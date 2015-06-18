@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>正在跳转,请稍候...</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style type="text/css">
+  .waitMsg{
+    font-family: "新宋体";
+    font-size: 13px;
+  }
+  </style>
+</head>
+<body onload="init();">
+<span class="waitMsg">正在跳转,请稍候...</span>
+</body>
+<script language="javascript">
+   function init(){
+     window.opener = null;
+     //window.close();
+     //self.close();
+     var win = window.open('login.do?reqCode=init', '_blank',
+       'top=0,left=0,location=no,status=yes,menubar=no,toolbar=no,scrollbars=no,resizable=yes,' 
+       + 'height=' + (screen.availHeight-30) + ', width=' + screen.availWidth);
+     self.close();
+	 }
+</script>
+</html>

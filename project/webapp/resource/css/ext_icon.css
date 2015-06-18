@@ -1,0 +1,308 @@
+@CHARSET "UTF-8";
+.folder_wrenchIcon {
+    background-image:url(../image/ext/folder_wrench.png) !important;
+ }
+
+.folder_cameraIcon {
+    background-image:url(../image/ext/folder_camera.png) !important;
+ }
+ 
+.folder_userIcon {
+    background-image:url(../image/ext/folder_user.png) !important;
+ }
+
+.folder_feedIcon {
+    background-image:url(../image/ext/folder_feed.png) !important;
+ }
+ 
+.cupIcon {
+    background-image:url(../image/ext/cup.png) !important;
+ }
+ 
+.application_homeIcon {
+    background-image:url(../image/ext/application_home.png) !important;
+ }
+
+.groupIcon {
+    background-image:url(../image/ext/group.png) !important;
+ }
+ 
+.commentsIcon {
+    background-image:url(../image/ext/comments.png) !important;
+ }
+
+.applicationIcon {
+    background-image:url(../image/ext/application.png) !important;
+ }
+ 
+.application_doubleIcon {
+    background-image:url(../image/ext/application_double.png) !important;
+ }
+ 
+.application_cascadeIcon {
+    background-image:url(../image/ext/application_cascade.png) !important;
+ }
+ 
+.tbar_synchronizeIcon {
+    background-image:url(../image/ext/tbar_synchronize.png) !important;
+ }
+ 
+.comments_addIcon {
+    background-image:url(../image/ext/comments_add.png) !important;
+ }
+ 
+.page_addIcon {
+    background-image:url(../image/ext/page_add.png) !important;
+ }
+ 
+.page_edit_1Icon {
+    background-image:url(../image/ext/page_edit_1.png) !important;
+ }
+ 
+.page_delIcon {
+    background-image:url(../image/ext/page_del.png) !important;
+ }
+
+.page_refreshIcon {
+    background-image:url(../image/ext/page_refresh.png) !important;
+ }
+ 
+.comment_addIcon {
+    background-image:url(../image/ext/comment_add.png) !important;
+ }
+
+.acceptIcon {
+    background-image:url(../image/ext/accept.png) !important;
+ }
+ 
+.deleteIcon {
+    background-image:url(../image/ext/delete.png) !important;
+ }
+
+.status_awayIcon {
+    background-image:url(../image/ext/status_away.png) !important;
+ }
+ 
+.status_busyIcon {
+    background-image:url(../image/ext/status_busy.png) !important;
+ }
+ 
+.arrow_refreshIcon {
+    background-image:url(../image/ext/arrow_refresh.png) !important;
+ }
+ 
+.lockIcon {
+    background-image:url(../image/ext/lock.png) !important;
+ }
+ 
+.wrenchIcon {
+    background-image:url(../image/ext/wrench.png) !important;
+ }
+ 
+.book_previousIcon {
+    background-image:url(../image/ext/book_previous.png) !important;
+ }
+ 
+.window_caise_listIcon {
+    background-image:url(../image/ext/window_caise_list.png) !important;
+ }
+ 
+.imageIcon {
+    background-image:url(../image/ext/image.png) !important;
+ }
+ 
+.application_view_listIcon {
+    background-image:url(../image/ext/application_view_list.png) !important;
+ }
+ 
+.keyIcon {
+    background-image:url(../image/ext/key.png) !important;
+ }
+ 
+.page_findIcon {
+    background-image:url(../image/ext/page_find.png) !important;
+ }
+ 
+.layout_contentIcon {
+    background-image:url(../image/ext/layout_content.png) !important;
+ }
+ 
+.chart_organisationIcon {
+    background-image:url(../image/ext/chart_organisation.png) !important;
+ }
+
+.buildingIcon {
+    background-image:url(../image/ext/building.png) !important;
+ }
+ 
+.user_femaleIcon {
+    background-image:url(../image/ext/user_female.png) !important;
+ }
+ 
+.status_onlineIcon {
+    background-image:url(../image/ext/status_online.png) !important;
+ }
+ 
+.expand-allIcon {
+    background-image:url(../image/ext/expand-all.gif) !important;
+ }
+ 
+.collapse-allIcon {
+    background-image:url(../image/ext/collapse-all.gif) !important;
+ }
+ 
+.drinkIcon {
+    background-image:url(../image/ext/drink.png) !important;
+ }
+ 
+.userIcon {
+    background-image:url(../image/ext/user.png) !important;
+ }
+ 
+.group_linkIcon {
+    background-image:url(../image/ext/group_link.png) !important;
+ }
+ 
+.award_star_silver_3Icon {
+    background-image:url(../image/ext/award_star_silver_3.png) !important;
+ }
+ 
+.medal_silver_3Icon {
+    background-image:url(../image/ext/medal_silver_3.png) !important;
+ }
+ 
+.medal_gold_1Icon {
+    background-image:url(../image/ext/medal_gold_1.png) !important;
+ }
+ 
+.cancel_48Icon {
+    background-image:url(../image/ext/cancel_48.png) !important;
+ }
+ 
+.themeIcon {
+    background-image:url(../image/ext/theme.png) !important;
+ }
+ 
+.config2Icon {
+    background-image:url(../image/ext/config2.png) !important;
+ }
+ 
+.imIcon {
+    background-image:url(../image/ext/im.png) !important;
+ }
+ 
+.theme2Icon {
+    background-image:url(../image/ext/theme2.png) !important;
+ }
+ 
+.checkIcon {
+    background-image:url(../image/ext/check.png) !important;
+ }
+
+.printerIcon {
+    background-image:url(../image/ext/printer.png) !important;
+ }
+ 
+.previewIcon {
+    background-image:url(../image/ext/preview.png) !important;
+ }
+ 
+.page_excelIcon {
+    background-image:url(../image/ext/page_excel.png) !important;
+ }
+ 
+.pluginIcon {
+    background-image:url(../image/ext/plugin.png) !important;
+ }
+ 
+.addIcon {
+    background-image:url(../image/ext/add.png) !important;
+ }
+ 
+.edit1Icon {
+    background-image:url(../image/ext/edit1.png) !important;
+ }
+ 
+.disconnectIcon {
+    background-image:url(../image/ext/disconnect.png) !important;
+ }
+ 
+.tableIcon {
+    background-image:url(../image/ext/table.png) !important;
+ }
+ 
+.database_connectIcon {
+    background-image:url(../image/ext/database_connect.png) !important;
+ }
+ 
+.exclamationIcon {
+    background-image:url(../image/ext/exclamation.png) !important;
+ }
+
+.bugIcon {
+    background-image:url(../image/ext/bug.png) !important;
+ }
+ 
+.configIcon {
+    background-image:url(../image/ext/config.png) !important;
+ }
+ 
+.server_connectIcon {
+    background-image:url(../image/ext/server_connect.png) !important;
+ }
+ 
+.database_refreshIcon {
+    background-image:url(../image/ext/database_refresh.png) !important;
+ }
+ 
+.user_commentIcon {
+    background-image:url(../image/ext/user_comment.png) !important;
+ }
+ 
+.imagesIcon {
+    background-image:url(../image/ext/images.png) !important;
+ }
+ 
+.docsIcon {
+    background-image:url(../image/ext/docs.gif) !important;
+ }
+ 
+.group_addIcon {
+    background-image:url(../image/ext/group_add.png) !important;
+ }
+ 
+.message_editIcon {
+    background-image:url(../image/ext/message_edit.png) !important;
+ }
+ 
+.uploadIcon {
+    background-image:url(../image/ext/upload.png) !important;
+ }
+
+.downloadIcon {
+    background-image:url(../image/ext/download.png) !important;
+ }
+ 
+.app_boxesIcon {
+    background-image:url(../image/ext/app_boxes.png) !important;
+ }
+ 
+.app_leftIcon {
+    background-image:url(../image/ext/app_left.png) !important;
+ }
+ 
+.app_rightIcon {
+    background-image:url(../image/ext/app_right.png) !important;
+ }
+ 
+.arrow_switchIcon {
+    background-image:url(../image/ext/arrow_switch.png) !important;
+ }
+ 
+.plugin_addIcon {
+    background-image:url(../image/ext/plugin_add.png) !important;
+ }
+ 
+.plugin_editIcon {
+    background-image:url(../image/ext/plugin_edit.png) !important;
+ }
