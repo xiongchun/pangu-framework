@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- G4Studio应用部署ANT打War包脚本 -->
+<project name="G4Studio" default="startup" basedir="../../../">
+	
+	<!-- 初始化 -->
+	<target name="init">
+		<property name="name" value="G4Studio" />
+		<property name="src" value="${basedir}/src/main/java" />
+		<property name="src-cfg" value="${basedir}/src/resources" />
+		<property name="lib" value="${basedir}/webapp/WEB-INF/lib" />
+		<property name="webapp" value="${basedir}/webapp" />
+
+		<property name="temp.src" value="${basedir}/build/src" />
+		<property name="build" value="${basedir}/build/g4studio" />
+		<property name="build.bin" value="${basedir}/build/g4studio/WEB-INF/classes" />
+		<property name="build.lib" value="${basedir}/build/g4studio/WEB-INF/lib" />
+		<property name="war.output" value="${basedir}/build/war" />
+
+		<path id="classpath">
+			<fileset dir="${lib}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+	</target>
+
+	<!-- 准备打包资源 -->
+	<target name="prepare" depends="init">
+		<echo message="正在创建目录,复制相关资源..." />
+		<mkdir dir="${temp.src}" />
+		<mkdir dir="${war.output}" />
+		<copy todir="${temp.src}">
+			<fileset dir="${src}" />
+		</copy>
+		<copy todir="${temp.src}">
+					<fileset dir="${src-cfg}" />
+		</copy>
+		<copy todir="${build}">
+			<fileset dir="${webapp}" />
+		</copy>
+		<copy todir="${build.lib}">
+			<fileset dir="${lib}" />
+		</copy>
+		<delete dir="${build.lib}/jetty" />
+	</target>
+
+	<!-- 编译源文件 -->
+	<target name="build" depends="prepare">
+		<delete dir="${build.bin}" />
+		<mkdir dir="${build.bin}" />
+		<echo message="正在编译源文件..."/>
+		<javac srcdir="${temp.src}" destdir="${build.bin}" encoding="utf-8">
+			<classpath refid="classpath" />
+		</javac>
+		<echo message="正在复制配置文件..."/>
+		<copy todir="${build.bin}">
+			<fileset dir="${temp.src}">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+				<include name="**/*.tpl" />
+				<include name="**/*.dtd" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- 打war包 -->
+	<target name="war" depends="build">
+    	<echo message="正在打war包..." />
+		<war warfile="${war.output}/g4studio.war" webxml="${build}/WEB-INF/web.xml">
+			<fileset dir="${build}" />
+		</war>
+	</target>
+
+	<!-- 清除临时资源 -->
+	<target name="clean" depends="war">
+    	<echo message="正在清除缓存资源..." />
+		<delete dir="${temp.src}" />
+		<delete dir="${build}" />
+	</target>
+
+	<!-- 启动 -->
+	<target name="startup" depends="clean">
+
+	</target>
+</project>

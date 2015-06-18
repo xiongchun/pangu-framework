@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- 权限模型标签数据访问手工映射SQL语句 -->
+<sqlMap namespace="ArmTagSupport">
+	<typeAlias alias="dto" type="org.g4studio.core.metatype.impl.BaseDto"/>
+	<typeAlias alias="menuVo" type="org.g4studio.system.admin.web.tag.vo.MenuVo"/>
+	<typeAlias alias="deptVo" type="org.g4studio.system.admin.web.tag.vo.DeptVo"/>
+	<typeAlias alias="userVo" type="org.g4studio.system.admin.web.tag.vo.UserVo"/>
+	<typeAlias alias="roleVo" type="org.g4studio.system.admin.web.tag.vo.RoleVo"/>
+	
+	<!-- 查询菜单树:角色授权/用户授权 -->
+	<select id="queryMenusForRoleGrant" parameterClass="map" resultClass="menuVo">
+		SELECT menuid, menuname, parentid, leaf,menutype,sortno
+		  FROM eamenu WHERE menutype = #menutype#
+		UNION
+        SELECT menuid, menuname, parentid, leaf,menutype,sortno
+		  FROM eamenu WHERE parentid = '0'
+	</select>
+	
+	<!-- 查询菜单树:角色授权/用户授权 -->
+	<select id="queryMenusForGrant" parameterClass="map" resultClass="menuVo">
+        SELECT DISTINCT a.menuid,b.menuname,b.parentid, b.leaf,b.menutype,b.sortno 
+          FROM earoleauthorize a, eamenu b  
+         WHERE a.menuid=b.menuid AND a.authorizelevel = '2'
+           AND a.roleid in (SELECT roleid FROM eauserauthorize WHERE userid = #userid#)
+         ORDER BY b.sortno ASC
+	</select>
+	
+	<!-- 查询某角色已授权菜单 -->
+	<select id="queryGrantedMenusByRoleId" parameterClass="map" resultClass="dto">
+		SELECT roleid, menuid, authorizelevel, authorizeid
+		  FROM earoleauthorize where roleid = #roleid#
+		<dynamic> 
+			<isNotEmpty prepend="and" property="authorizelevel">
+	          authorizelevel = #authorizelevel#
+			</isNotEmpty>									
+		</dynamic> 
+	</select>
+	
+	<!-- 查询部门树:选择人员 -->
+	<select id="queryDeptsForRoleGrant" parameterClass="map" resultClass="deptVo">
+		SELECT deptid, deptname, parentid
+		  FROM eadept where deptid like '$deptid$%' and enabled='1'
+	</select>
+	
+	<!-- 查询部门下属人员:选择人员 -->
+	<select id="queryUsersForRoleGrant" parameterClass="map" resultClass="userVo">
+			SELECT userid,username,usertype,deptid,account, 'false' as checked
+			from eauser WHERE locked = '0' and deptid = #deptid# and enabled = '1'
+		<dynamic> 
+			<isNotEmpty prepend="and" property="usertype">
+	          usertype = #usertype#
+			</isNotEmpty>
+			<isNotEmpty prepend="or" property="usertype4">
+	          usertype = '4'
+			</isNotEmpty>									
+		</dynamic> 
+	</select>
+	
+	<!-- 查询某角色已关联用户 -->
+	<select id="queryGrantedUsersByRoleId" parameterClass="map" resultClass="dto">
+		SELECT userid, roleid, authorizeid
+		  FROM eauserauthorize where roleid = #roleid#
+	</select>
+	
+	<!-- 查询部门树:选择角色 -->
+	<select id="queryDeptsForUserGrant" parameterClass="map" resultClass="deptVo">
+		SELECT deptid, deptname, parentid
+		  FROM eadept where deptid like '$deptid$%' and enabled='1'
+	</select>
+	
+	<!-- 查询部门下属角色:选择角色 -->
+	<select id="queryRolesForUserGrant" parameterClass="map" resultClass="roleVo">
+		SELECT 
+			roleid, rolename, deptid, roletype, locked
+		FROM EAROLE WHERE locked = '0' and deptid = #deptid#
+		<dynamic> 
+			<isNotEmpty prepend="and" property="roletype">
+	          roletype = #roletype#
+			</isNotEmpty>									
+		</dynamic> 
+	</select>
+	
+	<!-- 查询某人员已关联角色 -->
+	<select id="queryGrantedRolesByUserId" parameterClass="map" resultClass="dto">
+		SELECT userid, roleid, authorizeid
+		  FROM eauserauthorize where userid = #userid#
+	</select>
+	
+	<!-- 查询菜单树:人员授权 -->
+	<select id="queryMenusForUserGrant" parameterClass="map" resultClass="menuVo">
+		SELECT menuid, menuname, parentid, leaf,menutype,sortno
+		  FROM eamenu WHERE menutype = #menutype# ORDER BY sortno asc
+	</select>
+	
+	<!-- 查询某人员已授权菜单 -->
+	<select id="queryGrantedMenusByUserId" parameterClass="map" resultClass="dto">
+		SELECT userid, menuid, authorizeid, authorizelevel
+		  FROM eausermenumap WHERE userid=#userid# and authorizelevel = #authorizelevel#
+	</select>
+	
+	<!-- 查询卡片信息0：基于SUPER和DEVELOPER用户 -->
+	<select id="getCardListBasedSuperAndDeveloper" parameterClass="map" resultClass="menuVo">
+		SELECT DISTINCT b.menuid, b.menuname, b.iconcls, '1' as authorizelevel, b.sortno
+		           FROM eamenu b
+		<dynamic prepend="WHERE"> 
+			<isEqual prepend="AND" property="dbType" compareValue="common"> 
+	               LENGTH(b.menuid) = 4
+			</isEqual>
+			<isEqual prepend="AND" property="dbType" compareValue="sqlserver"> 
+	               LEN(b.menuid) = 4
+			</isEqual>		
+			<isEqual prepend="AND" property="accountType" compareValue="2"> 
+	                b.menutype = '1'
+			</isEqual>									
+		</dynamic> 
+		 ORDER BY b.sortno asc
+	</select>
+	
+	<!-- 查询卡片信息1：基于角色 -->
+	<select id="getCardList" parameterClass="map" resultClass="menuVo">
+		SELECT DISTINCT a.menuid, b.menuname, b.iconcls, a.authorizelevel, b.sortno
+		           FROM earoleauthorize a, eamenu b
+		          WHERE a.authorizelevel = '1'
+		            AND a.menuid = b.menuid
+		            AND a.roleid IN (SELECT roleid
+		                                 FROM eauserauthorize
+		                                WHERE userid = #userid#)
+		<dynamic>
+			<isEqual prepend="AND" property="dbType" compareValue="common"> 
+			               LENGTH(a.menuid) = 4
+			</isEqual>
+			<isEqual prepend="AND" property="dbType" compareValue="sqlserver"> 
+			               LEN(a.menuid) = 4
+			</isEqual>	
+		</dynamic>
+		ORDER BY b.sortno asc
+	</select>
+	
+	<!-- 查询卡片信息2:基于人员 -->
+	<select id="getCardListBasedUser" parameterClass="map" resultClass="menuVo">
+		SELECT DISTINCT a.menuid, b.menuname, b.iconcls, a.authorizelevel, b.sortno
+		           FROM eausermenumap a, eamenu b
+                  WHERE	a.menuid = b.menuid and a.userid=#userid# and a.authorizelevel = '1' 
+		<dynamic>
+			<isEqual prepend="AND" property="dbType" compareValue="common"> 
+			               LENGTH(a.menuid) = 4
+			</isEqual>
+			<isEqual prepend="AND" property="dbType" compareValue="sqlserver"> 
+			               LEN(a.menuid) = 4
+			</isEqual>	
+		</dynamic>                  
+               ORDER BY b.sortno asc           
+	</select>
+	
+	<!-- 查询卡片菜单子树信息：基于SUPER和DEVELOPER用户 -->
+	<select id="getCardTreeListBasedSuperAndDeveloper" parameterClass="map" resultClass="menuVo">
+		SELECT DISTINCT b.menuid, b.menuname, b.iconcls,b.parentid,b.request,b.sortno,  
+		                b.expanded,'1' as authorizelevel, b.icon
+		           FROM eamenu b
+		          WHERE  b.menuid like '$menuid$%'
+		       ORDER BY b.sortno asc
+	</select>
+	
+	<!-- 查询卡片菜单子树信息：基于角色 -->
+	<select id="getCardTreeList" parameterClass="map" resultClass="menuVo">
+		SELECT DISTINCT a.menuid, b.menuname, b.iconcls,b.parentid,b.request,b.sortno, b.leaf,
+		                b.expanded, a.authorizelevel, b.icon
+		           FROM earoleauthorize a, eamenu b
+		          WHERE a.authorizelevel = '1'
+		            AND a.menuid = b.menuid and a.menuid like '$menuid$%'
+		            AND a.roleid IN (SELECT roleid
+		                                 FROM eauserauthorize
+		                                WHERE userid = #userid#)
+		       ORDER BY b.sortno asc
+	</select>
+	
+	<!-- 查询卡片菜单子树信息：基于人员 -->
+	<select id="getCardTreeListBasedUser" parameterClass="map" resultClass="menuVo">
+		SELECT DISTINCT a.menuid, b.menuname, b.iconcls,b.parentid,b.request,b.sortno, b.leaf,
+		                b.expanded,a.authorizelevel, b.icon
+		           FROM eausermenumap a, eamenu b
+		          WHERE a.authorizelevel = '1'
+		            AND a.menuid = b.menuid and a.userid = #userid#
+		       ORDER BY b.sortno asc
+	</select>
+	
+	<!-- 查询菜单叶子节点信息(桌面布局)：基于SUPER和DEVELOPER用户 -->
+	<select id="getCardTreeListBasedSuperAndDeveloper4Desktop" parameterClass="map" resultClass="menuVo">
+		SELECT DISTINCT b.menuid, b.menuname, b.iconcls,b.parentid,b.request,b.sortno,  
+		                b.expanded,'1' as authorizelevel, b.icon, b.shortcut, b.width, b.height, b.scrollbar
+		           FROM eamenu b
+		          WHERE  b.leaf = '1'
+		<dynamic> 
+			<isEqual prepend="AND" property="accountType" compareValue="2"> 
+	                b.menutype = '1'
+			</isEqual>									
+		</dynamic> 
+		       ORDER BY b.sortno asc
+	</select>
+	
+	<!-- 查询菜单叶子节点信息(桌面布局)：基于角色 -->
+	<select id="getCardTreeList4Desktop" parameterClass="map" resultClass="menuVo">
+		SELECT DISTINCT a.menuid, b.menuname, b.iconcls,b.parentid,b.request,b.sortno, b.leaf,
+		                b.expanded, a.authorizelevel, b.icon, b.shortcut, b.width, b.height, b.scrollbar
+		           FROM earoleauthorize a, eamenu b
+		          WHERE a.authorizelevel = '1'
+		            AND a.menuid = b.menuid and b.leaf = '1'
+		            AND a.roleid IN (SELECT roleid
+		                                 FROM eauserauthorize
+		                                WHERE userid = #userid#)
+		       ORDER BY b.sortno asc
+	</select>
+	
+	<!-- 查询菜单叶子节点信息(桌面布局)：基于人员 -->
+	<select id="getCardTreeListBasedUser4Desktop" parameterClass="map" resultClass="menuVo">
+		SELECT DISTINCT a.menuid, b.menuname, b.iconcls,b.parentid,b.request,b.sortno, b.leaf,
+		                b.expanded,a.authorizelevel, b.icon, b.shortcut, b.width, b.height, b.scrollbar
+		           FROM eausermenumap a, eamenu b
+		          WHERE a.authorizelevel = '1' AND b.leaf = '1'
+		            AND a.menuid = b.menuid and a.userid = #userid#
+		       ORDER BY b.sortno asc
+	</select>
+	
+	<!-- 查询部门信息 -->
+	<select id="getDepartmentInfo" parameterClass="map" resultClass="dto">
+		SELECT deptid, deptname from eadept a
+		  WHERE a.deptid = #deptid# and a.enabled='1'
+	</select>
+	
+	<!-- 查询人员附加信息 -->
+	<select id="getEauserSubInfo" parameterClass="map" resultClass="dto">
+		SELECT theme, layout, background FROM eausersubinfo
+		  WHERE userid = #userid#
+	</select>
+	
+	<!-- 查询UI元素角色授权信息 -->
+	<select id="getUiRoleGrantInfo" parameterClass="map" resultClass="dto">
+		SELECT distinct a.cmpid,a.cmptype,b.partauthtype FROM eamenupart a, earolemenupart b 
+		  WHERE a.partid = b.partid and b.menuid = #menuid# and b.roleid in (SELECT roleid FROM eauserauthorize WHERE userid = #userid#)
+	</select>
+	
+	<!-- 查询UI元素人员授权信息 -->
+	<select id="getUiUserGrantInfo" parameterClass="map" resultClass="dto">
+		SELECT a.cmpid,a.cmptype,b.partauthtype FROM eamenupart a, eausermenupart b 
+		  WHERE a.partid = b.partid and b.userid = #userid# and b.menuid = #menuid#
+	</select>
+</sqlMap>

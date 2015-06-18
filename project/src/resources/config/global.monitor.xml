@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringBean切面监控 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<!-- 系统异常监控-->
+	<!-- 如果要对方法调用进行监控则使用下面的切面 
+		  <aop:around pointcut-ref="g4CallPointcut" method="interceptCall"/>
+    -->
+	
+	<aop:config>  
+		<aop:aspect id="g4ServiceMonitor" ref="aspectBean">   
+			<aop:pointcut id="g4ExceptionPointcut"  
+				expression="execution(* org.g4studio.*.*.*.*(..))" />  
+			<aop:after-throwing pointcut-ref="g4ExceptionPointcut" method="interceptException" throwing="ex"/>  
+		</aop:aspect>  
+	</aop:config> 
+	
+	<!-- 切面Bean -->
+	<bean id="aspectBean" class="org.g4studio.common.util.SpringBeanAspect" /> 
+</beans>

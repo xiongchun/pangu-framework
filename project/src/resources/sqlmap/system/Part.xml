@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- UI组件权限管理手工映射SQL语句 -->
+<sqlMap namespace="Part">
+	<typeAlias alias="dto" type="org.g4studio.core.metatype.impl.BaseDto"/>
+	
+	<!-- 查询UI组件 -->
+	<select id="queryParts" parameterClass="map" resultClass="dto">
+		SELECT
+			   a.partid,
+			   a.menuid,
+			   b.menuname,
+			   a.cmpid,
+			   a.cmptype,
+			   a.remark
+		FROM eamenupart a, eamenu b
+	   WHERE 1 = 1 and a.menuid=b.menuid
+		<dynamic>
+			<isNotEmpty prepend="AND" property="partid"> 
+									a.partid = #partid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="menuid"> 
+									a.menuid = #menuid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cmptype"> 
+									a.cmptype = #cmptype#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cmpid"> 
+									a.cmpid = #cmpid#
+			</isNotEmpty>
+		</dynamic>
+		ORDER BY partid DESC
+	</select>
+	
+	<!-- 统计UI组件 -->
+	<select id="queryPartsForPageCount" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT count(*) as count
+		  FROM eamenupart a WHERE 1 = 1
+		<dynamic>
+			<isNotEmpty prepend="AND" property="partid"> 
+									a.partid = #partid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="menuid"> 
+									a.menuid = #menuid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cmptype"> 
+									a.cmptype = #cmptype#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cmpid"> 
+									a.cmpid = #cmpid#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- 插入一条UI托管组件记录 -->
+	<insert id="savePartItem" parameterClass="dto">
+		INSERT INTO eamenupart (
+		   partid, menuid, cmpid, 
+		   cmptype, remark) 
+		VALUES (#partid#, #menuid#, #cmpid#, 
+		   #cmptype#, #remark#)
+	</insert>
+	
+	<!-- 根据主键更新托管组件 -->
+	<update id="updatePartItem" parameterClass="dto">
+         UPDATE eamenupart
+		<dynamic prepend="SET"> 
+			<isNotNull prepend="," property="menuid">
+	         menuid = #menuid#
+			</isNotNull>
+			<isNotNull prepend="," property="cmpid">
+	         cmpid = #cmpid#
+			</isNotNull>
+			<isNotNull prepend="," property="cmptype">
+	         cmptype = #cmptype#
+			</isNotNull>
+			<isNotNull prepend="," property="remark">
+	         remark = #remark#
+			</isNotNull>										
+		</dynamic> 
+	        WHERE partid = #partid#    
+	</update>
+	
+	<!-- 删除UI元素 -->
+	<delete id="deletePartItem" parameterClass="map" >
+		DELETE FROM eamenupart
+		      WHERE partid = #partid#
+	</delete>
+	
+	<!-- 删除UI元素人员授权信息 -->
+	<delete id="deletePartUserGrantItem" parameterClass="map" >
+		DELETE FROM eausermenupart
+		      WHERE partid = #partid#
+	</delete>
+	
+	<!-- 删除UI元素角色授权信息 -->
+	<delete id="deletePartRoleGrantItem" parameterClass="map" >
+		DELETE FROM earolemenupart
+		      WHERE partid = #partid#
+	</delete>
+	
+	<select id="queryPartByDto" parameterClass="map" resultClass="dto">
+		SELECT
+			   a.partid,
+			   a.menuid,
+			   a.cmpid,
+			   a.cmptype,
+			   a.remark
+		FROM eamenupart a
+	   WHERE 1 = 1
+		<dynamic>
+			<isNotEmpty prepend="AND" property="partid"> 
+									a.partid = #partid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="menuid"> 
+									a.menuid = #menuid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cmptype"> 
+									a.cmptype = #cmptype#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cmpid"> 
+									a.cmpid = #cmpid#
+			</isNotEmpty>
+		</dynamic>
+		ORDER BY a.partid DESC
+	</select>
+	
+	<!-- 查询授权信息 -->
+	<select id="queryPart4UserGrant" parameterClass="map" resultClass="dto">
+		SELECT
+			   a.authorizeid,
+			   a.partauthtype,
+			   a.userid
+		FROM eausermenupart a
+	   WHERE a.userid = #userid# and a.menuid=#menuid# and a.partid = #partid#
+	</select>
+	
+	<!-- 查询授权信息 -->
+	<select id="queryPart4RoleGrant" parameterClass="map" resultClass="dto">
+		SELECT
+			   a.authorizeid,
+			   a.partauthtype,
+			   a.roleid
+		FROM earolemenupart a
+	   WHERE a.roleid = #roleid# and a.menuid=#menuid# and a.partid = #partid#
+	</select>
+	
+	<!-- 插入一条UI人员授权记录 -->
+	<insert id="insertEausermenupartItem" parameterClass="dto">
+		INSERT INTO eausermenupart ( authorizeid, userid,menuid, partid, partauthtype) 
+		     VALUES (#authorizeid#, #userid#, #menuid#, #partid#, #partauthtype#)
+	</insert>
+	
+	<!-- 删除一条UI人员授权记录 -->
+	<delete id="deleteEausermenupartItem" parameterClass="dto">
+		DELETE FROM eausermenupart
+		      WHERE authorizeid = #authorizeid#
+	</delete>
+	
+	<!-- 修改UI人员授权类型 -->
+	<update id="updateEausermenupartItem" parameterClass="dto">
+         UPDATE eausermenupart
+		<dynamic prepend="SET"> 
+			<isNotNull prepend="," property="partauthtype">
+	         partauthtype = #partauthtype#
+			</isNotNull>										
+		</dynamic> 
+	        WHERE authorizeid = #authorizeid#   
+	</update>
+	
+	<!-- 插入一条UI角色授权记录 -->
+	<insert id="insertEarolemenupartItem" parameterClass="dto">
+		INSERT INTO earolemenupart ( authorizeid, roleid,menuid, partid, partauthtype) 
+		     VALUES (#authorizeid#, #roleid#, #menuid#, #partid#, #partauthtype#)
+	</insert>
+	
+	<!-- 删除一条UI角色授权记录 -->
+	<delete id="deleteEarolemenupartItem" parameterClass="dto">
+		DELETE FROM earolemenupart
+		      WHERE authorizeid = #authorizeid#
+	</delete>
+	
+	<!-- 修改UI角色授权类型 -->
+	<update id="updateEarolemenupartItem" parameterClass="dto">
+         UPDATE earolemenupart
+		<dynamic prepend="SET"> 
+			<isNotNull prepend="," property="partauthtype">
+	         partauthtype = #partauthtype#
+			</isNotNull>										
+		</dynamic> 
+	        WHERE authorizeid = #authorizeid#   
+	</update>
+
+</sqlMap>

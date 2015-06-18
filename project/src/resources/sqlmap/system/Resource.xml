@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- 资源模型手工映射SQL语句 -->
+<sqlMap namespace="Resource">
+	<typeAlias alias="dto" type="org.g4studio.core.metatype.impl.BaseDto"/>
+	
+	<!-- 读取字典到内存-->
+	<select id="getCodeViewList" parameterClass="map" resultClass="dto">
+		SELECT codeid, field, fieldname, code, codedesc, sortno
+		  FROM eacode  WHERE enabled = '1' ORDER BY codeid , sortno
+	</select>
+	
+	<!-- 读取全局参数表到内存 -->
+	<select id="getParamList" parameterClass="map" resultClass="dto">
+		SELECT paramid, paramkey, paramvalue
+		  FROM eaparam
+	</select>
+	
+	<!-- 代码表管理 -->
+	<select id="getCodeListForPage" parameterClass="map" resultClass="dto">
+		SELECT   field, fieldname, code, codedesc, enabled, editmode, sortno, remark,
+		         codeid
+		    FROM eacode
+		   WHERE FIELD LIKE '%$queryParam$%'
+		      OR fieldname LIKE '%$queryParam$%'
+		      OR codedesc LIKE '%$queryParam$%'
+		ORDER BY codeid DESC, sortno desc
+	</select>
+	
+	<select id="getCodeListForPageCount" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT count(*)
+		  FROM eacode WHERE field like '%$queryParam$%'
+		                 OR fieldname like '%$queryParam$%'
+		                 OR codedesc like '%$queryParam$%'
+	</select>
+	
+	<!-- 插入一条代码对照记录 -->
+	<insert id="createEacodeDomain" parameterClass="dto">
+		INSERT INTO eacode (
+		   field, fieldname, code, 
+		   codedesc, enabled, editmode, 
+		   sortno, remark, codeid) 
+		VALUES (#field#, #fieldname#, #code#,
+		    #codedesc#, #enabled#, #editmode#,
+		    #sortno#, #remark#,#codeid# )
+	</insert>
+    
+	<!-- 根据唯一索引进行唯一性校验 -->
+	<select id="checkEaCodeByIndex" parameterClass="map" resultClass="dto">
+		SELECT field, fieldname, code, codedesc, enabled, editmode, sortno, remark
+		  FROM eacode 
+		 WHERE field = #field# and code=#code#
+	</select>
+	
+	<!-- 根据主键查询代码表 -->
+	<select id="getEaCodeByKey" parameterClass="map" resultClass="dto">
+		SELECT field, fieldname, code, codedesc, enabled, editmode, sortno, remark, codeid
+		  FROM eacode 
+		 WHERE codeid = #codeid#
+	</select>
+	
+	<!-- 删除代码对照  -->
+	<delete id="deleteCodeItem" parameterClass="map" >
+		DELETE 
+		  FROM eacode 
+		 WHERE codeid = #codeid#
+	</delete>
+	
+	<!-- 根据主键更新代码表 -->
+	<update id="updateCodeItem" parameterClass="dto">
+         UPDATE eacode 
+		<dynamic prepend="SET"> 
+			<isNotNull prepend="," property="field">
+	         field = #field#
+			</isNotNull>
+			<isNotNull prepend="," property="fieldname">
+	         fieldname = #fieldname#
+			</isNotNull>
+			<isNotNull prepend="," property="code">
+	         code = #code#
+			</isNotNull>
+			<isNotNull prepend="," property="codedesc">
+	         codedesc = #codedesc#
+			</isNotNull>
+			<isNotNull prepend="," property="enabled">
+	         enabled = #enabled#
+			</isNotNull>
+			<isNotNull prepend="," property="editmode">
+	         editmode = #editmode#
+			</isNotNull>
+			<isNotNull prepend="," property="sortno">
+	         sortno = #sortno#
+			</isNotNull>
+			<isNotNull prepend="," property="remark">
+	         remark = #remark#
+			</isNotNull>								
+		</dynamic> 
+	        WHERE codeid = #codeid#    
+	</update>
+    
+	<!-- 根据DTO查询菜单信息 -->
+	<select id="queryMenuItemsByDto" parameterClass="map" resultClass="dto">
+		SELECT 
+		   menuid as id, menuname as text, parentid, request,leaf
+		FROM EAMENU
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="menuid"> 
+				menuid = #menuid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="parentid"> 
+				parentid = #parentid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="menutype"> 
+				menutype = #menutype#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="menuname"> 
+				menuname like '%'||#menuname#||'%'
+			</isNotEmpty>
+		</dynamic>
+		order by sortno asc
+	</select>
+	
+	<!-- 菜单资源管理-菜单列表 -->
+	<select id="queryMenuItemsForManage" parameterClass="map" resultClass="dto">
+		SELECT menuid, menuname, (SELECT menuname
+		                            FROM eamenu
+		                           WHERE menuid = a.parentid) AS parentmenuname,
+		       (SELECT COUNT(*)
+		          FROM earoleauthorize
+		         WHERE menuid = a.menuid) AS COUNT, iconcls, parentid, expanded,
+		       request, leaf, sortno, remark, icon, menutype, shortcut, width, height, scrollbar
+		  FROM eamenu a
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="menuid"> 
+									a.menuid like '$menuid$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="parentid"> 
+									a.parentid = #parentid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="menuname"> 
+									a.menuname like '%$menuname$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="queryParam"> 
+				                    a.menuname like '%$queryParam$%'
+			</isNotEmpty>
+		</dynamic>
+		 order by menuid desc
+	</select>
+	
+	<select id="queryMenuItemsForManageForPageCount" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT count(*) as count
+		  FROM eamenu a 
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="menuid"> 
+									a.menuid like '$menuid$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="parentid"> 
+									a.parentid = #parentid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="menuname"> 
+									a.menuname like '%$menuname$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="queryParam"> 
+				                    a.menuname like '%$queryParam$%'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- 插入一条菜单记录 -->
+	<insert id="saveMenuItem" parameterClass="dto">
+		INSERT INTO eamenu (
+		   menuid, menuname, parentid, 
+		   iconcls, expanded, request, 
+		   leaf, sortno, remark, icon, shortcut, width, height, scrollbar) 
+		VALUES (#menuid#, #menuname#, #parentid#,
+		    #iconcls#, #expanded#, #request#,
+		    #leaf#, #sortno#, #remark#, #icon#, #shortcut#, #width#, #height#, #scrollbar#)
+	</insert>
+    
+	<!-- 更新叶子节点 -->
+	<update id="updateLeafFieldInEaMenu" parameterClass="dto">
+         UPDATE eamenu SET leaf = #leaf# WHERE menuid = #menuid#  
+	</update>
+    
+	<!-- 删除菜单  -->
+	<delete id="deleteEamenuItem" parameterClass="map" >
+		DELETE 
+		  FROM eamenu
+		 WHERE menuid like '$menuid$%'
+	</delete>
+	
+	<!-- 删除角色授权  -->
+	<delete id="deleteEarwauthorizeItem" parameterClass="map" >
+		DELETE 
+		  FROM earoleauthorize 
+		 WHERE menuid like '$menuid$%'
+	</delete>
+	
+	<!-- 删除人员菜单关联  -->
+	<delete id="deleteEausermenumapByMenuid" parameterClass="map" >
+		DELETE 
+		  FROM eausermenumap 
+		 WHERE menuid like '$menuid$%'
+	</delete>
+	
+	<select id="prepareChangeLeafOfDeletedParent" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT count(*) as count
+		  FROM eamenu a WHERE parentid = #menuid#
+	</select>
+	
+	<!-- 根据主键更新菜单 -->
+	<update id="updateMenuItem" parameterClass="dto">
+         UPDATE eamenu 
+		<dynamic prepend="SET"> 
+			<isNotNull prepend="," property="menuname">
+	         menuname = #menuname#
+			</isNotNull>
+			<isNotNull prepend="," property="parentid">
+	         parentid = #parentid#
+			</isNotNull>
+			<isNotNull prepend="," property="iconcls">
+	         iconcls = #iconcls#
+			</isNotNull>
+			<isNotNull prepend="," property="expanded">
+	         expanded = #expanded#
+			</isNotNull>
+			<isNotNull prepend="," property="request">
+	         request = #request#
+			</isNotNull>
+			<isNotNull prepend="," property="leaf">
+	         leaf = #leaf#
+			</isNotNull>
+			<isNotNull prepend="," property="sortno">
+	         sortno = #sortno#
+			</isNotNull>
+			<isNotNull prepend="," property="remark">
+	         remark = #remark#
+			</isNotNull>	
+			<isNotNull prepend="," property="icon">
+	         icon = #icon#
+			</isNotNull>
+			<isNotNull prepend="," property="shortcut">
+	         shortcut = #shortcut#
+			</isNotNull>		
+			<isNotEmpty prepend="," property="width">
+	         width = #width#
+			</isNotEmpty>		
+			<isNotEmpty prepend="," property="height">
+	         height = #height#
+			</isNotEmpty>	
+			<isNotNull prepend="," property="scrollbar">
+	         scrollbar = #scrollbar#
+			</isNotNull>			
+		</dynamic> 
+	        WHERE menuid = #menuid#    
+	</update>
+    
+	<!-- 查询系统图标 -->
+	<select id="queryIconsForManage" parameterClass="map" resultClass="dto">
+		SELECT   iconid, filename, cssname
+		    FROM eaicon a
+		 WHERE 1 = 1
+		<dynamic>
+			<isNotEmpty prepend="AND" property="queryParam"> 
+				a.filename like '%$queryParam$%' or a.cssname like '%$queryParam$%'
+			</isNotEmpty>
+		</dynamic>
+		ORDER BY iconid DESC
+	</select>
+	
+	<!-- 查询系统图标 -->
+	<select id="queryIconsForManageForPageCount" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT count(*) as count
+		  FROM eaicon a WHERE 1 = 1
+		<dynamic>
+			<isNotEmpty prepend="AND" property="queryParam"> 
+				                    a.filename like '%$queryParam$%' or a.cssname like '%$queryParam$%'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- 根据主键查询菜单 -->
+	<select id="queryEamenuByMenuID" parameterClass="java.lang.String" resultClass="dto">
+		 SELECT 
+           menuid, menuname, parentid, 
+		   iconcls, expanded, request, 
+		   leaf, sortno, remark, 
+		   icon	      
+		 FROM eamenu where menuid = #menuid#
+	</select>
+</sqlMap>

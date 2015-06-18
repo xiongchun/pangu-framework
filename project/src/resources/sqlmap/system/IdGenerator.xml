@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- ID生成器手工映射SQL语句 -->
+<sqlMap namespace="IdGenerator">
+	<typeAlias alias="dto" type="org.g4studio.core.metatype.impl.BaseDto"/>
+	
+	<!-- 根据字段名查询 -->
+	<select id="getEaSequenceByFieldName" parameterClass="map" resultClass="dto">
+		SELECT 
+		   sequenceid as sequenceid, fieldname as fieldname, maxid as maxid, remark as remark, 
+		   pattern as pattern, idtype as idtype
+		FROM easequence WHERE fieldname = #fieldname#
+	</select>
+	
+	<!-- 根据ColumnName更新最大ID号 -->
+	<update id="updateMaxValueByFieldName" parameterClass="dto">
+        UPDATE easequence SET maxid = #maxid# WHERE fieldname = #fieldname#
+	</update>
+	
+	<!-- 获取最大菜单子节点编号 -->
+	<select id="getMaxSubMenuId" parameterClass="java.lang.String" resultClass="java.lang.String">
+		SELECT MAX(menuid)
+		  FROM eamenu
+		 WHERE parentid = #parentid#
+	</select>
+	
+	<!-- 获取最大部门子节点编号 -->
+	<select id="getMaxSubDeptId" parameterClass="java.lang.String" resultClass="java.lang.String">
+		SELECT MAX(deptid)
+		  FROM eadept
+		 WHERE parentid = #parentid#
+	</select>
+</sqlMap>

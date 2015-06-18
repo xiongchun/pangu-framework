@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 全局数据访问模型 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<!-- 加载jdbc属性文件 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- =================== G4Studio平台数据源配置 ==================  -->
+	<!-- Apache Commons DBCP 数据源  -->
+	<bean id="dataSourceG4" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${g4.jdbc.driverClassName}" />
+		<property name="url" value="${g4.jdbc.url}" />
+		<property name="username" value="${g4.jdbc.username}" />
+		<property name="password" value="${g4.jdbc.password}" />
+		<property name="initialSize" value="10" />
+		<property name="maxActive" value="30" />
+		<property name="maxIdle" value="15" />
+		<property name="minIdle" value="5" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="60" />
+		<property name="maxWait" value="10000" />
+		<property name="logAbandoned" value="true" />
+	</bean>
+	
+	<!-- JNDI 数据源  
+	<bean id="dataSourceG4"  class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>g4studio</value>
+		</property>
+	</bean>
+	-->
+	
+	<!-- 配置平台层面的qlmapClientFactory -->
+	<bean id="sqlMapClientG4" class="org.g4studio.core.orm.xibatis.support.SqlMapClientFactoryBean">
+		<property name="configLocations">
+			<list>
+				<value>config/system/system.sqlmap.xml</value>
+				<value>config/demo/demo.sqlmap.xml</value>
+				<value>config/app/app.sqlmap.xml</value>
+			</list>
+		</property>
+		<property name="dataSource" ref="dataSourceG4" />
+	</bean>
+	<!-- 配置平台层面的G4Reader  -->
+	<bean id="g4Reader" class="org.g4studio.common.dao.impl.ReaderImpl">
+		<property name="sqlMapClient" ref="sqlMapClientG4" />
+	</bean>
+	<!-- 配置平台层面的G4Dao  -->
+	<bean id="g4Dao" class="org.g4studio.common.dao.impl.DaoImpl">
+		<property name="sqlMapClient" ref="sqlMapClientG4" />
+	</bean>
+	
+	<!-- JDBC事务管理器配置 -->
+	<bean id="transactionManagerG4" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref bean="dataSourceG4" />
+		</property>
+	</bean>	
+	<!-- 配置事务代理的基类 -->
+	<bean id="baseTransactionProxyG4" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+		<property name="transactionManager">
+			<ref bean="transactionManagerG4" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="do*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="del*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="drop*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="edit*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="modify*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="call*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="batch*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="*">PROPAGATION_SUPPORTS,-Exception</prop>
+			</props>
+		</property>
+	</bean> 
+	
+</beans>
