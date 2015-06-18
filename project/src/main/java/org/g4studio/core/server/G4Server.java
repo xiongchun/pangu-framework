@@ -12,6 +12,7 @@ import org.g4studio.core.properties.PropertiesFile;
 import org.g4studio.core.properties.PropertiesHelper;
 import org.g4studio.system.common.util.SystemConstants;
 
+
 public class G4Server {
 	
 	private static Log log = LogFactory.getLog(G4Server.class);
@@ -72,7 +73,7 @@ public class G4Server {
 		server.start();
 		String msg = "启动成功";
 		webContext = webContext.equals("/") ? "" : webContext;
-		msg = msg + " >> localhost:" + port + webContext +  " | 技术支持 >> www.g4it.org";
+		msg = msg + " >> localhost:" + port + webContext +  "";
 		System.out.println(msg);
 		server.join();
 	}
