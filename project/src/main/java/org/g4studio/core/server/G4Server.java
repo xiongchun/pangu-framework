@@ -73,7 +73,7 @@ public class G4Server {
 		server.start();
 		String msg = "启动成功";
 		webContext = webContext.equals("/") ? "" : webContext;
-		msg = msg + " >> localhost:" + port + webContext +  "";
+		msg = msg + " >> localhost:" + port + webContext +  " ";
 		System.out.println(msg);
 		server.join();
 	}
