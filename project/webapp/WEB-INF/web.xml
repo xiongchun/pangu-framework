@@ -24,7 +24,7 @@
 	</servlet-mapping>
 	-->
 
-	<!-- 配置RPC.Httpinvoker -->
+	<!-- 配置RPC.Httpinvoker 
 	<servlet>
 		<servlet-name>httpinvokerServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -38,6 +38,7 @@
 		<servlet-name>httpinvokerServlet</servlet-name>
 		<url-pattern>/rpc/httpinvoker/*</url-pattern>
 	</servlet-mapping>
+	 -->
 	
 
 	<!-- 演示使用客户端Applet[RunAsApplet.java]调用服务器端Servlet -->
