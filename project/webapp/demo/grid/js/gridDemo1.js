@@ -338,7 +338,7 @@ Ext.onReady(function() {
 			// 生成一个图标列
 			function iconColumnRender(value) {
 				return "<a href='javascript:void(0);'><img src='" + webContext
-						+ "/resource/image/ext/edit1.png'/></a>";;
+						+ "/resource/image/ext/edit1.png'/></a>";
 			}
 
 		});
