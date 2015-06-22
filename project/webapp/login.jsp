@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+ <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/common/include/taglib.jsp"%>
 <G4Studio:html title="${sysTitle}" showLoading="false" exportParams="true"
 	isSubPage="false">
