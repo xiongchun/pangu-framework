@@ -30,7 +30,7 @@ import org.g4studio.system.common.dao.vo.UserInfoVo;
 
 /**
  * HTML标签
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-30
  */
 public class HtmlTag extends TagSupport{

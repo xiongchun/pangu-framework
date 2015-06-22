@@ -24,7 +24,7 @@ import org.g4studio.core.web.taglib.util.TagHelper;
 /**
  * Import标签<br>
  * 导入CSS、JS资源
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-30
  */
 public class ImportTag extends TagSupport{

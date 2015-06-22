@@ -5,7 +5,7 @@ import org.g4studio.core.metatype.Dto;
 /**
  * Httpinvoker接口
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-10-13
  */
 public interface HelloWorldClient {

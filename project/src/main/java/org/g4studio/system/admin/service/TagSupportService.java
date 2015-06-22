@@ -7,7 +7,7 @@ import org.g4studio.core.metatype.Dto;
  * 
  * 权限模型标签业务接口
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-05-13
  */
 public interface TagSupportService extends BaseService{

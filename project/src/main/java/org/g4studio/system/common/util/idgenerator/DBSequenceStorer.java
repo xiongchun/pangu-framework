@@ -9,7 +9,7 @@ import org.g4studio.core.metatype.impl.BaseDto;
 
 /**
  * ID数据库逻辑存储器
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-03-21
  */
 public class DBSequenceStorer implements SequenceStorer{

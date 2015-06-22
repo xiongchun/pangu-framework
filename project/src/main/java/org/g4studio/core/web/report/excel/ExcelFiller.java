@@ -25,7 +25,7 @@ import org.g4studio.core.util.G4Utils;
 /**
  * Excel数据填充器
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-08-12
  */
 public class ExcelFiller {

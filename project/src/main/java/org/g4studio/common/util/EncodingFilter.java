@@ -12,7 +12,7 @@ import javax.servlet.ServletResponse;
 /**
  * 字符编码过滤器
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-13
  */
 public class EncodingFilter implements Filter {

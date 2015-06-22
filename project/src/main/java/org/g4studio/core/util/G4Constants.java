@@ -4,7 +4,7 @@ package org.g4studio.core.util;
 /**
  * 常量表
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-13
  */
 public interface G4Constants {

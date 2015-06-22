@@ -14,7 +14,7 @@ import org.g4studio.core.util.G4Utils;
 /**
  * Excel导出器(适用于WebAPP)
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-08-12
  */
 public class ExcelExporter {

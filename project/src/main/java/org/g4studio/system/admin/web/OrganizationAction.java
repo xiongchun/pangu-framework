@@ -19,7 +19,7 @@ import org.g4studio.system.admin.service.OrganizationService;
 /**
  * 组织机构模型
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-04-10
  * @see BaseAction
  */

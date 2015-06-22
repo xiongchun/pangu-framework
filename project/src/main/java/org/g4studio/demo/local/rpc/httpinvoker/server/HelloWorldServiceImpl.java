@@ -11,7 +11,7 @@ import org.g4studio.core.metatype.impl.BaseDto;
 /**
  * Httpinvoker实现类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-10-13
  * @see BaseDomain
  */

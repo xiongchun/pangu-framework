@@ -4,7 +4,7 @@ import org.g4studio.core.util.G4Constants;
 
 /**
  * 常量表
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-13
  */
 public interface SystemConstants extends G4Constants{

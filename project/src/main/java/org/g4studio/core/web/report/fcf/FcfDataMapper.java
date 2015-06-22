@@ -13,7 +13,7 @@ import org.g4studio.core.metatype.Dto;
 /**
  * FlashReport数据包装类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-10-13
  */
 public class FcfDataMapper {

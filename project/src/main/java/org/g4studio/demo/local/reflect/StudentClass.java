@@ -4,7 +4,7 @@ package org.g4studio.demo.local.reflect;
 /**
  * 反射用例
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2013-02-19
  */
 public class StudentClass {

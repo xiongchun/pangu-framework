@@ -28,7 +28,7 @@ import org.g4studio.system.admin.web.tag.vo.UserVo;
 
 /**
  * ArmSelectUserTreeTag标签:G4Studio_ARM专用
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-05-22
  */
 public class ArmSelectUserTreeTag extends TagSupport {

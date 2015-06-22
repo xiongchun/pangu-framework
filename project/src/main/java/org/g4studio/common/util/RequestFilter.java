@@ -30,7 +30,7 @@ import org.g4studio.system.common.util.idgenerator.IDHelper;
 /**
  * 请求拦截过滤器
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-04-13
  */
 public class RequestFilter implements Filter {

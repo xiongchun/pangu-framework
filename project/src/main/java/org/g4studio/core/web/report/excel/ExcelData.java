@@ -7,7 +7,7 @@ import org.g4studio.core.metatype.Dto;
 /**
  * Excel数据对象
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-08-12
  */
 public class ExcelData {

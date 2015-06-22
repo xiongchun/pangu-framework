@@ -5,7 +5,7 @@ import javax.jws.WebService;
 /**
  * WebService接口
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-10-13
  */
 @WebService

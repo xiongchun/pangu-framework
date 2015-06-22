@@ -22,7 +22,7 @@ import org.g4studio.system.common.dao.vo.UserInfoVo;
 /**
  * 首页Action
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-13
  * @see BaseAction
  */

@@ -22,7 +22,7 @@ import org.g4studio.core.web.taglib.util.TagHelper;
 
 /**
  * FlashReport标签
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-30
  */
 public class FlashReportTag extends TagSupport{

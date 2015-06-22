@@ -14,7 +14,7 @@ import org.g4studio.core.util.G4Utils;
 
 /**
  * Velocity模板引擎辅助类
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-28
  */
 public class VelocityHelper {

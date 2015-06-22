@@ -31,7 +31,7 @@ import org.g4studio.system.common.util.SystemConstants;
 /**
  * ARMViewport标签:G4Studio_ARM专用
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-22
  */
 public class ArmViewportTag extends TagSupport {

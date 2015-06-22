@@ -18,7 +18,7 @@ import org.g4studio.core.util.G4Utils;
 /**
  * 导出Excel的模板对象
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-08-12
  */
 public class ExcelTemplate {

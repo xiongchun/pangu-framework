@@ -8,7 +8,7 @@ import org.g4studio.core.metatype.Dto;
 /**
  * 系统演示接口
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-02-13
  */
 public interface DemoService extends BaseService {

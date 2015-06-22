@@ -5,7 +5,7 @@ import org.g4studio.core.util.G4Constants;
 /**
  * 调用存储过程异常
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2011-01-24
  */
 public class PrcException extends RuntimeException {

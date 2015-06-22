@@ -6,7 +6,7 @@ import org.g4studio.core.metatype.Dto;
 
 /**
  * 模板引擎接口
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-26
  */
 public interface TemplateEngine {

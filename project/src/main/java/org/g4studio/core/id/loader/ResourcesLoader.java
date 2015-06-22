@@ -9,7 +9,7 @@ import org.g4studio.core.id.storer.FileSequenceStorer;
 /**
  * ResourcesLoader
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-03-17
  */
 public class ResourcesLoader {

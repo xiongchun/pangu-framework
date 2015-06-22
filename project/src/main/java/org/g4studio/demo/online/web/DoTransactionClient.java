@@ -10,7 +10,7 @@ public class DoTransactionClient {
 	/**
 	 * 演示事务控制
 	 * 
-	 * @author XiongChun
+	 * @author OSWorks-XC
 	 * @since 2011-2-30
 	 * @see BaseAction
 	 */

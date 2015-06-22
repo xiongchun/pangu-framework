@@ -11,7 +11,7 @@ import org.g4studio.core.util.G4Constants;
 
 /**
  * Script标签
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-02-30
  */
 public class ScriptTag extends TagSupport {

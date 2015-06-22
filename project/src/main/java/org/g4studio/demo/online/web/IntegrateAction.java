@@ -21,7 +21,7 @@ import org.g4studio.demo.online.service.DemoService;
 /**
  * 综合实例Action
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-11-30
  * @see BaseAction
  */

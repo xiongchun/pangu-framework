@@ -22,7 +22,7 @@ import org.g4studio.core.web.report.excel.ExcelReader;
 /**
  * Excel导入导出标准范例暨教程Action
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-10-13
  * @see BaseAction
  */

@@ -20,7 +20,7 @@ import org.g4studio.core.web.taglib.util.TagHelper;
 
 /**
  * Div标签
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-30
  */
 public class DivTag extends TagSupport{

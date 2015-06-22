@@ -8,7 +8,7 @@ import org.g4studio.core.server.G4Server;
 /**
  * 系统启动
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-01-13
  */
 public class StartUp {

@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * FlashReport数据元对象
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-07-04
  */
 public class Set extends HashMap {

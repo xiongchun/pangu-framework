@@ -24,7 +24,7 @@ import org.g4studio.core.util.G4Utils;
  * 数据访问实现类(原生)<br>
  * 基于Spring对iBatis的支持机制实现,支持自定义的数据操作
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-23
  */
 public class DaoImpl extends SqlMapClientDaoSupport implements Dao{

@@ -9,7 +9,7 @@ import org.g4studio.core.metatype.BaseVo;
  * 
  * 药品目录简单值对象
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2011-03-15
  */
 public class CatalogVO extends BaseVo {

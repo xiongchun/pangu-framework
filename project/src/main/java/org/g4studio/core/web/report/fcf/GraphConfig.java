@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 /**
  * FlashReport样式配置对象
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-07-13
  */
 public class GraphConfig extends HashMap {

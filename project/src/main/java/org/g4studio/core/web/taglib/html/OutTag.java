@@ -15,7 +15,7 @@ import org.g4studio.core.util.G4Utils;
 /**
  * Out标签<br>
  * 输出request,session,application作用域的变量值
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-02-30
  */
 public class OutTag extends TagSupport {

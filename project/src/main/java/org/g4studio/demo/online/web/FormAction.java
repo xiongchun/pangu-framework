@@ -22,7 +22,7 @@ import org.g4studio.core.util.G4Utils;
 /**
  * 表单及表单元素标准范例暨教程Action
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-10-23
  * @see BaseAction
  */

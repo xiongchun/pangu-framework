@@ -8,7 +8,7 @@ import org.g4studio.core.id.IDGenerator;
  * AbstractUUIDGenerator
  * 此代码源于开源项目E3,原作者：黄云辉
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-03-17
  * @see IDGenerator
  */

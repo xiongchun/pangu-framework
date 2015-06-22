@@ -5,7 +5,7 @@ import org.g4studio.core.metatype.BaseVo;
 /**
  * 和用户相关的字段,用于存储到Session容器中的值对象
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-13
  */
 public class UserInfoVo extends BaseVo {

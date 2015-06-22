@@ -6,7 +6,7 @@ import org.g4studio.core.metatype.impl.BaseDto;
 
 /**
  * FlashReport常量表
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-13
  */
 public class FcfConstant {

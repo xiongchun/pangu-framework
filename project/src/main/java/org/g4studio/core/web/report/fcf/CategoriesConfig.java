@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * FlashReport组合图种类配置对象
  * <b>只适用与组合图
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-07-13
  */
 public class CategoriesConfig extends HashMap{

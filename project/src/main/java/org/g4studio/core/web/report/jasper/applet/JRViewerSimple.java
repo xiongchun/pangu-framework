@@ -10,7 +10,7 @@ import net.sf.jasperreports.view.JRViewer;
 /**
  * JRViewerSimple
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-09-27
  */
 public class JRViewerSimple extends JRViewer {

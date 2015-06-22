@@ -2,7 +2,7 @@ package org.g4studio.core.properties;
 
 /**
  * Properties文件类型
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-08-2
  */
 public interface PropertiesFile {

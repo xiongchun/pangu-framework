@@ -28,7 +28,7 @@ import org.g4studio.system.common.util.SystemConstants;
 
 /**
  * ArmSelectMenuTreeTag标签:G4Studio_ARM专用
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-05-12
  */
 public class ArmSelectMenuTreeTag extends TagSupport {

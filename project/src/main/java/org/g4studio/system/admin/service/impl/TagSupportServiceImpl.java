@@ -18,7 +18,7 @@ import org.g4studio.system.common.util.SystemConstants;
 /**
  * 权限模型标签业务实现类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-05-13
  */
 public class TagSupportServiceImpl extends BaseServiceImpl implements TagSupportService {

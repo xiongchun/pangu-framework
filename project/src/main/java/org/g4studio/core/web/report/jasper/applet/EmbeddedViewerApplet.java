@@ -13,7 +13,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 /**
  * EmbeddedViewerApplet
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-09-27
  */
 public class EmbeddedViewerApplet extends javax.swing.JApplet {

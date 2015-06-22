@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * LoadResourcesServlet
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-03-17
  * @see HttpServlet
  */

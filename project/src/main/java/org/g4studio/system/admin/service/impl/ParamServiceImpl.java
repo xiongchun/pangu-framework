@@ -9,7 +9,7 @@ import org.g4studio.system.common.util.idgenerator.IDHelper;
 /**
  * 全局参数数据访问实现
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-05-13
  * @see BaseServiceImpl
  */

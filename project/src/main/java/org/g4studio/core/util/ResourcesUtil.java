@@ -12,7 +12,7 @@ import java.util.Properties;
 /**
  * 一个访问各种资源的辅助类(代码源于iBatis项目)
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-13
  */
 public class ResourcesUtil extends Object {

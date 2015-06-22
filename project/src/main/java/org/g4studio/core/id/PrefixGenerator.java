@@ -8,7 +8,7 @@ package org.g4studio.core.id;
  * PrefixGenerator 的实现要求线程序安全的 
  * 此代码源于开源项目E3,原作者：黄云辉
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-03-17
  */
 public interface PrefixGenerator {

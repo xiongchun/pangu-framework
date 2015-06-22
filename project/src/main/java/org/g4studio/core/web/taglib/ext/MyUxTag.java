@@ -22,7 +22,7 @@ import org.g4studio.core.web.taglib.util.TagHelper;
 /**
  * MyUx标签<br>
  * 导入Ext扩展组件的CSS、JS资源
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-30
  */
 public class MyUxTag extends TagSupport{

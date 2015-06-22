@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * FlashReport种类元对象<br>
  * <b>只适用与组合图
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-07-04
  */
 public class Categorie extends HashMap {

@@ -15,7 +15,7 @@ import org.apache.commons.codec.binary.Base64;
 /**
  * 加解密工具类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2013-07-13
  */
 public class CodeUtil {

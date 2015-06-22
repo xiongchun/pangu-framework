@@ -2,7 +2,7 @@ package org.g4studio.core.web.taglib.util;
 
 /**
  * 常量表
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-13
  */
 public interface TagConstant {

@@ -4,7 +4,7 @@ import org.g4studio.core.util.G4Constants;
 
 /**
  * 初始模板引擎异常类
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-28
  * @see RuntimeException
  */

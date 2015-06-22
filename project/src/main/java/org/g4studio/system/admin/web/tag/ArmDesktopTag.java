@@ -34,7 +34,7 @@ import org.g4studio.system.common.util.SystemConstants;
 /**
  * Desktop桌面布局标签:G4Studio_ARM专用
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2012-12-22
  */
 public class ArmDesktopTag extends TagSupport{

@@ -11,7 +11,7 @@ import org.g4studio.core.util.G4Utils;
 /**
  * 演示调用Oracle存储过程返回游标，并将游标映射为Java List集合对象的标准范例
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2012-10-30
  */
 public class RunQueryListFromOracleWithCursor {

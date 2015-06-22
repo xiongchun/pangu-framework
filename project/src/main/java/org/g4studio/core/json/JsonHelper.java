@@ -17,7 +17,7 @@ import org.g4studio.core.util.G4Utils;
 /**
  * Json处理器<br>
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-07
  */
 public class JsonHelper {

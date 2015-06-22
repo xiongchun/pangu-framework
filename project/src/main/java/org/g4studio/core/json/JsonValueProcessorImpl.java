@@ -11,7 +11,7 @@ import org.g4studio.core.util.G4Utils;
 /**
  * Json-Lib日期格式系列化辅助格式化工具<br>
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-06
  * @see net.sf.json.processors.JsonValueProcessor
  */

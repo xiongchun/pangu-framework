@@ -13,7 +13,7 @@ import org.g4studio.system.common.util.idgenerator.IDHelper;
 /**
  * 用户管理与授权业务实现类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-04-13
  */
 public class UserServiceImpl extends BaseServiceImpl implements UserService {

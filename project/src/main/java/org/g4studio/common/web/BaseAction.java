@@ -26,7 +26,7 @@ import org.g4studio.system.common.util.SystemConstants;
 /**
  * BizAction 商业Action组件基类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-09-03
  * @see DispatchAction
  */

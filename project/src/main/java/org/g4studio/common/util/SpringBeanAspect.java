@@ -18,7 +18,7 @@ import org.g4studio.system.common.util.idgenerator.IDHelper;
 /**
  * SpringBean监控切面
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-09-21
  */
 public class SpringBeanAspect {

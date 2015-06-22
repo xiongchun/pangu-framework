@@ -29,7 +29,7 @@ import org.g4studio.core.util.G4Utils;
 /**
  * JasperReport报表服务Acion
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-09-03
  */
 public class ReportAcion extends BaseAction {

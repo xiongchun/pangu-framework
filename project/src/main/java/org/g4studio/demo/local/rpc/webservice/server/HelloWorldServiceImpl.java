@@ -13,7 +13,7 @@ import org.g4studio.demo.local.rpc.webservice.HelloWorldService;
 /**
  * WebService实现类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-10-13
  * @see BaseDomain
  */

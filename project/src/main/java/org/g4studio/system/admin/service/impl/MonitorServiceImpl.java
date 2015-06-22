@@ -10,7 +10,7 @@ import org.g4studio.system.common.util.idgenerator.IDHelper;
 /**
  * 系统监控业务接口
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-09-13
  */
 public class MonitorServiceImpl extends BaseServiceImpl implements MonitorService {

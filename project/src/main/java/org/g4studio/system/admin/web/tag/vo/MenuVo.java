@@ -5,7 +5,7 @@ import org.g4studio.core.metatype.BaseVo;
 /**
  * 菜单值对象
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-22
  */
 public class MenuVo extends BaseVo {

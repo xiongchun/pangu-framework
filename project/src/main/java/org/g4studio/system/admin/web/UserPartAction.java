@@ -20,7 +20,7 @@ import org.g4studio.system.common.util.SystemConstants;
 /**
  * UI组件人员授权
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2011-06-03
  * @see BaseAction
  */

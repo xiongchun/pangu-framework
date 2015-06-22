@@ -21,7 +21,7 @@ import org.g4studio.system.admin.service.MonitorService;
 /**
  * HTTP会话监控
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-09-03
  */
 public class HttpSessionMonitorAction extends BaseAction {

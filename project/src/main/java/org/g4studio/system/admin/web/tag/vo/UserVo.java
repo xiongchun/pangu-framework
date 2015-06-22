@@ -5,7 +5,7 @@ import org.g4studio.core.metatype.BaseVo;
 /**
  * 人员值对象
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-05-22
  */
 public class UserVo extends BaseVo {

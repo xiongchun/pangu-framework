@@ -15,7 +15,7 @@ import org.g4studio.core.util.G4Utils;
 
 /**
  * ID生成器
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-13
  */
 public class IdGenerator {

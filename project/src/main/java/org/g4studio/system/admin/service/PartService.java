@@ -6,7 +6,7 @@ import org.g4studio.core.metatype.Dto;
 /**
  * UI组件授权服务接口
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2011-06-25
  */
 public interface PartService extends BaseService {

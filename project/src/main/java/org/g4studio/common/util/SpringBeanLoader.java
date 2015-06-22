@@ -17,7 +17,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 方法获取SpringBean.<br>
  * (2)、您也可以直接通过我们提供的getSpringBean()方法活得SpringBean。
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-22
  */
 public class SpringBeanLoader{

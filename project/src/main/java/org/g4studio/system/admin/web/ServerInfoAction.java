@@ -24,7 +24,7 @@ import org.g4studio.core.web.report.fcf.Set;
 /**
  * 获取服务器信息及内存CPU实时监控
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-04-21
  * @see BaseAction
  */

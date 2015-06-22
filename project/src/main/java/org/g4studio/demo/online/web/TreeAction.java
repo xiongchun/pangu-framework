@@ -19,7 +19,7 @@ import org.g4studio.system.common.util.SystemConstants;
 /**
  * 树标准范例暨教程Action
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-10-27
  * @see BaseAction
  */

@@ -5,7 +5,7 @@ import org.g4studio.core.metatype.BaseVo;
 /**
  * 角色值对象
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-04-22
  */
 public class RoleVo extends BaseVo {

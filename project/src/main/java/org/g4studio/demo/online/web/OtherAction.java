@@ -26,7 +26,7 @@ import org.g4studio.demo.online.service.DemoService;
 /**
  * 其他标准范例暨教程Action 文件管理、
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2011-04-09
  * @see BaseAction
  */

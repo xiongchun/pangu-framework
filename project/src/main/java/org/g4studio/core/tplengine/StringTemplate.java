@@ -2,7 +2,7 @@ package org.g4studio.core.tplengine;
 
 /**
  * 字符串模板
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-28
  * @see DefaultTemplate
  */

@@ -2,7 +2,7 @@ package org.g4studio.core.tplengine;
 
 /**
  * 模板引擎类型
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-26
  */
 public class TemplateType {

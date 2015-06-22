@@ -8,7 +8,7 @@ import org.g4studio.core.util.G4Constants;
 
 /**
  * 模板引擎工厂
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-26
  */
 public class TemplateEngineFactory {

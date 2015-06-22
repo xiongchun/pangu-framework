@@ -6,7 +6,7 @@ import org.g4studio.system.common.dao.vo.UserInfoVo;
 
 /**
  * 系统监控业务接口
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-05-13
  */
 public interface MonitorService extends BaseService{

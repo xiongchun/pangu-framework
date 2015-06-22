@@ -13,7 +13,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * Zip压缩解压工具类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-15
  */
 public class ZipUtil {

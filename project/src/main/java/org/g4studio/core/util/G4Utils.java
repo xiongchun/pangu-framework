@@ -39,7 +39,7 @@ import org.g4studio.core.properties.PropertiesHelper;
 /**
  * 常见的辅助类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-15
  */
 public class G4Utils {

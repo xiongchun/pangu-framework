@@ -15,7 +15,7 @@ import org.g4studio.core.exception.TypeCastException;
 /**
  * 类型转换辅助工具类<br>
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-06
  */
 public class TypeCaseHelper {

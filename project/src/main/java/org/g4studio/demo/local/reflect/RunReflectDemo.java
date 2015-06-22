@@ -11,7 +11,7 @@ public class RunReflectDemo {
 	/**
 	 * 演示Java反射使用实例(基于Java原生方式和基于字节码生成方式) 后者性能优于前者
 	 * 
-	 * @author XiongChun
+	 * @author OSWorks-XC
 	 * @throws Exception
 	 * @since 2013-02-19
 	 */

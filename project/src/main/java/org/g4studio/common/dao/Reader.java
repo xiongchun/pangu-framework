@@ -12,7 +12,7 @@ import org.g4studio.core.metatype.Dto;
  * 数据读取器<br>
  * 基于iBatis实现,只有query权限,提供在Action中使用
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-23
  */
 public interface Reader {

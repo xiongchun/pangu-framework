@@ -31,7 +31,7 @@ import org.g4studio.system.common.dao.vo.UserInfoVo;
  * UiGrant标签<br>
  * 实现UI元素授权
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2011-09-30
  */
 public class UiGrantTag extends TagSupport{

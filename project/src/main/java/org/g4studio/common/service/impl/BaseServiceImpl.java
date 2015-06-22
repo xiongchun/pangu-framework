@@ -9,7 +9,7 @@ import org.g4studio.core.properties.PropertiesHelper;
 /**
  * 业务模型实现基类<br>
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-21
  */
 public class BaseServiceImpl implements BaseService {

@@ -23,7 +23,7 @@ import org.g4studio.system.common.util.SystemConstants;
 /**
  * 用户管理与授权
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-04-21
  * @see BaseAction
  */

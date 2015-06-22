@@ -16,7 +16,7 @@ import org.g4studio.core.util.G4Utils;
 /**
  * ActionForm公共类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-09-03
  * @see ActionForm
  */

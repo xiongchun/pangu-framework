@@ -11,7 +11,7 @@ import org.g4studio.core.mvc.xstruts.action.ActionMapping;
 /**
  * 常用UI组件标准范例暨教程Action
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-10-30
  * @see BaseAction
  */

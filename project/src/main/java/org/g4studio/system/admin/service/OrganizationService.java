@@ -5,7 +5,7 @@ import org.g4studio.core.metatype.Dto;
 
 /**
  * 组织机构模型模型业务接口
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-13
  */
 public interface OrganizationService extends BaseService{

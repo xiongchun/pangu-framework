@@ -8,7 +8,7 @@ import org.g4studio.core.util.G4Utils;
 /**
  * FlashReport组合图数据实体
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-07-13
  */
 public class DataSet extends HashMap {

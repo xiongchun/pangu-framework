@@ -19,7 +19,7 @@ import org.g4studio.system.admin.service.MonitorService;
 /**
  * 事件跟踪Action
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-09-12
  */
 public class EventTrackAction extends BaseAction {

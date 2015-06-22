@@ -6,7 +6,7 @@ import org.g4studio.core.metatype.Dto;
 /**
  * 测试调用HttpInvoker服务
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  *
  */
 public class RunHttpInvokerClient {

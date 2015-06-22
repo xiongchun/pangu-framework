@@ -19,7 +19,7 @@ import org.g4studio.system.admin.service.MonitorService;
 /**
  * SpringBean监控
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-09-20
  */
 public class BeanMonitorAction extends BaseAction {

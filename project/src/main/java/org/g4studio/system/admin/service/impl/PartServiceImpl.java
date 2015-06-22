@@ -14,7 +14,7 @@ import org.g4studio.system.common.util.idgenerator.IDHelper;
 /**
  * UI组件授权服务实现
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2011-06-25
  */
 public class PartServiceImpl extends BaseServiceImpl implements PartService {

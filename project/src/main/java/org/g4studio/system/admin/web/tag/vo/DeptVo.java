@@ -4,7 +4,7 @@ import org.g4studio.core.metatype.BaseVo;
 
 /**
  * 部门值对象
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-05-22
  */
 public class DeptVo extends BaseVo{

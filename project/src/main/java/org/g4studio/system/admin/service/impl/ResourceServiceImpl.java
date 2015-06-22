@@ -12,7 +12,7 @@ import org.g4studio.system.common.util.idgenerator.IdGenerator;
 /**
  * 资源模型业务实现类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-13
  */
 public class ResourceServiceImpl extends BaseServiceImpl implements ResourceService {

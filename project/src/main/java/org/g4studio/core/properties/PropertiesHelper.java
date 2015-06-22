@@ -13,7 +13,7 @@ import org.g4studio.core.util.G4Constants;
 
 /**
  * Properties处理器
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-10
  */
 public class PropertiesHelper {

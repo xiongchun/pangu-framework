@@ -2,7 +2,7 @@ package org.g4studio.core.tplengine;
 
 /**
  * 模板接口
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-07-28
  */
 public interface DefaultTemplate {

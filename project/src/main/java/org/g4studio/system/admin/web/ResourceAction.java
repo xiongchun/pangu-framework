@@ -20,7 +20,7 @@ import org.g4studio.system.common.util.SystemConstants;
 /**
  * 资源模型
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-31
  */
 public class ResourceAction extends BaseAction {

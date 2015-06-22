@@ -18,7 +18,7 @@ import org.g4studio.system.admin.service.ParamService;
 /**
  * 全局参数表管理Action
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-05-05
  * @see BaseAction
  */

@@ -15,7 +15,7 @@ import org.g4studio.system.common.util.idgenerator.IdGenerator;
 /**
  * 组织机构模型业务实现类
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-13
  */
 public class OrganizationServiceImpl extends BaseServiceImpl implements OrganizationService {

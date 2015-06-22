@@ -25,7 +25,7 @@ import org.g4studio.core.web.report.fcf.Set;
 /**
  * FlashReport标准范例暨教程Action
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-10-13
  * @see BaseAction
  */

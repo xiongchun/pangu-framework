@@ -25,7 +25,7 @@ import org.g4studio.system.common.util.idgenerator.IDHelper;
 /**
  * 登录页面Action
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2010-01-13
  * @see BaseAction
  */

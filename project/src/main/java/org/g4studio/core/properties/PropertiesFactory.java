@@ -12,7 +12,7 @@ import org.springframework.core.io.Resource;
 /**
  * Properties文件静态工厂
  * 
- * @author XiongChun
+ * @author OSWorks-XC
  * @since 2009-08-2
  */
 public class PropertiesFactory {
