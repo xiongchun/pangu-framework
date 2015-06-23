@@ -13,6 +13,8 @@ AOS应用基础平台面向各型软件开发团队，通过提供卓越的基�
 ###功能组成
 AOS核心类库(模版引擎 规则引擎 数据访问组件)、资源数据缓存组件、系统安全服务、复杂事件处理、工作流/可视化设计器、系统审计监控组件、服务治理组件、AOS标签库、组织机构与权限管理、标准功能实现、通用模块参考实现、开发控制台……
 ###环境依赖
-中间件：Java6+；Oracle DB2 PostgreSQL SQL-Server MySQL MariaDB H2；Weblogic WebSphere JBoss Tomcat Jetty。<br>
-客户端：IE8+ Chrome FireFox App 桌面应用等。<br>
-服务器：IBM-AIX HP-UX Linux系列 Windows。
+Java环境：Java6+ Servlet2.5+。<br>
+数据库：Oracle DB2 PostgreSQL SQL-Server MySQL MariaDB H2。<br>
+应用服务器：Weblogic WebSphere JBoss Tomcat Jetty等<br>
+服务器：IBM-AIX HP-Unix Linux系列 Windows。<br>
+客户端：IE8+ Chrome FireFox App 桌面应用等。
