@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 编译时参数配置文件 ：有缺陷，属性字段对转义不方便处理，改为节点字段更科学 -->
+<configuration desc="建议配置编译时参数,运行时参数请配置到参数表中">
+<!-- 启动模式。0：开发模式；1：生产模式； -->
+<config key="runas" value="0" />
+<!-- JDBC执行模式。1：只读模式；2：全功能模式。 -->
+<config key="jdbc_execute" value="2" />
+<!-- json输出模式。0：格式化输出模式；1：压缩模式。 -->
+<config key="json_format" value="1" />
+<!-- ICON图标文件存储路径 -->
+<config key="icon_path" value="/static/icon/" />
+<!-- 应用系统小图标(浏览器标题栏左上角显示) -->
+<config key="app_ico" value="/static/icon/ico/aos2.ico" />
+<!-- 加解密算法密钥 提示：密钥只能在系统上线前的规划阶段修改，否则将导致已创建用户无法通过密码验证。 -->
+<config key="codekey" value="pulansoft" />
+<!-- 是否在系统启动时使用当前配置的加密密钥重新生成用户密码密文。有效值： 0 | 1。缺省值：0。建议：修改密钥时将此值改为1，服务器启动一次后将此配置项改为缺省值0。 -->
+<config key="regen_pwd" value="0" />
+
+
+<!-- 测试用例检测 -->
+<config key="testkey1" value="AOS!" />
+</configuration>
