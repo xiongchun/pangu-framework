@@ -21,7 +21,7 @@
 				<aos:menuitem text="刷新分类" onclick="_t_catalog_refresh" icon="refresh.png" />
 			</aos:menu>
 		</aos:treepanel>
-		<aos:gridpanel id="_g_param" url="listParams.jhtml" region="center" onrender="_g_param_query" pageSize="20"
+		<aos:gridpanel id="_g_param" url="listParams.jhtml" region="center" onrender="_g_param_query"
 			onitemdblclick="_w_param_u_show">
 			<aos:menu>
 				<aos:menuitem text="新增" onclick="_w_param_show" icon="add.png" />
