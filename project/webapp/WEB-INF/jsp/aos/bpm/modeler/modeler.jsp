@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<%@ taglib uri="http://www.osworks.cn/tag/aos" prefix="aos" %>
+<%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
 <aos:html>
     <aos:head title="流程模型设计器">
         <aos:include js="${cxt}/static/modeler/libs/prototype-1.5.1.js"/>

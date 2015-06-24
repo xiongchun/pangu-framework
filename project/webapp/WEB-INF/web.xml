@@ -107,6 +107,6 @@
 	<!-- 错误响应页面 -->
 	<error-page>
 		<error-code>404</error-code>
-		<location>/common/404.jsp</location>
+		<location>/WEB-INF/jsp/common/404.jsp</location>
 	</error-page>
 </web-app>
