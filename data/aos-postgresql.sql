@@ -16,7 +16,7 @@ Date: 2015-06-24 01:43:22
 -- ----------------------------
 -- Sequence structure for aos_bp_act_evt_log_log_nr__seq
 -- ----------------------------
-DROP SEQUENCE "public"."aos_bp_act_evt_log_log_nr__seq";
+DROP SEQUENCE  IF EXISTS  "public"."aos_bp_act_evt_log_log_nr__seq";
 CREATE SEQUENCE "public"."aos_bp_act_evt_log_log_nr__seq"
  INCREMENT 1
  MINVALUE 1
