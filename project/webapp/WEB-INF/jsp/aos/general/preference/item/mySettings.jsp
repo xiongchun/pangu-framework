@@ -16,7 +16,7 @@
 			<aos:hiddenfield fieldLabel="用户流水号" name="id_" />
 			<aos:fieldset title="界面设置" labelWidth="70" border="true">
 				<aos:combobox name="theme_" fieldLabel="系统主题" dicField="theme_" columnWidth="0.33" />
-				<aos:combobox name="skin_" fieldLabel="界面皮肤" dicField="skin_" columnWidth="0.33" />
+				<aos:combobox name="skin_" fieldLabel="界面皮肤" dicField="skin_" dicFilter="!aos"  columnWidth="0.33" />
 				<aos:combobox name="layout_" fieldLabel="主布局" dicField="layout_" columnWidth="0.33" />
 				<aos:combobox name="nav_mode_" fieldLabel="导航模式" dicField="nav_mode_" columnWidth="0.33" />
 				<aos:combobox name="is_show_top_nav_" fieldLabel="顶部导航" dicField="is_show_top_nav_" columnWidth="0.33" />
