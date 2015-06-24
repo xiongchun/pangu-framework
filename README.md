@@ -18,3 +18,5 @@ Java环境：Java6+ Servlet2.5+。<br>
 应用服务器：Weblogic WebSphere JBoss Tomcat Jetty等<br>
 服务器：IBM-AIX HP-Unix Linux系列 Windows。<br>
 客户端：IE8+ Chrome FireFox App 桌面应用等。
+### 作者微博互粉
+[http://weibo.com/afghan007](http://weibo.com/afghan007)
