@@ -93,7 +93,7 @@
 								slideInDuration : 200,
 								autoCloseDelay : 1000,
 								width : 320,
-								html : '创智工坊AOS应用基础平台，亚洲最好的开发平台。'
+								html : "It's AOS, enjoy it!"
 							}).show();
 		}
 
