@@ -17,7 +17,7 @@ AOS核心类库(模版引擎 规则引擎 数据访问组件)、资源数据缓�
 Java环境：Java6+ Servlet2.5+。<br>
 数据库：Oracle DB2 PostgreSQL SQL-Server MySQL MariaDB H2。<br>
 应用服务器：Weblogic WebSphere JBoss Tomcat Jetty等<br>
-服务器：IBM-AIX HP-Unix Linux系列 Windows。<br>
+服务器OS：IBM-AIX HP-Unix Linux系列 Windows。<br>
 客户端：IE8+ Chrome FireFox App 桌面应用等。
 ### 作者微博互粉
 [http://weibo.com/afghan007](http://weibo.com/afghan007)
