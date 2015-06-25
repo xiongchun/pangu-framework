@@ -21,3 +21,5 @@ Java环境：Java6+ Servlet2.5+。<br>
 客户端：IE8+ Chrome FireFox App 桌面应用等。
 ### 作者微博互粉
 [http://weibo.com/afghan007](http://weibo.com/afghan007)
+### AOS部分截屏 
+![github](http://dl2.iteye.com/upload/attachment/0109/7699/6f8c148a-6ada-3889-a740-d9439ccd299e.gif "AOS截屏")
