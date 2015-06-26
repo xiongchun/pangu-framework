@@ -8,12 +8,12 @@
     <!-- 查询流程任务数据  -->
     <select id="listTasksPage" parameterType="Dto" resultType="Dto">
         SELECT
-        (SELECT name_ FROM aos_bp_act_hi_procinst WHERE id_ = aos_bp_act_hi_taskinst.proc_inst_id_ AND super_process_instance_id_ IS NULL) AS proc_inst_name_,
-        (SELECT name_ FROM aos_au_user WHERE id_ = aos_bp_act_hi_taskinst.owner_) AS owner__user_,
-        (SELECT name_ FROM aos_au_user WHERE id_ = aos_bp_act_hi_taskinst.assignee_) AS assignee_user_,
+        (SELECT name_ FROM aos_act_hi_procinst WHERE id_ = aos_act_hi_taskinst.proc_inst_id_ AND super_process_instance_id_ IS NULL) AS proc_inst_name_,
+        (SELECT name_ FROM aos_au_user WHERE id_ = aos_act_hi_taskinst.owner_) AS owner__user_,
+        (SELECT name_ FROM aos_au_user WHERE id_ = aos_act_hi_taskinst.assignee_) AS assignee_user_,
         duration_/1000 AS duration_s_,
-        <include refid="cn.osworks.aos.modules.bpm.dao.mapper.Aos_bp_act_hi_taskinstMapper.column"/>
-        FROM aos_bp_act_hi_taskinst
+        <include refid="cn.osworks.aos.modules.bpm.dao.mapper.Aos_act_hi_taskinstMapper.column"/>
+        FROM aos_act_hi_taskinst
         <where>
 	        <if test="proctask_status_ == 2">
 	            <!-- 办结任务 -->	            

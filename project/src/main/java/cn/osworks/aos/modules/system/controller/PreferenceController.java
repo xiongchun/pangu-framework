@@ -153,7 +153,7 @@ public class PreferenceController {
 	public void getUser(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
 		inDto.put("id_", inDto.getUserInfo().getId_());
-		Dto outDto = userService.getUser(inDto);
+		Dto outDto = preferenceService.getUserInfo(inDto);
 		WebCxt.write(response, AOSJson.toJson(outDto));
 	}
 	

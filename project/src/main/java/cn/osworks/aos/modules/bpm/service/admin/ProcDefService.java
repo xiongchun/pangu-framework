@@ -13,10 +13,10 @@ import cn.osworks.aos.base.asset.AOSUtils;
 import cn.osworks.aos.base.typewrap.Dto;
 import cn.osworks.aos.base.typewrap.Dtos;
 import cn.osworks.aos.core.dao.SqlDao;
-import cn.osworks.aos.modules.bpm.dao.mapper.Aos_bp_act_re_procdefMapper;
-import cn.osworks.aos.modules.bpm.dao.po.Aos_bp_act_re_procdefPO;
-import cn.osworks.aos.modules.system.dao.mapper.Aos_bp_ext_procdefMapper;
-import cn.osworks.aos.modules.system.dao.po.Aos_bp_ext_procdefPO;
+import cn.osworks.aos.modules.bpm.dao.mapper.Aos_act_re_procdefMapper;
+import cn.osworks.aos.modules.bpm.dao.po.Aos_act_re_procdefPO;
+import cn.osworks.aos.modules.system.dao.mapper.Aos_act_ext_procdefMapper;
+import cn.osworks.aos.modules.system.dao.po.Aos_act_ext_procdefPO;
 
 
 /**
@@ -33,9 +33,9 @@ public class ProcDefService {
 	@Autowired
 	private SqlDao sqlDao;
 	@Autowired
-	private Aos_bp_act_re_procdefMapper aos_bp_act_re_procdefMapper;
+	private Aos_act_re_procdefMapper aos_act_re_procdefMapper;
 	@Autowired
-	private Aos_bp_ext_procdefMapper aos_bp_ext_procdefMapper;
+	private Aos_act_ext_procdefMapper aos_act_ext_procdefMapper;
 	
     /**
      * 查询流程定义列表
@@ -64,12 +64,12 @@ public class ProcDefService {
 			cascade = true;
 		}
 		for (String id_ : ids) {
-			Aos_bp_ext_procdefPO aos_bp_ext_procdefPO = aos_bp_ext_procdefMapper.selectByKey(id_);
-	        ProcessDefinition processDefinition = repositoryService.getProcessDefinition(aos_bp_ext_procdefPO.getProc_def_id_());
+			Aos_act_ext_procdefPO aos_act_ext_procdefPO = aos_act_ext_procdefMapper.selectByKey(id_);
+	        ProcessDefinition processDefinition = repositoryService.getProcessDefinition(aos_act_ext_procdefPO.getProc_def_id_());
 	        //级联强制删除
 	        repositoryService.deleteDeployment(processDefinition.getDeploymentId(), cascade);
 	        //删除扩展表
-	        aos_bp_ext_procdefMapper.deleteByKey(id_);
+	        aos_act_ext_procdefMapper.deleteByKey(id_);
 	        del++;
 		}
 		outDto.setAppMsg(AOSUtils.merge("操作完成，成功删除{0}条流程数据。", del));
@@ -82,9 +82,9 @@ public class ProcDefService {
 	 * @param inDto
 	 */
 	public void updateProcProps(Dto inDto) {
-		Aos_bp_act_re_procdefPO aos_bp_act_re_procdefPO = new Aos_bp_act_re_procdefPO();
-		AOSUtils.apply(inDto, aos_bp_act_re_procdefPO);
-		aos_bp_act_re_procdefMapper.updateByKey(aos_bp_act_re_procdefPO);
+		Aos_act_re_procdefPO aos_act_re_procdefPO = new Aos_act_re_procdefPO();
+		AOSUtils.apply(inDto, aos_act_re_procdefPO);
+		aos_act_re_procdefMapper.updateByKey(aos_act_re_procdefPO);
 	}
 
 }

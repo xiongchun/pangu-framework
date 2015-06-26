@@ -83,10 +83,10 @@
                 url: 'getUser.jhtml',
                 ok: function (data) {
                     _f_user.form.setValues(data);
-                    if(App.empty(data.bytearray_id_)) {
-                        Ext.get('_img_photo').dom.src = '${cxt}/static/image/empty_head_photo.png';
+                    if(data.has_head_photo) {
+                    	Ext.get('_img_photo').dom.src = '${cxt}/system/byteObj/viewByteObj.jhtml?id_=' + data.bytearray_id_;
                     }else {
-                        Ext.get('_img_photo').dom.src = '${cxt}/system/byteObj/viewByteObj.jhtml?id_=' + data.bytearray_id_;
+                    	Ext.get('_img_photo').dom.src = '${cxt}/static/image/empty_head_photo.png';
                     }
                 }
             });

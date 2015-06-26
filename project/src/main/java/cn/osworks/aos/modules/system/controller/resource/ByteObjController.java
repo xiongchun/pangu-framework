@@ -74,11 +74,13 @@ public class ByteObjController {
     public void viewByteObj(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Dto inDto = Dtos.newDto(request);
         Aos_ge_bytearrayPO aos_ge_bytearrayPO = aos_ge_bytearrayMapper.selectByKey(inDto.getString("id_"));
-        byte[] bytes = aos_ge_bytearrayPO.getBytes_();
-        OutputStream outputStream = response.getOutputStream();
-        outputStream.write(bytes);
-        outputStream.flush();
-        outputStream.close();
+        if (AOSUtils.isNotEmpty(aos_ge_bytearrayPO)) {
+            byte[] bytes = aos_ge_bytearrayPO.getBytes_();
+            OutputStream outputStream = response.getOutputStream();
+            outputStream.write(bytes);
+            outputStream.flush();
+            outputStream.close();
+		}
     }
 
     /**

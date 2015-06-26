@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import cn.osworks.aos.base.asset.AOSCons;
 import cn.osworks.aos.base.asset.AOSJson;
 import cn.osworks.aos.base.asset.AOSUtils;
@@ -19,17 +18,19 @@ import cn.osworks.aos.modules.system.dao.mapper.Aos_au_module_user_navMapper;
 import cn.osworks.aos.modules.system.dao.mapper.Aos_au_userMapper;
 import cn.osworks.aos.modules.system.dao.mapper.Aos_au_user_cfgMapper;
 import cn.osworks.aos.modules.system.dao.mapper.Aos_au_user_extMapper;
+import cn.osworks.aos.modules.system.dao.mapper.Aos_ge_bytearrayMapper;
 import cn.osworks.aos.modules.system.dao.po.Aos_au_modulePO;
 import cn.osworks.aos.modules.system.dao.po.Aos_au_module_user_navPO;
 import cn.osworks.aos.modules.system.dao.po.Aos_au_userPO;
 import cn.osworks.aos.modules.system.dao.po.Aos_au_user_cfgPO;
 import cn.osworks.aos.modules.system.dao.po.Aos_au_user_extPO;
 import cn.osworks.aos.modules.system.dao.vo.UserInfoVO;
+import cn.osworks.aos.modules.system.service.auth.UserService;
 import cn.osworks.aos.modules.system.service.resource.ModuleService;
-import cn.osworks.aos.web.tag.core.model.TreeBuilder;
-import cn.osworks.aos.web.tag.core.model.TreeNode;
 import cn.osworks.aos.web.misc.DicCons;
 import cn.osworks.aos.web.misc.IdCons;
+import cn.osworks.aos.web.tag.core.model.TreeBuilder;
+import cn.osworks.aos.web.tag.core.model.TreeNode;
 
 import com.google.common.collect.Lists;
 
@@ -58,6 +59,29 @@ public class PreferenceService {
 	private ModuleService moduleService;
 	@Autowired
 	private SqlDao sqlDao;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private Aos_ge_bytearrayMapper aos_ge_bytearrayMapper;
+	
+	/**
+	 * 获取首选项使用的用户基本信息
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public Dto getUserInfo(Dto inDto){
+		Dto outDto = userService.getUser(inDto);
+		boolean has_head_photo = false;
+		String bytearray_id_ = outDto.getString("bytearray_id_");
+		if (AOSUtils.isNotEmpty(bytearray_id_)) {
+			if (AOSUtils.isNotEmpty(aos_ge_bytearrayMapper.selectByKey(bytearray_id_))) {
+				has_head_photo = true;
+			}
+		}
+		outDto.put("has_head_photo", has_head_photo);
+		return outDto;
+	}
 
 	/**
 	 * 修改个人资料信息

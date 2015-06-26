@@ -17,8 +17,8 @@ import cn.osworks.aos.base.typewrap.Dtos;
 import cn.osworks.aos.base.typewrap.impl.HashDto;
 import cn.osworks.aos.core.id.AOSId;
 import cn.osworks.aos.modules.bpm.service.ModelerService;
-import cn.osworks.aos.modules.system.dao.mapper.Aos_bp_ext_modelMapper;
-import cn.osworks.aos.modules.system.dao.po.Aos_bp_ext_modelPO;
+import cn.osworks.aos.modules.system.dao.mapper.Aos_act_ext_modelMapper;
+import cn.osworks.aos.modules.system.dao.po.Aos_act_ext_modelPO;
 
 
 /**
@@ -34,7 +34,7 @@ public class ModelerController {
     @Autowired
     private RepositoryService repositoryService;
     @Autowired
-    private Aos_bp_ext_modelMapper aos_bp_ext_modelMapper;
+    private Aos_act_ext_modelMapper aos_act_ext_modelMapper;
     @Autowired
     private ModelerService modelerService;
 
@@ -65,11 +65,11 @@ public class ModelerController {
         String name = "", description = ""; //保存模型窗口的表单属性
         String modelId = inDto.getString("id");
         if (AOSUtils.isNotEmpty(modelId)){
-            Aos_bp_ext_modelPO aos_bp_ext_modelPO = aos_bp_ext_modelMapper.selectOne(Dtos.newDto("model_id_", modelId));
+            Aos_act_ext_modelPO aos_act_ext_modelPO = aos_act_ext_modelMapper.selectOne(Dtos.newDto("model_id_", modelId));
             
-            if (AOSUtils.isNotEmpty(aos_bp_ext_modelPO)) {
-                name = aos_bp_ext_modelPO.getName_();
-                description = aos_bp_ext_modelPO.getRemark_();
+            if (AOSUtils.isNotEmpty(aos_act_ext_modelPO)) {
+                name = aos_act_ext_modelPO.getName_();
+                description = aos_act_ext_modelPO.getRemark_();
             }
         }
         modelDto.put("name", name);

@@ -20,10 +20,10 @@ import cn.osworks.aos.core.dao.SqlDao;
 import cn.osworks.aos.core.id.AOSId;
 import cn.osworks.aos.modules.bpm.misc.BPMUtils;
 import cn.osworks.aos.modules.bpm.service.ModelerService;
-import cn.osworks.aos.modules.system.dao.mapper.Aos_bp_ext_modelMapper;
-import cn.osworks.aos.modules.system.dao.mapper.Aos_bp_ext_procdefMapper;
-import cn.osworks.aos.modules.system.dao.po.Aos_bp_ext_modelPO;
-import cn.osworks.aos.modules.system.dao.po.Aos_bp_ext_procdefPO;
+import cn.osworks.aos.modules.system.dao.mapper.Aos_act_ext_modelMapper;
+import cn.osworks.aos.modules.system.dao.mapper.Aos_act_ext_procdefMapper;
+import cn.osworks.aos.modules.system.dao.po.Aos_act_ext_modelPO;
+import cn.osworks.aos.modules.system.dao.po.Aos_act_ext_procdefPO;
 import cn.osworks.aos.modules.system.dao.vo.UserInfoVO;
 import cn.osworks.aos.web.misc.DicCons;
 import cn.osworks.aos.web.misc.IdCons;
@@ -45,9 +45,9 @@ public class ProcModelService {
 	@Autowired
 	private SqlDao sqlDao;
 	@Autowired
-	private Aos_bp_ext_procdefMapper aos_bp_ext_procdefMapper;
+	private Aos_act_ext_procdefMapper aos_act_ext_procdefMapper;
 	@Autowired
-	private Aos_bp_ext_modelMapper aos_bp_ext_modelMapper;
+	private Aos_act_ext_modelMapper aos_act_ext_modelMapper;
 
 	/**
 	 * 导入文件模型资源
@@ -85,13 +85,13 @@ public class ProcModelService {
 	 * @param inDto
 	 */
 	public void updateModelProps(Dto inDto) {
-		Aos_bp_ext_modelPO aos_bp_ext_modelPO = new Aos_bp_ext_modelPO();
-		AOSUtils.apply(inDto, aos_bp_ext_modelPO);
+		Aos_act_ext_modelPO aos_act_ext_modelPO = new Aos_act_ext_modelPO();
+		AOSUtils.apply(inDto, aos_act_ext_modelPO);
 		// 更新扩展表
-		aos_bp_ext_modelMapper.updateByKey(aos_bp_ext_modelPO);
+		aos_act_ext_modelMapper.updateByKey(aos_act_ext_modelPO);
 		Dto modelDto = Dtos.newDto();
-		modelDto.put("id_", aos_bp_ext_modelPO.getModel_id_());
-		modelDto.put("name_", aos_bp_ext_modelPO.getName_());
+		modelDto.put("id_", aos_act_ext_modelPO.getModel_id_());
+		modelDto.put("name_", aos_act_ext_modelPO.getName_());
 		// 更新re_model表
 		sqlDao.update("Bpm.update_re_model_bykey", modelDto);
 	}
@@ -106,11 +106,11 @@ public class ProcModelService {
 		String id_s[] = inDto.getSelection();
 		int del = 0;
 		for (String id_ : id_s) {
-			Aos_bp_ext_modelPO aos_bp_ext_modelPO = aos_bp_ext_modelMapper.selectByKey(id_);
+			Aos_act_ext_modelPO aos_act_ext_modelPO = aos_act_ext_modelMapper.selectByKey(id_);
 			// 删除re_model及其大对象
-			repositoryService.deleteModel(aos_bp_ext_modelPO.getModel_id_());
+			repositoryService.deleteModel(aos_act_ext_modelPO.getModel_id_());
 			// 删除流程模型扩展表
-			aos_bp_ext_modelMapper.deleteByKey(id_);
+			aos_act_ext_modelMapper.deleteByKey(id_);
 			del++;
 		}
 		outDto.setAppMsg(AOSUtils.merge("操作完成，成功删除模型数据{0}条。", del));
@@ -141,17 +141,17 @@ public class ProcModelService {
 		sqlDao.update("Bpm.update_re_model_bykey", updateDto);
 
 		// 写流程定义扩展表
-		Aos_bp_ext_procdefPO aos_bp_ext_procdefPO = new Aos_bp_ext_procdefPO();
-		aos_bp_ext_procdefPO.setId_(AOSId.id(IdCons.BPMID));
-		aos_bp_ext_procdefPO.setModel_id_(inDto.getString("model_id_"));
+		Aos_act_ext_procdefPO aos_act_ext_procdefPO = new Aos_act_ext_procdefPO();
+		aos_act_ext_procdefPO.setId_(AOSId.id(IdCons.BPMID));
+		aos_act_ext_procdefPO.setModel_id_(inDto.getString("model_id_"));
 		// 获取已部署流程实体
 		ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
 				.deploymentId(deployment.getId()).singleResult();
-		aos_bp_ext_procdefPO.setProc_def_id_(processDefinition.getId());
-		aos_bp_ext_procdefPO.setDeploy_user_id_(userInfoVO.getId_());
-		aos_bp_ext_procdefPO.setDeploy_user_(userInfoVO.getName_());
-		aos_bp_ext_procdefPO.setDeploy_time_(AOSUtils.getDateTimeStr());
-		aos_bp_ext_procdefMapper.insert(aos_bp_ext_procdefPO);
+		aos_act_ext_procdefPO.setProc_def_id_(processDefinition.getId());
+		aos_act_ext_procdefPO.setDeploy_user_id_(userInfoVO.getId_());
+		aos_act_ext_procdefPO.setDeploy_user_(userInfoVO.getName_());
+		aos_act_ext_procdefPO.setDeploy_time_(AOSUtils.getDateTimeStr());
+		aos_act_ext_procdefMapper.insert(aos_act_ext_procdefPO);
 		outDto.setAppMsg("操作完成，部署成功。");
 		return outDto;
 	}

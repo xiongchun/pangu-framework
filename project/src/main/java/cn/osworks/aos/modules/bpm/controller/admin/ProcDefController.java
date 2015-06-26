@@ -19,7 +19,7 @@ import cn.osworks.aos.base.asset.WebCxt;
 import cn.osworks.aos.base.typewrap.Dto;
 import cn.osworks.aos.base.typewrap.Dtos;
 import cn.osworks.aos.core.id.AOSId;
-import cn.osworks.aos.modules.bpm.dao.mapper.Aos_bp_act_re_procdefMapper;
+import cn.osworks.aos.modules.bpm.dao.mapper.Aos_act_re_procdefMapper;
 import cn.osworks.aos.modules.bpm.service.admin.ProcDefService;
 
 
@@ -42,7 +42,7 @@ public class ProcDefController {
     @Autowired
     private IdentityService identityService;
     @Autowired
-    private Aos_bp_act_re_procdefMapper aos_bp_act_re_procdefMapper;
+    private Aos_act_re_procdefMapper aos_act_re_procdefMapper;
 
     /**
      * 页面初始化

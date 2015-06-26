@@ -96,7 +96,7 @@ public class UserService {
 	 */
 	public String saveUserPhoto(Dto inDto) throws IOException {
 		String bytearray_id_ = inDto.getString("bytearray_id_");
-		if (AOSUtils.isEmpty(bytearray_id_)) {
+		if (AOSUtils.isEmpty(aos_ge_bytearrayMapper.selectByKey(bytearray_id_))) {
 			// 新增上传
 			bytearray_id_ = byteObjService.saveByteObj(inDto);
 			Aos_au_user_extPO aos_au_user_extPO = aos_au_user_extMapper.selectByKey(inDto.getString("id_"));

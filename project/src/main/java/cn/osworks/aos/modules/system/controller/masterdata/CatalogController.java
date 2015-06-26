@@ -13,6 +13,7 @@ import cn.osworks.aos.base.asset.AOSJson;
 import cn.osworks.aos.base.asset.WebCxt;
 import cn.osworks.aos.base.typewrap.Dto;
 import cn.osworks.aos.base.typewrap.Dtos;
+import cn.osworks.aos.modules.system.dao.mapper.Aos_ge_catalogMapper;
 import cn.osworks.aos.modules.system.service.masterdata.CatalogService;
 
 /**
@@ -25,6 +26,8 @@ import cn.osworks.aos.modules.system.service.masterdata.CatalogService;
 @RequestMapping(value = "system/catalog/")
 public class CatalogController {
 	
+	@Autowired
+	 private Aos_ge_catalogMapper aos_ge_catalogMapper;
 	@Autowired
 	private CatalogService catalogService;
 	

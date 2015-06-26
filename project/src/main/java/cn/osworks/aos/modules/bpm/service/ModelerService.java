@@ -13,8 +13,8 @@ import cn.osworks.aos.base.asset.AOSUtils;
 import cn.osworks.aos.base.typewrap.Dto;
 import cn.osworks.aos.base.typewrap.Dtos;
 import cn.osworks.aos.core.id.AOSId;
-import cn.osworks.aos.modules.system.dao.mapper.Aos_bp_ext_modelMapper;
-import cn.osworks.aos.modules.system.dao.po.Aos_bp_ext_modelPO;
+import cn.osworks.aos.modules.system.dao.mapper.Aos_act_ext_modelMapper;
+import cn.osworks.aos.modules.system.dao.po.Aos_act_ext_modelPO;
 import cn.osworks.aos.modules.system.dao.vo.UserInfoVO;
 import cn.osworks.aos.web.misc.DicCons;
 import cn.osworks.aos.web.misc.IdCons;
@@ -30,7 +30,7 @@ import cn.osworks.aos.web.misc.IdCons;
 public class ModelerService {
 
 	@Autowired
-    private Aos_bp_ext_modelMapper aos_bp_ext_modelMapper;
+    private Aos_act_ext_modelMapper aos_act_ext_modelMapper;
     @Autowired
     private RepositoryService repositoryService;
 
@@ -50,16 +50,16 @@ public class ModelerService {
         String model_id_ = model.getId();
         //写扩展表
         UserInfoVO userInfoVO = inDto.getUserInfo();
-        Aos_bp_ext_modelPO aos_bp_ext_modelPO = new Aos_bp_ext_modelPO();
-        aos_bp_ext_modelPO.setId_(AOSId.id(IdCons.BPMID));
-        aos_bp_ext_modelPO.setModel_id_(model_id_);
-        aos_bp_ext_modelPO.setCreate_type_(inDto.getString("create_type_"));
-        aos_bp_ext_modelPO.setName_(inDto.getString("name"));
-        aos_bp_ext_modelPO.setCreate_user_id_(userInfoVO.getId_());
-        aos_bp_ext_modelPO.setCreate_user_(userInfoVO.getName_());
-        aos_bp_ext_modelPO.setCreate_time_(AOSUtils.getDateTimeStr());
-        aos_bp_ext_modelPO.setRemark_(inDto.getString("description"));
-        aos_bp_ext_modelMapper.insert(aos_bp_ext_modelPO);
+        Aos_act_ext_modelPO aos_act_ext_modelPO = new Aos_act_ext_modelPO();
+        aos_act_ext_modelPO.setId_(AOSId.id(IdCons.BPMID));
+        aos_act_ext_modelPO.setModel_id_(model_id_);
+        aos_act_ext_modelPO.setCreate_type_(inDto.getString("create_type_"));
+        aos_act_ext_modelPO.setName_(inDto.getString("name"));
+        aos_act_ext_modelPO.setCreate_user_id_(userInfoVO.getId_());
+        aos_act_ext_modelPO.setCreate_user_(userInfoVO.getName_());
+        aos_act_ext_modelPO.setCreate_time_(AOSUtils.getDateTimeStr());
+        aos_act_ext_modelPO.setRemark_(inDto.getString("description"));
+       aos_act_ext_modelMapper.insert(aos_act_ext_modelPO);
         return model_id_;
     }
 
@@ -77,10 +77,10 @@ public class ModelerService {
         model.setName(inDto.getString("name"));
         repositoryService.saveModel(model);
         //更新扩展表
-        Aos_bp_ext_modelPO aos_bp_ext_modelPO = aos_bp_ext_modelMapper.selectOne(Dtos.newDto("model_id_", modelId));
-        aos_bp_ext_modelPO.setName_(inDto.getString("name"));
-        aos_bp_ext_modelPO.setRemark_(inDto.getString("description"));
-        aos_bp_ext_modelMapper.updateByKey(aos_bp_ext_modelPO);
+        Aos_act_ext_modelPO aos_act_ext_modelPO = aos_act_ext_modelMapper.selectOne(Dtos.newDto("model_id_", modelId));
+        aos_act_ext_modelPO.setName_(inDto.getString("name"));
+        aos_act_ext_modelPO.setRemark_(inDto.getString("description"));
+        aos_act_ext_modelMapper.updateByKey(aos_act_ext_modelPO);
     }
     
     /**
