@@ -167,7 +167,6 @@
 
 		//响应导航菜单树节点单击事件
 		function fn_node_click(view, record, item, index, e) {
-			console.log(record);
 			var url =  record.raw.a;
 			if (!Ext.isEmpty(url)) {
 				fnaddtab(record.raw.id, record.raw.text, url);
