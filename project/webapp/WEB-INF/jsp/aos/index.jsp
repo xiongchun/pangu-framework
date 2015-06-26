@@ -167,7 +167,15 @@
 
 		//响应导航菜单树节点单击事件
 		function fn_node_click(view, record, item, index, e) {
-			fnaddtab(record.raw.id, record.raw.text, record.raw.a);
+			console.log(record);
+			var url =  record.raw.a;
+			if (!Ext.isEmpty(url)) {
+				fnaddtab(record.raw.id, record.raw.text, url);
+			}else{
+				if(record.raw.leaf){
+					 App.tip('没有配置菜单的请求地址。');
+				}
+			}
 		}
 		
 		//响应快捷菜单单击事件
@@ -191,11 +199,10 @@
 <script type="text/javascript">
 	//打开菜单功能页面
 	function fnaddtab(menuid, menuname, url) {
-		var id = "_id_tab_" + menuid;
 		if (Ext.isEmpty(url)) {
-			App.tip('没有配置菜单的请求地址。');
 			return;
 		}
+		var id = "_id_tab_" + menuid;
 		url = '${cxt}/' + url;
 		var index = url.indexOf('?');
 		//一级菜单的主页面所属的页面元素其page_id_同module_id_。
