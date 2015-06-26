@@ -731,7 +731,7 @@ INSERT INTO `aos_au_module` VALUES ('213', '0.002.007', '我的任务', 'bpm/myt
 INSERT INTO `aos_au_module` VALUES ('217', '0.001.008.006', 'DAO代码生成', null, null, '555', '1', '0', 'icon66.png', '1', '开发工具', null, '20');
 INSERT INTO `aos_au_module` VALUES ('220', '0.001.008.003', '视图页面设计', null, null, '555', '1', '0', 'icon88.png', '1', '开发工具', null, '31');
 INSERT INTO `aos_au_module` VALUES ('222', '0.001.008.004', '新增模块向导', null, null, '555', '1', '0', 'icon65.png', '1', '开发工具', null, '32');
-INSERT INTO `aos_au_module` VALUES ('225', '0.001.008.002', 'WebSQL', 'system/webSql/init.jhtml', null, '555', '1', '0', 'sql.png', '1', '开发工具', null, '11');
+INSERT INTO `aos_au_module` VALUES ('225', '0.001.008.002', 'WebSQL', null, null, '555', '1', '0', 'sql.png', '1', '开发工具', null, '11');
 INSERT INTO `aos_au_module` VALUES ('227', '0.001.009.001', 'AOS开发指南', null, null, '576', '1', '0', 'lightbulb.png', '1', '帮助', null, '1');
 INSERT INTO `aos_au_module` VALUES ('228', '0.001.009.002', 'AOS开发者社区', null, null, '576', '1', '0', 'icq.png', '1', '帮助', null, '2');
 INSERT INTO `aos_au_module` VALUES ('236', '0.004', '演示', null, null, '0', '0', '1', 'folder27.png', '1', 'OSWorks-AOS应用基础平台', 'fa-coffee', '40');
