@@ -16,10 +16,10 @@ Date: 2015-06-26 16:24:38
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for act_id_info
+-- Table structure for aos_act_id_info
 -- ----------------------------
-DROP TABLE IF EXISTS `act_id_info`;
-CREATE TABLE `act_id_info` (
+DROP TABLE IF EXISTS `aos_act_id_info`;
+CREATE TABLE `aos_act_id_info` (
   `ID_` varchar(64) collate utf8_bin NOT NULL default '',
   `REV_` int(11) default NULL,
   `USER_ID_` varchar(64) collate utf8_bin default NULL,
@@ -32,14 +32,14 @@ CREATE TABLE `act_id_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
--- Records of act_id_info
+-- Records of aos_act_id_info
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for act_id_user
+-- Table structure for aos_act_id_user
 -- ----------------------------
-DROP TABLE IF EXISTS `act_id_user`;
-CREATE TABLE `act_id_user` (
+DROP TABLE IF EXISTS `aos_act_id_user`;
+CREATE TABLE `aos_act_id_user` (
   `ID_` varchar(64) collate utf8_bin NOT NULL default '',
   `REV_` int(11) default NULL,
   `FIRST_` varchar(255) collate utf8_bin default NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `act_id_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
--- Records of act_id_user
+-- Records of aos_act_id_user
 -- ----------------------------
 
 -- ----------------------------
@@ -398,7 +398,7 @@ CREATE TABLE `aos_act_id_membership` (
   `GROUP_ID_` varchar(64) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`USER_ID_`,`GROUP_ID_`),
   KEY `AOS_ACT_FK_MEMB_GROUP` (`GROUP_ID_`),
-  CONSTRAINT `AOS_ACT_FK_MEMB_USER` FOREIGN KEY (`USER_ID_`) REFERENCES `act_id_user` (`ID_`),
+  CONSTRAINT `AOS_ACT_FK_MEMB_USER` FOREIGN KEY (`USER_ID_`) REFERENCES `aos_act_id_user` (`ID_`),
   CONSTRAINT `AOS_ACT_FK_MEMB_GROUP` FOREIGN KEY (`GROUP_ID_`) REFERENCES `aos_act_id_group` (`ID_`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
