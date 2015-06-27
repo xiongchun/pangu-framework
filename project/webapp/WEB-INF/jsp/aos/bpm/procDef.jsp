@@ -7,7 +7,7 @@
 </aos:head>
 <aos:body>
 	<div id="_div_diagram" class="x-hidden" align="center">
-		<img id="_img_diagram" src="" style="vertical-align: middle;" />
+		<img id="_img_diagram" style="vertical-align: middle;" />
 	</div>
 </aos:body>
 <aos:onready>

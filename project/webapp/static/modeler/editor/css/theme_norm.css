@@ -117,7 +117,7 @@
 }
 
 .LoadingIndicator {
-    background-image: url('../../libs/ext-2.0.2/resources/images/default/grid/loading.gif');
+    background-image: url('../../libs/ext/resources/images/default/grid/loading.gif');
 }
 
 .StatusIndicator {
@@ -138,12 +138,12 @@
 }
 
 .x-form-field-wrap .x-form-color-trigger {
-    background: transparent url("../../libs/ext-2.0.2/resources/images/default/form/color-trigger.png") no-repeat 0 0;
+    background: transparent url("../../libs/ext/resources/images/default/form/color-trigger.png") no-repeat 0 0;
     cursor: pointer;
 }
 
 .ie6 .x-form-field-wrap .x-form-color-trigger {
-    background: transparent url("../../libs/ext-2.0.2/resources/images/default/form/color-trigger.gif") no-repeat 0 0;
+    background: transparent url("../../libs/ext/resources/images/default/form/color-trigger.gif") no-repeat 0 0;
 }
 
 /* extended by Kerstin (start)*/
@@ -373,13 +373,13 @@
 }
 
 .resizer_southeast {
-    background-image: url(../../libs/ext-2.0.2/resources/images/default/sizer/se-handle-dark.gif);
+    background-image: url(../../libs/ext/resources/images/default/sizer/se-handle-dark.gif);
     cursor: se-resize;
     background-position: 4px 4px;
 }
 
 .resizer_northwest {
-    background-image: url(../../libs/ext-2.0.2/resources/images/default/sizer/nw-handle-dark.gif);
+    background-image: url(../../libs/ext/resources/images/default/sizer/nw-handle-dark.gif);
     cursor: nw-resize;
     background-position: -2px -2px;
 }
@@ -614,7 +614,7 @@ input.text.disabled:hover, input.disabled:hover, select.disabled:hover, textarea
 }
 
 .transform-epc-bpmn-window .transform-epc-bpmn-group-button .x-btn-center {
-    background: transparent url(../../libs/ext-2.0.2/resources/images/default/grid/group-expand-sprite.gif) no-repeat scroll 0px 0px;
+    background: transparent url(../../libs/ext/resources/images/default/grid/group-expand-sprite.gif) no-repeat scroll 0px 0px;
     padding-left: 15px;
     border-bottom: 1px solid #CCCCCC;
     text-align: left;

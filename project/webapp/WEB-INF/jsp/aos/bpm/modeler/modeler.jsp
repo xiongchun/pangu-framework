@@ -2,18 +2,21 @@
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
 <aos:html>
     <aos:head title="流程模型设计器">
+    	<script type="text/javascript">
+			var cxt = '${cxt}';
+		</script>
         <aos:include js="${cxt}/static/modeler/libs/prototype-1.5.1.js"/>
         <aos:include js="${cxt}/static/modeler/libs/path_parser.js"/>
-        <aos:include js="${cxt}/static/modeler/libs/ext-2.0.2/adapter/ext/ext-base.js"/>
-        <aos:include js="${cxt}/static/modeler/libs/ext-2.0.2/ext-all.js"/>
-        <aos:include js="${cxt}/static/modeler/libs/ext-2.0.2/color-field.js"/>
+        <aos:include js="${cxt}/static/modeler/libs/ext/ext-base.js"/>
+        <aos:include js="${cxt}/static/modeler/libs/ext/ext-all.js"/>
+        <aos:include js="${cxt}/static/modeler/libs/ext/color-field.js"/>
         <aos:include js="${cxt}/static/modeler/editor/i18n/translation_cn.js"/>
         <aos:include js="${cxt}/static/modeler/editor/i18n/translation_signavio_cn.js"/>
         <aos:include js="${cxt}/static/modeler/libs/utils.js"/>
         <aos:include js="${cxt}/static/modeler/editor/modeler.js"/>
         <aos:include css="${cxt}/static/css/aos.css"/>
-        <aos:include css="${cxt}/static/modeler/libs/ext-2.0.2/resources/css/ext-all.css"/>
-        <aos:include css="${cxt}/static/modeler/libs/ext-2.0.2/resources/css/xtheme-galdaka.css"/>
+        <aos:include css="${cxt}/static/modeler/libs/ext/resources/css/ext-all.css"/>
+        <aos:include css="${cxt}/static/modeler/libs/ext/resources/css/xtheme-galdaka.css"/>
         <aos:include css="${cxt}/static/modeler/editor/css/theme_norm.css"/>
         <style type="text/css">
             body {
@@ -81,6 +84,7 @@
                 background-image: url(${cxt}/static/icon/ok.png) !important;
             }
         </style>
+        
     </aos:head>
     <aos:body>
     </aos:body>

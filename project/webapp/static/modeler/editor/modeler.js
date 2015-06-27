@@ -1862,9 +1862,9 @@ if(!ORYX.CONFIG) ORYX.CONFIG = {};
  * This file contains URI constants that may be used for XMLHTTPRequests.
  */
 
-ORYX.CONFIG.ROOT_PATH =					"/aos/static/modeler/editor/"; //TODO: Remove last slash!!
+ORYX.CONFIG.ROOT_PATH =					cxt + "/static/modeler/editor/"; //TODO: Remove last slash!!
 ORYX.CONFIG.EXPLORER_PATH =				"./explorer";  //xiongchun no use
-ORYX.CONFIG.LIBS_PATH =					"/aos/static/modeler/libs";
+ORYX.CONFIG.LIBS_PATH =					cxt + "/static/modeler/libs";
 
 /**
  * Regular Config
@@ -1875,7 +1875,7 @@ ORYX.CONFIG.SERVER_MODEL_HANDLER =		ORYX.CONFIG.SERVER_HANDLER_ROOT + "/model";
 ORYX.CONFIG.STENCILSET_HANDLER = 		ORYX.CONFIG.SERVER_HANDLER_ROOT + "/editor_stencilset?embedsvg=true&url=true&namespace=";    
 ORYX.CONFIG.STENCIL_SETS_URL = 			ORYX.CONFIG.SERVER_HANDLER_ROOT + "/editor_stencilset";
 
-ORYX.CONFIG.PLUGINS_CONFIG =			"/aos/static/modeler/plugins.xml";
+ORYX.CONFIG.PLUGINS_CONFIG =			cxt + "/static/modeler/plugins.xml";
 ORYX.CONFIG.SYNTAXCHECKER_URL =			ORYX.CONFIG.SERVER_HANDLER_ROOT + "/syntaxchecker";
 ORYX.CONFIG.DEPLOY_URL = 				ORYX.CONFIG.SERVER_HANDLER_ROOT + "/model/deploy";
 ORYX.CONFIG.MODEL_LIST_URL = 			ORYX.CONFIG.SERVER_HANDLER_ROOT + "/models";
@@ -1919,7 +1919,7 @@ ORYX.CONFIG.PANEL_RIGHT_WIDTH	= 		300;
 ORYX.CONFIG.APPNAME = 					'Activiti BPM suite';
 ORYX.CONFIG.WEB_URL = 					"../";
 
-ORYX.CONFIG.BLANK_IMAGE = ORYX.CONFIG.LIBS_PATH + '/ext-2.0.2/resources/images/default/s.gif';
+ORYX.CONFIG.BLANK_IMAGE = ORYX.CONFIG.LIBS_PATH + '/ext/resources/images/default/s.gif';
 
 
 /* Show grid line while dragging */
@@ -8469,9 +8469,9 @@ ORYX.Core.StencilSet.StencilSet = Clazz.extend({
 		this._availableStencils = new Hash();
         
 		if(ORYX.CONFIG.BACKEND_SWITCH) {
-			this._baseUrl = "/aos/static/modeler/editor/stencilsets/bpmn2.0/";
+			this._baseUrl = cxt + "/static/modeler/editor/stencilsets/bpmn2.0/"; //这个资源似乎没用到
 			this._source = "../stencilsets/bpmn2.0/bpmn2.0.json";
-			new Ajax.Request("/aos/static/modeler/stencilset.json", {
+			new Ajax.Request(cxt + "/static/modeler/stencilset.json", {
 	            asynchronous: false,
 	            method: 'get',
 	            onSuccess: this._init.bind(this),
@@ -11165,7 +11165,7 @@ function init() {
 	 * representation, a spacer gif on the site of ext is loaded from the
 	 * internet. This causes problems when internet or the ext site are not
 	 * available. */
-	Ext.BLANK_IMAGE_URL = (ORYX.CONFIG.BLANK_IMAGE) || (ORYX.PATH + 'libs/ext-2.0.2/resources/images/default/s.gif');	
+	Ext.BLANK_IMAGE_URL = (ORYX.CONFIG.BLANK_IMAGE) || (ORYX.PATH + 'libs/ext/resources/images/default/s.gif');	
 	
 	ORYX.Log.debug("Querying editor instances");
 
@@ -11197,7 +11197,7 @@ function init() {
 			var modelId = window.location.search.substring(4);
 			//TODO 应用上下文
 			//这个请求为打开modeler页面时候发出去的。
-			modelUrl = '/aos/bpm/modeler/initModel.jhtml?id=' + modelId;
+			modelUrl = cxt + '/bpm/modeler/initModel.jhtml?id=' + modelId;
 		}
 
         ORYX.Editor.createByUrl(modelUrl, {
@@ -18346,7 +18346,7 @@ new function(){
 		var sversion 	= "color:#ad0f5b;padding-right:10px;font-family:tahoma,arial,san-serif;font-size:12px;";
 		var stext 		= "display:block;position:relative;text-align:right;top:0;width:100%;";
 		var stitle 		= "color:#ad0f5b;font-weight:bold;padding-right:10px;font-family:tahoma,arial,san-serif;font-size:12px;"
-		var sloading 	= "height:16px;width:16px;margin-bottom:-4px;background: transparent url(/aos/static/modeler/libs/ext-2.0.2/resources/images/default/tree/loading.gif) no-repeat center;"
+		var sloading 	= "height:16px;width:16px;margin-bottom:-4px;background: transparent url(" + cxt + "/static/modeler/libs/ext/resources/images/default/tree/loading.gif) no-repeat center;"
 		var simg 		= "padding-bottom:10px;border-bottom:1px solid #ad0f5b;";
 
 		// Define the parent
@@ -24864,8 +24864,8 @@ ORYX.Plugins.Save = Clazz.extend({
 
 
 		//这个请求是弹出模型保存窗口时发出去的
-		//new Ajax.Request("/aos/bpm/modeler/retrieveBeforeSave.jhtml?id=" + modelMeta.modelId, {
-		new Ajax.Request("/aos/bpm/modeler/retrieveBeforeSave.jhtml?id=" + _retrieve_modelID, {
+		//new Ajax.Request(cxt + "/bpm/modeler/retrieveBeforeSave.jhtml?id=" + modelMeta.modelId, {
+		new Ajax.Request(cxt + "/bpm/modeler/retrieveBeforeSave.jhtml?id=" + _retrieve_modelID, {
             method: 'get',
             asynchronous: true,
 			requestHeaders: {
@@ -24924,9 +24924,9 @@ ORYX.Plugins.Save = Clazz.extend({
 		
 		var saveUri;
 		if(forceNew == false) {
-			saveUri = "/aos/bpm/modeler/saveModel.jhtml";
+			saveUri = cxt + "/bpm/modeler/saveModel.jhtml";
 		} else {
-			saveUri = "/aos/bpm/modeler/saveModel.jhtml";
+			saveUri = cxt + "/bpm/modeler/saveModel.jhtml";
 		}
 		//保存模型的请求
 		//后台需要此变量控制新建模型保存后再次保存不会重复insert

@@ -13,7 +13,7 @@
         </param-value>
 	</context-param>
 
-	<!-- 字符集编码过滤器  -->
+	<!-- 字符集编码过滤器 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -97,6 +97,24 @@
 	<servlet-mapping>
 		<servlet-name>verCodeServlet</servlet-name>
 		<url-pattern>/verCodeServlet.png</url-pattern>
+	</servlet-mapping>
+
+    <!-- hproseServlet -->
+	<servlet>
+		<servlet-name>hproseServlet</servlet-name>
+		<servlet-class>hprose.server.HproseServlet</servlet-class>
+		<init-param>
+			<param-name>class</param-name>
+			<param-value>cn.osworks.aos.mylab.hprose.server.HPRoseService</param-value>
+		</init-param>
+		<init-param>
+			<param-name>crossDomain</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>hproseServlet</servlet-name>
+		<url-pattern>/hproseservice</url-pattern>
 	</servlet-mapping>
 
 	<!-- 缺省首页 -->
