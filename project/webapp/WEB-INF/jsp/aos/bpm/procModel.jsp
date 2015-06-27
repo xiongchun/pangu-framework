@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<%@ include file="/WEB-INF/jsp/common/tags.jsp"%>>
+<%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
 <aos:html>
 <aos:head title="流程建模">
 	<aos:include lib="ext" />
