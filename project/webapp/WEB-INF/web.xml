@@ -99,24 +99,6 @@
 		<url-pattern>/verCodeServlet.png</url-pattern>
 	</servlet-mapping>
 
-    <!-- hproseServlet -->
-	<servlet>
-		<servlet-name>hproseServlet</servlet-name>
-		<servlet-class>hprose.server.HproseServlet</servlet-class>
-		<init-param>
-			<param-name>class</param-name>
-			<param-value>cn.osworks.aos.mylab.hprose.server.HPRoseService</param-value>
-		</init-param>
-		<init-param>
-			<param-name>crossDomain</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>hproseServlet</servlet-name>
-		<url-pattern>/hproseservice</url-pattern>
-	</servlet-mapping>
-
 	<!-- 缺省首页 -->
 	<welcome-file-list>
 		<welcome-file>/login.htm</welcome-file>
