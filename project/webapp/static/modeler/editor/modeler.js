@@ -2262,8 +2262,8 @@ ORYX = Object.extend(ORYX, {
 	load: function() {
 		
 		if (ORYX.CONFIG.PREVENT_LOADINGMASK_AT_READY !== true) {
-			var waitingpanel = new Ext.Window({renderTo:Ext.getBody(),id:'oryx-loading-panel',bodyStyle:'padding: 8px;background:white',title:ORYX.I18N.Oryx.title,width:'auto',height:'auto',modal:true,resizable:false,closable:false,html:'<span style="font-size:11px;">' + ORYX.I18N.Oryx.pleaseWait + '</span>'})
-			waitingpanel.show()
+			//var waitingpanel = new Ext.Window({renderTo:Ext.getBody(),id:'oryx-loading-panel',bodyStyle:'padding: 8px;background:white',title:ORYX.I18N.Oryx.title,width:'auto',height:'auto',modal:true,resizable:false,closable:false,html:'<span style="font-size:11px;">' + ORYX.I18N.Oryx.pleaseWait + '</span>'})
+			//waitingpanel.show()
 		}
 		
 		ORYX.Log.debug("Oryx begins loading procedure.");
