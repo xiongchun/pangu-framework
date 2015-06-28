@@ -18342,12 +18342,11 @@ new function(){
 		}
 		
 		var s 	= "background:white;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%;z-index:100000;"
-		var ss 	= "left:50%;margin-left:-200px;margin-top:-90px;position:absolute;top:50%;display:none;width:391px;"
-		var sversion 	= "color:#ad0f5b;padding-right:10px;font-family:tahoma,arial,san-serif;font-size:12px;";
+		var ss 	= "left:50%;margin-left:-200px;margin-top:-90px;position:absolute;top:40%;display:none;width:391px;"
 		var stext 		= "display:block;position:relative;text-align:right;top:0;width:100%;";
-		var stitle 		= "color:#ad0f5b;font-weight:bold;padding-right:10px;font-family:tahoma,arial,san-serif;font-size:12px;"
-		var sloading 	= "height:16px;width:16px;margin-bottom:-4px;background: transparent url(" + cxt + "/static/modeler/libs/ext/resources/images/default/tree/loading.gif) no-repeat center;"
-		var simg 		= "padding-bottom:10px;border-bottom:1px solid #ad0f5b;";
+		var stitle 		= "color:#333;padding-right:10px;font-family:tahoma,arial,san-serif;font-size:13px;"
+		var sloading 	= "height:16px;width:16px;margin-bottom:-4px;background: transparent url(" + cxt + "/static/image/gif/loading2.gif) no-repeat center;"
+		var simg 		= "padding-bottom:10px;border-bottom:1px solid #666;";
 
 		// Define the parent
 		parent = (parent ? Ext.get(parent) : null) || Ext.getBody();
@@ -18355,7 +18354,7 @@ new function(){
 		if (parent !== Ext.getBody()){
 			parent.setStyle("position", "relative")
 		}
-
+       
 		mask = Ext.get(document.createElement("div"));
 		parent.appendChild(mask);
 		mask.dom.setAttribute("style", s);
@@ -18364,8 +18363,7 @@ new function(){
 										"<img style='"+simg+"' src='"+ORYX.CONFIG.ROOT_PATH+"image/logo.png' />"+
 									"</div>"+
 									"<span class='mask-text' style='"+stext+"'>"+
-										"<span class='mask-title' style='"+stitle+"'>Editor</span>"+
-										"<span class='mask-version' style='"+sversion+"'>Version "+Signavio.Core.Version+"</span>"+
+										"<span class='mask-title' style='"+stitle+"'>正在初始化...</span>"+
 										"<img style='"+sloading+"' src='"+(ORYX.CONFIG.BLANK_IMAGE||Ext.BLANK_IMAGE_URL)+"'/>"+
 									"</span>" +
 								"</div>";
@@ -18375,7 +18373,7 @@ new function(){
 	}
 			
 	// When body is loaded, show overlay		
-	Ext.onReady(Signavio.Helper.ShowMask);
+	//Ext.onReady(Signavio.Helper.ShowMask);
 	
 	/**
 	 * Hides the overlay
