@@ -66,7 +66,6 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/javax.el-2.2.0.v201108011116.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/javax.servlet-3.0.0.v201112011016.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/javax.servlet.jsp-2.2.0.v201112011158.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/javax.servlet.jsp.jstl-1.2.0.v201105211821.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jetty-all-8.1.17.v20150415.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/org.apache.jasper.glassfish-2.2.2.v201112011158.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/org.apache.taglibs.standard.glassfish-1.2.0.v201112081803.jar"/>
@@ -77,6 +76,7 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/aos/aos-core.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/aos/aos-web.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/dependencies/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jstl-1.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-bpmn-converter-5.17.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-bpmn-layout-5.17.0.jar"/>
