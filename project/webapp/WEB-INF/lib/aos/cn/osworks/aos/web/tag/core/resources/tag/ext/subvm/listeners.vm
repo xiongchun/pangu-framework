@@ -1,0 +1,36 @@
+##on标签注册组件的事件监听
+#if($listeners)
+var ${id}_listeners = {
+    ##afterrender监听专门用于子组件添加到父组件的操作
+	##仅针对一些特殊操作，比如Tools、Docked的添加，必须afterrender之后操作。容器组件Items的add和这个没关系。
+	#if($afterRenderRegisterList)
+    afterrender : {
+    	fn : function() {
+    	#foreach($register in $afterRenderRegisterList)
+    		#if(${register.type} == "tool")
+    		    Ext.getCmp('$id').addTool(${register.id});
+    		#elseif(${register.type} == "docked")
+    			Ext.getCmp('$id').addDocked(${register.id});
+    	    #end
+    	#end
+    	}
+    }
+	#if($listenerList),#end
+    #end
+##注册用户自己添加的事件监听
+#foreach($listener in $listenerList)
+			${listener.event} : {
+			#if(${listener.delay})
+			    delay : ${listener.delay},
+			#end
+			#if(${listener.single})
+			    single : $listener.single},
+			#end
+			#if(${listener.any})
+                ${listener.any},
+            #end
+				fn : ${listener.fn}
+			}#if($velocityCount != $listenerList.size()),#end
+#end
+};
+#end

@@ -1,0 +1,76 @@
+##导入相关插件依赖的CSS资源
+#if($toggle == "true")
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/ux/toggleslide/css/style.css" />
+#end
+
+<script type="text/javascript">
+##导入Ext扩展依赖资源
+Ext.Loader.setConfig({  
+   enabled: true,  
+   paths : { 
+      'Ext.ux' : '$cxt/static/weblib/ext/ux',
+      'App.ux' : '$cxt/static/weblib/myux'
+   }  
+});
+##本来可以不需要显式导入这些依赖资源，Ext会依赖加载。但还是建议显式导入更好。细节不赘述，我说好就是好 : )。
+Ext.require('App.ux.Notification');
+#if($statusBar == "true")
+Ext.require('Ext.ux.statusbar.StatusBar');
+#end
+#if($pagingMemoryProxy == "true")
+Ext.require('Ext.ux.data.PagingMemoryProxy');
+#end
+#if($iframe == "true")
+Ext.require('App.ux.IFrame');
+#end
+#if($treePicker == "true")
+Ext.require('App.ux.TreePicker');
+#end
+#if($dataView == "true")
+Ext.require('Ext.ux.DataView.Animated');
+#end
+#if($toggle == "true")
+Ext.require([ 'Ext.ux.form.field.ToggleSlide']);
+Ext.require([ 'Ext.ux.toggleslide.ToggleSlide']);
+#end
+
+##=====Ajax的全局设定开始
+##将缺省超时时间设置为120s
+Ext.Ajax.timeout = 120000;
+##TODO:改变提示信息弹出方式
+##监听请求提交前事件
+Ext.Ajax.on('beforerequest', function(conn, options, eopts) {
+    ##追加请求全局参数
+	Ext.Ajax.extraParams = {
+		'app' : '169'
+	};
+});
+##监听请求异常回调
+Ext.Ajax.on('requestexception', function(conn, response, options, eopts) {
+	if (response.status === 500) {
+	    ##服务器异常
+		Ext.Msg.alert('提示', response.responseText);
+	} else if (response.status === 0) {
+	    ##网络异常或服务器关闭
+		Ext.Msg.alert('提示', response.responseText);
+	} else {
+	    ##其它异常
+		Ext.Msg.alert('提示', response.responseText);
+	}
+});
+##=====Ajax的全局设定结束
+
+##表单必录项的高亮提示
+var x_field_required = '<span class="mustinput-label">*</span>';
+
+##Ext组件开始实例化
+Ext.onReady(function(){
+Ext.QuickTips.init();
+##TODO 此属性改为可配置
+Ext.form.Field.prototype.msgTarget = 'under';
+##屏蔽浏览器右键
+#if($preventDefault == "true")
+Ext.getDoc().on("contextmenu", function(e){
+    e.preventDefault();
+});
+#end

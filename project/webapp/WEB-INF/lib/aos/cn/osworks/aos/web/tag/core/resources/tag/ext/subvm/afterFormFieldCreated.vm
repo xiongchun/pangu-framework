@@ -1,0 +1,6 @@
+#if($readOnly == "true")
+   App.read($id);
+#end
+#if($disabled == "true")
+   App.disable($id);
+#end

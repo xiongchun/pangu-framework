@@ -1,0 +1,21 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##Button定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/buttonTagSupport.vm")
+#if($iconAlign)
+    iconAlign: '$iconAlign',
+#end
+#if($arrowAlign)
+    arrowAlign: '$arrowAlign',
+#end
+#if($textAlign)
+    textAlign: '$textAlign',
+#end
+    app:169	
+};
+##Button实例化
+var ${id} = Ext.create('$classtype', ${id}_cfg);
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
