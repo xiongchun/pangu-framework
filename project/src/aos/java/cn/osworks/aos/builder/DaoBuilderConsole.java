@@ -9,17 +9,17 @@ import cn.osworks.aos.core.dao.asset.DBType;
 import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
 
+/**
+ * 数据访问层代码生成器
+ * 
+ * <p>
+ * 提示：此方式为临时的代码生成方案，后续版本会将此功能整合进AOS的Eclipse开发插件中。
+ * 
+ * @author OSWorks-XC
+ * @throws SQLException 
+ */
 public class DaoBuilderConsole {
-
-	/**
-	 * 数据访问层代码生成器
-	 * 
-	 * <p>
-	 * 提示：此方式为临时的代码生成方案，后续版本会将此功能整合进AOS的Eclipse开发插件中。
-	 * 
-     * @author OSWorks-XC
-	 * @throws SQLException 
-	 */
+	
 	public static void main(String[] args) throws SQLException {
 		//===================
 		DriverManagerOpt driverOpt = new DriverManagerOpt();
