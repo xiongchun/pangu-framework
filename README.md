@@ -6,7 +6,7 @@ AOS应用基础平台基于JavaEE技术体系，以“标准功能可复用、�
 [http://42.120.21.17/aos](http://42.120.21.17/aos)  (在线演示系统为只读模式，部分功能可能不流畅。完美体验请[搭建本地环境](http://git.oschina.net/osworks/AOS/raw/master/doc/AOS%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E.pdf)。)<br>
 登录帐户/密码：root/111111。(或单击 开发者 按钮直接登录)
 ##### AOS开发者社区 
-[AOS开发者社区](http://git.oschina.net/osworks/AOS/tags)
+[AOS开发者社区](http://www.oschina.net/question/tag/aos)
 ### 产品定位与用户价值
 AOS应用基础平台面向各型软件开发团队，通过提供卓越的基础平台和服务支持保障。帮助企业落实IT策略、屏蔽技术壁垒快速实现业务愿景，使其获得更低成本、更高质量、更快交付业务和运维支持的核心技术竞争力。
 ### 适用行业及项目场景
