@@ -12,7 +12,7 @@
         <property name="transactionManager" ref="transactionManager"/>
         <property name="databaseSchemaUpdate" value="false"/>
         <property name="createDiagramOnDeploy" value="true" />
-        <property name="databaseTablePrefix" value="aos_" />
+        <property name="databaseTablePrefix" value="AOS_" />
         <property name="activityFontName" value="宋体"/>
         <property name="labelFontName" value="宋体"/>
     </bean>
