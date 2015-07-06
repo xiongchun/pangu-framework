@@ -7,7 +7,7 @@
     </aos:head>
     <aos:body>
         <div id="_div_view" class="x-hidden" align="center">
-            <img id="_img_view" src="" style="vertical-align: middle;"/>
+            <img id="_img_view" style="vertical-align: middle;"/>
         </div>
     </aos:body>
     <aos:onready>
