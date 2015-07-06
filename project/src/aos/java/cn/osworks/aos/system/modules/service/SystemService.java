@@ -12,6 +12,7 @@ import cn.osworks.aos.core.asset.AOSListUtils;
 import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.asset.AOSXmlParam;
 import cn.osworks.aos.core.dao.SqlDao;
+import cn.osworks.aos.core.dao.asset.DBDialectUtils;
 import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
 import cn.osworks.aos.system.asset.DicCons;
@@ -87,6 +88,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<Aos_sys_modulePO> getModulesByUser(Dto inDto) {
+		inDto.put("fnLength", DBDialectUtils.fnLength(sqlDao.getDatabaseId()));
 		List<Aos_sys_modulePO> modulesList = sqlDao.list("Auth.getModulesByUser", inDto);
 		return modulesList;
 	}
@@ -97,6 +99,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<Aos_sys_modulePO> getModulesByPost(Dto inDto) {
+		inDto.put("fnLength", DBDialectUtils.fnLength(sqlDao.getDatabaseId()));
 		List<Aos_sys_modulePO> modulesList = sqlDao.list("Auth.getModulesByPost", inDto);
 		return modulesList;
 	}
@@ -107,6 +110,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<Aos_sys_modulePO> getModulesByRole(Dto inDto) {
+		inDto.put("fnLength", DBDialectUtils.fnLength(sqlDao.getDatabaseId()));
 		List<Aos_sys_modulePO> modulesList = sqlDao.list("Auth.getModulesByRole", inDto);
 		return modulesList;
 	}

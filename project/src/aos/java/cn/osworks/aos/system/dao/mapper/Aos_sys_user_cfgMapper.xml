@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 用户配置表[aos_sys_user_cfg]SQLMapper自动映射 -->
-<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-03 22:01:21 -->
+<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-05 16:03:21 -->
 <mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_sys_user_cfgMapper">
 
 	<!-- 表字段 -->

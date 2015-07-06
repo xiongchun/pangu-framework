@@ -9,7 +9,7 @@ import cn.osworks.aos.core.typewrap.PO;
  * </p>
  * 
  * @author OSWorks-XC
- * @date 2015-07-03 22:01:20
+ * @date 2015-07-05 16:03:21
  */
 public class Aos_act_ru_variablePO extends PO {
 

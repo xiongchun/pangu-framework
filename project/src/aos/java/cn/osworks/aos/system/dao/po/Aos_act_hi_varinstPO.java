@@ -10,7 +10,7 @@ import java.util.Date;
  * </p>
  * 
  * @author OSWorks-XC
- * @date 2015-07-03 22:01:20
+ * @date 2015-07-05 16:03:20
  */
 public class Aos_act_hi_varinstPO extends PO {
 

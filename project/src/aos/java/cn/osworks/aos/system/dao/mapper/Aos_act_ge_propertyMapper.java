@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_act_ge_propertyPO;
  * </p>
  * 
  * @author OSWorks-XC
- * @date 2015-07-03 22:01:19
+ * @date 2015-07-05 16:03:20
  */
 @Mapper
 public interface Aos_act_ge_propertyMapper {

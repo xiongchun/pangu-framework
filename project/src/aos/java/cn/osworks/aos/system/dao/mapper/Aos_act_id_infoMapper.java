@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_act_id_infoPO;
  * </p>
  * 
  * @author OSWorks-XC
- * @date 2015-07-03 22:01:20
+ * @date 2015-07-05 16:03:20
  */
 @Mapper
 public interface Aos_act_id_infoMapper {

@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_sys_userPO;
  * </p>
  * 
  * @author OSWorks-XC
- * @date 2015-07-03 22:01:21
+ * @date 2015-07-05 16:03:21
  */
 @Mapper
 public interface Aos_sys_userMapper {

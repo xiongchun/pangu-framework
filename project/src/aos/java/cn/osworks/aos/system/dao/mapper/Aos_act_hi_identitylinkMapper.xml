@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- [aos_act_hi_identitylink]SQLMapper自动映射 -->
-<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-03 22:01:20 -->
+<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-05 16:03:20 -->
 <mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_act_hi_identitylinkMapper">
 
 	<!-- 表字段 -->

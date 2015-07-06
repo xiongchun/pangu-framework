@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_act_ru_variablePO;
  * </p>
  * 
  * @author OSWorks-XC
- * @date 2015-07-03 22:01:20
+ * @date 2015-07-05 16:03:21
  */
 @Mapper
 public interface Aos_act_ru_variableMapper {
