@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
+import cn.osworks.aos.system.asset.DicCons;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_dicMapper;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_dic_indexMapper;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_paramMapper;
@@ -68,6 +68,7 @@ public class AosService {
 		if (AOSUtils.isNotEmpty(aos_sys_dic_indexPOs)) {
 			Aos_sys_dic_indexPO aos_sys_dic_indexPO = aos_sys_dic_indexPOs.get(0);
 			Dto inDto = Dtos.newDto();
+			inDto.put("status_", DicCons.ENABLED_YES);
 			inDto.put("dic_index_id_", aos_sys_dic_indexPO.getId_());
 			inDto.setOrder("code_, id_");
 			dicList = aos_sys_dicMapper.list(inDto);
