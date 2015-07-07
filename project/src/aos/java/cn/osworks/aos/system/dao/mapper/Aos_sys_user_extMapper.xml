@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 用户扩展信息表[aos_sys_user_ext]SQLMapper自动映射 -->
-<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-05 16:03:21 -->
+<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-07 01:19:45 -->
 <mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_sys_user_extMapper">
 
 	<!-- 表字段 -->
@@ -380,7 +380,7 @@
 	
 	<!-- 根据Dto统计行数 -->
 	<select id="rows" resultType="Integer" parameterType="Dto">
-		SELECT COUNT(1) AS rows FROM aos_sys_user_ext
+		SELECT COUNT(1) AS aos_rows_ FROM aos_sys_user_ext
 		<where>
 		    <include refid="equal" />
 		</where>

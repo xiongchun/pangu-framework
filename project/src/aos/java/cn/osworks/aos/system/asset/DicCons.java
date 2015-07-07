@@ -45,7 +45,7 @@ public interface DicCons {
 	public static final String ENABLED_YES = "1";
 	
 	/**
-	 * 当前状态：通用
+	 * 当前状态：停用
 	 */
 	public static final String ENABLED_NO = "0";
 	

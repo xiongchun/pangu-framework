@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- [aos_act_hi_comment]SQLMapper自动映射 -->
-<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-05 16:03:20 -->
+<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-07 01:19:44 -->
 <mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_act_hi_commentMapper">
 
 	<!-- 表字段 -->
@@ -272,7 +272,7 @@
 	
 	<!-- 根据Dto统计行数 -->
 	<select id="rows" resultType="Integer" parameterType="Dto">
-		SELECT COUNT(1) AS rows FROM aos_act_hi_comment
+		SELECT COUNT(1) AS aos_rows_ FROM aos_act_hi_comment
 		<where>
 		    <include refid="equal" />
 		</where>

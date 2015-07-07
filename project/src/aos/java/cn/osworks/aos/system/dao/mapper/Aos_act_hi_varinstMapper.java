@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_act_hi_varinstPO;
  * </p>
  * 
  * @author OSWorks-XC
- * @date 2015-07-05 16:03:20
+ * @date 2015-07-07 01:19:44
  */
 @Mapper
 public interface Aos_act_hi_varinstMapper {

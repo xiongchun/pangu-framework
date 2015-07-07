@@ -17,13 +17,13 @@ import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
 import cn.osworks.aos.system.asset.DicCons;
 import cn.osworks.aos.system.asset.MasterDetailModel;
+import cn.osworks.aos.system.dao.mapper.Aos_sys_catalogMapper;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_orgMapper;
-import cn.osworks.aos.system.dao.mapper.Aos_sys_catalogMapper;
+import cn.osworks.aos.system.dao.po.Aos_sys_catalogPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_modulePO;
 import cn.osworks.aos.system.dao.po.Aos_sys_orgPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_pagePO;
-import cn.osworks.aos.system.dao.po.Aos_sys_catalogPO;
 import cn.osworks.aos.system.modules.dao.vo.ElementVO;
 
 
@@ -285,4 +285,5 @@ public class SystemService {
 		}
 		return masterDetailPageModel;
 	}
+	
 }
