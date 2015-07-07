@@ -1676,25 +1676,11 @@ cache 20;
 
 spool off
 
-
 prompt PL/SQL Developer import file
-prompt Created on 2015年7月6日 by XChun
+prompt Created on 2015年7月7日 by XChun
 set feedback off
 set define off
-prompt Loading AOS_ACT_GE_PROPERTY...
-insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
-values ('schema.version', '5.17.0.2', 1);
-insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
-values ('schema.history', 'create(5.17.0.2)', 1);
-insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
-values ('next.dbid', '2501', 2);
-commit;
-prompt 3 records loaded
 prompt Loading AOS_SYS_CATALOG...
-insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
-values ('10', '0.001', 'PARAM_TYPE', '参数分类科目', '参数分类', null, '0', '0', '0', 'book.png', 1);
-insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
-values ('11', '0.001.001', 'PARAM_TYPE', '参数分类科目', '业务参数', null, '10', '1', '0', 'user20.png', 2);
 insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
 values ('12', '0.001.002', 'PARAM_TYPE', '参数分类科目', '系统参数', null, '10', '0', '1', 'folder22.png', 1);
 insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
@@ -1735,13 +1721,13 @@ insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hot
 values ('616', '0.004.003', 'BYTE_FILE_TYPE', '流文件分类', '序列化对象', null, '611', '1', '0', 'plugin.png', 3);
 insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
 values ('80', '0.002.006', 'DIC_TYPE', '词典分类科目', '平台配置', null, '38', '1', '0', 'folder2.png', 1);
+insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
+values ('10', '0.001', 'PARAM_TYPE', '参数分类科目', '参数分类', null, '0', '0', '0', 'book.png', 1);
+insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
+values ('11', '0.001.001', 'PARAM_TYPE', '参数分类科目', '业务参数', null, '10', '1', '0', 'user20.png', 2);
 commit;
 prompt 22 records loaded
 prompt Loading AOS_SYS_DIC...
-insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
-values ('123', '2', '表格列', null, '1', '122', null);
-insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
-values ('124', '3', '表单元素(输入框|下拉框|选择框等)', null, '1', '122', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('125', '4', '容器组件(窗口|面板|树|表格|工具栏等)', null, '1', '122', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
@@ -1905,15 +1891,15 @@ values ('651', 'gray', '银灰', null, '1', '649', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('652', 'neptune', '海王星(水蓝)', null, '1', '649', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
-values ('653', 'aos', 'AOS', null, '1', '649', null);
+values ('653', 'aos', 'AOS', null, '0', '649', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('655', 'tab', 'Tab风格', null, '1', '654', '支持打开多个业务经办界面。');
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
-values ('656', 'page', '单页风格', null, '1', '654', '只能打开一个功能页面');
+values ('656', 'page', '单页风格', null, '0', '654', '只能打开一个功能页面');
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('658', '1', '同级', null, '1', '657', '水平导航按钮和垂直导航的卡片属于统一层级。');
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
-values ('659', '2', '级联', null, '1', '657', '水平导航按钮和垂直导航的卡片有上下级级联导航关系');
+values ('659', '2', '级联', null, '0', '657', '水平导航按钮和垂直导航的卡片有上下级级联导航关系');
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('661', 'true', '显示', null, '1', '660', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
@@ -1938,21 +1924,21 @@ insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, rem
 values ('86', '0', '停用', null, '1', '85', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('87', '1', '启用', null, '1', '85', null);
-commit;
-prompt 100 records committed...
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('89', '1', 'APPID', null, '1', '88', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('90', '2', 'UUID', null, '1', '88', null);
+commit;
+prompt 100 records committed...
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('91', '3', 'DBSequence', null, '1', '88', null);
+insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
+values ('123', '2', '表格列', null, '1', '122', null);
+insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
+values ('124', '3', '表单元素(输入框|下拉框|选择框等)', null, '1', '122', null);
 commit;
 prompt 103 records loaded
 prompt Loading AOS_SYS_DIC_INDEX...
-insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
-values ('122', 'page_el_type_', '页面元素类型', null, '39', '0.002.001', null);
-insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
-values ('1636', 'page_type_', '页面类型', null, '39', '0.002.001', null);
 insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
 values ('1670', 'nav_quick_layout_', '快捷菜单布局风格', null, '80', '0.002.006', '快捷菜单布局风格。');
 insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
@@ -2019,6 +2005,10 @@ insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_c
 values ('85', 'enabled_', '使能状态', null, '40', '0.002.002', null);
 insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
 values ('88', 'sequence_type_', 'ID类型', null, '39', '0.002.001', null);
+insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
+values ('122', 'page_el_type_', '页面元素类型', null, '39', '0.002.001', null);
+insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
+values ('1636', 'page_type_', '页面类型', null, '39', '0.002.001', null);
 commit;
 prompt 35 records loaded
 prompt Loading AOS_SYS_ICON...
@@ -3249,10 +3239,6 @@ values ('7018', 'folder8.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('7019', 'folder9.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7020', 'forward.png', '1');
-insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7021', 'freelance.png', '1');
-insert into AOS_SYS_ICON (id_, name_, type_)
 values ('7022', 'go.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('7023', 'go.png', '1');
@@ -3434,12 +3420,12 @@ insert into AOS_SYS_ICON (id_, name_, type_)
 values ('7111', 'pictures.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('7112', 'picture_empty.png', '1');
-commit;
-prompt 700 records committed...
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('7113', 'plugin.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('7114', 'plugin1.png', '1');
+commit;
+prompt 700 records committed...
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('7115', 'plugin2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
@@ -3550,13 +3536,13 @@ insert into AOS_SYS_ICON (id_, name_, type_)
 values ('7168', 'zoom_in.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('7169', 'zoom_out.png', '1');
+insert into AOS_SYS_ICON (id_, name_, type_)
+values ('7020', 'forward.png', '1');
+insert into AOS_SYS_ICON (id_, name_, type_)
+values ('7021', 'freelance.png', '1');
 commit;
 prompt 757 records loaded
 prompt Loading AOS_SYS_MODULE...
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
-values ('0', '0', 'AOS应用基础平台', null, null, 'p', '0', '1', 'home.png', '1', 'root', null, 1);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
-values ('1680', '0.001.004.002', '流程建模', 'bpm/procModel/init.jhtml', null, '189', '1', '0', 'icon8.png', '1', '工作流', null, 10);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('1688', '0.001.004.003', '流程配置与管理', 'bpm/procDef/init.jhtml', null, '189', '1', '0', 'icon79.png', '1', '工作流', null, 20);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
@@ -3645,6 +3631,10 @@ insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, 
 values ('576', '0.001.009', '帮助', null, null, '183', '0', '0', 'folder11.png', '1', '控制台', null, 80);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('615', '0.001.002.006', '流文件', 'system/byteObj/init.jhtml', null, '187', '1', '0', 'page_office.png', '1', '资源', null, 40);
+insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+values ('0', '0', 'AOS应用基础平台', null, null, 'p', '0', '1', 'home.png', '1', 'root', null, 1);
+insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+values ('1680', '0.001.004.002', '流程建模', 'bpm/procModel/init.jhtml', null, '189', '1', '0', 'icon8.png', '1', '工作流', null, 10);
 commit;
 prompt 46 records loaded
 prompt Loading AOS_SYS_MODULE_POST...
@@ -3654,10 +3644,6 @@ prompt Table is empty
 prompt Loading AOS_SYS_MODULE_USER...
 prompt Table is empty
 prompt Loading AOS_SYS_MODULE_USER_NAV...
-insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
-values ('1', '192', '1', '25.png', '2', 0);
-insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
-values ('2', '193', '1', '11.png', '2', 0);
 insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
 values ('3', '200', '1', '30.png', '2', 0);
 insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
@@ -3780,13 +3766,13 @@ insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_
 values ('8', '217', '1', '56.png', '2', 0);
 insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
 values ('9', '222', '1', '22.png', '2', 0);
+insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
+values ('1', '192', '1', '25.png', '2', 0);
+insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
+values ('2', '193', '1', '11.png', '2', 0);
 commit;
 prompt 63 records loaded
 prompt Loading AOS_SYS_ORG...
-insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
-values ('0', '0', 'OSWorks', null, 'p', 'root', '0', '1', 'home.png', '1', '1', null, null, '2012-01-01 12:12:12', '1', 0);
-insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
-values ('284', '0.007', '项目部', null, '0', 'OSWorks', '1', '0', null, '1', '1', null, null, '2012-01-01 12:12:12', '1', 3);
 insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
 values ('285', '0.003', '产品部', null, '0', 'OSWorks', '1', '0', null, '1', '1', null, null, '2012-01-01 12:12:12', '1', 2);
 insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
@@ -3799,13 +3785,13 @@ insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_n
 values ('424', '0.005.001', '部门1', null, '287', '总务办', '0', '1', null, '1', '1', null, null, '2012-01-01 12:12:12', '1', 1);
 insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
 values ('441', '0.005.001.001', '部门1-1', null, '424', '部门1', '1', '0', null, '1', '1', null, null, '2012-01-01 12:12:12', '4', 1);
+insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
+values ('0', '0', 'OSWorks', null, 'p', 'root', '0', '1', 'home.png', '1', '1', null, null, '2012-01-01 12:12:12', '1', 0);
+insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
+values ('284', '0.007', '项目部', null, '0', 'OSWorks', '1', '0', null, '1', '1', null, null, '2012-01-01 12:12:12', '1', 3);
 commit;
 prompt 8 records loaded
 prompt Loading AOS_SYS_PAGE...
-insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
-values ('1646', '207', '我的个人资料', 'initMyInfo.jhtml', '2', '1', '1', 'vcard.png', null, null, 1);
-insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
-values ('1647', '207', '我的偏好设置', 'initMySettings.jhtml', '2', '1', '0', 'icon79.png', null, null, 2);
 insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
 values ('1648', '207', '系统安全选项', 'initSecurityCfg.jhtml', '2', '1', '0', 'system.png', null, null, 3);
 insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
@@ -3826,24 +3812,24 @@ insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_defa
 values ('1702', '213', '已办任务', 'initDone.jhtml', '2', '1', '0', 'task_finish.png', null, null, 20);
 insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
 values ('1703', '393', '分隔符', null, '4', '1', '0', null, null, null, 3);
+insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
+values ('1646', '207', '我的个人资料', 'initMyInfo.jhtml', '2', '1', '1', 'vcard.png', null, null, 1);
+insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
+values ('1647', '207', '我的偏好设置', 'initMySettings.jhtml', '2', '1', '0', 'icon79.png', null, null, 2);
 commit;
 prompt 12 records loaded
 prompt Loading AOS_SYS_PAGE_EL...
 insert into AOS_SYS_PAGE_EL (id_, dom_id_, name_, type_, module_id_, page_id_, remark_)
+values ('477', '_btn_add_demo', '弹出新增参数窗口按钮', '1', '192', '192', null);
+insert into AOS_SYS_PAGE_EL (id_, dom_id_, name_, type_, module_id_, page_id_, remark_)
 values ('1666', '_btn_demo', '文本按钮', '1', '207', '207', '演示页面元素授权');
 insert into AOS_SYS_PAGE_EL (id_, dom_id_, name_, type_, module_id_, page_id_, remark_)
 values ('1667', '_btn_save_demo', '个人信息保存按钮', '1', '207', '1646', '演示页面元素授权');
-insert into AOS_SYS_PAGE_EL (id_, dom_id_, name_, type_, module_id_, page_id_, remark_)
-values ('477', '_btn_add_demo', '弹出新增参数窗口按钮', '1', '192', '192', null);
 commit;
 prompt 3 records loaded
 prompt Loading AOS_SYS_PAGE_EL_GRANT...
 prompt Table is empty
 prompt Loading AOS_SYS_PARAM...
-insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
-values ('1668', 'nav_tab_index_', '1', '423', '0.001.002.004', '导航缺省活动页', '1', 'nav_tab_index_', '左侧布局的导航卡片缺省激活的卡片索引号');
-insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
-values ('1669', 'nav_quick_layout_', '1', '423', '0.001.002.004', '快捷菜单布局风格', '1', 'nav_quick_layout_', '快捷菜单布局风格。1:平铺。2：树状。');
 insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
 values ('302', 'theme_', 'classic', '413', '0.001.002.002', '系统主题风格', '1', 'theme_', '可选值：classic。缺省值：classic。');
 insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
@@ -3898,33 +3884,33 @@ insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, 
 values ('637', 'user_head_catalog_id_', '613', '414', '0.001.002.003', '用户头像流文件分类ID', '0', null, '用户头像流文件分类ID，分类科目中的用户头像分类ID。用户上传文件时使用。');
 insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
 values ('74', 'app_name_', 'AOS : JavaEE应用基础平台', '413', '0.001.002.002', '应用系统名称', '0', null, '应用系统名称');
+insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
+values ('1668', 'nav_tab_index_', '1', '423', '0.001.002.004', '导航缺省活动页', '1', 'nav_tab_index_', '左侧布局的导航卡片缺省激活的卡片索引号');
+insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
+values ('1669', 'nav_quick_layout_', '1', '423', '0.001.002.004', '快捷菜单布局风格', '1', 'nav_quick_layout_', '快捷菜单布局风格。1:平铺。2：树状。');
 commit;
 prompt 29 records loaded
 prompt Loading AOS_SYS_POST...
 insert into AOS_SYS_POST (id_, name_, status_, type_, org_id_, create_time_, creater_id_, org_cascade_id_)
+values ('540', '岗位3', '1', '1', '284', '2014-12-10 02:26:56', '1', '0.007');
+insert into AOS_SYS_POST (id_, name_, status_, type_, org_id_, create_time_, creater_id_, org_cascade_id_)
 values ('538', '岗位1', '1', '1', '288', '2014-12-10 02:25:17', '1', '0.008');
 insert into AOS_SYS_POST (id_, name_, status_, type_, org_id_, create_time_, creater_id_, org_cascade_id_)
 values ('539', '岗位2', '1', '1', '285', '2014-12-10 02:25:24', '1', '0.003');
-insert into AOS_SYS_POST (id_, name_, status_, type_, org_id_, create_time_, creater_id_, org_cascade_id_)
-values ('540', '岗位3', '1', '1', '284', '2014-12-10 02:26:56', '1', '0.007');
 commit;
 prompt 3 records loaded
 prompt Loading AOS_SYS_ROLE...
 insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
-values ('449', '测试角色1', '1', '1', '2014-11-18 12:56:15', '4', '287', '0.005');
-insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
-values ('455', '测试角色', '1', '1', '2014-11-23 19:58:19', '4', '288', '0.008');
-insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
 values ('541', '角色1', '1', '1', '2014-12-10 02:28:26', '1', '0', '0');
 insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
 values ('605', '角色2', '1', '1', '2015-01-22 00:48:47', '1', '0', '0');
+insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
+values ('449', '测试角色1', '1', '1', '2014-11-18 12:56:15', '4', '287', '0.005');
+insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
+values ('455', '测试角色', '1', '1', '2014-11-23 19:58:19', '4', '288', '0.008');
 commit;
 prompt 4 records loaded
 prompt Loading AOS_SYS_SEQUENCE...
-insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
-values ('1', 'GID', '1', null, '1', '1', '1720', '1', null, null, null, '9999999999', '0', '1', '0', '1720', '系统管理-实体表流水号。');
-insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
-values ('1635', 'ICONID', '1', null, '1', '1', '7169', '1', null, null, null, '9223372036854775807', '0', '1', '0', '7169', '图标ID');
 insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
 values ('2', 'GUUID', '2', null, '1', '1', 'bd749e4c-0512-4b01-9ef7-7f42af3812a0', '1', null, null, null, '9223372036854775807', '0', '1', '0', 'bd749e4c-0512-4b01-9ef7-7f42af3812a0', '通用UUID。');
 insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
@@ -3937,45 +3923,49 @@ insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_val
 values ('546', 'BPMID', '1', null, '1', '1', '119', '1', null, null, null, '9999999999', '0', '1', '0', '119', '流程引擎相关辅助表的流水号');
 insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
 values ('8', 'TESTID1', '1', 'TEST{yyyyMMdd}', '1', '1', '0059', '1', '-', '{HHmmss}', null, '9999', '1', '1', '1', 'TEST20150121-0059-005407', '测试ID，前缀后缀支持日期时间表达式。');
+insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
+values ('1', 'GID', '1', null, '1', '1', '1721', '1', null, null, null, '9999999999', '0', '1', '0', '1721', '系统管理-实体表流水号。');
+insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
+values ('1635', 'ICONID', '1', null, '1', '1', '7169', '1', null, null, null, '9223372036854775807', '0', '1', '0', '7169', '图标ID');
 commit;
 prompt 8 records loaded
 prompt Loading AOS_SYS_USER...
 insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
-values ('1', 'root', 'Q31Ox+QY0vs=', '超级用户', '1', '0', '1', '2', null, '2014-09-27 22:12:56', '1', '0');
-insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
-values ('14', 'test1', 'ByOPAM8ATmY=', '测试1', '0', '284', '1', '1', null, '2014-12-10 02:18:53', '1', '0.007');
-insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
 values ('15', 'xxd', 'Q31Ox+QY0vs=', '熊小朵', '0', '441', '1', '1', null, '2014-12-10 02:19:12', '1', '0.005.001.001');
+insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
+values ('1', 'root', 'Q31Ox+QY0vs=', '超级用户', '1', '0', '1', '2', null, '2014-09-27 22:12:56', '1', '0');
 insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
 values ('19', 'xxx', 'ByOPAM8ATmY=', '熊小雄', '1', '285', '1', '1', null, '2015-01-25 16:20:54', '1', '0.003');
 insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
 values ('20', 'xcc', '5SIDJ03AkJI=', '熊楚楚', '0', '0', '1', '1', null, '2015-02-01 22:19:03', '1', '0');
+insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
+values ('14', 'test1', 'ByOPAM8ATmY=', '测试1', '0', '284', '1', '1', null, '2014-12-10 02:18:53', '1', '0.007');
 commit;
 prompt 5 records loaded
 prompt Loading AOS_SYS_USER_CFG...
 insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
-values ('1', 'classic', 'blue', 'tab', '1', 'true', 'tight', '#0099FF', '1', '0', '1');
-insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
-values ('14', 'classic', 'blue', 'tab', '1', 'true', 'tight', '#0099FF', '1', '1', null);
-insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
 values ('15', 'classic', 'blue', 'tab', '1', 'true', 'tight', '#0099FF', '1', '1', '1');
+insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
+values ('1', 'classic', 'blue', 'tab', '1', 'true', 'tight', '#0099FF', '1', '0', '1');
 insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
 values ('19', 'classic', 'neptune', 'tab', '1', 'true', 'tight', '#0099FF', '1', '1', null);
 insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
 values ('20', 'classic', 'neptune', 'tab', '1', 'true', 'tight', '#0099FF', '1', '1', '1');
+insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
+values ('14', 'classic', 'blue', 'tab', '1', 'true', 'tight', '#0099FF', '1', '1', null);
 commit;
 prompt 5 records loaded
 prompt Loading AOS_SYS_USER_EXT...
 insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
-values ('1', '307916217@qq.com', null, '18616786188', null, null, null, null, '307916217', null, '1717', '超级用户拥有系统最高权限。', null, null, null);
-insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
-values ('14', null, null, null, null, null, null, null, null, null, '680', null, null, null, null);
-insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
 values ('15', null, null, null, null, null, '2015-02-01', null, null, null, '646', null, null, null, null);
+insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
+values ('1', '307916217@qq.com', null, '18616786188', null, null, null, null, '307916217', null, '1717', '超级用户拥有系统最高权限。', null, null, null);
 insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
 values ('19', 'xxx@qq.com', '0871-3131921', '18616786188', '云南大理', '53021890', '2015-01-30', '532925108211170651', '307916217', null, '644', '备注内容', '100', '100', '100');
 insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
 values ('20', null, null, null, null, null, null, null, null, null, null, null, '100', '100', null);
+insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
+values ('14', null, null, null, null, null, null, null, null, null, '680', null, null, null, null);
 commit;
 prompt 5 records loaded
 prompt Loading AOS_SYS_USER_POST...

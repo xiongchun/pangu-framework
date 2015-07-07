@@ -11,7 +11,7 @@ Target Server Type    : SQL Server
 Target Server Version : 100000
 File Encoding         : 65001
 
-Date: 2015-07-06 01:12:33
+Date: 2015-07-07 09:44:40
 */
 
 
@@ -1497,19 +1497,19 @@ GO
 INSERT INTO [dbo].[AOS_SYS_DIC] ([ID_], [CODE_], [DESC_], [HOTKEY_], [STATUS_], [DIC_INDEX_ID_], [REMARK_]) VALUES (N'652', N'neptune', N'海王星(水蓝)', null, N'1', N'649', null)
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_DIC] ([ID_], [CODE_], [DESC_], [HOTKEY_], [STATUS_], [DIC_INDEX_ID_], [REMARK_]) VALUES (N'653', N'aos', N'AOS', null, N'1', N'649', null)
+INSERT INTO [dbo].[AOS_SYS_DIC] ([ID_], [CODE_], [DESC_], [HOTKEY_], [STATUS_], [DIC_INDEX_ID_], [REMARK_]) VALUES (N'653', N'aos', N'AOS', null, N'0', N'649', null)
 GO
 GO
 INSERT INTO [dbo].[AOS_SYS_DIC] ([ID_], [CODE_], [DESC_], [HOTKEY_], [STATUS_], [DIC_INDEX_ID_], [REMARK_]) VALUES (N'655', N'tab', N'Tab风格', null, N'1', N'654', N'支持打开多个业务经办界面。')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_DIC] ([ID_], [CODE_], [DESC_], [HOTKEY_], [STATUS_], [DIC_INDEX_ID_], [REMARK_]) VALUES (N'656', N'page', N'单页风格', null, N'1', N'654', N'只能打开一个功能页面')
+INSERT INTO [dbo].[AOS_SYS_DIC] ([ID_], [CODE_], [DESC_], [HOTKEY_], [STATUS_], [DIC_INDEX_ID_], [REMARK_]) VALUES (N'656', N'page', N'单页风格', null, N'0', N'654', N'只能打开一个功能页面')
 GO
 GO
 INSERT INTO [dbo].[AOS_SYS_DIC] ([ID_], [CODE_], [DESC_], [HOTKEY_], [STATUS_], [DIC_INDEX_ID_], [REMARK_]) VALUES (N'658', N'1', N'同级', null, N'1', N'657', N'水平导航按钮和垂直导航的卡片属于统一层级。')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_DIC] ([ID_], [CODE_], [DESC_], [HOTKEY_], [STATUS_], [DIC_INDEX_ID_], [REMARK_]) VALUES (N'659', N'2', N'级联', null, N'1', N'657', N'水平导航按钮和垂直导航的卡片有上下级级联导航关系')
+INSERT INTO [dbo].[AOS_SYS_DIC] ([ID_], [CODE_], [DESC_], [HOTKEY_], [STATUS_], [DIC_INDEX_ID_], [REMARK_]) VALUES (N'659', N'2', N'级联', null, N'0', N'657', N'水平导航按钮和垂直导航的卡片有上下级级联导航关系')
 GO
 GO
 INSERT INTO [dbo].[AOS_SYS_DIC] ([ID_], [CODE_], [DESC_], [HOTKEY_], [STATUS_], [DIC_INDEX_ID_], [REMARK_]) VALUES (N'661', N'true', N'显示', null, N'1', N'660', null)
@@ -6777,7 +6777,7 @@ GO
 -- ----------------------------
 -- Records of AOS_SYS_SEQUENCE
 -- ----------------------------
-INSERT INTO [dbo].[AOS_SYS_SEQUENCE] ([ID_], [NAME_], [TYPE_], [PREFIX_], [START_], [STEP_], [CUR_VALUE_], [STATUS_], [CONNECTOR_], [SUFFIX_], [DB_SEQ_NAME_], [MAX_VALUE_], [IS_CIRCUL_], [MIN_VALUE_], [IS_LEFTPAD_], [FORMAT_VALUE_], [REMARK_]) VALUES (N'1', N'GID', N'1', null, N'1', N'1', N'1720', N'1', null, null, null, N'9999999999', N'0', N'1', N'0', N'1720', N'系统管理-实体表流水号。')
+INSERT INTO [dbo].[AOS_SYS_SEQUENCE] ([ID_], [NAME_], [TYPE_], [PREFIX_], [START_], [STEP_], [CUR_VALUE_], [STATUS_], [CONNECTOR_], [SUFFIX_], [DB_SEQ_NAME_], [MAX_VALUE_], [IS_CIRCUL_], [MIN_VALUE_], [IS_LEFTPAD_], [FORMAT_VALUE_], [REMARK_]) VALUES (N'1', N'GID', N'1', null, N'1', N'1', N'1721', N'1', null, null, null, N'9999999999', N'0', N'1', N'0', N'1721', N'系统管理-实体表流水号。')
 GO
 GO
 INSERT INTO [dbo].[AOS_SYS_SEQUENCE] ([ID_], [NAME_], [TYPE_], [PREFIX_], [START_], [STEP_], [CUR_VALUE_], [STATUS_], [CONNECTOR_], [SUFFIX_], [DB_SEQ_NAME_], [MAX_VALUE_], [IS_CIRCUL_], [MIN_VALUE_], [IS_LEFTPAD_], [FORMAT_VALUE_], [REMARK_]) VALUES (N'1635', N'ICONID', N'1', null, N'1', N'1', N'7169', N'1', null, null, null, N'9223372036854775807', N'0', N'1', N'0', N'7169', N'图标ID')

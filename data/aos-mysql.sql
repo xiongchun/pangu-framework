@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50022
 File Encoding         : 65001
 
-Date: 2015-07-05 21:23:57
+Date: 2015-07-07 09:45:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -806,11 +806,11 @@ INSERT INTO `aos_sys_dic` VALUES ('648', 'classic', '经典主题', null, '1', '
 INSERT INTO `aos_sys_dic` VALUES ('650', 'blue', '天蓝', null, '1', '649', null);
 INSERT INTO `aos_sys_dic` VALUES ('651', 'gray', '银灰', null, '1', '649', null);
 INSERT INTO `aos_sys_dic` VALUES ('652', 'neptune', '海王星(水蓝)', null, '1', '649', null);
-INSERT INTO `aos_sys_dic` VALUES ('653', 'aos', 'AOS', null, '1', '649', null);
+INSERT INTO `aos_sys_dic` VALUES ('653', 'aos', 'AOS', null, '0', '649', '');
 INSERT INTO `aos_sys_dic` VALUES ('655', 'tab', 'Tab风格', null, '1', '654', '支持打开多个业务经办界面。');
-INSERT INTO `aos_sys_dic` VALUES ('656', 'page', '单页风格', null, '1', '654', '只能打开一个功能页面');
+INSERT INTO `aos_sys_dic` VALUES ('656', 'page', '单页风格', null, '0', '654', '只能打开一个功能页面');
 INSERT INTO `aos_sys_dic` VALUES ('658', '1', '同级', null, '1', '657', '水平导航按钮和垂直导航的卡片属于统一层级。');
-INSERT INTO `aos_sys_dic` VALUES ('659', '2', '级联', null, '1', '657', '水平导航按钮和垂直导航的卡片有上下级级联导航关系');
+INSERT INTO `aos_sys_dic` VALUES ('659', '2', '级联', null, '0', '657', '水平导航按钮和垂直导航的卡片有上下级级联导航关系');
 INSERT INTO `aos_sys_dic` VALUES ('661', 'true', '显示', null, '1', '660', null);
 INSERT INTO `aos_sys_dic` VALUES ('662', 'false', '隐藏', null, '1', '660', null);
 INSERT INTO `aos_sys_dic` VALUES ('664', 'tight', '组合按钮', null, '1', '663', null);
@@ -2104,7 +2104,7 @@ CREATE TABLE `aos_sys_sequence` (
 -- ----------------------------
 -- Records of aos_sys_sequence
 -- ----------------------------
-INSERT INTO `aos_sys_sequence` VALUES ('1', 'GID', '1', null, '1', '1', '1720', '1', null, null, null, '9999999999', '0', '1', '0', '1720', '系统管理-实体表流水号。');
+INSERT INTO `aos_sys_sequence` VALUES ('1', 'GID', '1', null, '1', '1', '1721', '1', null, null, null, '9999999999', '0', '1', '0', '1721', '系统管理-实体表流水号。');
 INSERT INTO `aos_sys_sequence` VALUES ('1635', 'ICONID', '1', null, '1', '1', '7169', '1', null, null, null, '9223372036854775807', '0', '1', '0', '7169', '图标ID');
 INSERT INTO `aos_sys_sequence` VALUES ('2', 'GUUID', '2', null, '1', '1', 'bd749e4c-0512-4b01-9ef7-7f42af3812a0', '1', null, null, null, '9223372036854775807', '0', '1', '0', 'bd749e4c-0512-4b01-9ef7-7f42af3812a0', '通用UUID。');
 INSERT INTO `aos_sys_sequence` VALUES ('3', 'TESTID', '1', null, '1', '1', '00000050', '1', null, null, null, '99999999', '1', '1', '1', '00000050', '测试用ID');
