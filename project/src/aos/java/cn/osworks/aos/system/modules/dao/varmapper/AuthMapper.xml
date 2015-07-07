@@ -474,8 +474,14 @@
 		FROM
 			aos_sys_module , aos_sys_module_user_nav
 		WHERE
-			aos_sys_module.id_ = aos_sys_module_user_nav.module_id_ AND aos_sys_module_user_nav.type_ = #{type_} 
+			aos_sys_module.id_ = aos_sys_module_user_nav.module_id_ 
 			AND aos_sys_module_user_nav.user_id_ = #{user_id_} AND aos_sys_module.status_ = '1'
+			<if test="type_ != null and type_ != ''">
+			    AND aos_sys_module_user_nav.type_ = #{type_}
+			</if>
+			<if test="is_leaf_ != null and is_leaf_ != ''">
+			    AND aos_sys_module.is_leaf_ = #{is_leaf_}
+			</if>
 		ORDER BY aos_sys_module.sort_no_
 	</select>
 	
@@ -510,5 +516,21 @@
 	<delete id="deleteAos_sys_module_user_navByDto" parameterType="Dto">
 		DELETE FROM aos_sys_module_user_nav WHERE user_id_ = #{user_id_} AND type_ = #{type_}
 	</delete>
+	<delete id="deleteAos_sys_module_user_navByDto2" parameterType="Dto">
+		DELETE FROM aos_sys_module_user_nav WHERE user_id_ = #{user_id_} AND module_id_ = #{module_id_}
+	</delete>
+	
+	<!-- 统计行数自定义菜单是否还有自定义子菜单 -->
+	<select id="rows_aos_sys_module" resultType="Integer" parameterType="Dto">
+		SELECT
+			COUNT(1)
+		FROM
+			aos_sys_module_user_nav
+		WHERE user_id_ = #{user_id_}
+		AND type_ = '1'
+		AND module_id_ IN (
+			SELECT id_ FROM aos_sys_module WHERE parent_id_ = #{module_id_}
+		 )
+	</select>
 	
 </mapper>

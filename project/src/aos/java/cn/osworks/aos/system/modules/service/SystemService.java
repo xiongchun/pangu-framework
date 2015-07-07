@@ -25,7 +25,9 @@ import cn.osworks.aos.system.dao.po.Aos_sys_modulePO;
 import cn.osworks.aos.system.dao.po.Aos_sys_orgPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_pagePO;
 import cn.osworks.aos.system.modules.dao.vo.ElementVO;
+import cn.osworks.aos.system.modules.dao.vo.UserInfoVO;
 
+import com.google.common.collect.Lists;
 
 /**
  * <b>系统公用服务</b>
@@ -57,13 +59,31 @@ public class SystemService {
 		List<Aos_sys_modulePO> listAos_sys_modulePO = getModulesByUser(inDto);
 		listAos_sys_modulePO.addAll(getModulesByPost(inDto));
 		listAos_sys_modulePO.addAll(getModulesByRole(inDto));
-		//去除重复值记录
+		// 去除重复值记录
 		List<Aos_sys_modulePO> outList = AOSListUtils.distinct(listAos_sys_modulePO, Aos_sys_modulePO.class);
 		String jqlText = "SELECT * FROM :AOSList ORDER BY sort_no_ ASC";
 		outList = AOSListUtils.select(outList, Aos_sys_modulePO.class, jqlText, null);
 		return outList;
 	}
-	
+
+	/**
+	 * 超级用户和普通用户：获取用户的所有模块权限(用户+岗位+角色)
+	 * 
+	 * @return
+	 */
+	public List<Aos_sys_modulePO> getBizModulesOfUserOrRoot(Dto inDto) {
+		UserInfoVO userInfoVO = inDto.getUserInfo();
+		List<Aos_sys_modulePO> aos_sys_modulePOs = Lists.newArrayList();
+		if (DicCons.USER_TYPE_SUPER.equals(userInfoVO.getType_())) {
+			// 超级用户不做任何限制
+			inDto.put("cascade_id_", "0");
+			aos_sys_modulePOs = sqlDao.list("Auth.getModuleTreeBasedRoot", inDto);
+		} else {
+			aos_sys_modulePOs = getBizModulesOfUser(inDto);
+		}
+		return aos_sys_modulePOs;
+	}
+
 	/**
 	 * 获取用户的所有模块管理权限(用户+角色)
 	 * 
@@ -75,7 +95,7 @@ public class SystemService {
 		inDto.put("grant_type_", DicCons.GRANT_TYPE_ADMIN);
 		List<Aos_sys_modulePO> listAos_sys_modulePO = getModulesByUser(inDto);
 		listAos_sys_modulePO.addAll(getModulesByRole(inDto));
-		//去除重复值记录
+		// 去除重复值记录
 		List<Aos_sys_modulePO> outList = AOSListUtils.distinct(listAos_sys_modulePO, Aos_sys_modulePO.class);
 		String jqlText = "SELECT * FROM :AOSList ORDER BY sort_no_ ASC";
 		outList = AOSListUtils.select(outList, Aos_sys_modulePO.class, jqlText, null);
@@ -114,7 +134,7 @@ public class SystemService {
 		List<Aos_sys_modulePO> modulesList = sqlDao.list("Auth.getModulesByRole", inDto);
 		return modulesList;
 	}
-	
+
 	/**
 	 * 查询用户关联岗位的页面元素授权信息
 	 * 
@@ -124,7 +144,7 @@ public class SystemService {
 		List<ElementVO> cmpList = sqlDao.list("Auth.getElementsByPost", inDto);
 		return cmpList;
 	}
-	
+
 	/**
 	 * 查询用户关联角色的页面元素授权信息
 	 * 
@@ -134,7 +154,7 @@ public class SystemService {
 		List<ElementVO> cmpList = sqlDao.list("Auth.getElementsByRole", inDto);
 		return cmpList;
 	}
-	
+
 	/**
 	 * 查询用户直接自己的页面元素授权信息
 	 * 
@@ -144,11 +164,12 @@ public class SystemService {
 		List<ElementVO> cmpList = sqlDao.list("Auth.getElementsByUser", inDto);
 		return cmpList;
 	}
-	
+
 	/**
 	 * 查询用户所有的页面元素授权信息(用户+角色+岗位)
 	 * 
 	 * 注：标签权限授权也是调用此方法
+	 * 
 	 * @return
 	 */
 	public List<ElementVO> getElementsOfUser(Dto inDto) {
@@ -158,7 +179,7 @@ public class SystemService {
 		cmpList = AOSListUtils.distinct(cmpList, ElementVO.class);
 		return cmpList;
 	}
-	
+
 	/**
 	 * 获取分类树节点集合
 	 * 
@@ -194,7 +215,80 @@ public class SystemService {
 		}
 		return treeNodes;
 	}
-	
+
+	/**
+	 * 过滤用户自定义菜单(快捷菜单和浮动菜单)
+	 * 
+	 * @param inDto
+	 * @param quickAos_sys_modulePOs
+	 * @return
+	 */
+	public List<Aos_sys_modulePO> filterQuickModules1(Dto inDto, List<Aos_sys_modulePO> quickAos_sys_modulePOs) {
+		List<Aos_sys_modulePO> outList = Lists.newArrayList();
+		List<Aos_sys_modulePO> curAos_sys_modulePOs = getBizModulesOfUserOrRoot(inDto);
+		String jql = "SELECT * FROM :AOSList WHERE id_ = :id_";
+		Dto checkDto = Dtos.newDto();
+		for (Aos_sys_modulePO aos_sys_modulePO : quickAos_sys_modulePOs) {
+			checkDto.put("id_", aos_sys_modulePO.getId_());
+			List<Aos_sys_modulePO> tempList = AOSListUtils.select(curAos_sys_modulePOs, Aos_sys_modulePO.class, jql,
+					checkDto);
+			if (AOSUtils.isNotEmpty(tempList)) {
+				outList.addAll(tempList);
+			}
+		}
+		return outList;
+	}
+
+	/**
+	 * 清除快捷菜单和浮动菜单的垃圾数据
+	 * 
+	 *
+	 * <p>
+	 * 1)、用户自定义菜单后，自定义菜单的权限被管理员收回则会产生垃圾数据。
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public void clearRubbishQuiclModules(Dto inDto) {
+		UserInfoVO userInfoVO = inDto.getUserInfo();
+		inDto.put("user_id_", userInfoVO.getId_());
+		// 快捷菜单和浮动菜单集合，可能含有垃圾数据
+		// 参数不含自定义菜单类型
+		List<Aos_sys_modulePO> quickSys_modulePOs = sqlDao.list("Auth.listUserQuickModuleSelected", inDto);
+		// 当前用户所有菜单节点
+		List<Aos_sys_modulePO> curAos_sys_modulePOs = getBizModulesOfUserOrRoot(inDto);
+		String jql = "SELECT * FROM :AOSList WHERE id_ = :id_";
+		Dto checkDto = Dtos.newDto();
+		Dto delDto = Dtos.newDto("user_id_", userInfoVO.getId_());
+		// 这个for里只能清除叶子节点的垃圾数据。quick里的树枝节点可能也是当前节点中的本应存在的叶子节点的树枝节点。
+		for (Aos_sys_modulePO aos_sys_modulePO : quickSys_modulePOs) {
+			checkDto.put("id_", aos_sys_modulePO.getId_());
+			List<Aos_sys_modulePO> tempList = AOSListUtils.select(curAos_sys_modulePOs, Aos_sys_modulePO.class, jql,
+					checkDto);
+			if (AOSUtils.isEmpty(tempList)) {
+				// 删除垃圾数据
+				delDto.put("module_id_", aos_sys_modulePO.getId_());
+				sqlDao.delete("Auth.deleteAos_sys_module_user_navByDto2", delDto);
+			}
+		}
+		// 再次清理树枝节点
+		inDto.put("is_leaf_", AOSCons.NO);
+		quickSys_modulePOs = sqlDao.list("Auth.listUserQuickModuleSelected", inDto);
+		// 进行排序，先清理深度较深的树枝节点
+		//Java再排序规避DB兼容性问题
+		String jql2 = "SELECT * FROM :AOSList ORDER BY toNumber(id_) DESC"; 
+		quickSys_modulePOs = AOSListUtils.select(quickSys_modulePOs, Aos_sys_modulePO.class, jql2, null);
+		for (Aos_sys_modulePO aos_sys_modulePO : quickSys_modulePOs) {
+			inDto.put("module_id_", aos_sys_modulePO.getId_());
+			// 删除自定义菜单映射表里没有子孙节点的树枝节点
+			int rows = (Integer) sqlDao.selectOne("Auth.rows_aos_sys_module", inDto);
+			if (rows == 0) {
+				delDto.put("module_id_", aos_sys_modulePO.getId_());
+				sqlDao.delete("Auth.deleteAos_sys_module_user_navByDto2", delDto);
+			}
+		}
+	}
+
 	/**
 	 * 获取组织树节点集合
 	 * 
@@ -231,7 +325,7 @@ public class SystemService {
 		}
 		return treeNodes;
 	}
-	
+
 	/**
 	 * 获取功能模块树节点集合
 	 * 
@@ -266,7 +360,7 @@ public class SystemService {
 		}
 		return treeNodes;
 	}
-	
+
 	/**
 	 * 根据模块编号获取模块的子页面导航菜单
 	 * 
@@ -285,5 +379,5 @@ public class SystemService {
 		}
 		return masterDetailPageModel;
 	}
-	
+
 }

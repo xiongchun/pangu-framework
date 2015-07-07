@@ -134,7 +134,7 @@
 						</aos:menu>
 					</aos:treepanel>
 				</c:if>
-				<c:if test="${nav_quick_layout_ == '1' }">
+				<c:if test="${nav_quick_layout_ == '1' && not empty aos_sys_modulePOs}">
 					<aos:menu floating="false" plain="false" border="false" >
 						<c:forEach var="module" items="${aos_sys_modulePOs}">
 							<aos:menuitem text="${module.name_}" icon="${module.icon_name_}" onclick="fn_quick_click('${module.id_}', '${module.name_}', '${module.url_}')"/>

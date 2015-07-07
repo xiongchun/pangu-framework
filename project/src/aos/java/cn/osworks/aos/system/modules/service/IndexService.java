@@ -46,8 +46,7 @@ public class IndexService {
 			cardDtos = sqlDao.list("Auth.getLeftNavCradListBasedRoot", inDto);
 		}else {
 			inDto.put("user_id_", inDto.getUserInfo().getId_());
-			inDto.put("grant_type_", DicCons.GRANT_TYPE_BIZ);
-			//获取语义节点ID为5的那层菜单作为一级导航
+			//获取语义节点ID为5的那层菜单作为一级导航  查询卡片标题
 			inDto.put("length", "5");
 			List<Aos_sys_modulePO> aos_sys_modulePOs = systemService.getBizModulesOfUser(inDto);
 			for (Aos_sys_modulePO aos_sys_modulePO : aos_sys_modulePOs) {
@@ -80,6 +79,20 @@ public class IndexService {
 	}
 	
 	/**
+	 * 获取平铺模式的快捷菜单
+	 * 
+	 * <p>只含叶子节点
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public List<Aos_sys_modulePO> listUserQuickModuleSelected4Flat(Dto inDto){
+		List<Aos_sys_modulePO> aos_sys_modulePOs = sqlDao.list("Auth.listUserQuickModuleSelected4Flat", inDto);
+		return aos_sys_modulePOs;
+	}
+	
+	
+	/**
 	 * 将后台树结构转换为前端树模型
 	 * 
 	 * @param inDto
@@ -109,6 +122,5 @@ public class IndexService {
 		String jsonString = TreeBuilder.build(treeNodes);
 		return jsonString;
 	}
-
 	
 }

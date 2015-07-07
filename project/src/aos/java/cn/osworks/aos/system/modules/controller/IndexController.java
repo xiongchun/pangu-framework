@@ -23,6 +23,7 @@ import cn.osworks.aos.system.dao.po.Aos_sys_user_cfgPO;
 import cn.osworks.aos.system.modules.dao.vo.UserInfoVO;
 import cn.osworks.aos.system.modules.service.IndexService;
 import cn.osworks.aos.system.modules.service.PreferenceService;
+import cn.osworks.aos.system.modules.service.SystemService;
 import cn.osworks.aos.system.modules.service.auth.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +42,7 @@ import java.util.List;
 public class IndexController {
 	
 	@Autowired
-	private IndexService authService;
+	private IndexService indexService;
 	@Autowired
 	private Aos_sys_userMapper aos_sys_userMapper;
 	@Autowired
@@ -50,6 +51,8 @@ public class IndexController {
 	private UserService userService;
 	@Autowired
 	private PreferenceService preferenceService;
+	@Autowired
+	private SystemService systemService;
 	@Autowired
 	private SqlDao sqlDao;
 
@@ -235,8 +238,11 @@ public class IndexController {
 	 */
 	@RequestMapping(value = "index")
 	public String index(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		Dto inDto = Dtos.newDto(request);
+		//清除快捷菜单和浮动菜单的垃圾数据 
+		systemService.clearRubbishQuiclModules(inDto);
 		// 构造West区域的系统导航
-		List<Dto> cardDtos = authService.getLeftNavCradList(Dtos.newDto(request));
+		List<Dto> cardDtos = indexService.getLeftNavCradList(inDto);
 		request.setAttribute("cardDtos", cardDtos);
 		// 第一个卡片标识字段
 		String first_card_id_ = "";
@@ -247,11 +253,10 @@ public class IndexController {
 		request.setAttribute("first_card_id_", first_card_id_);
 		String nav_quick_layout_ = WebCxt.getCfgByUser(session, "nav_quick_layout_");
 		if (StringUtils.equals(nav_quick_layout_, AOSCons.NAV_QUICK_LAYOUT_FLAT)) {
-			Dto inDto = Dtos.newDto(request);
 			//获取快捷菜单平铺风格下的菜单列表
 			inDto.put("user_id_", inDto.getUserInfo().getId_());
 			inDto.put("type_", DicCons.MODULE_USER_NAV_TYPE_QUICK);
-			List<Aos_sys_modulePO> aos_sys_modulePOs = sqlDao.list("Auth.listUserQuickModuleSelected4Flat", inDto);
+			List<Aos_sys_modulePO> aos_sys_modulePOs = indexService.listUserQuickModuleSelected4Flat(inDto);
 			request.setAttribute("aos_sys_modulePOs", aos_sys_modulePOs);
 		}
 		// 一些首页所需的页面变量
@@ -393,7 +398,7 @@ public class IndexController {
 	@RequestMapping(value = "getModuleTree")
 	public void getModuleTree(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
-		String jsonString = authService.getModuleTree(inDto).getStringA();
+		String jsonString = indexService.getModuleTree(inDto).getStringA();
 		WebCxt.write(response, jsonString);
 	}
 	
