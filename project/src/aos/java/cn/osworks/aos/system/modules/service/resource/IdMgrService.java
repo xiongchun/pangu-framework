@@ -3,6 +3,7 @@ package cn.osworks.aos.system.modules.service.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.id.AOSId;
@@ -30,6 +31,7 @@ public class IdMgrService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto saveId(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		Aos_sys_sequencePO aos_sys_sequencePO = new Aos_sys_sequencePO();
@@ -64,6 +66,7 @@ public class IdMgrService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public int deleteId(Dto qDto) {
 		String[] selections = qDto.getSelection();
 		int rows = 0;

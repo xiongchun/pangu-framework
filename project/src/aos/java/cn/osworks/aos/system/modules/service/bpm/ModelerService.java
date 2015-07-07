@@ -7,6 +7,7 @@ import org.activiti.engine.repository.Model;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -39,6 +40,7 @@ public class ModelerService {
      *
      * @throws UnsupportedEncodingException
      */
+    @Transactional
     public String newModel(Dto inDto) throws UnsupportedEncodingException {
         // 模型新增
         Model model = repositoryService.newModel();
@@ -68,6 +70,7 @@ public class ModelerService {
      *
      * @throws UnsupportedEncodingException
      */
+    @Transactional
     public void updateModel(Dto inDto) throws UnsupportedEncodingException {
         String modelId = inDto.getString("id");
         //更新大对象
@@ -88,6 +91,7 @@ public class ModelerService {
      * @throws UnsupportedEncodingException 
      *
      */
+    @Transactional
     public Dto saveModel(Dto inDto) throws UnsupportedEncodingException{
         String id = inDto.getString("id");
         String modelId = "";

@@ -5,6 +5,7 @@ import java.io.File;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.dao.SqlDao;
 import cn.osworks.aos.core.id.AOSId;
@@ -44,6 +45,7 @@ public class IconService {
 	/**
 	 * 同步小图标
 	 */
+	@Transactional
 	public void syncSmallIcon(Dto inDto) {
 		String path = System.getProperty("user.dir");
 		path = path + "/webapp/static/icon";
@@ -72,6 +74,7 @@ public class IconService {
 	/**
 	 * 同步大图标
 	 */
+	@Transactional
 	public void syncBigIcon(Dto inDto) {
 		String path = System.getProperty("user.dir");
 		path = path + "/webapp/static/icon/big64";

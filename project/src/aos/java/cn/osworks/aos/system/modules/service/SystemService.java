@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSListUtils;
@@ -249,6 +250,7 @@ public class SystemService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public void clearRubbishQuiclModules(Dto inDto) {
 		UserInfoVO userInfoVO = inDto.getUserInfo();
 		inDto.put("user_id_", userInfoVO.getId_());

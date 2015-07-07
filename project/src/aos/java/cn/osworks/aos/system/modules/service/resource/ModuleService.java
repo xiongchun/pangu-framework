@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -46,6 +47,7 @@ public class ModuleService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public void saveModule(Dto inDto) {
 		Aos_sys_modulePO aos_sys_modulePO = new Aos_sys_modulePO();
 		AOSUtils.apply(inDto, aos_sys_modulePO);
@@ -80,6 +82,7 @@ public class ModuleService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public Dto updateModule(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		// 修改属性后的节点
@@ -125,6 +128,7 @@ public class ModuleService {
 	 * @param updatePO
 	 *            新节点
 	 */
+	@Transactional
 	private void updateAos_sys_module(Aos_sys_modulePO aos_sys_modulePO, Aos_sys_modulePO updatePO) {
 		Dto calcDto = Dtos.newCalcDto("MAX(cascade_id_)");
 		calcDto.put("parent_id_", updatePO.getParent_id_());
@@ -188,6 +192,7 @@ public class ModuleService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto deleteModule(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		String[] selections = qDto.getSelection();

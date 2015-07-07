@@ -7,6 +7,7 @@ import org.activiti.engine.repository.ProcessDefinition;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -54,6 +55,7 @@ public class ProcDefService {
 	 * @param inDto
 	 */
 	//TODO 需要完善常规删除和级联删除的用户交互逻辑 常规删除时候自动检测并跳过不能删除的数据
+    @Transactional
 	public Dto delProcDef(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		String ids[] = inDto.getSelection();

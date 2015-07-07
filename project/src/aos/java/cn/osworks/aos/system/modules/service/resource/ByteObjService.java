@@ -3,6 +3,7 @@ package cn.osworks.aos.system.modules.service.resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -36,6 +37,7 @@ public class ByteObjService {
      *
      * @param inDto
      */
+    @Transactional
     public String saveByteObj(Dto inDto) throws IOException {
         Aos_sys_bytearrayPO aos_sys_bytearrayPO = new Aos_sys_bytearrayPO();
         AOSUtils.apply(inDto, aos_sys_bytearrayPO);
@@ -61,6 +63,7 @@ public class ByteObjService {
      *
      * @param inDto
      */
+    @Transactional
     public Dto updateByteObj(Dto inDto) throws IOException {
         Dto outDto = Dtos.newOutDto();
         String key_ = inDto.getString("key_");
@@ -97,6 +100,7 @@ public class ByteObjService {
      *
      * @param qDto
      */
+    @Transactional
     public int deleteByteObj(Dto qDto) {
         String[] selections = qDto.getSelection();
         int rows = 0;

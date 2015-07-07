@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -48,6 +49,7 @@ public class OrgService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public void saveOrg(Dto inDto) {
 		Aos_sys_orgPO aos_sys_orgPO = new Aos_sys_orgPO();
 		AOSUtils.apply(inDto, aos_sys_orgPO);
@@ -85,6 +87,7 @@ public class OrgService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public Dto updateOrg(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		// 修改属性后的节点
@@ -129,6 +132,7 @@ public class OrgService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto deleteOrg(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		String[] selections = qDto.getSelection();
@@ -196,6 +200,7 @@ public class OrgService {
 	 * @param id_
 	 *            组织流水号
 	 */
+	@Transactional
 	public void resetWhenDeleteOrg(String id_) {
 		//待删岗位集合
 		List<Aos_sys_postPO> aos_sys_postPOs = aos_sys_postMapper.list(Dtos.newDto("id_", id_));

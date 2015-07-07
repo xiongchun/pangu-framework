@@ -20,6 +20,7 @@
 	</bean>
 
 	<!-- Spring服务组件扫描(排除@Controller相关组件) -->
+	<!-- 请将com.mycorp.mysystem.**改为你的项目扫描路径 -->
 	<context:component-scan base-package="cn.osworks.aos;com.mycorp.mysystem" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
@@ -43,23 +44,29 @@
 		<property name="logAbandoned" value="true" />
 	</bean>
 
-	<!-- 单一数据源事务管理器 -->
+	<!-- JDBC事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<!-- 注解驱动的声明式事务管理 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 
 	<!-- SqlSessionFactory配置 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<!-- 请将com.mycorp.mysystem.**改为你的项目扫描路径 -->
 		<property name="typeAliasesPackage" value="cn.osworks.aos;com.mycorp.mysystem" />
 		<property name="mapperLocations" value="classpath:**/*Mapper.xml" />
 		<property name="configLocation" value="classpath:aos.mybatis.cfg.xml" />
 	</bean>
 
-	<!-- 扫描实体数据访问对象Mapper 这会导致Mybatis的SQLMapper文件校验出错信息打印输出的问题  -->
+	<!-- 扫描实体数据访问对象Mapper。!待解决。这会导致Mybatis的SQLMapper文件校验出错信息打印输出的问题  -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	    <!-- 请将com.mycorp.mysystem.**改为你的项目扫描路径 -->
 		<property name="basePackage" value="cn.osworks.aos;com.mycorp.mysystem" />
 		<property name="annotationClass" value="cn.osworks.aos.core.annotation.Mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
      
 	<!-- 缺省全局通用数据访问对象，缺省数据访问对象连接到dataSource Bean配置的数据源 -->

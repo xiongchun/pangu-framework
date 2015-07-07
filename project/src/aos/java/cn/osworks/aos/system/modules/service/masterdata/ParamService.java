@@ -4,6 +4,7 @@ package cn.osworks.aos.system.modules.service.masterdata;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -37,6 +38,7 @@ public class ParamService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public Dto saveParam(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		Aos_sys_paramPO tempPO = aos_sys_paramMapper.selectOne(Dtos.newDto("key_", inDto.getString("key_")));
@@ -63,6 +65,7 @@ public class ParamService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public Dto updateParam(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		Aos_sys_paramPO tempPO = aos_sys_paramMapper.selectOne(Dtos.newDto("key_", inDto.getString("key_")));
@@ -88,6 +91,7 @@ public class ParamService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public int deleteParam(Dto qDto) {
 		String[] selections = qDto.getSelection();
 		int rows = 0;

@@ -11,6 +11,7 @@ import org.activiti.engine.repository.Model;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -83,6 +84,7 @@ public class ProcModelService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public void updateModelProps(Dto inDto) {
 		Aos_sys_wf_modelPO aos_sys_wf_modelPO = new Aos_sys_wf_modelPO();
 		AOSUtils.apply(inDto, aos_sys_wf_modelPO);
@@ -100,6 +102,7 @@ public class ProcModelService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public Dto deleteModel(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		String id_s[] = inDto.getSelection();
@@ -121,6 +124,7 @@ public class ProcModelService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public Dto deployModel(Dto inDto) throws IOException {
 		Dto outDto = Dtos.newOutDto();
 		UserInfoVO userInfoVO = inDto.getUserInfo();

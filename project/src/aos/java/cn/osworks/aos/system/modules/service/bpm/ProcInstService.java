@@ -5,6 +5,7 @@ import java.util.List;
 import org.activiti.engine.RuntimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.dao.SqlDao;
@@ -52,6 +53,7 @@ public class ProcInstService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public Dto delProcInst(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		String ids[] = inDto.getSelection();

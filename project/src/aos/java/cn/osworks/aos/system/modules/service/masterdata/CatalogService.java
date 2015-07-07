@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -72,6 +73,7 @@ public class CatalogService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto saveCatalog(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		outDto.put("flag", qDto.getString("flag"));
@@ -120,6 +122,7 @@ public class CatalogService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public void updateCatalog(Dto qDto) {
 		Aos_sys_catalogPO aos_sys_catalogPO = new Aos_sys_catalogPO();
 		AOSUtils.apply(qDto, aos_sys_catalogPO);
@@ -131,6 +134,7 @@ public class CatalogService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto deleteCatalog(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		Aos_sys_catalogPO aos_sys_catalogPO = new Aos_sys_catalogPO();

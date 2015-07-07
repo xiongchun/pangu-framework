@@ -3,6 +3,7 @@ package cn.osworks.aos.system.modules.service.bpm;
 import org.activiti.engine.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.dao.SqlDao;
 
@@ -40,6 +41,7 @@ public class BpmService {
 	 *            任务ID
 	 * @return
 	 */
+	@Transactional
 	public void unclaim(String id_) {
 		taskService.unclaim(id_);
 		sqlDao.update("Bpm.update_claim_time_when_unclaim", id_);

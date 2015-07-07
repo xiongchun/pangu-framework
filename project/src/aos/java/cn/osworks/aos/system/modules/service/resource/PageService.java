@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import cn.osworks.aos.core.asset.AOSCons;
@@ -101,6 +102,7 @@ public class PageService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public Dto savePage(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		if (StringUtils.equals(inDto.getString("type_"), DicCons.PAGE_TYPE_SUB)
@@ -129,6 +131,7 @@ public class PageService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public Dto updatePage(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		if (StringUtils.equals(inDto.getString("type_"), DicCons.PAGE_TYPE_SUB)
@@ -160,6 +163,7 @@ public class PageService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto deletePage(Dto qDto) {
 		Dto outDto = Dtos.newOutDto();
 		String[] selections = qDto.getSelection();
@@ -194,6 +198,7 @@ public class PageService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public Dto saveElement(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		Dto calcDto = Dtos.newCalcDto("COUNT(id_)");
@@ -219,6 +224,7 @@ public class PageService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public Dto updateElement(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		Aos_sys_page_elPO aos_sys_page_elPO = aos_sys_page_elMapper.selectByKey(inDto.getString("id_"));
@@ -247,6 +253,7 @@ public class PageService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto deleteElement(Dto qDto) {
 		Dto outDto = Dtos.newOutDto();
 		String[] selections = qDto.getSelection();
@@ -294,6 +301,7 @@ public class PageService {
 	 * 
 	 * @param pDto
 	 */
+	@Transactional
 	public void saveElementGrantInfo(Dto pDto) {
 		Aos_sys_page_el_grantPO aos_sys_page_el_grantPO = new Aos_sys_page_el_grantPO();
 		AOSUtils.apply(pDto, aos_sys_page_el_grantPO);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -59,6 +60,7 @@ public class RoleService {
 	/**
 	 * 保存角色列表
 	 */
+	@Transactional
 	public void saveRole(Dto inDto) {
 		Aos_sys_rolePO aos_sys_rolePO = new Aos_sys_rolePO();
 		AOSUtils.apply(inDto, aos_sys_rolePO);
@@ -77,6 +79,7 @@ public class RoleService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public void updateRole(Dto inDto) {
 		Aos_sys_rolePO aos_sys_rolePO = new Aos_sys_rolePO();
 		AOSUtils.apply(inDto, aos_sys_rolePO);
@@ -88,6 +91,7 @@ public class RoleService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto deleteRole(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		String[] selections = qDto.getSelection();
@@ -124,6 +128,7 @@ public class RoleService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public void updateStatus(Dto qDto) {
 		String[] selections = qDto.getSelection();
 		Aos_sys_rolePO aos_sys_rolePO = new Aos_sys_rolePO();
@@ -236,6 +241,7 @@ public class RoleService {
 	 * 
 	 * @param pDto
 	 */
+	@Transactional
 	public void saveRoleModuleGrantInfo(Dto pDto) {
 		UserInfoVO userInfoVO = pDto.getUserInfo();
 		Dto delDto = Dtos.newDto();
@@ -261,6 +267,7 @@ public class RoleService {
 	 * 
 	 * @param pDto
 	 */
+	@Transactional
 	public void saveRoleUserGrantInfo(Dto pDto) {
 		UserInfoVO userInfoVO = pDto.getUserInfo();
 		String[] selections = pDto.getSelection();
@@ -311,6 +318,7 @@ public class RoleService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto delRoleUserGrantInfo(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		String[] selections = qDto.getSelection();

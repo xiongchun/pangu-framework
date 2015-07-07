@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -94,6 +95,7 @@ public class UserService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public String saveUserPhoto(Dto inDto) throws IOException {
 		String bytearray_id_ = inDto.getString("bytearray_id_");
 		if (AOSUtils.isEmpty(aos_sys_bytearrayMapper.selectByKey(bytearray_id_))) {
@@ -120,6 +122,7 @@ public class UserService {
 	/**
 	 * 删除用户头像
 	 */
+	@Transactional
 	public void delUserPhoto(Dto inDto) {
 		String user_id_ = inDto.getString("id_");
 		Aos_sys_user_extPO aos_sys_user_extPO = aos_sys_user_extMapper.selectByKey(user_id_);
@@ -156,6 +159,7 @@ public class UserService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public Dto saveUser(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		Aos_sys_userPO aos_sys_userPO = new Aos_sys_userPO();
@@ -218,6 +222,7 @@ public class UserService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public Dto updateUser(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		Aos_sys_userPO aos_sys_userPO = new Aos_sys_userPO();
@@ -259,6 +264,7 @@ public class UserService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto deleteUser(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		String[] selections = qDto.getSelection();
@@ -290,6 +296,7 @@ public class UserService {
 	 * 
 	 * @param user_id_
 	 */
+	@Transactional
 	private void resetWhenDeleteUser(String user_id_) {
 		// 删除用户-角色关联表
 		sqlDao.delete("Auth.deleteAos_sys_user_roleByUser_id_", Dtos.newDto("user_id_", user_id_));
@@ -312,6 +319,7 @@ public class UserService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public void updatePwd(Dto inDto) {
 		String[] selections = inDto.getSelection();
 		String password = encryptPwd(inDto.getString("password_"));
@@ -328,6 +336,7 @@ public class UserService {
 	 * 
 	 * @param inDto
 	 */
+	@Transactional
 	public Dto updateMyPwd(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		Aos_sys_userPO userPO = aos_sys_userMapper.selectByKey(inDto.getString("id_"));
@@ -354,6 +363,7 @@ public class UserService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public void updateStatus(Dto qDto) {
 		String[] selections = qDto.getSelection();
 		Aos_sys_userPO aos_sys_userPO = new Aos_sys_userPO();
@@ -369,6 +379,7 @@ public class UserService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public void updateUserOrg(Dto qDto) {
 		String[] selections = qDto.getSelection();
 		Aos_sys_userPO aos_sys_userPO = new Aos_sys_userPO();
@@ -408,6 +419,7 @@ public class UserService {
 	 * 
 	 * @param pDto
 	 */
+	@Transactional
 	public void saveUserModuleGrantInfo(Dto pDto) {
 		UserInfoVO userInfoVO = pDto.getUserInfo();
 		Dto delDto = Dtos.newDto();
@@ -515,6 +527,7 @@ public class UserService {
 	 * 
 	 * @param pDto
 	 */
+	@Transactional
 	public void saveUserPostGrantInfo(Dto pDto) {
 		UserInfoVO userInfoVO = pDto.getUserInfo();
 		String[] selections = pDto.getSelection();
@@ -534,6 +547,7 @@ public class UserService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto delUserPostGrantInfo(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		String[] selections = qDto.getSelection();
@@ -549,6 +563,7 @@ public class UserService {
 	 * 
 	 * @param pDto
 	 */
+	@Transactional
 	public void saveUserRoleGrantInfo(Dto pDto) {
 		UserInfoVO userInfoVO = pDto.getUserInfo();
 		Aos_sys_user_rolePO aos_sys_user_rolePO = new Aos_sys_user_rolePO();
@@ -568,6 +583,7 @@ public class UserService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto delUserRoleGrantInfo(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		String[] selections = qDto.getSelection();

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSJson;
@@ -89,6 +90,7 @@ public class PreferenceService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public Dto updateMyInfo(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		Aos_sys_userPO aos_sys_userPO = new Aos_sys_userPO();
@@ -109,6 +111,7 @@ public class PreferenceService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public Dto updateMySettings(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		// 更新用户配置信息
@@ -125,6 +128,7 @@ public class PreferenceService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public Dto saveQuickMenuSortNo(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		Aos_sys_module_user_navPO aos_sys_module_user_navPO = new Aos_sys_module_user_navPO();
@@ -140,6 +144,7 @@ public class PreferenceService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public Dto saveFloatModuleInfo(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		Dto qDto = Dtos.newDto();
@@ -168,6 +173,7 @@ public class PreferenceService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public Dto saveQuickModuleInfo(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		Dto delDto = Dtos.newDto();
@@ -200,6 +206,7 @@ public class PreferenceService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public Dto updateFloatModuleInfo(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		Aos_sys_module_user_navPO old_Aos_sys_module_user_navPO = aos_sys_module_user_navMapper.selectByKey(inDto.getString("id_"));
@@ -228,6 +235,7 @@ public class PreferenceService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public Dto delFloatModules(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		String[] selections = inDto.getSelection();

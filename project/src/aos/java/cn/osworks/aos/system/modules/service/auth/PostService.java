@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -62,6 +63,7 @@ public class PostService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public void savePost(Dto inDto) {
 		Aos_sys_postPO aos_sys_postPO = new Aos_sys_postPO();
 		AOSUtils.apply(inDto, aos_sys_postPO);
@@ -80,6 +82,7 @@ public class PostService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	public void updatePost(Dto inDto) {
 		Aos_sys_postPO aos_sys_postPO = new Aos_sys_postPO();
 		AOSUtils.apply(inDto, aos_sys_postPO);
@@ -99,6 +102,7 @@ public class PostService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto deletePost(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		String[] selections = qDto.getSelection();
@@ -126,6 +130,7 @@ public class PostService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public void updateStatus(Dto qDto) {
 		String[] selections = qDto.getSelection();
 		Aos_sys_postPO aos_sys_postPO = new Aos_sys_postPO();
@@ -141,6 +146,7 @@ public class PostService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public void updatePostOrgBatch(Dto qDto) {
 		String[] selections = qDto.getSelection();
 		Aos_sys_postPO aos_sys_postPO = new Aos_sys_postPO();
@@ -289,6 +295,7 @@ public class PostService {
 	 * 
 	 * @param pDto
 	 */
+	@Transactional
 	public void savePostModuleGrantInfo(Dto pDto){
 		String grant_type_ = DicCons.GRANT_TYPE_BIZ;   //岗位职能授予经办权限
 		UserInfoVO userInfoVO = pDto.getUserInfo();
@@ -315,6 +322,7 @@ public class PostService {
 	 * 
 	 * @param pDto
 	 */
+	@Transactional
 	public void savePostUserGrantInfo(Dto pDto){
 		UserInfoVO userInfoVO = pDto.getUserInfo();
 		String[] selections = pDto.getSelection();
@@ -354,6 +362,7 @@ public class PostService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto delPostUserGrantInfo(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		String[] selections = qDto.getSelection();

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -40,6 +41,7 @@ public class DictionaryService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto saveIndex(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		String key_ = qDto.getString("key_");
@@ -64,6 +66,7 @@ public class DictionaryService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public Dto updateIndex(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		String key_ = qDto.getString("key_");
@@ -107,6 +110,7 @@ public class DictionaryService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public void saveDic(Dto qDto) {
 		Aos_sys_dicPO aos_sys_dicPO = new Aos_sys_dicPO();
 		AOSUtils.apply(qDto, aos_sys_dicPO);
@@ -123,6 +127,7 @@ public class DictionaryService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public void updateDic(Dto qDto) {
 		Aos_sys_dicPO aos_sys_dicPO = new Aos_sys_dicPO();
 		AOSUtils.apply(qDto, aos_sys_dicPO);
@@ -134,6 +139,7 @@ public class DictionaryService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public int deleteIndex(Dto qDto) {
 		String[] selections = qDto.getSelection();
 		int rows = 0;
@@ -155,6 +161,7 @@ public class DictionaryService {
 	 * 
 	 * @param qDto
 	 */
+	@Transactional
 	public int deleteDic(Dto qDto) {
 		String[] selections = qDto.getSelection();
 		int rows = 0;
