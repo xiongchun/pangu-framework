@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!-- Web应用部署-Ant打包脚本(输出war包) -->
-<project name="aos" default="" basedir="../../">
-
-</project>
