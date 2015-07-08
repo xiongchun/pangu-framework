@@ -9,9 +9,8 @@
 		<property name="name" value="aos" />
 		<property name="src.aos" value="${basedir}/src/aos/java" />
 		<property name="src.project" value="${basedir}/src/project/java" />
-		<property name="resources" value="${basedir}/src/resources" />
+		<property name="src.resources" value="${basedir}/src/resources" />
 		<property name="webapp" value="${basedir}/webapp" />
-		<property name="lib" value="${basedir}/webapp/WEB-INF/lib" />
 
 		<property name="dist" value="${basedir}/dist" />
 		<property name="dist.src" value="${basedir}/dist/src" />
@@ -27,7 +26,7 @@
 		<copy todir="${dist.src}">
 			<fileset dir="${src.aos}" />
 			<fileset dir="${src.project}" />
-			<fileset dir="${resources}" excludes="ant/**" />
+			<fileset dir="${src.resources}" excludes="ant/**" />
 		</copy>
 		<copy todir="${dist.bin}">
 			<fileset dir="${webapp}">
@@ -36,7 +35,7 @@
 			</fileset>
 		</copy>
 		<copy todir="${dist.classes}">
-			<fileset dir="${resources}" excludes="ant/**" />
+			<fileset dir="${src.resources}" excludes="ant/**" />
 		</copy>
 		<copy todir="${dist.classes}">
 			<fileset dir="${src.aos}">
@@ -63,7 +62,7 @@
 		<javac srcdir="${dist.src}" destdir="${dist.classes}" encoding="utf-8" includeantruntime="on" listfiles="false">
 			<!-- <compilerarg value="-Xlint:unchecked"/> -->
 			<classpath>
-				<fileset dir="${lib}">
+				<fileset dir="${webapp}/WEB-INF/lib">
 					<include name="**/*.jar" />
 				</fileset>
 			</classpath>
