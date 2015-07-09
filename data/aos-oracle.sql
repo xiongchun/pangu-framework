@@ -3968,6 +3968,17 @@ insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_
 values ('14', null, null, null, null, null, null, null, null, null, '680', null, null, null, null);
 commit;
 prompt 5 records loaded
+
+prompt Loading AOS_ACT_GE_PROPERTY...
+insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
+values ('schema.version', '5.17.0.2', 1);
+insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
+values ('schema.history', 'create(5.17.0.2)', 1);
+insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
+values ('next.dbid', '2501', 2);
+commit;
+prompt 3 records loaded
+
 prompt Loading AOS_SYS_USER_POST...
 prompt Table is empty
 prompt Loading AOS_SYS_USER_ROLE...
