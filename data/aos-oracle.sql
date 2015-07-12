@@ -1,6 +1,6 @@
 --------------------------------------------
 -- Export file for user AOS               --
--- Created by XChun on 2015/7/6, 15:14:31 --
+-- Created by XChun on 2015/7/12, 15:14:31 --
 --------------------------------------------
 
 set define off
@@ -1677,10 +1677,23 @@ cache 20;
 spool off
 
 prompt PL/SQL Developer import file
-prompt Created on 2015年7月7日 by XChun
+prompt Created on 2015年7月13日 by XChun
 set feedback off
 set define off
+prompt Loading AOS_ACT_GE_PROPERTY...
+insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
+values ('schema.version', '5.17.0.2', 1);
+insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
+values ('schema.history', 'create(5.17.0.2)', 1);
+insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
+values ('next.dbid', '2501', 2);
+commit;
+prompt 3 records loaded
 prompt Loading AOS_SYS_CATALOG...
+insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
+values ('10', '0.001', 'PARAM_TYPE', '参数分类科目', '参数分类', null, '0', '0', '0', 'book.png', 1);
+insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
+values ('11', '0.001.001', 'PARAM_TYPE', '参数分类科目', '业务参数', null, '10', '1', '0', 'user20.png', 2);
 insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
 values ('12', '0.001.002', 'PARAM_TYPE', '参数分类科目', '系统参数', null, '10', '0', '1', 'folder22.png', 1);
 insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
@@ -1721,13 +1734,13 @@ insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hot
 values ('616', '0.004.003', 'BYTE_FILE_TYPE', '流文件分类', '序列化对象', null, '611', '1', '0', 'plugin.png', 3);
 insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
 values ('80', '0.002.006', 'DIC_TYPE', '词典分类科目', '平台配置', null, '38', '1', '0', 'folder2.png', 1);
-insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
-values ('10', '0.001', 'PARAM_TYPE', '参数分类科目', '参数分类', null, '0', '0', '0', 'book.png', 1);
-insert into AOS_SYS_CATALOG (id_, cascade_id_, root_key_, root_name_, name_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, sort_no_)
-values ('11', '0.001.001', 'PARAM_TYPE', '参数分类科目', '业务参数', null, '10', '1', '0', 'user20.png', 2);
 commit;
 prompt 22 records loaded
 prompt Loading AOS_SYS_DIC...
+insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
+values ('123', '2', '表格列', null, '1', '122', null);
+insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
+values ('124', '3', '表单元素(输入框|下拉框|选择框等)', null, '1', '122', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('125', '4', '容器组件(窗口|面板|树|表格|工具栏等)', null, '1', '122', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
@@ -1924,21 +1937,21 @@ insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, rem
 values ('86', '0', '停用', null, '1', '85', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('87', '1', '启用', null, '1', '85', null);
+commit;
+prompt 100 records committed...
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('89', '1', 'APPID', null, '1', '88', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('90', '2', 'UUID', null, '1', '88', null);
-commit;
-prompt 100 records committed...
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('91', '3', 'DBSequence', null, '1', '88', null);
-insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
-values ('123', '2', '表格列', null, '1', '122', null);
-insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
-values ('124', '3', '表单元素(输入框|下拉框|选择框等)', null, '1', '122', null);
 commit;
 prompt 103 records loaded
 prompt Loading AOS_SYS_DIC_INDEX...
+insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
+values ('122', 'page_el_type_', '页面元素类型', null, '39', '0.002.001', null);
+insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
+values ('1636', 'page_type_', '页面类型', null, '39', '0.002.001', null);
 insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
 values ('1670', 'nav_quick_layout_', '快捷菜单布局风格', null, '80', '0.002.006', '快捷菜单布局风格。');
 insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
@@ -2005,17 +2018,9 @@ insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_c
 values ('85', 'enabled_', '使能状态', null, '40', '0.002.002', null);
 insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
 values ('88', 'sequence_type_', 'ID类型', null, '39', '0.002.001', null);
-insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
-values ('122', 'page_el_type_', '页面元素类型', null, '39', '0.002.001', null);
-insert into AOS_SYS_DIC_INDEX (id_, key_, name_, hotkey_, catalog_id_, catalog_cascade_id_, remark_)
-values ('1636', 'page_type_', '页面类型', null, '39', '0.002.001', null);
 commit;
 prompt 35 records loaded
 prompt Loading AOS_SYS_ICON...
-insert into AOS_SYS_ICON (id_, name_, type_)
-values ('2904', '10.png', '2');
-insert into AOS_SYS_ICON (id_, name_, type_)
-values ('2905', '11.png', '2');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('2906', '13.png', '2');
 insert into AOS_SYS_ICON (id_, name_, type_)
@@ -2105,119 +2110,119 @@ values ('2948', '8.png', '2');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('2949', '9.png', '2');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6938', 'add.png', '1');
+values ('7637', 'add.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6939', 'add2.png', '1');
+values ('7638', 'add2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6940', 'against.png', '1');
+values ('7639', 'against.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6941', 'agree.png', '1');
+values ('7640', 'agree.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6942', 'app_columns.png', '1');
+values ('7641', 'app_columns.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6943', 'app_list.png', '1');
+values ('7642', 'app_list.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6944', 'arraw_return.png', '1');
+values ('7643', 'arraw_return.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6945', 'arrow_branch.png', '1');
+values ('7644', 'arrow_branch.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6946', 'arrow_divide.png', '1');
+values ('7645', 'arrow_divide.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6947', 'arrow_down.png', '1');
+values ('7646', 'arrow_down.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6948', 'arrow_left.png', '1');
+values ('7647', 'arrow_left.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6949', 'arrow_merge.png', '1');
+values ('7648', 'arrow_merge.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6950', 'arrow_redo.png', '1');
+values ('7649', 'arrow_redo.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6951', 'arrow_right.png', '1');
+values ('7650', 'arrow_right.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6952', 'arrow_switch.png', '1');
+values ('7651', 'arrow_switch.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6953', 'arrow_undo.png', '1');
+values ('7652', 'arrow_undo.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6954', 'arrow_up.png', '1');
+values ('7653', 'arrow_up.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6955', 'basket.png', '1');
+values ('7654', 'basket.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6956', 'book.png', '1');
+values ('7655', 'book.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6957', 'book_user.png', '1');
+values ('7656', 'book_user.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6958', 'bug.png', '1');
+values ('7657', 'bug.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6959', 'bullet_blue.png', '1');
+values ('7658', 'bullet_blue.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6960', 'chart_curve.png', '1');
+values ('7659', 'chart_curve.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6961', 'chart_flipped.png', '1');
+values ('7660', 'chart_flipped.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6962', 'chart_line.png', '1');
+values ('7661', 'chart_line.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6963', 'chart_pie.png', '1');
+values ('7662', 'chart_pie.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6964', 'close.png', '1');
+values ('7663', 'close.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6965', 'config.png', '1');
+values ('7664', 'config.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6966', 'config1.png', '1');
+values ('7665', 'config1.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6967', 'config3.png', '1');
+values ('7666', 'config3.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6968', 'connect.png', '1');
+values ('7667', 'connect.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6969', 'copy.png', '1');
+values ('7668', 'copy.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6970', 'cut.png', '1');
+values ('7669', 'cut.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6971', 'cv.png', '1');
+values ('7670', 'cv.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6972', 'c_key.png', '1');
+values ('7671', 'c_key.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6973', 'database.png', '1');
+values ('7672', 'database.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6974', 'database_add.png', '1');
+values ('7673', 'database_add.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6975', 'del.png', '1');
+values ('7674', 'del.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6976', 'del1.png', '1');
+values ('7675', 'del1.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6977', 'del2.png', '1');
+values ('7676', 'del2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6978', 'del3.png', '1');
+values ('7677', 'del3.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6979', 'del_folder.png', '1');
+values ('7678', 'del_folder.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6980', 'del_page.png', '1');
+values ('7679', 'del_page.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6981', 'detail.png', '1');
+values ('7680', 'detail.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6982', 'disconnect.png', '1');
+values ('7681', 'disconnect.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6983', 'doc_ok.png', '1');
+values ('7682', 'doc_ok.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6984', 'edit.png', '1');
+values ('7683', 'edit.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6985', 'edit2.png', '1');
+values ('7684', 'edit2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6986', 'email.png', '1');
+values ('7685', 'email.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6987', 'email2.png', '1');
+values ('7686', 'email2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6988', 'email3.png', '1');
+values ('7687', 'email3.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6989', 'email_go.png', '1');
+values ('7688', 'email_go.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6990', 'email_open.png', '1');
+values ('7689', 'email_open.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6991', 'exit.png', '1');
-commit;
-prompt 100 records committed...
+values ('7690', 'exit.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6992', 'exit2.png', '1');
+values ('7691', 'exit2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('827', 'fa-adjust', '3');
+commit;
+prompt 100 records committed...
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('1096', 'fa-adn', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
@@ -2314,6 +2319,10 @@ insert into AOS_SYS_ICON (id_, name_, type_)
 values ('917', 'fa-bell', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('981', 'fa-bell-o', '3');
+insert into AOS_SYS_ICON (id_, name_, type_)
+values ('2904', '10.png', '2');
+insert into AOS_SYS_ICON (id_, name_, type_)
+values ('2905', '11.png', '2');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('1222', 'fa-bell-slash', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
@@ -3183,366 +3192,378 @@ values ('1091', 'fa-youtube-play', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('1087', 'fa-youtube-square', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6993', 'folder1.png', '1');
+values ('7692', 'folder1.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6994', 'folder10.png', '1');
+values ('7693', 'folder10.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6995', 'folder11.png', '1');
+values ('7694', 'folder11.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6996', 'folder12.png', '1');
+values ('7695', 'folder12.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6997', 'folder13.png', '1');
+values ('7696', 'folder13.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6998', 'folder14.png', '1');
+values ('7697', 'folder14.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('6999', 'folder15.png', '1');
+values ('7698', 'folder15.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7000', 'folder16.png', '1');
+values ('7699', 'folder16.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7001', 'folder17.png', '1');
+values ('7700', 'folder17.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7002', 'folder18.png', '1');
+values ('7701', 'folder18.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7003', 'folder19.png', '1');
+values ('7702', 'folder19.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7004', 'folder2.png', '1');
+values ('7703', 'folder2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7005', 'folder20.png', '1');
+values ('7704', 'folder20.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7006', 'folder21.png', '1');
+values ('7705', 'folder21.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7007', 'folder22.png', '1');
+values ('7706', 'folder22.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7008', 'folder23.png', '1');
+values ('7707', 'folder23.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7009', 'folder24.png', '1');
+values ('7708', 'folder24.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7010', 'folder25.png', '1');
+values ('7709', 'folder25.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7011', 'folder26.png', '1');
+values ('7710', 'folder26.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7012', 'folder27.png', '1');
+values ('7711', 'folder27.png', '1');
 commit;
 prompt 600 records committed...
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7013', 'folder28.png', '1');
+values ('7712', 'folder28.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7014', 'folder4.png', '1');
+values ('7713', 'folder4.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7015', 'folder5.png', '1');
+values ('7714', 'folder5.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7016', 'folder6.png', '1');
+values ('7715', 'folder6.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7017', 'folder7.png', '1');
+values ('7716', 'folder7.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7018', 'folder8.png', '1');
+values ('7717', 'folder8.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7019', 'folder9.png', '1');
+values ('7718', 'folder9.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7022', 'go.gif', '1');
+values ('7719', 'forward.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7023', 'go.png', '1');
+values ('7720', 'freelance.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7024', 'go1.gif', '1');
+values ('7721', 'go.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7025', 'go1.png', '1');
+values ('7722', 'go.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7026', 'help.png', '1');
+values ('7723', 'go1.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7027', 'home.gif', '1');
+values ('7724', 'go1.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7028', 'home.png', '1');
+values ('7725', 'help.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7029', 'icon134.png', '1');
+values ('7726', 'home.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7030', 'icon137.png', '1');
+values ('7727', 'home.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7031', 'icon140.png', '1');
+values ('7728', 'icon134.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7032', 'icon141.png', '1');
+values ('7729', 'icon137.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7033', 'icon146.png', '1');
+values ('7730', 'icon140.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7034', 'icon15.png', '1');
+values ('7731', 'icon141.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7035', 'icon150.png', '1');
+values ('7732', 'icon146.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7036', 'icon152.png', '1');
+values ('7733', 'icon15.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7037', 'icon153.png', '1');
+values ('7734', 'icon150.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7038', 'icon154.png', '1');
+values ('7735', 'icon152.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7039', 'icon17.gif', '1');
+values ('7736', 'icon153.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7040', 'icon25.gif', '1');
+values ('7737', 'icon154.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7041', 'icon26.gif', '1');
+values ('7738', 'icon17.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7042', 'icon28.gif', '1');
+values ('7739', 'icon25.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7043', 'icon31.gif', '1');
+values ('7740', 'icon26.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7044', 'icon32.gif', '1');
+values ('7741', 'icon28.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7045', 'icon34.gif', '1');
+values ('7742', 'icon31.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7046', 'icon35.gif', '1');
+values ('7743', 'icon32.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7047', 'icon36.gif', '1');
+values ('7744', 'icon34.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7048', 'icon37.gif', '1');
+values ('7745', 'icon35.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7049', 'icon38.gif', '1');
+values ('7746', 'icon36.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7050', 'icon39.gif', '1');
+values ('7747', 'icon37.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7051', 'icon41.gif', '1');
+values ('7748', 'icon38.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7052', 'icon42.gif', '1');
+values ('7749', 'icon39.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7053', 'icon5.png', '1');
+values ('7750', 'icon41.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7054', 'icon56.png', '1');
+values ('7751', 'icon42.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7055', 'icon59.png', '1');
+values ('7752', 'icon5.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7056', 'icon62.png', '1');
+values ('7753', 'icon56.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7057', 'icon63.png', '1');
+values ('7754', 'icon59.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7058', 'icon65.png', '1');
+values ('7755', 'icon63.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7059', 'icon66.png', '1');
+values ('7756', 'icon65.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7060', 'icon67.png', '1');
+values ('7757', 'icon66.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7061', 'icon68.png', '1');
+values ('7758', 'icon67.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7062', 'icon7.png', '1');
+values ('7759', 'icon68.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7063', 'icon70.png', '1');
+values ('7760', 'icon7.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7064', 'icon71.png', '1');
+values ('7761', 'icon70.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7065', 'icon72.png', '1');
+values ('7762', 'icon71.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7066', 'icon75.png', '1');
+values ('7763', 'icon72.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7067', 'icon76.png', '1');
+values ('7764', 'icon75.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7068', 'icon77.png', '1');
+values ('7765', 'icon76.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7069', 'icon78.png', '1');
+values ('7766', 'icon77.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7070', 'icon79.png', '1');
+values ('7767', 'icon78.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7071', 'icon8.png', '1');
+values ('7768', 'icon79.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7072', 'icon80.png', '1');
+values ('7769', 'icon8.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7073', 'icon82.png', '1');
+values ('7770', 'icon80.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7074', 'icon85.png', '1');
+values ('7771', 'icon82.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7075', 'icon86.png', '1');
+values ('7772', 'icon85.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7076', 'icon88.png', '1');
+values ('7773', 'icon86.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7077', 'icon9.png', '1');
+values ('7774', 'icon88.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7078', 'icon96.png', '1');
+values ('7775', 'icon9.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7079', 'icon_19.png', '1');
+values ('7776', 'icon96.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7080', 'icq.png', '1');
+values ('7777', 'icon_19.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7081', 'id.png', '1');
+values ('7778', 'icq.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7082', 'jar.png', '1');
+values ('7779', 'id.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7083', 'key.png', '1');
+values ('7780', 'jar.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7084', 'layout.png', '1');
+values ('7781', 'key.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7085', 'layout2.png', '1');
+values ('7782', 'layout.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7086', 'lightbulb.png', '1');
+values ('7783', 'layout2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7087', 'lock.png', '1');
+values ('7784', 'lightbulb.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7088', 'lock3.png', '1');
+values ('7785', 'lock.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7089', 'monitor.png', '1');
+values ('7786', 'lock3.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7090', 'node.png', '1');
+values ('7787', 'monitor.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7091', 'ok.png', '1');
+values ('7788', 'node.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7092', 'ok1.png', '1');
+values ('7789', 'ok.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7093', 'ok2.png', '1');
+values ('7790', 'ok1.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7094', 'ok3.png', '1');
+values ('7791', 'ok2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7095', 'ok4.png', '1');
+values ('7792', 'ok3.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7096', 'ok5.png', '1');
+values ('7793', 'ok4.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7097', 'org.png', '1');
+values ('7794', 'ok5.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7098', 'org2.png', '1');
+values ('7795', 'org.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7099', 'own.png', '1');
+values ('7796', 'org2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7100', 'pages.png', '1');
+values ('7797', 'own.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7101', 'page_code.png', '1');
+values ('7798', 'page.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7102', 'page_font.png', '1');
+values ('7799', 'page2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7103', 'page_next.png', '1');
+values ('7800', 'page3.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7104', 'page_office.png', '1');
+values ('7801', 'page_code.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7105', 'page_paint.png', '1');
+values ('7802', 'page_font.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7106', 'page_picture.png', '1');
+values ('7803', 'page_next.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7107', 'page_vector.png', '1');
+values ('7804', 'page_office.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7108', 'paint2.png', '1');
+values ('7805', 'page_paint.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7109', 'paste.png', '1');
+values ('7806', 'page_picture.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7110', 'picture.png', '1');
+values ('7807', 'page_vector.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7111', 'pictures.png', '1');
+values ('7808', 'paint2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7112', 'picture_empty.png', '1');
+values ('7809', 'paste.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7113', 'plugin.png', '1');
+values ('7810', 'picture.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7114', 'plugin1.png', '1');
+values ('7811', 'pictures.png', '1');
 commit;
 prompt 700 records committed...
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7115', 'plugin2.png', '1');
+values ('7812', 'picture_empty.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7116', 'printer.png', '1');
+values ('7813', 'plugin.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7117', 'query.png', '1');
+values ('7814', 'plugin1.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7118', 'refresh.png', '1');
+values ('7815', 'plugin2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7119', 'refresh1.png', '1');
+values ('7816', 'printer.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7120', 'save.png', '1');
+values ('7817', 'query.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7121', 'save_all.png', '1');
+values ('7818', 'refresh.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7122', 'search.png', '1');
+values ('7819', 'refresh1.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7123', 'security.png', '1');
+values ('7820', 'refresh2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7124', 'send_receive.png', '1');
+values ('7821', 'refresh3.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7125', 'shape_align_bottom.png', '1');
+values ('7822', 'refresh4.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7126', 'shape_align_center.png', '1');
+values ('7823', 'save.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7127', 'shape_align_middle.png', '1');
+values ('7824', 'save_all.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7128', 'shape_group.png', '1');
+values ('7825', 'search.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7129', 'shape_handles.png', '1');
+values ('7826', 'security.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7130', 'shape_move_back.png', '1');
+values ('7827', 'send_receive.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7131', 'share.png', '1');
+values ('7828', 'shape_align_bottom.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7132', 'sitemap.png', '1');
+values ('7829', 'shape_align_center.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7133', 'sql.png', '1');
+values ('7830', 'shape_align_middle.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7134', 'sql2.png', '1');
+values ('7831', 'shape_group.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7135', 'sql3.png', '1');
+values ('7832', 'shape_handles.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7136', 'stop.gif', '1');
+values ('7833', 'shape_move_back.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7137', 'stop2.png', '1');
+values ('7834', 'share.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7138', 'stop3.png', '1');
+values ('7835', 'sitemap.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7139', 'system.png', '1');
+values ('7836', 'sql.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7140', 'table.png', '1');
+values ('7837', 'sql2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7141', 'table2.png', '1');
+values ('7838', 'sql3.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7142', 'tables.png', '1');
+values ('7839', 'stop.gif', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7143', 'tables_relation.png', '1');
+values ('7840', 'stop2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7144', 'table_edit.png', '1');
+values ('7841', 'stop3.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7145', 'tag.png', '1');
+values ('7842', 'system.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7146', 'task.png', '1');
+values ('7843', 'table.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7147', 'task1.png', '1');
+values ('7844', 'table2.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7148', 'task_finish.png', '1');
+values ('7845', 'tables.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7149', 'task_list.png', '1');
+values ('7846', 'tables_relation.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7150', 'terminal.png', '1');
+values ('7847', 'table_edit.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7151', 'textfield.png', '1');
+values ('7848', 'tag.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7152', 'text_cap.png', '1');
+values ('7849', 'task.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7153', 'text_col.png', '1');
+values ('7850', 'task1.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7154', 'text_list.png', '1');
+values ('7851', 'task_finish.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7155', 'text_upper.png', '1');
+values ('7852', 'task_list.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7156', 'theme.png', '1');
+values ('7853', 'terminal.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7157', 'time.png', '1');
+values ('7854', 'textfield.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7158', 'timeline.png', '1');
+values ('7855', 'text_cap.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7159', 'user1.png', '1');
+values ('7856', 'text_col.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7160', 'user20.png', '1');
+values ('7857', 'text_list.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7161', 'user3.png', '1');
+values ('7858', 'text_upper.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7162', 'user6.png', '1');
+values ('7859', 'theme.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7163', 'user8.png', '1');
+values ('7860', 'time.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7164', 'vcard.png', '1');
+values ('7861', 'timeline.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7165', 'vector.png', '1');
+values ('7862', 'user1.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7166', 'wand.png', '1');
+values ('7863', 'user20.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7167', 'webcam.png', '1');
+values ('7864', 'user3.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7168', 'zoom_in.png', '1');
+values ('7865', 'user6.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7169', 'zoom_out.png', '1');
+values ('7866', 'user8.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7020', 'forward.png', '1');
+values ('7867', 'vcard.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('7021', 'freelance.png', '1');
+values ('7868', 'vector.png', '1');
+insert into AOS_SYS_ICON (id_, name_, type_)
+values ('7869', 'wand.png', '1');
+insert into AOS_SYS_ICON (id_, name_, type_)
+values ('7870', 'webcam.png', '1');
+insert into AOS_SYS_ICON (id_, name_, type_)
+values ('7871', 'zoom_in.png', '1');
+insert into AOS_SYS_ICON (id_, name_, type_)
+values ('7872', 'zoom_out.png', '1');
 commit;
-prompt 757 records loaded
+prompt 761 records loaded
 prompt Loading AOS_SYS_MODULE...
+insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+values ('0', '0', 'AOS应用基础平台', null, null, 'p', '0', '1', 'home.png', '1', 'root', null, 1);
+insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+values ('1680', '0.001.004.002', '流程建模', 'bpm/procModel/init.jhtml', null, '189', '1', '0', 'icon8.png', '1', '工作流', null, 10);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('1688', '0.001.004.003', '流程配置与管理', 'bpm/procDef/init.jhtml', null, '189', '1', '0', 'icon79.png', '1', '工作流', null, 20);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
@@ -3631,19 +3652,89 @@ insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, 
 values ('576', '0.001.009', '帮助', null, null, '183', '0', '0', 'folder11.png', '1', '控制台', null, 80);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('615', '0.001.002.006', '流文件', 'system/byteObj/init.jhtml', null, '187', '1', '0', 'page_office.png', '1', '资源', null, 40);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
-values ('0', '0', 'AOS应用基础平台', null, null, 'p', '0', '1', 'home.png', '1', 'root', null, 1);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
-values ('1680', '0.001.004.002', '流程建模', 'bpm/procModel/init.jhtml', null, '189', '1', '0', 'icon8.png', '1', '工作流', null, 10);
 commit;
 prompt 46 records loaded
 prompt Loading AOS_SYS_MODULE_POST...
 prompt Table is empty
 prompt Loading AOS_SYS_MODULE_ROLE...
-prompt Table is empty
+insert into AOS_SYS_MODULE_ROLE (id_, role_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4277', '541', '0', '1', '2015-07-07 19:58:29', '1');
+insert into AOS_SYS_MODULE_ROLE (id_, role_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4278', '541', '184', '1', '2015-07-07 19:58:29', '1');
+insert into AOS_SYS_MODULE_ROLE (id_, role_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4279', '541', '207', '1', '2015-07-07 19:58:29', '1');
+insert into AOS_SYS_MODULE_ROLE (id_, role_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4280', '541', '489', '1', '2015-07-07 19:58:29', '1');
+insert into AOS_SYS_MODULE_ROLE (id_, role_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4281', '541', '213', '1', '2015-07-07 19:58:29', '1');
+commit;
+prompt 5 records loaded
 prompt Loading AOS_SYS_MODULE_USER...
-prompt Table is empty
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4308', '21', '0', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4309', '21', '183', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4310', '21', '186', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4311', '21', '192', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4312', '21', '193', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4313', '21', '194', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4314', '21', '187', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4315', '21', '197', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4316', '21', '454', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4317', '21', '195', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4318', '21', '615', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4319', '21', '530', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4320', '21', '188', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4321', '21', '199', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4322', '21', '200', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4323', '21', '201', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4324', '21', '304', '1', '2015-07-08 21:55:28', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4325', '21', '0', '2', '2015-07-08 21:56:33', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4326', '21', '183', '2', '2015-07-08 21:56:33', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4327', '21', '186', '2', '2015-07-08 21:56:33', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4328', '21', '192', '2', '2015-07-08 21:56:33', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4329', '21', '193', '2', '2015-07-08 21:56:33', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4330', '21', '194', '2', '2015-07-08 21:56:33', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4331', '21', '187', '2', '2015-07-08 21:56:33', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4332', '21', '197', '2', '2015-07-08 21:56:34', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4333', '21', '454', '2', '2015-07-08 21:56:34', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4334', '21', '195', '2', '2015-07-08 21:56:34', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4335', '21', '615', '2', '2015-07-08 21:56:34', '1');
+insert into AOS_SYS_MODULE_USER (id_, user_id_, module_id_, grant_type_, operate_time_, operator_id_)
+values ('4336', '21', '530', '2', '2015-07-08 21:56:34', '1');
+commit;
+prompt 29 records loaded
 prompt Loading AOS_SYS_MODULE_USER_NAV...
+insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
+values ('1', '192', '1', '25.png', '2', 0);
+insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
+values ('2', '193', '1', '11.png', '2', 0);
 insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
 values ('3', '200', '1', '30.png', '2', 0);
 insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
@@ -3762,17 +3853,13 @@ insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_
 values ('6', '199', '1', '7.png', '2', 0);
 insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
 values ('7', '197', '1', '51.png', '2', 0);
-insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
-values ('8', '217', '1', '56.png', '2', 0);
-insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
-values ('9', '222', '1', '22.png', '2', 0);
-insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
-values ('1', '192', '1', '25.png', '2', 0);
-insert into AOS_SYS_MODULE_USER_NAV (id_, module_id_, user_id_, nav_icon_, type_, sort_no_)
-values ('2', '193', '1', '11.png', '2', 0);
 commit;
-prompt 63 records loaded
+prompt 61 records loaded
 prompt Loading AOS_SYS_ORG...
+insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
+values ('0', '0', 'OSWorks', null, 'p', 'root', '0', '1', 'home.png', '1', '1', null, null, '2012-01-01 12:12:12', '1', 0);
+insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
+values ('284', '0.007', '项目部', null, '0', 'OSWorks', '1', '0', null, '1', '1', null, null, '2012-01-01 12:12:12', '1', 3);
 insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
 values ('285', '0.003', '产品部', null, '0', 'OSWorks', '1', '0', null, '1', '1', null, null, '2012-01-01 12:12:12', '1', 2);
 insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
@@ -3785,13 +3872,13 @@ insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_n
 values ('424', '0.005.001', '部门1', null, '287', '总务办', '0', '1', null, '1', '1', null, null, '2012-01-01 12:12:12', '1', 1);
 insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
 values ('441', '0.005.001.001', '部门1-1', null, '424', '部门1', '1', '0', null, '1', '1', null, null, '2012-01-01 12:12:12', '4', 1);
-insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
-values ('0', '0', 'OSWorks', null, 'p', 'root', '0', '1', 'home.png', '1', '1', null, null, '2012-01-01 12:12:12', '1', 0);
-insert into AOS_SYS_ORG (id_, cascade_id_, name_, hotkey_, parent_id_, pareant_name_, is_leaf_, is_auto_expand_, icon_name_, status_, type_, biz_code_, custom_code_, create_time_, creater_id_, sort_no_)
-values ('284', '0.007', '项目部', null, '0', 'OSWorks', '1', '0', null, '1', '1', null, null, '2012-01-01 12:12:12', '1', 3);
 commit;
 prompt 8 records loaded
 prompt Loading AOS_SYS_PAGE...
+insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
+values ('1646', '207', '我的个人资料', 'initMyInfo.jhtml', '2', '1', '1', 'vcard.png', null, null, 1);
+insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
+values ('1647', '207', '我的偏好设置', 'initMySettings.jhtml', '2', '1', '0', 'icon79.png', null, null, 2);
 insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
 values ('1648', '207', '系统安全选项', 'initSecurityCfg.jhtml', '2', '1', '0', 'system.png', null, null, 3);
 insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
@@ -3812,24 +3899,24 @@ insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_defa
 values ('1702', '213', '已办任务', 'initDone.jhtml', '2', '1', '0', 'task_finish.png', null, null, 20);
 insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
 values ('1703', '393', '分隔符', null, '4', '1', '0', null, null, null, 3);
-insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
-values ('1646', '207', '我的个人资料', 'initMyInfo.jhtml', '2', '1', '1', 'vcard.png', null, null, 1);
-insert into AOS_SYS_PAGE (id_, module_id_, name_, url_, type_, enabled_, is_default_, icon_, icon_big_, vector_, sort_no_)
-values ('1647', '207', '我的偏好设置', 'initMySettings.jhtml', '2', '1', '0', 'icon79.png', null, null, 2);
 commit;
 prompt 12 records loaded
 prompt Loading AOS_SYS_PAGE_EL...
 insert into AOS_SYS_PAGE_EL (id_, dom_id_, name_, type_, module_id_, page_id_, remark_)
-values ('477', '_btn_add_demo', '弹出新增参数窗口按钮', '1', '192', '192', null);
-insert into AOS_SYS_PAGE_EL (id_, dom_id_, name_, type_, module_id_, page_id_, remark_)
 values ('1666', '_btn_demo', '文本按钮', '1', '207', '207', '演示页面元素授权');
 insert into AOS_SYS_PAGE_EL (id_, dom_id_, name_, type_, module_id_, page_id_, remark_)
 values ('1667', '_btn_save_demo', '个人信息保存按钮', '1', '207', '1646', '演示页面元素授权');
+insert into AOS_SYS_PAGE_EL (id_, dom_id_, name_, type_, module_id_, page_id_, remark_)
+values ('477', '_btn_add_demo', '弹出新增参数窗口按钮', '1', '192', '192', null);
 commit;
 prompt 3 records loaded
 prompt Loading AOS_SYS_PAGE_EL_GRANT...
 prompt Table is empty
 prompt Loading AOS_SYS_PARAM...
+insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
+values ('1668', 'nav_tab_index_', '0', '423', '0.001.002.004', '导航缺省活动页', '1', 'nav_tab_index_', '左侧布局的导航卡片缺省激活的卡片索引号，索引下标从0开始。');
+insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
+values ('1669', 'nav_quick_layout_', '1', '423', '0.001.002.004', '快捷菜单布局风格', '1', 'nav_quick_layout_', '快捷菜单布局风格。1:平铺。2：树状。');
 insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
 values ('302', 'theme_', 'classic', '413', '0.001.002.002', '系统主题风格', '1', 'theme_', '可选值：classic。缺省值：classic。');
 insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
@@ -3884,101 +3971,86 @@ insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, 
 values ('637', 'user_head_catalog_id_', '613', '414', '0.001.002.003', '用户头像流文件分类ID', '0', null, '用户头像流文件分类ID，分类科目中的用户头像分类ID。用户上传文件时使用。');
 insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
 values ('74', 'app_name_', 'AOS : JavaEE应用基础平台', '413', '0.001.002.002', '应用系统名称', '0', null, '应用系统名称');
-insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
-values ('1668', 'nav_tab_index_', '1', '423', '0.001.002.004', '导航缺省活动页', '1', 'nav_tab_index_', '左侧布局的导航卡片缺省激活的卡片索引号');
-insert into AOS_SYS_PARAM (id_, key_, value_, catalog_id_, catalog_cascade_id_, name_, is_overwrite_, overwrite_field_, remark_)
-values ('1669', 'nav_quick_layout_', '1', '423', '0.001.002.004', '快捷菜单布局风格', '1', 'nav_quick_layout_', '快捷菜单布局风格。1:平铺。2：树状。');
 commit;
 prompt 29 records loaded
 prompt Loading AOS_SYS_POST...
 insert into AOS_SYS_POST (id_, name_, status_, type_, org_id_, create_time_, creater_id_, org_cascade_id_)
-values ('540', '岗位3', '1', '1', '284', '2014-12-10 02:26:56', '1', '0.007');
-insert into AOS_SYS_POST (id_, name_, status_, type_, org_id_, create_time_, creater_id_, org_cascade_id_)
 values ('538', '岗位1', '1', '1', '288', '2014-12-10 02:25:17', '1', '0.008');
 insert into AOS_SYS_POST (id_, name_, status_, type_, org_id_, create_time_, creater_id_, org_cascade_id_)
 values ('539', '岗位2', '1', '1', '285', '2014-12-10 02:25:24', '1', '0.003');
+insert into AOS_SYS_POST (id_, name_, status_, type_, org_id_, create_time_, creater_id_, org_cascade_id_)
+values ('540', '岗位3', '1', '1', '284', '2014-12-10 02:26:56', '1', '0.007');
 commit;
 prompt 3 records loaded
 prompt Loading AOS_SYS_ROLE...
 insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
-values ('541', '角色1', '1', '1', '2014-12-10 02:28:26', '1', '0', '0');
-insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
-values ('605', '角色2', '1', '1', '2015-01-22 00:48:47', '1', '0', '0');
-insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
 values ('449', '测试角色1', '1', '1', '2014-11-18 12:56:15', '4', '287', '0.005');
 insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
 values ('455', '测试角色', '1', '1', '2014-11-23 19:58:19', '4', '288', '0.008');
+insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
+values ('541', '角色1', '1', '1', '2014-12-10 02:28:26', '1', '0', '0');
+insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
+values ('605', '角色2', '1', '1', '2015-01-22 00:48:47', '1', '0', '0');
 commit;
 prompt 4 records loaded
 prompt Loading AOS_SYS_SEQUENCE...
+insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
+values ('1', 'GID', '1', null, '1', '1', '1721', '1', null, null, null, '9999999999', '0', '1', '0', '1721', '系统管理-实体表流水号。');
+insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
+values ('1635', 'ICONID', '1', null, '1', '1', '7872', '1', null, null, null, '9223372036854775807', '0', '1', '0', '7872', '图标ID');
 insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
 values ('2', 'GUUID', '2', null, '1', '1', 'bd749e4c-0512-4b01-9ef7-7f42af3812a0', '1', null, null, null, '9223372036854775807', '0', '1', '0', 'bd749e4c-0512-4b01-9ef7-7f42af3812a0', '通用UUID。');
 insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
 values ('3', 'TESTID', '1', null, '1', '1', '00000050', '1', null, null, null, '99999999', '1', '1', '1', '00000050', '测试用ID');
 insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
-values ('313', 'USERID', '1', null, '1', '1', '20', '1', null, null, null, '9223372036854775807', '0', '1', '0', '20', '用户ID');
+values ('313', 'USERID', '1', null, '1', '1', '21', '1', null, null, null, '9223372036854775807', '0', '1', '0', '21', '用户ID');
 insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
-values ('337', 'RID', '1', null, '1', '1', '4214', '1', null, null, null, '9999999999', '0', '1', '0', '4214', '系统管理-关联表流水号。');
+values ('337', 'RID', '1', null, '1', '1', '4340', '1', null, null, null, '9999999999', '0', '1', '0', '4340', '系统管理-关联表流水号。');
 insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
 values ('546', 'BPMID', '1', null, '1', '1', '119', '1', null, null, null, '9999999999', '0', '1', '0', '119', '流程引擎相关辅助表的流水号');
 insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
 values ('8', 'TESTID1', '1', 'TEST{yyyyMMdd}', '1', '1', '0059', '1', '-', '{HHmmss}', null, '9999', '1', '1', '1', 'TEST20150121-0059-005407', '测试ID，前缀后缀支持日期时间表达式。');
-insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
-values ('1', 'GID', '1', null, '1', '1', '1721', '1', null, null, null, '9999999999', '0', '1', '0', '1721', '系统管理-实体表流水号。');
-insert into AOS_SYS_SEQUENCE (id_, name_, type_, prefix_, start_, step_, cur_value_, status_, connector_, suffix_, db_seq_name_, max_value_, is_circul_, min_value_, is_leftpad_, format_value_, remark_)
-values ('1635', 'ICONID', '1', null, '1', '1', '7169', '1', null, null, null, '9223372036854775807', '0', '1', '0', '7169', '图标ID');
 commit;
 prompt 8 records loaded
 prompt Loading AOS_SYS_USER...
 insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
-values ('15', 'xxd', 'Q31Ox+QY0vs=', '熊小朵', '0', '441', '1', '1', null, '2014-12-10 02:19:12', '1', '0.005.001.001');
-insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
 values ('1', 'root', 'Q31Ox+QY0vs=', '超级用户', '1', '0', '1', '2', null, '2014-09-27 22:12:56', '1', '0');
+insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
+values ('15', 'xxd', 'Q31Ox+QY0vs=', '熊小朵', '0', '441', '1', '1', null, '2014-12-10 02:19:12', '1', '0.005.001.001');
 insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
 values ('19', 'xxx', 'ByOPAM8ATmY=', '熊小雄', '1', '285', '1', '1', null, '2015-01-25 16:20:54', '1', '0.003');
 insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
 values ('20', 'xcc', '5SIDJ03AkJI=', '熊楚楚', '0', '0', '1', '1', null, '2015-02-01 22:19:03', '1', '0');
 insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_)
-values ('14', 'test1', 'ByOPAM8ATmY=', '测试1', '0', '284', '1', '1', null, '2014-12-10 02:18:53', '1', '0.007');
+values ('21', 'admin', 'ByOPAM8ATmY=', 'admin', '0', '0', '1', '1', null, '2015-07-08 21:55:10', '1', '0');
 commit;
 prompt 5 records loaded
 prompt Loading AOS_SYS_USER_CFG...
 insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
-values ('15', 'classic', 'blue', 'tab', '1', 'true', 'tight', '#0099FF', '1', '1', '1');
-insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
 values ('1', 'classic', 'blue', 'tab', '1', 'true', 'tight', '#0099FF', '1', '0', '1');
+insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
+values ('15', 'classic', 'blue', 'tab', '1', 'true', 'tight', '#0099FF', '1', '1', '1');
 insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
 values ('19', 'classic', 'neptune', 'tab', '1', 'true', 'tight', '#0099FF', '1', '1', null);
 insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
 values ('20', 'classic', 'neptune', 'tab', '1', 'true', 'tight', '#0099FF', '1', '1', '1');
 insert into AOS_SYS_USER_CFG (id_, theme_, skin_, layout_, nav_mode_, is_show_top_nav_, navbar_btn_style_, tab_focus_color_, is_show_mac_nav_, nav_tab_index_, nav_quick_layout_)
-values ('14', 'classic', 'blue', 'tab', '1', 'true', 'tight', '#0099FF', '1', '1', null);
+values ('21', 'classic', 'blue', 'tab', '1', 'true', 'tight', '#0099FF', '1', '1', '1');
 commit;
 prompt 5 records loaded
 prompt Loading AOS_SYS_USER_EXT...
 insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
-values ('15', null, null, null, null, null, '2015-02-01', null, null, null, '646', null, null, null, null);
-insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
 values ('1', '307916217@qq.com', null, '18616786188', null, null, null, null, '307916217', null, '1717', '超级用户拥有系统最高权限。', null, null, null);
+insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
+values ('15', null, null, null, null, null, '2015-02-01', null, null, null, '646', null, null, null, null);
 insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
 values ('19', 'xxx@qq.com', '0871-3131921', '18616786188', '云南大理', '53021890', '2015-01-30', '532925108211170651', '307916217', null, '644', '备注内容', '100', '100', '100');
 insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
 values ('20', null, null, null, null, null, null, null, null, null, null, null, '100', '100', null);
 insert into AOS_SYS_USER_EXT (id_, email_, fixed_phone_, mobile_phone_, address_, zip_, birthday_, idno_, qq_, dynamic_field_, bytearray_id_, remark_, filed1_, filed2_, filed3_)
-values ('14', null, null, null, null, null, null, null, null, null, '680', null, null, null, null);
+values ('21', null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 commit;
 prompt 5 records loaded
-
-prompt Loading AOS_ACT_GE_PROPERTY...
-insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
-values ('schema.version', '5.17.0.2', 1);
-insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
-values ('schema.history', 'create(5.17.0.2)', 1);
-insert into AOS_ACT_GE_PROPERTY (name_, value_, rev_)
-values ('next.dbid', '2501', 2);
-commit;
-prompt 3 records loaded
-
 prompt Loading AOS_SYS_USER_POST...
 prompt Table is empty
 prompt Loading AOS_SYS_USER_ROLE...
@@ -3990,4 +4062,5 @@ prompt Table is empty
 set feedback on
 set define on
 prompt Done.
+
 
