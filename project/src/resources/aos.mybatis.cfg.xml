@@ -21,7 +21,7 @@
 	<plugins>
 		<!-- StatementHandler插件 -->
 		<plugin interceptor="cn.osworks.aos.core.dao.plugin.StatementHandlerPlugin">
-			<property name="sqlid" value=".*Page.*" />
+			<property name="sqlid" value=".*Page" />
 		</plugin>
 		<!-- ResultSetHandler插件 -->
 		<plugin interceptor="cn.osworks.aos.core.dao.plugin.ResultSetHandlerPlugin" />
