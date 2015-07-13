@@ -14,7 +14,7 @@ Ext.define('Ext.ux.TabCloseMenu', {
      * @cfg {String} closeTabText
      * The text for closing the current tab.
      */
-    closeTabText: 'Close Tab',
+    closeTabText: '关闭',
 
     /**
      * @cfg {Boolean} showCloseOthers
@@ -26,7 +26,7 @@ Ext.define('Ext.ux.TabCloseMenu', {
      * @cfg {String} closeOthersTabsText
      * The text for closing all tabs except the current one.
      */
-    closeOthersTabsText: 'Close Other Tabs',
+    closeOthersTabsText: '关闭其它',
 
     /**
      * @cfg {Boolean} showCloseAll
@@ -38,7 +38,7 @@ Ext.define('Ext.ux.TabCloseMenu', {
      * @cfg {String} closeAllTabsText
      * The text for closing all tabs.
      */
-    closeAllTabsText: 'Close All Tabs',
+    closeAllTabsText: '关闭全部',
 
     /**
      * @cfg {Array} extraItemsHead
@@ -51,6 +51,10 @@ Ext.define('Ext.ux.TabCloseMenu', {
      * An array of additional context menu items to add to the end of the context menu.
      */
     extraItemsTail: null,
+    
+    closeTabIcon: null,
+    closeOthersTabsIcon:null,
+    closeAllTabsIcon: null,
 
     //public
     constructor: function (config) {
@@ -130,17 +134,19 @@ Ext.define('Ext.ux.TabCloseMenu', {
         if (!me.menu) {
             var items = [{
                 text: me.closeTabText,
+                icon: me.closeTabIcon,
                 scope: me,
                 handler: me.onClose
             }];
 
             if (me.showCloseAll || me.showCloseOthers) {
-                items.push('-');
+               //items.push('-');
             }
 
             if (me.showCloseOthers) {
                 items.push({
                     text: me.closeOthersTabsText,
+                    icon: me.closeOthersTabsIcon,
                     scope: me,
                     handler: me.onCloseOthers
                 });
@@ -149,6 +155,7 @@ Ext.define('Ext.ux.TabCloseMenu', {
             if (me.showCloseAll) {
                 items.push({
                     text: me.closeAllTabsText,
+                    icon: me.closeAllTabsIcon,
                     scope: me,
                     handler: me.onCloseAll
                 });
@@ -166,6 +173,8 @@ Ext.define('Ext.ux.TabCloseMenu', {
                 items: items,
                 listeners: {
                     hide: me.onHideMenu,
+                    //bug 修正 加延时解决无法关闭当前Tab的Bug
+                    delay:20,
                     scope: me
                 }
             });
