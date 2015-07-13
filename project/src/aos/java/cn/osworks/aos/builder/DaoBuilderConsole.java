@@ -23,7 +23,7 @@ public class DaoBuilderConsole {
 	public static void main(String[] args) throws SQLException {
 		//===================
 		DriverManagerOpt driverOpt = new DriverManagerOpt();
-		//当前版本支持mysql、oracle、ms-sqlserver、H2
+		//当前版本支持mysql、oracle、sqlserver2005+、H2
 		driverOpt.setDataBaseType(DBType.H2); 
 		driverOpt.setIp("127.0.0.1");
 		driverOpt.setPort("1521");
