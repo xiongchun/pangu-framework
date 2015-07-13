@@ -29,7 +29,7 @@ import cn.osworks.aos.system.modules.dao.vo.UserInfoVO;
 public class PortalController {
 	
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	
 	/**
 	 * 页面初始化
@@ -43,7 +43,7 @@ public class PortalController {
 		UserInfoVO userInfoVO = WebCxt.getUserInfo(session);
 		Dto qDto = Dtos.newDto("user_id_", userInfoVO.getId_());
 		qDto.put("type_", DicCons.MODULE_USER_NAV_TYPE_FLOAT);
-		List<Dto> macList = sqlDao.list("Auth.getNavMenusByUser", qDto);
+		List<Dto> macList = sysDao.list("Auth.getNavMenusByUser", qDto);
 		//TODO 过滤掉菜单权限被管理员收回的自定义浮动菜单
 		request.setAttribute("macList", macList);
 		request.setAttribute("welcome_mac_on", WebCxt.getCfgByUser(session, "is_show_mac_nav_"));

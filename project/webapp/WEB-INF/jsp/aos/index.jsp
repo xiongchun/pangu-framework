@@ -22,7 +22,7 @@
 	</div>
 	<%-- Center导航 --%>
 	<div id="_div_center">
-		<iframe src="${cxt}/system/portal/init.jhtml"></iframe>
+		<iframe id="_id_tab_welcome.frame" src="${cxt}/system/portal/init.jhtml"></iframe>
 	</div>
 	<%-- Banner导航 --%>
 	<div id="_id_north_el" class="x-hidden north_el">
@@ -83,11 +83,11 @@
 
 <aos:onready ux="iframe" elAuth="false">
 	<aos:viewport layout="border" id="_test">
-		<aos:panel region="north" contentEl="_id_north_el" height="60" maxHeight="60" minHeight="60" border="false"
+		<aos:panel id="_north" region="north" contentEl="_id_north_el" height="60" maxHeight="60" minHeight="60" border="false"
 			header="false" collapsible="true" collapseMode="mini" split="true">
 		</aos:panel>
 
-		<aos:panel region="south" contentEl="_id_south_el" height="${statusbar_height}" border="false" header="false"
+		<aos:panel id="_south" region="south" contentEl="_id_south_el" height="${statusbar_height}" border="false" header="false"
 			bodyStyle="backgroundColor:'${south_back_color_}'">
 		</aos:panel>
 
@@ -95,13 +95,14 @@
 			maxWidth="300" border="true" minWidth="220" width="240" collapsible="true" collapseMode="mini" header="false">
 			<aos:tab id="_sys_nav" title="系统导航" layout="accordion" animate="false">
 				<aos:docked forceBoder="0 0 1 0">
-					<aos:triggerfield emptyText="查找功能菜单..." trigger1Cls="x-form-search-trigger" width="${searchfield_width}" />
+					<aos:triggerfield emptyText="查找功能菜单..." trigger1Cls="x-form-search-trigger" onenterkey="fn_find_modules"
+						onTrigger1Click="fn_find_modules" width="${searchfield_width}" />
 					<aos:dockeditem xtype="tbfill" />
 					<aos:dockeditem text="" tooltip="更多选型" icon="icon141.png">
 						<aos:menu>
 							<aos:menuitem text="首选项" icon="config1.png" onclick="_fn_preference" />
 							<aos:menuitem xtype="menuseparator" />
-							<aos:menuitem text="锁定离开" icon="key.png" />
+							<aos:menuitem text="锁定离开" onclick="fn_find_modules" icon="key.png" />
 							<aos:menuitem text="安全退出" icon="exit2.png" onclick="_fn_logout" />
 						</aos:menu>
 					</aos:dockeditem>
@@ -115,13 +116,14 @@
 			</aos:tab>
 			<aos:tab title="快捷菜单" layout="fit">
 				<aos:docked forceBoder="0 0 1 0">
-					<aos:triggerfield emptyText="查找功能菜单..." trigger1Cls="x-form-search-trigger" width="${searchfield_width}" />
+					<aos:triggerfield emptyText="查找功能菜单..." trigger1Cls="x-form-search-trigger" onenterkey="fn_find_modules"
+						onTrigger1Click="fn_find_modules" width="${searchfield_width}" />
 					<aos:dockeditem xtype="tbfill" />
 					<aos:dockeditem text="" tooltip="更多选型" icon="icon141.png">
 						<aos:menu>
 							<aos:menuitem text="首选项" icon="icon152.png" onclick="_fn_preference" />
 							<aos:menuitem xtype="menuseparator" />
-							<aos:menuitem text="锁定离开" icon="key.png" />
+							<aos:menuitem text="锁定离开" onclick="fn_find_modules" icon="key.png" />
 							<aos:menuitem text="安全退出" icon="exit2.png" onclick="_fn_logout" />
 						</aos:menu>
 					</aos:dockeditem>
@@ -135,9 +137,10 @@
 					</aos:treepanel>
 				</c:if>
 				<c:if test="${nav_quick_layout_ == '1' && not empty aos_sys_modulePOs}">
-					<aos:menu floating="false" plain="false" border="false" >
+					<aos:menu floating="false" plain="false" border="false">
 						<c:forEach var="module" items="${aos_sys_modulePOs}">
-							<aos:menuitem text="${module.name_}" icon="${module.icon_name_}" onclick="fn_quick_click('${module.id_}', '${module.name_}', '${module.url_}')"/>
+							<aos:menuitem text="${module.name_}" icon="${module.icon_name_}"
+								onclick="fn_quick_click('${module.id_}', '${module.name_}', '${module.url_}')" />
 							<aos:menuitem xtype="menuseparator" />
 						</c:forEach>
 					</aos:menu>
@@ -147,11 +150,34 @@
 			</aos:tab>
 		</aos:tabpanel>
 		<aos:tabpanel id="_tabs" region="center" activeTab="0" plain="true" tabBarHeight="30" bodyBorder="0 1 1 1">
-			<aos:tab title="${welcome_page_title}" contentEl="_div_center">
-			</aos:tab>
+			<aos:plugins>
+				<aos:tabCloseMenu extraItemsTail1="最大化 还原:fn_collapse_expand:shape_move_back.png"  extraItemsTail2="刷新:fn_reload:refresh4.png" />
+				<aos:tabReorderer/>
+			</aos:plugins>
+			<aos:tab id="_id_tab_welcome" reorderable="false" title="${welcome_page_title}" contentEl="_div_center" />
 		</aos:tabpanel>
 	</aos:viewport>
 	<script type="text/javascript">
+		function fn_find_modules(){
+			App.tip('预留功能接口，暂未实现……');
+		}
+		
+	    //刷新当前活动卡片
+	    function fn_reload(){
+	    	var cur_tab_id = _tabs.getLayout().activeItem.id;
+	    	if(cur_tab_id === '_id_tab_welcome'){
+	    		Ext.get('_id_tab_welcome.frame').dom.contentWindow.location.reload();
+	    	}else{
+	    		Ext.getCmp(cur_tab_id + '.iframe').load();
+	    	}
+	    }
+	    
+	    //最大化 还原
+	    function fn_collapse_expand(){
+	    	_west.toggleCollapse();
+	    	_north.toggleCollapse();
+	    }
+		
 		//响应卡片展开事件
 		function _fn_card_onexpand(me, eOpts) {
 			var nav_mode_ = '${navDto.nav_mode_}';
@@ -212,6 +238,7 @@
 		var tempflag = 0;
 		if (!tab) {
 			var iframe = Ext.create('App.ux.IFrame', {
+				id : id + '.iframe',
 				mask : true,
 				layout : 'fit',
 				//这个参数仅起到将iframe组件自带的mask调节到相对居中位置的作用
@@ -287,7 +314,7 @@
 				duration : 500,
 				remove : true
 			});
-		}, 50); //做这个延时，只是为在Dom加载很快的时候GIF动画效果更显著一点
+		}, 50); //做这个延时，只是为在Dom加载很快的时候GIF动画效果更稍微显著一点
 
 	});
 
@@ -344,5 +371,6 @@
 			}
 		}
 	}
+
 </script>
 </aos:html>

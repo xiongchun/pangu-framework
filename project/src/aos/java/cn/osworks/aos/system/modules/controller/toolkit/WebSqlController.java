@@ -32,7 +32,7 @@ public class WebSqlController {
 	private WebSqlService daoCoderService;
 	
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	
 	/**
 	 * 页面初始化

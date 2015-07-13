@@ -58,7 +58,7 @@ public class PreferenceController {
 	@Autowired
 	private Aos_sys_moduleMapper aos_sys_moduleMapper;
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	@Autowired
 	private SystemService systemService;
 
@@ -252,7 +252,7 @@ public class PreferenceController {
 		Dto inDto = Dtos.newDto(request);
 		inDto.put("user_id_", inDto.getUserInfo().getId_());
 		inDto.put("type_", DicCons.MODULE_USER_NAV_TYPE_QUICK);
-		List<Dto> list = sqlDao.list("Auth.listQuickMenu4Sort", inDto);
+		List<Dto> list = sysDao.list("Auth.listQuickMenu4Sort", inDto);
 		WebCxt.write(response, AOSJson.toGridJson(list));
 	}
 	
@@ -338,7 +338,7 @@ public class PreferenceController {
 		Dto inDto = Dtos.newDto(request);
 		inDto.put("user_id_", inDto.getUserInfo().getId_());
 		inDto.put("type_", DicCons.MODULE_USER_NAV_TYPE_FLOAT);
-		List<Aos_sys_module_user_navPO> aos_sys_module_user_navPOs = sqlDao.list("Auth.listAos_sys_module_user_navPOs", inDto);
+		List<Aos_sys_module_user_navPO> aos_sys_module_user_navPOs = sysDao.list("Auth.listAos_sys_module_user_navPOs", inDto);
 		WebCxt.write(response, AOSJson.toGridJson(aos_sys_module_user_navPOs, aos_sys_module_user_navPOs.size()));
 	}
 	

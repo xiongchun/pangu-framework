@@ -290,6 +290,14 @@
 			</description>
 		</attribute>
 		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
+			</description>
+		</attribute>
+		<attribute>
 			<name>autoShow</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
@@ -1876,6 +1884,14 @@
 			</description>
 		</attribute>
 		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
+			</description>
+		</attribute>
+		<attribute>
 			<name>autoShow</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
@@ -2661,6 +2677,14 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    通过设置false来阻止面板型组件的标题头被创建与渲染，默认为true。
+			</description>
+		</attribute>
+		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
 			</description>
 		</attribute>
 		<attribute>
@@ -4073,6 +4097,92 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    表单项名称。name作为表单提交的参数名称。
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>tabCloseMenu</name>
+		<tag-class>cn.osworks.aos.web.tag.impl.ext.plugins.impl.TabCloseMenuPluginTag</tag-class>
+		<body-content>empty</body-content>
+		<description>Tab卡片的右键关闭菜单插件。</description>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    唯一的组件id（默认为自动分配的id）。用id来获取组件引用这一目的，如：Ext.getCmp(id)。标签也会直接根据id生成一个对实例化组件的引用，在JS中可以直接使用此ID来引用该组件。
+			</description>
+		</attribute>
+		<attribute>
+			<name>any</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    可以在这里写任意的属性配置。提示：多个配置属性请使用,分隔。如：any="id:'app169',disabled:true"。
+			</description>
+		</attribute>
+		<attribute>
+			<name>closeTabText</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    关闭按钮的显示文本。缺省值：关闭。
+			</description>
+		</attribute>
+		<attribute>
+			<name>showCloseOthers</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    标识是否显示关闭其它按钮。可选值：true | false。缺省值：true。
+			</description>
+		</attribute>
+		<attribute>
+			<name>closeOthersTabsText</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    关闭其它按钮的显示文本。缺省值：关闭其它。
+			</description>
+		</attribute>
+		<attribute>
+			<name>showCloseAll</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    标识是否显示关闭全部按钮。可选值：true | false。缺省值：true。
+			</description>
+		</attribute>
+		<attribute>
+			<name>closeAllTabsText</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    关闭全部按钮的显示文本。缺省值：关闭全部。
+			</description>
+		</attribute>
+		<attribute>
+			<name>extraItemsTail1</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    尾部扩展菜单1，可在关闭按钮组后加菜单项。格式为：【菜单文本:句柄函数:菜单图标】。如：extraItemsTail1="刷新:fn_refresh:refresh.png"。
+			</description>
+		</attribute>
+		<attribute>
+			<name>extraItemsTail2</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    尾部扩展菜单2，可在关闭按钮组后加菜单项。格式为：【菜单文本:句柄函数:菜单图标】。如：extraItemsTail1="刷新:fn_refresh:refresh.png"。
+			</description>
+		</attribute>
+		<attribute>
+			<name>showCloseItemIcon</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    是否显示关闭菜单图标。可选值：true | false。缺省值：true。
 			</description>
 		</attribute>
 	</tag>
@@ -5648,6 +5758,14 @@
 			</description>
 		</attribute>
 		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
+			</description>
+		</attribute>
+		<attribute>
 			<name>autoShow</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
@@ -6219,6 +6337,14 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    通过设置false来阻止面板型组件的标题头被创建与渲染，默认为true。
+			</description>
+		</attribute>
+		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
 			</description>
 		</attribute>
 		<attribute>
@@ -7810,6 +7936,14 @@
 			</description>
 		</attribute>
 		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
+			</description>
+		</attribute>
+		<attribute>
 			<name>autoShow</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
@@ -8373,6 +8507,14 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    通过设置false来阻止面板型组件的标题头被创建与渲染，默认为true。
+			</description>
+		</attribute>
+		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
 			</description>
 		</attribute>
 		<attribute>
@@ -9650,6 +9792,14 @@
 			</description>
 		</attribute>
 		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
+			</description>
+		</attribute>
+		<attribute>
 			<name>autoShow</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
@@ -10312,6 +10462,14 @@
 			</description>
 		</attribute>
 		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
+			</description>
+		</attribute>
+		<attribute>
 			<name>autoShow</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
@@ -10819,6 +10977,14 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    通过设置false来阻止面板型组件的标题头被创建与渲染，默认为true。
+			</description>
+		</attribute>
+		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
 			</description>
 		</attribute>
 		<attribute>
@@ -11433,6 +11599,14 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    通过设置false来阻止面板型组件的标题头被创建与渲染，默认为true。
+			</description>
+		</attribute>
+		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
 			</description>
 		</attribute>
 		<attribute>
@@ -13584,6 +13758,14 @@
 			</description>
 		</attribute>
 		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
+			</description>
+		</attribute>
+		<attribute>
 			<name>autoShow</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
@@ -13965,6 +14147,28 @@
 		<tag-class>cn.osworks.aos.web.tag.impl.ext.plugins.PluginsTag</tag-class>
 		<body-content>JSP</body-content>
 		<description>Plugins标签</description>
+	</tag>
+	<tag>
+		<name>tabReorderer</name>
+		<tag-class>cn.osworks.aos.web.tag.impl.ext.plugins.impl.TabReordererPluginTag</tag-class>
+		<body-content>empty</body-content>
+		<description>Tab卡片的拖拽重排序插件。</description>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    唯一的组件id（默认为自动分配的id）。用id来获取组件引用这一目的，如：Ext.getCmp(id)。标签也会直接根据id生成一个对实例化组件的引用，在JS中可以直接使用此ID来引用该组件。
+			</description>
+		</attribute>
+		<attribute>
+			<name>any</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    可以在这里写任意的属性配置。提示：多个配置属性请使用,分隔。如：any="id:'app169',disabled:true"。
+			</description>
+		</attribute>
 	</tag>
 	<tag>
 		<name>radiobox</name>
@@ -15777,6 +15981,14 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    通过设置false来阻止面板型组件的标题头被创建与渲染，默认为true。
+			</description>
+		</attribute>
+		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
 			</description>
 		</attribute>
 		<attribute>
@@ -19071,6 +19283,14 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    通过设置false来阻止面板型组件的标题头被创建与渲染，默认为true。
+			</description>
+		</attribute>
+		<attribute>
+			<name>reorderable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
 			</description>
 		</attribute>
 		<attribute>

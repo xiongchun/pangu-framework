@@ -32,7 +32,7 @@ public class ProcDefService {
 	@Autowired
 	private RepositoryService repositoryService;
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	@Autowired
 	private Aos_act_re_procdefMapper aos_act_re_procdefMapper;
 	@Autowired
@@ -45,7 +45,7 @@ public class ProcDefService {
      * @param response
      */
     public List<Dto> listProcdefs(Dto inDto) {
-        List<Dto> list = sqlDao.list("Bpm.listProcDefsPage", inDto);
+        List<Dto> list = sysDao.list("Bpm.listProcDefsPage", inDto);
         return list;
     }
 	

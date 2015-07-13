@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import cn.osworks.aos.core.asset.AOSCodec;
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -20,6 +19,8 @@ import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
 import cn.osworks.aos.system.asset.DicCons;
 import cn.osworks.aos.system.asset.IdCons;
+import cn.osworks.aos.system.asset.SystemUtils;
+import cn.osworks.aos.system.dao.mapper.Aos_sys_bytearrayMapper;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_module_userMapper;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_orgMapper;
@@ -29,7 +30,7 @@ import cn.osworks.aos.system.dao.mapper.Aos_sys_user_cfgMapper;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_user_extMapper;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_user_postMapper;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_user_roleMapper;
-import cn.osworks.aos.system.dao.mapper.Aos_sys_bytearrayMapper;
+import cn.osworks.aos.system.dao.po.Aos_sys_bytearrayPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_modulePO;
 import cn.osworks.aos.system.dao.po.Aos_sys_module_userPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_orgPO;
@@ -39,7 +40,6 @@ import cn.osworks.aos.system.dao.po.Aos_sys_user_cfgPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_user_extPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_user_postPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_user_rolePO;
-import cn.osworks.aos.system.dao.po.Aos_sys_bytearrayPO;
 import cn.osworks.aos.system.modules.dao.vo.ElementVO;
 import cn.osworks.aos.system.modules.dao.vo.UserInfoVO;
 import cn.osworks.aos.system.modules.service.SystemService;
@@ -60,7 +60,7 @@ import com.google.common.collect.Lists;
 public class UserService {
 
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	@Autowired
 	private Aos_sys_orgMapper aos_sys_orgMapper;
 	@Autowired
@@ -241,7 +241,7 @@ public class UserService {
 			Aos_sys_orgPO aos_sys_orgPO = aos_sys_orgMapper.selectByKey(aos_sys_userPO.getOrg_id_());
 			aos_sys_userPO.setOrg_cascade_id_(aos_sys_orgPO.getCascade_id_());
 			// 删除用户-岗位关联表
-			sqlDao.delete("Auth.deleteAos_sys_user_postByUser_id_", aos_sys_userPO.getId_());
+			sysDao.delete("Auth.deleteAos_sys_user_postByUser_id_", aos_sys_userPO.getId_());
 		}
 		// 更新用户基本信息
 		aos_sys_userMapper.updateByKey(aos_sys_userPO);
@@ -299,15 +299,15 @@ public class UserService {
 	@Transactional
 	private void resetWhenDeleteUser(String user_id_) {
 		// 删除用户-角色关联表
-		sqlDao.delete("Auth.deleteAos_sys_user_roleByUser_id_", Dtos.newDto("user_id_", user_id_));
+		sysDao.delete("Auth.deleteAos_sys_user_roleByUser_id_", Dtos.newDto("user_id_", user_id_));
 		// 删除用户-岗位关联表
-		sqlDao.delete("Auth.deleteAos_sys_user_postByUser_id_", user_id_);
+		sysDao.delete("Auth.deleteAos_sys_user_postByUser_id_", user_id_);
 		// 删除用户-菜单关联表
-		sqlDao.delete("Auth.deleteAos_sys_module_userByUser_id_", user_id_);
+		sysDao.delete("Auth.deleteAos_sys_module_userByUser_id_", user_id_);
 		// 删除用户-Mac菜单关联表
-		sqlDao.delete("Auth.deleteAos_sys_module_user_macstyleByUser_id_", user_id_);
+		sysDao.delete("Auth.deleteAos_sys_module_user_macstyleByUser_id_", user_id_);
 		// 删除用户-页面元素关联表
-		sqlDao.delete("Auth.deleteAos_sys_element_grantByUser_id_", user_id_);
+		sysDao.delete("Auth.deleteAos_sys_element_grantByUser_id_", user_id_);
 		// 删除用户配置表
 		aos_sys_user_cfgMapper.deleteByKey(user_id_);
 		// 删除用户扩展表
@@ -390,7 +390,7 @@ public class UserService {
 			aos_sys_userPO.setOrg_cascade_id_(aos_sys_orgPO.getCascade_id_());
 			aos_sys_userMapper.updateByKey(aos_sys_userPO);
 			// 删除用户-岗位关联表
-			sqlDao.delete("Auth.deleteAos_sys_user_postByUser_id_", id_);
+			sysDao.delete("Auth.deleteAos_sys_user_postByUser_id_", id_);
 		}
 	}
 
@@ -410,7 +410,7 @@ public class UserService {
 				qDto.put("org_cascade_id_", "0");
 			}
 		}
-		List<Dto> userInfos = sqlDao.list("Auth.listUserInfosPage", qDto);
+		List<Dto> userInfos = sysDao.list("Auth.listUserInfosPage", qDto);
 		return userInfos;
 	}
 
@@ -426,7 +426,7 @@ public class UserService {
 		delDto.put("user_id_", pDto.getString("user_id_"));
 		delDto.put("grant_type_", pDto.getString("grant_type_"));
 		// 每次授权都将历史数据清零
-		sqlDao.delete("Auth.deleteAos_sys_module_userByDto", delDto);
+		sysDao.delete("Auth.deleteAos_sys_module_userByDto", delDto);
 		String[] selections = pDto.getSelection();
 		Aos_sys_module_userPO aos_sys_module_userPO = new Aos_sys_module_userPO();
 		for (String module_id_ : selections) {
@@ -515,7 +515,7 @@ public class UserService {
 	public Dto getModuleTree4Selected(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		inDto.put("status_", DicCons.ENABLED_YES);
-		List<Aos_sys_modulePO> aos_sys_modulePOs = sqlDao.list("Auth.listUserModuleSelected", inDto);
+		List<Aos_sys_modulePO> aos_sys_modulePOs = sysDao.list("Auth.listUserModuleSelected", inDto);
 		List<TreeNode> treeNodes = moduleService.toTreeModal(aos_sys_modulePOs);
 		String jsonString = TreeBuilder.build(treeNodes);
 		outDto.setStringA(jsonString);
@@ -634,7 +634,7 @@ public class UserService {
 	 * @return
 	 */
 	public List<Dto> listGrantedPostsOfUser(Dto inDto) {
-		List<Dto> grantedList = sqlDao.list("Auth.listGrantedPostsOfUser", inDto);
+		List<Dto> grantedList = sysDao.list("Auth.listGrantedPostsOfUser", inDto);
 		return grantedList;
 	}
 
@@ -655,7 +655,7 @@ public class UserService {
 		} else {
 			inDto.put("creater_org_id_", inDto.getUserInfo().getOrg_id_());
 		}
-		List<Dto> roleInfos = sqlDao.list("Auth.listRoleInfos4UserGrant", inDto);
+		List<Dto> roleInfos = sysDao.list("Auth.listRoleInfos4UserGrant", inDto);
 		return roleInfos;
 	}
 
@@ -666,7 +666,7 @@ public class UserService {
 	 * @return
 	 */
 	public List<Dto> listGrantedRolesOfUser(Dto inDto) {
-		List<Dto> grantedList = sqlDao.list("Auth.listGrantedRolesOfUser", inDto);
+		List<Dto> grantedList = sysDao.list("Auth.listGrantedRolesOfUser", inDto);
 		return grantedList;
 	}
 
@@ -675,7 +675,7 @@ public class UserService {
 	 */
 	public String getBizModulesOfUser(Dto inDto) {
 		List<Aos_sys_modulePO> aos_sys_modulePOs = systemService.getBizModulesOfUser(inDto);
-		return toTreeModal(aos_sys_modulePOs);
+		return TreeBuilder.build(SystemUtils.toTreeModal(aos_sys_modulePOs));
 	}
 
 	/**
@@ -683,7 +683,7 @@ public class UserService {
 	 */
 	public String getAdminModulesOfUser(Dto inDto) {
 		List<Aos_sys_modulePO> aos_sys_modulePOs = systemService.getAdminModulesOfUser(inDto);
-		return toTreeModal(aos_sys_modulePOs);
+		return TreeBuilder.build(SystemUtils.toTreeModal(aos_sys_modulePOs));
 	}
 
 	/**
@@ -700,37 +700,6 @@ public class UserService {
 			}
 		}
 		return elementVOs;
-	}
-
-	/**
-	 * 将后台树结构转换为前端树模型
-	 * 
-	 * @param aos_sys_modulePOs
-	 * @return
-	 */
-	private String toTreeModal(List<Aos_sys_modulePO> aos_sys_modulePOs) {
-		List<TreeNode> treeNodes = Lists.newArrayList();
-		for (Aos_sys_modulePO aos_sys_modulePO : aos_sys_modulePOs) {
-			TreeNode treeNode = new TreeNode();
-			treeNode.setId(aos_sys_modulePO.getId_());
-			treeNode.setText(aos_sys_modulePO.getName_());
-			treeNode.setParentId(aos_sys_modulePO.getParent_id_());
-			treeNode.setIcon(aos_sys_modulePO.getIcon_name_());
-			treeNode.setA(aos_sys_modulePO.getUrl_());
-			boolean leaf = true;
-			if (aos_sys_modulePO.getIs_leaf_().equals("0")) {
-				leaf = false;
-			}
-			treeNode.setLeaf(leaf);
-			boolean expanded = true;
-			if (aos_sys_modulePO.getIs_auto_expand_().equals("0")) {
-				expanded = false;
-			}
-			treeNode.setExpanded(expanded);
-			treeNodes.add(treeNode);
-		}
-		String jsonString = TreeBuilder.build(treeNodes);
-		return jsonString;
 	}
 
 }

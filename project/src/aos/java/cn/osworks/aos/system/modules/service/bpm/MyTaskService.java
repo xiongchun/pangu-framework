@@ -20,7 +20,7 @@ import cn.osworks.aos.system.asset.DicCons;
 public class MyTaskService {
 
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	@Autowired
 	private BpmService bpmService;
 	
@@ -32,7 +32,7 @@ public class MyTaskService {
 	 */
 	public List<Dto>listTodoTasks(Dto inDto){
 		inDto.put("suspension_state_", Integer.valueOf(DicCons.SUSPENSION_STATE_ACTIVED));
-		List<Dto> list = sqlDao.list("MyBpm.listTodoTasksPage", inDto);
+		List<Dto> list = sysDao.list("MyBpm.listTodoTasksPage", inDto);
 		return list;
 	}
 	
@@ -44,7 +44,7 @@ public class MyTaskService {
 	 */
 	public List<Dto> listClaimTasks(Dto inDto){
 		inDto.put("suspension_state_", Integer.valueOf(DicCons.SUSPENSION_STATE_ACTIVED));
-		List<Dto> list = sqlDao.list("MyBpm.listClaimTasksPage", inDto);
+		List<Dto> list = sysDao.list("MyBpm.listClaimTasksPage", inDto);
 		return list;
 	}
 	
@@ -82,7 +82,7 @@ public class MyTaskService {
 	 */
 	public List<Dto>listDoneTasks(Dto inDto){
 		inDto.put("proctask_status_", DicCons.PROCTASK_STATUS_BJ);
-		List<Dto> list = sqlDao.list("History.listTasksPage", inDto);
+		List<Dto> list = sysDao.list("History.listTasksPage", inDto);
 		return list;
 	}
 }

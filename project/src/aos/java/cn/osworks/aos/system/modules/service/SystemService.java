@@ -40,7 +40,7 @@ import com.google.common.collect.Lists;
 public class SystemService {
 
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	@Autowired
 	private Aos_sys_catalogMapper aos_sys_catalogMapper;
 	@Autowired
@@ -78,7 +78,7 @@ public class SystemService {
 		if (DicCons.USER_TYPE_SUPER.equals(userInfoVO.getType_())) {
 			// 超级用户不做任何限制
 			inDto.put("cascade_id_", "0");
-			aos_sys_modulePOs = sqlDao.list("Auth.getModuleTreeBasedRoot", inDto);
+			aos_sys_modulePOs = sysDao.list("Auth.getModuleTreeBasedRoot", inDto);
 		} else {
 			aos_sys_modulePOs = getBizModulesOfUser(inDto);
 		}
@@ -109,8 +109,8 @@ public class SystemService {
 	 * @return
 	 */
 	public List<Aos_sys_modulePO> getModulesByUser(Dto inDto) {
-		inDto.put("fnLength", DBDialectUtils.fnLength(sqlDao.getDatabaseId()));
-		List<Aos_sys_modulePO> modulesList = sqlDao.list("Auth.getModulesByUser", inDto);
+		inDto.put("fnLength", DBDialectUtils.fnLength(sysDao.getDatabaseId()));
+		List<Aos_sys_modulePO> modulesList = sysDao.list("Auth.getModulesByUser", inDto);
 		return modulesList;
 	}
 
@@ -120,8 +120,8 @@ public class SystemService {
 	 * @return
 	 */
 	public List<Aos_sys_modulePO> getModulesByPost(Dto inDto) {
-		inDto.put("fnLength", DBDialectUtils.fnLength(sqlDao.getDatabaseId()));
-		List<Aos_sys_modulePO> modulesList = sqlDao.list("Auth.getModulesByPost", inDto);
+		inDto.put("fnLength", DBDialectUtils.fnLength(sysDao.getDatabaseId()));
+		List<Aos_sys_modulePO> modulesList = sysDao.list("Auth.getModulesByPost", inDto);
 		return modulesList;
 	}
 
@@ -131,8 +131,8 @@ public class SystemService {
 	 * @return
 	 */
 	public List<Aos_sys_modulePO> getModulesByRole(Dto inDto) {
-		inDto.put("fnLength", DBDialectUtils.fnLength(sqlDao.getDatabaseId()));
-		List<Aos_sys_modulePO> modulesList = sqlDao.list("Auth.getModulesByRole", inDto);
+		inDto.put("fnLength", DBDialectUtils.fnLength(sysDao.getDatabaseId()));
+		List<Aos_sys_modulePO> modulesList = sysDao.list("Auth.getModulesByRole", inDto);
 		return modulesList;
 	}
 
@@ -142,7 +142,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<ElementVO> getElementsByPost(Dto inDto) {
-		List<ElementVO> cmpList = sqlDao.list("Auth.getElementsByPost", inDto);
+		List<ElementVO> cmpList = sysDao.list("Auth.getElementsByPost", inDto);
 		return cmpList;
 	}
 
@@ -152,7 +152,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<ElementVO> getElementsByRole(Dto inDto) {
-		List<ElementVO> cmpList = sqlDao.list("Auth.getElementsByRole", inDto);
+		List<ElementVO> cmpList = sysDao.list("Auth.getElementsByRole", inDto);
 		return cmpList;
 	}
 
@@ -162,7 +162,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<ElementVO> getElementsByUser(Dto inDto) {
-		List<ElementVO> cmpList = sqlDao.list("Auth.getElementsByUser", inDto);
+		List<ElementVO> cmpList = sysDao.list("Auth.getElementsByUser", inDto);
 		return cmpList;
 	}
 
@@ -256,7 +256,7 @@ public class SystemService {
 		inDto.put("user_id_", userInfoVO.getId_());
 		// 快捷菜单和浮动菜单集合，可能含有垃圾数据
 		// 参数不含自定义菜单类型
-		List<Aos_sys_modulePO> quickSys_modulePOs = sqlDao.list("Auth.listUserQuickModuleSelected", inDto);
+		List<Aos_sys_modulePO> quickSys_modulePOs = sysDao.list("Auth.listUserQuickModuleSelected", inDto);
 		// 当前用户所有菜单节点
 		List<Aos_sys_modulePO> curAos_sys_modulePOs = getBizModulesOfUserOrRoot(inDto);
 		String jql = "SELECT * FROM :AOSList WHERE id_ = :id_";
@@ -270,12 +270,12 @@ public class SystemService {
 			if (AOSUtils.isEmpty(tempList)) {
 				// 删除垃圾数据
 				delDto.put("module_id_", aos_sys_modulePO.getId_());
-				sqlDao.delete("Auth.deleteAos_sys_module_user_navByDto2", delDto);
+				sysDao.delete("Auth.deleteAos_sys_module_user_navByDto2", delDto);
 			}
 		}
 		// 再次清理树枝节点
 		inDto.put("is_leaf_", AOSCons.NO);
-		quickSys_modulePOs = sqlDao.list("Auth.listUserQuickModuleSelected", inDto);
+		quickSys_modulePOs = sysDao.list("Auth.listUserQuickModuleSelected", inDto);
 		// 进行排序，先清理深度较深的树枝节点
 		//Java再排序规避DB兼容性问题
 		String jql2 = "SELECT * FROM :AOSList ORDER BY toNumber(id_) DESC"; 
@@ -283,10 +283,10 @@ public class SystemService {
 		for (Aos_sys_modulePO aos_sys_modulePO : quickSys_modulePOs) {
 			inDto.put("module_id_", aos_sys_modulePO.getId_());
 			// 删除自定义菜单映射表里没有子孙节点的树枝节点
-			int rows = (Integer) sqlDao.selectOne("Auth.rows_aos_sys_module", inDto);
+			int rows = (Integer) sysDao.selectOne("Auth.rows_aos_sys_module", inDto);
 			if (rows == 0) {
 				delDto.put("module_id_", aos_sys_modulePO.getId_());
-				sqlDao.delete("Auth.deleteAos_sys_module_user_navByDto2", delDto);
+				sysDao.delete("Auth.deleteAos_sys_module_user_navByDto2", delDto);
 			}
 		}
 	}
@@ -372,7 +372,7 @@ public class SystemService {
 	public MasterDetailModel getMasterDetailPageModel(Dto inDto) {
 		MasterDetailModel masterDetailPageModel = new MasterDetailModel();
 		inDto.put("module_id_", inDto.getString(AOSCons.MODULE_ID_KEY));
-		List<Aos_sys_pagePO> aos_sys_pagePOs = sqlDao.list("Resource.getSubNavMenuByModuleID", inDto);
+		List<Aos_sys_pagePO> aos_sys_pagePOs = sysDao.list("Resource.getSubNavMenuByModuleID", inDto);
 		masterDetailPageModel.setSubPages(aos_sys_pagePOs);
 		for (Aos_sys_pagePO aos_sys_pagePO : aos_sys_pagePOs) {
 			if (StringUtils.equals(aos_sys_pagePO.getIs_default_(), AOSCons.YES)) {

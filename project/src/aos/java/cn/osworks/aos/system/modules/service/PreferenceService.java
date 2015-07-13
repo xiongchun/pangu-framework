@@ -59,7 +59,7 @@ public class PreferenceService {
 	@Autowired
 	private ModuleService moduleService;
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -181,7 +181,7 @@ public class PreferenceService {
 		delDto.put("type_", DicCons.MODULE_USER_NAV_TYPE_QUICK);
 		List<Aos_sys_module_user_navPO> aos_sys_module_user_navPOs = aos_sys_module_user_navMapper.list(delDto);
 		//清空当前用户快捷菜单信息
-		sqlDao.delete("Auth.deleteAos_sys_module_user_navByDto", delDto);
+		sysDao.delete("Auth.deleteAos_sys_module_user_navByDto", delDto);
 		String selecttions[] = inDto.getSelection();
 		for (String module_id_ : selecttions) {
 			Aos_sys_module_user_navPO aos_sys_module_user_navPO = new Aos_sys_module_user_navPO();
@@ -280,7 +280,7 @@ public class PreferenceService {
 	public String getModuleTree4QuickMenu(Dto inDto) {
 		inDto.put("user_id_", inDto.getUserInfo().getId_());
 		inDto.put("type_", DicCons.MODULE_USER_NAV_TYPE_QUICK);
-		List<Aos_sys_modulePO> aos_sys_modulePOs = sqlDao.list("Auth.listUserQuickModuleSelected", inDto);
+		List<Aos_sys_modulePO> aos_sys_modulePOs = sysDao.list("Auth.listUserQuickModuleSelected", inDto);
 		List<TreeNode> treeNodes = moduleService.toTreeModal(aos_sys_modulePOs);
 		return TreeBuilder.build(treeNodes);
 	}

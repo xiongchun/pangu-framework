@@ -408,7 +408,8 @@ public class UserController {
 	 */
 	@RequestMapping(value = "getBizModulesOfUser")
 	public void getBizModulesOfUser(HttpServletRequest request, HttpServletResponse response) {
-		WebCxt.write(response, userService.getBizModulesOfUser(Dtos.newDto(request)));
+		String jsonString = userService.getBizModulesOfUser(Dtos.newDto(request));
+		WebCxt.write(response, jsonString);
 	}
 	
 	/**

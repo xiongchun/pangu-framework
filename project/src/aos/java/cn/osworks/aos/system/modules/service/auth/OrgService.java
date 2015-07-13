@@ -36,7 +36,7 @@ public class OrgService {
 	@Autowired
 	private Aos_sys_orgMapper aos_sys_orgMapper;
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	@Autowired
 	private Aos_sys_postMapper aos_sys_postMapper;
 	@Autowired
@@ -100,7 +100,7 @@ public class OrgService {
 			Dto dto = Dtos.newDto();
 			dto.put("parent_id_", updatePO.getId_());
 			dto.put("pareant_name_", updatePO.getName_());
-			sqlDao.update("Auth.updateAos_sys_orgByParent_id_", dto);
+			sysDao.update("Auth.updateAos_sys_orgByParent_id_", dto);
 		}
 		// 更新节点
 		aos_sys_orgMapper.updateByKey(updatePO);
@@ -209,18 +209,18 @@ public class OrgService {
 	    
 	    for (Aos_sys_postPO aos_sys_postPO : aos_sys_postPOs) {
 			//删除岗位-菜单关联表
-	    	sqlDao.delete("Auth.deleteAos_sys_module_postByPost_id_", Dtos.newDto("post_id_", aos_sys_postPO.getId_()));
+	    	sysDao.delete("Auth.deleteAos_sys_module_postByPost_id_", Dtos.newDto("post_id_", aos_sys_postPO.getId_()));
 	    	//删除岗位-用户关联表
-	    	sqlDao.delete("Auth.deleteAos_sys_user_postByPost_id_", Dtos.newDto("post_id_", aos_sys_postPO.getId_()));
+	    	sysDao.delete("Auth.deleteAos_sys_user_postByPost_id_", Dtos.newDto("post_id_", aos_sys_postPO.getId_()));
 	    	//删除岗位自己
 	    	aos_sys_postMapper.deleteByKey(aos_sys_postPO.getId_());
 		}
 	    
 	    for (Aos_sys_userPO aos_sys_userPO : aos_sys_userPOs) {
 	    	//删除用户-菜单关联表
-	    	sqlDao.delete("Auth.deleteAos_sys_module_userByUser_id_", aos_sys_userPO.getId_());
+	    	sysDao.delete("Auth.deleteAos_sys_module_userByUser_id_", aos_sys_userPO.getId_());
 	    	//删除用户-岗位关联表
-	    	sqlDao.delete("Auth.deleteAos_sys_user_postByUser_id_", Dtos.newDto("user_id_", Dtos.newDto("user_id_", aos_sys_userPO.getId_())));
+	    	sysDao.delete("Auth.deleteAos_sys_user_postByUser_id_", Dtos.newDto("user_id_", Dtos.newDto("user_id_", aos_sys_userPO.getId_())));
 	    	//删除用户配置表
 	    	aos_sys_user_cfgMapper.deleteByKey(aos_sys_userPO.getId_());
 	    	//删除用户自己

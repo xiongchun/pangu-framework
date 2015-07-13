@@ -32,7 +32,7 @@ public class DictionaryController {
 	private DictionaryService dictionaryService;
 	
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	
 	/**
 	 * 页面初始化
@@ -54,7 +54,7 @@ public class DictionaryController {
 	public void listDicindexInfos(HttpServletRequest request, HttpServletResponse response) {
 		Dto qDto = Dtos.newDto(request);
 		qDto.setOrder("id_ DESC");
-		List<Aos_sys_dic_indexPO> list = sqlDao.list("MasterData.listDicindexInfos", qDto);
+		List<Aos_sys_dic_indexPO> list = sysDao.list("MasterData.listDicindexInfos", qDto);
 		String outString = AOSJson.toGridJson(list, list.size());
 		WebCxt.write(response, outString);
 	}
@@ -69,7 +69,7 @@ public class DictionaryController {
 	public void listDicInfos(HttpServletRequest request, HttpServletResponse response) {
 		Dto qDto = Dtos.newDto(request);
 		qDto.setOrder("code_, id_ DESC");
-		List<Aos_sys_dicPO> list = sqlDao.list("MasterData.listDicInfos", qDto);
+		List<Aos_sys_dicPO> list = sysDao.list("MasterData.listDicInfos", qDto);
 		String outString = AOSJson.toGridJson(list, list.size());
 		WebCxt.write(response, outString);
 	}

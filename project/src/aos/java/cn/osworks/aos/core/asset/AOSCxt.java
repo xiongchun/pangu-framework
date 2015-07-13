@@ -21,7 +21,7 @@ public class AOSCxt {
 	/**
 	 * 缺省的SqlDao组件
 	 */
-	public static SqlDao sqlDao = getSqlDao();
+	public static SqlDao sysDao = getSysDao();
 
 	/**
 	 * 系统服务组件AosService
@@ -55,9 +55,9 @@ public class AOSCxt {
 	 * 
 	 * @return
 	 */
-	public static SqlDao getSqlDao() {
-		SqlDao sqlDao = (SqlDao) getBean("sqlDao");
-		return sqlDao;
+	public static SqlDao getSysDao() {
+		SqlDao sysDao = (SqlDao) getBean("sysDao");
+		return sysDao;
 	}
 
 	/**
@@ -66,9 +66,9 @@ public class AOSCxt {
 	 * @param springBeaID
 	 * @return
 	 */
-	public static SqlDao getSqlDao(String sqlDaoID) {
-		SqlDao sqlDao = (SqlDao) getBean(sqlDaoID);
-		return sqlDao;
+	public static SqlDao getSysDao(String sysDaoID) {
+		SqlDao sysDao = (SqlDao) getBean(sysDaoID);
+		return sysDao;
 	}
 	
 	/**

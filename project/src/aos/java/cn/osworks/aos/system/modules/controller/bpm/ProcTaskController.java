@@ -29,7 +29,7 @@ import cn.osworks.aos.system.modules.service.bpm.ProcTaskService;
 public class ProcTaskController {
 
     @Autowired
-    private SqlDao sqlDao;
+    private SqlDao sysDao;
     @Autowired
     private TaskService taskService;
     @Autowired

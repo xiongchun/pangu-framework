@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
@@ -24,17 +23,16 @@
 	<context:component-scan base-package="cn.osworks.aos;com.mycorp.mysystem" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 
-	<!-- JDBC 数据源 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<!-- 平台缺省 JDBC 数据源 -->
+	<bean id="dataSource.sys" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-        <property name="initialSize" value="10" />
+		<property name="initialSize" value="10" />
 		<property name="maxActive" value="30" />
 		<property name="maxIdle" value="15" />
 		<property name="minIdle" value="5" />
@@ -44,39 +42,55 @@
 		<property name="logAbandoned" value="true" />
 	</bean>
 
-	<!-- JDBC事务管理器 -->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
+	<!-- 平台缺省数据源 JDBC事务管理器 -->
+	<bean id="transactionManager.sys" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource.sys" />
 	</bean>
-	
-	<!-- 注解驱动的声明式事务管理 -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
 
-	<!-- SqlSessionFactory配置 -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
+	<!-- 注解驱动的声明式事务管理 -->
+	<tx:annotation-driven transaction-manager="transactionManager.sys" />
+
+	<!-- 平台缺省数据源 SqlSessionFactory配置 -->
+	<bean id="sqlSessionFactory.sys" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource.sys" />
 		<!-- 请将com.mycorp.mysystem.**改为你的项目扫描路径 -->
 		<property name="typeAliasesPackage" value="cn.osworks.aos;com.mycorp.mysystem" />
 		<property name="mapperLocations" value="classpath:**/*Mapper.xml" />
 		<property name="configLocation" value="classpath:aos.mybatis.cfg.xml" />
 	</bean>
 
-	<!-- 扫描实体数据访问对象Mapper。!待解决。这会导致Mybatis的SQLMapper文件校验出错信息打印输出的问题  -->
+	<!-- 扫描实体数据访问对象Mapper。!待解决。这会导致Mybatis的SQLMapper文件校验出错信息打印输出的问题 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-	    <!-- 请将com.mycorp.mysystem.**改为你的项目扫描路径 -->
+		<!-- 请将com.mycorp.mysystem.**改为你的项目扫描路径 -->
 		<property name="basePackage" value="cn.osworks.aos;com.mycorp.mysystem" />
 		<property name="annotationClass" value="cn.osworks.aos.core.annotation.Mapper" />
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory.sys" />
 	</bean>
-     
-	<!-- 缺省全局通用数据访问对象，缺省数据访问对象连接到dataSource Bean配置的数据源 -->
-	<bean id="sqlDao" class="cn.osworks.aos.core.dao.SqlDao">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+
+	<!-- 平台缺省数据源的SQL通用访问接口 -->
+	<bean id="sysDao" class="cn.osworks.aos.core.dao.SqlDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory.sys" />
 	</bean>
-	
+
 	<!-- ID服务组件 -->
 	<bean id="idService" class="cn.osworks.aos.core.id.IdService">
 		<property name="aos_sys_sequenceMapper" ref="aos_sys_sequenceMapper" />
 	</bean>
-    
+
+	<!-- ================= 演示模块使用的数据源>> ======================= -->
+	<bean id="dataSource.demo" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="org.h2.Driver" />
+		<property name="url" value="jdbc:h2:./webapp/data/aos" />
+	</bean>
+	<bean id="sqlSessionFactory.demo" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource.demo" />
+		<property name="typeAliasesPackage" value="cn.osworks.aos.demo" />
+		<property name="mapperLocations" value="classpath:cn/osworks/aos/demo/**/*Mapper.xml" />
+		<property name="configLocation" value="classpath:aos.mybatis.cfg.xml" />
+	</bean>
+	<bean id="demoDao" class="cn.osworks.aos.core.dao.SqlDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory.demo" />
+	</bean>
+	<!-- ================= <<演示模块使用的数据源 ======================= -->
+
 </beans>

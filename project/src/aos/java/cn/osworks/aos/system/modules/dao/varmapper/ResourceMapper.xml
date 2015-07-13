@@ -44,6 +44,26 @@
 		DELETE FROM aos_sys_page WHERE  module_id_ = #{module_id_}
 	</delete>
 	
+	<!-- 删除模块时清除模块授权信息 -->
+	<delete id="deleteAos_sys_module_user"  parameterType="String">
+		DELETE FROM aos_sys_module_user WHERE  module_id_ = #{module_id_}
+	</delete>
+	
+	<!-- 删除模块时清除模块授权信息 -->
+	<delete id="deleteAos_sys_module_user_nav"  parameterType="String">
+		DELETE FROM aos_sys_module_user_nav WHERE  module_id_ = #{module_id_}
+	</delete>
+	
+	<!-- 删除模块时清除模块授权信息 -->
+	<delete id="deleteAos_sys_module_role"  parameterType="String">
+		DELETE FROM aos_sys_module_role WHERE  module_id_ = #{module_id_}
+	</delete>
+	
+	<!-- 删除模块时清除模块授权信息 -->
+	<delete id="deleteAos_sys_module_post"  parameterType="String">
+		DELETE FROM aos_sys_module_post WHERE  module_id_ = #{module_id_}
+	</delete>
+	
 	<!-- 查询页面集合 -->
 	<select id="listPages4Mgr" parameterType="Dto" resultType="PageVO" >
 		SELECT

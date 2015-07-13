@@ -59,7 +59,7 @@ public class ByteObjController {
     @RequestMapping(value = "listByteObjs")
     public void listByteObjs(HttpServletRequest request, HttpServletResponse response) {
         Dto qDto = Dtos.newDto(request);
-        List<Dto> list = AOSCxt.sqlDao.list("Resource.listByteObjs4Page", qDto);
+        List<Dto> list = AOSCxt.sysDao.list("Resource.listByteObjs4Page", qDto);
         String outString = AOSJson.toGridJson(list, qDto.getPageTotal());
         WebCxt.write(response, outString);
     }

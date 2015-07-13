@@ -50,7 +50,7 @@ public class RoleController {
 	@Autowired 
 	private PageService uiCmpService;
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	
 	/**
 	 * 页面初始化
@@ -101,7 +101,7 @@ public class RoleController {
 		}else {
 			inDto.put("creater_org_id_", inDto.getUserInfo().getOrg_id_());
 		}
-		List<Dto> list = sqlDao.list("Auth.listRoleInfosPage", inDto);
+		List<Dto> list = sysDao.list("Auth.listRoleInfosPage", inDto);
 		String outString = AOSJson.toGridJson(list, inDto.getPageTotal());
 		WebCxt.write(response, outString);
 	}

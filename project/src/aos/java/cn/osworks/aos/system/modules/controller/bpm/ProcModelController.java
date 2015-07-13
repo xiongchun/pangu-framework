@@ -33,7 +33,7 @@ public class ProcModelController {
     @Autowired
     private ProcModelService procModelService;
     @Autowired
-    private SqlDao sqlDao;
+    private SqlDao sysDao;
 
     /**
      * 页面初始化
@@ -54,7 +54,7 @@ public class ProcModelController {
     @RequestMapping(value = "listModels")
     public void listModels(HttpServletRequest request, HttpServletResponse response) {
         Dto qDto = Dtos.newDto(request);
-        List<Dto> list = sqlDao.list("Bpm.listModelsPage", qDto);
+        List<Dto> list = sysDao.list("Bpm.listModelsPage", qDto);
         String outString = AOSJson.toGridJson(list, qDto.getPageTotal());
         WebCxt.write(response, outString);
     }

@@ -41,7 +41,7 @@ import com.google.common.collect.Lists;
 public class PostService {
 	
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	@Autowired
 	private Aos_sys_orgMapper aos_sys_orgMapper;
 	@Autowired
@@ -92,7 +92,7 @@ public class PostService {
 			Aos_sys_orgPO aos_sys_orgPO = aos_sys_orgMapper.selectByKey(aos_sys_postPO.getOrg_id_());
 			aos_sys_postPO.setOrg_cascade_id_(aos_sys_orgPO.getCascade_id_());
 	    	//删除岗位-用户关联表
-	    	sqlDao.delete("Auth.deleteAos_sys_user_postByPost_id_", Dtos.newDto("post_id_", aos_sys_postPO.getId_()));
+	    	sysDao.delete("Auth.deleteAos_sys_user_postByPost_id_", Dtos.newDto("post_id_", aos_sys_postPO.getId_()));
 		}
 		aos_sys_postMapper.updateByKey(aos_sys_postPO);
 	}
@@ -110,11 +110,11 @@ public class PostService {
 		for (String id_ : selections) {
 			aos_sys_postMapper.deleteByKey(id_);
 	    	//删除岗位-用户关联表
-	    	sqlDao.delete("Auth.deleteAos_sys_user_postByPost_id_", Dtos.newDto("post_id_", id_));
+	    	sysDao.delete("Auth.deleteAos_sys_user_postByPost_id_", Dtos.newDto("post_id_", id_));
 	    	//删除岗位-菜单关联表
-	    	sqlDao.delete("Auth.deleteAos_sys_module_postByPost_id_", Dtos.newDto("post_id_", id_));
+	    	sysDao.delete("Auth.deleteAos_sys_module_postByPost_id_", Dtos.newDto("post_id_", id_));
 	    	//删除岗位-页面元素关联表
-	    	sqlDao.delete("Auth.deleteAos_sys_element_grantByPost_id_", id_);
+	    	sysDao.delete("Auth.deleteAos_sys_element_grantByPost_id_", id_);
 	    	del++;
 		}
 		String msg = "操作完成, ";
@@ -157,7 +157,7 @@ public class PostService {
 			Aos_sys_orgPO aos_sys_orgPO = aos_sys_orgMapper.selectByKey(aos_sys_postPO.getOrg_id_());
 			aos_sys_postPO.setOrg_cascade_id_(aos_sys_orgPO.getCascade_id_());
 	    	//删除岗位-用户关联表
-	    	sqlDao.delete("Auth.deleteAos_sys_user_postByPost_id_", Dtos.newDto("post_id_", id_));
+	    	sysDao.delete("Auth.deleteAos_sys_user_postByPost_id_", Dtos.newDto("post_id_", id_));
 			aos_sys_postMapper.updateByKey(aos_sys_postPO);
 		}
 	}
@@ -178,7 +178,7 @@ public class PostService {
 				qDto.put("org_cascade_id_", "0");
 			}
 		}
-		List<Dto> postInfos = sqlDao.list("Auth.listPostInfosPage", qDto);
+		List<Dto> postInfos = sysDao.list("Auth.listPostInfosPage", qDto);
 		return postInfos;
 	}
 	
@@ -189,7 +189,7 @@ public class PostService {
 	 * @return
 	 */
 	public List<Dto> listGrantedUsersOfPost(Dto inDto){
-		List<Dto> grantedList = sqlDao.list("Auth.listGrantedUsersOfPost", inDto);
+		List<Dto> grantedList = sysDao.list("Auth.listGrantedUsersOfPost", inDto);
 		return grantedList;
 	}
 	
@@ -265,7 +265,7 @@ public class PostService {
 	public Dto getModuleTree4Selected(Dto inDto){
 		inDto.setOrder("sort_no_ ASC");
 		Dto outDto = Dtos.newDto();
-		List<Aos_sys_modulePO> aos_sys_modulePOs = sqlDao.list("Auth.listPostModuleSelected", inDto);
+		List<Aos_sys_modulePO> aos_sys_modulePOs = sysDao.list("Auth.listPostModuleSelected", inDto);
 		List<TreeNode> treeNodes = Lists.newArrayList();
 		for (Aos_sys_modulePO aos_sys_modulePO : aos_sys_modulePOs) {
 			TreeNode treeNode = new TreeNode();
@@ -303,7 +303,7 @@ public class PostService {
 		delDto.put("post_id_", pDto.getString("post_id_"));
 		delDto.put("grant_type_", grant_type_);
 		//每次授权都将历史数据清零
-		sqlDao.delete("Auth.deleteAos_sys_module_postByPost_id_", delDto);
+		sysDao.delete("Auth.deleteAos_sys_module_postByPost_id_", delDto);
 		String[] selections = pDto.getSelection();
 		Aos_sys_module_postPO aos_sys_module_postPO = new Aos_sys_module_postPO();
 		for (String id_ : selections) {

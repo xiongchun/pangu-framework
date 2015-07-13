@@ -48,7 +48,7 @@ public class PageService {
 	@Autowired
 	private Aos_sys_moduleMapper aos_sys_moduleMapper;
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	@Autowired
 	private Aos_sys_page_el_grantMapper aos_sys_page_el_grantMapper;
 	@Autowired
@@ -65,8 +65,8 @@ public class PageService {
 	 * @return
 	 */
 	public List<PageVO> listPages4Mgr(Dto inDto) {
-		List<PageVO> list = sqlDao.list("Resource.listPages4Mgr", inDto);
-		List<PageVO> mainList = sqlDao.list("Resource.listModuleMainPages", inDto);
+		List<PageVO> list = sysDao.list("Resource.listPages4Mgr", inDto);
+		List<PageVO> mainList = sysDao.list("Resource.listModuleMainPages", inDto);
 		list.addAll(mainList);
 		for (PageVO pageVO : mainList) {
 			pageVO.setName_(pageVO.getName_() + "-主页面");
@@ -84,7 +84,7 @@ public class PageService {
 	 */
 	public List<Dto> listElements4Mgr(Dto inDto) {
 		inDto.setOrder("id_ DESC");
-		List<Dto> list = sqlDao.list("Resource.listElements4Mgr", inDto);
+		List<Dto> list = sysDao.list("Resource.listElements4Mgr", inDto);
 		for (Dto dto : list) {
 			if (StringUtils.equals(dto.getString("page_id_"), dto.getString("module_id_"))) {
 				//主页面
@@ -177,7 +177,7 @@ public class PageService {
 			List<Aos_sys_page_elPO> aos_sys_page_elPOs = aos_sys_page_elMapper.list(Dtos.newDto("page_id_", page_id_));
 			for (Aos_sys_page_elPO aos_sys_page_elPO : aos_sys_page_elPOs) {
 				// 清除页面元素授权资源
-				sqlDao.delete("Resource.deleteAos_sys_page_el_grant", aos_sys_page_elPO.getId_());
+				sysDao.delete("Resource.deleteAos_sys_page_el_grant", aos_sys_page_elPO.getId_());
 				// 清除页面元素
 				aos_sys_page_elMapper.deleteByKey(aos_sys_page_elPO.getId_());
 			}
@@ -260,7 +260,7 @@ public class PageService {
 		for (String id_ : selections) {
 			aos_sys_page_elMapper.deleteByKey(id_);
 			// 清除授权资源
-			sqlDao.delete("Resource.deleteAos_sys_page_el_grant", id_);
+			sysDao.delete("Resource.deleteAos_sys_page_el_grant", id_);
 		}
 		outDto.setAppMsg(AOSUtils.merge("操作成功，删除{0}条页面元素记录。", selections.length));
 		return outDto;
@@ -274,7 +274,7 @@ public class PageService {
 	 */
 	public List<Dto> listElement4Grant(Dto inDto) {
 		inDto.setOrder("module_id_, id_ DESC");
-		List<Dto> elementInfos = sqlDao.list("Resource.listElement4Grant", inDto);
+		List<Dto> elementInfos = sysDao.list("Resource.listElement4Grant", inDto);
 		Dto qDto = Dtos.newDto();
 		for (Dto elementDto : elementInfos) {
 			qDto.put("el_id_", elementDto.getString("id_"));

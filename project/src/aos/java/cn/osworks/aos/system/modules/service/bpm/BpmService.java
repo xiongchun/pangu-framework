@@ -17,7 +17,7 @@ import cn.osworks.aos.core.dao.SqlDao;
 public class BpmService {
 
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 
 	@Autowired
 	private TaskService taskService;
@@ -44,6 +44,6 @@ public class BpmService {
 	@Transactional
 	public void unclaim(String id_) {
 		taskService.unclaim(id_);
-		sqlDao.update("Bpm.update_claim_time_when_unclaim", id_);
+		sysDao.update("Bpm.update_claim_time_when_unclaim", id_);
 	}
 }

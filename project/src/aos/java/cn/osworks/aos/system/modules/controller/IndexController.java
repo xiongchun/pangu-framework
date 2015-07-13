@@ -54,7 +54,7 @@ public class IndexController {
 	@Autowired
 	private SystemService systemService;
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 
 	/**
 	 * 登录页面初始化

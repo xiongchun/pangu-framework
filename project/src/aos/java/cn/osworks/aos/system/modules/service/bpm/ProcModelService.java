@@ -43,7 +43,7 @@ public class ProcModelService {
 	@Autowired
 	private RepositoryService repositoryService;
 	@Autowired
-	private SqlDao sqlDao;
+	private SqlDao sysDao;
 	@Autowired
 	private Aos_sys_wf_procdefMapper aos_sys_wf_procdefMapper;
 	@Autowired
@@ -94,7 +94,7 @@ public class ProcModelService {
 		modelDto.put("id_", aos_sys_wf_modelPO.getModel_id_());
 		modelDto.put("name_", aos_sys_wf_modelPO.getName_());
 		// 更新re_model表
-		sqlDao.update("Bpm.update_re_model_bykey", modelDto);
+		sysDao.update("Bpm.update_re_model_bykey", modelDto);
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class ProcModelService {
 		Dto updateDto = Dtos.newDto();
 		updateDto.put("deployment_id_", deployment.getId());
 		updateDto.put("id_", model.getId());
-		sqlDao.update("Bpm.update_re_model_bykey", updateDto);
+		sysDao.update("Bpm.update_re_model_bykey", updateDto);
 
 		// 写流程定义扩展表
 		Aos_sys_wf_procdefPO aos_sys_wf_procdefPO = new Aos_sys_wf_procdefPO();

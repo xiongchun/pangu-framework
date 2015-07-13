@@ -28,10 +28,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 
 /**
- * <b>BPM工具类</b>
+ * BPM工具类
  * 
  * @author OSWorks-XC
- * @date 2009-10-06
  */
 public class BPMUtils {
 

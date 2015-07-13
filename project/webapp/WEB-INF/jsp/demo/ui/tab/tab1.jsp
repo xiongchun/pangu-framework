@@ -9,6 +9,9 @@
 <aos:onready>
 	<aos:viewport layout="border">
 		<aos:tabpanel id="_id_tabs" region="center" activeTab="1" width="500" plain="true" tabBarHeight="30">
+		    <aos:plugins>
+			    <aos:tabCloseMenu extraItemsTail1="刷新:test:refresh.png" />
+			</aos:plugins>
 			<aos:tab title="选项卡一">
 				<aos:panel html="上海" border="false">
 				</aos:panel>
