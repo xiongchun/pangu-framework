@@ -9,7 +9,7 @@
 </aos:body>
 <aos:onready>
 	<aos:panel id="_id_panel1" icon="config.png" collapsible="true" margin="5" width="500" titleCollapse="true"
-		html="昆明金码坊科技有限公司" bodyPadding="5" renderTo="_id_01" layout="fit" title="测试1">
+		html="AOS应用基础平台" bodyPadding="5" renderTo="_id_01" layout="fit" title="测试1">
 		<aos:docked dock="top">
 			<aos:dockeditem xtype="tbtext" text="文本1" />
 

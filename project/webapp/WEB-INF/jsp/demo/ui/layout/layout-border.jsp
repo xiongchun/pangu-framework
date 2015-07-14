@@ -8,9 +8,9 @@
 </aos:body>
 <aos:onready>
 	<aos:viewport layout="border">
-		<aos:panel region="north" frame="false" html="金码坊" height="60" border="false">
+		<aos:panel region="north" frame="false" html="OSWorks" height="60" border="false">
 		</aos:panel>
-		<aos:panel region="west" title="系统导航" split="true" maxWidth="250" minWidth="100" html="金码坊" width="180"
+		<aos:panel region="west" title="系统导航" split="true" maxWidth="250" minWidth="100" html="OSWorks" width="180"
 			collapsible="true">
 		</aos:panel>
 		<aos:panel icon="vcard.png" layout="border" region="center" title="测试1">
@@ -22,7 +22,7 @@
 			</aos:panel>
 
 			<aos:panel region="west" collapseMode="mini" split="true" headerBorder="0 0 0" bodyBorder="1 1 1 0" maxWidth="250"
-				minWidth="100" html="金码坊" title="系统导航1" width="180" collapsible="true">
+				minWidth="100" html="OSWorks" title="系统导航1" width="180" collapsible="true">
 
 			</aos:panel>
 		</aos:panel>

@@ -15,7 +15,7 @@
 	<div id="_id_01"></div>
 </aos:body>
 <aos:onready>
-	<aos:panel id="_id_panel1" collapsible="true" width="500" titleCollapse="true" html="昆明金码坊科技有限公司" bodyPadding="5"
+	<aos:panel id="_id_panel1" collapsible="true" width="500" titleCollapse="true" html="AOS应用基础平台" bodyPadding="5"
 		renderTo="_id_01" layout="fit" title="状态栏">
 		<aos:docked id="_id_statusbar" xtype="statusbar" dock="bottom" iconCls="app-x-status-init" text="初始完成"
 			defaultText="缺省文本信息">

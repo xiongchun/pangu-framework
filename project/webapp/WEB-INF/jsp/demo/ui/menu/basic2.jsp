@@ -9,7 +9,7 @@
 <aos:onready>
 	<aos:viewport>
 		<aos:window title="菜单演示" autoShow="true" layout="border" width="800" height="600" center="true" frame="true">
-			<aos:panel region="north" frame="false" html="金码坊" height="60">
+			<aos:panel region="north" frame="false" html="OSWorks" height="60">
 			</aos:panel>
 			<aos:panel region="west" title="系统导航"  width="180" split="true">
 				<aos:menu floating="false" plain="true" border="false">
