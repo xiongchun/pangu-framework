@@ -37,9 +37,18 @@
 		<property name="maxIdle" value="15" />
 		<property name="minIdle" value="5" />
 		<property name="removeAbandoned" value="true" />
-		<property name="removeAbandonedTimeout" value="60" />
-		<property name="maxWait" value="10000" />
+		<property name="removeAbandonedTimeout" value="180" />
+		<property name="maxWait" value="120000" />
 		<property name="logAbandoned" value="true" />
+		<!-- 如下为针对Mysql的8小时断开问题的配置 -->
+		<!-- 每timeBetweenEvictionRunsMillis毫秒秒检查一次连接池中空闲的连接，把空闲时间超过minEvictableIdleTimeMillis毫秒的连接断开 -->
+		<!-- minEvictableIdleTimeMillis要小于mysql的等待时间  -->
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="testWhileIdle" value="true" />
+		<property name="timeBetweenEvictionRunsMillis" value="3600000" /> <!-- 1小时 -->
+		<property name="minEvictableIdleTimeMillis" value="18000000" /> <!-- 5小时 -->
+		<property name="testOnBorrow" value="true" />
+		
 	</bean>
 
 	<!-- 平台缺省数据源 JDBC事务管理器 -->
