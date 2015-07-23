@@ -49,7 +49,7 @@
 		<property name="logAbandoned" value="true" />
 		<!-- 每timeBetweenEvictionRunsMillis毫秒检查一次连接池中空闲的连接，把空闲时间超过minEvictableIdleTimeMillis毫秒的连接断开 -->
 		<!-- minEvictableIdleTimeMillis要小于数据库的最大空闲等待断开时间（如部分mysql版本的缺省空闲8小时则自动断开连接等)  -->
-		<property name="validationQuery" value="${jdbc.tsql}" />
+		<property name="validationQuery" value="${jdbc.vsql}" />
 		<property name="timeBetweenEvictionRunsMillis" value="3600000" /> <!-- 1小时 -->
 		<property name="minEvictableIdleTimeMillis" value="18000000" /> <!-- 5小时 -->
 		<!-- 让空闲链接回收器(如果有)进行有效性检测 -->
