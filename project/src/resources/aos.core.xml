@@ -32,10 +32,14 @@
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-		<property name="initialSize" value="10" />
-		<property name="maxActive" value="30" />
-		<property name="maxIdle" value="15" />
+		<!--initialSize: 初始连接数-->
+		<property name="initialSize" value="5" />
+		<!--minIdle: 池中自小空闲连接数-->
 		<property name="minIdle" value="5" />
+		<!--maxIdle: 池中最大空闲连接数-->
+		<property name="maxIdle" value="10" />
+		<!--maxActive: 最大活动链接-->
+		<property name="maxActive" value="20" />
 		<!--removeAbandoned: 是否自动回收超时连接-->
 		<property name="removeAbandoned" value="true" />
 		<!--removeAbandonedTimeout: 超时时间(以秒数为单位)-->  
@@ -43,14 +47,17 @@
 		<!--maxWait: 当没有可用连接时，连接池等待连接释放的最大时间，超过该时间限制会抛出异常，如果设置-1表示无限等待。以毫秒为单位。-->  
 		<property name="maxWait" value="120000" />
 		<property name="logAbandoned" value="true" />
-		<!-- 如下为针对Mysql的8小时断开问题的配置 -->
 		<!-- 每timeBetweenEvictionRunsMillis毫秒检查一次连接池中空闲的连接，把空闲时间超过minEvictableIdleTimeMillis毫秒的连接断开 -->
-		<!-- minEvictableIdleTimeMillis要小于mysql的等待时间  -->
-		<property name="validationQuery" value="SELECT 1" />
-		<property name="testWhileIdle" value="true" />
+		<!-- minEvictableIdleTimeMillis要小于数据库的最大空闲等待断开时间（如部分mysql版本的缺省空闲8小时则自动断开连接等)  -->
+		<property name="validationQuery" value="${jdbc.tsql}" />
 		<property name="timeBetweenEvictionRunsMillis" value="3600000" /> <!-- 1小时 -->
 		<property name="minEvictableIdleTimeMillis" value="18000000" /> <!-- 5小时 -->
+		<!-- 让空闲链接回收器(如果有)进行有效性检测 -->
+		<property name="testWhileIdle" value="true" />
+		<!-- 从连接池之取出时进行有效性检测 -->
 		<property name="testOnBorrow" value="true" />
+		<!-- 归还连接池之前进行有效性检测 -->
+		<property name="testOnReturn" value="true" />
 	</bean>
 
 	<!-- 平台缺省数据源 JDBC事务管理器 -->
