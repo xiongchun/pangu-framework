@@ -24,14 +24,14 @@ public class DaoBuilderConsole {
 		//===================
 		DriverManagerOpt driverOpt = new DriverManagerOpt();
 		//当前版本支持mysql、oracle、sqlserver2005+、H2
-		driverOpt.setDataBaseType(DBType.H2); 
+		driverOpt.setDataBaseType(DBType.MYSQL); 
 		driverOpt.setIp("127.0.0.1");
-		driverOpt.setPort("1521");
+		driverOpt.setPort("3306");
 		//数据库名或数据库实例名
-		driverOpt.setCatalog("./webapp/data/aos");
-		//driverOpt.setCatalog("orcl");
-		driverOpt.setUserName("");
-		driverOpt.setPassword("");
+		//driverOpt.setCatalog("./webapp/data/aos");
+		driverOpt.setCatalog("aos");
+		driverOpt.setUserName("root");
+		driverOpt.setPassword("111111");
 		//===================
 		Dto dto = Dtos.newDto();
 		//改为自己存放Dao相关文件的磁盘文件路径
