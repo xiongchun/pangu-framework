@@ -41,6 +41,7 @@ public class DaoBuilderConsole {
 		dto.put("package", "cn.osworks.aos.demo.dao");
 		dto.put("author", "OSWorks-XC");
 		//指定多张表请用逗号分隔；
+		//!!表名区分大小写的喔
 		dto.put("tables", "DEMO_ORG,DEMO_ACCOUNT");
 		//===================
 		Connection connection = DBMetaInfoUtils.newConnection(driverOpt);
