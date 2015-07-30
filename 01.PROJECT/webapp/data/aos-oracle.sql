@@ -1706,8 +1706,6 @@ EXCEPTION
     prm_appmsg := '出错：' || SQLERRM;
 end aos_proc_demo2;
 
-spool off
-
 
 prompt PL/SQL Developer import file
 prompt Created on 2015年7月30日 by XChun
@@ -4215,4 +4213,4 @@ set define on
 prompt Done.
 
 
-
+spool off
