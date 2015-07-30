@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import cn.osworks.aos.builder.metainfo.vo.TableVO;
 import cn.osworks.aos.core.asset.AOSJson;
 import cn.osworks.aos.core.asset.WebCxt;
 import cn.osworks.aos.core.dao.SqlDao;
+import cn.osworks.aos.core.exception.AOSException;
 import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
 import cn.osworks.aos.system.modules.service.toolkit.CoderService;
@@ -102,6 +104,9 @@ public class CoderController {
 	 */
 	@RequestMapping(value = "buildDaoCode")
 	public void buildDaoCode(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws SQLException {
+		if (StringUtils.equals(WebCxt.getCfgOfDB("run_mode_"), "2")) {
+			throw new AOSException();
+		}
 		Dto inDto = Dtos.newDto(request);
 		coderService.buildDaoCode(inDto);
 		WebCxt.write(response, "Dao代码生成成功，请刷新工程后重启服务器。");
