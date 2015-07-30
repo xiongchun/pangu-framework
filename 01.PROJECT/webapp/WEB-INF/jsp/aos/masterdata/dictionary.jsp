@@ -128,8 +128,8 @@
 			<aos:hiddenfield name="id_" fieldLabel="字典对照流水号" />
 			<aos:textfield name="key_" fieldLabel="字典标识" allowBlank="false" readOnly="true" />
 			<aos:textfield name="name_" fieldLabel="字典名称" allowBlank="false" readOnly="true" />
-			<aos:textfield name="code_" fieldLabel="字典对照码" allowBlank="false" maxLength="10" />
-			<aos:textfield name="desc_" fieldLabel="字典对照值" allowBlank="false" maxLength="50" />
+			<aos:textfield name="code_" fieldLabel="字典对照码" allowBlank="false" maxLength="100" />
+			<aos:textfield name="desc_" fieldLabel="字典对照值" allowBlank="false" maxLength="100" />
 			<aos:combobox name="status_" fieldLabel="当前状态" allowBlank="false" dicField="enabled_" editable="false" />
 			<aos:textareafield name="remark_" fieldLabel="备注" maxLength="200" height="80" />
 		</aos:formpanel>
