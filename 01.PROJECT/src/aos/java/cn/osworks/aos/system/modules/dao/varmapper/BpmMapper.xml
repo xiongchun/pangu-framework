@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 工作流业务域使用的SQL语句 -->
+<mapper namespace="Bpm">
+
+    <!-- 查询并返回模型数据 -->
+    <select id="listModelsPage" parameterType="Dto" resultType="Dto">
+        SELECT
+        <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_wf_modelMapper.column"/>
+        FROM aos_sys_wf_model
+        <where>
+	        <if test="name_ != null and name_ != ''">
+	            AND name_ LIKE '%${name_}%'
+	        </if>
+        </where>
+    </select>
+
+    <!-- 更新模型资源表 -->
+    <update id="update_re_model_bykey" parameterType="Dto">
+        UPDATE aos_act_re_model
+        <set>
+            <if test="deployment_id_ != null">
+                deployment_id_ = #{deployment_id_},
+            </if>
+            <if test="name_ != null">
+                name_ = #{name_},
+            </if>
+        </set>
+        WHERE id_ = #{id_}
+    </update>
+
+    <!-- 查询并返回流程定义数据 -->
+    <select id="listProcDefsPage" parameterType="Dto" resultType="Dto">
+        SELECT
+			aos_act_re_procdef.rev_,  
+			aos_act_re_procdef.category_,  
+			aos_act_re_procdef.name_, 
+			aos_act_re_procdef.key_,  
+			aos_act_re_procdef.version_,  
+			aos_act_re_procdef.deployment_id_,  
+			aos_act_re_procdef.resource_name_,  
+			aos_act_re_procdef.dgrm_resource_name_, 
+			aos_act_re_procdef.description_, 
+			aos_act_re_procdef.has_start_form_key_, 
+			aos_act_re_procdef.has_graphical_notation_, 
+			aos_act_re_procdef.suspension_state_, 
+			aos_act_re_procdef.tenant_id_,
+	        <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_wf_procdefMapper.column2"/>
+        FROM aos_sys_wf_procdef, aos_act_re_procdef
+        WHERE aos_sys_wf_procdef.proc_def_id_ = aos_act_re_procdef.id_
+	        <if test="name_ != null and name_ != ''">
+	            AND aos_act_re_procdef.name_ LIKE '%${name_}%'
+	        </if>
+	        <if test="model_id_ != null and model_id_ != ''">
+	            AND aos_sys_wf_procdef.model_id_ = #{model_id_}
+	        </if>
+	        ORDER BY aos_sys_wf_procdef.id_ DESC, aos_act_re_procdef.version_ DESC
+    </select>
+
+    <!-- 查询并返回流程实例数据 -->
+    <select id="listProcInstsPage" parameterType="Dto" resultType="Dto">
+        SELECT
+        aos_act_ru_execution.rev_,
+        aos_act_ru_execution.act_id_,
+        aos_act_ru_execution.is_active_,
+        aos_act_ru_execution.is_concurrent_,
+        aos_act_ru_execution.is_scope_,
+        aos_act_ru_execution.suspension_state_,
+        (SELECT name_ FROM aos_sys_user WHERE id_ = aos_act_hi_procinst.start_user_id_) AS start_user_,
+        aos_act_hi_procinst.duration_/1000 AS duration_s_,
+        <include refid="cn.osworks.aos.system.dao.mapper.Aos_act_hi_procinstMapper.column2"/>
+        FROM aos_act_hi_procinst LEFT JOIN aos_act_ru_execution ON aos_act_hi_procinst.proc_inst_id_ = aos_act_ru_execution.proc_inst_id_
+        WHERE  aos_act_ru_execution.parent_id_ IS NULL <!-- 排除子流程 -->
+        <if test="procinst_status_ == 1">
+            <!-- 运行中的流程流程 -->
+            AND aos_act_hi_procinst.end_time_ IS NULL
+        </if>
+        <if test="procinst_status_ == 2">
+            <!-- 已结束的流程 -->
+            AND aos_act_hi_procinst.end_time_ IS NOT NULL
+        </if>
+        <if test="name_ != null and name_ != ''">
+            AND aos_act_hi_procinst.name_ LIKE '%${name_}%'
+        </if>
+        <if test="proc_def_id_ != null and proc_def_id_ != ''">
+            AND aos_act_hi_procinst.proc_def_id_ = #{proc_def_id_}
+        </if>
+        ORDER BY aos_act_hi_procinst.start_time_ DESC
+    </select>
+
+    <!-- 查询流程任务监管数据  -->
+    <select id="listProcTasksPage" parameterType="Dto" resultType="Dto">
+        SELECT
+        (SELECT name_ FROM aos_sys_user WHERE id_ = aos_act_ru_task.assignee_) AS assignee_user_,
+        <include refid="cn.osworks.aos.system.dao.mapper.Aos_act_ru_taskMapper.column"/>
+        FROM aos_act_ru_task
+        <where>
+	        <if test="proctask_status_ == 1">
+	            <!-- 待办任务 -->	            
+	            AND assignee_ IS NOT NULL
+	        </if>
+	        <if test="proctask_status_ == 3">
+	            <!-- 待签收任务 -->
+	            AND assignee_ IS NULL
+	        </if>
+            <if test="name_ != null and name_ != ''">
+                AND name_ LIKE '%${name_}%'
+            </if>
+            <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+                AND proc_inst_id_ = #{proc_inst_id_}
+            </if>
+            <if test="assignee_ != null and assignee_ != ''">
+                AND assignee_ = #{assignee_}
+            </if>
+        </where>
+        ORDER BY create_time_ DESC
+    </select>
+
+    <!-- 更新签收时间 -->
+    <update id="update_claim_time_when_unclaim" parameterType="String">
+        UPDATE aos_act_hi_taskinst SET claim_time_ = NULL WHERE id_ = #{id_}
+    </update>
+
+</mapper>
