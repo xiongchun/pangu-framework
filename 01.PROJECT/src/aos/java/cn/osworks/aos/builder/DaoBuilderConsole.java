@@ -13,7 +13,7 @@ import cn.osworks.aos.core.typewrap.Dtos;
  * 数据访问层代码生成器
  * 
  * <p>
- * 提示：已经支持可视化生成。请访问：开发工具箱->WebIDE集成开发。本控制台工具也可以使用。
+ * 提示：已经支持可视化生成。请访问：开发工具箱->WebIDE集成开发。
  * 
  * @author OSWorks-XC
  * @throws SQLException 
