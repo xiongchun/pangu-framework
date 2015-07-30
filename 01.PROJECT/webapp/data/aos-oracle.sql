@@ -1673,38 +1673,9 @@ start with 1
 increment by 1
 cache 20;
 
-create or replace procedure aos_proc_demo(prm_name      IN VARCHAR2, --持卡人
-                                          prm_number1   IN NUMBER, --信用额度
-                                          prm_number2   IN NUMBER, --已消费额
-                                          prm_outstring OUT VARCHAR2, --返回值
-                                          prm_appcode   OUT NUMBER,
-                                          prm_appmsg    OUT VARCHAR2) is
-  n_balance_ NUMBER(10, 2);
-begin
-  prm_appcode   := 1; --成功请返回1。
-  n_balance_    := prm_number1 - prm_number2;
-  prm_outstring := '你好, ' || prm_name || '。' || '你的可用余额为：' || n_balance_ || '元。';
-EXCEPTION
-  WHEN OTHERS THEN
-    prm_appcode := -1;
-    prm_appmsg  := '出错：' || SQLERRM;
-end aos_proc_demo;
+spool off
 
-create or replace procedure aos_proc_demo2(prm_name_ IN VARCHAR2, -- 模块名称
-                                             prm_cur         OUT sys_refcursor, --结果集游标
-                                             prm_appcode     OUT NUMBER,
-                                             prm_appmsg      OUT VARCHAR2) is
-begin
-  prm_appcode := 1; --成功请返回1。
-  open prm_cur for
-    select id_, cascade_id_, name_, url_
-      from aos_sys_module
-     where name_ like '%' || prm_name_ || '%';
-EXCEPTION
-  WHEN OTHERS THEN
-    prm_appcode  := -1;
-    prm_appmsg := '出错：' || SQLERRM;
-end aos_proc_demo2;
+
 
 
 prompt PL/SQL Developer import file
@@ -4212,5 +4183,37 @@ set feedback on
 set define on
 prompt Done.
 
+create or replace procedure aos_proc_demo(prm_name      IN VARCHAR2, --持卡人
+                                          prm_number1   IN NUMBER, --信用额度
+                                          prm_number2   IN NUMBER, --已消费额
+                                          prm_outstring OUT VARCHAR2, --返回值
+                                          prm_appcode   OUT NUMBER,
+                                          prm_appmsg    OUT VARCHAR2) is
+  n_balance_ NUMBER(10, 2);
+begin
+  prm_appcode   := 1; --成功请返回1。
+  n_balance_    := prm_number1 - prm_number2;
+  prm_outstring := '你好, ' || prm_name || '。' || '你的可用余额为：' || n_balance_ || '元。';
+EXCEPTION
+  WHEN OTHERS THEN
+    prm_appcode := -1;
+    prm_appmsg  := '出错：' || SQLERRM;
+end aos_proc_demo;
+/
 
-spool off
+create or replace procedure aos_proc_demo2(prm_name_ IN VARCHAR2, -- 模块名称
+                                             prm_cur         OUT sys_refcursor, --结果集游标
+                                             prm_appcode     OUT NUMBER,
+                                             prm_appmsg      OUT VARCHAR2) is
+begin
+  prm_appcode := 1; --成功请返回1。
+  open prm_cur for
+    select id_, cascade_id_, name_, url_
+      from aos_sys_module
+     where name_ like '%' || prm_name_ || '%';
+EXCEPTION
+  WHEN OTHERS THEN
+    prm_appcode  := -1;
+    prm_appmsg := '出错：' || SQLERRM;
+end aos_proc_demo2;
+/
