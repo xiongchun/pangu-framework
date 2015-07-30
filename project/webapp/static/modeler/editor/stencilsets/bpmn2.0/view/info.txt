@@ -1,4 +1,0 @@
-1、主背景
-stop-color="#ffffcc" ---> stop-color="#E1FFFA"
-2、透明度
-任务图元的透明度左上角和右下角分别改为 stop-opacity 0.1和0.6。

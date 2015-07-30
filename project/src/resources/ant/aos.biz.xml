@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!-- AOS服务组件打包脚本：生产环境下部署服务组件应用请执行此脚本输出部署资源 -->
-<project name="aos.biz" default="" basedir="../../">
-
-</project>
