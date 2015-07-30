@@ -50,6 +50,7 @@
 				<aos:column header="宿主" dataIndex="owner" width="120" />
 			</aos:gridpanel>
 			<aos:docked dock="bottom" ui="footer">
+                <aos:dockeditem xtype="tbtext" iconVec="fa-hand-o-right " text=" 提示：请先到[字典参数->平台配置]模块中配置数据库的连接参数：websql_jdbc_。" />
 				<aos:dockeditem xtype="tbfill" />
 				<aos:dockeditem onclick="#_w_dao.hide();" text="关闭" icon="close.png" />
 			</aos:docked>
