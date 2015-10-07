@@ -13,7 +13,25 @@
 		demo_account
 		LIMIT 250 OFFSET 0
 	</select>
-
+	
+	<!-- 查询下拉列表数据 -->
+	<select id="listComboBoxData" resultType="Dto">
+		SELECT
+		    id_ AS value, name_ AS display
+		FROM
+		    demo_org
+		WHERE parent_id_ = #{parent_id_}
+	</select>
+	
+	<!-- 查询下拉列表快捷过滤数据 -->
+	<select id="listModules" resultType="Dto">
+		SELECT
+		    id_ AS value, name_ AS display
+		FROM
+		    aos_sys_module
+		WHERE is_leaf_ = '1' AND (name_ like  '%${name_}%' OR hotkey_ like  '%${hotkey_}%')
+	</select>
+	
 	<!-- 调用存储过程aos_proc_demo -->
 	<update id="aos_proc_demo" parameterType="Dto" statementType="CALLABLE">
 		CALL aos_proc_demo(

@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_sys_dic_indexPO;
  * </p>
  * 
  * @author AHei
- * @date 2015-07-30 01:19:53
+ * @date 2015-08-17 22:20:00
  */
 @Mapper
 public interface Aos_sys_dic_indexMapper {

@@ -6,97 +6,97 @@ import org.apache.ibatis.annotations.Param;
 
 import cn.osworks.aos.core.annotation.Mapper;
 import cn.osworks.aos.core.typewrap.Dto;
-import cn.osworks.aos.system.dao.po.Aos_sys_modulePO;
+import cn.osworks.aos.system.dao.po.TestPO;
 
 /**
- * <b>功能模块表[aos_sys_module]数据访问接口</b>
+ * <b>test[test]数据访问接口</b>
  * 
  * <p>
- * 注意:此文件由AOS平台开发插件自动生成-禁止手工修改
+ * 注意:此文件由AOS平台自动生成-禁止手工修改
  * </p>
  * 
  * @author AHei
- * @date 2015-08-17 22:20:00
+ * @date 2015-09-08 22:35:13
  */
 @Mapper
-public interface Aos_sys_moduleMapper {
+public interface TestMapper {
 
 	/**
 	 * 插入一个数据持久化对象(插入字段为传入PO实体的非空属性)
 	 * <p> 防止DB字段缺省值需要程序中再次赋值
 	 *
-	 * @param aos_sys_modulePO
+	 * @param testPO
 	 *            要插入的数据持久化对象
 	 * @return 返回影响行数
 	 */
-	int insert(Aos_sys_modulePO aos_sys_modulePO);
+	int insert(TestPO testPO);
 	
 	/**
 	 * 插入一个数据持久化对象(含所有字段)
 	 * 
-	 * @param aos_sys_modulePO
+	 * @param testPO
 	 *            要插入的数据持久化对象
 	 * @return 返回影响行数
 	 */
-	int insertAll(Aos_sys_modulePO aos_sys_modulePO);
+	int insertAll(TestPO testPO);
 
 	/**
 	 * 根据主键修改数据持久化对象
 	 * 
-	 * @param aos_sys_modulePO
+	 * @param testPO
 	 *            要修改的数据持久化对象
 	 * @return int 返回影响行数
 	 */
-	int updateByKey(Aos_sys_modulePO aos_sys_modulePO);
+	int updateByKey(TestPO testPO);
 
 	/**
 	 * 根据主键查询并返回数据持久化对象
 	 * 
-	 * @return Aos_sys_modulePO
+	 * @return TestPO
 	 */
-	Aos_sys_modulePO selectByKey(@Param(value = "id_") String id_);
+	TestPO selectByKey(@Param(value = "id_") Integer id_);
 
 	/**
 	 * 根据唯一组合条件查询并返回数据持久化对象
 	 * 
-	 * @return Aos_sys_modulePO
+	 * @return TestPO
 	 */
-	Aos_sys_modulePO selectOne(Dto pDto);
+	TestPO selectOne(Dto pDto);
 
 	/**
 	 * 根据Dto查询并返回数据持久化对象集合
 	 * 
-	 * @return List<Aos_sys_modulePO>
+	 * @return List<TestPO>
 	 */
-	List<Aos_sys_modulePO> list(Dto pDto);
+	List<TestPO> list(Dto pDto);
 
 	/**
 	 * 根据Dto查询并返回分页数据持久化对象集合
 	 * 
-	 * @return List<Aos_sys_modulePO>
+	 * @return List<TestPO>
 	 */
-	List<Aos_sys_modulePO> listPage(Dto pDto);
+	List<TestPO> listPage(Dto pDto);
 		
 	/**
 	 * 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配)
 	 * 
-	 * @return List<Aos_sys_modulePO>
+	 * @return List<TestPO>
 	 */
-	List<Aos_sys_modulePO> like(Dto pDto);
+	List<TestPO> like(Dto pDto);
 
 	/**
 	 * 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配)
 	 * 
-	 * @return List<Aos_sys_modulePO>
+	 * @return List<TestPO>
 	 */
-	List<Aos_sys_modulePO> likePage(Dto pDto);
+	List<TestPO> likePage(Dto pDto);
 
 	/**
 	 * 根据主键删除数据持久化对象
 	 *
 	 * @return 影响行数
 	 */
-	int deleteByKey(@Param(value = "id_") String id_);
+	int deleteByKey(@Param(value = "id_") Integer id_);
 	
 	/**
 	 * 根据Dto统计行数

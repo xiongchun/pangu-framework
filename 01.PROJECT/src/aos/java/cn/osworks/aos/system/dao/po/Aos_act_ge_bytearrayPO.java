@@ -9,7 +9,7 @@ import cn.osworks.aos.core.typewrap.PO;
  * </p>
  * 
  * @author AHei
- * @date 2015-07-30 01:19:51
+ * @date 2015-08-17 22:19:58
  */
 public class Aos_act_ge_bytearrayPO extends PO {
 

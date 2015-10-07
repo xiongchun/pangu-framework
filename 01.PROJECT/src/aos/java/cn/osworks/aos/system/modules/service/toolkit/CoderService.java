@@ -208,7 +208,7 @@ public class CoderService {
 			inDto.put("tableVO", tableVO);
 			List<ColumnVO> columnVOs = DBMetaInfoUtils.listColumnVOs(databaseMetaData, tableName);
 			//仅生成XMLMapper时需要
-			List<ColumnVO> pkeyColumnVOs = DBMetaInfoUtils.listPKColumnVOs(databaseMetaData, tableName);
+			List<ColumnVO> pkeyColumnVOs = DBMetaInfoUtils.getPKColumnVOs(columnVOs);
 			inDto.put("columnVOs", columnVOs);
 			inDto.put("pkeyColumnVOs", pkeyColumnVOs);
 			DaoBuilder.buildPO(inDto);

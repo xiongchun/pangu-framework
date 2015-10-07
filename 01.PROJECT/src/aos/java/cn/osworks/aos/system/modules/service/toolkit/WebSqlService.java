@@ -10,7 +10,7 @@ import cn.osworks.aos.builder.metainfo.vo.ColumnVO;
 import cn.osworks.aos.builder.metainfo.vo.TableVO;
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
-import cn.osworks.aos.core.asset.AOSXmlParam;
+import cn.osworks.aos.core.asset.AOSXmlOptionsHandler;
 import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
 import cn.osworks.aos.web.tag.core.model.TreeNode;
@@ -85,7 +85,7 @@ public class WebSqlService {
 			//根节点
 			queryDto.put("path", System.getProperty("user.dir"));
 		}
-		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlParam.getValue("icon_path");
+		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlOptionsHandler.getValue("icon_path");
 		List<Dto> fileList = Lists.newArrayList();
 		File file = new File(queryDto.getString("path"));
 		if (file.exists()) {

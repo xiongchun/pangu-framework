@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_act_hi_actinstPO;
  * </p>
  * 
  * @author AHei
- * @date 2015-07-30 01:19:52
+ * @date 2015-08-17 22:19:59
  */
 @Mapper
 public interface Aos_act_hi_actinstMapper {

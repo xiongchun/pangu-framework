@@ -3,155 +3,78 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- aos_act_ru_identitylink[aos_act_ru_identitylink]SQLMapper自动映射 -->
-<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-30 01:19:53 -->
+<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-08-17 22:19:59 -->
 <mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_act_ru_identitylinkMapper">
-
-	<!-- 表字段 -->
-	<sql id="column">
-		id_,  <!-- id_ -->
-		rev_,  <!-- rev_ -->
-		group_id_,  <!-- group_id_ -->
-		type_,  <!-- type_ -->
-		user_id_,  <!-- user_id_ -->
-		task_id_,  <!-- task_id_ -->
-		proc_inst_id_,  <!-- proc_inst_id_ -->
-		proc_def_id_  <!-- proc_def_id_ -->
-	</sql>
 	
-	<!-- 表字段(用于外表的关联时引用) -->
-	<sql id="column2">
-		aos_act_ru_identitylink.id_,  <!-- id_ -->
-		aos_act_ru_identitylink.rev_,  <!-- rev_ -->
-		aos_act_ru_identitylink.group_id_,  <!-- group_id_ -->
-		aos_act_ru_identitylink.type_,  <!-- type_ -->
-		aos_act_ru_identitylink.user_id_,  <!-- user_id_ -->
-		aos_act_ru_identitylink.task_id_,  <!-- task_id_ -->
-		aos_act_ru_identitylink.proc_inst_id_,  <!-- proc_inst_id_ -->
-		aos_act_ru_identitylink.proc_def_id_  <!-- proc_def_id_ -->
-	</sql>
-
-	<!-- Where精确匹配字段 -->
-	<sql id="equal">
-	    <if test="id_ != null and id_ != ''">
-		    AND id_ = #{id_}  <!-- id_ -->
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert" parameterType="Aos_act_ru_identitylinkPO">
+		INSERT INTO aos_act_ru_identitylink (
+		<if test="rev_ != null">
+	         rev_, <!-- rev_ -->
 		</if>
-	   <if test="rev_ != null ">
-		    AND rev_ = #{rev_}  <!-- rev_ -->
+		<if test="group_id_ != null and group_id_ != ''">
+	         group_id_, <!-- group_id_ -->
 		</if>
-	    <if test="group_id_ != null and group_id_ != ''">
-		    AND group_id_ = #{group_id_}  <!-- group_id_ -->
+		<if test="type_ != null and type_ != ''">
+	         type_, <!-- type_ -->
 		</if>
-	    <if test="type_ != null and type_ != ''">
-		    AND type_ = #{type_}  <!-- type_ -->
+		<if test="user_id_ != null and user_id_ != ''">
+	         user_id_, <!-- user_id_ -->
 		</if>
-	    <if test="user_id_ != null and user_id_ != ''">
-		    AND user_id_ = #{user_id_}  <!-- user_id_ -->
+		<if test="task_id_ != null and task_id_ != ''">
+	         task_id_, <!-- task_id_ -->
 		</if>
-	    <if test="task_id_ != null and task_id_ != ''">
-		    AND task_id_ = #{task_id_}  <!-- task_id_ -->
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	         proc_inst_id_, <!-- proc_inst_id_ -->
 		</if>
-	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
-		    AND proc_inst_id_ = #{proc_inst_id_}  <!-- proc_inst_id_ -->
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	         proc_def_id_, <!-- proc_def_id_ -->
 		</if>
-	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
-		    AND proc_def_id_ = #{proc_def_id_}  <!-- proc_def_id_ -->
-		</if>
-	</sql>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- id_ -->
+	   </if>
+		)VALUES(
+		<if test="rev_ != null">
+	          #{rev_, jdbcType=INTEGER}, <!-- rev_ -->
+	    </if>
+		<if test="group_id_ != null and group_id_ != ''">
+	          #{group_id_, jdbcType=VARCHAR}, <!-- group_id_ -->
+	    </if>
+		<if test="type_ != null and type_ != ''">
+	          #{type_, jdbcType=VARCHAR}, <!-- type_ -->
+	    </if>
+		<if test="user_id_ != null and user_id_ != ''">
+	          #{user_id_, jdbcType=VARCHAR}, <!-- user_id_ -->
+	    </if>
+		<if test="task_id_ != null and task_id_ != ''">
+	          #{task_id_, jdbcType=VARCHAR}, <!-- task_id_ -->
+	    </if>
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	          #{proc_inst_id_, jdbcType=VARCHAR}, <!-- proc_inst_id_ -->
+	    </if>
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	          #{proc_def_id_, jdbcType=VARCHAR}, <!-- proc_def_id_ -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
+	    </if>
+		)
+	</insert>
 	
-	<!-- Where模糊匹配字段 -->
-	<sql id="like">
-	    <if test="id_ != null and id_ != ''">
-		    AND id_ like '%${id_}%'  <!-- id_ -->
-		</if>
-	    <if test="group_id_ != null and group_id_ != ''">
-		    AND group_id_ like '%${group_id_}%'  <!-- group_id_ -->
-		</if>
-	    <if test="type_ != null and type_ != ''">
-		    AND type_ like '%${type_}%'  <!-- type_ -->
-		</if>
-	    <if test="user_id_ != null and user_id_ != ''">
-		    AND user_id_ like '%${user_id_}%'  <!-- user_id_ -->
-		</if>
-	    <if test="task_id_ != null and task_id_ != ''">
-		    AND task_id_ like '%${task_id_}%'  <!-- task_id_ -->
-		</if>
-	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
-		    AND proc_inst_id_ like '%${proc_inst_id_}%'  <!-- proc_inst_id_ -->
-		</if>
-	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
-		    AND proc_def_id_ like '%${proc_def_id_}%'  <!-- proc_def_id_ -->
-		</if>
-	</sql>
-
 	<!-- 插入一个数据持久化对象(含所有字段) -->
 	<insert id="insertAll" parameterType="Aos_act_ru_identitylinkPO">
 		INSERT INTO aos_act_ru_identitylink (
 		    <include refid="column" />
 		)
 		VALUES (
-		#{id_, jdbcType=VARCHAR},  <!-- id_ -->
-		#{rev_, jdbcType=INTEGER},  <!-- rev_ -->
-		#{group_id_, jdbcType=VARCHAR},  <!-- group_id_ -->
-		#{type_, jdbcType=VARCHAR},  <!-- type_ -->
-		#{user_id_, jdbcType=VARCHAR},  <!-- user_id_ -->
-		#{task_id_, jdbcType=VARCHAR},  <!-- task_id_ -->
-		#{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
-		#{proc_def_id_, jdbcType=VARCHAR}  <!-- proc_def_id_ -->
-		)
-	</insert>
-	
-	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
-	<insert id="insert" parameterType="Aos_act_ru_identitylinkPO">
-		INSERT INTO aos_act_ru_identitylink (
-		<if test="rev_ != null">
-	          rev_, <!-- rev_ -->
-	   </if>
-		<if test="group_id_ != null and group_id_ != ''">
-	          group_id_, <!-- group_id_ -->
-	   </if>
-		<if test="type_ != null and type_ != ''">
-	          type_, <!-- type_ -->
-	   </if>
-		<if test="user_id_ != null and user_id_ != ''">
-	          user_id_, <!-- user_id_ -->
-	   </if>
-		<if test="task_id_ != null and task_id_ != ''">
-	          task_id_, <!-- task_id_ -->
-	   </if>
-		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
-	          proc_inst_id_, <!-- proc_inst_id_ -->
-	   </if>
-		<if test="proc_def_id_ != null and proc_def_id_ != ''">
-	          proc_def_id_, <!-- proc_def_id_ -->
-	   </if>
-		<if test="id_ != null and id_ != ''">
-	          id_  <!-- id_ -->
-	   </if>
-		)VALUES(
-		<if test="rev_ != null">
-		      #{rev_, jdbcType=INTEGER}, <!-- rev_ -->
-	    </if>
-		<if test="group_id_ != null and group_id_ != ''">
-		      #{group_id_, jdbcType=VARCHAR}, <!-- group_id_ -->
-	    </if>
-		<if test="type_ != null and type_ != ''">
-		      #{type_, jdbcType=VARCHAR}, <!-- type_ -->
-	    </if>
-		<if test="user_id_ != null and user_id_ != ''">
-		      #{user_id_, jdbcType=VARCHAR}, <!-- user_id_ -->
-	    </if>
-		<if test="task_id_ != null and task_id_ != ''">
-		      #{task_id_, jdbcType=VARCHAR}, <!-- task_id_ -->
-	    </if>
-		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
-		      #{proc_inst_id_, jdbcType=VARCHAR}, <!-- proc_inst_id_ -->
-	    </if>
-		<if test="proc_def_id_ != null and proc_def_id_ != ''">
-		      #{proc_def_id_, jdbcType=VARCHAR}, <!-- proc_def_id_ -->
-	    </if>
-		<if test="id_ != null and id_ != ''">
-		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
-	    </if>
+		    #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+		    #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+		    #{group_id_, jdbcType=VARCHAR},  <!-- group_id_ -->
+		    #{type_, jdbcType=VARCHAR},  <!-- type_ -->
+		    #{user_id_, jdbcType=VARCHAR},  <!-- user_id_ -->
+		    #{task_id_, jdbcType=VARCHAR},  <!-- task_id_ -->
+		    #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+		    #{proc_def_id_, jdbcType=VARCHAR}  <!-- proc_def_id_ -->
 		)
 	</insert>
 
@@ -160,32 +83,37 @@
 		UPDATE aos_act_ru_identitylink
 		<set>
 			<if test="id_ != null">
-				id_ = #{id_},  <!-- id_ -->
+		          id_ = #{id_},  <!-- id_ -->
 			</if>
 			<if test="rev_ != null">
-				rev_ = #{rev_},  <!-- rev_ -->
+		          rev_ = #{rev_},  <!-- rev_ -->
 			</if>
 			<if test="group_id_ != null">
-				group_id_ = #{group_id_},  <!-- group_id_ -->
+		          group_id_ = #{group_id_},  <!-- group_id_ -->
 			</if>
 			<if test="type_ != null">
-				type_ = #{type_},  <!-- type_ -->
+		          type_ = #{type_},  <!-- type_ -->
 			</if>
 			<if test="user_id_ != null">
-				user_id_ = #{user_id_},  <!-- user_id_ -->
+		          user_id_ = #{user_id_},  <!-- user_id_ -->
 			</if>
 			<if test="task_id_ != null">
-				task_id_ = #{task_id_},  <!-- task_id_ -->
+		          task_id_ = #{task_id_},  <!-- task_id_ -->
 			</if>
 			<if test="proc_inst_id_ != null">
-				proc_inst_id_ = #{proc_inst_id_},  <!-- proc_inst_id_ -->
+		          proc_inst_id_ = #{proc_inst_id_},  <!-- proc_inst_id_ -->
 			</if>
 			<if test="proc_def_id_ != null">
-				proc_def_id_ = #{proc_def_id_},  <!-- proc_def_id_ -->
+		          proc_def_id_ = #{proc_def_id_},  <!-- proc_def_id_ -->
 			</if>
 		</set>
 		WHERE  id_ = #{id_}
 	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_act_ru_identitylink WHERE  id_ = #{id_}
+	</delete>
 
 	<!-- 根据主键查询并返回数据持久化对象 -->
 	<select id="selectByKey" resultType="Aos_act_ru_identitylinkPO">
@@ -243,11 +171,6 @@
 		    <include refid="like" />
 		</where>	
 	</select>
-
-	<!-- 根据主键删除数据持久化对象 -->
-	<delete id="deleteByKey">
-		DELETE FROM aos_act_ru_identitylink WHERE  id_ = #{id_}
-	</delete>
 	
 	<!-- 根据Dto统计行数 -->
 	<select id="rows" resultType="Integer" parameterType="Dto">
@@ -266,5 +189,82 @@
 		    <include refid="equal" />
 		</where>
 	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- id_ -->
+		  rev_,  <!-- rev_ -->
+		  group_id_,  <!-- group_id_ -->
+		  type_,  <!-- type_ -->
+		  user_id_,  <!-- user_id_ -->
+		  task_id_,  <!-- task_id_ -->
+		  proc_inst_id_,  <!-- proc_inst_id_ -->
+		  proc_def_id_  <!-- proc_def_id_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_act_ru_identitylink.id_,  <!-- id_ -->
+		  aos_act_ru_identitylink.rev_,  <!-- rev_ -->
+		  aos_act_ru_identitylink.group_id_,  <!-- group_id_ -->
+		  aos_act_ru_identitylink.type_,  <!-- type_ -->
+		  aos_act_ru_identitylink.user_id_,  <!-- user_id_ -->
+		  aos_act_ru_identitylink.task_id_,  <!-- task_id_ -->
+		  aos_act_ru_identitylink.proc_inst_id_,  <!-- proc_inst_id_ -->
+		  aos_act_ru_identitylink.proc_def_id_  <!-- proc_def_id_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- id_ -->
+		</if>
+	   <if test="rev_ != null ">
+		      AND rev_ = #{rev_}  <!-- rev_ -->
+		</if>
+	    <if test="group_id_ != null and group_id_ != ''">
+		      AND group_id_ = #{group_id_}  <!-- group_id_ -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ = #{type_}  <!-- type_ -->
+		</if>
+	    <if test="user_id_ != null and user_id_ != ''">
+		      AND user_id_ = #{user_id_}  <!-- user_id_ -->
+		</if>
+	    <if test="task_id_ != null and task_id_ != ''">
+		      AND task_id_ = #{task_id_}  <!-- task_id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ = #{proc_inst_id_}  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ = #{proc_def_id_}  <!-- proc_def_id_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- id_ -->
+		</if>
+	    <if test="group_id_ != null and group_id_ != ''">
+		      AND group_id_ like '%${group_id_}%'  <!-- group_id_ -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ like '%${type_}%'  <!-- type_ -->
+		</if>
+	    <if test="user_id_ != null and user_id_ != ''">
+		      AND user_id_ like '%${user_id_}%'  <!-- user_id_ -->
+		</if>
+	    <if test="task_id_ != null and task_id_ != ''">
+		      AND task_id_ like '%${task_id_}%'  <!-- task_id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ like '%${proc_inst_id_}%'  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ like '%${proc_def_id_}%'  <!-- proc_def_id_ -->
+		</if>
+	</sql>
 	
 </mapper>

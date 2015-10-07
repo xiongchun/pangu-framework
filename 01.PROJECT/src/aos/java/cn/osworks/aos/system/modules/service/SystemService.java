@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSListUtils;
 import cn.osworks.aos.core.asset.AOSUtils;
-import cn.osworks.aos.core.asset.AOSXmlParam;
+import cn.osworks.aos.core.asset.AOSXmlOptionsHandler;
 import cn.osworks.aos.core.dao.SqlDao;
 import cn.osworks.aos.core.dao.asset.DBDialectUtils;
 import cn.osworks.aos.core.typewrap.Dto;
@@ -190,7 +190,7 @@ public class SystemService {
 		qDto.setOrder("sort_no_");
 		List<Aos_sys_catalogPO> list = aos_sys_catalogMapper.list(qDto);
 		List<Dto> treeNodes = new ArrayList<Dto>();
-		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlParam.getValue("icon_path");
+		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlOptionsHandler.getValue("icon_path");
 		for (Aos_sys_catalogPO aos_sys_catalogPO : list) {
 			Dto treeNode = Dtos.newDto();
 			AOSUtils.apply(aos_sys_catalogPO, treeNode);
@@ -300,7 +300,7 @@ public class SystemService {
 		qDto.setOrder("sort_no_");
 		List<Aos_sys_orgPO> list = aos_sys_orgMapper.list(qDto);
 		List<Dto> treeNodes = new ArrayList<Dto>();
-		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlParam.getValue("icon_path");
+		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlOptionsHandler.getValue("icon_path");
 		for (Aos_sys_orgPO aos_sys_orgPO : list) {
 			Dto treeNode = Dtos.newDto();
 			treeNode.put("id", aos_sys_orgPO.getId_());
@@ -336,7 +336,7 @@ public class SystemService {
 	public List<Dto> listModuleTree(Dto qDto) {
 		List<Aos_sys_modulePO> list = aos_sys_moduleMapper.list(qDto);
 		List<Dto> treeNodes = new ArrayList<Dto>();
-		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlParam.getValue("icon_path");
+		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlOptionsHandler.getValue("icon_path");
 		for (Aos_sys_modulePO aos_sys_modulePO : list) {
 			Dto treeNode = Dtos.newDto();
 			treeNode.put("id", aos_sys_modulePO.getId_());

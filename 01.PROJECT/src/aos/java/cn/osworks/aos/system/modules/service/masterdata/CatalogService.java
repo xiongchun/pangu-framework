@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
-import cn.osworks.aos.core.asset.AOSXmlParam;
+import cn.osworks.aos.core.asset.AOSXmlOptionsHandler;
 import cn.osworks.aos.core.id.AOSId;
 import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
@@ -41,7 +41,7 @@ public class CatalogService {
 		qDto.setOrder("sort_no_");
 		List<Aos_sys_catalogPO> list = aos_sys_catalogMapper.list(qDto);
 		List<Dto> treeNodes = new ArrayList<Dto>();
-		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlParam.getValue("icon_path");
+		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlOptionsHandler.getValue("icon_path");
 		for (Aos_sys_catalogPO aos_sys_catalogPO : list) {
 			Dto treeNode = Dtos.newDto();
 			AOSUtils.apply(aos_sys_catalogPO, treeNode);

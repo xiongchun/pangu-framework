@@ -3,80 +3,43 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- aos_act_ge_property[aos_act_ge_property]SQLMapper自动映射 -->
-<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-30 01:27:35 -->
+<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-08-17 22:19:59 -->
 <mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_act_ge_propertyMapper">
-
-	<!-- 表字段 -->
-	<sql id="column">
-		name_,  <!-- name_ -->
-		value_,  <!-- value_ -->
-		rev_  <!-- rev_ -->
-	</sql>
 	
-	<!-- 表字段(用于外表的关联时引用) -->
-	<sql id="column2">
-		aos_act_ge_property.name_,  <!-- name_ -->
-		aos_act_ge_property.value_,  <!-- value_ -->
-		aos_act_ge_property.rev_  <!-- rev_ -->
-	</sql>
-
-	<!-- Where精确匹配字段 -->
-	<sql id="equal">
-	    <if test="name_ != null and name_ != ''">
-		    AND name_ = #{name_}  <!-- name_ -->
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert" parameterType="Aos_act_ge_propertyPO">
+		INSERT INTO aos_act_ge_property (
+		<if test="value_ != null and value_ != ''">
+	         value_, <!-- value_ -->
 		</if>
-	    <if test="value_ != null and value_ != ''">
-		    AND value_ = #{value_}  <!-- value_ -->
+		<if test="rev_ != null">
+	         rev_, <!-- rev_ -->
 		</if>
-	   <if test="rev_ != null ">
-		    AND rev_ = #{rev_}  <!-- rev_ -->
-		</if>
-	</sql>
+		<if test="name_ != null and name_ != ''">
+	          name_  <!-- name_ -->
+	   </if>
+		)VALUES(
+		<if test="value_ != null and value_ != ''">
+	          #{value_, jdbcType=VARCHAR}, <!-- value_ -->
+	    </if>
+		<if test="rev_ != null">
+	          #{rev_, jdbcType=INTEGER}, <!-- rev_ -->
+	    </if>
+		<if test="name_ != null and name_ != ''">
+		     #{name_, jdbcType=VARCHAR}  <!-- name_ -->
+	    </if>
+		)
+	</insert>
 	
-	<!-- Where模糊匹配字段 -->
-	<sql id="like">
-	    <if test="name_ != null and name_ != ''">
-		    AND name_ like '%${name_}%'  <!-- name_ -->
-		</if>
-	    <if test="value_ != null and value_ != ''">
-		    AND value_ like '%${value_}%'  <!-- value_ -->
-		</if>
-	</sql>
-
 	<!-- 插入一个数据持久化对象(含所有字段) -->
 	<insert id="insertAll" parameterType="Aos_act_ge_propertyPO">
 		INSERT INTO aos_act_ge_property (
 		    <include refid="column" />
 		)
 		VALUES (
-		#{name_, jdbcType=VARCHAR},  <!-- name_ -->
-		#{value_, jdbcType=VARCHAR},  <!-- value_ -->
-		#{rev_, jdbcType=INTEGER}  <!-- rev_ -->
-		)
-	</insert>
-	
-	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
-	<insert id="insert" parameterType="Aos_act_ge_propertyPO">
-		INSERT INTO aos_act_ge_property (
-		<if test="value_ != null and value_ != ''">
-	          value_, <!-- value_ -->
-	   </if>
-		<if test="rev_ != null">
-	          rev_, <!-- rev_ -->
-	   </if>
-		<if test="name_ != null and name_ != ''">
-	          name_  <!-- name_ -->
-	   </if>
-		)VALUES(
-		<if test="value_ != null and value_ != ''">
-		      #{value_, jdbcType=VARCHAR}, <!-- value_ -->
-	    </if>
-		<if test="rev_ != null">
-		      #{rev_, jdbcType=INTEGER}, <!-- rev_ -->
-	    </if>
-		<if test="name_ != null and name_ != ''">
-		     #{name_, jdbcType=VARCHAR}  <!-- name_ -->
-	    </if>
+		    #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+		    #{value_, jdbcType=VARCHAR},  <!-- value_ -->
+		    #{rev_, jdbcType=INTEGER}  <!-- rev_ -->
 		)
 	</insert>
 
@@ -85,17 +48,22 @@
 		UPDATE aos_act_ge_property
 		<set>
 			<if test="name_ != null">
-				name_ = #{name_},  <!-- name_ -->
+		          name_ = #{name_},  <!-- name_ -->
 			</if>
 			<if test="value_ != null">
-				value_ = #{value_},  <!-- value_ -->
+		          value_ = #{value_},  <!-- value_ -->
 			</if>
 			<if test="rev_ != null">
-				rev_ = #{rev_},  <!-- rev_ -->
+		          rev_ = #{rev_},  <!-- rev_ -->
 			</if>
 		</set>
 		WHERE  name_ = #{name_}
 	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_act_ge_property WHERE  name_ = #{name_}
+	</delete>
 
 	<!-- 根据主键查询并返回数据持久化对象 -->
 	<select id="selectByKey" resultType="Aos_act_ge_propertyPO">
@@ -153,11 +121,6 @@
 		    <include refid="like" />
 		</where>	
 	</select>
-
-	<!-- 根据主键删除数据持久化对象 -->
-	<delete id="deleteByKey">
-		DELETE FROM aos_act_ge_property WHERE  name_ = #{name_}
-	</delete>
 	
 	<!-- 根据Dto统计行数 -->
 	<select id="rows" resultType="Integer" parameterType="Dto">
@@ -176,5 +139,42 @@
 		    <include refid="equal" />
 		</where>
 	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  name_,  <!-- name_ -->
+		  value_,  <!-- value_ -->
+		  rev_  <!-- rev_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_act_ge_property.name_,  <!-- name_ -->
+		  aos_act_ge_property.value_,  <!-- value_ -->
+		  aos_act_ge_property.rev_  <!-- rev_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- name_ -->
+		</if>
+	    <if test="value_ != null and value_ != ''">
+		      AND value_ = #{value_}  <!-- value_ -->
+		</if>
+	   <if test="rev_ != null ">
+		      AND rev_ = #{rev_}  <!-- rev_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- name_ -->
+		</if>
+	    <if test="value_ != null and value_ != ''">
+		      AND value_ like '%${value_}%'  <!-- value_ -->
+		</if>
+	</sql>
 	
 </mapper>

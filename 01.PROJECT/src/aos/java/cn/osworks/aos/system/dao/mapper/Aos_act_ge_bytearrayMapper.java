@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_act_ge_bytearrayPO;
  * </p>
  * 
  * @author AHei
- * @date 2015-07-30 01:19:51
+ * @date 2015-08-17 22:19:58
  */
 @Mapper
 public interface Aos_act_ge_bytearrayMapper {

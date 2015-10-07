@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
-import cn.osworks.aos.core.asset.AOSXmlParam;
+import cn.osworks.aos.core.asset.AOSXmlOptionsHandler;
 import cn.osworks.aos.core.dao.SqlDao;
 import cn.osworks.aos.core.id.AOSId;
 import cn.osworks.aos.core.typewrap.Dto;
@@ -273,7 +273,7 @@ public class ModuleService {
 	 */
 	public List<Dto>toTreeDto(List<Aos_sys_modulePO> aos_sys_modulePOs){
 		List<Dto> treeNodes = new ArrayList<Dto>();
-		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlParam.getValue("icon_path");
+		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlOptionsHandler.getValue("icon_path");
 		for (Aos_sys_modulePO aos_sys_modulePO : aos_sys_modulePOs) {
 			Dto treeNode = Dtos.newDto();
 			treeNode.put("id", aos_sys_modulePO.getId_());

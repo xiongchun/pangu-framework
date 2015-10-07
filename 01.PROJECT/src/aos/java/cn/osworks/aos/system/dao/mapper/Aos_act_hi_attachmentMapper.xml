@@ -3,200 +3,99 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- aos_act_hi_attachment[aos_act_hi_attachment]SQLMapper自动映射 -->
-<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-30 01:27:36 -->
+<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-08-17 22:19:59 -->
 <mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_act_hi_attachmentMapper">
-
-	<!-- 表字段 -->
-	<sql id="column">
-		id_,  <!-- id_ -->
-		rev_,  <!-- rev_ -->
-		user_id_,  <!-- user_id_ -->
-		name_,  <!-- name_ -->
-		description_,  <!-- description_ -->
-		type_,  <!-- type_ -->
-		task_id_,  <!-- task_id_ -->
-		proc_inst_id_,  <!-- proc_inst_id_ -->
-		url_,  <!-- url_ -->
-		content_id_,  <!-- content_id_ -->
-		time_  <!-- time_ -->
-	</sql>
 	
-	<!-- 表字段(用于外表的关联时引用) -->
-	<sql id="column2">
-		aos_act_hi_attachment.id_,  <!-- id_ -->
-		aos_act_hi_attachment.rev_,  <!-- rev_ -->
-		aos_act_hi_attachment.user_id_,  <!-- user_id_ -->
-		aos_act_hi_attachment.name_,  <!-- name_ -->
-		aos_act_hi_attachment.description_,  <!-- description_ -->
-		aos_act_hi_attachment.type_,  <!-- type_ -->
-		aos_act_hi_attachment.task_id_,  <!-- task_id_ -->
-		aos_act_hi_attachment.proc_inst_id_,  <!-- proc_inst_id_ -->
-		aos_act_hi_attachment.url_,  <!-- url_ -->
-		aos_act_hi_attachment.content_id_,  <!-- content_id_ -->
-		aos_act_hi_attachment.time_  <!-- time_ -->
-	</sql>
-
-	<!-- Where精确匹配字段 -->
-	<sql id="equal">
-	    <if test="id_ != null and id_ != ''">
-		    AND id_ = #{id_}  <!-- id_ -->
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert" parameterType="Aos_act_hi_attachmentPO">
+		INSERT INTO aos_act_hi_attachment (
+		<if test="rev_ != null">
+	         rev_, <!-- rev_ -->
 		</if>
-	   <if test="rev_ != null ">
-		    AND rev_ = #{rev_}  <!-- rev_ -->
+		<if test="user_id_ != null and user_id_ != ''">
+	         user_id_, <!-- user_id_ -->
 		</if>
-	    <if test="user_id_ != null and user_id_ != ''">
-		    AND user_id_ = #{user_id_}  <!-- user_id_ -->
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- name_ -->
 		</if>
-	    <if test="name_ != null and name_ != ''">
-		    AND name_ = #{name_}  <!-- name_ -->
+		<if test="description_ != null and description_ != ''">
+	         description_, <!-- description_ -->
 		</if>
-	    <if test="description_ != null and description_ != ''">
-		    AND description_ = #{description_}  <!-- description_ -->
+		<if test="type_ != null and type_ != ''">
+	         type_, <!-- type_ -->
 		</if>
-	    <if test="type_ != null and type_ != ''">
-		    AND type_ = #{type_}  <!-- type_ -->
+		<if test="task_id_ != null and task_id_ != ''">
+	         task_id_, <!-- task_id_ -->
 		</if>
-	    <if test="task_id_ != null and task_id_ != ''">
-		    AND task_id_ = #{task_id_}  <!-- task_id_ -->
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	         proc_inst_id_, <!-- proc_inst_id_ -->
 		</if>
-	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
-		    AND proc_inst_id_ = #{proc_inst_id_}  <!-- proc_inst_id_ -->
+		<if test="url_ != null and url_ != ''">
+	         url_, <!-- url_ -->
 		</if>
-	    <if test="url_ != null and url_ != ''">
-		    AND url_ = #{url_}  <!-- url_ -->
+		<if test="content_id_ != null and content_id_ != ''">
+	         content_id_, <!-- content_id_ -->
 		</if>
-	    <if test="content_id_ != null and content_id_ != ''">
-		    AND content_id_ = #{content_id_}  <!-- content_id_ -->
+		<if test="time_ != null and time_ != ''">
+	         time_, <!-- time_ -->
 		</if>
-	    <if test="time_ != null and time_ != ''">
-		    AND time_ = #{time_}  <!-- time_ -->
-		</if>
-	</sql>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- id_ -->
+	   </if>
+		)VALUES(
+		<if test="rev_ != null">
+	          #{rev_, jdbcType=INTEGER}, <!-- rev_ -->
+	    </if>
+		<if test="user_id_ != null and user_id_ != ''">
+	          #{user_id_, jdbcType=VARCHAR}, <!-- user_id_ -->
+	    </if>
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- name_ -->
+	    </if>
+		<if test="description_ != null and description_ != ''">
+	          #{description_, jdbcType=VARCHAR}, <!-- description_ -->
+	    </if>
+		<if test="type_ != null and type_ != ''">
+	          #{type_, jdbcType=VARCHAR}, <!-- type_ -->
+	    </if>
+		<if test="task_id_ != null and task_id_ != ''">
+	          #{task_id_, jdbcType=VARCHAR}, <!-- task_id_ -->
+	    </if>
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	          #{proc_inst_id_, jdbcType=VARCHAR}, <!-- proc_inst_id_ -->
+	    </if>
+		<if test="url_ != null and url_ != ''">
+	          #{url_, jdbcType=VARCHAR}, <!-- url_ -->
+	    </if>
+		<if test="content_id_ != null and content_id_ != ''">
+	          #{content_id_, jdbcType=VARCHAR}, <!-- content_id_ -->
+	    </if>
+		<if test="time_ != null and time_ != ''">
+	          #{time_, jdbcType=VARCHAR}, <!-- time_ -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
+	    </if>
+		)
+	</insert>
 	
-	<!-- Where模糊匹配字段 -->
-	<sql id="like">
-	    <if test="id_ != null and id_ != ''">
-		    AND id_ like '%${id_}%'  <!-- id_ -->
-		</if>
-	    <if test="user_id_ != null and user_id_ != ''">
-		    AND user_id_ like '%${user_id_}%'  <!-- user_id_ -->
-		</if>
-	    <if test="name_ != null and name_ != ''">
-		    AND name_ like '%${name_}%'  <!-- name_ -->
-		</if>
-	    <if test="description_ != null and description_ != ''">
-		    AND description_ like '%${description_}%'  <!-- description_ -->
-		</if>
-	    <if test="type_ != null and type_ != ''">
-		    AND type_ like '%${type_}%'  <!-- type_ -->
-		</if>
-	    <if test="task_id_ != null and task_id_ != ''">
-		    AND task_id_ like '%${task_id_}%'  <!-- task_id_ -->
-		</if>
-	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
-		    AND proc_inst_id_ like '%${proc_inst_id_}%'  <!-- proc_inst_id_ -->
-		</if>
-	    <if test="url_ != null and url_ != ''">
-		    AND url_ like '%${url_}%'  <!-- url_ -->
-		</if>
-	    <if test="content_id_ != null and content_id_ != ''">
-		    AND content_id_ like '%${content_id_}%'  <!-- content_id_ -->
-		</if>
-	    <if test="time_ != null and time_ != ''">
-		    AND time_ like '%${time_}%'  <!-- time_ -->
-		</if>
-	</sql>
-
 	<!-- 插入一个数据持久化对象(含所有字段) -->
 	<insert id="insertAll" parameterType="Aos_act_hi_attachmentPO">
 		INSERT INTO aos_act_hi_attachment (
 		    <include refid="column" />
 		)
 		VALUES (
-		#{id_, jdbcType=VARCHAR},  <!-- id_ -->
-		#{rev_, jdbcType=INTEGER},  <!-- rev_ -->
-		#{user_id_, jdbcType=VARCHAR},  <!-- user_id_ -->
-		#{name_, jdbcType=VARCHAR},  <!-- name_ -->
-		#{description_, jdbcType=VARCHAR},  <!-- description_ -->
-		#{type_, jdbcType=VARCHAR},  <!-- type_ -->
-		#{task_id_, jdbcType=VARCHAR},  <!-- task_id_ -->
-		#{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
-		#{url_, jdbcType=VARCHAR},  <!-- url_ -->
-		#{content_id_, jdbcType=VARCHAR},  <!-- content_id_ -->
-		#{time_, jdbcType=VARCHAR}  <!-- time_ -->
-		)
-	</insert>
-	
-	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
-	<insert id="insert" parameterType="Aos_act_hi_attachmentPO">
-		INSERT INTO aos_act_hi_attachment (
-		<if test="rev_ != null">
-	          rev_, <!-- rev_ -->
-	   </if>
-		<if test="user_id_ != null and user_id_ != ''">
-	          user_id_, <!-- user_id_ -->
-	   </if>
-		<if test="name_ != null and name_ != ''">
-	          name_, <!-- name_ -->
-	   </if>
-		<if test="description_ != null and description_ != ''">
-	          description_, <!-- description_ -->
-	   </if>
-		<if test="type_ != null and type_ != ''">
-	          type_, <!-- type_ -->
-	   </if>
-		<if test="task_id_ != null and task_id_ != ''">
-	          task_id_, <!-- task_id_ -->
-	   </if>
-		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
-	          proc_inst_id_, <!-- proc_inst_id_ -->
-	   </if>
-		<if test="url_ != null and url_ != ''">
-	          url_, <!-- url_ -->
-	   </if>
-		<if test="content_id_ != null and content_id_ != ''">
-	          content_id_, <!-- content_id_ -->
-	   </if>
-		<if test="time_ != null and time_ != ''">
-	          time_, <!-- time_ -->
-	   </if>
-		<if test="id_ != null and id_ != ''">
-	          id_  <!-- id_ -->
-	   </if>
-		)VALUES(
-		<if test="rev_ != null">
-		      #{rev_, jdbcType=INTEGER}, <!-- rev_ -->
-	    </if>
-		<if test="user_id_ != null and user_id_ != ''">
-		      #{user_id_, jdbcType=VARCHAR}, <!-- user_id_ -->
-	    </if>
-		<if test="name_ != null and name_ != ''">
-		      #{name_, jdbcType=VARCHAR}, <!-- name_ -->
-	    </if>
-		<if test="description_ != null and description_ != ''">
-		      #{description_, jdbcType=VARCHAR}, <!-- description_ -->
-	    </if>
-		<if test="type_ != null and type_ != ''">
-		      #{type_, jdbcType=VARCHAR}, <!-- type_ -->
-	    </if>
-		<if test="task_id_ != null and task_id_ != ''">
-		      #{task_id_, jdbcType=VARCHAR}, <!-- task_id_ -->
-	    </if>
-		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
-		      #{proc_inst_id_, jdbcType=VARCHAR}, <!-- proc_inst_id_ -->
-	    </if>
-		<if test="url_ != null and url_ != ''">
-		      #{url_, jdbcType=VARCHAR}, <!-- url_ -->
-	    </if>
-		<if test="content_id_ != null and content_id_ != ''">
-		      #{content_id_, jdbcType=VARCHAR}, <!-- content_id_ -->
-	    </if>
-		<if test="time_ != null and time_ != ''">
-		      #{time_, jdbcType=VARCHAR}, <!-- time_ -->
-	    </if>
-		<if test="id_ != null and id_ != ''">
-		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
-	    </if>
+		    #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+		    #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+		    #{user_id_, jdbcType=VARCHAR},  <!-- user_id_ -->
+		    #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+		    #{description_, jdbcType=VARCHAR},  <!-- description_ -->
+		    #{type_, jdbcType=VARCHAR},  <!-- type_ -->
+		    #{task_id_, jdbcType=VARCHAR},  <!-- task_id_ -->
+		    #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+		    #{url_, jdbcType=VARCHAR},  <!-- url_ -->
+		    #{content_id_, jdbcType=VARCHAR},  <!-- content_id_ -->
+		    #{time_, jdbcType=VARCHAR}  <!-- time_ -->
 		)
 	</insert>
 
@@ -205,41 +104,46 @@
 		UPDATE aos_act_hi_attachment
 		<set>
 			<if test="id_ != null">
-				id_ = #{id_},  <!-- id_ -->
+		          id_ = #{id_},  <!-- id_ -->
 			</if>
 			<if test="rev_ != null">
-				rev_ = #{rev_},  <!-- rev_ -->
+		          rev_ = #{rev_},  <!-- rev_ -->
 			</if>
 			<if test="user_id_ != null">
-				user_id_ = #{user_id_},  <!-- user_id_ -->
+		          user_id_ = #{user_id_},  <!-- user_id_ -->
 			</if>
 			<if test="name_ != null">
-				name_ = #{name_},  <!-- name_ -->
+		          name_ = #{name_},  <!-- name_ -->
 			</if>
 			<if test="description_ != null">
-				description_ = #{description_},  <!-- description_ -->
+		          description_ = #{description_},  <!-- description_ -->
 			</if>
 			<if test="type_ != null">
-				type_ = #{type_},  <!-- type_ -->
+		          type_ = #{type_},  <!-- type_ -->
 			</if>
 			<if test="task_id_ != null">
-				task_id_ = #{task_id_},  <!-- task_id_ -->
+		          task_id_ = #{task_id_},  <!-- task_id_ -->
 			</if>
 			<if test="proc_inst_id_ != null">
-				proc_inst_id_ = #{proc_inst_id_},  <!-- proc_inst_id_ -->
+		          proc_inst_id_ = #{proc_inst_id_},  <!-- proc_inst_id_ -->
 			</if>
 			<if test="url_ != null">
-				url_ = #{url_},  <!-- url_ -->
+		          url_ = #{url_},  <!-- url_ -->
 			</if>
 			<if test="content_id_ != null">
-				content_id_ = #{content_id_},  <!-- content_id_ -->
+		          content_id_ = #{content_id_},  <!-- content_id_ -->
 			</if>
 			<if test="time_ != null">
-				time_ = #{time_},  <!-- time_ -->
+		          time_ = #{time_},  <!-- time_ -->
 			</if>
 		</set>
 		WHERE  id_ = #{id_}
 	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_act_hi_attachment WHERE  id_ = #{id_}
+	</delete>
 
 	<!-- 根据主键查询并返回数据持久化对象 -->
 	<select id="selectByKey" resultType="Aos_act_hi_attachmentPO">
@@ -297,11 +201,6 @@
 		    <include refid="like" />
 		</where>	
 	</select>
-
-	<!-- 根据主键删除数据持久化对象 -->
-	<delete id="deleteByKey">
-		DELETE FROM aos_act_hi_attachment WHERE  id_ = #{id_}
-	</delete>
 	
 	<!-- 根据Dto统计行数 -->
 	<select id="rows" resultType="Integer" parameterType="Dto">
@@ -320,5 +219,106 @@
 		    <include refid="equal" />
 		</where>
 	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- id_ -->
+		  rev_,  <!-- rev_ -->
+		  user_id_,  <!-- user_id_ -->
+		  name_,  <!-- name_ -->
+		  description_,  <!-- description_ -->
+		  type_,  <!-- type_ -->
+		  task_id_,  <!-- task_id_ -->
+		  proc_inst_id_,  <!-- proc_inst_id_ -->
+		  url_,  <!-- url_ -->
+		  content_id_,  <!-- content_id_ -->
+		  time_  <!-- time_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_act_hi_attachment.id_,  <!-- id_ -->
+		  aos_act_hi_attachment.rev_,  <!-- rev_ -->
+		  aos_act_hi_attachment.user_id_,  <!-- user_id_ -->
+		  aos_act_hi_attachment.name_,  <!-- name_ -->
+		  aos_act_hi_attachment.description_,  <!-- description_ -->
+		  aos_act_hi_attachment.type_,  <!-- type_ -->
+		  aos_act_hi_attachment.task_id_,  <!-- task_id_ -->
+		  aos_act_hi_attachment.proc_inst_id_,  <!-- proc_inst_id_ -->
+		  aos_act_hi_attachment.url_,  <!-- url_ -->
+		  aos_act_hi_attachment.content_id_,  <!-- content_id_ -->
+		  aos_act_hi_attachment.time_  <!-- time_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- id_ -->
+		</if>
+	   <if test="rev_ != null ">
+		      AND rev_ = #{rev_}  <!-- rev_ -->
+		</if>
+	    <if test="user_id_ != null and user_id_ != ''">
+		      AND user_id_ = #{user_id_}  <!-- user_id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- name_ -->
+		</if>
+	    <if test="description_ != null and description_ != ''">
+		      AND description_ = #{description_}  <!-- description_ -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ = #{type_}  <!-- type_ -->
+		</if>
+	    <if test="task_id_ != null and task_id_ != ''">
+		      AND task_id_ = #{task_id_}  <!-- task_id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ = #{proc_inst_id_}  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="url_ != null and url_ != ''">
+		      AND url_ = #{url_}  <!-- url_ -->
+		</if>
+	    <if test="content_id_ != null and content_id_ != ''">
+		      AND content_id_ = #{content_id_}  <!-- content_id_ -->
+		</if>
+	    <if test="time_ != null and time_ != ''">
+		      AND time_ = #{time_}  <!-- time_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- id_ -->
+		</if>
+	    <if test="user_id_ != null and user_id_ != ''">
+		      AND user_id_ like '%${user_id_}%'  <!-- user_id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- name_ -->
+		</if>
+	    <if test="description_ != null and description_ != ''">
+		      AND description_ like '%${description_}%'  <!-- description_ -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ like '%${type_}%'  <!-- type_ -->
+		</if>
+	    <if test="task_id_ != null and task_id_ != ''">
+		      AND task_id_ like '%${task_id_}%'  <!-- task_id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ like '%${proc_inst_id_}%'  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="url_ != null and url_ != ''">
+		      AND url_ like '%${url_}%'  <!-- url_ -->
+		</if>
+	    <if test="content_id_ != null and content_id_ != ''">
+		      AND content_id_ like '%${content_id_}%'  <!-- content_id_ -->
+		</if>
+	    <if test="time_ != null and time_ != ''">
+		      AND time_ like '%${time_}%'  <!-- time_ -->
+		</if>
+	</sql>
 	
 </mapper>

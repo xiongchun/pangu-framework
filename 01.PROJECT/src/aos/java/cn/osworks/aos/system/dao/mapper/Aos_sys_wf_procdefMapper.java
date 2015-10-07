@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_sys_wf_procdefPO;
  * </p>
  * 
  * @author AHei
- * @date 2015-07-30 01:19:54
+ * @date 2015-08-17 22:20:00
  */
 @Mapper
 public interface Aos_sys_wf_procdefMapper {

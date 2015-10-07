@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_act_evt_logPO;
  * </p>
  * 
  * @author AHei
- * @date 2015-07-30 01:19:51
+ * @date 2015-08-17 22:19:58
  */
 @Mapper
 public interface Aos_act_evt_logMapper {
@@ -54,7 +54,7 @@ public interface Aos_act_evt_logMapper {
 	 * 
 	 * @return Aos_act_evt_logPO
 	 */
-	Aos_act_evt_logPO selectByKey(@Param(value = "log_nr_") String log_nr_);
+	Aos_act_evt_logPO selectByKey(@Param(value = "log_nr_") Integer log_nr_);
 
 	/**
 	 * 根据唯一组合条件查询并返回数据持久化对象
@@ -96,7 +96,7 @@ public interface Aos_act_evt_logMapper {
 	 *
 	 * @return 影响行数
 	 */
-	int deleteByKey(@Param(value = "log_nr_") String log_nr_);
+	int deleteByKey(@Param(value = "log_nr_") Integer log_nr_);
 	
 	/**
 	 * 根据Dto统计行数

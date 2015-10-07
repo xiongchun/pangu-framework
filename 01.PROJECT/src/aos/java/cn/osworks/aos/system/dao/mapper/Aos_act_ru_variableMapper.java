@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_act_ru_variablePO;
  * </p>
  * 
  * @author AHei
- * @date 2015-07-30 01:19:53
+ * @date 2015-08-17 22:20:00
  */
 @Mapper
 public interface Aos_act_ru_variableMapper {

@@ -10,7 +10,7 @@ import java.util.Date;
  * </p>
  * 
  * @author AHei
- * @date 2015-07-30 01:19:53
+ * @date 2015-08-17 22:19:59
  */
 public class Aos_act_ru_jobPO extends PO {
 

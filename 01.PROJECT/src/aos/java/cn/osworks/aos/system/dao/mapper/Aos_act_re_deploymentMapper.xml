@@ -3,110 +3,57 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- aos_act_re_deployment[aos_act_re_deployment]SQLMapper自动映射 -->
-<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-30 01:19:52 -->
+<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-08-17 22:19:59 -->
 <mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_act_re_deploymentMapper">
-
-	<!-- 表字段 -->
-	<sql id="column">
-		id_,  <!-- id_ -->
-		name_,  <!-- name_ -->
-		category_,  <!-- category_ -->
-		tenant_id_,  <!-- tenant_id_ -->
-		deploy_time_  <!-- deploy_time_ -->
-	</sql>
 	
-	<!-- 表字段(用于外表的关联时引用) -->
-	<sql id="column2">
-		aos_act_re_deployment.id_,  <!-- id_ -->
-		aos_act_re_deployment.name_,  <!-- name_ -->
-		aos_act_re_deployment.category_,  <!-- category_ -->
-		aos_act_re_deployment.tenant_id_,  <!-- tenant_id_ -->
-		aos_act_re_deployment.deploy_time_  <!-- deploy_time_ -->
-	</sql>
-
-	<!-- Where精确匹配字段 -->
-	<sql id="equal">
-	    <if test="id_ != null and id_ != ''">
-		    AND id_ = #{id_}  <!-- id_ -->
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert" parameterType="Aos_act_re_deploymentPO">
+		INSERT INTO aos_act_re_deployment (
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- name_ -->
 		</if>
-	    <if test="name_ != null and name_ != ''">
-		    AND name_ = #{name_}  <!-- name_ -->
+		<if test="category_ != null and category_ != ''">
+	         category_, <!-- category_ -->
 		</if>
-	    <if test="category_ != null and category_ != ''">
-		    AND category_ = #{category_}  <!-- category_ -->
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	         tenant_id_, <!-- tenant_id_ -->
 		</if>
-	    <if test="tenant_id_ != null and tenant_id_ != ''">
-		    AND tenant_id_ = #{tenant_id_}  <!-- tenant_id_ -->
+		<if test="deploy_time_ != null">
+	         deploy_time_, <!-- deploy_time_ -->
 		</if>
-	   <if test="deploy_time_ != null ">
-		    AND deploy_time_ = #{deploy_time_}  <!-- deploy_time_ -->
-		</if>
-	</sql>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- id_ -->
+	   </if>
+		)VALUES(
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- name_ -->
+	    </if>
+		<if test="category_ != null and category_ != ''">
+	          #{category_, jdbcType=VARCHAR}, <!-- category_ -->
+	    </if>
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	          #{tenant_id_, jdbcType=VARCHAR}, <!-- tenant_id_ -->
+	    </if>
+		<if test="deploy_time_ != null">
+	          #{deploy_time_, jdbcType=TIMESTAMP}, <!-- deploy_time_ -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
+	    </if>
+		)
+	</insert>
 	
-	<!-- Where模糊匹配字段 -->
-	<sql id="like">
-	    <if test="id_ != null and id_ != ''">
-		    AND id_ like '%${id_}%'  <!-- id_ -->
-		</if>
-	    <if test="name_ != null and name_ != ''">
-		    AND name_ like '%${name_}%'  <!-- name_ -->
-		</if>
-	    <if test="category_ != null and category_ != ''">
-		    AND category_ like '%${category_}%'  <!-- category_ -->
-		</if>
-	    <if test="tenant_id_ != null and tenant_id_ != ''">
-		    AND tenant_id_ like '%${tenant_id_}%'  <!-- tenant_id_ -->
-		</if>
-	</sql>
-
 	<!-- 插入一个数据持久化对象(含所有字段) -->
 	<insert id="insertAll" parameterType="Aos_act_re_deploymentPO">
 		INSERT INTO aos_act_re_deployment (
 		    <include refid="column" />
 		)
 		VALUES (
-		#{id_, jdbcType=VARCHAR},  <!-- id_ -->
-		#{name_, jdbcType=VARCHAR},  <!-- name_ -->
-		#{category_, jdbcType=VARCHAR},  <!-- category_ -->
-		#{tenant_id_, jdbcType=VARCHAR},  <!-- tenant_id_ -->
-		#{deploy_time_, jdbcType=TIMESTAMP}  <!-- deploy_time_ -->
-		)
-	</insert>
-	
-	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
-	<insert id="insert" parameterType="Aos_act_re_deploymentPO">
-		INSERT INTO aos_act_re_deployment (
-		<if test="name_ != null and name_ != ''">
-	          name_, <!-- name_ -->
-	   </if>
-		<if test="category_ != null and category_ != ''">
-	          category_, <!-- category_ -->
-	   </if>
-		<if test="tenant_id_ != null and tenant_id_ != ''">
-	          tenant_id_, <!-- tenant_id_ -->
-	   </if>
-		<if test="deploy_time_ != null">
-	          deploy_time_, <!-- deploy_time_ -->
-	   </if>
-		<if test="id_ != null and id_ != ''">
-	          id_  <!-- id_ -->
-	   </if>
-		)VALUES(
-		<if test="name_ != null and name_ != ''">
-		      #{name_, jdbcType=VARCHAR}, <!-- name_ -->
-	    </if>
-		<if test="category_ != null and category_ != ''">
-		      #{category_, jdbcType=VARCHAR}, <!-- category_ -->
-	    </if>
-		<if test="tenant_id_ != null and tenant_id_ != ''">
-		      #{tenant_id_, jdbcType=VARCHAR}, <!-- tenant_id_ -->
-	    </if>
-		<if test="deploy_time_ != null">
-		      #{deploy_time_, jdbcType=TIMESTAMP}, <!-- deploy_time_ -->
-	    </if>
-		<if test="id_ != null and id_ != ''">
-		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
-	    </if>
+		    #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+		    #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+		    #{category_, jdbcType=VARCHAR},  <!-- category_ -->
+		    #{tenant_id_, jdbcType=VARCHAR},  <!-- tenant_id_ -->
+		    #{deploy_time_, jdbcType=TIMESTAMP}  <!-- deploy_time_ -->
 		)
 	</insert>
 
@@ -115,23 +62,28 @@
 		UPDATE aos_act_re_deployment
 		<set>
 			<if test="id_ != null">
-				id_ = #{id_},  <!-- id_ -->
+		          id_ = #{id_},  <!-- id_ -->
 			</if>
 			<if test="name_ != null">
-				name_ = #{name_},  <!-- name_ -->
+		          name_ = #{name_},  <!-- name_ -->
 			</if>
 			<if test="category_ != null">
-				category_ = #{category_},  <!-- category_ -->
+		          category_ = #{category_},  <!-- category_ -->
 			</if>
 			<if test="tenant_id_ != null">
-				tenant_id_ = #{tenant_id_},  <!-- tenant_id_ -->
+		          tenant_id_ = #{tenant_id_},  <!-- tenant_id_ -->
 			</if>
 			<if test="deploy_time_ != null">
-				deploy_time_ = #{deploy_time_},  <!-- deploy_time_ -->
+		          deploy_time_ = #{deploy_time_},  <!-- deploy_time_ -->
 			</if>
 		</set>
 		WHERE  id_ = #{id_}
 	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_act_re_deployment WHERE  id_ = #{id_}
+	</delete>
 
 	<!-- 根据主键查询并返回数据持久化对象 -->
 	<select id="selectByKey" resultType="Aos_act_re_deploymentPO">
@@ -189,11 +141,6 @@
 		    <include refid="like" />
 		</where>	
 	</select>
-
-	<!-- 根据主键删除数据持久化对象 -->
-	<delete id="deleteByKey">
-		DELETE FROM aos_act_re_deployment WHERE  id_ = #{id_}
-	</delete>
 	
 	<!-- 根据Dto统计行数 -->
 	<select id="rows" resultType="Integer" parameterType="Dto">
@@ -212,5 +159,58 @@
 		    <include refid="equal" />
 		</where>
 	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- id_ -->
+		  name_,  <!-- name_ -->
+		  category_,  <!-- category_ -->
+		  tenant_id_,  <!-- tenant_id_ -->
+		  deploy_time_  <!-- deploy_time_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_act_re_deployment.id_,  <!-- id_ -->
+		  aos_act_re_deployment.name_,  <!-- name_ -->
+		  aos_act_re_deployment.category_,  <!-- category_ -->
+		  aos_act_re_deployment.tenant_id_,  <!-- tenant_id_ -->
+		  aos_act_re_deployment.deploy_time_  <!-- deploy_time_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- name_ -->
+		</if>
+	    <if test="category_ != null and category_ != ''">
+		      AND category_ = #{category_}  <!-- category_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ = #{tenant_id_}  <!-- tenant_id_ -->
+		</if>
+	   <if test="deploy_time_ != null ">
+		      AND deploy_time_ = #{deploy_time_}  <!-- deploy_time_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- name_ -->
+		</if>
+	    <if test="category_ != null and category_ != ''">
+		      AND category_ like '%${category_}%'  <!-- category_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ like '%${tenant_id_}%'  <!-- tenant_id_ -->
+		</if>
+	</sql>
 	
 </mapper>

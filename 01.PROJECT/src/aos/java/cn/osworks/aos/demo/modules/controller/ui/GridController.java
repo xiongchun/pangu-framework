@@ -69,7 +69,7 @@ public class GridController {
 	 */
 	@RequestMapping(value = "initEditGrid")
 	public String initEditGrid() {
-		return "demo/ui/grid/grid.edit.jsp";
+		return "demo/ui/grid/gridEdit.jsp";
 	}
 
 	/**

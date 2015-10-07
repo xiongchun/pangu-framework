@@ -9,7 +9,7 @@ import cn.osworks.aos.core.typewrap.PO;
  * </p>
  * 
  * @author AHei
- * @date 2015-07-30 01:19:52
+ * @date 2015-08-17 22:19:59
  */
 public class Aos_act_id_userPO extends PO {
 

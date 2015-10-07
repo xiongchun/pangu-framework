@@ -42,7 +42,7 @@ public class DaoBuilderConsole {
 		dto.put("author", "AHei");
 		//指定多张表请用逗号分隔；
 		//!!表名区分大小写的喔
-		dto.put("tables", "aos_sys_wf_procdef");
+		dto.put("tables", "test");
 		//===================
 		Connection connection = DBMetaInfoUtils.newConnection(driverOpt);
 		DaoBuilder.build(connection, dto);

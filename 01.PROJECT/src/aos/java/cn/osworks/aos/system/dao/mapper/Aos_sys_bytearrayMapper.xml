@@ -3,215 +3,106 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 流文件表[aos_sys_bytearray]SQLMapper自动映射 -->
-<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-30 01:19:53 -->
+<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-08-17 22:20:00 -->
 <mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_sys_bytearrayMapper">
-
-	<!-- 表字段 -->
-	<sql id="column">
-		id_,  <!-- 流水号 -->
-		key_,  <!-- 标识键 -->
-		name_,  <!-- 名称 -->
-		catalog_id_,  <!-- 分类ID -->
-		catalog_cascade_id_,  <!-- 分类级联ID -->
-		content_type_,  <!-- 内容类型 -->
-		size_,  <!-- 大小 -->
-		bytes_,  <!-- 流文件 -->
-		create_time_,  <!-- 创建时间 -->
-		creater_id_,  <!-- 操作人ID -->
-		title_,  <!-- 标题 -->
-		remark_  <!-- 备注 -->
-	</sql>
 	
-	<!-- 表字段(用于外表的关联时引用) -->
-	<sql id="column2">
-		aos_sys_bytearray.id_,  <!-- 流水号 -->
-		aos_sys_bytearray.key_,  <!-- 标识键 -->
-		aos_sys_bytearray.name_,  <!-- 名称 -->
-		aos_sys_bytearray.catalog_id_,  <!-- 分类ID -->
-		aos_sys_bytearray.catalog_cascade_id_,  <!-- 分类级联ID -->
-		aos_sys_bytearray.content_type_,  <!-- 内容类型 -->
-		aos_sys_bytearray.size_,  <!-- 大小 -->
-		aos_sys_bytearray.bytes_,  <!-- 流文件 -->
-		aos_sys_bytearray.create_time_,  <!-- 创建时间 -->
-		aos_sys_bytearray.creater_id_,  <!-- 操作人ID -->
-		aos_sys_bytearray.title_,  <!-- 标题 -->
-		aos_sys_bytearray.remark_  <!-- 备注 -->
-	</sql>
-
-	<!-- Where精确匹配字段 -->
-	<sql id="equal">
-	    <if test="id_ != null and id_ != ''">
-		    AND id_ = #{id_}  <!-- 流水号 -->
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert" parameterType="Aos_sys_bytearrayPO">
+		INSERT INTO aos_sys_bytearray (
+		<if test="key_ != null and key_ != ''">
+	         key_, <!-- 标识键 -->
 		</if>
-	    <if test="key_ != null and key_ != ''">
-		    AND key_ = #{key_}  <!-- 标识键 -->
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- 名称 -->
 		</if>
-	    <if test="name_ != null and name_ != ''">
-		    AND name_ = #{name_}  <!-- 名称 -->
+		<if test="catalog_id_ != null and catalog_id_ != ''">
+	         catalog_id_, <!-- 分类ID -->
 		</if>
-	    <if test="catalog_id_ != null and catalog_id_ != ''">
-		    AND catalog_id_ = #{catalog_id_}  <!-- 分类ID -->
+		<if test="catalog_cascade_id_ != null and catalog_cascade_id_ != ''">
+	         catalog_cascade_id_, <!-- 分类级联ID -->
 		</if>
-	    <if test="catalog_cascade_id_ != null and catalog_cascade_id_ != ''">
-		    AND catalog_cascade_id_ = #{catalog_cascade_id_}  <!-- 分类级联ID -->
+		<if test="content_type_ != null and content_type_ != ''">
+	         content_type_, <!-- 内容类型 -->
 		</if>
-	    <if test="content_type_ != null and content_type_ != ''">
-		    AND content_type_ = #{content_type_}  <!-- 内容类型 -->
+		<if test="size_ != null">
+	         size_, <!-- 大小 -->
 		</if>
-	   <if test="size_ != null ">
-		    AND size_ = #{size_}  <!-- 大小 -->
+		<if test="bytes_ != null and bytes_ != ''">
+	         bytes_, <!-- 流文件 -->
 		</if>
-	    <if test="bytes_ != null and bytes_ != ''">
-		    AND bytes_ = #{bytes_}  <!-- 流文件 -->
+		<if test="create_time_ != null and create_time_ != ''">
+	         create_time_, <!-- 创建时间 -->
 		</if>
-	    <if test="create_time_ != null and create_time_ != ''">
-		    AND create_time_ = #{create_time_}  <!-- 创建时间 -->
+		<if test="creater_id_ != null and creater_id_ != ''">
+	         creater_id_, <!-- 操作人ID -->
 		</if>
-	    <if test="creater_id_ != null and creater_id_ != ''">
-		    AND creater_id_ = #{creater_id_}  <!-- 操作人ID -->
+		<if test="title_ != null and title_ != ''">
+	         title_, <!-- 标题 -->
 		</if>
-	    <if test="title_ != null and title_ != ''">
-		    AND title_ = #{title_}  <!-- 标题 -->
+		<if test="remark_ != null and remark_ != ''">
+	         remark_, <!-- 备注 -->
 		</if>
-	    <if test="remark_ != null and remark_ != ''">
-		    AND remark_ = #{remark_}  <!-- 备注 -->
-		</if>
-	</sql>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- 流水号 -->
+	   </if>
+		)VALUES(
+		<if test="key_ != null and key_ != ''">
+	          #{key_, jdbcType=VARCHAR}, <!-- 标识键 -->
+	    </if>
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- 名称 -->
+	    </if>
+		<if test="catalog_id_ != null and catalog_id_ != ''">
+	          #{catalog_id_, jdbcType=VARCHAR}, <!-- 分类ID -->
+	    </if>
+		<if test="catalog_cascade_id_ != null and catalog_cascade_id_ != ''">
+	          #{catalog_cascade_id_, jdbcType=VARCHAR}, <!-- 分类级联ID -->
+	    </if>
+		<if test="content_type_ != null and content_type_ != ''">
+	          #{content_type_, jdbcType=VARCHAR}, <!-- 内容类型 -->
+	    </if>
+		<if test="size_ != null">
+	          #{size_, jdbcType=INTEGER}, <!-- 大小 -->
+	    </if>
+		<if test="bytes_ != null and bytes_ != ''">
+	          #{bytes_, jdbcType=VARCHAR}, <!-- 流文件 -->
+	    </if>
+		<if test="create_time_ != null and create_time_ != ''">
+	          #{create_time_, jdbcType=VARCHAR}, <!-- 创建时间 -->
+	    </if>
+		<if test="creater_id_ != null and creater_id_ != ''">
+	          #{creater_id_, jdbcType=VARCHAR}, <!-- 操作人ID -->
+	    </if>
+		<if test="title_ != null and title_ != ''">
+	          #{title_, jdbcType=VARCHAR}, <!-- 标题 -->
+	    </if>
+		<if test="remark_ != null and remark_ != ''">
+	          #{remark_, jdbcType=VARCHAR}, <!-- 备注 -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- 流水号 -->
+	    </if>
+		)
+	</insert>
 	
-	<!-- Where模糊匹配字段 -->
-	<sql id="like">
-	    <if test="id_ != null and id_ != ''">
-		    AND id_ like '%${id_}%'  <!-- 流水号 -->
-		</if>
-	    <if test="key_ != null and key_ != ''">
-		    AND key_ like '%${key_}%'  <!-- 标识键 -->
-		</if>
-	    <if test="name_ != null and name_ != ''">
-		    AND name_ like '%${name_}%'  <!-- 名称 -->
-		</if>
-	    <if test="catalog_id_ != null and catalog_id_ != ''">
-		    AND catalog_id_ like '%${catalog_id_}%'  <!-- 分类ID -->
-		</if>
-	    <if test="catalog_cascade_id_ != null and catalog_cascade_id_ != ''">
-		    AND catalog_cascade_id_ like '%${catalog_cascade_id_}%'  <!-- 分类级联ID -->
-		</if>
-	    <if test="content_type_ != null and content_type_ != ''">
-		    AND content_type_ like '%${content_type_}%'  <!-- 内容类型 -->
-		</if>
-	    <if test="bytes_ != null and bytes_ != ''">
-		    AND bytes_ like '%${bytes_}%'  <!-- 流文件 -->
-		</if>
-	    <if test="create_time_ != null and create_time_ != ''">
-		    AND create_time_ like '%${create_time_}%'  <!-- 创建时间 -->
-		</if>
-	    <if test="creater_id_ != null and creater_id_ != ''">
-		    AND creater_id_ like '%${creater_id_}%'  <!-- 操作人ID -->
-		</if>
-	    <if test="title_ != null and title_ != ''">
-		    AND title_ like '%${title_}%'  <!-- 标题 -->
-		</if>
-	    <if test="remark_ != null and remark_ != ''">
-		    AND remark_ like '%${remark_}%'  <!-- 备注 -->
-		</if>
-	</sql>
-
 	<!-- 插入一个数据持久化对象(含所有字段) -->
 	<insert id="insertAll" parameterType="Aos_sys_bytearrayPO">
 		INSERT INTO aos_sys_bytearray (
 		    <include refid="column" />
 		)
 		VALUES (
-		#{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
-		#{key_, jdbcType=VARCHAR},  <!-- 标识键 -->
-		#{name_, jdbcType=VARCHAR},  <!-- 名称 -->
-		#{catalog_id_, jdbcType=VARCHAR},  <!-- 分类ID -->
-		#{catalog_cascade_id_, jdbcType=VARCHAR},  <!-- 分类级联ID -->
-		#{content_type_, jdbcType=VARCHAR},  <!-- 内容类型 -->
-		#{size_, jdbcType=INTEGER},  <!-- 大小 -->
-		#{bytes_, jdbcType=VARCHAR},  <!-- 流文件 -->
-		#{create_time_, jdbcType=VARCHAR},  <!-- 创建时间 -->
-		#{creater_id_, jdbcType=VARCHAR},  <!-- 操作人ID -->
-		#{title_, jdbcType=VARCHAR},  <!-- 标题 -->
-		#{remark_, jdbcType=VARCHAR}  <!-- 备注 -->
-		)
-	</insert>
-	
-	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
-	<insert id="insert" parameterType="Aos_sys_bytearrayPO">
-		INSERT INTO aos_sys_bytearray (
-		<if test="key_ != null and key_ != ''">
-	          key_, <!-- 标识键 -->
-	   </if>
-		<if test="name_ != null and name_ != ''">
-	          name_, <!-- 名称 -->
-	   </if>
-		<if test="catalog_id_ != null and catalog_id_ != ''">
-	          catalog_id_, <!-- 分类ID -->
-	   </if>
-		<if test="catalog_cascade_id_ != null and catalog_cascade_id_ != ''">
-	          catalog_cascade_id_, <!-- 分类级联ID -->
-	   </if>
-		<if test="content_type_ != null and content_type_ != ''">
-	          content_type_, <!-- 内容类型 -->
-	   </if>
-		<if test="size_ != null">
-	          size_, <!-- 大小 -->
-	   </if>
-		<if test="bytes_ != null and bytes_ != ''">
-	          bytes_, <!-- 流文件 -->
-	   </if>
-		<if test="create_time_ != null and create_time_ != ''">
-	          create_time_, <!-- 创建时间 -->
-	   </if>
-		<if test="creater_id_ != null and creater_id_ != ''">
-	          creater_id_, <!-- 操作人ID -->
-	   </if>
-		<if test="title_ != null and title_ != ''">
-	          title_, <!-- 标题 -->
-	   </if>
-		<if test="remark_ != null and remark_ != ''">
-	          remark_, <!-- 备注 -->
-	   </if>
-		<if test="id_ != null and id_ != ''">
-	          id_  <!-- id_ -->
-	   </if>
-		)VALUES(
-		<if test="key_ != null and key_ != ''">
-		      #{key_, jdbcType=VARCHAR}, <!-- 标识键 -->
-	    </if>
-		<if test="name_ != null and name_ != ''">
-		      #{name_, jdbcType=VARCHAR}, <!-- 名称 -->
-	    </if>
-		<if test="catalog_id_ != null and catalog_id_ != ''">
-		      #{catalog_id_, jdbcType=VARCHAR}, <!-- 分类ID -->
-	    </if>
-		<if test="catalog_cascade_id_ != null and catalog_cascade_id_ != ''">
-		      #{catalog_cascade_id_, jdbcType=VARCHAR}, <!-- 分类级联ID -->
-	    </if>
-		<if test="content_type_ != null and content_type_ != ''">
-		      #{content_type_, jdbcType=VARCHAR}, <!-- 内容类型 -->
-	    </if>
-		<if test="size_ != null">
-		      #{size_, jdbcType=INTEGER}, <!-- 大小 -->
-	    </if>
-		<if test="bytes_ != null and bytes_ != ''">
-		      #{bytes_, jdbcType=VARCHAR}, <!-- 流文件 -->
-	    </if>
-		<if test="create_time_ != null and create_time_ != ''">
-		      #{create_time_, jdbcType=VARCHAR}, <!-- 创建时间 -->
-	    </if>
-		<if test="creater_id_ != null and creater_id_ != ''">
-		      #{creater_id_, jdbcType=VARCHAR}, <!-- 操作人ID -->
-	    </if>
-		<if test="title_ != null and title_ != ''">
-		      #{title_, jdbcType=VARCHAR}, <!-- 标题 -->
-	    </if>
-		<if test="remark_ != null and remark_ != ''">
-		      #{remark_, jdbcType=VARCHAR}, <!-- 备注 -->
-	    </if>
-		<if test="id_ != null and id_ != ''">
-		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
-	    </if>
+		    #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+		    #{key_, jdbcType=VARCHAR},  <!-- 标识键 -->
+		    #{name_, jdbcType=VARCHAR},  <!-- 名称 -->
+		    #{catalog_id_, jdbcType=VARCHAR},  <!-- 分类ID -->
+		    #{catalog_cascade_id_, jdbcType=VARCHAR},  <!-- 分类级联ID -->
+		    #{content_type_, jdbcType=VARCHAR},  <!-- 内容类型 -->
+		    #{size_, jdbcType=INTEGER},  <!-- 大小 -->
+		    #{bytes_, jdbcType=VARCHAR},  <!-- 流文件 -->
+		    #{create_time_, jdbcType=VARCHAR},  <!-- 创建时间 -->
+		    #{creater_id_, jdbcType=VARCHAR},  <!-- 操作人ID -->
+		    #{title_, jdbcType=VARCHAR},  <!-- 标题 -->
+		    #{remark_, jdbcType=VARCHAR}  <!-- 备注 -->
 		)
 	</insert>
 
@@ -220,44 +111,49 @@
 		UPDATE aos_sys_bytearray
 		<set>
 			<if test="id_ != null">
-				id_ = #{id_},  <!-- 流水号 -->
+		          id_ = #{id_},  <!-- 流水号 -->
 			</if>
 			<if test="key_ != null">
-				key_ = #{key_},  <!-- 标识键 -->
+		          key_ = #{key_},  <!-- 标识键 -->
 			</if>
 			<if test="name_ != null">
-				name_ = #{name_},  <!-- 名称 -->
+		          name_ = #{name_},  <!-- 名称 -->
 			</if>
 			<if test="catalog_id_ != null">
-				catalog_id_ = #{catalog_id_},  <!-- 分类ID -->
+		          catalog_id_ = #{catalog_id_},  <!-- 分类ID -->
 			</if>
 			<if test="catalog_cascade_id_ != null">
-				catalog_cascade_id_ = #{catalog_cascade_id_},  <!-- 分类级联ID -->
+		          catalog_cascade_id_ = #{catalog_cascade_id_},  <!-- 分类级联ID -->
 			</if>
 			<if test="content_type_ != null">
-				content_type_ = #{content_type_},  <!-- 内容类型 -->
+		          content_type_ = #{content_type_},  <!-- 内容类型 -->
 			</if>
 			<if test="size_ != null">
-				size_ = #{size_},  <!-- 大小 -->
+		          size_ = #{size_},  <!-- 大小 -->
 			</if>
 			<if test="bytes_ != null">
-				bytes_ = #{bytes_},  <!-- 流文件 -->
+		          bytes_ = #{bytes_},  <!-- 流文件 -->
 			</if>
 			<if test="create_time_ != null">
-				create_time_ = #{create_time_},  <!-- 创建时间 -->
+		          create_time_ = #{create_time_},  <!-- 创建时间 -->
 			</if>
 			<if test="creater_id_ != null">
-				creater_id_ = #{creater_id_},  <!-- 操作人ID -->
+		          creater_id_ = #{creater_id_},  <!-- 操作人ID -->
 			</if>
 			<if test="title_ != null">
-				title_ = #{title_},  <!-- 标题 -->
+		          title_ = #{title_},  <!-- 标题 -->
 			</if>
 			<if test="remark_ != null">
-				remark_ = #{remark_},  <!-- 备注 -->
+		          remark_ = #{remark_},  <!-- 备注 -->
 			</if>
 		</set>
 		WHERE  id_ = #{id_}
 	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_sys_bytearray WHERE  id_ = #{id_}
+	</delete>
 
 	<!-- 根据主键查询并返回数据持久化对象 -->
 	<select id="selectByKey" resultType="Aos_sys_bytearrayPO">
@@ -315,11 +211,6 @@
 		    <include refid="like" />
 		</where>	
 	</select>
-
-	<!-- 根据主键删除数据持久化对象 -->
-	<delete id="deleteByKey">
-		DELETE FROM aos_sys_bytearray WHERE  id_ = #{id_}
-	</delete>
 	
 	<!-- 根据Dto统计行数 -->
 	<select id="rows" resultType="Integer" parameterType="Dto">
@@ -338,5 +229,114 @@
 		    <include refid="equal" />
 		</where>
 	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- 流水号 -->
+		  key_,  <!-- 标识键 -->
+		  name_,  <!-- 名称 -->
+		  catalog_id_,  <!-- 分类ID -->
+		  catalog_cascade_id_,  <!-- 分类级联ID -->
+		  content_type_,  <!-- 内容类型 -->
+		  size_,  <!-- 大小 -->
+		  bytes_,  <!-- 流文件 -->
+		  create_time_,  <!-- 创建时间 -->
+		  creater_id_,  <!-- 操作人ID -->
+		  title_,  <!-- 标题 -->
+		  remark_  <!-- 备注 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_sys_bytearray.id_,  <!-- 流水号 -->
+		  aos_sys_bytearray.key_,  <!-- 标识键 -->
+		  aos_sys_bytearray.name_,  <!-- 名称 -->
+		  aos_sys_bytearray.catalog_id_,  <!-- 分类ID -->
+		  aos_sys_bytearray.catalog_cascade_id_,  <!-- 分类级联ID -->
+		  aos_sys_bytearray.content_type_,  <!-- 内容类型 -->
+		  aos_sys_bytearray.size_,  <!-- 大小 -->
+		  aos_sys_bytearray.bytes_,  <!-- 流文件 -->
+		  aos_sys_bytearray.create_time_,  <!-- 创建时间 -->
+		  aos_sys_bytearray.creater_id_,  <!-- 操作人ID -->
+		  aos_sys_bytearray.title_,  <!-- 标题 -->
+		  aos_sys_bytearray.remark_  <!-- 备注 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- 流水号 -->
+		</if>
+	    <if test="key_ != null and key_ != ''">
+		      AND key_ = #{key_}  <!-- 标识键 -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- 名称 -->
+		</if>
+	    <if test="catalog_id_ != null and catalog_id_ != ''">
+		      AND catalog_id_ = #{catalog_id_}  <!-- 分类ID -->
+		</if>
+	    <if test="catalog_cascade_id_ != null and catalog_cascade_id_ != ''">
+		      AND catalog_cascade_id_ = #{catalog_cascade_id_}  <!-- 分类级联ID -->
+		</if>
+	    <if test="content_type_ != null and content_type_ != ''">
+		      AND content_type_ = #{content_type_}  <!-- 内容类型 -->
+		</if>
+	   <if test="size_ != null ">
+		      AND size_ = #{size_}  <!-- 大小 -->
+		</if>
+	    <if test="bytes_ != null and bytes_ != ''">
+		      AND bytes_ = #{bytes_}  <!-- 流文件 -->
+		</if>
+	    <if test="create_time_ != null and create_time_ != ''">
+		      AND create_time_ = #{create_time_}  <!-- 创建时间 -->
+		</if>
+	    <if test="creater_id_ != null and creater_id_ != ''">
+		      AND creater_id_ = #{creater_id_}  <!-- 操作人ID -->
+		</if>
+	    <if test="title_ != null and title_ != ''">
+		      AND title_ = #{title_}  <!-- 标题 -->
+		</if>
+	    <if test="remark_ != null and remark_ != ''">
+		      AND remark_ = #{remark_}  <!-- 备注 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- 流水号 -->
+		</if>
+	    <if test="key_ != null and key_ != ''">
+		      AND key_ like '%${key_}%'  <!-- 标识键 -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- 名称 -->
+		</if>
+	    <if test="catalog_id_ != null and catalog_id_ != ''">
+		      AND catalog_id_ like '%${catalog_id_}%'  <!-- 分类ID -->
+		</if>
+	    <if test="catalog_cascade_id_ != null and catalog_cascade_id_ != ''">
+		      AND catalog_cascade_id_ like '%${catalog_cascade_id_}%'  <!-- 分类级联ID -->
+		</if>
+	    <if test="content_type_ != null and content_type_ != ''">
+		      AND content_type_ like '%${content_type_}%'  <!-- 内容类型 -->
+		</if>
+	    <if test="bytes_ != null and bytes_ != ''">
+		      AND bytes_ like '%${bytes_}%'  <!-- 流文件 -->
+		</if>
+	    <if test="create_time_ != null and create_time_ != ''">
+		      AND create_time_ like '%${create_time_}%'  <!-- 创建时间 -->
+		</if>
+	    <if test="creater_id_ != null and creater_id_ != ''">
+		      AND creater_id_ like '%${creater_id_}%'  <!-- 操作人ID -->
+		</if>
+	    <if test="title_ != null and title_ != ''">
+		      AND title_ like '%${title_}%'  <!-- 标题 -->
+		</if>
+	    <if test="remark_ != null and remark_ != ''">
+		      AND remark_ like '%${remark_}%'  <!-- 备注 -->
+		</if>
+	</sql>
 	
 </mapper>

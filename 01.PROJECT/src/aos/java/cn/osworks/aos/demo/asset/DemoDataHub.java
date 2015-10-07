@@ -2,14 +2,13 @@ package cn.osworks.aos.demo.asset;
 
 import java.math.BigDecimal;
 
-import org.apache.commons.lang3.StringUtils;
-
 import cn.osworks.aos.core.asset.AOSCxt;
 import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.id.AOSId;
 import cn.osworks.aos.demo.dao.mapper.Demo_accountMapper;
+import cn.osworks.aos.demo.dao.mapper.Demo_orgMapper;
 import cn.osworks.aos.demo.dao.po.Demo_accountPO;
-import cn.osworks.aos.system.asset.IdCons;
+import cn.osworks.aos.demo.dao.po.Demo_orgPO;
 
 /**
  * 范例系统数据集线器
@@ -24,7 +23,8 @@ public class DemoDataHub {
 	}
 
 	public static void main(String[] args) {
-		generateDemo_accountTableData(1000);
+		//generateDemo_accountTableData(1000);
+		generateDemo_orgTableData();
 	}
 
 	// 生成Demo_account表数据
@@ -51,6 +51,21 @@ public class DemoDataHub {
 			mapper.insert(demo_accountPO);
 		}
 
+	}
+	
+	// 生成Demo_org表数据
+	private static void generateDemo_orgTableData() {
+		Demo_orgMapper mapper = (Demo_orgMapper) AOSCxt.getBean("demo_orgMapper");
+		Demo_orgPO demo_orgPO = new Demo_orgPO();
+		demo_orgPO.setId_("7");
+		demo_orgPO.setCascade_id_("0.003.002");
+		demo_orgPO.setName_("云南分行昆明支行");
+		demo_orgPO.setParent_id_("3");
+		demo_orgPO.setIs_leaf_(1);
+		demo_orgPO.setIs_auto_expand_(0);
+		demo_orgPO.setCreate_user_id_("1");
+		demo_orgPO.setCreate_time_(AOSUtils.getDate());
+		mapper.insert(demo_orgPO);
 	}
 
 }

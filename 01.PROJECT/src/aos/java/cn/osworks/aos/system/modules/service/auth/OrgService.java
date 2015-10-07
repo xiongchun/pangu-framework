@@ -203,9 +203,9 @@ public class OrgService {
 	@Transactional
 	public void resetWhenDeleteOrg(String id_) {
 		//待删岗位集合
-		List<Aos_sys_postPO> aos_sys_postPOs = aos_sys_postMapper.list(Dtos.newDto("id_", id_));
+		List<Aos_sys_postPO> aos_sys_postPOs = aos_sys_postMapper.list(Dtos.newDto("org_id_", id_));
 		//待删人员集合(如果以后改为人员可以属于多个组织的话，这里需要重新实现)
-	    List<Aos_sys_userPO> aos_sys_userPOs = aos_sys_userMapper.list(Dtos.newDto("id_", id_));
+	    List<Aos_sys_userPO> aos_sys_userPOs = aos_sys_userMapper.list(Dtos.newDto("org_id_", id_));
 	    
 	    for (Aos_sys_postPO aos_sys_postPO : aos_sys_postPOs) {
 			//删除岗位-菜单关联表
