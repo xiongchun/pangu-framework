@@ -12,7 +12,6 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/ognl-2.6.9.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/ant-1.6.5.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jdbc/postgresql-9.3-jdbc4-jdk6.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jdbc/mysql-connector-java-5.0.5.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/slf4j-api-1.7.5.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/slf4j-log4j12-1.7.5.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/guava-17.0.jar"/>
@@ -80,7 +79,6 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jdbc/sqljdbc4.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/aos/aos-3rd.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/aos/aos-core.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/h2-1.4.187.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/groovy-all-2.0.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/iText-2.1.7.js2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/iTextAsian-2.1.7.jar"/>
@@ -112,5 +110,7 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-rest-5.17.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-simple-workflow-5.17.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-spring-5.17.0.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/h2-1.4.189.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jdbc/mysql-connector-java-5.0.22.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>
 </classpath>
