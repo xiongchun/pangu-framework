@@ -9,7 +9,7 @@
 </aos:body>
 <aos:onready>
 	<aos:viewport>
-		<aos:panel id="_p_cfg" region="center" layout="anchor" width="500" border="false" header="false">
+		<aos:panel id="_p_cfg" region="center" layout="anchor" width="500" border="false" header="false" center="true">
 			<aos:docked>
 				<aos:dockeditem xtype="tbtext" text="系统安全选项" />
 			</aos:docked>
@@ -18,12 +18,12 @@
 					<aos:hiddenfield fieldLabel="用户流水号" name="id_" />
 					<aos:textfield name="name_" fieldLabel="姓名" readOnly="true" maxLength="50" columnWidth="0.99" />
 					<aos:textfield name="account_" fieldLabel="登录帐号" readOnly="true" maxLength="50" columnWidth="0.99" />
-					<aos:textfield name="password_" fieldLabel="密码" inputType="password" allowBlank="false" maxLength="50"
+					<aos:textfield name="password_" fieldLabel="密码" inputType="password" allowBlank="false" maxLength="10"
 						columnWidth="0.99" />
-					<aos:textfield name="new_password_" fieldLabel="新密码" inputType="password" allowBlank="false" maxLength="50"
+					<aos:textfield name="new_password_" fieldLabel="新密码" inputType="password" allowBlank="false" maxLength="10"
 						columnWidth="0.99" />
 					<aos:textfield name="confirm_new_password_" fieldLabel="确认新密码" inputType="password" allowBlank="false"
-						maxLength="50" columnWidth="0.99" />
+						maxLength="10" columnWidth="0.99" />
 				</aos:fieldset>
 				<aos:docked dock="bottom">
 					<aos:dockeditem xtype="tbfill" />
@@ -31,7 +31,7 @@
 				</aos:docked>
 			</aos:formpanel>
 			<aos:formpanel id="_f_dog" layout="column" labelWidth="80" bodyBorder="0 1 1 1" anchor="100%" >
-				<aos:fieldset title="加密狗设置[功能预留]" labelWidth="80" border="true">
+				<aos:fieldset title="功能预留" labelWidth="80" border="true">
 					<aos:hiddenfield fieldLabel="用户流水号" name="id_" />
 				</aos:fieldset>
 				<aos:docked dock="bottom">
@@ -42,16 +42,6 @@
 		</aos:panel>
 	</aos:viewport>
 	<script type="text/javascript">
-		_p_cfg.center();
-		//响应窗口变化事件
-		Ext.EventManager
-				.onWindowResize(function() {
-					var left = (Ext.getBody().getViewSize().width - _p_cfg
-							.getWidth()) / 2;
-					var top = (Ext.getBody().getViewSize().height - _p_cfg
-							.getHeight()) / 2;
-					_p_cfg.setPosition(left, top, true)
-				});
 
 		//监听密码表单onshow事件
 		function _f_pwd_onrender() {

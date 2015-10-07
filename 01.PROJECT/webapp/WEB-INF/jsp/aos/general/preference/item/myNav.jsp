@@ -41,7 +41,7 @@
 		<aos:gridpanel id="_g_nav" url="listFloatModules.jhtml" flex="0.4" pageSize="1000" hidePagebar="true"
 			onrender="_g_nav_query" onitemdblclick="_w_module_u_show">
 			<aos:docked forceBoder="0 0 1 0">
-				<aos:dockeditem xtype="tbtext" text="自定义浮动菜单" />
+				<aos:dockeditem xtype="tbtext" text="自定义欢迎页浮动菜单" />
 				<aos:dockeditem xtype="tbfill" />
 				<aos:dockeditem text="新增" tooltip="新增浮动菜单" onclick="_w_module_show" icon="add.png" />
 				<aos:dockeditem text="修改" tooltip="修改浮动菜单" onclick="_w_module_u_show" icon="edit.png" />

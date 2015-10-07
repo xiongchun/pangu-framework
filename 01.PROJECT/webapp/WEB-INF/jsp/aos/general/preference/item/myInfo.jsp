@@ -14,7 +14,7 @@
 </aos:body>
 <aos:onready>
 	<aos:viewport>
-		<aos:formpanel id="_f_user" onrender="_f_user_onrender" width="700" layout="column" labelWidth="70">
+		<aos:formpanel id="_f_user" onrender="_f_user_onrender" width="700" layout="column" labelWidth="70" center="true">
 			<aos:docked>
 				<aos:dockeditem xtype="tbtext" text="我的个人资料" />
 			</aos:docked>
@@ -66,15 +66,6 @@
 		</aos:window>
 	</aos:viewport>
 	<script type="text/javascript">
-		_f_user.center();
-		//响应窗口变化事件
-		Ext.EventManager.onWindowResize(function() {
-			var left = (Ext.getBody().getViewSize().width - _f_user
-					.getWidth()) / 2;
-			var top = (Ext.getBody().getViewSize().height - _f_user
-					.getHeight()) / 2;
-			_f_user.setPosition(left, top, true)
-		});
 		
         //监听用户表单onshow事件
         function _f_user_onrender() {

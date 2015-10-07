@@ -9,7 +9,7 @@
 </aos:body>
 <aos:onready>
 	<aos:viewport>
-		<aos:formpanel id="_f_settings" onrender="_f_settings_onrender" width="800" layout="column" labelWidth="80">
+		<aos:formpanel id="_f_settings" onrender="_f_settings_onrender" width="800" layout="column" center="true" labelWidth="80">
 			<aos:docked>
 				<aos:dockeditem xtype="tbtext" text="我的偏好设置" />
 			</aos:docked>
@@ -37,15 +37,6 @@
 		</aos:formpanel>
 	</aos:viewport>
 	<script type="text/javascript">
-		_f_settings.center();
-		//响应窗口变化事件
-		Ext.EventManager.onWindowResize(function() {
-			var left = (Ext.getBody().getViewSize().width - _f_settings
-					.getWidth()) / 2;
-			var top = (Ext.getBody().getViewSize().height - _f_settings
-					.getHeight()) / 2;
-			_f_settings.setPosition(left, top, true)
-		});
 
 		//监听表单onshow事件
 		function _f_settings_onrender() {

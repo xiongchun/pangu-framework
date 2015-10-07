@@ -232,7 +232,7 @@
 			return;
 		}
 		var id = "_id_tab_" + module_id_;
-		url = '${cxt}/' + url;
+		url = url.indexOf('http') === 0 ? url : '${cxt}/' + url;
 		var index = url.indexOf('?');
 		//一级菜单的主页面所属的页面元素其page_id_同module_id_。
 		url = url + (index === -1 ? '?' : '&') + 'aos_module_id_=' + module_id_

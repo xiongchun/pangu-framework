@@ -693,11 +693,11 @@ AOS.file = function(url) {
 };
 
 /**
- * 自定义Window
+ * 自定义Window : 例子而已
  */
 Ext.define('Ext.AOS.Msg', {
     extend: 'Ext.window.Window',
-    alias: 'app.msg',
+    alias: 'aos.msg',
     initComponent: function () {
         var me = this;
         me.callParent(arguments);

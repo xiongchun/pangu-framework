@@ -4,6 +4,11 @@
 <aos:head title="分类科目">
 	<aos:include lib="ext" />
 	<aos:base href="system/catalog" />
+	<style>
+		.x-tree-node-text{
+		  cursor:default;
+		}
+	</style>
 </aos:head>
 <aos:body>
 </aos:body>

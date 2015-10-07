@@ -80,7 +80,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:aos.mvc.xml</param-value>
+			<param-value>classpath:aos.web.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -97,6 +97,35 @@
 	<servlet-mapping>
 		<servlet-name>verCodeServlet</servlet-name>
 		<url-pattern>/verCodeServlet.png</url-pattern>
+	</servlet-mapping>
+
+	<!-- H2控制台 -->
+	<servlet>
+		<servlet-name>h2</servlet-name>
+		<servlet-class>org.h2.server.web.WebServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>h2</servlet-name>
+		<url-pattern>/h2/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- hproseServlet -->
+	<servlet>
+		<servlet-name>hproseServlet</servlet-name>
+		<servlet-class>hprose.server.HproseServlet</servlet-class>
+		<init-param>
+			<param-name>class</param-name>
+			<param-value>cn.osworks.aos.mylab.hprose.server.HPRoseService</param-value>
+		</init-param>
+		<init-param>
+			<param-name>crossDomain</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>hproseServlet</servlet-name>
+		<url-pattern>/hproseservice</url-pattern>
 	</servlet-mapping>
 
 	<!-- 缺省首页 -->

@@ -5,7 +5,7 @@
 	<aos:include lib="ext" />
 	<aos:base href="demo/ui" />
 </aos:head>
-<aos:body>
+<aos:body backGround="true">
 </aos:body>
 <aos:onready>
 	<aos:viewport layout="hbox" margin="30">

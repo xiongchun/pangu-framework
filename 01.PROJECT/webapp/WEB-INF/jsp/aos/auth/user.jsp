@@ -116,7 +116,7 @@
 					onfocus="_w_org_find_show" trigger1Cls="x-form-search-trigger" onTrigger1Click="_w_org_find_show" columnWidth="0.5" />
 				<aos:textfield name="name_" fieldLabel="姓名" allowBlank="false" maxLength="50" columnWidth="0.49" />
 				<aos:textfield name="account_" fieldLabel="登录帐号" allowBlank="false" maxLength="50" columnWidth="0.5" />
-				<aos:textfield name="password_" fieldLabel="初始密码" allowBlank="false" inputType="password" maxLength="20"
+				<aos:textfield name="password_" fieldLabel="初始密码" allowBlank="false" inputType="password" maxLength="10"
 					columnWidth="0.49" />
 				<aos:combobox name="sex_" fieldLabel="性别" dicField="sex_" emptyText="请选择..." value="3" columnWidth="0.5" />
 				<aos:textfield name="biz_code_" fieldLabel="业务对照码" maxLength="50" columnWidth="0.49" />
@@ -222,8 +222,8 @@
 	<aos:window id="_w_pwd" title="重置密码">
 		<aos:formpanel id="_f_pwd" width="350" layout="anchor" labelWidth="75">
 			<aos:hiddenfield name="aos_rows_" fieldLabel="已选中的用户ID集合" />
-			<aos:textfield name="password_" fieldLabel="新密码" allowBlank="false" inputType="password" maxLength="20" />
-			<aos:textfield name="password_b" fieldLabel="确认新密码" allowBlank="false" inputType="password" maxLength="20" />
+			<aos:textfield name="password_" fieldLabel="新密码" allowBlank="false" inputType="password" maxLength="10" />
+			<aos:textfield name="password_b" fieldLabel="确认新密码" allowBlank="false" inputType="password" maxLength="10" />
 		</aos:formpanel>
 		<aos:docked dock="bottom" ui="footer">
 			<aos:dockeditem xtype="tbfill" />
