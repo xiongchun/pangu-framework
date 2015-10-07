@@ -25,6 +25,7 @@
 		</plugin>
 		<!-- ResultSetHandler插件 -->
 		<plugin interceptor="cn.osworks.aos.core.dao.plugin.ResultSetHandlerPlugin" />
+		
 	</plugins>
 
 </configuration>

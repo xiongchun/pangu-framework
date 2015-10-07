@@ -10,13 +10,19 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"
 	default-lazy-init="true">
 
-	<description>系统全局上下文环境</description>
+	<description>Service组件</description>
 
-	<!-- 导入Service组件 -->
-	<import resource="core/aos.service.xml" />
-	<!-- 导入DAO组件 -->
-	<import resource="core/aos.dao.xml" />
-	<!-- 导入业务流程服务 -->
-	<import resource="core/aos.bpm.xml" />
-
+	<!-- Spring服务组件扫描(排除@Controller相关组件) -->
+	<!-- 请将com.mycorp.mysystem.**改为你的项目扫描路径 -->
+	<context:component-scan base-package="cn.osworks.aos;com.mycorp.mysystem" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+	
+	<!-- ID服务组件 -->
+	<bean id="idService" class="cn.osworks.aos.core.id.IdService">
+		<property name="aos_sys_sequenceMapper" ref="aos_sys_sequenceMapper" />
+	</bean>
+	
 </beans>
