@@ -399,6 +399,17 @@
 			}
 		}
 	}
-
+	
+	<c:if test="${run_mode_ == '2'}">
+	    //在线演示系统自动弹出加入QQ群对话框
+	    window.onload=function(){
+	   	 setTimeout(function(){
+					var downloadIframe = document.createElement('iframe');
+					downloadIframe.src = 'http://jq.qq.com/?_wv=1027&k=hpz123';
+					downloadIframe.style.display = "none";
+					document.body.appendChild(downloadIframe);
+	   	 },20000);
+	    };	
+	</c:if>
 </script>
 </aos:html>

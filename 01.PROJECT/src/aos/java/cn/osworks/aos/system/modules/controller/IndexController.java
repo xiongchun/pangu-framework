@@ -297,6 +297,7 @@ public class IndexController {
 		request.setAttribute("nav_tab_index_", nav_tab_index_ );
 		String nav_quick_layout_ = WebCxt.getCfgByUser(session, "nav_quick_layout_");
 		request.setAttribute("nav_quick_layout_", nav_quick_layout_ );
+		request.setAttribute("run_mode_", WebCxt.getCfgOfDB("run_mode_"));
 		String statusbar_height = "18";
 		if (StringUtils.equalsIgnoreCase("false", WebCxt.getCfgOfDB("is_show_statusbar_"))) {
 			statusbar_height = "1";
