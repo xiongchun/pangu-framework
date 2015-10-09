@@ -9,7 +9,7 @@
 </aos:body>
 <aos:onready>
 	<aos:viewport layout="border">
-		<aos:gridpanel id="_g_north" region="north" url="listAccounts.jhtml" onrender="_g_north_query" pageSize="20" 
+		<aos:gridpanel id="_g_north" region="north" url="listAccounts.jhtml" onrender="_g_north_query" pageSize="20"
 			height="300">
 			<aos:docked>
 				<aos:dockeditem xtype="tbtext" text="信用卡账户信息①" />
@@ -43,18 +43,19 @@
 		</aos:gridpanel>
 		<aos:gridpanel id="_g_west" region="west" split="true" splitterBorder="0 1 0 1" header="false"
 			url="listAccounts.jhtml" onrender="_g_west_query" hidePagebar="true" pageSize="200" width="300"
-			onitemclick="fn_click" >
+			onitemclick="fn_click">
 			<aos:docked forceBoder="1 0 1 0">
 				<aos:dockeditem xtype="tbtext" text="信用卡账户信息②" />
 				<aos:dockeditem xtype="tbfill" />
-				<aos:triggerfield emptyText="客户端过滤：姓名" id="_name_2" onenterkey="fn_filter" trigger1Cls="trigger-filter" 
+				<aos:triggerfield emptyText="客户端过滤：姓名" id="_name_2" onenterkey="fn_filter" trigger1Cls="trigger-filter"
 					onTrigger1Click="fn_filter" width="150" />
 			</aos:docked>
 			<aos:column header="持卡人" dataIndex="name_" width="80" />
 			<aos:column header="信用额度" dataIndex="credit_line_" type="number" />
 			<aos:column header="可用余额" dataIndex="balance_" rendererFn="fn_balance_render2" type="number" />
 		</aos:gridpanel>
-		<aos:gridpanel id="_g_center" region="center" url="listAccounts.jhtml" onrender="_g_center_query" onitemdblclick="fn_dbclick" >
+		<aos:gridpanel id="_g_center" region="center" url="listAccounts.jhtml" onrender="_g_center_query"
+			onitemdblclick="fn_dbclick">
 			<aos:docked forceBoder="1 0 1 0">
 				<aos:dockeditem xtype="tbtext" text="信用卡账户信息③" />
 				<aos:dockeditem xtype="tbfill" />
@@ -170,11 +171,11 @@
 		function fn_sex_render(value, metaData, record, rowIndex, colIndex,
 				store) {
 			if (value === '1') {
-				return value = '<img src="${cxt}/static/icon/user8.png" />';
+				return '<img src="${cxt}/static/icon/user8.png" />';
 			} else if (value === '2') {
-				return value = '<img src="${cxt}/static/icon/user1.png" />';
+				return '<img src="${cxt}/static/icon/user1.png" />';
 			} else {
-				return value = '<img src="${cxt}/static/icon/user6.png" />';
+				return '<img src="${cxt}/static/icon/user6.png" />';
 			}
 		}
 
@@ -200,12 +201,12 @@
 						value);
 			}
 		}
-		
+
 		//客户端自定义过滤
 		function fn_filter() {
 			_g_west_store.clearFilter(true);
 			_g_west_store.filterBy(function(record) {
-			var name_ = record.get('name_');
+				var name_ = record.get('name_');
 				if (name_.indexOf(_name_2.getValue()) != -1) {
 					return true;
 				}
