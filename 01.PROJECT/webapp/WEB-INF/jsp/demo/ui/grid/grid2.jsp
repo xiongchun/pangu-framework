@@ -168,8 +168,7 @@
 		}
 
 		//sex_列转换
-		function fn_sex_render(value, metaData, record, rowIndex, colIndex,
-				store) {
+		function fn_sex_render(value, metaData, record, rowIndex, colIndex, store) {
 			if (value === '1') {
 				return '<img src="${cxt}/static/icon/user8.png" />';
 			} else if (value === '2') {
