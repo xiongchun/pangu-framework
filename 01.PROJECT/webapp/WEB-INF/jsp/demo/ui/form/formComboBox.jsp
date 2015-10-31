@@ -30,11 +30,6 @@
 				<aos:combobox id="_bank_2" fieldLabel="二级节点" queryMode="local" name="bank_2_" readOnly="true" emptyText="请选择支行..."
 					columnWidth="0.49" url="listComboBoxData2.jhtml" />
 			</aos:fieldset>
-			<%--
-			<aos:fieldset title="热键过滤选择框" labelWidth="90"  columnWidth="1" >
-				<aos:combobox fieldLabel="功能模块菜单" name="module_" editable="true" onkeydown="fn_keydown" emptyText="请输入快捷键过滤选择..." columnWidth="0.99" url="listModules.jhtml" />
-			</aos:fieldset>
-			--%>
 			<aos:fieldset title="弹窗式选择框" labelWidth="90" columnWidth="1">
 				<%-- 隐藏域用来存储弹出树选中节点ID --%>
 				<aos:hiddenfield name="parent_id_" />
@@ -166,11 +161,6 @@
 		}
 		//<<=====================================================
 		
-		//快捷键过滤
-		function fn_keydown(obj, record){
-			console.log(obj);
-			console.log(record);
-		}
 	</script>
 </aos:onready>
 </aos:html>

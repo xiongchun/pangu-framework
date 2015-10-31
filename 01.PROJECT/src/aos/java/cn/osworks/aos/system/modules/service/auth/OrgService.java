@@ -52,7 +52,7 @@ public class OrgService {
 	@Transactional
 	public void saveOrg(Dto inDto) {
 		Aos_sys_orgPO aos_sys_orgPO = new Aos_sys_orgPO();
-		AOSUtils.apply(inDto, aos_sys_orgPO);
+		AOSUtils.copyProperties(inDto, aos_sys_orgPO);
 		aos_sys_orgPO.setId_(AOSId.id(IdCons.GID));
 		// 生成语义ID
 		Dto calcDto = Dtos.newCalcDto("MAX(cascade_id_)");
@@ -92,7 +92,7 @@ public class OrgService {
 		Dto outDto = Dtos.newDto();
 		// 修改属性后的节点
 		Aos_sys_orgPO updatePO = new Aos_sys_orgPO();
-		AOSUtils.apply(inDto, updatePO);
+		AOSUtils.copyProperties(inDto, updatePO);
 		// 修改属性前的节点
 		Aos_sys_orgPO aos_sys_orgPO = aos_sys_orgMapper.selectByKey(updatePO.getId_());
 		if (!updatePO.getName_().equals(aos_sys_orgPO.getName_())) {
@@ -220,7 +220,7 @@ public class OrgService {
 	    	//删除用户-菜单关联表
 	    	sysDao.delete("Auth.deleteAos_sys_module_userByUser_id_", aos_sys_userPO.getId_());
 	    	//删除用户-岗位关联表
-	    	sysDao.delete("Auth.deleteAos_sys_user_postByUser_id_", Dtos.newDto("user_id_", Dtos.newDto("user_id_", aos_sys_userPO.getId_())));
+	    	sysDao.delete("Auth.deleteAos_sys_user_postByUser_id_", aos_sys_userPO.getId_());
 	    	//删除用户配置表
 	    	aos_sys_user_cfgMapper.deleteByKey(aos_sys_userPO.getId_());
 	    	//删除用户自己

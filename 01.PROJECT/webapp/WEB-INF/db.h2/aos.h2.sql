@@ -1,7 +1,7 @@
 /*
  !这个脚本不需要执行
+ 演示系统虚拟业务H2-SQL脚本
  中国嘉靖银行信用卡管理信息系统
- 演示系统虚拟业务H2-SQL脚本 (test_*为测试用例使用的表)
 */
 -- Create table
 DROP TABLE IF EXISTS demo_org;

@@ -193,7 +193,7 @@ public class SystemService {
 		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlOptionsHandler.getValue("icon_path");
 		for (Aos_sys_catalogPO aos_sys_catalogPO : list) {
 			Dto treeNode = Dtos.newDto();
-			AOSUtils.apply(aos_sys_catalogPO, treeNode);
+			AOSUtils.copyProperties(aos_sys_catalogPO, treeNode);
 			treeNode.put("id", aos_sys_catalogPO.getId_());
 			treeNode.put("text", aos_sys_catalogPO.getName_());
 			String icon_name_ = aos_sys_catalogPO.getIcon_name_();

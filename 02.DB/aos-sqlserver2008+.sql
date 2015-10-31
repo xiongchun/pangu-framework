@@ -11,7 +11,7 @@ Target Server Type    : SQL Server
 Target Server Version : 100000
 File Encoding         : 65001
 
-Date: 2015-10-07 21:19:55
+Date: 2015-10-31 16:38:02
 */
 
 
@@ -2037,166 +2037,169 @@ GO
 INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'2949', N'9.png', N'2')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8836', N'add2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9074', N'add.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8837', N'against.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9075', N'add2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8838', N'agree.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9076', N'against.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8839', N'app_columns.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9077', N'agree.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8840', N'app_list.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9078', N'app_columns.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8841', N'bars.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9079', N'app_list.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8842', N'basket.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9080', N'bars.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8843', N'book.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9081', N'basket.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8844', N'book_user.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9082', N'book.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8845', N'bug.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9083', N'book_user.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8846', N'bullet_black.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9084', N'bug.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8847', N'bullet_blue.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9085', N'bullet_black.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8848', N'bullet_green.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9086', N'bullet_blue.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8849', N'bullet_group.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9087', N'bullet_green.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8850', N'bullet_group2.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9088', N'bullet_group.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8851', N'bullet_group3.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9089', N'bullet_group2.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8852', N'bullet_group4.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9090', N'bullet_group3.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8853', N'bullet_purple.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9091', N'bullet_group4.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8854', N'bullet_red.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9092', N'bullet_purple.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8855', N'bullet_yellow.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9093', N'bullet_red.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8868', N'c_key.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9094', N'bullet_yellow.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8856', N'chart_curve.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9107', N'c_key.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8857', N'chart_flipped.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9095', N'chart_curve.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8858', N'chart_line.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9096', N'chart_flipped.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8859', N'chart_pie.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9097', N'chart_line.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8860', N'close.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9098', N'chart_pie.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8861', N'config.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9099', N'close.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8862', N'config1.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9100', N'config.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8863', N'config3.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9101', N'config1.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8864', N'connect.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9102', N'config3.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8865', N'copy.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9103', N'connect.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8866', N'cut.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9104', N'copy.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8867', N'cv.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9105', N'cut.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8869', N'database.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9106', N'cv.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8870', N'database_add.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9108', N'database.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8871', N'del.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9109', N'database_add.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8875', N'del_folder.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9110', N'del.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8876', N'del_page.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9114', N'del_folder.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8872', N'del1.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9115', N'del_page.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8873', N'del2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9111', N'del1.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8874', N'del3.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9112', N'del2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8877', N'detail.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9113', N'del3.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8878', N'disconnect.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9116', N'detail.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8879', N'doc_ok.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9117', N'disconnect.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8880', N'down.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9118', N'doc_ok.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8881', N'edit.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9119', N'down.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8882', N'edit2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9120', N'edit.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8883', N'email.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9121', N'edit2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8886', N'email_go.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9122', N'email.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8887', N'email_open.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9125', N'email_go.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8884', N'email2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9126', N'email_open.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8885', N'email3.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9123', N'email2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8888', N'exit.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9124', N'email3.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8889', N'exit2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9127', N'exit.png', N'1')
+GO
+GO
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9128', N'exit2.png', N'1')
 GO
 GO
 INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'827', N'fa-adjust', N'3')
@@ -3636,556 +3639,562 @@ GO
 INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'1087', N'fa-youtube-square', N'3')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8890', N'filter.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9129', N'filter.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8891', N'folder1.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9130', N'folder1.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8892', N'folder10.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9131', N'folder10.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8893', N'folder11.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9132', N'folder11.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8894', N'folder12.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9133', N'folder12.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8895', N'folder13.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9134', N'folder13.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8896', N'folder14.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9135', N'folder14.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8897', N'folder15.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9136', N'folder15.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8898', N'folder16.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9137', N'folder16.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8899', N'folder17.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9138', N'folder17.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8900', N'folder18.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9139', N'folder18.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8901', N'folder19.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9140', N'folder19.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8902', N'folder2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9141', N'folder2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8903', N'folder20.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9142', N'folder20.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8904', N'folder21.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9143', N'folder21.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8905', N'folder22.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9144', N'folder22.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8906', N'folder23.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9145', N'folder23.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8907', N'folder24.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9146', N'folder24.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8908', N'folder25.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9147', N'folder25.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8909', N'folder26.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9148', N'folder26.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8910', N'folder27.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9149', N'folder27.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8911', N'folder28.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9150', N'folder28.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8912', N'folder4.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9151', N'folder4.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8913', N'folder5.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9152', N'folder5.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8914', N'folder6.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9153', N'folder6.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8915', N'folder7.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9154', N'folder7.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8916', N'folder8.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9155', N'folder8.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8917', N'folder9.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9156', N'folder9.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8918', N'forward.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9157', N'forward.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8919', N'freelance.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9158', N'freelance.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8920', N'go.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9159', N'go.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8921', N'go.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9160', N'go.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8922', N'go1.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9161', N'go1.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8923', N'go1.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9162', N'go1.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8924', N'help.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9163', N'help.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8925', N'home.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9164', N'home.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8926', N'home.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9165', N'home.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8975', N'icon_19.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9214', N'icon_19.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8927', N'icon134.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9166', N'icon134.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8928', N'icon137.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9167', N'icon137.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8929', N'icon140.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9168', N'icon140.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8930', N'icon141.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9169', N'icon141.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8931', N'icon146.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9170', N'icon146.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8932', N'icon15.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9171', N'icon15.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8933', N'icon150.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9172', N'icon150.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8934', N'icon152.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9173', N'icon152.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8935', N'icon153.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9174', N'icon153.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8936', N'icon154.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9175', N'icon154.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8937', N'icon17.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9176', N'icon17.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8938', N'icon25.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9177', N'icon25.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8939', N'icon26.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9178', N'icon26.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8940', N'icon31.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9179', N'icon31.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8941', N'icon32.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9180', N'icon32.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8942', N'icon34.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9181', N'icon34.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8943', N'icon35.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9182', N'icon35.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8944', N'icon36.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9183', N'icon36.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8945', N'icon37.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9184', N'icon37.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8946', N'icon38.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9185', N'icon38.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8947', N'icon39.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9186', N'icon39.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8948', N'icon41.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9187', N'icon41.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8949', N'icon42.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9188', N'icon42.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8950', N'icon5.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9189', N'icon5.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8951', N'icon56.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9190', N'icon56.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8952', N'icon59.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9191', N'icon59.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8953', N'icon63.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9192', N'icon63.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8954', N'icon65.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9193', N'icon65.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8955', N'icon66.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9194', N'icon66.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8956', N'icon67.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9195', N'icon67.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8957', N'icon68.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9196', N'icon68.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8958', N'icon7.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9197', N'icon7.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8959', N'icon70.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9198', N'icon70.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8960', N'icon71.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9199', N'icon71.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8961', N'icon72.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9200', N'icon72.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8962', N'icon75.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9201', N'icon75.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8963', N'icon76.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9202', N'icon76.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8964', N'icon77.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9203', N'icon77.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8965', N'icon78.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9204', N'icon78.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8966', N'icon79.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9205', N'icon79.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8967', N'icon8.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9206', N'icon8.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8968', N'icon80.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9207', N'icon80.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8969', N'icon82.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9208', N'icon82.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8970', N'icon85.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9209', N'icon85.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8971', N'icon86.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9210', N'icon86.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8972', N'icon88.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9211', N'icon88.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8973', N'icon9.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9212', N'icon9.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8974', N'icon96.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9213', N'icon96.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8976', N'icq.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9215', N'icq.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8977', N'id.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9216', N'id.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8978', N'jar.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9217', N'jar.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8979', N'key.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9218', N'key.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8980', N'layout.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9219', N'layout.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8981', N'layout2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9220', N'layout2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8982', N'left.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9221', N'left.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8983', N'lightbulb.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9222', N'lightbulb.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8984', N'lock.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9223', N'lock.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8985', N'lock3.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9224', N'lock3.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8986', N'modules_wizard.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9225', N'modules_wizard.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8987', N'monitor.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9226', N'monitor.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8988', N'node.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9227', N'node.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8989', N'ok.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9228', N'ok.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8990', N'ok1.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9229', N'ok1.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8991', N'ok2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9230', N'ok2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8992', N'ok3.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9231', N'ok3.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8993', N'ok4.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9232', N'ok4.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8994', N'ok5.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9233', N'ok5.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8995', N'org.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9234', N'org.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8996', N'org2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9235', N'org2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8997', N'own.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9236', N'own.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8998', N'page.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9237', N'page.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9001', N'page_code.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9240', N'page_code.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9002', N'page_font.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9241', N'page_font.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9003', N'page_next.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9242', N'page_next.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9004', N'page_office.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9243', N'page_office.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9005', N'page_paint.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9244', N'page_paint.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9006', N'page_picture.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9245', N'page_picture.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9007', N'page_vector.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9246', N'page_vector.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'8999', N'page2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9238', N'page2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9000', N'page3.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9239', N'page3.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9008', N'paint2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9247', N'paint2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9009', N'paste.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9248', N'paste.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9010', N'picture.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9249', N'picture.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9012', N'picture_empty.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9251', N'picture_empty.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9011', N'pictures.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9250', N'pictures.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9013', N'plugin.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9252', N'plugin.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9014', N'plugin1.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9253', N'plugin1.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9015', N'plugin2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9254', N'plugin2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9016', N'printer.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9255', N'printer.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9017', N'query.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9256', N'query.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9018', N'refresh.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9257', N'refresh.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9019', N'refresh1.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9258', N'refresh1.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9020', N'refresh2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9259', N'refresh2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9021', N'refresh3.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9260', N'refresh3.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9022', N'right.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9261', N'right.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9023', N'save.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9262', N'save.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9024', N'save_all.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9263', N'save_all.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9025', N'search.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9264', N'search.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9026', N'security.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9265', N'security.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9027', N'send_receive.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9266', N'send_receive.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9028', N'shape_align_bottom.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9267', N'shape_align_bottom.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9029', N'shape_align_center.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9268', N'shape_align_center.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9030', N'shape_align_middle.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9269', N'shape_align_middle.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9031', N'shape_group.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9270', N'shape_group.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9032', N'shape_handles.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9271', N'shape_handles.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9033', N'shape_move_back.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9272', N'shape_move_back.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9034', N'share.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9273', N'share.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9035', N'sitemap.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9274', N'sitemap.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9036', N'sql.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9275', N'sql.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9037', N'sql2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9276', N'sql2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9038', N'sql3.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9277', N'sql3.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9039', N'stop.gif', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9278', N'stop.gif', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9040', N'stop2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9279', N'stop2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9041', N'stop3.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9280', N'stop3.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9042', N'system.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9281', N'system.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9043', N'table.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9282', N'table.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9047', N'table_edit.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9286', N'table_edit.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9044', N'table2.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9283', N'table2.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9045', N'tables.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9284', N'tables.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9046', N'tables_relation.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9285', N'tables_relation.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9048', N'tag.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9287', N'tag.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9049', N'task.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9288', N'task.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9051', N'task_finish.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9290', N'task_finish.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9052', N'task_list.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9291', N'task_list.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9050', N'task1.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9289', N'task1.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9053', N'terminal.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9292', N'terminal.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9055', N'text_cap.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9294', N'text_cap.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9056', N'text_col.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9295', N'text_col.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9057', N'text_list.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9296', N'text_list.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9058', N'text_upper.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9297', N'text_upper.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9054', N'textfield.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9293', N'textfield.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9059', N'theme.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9298', N'theme.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9060', N'time.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9299', N'time.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9061', N'timeline.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9300', N'timeline.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9062', N'up.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9301', N'undo.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9063', N'user1.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9302', N'undo1.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9064', N'user20.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9303', N'up.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9065', N'user3.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9304', N'user1.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9066', N'user6.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9305', N'user20.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9067', N'user8.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9306', N'user3.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9068', N'vcard.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9307', N'user6.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9069', N'vector.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9308', N'user8.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9070', N'wand.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9309', N'vcard.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9071', N'webcam.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9310', N'vector.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9072', N'zoom_in.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9311', N'wand.png', N'1')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9073', N'zoom_out.png', N'1')
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9312', N'webcam.png', N'1')
+GO
+GO
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9313', N'zoom_in.png', N'1')
+GO
+GO
+INSERT INTO [dbo].[AOS_SYS_ICON] ([ID_], [NAME_], [TYPE_]) VALUES (N'9314', N'zoom_out.png', N'1')
 GO
 GO
 
@@ -4488,7 +4497,7 @@ GO
 INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'1748', N'0.001.012.001', N'作业管理', null, null, N'1747', N'1', N'0', null, N'1', N'作业调度', null, N'10')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'1750', N'0.001.008.005', N'WebIDE集成开发', N'system/coder/init.jhtml', null, N'555', N'1', N'0', N'terminal.png', N'1', N'开发工具箱', null, N'5')
+INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'1750', N'0.001.008.005', N'WebIDE', N'system/coder/init.jhtml', null, N'555', N'1', N'0', N'terminal.png', N'1', N'开发工具箱', null, N'5')
 GO
 GO
 INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'1762', N'0.004.002.001.002', N'表单布局②', N'demo/ui/initForm2.jhtml', null, N'237', N'1', N'0', null, N'1', N'表单', null, N'2')
@@ -4507,6 +4516,12 @@ INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTK
 GO
 GO
 INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'1767', N'0.004.002.001.006', N'组合选择框', N'demo/ui/initFormComboBox.jhtml', null, N'237', N'1', N'0', null, N'1', N'表单', null, N'20')
+GO
+GO
+INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'1769', N'0.004.002.001.007', N'表单元素常用API', N'demo/ui/initFormApi.jhtml', null, N'237', N'1', N'0', null, N'1', N'表单', null, N'30')
+GO
+GO
+INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'1770', N'0.004.002.001.008', N'表单数据交互', N'demo/ui/initFormData.jhtml', null, N'237', N'1', N'0', null, N'1', N'表单', null, N'40')
 GO
 GO
 INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'183', N'0.001', N'控制台', null, null, N'0', N'0', N'1', N'folder22.png', N'1', N'AOS应用基础平台', N'fa-cogs', N'10')
@@ -4575,13 +4590,7 @@ GO
 INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'213', N'0.002.007', N'我的任务', N'bpm/mytask/init.jhtml', null, N'184', N'1', N'1', N'task_list.png', N'1', N'工作台', null, N'30')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'225', N'0.001.008.002', N'WebSQL视窗管理', N'system/webSql/init.jhtml', null, N'555', N'1', N'0', N'sql.png', N'1', N'开发工具箱', null, N'10')
-GO
-GO
-INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'227', N'0.001.008.003', N'AOS开发指南', null, null, N'555', N'1', N'0', N'lightbulb.png', N'1', N'开发工具箱', null, N'90')
-GO
-GO
-INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'228', N'0.001.008.004', N'AOS开发者社区', null, null, N'555', N'1', N'0', N'icq.png', N'1', N'开发工具箱', null, N'91')
+INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'225', N'0.001.008.002', N'WebSQL', N'system/webSql/init.jhtml', null, N'555', N'1', N'0', N'sql.png', N'1', N'开发工具箱', null, N'10')
 GO
 GO
 INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'236', N'0.004', N'范例', null, null, N'0', N'0', N'1', N'folder27.png', N'1', N'AOS应用基础平台', N'fa-coffee', N'40')
@@ -4596,7 +4605,7 @@ GO
 INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'304', N'0.001.003.006', N'角色与授权', N'system/role/init.jhtml', null, N'188', N'1', N'0', N'icon134.png', N'1', N'组织与权限', null, N'5')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'393', N'0.001.008.001', N'图标大全', N'system/icon/init.jhtml', null, N'555', N'1', N'0', N'page_picture.png', N'1', N'开发工具箱', null, N'60')
+INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'393', N'0.001.008.001', N'图标', N'system/icon/init.jhtml', null, N'555', N'1', N'0', N'page_picture.png', N'1', N'开发工具箱', null, N'60')
 GO
 GO
 INSERT INTO [dbo].[AOS_SYS_MODULE] ([ID_], [CASCADE_ID_], [NAME_], [URL_], [HOTKEY_], [PARENT_ID_], [IS_LEAF_], [IS_AUTO_EXPAND_], [ICON_NAME_], [STATUS_], [PARENT_NAME_], [VECTOR_], [SORT_NO_]) VALUES (N'454', N'0.001.002.003', N'页面组件', N'system/page/init.jhtml', null, N'187', N'1', N'0', N'icon59.png', N'1', N'资源', null, N'20')
@@ -6381,6 +6390,9 @@ GO
 INSERT INTO [dbo].[AOS_SYS_PARAM] ([ID_], [KEY_], [VALUE_], [CATALOG_ID_], [CATALOG_CASCADE_ID_], [NAME_], [IS_OVERWRITE_], [OVERWRITE_FIELD_], [REMARK_]) VALUES (N'1768', N'combobox_emptytext', N'请选择...', N'413', N'0.001.002.002', N'下拉选择框的缺省提示信息', N'0', null, null)
 GO
 GO
+INSERT INTO [dbo].[AOS_SYS_PARAM] ([ID_], [KEY_], [VALUE_], [CATALOG_ID_], [CATALOG_CASCADE_ID_], [NAME_], [IS_OVERWRITE_], [OVERWRITE_FIELD_], [REMARK_]) VALUES (N'1771', N'msgtarget_', N'qtip', N'413', N'0.001.002.002', N'表单校验消息提示方式', N'0', null, N'可选值必须是下列值之一 (1)、qtip 当用户鼠标悬停在该域之上时显示包含了消息的迅速提示。(2)、title 显示消息以浏览器默认的title属性弹出。 (3)、under 在域下方添加一块包含了错误消息的div。(4)、side 添加一个错误图标在域的右边，鼠标悬停上面时弹出显示消息。')
+GO
+GO
 INSERT INTO [dbo].[AOS_SYS_PARAM] ([ID_], [KEY_], [VALUE_], [CATALOG_ID_], [CATALOG_CASCADE_ID_], [NAME_], [IS_OVERWRITE_], [OVERWRITE_FIELD_], [REMARK_]) VALUES (N'302', N'theme_', N'classic', N'413', N'0.001.002.002', N'系统主题风格', N'1', N'theme_', N'可选值：classic。缺省值：classic。')
 GO
 GO
@@ -7059,10 +7071,10 @@ GO
 -- ----------------------------
 -- Records of AOS_SYS_SEQUENCE
 -- ----------------------------
-INSERT INTO [dbo].[AOS_SYS_SEQUENCE] ([ID_], [NAME_], [TYPE_], [PREFIX_], [START_], [STEP_], [CUR_VALUE_], [STATUS_], [CONNECTOR_], [SUFFIX_], [DB_SEQ_NAME_], [MAX_VALUE_], [IS_CIRCUL_], [MIN_VALUE_], [IS_LEFTPAD_], [FORMAT_VALUE_], [REMARK_]) VALUES (N'1', N'GID', N'1', null, N'1', N'1', N'1768', N'1', null, null, null, N'9999999999', N'0', N'1', N'0', N'1768', N'系统管理-实体表流水号。')
+INSERT INTO [dbo].[AOS_SYS_SEQUENCE] ([ID_], [NAME_], [TYPE_], [PREFIX_], [START_], [STEP_], [CUR_VALUE_], [STATUS_], [CONNECTOR_], [SUFFIX_], [DB_SEQ_NAME_], [MAX_VALUE_], [IS_CIRCUL_], [MIN_VALUE_], [IS_LEFTPAD_], [FORMAT_VALUE_], [REMARK_]) VALUES (N'1', N'GID', N'1', null, N'1', N'1', N'1771', N'1', null, null, null, N'9999999999', N'0', N'1', N'0', N'1771', N'系统管理-实体表流水号。')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_SEQUENCE] ([ID_], [NAME_], [TYPE_], [PREFIX_], [START_], [STEP_], [CUR_VALUE_], [STATUS_], [CONNECTOR_], [SUFFIX_], [DB_SEQ_NAME_], [MAX_VALUE_], [IS_CIRCUL_], [MIN_VALUE_], [IS_LEFTPAD_], [FORMAT_VALUE_], [REMARK_]) VALUES (N'1635', N'ICONID', N'1', null, N'1', N'1', N'9073', N'1', null, null, null, N'9223372036854775807', N'0', N'1', N'0', N'9073', N'图标ID')
+INSERT INTO [dbo].[AOS_SYS_SEQUENCE] ([ID_], [NAME_], [TYPE_], [PREFIX_], [START_], [STEP_], [CUR_VALUE_], [STATUS_], [CONNECTOR_], [SUFFIX_], [DB_SEQ_NAME_], [MAX_VALUE_], [IS_CIRCUL_], [MIN_VALUE_], [IS_LEFTPAD_], [FORMAT_VALUE_], [REMARK_]) VALUES (N'1635', N'ICONID', N'1', null, N'1', N'1', N'9314', N'1', null, null, null, N'9223372036854775807', N'0', N'1', N'0', N'9314', N'图标ID')
 GO
 GO
 INSERT INTO [dbo].[AOS_SYS_SEQUENCE] ([ID_], [NAME_], [TYPE_], [PREFIX_], [START_], [STEP_], [CUR_VALUE_], [STATUS_], [CONNECTOR_], [SUFFIX_], [DB_SEQ_NAME_], [MAX_VALUE_], [IS_CIRCUL_], [MIN_VALUE_], [IS_LEFTPAD_], [FORMAT_VALUE_], [REMARK_]) VALUES (N'1729', N'DEMOID', N'1', null, N'1', N'1', N'6637', N'1', null, null, null, N'9223372036854775807', N'0', N'1', N'0', N'6637', N'演示模块相关功能使用的ID发生器')
@@ -7083,7 +7095,7 @@ GO
 INSERT INTO [dbo].[AOS_SYS_SEQUENCE] ([ID_], [NAME_], [TYPE_], [PREFIX_], [START_], [STEP_], [CUR_VALUE_], [STATUS_], [CONNECTOR_], [SUFFIX_], [DB_SEQ_NAME_], [MAX_VALUE_], [IS_CIRCUL_], [MIN_VALUE_], [IS_LEFTPAD_], [FORMAT_VALUE_], [REMARK_]) VALUES (N'337', N'RID', N'1', null, N'1', N'1', N'4373', N'1', null, null, null, N'9999999999', N'0', N'1', N'0', N'4373', N'系统管理-关联表流水号。')
 GO
 GO
-INSERT INTO [dbo].[AOS_SYS_SEQUENCE] ([ID_], [NAME_], [TYPE_], [PREFIX_], [START_], [STEP_], [CUR_VALUE_], [STATUS_], [CONNECTOR_], [SUFFIX_], [DB_SEQ_NAME_], [MAX_VALUE_], [IS_CIRCUL_], [MIN_VALUE_], [IS_LEFTPAD_], [FORMAT_VALUE_], [REMARK_]) VALUES (N'546', N'BPMID', N'1', null, N'1', N'1', N'119', N'1', null, null, null, N'9999999999', N'0', N'1', N'0', N'119', N'流程引擎相关辅助表的流水号')
+INSERT INTO [dbo].[AOS_SYS_SEQUENCE] ([ID_], [NAME_], [TYPE_], [PREFIX_], [START_], [STEP_], [CUR_VALUE_], [STATUS_], [CONNECTOR_], [SUFFIX_], [DB_SEQ_NAME_], [MAX_VALUE_], [IS_CIRCUL_], [MIN_VALUE_], [IS_LEFTPAD_], [FORMAT_VALUE_], [REMARK_]) VALUES (N'546', N'BPMID', N'1', null, N'1', N'1', N'121', N'1', null, null, null, N'9999999999', N'0', N'1', N'0', N'121', N'流程引擎相关辅助表的流水号')
 GO
 GO
 
@@ -8133,6 +8145,9 @@ GO
 -- ----------------------------
 -- Records of AOS_SYS_WF_MODEL
 -- ----------------------------
+INSERT INTO [dbo].[AOS_SYS_WF_MODEL] ([ID_], [MODEL_ID_], [CREATE_TYPE_], [NAME_], [CREATE_USER_ID_], [CREATE_USER_], [CREATE_TIME_], [REMARK_]) VALUES (N'120', N'2501', N'1', N'流程12', N'1', N'超级用户', N'2015-10-15 19:39:20', null)
+GO
+GO
 
 -- ----------------------------
 -- Table structure for AOS_SYS_WF_PROCDEF
@@ -8250,6 +8265,9 @@ GO
 -- ----------------------------
 -- Records of AOS_SYS_WF_PROCDEF
 -- ----------------------------
+INSERT INTO [dbo].[AOS_SYS_WF_PROCDEF] ([ID_], [MODEL_ID_], [PROC_DEF_ID_], [DEPLOY_USER_ID_], [DEPLOY_USER_], [DEPLOY_TIME_]) VALUES (N'121', N'2501', N'process:1:2506', N'1', N'超级用户', N'2015-10-15 19:40:43')
+GO
+GO
 
 -- ----------------------------
 -- Indexes structure for table AOS_ACT_EVT_LOG

@@ -94,12 +94,12 @@ public class PreferenceService {
 	public Dto updateMyInfo(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		Aos_sys_userPO aos_sys_userPO = new Aos_sys_userPO();
-		AOSUtils.apply(inDto, aos_sys_userPO);
+		AOSUtils.copyProperties(inDto, aos_sys_userPO);
 		// 更新用户基本信息
 		aos_sys_userMapper.updateByKey(aos_sys_userPO);
 		// 更新用户扩展信息
 		Aos_sys_user_extPO aos_sys_user_extPO = new Aos_sys_user_extPO();
-		AOSUtils.apply(inDto, aos_sys_user_extPO);
+		AOSUtils.copyProperties(inDto, aos_sys_user_extPO);
 		aos_sys_user_extMapper.updateByKey(aos_sys_user_extPO);
 		outDto.setAppMsg("操作完成，我的个人资料信息保存成功。");
 		return outDto;
@@ -116,7 +116,7 @@ public class PreferenceService {
 		Dto outDto = Dtos.newDto();
 		// 更新用户配置信息
 		Aos_sys_user_cfgPO aos_sys_user_cfgPO = new Aos_sys_user_cfgPO();
-		AOSUtils.apply(inDto, aos_sys_user_cfgPO);
+		AOSUtils.copyProperties(inDto, aos_sys_user_cfgPO);
 		aos_sys_user_cfgMapper.updateByKey(aos_sys_user_cfgPO);
 		outDto.setAppMsg("操作完成，我的偏好设置数据保存成功。");
 		return outDto;
@@ -132,7 +132,7 @@ public class PreferenceService {
 	public Dto saveQuickMenuSortNo(Dto inDto) {
 		Dto outDto = Dtos.newOutDto();
 		Aos_sys_module_user_navPO aos_sys_module_user_navPO = new Aos_sys_module_user_navPO();
-		AOSUtils.apply(inDto, aos_sys_module_user_navPO);
+		AOSUtils.copyProperties(inDto, aos_sys_module_user_navPO);
 		aos_sys_module_user_navMapper.updateByKey(aos_sys_module_user_navPO);
 		outDto.setAppMsg("操作完成，快捷菜单排序号保存成功。");
 		return outDto;
@@ -158,7 +158,7 @@ public class PreferenceService {
 	    	return outDto;
 		}
 		Aos_sys_module_user_navPO aos_sys_module_user_navPO = new Aos_sys_module_user_navPO();
-		AOSUtils.apply(inDto, aos_sys_module_user_navPO);
+		AOSUtils.copyProperties(inDto, aos_sys_module_user_navPO);
 		aos_sys_module_user_navPO.setId_(AOSId.id(IdCons.RID));
 		aos_sys_module_user_navPO.setType_(DicCons.MODULE_USER_NAV_TYPE_FLOAT);
 		aos_sys_module_user_navPO.setUser_id_(inDto.getUserInfo().getId_());
@@ -223,7 +223,7 @@ public class PreferenceService {
 			}
 		}
 		Aos_sys_module_user_navPO aos_sys_module_user_navPO = new Aos_sys_module_user_navPO();
-		AOSUtils.apply(inDto, aos_sys_module_user_navPO);
+		AOSUtils.copyProperties(inDto, aos_sys_module_user_navPO);
 		aos_sys_module_user_navMapper.updateByKey(aos_sys_module_user_navPO);
 		outDto.setAppMsg("操作完成，浮动菜单修改成功。");
 		return outDto;

@@ -63,7 +63,7 @@ public class RoleService {
 	@Transactional
 	public void saveRole(Dto inDto) {
 		Aos_sys_rolePO aos_sys_rolePO = new Aos_sys_rolePO();
-		AOSUtils.apply(inDto, aos_sys_rolePO);
+		AOSUtils.copyProperties(inDto, aos_sys_rolePO);
 		aos_sys_rolePO.setId_(AOSId.id(IdCons.GID));
 		UserInfoVO userInfoVO = inDto.getUserInfo();
 		aos_sys_rolePO.setCreater_id_(userInfoVO.getId_());
@@ -82,7 +82,7 @@ public class RoleService {
 	@Transactional
 	public void updateRole(Dto inDto) {
 		Aos_sys_rolePO aos_sys_rolePO = new Aos_sys_rolePO();
-		AOSUtils.apply(inDto, aos_sys_rolePO);
+		AOSUtils.copyProperties(inDto, aos_sys_rolePO);
 		aos_sys_roleMapper.updateByKey(aos_sys_rolePO);
 	}
 

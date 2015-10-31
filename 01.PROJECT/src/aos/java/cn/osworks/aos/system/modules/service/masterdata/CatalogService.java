@@ -44,7 +44,7 @@ public class CatalogService {
 		String iconPath = System.getProperty(AOSCons.CXT_KEY) + AOSXmlOptionsHandler.getValue("icon_path");
 		for (Aos_sys_catalogPO aos_sys_catalogPO : list) {
 			Dto treeNode = Dtos.newDto();
-			AOSUtils.apply(aos_sys_catalogPO, treeNode);
+			AOSUtils.copyProperties(aos_sys_catalogPO, treeNode);
 			treeNode.put("id", aos_sys_catalogPO.getId_());
 			treeNode.put("text", aos_sys_catalogPO.getName_());
 			String icon_name_ = aos_sys_catalogPO.getIcon_name_();
@@ -78,7 +78,7 @@ public class CatalogService {
 		Dto outDto = Dtos.newDto();
 		outDto.put("flag", qDto.getString("flag"));
 		Aos_sys_catalogPO aos_sys_catalogPO = new Aos_sys_catalogPO();
-		AOSUtils.apply(qDto, aos_sys_catalogPO);
+		AOSUtils.copyProperties(qDto, aos_sys_catalogPO);
 		// 新增
 		aos_sys_catalogPO.setId_(AOSId.id(IdCons.GID));
 		aos_sys_catalogPO.setIs_leaf_(AOSCons.YES);
@@ -125,7 +125,7 @@ public class CatalogService {
 	@Transactional
 	public void updateCatalog(Dto qDto) {
 		Aos_sys_catalogPO aos_sys_catalogPO = new Aos_sys_catalogPO();
-		AOSUtils.apply(qDto, aos_sys_catalogPO);
+		AOSUtils.copyProperties(qDto, aos_sys_catalogPO);
 		aos_sys_catalogMapper.updateByKey(aos_sys_catalogPO);
 	}
 
@@ -138,7 +138,7 @@ public class CatalogService {
 	public Dto deleteCatalog(Dto qDto) {
 		Dto outDto = Dtos.newDto();
 		Aos_sys_catalogPO aos_sys_catalogPO = new Aos_sys_catalogPO();
-		AOSUtils.apply(qDto, aos_sys_catalogPO);
+		AOSUtils.copyProperties(qDto, aos_sys_catalogPO);
 		//删除本节点
 		aos_sys_catalogMapper.deleteByKey(aos_sys_catalogPO.getId_());
 		Dto countDto = Dtos.newDto();

@@ -87,7 +87,7 @@ public class ProcModelService {
 	@Transactional
 	public void updateModelProps(Dto inDto) {
 		Aos_sys_wf_modelPO aos_sys_wf_modelPO = new Aos_sys_wf_modelPO();
-		AOSUtils.apply(inDto, aos_sys_wf_modelPO);
+		AOSUtils.copyProperties(inDto, aos_sys_wf_modelPO);
 		// 更新扩展表
 		aos_sys_wf_modelMapper.updateByKey(aos_sys_wf_modelPO);
 		Dto modelDto = Dtos.newDto();

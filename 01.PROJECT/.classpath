@@ -48,9 +48,7 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/dependencies/javax.persistence-1.0.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/dependencies/javax.transaction-1.1.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/dependencies/java-uuid-generator-3.1.3.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/dependencies/junit-4.11.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/dependencies/javax.enterprise.concurrent-api-1.0.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-beanutils-1.7.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-chain-1.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-codec-1.6.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-collections-3.2.1.jar"/>
@@ -78,7 +76,6 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/log4j-api-2.3.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jdbc/sqljdbc4.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/aos/aos-3rd.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/aos/aos-core.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/groovy-all-2.0.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/iText-2.1.7.js2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/iTextAsian-2.1.7.jar"/>
@@ -90,6 +87,9 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/jfreechart-1.0.12.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/poi-3.10.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/junit-4.8.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-beanutils-1.9.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/aos/aos-core-0.5.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-bpmn-converter-5.17.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-bpmn-layout-5.17.0.jar"/>

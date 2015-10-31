@@ -48,7 +48,7 @@ public class ParamService {
 			return outDto;
 		}
 		Aos_sys_paramPO aos_sys_paramPO = new Aos_sys_paramPO();
-		AOSUtils.apply(inDto, aos_sys_paramPO);
+		AOSUtils.copyProperties(inDto, aos_sys_paramPO);
 		aos_sys_paramPO.setId_(AOSId.id(IdCons.GID));
 		Aos_sys_catalogPO aos_sys_catalogPO = aos_sys_catalogMapper.selectByKey(aos_sys_paramPO.getCatalog_id_());
 		aos_sys_paramPO.setCatalog_cascade_id_(aos_sys_catalogPO.getCascade_id_());
@@ -75,7 +75,7 @@ public class ParamService {
 			return outDto;
 		}
 		Aos_sys_paramPO aos_sys_paramPO = new Aos_sys_paramPO();
-		AOSUtils.apply(inDto, aos_sys_paramPO);
+		AOSUtils.copyProperties(inDto, aos_sys_paramPO);
 		Aos_sys_catalogPO aos_sys_catalogPO = aos_sys_catalogMapper.selectByKey(aos_sys_paramPO.getCatalog_id_());
 		aos_sys_paramPO.setCatalog_cascade_id_((aos_sys_catalogPO.getCascade_id_()));
 		if (AOSUtils.isEmpty(aos_sys_paramPO.getOverwrite_field_())) {

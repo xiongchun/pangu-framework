@@ -12,7 +12,7 @@
 </aos:body>
 <aos:onready>
 	<aos:viewport layout="border">
-		<aos:treepanel id="_t_catalog" width="220" region="west" url="${cxt}/system/listCatalogs.jhtml" singleClick="false"
+		<aos:treepanel id="_t_catalog" width="180" region="west" url="${cxt}/system/listCatalogs.jhtml" singleClick="false"
 			useArrows="false" rootVisible="true" rootText="全部分类" nodeParam="parent_id_" bodyBorder="0 1 0 0"
 			headerBorder="0 1 0 0" rootId="1689">
 			<aos:docked forceBoder="0 1 1 0">

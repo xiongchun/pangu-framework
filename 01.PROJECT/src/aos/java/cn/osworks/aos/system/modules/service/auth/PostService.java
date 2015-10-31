@@ -66,7 +66,7 @@ public class PostService {
 	@Transactional
 	public void savePost(Dto inDto) {
 		Aos_sys_postPO aos_sys_postPO = new Aos_sys_postPO();
-		AOSUtils.apply(inDto, aos_sys_postPO);
+		AOSUtils.copyProperties(inDto, aos_sys_postPO);
 		aos_sys_postPO.setId_(AOSId.id(IdCons.GID));
 		UserInfoVO userInfoVO = inDto.getUserInfo();
 		aos_sys_postPO.setCreater_id_(userInfoVO.getId_());
@@ -85,7 +85,7 @@ public class PostService {
 	@Transactional
 	public void updatePost(Dto inDto) {
 		Aos_sys_postPO aos_sys_postPO = new Aos_sys_postPO();
-		AOSUtils.apply(inDto, aos_sys_postPO);
+		AOSUtils.copyProperties(inDto, aos_sys_postPO);
 		//修改了所属部门
 		if (!inDto.getString("org_id_").equals(inDto.getString("old_org_id_"))) {
 			//修改部门名称

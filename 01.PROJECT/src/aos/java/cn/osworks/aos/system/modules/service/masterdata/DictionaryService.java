@@ -47,7 +47,7 @@ public class DictionaryService {
 		String key_ = qDto.getString("key_");
 		if (checkDicIndexUkey(key_)) {
 			Aos_sys_dic_indexPO aos_sys_dic_indexPO = new Aos_sys_dic_indexPO();
-			AOSUtils.apply(qDto, aos_sys_dic_indexPO);
+			AOSUtils.copyProperties(qDto, aos_sys_dic_indexPO);
 			aos_sys_dic_indexPO.setId_(AOSId.id(IdCons.GID));
 			Aos_sys_catalogPO aos_sys_catalogPO = aos_sys_catalogMapper.selectByKey(aos_sys_dic_indexPO.getCatalog_id_());
 			aos_sys_dic_indexPO.setCatalog_cascade_id_(aos_sys_catalogPO.getCascade_id_());
@@ -79,7 +79,7 @@ public class DictionaryService {
 			}
 		}
 		Aos_sys_dic_indexPO aos_sys_dic_indexPO = new Aos_sys_dic_indexPO();
-		AOSUtils.apply(qDto, aos_sys_dic_indexPO);
+		AOSUtils.copyProperties(qDto, aos_sys_dic_indexPO);
 		Aos_sys_catalogPO aos_sys_catalogPO = aos_sys_catalogMapper.selectByKey(aos_sys_dic_indexPO.getCatalog_id_());
 		aos_sys_dic_indexPO.setCatalog_cascade_id_(aos_sys_catalogPO.getCascade_id_());
 		aos_sys_dic_indexMapper.updateByKey(aos_sys_dic_indexPO);
@@ -113,7 +113,7 @@ public class DictionaryService {
 	@Transactional
 	public void saveDic(Dto qDto) {
 		Aos_sys_dicPO aos_sys_dicPO = new Aos_sys_dicPO();
-		AOSUtils.apply(qDto, aos_sys_dicPO);
+		AOSUtils.copyProperties(qDto, aos_sys_dicPO);
 		aos_sys_dicPO.setId_(AOSId.id(IdCons.GID));
 		if (AOSUtils.isEmpty(aos_sys_dicPO.getStatus_())) {
 			aos_sys_dicPO.setStatus_(AOSCons.NO);
@@ -130,7 +130,7 @@ public class DictionaryService {
 	@Transactional
 	public void updateDic(Dto qDto) {
 		Aos_sys_dicPO aos_sys_dicPO = new Aos_sys_dicPO();
-		AOSUtils.apply(qDto, aos_sys_dicPO);
+		AOSUtils.copyProperties(qDto, aos_sys_dicPO);
 		aos_sys_dicMapper.updateByKey(aos_sys_dicPO);
 	}
 	

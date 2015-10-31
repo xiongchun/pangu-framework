@@ -119,7 +119,7 @@ public class PageService {
 			}
 		}
 		Aos_sys_pagePO aos_sys_pagePO = new Aos_sys_pagePO();
-		AOSUtils.apply(inDto, aos_sys_pagePO);
+		AOSUtils.copyProperties(inDto, aos_sys_pagePO);
 		aos_sys_pagePO.setId_(AOSId.id(IdCons.GID));
 		aos_sys_pageMapper.insert(aos_sys_pagePO);
 		outDto.setAppMsg("操作完成，页面新增成功。");
@@ -152,7 +152,7 @@ public class PageService {
 			}
 		}
 		Aos_sys_pagePO aos_sys_pagePO = new Aos_sys_pagePO();
-		AOSUtils.apply(inDto, aos_sys_pagePO);
+		AOSUtils.copyProperties(inDto, aos_sys_pagePO);
 		aos_sys_pageMapper.updateByKey(aos_sys_pagePO);
 		outDto.setAppMsg("操作完成，页面修改成功。");
 		return outDto;
@@ -212,7 +212,7 @@ public class PageService {
 			return outDto;
 		}
 		Aos_sys_page_elPO aos_sys_page_elPO = new Aos_sys_page_elPO();
-		AOSUtils.apply(inDto, aos_sys_page_elPO);
+		AOSUtils.copyProperties(inDto, aos_sys_page_elPO);
 		aos_sys_page_elPO.setId_(AOSId.id(IdCons.GID));
 		aos_sys_page_elMapper.insert(aos_sys_page_elPO);
 		outDto.setAppMsg("操作完成，页面元素新增成功。");
@@ -242,7 +242,7 @@ public class PageService {
 			}
 		}
 		Aos_sys_page_elPO aos_sys_page_elPO2 = new Aos_sys_page_elPO();
-		AOSUtils.apply(inDto, aos_sys_page_elPO2);
+		AOSUtils.copyProperties(inDto, aos_sys_page_elPO2);
 		aos_sys_page_elMapper.updateByKey(aos_sys_page_elPO2);
 		outDto.setAppMsg("操作完成，页面元素修改成功。");
 		return outDto;
@@ -304,7 +304,7 @@ public class PageService {
 	@Transactional
 	public void saveElementGrantInfo(Dto pDto) {
 		Aos_sys_page_el_grantPO aos_sys_page_el_grantPO = new Aos_sys_page_el_grantPO();
-		AOSUtils.apply(pDto, aos_sys_page_el_grantPO);
+		AOSUtils.copyProperties(pDto, aos_sys_page_el_grantPO);
 		String grant_type_ = pDto.getString("grant_type_");
 		aos_sys_page_el_grantPO.setGrant_type_(grant_type_);
 		aos_sys_page_el_grantPO.setEl_id_(pDto.getString("id_"));

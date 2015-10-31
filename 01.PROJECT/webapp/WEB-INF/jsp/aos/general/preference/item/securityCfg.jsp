@@ -9,7 +9,7 @@
 </aos:body>
 <aos:onready>
 	<aos:viewport>
-		<aos:panel id="_p_cfg" region="center" layout="anchor" width="500" border="false" header="false" center="true">
+		<aos:panel id="_p_cfg" layout="anchor" width="500" border="false" header="false" center="true">
 			<aos:docked>
 				<aos:dockeditem xtype="tbtext" text="系统安全选项" />
 			</aos:docked>

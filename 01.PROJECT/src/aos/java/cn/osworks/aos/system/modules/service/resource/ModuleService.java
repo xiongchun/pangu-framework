@@ -50,7 +50,7 @@ public class ModuleService {
 	@Transactional
 	public void saveModule(Dto inDto) {
 		Aos_sys_modulePO aos_sys_modulePO = new Aos_sys_modulePO();
-		AOSUtils.apply(inDto, aos_sys_modulePO);
+		AOSUtils.copyProperties(inDto, aos_sys_modulePO);
 		aos_sys_modulePO.setId_(AOSId.id(IdCons.GID));
 		// 生成语义ID
 		Dto calcDto = Dtos.newCalcDto("MAX(cascade_id_)");
@@ -87,7 +87,7 @@ public class ModuleService {
 		Dto outDto = Dtos.newDto();
 		// 修改属性后的节点
 		Aos_sys_modulePO updatePO = new Aos_sys_modulePO();
-		AOSUtils.apply(inDto, updatePO);
+		AOSUtils.copyProperties(inDto, updatePO);
 		// 修改属性前的节点
 		Aos_sys_modulePO aos_sys_modulePO = aos_sys_moduleMapper.selectByKey(updatePO.getId_());
 		if (!updatePO.getName_().equals(aos_sys_modulePO.getName_())) {

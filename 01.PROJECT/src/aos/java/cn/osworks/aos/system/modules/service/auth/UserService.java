@@ -163,7 +163,7 @@ public class UserService {
 	public Dto saveUser(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		Aos_sys_userPO aos_sys_userPO = new Aos_sys_userPO();
-		AOSUtils.apply(inDto, aos_sys_userPO);
+		AOSUtils.copyProperties(inDto, aos_sys_userPO);
 		if (!checkAccount(aos_sys_userPO.getAccount_())) {
 			outDto.setAppCode(AOSCons.ERROR);
 			String msg = AOSUtils.merge("登录帐号[{0}]已被其它用户占用, 请重新输入。", aos_sys_userPO.getAccount_());
@@ -184,13 +184,13 @@ public class UserService {
 
 		// 写用户扩展表
 		Aos_sys_user_extPO aos_sys_user_extPO = new Aos_sys_user_extPO();
-		AOSUtils.apply(inDto, aos_sys_user_extPO);
+		AOSUtils.copyProperties(inDto, aos_sys_user_extPO);
 		aos_sys_user_extPO.setId_(aos_sys_userPO.getId_());
 		aos_sys_user_extMapper.insert(aos_sys_user_extPO);
 
 		// 写用户配置信息表
 		Aos_sys_user_cfgPO aos_sys_user_cfgPO = new Aos_sys_user_cfgPO();
-		AOSUtils.apply(inDto, aos_sys_user_cfgPO);
+		AOSUtils.copyProperties(inDto, aos_sys_user_cfgPO);
 		aos_sys_user_cfgPO.setId_(aos_sys_userPO.getId_());
 		aos_sys_user_cfgMapper.insert(aos_sys_user_cfgPO);
 
@@ -226,7 +226,7 @@ public class UserService {
 	public Dto updateUser(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		Aos_sys_userPO aos_sys_userPO = new Aos_sys_userPO();
-		AOSUtils.apply(inDto, aos_sys_userPO);
+		AOSUtils.copyProperties(inDto, aos_sys_userPO);
 		Aos_sys_userPO oldAos_sys_userPO = aos_sys_userMapper.selectByKey(aos_sys_userPO.getId_());
 		if (!aos_sys_userPO.getAccount_().equalsIgnoreCase(oldAos_sys_userPO.getAccount_())) {
 			if (!checkAccount(aos_sys_userPO.getAccount_())) {
@@ -247,11 +247,11 @@ public class UserService {
 		aos_sys_userMapper.updateByKey(aos_sys_userPO);
 		// 更新用户扩展信息
 		Aos_sys_user_extPO aos_sys_user_extPO = new Aos_sys_user_extPO();
-		AOSUtils.apply(inDto, aos_sys_user_extPO);
+		AOSUtils.copyProperties(inDto, aos_sys_user_extPO);
 		aos_sys_user_extMapper.updateByKey(aos_sys_user_extPO);
 		// 更新用户配置信息
 		Aos_sys_user_cfgPO aos_sys_user_cfgPO = new Aos_sys_user_cfgPO();
-		AOSUtils.apply(inDto, aos_sys_user_cfgPO);
+		AOSUtils.copyProperties(inDto, aos_sys_user_cfgPO);
 		aos_sys_user_cfgMapper.updateByKey(aos_sys_user_cfgPO);
 
 		outDto.setAppCode(AOSCons.SUCCESS);

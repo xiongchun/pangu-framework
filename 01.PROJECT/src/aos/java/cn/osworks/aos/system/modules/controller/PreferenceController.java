@@ -382,7 +382,7 @@ public class PreferenceController {
 		UserInfoVO old_userInfoVO = WebCxt.getUserInfo(session);
 		UserInfoVO new_userInfoVO = new UserInfoVO();
 		Aos_sys_userPO aos_sys_userPO = aos_sys_userMapper.selectByKey(old_userInfoVO.getId_());
-		AOSUtils.apply(aos_sys_userPO, new_userInfoVO);
+		AOSUtils.copyProperties(aos_sys_userPO, new_userInfoVO);
 		Aos_sys_user_cfgPO aos_sys_user_cfgPO = WebCxt.getUserCfgInfo(old_userInfoVO.getId_());
 		new_userInfoVO.setCfgInfo(aos_sys_user_cfgPO);
 		new_userInfoVO.setOrgInfo(old_userInfoVO.getOrgInfo());

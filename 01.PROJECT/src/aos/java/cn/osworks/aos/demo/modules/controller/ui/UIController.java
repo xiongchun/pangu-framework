@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +32,8 @@ import cn.osworks.aos.system.modules.service.SystemService;
 @Controller
 @RequestMapping(value = "demo/ui")
 public class UIController {
+	
+	private static Log log = LogFactory.getLog(UIController.class);
 
 	@Autowired
 	private SqlDao demoDao;
@@ -89,6 +93,27 @@ public class UIController {
 	public String initForm3() {
 		return "demo/ui/form/formPanel3.jsp";
 	}
+	
+	/**
+	 * 表单元素常用API页面初始化
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "initFormApi")
+	public String initFormApi() {
+		return "demo/ui/form/formApi.jsp";
+	}
+	
+	/**
+	 * 表单数据交互页面初始化
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "initFormData")
+	public String initFormData() {
+		return "demo/ui/form/formData.jsp";
+	}
+
 
 	/**
 	 * 基本表单4初始化
@@ -220,5 +245,76 @@ public class UIController {
 		String outString = AOSJson.toJson(treeNodes);
 		WebCxt.write(response, outString);
 	}
+	
+	/**
+	 * 加载表单1信息
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "getForm1Info")
+	public void getForm1Info(HttpServletRequest request, HttpServletResponse response) {
+		Dto outDto = Dtos.newDto();
+		outDto.put("name_", "凤姐_" + AOSUtils.random());
+		outDto.put("cardno_", "53001292519821117");
+		outDto.put("age_", "年芳18、貌美如花。");
+		outDto.put("sex_", "2");
+		WebCxt.write(response, AOSJson.toJson(outDto));
+	}
+	
+	/**
+	 * 加载表单2信息
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "getForm2Info")
+	public void getForm2Info(HttpServletRequest request, HttpServletResponse response) {
+		Dto outDto = Dtos.newDto();
+		outDto.put("name_", "中国嘉靖银行第" + AOSUtils.random() + "支行");
+		outDto.put("birthday_", "2015-03-10");
+		outDto.put("home_", "云南省昆明市杨浦区政通路");
+		WebCxt.write(response, AOSJson.toJson(outDto));
+	}
+	
+	/**
+	 * 提交表单信息
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "submitForm")
+	public void submitForm(HttpServletRequest request, HttpServletResponse response) {
+		Dto inDto = Dtos.newDto(request);
+		//如果获取当前用户信息
+		//UserInfoVO userInfoVO = inDto.getUserInfo();
+		if (log.isDebugEnabled()) {
+			log.debug("表单数据提交");
+			inDto.println();
+		}
+		//返回简单的提示信息
+		WebCxt.write(response, "数据已提交到后台，请查看控制台输出。");
+	}
+	
+	/**
+	 * 提交表单信息
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "submitForm2")
+	public void submitForm2(HttpServletRequest request, HttpServletResponse response) {
+		Dto inDto = Dtos.newDto(request);
+		if (log.isDebugEnabled()) {
+			log.debug("表单数据提交");
+			inDto.println();
+		}
+		//返回复杂的Json对象给前端
+		Dto outDto = Dtos.newOutDto();
+		outDto.put("userName", inDto.getUserInfo().getName_());
+		outDto.setAppMsg("数据已提交到后台，请查看控制台输出。");
+		WebCxt.write(response, AOSJson.toJson(outDto));
+	}
+	
 	
 }

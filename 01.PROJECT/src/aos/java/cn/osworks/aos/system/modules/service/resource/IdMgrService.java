@@ -42,7 +42,7 @@ public class IdMgrService {
 			outDto.setAppMsg("ID名称已存在，请修改。");
 		}else {
 			aos_sys_sequencePO.clear();
-			AOSUtils.apply(qDto, aos_sys_sequencePO);
+			AOSUtils.copyProperties(qDto, aos_sys_sequencePO);
 			aos_sys_sequencePO.setId_(AOSId.id(IdCons.GID));
 			aos_sys_sequenceMapper.insert(aos_sys_sequencePO);
 			outDto.setAppMsg("操作完成，ID新增成功。");
@@ -57,7 +57,7 @@ public class IdMgrService {
 	 */
 	public void updateId(Dto qDto) {
 		Aos_sys_sequencePO aos_sys_sequencePO = new Aos_sys_sequencePO();
-		AOSUtils.apply(qDto, aos_sys_sequencePO);
+		AOSUtils.copyProperties(qDto, aos_sys_sequencePO);
 		aos_sys_sequenceMapper.updateByKey(aos_sys_sequencePO);
 	}
 	

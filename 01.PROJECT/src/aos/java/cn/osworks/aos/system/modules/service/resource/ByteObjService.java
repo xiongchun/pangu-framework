@@ -40,7 +40,7 @@ public class ByteObjService {
     @Transactional
     public String saveByteObj(Dto inDto) throws IOException {
         Aos_sys_bytearrayPO aos_sys_bytearrayPO = new Aos_sys_bytearrayPO();
-        AOSUtils.apply(inDto, aos_sys_bytearrayPO);
+        AOSUtils.copyProperties(inDto, aos_sys_bytearrayPO);
         aos_sys_bytearrayPO.setId_(AOSId.id(IdCons.GID));
         Aos_sys_catalogPO aos_sys_catalogPO = aos_sys_catalogMapper.selectByKey(aos_sys_bytearrayPO.getCatalog_id_());
         aos_sys_bytearrayPO.setCatalog_cascade_id_(aos_sys_catalogPO.getCascade_id_());
@@ -77,7 +77,7 @@ public class ByteObjService {
             }
         }
         Aos_sys_bytearrayPO aos_sys_bytearrayPO = new Aos_sys_bytearrayPO();
-        AOSUtils.apply(inDto, aos_sys_bytearrayPO);
+        AOSUtils.copyProperties(inDto, aos_sys_bytearrayPO);
         Aos_sys_catalogPO aos_sys_catalogPO = aos_sys_catalogMapper.selectByKey(aos_sys_bytearrayPO.getCatalog_id_());
         aos_sys_bytearrayPO.setCatalog_cascade_id_((aos_sys_catalogPO.getCascade_id_()));
         MultipartFile myfile_ = (MultipartFile) inDto.get("myfile_");

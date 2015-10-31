@@ -85,7 +85,7 @@ public class ProcDefService {
 	 */
 	public void updateProcProps(Dto inDto) {
 		Aos_act_re_procdefPO aos_act_re_procdefPO = new Aos_act_re_procdefPO();
-		AOSUtils.apply(inDto, aos_act_re_procdefPO);
+		AOSUtils.copyProperties(inDto, aos_act_re_procdefPO);
 		aos_act_re_procdefMapper.updateByKey(aos_act_re_procdefPO);
 	}
 

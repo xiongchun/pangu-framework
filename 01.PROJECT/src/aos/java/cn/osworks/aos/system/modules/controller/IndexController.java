@@ -185,7 +185,7 @@ public class IndexController {
 		Dto outDto = Dtos.newDto();
 		Aos_sys_userPO aos_sys_userPO = (Aos_sys_userPO) checkAccountDto.get("aos_sys_userPO");
 		UserInfoVO userInfoVO = new UserInfoVO();
-		AOSUtils.apply(aos_sys_userPO, userInfoVO);
+		AOSUtils.copyProperties(aos_sys_userPO, userInfoVO);
 		Aos_sys_user_cfgPO aos_sys_user_cfgPO = WebCxt.getUserCfgInfo(aos_sys_userPO.getId_());
 		userInfoVO.setCfgInfo(aos_sys_user_cfgPO);
 		Aos_sys_orgPO aos_sys_orgPO = aos_sys_orgMapper.selectByKey(aos_sys_userPO.getOrg_id_());
@@ -218,7 +218,7 @@ public class IndexController {
 				Dto aos_sys_userDto = Dtos.newDto("account_", dev_account);
 				Aos_sys_userPO aos_sys_userPO = aos_sys_userMapper.selectOne(aos_sys_userDto);
 				UserInfoVO userInfoVO = new UserInfoVO();
-				AOSUtils.apply(aos_sys_userPO, userInfoVO);
+				AOSUtils.copyProperties(aos_sys_userPO, userInfoVO);
 				Aos_sys_user_cfgPO aos_sys_user_cfgPO = WebCxt.getUserCfgInfo(aos_sys_userPO.getId_());
 				userInfoVO.setCfgInfo(aos_sys_user_cfgPO);
 				Aos_sys_orgPO aos_sys_orgPO = aos_sys_orgMapper.selectByKey(aos_sys_userPO.getOrg_id_());

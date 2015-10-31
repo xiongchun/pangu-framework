@@ -28,19 +28,21 @@ import java.util.Map;
 import java.util.Random;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.BeanUtilsBean;
+import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.collections.ListUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.common.collect.Lists;
-
 import cn.osworks.aos.core.exception.AOSException;
+import cn.osworks.aos.core.misc.BeanUtilsDateConverter;
 import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
 import cn.osworks.aos.core.typewrap.TypeConvertUtil;
 import cn.osworks.aos.core.velocity.VelocityHelper;
 
+import com.google.common.collect.Lists;
 
 /**
  * <b>辅助工具类</b>
@@ -48,19 +50,11 @@ import cn.osworks.aos.core.velocity.VelocityHelper;
  * @author OSWorks-XC
  * @since 1.0
  * @date 2009-1-22
- * @lastmodify 2013-08-10
  */
 @SuppressWarnings("all")
 public class AOSUtils {
 
 	private static Log log = LogFactory.getLog(AOSUtils.class);
-
-	/**
-	 * Utility Class, no instances
-	 */
-	private AOSUtils() {
-		super();
-	}
 
 	/**
 	 * 判断对象是否Empty(null或元素为0)<br>
@@ -128,9 +122,15 @@ public class AOSUtils {
 	 * @param pToObj
 	 *            Bean目标对象
 	 */
-	public static void apply(Object pFromObj, Object pToObj) {
+	public static void copyProperties(Object pFromObj, Object pToObj) {
 		if (pToObj != null) {
 			try {
+				// 支持属性空值复制
+				BeanUtilsBean.getInstance().getConvertUtils().register(false, true, 0);
+				// 日期类型复制
+				BeanUtilsDateConverter converter = new BeanUtilsDateConverter();
+				ConvertUtils.register(converter, java.util.Date.class);
+				ConvertUtils.register(converter, java.sql.Date.class);
 				BeanUtils.copyProperties(pToObj, pFromObj);
 			} catch (Exception e) {
 				throw new AOSException("JavaBean之间的属性值拷贝发生错误", e);
@@ -146,7 +146,7 @@ public class AOSUtils {
 	 * @param pToDto
 	 *            Dto目标对象
 	 */
-	public static void apply(Object pFromObj, Dto pToDto) {
+	public static void copyProperties(Object pFromObj, Dto pToDto) {
 		if (pToDto != null) {
 			try {
 				pToDto.putAll(BeanUtils.describe(pFromObj));
@@ -294,11 +294,11 @@ public class AOSUtils {
 		char sex = id.charAt(16);
 		return sex % 2 == 0 ? "2" : "1";
 	}
-	
+
 	private static String DigitUppercaseStrings[] = new String[] { "零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
 
-	private static String moneyStrings[] = new String[] { "", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟", "万",
-			"拾", "佰", "仟", "亿", "拾", "佰", "仟", "万", "拾", "佰", "仟" };
+	private static String moneyStrings[] = new String[] { "", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟",
+			"万", "拾", "佰", "仟", "亿", "拾", "佰", "仟", "万", "拾", "佰", "仟" };
 
 	/**
 	 * 将货币转换为大写形式(类内部调用)
@@ -913,10 +913,12 @@ public class AOSUtils {
 			userAgent = AOSUtils.trimAll(userAgent);
 			userAgent = StringUtils.lowerCase(userAgent);
 			if (StringUtils.contains(userAgent, "rv:")) {
-				//IE11: Mozilla/5.0 (MSIE 9.0; qdesk 2.5.1277.202; Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
+				// IE11: Mozilla/5.0 (MSIE 9.0; qdesk 2.5.1277.202; Windows NT
+				// 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
 				ieVersion = StringUtils.substringBetween(userAgent, "rv:", ".");
-			}else {
-				//IE6-10: Mozilla / 5.0(compatible; MSIE 6.0-10.0; Windows NT 6.2; Trident / 6.0)
+			} else {
+				// IE6-10: Mozilla / 5.0(compatible; MSIE 6.0-10.0; Windows NT
+				// 6.2; Trident / 6.0)
 				ieVersion = StringUtils.substringBetween(userAgent, "msie", ".");
 			}
 		}
@@ -968,7 +970,7 @@ public class AOSUtils {
 			System.out.println(object);
 		}
 	}
-	
+
 	/**
 	 * 打印出错信息
 	 * 
@@ -977,7 +979,7 @@ public class AOSUtils {
 	public static void error(Object object) {
 		System.out.print(getDateTimeStr() + " ERROR " + object + "\n");
 	}
-	
+
 	/**
 	 * 打印警告信息
 	 * 
@@ -986,7 +988,7 @@ public class AOSUtils {
 	public static void warn(Object object) {
 		System.out.print(getDateTimeStr() + " WARN " + object + "\n");
 	}
-	
+
 	/**
 	 * 打印提示信息
 	 * 
@@ -1013,49 +1015,50 @@ public class AOSUtils {
 	public static long randomBetween(long min, long max) {
 		return Math.round(Math.random() * (max - min) + min);
 	}
-	
+
 	/**
 	 * 产生随机简体汉字
 	 * 
 	 * @return
 	 */
-	public static String randomSimplified(){
+	public static String randomSimplified() {
 		String outCharacter = null;
 		int hightPos, lowPos;
 		Random random = new Random();
-		hightPos = (176 + Math.abs(random.nextInt(39))); 
+		hightPos = (176 + Math.abs(random.nextInt(39)));
 		lowPos = (161 + Math.abs(random.nextInt(93)));
 		byte[] b = new byte[2];
 		b[0] = (new Integer(hightPos).byteValue());
 		b[1] = (new Integer(lowPos).byteValue());
 		try {
-			outCharacter = new String(b, "GBK"); 
+			outCharacter = new String(b, "GBK");
 		} catch (UnsupportedEncodingException ex) {
 			ex.printStackTrace();
 		}
 		return outCharacter;
 	}
-	
+
 	/**
 	 * 将List<Dto>对象的Dto的key转换为小写
 	 * 
-	 * <p>因为调用存储过程返回的游标结果集中的Dto的Key大小写问题不能被拦截器统一转换，所以在这里做一次转换后返回。
+	 * <p>
+	 * 因为调用存储过程返回的游标结果集中的Dto的Key大小写问题不能被拦截器统一转换，所以在这里做一次转换后返回。
 	 * 
 	 * @return
 	 */
-	public static List<Dto> lowercaseDtos(List<Dto> list){
+	public static List<Dto> lowercaseDtos(List<Dto> list) {
 		if (list == null) {
 			return ListUtils.EMPTY_LIST;
 		}
 		List<Dto> lowerDtos = Lists.newArrayList();
 		for (Dto dto : list) {
 			Dto lowerDto = Dtos.newDto();
-	        Iterator<String> keyIterator = (Iterator) dto.keySet().iterator();
-	        while (keyIterator.hasNext()) {
-	            String key = (String) keyIterator.next();
-	            lowerDto.put(StringUtils.lowerCase(key), dto.get(key));
-	        }
-	        lowerDtos.add(lowerDto);
+			Iterator<String> keyIterator = (Iterator) dto.keySet().iterator();
+			while (keyIterator.hasNext()) {
+				String key = (String) keyIterator.next();
+				lowerDto.put(StringUtils.lowerCase(key), dto.get(key));
+			}
+			lowerDtos.add(lowerDto);
 		}
 		return lowerDtos;
 	}
