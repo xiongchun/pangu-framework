@@ -1,0 +1,63 @@
+package ${package};
+
+import cn.osworks.aos.core.typewrap.PO;
+#if(${importDto.bigDecimal})
+import java.math.BigDecimal;
+#end
+#if(${importDto.data})
+import java.util.Date;
+#end
+#if(${importDto.timestamp})
+import java.sql.Timestamp;
+#end
+##java.lang.*下的类型不需要导入
+
+/**
+ * <b>$!{tableDto.comment}[${tableDto.name}]数据持久化对象</b>
+ * <p>
+ * 注意:此文件由AOS平台自动生成-禁止手工修改。
+ * </p>
+ * 
+ * @author $!author
+ * @date $!sysdate
+ */
+public class ${tableDto.upname}PO extends PO {
+
+	private static final long serialVersionUID = 1L;
+
+##变量声明
+#foreach($columnDto in $columnDtos)
+	/**
+	 * ${columnDto.comment}
+	 */
+	private ${columnDto.javatype} ${columnDto.name};
+	
+#end
+
+##get方法
+#foreach($columnDto in $columnDtos)
+	/**
+	 * ${columnDto.comment}
+	 * 
+	 * @return ${columnDto.name}
+	 */
+	public ${columnDto.javatype} get${columnDto.upname}() {
+		return ${columnDto.name};
+	}
+	
+#end
+
+##set方法
+#foreach($columnDto in $columnDtos)
+	/**
+	 * ${columnDto.comment}
+	 * 
+	 * @param ${columnDto.name}
+	 */
+	public void set${columnDto.upname}(${columnDto.javatype} ${columnDto.name}) {
+		this.${columnDto.name} = ${columnDto.name};
+	}
+	
+#end
+
+}

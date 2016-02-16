@@ -1,0 +1,21 @@
+<head>
+#if($title)
+<title>$title</title>
+#end
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="keywords" content="AOS应用基础平台">
+##IE10及以上版本统一使用10来渲染。
+#if($ie_version >= 10)
+<meta http-equiv="X-UA-Compatible" content="IE=10">
+#end
+##IE10以下版本统一使用自己的最高版本来渲染。如果安装了GCF，则使用GCF来渲染页面，如果没有则使用IE最高模式进行渲染。
+##GCF只会对678版本有效。
+#if($ie_version < 10)
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+#end
+##可以让部分国产双核浏览器默认采用高速模式渲染页面
+<meta name="renderer" content="webkit">
+<link rel="shortcut icon" href="${cxt}$appico" />
+##awesome组件为标配组件
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/awesome/css/font-awesome.min.css" />
+#parse("${vmpath}app/common/dynamicCss.vm")

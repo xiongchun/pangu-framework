@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ID配置表[aos_sys_sequence]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:31 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_sys_sequenceMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_sys_sequencePO">
+		INSERT INTO aos_sys_sequence (
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- 名称 -->
+		</if>
+		<if test="type_ != null and type_ != ''">
+	         type_, <!-- 类型 -->
+		</if>
+		<if test="prefix_ != null and prefix_ != ''">
+	         prefix_, <!-- 前缀 -->
+		</if>
+		<if test="start_ != null and start_ != ''">
+	         start_, <!-- 起始值 -->
+		</if>
+		<if test="step_ != null and step_ != ''">
+	         step_, <!-- 递增步长 -->
+		</if>
+		<if test="cur_value_ != null and cur_value_ != ''">
+	         cur_value_, <!-- 当前值 -->
+		</if>
+		<if test="status_ != null and status_ != ''">
+	         status_, <!-- 当前状态 -->
+		</if>
+		<if test="connector_ != null and connector_ != ''">
+	         connector_, <!-- 连接符 -->
+		</if>
+		<if test="suffix_ != null and suffix_ != ''">
+	         suffix_, <!-- 后缀 -->
+		</if>
+		<if test="db_seq_name_ != null and db_seq_name_ != ''">
+	         db_seq_name_, <!-- DBSequence名称 -->
+		</if>
+		<if test="max_value_ != null and max_value_ != ''">
+	         max_value_, <!-- 最大值 -->
+		</if>
+		<if test="is_circul_ != null and is_circul_ != ''">
+	         is_circul_, <!-- 是否循环 -->
+		</if>
+		<if test="min_value_ != null and min_value_ != ''">
+	         min_value_, <!-- 最小值 -->
+		</if>
+		<if test="is_leftpad_ != null and is_leftpad_ != ''">
+	         is_leftpad_, <!-- 是否左补足 -->
+		</if>
+		<if test="format_value_ != null and format_value_ != ''">
+	         format_value_, <!-- 当前格式化值 -->
+		</if>
+		<if test="remark_ != null and remark_ != ''">
+	         remark_, <!-- 备注 -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- 流水号 -->
+	   </if>
+		)VALUES(
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- 名称 -->
+	    </if>
+		<if test="type_ != null and type_ != ''">
+	          #{type_, jdbcType=VARCHAR}, <!-- 类型 -->
+	    </if>
+		<if test="prefix_ != null and prefix_ != ''">
+	          #{prefix_, jdbcType=VARCHAR}, <!-- 前缀 -->
+	    </if>
+		<if test="start_ != null and start_ != ''">
+	          #{start_, jdbcType=VARCHAR}, <!-- 起始值 -->
+	    </if>
+		<if test="step_ != null and step_ != ''">
+	          #{step_, jdbcType=VARCHAR}, <!-- 递增步长 -->
+	    </if>
+		<if test="cur_value_ != null and cur_value_ != ''">
+	          #{cur_value_, jdbcType=VARCHAR}, <!-- 当前值 -->
+	    </if>
+		<if test="status_ != null and status_ != ''">
+	          #{status_, jdbcType=VARCHAR}, <!-- 当前状态 -->
+	    </if>
+		<if test="connector_ != null and connector_ != ''">
+	          #{connector_, jdbcType=VARCHAR}, <!-- 连接符 -->
+	    </if>
+		<if test="suffix_ != null and suffix_ != ''">
+	          #{suffix_, jdbcType=VARCHAR}, <!-- 后缀 -->
+	    </if>
+		<if test="db_seq_name_ != null and db_seq_name_ != ''">
+	          #{db_seq_name_, jdbcType=VARCHAR}, <!-- DBSequence名称 -->
+	    </if>
+		<if test="max_value_ != null and max_value_ != ''">
+	          #{max_value_, jdbcType=VARCHAR}, <!-- 最大值 -->
+	    </if>
+		<if test="is_circul_ != null and is_circul_ != ''">
+	          #{is_circul_, jdbcType=VARCHAR}, <!-- 是否循环 -->
+	    </if>
+		<if test="min_value_ != null and min_value_ != ''">
+	          #{min_value_, jdbcType=VARCHAR}, <!-- 最小值 -->
+	    </if>
+		<if test="is_leftpad_ != null and is_leftpad_ != ''">
+	          #{is_leftpad_, jdbcType=VARCHAR}, <!-- 是否左补足 -->
+	    </if>
+		<if test="format_value_ != null and format_value_ != ''">
+	          #{format_value_, jdbcType=VARCHAR}, <!-- 当前格式化值 -->
+	    </if>
+		<if test="remark_ != null and remark_ != ''">
+	          #{remark_, jdbcType=VARCHAR}, <!-- 备注 -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- 流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_sys_sequencePO">
+		INSERT INTO aos_sys_sequence (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+		    #{name_, jdbcType=VARCHAR},  <!-- 名称 -->
+		    #{type_, jdbcType=VARCHAR},  <!-- 类型 -->
+		    #{prefix_, jdbcType=VARCHAR},  <!-- 前缀 -->
+		    #{start_, jdbcType=VARCHAR},  <!-- 起始值 -->
+		    #{step_, jdbcType=VARCHAR},  <!-- 递增步长 -->
+		    #{cur_value_, jdbcType=VARCHAR},  <!-- 当前值 -->
+		    #{status_, jdbcType=VARCHAR},  <!-- 当前状态 -->
+		    #{connector_, jdbcType=VARCHAR},  <!-- 连接符 -->
+		    #{suffix_, jdbcType=VARCHAR},  <!-- 后缀 -->
+		    #{db_seq_name_, jdbcType=VARCHAR},  <!-- DBSequence名称 -->
+		    #{max_value_, jdbcType=VARCHAR},  <!-- 最大值 -->
+		    #{is_circul_, jdbcType=VARCHAR},  <!-- 是否循环 -->
+		    #{min_value_, jdbcType=VARCHAR},  <!-- 最小值 -->
+		    #{is_leftpad_, jdbcType=VARCHAR},  <!-- 是否左补足 -->
+		    #{format_value_, jdbcType=VARCHAR},  <!-- 当前格式化值 -->
+		    #{remark_, jdbcType=VARCHAR}  <!-- 备注 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_sys_sequencePO">
+		UPDATE aos_sys_sequence
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+			</if>
+			<if test="name_ != null">
+		          name_ = #{name_, jdbcType=VARCHAR},  <!-- 名称 -->
+			</if>
+			<if test="type_ != null">
+		          type_ = #{type_, jdbcType=VARCHAR},  <!-- 类型 -->
+			</if>
+			<if test="prefix_ != null">
+		          prefix_ = #{prefix_, jdbcType=VARCHAR},  <!-- 前缀 -->
+			</if>
+			<if test="start_ != null">
+		          start_ = #{start_, jdbcType=VARCHAR},  <!-- 起始值 -->
+			</if>
+			<if test="step_ != null">
+		          step_ = #{step_, jdbcType=VARCHAR},  <!-- 递增步长 -->
+			</if>
+			<if test="cur_value_ != null">
+		          cur_value_ = #{cur_value_, jdbcType=VARCHAR},  <!-- 当前值 -->
+			</if>
+			<if test="status_ != null">
+		          status_ = #{status_, jdbcType=VARCHAR},  <!-- 当前状态 -->
+			</if>
+			<if test="connector_ != null">
+		          connector_ = #{connector_, jdbcType=VARCHAR},  <!-- 连接符 -->
+			</if>
+			<if test="suffix_ != null">
+		          suffix_ = #{suffix_, jdbcType=VARCHAR},  <!-- 后缀 -->
+			</if>
+			<if test="db_seq_name_ != null">
+		          db_seq_name_ = #{db_seq_name_, jdbcType=VARCHAR},  <!-- DBSequence名称 -->
+			</if>
+			<if test="max_value_ != null">
+		          max_value_ = #{max_value_, jdbcType=VARCHAR},  <!-- 最大值 -->
+			</if>
+			<if test="is_circul_ != null">
+		          is_circul_ = #{is_circul_, jdbcType=VARCHAR},  <!-- 是否循环 -->
+			</if>
+			<if test="min_value_ != null">
+		          min_value_ = #{min_value_, jdbcType=VARCHAR},  <!-- 最小值 -->
+			</if>
+			<if test="is_leftpad_ != null">
+		          is_leftpad_ = #{is_leftpad_, jdbcType=VARCHAR},  <!-- 是否左补足 -->
+			</if>
+			<if test="format_value_ != null">
+		          format_value_ = #{format_value_, jdbcType=VARCHAR},  <!-- 当前格式化值 -->
+			</if>
+			<if test="remark_ != null">
+		          remark_ = #{remark_, jdbcType=VARCHAR},  <!-- 备注 -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_sys_sequence WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_sys_sequencePO">
+		SELECT
+		<include refid="column" />
+		FROM aos_sys_sequence WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_sys_sequencePO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_sys_sequence
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_sys_sequencePO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_sequence
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_sys_sequencePO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_sequence
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_sys_sequencePO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_sequence
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_sys_sequencePO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_sequence
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_sys_sequence
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_sys_sequence
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- 流水号 -->
+		  name_,  <!-- 名称 -->
+		  type_,  <!-- 类型 -->
+		  prefix_,  <!-- 前缀 -->
+		  start_,  <!-- 起始值 -->
+		  step_,  <!-- 递增步长 -->
+		  cur_value_,  <!-- 当前值 -->
+		  status_,  <!-- 当前状态 -->
+		  connector_,  <!-- 连接符 -->
+		  suffix_,  <!-- 后缀 -->
+		  db_seq_name_,  <!-- DBSequence名称 -->
+		  max_value_,  <!-- 最大值 -->
+		  is_circul_,  <!-- 是否循环 -->
+		  min_value_,  <!-- 最小值 -->
+		  is_leftpad_,  <!-- 是否左补足 -->
+		  format_value_,  <!-- 当前格式化值 -->
+		  remark_  <!-- 备注 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_sys_sequence.id_,  <!-- 流水号 -->
+		  aos_sys_sequence.name_,  <!-- 名称 -->
+		  aos_sys_sequence.type_,  <!-- 类型 -->
+		  aos_sys_sequence.prefix_,  <!-- 前缀 -->
+		  aos_sys_sequence.start_,  <!-- 起始值 -->
+		  aos_sys_sequence.step_,  <!-- 递增步长 -->
+		  aos_sys_sequence.cur_value_,  <!-- 当前值 -->
+		  aos_sys_sequence.status_,  <!-- 当前状态 -->
+		  aos_sys_sequence.connector_,  <!-- 连接符 -->
+		  aos_sys_sequence.suffix_,  <!-- 后缀 -->
+		  aos_sys_sequence.db_seq_name_,  <!-- DBSequence名称 -->
+		  aos_sys_sequence.max_value_,  <!-- 最大值 -->
+		  aos_sys_sequence.is_circul_,  <!-- 是否循环 -->
+		  aos_sys_sequence.min_value_,  <!-- 最小值 -->
+		  aos_sys_sequence.is_leftpad_,  <!-- 是否左补足 -->
+		  aos_sys_sequence.format_value_,  <!-- 当前格式化值 -->
+		  aos_sys_sequence.remark_  <!-- 备注 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- 流水号 -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- 名称 -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ = #{type_}  <!-- 类型 -->
+		</if>
+	    <if test="prefix_ != null and prefix_ != ''">
+		      AND prefix_ = #{prefix_}  <!-- 前缀 -->
+		</if>
+	    <if test="start_ != null and start_ != ''">
+		      AND start_ = #{start_}  <!-- 起始值 -->
+		</if>
+	    <if test="step_ != null and step_ != ''">
+		      AND step_ = #{step_}  <!-- 递增步长 -->
+		</if>
+	    <if test="cur_value_ != null and cur_value_ != ''">
+		      AND cur_value_ = #{cur_value_}  <!-- 当前值 -->
+		</if>
+	    <if test="status_ != null and status_ != ''">
+		      AND status_ = #{status_}  <!-- 当前状态 -->
+		</if>
+	    <if test="connector_ != null and connector_ != ''">
+		      AND connector_ = #{connector_}  <!-- 连接符 -->
+		</if>
+	    <if test="suffix_ != null and suffix_ != ''">
+		      AND suffix_ = #{suffix_}  <!-- 后缀 -->
+		</if>
+	    <if test="db_seq_name_ != null and db_seq_name_ != ''">
+		      AND db_seq_name_ = #{db_seq_name_}  <!-- DBSequence名称 -->
+		</if>
+	    <if test="max_value_ != null and max_value_ != ''">
+		      AND max_value_ = #{max_value_}  <!-- 最大值 -->
+		</if>
+	    <if test="is_circul_ != null and is_circul_ != ''">
+		      AND is_circul_ = #{is_circul_}  <!-- 是否循环 -->
+		</if>
+	    <if test="min_value_ != null and min_value_ != ''">
+		      AND min_value_ = #{min_value_}  <!-- 最小值 -->
+		</if>
+	    <if test="is_leftpad_ != null and is_leftpad_ != ''">
+		      AND is_leftpad_ = #{is_leftpad_}  <!-- 是否左补足 -->
+		</if>
+	    <if test="format_value_ != null and format_value_ != ''">
+		      AND format_value_ = #{format_value_}  <!-- 当前格式化值 -->
+		</if>
+	    <if test="remark_ != null and remark_ != ''">
+		      AND remark_ = #{remark_}  <!-- 备注 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- 流水号 -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- 名称 -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ like '%${type_}%'  <!-- 类型 -->
+		</if>
+	    <if test="prefix_ != null and prefix_ != ''">
+		      AND prefix_ like '%${prefix_}%'  <!-- 前缀 -->
+		</if>
+	    <if test="start_ != null and start_ != ''">
+		      AND start_ like '%${start_}%'  <!-- 起始值 -->
+		</if>
+	    <if test="step_ != null and step_ != ''">
+		      AND step_ like '%${step_}%'  <!-- 递增步长 -->
+		</if>
+	    <if test="cur_value_ != null and cur_value_ != ''">
+		      AND cur_value_ like '%${cur_value_}%'  <!-- 当前值 -->
+		</if>
+	    <if test="status_ != null and status_ != ''">
+		      AND status_ like '%${status_}%'  <!-- 当前状态 -->
+		</if>
+	    <if test="connector_ != null and connector_ != ''">
+		      AND connector_ like '%${connector_}%'  <!-- 连接符 -->
+		</if>
+	    <if test="suffix_ != null and suffix_ != ''">
+		      AND suffix_ like '%${suffix_}%'  <!-- 后缀 -->
+		</if>
+	    <if test="db_seq_name_ != null and db_seq_name_ != ''">
+		      AND db_seq_name_ like '%${db_seq_name_}%'  <!-- DBSequence名称 -->
+		</if>
+	    <if test="max_value_ != null and max_value_ != ''">
+		      AND max_value_ like '%${max_value_}%'  <!-- 最大值 -->
+		</if>
+	    <if test="is_circul_ != null and is_circul_ != ''">
+		      AND is_circul_ like '%${is_circul_}%'  <!-- 是否循环 -->
+		</if>
+	    <if test="min_value_ != null and min_value_ != ''">
+		      AND min_value_ like '%${min_value_}%'  <!-- 最小值 -->
+		</if>
+	    <if test="is_leftpad_ != null and is_leftpad_ != ''">
+		      AND is_leftpad_ like '%${is_leftpad_}%'  <!-- 是否左补足 -->
+		</if>
+	    <if test="format_value_ != null and format_value_ != ''">
+		      AND format_value_ like '%${format_value_}%'  <!-- 当前格式化值 -->
+		</if>
+	    <if test="remark_ != null and remark_ != ''">
+		      AND remark_ like '%${remark_}%'  <!-- 备注 -->
+		</if>
+	</sql>
+	
+</mapper>

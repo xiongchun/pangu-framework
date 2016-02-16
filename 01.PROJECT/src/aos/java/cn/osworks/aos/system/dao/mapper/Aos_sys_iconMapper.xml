@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 图标大全[aos_sys_icon]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:31 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_sys_iconMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_sys_iconPO">
+		INSERT INTO aos_sys_icon (
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- 名称 -->
+		</if>
+		<if test="type_ != null and type_ != ''">
+	         type_, <!-- 类型 -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- 流水号 -->
+	   </if>
+		)VALUES(
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- 名称 -->
+	    </if>
+		<if test="type_ != null and type_ != ''">
+	          #{type_, jdbcType=VARCHAR}, <!-- 类型 -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- 流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_sys_iconPO">
+		INSERT INTO aos_sys_icon (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+		    #{name_, jdbcType=VARCHAR},  <!-- 名称 -->
+		    #{type_, jdbcType=VARCHAR}  <!-- 类型 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_sys_iconPO">
+		UPDATE aos_sys_icon
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+			</if>
+			<if test="name_ != null">
+		          name_ = #{name_, jdbcType=VARCHAR},  <!-- 名称 -->
+			</if>
+			<if test="type_ != null">
+		          type_ = #{type_, jdbcType=VARCHAR},  <!-- 类型 -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_sys_icon WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_sys_iconPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_sys_icon WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_sys_iconPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_sys_icon
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_sys_iconPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_icon
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_sys_iconPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_icon
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_sys_iconPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_icon
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_sys_iconPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_icon
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_sys_icon
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_sys_icon
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- 流水号 -->
+		  name_,  <!-- 名称 -->
+		  type_  <!-- 类型 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_sys_icon.id_,  <!-- 流水号 -->
+		  aos_sys_icon.name_,  <!-- 名称 -->
+		  aos_sys_icon.type_  <!-- 类型 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- 流水号 -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- 名称 -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ = #{type_}  <!-- 类型 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- 流水号 -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- 名称 -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ like '%${type_}%'  <!-- 类型 -->
+		</if>
+	</sql>
+	
+</mapper>
