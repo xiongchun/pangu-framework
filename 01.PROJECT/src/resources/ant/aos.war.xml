@@ -49,7 +49,6 @@
 			<fileset dir="${webapp}/WEB-INF/lib" includes="*.jar" />
 			<fileset dir="${webapp}/WEB-INF/lib/activiti/dependencies" includes="*.jar" />
 			<fileset dir="${webapp}/WEB-INF/lib/activiti" includes="*.jar" />
-			<fileset dir="${webapp}/WEB-INF/lib/aos" includes="*.jar" />
 			<fileset dir="${webapp}/WEB-INF/lib/commons" includes="*.jar" />
 			<fileset dir="${webapp}/WEB-INF/lib/jdbc" includes="*.jar" />
 			<fileset dir="${webapp}/WEB-INF/lib/spring" includes="*.jar" />
