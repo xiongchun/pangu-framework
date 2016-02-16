@@ -1,0 +1,8 @@
+1、解决了显示上的高度瑕疵。
+.x-toggle-slide-thumb {
+	display: block;
+	height: 23px;
+改为了
+.x-toggle-slide-thumb {
+	display: block;
+	height: 21px;

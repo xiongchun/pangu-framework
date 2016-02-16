@@ -1,0 +1,28 @@
+/* index.jsp css*/
+.south_el_left {
+	padding-left: 5px;
+	padding-top: 1px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 350px;
+	font-size: 12px;
+}
+
+.south_el_right {
+	padding-right: 5px;
+	padding-top: 1px;
+	text-align: right;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 350px;
+	font-size: 12px;
+}
+
+#loading {
+	z-index: 20001;
+	left: 48%;
+	top: 38%;
+	position: absolute;
+}
