@@ -1,7 +1,7 @@
 ##### AOS在线演示系统 
 [http://42.120.21.17/aos](http://42.120.21.17/aos)  (在线演示系统为只读模式，部分功能可能不流畅。完美体验请搭建本地环境。)<br>
 登录帐户/密码：```root/111111```(或单击 开发者 按钮直接登录)。QQ交流群：```63787587``` ```92497522```
-##### 获取源码
+##### 如何获取100%无死角全开源代码
 SVN：```svn://git.oschina.net/osworks/AOS```<br>
 GIT：```git@git.oschina.net:osworks/AOS.git```<br>
 ZIP：[http://git.oschina.net/osworks/AOS/tags](http://git.oschina.net/osworks/AOS/tags)<br>
