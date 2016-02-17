@@ -9,7 +9,7 @@
 	<description>Spring WebMVC 配置</description>
 
 	<!-- 扫描@Controller组件 -->
-	<!-- 提示：将com.corp.app该为您的业务系统的包路径 -->
+	<!-- 提示：将com.mycorp.mysystem该为您的业务系统的包路径 -->
 	<context:component-scan base-package="cn.osworks.aos;com.mycorp.mysystem"
 		use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
