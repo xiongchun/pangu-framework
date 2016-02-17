@@ -26,7 +26,7 @@
     </select>
     
     <!-- 批量删除会话日志信息 -->
-    <delete id="Log.deleteSessionLogs" parameterType="Dto" >
+    <delete id="deleteSessionLogs" parameterType="Dto" >
           DELETE FROM aos_log_session
     </delete>
 
