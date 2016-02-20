@@ -64,7 +64,7 @@
 		<property name="dataSource" ref="dataSource.sys" />
 		<!-- 请将com.mycorp.mysystem.**改为你的项目扫描路径 -->
 		<property name="typeAliasesPackage" value="cn.osworks.aos;com.mycorp.mysystem" />
-		<property name="mapperLocations" value="classpath:**/*Mapper.xml" />
+		<property name="mapperLocations" value="classpath*:**/*Mapper.xml" />
 		<property name="configLocation" value="classpath:core/aos.dao.cfg.xml" />
 	</bean>
 

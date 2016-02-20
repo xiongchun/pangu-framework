@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSJson;
 import cn.osworks.aos.core.asset.WebCxt;
 import cn.osworks.aos.core.dao.SqlDao;
@@ -46,7 +47,7 @@ public class ModuleController {
 	 */
 	@RequestMapping(value = "init")
 	public String init(HttpSession session, HttpServletRequest request) {
-		Aos_sys_modulePO aos_sys_modulePO = aos_sys_moduleMapper.selectByKey("0");
+		Aos_sys_modulePO aos_sys_modulePO = aos_sys_moduleMapper.selectByKey(AOSCons.MODULE_ROOT_ID);
 		request.setAttribute("_root", aos_sys_modulePO);
 		return "aos/resource/module.jsp";
 	}

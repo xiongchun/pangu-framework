@@ -59,7 +59,7 @@
 	<aos:window id="_w_module_find" title="上级菜单[双击选择]" height="-10" layout="fit" autoScroll="true"
 		onshow="_t_module_find_refresh">
 		<aos:treepanel id="_t_module_find" singleClick="false" width="320" bodyBorder="0 0 0 0" url="listModuleTree.jhtml"
-			nodeParam="parent_id_" rootId="0" rootVisible="true" rootExpanded="false" rootText="${_root.name_}"
+			nodeParam="parent_id_" rootId="2a4c060f44d944ea926fe44522ce7b39" rootVisible="true" rootExpanded="false" rootText="${_root.name_}"
 			rootIcon="${_root.icon_name_}" onitemdblclick="_t_module_find_select">
 			<aos:menu>
 				<aos:menuitem text="选择" icon="ok1.png" onclick="_t_module_find_select" />
