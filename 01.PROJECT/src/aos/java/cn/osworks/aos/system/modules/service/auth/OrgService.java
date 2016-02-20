@@ -143,7 +143,7 @@ public class OrgService {
 		String[] selections = qDto.getRows();
 		List<String> selList = Arrays.asList(selections);
 		for (String id_ : selList) {
-			if (id_.equals("0")) {
+			if (id_.equals(AOSCons.ORG_ROOT_ID)) {
 				outDto.setAppCode(AOSCons.ERROR);
 				outDto.setAppMsg("根节点不能删除，请重新选择。");
 				return outDto;
@@ -186,13 +186,18 @@ public class OrgService {
 			// 刷新自己
 			outDto.put("nodeid", aos_sys_orgPO.getId_());
 		} else {
-			Aos_sys_orgPO aos_sys_orgPO2 = aos_sys_orgMapper.selectByKey(aos_sys_orgPO.getParent_id_());
-			if (aos_sys_orgPO.getId_().equals("0")) {
+			if (aos_sys_orgPO.getId_().equals(AOSCons.ORG_ROOT_ID)) {
 				// 刷新根节点
-				outDto.put("nodeid", "0");
+				outDto.put("nodeid", AOSCons.ORG_ROOT_ID);
 			} else {
-				// 刷新父节点
-				outDto.put("nodeid", aos_sys_orgPO2.getId_());
+				Aos_sys_orgPO aos_sys_orgPO2 = aos_sys_orgMapper.selectByKey(aos_sys_orgPO.getParent_id_());
+				if (AOSUtils.isEmpty(aos_sys_orgPO2)) {
+					// 刷新根节点
+					outDto.put("nodeid", AOSCons.ORG_ROOT_ID);
+				}else {
+					// 刷新父节点
+					outDto.put("nodeid", aos_sys_orgPO2.getId_());
+				}
 			}
 		}
 		outDto.setAppMsg("操作完成，成功删除数据。");

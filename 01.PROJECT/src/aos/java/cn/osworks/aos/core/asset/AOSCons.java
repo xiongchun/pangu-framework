@@ -240,6 +240,11 @@ public interface AOSCons {
 	public static final String MODULE_ROOT_ID = "2a4c060f44d944ea926fe44522ce7b39";
 	
 	/**
+	 * 组织根节点ID
+	 */
+	public static final String ORG_ROOT_ID = "63cf387a243d4d9799367d773b853346";
+	
+	/**
 	 * 对象删除规则
 	 *
 	 */
