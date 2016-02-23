@@ -418,36 +418,8 @@ comment on column AOS_SYS_ORG.creater_id_
   is '创建人ID';
 comment on column AOS_SYS_ORG.sort_no_
   is '排序号';
-create unique index BIN$y9DngOHsQa+bJS8Un4K9ZA==$0 on AOS_SYS_ORG (ID_);
 alter table AOS_SYS_ORG
-  add constraint BIN$3H11ai0tRjSJ2+XPbTFZFQ==$0 primary key (ID_);
-alter table AOS_SYS_ORG
-  add constraint BIN$46NVqVamQPWPRTEHrODl/g==$0
-  check ("STATUS_" IS NOT NULL);
-alter table AOS_SYS_ORG
-  add constraint BIN$J167KgoBRUeoMb0SCyDXug==$0
-  check ("CREATE_TIME_" IS NOT NULL);
-alter table AOS_SYS_ORG
-  add constraint BIN$KxdSEEajRx2fmBIjGvGv5g==$0
-  check ("IS_AUTO_EXPAND_" IS NOT NULL);
-alter table AOS_SYS_ORG
-  add constraint BIN$Mb6ykhBIRFK3xW6gPd3r1g==$0
-  check ("PARENT_ID_" IS NOT NULL);
-alter table AOS_SYS_ORG
-  add constraint BIN$MyALk+vHQ92KAdcH8v9dJg==$0
-  check ("CASCADE_ID_" IS NOT NULL);
-alter table AOS_SYS_ORG
-  add constraint BIN$axE8IylDSOSBwymffTYO+g==$0
-  check ("IS_LEAF_" IS NOT NULL);
-alter table AOS_SYS_ORG
-  add constraint BIN$d8E0puy/Qw2ymGfjDSMAfw==$0
-  check ("NAME_" IS NOT NULL);
-alter table AOS_SYS_ORG
-  add constraint BIN$qVmrUdCLRwS6HmTMRazHEw==$0
-  check ("ID_" IS NOT NULL);
-alter table AOS_SYS_ORG
-  add constraint BIN$uG4Au9T5Qgip5nSgBUnu0w==$0
-  check ("TYPE_" IS NOT NULL);
+  add constraint AOS_SYS_ORG_PKEY primary key (ID_);
 
 prompt
 prompt Creating table AOS_SYS_PAGE
