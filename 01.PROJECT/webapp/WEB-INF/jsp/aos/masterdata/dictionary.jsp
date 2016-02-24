@@ -81,7 +81,7 @@
 	<aos:window id="_w_index" title="新增字典">
 		<aos:formpanel id="_f_index" width="400" layout="anchor" labelWidth="75">
 			<aos:treepicker fieldLabel="所属分类" id="_tp_catalog_id_" name="catalog_id_" allowBlank="false" emptyText="请选择..."
-				rootId="38" url="${cxt}/system/listCatalogs.jhtml" nodeParam="parent_id_" />
+				rootId="21d03054afdf43d69972cf6f7db6cfa3" url="${cxt}/system/listCatalogs.jhtml" nodeParam="parent_id_" />
 			<aos:textfield name="key_" fieldLabel="字典标识" allowBlank="false" maxLength="50" />
 			<aos:textfield name="name_" fieldLabel="字典名称" maxLength="100" allowBlank="false" />
 			<aos:textareafield name="remark_" fieldLabel="备注" maxLength="200" height="80" />
@@ -96,7 +96,7 @@
 		<aos:formpanel id="_f_index_u" width="400" layout="anchor" labelWidth="75">
 			<aos:hiddenfield name="id_" />
 			<aos:treepicker fieldLabel="所属分类" id="_tp_u_catalog_id_" name="catalog_id_" allowBlank="false" emptyText="请选择..."
-				rootId="38" url="${cxt}/system/listCatalogs.jhtml" nodeParam="parent_id_" />
+				rootId="21d03054afdf43d69972cf6f7db6cfa3" url="${cxt}/system/listCatalogs.jhtml" nodeParam="parent_id_" />
 			<aos:textfield name="key_" fieldLabel="字典标识" allowBlank="false" maxLength="50" />
 			<aos:textfield name="name_" fieldLabel="字典名称" maxLength="100" allowBlank="false" />
 			<aos:textareafield name="remark_" fieldLabel="备注" maxLength="200" height="80" />

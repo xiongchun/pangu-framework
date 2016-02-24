@@ -54,7 +54,7 @@
 	<aos:window id="_w_param" title="新增参数">
 		<aos:formpanel id="_f_param" width="420" layout="anchor" labelWidth="70">
 			<aos:treepicker fieldLabel="所属分类" name="catalog_id_" allowBlank="false" id="_tp_catalog_id_" emptyText="请选择..."
-				rootId="10" url="${cxt}/system/listCatalogs.jhtml" nodeParam="parent_id_" />
+				rootId="cd14928a239b448b867c2e45246cd038" url="${cxt}/system/listCatalogs.jhtml" nodeParam="parent_id_" />
 			<aos:textfield name="name_" fieldLabel="参数名称" allowBlank="false" maxLength="50" />
 			<aos:textfield name="key_" fieldLabel="参数键" allowBlank="false" maxLength="50" />
 			<aos:textareafield name="value_" fieldLabel="参数值" maxLength="200" allowBlank="false" height="40" />
@@ -79,7 +79,7 @@
 		<aos:formpanel id="_f_param_u" width="420" layout="anchor" labelWidth="70">
 			<aos:hiddenfield name="id_" />
 			<aos:treepicker fieldLabel="所属分类" id="_tp_catalog_id_u" name="catalog_id_" allowBlank="false" emptyText="请选择..."
-				rootId="10" url="${cxt}/system/listCatalogs.jhtml" nodeParam="parent_id_" />
+				rootId="cd14928a239b448b867c2e45246cd038" url="${cxt}/system/listCatalogs.jhtml" nodeParam="parent_id_" />
 			<aos:textfield name="name_" fieldLabel="参数名称" allowBlank="false" maxLength="50" />
 			<aos:textfield name="key_" fieldLabel="参数键" allowBlank="false" maxLength="50" />
 			<aos:textareafield name="value_" fieldLabel="参数值" maxLength="200" allowBlank="false" height="40" />
