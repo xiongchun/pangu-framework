@@ -212,7 +212,7 @@ public class DBMetaInfoUtils {
 	public static List<ColumnVO> listColumnVOs(DatabaseMetaData databaseMetaData, String equalTableName) {
 		List<ColumnVO> columnVOs = Lists.newArrayList();
 		try {
-			ResultSet rs = databaseMetaData.getColumns(null, null, equalTableName, null);
+			ResultSet rs = databaseMetaData.getColumns(null, StringUtils.upperCase(databaseMetaData.getUserName()), equalTableName, null);
 			while (rs.next()) {
 				ColumnVO columnVO = new ColumnVO();
 				columnVO.setName(rs.getString("COLUMN_NAME"));
