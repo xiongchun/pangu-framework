@@ -209,10 +209,13 @@ public class AOSUtils {
 	 * @throws 身份证号参数不是15位
 	 */
 	public static String fixPersonIDCodeWithoutCheck(String personIDCode) {
-		if (personIDCode == null || personIDCode.trim().length() != 15)
+		String id17 = null;
+    	if(personIDCode != null && personIDCode.length() == 17)
+			id17 = personIDCode;
+		else if (personIDCode != null || personIDCode.trim().length() == 15)
+			id17 = personIDCode.substring(0, 6) + "19" + personIDCode.substring(6, 15); // 15位身份证补'19'
+		else
 			throw new AOSException("输入的身份证号不足15位，请检查");
-
-		String id17 = personIDCode.substring(0, 6) + "19" + personIDCode.substring(6, 15); // 15位身份证补'19'
 
 		char[] code = { '1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2' }; // 11个校验码字符
 		int[] factor = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1 }; // 18个加权因子
@@ -243,8 +246,11 @@ public class AOSUtils {
 			return false;
 		if (identity.length() == 18 || identity.length() == 15) {
 			String id15 = null;
-			if (identity.length() == 18)
+    		String id17 = null;
+			if (identity.length() == 18){
+				id17 = identity.substring(0, 17);
 				id15 = identity.substring(0, 6) + identity.substring(8, 17);
+			}
 			else
 				id15 = identity;
 			try {
@@ -253,7 +259,7 @@ public class AOSUtils {
 				String birthday = "19" + id15.substring(6, 12);
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 				sdf.parse(birthday); // 校验出生日期
-				if (identity.length() == 18 && !fixPersonIDCodeWithoutCheck(id15).equals(identity))
+				if (identity.length() == 18 && !fixPersonIDCodeWithoutCheck(id17).equals(identity))
 					return false; // 校验18位身份证
 			} catch (Exception e) {
 				return false;
