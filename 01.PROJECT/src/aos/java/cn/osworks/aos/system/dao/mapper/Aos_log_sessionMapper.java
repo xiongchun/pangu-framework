@@ -16,7 +16,7 @@ import cn.osworks.aos.system.dao.po.Aos_log_sessionPO;
  * </p>
  * 
  * @author AHei
- * @date 2016-01-05 21:13:58
+ * @date 2016-02-24 23:52:40
  */
 @Mapper
 public interface Aos_log_sessionMapper {

@@ -10,7 +10,7 @@ import java.util.Date;
  * </p>
  * 
  * @author AHei
- * @date 2016-01-05 21:13:58
+ * @date 2016-02-24 23:52:40
  */
 public class Aos_log_sessionPO extends PO {
 

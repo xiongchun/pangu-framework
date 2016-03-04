@@ -606,8 +606,8 @@ AOS.valid = function (form) {
 
 /**
  * 表单元素赋值方法
- * 用法：(1)、根据表单ID.元素名称的规则设值AOS.val('_id__form.name_', 'aos');
- *           (2)、根据元素ID设值AOS.val('_id', 'aos');
+ * 用法：(1)、根据表单ID.元素名称的规则设值AOS.setValue('_id__form.name_', 'aos');
+ *           (2)、根据元素ID设值AOS.setValue('_id', 'aos');
  */
 AOS.setValue = function(target, value){
 	if(AOS.empty(target)) return;
@@ -630,8 +630,8 @@ AOS.setValue = function(target, value){
 
 /**
  * 表单元素取值方法
- * 用法：(1)、根据表单ID.元素名称的规则取AOS.val('_form.name_');
- *           (2)、根据元素ID取值。AOS.val('_id');
+ * 用法：(1)、根据表单ID.元素名称的规则取AOS.getValue('_form.name_');
+ *           (2)、根据元素ID取值。AOS.getValue('_id');
  *           (3)、根据表单ID取出，返回JSON格式。
  */
 AOS.getValue = function(target){

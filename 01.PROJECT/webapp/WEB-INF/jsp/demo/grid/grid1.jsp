@@ -43,6 +43,19 @@
 			_g_account_store.getProxy().extraParams = params;
 			_g_account_store.load();
 		}
+		
+		//加载表格数据2  可以动态变更表格加载数据的url（很少用到）
+		function _g_account_query2() {
+			var params = {
+				name_ : _name_.getValue()
+			};
+			//这个可以动态指定加载数据的url
+			_g_account_store.getProxy().url = 'listAccounts.jhtml';
+			//这个Store的命名规则为：表格ID+"_store"。
+			_g_account_store.getProxy().extraParams = params;
+			_g_account_store.load();
+		}
+		
 	</script>
 </aos:onready>
 </aos:html>
