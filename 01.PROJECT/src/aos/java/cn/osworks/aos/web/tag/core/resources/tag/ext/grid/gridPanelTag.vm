@@ -196,7 +196,7 @@ var ${id}_cfg = {
   store: ${id}_store,
   columns:${id}_grid_columns,
   viewConfig: {
-      enableTextSelection:true,
+          enableTextSelection:true,
       #if($stripeRows)
           stripeRows: $stripeRows
 	  #end
