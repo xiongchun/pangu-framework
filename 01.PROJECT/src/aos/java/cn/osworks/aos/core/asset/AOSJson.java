@@ -45,7 +45,7 @@ public class AOSJson {
 	 */
 	public static final String toJson(Object pObject, String pDateFormat) {
 		String jsonString = "";
-		if (AOSUtils.isNotEmpty(pDateFormat)) {
+		if (AOSUtils.isEmpty(pDateFormat)) {
 			pDateFormat = AOSCons.DATATIME;
 		}
 		GsonBuilder builder = new GsonBuilder();
