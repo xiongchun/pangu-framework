@@ -57,7 +57,6 @@
 			<aos:column header="叶子节点" dataIndex="is_leaf_" rendererField="bool_" width="80" hidden="true" />
 			<aos:column header="自动展开" dataIndex="is_auto_expand_" rendererField="bool_" width="80" hidden="true" />
 			<aos:column header="自定义扩展码" dataIndex="custom_code_" />
-			<aos:column header="创建人" dataIndex="aa00a4" />
 		</aos:gridpanel>
 	</aos:viewport>
 	<aos:window id="_w_org_find" title="上级组织[双击选择]" height="-10" layout="fit" autoScroll="true" onshow="_w_org_find_onshow">
