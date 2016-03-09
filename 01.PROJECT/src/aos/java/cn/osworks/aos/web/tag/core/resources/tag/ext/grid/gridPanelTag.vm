@@ -33,12 +33,20 @@ var ${id}_store = Ext.create('Ext.data.Store', {
 	 #end
 	 #if($pageType == "client")
 		 proxy : {
+    				##将load的提交方式强制改为POST，缺省为GET。GET会导致在部分Web容器里中文参数乱码的情况。
+    				actionMethods: {  
+                        read: 'POST'  
+                    },
 					type : 'pagingmemory'
 				}
 	 #else
     	 proxy : {
     			type : 'ajax',
     			url:'$url',
+				##将load的提交方式强制改为POST，缺省为GET。GET会导致在部分Web容器里中文参数乱码的情况。
+				actionMethods: {  
+                    read: 'POST'  
+                },
     			reader : {
     				type : 'json',
     				totalProperty: '$totalProperty', 

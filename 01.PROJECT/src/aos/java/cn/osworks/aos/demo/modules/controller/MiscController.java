@@ -16,6 +16,8 @@ import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
 import cn.osworks.aos.demo.dao.mapper.Demo_accountMapper;
 import cn.osworks.aos.demo.dao.po.Demo_accountPO;
+import cn.osworks.aos.demo.modules.service.MiscService;
+import cn.osworks.aos.system.dao.po.Aos_sys_orgPO;
 
 /**
  * 综合实例相关功能控制器
@@ -23,22 +25,34 @@ import cn.osworks.aos.demo.dao.po.Demo_accountPO;
  * @author OSWorks-XC
  */
 @Controller
-@RequestMapping(value = "demo/layout")
+@RequestMapping(value = "demo/misc")
 public class MiscController {
 
 	@Autowired
     private SqlDao demoDao;
 	@Autowired
 	private Demo_accountMapper demo_accountMapper;
+	@Autowired
+	private MiscService miscService;
 
 	/**
-	 * 综合布局①页面初始化
+	 * 综合实例①页面初始化
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "initLayout1")
-	public String initLayout1() {
+	@RequestMapping(value = "initMisc1")
+	public String initMisc1() {
 		return "demo/misc/misc1.jsp";
+	}
+	
+	/**
+	 * 综合实例②页面初始化
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "initMisc2")
+	public String initMisc2() {
+		return "demo/misc/misc2.jsp";
 	}
 	
 	/**
@@ -56,6 +70,38 @@ public class MiscController {
 		// 神奇的inDto又显神功了，它里面还包含了分页查询记录总条数喔。
 		String outString = AOSJson.toGridJson(list, inDto.getPageTotal());
 		// 就这样返回转换为Json后返回界面就可以了。
+		WebCxt.write(response, outString);
+	}
+	
+	/**
+	 * 查询组织信息列表
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "listOrgs")
+	public void listOrgs(HttpServletRequest request, HttpServletResponse response) {
+		// inDto包装了全部的请求参数哦
+		Dto inDto = Dtos.newDto(request);
+		List<Aos_sys_orgPO> list = miscService.listOrgs(inDto);
+		// 神奇的inDto又显神功了，它里面还包含了分页查询记录总条数喔。
+		String outString = AOSJson.toGridJson(list, inDto.getPageTotal());
+		// 就这样返回转换为Json后返回界面就可以了。
+		WebCxt.write(response, outString);
+	}
+	
+	/**
+	 * 查询组织信息
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "getOrgInfo")
+	public void getOrgInfo(HttpServletRequest request, HttpServletResponse response) {
+		// inDto包装了全部的请求参数哦
+		Dto inDto = Dtos.newDto(request);
+		Aos_sys_orgPO aos_sys_orgPO = miscService.getOrgInfo(inDto);
+		String outString = AOSJson.toJson(aos_sys_orgPO);
 		WebCxt.write(response, outString);
 	}
 	

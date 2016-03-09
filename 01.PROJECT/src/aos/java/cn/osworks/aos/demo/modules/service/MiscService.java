@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.dao.SqlDao;
 import cn.osworks.aos.core.typewrap.Dto;
+import cn.osworks.aos.system.dao.mapper.Aos_sys_orgMapper;
+import cn.osworks.aos.system.dao.po.Aos_sys_orgPO;
 
 /**
  * 范例模块杂项服务
@@ -20,6 +22,30 @@ public class MiscService {
 
 	@Autowired
 	private SqlDao sysDao;
+	@Autowired Aos_sys_orgMapper aos_sys_orgMapper;
+	
+	/**
+	 * 查询组织信息列表
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public List<Aos_sys_orgPO> listOrgs(Dto inDto){
+		//也可以调用自己写的SQL，也可以返回List<Dto>
+		List<Aos_sys_orgPO> aos_sys_orgPOs = aos_sys_orgMapper.likePage(inDto);
+		return aos_sys_orgPOs;
+	}
+	
+	/**
+	 * 查询组织信息列表
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public Aos_sys_orgPO getOrgInfo(Dto inDto){
+		Aos_sys_orgPO aos_sys_orgPO = aos_sys_orgMapper.selectByKey(inDto.getString("id_"));
+		return aos_sys_orgPO;
+	}
 
 	/**
 	 * 存储过程调用1
