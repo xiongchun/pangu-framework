@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 实现同步锁的一个小例子   
+ * 实现单进程同步锁的一个小例子   
  * 
  * @author OSWorks-XC
  * @date 2013-08-18

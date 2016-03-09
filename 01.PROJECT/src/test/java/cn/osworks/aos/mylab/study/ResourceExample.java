@@ -3,6 +3,7 @@ package cn.osworks.aos.mylab.study;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import cn.osworks.aos.core.exception.ExceptionInfoUtil;
@@ -18,7 +19,7 @@ import cn.osworks.aos.core.exception.ExceptionInfoUtil;
 @SuppressWarnings("all")
 public class ResourceExample {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, URISyntaxException {
 		showUri();
 		//getResourceAsStream();
 	}
@@ -27,12 +28,16 @@ public class ResourceExample {
 	 * 获取相关路径的方法
 	 * 
 	 * @throws IOException
+	 * @throws URISyntaxException 
 	 */
-	private static void showUri() throws IOException {
+	private static void showUri() throws IOException, URISyntaxException {
 		File f = new File(ResourceExample.class.getResource("/").getPath());
 		System.out.println(f);
 		File f2 = new File(ResourceExample.class.getResource("").getPath());
 		System.out.println(f2);
+		//支持中文路径、空格。
+		String anypath = ResourceExample.class.getResource("/").toURI().getPath();
+		System.out.println(anypath);
 		File directory = new File("");
 		String sourseFile = directory.getCanonicalPath();
 		System.out.println("a:" + sourseFile);

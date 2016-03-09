@@ -21,22 +21,6 @@ AOS.select = function (pObj) {
 }
 
 /**
- * 提取树或表格选中行的某一字段值以逗号分割传给后台
- */
-AOS.selection = function (pObj, pField) {
-    if (Ext.isEmpty(pField) || Ext.isEmpty(pObj)) {
-        AOS.err('AOS.selection()参数不合法，请检查。');
-        console.error('AOS.selection()参数不合法，请检查。');
-    }
-    var records = AOS.select(pObj);
-    var outString = '';
-    Ext.Array.each(records, function (record) {
-        outString += record.get(pField) + ",";
-    });
-    return outString;
-}
-
-/**
  * 返回树或表格当前选中行的Record对象。
  *  @param pObj
  *          集合ID。如果是树模型，则强制返回选中行的第一行。
@@ -68,9 +52,25 @@ AOS.selectone = function (pObj, force) {
 }
 
 /**
+ * 提取树或表格选中行的某一字段值以逗号分割传给后台
+ */
+AOS.selection = function (pObj, pField) {
+    if (Ext.isEmpty(pField) || Ext.isEmpty(pObj)) {
+        AOS.err('AOS.selection()参数不合法，请检查。');
+        console.error('AOS.selection()参数不合法，请检查。');
+    }
+    var records = AOS.select(pObj);
+    var outString = '';
+    Ext.Array.each(records, function (record) {
+        outString += record.get(pField) + ",";
+    });
+    return outString;
+}
+
+/**
  * 返回树或表格当前所有选中行的所有字段转换为json格式返回
  */
-AOS.selection2 = function (pObj) {
+AOS.select2json = function (pObj) {
     var records = AOS.select(pObj);
     var jsonArray = [];
     Ext.each(records, function (record) {

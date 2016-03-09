@@ -147,7 +147,7 @@
 
 		//获取数据表选择行的所有字段集合[JSON]
 		function fnaos_rows_s2() {
-			var selection = AOS.selection2(_g_north);
+			var selection = AOS.select2json(_g_north);
 			if (AOS.empty(selection)) {
 				AOS.tip('请先选择表格行。');
 				return;
