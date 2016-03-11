@@ -10,18 +10,11 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"
 	default-lazy-init="true">
 
-	<description>系统全局上下文环境</description>
-
-	<!-- 导入Service组件 -->
-	<import resource="core/aos.service.xml" />
-	<!-- 导入DAO组件 -->
-	<import resource="core/aos.dao.xml" />
-	<!-- 导入缓存服务 -->
-	<import resource="core/aos.cache.xml" />
-	<!-- 导入工作流服务 -->
-	<import resource="core/aos.workflow.xml" />
-	<!-- 数据同步 
-	<import resource="core/aos.datacopy.xml" /> 
-	-->
-
+	<description>缓存组件</description>
+     
+     <!-- 缓存管理器 -->
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:misc/ehcache.xml" />
+	</bean>
+	
 </beans>

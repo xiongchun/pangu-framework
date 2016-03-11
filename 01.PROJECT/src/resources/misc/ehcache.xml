@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- EHCache缓存配置文件 -->
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd"
+	updateCheck="true" monitoring="autodetect" dynamicConfig="true" >
+
+	<diskStore path="java.io.tmpdir" />
+
+	<!-- 缺省配置 -->
+	<defaultCache maxEntriesLocalHeap="10000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="600"
+		overflowToDisk="true" maxEntriesLocalDisk="100000"  />
+
+	<!-- AOS系统级缓存 -->
+	<cache name="aosCfgCache" eternal="true" maxEntriesLocalHeap="100000" memoryStoreEvictionPolicy="LFU" timeToIdleSeconds="0" timeToLiveSeconds="0"
+		overflowToDisk="false" />
+		
+	<!-- XXXX缓存 -->
+
+</ehcache>

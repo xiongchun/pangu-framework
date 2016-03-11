@@ -39,6 +39,7 @@ public class GridController {
 	 */
 	@RequestMapping(value = "initGrid1")
 	public String initGrid1() {
+		
 		return "demo/grid/grid1.jsp";
 	}
 

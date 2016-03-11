@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- AOS Web应用打包脚本：生产环境下部署Web应用请执行此脚本输出war包 -->
-<project name="aos.web" default="" basedir="../../../">
+<project name="aos.web" default="4.PACKAGE" basedir="../../../">
 
 	<!-- 初始化 -->
 	<target name="1.INIT">

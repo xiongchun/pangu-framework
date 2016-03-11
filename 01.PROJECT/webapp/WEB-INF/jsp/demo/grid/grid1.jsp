@@ -43,7 +43,7 @@
 			_g_account_store.getProxy().extraParams = params;
 			_g_account_store.load();
 		}
-		
+
 		//加载表格数据2  可以动态变更表格加载数据的url（很少用到）
 		function _g_account_query2() {
 			var params = {
@@ -55,7 +55,12 @@
 			_g_account_store.getProxy().extraParams = params;
 			_g_account_store.load();
 		}
-		
+        
+		//获取表格当前行数的API
+		function getCount() {
+			var count = _g_account_store.getCount();
+			console.log(count);
+		}
 	</script>
 </aos:onready>
 </aos:html>
