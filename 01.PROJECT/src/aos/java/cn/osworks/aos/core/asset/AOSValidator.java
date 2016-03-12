@@ -43,7 +43,4 @@ public class AOSValidator {
 		}
 	}
 
-	public static void main(String[] args) {
-	}
-
 }
