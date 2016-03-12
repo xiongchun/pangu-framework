@@ -19,6 +19,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.Assert;
 
+import cn.osworks.aos.core.exception.AOSException;
+
 import com.google.common.collect.Lists;
 
 /**
@@ -136,7 +138,7 @@ public class AOSReflector {
 	public static Object getFieldValue(final Object obj, final String fieldName) {
 		Field field = getAccessibleField(obj, fieldName);
 		if (field == null) {
-			throw new IllegalArgumentException("Could not find field [" + fieldName + "] on target [" + obj + "]");
+			throw new AOSException(AOSUtils.merge("在目标对象[{0}]中没找到指定属性字段[{1}]，请检查。", obj, fieldName));
 		}
 		Object result = null;
 		try {
