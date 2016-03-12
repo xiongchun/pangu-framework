@@ -11,8 +11,8 @@
 	<exception id="8" info="你指定的报表文件{0}不存在。" suggest="请检查相应参数。" />
 	<exception id="9" info="没有在当前会话中根据你指定KEY[{0}]找到对应的报表对象。" suggest="1)、没有将AOSPrint对象存入会话。2)、如果使用的是自定义会话Key的话，请确保url中的参数值和你存储AOISPrint对象的会话Key保持一致。" />
 	<exception id="10" info="创建连接失败。" suggest="请检查数据库连接参数配置。" />
-	<exception id="sys-100 11" info="表单行标签里的元素columnWidth属性之和不能大于1。" suggest="请检查页面rowset或rowset2标签表单元素的columnWidth属性。" />
-	<exception id="sys-201 13" info="当前JDBC执行模式为只读模式，不支持其它操作。" suggest="请修改参数配置文件aos.param.xml调整JDBC执行权限。" />
+	<exception id="11" info="表单行标签里的元素columnWidth属性之和不能大于1。" suggest="请检查页面rowset或rowset2标签表单元素的columnWidth属性。" />
+	<exception id="13" info="当前JDBC执行模式为只读模式，不支持其它操作。" suggest="请修改参数配置文件aos.param.xml调整JDBC执行权限。" />
 	
 
 </exceptionInfos>
