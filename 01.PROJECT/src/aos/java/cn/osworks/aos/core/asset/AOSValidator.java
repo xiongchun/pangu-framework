@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 
 import cn.osworks.aos.core.exception.AOSException;
-import cn.osworks.aos.system.dao.po.Aos_sys_orgPO;
 
 /**
  * <b>验证器</b>
@@ -45,10 +44,6 @@ public class AOSValidator {
 	}
 
 	public static void main(String[] args) {
-		Aos_sys_orgPO po = new Aos_sys_orgPO();
-		po.setName_("测试");
-		//po.setSort_no_(1);
-		AOSValidator.notEmpty(po, "name_,sort_no_");
 	}
 
 }
