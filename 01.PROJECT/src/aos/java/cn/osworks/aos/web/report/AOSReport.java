@@ -35,7 +35,7 @@ public class AOSReport {
 		String jasperFile = reportModel.getJasperFile();
 		if (AOSUtils.isNotEmpty(jasperFile)) {
 			if (!new File(jasperFile).exists()){
-				throw new AOSException("sys-008", jasperFile);
+				throw new AOSException(8, jasperFile);
 			}
 			try {
 				//JasperReport jasperReport = (JasperReport)JRLoader.loadObjectFromFile(jasperFile);

@@ -94,7 +94,7 @@ public class StatementHandlerPlugin implements Interceptor {
 		if (update) {
 			//实现一个辅助的小功能：如果配置jdbc_execute为只读模式的话，则不允许执行update操作
 			if (StringUtils.equals(AOSCons.JDBC_EXECUTE_ONLYREAD, AOSXmlOptionsHandler.getValue("jdbc_execute"))) {
-				throw new AOSException("sys-201");
+				throw new AOSException(13);
 			}
 		}		
 		//从现在开始只剩下Select语句了

@@ -77,7 +77,7 @@ public class AOSServer {
         	server.start();
 		} catch (BindException e) {
 			isSuccess = false;
-			new AOSException("sys-007", port);
+			new AOSException(7, port);
 		} catch (Exception e) {
 			isSuccess = false;
 			new AOSException();

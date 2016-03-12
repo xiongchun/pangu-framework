@@ -3,7 +3,7 @@ package cn.osworks.aos.core.exception;
 import cn.osworks.aos.core.asset.AOSUtils;
 
 /**
- * <b>平台级系统异常类</b>
+ * <b>系统异常类</b>
  * 
  * @author OSWorks-XC
  */
@@ -21,9 +21,9 @@ public class AOSException extends RuntimeException {
 	 * @param errID
 	 * @param args
 	 */
-	public AOSException(String errID, Object... args) {
+	public AOSException(int errID, Object... args) {
 		super("异常编号：" + errID);
-		ExceptionVO vo = ExceptionInfoUtil.getExceptionInfo(errID);
+		ExceptionVO vo = ExceptionInfoUtil.getExceptionInfo(String.valueOf(errID));
 		if (AOSUtils.isNotEmpty(vo)) {
 			String errMsg = "异常编号：" + errID;
 			errMsg = errMsg + "\n异常摘要：" + AOSUtils.merge(vo.getInfo(), args);
@@ -40,9 +40,9 @@ public class AOSException extends RuntimeException {
 	 * 
 	 * @param errID
 	 */
-	public AOSException(String errID) {
+	public AOSException(int errID) {
 		super("异常编号：" + errID);
-		ExceptionVO vo = ExceptionInfoUtil.getExceptionInfo(errID);
+		ExceptionVO vo = ExceptionInfoUtil.getExceptionInfo(String.valueOf(errID));
 		if (AOSUtils.isNotEmpty(vo)) {
 			String errMsg = "异常编号：" + errID;
 			errMsg = errMsg + "\n异常摘要：" + AOSUtils.merge(vo.getInfo(), "");
@@ -52,6 +52,16 @@ public class AOSException extends RuntimeException {
 		} else {
 			System.out.println("没有查询到异常编号为[" + errID + "]的异常配置信息。");
 		}
+	}
+	
+	/**
+	 * 直接打印简单信息
+	 * 
+	 * @param pMsg
+	 * @param pNestedException
+	 */
+	public AOSException(String pMsg) {
+		super(pMsg);
 	}
 
 	/**

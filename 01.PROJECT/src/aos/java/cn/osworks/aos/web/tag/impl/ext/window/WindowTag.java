@@ -69,7 +69,7 @@ public class WindowTag extends PanelTagSupport {
 		if (AOSUtils.isNotEmpty(getOpacity())) {
 			BigDecimal opacityBigDecimal = new BigDecimal(opacity);
 			if (opacityBigDecimal.doubleValue() > 1) {
-				throw new AOSException("sys-006", "opacity");
+				throw new AOSException(6, "opacity");
 			}
 			BigDecimal alpha = opacityBigDecimal.multiply(new BigDecimal(100));
 			String opacityString = "opacity: '{0}', filter: 'alpha(opacity={1})'";

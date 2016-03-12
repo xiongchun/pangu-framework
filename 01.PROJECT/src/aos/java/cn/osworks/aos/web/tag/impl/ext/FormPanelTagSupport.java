@@ -79,7 +79,7 @@ public class FormPanelTagSupport extends PanelTagSupport {
 		}
 		totalColWidth = totalColWidth.add(columnWidth);
 		if (totalColWidth.floatValue() > 1) {
-			throw new AOSException("sys-100");
+			throw new AOSException(11);
 		}
 	}
 

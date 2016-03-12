@@ -91,11 +91,11 @@ public class AOSId {
 		String prefix = StringUtils.substringBeforeLast(curMaxNode, ".");
 		String last = StringUtils.substringAfterLast(curMaxNode, ".");
 		if (AOSUtils.isEmpty(last)) {
-			throw new AOSException("sys-004");
+			throw new AOSException(4);
 		}
 		int intLast = Integer.valueOf(last);
 		if (intLast == maxValue || intLast > maxValue) {
-			throw new AOSException("sys-003");
+			throw new AOSException(3);
 		}
 		String thisNode = String.valueOf(intLast + 1);
 		thisNode = StringUtils.leftPad(thisNode, String.valueOf(maxValue).length(), "0");

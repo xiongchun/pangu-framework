@@ -69,7 +69,7 @@ public class AOSReportController {
 		}
 		AOSPrint aosPrint = (AOSPrint) session.getAttribute(Key);
 		if (aosPrint == null) {
-			throw new AOSException("sys-009", Key);
+			throw new AOSException(9, Key);
 		}
 		return aosPrint;
 	}

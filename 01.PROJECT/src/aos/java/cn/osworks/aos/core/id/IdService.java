@@ -37,7 +37,7 @@ public class IdService {
 		dto.put("name_", idname);
 		Aos_sys_sequencePO aos_sys_sequencePO = aos_sys_sequenceMapper.selectOne(dto);
 		if (AOSUtils.isEmpty(aos_sys_sequencePO)) {
-			throw new AOSException("sys-001");
+			throw new AOSException(1);
 		}
 		// 类型
 		String type_ = aos_sys_sequencePO.getType_();
@@ -55,7 +55,7 @@ public class IdService {
 					idLong = new Long(aos_sys_sequencePO.getMin_value_());
 				} else {
 					// 溢出
-					throw new AOSException("sys-002", aos_sys_sequencePO.getName_());
+					throw new AOSException(2, aos_sys_sequencePO.getName_());
 				}
 			}
 			id = String.valueOf(idLong);
