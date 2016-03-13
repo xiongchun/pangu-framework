@@ -103,7 +103,7 @@
 			</aos:tab>
 
 			<aos:tab title="组织机构信息②" id="_tab_org2" layout="border">
-				<aos:panel region="north" layout="fit">
+				<aos:panel region="north" >
 					<aos:formpanel id="_f_query2" layout="column" labelWidth="70" header="false" border="false">
 						<aos:textfield name="name_" fieldLabel="组织名称" columnWidth="0.25" />
 						<aos:combobox name="type_" fieldLabel="组织类型" dicField="org_type_" columnWidth="0.25" />
