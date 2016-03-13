@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.jsp.JspException;
 
+import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.web.tag.asset.Xtypes;
 import cn.osworks.aos.web.tag.core.model.TagDto;
@@ -32,6 +33,9 @@ public class PanelTag extends PanelTagSupport {
 		setXtype(Xtypes.PANEL);
 		resetListenerContainer();
 		resetObjInContainerTag();
+		if (AOSUtils.isEmpty(getLayout())) {
+			setLayout("fit");
+		}
 	}
 
 	/**
