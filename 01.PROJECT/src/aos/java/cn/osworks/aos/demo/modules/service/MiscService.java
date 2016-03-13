@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.osworks.aos.core.asset.AOSCxt;
 import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.dao.SqlDao;
 import cn.osworks.aos.core.typewrap.Dto;
@@ -45,6 +46,17 @@ public class MiscService {
 	public Aos_sys_orgPO getOrgInfo(Dto inDto){
 		Aos_sys_orgPO aos_sys_orgPO = aos_sys_orgMapper.selectByKey(inDto.getString("id_"));
 		return aos_sys_orgPO;
+	}
+	
+	/**
+	 * 查询参数信息列表
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public List<Dto> listParams(Dto inDto){
+		List<Dto> outList = sysDao.list("MasterData.listParamInfos4Page", inDto);
+		return outList;
 	}
 
 	/**

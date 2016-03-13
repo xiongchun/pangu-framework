@@ -56,6 +56,16 @@ public class MiscController {
 	}
 	
 	/**
+	 * 综合实例③页面初始化
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "initMisc3")
+	public String initMisc3() {
+		return "demo/misc/misc3.jsp";
+	}
+	
+	/**
 	 * 查询信用卡账户列表
 	 * 
 	 * @param request
@@ -102,6 +112,21 @@ public class MiscController {
 		Dto inDto = Dtos.newDto(request);
 		Aos_sys_orgPO aos_sys_orgPO = miscService.getOrgInfo(inDto);
 		String outString = AOSJson.toJson(aos_sys_orgPO);
+		WebCxt.write(response, outString);
+	}
+	
+	/**
+	 * 查询参数列表
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "listParams")
+	public void listParams(HttpServletRequest request, HttpServletResponse response) {
+		Dto inDto = Dtos.newDto(request);
+		inDto.setOrder("id_ DESC");
+		List<Dto> list = miscService.listParams(inDto);
+		String outString = AOSJson.toGridJson(list, inDto.getPageTotal());
 		WebCxt.write(response, outString);
 	}
 	

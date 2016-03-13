@@ -40,7 +40,7 @@ public class DBMetaInfoUtils {
 	public static DatabaseMetaData getDatabaseMetaData() throws SQLException{
 		Connection connection = newConnection();
 		if (connection == null) {
-			throw new AOSException("sys-010");
+			throw new AOSException(10);
 		}
 		return newConnection().getMetaData();
 	}
