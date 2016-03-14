@@ -9,7 +9,7 @@
 </aos:body>
 <aos:onready>
 	<aos:viewport layout="border">
-		<aos:panel region="west" width="160" border="false">
+		<aos:panel region="west" width="160" border="false" layout="auto" >
 			<aos:docked forceBoder="${bodyBorder}">
 				<aos:dockeditem xtype="button" icon="icon140.png"/>
 				<aos:dockeditem xtype="tbtext" text="图标分类导航"/>				

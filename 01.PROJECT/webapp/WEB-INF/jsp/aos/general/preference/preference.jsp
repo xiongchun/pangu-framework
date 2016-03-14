@@ -9,12 +9,12 @@
 </aos:body>
 <aos:onready>
 	<aos:viewport layout="border">
-		<aos:panel region="west" width="180" border="false" >
+		<aos:panel region="west" width="180" border="false" layout="auto" >
 			<aos:docked forceBoder="${bodyBorder}">
 				<aos:dockeditem xtype="button" icon="icon140.png"/>
 				<aos:dockeditem xtype="tbtext" text="首选项导航"/>				
 			</aos:docked>
-			<aos:menu floating="false" border="false">
+			<aos:menu floating="false" >
 				<c:forEach var="page" items="${mdpm.subPages}">
 					<c:if test="${page.type_ == '2' }">
 						<aos:menuitem id="_id_${page.id_}" text="${page.name_}"
