@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50022
 File Encoding         : 65001
 
-Date: 2016-02-16 17:41:57
+Date: 2016-03-14 22:00:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,6 +34,7 @@ CREATE TABLE `aos_log_session` (
 -- ----------------------------
 -- Records of aos_log_session
 -- ----------------------------
+INSERT INTO `aos_log_session` VALUES ('olm84c8hkwlg1ddmysfksu215', 'fa04db9dd2f54d61b0c8202a25de2dc6', 'root', '超级用户', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36', 'XChun-PC:10080', '2016-03-14 21:20:40');
 
 -- ----------------------------
 -- Table structure for aos_sys_catalog
@@ -1057,7 +1058,7 @@ CREATE TABLE `aos_sys_module` (
 -- Records of aos_sys_module
 -- ----------------------------
 INSERT INTO `aos_sys_module` VALUES ('078df89c7b5b478cb38fd607805c6155', '0.004.002.001.007', '常用表单元素API', 'demo/initFormApi.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, '20');
-INSERT INTO `aos_sys_module` VALUES ('09b24aac059f4ba58bfb30652636b543', '0.004.003.001', '综合实例①', 'demo/layout/initLayout1.jhtml', '', '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', '', '1', '综合实例', '', '10');
+INSERT INTO `aos_sys_module` VALUES ('09b24aac059f4ba58bfb30652636b543', '0.004.003.001', '综合实例①', 'demo/misc/initMisc1.jhtml', '', '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', '', '1', '综合实例', '', '10');
 INSERT INTO `aos_sys_module` VALUES ('0b99e9d118b54ee084d9e74bd72cdd1c', '0.001.002', '资源管理', null, null, '7a6d3674e5204937951d01544e18e3aa', '0', '1', 'folder14.png', '1', '系统管理', null, '20');
 INSERT INTO `aos_sys_module` VALUES ('1886bf699ec74f79959bdc8ca8e5371a', '0.001.006.004', '会话监控', 'system/sessionLog/init.jhtml', null, '5b9a439743f141729f46a07e8e222a47', '1', '0', 'c_key.png', '1', '监控与审计', null, '10');
 INSERT INTO `aos_sys_module` VALUES ('1906d5a892654e2bb882851e0ea7322f', '0.001.008.001', '图标', 'system/icon/init.jhtml', null, '524e5f5c3e5b4cdb90611cd8b15ca684', '1', '0', 'page_picture.png', '1', '开发工具箱', null, '60');
@@ -1086,6 +1087,7 @@ INSERT INTO `aos_sys_module` VALUES ('704d4e51ffcf473fa95ab9e680177d46', '0.004.
 INSERT INTO `aos_sys_module` VALUES ('715f6cf8d2ce4fa694baf2259327f6b1', '0.001.003.002', '岗位与授权', 'system/post/init.jhtml', null, 'b656d6afbbe844d0a6626d0eb590643f', '1', '0', 'icon137.png', '1', '组织与权限', null, '3');
 INSERT INTO `aos_sys_module` VALUES ('73b69ca49e2240ba8717fc13acb884c2', '0.004.002.001.001', '表单布局①', 'demo/initForm1.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, '1');
 INSERT INTO `aos_sys_module` VALUES ('7a6d3674e5204937951d01544e18e3aa', '0.001', '系统管理', null, null, '2a4c060f44d944ea926fe44522ce7b39', '0', '1', 'folder22.png', '1', 'AOS应用基础平台', 'fa-cogs', '10');
+INSERT INTO `aos_sys_module` VALUES ('7e6951e668be44b39fb9f9fd20b21315', '0.004.003.002', '综合实例②', 'demo/misc/initMisc2.jhtml', '', '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', '', '1', '综合实例', '', '20');
 INSERT INTO `aos_sys_module` VALUES ('81fc0e05049e467d976ec523182421f2', '0.001.002.004', '序列号', 'system/idMgr/init.jhtml', null, '0b99e9d118b54ee084d9e74bd72cdd1c', '1', '0', 'id.png', '1', '资源管理', null, '30');
 INSERT INTO `aos_sys_module` VALUES ('870c482cdb2e4c8aa373dcf447964284', '0.004.002.003.003', '可编辑表格', 'demo/grid/initEditGrid.jhtml', null, 'dbf75990cf784e79920caf7eb47856f6', '1', '0', null, '1', '表格', null, '30');
 INSERT INTO `aos_sys_module` VALUES ('88bc371429ce4243a49c5893ae036f6a', '0.004.002.004', '报表', '', '', '6cab8b013c314b37aec7c4567d859fc8', '0', '0', '', '1', 'AOS UI组件库', '', '40');
@@ -1095,6 +1097,7 @@ INSERT INTO `aos_sys_module` VALUES ('9e4cf77815dd49fbac4158c62af3197a', '0.001.
 INSERT INTO `aos_sys_module` VALUES ('a21b52d911bb44c2978e52bbc523de51', '0.001.004.002', '流程部署', 'workflow/procDeploy/init.jhtml', null, 'cfc4e4bd367047a29e0d72e688f860a2', '1', '0', 'modules_wizard.gif', '1', '业务流程管理', null, '10');
 INSERT INTO `aos_sys_module` VALUES ('a27532c1cc8948e5b9bd7d8ac2e30a42', '0.004.002.006.001', '布局①', '', '', 'f84a495bca10403ebe8351d4737dfc72', '1', '0', '', '1', '容器布局', '', '1');
 INSERT INTO `aos_sys_module` VALUES ('a4d2ef333e35476680786df9a89e200b', '0.004.002.004.001', '报表①', 'demo/report/initReport1.jhtml', null, '88bc371429ce4243a49c5893ae036f6a', '1', '0', null, '1', '报表', null, '1');
+INSERT INTO `aos_sys_module` VALUES ('b4485f8151ae4a7db09ee6cd70c5e24f', '0.004.003.003', '综合实例③', 'demo/misc/initMisc3.jhtml', null, '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', null, '1', '综合实例', null, '30');
 INSERT INTO `aos_sys_module` VALUES ('b656d6afbbe844d0a6626d0eb590643f', '0.001.003', '组织与权限', null, null, '7a6d3674e5204937951d01544e18e3aa', '0', '1', 'folder23.png', '1', '系统管理', null, '30');
 INSERT INTO `aos_sys_module` VALUES ('ba90369eb83540bab4d9492bc17f0937', '0.001.004.005', '流程实例', 'workflow/procInst/init.jhtml', null, 'cfc4e4bd367047a29e0d72e688f860a2', '1', '0', 'icon5.png', '1', '业务流程管理', null, '30');
 INSERT INTO `aos_sys_module` VALUES ('bc3c9877c598404da7e31355a4deebad', '0.001.008.002', 'WebSQL', 'system/webSql/init.jhtml', null, '524e5f5c3e5b4cdb90611cd8b15ca684', '1', '0', 'sql.png', '1', '开发工具箱', null, '10');
@@ -1130,32 +1133,6 @@ CREATE TABLE `aos_sys_module_post` (
 -- ----------------------------
 -- Records of aos_sys_module_post
 -- ----------------------------
-INSERT INTO `aos_sys_module_post` VALUES ('01e6f6f7fe924b8d89a846c2dfc7a05f', '60cb0e6359ea46a19a841adc46cf66cf', '715f6cf8d2ce4fa694baf2259327f6b1', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('0e95a8527f37467fa0246abbc9de4d95', '60cb0e6359ea46a19a841adc46cf66cf', 'ba90369eb83540bab4d9492bc17f0937', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('30cea10ca6bb4628abc80116cf748be5', '60cb0e6359ea46a19a841adc46cf66cf', 'b656d6afbbe844d0a6626d0eb590643f', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('30f6dae98d964d3ca62017bf09d8bb40', '60cb0e6359ea46a19a841adc46cf66cf', 'bc3c9877c598404da7e31355a4deebad', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('324b0d0319084a6a9f9bc2c9c61d384e', '60cb0e6359ea46a19a841adc46cf66cf', '1906d5a892654e2bb882851e0ea7322f', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('51d9d42511274b7c995eaaf1705f9179', '60cb0e6359ea46a19a841adc46cf66cf', '5b9a439743f141729f46a07e8e222a47', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('5d2a3a46566f433f8ea44c6c795d162d', '60cb0e6359ea46a19a841adc46cf66cf', '81fc0e05049e467d976ec523182421f2', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('5d9616a615814d3fb4a07300bce4156a', '60cb0e6359ea46a19a841adc46cf66cf', 'fd88d0de59024e4db81ead8510b6bd98', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('65bf789caf3648d1a8653b142a9e130a', '60cb0e6359ea46a19a841adc46cf66cf', 'f405a849f27d4ddebf7f8a2dfbf30bea', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('69063560c4374ab483bbe9ced3229420', '60cb0e6359ea46a19a841adc46cf66cf', '9a8e5cedcd514af2b37cf5828f509f94', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('6c6f89adb49f4c7eacd83cf17196222f', '60cb0e6359ea46a19a841adc46cf66cf', 'f107450058a2438eb6ad9bf6a4d7e967', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('7e48d55cede7414fb68dd14490e9a46f', '60cb0e6359ea46a19a841adc46cf66cf', 'd452524058ff42cfb9e5146dacd0cd79', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('8c0b0aa02b14460b825b14b40cfe3ffc', '60cb0e6359ea46a19a841adc46cf66cf', '0b99e9d118b54ee084d9e74bd72cdd1c', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('90c0cc96bc7f4ba39b7fa3983b33e405', '60cb0e6359ea46a19a841adc46cf66cf', '1886bf699ec74f79959bdc8ca8e5371a', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('91003499b9f24bc58988395b591d7243', '60cb0e6359ea46a19a841adc46cf66cf', 'a21b52d911bb44c2978e52bbc523de51', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('a193381281004ea38a889c5c2eb5a0b8', '60cb0e6359ea46a19a841adc46cf66cf', '9e4cf77815dd49fbac4158c62af3197a', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('b9cb4fe117904e9b9619ab3cc539fb36', '60cb0e6359ea46a19a841adc46cf66cf', '65320b914c18453f9ca0a84d3f8a0a7b', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('bb44d1afa45c46ad8a8534594c759a46', '60cb0e6359ea46a19a841adc46cf66cf', '2a4c060f44d944ea926fe44522ce7b39', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('c3574201434947fe80c393907b96fd16', '60cb0e6359ea46a19a841adc46cf66cf', 'bf530e26480d43b08dd20e31e31274af', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('caa084c048fa4fecb581680c06879e58', '60cb0e6359ea46a19a841adc46cf66cf', '7a6d3674e5204937951d01544e18e3aa', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('d5e18c1411344768808c275c10b66e73', '60cb0e6359ea46a19a841adc46cf66cf', 'cfc4e4bd367047a29e0d72e688f860a2', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('dec716f33f094267801fefc5e183b57c', '60cb0e6359ea46a19a841adc46cf66cf', '5fb994e71cb14a77891670990d7f554d', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('eaf6119a463a47c3bd8343a99593f736', '60cb0e6359ea46a19a841adc46cf66cf', '524e5f5c3e5b4cdb90611cd8b15ca684', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('f39c2c58db8a40db9f330c8d5fac608a', '60cb0e6359ea46a19a841adc46cf66cf', 'f81608054a714b60adb0b1ed574c6b6c', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('f3e97c7d8a0f4cb29ba68fe5a6f00e09', '60cb0e6359ea46a19a841adc46cf66cf', '619cb338b278406f8368471034d5946f', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-INSERT INTO `aos_sys_module_post` VALUES ('f97e552d5e0c4fcc965d70866c259d50', '60cb0e6359ea46a19a841adc46cf66cf', '2790bf6cc0b54c36b56c90429c112ab2', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
 
 -- ----------------------------
 -- Table structure for aos_sys_module_role
@@ -1448,7 +1425,6 @@ CREATE TABLE `aos_sys_post` (
 -- ----------------------------
 -- Records of aos_sys_post
 -- ----------------------------
-INSERT INTO `aos_sys_post` VALUES ('60cb0e6359ea46a19a841adc46cf66cf', '研发岗位', '1', '1', 'b2fa97f8bed34eee86201f01fa786ed4', '2016-02-02 21:54:59', 'fa04db9dd2f54d61b0c8202a25de2dc6', '0.001');
 
 -- ----------------------------
 -- Table structure for aos_sys_role
@@ -1529,7 +1505,7 @@ CREATE TABLE `aos_sys_user` (
 -- Records of aos_sys_user
 -- ----------------------------
 INSERT INTO `aos_sys_user` VALUES ('fa04db9dd2f54d61b0c8202a25de2dc6', 'root', 'gnRD3IiRP6s=', '超级用户', '1', '63cf387a243d4d9799367d773b853346', '1', '2', '', '2014-09-27 22:12:56', 'fa04db9dd2f54d61b0c8202a25de2dc6', '0', '0');
-INSERT INTO `aos_sys_user` VALUES ('fe24c4ac34444902a2129ec1debf9ed4', 'caocao', 'gnRD3IiRP6s=', '曹操', '3', 'b2fa97f8bed34eee86201f01fa786ed4', '1', '1', null, '2016-02-02 21:55:57', 'fa04db9dd2f54d61b0c8202a25de2dc6', '0.001', '0');
+INSERT INTO `aos_sys_user` VALUES ('fe24c4ac34444902a2129ec1debf9ed4', 'caocao', 'gnRD3IiRP6s=', '曹操', '3', 'b2fa97f8bed34eee86201f01fa786ed4', '1', '1', null, '2016-02-02 21:55:57', 'fa04db9dd2f54d61b0c8202a25de2dc6', '0.001', '1');
 
 -- ----------------------------
 -- Table structure for aos_sys_user_cfg

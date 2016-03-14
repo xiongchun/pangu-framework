@@ -1,6 +1,6 @@
 ﻿----------------------------------------------
 -- Export file for user AOS@ORCL            --
--- Created by XChun on 2016-02-17, 10:33:20 --
+-- Created by XChun on 2016-03-14, 22:20:45 --
 ----------------------------------------------
 
 set define off
@@ -366,7 +366,7 @@ prompt ==========================
 prompt
 create table AOS_SYS_ORG
 (
-  id_             VARCHAR2(64),
+  id_             VARCHAR2(64) not null,
   cascade_id_     VARCHAR2(255),
   name_           VARCHAR2(255),
   hotkey_         VARCHAR2(255),
@@ -1637,13 +1637,14 @@ end aos_proc_demo2;
 
 spool off
 
+
 prompt PL/SQL Developer import file
-prompt Created on 2016年2月17日 by XChun
+prompt Created on 2016年3月14日 by XChun
 set feedback off
 set define off
 prompt Loading AOS_LOG_SESSION...
 insert into AOS_LOG_SESSION (id_, user_id_, account_, user_name_, ip_address_, client_type_, owner_, create_time_)
-values ('37yzw6ztakzh1mc4rtxyv1mv8', 'fa04db9dd2f54d61b0c8202a25de2dc6', 'root', '超级用户', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 'XChun-PC:1690', to_date('16-02-2016 00:31:30', 'dd-mm-yyyy hh24:mi:ss'));
+values ('1h1k8go6mu3lx2rt0aa9vno5q', 'fa04db9dd2f54d61b0c8202a25de2dc6', 'root', '超级用户', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36', 'XChun-PC:10080', to_date('14-03-2016 22:16:57', 'dd-mm-yyyy hh24:mi:ss'));
 commit;
 prompt 1 records loaded
 prompt Loading AOS_SYS_CATALOG...
@@ -1720,6 +1721,10 @@ insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, rem
 values ('2a5d03f79fd64c2090c9847d1b1484f0', '3', '待签收', null, '1', '48062fd856f14794b03ceba2a1d6b60e', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('2bd5fc7756d74fe59f5b9372fd83d03c', '4', '分割符', null, '1', '38841cd4f85f4ffb8c07c74650a130dc', '子页面生成的二级导航菜单的分割符标识');
+insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
+values ('040e1d4d8a914145884553f170e1bcfd', '1', '缺省', null, '1', 'cfcbc48fd8ad42678a52334bac8aa299', null);
+insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
+values ('040fbde5cca746e7a90a9f888c033897', '4', '只读', null, '1', '2794338c8b4946b99c361dae80da71b1', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('2ce972620b1d484e880ae17113f4cf05', 'tight', '组合按钮', null, '1', 'a19ac2af964c4a6e8af9c6f1c0d2673f', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
@@ -1833,11 +1838,7 @@ values ('b85f79702d094f348e1c9e79e67d95b7', '1', '待办', null, '1', '48062fd85
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('ba5b0493f0544278a980e0f268baf83c', '1', '快捷菜单', null, '1', '4c2a12d3890a449fa91521a29a3c2436', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
-values ('040e1d4d8a914145884553f170e1bcfd', '1', '缺省', null, '1', 'cfcbc48fd8ad42678a52334bac8aa299', null);
-insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
-values ('040fbde5cca746e7a90a9f888c033897', '4', '只读', null, '1', '2794338c8b4946b99c361dae80da71b1', null);
-insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
-values ('c172686bc21e40efacca63c5b7e1c9d3', 'blue', '#99bce8', null, '1', '1ec5d3c945de40469595c85955196e76', null);
+values ('bbef93ea807847029e98ed7023b47c6a', '1', '正常', null, '1', '0744eedeaaa143afa499254866aa75c9', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('c1c92ade06b94969b2b066184845781c', '6', '禁用', null, '1', '2794338c8b4946b99c361dae80da71b1', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
@@ -1883,9 +1884,9 @@ values ('fac86f6625cb47fc8c1a4bab41dc1af4', 'ip', '127.0.0.1', null, '1', '2d977
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('fedcb0e622734060a19a3d9b98e96f71', '4', '导入离线文本', null, '1', '483fb2ff35e84a42974e914851fae01a', null);
 insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
-values ('bbef93ea807847029e98ed7023b47c6a', '1', '正常', null, '1', '0744eedeaaa143afa499254866aa75c9', null);
-insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
 values ('bc17f4f03f0d415c97a026e8ec5a999d', 'blue', '#6699CC', null, '1', '54e48c66b3ef4d99823ca8217a2abf43', null);
+insert into AOS_SYS_DIC (id_, code_, desc_, hotkey_, status_, dic_index_id_, remark_)
+values ('c172686bc21e40efacca63c5b7e1c9d3', 'blue', '#99bce8', null, '1', '1ec5d3c945de40469595c85955196e76', null);
 commit;
 prompt 104 records loaded
 prompt Loading AOS_SYS_DIC_INDEX...
@@ -2567,10 +2568,6 @@ values ('1012', 'fa-folder-o', '3');
 commit;
 prompt 300 records committed...
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('882', 'fa-folder-open', '3');
-insert into AOS_SYS_ICON (id_, name_, type_)
-values ('1013', 'fa-folder-open-o', '3');
-insert into AOS_SYS_ICON (id_, name_, type_)
 values ('811', 'fa-font', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('839', 'fa-forward', '3');
@@ -2766,12 +2763,12 @@ insert into AOS_SYS_ICON (id_, name_, type_)
 values ('1137', 'fa-openid', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('821', 'fa-outdent', '3');
-commit;
-prompt 400 records committed...
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('1123', 'fa-pagelines', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('1228', 'fa-paint-brush', '3');
+commit;
+prompt 400 records committed...
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('1194', 'fa-paper-plane', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
@@ -2900,6 +2897,10 @@ insert into AOS_SYS_ICON (id_, name_, type_)
 values ('880', 'fa-shopping-cart', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('900', 'fa-sign-in', '3');
+insert into AOS_SYS_ICON (id_, name_, type_)
+values ('882', 'fa-folder-open', '3');
+insert into AOS_SYS_ICON (id_, name_, type_)
+values ('1013', 'fa-folder-open-o', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('896', 'fa-sign-out', '3');
 insert into AOS_SYS_ICON (id_, name_, type_)
@@ -3179,10 +3180,6 @@ values ('10123', 'folder28.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('10124', 'folder4.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
-values ('10125', 'folder5.png', '1');
-insert into AOS_SYS_ICON (id_, name_, type_)
-values ('10126', 'folder6.png', '1');
-insert into AOS_SYS_ICON (id_, name_, type_)
 values ('10127', 'folder7.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('10128', 'folder8.png', '1');
@@ -3372,12 +3369,12 @@ insert into AOS_SYS_ICON (id_, name_, type_)
 values ('10220', 'page_vector.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('10221', 'paint2.png', '1');
-commit;
-prompt 700 records committed...
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('10222', 'paste.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('10223', 'picture.png', '1');
+commit;
+prompt 700 records committed...
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('10224', 'pictures.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
@@ -3503,6 +3500,10 @@ values ('10284', 'vector.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('10285', 'wand.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
+values ('10125', 'folder5.png', '1');
+insert into AOS_SYS_ICON (id_, name_, type_)
+values ('10126', 'folder6.png', '1');
+insert into AOS_SYS_ICON (id_, name_, type_)
 values ('10286', 'webcam.png', '1');
 insert into AOS_SYS_ICON (id_, name_, type_)
 values ('10287', 'zoom_in.png', '1');
@@ -3513,6 +3514,10 @@ prompt 767 records loaded
 prompt Loading AOS_SYS_MODULE...
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('0b99e9d118b54ee084d9e74bd72cdd1c', '0.001.002', '资源管理', null, null, '7a6d3674e5204937951d01544e18e3aa', '0', '1', 'folder14.png', '1', '系统管理', null, 20);
+insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+values ('078df89c7b5b478cb38fd607805c6155', '0.004.002.001.007', '常用表单元素API', 'demo/initFormApi.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, 20);
+insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+values ('09b24aac059f4ba58bfb30652636b543', '0.004.003.001', '综合实例①', 'demo/misc/initMisc1.jhtml', null, '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', null, '1', '综合实例', null, 10);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('1886bf699ec74f79959bdc8ca8e5371a', '0.001.006.004', '会话监控', 'system/sessionLog/init.jhtml', null, '5b9a439743f141729f46a07e8e222a47', '1', '0', 'c_key.png', '1', '监控与审计', null, 10);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
@@ -3568,6 +3573,8 @@ values ('73b69ca49e2240ba8717fc13acb884c2', '0.004.002.001.001', '表单布局�
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('7a6d3674e5204937951d01544e18e3aa', '0.001', '系统管理', null, null, '2a4c060f44d944ea926fe44522ce7b39', '0', '1', 'folder22.png', '1', 'AOS应用基础平台', 'fa-cogs', 10);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+values ('7e6951e668be44b39fb9f9fd20b21315', '0.004.003.002', '综合实例②', 'demo/misc/initMisc2.jhtml', null, '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', null, '1', '综合实例', null, 20);
+insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('81fc0e05049e467d976ec523182421f2', '0.001.002.004', '序列号', 'system/idMgr/init.jhtml', null, '0b99e9d118b54ee084d9e74bd72cdd1c', '1', '0', 'id.png', '1', '资源管理', null, 30);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('870c482cdb2e4c8aa373dcf447964284', '0.004.002.003.003', '可编辑表格', 'demo/grid/initEditGrid.jhtml', null, 'dbf75990cf784e79920caf7eb47856f6', '1', '0', null, '1', '表格', null, 30);
@@ -3585,6 +3592,8 @@ insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, 
 values ('a27532c1cc8948e5b9bd7d8ac2e30a42', '0.004.002.006.001', '布局①', null, null, 'f84a495bca10403ebe8351d4737dfc72', '1', '0', null, '1', '容器布局', null, 1);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('a4d2ef333e35476680786df9a89e200b', '0.004.002.004.001', '报表①', 'demo/report/initReport1.jhtml', null, '88bc371429ce4243a49c5893ae036f6a', '1', '0', null, '1', '报表', null, 1);
+insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+values ('b4485f8151ae4a7db09ee6cd70c5e24f', '0.004.003.003', '综合实例③', 'demo/misc/initMisc3.jhtml', null, '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', null, '1', '综合实例', null, 30);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('b656d6afbbe844d0a6626d0eb590643f', '0.001.003', '组织与权限', null, null, '7a6d3674e5204937951d01544e18e3aa', '0', '1', 'folder23.png', '1', '系统管理', null, 30);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
@@ -3608,76 +3617,19 @@ values ('e9de0eacf61a4aa6b1ed0c210fc209fe', '0.004.004.003', '页面组件复用
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('f107450058a2438eb6ad9bf6a4d7e967', '0.001.001.002', '字典参数', 'system/dictionary/init.jhtml', null, '5fb994e71cb14a77891670990d7f554d', '1', '0', 'icon154.png', '1', '基础数据', null, 10);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
-values ('f405a849f27d4ddebf7f8a2dfbf30bea', '0.001.002.001', '功能模块', 'system/module/init.jhtml', null, '0b99e9d118b54ee084d9e74bd72cdd1c', '1', '0', 'icon75.png', '1', '资源管理', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
-values ('f73a952eefa2406c9327da6252c4ca79', '0.004.002.001', '表单', null, null, '6cab8b013c314b37aec7c4567d859fc8', '0', '0', null, '1', 'AOS UI组件库', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
-values ('078df89c7b5b478cb38fd607805c6155', '0.004.002.001.007', '常用表单元素API', 'demo/initFormApi.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
-values ('09b24aac059f4ba58bfb30652636b543', '0.004.003.001', '综合实例①', 'demo/layout/initLayout1.jhtml', null, '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', null, '1', '综合实例', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
-values ('fd88d0de59024e4db81ead8510b6bd98', '0.001.002.003', '页面组件', 'system/page/init.jhtml', null, '0b99e9d118b54ee084d9e74bd72cdd1c', '1', '0', 'icon59.png', '1', '资源管理', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('f81608054a714b60adb0b1ed574c6b6c', '0.001.003.003', '用户与授权', 'system/user/init.jhtml', null, 'b656d6afbbe844d0a6626d0eb590643f', '1', '0', 'user6.png', '1', '组织与权限', null, 4);
 insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
 values ('f84a495bca10403ebe8351d4737dfc72', '0.004.002.006', '容器布局', null, null, '6cab8b013c314b37aec7c4567d859fc8', '0', '0', null, '1', 'AOS UI组件库', null, 35);
+insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+values ('fd88d0de59024e4db81ead8510b6bd98', '0.001.002.003', '页面组件', 'system/page/init.jhtml', null, '0b99e9d118b54ee084d9e74bd72cdd1c', '1', '0', 'icon59.png', '1', '资源管理', null, 20);
+insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+values ('f405a849f27d4ddebf7f8a2dfbf30bea', '0.001.002.001', '功能模块', 'system/module/init.jhtml', null, '0b99e9d118b54ee084d9e74bd72cdd1c', '1', '0', 'icon75.png', '1', '资源管理', null, 10);
+insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+values ('f73a952eefa2406c9327da6252c4ca79', '0.004.002.001', '表单', null, null, '6cab8b013c314b37aec7c4567d859fc8', '0', '0', null, '1', 'AOS UI组件库', null, 20);
 commit;
-prompt 55 records loaded
+prompt 57 records loaded
 prompt Loading AOS_SYS_MODULE_POST...
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('01e6f6f7fe924b8d89a846c2dfc7a05f', '60cb0e6359ea46a19a841adc46cf66cf', '715f6cf8d2ce4fa694baf2259327f6b1', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('0e95a8527f37467fa0246abbc9de4d95', '60cb0e6359ea46a19a841adc46cf66cf', 'ba90369eb83540bab4d9492bc17f0937', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('30cea10ca6bb4628abc80116cf748be5', '60cb0e6359ea46a19a841adc46cf66cf', 'b656d6afbbe844d0a6626d0eb590643f', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('30f6dae98d964d3ca62017bf09d8bb40', '60cb0e6359ea46a19a841adc46cf66cf', 'bc3c9877c598404da7e31355a4deebad', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('324b0d0319084a6a9f9bc2c9c61d384e', '60cb0e6359ea46a19a841adc46cf66cf', '1906d5a892654e2bb882851e0ea7322f', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('51d9d42511274b7c995eaaf1705f9179', '60cb0e6359ea46a19a841adc46cf66cf', '5b9a439743f141729f46a07e8e222a47', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('5d2a3a46566f433f8ea44c6c795d162d', '60cb0e6359ea46a19a841adc46cf66cf', '81fc0e05049e467d976ec523182421f2', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('5d9616a615814d3fb4a07300bce4156a', '60cb0e6359ea46a19a841adc46cf66cf', 'fd88d0de59024e4db81ead8510b6bd98', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('65bf789caf3648d1a8653b142a9e130a', '60cb0e6359ea46a19a841adc46cf66cf', 'f405a849f27d4ddebf7f8a2dfbf30bea', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('69063560c4374ab483bbe9ced3229420', '60cb0e6359ea46a19a841adc46cf66cf', '9a8e5cedcd514af2b37cf5828f509f94', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('6c6f89adb49f4c7eacd83cf17196222f', '60cb0e6359ea46a19a841adc46cf66cf', 'f107450058a2438eb6ad9bf6a4d7e967', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('7e48d55cede7414fb68dd14490e9a46f', '60cb0e6359ea46a19a841adc46cf66cf', 'd452524058ff42cfb9e5146dacd0cd79', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('8c0b0aa02b14460b825b14b40cfe3ffc', '60cb0e6359ea46a19a841adc46cf66cf', '0b99e9d118b54ee084d9e74bd72cdd1c', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('90c0cc96bc7f4ba39b7fa3983b33e405', '60cb0e6359ea46a19a841adc46cf66cf', '1886bf699ec74f79959bdc8ca8e5371a', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('91003499b9f24bc58988395b591d7243', '60cb0e6359ea46a19a841adc46cf66cf', 'a21b52d911bb44c2978e52bbc523de51', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('a193381281004ea38a889c5c2eb5a0b8', '60cb0e6359ea46a19a841adc46cf66cf', '9e4cf77815dd49fbac4158c62af3197a', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('b9cb4fe117904e9b9619ab3cc539fb36', '60cb0e6359ea46a19a841adc46cf66cf', '65320b914c18453f9ca0a84d3f8a0a7b', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('bb44d1afa45c46ad8a8534594c759a46', '60cb0e6359ea46a19a841adc46cf66cf', '2a4c060f44d944ea926fe44522ce7b39', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('c3574201434947fe80c393907b96fd16', '60cb0e6359ea46a19a841adc46cf66cf', 'bf530e26480d43b08dd20e31e31274af', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('caa084c048fa4fecb581680c06879e58', '60cb0e6359ea46a19a841adc46cf66cf', '7a6d3674e5204937951d01544e18e3aa', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('d5e18c1411344768808c275c10b66e73', '60cb0e6359ea46a19a841adc46cf66cf', 'cfc4e4bd367047a29e0d72e688f860a2', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('dec716f33f094267801fefc5e183b57c', '60cb0e6359ea46a19a841adc46cf66cf', '5fb994e71cb14a77891670990d7f554d', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('eaf6119a463a47c3bd8343a99593f736', '60cb0e6359ea46a19a841adc46cf66cf', '524e5f5c3e5b4cdb90611cd8b15ca684', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('f39c2c58db8a40db9f330c8d5fac608a', '60cb0e6359ea46a19a841adc46cf66cf', 'f81608054a714b60adb0b1ed574c6b6c', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('f3e97c7d8a0f4cb29ba68fe5a6f00e09', '60cb0e6359ea46a19a841adc46cf66cf', '619cb338b278406f8368471034d5946f', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-insert into AOS_SYS_MODULE_POST (id_, post_id_, module_id_, grant_type_, operate_time_, operator_id_)
-values ('f97e552d5e0c4fcc965d70866c259d50', '60cb0e6359ea46a19a841adc46cf66cf', '2790bf6cc0b54c36b56c90429c112ab2', '1', '2016-02-02 21:55:10', 'fa04db9dd2f54d61b0c8202a25de2dc6');
-commit;
-prompt 26 records loaded
+prompt Table is empty
 prompt Loading AOS_SYS_MODULE_ROLE...
 insert into AOS_SYS_MODULE_ROLE (id_, role_id_, module_id_, grant_type_, operate_time_, operator_id_)
 values ('1939747179be463fb49c9c94c15cb5ae', '84f923b5e334498494eda38d8e86ef80', 'bf530e26480d43b08dd20e31e31274af', '1', '2016-02-02 21:56:26', 'fa04db9dd2f54d61b0c8202a25de2dc6');
@@ -3908,10 +3860,7 @@ values ('19ad8d57d72b4ecf98ad133ebb6492bd', 'page_load_gif_', 'wheel.gif', 'f22f
 commit;
 prompt 36 records loaded
 prompt Loading AOS_SYS_POST...
-insert into AOS_SYS_POST (id_, name_, status_, type_, org_id_, create_time_, creater_id_, org_cascade_id_)
-values ('60cb0e6359ea46a19a841adc46cf66cf', '研发岗位', '1', '1', 'b2fa97f8bed34eee86201f01fa786ed4', '2016-02-02 21:54:59', 'fa04db9dd2f54d61b0c8202a25de2dc6', '0.001');
-commit;
-prompt 1 records loaded
+prompt Table is empty
 prompt Loading AOS_SYS_ROLE...
 insert into AOS_SYS_ROLE (id_, name_, status_, type_, create_time_, creater_id_, creater_org_id_, creater_org_cascade_id_)
 values ('84f923b5e334498494eda38d8e86ef80', '研发角色', '1', '1', '2016-02-02 21:56:20', 'fa04db9dd2f54d61b0c8202a25de2dc6', '63cf387a243d4d9799367d773b853346', '0');
@@ -3930,7 +3879,7 @@ prompt Loading AOS_SYS_USER...
 insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_, delete_flag_)
 values ('fa04db9dd2f54d61b0c8202a25de2dc6', 'root', 'gnRD3IiRP6s=', '超级用户', '1', '63cf387a243d4d9799367d773b853346', '1', '2', null, '2014-09-27 22:12:56', 'fa04db9dd2f54d61b0c8202a25de2dc6', '0', '0');
 insert into AOS_SYS_USER (id_, account_, password_, name_, sex_, org_id_, status_, type_, biz_code_, create_time_, creater_id_, org_cascade_id_, delete_flag_)
-values ('fe24c4ac34444902a2129ec1debf9ed4', 'caocao', 'gnRD3IiRP6s=', '曹操', '3', 'b2fa97f8bed34eee86201f01fa786ed4', '1', '1', null, '2016-02-02 21:55:57', 'fa04db9dd2f54d61b0c8202a25de2dc6', '0.001', '0');
+values ('fe24c4ac34444902a2129ec1debf9ed4', 'caocao', 'gnRD3IiRP6s=', '曹操', '3', 'b2fa97f8bed34eee86201f01fa786ed4', '1', '1', null, '2016-02-02 21:55:57', 'fa04db9dd2f54d61b0c8202a25de2dc6', '0.001', '1');
 commit;
 prompt 2 records loaded
 prompt Loading AOS_SYS_USER_CFG...
@@ -3963,44 +3912,6 @@ insert into AOS_WF_GE_PROPERTY (name_, value_, rev_)
 values ('next.dbid', '1', 1);
 commit;
 prompt 3 records loaded
-prompt Loading AOS_WF_HI_ACTINST...
-prompt Table is empty
-prompt Loading AOS_WF_HI_ATTACHMENT...
-prompt Table is empty
-prompt Loading AOS_WF_HI_DETAIL...
-prompt Table is empty
-prompt Loading AOS_WF_HI_IDENTITYLINK...
-prompt Table is empty
-prompt Loading AOS_WF_HI_PROCINST...
-prompt Table is empty
-prompt Loading AOS_WF_HI_TASKINST...
-prompt Table is empty
-prompt Loading AOS_WF_HI_VARINST...
-prompt Table is empty
-prompt Loading AOS_WF_ID_GROUP...
-prompt Table is empty
-prompt Loading AOS_WF_ID_USER...
-prompt Table is empty
-prompt Loading AOS_WF_ID_MEMBERSHIP...
-prompt Table is empty
-prompt Loading AOS_WF_RE_DEPLOYMENT...
-prompt Table is empty
-prompt Loading AOS_WF_RE_MODEL...
-prompt Table is empty
-prompt Loading AOS_WF_RE_PROCDEF...
-prompt Table is empty
-prompt Loading AOS_WF_RU_EXECUTION...
-prompt Table is empty
-prompt Loading AOS_WF_RU_EVENT_SUBSCR...
-prompt Table is empty
-prompt Loading AOS_WF_RU_TASK...
-prompt Table is empty
-prompt Loading AOS_WF_RU_IDENTITYLINK...
-prompt Table is empty
-prompt Loading AOS_WF_RU_JOB...
-prompt Table is empty
-prompt Loading AOS_WF_RU_VARIABLE...
-prompt Table is empty
 set feedback on
 set define on
 prompt Done.
