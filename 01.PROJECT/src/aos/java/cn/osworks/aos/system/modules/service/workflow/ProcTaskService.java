@@ -6,10 +6,10 @@ import org.activiti.engine.RuntimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.dao.SqlDao;
 import cn.osworks.aos.core.typewrap.Dto;
-import cn.osworks.aos.system.asset.DicCons;
+
+import com.google.common.collect.Lists;
 
 /**
  * 任务服务
@@ -32,15 +32,15 @@ public class ProcTaskService {
 	 * @return
 	 */
 	public List<Dto>listProcTasks(Dto inDto){
-		List<Dto> list = sysDao.list("Workflow.listProcTasksPage", inDto);
+/*		List<Dto> list = sysDao.list("Workflow.listProcTasksPage", inDto);
 		for (Dto dto : list) {
 			if (AOSUtils.isEmpty(dto.getString("assignee_"))) {
 				dto.put("proctask_status_", DicCons.PROCTASK_STATUS_DQS);
 			}else {
 				dto.put("proctask_status_", DicCons.PROCTASK_STATUS_DB);
 			}
-		}
-		return list;
+		}*/
+		return Lists.newArrayList();
 	}
 
 }
