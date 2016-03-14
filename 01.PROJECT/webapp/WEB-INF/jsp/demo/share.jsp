@@ -3,7 +3,7 @@
 <aos:html>
 <aos:head title="页面组件复用">
 	<aos:include lib="ext" />
-	<aos:base href="demo/layout" />
+	<aos:base href="demo/misc" />
 	<style>
 	#_div_tips {
 		line-height: 25px;
