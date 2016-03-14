@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.osworks.aos.core.asset.AOSCxt;
 import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.dao.SqlDao;
 import cn.osworks.aos.core.typewrap.Dto;
@@ -23,7 +22,8 @@ public class MiscService {
 
 	@Autowired
 	private SqlDao sysDao;
-	@Autowired Aos_sys_orgMapper aos_sys_orgMapper;
+	@Autowired 
+	private Aos_sys_orgMapper aos_sys_orgMapper;
 	
 	/**
 	 * 查询组织信息列表

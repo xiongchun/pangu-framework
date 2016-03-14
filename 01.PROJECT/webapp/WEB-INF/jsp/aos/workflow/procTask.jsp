@@ -80,6 +80,10 @@
 				});
 			});
 		}
+		
+		AOS.job(function(){
+			AOS.tip('此模块正在开发中，敬请期待……');
+		},1000);
 	</script>
 </aos:onready>
 </aos:html>

@@ -39,6 +39,7 @@
 		function fn_handler(obj){
 			AOS.tip('你点击了：' + obj.text + '。');
 		}
+	    
 	</script>
 </aos:onready>
 </aos:html>
