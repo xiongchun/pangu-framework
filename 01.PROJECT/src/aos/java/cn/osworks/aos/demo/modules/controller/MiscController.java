@@ -66,6 +66,16 @@ public class MiscController {
 	}
 	
 	/**
+	 * 综合实例④页面初始化
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "initMisc4")
+	public String initMisc4() {
+		return "demo/misc/misc4.jsp";
+	}
+	
+	/**
 	 * 查询信用卡账户列表
 	 * 
 	 * @param request
