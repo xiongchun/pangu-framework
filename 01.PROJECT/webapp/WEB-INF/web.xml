@@ -41,7 +41,7 @@
 		</init-param>
 		<init-param>
 			<param-name>excludes</param-name>
-			<param-value>login.jhtml</param-value>
+			<param-value>login.jhtml,/esb/</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

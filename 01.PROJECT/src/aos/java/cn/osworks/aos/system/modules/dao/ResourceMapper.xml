@@ -104,7 +104,7 @@
 			<if test="module_id_ != null and module_id_ != ''">
 				AND id_ = #{module_id_}
 			</if>
-			AND is_leaf_ = '1' AND (url_ != null OR url_ != '')
+			AND is_leaf_ = '1' AND (url_ is not null OR url_ != '')
 		</where>
 		ORDER BY id_, sort_no_
 	</select>

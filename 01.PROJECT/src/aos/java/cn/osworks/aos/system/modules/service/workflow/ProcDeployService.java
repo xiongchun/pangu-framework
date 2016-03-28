@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import cn.osworks.aos.core.AosService;
 import cn.osworks.aos.core.asset.AOSCons;
 import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.dao.SqlDao;
@@ -24,6 +23,7 @@ import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
 import cn.osworks.aos.system.dao.mapper.Aos_wf_re_procdefMapper;
 import cn.osworks.aos.system.dao.po.Aos_wf_re_procdefPO;
+import cn.osworks.aos.system.service.AOSService;
 
 import com.google.common.collect.Lists;
 
@@ -47,7 +47,7 @@ public class ProcDeployService {
 	@Autowired
 	private Aos_wf_re_procdefMapper aos_wf_re_procdefMapper;
 	@Autowired
-	private AosService aosService;
+	private AOSService aosService;
 	
 	/**
 	 * 查询流程列表

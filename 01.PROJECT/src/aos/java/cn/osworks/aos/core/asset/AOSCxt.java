@@ -4,8 +4,8 @@ import org.activiti.engine.ProcessEngine;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import cn.osworks.aos.core.AosService;
 import cn.osworks.aos.core.dao.SqlDao;
+import cn.osworks.aos.system.service.AOSService;
 
 
 /**
@@ -26,7 +26,7 @@ public class AOSCxt {
 	/**
 	 * 系统服务组件AosService
 	 */
-	public static AosService aosService = getAosService();
+	public static AOSService aosService = getAosService();
 
 	/**
 	 * 从Spring容器上下文中获取SpringBean组件
@@ -45,8 +45,8 @@ public class AOSCxt {
 	 * 
 	 * @return
 	 */
-	public static AosService getAosService() {
-		AosService aosService = (AosService) getBean("aosService");
+	public static AOSService getAosService() {
+		AOSService aosService = (AOSService) getBean("aosService");
 		return aosService;
 	}
 

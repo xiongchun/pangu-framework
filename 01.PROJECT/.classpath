@@ -111,6 +111,9 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-simple-workflow-5.18.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons-pool2-2.4.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jedis-2.7.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/httpclient-4.5.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/httpmime-4.5.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-cdi.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>

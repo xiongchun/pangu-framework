@@ -1,4 +1,4 @@
-package cn.osworks.aos.core;
+package cn.osworks.aos.system.service;
 
 import java.util.List;
 
@@ -21,13 +21,13 @@ import cn.osworks.aos.system.dao.po.Aos_sys_paramPO;
 import com.google.common.collect.Lists;
 
 /**
- * <b>提供一些系统级服务</b>
+ * <b>提供一些基础服务</b>
  * 
  * @author OSWorks-XC
  * @date 2014-05-13
  */
-@Service
-public class AosService {
+@Service("aosService")
+public class AOSService {
 
 	@Autowired
 	private Aos_sys_paramMapper aos_sys_paramMapper;

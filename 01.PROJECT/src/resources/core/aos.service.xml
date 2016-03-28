@@ -19,10 +19,10 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
-	
+
 	<!-- ID服务组件 -->
 	<bean id="idService" class="cn.osworks.aos.core.id.IdService">
 		<property name="aos_sys_sequenceMapper" ref="aos_sys_sequenceMapper" />
 	</bean>
-	
+
 </beans>
