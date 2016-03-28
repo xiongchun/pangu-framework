@@ -18,7 +18,7 @@
 			</aos:docked>
 			<aos:column type="rowno" />
 			<aos:column header="流水号" dataIndex="id_" hidden="true" />
-			<aos:column header="信用卡号" dataIndex="card_id_" rendererFn="fn_link_render" width="90" />
+			<aos:column header="信用卡号" dataIndex="card_id_" rendererFn="fn_link_render" width="80" minWidth="80" maxWidth="80" align="center" />
 			<%-- 演示数据字典代码转换功能 --%>
 			<aos:column header="卡类型" dataIndex="card_type_" rendererField="card_type_" width="60" />
 			<aos:column header="身份证号" dataIndex="id_no_" width="140" />
