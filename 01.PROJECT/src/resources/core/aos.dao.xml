@@ -38,15 +38,11 @@
 		<!--maxWait: 当没有可用连接时，连接池等待连接释放的最大时间，超过该时间限制会抛出异常，如果设置-1表示无限等待。以毫秒为单位。 -->
 		<property name="maxWait" value="120000" />
 		<property name="logAbandoned" value="true" />
-		<!-- 每timeBetweenEvictionRunsMillis毫秒检查一次连接池中空闲的连接，把空闲时间超过minEvictableIdleTimeMillis毫秒的连接断开 -->
-		<!-- minEvictableIdleTimeMillis要小于数据库的最大空闲等待断开时间（如部分mysql版本的缺省空闲8小时则自动断开连接等) -->
-		<property name="validationQuery" value="${jdbc.vsql}" />
-		<property name="timeBetweenEvictionRunsMillis" value="3600000" /> <!-- 1小时 -->
-		<property name="minEvictableIdleTimeMillis" value="18000000" /> <!-- 5小时 -->
 		<!-- 让空闲链接回收器(如果有)进行有效性检测 -->
 		<property name="testWhileIdle" value="true" />
 		<!-- 从连接池之取出时进行有效性检测 -->
 		<property name="testOnBorrow" value="true" />
+		<property name="validationQuery" value="${jdbc.vsql}" />
 		<!-- 归还连接池之前进行有效性检测 -->
 		<property name="testOnReturn" value="true" />
 	</bean>
