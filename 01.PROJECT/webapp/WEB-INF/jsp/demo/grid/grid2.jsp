@@ -24,7 +24,7 @@
 			<aos:column type="rowno" />
 			<aos:selmodel type="checkbox" mode="multi" />
 			<aos:column header="流水号" dataIndex="id_" hidden="true" />
-			<aos:column header="信用卡号" dataIndex="card_id_" width="90" />
+			<aos:column header="信用卡号" dataIndex="card_id_" rendererFn="fn_link_render" width="80" minWidth="80" maxWidth="80" align="center" />
 			<aos:column header="卡类型" dataIndex="card_type_" rendererField="card_type_" width="60" />
 			<aos:column header="身份证号" dataIndex="id_no_" width="140" />
 			<aos:column header="持卡人" dataIndex="name_" width="80" />
@@ -84,6 +84,20 @@
 		</aos:gridpanel>
 	</aos:viewport>
 	<script type="text/javascript">
+	    //绑定超链接列单击事件
+		_g_north.on("cellclick", function(pGrid, rowIndex, columnIndex, e) {
+			var record = AOS.selectone(_g_north);
+			if(columnIndex === 2){
+				AOS.info("信用卡号：" + record.data.card_id_);
+			}
+		});
+		
+		//超链接列转换
+		function fn_link_render(value, metaData, record, rowIndex, colIndex,
+				store) {
+			return '<a href="javascript:void(0);">' +  record.data.card_id_ + '</a>';
+		}
+		
 		//根据值禁用图标按钮
 		function fn_disabled(view, rowIndex, colIndex, item, record) {
 			if (record.data.sex_ === '1') {
