@@ -3512,120 +3512,178 @@ values ('10288', 'zoom_out.png', '1');
 commit;
 prompt 767 records loaded
 prompt Loading AOS_SYS_MODULE...
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('0b99e9d118b54ee084d9e74bd72cdd1c', '0.001.002', '资源管理', null, null, '7a6d3674e5204937951d01544e18e3aa', '0', '1', 'folder14.png', '1', '系统管理', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('078df89c7b5b478cb38fd607805c6155', '0.004.002.001.007', '常用表单元素API', 'demo/initFormApi.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('09b24aac059f4ba58bfb30652636b543', '0.004.003.001', '综合实例①', 'demo/misc/initMisc1.jhtml', null, '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', null, '1', '综合实例', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('1886bf699ec74f79959bdc8ca8e5371a', '0.001.006.004', '会话监控', 'system/sessionLog/init.jhtml', null, '5b9a439743f141729f46a07e8e222a47', '1', '0', 'c_key.png', '1', '监控与审计', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('1906d5a892654e2bb882851e0ea7322f', '0.001.008.001', '图标', 'system/icon/init.jhtml', null, '524e5f5c3e5b4cdb90611cd8b15ca684', '1', '0', 'page_picture.png', '1', '开发工具箱', null, 60);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('1cf1947152174cacaf226fa54ca51351', '0.004.002.001.009', '表单校验', 'demo/initFormValidate.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, 8);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('25406890354f4514909e2ad1c0fd678d', '0.004.002.003.001', '表格①', 'demo/grid/initGrid1.jhtml', null, 'dbf75990cf784e79920caf7eb47856f6', '1', '0', null, '1', '表格', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('266bbec9e0af4612afa5139aade0a511', '0.004.002.001.006', '组合选择框', 'demo/initFormComboBox.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, 30);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('2790bf6cc0b54c36b56c90429c112ab2', '0.001.008.005', 'WebIDE', 'system/coder/init.jhtml', null, '524e5f5c3e5b4cdb90611cd8b15ca684', '1', '0', 'icon15.png', '1', '开发工具箱', null, 5);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('29873ca569fb46c3bbd951a8a1df2472', '0.002', '项目导航', null, null, '2a4c060f44d944ea926fe44522ce7b39', '0', '1', 'folder2.png', '1', 'AOS应用基础平台', 'fa-github-alt', 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('2a4c060f44d944ea926fe44522ce7b39', '0', 'AOS应用基础平台', null, null, 'p', '0', '1', 'home.png', '1', 'root', null, 1);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('327677ef8d2a4e5caf3c4cbc9b72d0b0', '0.004.002.003.004', '客户端分页表格', 'demo/grid/initGrid3.jhtml', null, 'dbf75990cf784e79920caf7eb47856f6', '1', '0', null, '1', '表格', null, 40);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('33baf8c9948b47cfa54cd8d7a5e1753d', '0.004.003', '综合实例', null, null, '6e10c86d1885434e80e6dfa0953e307d', '0', '1', null, '1', '范例', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('38e28fce49414c4c9e95d032559d5bee', '0.004.002.002', '按钮', 'demo/initButton.jhtml', null, '6cab8b013c314b37aec7c4567d859fc8', '1', '0', null, '1', 'AOS UI组件库', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('3bb16fa3935c41bebe4d3fcf3c4ebd5c', '0.004.004', '杂项', null, null, '6e10c86d1885434e80e6dfa0953e307d', '0', '0', null, '1', '范例', null, 15);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('4d3cfce7b9b146d2bc8482ec477517aa', '0.002.001', '首选项', 'system/preference/init.jhtml', null, '29873ca569fb46c3bbd951a8a1df2472', '1', '0', 'config1.png', '1', '项目导航', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('524e5f5c3e5b4cdb90611cd8b15ca684', '0.001.008', '开发工具箱', null, null, '7a6d3674e5204937951d01544e18e3aa', '0', '0', 'folder9.png', '1', '系统管理', 'fa-bug', 70);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('591f2ffa62a1461887c1d6f02c60a1ff', '0.004.004.002', '消息通知窗口', 'demo/initNotification.jhtml', null, '3bb16fa3935c41bebe4d3fcf3c4ebd5c', '1', '0', null, '1', '杂项', null, 2);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('5ae41d35d16247febabf631a81a0d70d', '0.004.002.001.008', '表单数据交互', 'demo/initFormData.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, 40);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('5b9a439743f141729f46a07e8e222a47', '0.001.006', '监控与审计', null, null, '7a6d3674e5204937951d01544e18e3aa', '0', '0', 'folder27.png', '1', '系统管理', null, 60);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('5fb994e71cb14a77891670990d7f554d', '0.001.001', '基础数据', null, null, '7a6d3674e5204937951d01544e18e3aa', '0', '1', 'folder2.png', '1', '系统管理', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('619cb338b278406f8368471034d5946f', '0.001.004.006', '任务节点', 'workflow/procTask/init.jhtml', null, 'cfc4e4bd367047a29e0d72e688f860a2', '1', '0', 'task_list.png', '1', '业务流程管理', null, 40);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('65320b914c18453f9ca0a84d3f8a0a7b', '0.001.003.001', '组织架构', 'system/org/init.jhtml', null, 'b656d6afbbe844d0a6626d0eb590643f', '1', '0', 'icon56.png', '1', '组织与权限', null, 1);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('68822bfa39914373afe70dc343c84e94', '0.004.002.001.005', '常用表单元素', 'demo/initFormElements.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('6cab8b013c314b37aec7c4567d859fc8', '0.004.002', 'AOS UI组件库', null, null, '6e10c86d1885434e80e6dfa0953e307d', '0', '1', null, '1', '范例', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('6e10c86d1885434e80e6dfa0953e307d', '0.004', '范例', null, null, '2a4c060f44d944ea926fe44522ce7b39', '0', '1', 'folder27.png', '1', 'AOS应用基础平台', 'fa-coffee', 40);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('704d4e51ffcf473fa95ab9e680177d46', '0.004.002.003.002', '表格②', 'demo/grid/initGrid2.jhtml', null, 'dbf75990cf784e79920caf7eb47856f6', '1', '0', null, '1', '表格', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('715f6cf8d2ce4fa694baf2259327f6b1', '0.001.003.002', '岗位与授权', 'system/post/init.jhtml', null, 'b656d6afbbe844d0a6626d0eb590643f', '1', '0', 'icon137.png', '1', '组织与权限', null, 3);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('73b69ca49e2240ba8717fc13acb884c2', '0.004.002.001.001', '表单布局①', 'demo/initForm1.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, 1);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('7a6d3674e5204937951d01544e18e3aa', '0.001', '系统管理', null, null, '2a4c060f44d944ea926fe44522ce7b39', '0', '1', 'folder22.png', '1', 'AOS应用基础平台', 'fa-cogs', 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('7e6951e668be44b39fb9f9fd20b21315', '0.004.003.002', '综合实例②', 'demo/misc/initMisc2.jhtml', null, '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', null, '1', '综合实例', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('81fc0e05049e467d976ec523182421f2', '0.001.002.004', '序列号', 'system/idMgr/init.jhtml', null, '0b99e9d118b54ee084d9e74bd72cdd1c', '1', '0', 'id.png', '1', '资源管理', null, 30);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('870c482cdb2e4c8aa373dcf447964284', '0.004.002.003.003', '可编辑表格', 'demo/grid/initEditGrid.jhtml', null, 'dbf75990cf784e79920caf7eb47856f6', '1', '0', null, '1', '表格', null, 30);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('88bc371429ce4243a49c5893ae036f6a', '0.004.002.004', '报表', null, null, '6cab8b013c314b37aec7c4567d859fc8', '0', '0', null, '1', 'AOS UI组件库', null, 40);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('97c8a95d0aa84d7cba2a8b536ba5326a', '0.004.002.001.002', '表单布局②', 'demo/initForm2.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, 2);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('9a8e5cedcd514af2b37cf5828f509f94', '0.001.001.003', '分类科目', 'system/catalog/init.jhtml', null, '5fb994e71cb14a77891670990d7f554d', '1', '0', 'icon146.png', '1', '基础数据', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('9e4cf77815dd49fbac4158c62af3197a', '0.001.001.001', '键值参数', 'system/param/init.jhtml', null, '5fb994e71cb14a77891670990d7f554d', '1', '0', 'icon79.png', '1', '基础数据', null, 1);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('a21b52d911bb44c2978e52bbc523de51', '0.001.004.002', '流程部署', 'workflow/procDeploy/init.jhtml', null, 'cfc4e4bd367047a29e0d72e688f860a2', '1', '0', 'modules_wizard.gif', '1', '业务流程管理', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('a27532c1cc8948e5b9bd7d8ac2e30a42', '0.004.002.006.001', '布局①', null, null, 'f84a495bca10403ebe8351d4737dfc72', '1', '0', null, '1', '容器布局', null, 1);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('a4d2ef333e35476680786df9a89e200b', '0.004.002.004.001', '报表①', 'demo/report/initReport1.jhtml', null, '88bc371429ce4243a49c5893ae036f6a', '1', '0', null, '1', '报表', null, 1);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('b4485f8151ae4a7db09ee6cd70c5e24f', '0.004.003.003', '综合实例③', 'demo/misc/initMisc3.jhtml', null, '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', null, '1', '综合实例', null, 30);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('b656d6afbbe844d0a6626d0eb590643f', '0.001.003', '组织与权限', null, null, '7a6d3674e5204937951d01544e18e3aa', '0', '1', 'folder23.png', '1', '系统管理', null, 30);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('ba90369eb83540bab4d9492bc17f0937', '0.001.004.005', '流程实例', 'workflow/procInst/init.jhtml', null, 'cfc4e4bd367047a29e0d72e688f860a2', '1', '0', 'icon5.png', '1', '业务流程管理', null, 30);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('bc3c9877c598404da7e31355a4deebad', '0.001.008.002', 'WebSQL', 'system/webSql/init.jhtml', null, '524e5f5c3e5b4cdb90611cd8b15ca684', '1', '0', 'sql.png', '1', '开发工具箱', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('bf530e26480d43b08dd20e31e31274af', '0.001.003.006', '角色与授权', 'system/role/init.jhtml', null, 'b656d6afbbe844d0a6626d0eb590643f', '1', '0', 'icon134.png', '1', '组织与权限', null, 5);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('cfc4e4bd367047a29e0d72e688f860a2', '0.001.004', '业务流程管理', null, null, '7a6d3674e5204937951d01544e18e3aa', '0', '1', 'folder24.png', '1', '系统管理', null, 40);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('d452524058ff42cfb9e5146dacd0cd79', '0.001.006.002', '操作日志', null, null, '5b9a439743f141729f46a07e8e222a47', '1', '0', 'user20.png', '1', '监控与审计', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('dbf75990cf784e79920caf7eb47856f6', '0.004.002.003', '表格', null, null, '6cab8b013c314b37aec7c4567d859fc8', '0', '1', null, '1', 'AOS UI组件库', null, 30);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('e3e403f7b94247c7827d8f280f06b64d', '0.004.002.001.003', '表单布局③', 'demo/initForm3.jhtml', null, 'f73a952eefa2406c9327da6252c4ca79', '1', '0', null, '1', '表单', null, 3);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('e7bb35f24a634a759cef64d28411901f', '0.004.004.001', '存储过程调用', 'demo/procedure/init.jhtml', null, '3bb16fa3935c41bebe4d3fcf3c4ebd5c', '1', '0', null, '1', '杂项', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('e9de0eacf61a4aa6b1ed0c210fc209fe', '0.004.004.003', '页面组件复用', 'demo/initShare.jhtml', null, '3bb16fa3935c41bebe4d3fcf3c4ebd5c', '1', '0', null, '1', '杂项', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('f107450058a2438eb6ad9bf6a4d7e967', '0.001.001.002', '字典参数', 'system/dictionary/init.jhtml', null, '5fb994e71cb14a77891670990d7f554d', '1', '0', 'icon154.png', '1', '基础数据', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('f81608054a714b60adb0b1ed574c6b6c', '0.001.003.003', '用户与授权', 'system/user/init.jhtml', null, 'b656d6afbbe844d0a6626d0eb590643f', '1', '0', 'user6.png', '1', '组织与权限', null, 4);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('f84a495bca10403ebe8351d4737dfc72', '0.004.002.006', '容器布局', null, null, '6cab8b013c314b37aec7c4567d859fc8', '0', '0', null, '1', 'AOS UI组件库', null, 35);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('fd88d0de59024e4db81ead8510b6bd98', '0.001.002.003', '页面组件', 'system/page/init.jhtml', null, '0b99e9d118b54ee084d9e74bd72cdd1c', '1', '0', 'icon59.png', '1', '资源管理', null, 20);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('f405a849f27d4ddebf7f8a2dfbf30bea', '0.001.002.001', '功能模块', 'system/module/init.jhtml', null, '0b99e9d118b54ee084d9e74bd72cdd1c', '1', '0', 'icon75.png', '1', '资源管理', null, 10);
-insert into AOS_SYS_MODULE (id_, cascade_id_, name_, url_, hotkey_, parent_id_, is_leaf_, is_auto_expand_, icon_name_, status_, parent_name_, vector_, sort_no_)
+
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
 values ('f73a952eefa2406c9327da6252c4ca79', '0.004.002.001', '表单', null, null, '6cab8b013c314b37aec7c4567d859fc8', '0', '0', null, '1', 'AOS UI组件库', null, 20);
+insert into AOS_SYS_MODULE (ID_, CASCADE_ID_, NAME_, URL_, HOTKEY_, PARENT_ID_, IS_LEAF_, IS_AUTO_EXPAND_, ICON_NAME_, STATUS_, PARENT_NAME_, VECTOR_, SORT_NO_)
+values ('0443f506186146ebb2235149a406b9ae', '0.004.003.004', '综合实例④', 'demo/misc/initMisc4.jhtml', null, '33baf8c9948b47cfa54cd8d7a5e1753d', '1', '0', null, '1', '综合实例', null, 40);
 commit;
 prompt 57 records loaded
 prompt Loading AOS_SYS_MODULE_POST...
