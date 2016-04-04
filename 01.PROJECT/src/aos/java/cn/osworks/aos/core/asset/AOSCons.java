@@ -254,5 +254,22 @@ public interface AOSCons {
 		//物理删除
 		public static final String DELETE = "delete";
 	}
+	
+	/**
+	 * Cache对象前缀
+	 *
+	 */
+	public static  final class CACHE_PREFIX{
+		//全局参数
+		public static final String PARAM = "aos.cache.param.key_:";
+		//字典
+		public static final String DIC = "aos.cache.dic.key_:";
+		//组件各位授权
+		public static final String CMP_POST = "aos.cache.cmp.post.key_:";
+		//组件角色授权
+		public static final String CMP_ROLE = "aos.cache.cmp.role.key_:";
+		//组件用户授权
+		public static final String CMP_USER = "aos.cache.cmp.user.key_:";
+	}
 
 }

@@ -40,7 +40,8 @@ public final class ConnectionLogger extends BaseJdbcLogger implements Invocation
     super(statementLog);
     this.connection = conn;
     if (isDebugEnabled()) {
-      debug("Using Connection [" + conn + "]");
+      //意义不大，被注释
+      //trace("Using Connection [" + conn + "]");
     }
   }
 
@@ -50,7 +51,7 @@ public final class ConnectionLogger extends BaseJdbcLogger implements Invocation
       if ("prepareStatement".equals(method.getName())) {
         if (isDebugEnabled()) {
           //Preparing:
-          debug(AOSCons.CONSOLE_FLAG2 + removeBreakingWhitespace((String) params[0]));
+          debug(AOSCons.CONSOLE_FLAG2 + "SQL语句: " + removeBreakingWhitespace((String) params[0]));
         }        
         PreparedStatement stmt = (PreparedStatement) method.invoke(connection, params);
         stmt = PreparedStatementLogger.newInstance(stmt, getStatementLog());
@@ -58,7 +59,7 @@ public final class ConnectionLogger extends BaseJdbcLogger implements Invocation
       } else if ("prepareCall".equals(method.getName())) {
         if (isDebugEnabled()) {
           //Preparing:
-          debug(AOSCons.CONSOLE_FLAG2 + removeBreakingWhitespace((String) params[0]));
+          debug(AOSCons.CONSOLE_FLAG2 + "SQL语句: " + removeBreakingWhitespace((String) params[0]));
         }        
         PreparedStatement stmt = (PreparedStatement) method.invoke(connection, params);
         stmt = PreparedStatementLogger.newInstance(stmt, getStatementLog());

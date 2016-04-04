@@ -83,7 +83,7 @@ public final class ResultSetLogger extends BaseJdbcLogger implements InvocationH
 
   private void printColumnHeaders(ResultSetMetaData rsmd, int columnCount) throws SQLException {
     StringBuilder row = new StringBuilder();
-    row.append("Columns: ");
+    row.append("SQL字段: ");
     for (int i = 1; i <= columnCount; i++) {
       if (BLOB_TYPES.contains(rsmd.getColumnType(i))) {
         blobColumns.add(i);
@@ -92,12 +92,13 @@ public final class ResultSetLogger extends BaseJdbcLogger implements InvocationH
       row.append(colname);
       if (i != columnCount) row.append(", ");
     }
-    trace(row.toString());
+    //意义不大，被注释
+    //trace(row.toString());
   }
 
   private void printColumnValues(int columnCount) throws SQLException {
     StringBuilder row = new StringBuilder();
-    row.append(AOSCons.CONSOLE_FLAG1 + "row: ");
+    row.append(AOSCons.CONSOLE_FLAG1 + "SQL返回: ");
     for (int i = 1; i <= columnCount; i++) {
       String colname;
       try {
@@ -113,7 +114,7 @@ public final class ResultSetLogger extends BaseJdbcLogger implements InvocationH
       row.append(colname);
       if (i != columnCount) row.append(", ");
     }
-    trace(row.toString());
+    debug(row.toString());
   }
 
   /*

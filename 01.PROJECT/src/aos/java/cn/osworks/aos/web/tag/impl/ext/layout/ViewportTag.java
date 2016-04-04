@@ -49,7 +49,6 @@ public class ViewportTag extends ContainerTagSupport {
 		Dto tagDto = new TagDto();
 		super.pkgProperties(tagDto);
 		tagDto.put("centerCmpId", getCenterCmpId());
-		tagDto.println();
 		String jspString = mergeFileTemplate(EXTVM + "viewportTag.vm", tagDto);
 		try {
 			pageContext.getOut().write(jspString);

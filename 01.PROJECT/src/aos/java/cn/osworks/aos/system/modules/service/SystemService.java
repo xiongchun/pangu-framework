@@ -27,6 +27,7 @@ import cn.osworks.aos.system.dao.po.Aos_sys_orgPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_pagePO;
 import cn.osworks.aos.system.modules.dao.vo.ElementVO;
 import cn.osworks.aos.system.modules.dao.vo.UserInfoVO;
+import cn.osworks.aos.system.service.AOSCacheService;
 
 import com.google.common.collect.Lists;
 
@@ -47,6 +48,8 @@ public class SystemService {
 	private Aos_sys_orgMapper aos_sys_orgMapper;
 	@Autowired
 	private Aos_sys_moduleMapper aos_sys_moduleMapper;
+	@Autowired
+	private AOSCacheService aosCacheService;
 
 	/**
 	 * 获取用户的所有模块权限(用户+岗位+角色)
@@ -142,8 +145,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<ElementVO> getElementsByPost(Dto inDto) {
-		List<ElementVO> cmpList = sysDao.list("Auth.getElementsByPost", inDto);
-		return cmpList;
+		return aosCacheService.getElementsByPost(inDto);
 	}
 
 	/**
@@ -152,8 +154,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<ElementVO> getElementsByRole(Dto inDto) {
-		List<ElementVO> cmpList = sysDao.list("Auth.getElementsByRole", inDto);
-		return cmpList;
+		return aosCacheService.getElementsByRole(inDto);
 	}
 
 	/**
@@ -162,8 +163,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<ElementVO> getElementsByUser(Dto inDto) {
-		List<ElementVO> cmpList = sysDao.list("Auth.getElementsByUser", inDto);
-		return cmpList;
+		return aosCacheService.getElementsByUser(inDto);
 	}
 
 	/**
@@ -243,7 +243,7 @@ public class SystemService {
 	/**
 	 * 清除快捷菜单和浮动菜单的垃圾数据
 	 * 
-	 *
+	 * 
 	 * <p>
 	 * 1)、用户自定义菜单后，自定义菜单的权限被管理员收回则会产生垃圾数据。
 	 * 
@@ -277,8 +277,8 @@ public class SystemService {
 		inDto.put("is_leaf_", AOSCons.NO);
 		quickSys_modulePOs = sysDao.list("Auth.listUserQuickModuleSelected", inDto);
 		// 进行排序，先清理深度较深的树枝节点
-		//Java再排序规避DB兼容性问题
-		String jql2 = "SELECT * FROM :AOSList ORDER BY toNumber(id_) DESC"; 
+		// Java再排序规避DB兼容性问题
+		String jql2 = "SELECT * FROM :AOSList ORDER BY toNumber(id_) DESC";
 		quickSys_modulePOs = AOSListUtils.select(quickSys_modulePOs, Aos_sys_modulePO.class, jql2, null);
 		for (Aos_sys_modulePO aos_sys_modulePO : quickSys_modulePOs) {
 			inDto.put("module_id_", aos_sys_modulePO.getId_());

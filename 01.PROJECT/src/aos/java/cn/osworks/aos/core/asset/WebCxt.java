@@ -15,11 +15,11 @@ import cn.osworks.aos.core.typewrap.Dto;
 import cn.osworks.aos.core.typewrap.Dtos;
 import cn.osworks.aos.core.typewrap.impl.HashDto;
 import cn.osworks.aos.system.dao.mapper.Aos_sys_user_cfgMapper;
-import cn.osworks.aos.system.dao.mapper.Aos_sys_paramMapper;
-import cn.osworks.aos.system.dao.po.Aos_sys_user_cfgPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_dicPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_paramPO;
+import cn.osworks.aos.system.dao.po.Aos_sys_user_cfgPO;
 import cn.osworks.aos.system.modules.dao.vo.UserInfoVO;
+import cn.osworks.aos.system.service.AOSService;
 
 /**
  * <b>Web上下文</b>
@@ -235,6 +235,7 @@ public class WebCxt {
 		for (Aos_sys_dicPO aos_sys_dicPO : dicList) {
 			if (aos_sys_dicPO.getCode_().equals(code)) {
 				desc = aos_sys_dicPO.getDesc_();
+				break;
 			}
 		}
 		return desc;
@@ -252,16 +253,13 @@ public class WebCxt {
 	 * @return
 	 */
 	public static String getCfgByUser(HttpSession session, String key) {
-		String value = StringUtils.EMPTY;
-		Aos_sys_paramMapper aos_sys_paramMapper = (Aos_sys_paramMapper) AOSCxt.getBean("aos_sys_paramMapper");
-		Dto qDto = Dtos.newDto();
-		qDto.put("key_", key);
-		Aos_sys_paramPO aos_sys_paramPO = aos_sys_paramMapper.selectOne(qDto);
-		if (AOSUtils.isEmpty(aos_sys_paramPO)) {
-			return value;
+		AOSService aosService = (AOSService)AOSBeanLoader.getSpringBean("aosService");
+		String value = "";
+		Aos_sys_paramPO aos_sys_paramPO = aosService.getParamPOByParamKey(key);
+		if (aos_sys_paramPO != null) {
+			value = aos_sys_paramPO.getValue_();
 		}
 		// 如果用户信息为空，则直接返回系统参数
-		value = aos_sys_paramPO.getValue_();
 		UserInfoVO userInfoVO = getUserInfo(session);
 		if (AOSUtils.isEmpty(userInfoVO)) {
 			return value;

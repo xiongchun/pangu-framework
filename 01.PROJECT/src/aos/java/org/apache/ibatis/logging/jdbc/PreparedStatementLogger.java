@@ -25,6 +25,8 @@ import java.sql.ResultSet;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.reflection.ExceptionUtil;
 
+import cn.osworks.aos.core.asset.AOSCons;
+
 /*
  * PreparedStatement proxy to add logging
  */
@@ -41,7 +43,7 @@ public final class PreparedStatementLogger extends BaseJdbcLogger implements Inv
     try {
       if (EXECUTE_METHODS.contains(method.getName())) {
         if (isDebugEnabled()) {
-          debug("Parameters: " + getParameterValueString());
+          debug(AOSCons.CONSOLE_FLAG1 + "SQL参数: " + getParameterValueString());
         }
         clearColumnInfo();
         if ("executeQuery".equals(method.getName())) {

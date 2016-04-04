@@ -21,7 +21,7 @@ public class AOS {
 	public static void main(String[] args) throws Exception {
 		AOSServer aosServer = new AOSServer();
 		aosServer.setWebContext("/aos");
-		aosServer.setPort(10086);
+		aosServer.setPort(10080);
 		aosServer.start();
 	}
 }

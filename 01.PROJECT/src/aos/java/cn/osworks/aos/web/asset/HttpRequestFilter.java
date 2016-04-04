@@ -55,8 +55,8 @@ public class HttpRequestFilter implements Filter{
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		String requestUri = httpRequest.getRequestURI();
-		if (log.isDebugEnabled()) {
-			log.debug(AOSCons.CONSOLE_FLAG3 + "处理http请求: " + requestUri + " >> 参数列表: " + WebCxt.getParamAsDto(httpRequest));
+		if (log.isInfoEnabled()) {
+			log.info(AOSCons.CONSOLE_FLAG3 + "HTTP请求: " + requestUri + " >> 参数列表: " + WebCxt.getParamAsDto(httpRequest));
 		}
 		if (!enabled) {
 			chain.doFilter(httpRequest, httpResponse);
