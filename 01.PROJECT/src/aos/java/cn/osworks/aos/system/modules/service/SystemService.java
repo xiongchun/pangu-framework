@@ -27,7 +27,7 @@ import cn.osworks.aos.system.dao.po.Aos_sys_orgPO;
 import cn.osworks.aos.system.dao.po.Aos_sys_pagePO;
 import cn.osworks.aos.system.modules.dao.vo.ElementVO;
 import cn.osworks.aos.system.modules.dao.vo.UserInfoVO;
-import cn.osworks.aos.system.service.AOSCacheService;
+import cn.osworks.aos.system.service.ResourceCacheService;
 
 import com.google.common.collect.Lists;
 
@@ -49,7 +49,7 @@ public class SystemService {
 	@Autowired
 	private Aos_sys_moduleMapper aos_sys_moduleMapper;
 	@Autowired
-	private AOSCacheService aosCacheService;
+	private ResourceCacheService resourceCacheService;
 
 	/**
 	 * 获取用户的所有模块权限(用户+岗位+角色)
@@ -145,7 +145,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<ElementVO> getElementsByPost(Dto inDto) {
-		return aosCacheService.getElementsByPost(inDto);
+		return resourceCacheService.getElementsByPost(inDto);
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<ElementVO> getElementsByRole(Dto inDto) {
-		return aosCacheService.getElementsByRole(inDto);
+		return resourceCacheService.getElementsByRole(inDto);
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class SystemService {
 	 * @return
 	 */
 	public List<ElementVO> getElementsByUser(Dto inDto) {
-		return aosCacheService.getElementsByUser(inDto);
+		return resourceCacheService.getElementsByUser(inDto);
 	}
 
 	/**

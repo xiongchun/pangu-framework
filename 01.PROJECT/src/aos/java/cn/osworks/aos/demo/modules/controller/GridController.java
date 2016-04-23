@@ -18,6 +18,8 @@ import cn.osworks.aos.core.typewrap.Dtos;
 import cn.osworks.aos.demo.dao.mapper.Demo_accountMapper;
 import cn.osworks.aos.demo.dao.po.Demo_accountPO;
 
+import com.google.common.collect.Lists;
+
 /**
  * 标签库Grid组件演示控制器
  * 
@@ -171,6 +173,27 @@ public class GridController {
 			dto.println();
 		}
 		WebCxt.write(response, "后台已接收，请查看控制台。");
+	}
+	
+	/**
+	 * 可编辑表格下拉选择框服务器端数据源
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "listComboBoxData")
+	public void listComboBoxData(HttpServletRequest request, HttpServletResponse response) {
+		List<Dto> list = Lists.newArrayList();
+		Dto dto1 = Dtos.newDto("display", "男");
+		dto1.put("value", "1");
+		list.add(dto1);
+		Dto dto2 = Dtos.newDto("display", "女");
+		dto2.put("value", "2");
+		list.add(dto2);
+		Dto dto3 = Dtos.newDto("display", "未知");
+		dto3.put("value", "3");
+		list.add(dto3);
+		WebCxt.write(response, AOSJson.toJson(list));
 	}
 
 }

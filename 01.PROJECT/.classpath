@@ -68,7 +68,6 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/org.eclipse.jdt.core-3.7.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/velocity-1.7.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jstl-1.2.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-dbcp-1.4.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-pool-1.6.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/gentlyweb-utils-1.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/gson-2.2.4.jar"/>
@@ -86,7 +85,6 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-digester-2.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/iTextAsian-2.1.7.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/iTextAsianCmaps.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jdbc/mysql-connector-java-5.0.22.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/h2-1.4.189.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-beanutils-1.9.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-bpmn-converter-5.18.0.jar"/>
@@ -116,7 +114,13 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/ehcache-jgroupsreplication-1.7.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/ehcache-2.7.4.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jgroups-3.6.3.Final.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-dbcp-1.4.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jdbc/mysql-connector-java-5.1.37-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-cdi.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/c3p0-0.9.5.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/c3p0-oracle-thin-extras-0.9.5.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/mchange-commons-java-0.2.11.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/quartz-all-2.1.5.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>
 </classpath>

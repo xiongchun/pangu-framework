@@ -20,7 +20,7 @@
 						<aos:option value="4" display="中国建设银行" />
 						<aos:option value="5" display="中国工商银行" />
 					</aos:combobox>
-					<aos:combobox fieldLabel="字典数据源" name="card_type_" dicField="card_type_" columnWidth="0.49" />
+					<aos:combobox fieldLabel="字典数据源" name="card_type_"  dicField="card_type_" columnWidth="0.49" />
 					<aos:combobox fieldLabel="服务器数据源" name="name2" editable="false" columnWidth="0.5" url="listComboBoxData.jhtml" />
 					<aos:combobox fieldLabel="可输入" name="card_type_2_" dicField="card_type_" editable="true" columnWidth="0.49" />
 					<aos:combobox fieldLabel="下拉项多选" multiSelect="true" name="name2" columnWidth="0.99" url="listComboBoxData.jhtml" />

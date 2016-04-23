@@ -22,7 +22,7 @@ public class AOSService {
 	@Autowired
 	private Aos_sys_catalogMapper aos_sys_catalogMapper;
 	@Autowired
-	private AOSCacheService aosCacheService;
+	private ResourceCacheService resourceCacheService;
 
 	
 	/**
@@ -47,7 +47,7 @@ public class AOSService {
 	 *            参数键
 	 */
 	public Aos_sys_paramPO getParamPOByParamKey(String key_) {
-		return aosCacheService.getParamPOByParamKey(key_);
+		return resourceCacheService.getParamPOByParamKey(key_);
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class AOSService {
 	 * @return
 	 */
 	public List<Aos_sys_dicPO> getDicList(String dickey) {
-		return aosCacheService.getDicList(dickey);
+		return resourceCacheService.getDicList(dickey);
 	}
 	
 	/**

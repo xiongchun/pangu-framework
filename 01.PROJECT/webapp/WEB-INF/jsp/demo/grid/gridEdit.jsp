@@ -11,7 +11,7 @@
 	<aos:viewport layout="border">
 
 		<aos:gridpanel id="_g_account" region="north" url="listAccounts.jhtml" split="true" splitterBorder="1 0 1 0"
-			onrender="_g_account_query" pageSize="20" height="315">
+			onrender="_g_account_query" pageSize="20" height="315" >
 			<aos:docked>
 				<aos:dockeditem xtype="tbtext" text="信用卡账户信息① [行编辑模式]" />
 				<aos:dockeditem xtype="tbseparator" />
@@ -28,6 +28,7 @@
 			<aos:column header="流水号" dataIndex="id_" hidden="true" />
 			<aos:column header="信用卡号" dataIndex="card_id_" width="90" />
 			<aos:column header="卡类型" dataIndex="card_type_" rendererField="card_type_" width="60">
+			   <%-- 字典数据源 --%>
 				<aos:combobox dicField="card_type_" />
 			</aos:column>
 			<aos:column header="身份证号" dataIndex="id_no_" width="140" />
@@ -40,12 +41,17 @@
 			</aos:column>
 			<aos:column header="性别" dataIndex="sex_" rendererField="sex_" width="60">
 				<aos:combobox>
-					<%-- 也可以使用远程数据源和字典数据源 --%>
+					<%-- 客户端数据源 --%>
 					<aos:option value="1" display="男" />
 					<aos:option value="2" display="女" />
 					<aos:option value="3" display="人妖" />
 				</aos:combobox>
 			</aos:column>
+			<%-- 自定义服务器数据源
+			<aos:column header="性别2" dataIndex="sex_" rendererField="sex_" width="60">				
+			   <aos:combobox id="cb_sex" url="listComboBoxData.jhtml"  />
+			</aos:column>
+			--%>
 			<aos:column header="出生日期" dataIndex="birthday_" type="date" format="Y年m月d日" width="120">
 				<aos:datefield format="Y年m月d日" />
 			</aos:column>
@@ -114,6 +120,7 @@
 
 	</aos:viewport>
 	<script type="text/javascript">
+	
 		//加载表格数据
 		function _g_account_query() {
 			var params = {
@@ -121,6 +128,7 @@
 			};
 			_g_account_store.getProxy().extraParams = params;
 			_g_account_store.load();
+			//cb_sex_store.load();
 		}
 
 		function _g_account2_query() {
@@ -171,6 +179,7 @@
 			var card_type_ = e.record.data.card_type_;
 			editing = _g_account.getPlugin('id_plugin');
 			form = editing.editor.form;
+			//form.findField('sex_').setValue('1');
 			//根据当前行的数据控制行编辑器
 			if(card_type_ == '2'){
 				 AOS.read(form.findField('name_'));

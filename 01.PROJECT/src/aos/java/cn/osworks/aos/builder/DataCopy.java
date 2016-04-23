@@ -83,6 +83,15 @@ public class DataCopy {
 	    aos_sys_user_role(sysDao2);
 	}
 	
+	public static void test(SqlDao sysDao2) {
+		AOSUtils.info("正在复制表...");
+		Aos_sys_catalogMapper mapper = (Aos_sys_catalogMapper)AOSCxt.getBean("aos_sys_catalogMapper");
+		for (Aos_sys_catalogPO po :  mapper.list(Dtos.newDto())) {
+			sysDao2.insert("cn.osworks.aos.system.dao.mapper.Aos_sys_catalogMapper.insert", po);
+		}
+		AOSUtils.info("表复制完成。");
+	}
+	
 	public static void aos_sys_catalog(SqlDao sysDao2) {
 		AOSUtils.info("正在复制表...");
 		Aos_sys_catalogMapper mapper = (Aos_sys_catalogMapper)AOSCxt.getBean("aos_sys_catalogMapper");

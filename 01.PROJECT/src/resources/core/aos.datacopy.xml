@@ -27,20 +27,22 @@
 			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driver}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-        <property name="initialSize" value="10" />
-		<property name="maxActive" value="30" />
-		<property name="maxIdle" value="15" />
-		<property name="minIdle" value="5" />
-		<property name="removeAbandoned" value="true" />
-		<property name="removeAbandonedTimeout" value="60" />
-		<property name="maxWait" value="10000" />
-		<property name="logAbandoned" value="true" />
-	</bean>
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+			<property name="driverClass" value="${jdbc.driver}" />
+			<property name="jdbcUrl" value="${jdbc.url}" />
+			<property name="user" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+			<property name="minPoolSize" value="10" />
+			<property name="maxPoolSize" value="60" />
+			<property name="maxIdleTime" value="1800" />
+			<property name="acquireIncrement" value="3" />
+			<property name="maxStatements" value="1000" />
+			<property name="initialPoolSize" value="10" />
+			<property name="idleConnectionTestPeriod" value="60" />
+			<property name="acquireRetryAttempts" value="30" />
+			<property name="breakAfterAcquireFailure" value="true" />
+			<property name="testConnectionOnCheckout" value="false" />
+	 </bean>
 
 	<!-- 单一数据源事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -68,20 +70,20 @@
 	</bean>
 	
 	<!-- 同步到SQLServer 
-	<bean id="dataSource2" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-		<property name="url" value="jdbc:sqlserver://localhost:1433;database=aos" />
-		<property name="username" value="sa" />
+	<bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="jdbcUrl" value="jdbc:sqlserver://localhost:1433;database=aos" />
+		<property name="user" value="sa" />
 		<property name="password" value="111111" />
 	</bean>
 	-->
 	 
 	
 	<!-- 同步到Oracle  -->
-	<bean id="dataSource2" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
-		<property name="username" value="aos" />
+	<bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="oracle.jdbc.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
+		<property name="user" value="aos" />
 		<property name="password" value="aos" />
 	</bean>
 	

@@ -10,10 +10,8 @@
 <config key="codekey" value="It's AOS!" />
 <!-- 是否在系统启动时使用当前配置的加密密钥重新生成用户密码密文。有效值： 0 | 1。缺省值：0。建议：修改密钥时将此值改为1，服务器启动一次后将此配置项改为缺省值0，避免每次启动都重新生成密文。 -->
 <config key="regen_pwd" value="0" />
-<!-- 资源(配置参数、字典、权限等)缓存。1：Ehcache；2：Redis -->
-<config key="aosResourceCache" value="1" />
-<!-- 会话缓存服务。1：Ehcache；2：Redis -->
-<config key="aosSessionCache" value="1" />
+<!-- 会话缓存实现方式。1：Ehcache；2：Redis -->
+<config key="session_cache_type" value="1" />
 
 <!-- 测试用例检测 -->
 <config key="testkey1" value="It's AOS!" />

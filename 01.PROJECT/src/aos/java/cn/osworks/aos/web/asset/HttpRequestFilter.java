@@ -11,7 +11,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
@@ -22,17 +21,16 @@ import cn.osworks.aos.core.asset.AOSUtils;
 import cn.osworks.aos.core.asset.WebCxt;
 import cn.osworks.aos.system.modules.dao.vo.UserInfoVO;
 
-
 /**
  * <b>请求过滤器</b>
  * 
  * @author OSWorks-XC
  */
-public class HttpRequestFilter implements Filter{
-	
+public class HttpRequestFilter implements Filter {
+
 	private Log log = LogFactory.getLog(HttpRequestFilter.class);
-	private Boolean enabled; //过滤器开关
-	private String[] excludes; //忽略过滤配置
+	private Boolean enabled; // 过滤器开关
+	private String[] excludes; // 忽略过滤配置
 
 	/**
 	 * 初始化
@@ -55,9 +53,8 @@ public class HttpRequestFilter implements Filter{
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		String requestUri = httpRequest.getRequestURI();
-		if (log.isInfoEnabled()) {
-			log.info(AOSCons.CONSOLE_FLAG3 + "HTTP请求: " + requestUri + " >> 参数列表: " + WebCxt.getParamAsDto(httpRequest));
-		}
+		String logString  = AOSCons.CONSOLE_FLAG3 +  "HTTP请求: " + requestUri + " >> 参数列表: " + WebCxt.getParamAsDto(httpRequest);
+		log.info(logString);
 		if (!enabled) {
 			chain.doFilter(httpRequest, httpResponse);
 			return;
@@ -77,14 +74,15 @@ public class HttpRequestFilter implements Filter{
 		}
 		chain.doFilter(httpRequest, httpResponse);
 	}
-	
+
 	/**
 	 * 检查URI例外
 	 * 
-	 * @param uri 待检查的URI
+	 * @param uri
+	 *            待检查的URI
 	 * @return true: 例外
 	 */
-	private boolean isExclude(String uri){
+	private boolean isExclude(String uri) {
 		boolean out = false;
 		for (String exclude : excludes) {
 			if (StringUtils.indexOfIgnoreCase(uri, exclude) != -1) {

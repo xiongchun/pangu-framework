@@ -8,7 +8,6 @@ import javax.servlet.jsp.JspException;
 
 import org.apache.commons.lang3.StringUtils;
 
-
 import cn.osworks.aos.core.asset.AOSJson;
 import cn.osworks.aos.core.asset.AOSListUtils;
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -86,7 +85,9 @@ public class ComboBoxFieldTag extends FormItemTagSupport {
 			setQueryMode("local");
 		}
 		if (AOSUtils.isEmpty(getEmptyText())) {
-			setEmptyText(WebCxt.getCfgOfDB("combobox_emptytext"));
+			if (!StringUtils.equalsIgnoreCase(getReadOnly(), TRUE)&&!StringUtils.equalsIgnoreCase(getDisabled(), TRUE)) {
+				setEmptyText(WebCxt.getCfgOfDB("combobox_emptytext"));
+			}
 		}
 	}
 
@@ -200,6 +201,7 @@ public class ComboBoxFieldTag extends FormItemTagSupport {
 	 * 释放资源
 	 */
 	public void release() {
+		setEmptyText(null);
 		super.release();
 	}
 
