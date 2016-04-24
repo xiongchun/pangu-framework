@@ -25,7 +25,7 @@
         <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
     </bean>
     <!-- 流程服务 -->
-    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService"/>
+    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService" />
     <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService"/>
     <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService"/>
     <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>

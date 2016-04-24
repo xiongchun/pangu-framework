@@ -36,15 +36,15 @@
 	 </bean>
 
 	<!-- 平台缺省数据源 JDBC事务管理器 -->
-	<bean id="transactionManager.sys" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<!-- 注解驱动的声明式事务管理 -->
-	<tx:annotation-driven transaction-manager="transactionManager.sys" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- 平台缺省数据源 SqlSessionFactory配置 -->
-	<bean id="sqlSessionFactory.sys" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 请将com.mycorp.mysystem.**改为你的项目扫描路径 -->
 		<property name="typeAliasesPackage" value="cn.osworks.aos;com.mycorp.mysystem" />
@@ -64,25 +64,5 @@
 	<bean id="sysDao" class="cn.osworks.aos.core.dao.SqlDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory.sys" />
 	</bean>
-
-	<!-- ================= 演示模块使用的数据源>> ======================= -->
-	<bean id="dataSource.demo" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-		<property name="jdbcUrl" value="jdbc:h2:./webapp/WEB-INF/db.h2/aos" />
-	</bean>
-	<bean id="sqlSessionFactory.demo" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource.demo" />
-		<property name="typeAliasesPackage" value="cn.osworks.aos.demo" />
-		<property name="mapperLocations" value="classpath:cn/osworks/aos/demo/**/*Mapper.xml" />
-		<property name="configLocation" value="classpath:core/aos.dao.cfg.xml" />
-	</bean>
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="cn.osworks.aos.demo" />
-		<property name="annotationClass" value="cn.osworks.aos.demo.dao.Mapper" />
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory.demo" />
-	</bean>
-	<bean id="demoDao" class="cn.osworks.aos.core.dao.SqlDao">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory.demo" />
-	</bean>
-	<!-- ================= <<演示模块使用的数据源 ======================= -->
 
 </beans>
