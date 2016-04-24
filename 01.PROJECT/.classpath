@@ -85,7 +85,6 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-digester-2.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/iTextAsian-2.1.7.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreport/iTextAsianCmaps.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/h2-1.4.189.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-beanutils-1.9.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-bpmn-converter-5.18.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-bpmn-layout-5.18.0.jar"/>
