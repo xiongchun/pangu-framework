@@ -16,14 +16,14 @@ import cn.osworks.aos.demo.dao.po.Demo_orgPO;
  * @author OSWorks-XC
  */
 @SuppressWarnings("all")
-public class DemoDataHub {
+public class DemoDataGenerator {
 
 	static {
 
 	}
 
 	public static void main(String[] args) {
-		//generateDemo_accountTableData(1000);
+		//generateDemo_accountTableData(1);
 		generateDemo_orgTableData();
 	}
 
@@ -57,14 +57,14 @@ public class DemoDataHub {
 	private static void generateDemo_orgTableData() {
 		Demo_orgMapper mapper = (Demo_orgMapper) AOSCxt.getBean("demo_orgMapper");
 		Demo_orgPO demo_orgPO = new Demo_orgPO();
-		demo_orgPO.setId_("7");
+		demo_orgPO.setId_("5");
 		demo_orgPO.setCascade_id_("0.003.002");
-		demo_orgPO.setName_("云南分行昆明支行");
+		demo_orgPO.setName_("云南分行大理支行");
 		demo_orgPO.setParent_id_("3");
 		demo_orgPO.setIs_leaf_(1);
 		demo_orgPO.setIs_auto_expand_(0);
 		demo_orgPO.setCreate_user_id_("1");
-		demo_orgPO.setCreate_time_(AOSUtils.getDate());
+		demo_orgPO.setCreate_time_(AOSUtils.getDateTime());
 		mapper.insert(demo_orgPO);
 	}
 
