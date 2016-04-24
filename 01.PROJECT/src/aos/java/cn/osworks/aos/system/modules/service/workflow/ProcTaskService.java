@@ -23,7 +23,7 @@ public class ProcTaskService {
 	@Autowired
 	private RuntimeService runtimeServic;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	
 	/**
 	 * 查询流程任务列表
@@ -32,7 +32,7 @@ public class ProcTaskService {
 	 * @return
 	 */
 	public List<Dto>listProcTasks(Dto inDto){
-/*		List<Dto> list = sysDao.list("Workflow.listProcTasksPage", inDto);
+/*		List<Dto> list = sqlDao.list("Workflow.listProcTasksPage", inDto);
 		for (Dto dto : list) {
 			if (AOSUtils.isEmpty(dto.getString("assignee_"))) {
 				dto.put("proctask_status_", DicCons.PROCTASK_STATUS_DQS);

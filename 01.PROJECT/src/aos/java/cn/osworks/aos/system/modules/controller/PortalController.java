@@ -22,7 +22,7 @@ import cn.osworks.aos.core.dao.SqlDao;
 public class PortalController {
 	
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	
 	/**
 	 * 页面初始化

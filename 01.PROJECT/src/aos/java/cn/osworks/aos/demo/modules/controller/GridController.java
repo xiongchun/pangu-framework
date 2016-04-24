@@ -30,7 +30,7 @@ import com.google.common.collect.Lists;
 public class GridController {
 	
 	@Autowired
-    private SqlDao demoDao;
+    private SqlDao sqlDao;
 	@Autowired
 	private Demo_accountMapper demo_accountMapper;
 
@@ -104,7 +104,7 @@ public class GridController {
 	@RequestMapping(value = "listAccounts4ClientPage")
 	public void listAccounts4ClientPage(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
-		List<Demo_accountPO> list = demoDao.list("Demo.listAccounts4Client", inDto);
+		List<Demo_accountPO> list = sqlDao.list("Demo.listAccounts4Client", inDto);
 		WebCxt.write(response, AOSJson.toGridJson(list));
 	}
 

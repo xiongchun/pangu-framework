@@ -27,7 +27,7 @@ public class ProcInstService {
 	@Autowired
 	private RuntimeService runtimeServic;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	
 	/**
 	 * 查询流程实例列表
@@ -36,7 +36,7 @@ public class ProcInstService {
 	 * @return
 	 */
 	public List<Dto>listProcInsts(Dto inDto){
-/*		List<Dto> list = sysDao.list("Workflow.listProcInstsPage", inDto);
+/*		List<Dto> list = sqlDao.list("Workflow.listProcInstsPage", inDto);
 		for (Dto dto : list) {
 			if (AOSUtils.isEmpty(dto.getString("end_time_"))) {
 				dto.put("procinst_status_", DicCons.PROCINST_STATUS_RUNNING);

@@ -36,7 +36,7 @@ public class ModuleController {
 	@Autowired
 	private ModuleService moduleService;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	
 	/**
 	 * 页面初始化
@@ -62,7 +62,7 @@ public class ModuleController {
 	public void listModules(HttpServletRequest request, HttpServletResponse response) {
 		Dto qDto = Dtos.newDto(request);
 		qDto.setOrder("sort_no_");
-		List<Aos_sys_modulePO> aos_sys_modulePOs = sysDao.list("Resource.listAos_sys_modulePOs", qDto);
+		List<Aos_sys_modulePO> aos_sys_modulePOs = sqlDao.list("Resource.listAos_sys_modulePOs", qDto);
 		String outString = AOSJson.toGridJson(aos_sys_modulePOs, aos_sys_modulePOs.size());
 		WebCxt.write(response, outString);
 	}

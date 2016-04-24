@@ -24,7 +24,7 @@ import cn.osworks.aos.system.dao.po.Aos_log_sessionPO;
 public class LogService {
 
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private Aos_log_sessionMapper aos_log_sessionMapper;
 
@@ -35,7 +35,7 @@ public class LogService {
 	 */
 	public List<Aos_log_sessionPO> listSessions(Dto qDto) {
 		qDto.setOrder("create_time_ desc");
-		List<Aos_log_sessionPO> outList = sysDao.list("Log.listSessionsPage", qDto);
+		List<Aos_log_sessionPO> outList = sqlDao.list("Log.listSessionsPage", qDto);
 		return outList;
 	}
 
@@ -72,7 +72,7 @@ public class LogService {
 	 */
 	public void deleteSessionLogs(Dto inDto) {
 		if (!StringUtils.equals(AOSCons.JDBC_EXECUTE_ONLYREAD, AOSXmlOptionsHandler.getValue("jdbc_execute"))) {
-			sysDao.delete("Log.deleteSessionLogs",inDto);
+			sqlDao.delete("Log.deleteSessionLogs",inDto);
 		}
 	}
 }

@@ -35,7 +35,7 @@ import com.google.common.collect.Lists;
 public class AOSCacheService {
 	
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private Aos_sys_paramMapper aos_sys_paramMapper;
 	@Autowired
@@ -141,7 +141,7 @@ public class AOSCacheService {
 	public List<ElementVO> getElementsByPost(Dto inDto) {
 		List<ElementVO> cmpList = Lists.newArrayList();
 		if (AOSUtils.isEmpty(inDto.getString("is_tag_"))) {
-			cmpList = sysDao.list("Auth.getElementsByPost", inDto);
+			cmpList = sqlDao.list("Auth.getElementsByPost", inDto);
 		}else {
 			Cache cache = AOSCxt.getCache(AOSCxt.CACHE.AOSRESOURCECACHE);
 			String keyString = AOSCons.CACHE_PREFIX.CMP_POST + mergeElementCatcheKey(inDto);
@@ -149,7 +149,7 @@ public class AOSCacheService {
 			if (element != null) {
 				cmpList = (List<ElementVO>)element.getObjectValue();
 			}else {
-				cmpList = sysDao.list("Auth.getElementsByPost", inDto);
+				cmpList = sqlDao.list("Auth.getElementsByPost", inDto);
 				Element newElement = new Element(keyString, cmpList);
 				cache.put(newElement);
 			}
@@ -166,7 +166,7 @@ public class AOSCacheService {
 	public List<ElementVO> getElementsByRole(Dto inDto) {
 		List<ElementVO> cmpList = Lists.newArrayList();
 		if (AOSUtils.isEmpty(inDto.getString("is_tag_"))) {
-			cmpList = sysDao.list("Auth.getElementsByRole", inDto);
+			cmpList = sqlDao.list("Auth.getElementsByRole", inDto);
 		}else {
 			Cache cache = AOSCxt.getCache(AOSCxt.CACHE.AOSRESOURCECACHE);
 			String keyString = AOSCons.CACHE_PREFIX.CMP_ROLE + mergeElementCatcheKey(inDto);
@@ -174,7 +174,7 @@ public class AOSCacheService {
 			if (element != null) {
 				cmpList = (List<ElementVO>)element.getObjectValue();
 			}else {
-				cmpList = sysDao.list("Auth.getElementsByRole", inDto);
+				cmpList = sqlDao.list("Auth.getElementsByRole", inDto);
 				Element newElement = new Element(keyString, cmpList);
 				cache.put(newElement);
 			}
@@ -191,7 +191,7 @@ public class AOSCacheService {
 	public List<ElementVO> getElementsByUser(Dto inDto) {
 		List<ElementVO> cmpList = Lists.newArrayList();
 		if (AOSUtils.isEmpty(inDto.getString("is_tag_"))) {
-			cmpList = sysDao.list("Auth.getElementsByUser", inDto);
+			cmpList = sqlDao.list("Auth.getElementsByUser", inDto);
 		}else {
 			Cache cache = AOSCxt.getCache(AOSCxt.CACHE.AOSRESOURCECACHE);
 			String keyString = AOSCons.CACHE_PREFIX.CMP_USER + mergeElementCatcheKey(inDto);
@@ -199,7 +199,7 @@ public class AOSCacheService {
 			if (element != null) {
 				cmpList = (List<ElementVO>)element.getObjectValue();
 			}else {
-				cmpList = sysDao.list("Auth.getElementsByUser", inDto);
+				cmpList = sqlDao.list("Auth.getElementsByUser", inDto);
 				Element newElement = new Element(keyString, cmpList);
 				cache.put(newElement);
 			}

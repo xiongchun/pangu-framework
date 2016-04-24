@@ -29,7 +29,7 @@ import cn.osworks.aos.system.dao.po.Aos_sys_orgPO;
 public class MiscController {
 
 	@Autowired
-    private SqlDao demoDao;
+    private SqlDao sqlDao;
 	@Autowired
 	private Demo_accountMapper demo_accountMapper;
 	@Autowired

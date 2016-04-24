@@ -31,7 +31,7 @@ public class ProcDeployController {
 	@Autowired
 	private ProcDeployService procDeployService;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 
 	/**
 	 * 页面初始化

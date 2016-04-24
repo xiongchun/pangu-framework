@@ -39,7 +39,7 @@ public class OrgService {
 	@Autowired
 	private Aos_sys_orgMapper aos_sys_orgMapper;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private Aos_sys_postMapper aos_sys_postMapper;
 	@Autowired
@@ -105,7 +105,7 @@ public class OrgService {
 			Dto dto = Dtos.newDto();
 			dto.put("parent_id_", updatePO.getId_());
 			dto.put("pareant_name_", updatePO.getName_());
-			sysDao.update("Auth.updateAos_sys_orgByParent_id_", dto);
+			sqlDao.update("Auth.updateAos_sys_orgByParent_id_", dto);
 		}
 		// 更新节点
 		aos_sys_orgMapper.updateByKey(updatePO);
@@ -219,18 +219,18 @@ public class OrgService {
 	    
 	    for (Aos_sys_postPO aos_sys_postPO : aos_sys_postPOs) {
 			//删除岗位-菜单关联表
-	    	sysDao.delete("Auth.deleteAos_sys_module_postByPost_id_", Dtos.newDto("post_id_", aos_sys_postPO.getId_()));
+	    	sqlDao.delete("Auth.deleteAos_sys_module_postByPost_id_", Dtos.newDto("post_id_", aos_sys_postPO.getId_()));
 	    	//删除岗位-用户关联表
-	    	sysDao.delete("Auth.deleteAos_sys_user_postByPost_id_", Dtos.newDto("post_id_", aos_sys_postPO.getId_()));
+	    	sqlDao.delete("Auth.deleteAos_sys_user_postByPost_id_", Dtos.newDto("post_id_", aos_sys_postPO.getId_()));
 	    	//删除岗位自己
 	    	aos_sys_postMapper.deleteByKey(aos_sys_postPO.getId_());
 		}
 	    
 	    for (Aos_sys_userPO aos_sys_userPO : aos_sys_userPOs) {
 	    	//删除用户-菜单关联表
-	    	sysDao.delete("Auth.deleteAos_sys_module_userByUser_id_", aos_sys_userPO.getId_());
+	    	sqlDao.delete("Auth.deleteAos_sys_module_userByUser_id_", aos_sys_userPO.getId_());
 	    	//删除用户-岗位关联表
-	    	sysDao.delete("Auth.deleteAos_sys_user_postByUser_id_", aos_sys_userPO.getId_());
+	    	sqlDao.delete("Auth.deleteAos_sys_user_postByUser_id_", aos_sys_userPO.getId_());
 	    	//判断对象删除规则(物理删除，逻辑删除)			
 			String user_obj_del_mode_ = WebCxt.getCfgOfDB("user_obj_del_mode_", AOSCons.OBJECT_DELETE_RULE.UPDATE);
 	    	if (StringUtils.equalsIgnoreCase(user_obj_del_mode_, AOSCons.OBJECT_DELETE_RULE.DELETE)) {

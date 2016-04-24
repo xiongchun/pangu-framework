@@ -41,7 +41,7 @@ public class ProcDeployService {
 	@Autowired
 	private RepositoryService repositoryService;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private WorkflowService workflowService;
 	@Autowired

@@ -58,7 +58,7 @@
 	</bean>
      
 	<!-- 缺省全局通用数据访问对象，缺省数据访问对象连接到dataSource Bean配置的数据源 -->
-	<bean id="sysDao" class="cn.osworks.aos.core.dao.SqlDao">
+	<bean id="sqlDao" class="cn.osworks.aos.core.dao.SqlDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
@@ -93,7 +93,7 @@
 		<property name="mapperLocations" value="classpath:**/*Mapper.xml" />
 		<property name="configLocation" value="classpath:core/aos.dao.cfg.xml" />
 	</bean>
-	<bean id="sysDao2" class="cn.osworks.aos.core.dao.SqlDao">
+	<bean id="sqlDao2" class="cn.osworks.aos.core.dao.SqlDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory2" />
 	</bean>
     

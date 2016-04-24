@@ -32,7 +32,7 @@ public class CatalogService {
 	@Autowired
 	private Aos_sys_catalogMapper aos_sys_catalogMapper;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	
 	/**
 	 * 获取分类树节点集合
@@ -143,7 +143,7 @@ public class CatalogService {
 		AOSUtils.copyProperties(qDto, aos_sys_catalogPO);
 		//删除选中节点及其所有子孙节点
 		Aos_sys_catalogPO curPO = aos_sys_catalogMapper.selectByKey(aos_sys_catalogPO.getId_());
-		sysDao.delete("MasterData.deleteCatalogByCascadeId", Dtos.newDto("cascade_id_", curPO.getCascade_id_()));
+		sqlDao.delete("MasterData.deleteCatalogByCascadeId", Dtos.newDto("cascade_id_", curPO.getCascade_id_()));
 		Dto countDto = Dtos.newDto();
 		countDto.put("parent_id_", aos_sys_catalogPO.getParent_id_());
 		// 检测删除节点的父节点是否还有子节点，如果没有则将其更新为叶子节点

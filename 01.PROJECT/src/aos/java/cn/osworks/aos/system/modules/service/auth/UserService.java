@@ -54,7 +54,7 @@ import com.google.common.collect.Lists;
 public class UserService {
 
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private Aos_sys_orgMapper aos_sys_orgMapper;
 	@Autowired
@@ -192,7 +192,7 @@ public class UserService {
 			Aos_sys_orgPO aos_sys_orgPO = aos_sys_orgMapper.selectByKey(aos_sys_userPO.getOrg_id_());
 			aos_sys_userPO.setOrg_cascade_id_(aos_sys_orgPO.getCascade_id_());
 			// 删除用户-岗位关联表
-			sysDao.delete("Auth.deleteAos_sys_user_postByUser_id_", aos_sys_userPO.getId_());
+			sqlDao.delete("Auth.deleteAos_sys_user_postByUser_id_", aos_sys_userPO.getId_());
 		}
 		// 更新用户基本信息
 		aos_sys_userMapper.updateByKey(aos_sys_userPO);
@@ -257,15 +257,15 @@ public class UserService {
 	@Transactional
 	private void resetWhenDeleteUser(String user_id_, String user_obj_del_mode_) {
 		// 删除用户-角色关联表
-		sysDao.delete("Auth.deleteAos_sys_user_roleByUser_id_", Dtos.newDto("user_id_", user_id_));
+		sqlDao.delete("Auth.deleteAos_sys_user_roleByUser_id_", Dtos.newDto("user_id_", user_id_));
 		// 删除用户-岗位关联表
-		sysDao.delete("Auth.deleteAos_sys_user_postByUser_id_", user_id_);
+		sqlDao.delete("Auth.deleteAos_sys_user_postByUser_id_", user_id_);
 		// 删除用户-菜单关联表
-		sysDao.delete("Auth.deleteAos_sys_module_userByUser_id_", user_id_);
+		sqlDao.delete("Auth.deleteAos_sys_module_userByUser_id_", user_id_);
 		// 删除用户-Mac菜单关联表
-		sysDao.delete("Auth.deleteAos_sys_module_user_macstyleByUser_id_", user_id_);
+		sqlDao.delete("Auth.deleteAos_sys_module_user_macstyleByUser_id_", user_id_);
 		// 删除用户-页面元素关联表
-		sysDao.delete("Auth.deleteAos_sys_element_grantByUser_id_", user_id_);
+		sqlDao.delete("Auth.deleteAos_sys_element_grantByUser_id_", user_id_);
 		if (StringUtils.equalsIgnoreCase(user_obj_del_mode_, AOSCons.OBJECT_DELETE_RULE.DELETE)) {
 			// 删除用户配置表
 			aos_sys_user_cfgMapper.deleteByKey(user_id_);
@@ -350,7 +350,7 @@ public class UserService {
 			aos_sys_userPO.setOrg_cascade_id_(aos_sys_orgPO.getCascade_id_());
 			aos_sys_userMapper.updateByKey(aos_sys_userPO);
 			// 删除用户-岗位关联表
-			sysDao.delete("Auth.deleteAos_sys_user_postByUser_id_", id_);
+			sqlDao.delete("Auth.deleteAos_sys_user_postByUser_id_", id_);
 		}
 	}
 
@@ -370,7 +370,7 @@ public class UserService {
 				qDto.put("org_cascade_id_", "0");
 			}
 		}
-		List<Dto> userInfos = sysDao.list("Auth.listUserInfosPage", qDto);
+		List<Dto> userInfos = sqlDao.list("Auth.listUserInfosPage", qDto);
 		return userInfos;
 	}
 
@@ -386,7 +386,7 @@ public class UserService {
 		delDto.put("user_id_", pDto.getString("user_id_"));
 		delDto.put("grant_type_", pDto.getString("grant_type_"));
 		// 每次授权都将历史数据清零
-		sysDao.delete("Auth.deleteAos_sys_module_userByDto", delDto);
+		sqlDao.delete("Auth.deleteAos_sys_module_userByDto", delDto);
 		String[] selections = pDto.getRows();
 		Aos_sys_module_userPO aos_sys_module_userPO = new Aos_sys_module_userPO();
 		for (String module_id_ : selections) {
@@ -475,7 +475,7 @@ public class UserService {
 	public Dto getModuleTree4Selected(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		inDto.put("status_", DicCons.ENABLED_YES);
-		List<Aos_sys_modulePO> aos_sys_modulePOs = sysDao.list("Auth.listUserModuleSelected", inDto);
+		List<Aos_sys_modulePO> aos_sys_modulePOs = sqlDao.list("Auth.listUserModuleSelected", inDto);
 		List<TreeNode> treeNodes = moduleService.toTreeModal(aos_sys_modulePOs);
 		String jsonString = TreeBuilder.build(treeNodes);
 		outDto.setStringA(jsonString);
@@ -594,7 +594,7 @@ public class UserService {
 	 * @return
 	 */
 	public List<Dto> listGrantedPostsOfUser(Dto inDto) {
-		List<Dto> grantedList = sysDao.list("Auth.listGrantedPostsOfUser", inDto);
+		List<Dto> grantedList = sqlDao.list("Auth.listGrantedPostsOfUser", inDto);
 		return grantedList;
 	}
 
@@ -615,7 +615,7 @@ public class UserService {
 		} else {
 			inDto.put("creater_org_id_", inDto.getUserInfo().getOrg_id_());
 		}
-		List<Dto> roleInfos = sysDao.list("Auth.listRoleInfos4UserGrant", inDto);
+		List<Dto> roleInfos = sqlDao.list("Auth.listRoleInfos4UserGrant", inDto);
 		return roleInfos;
 	}
 
@@ -626,7 +626,7 @@ public class UserService {
 	 * @return
 	 */
 	public List<Dto> listGrantedRolesOfUser(Dto inDto) {
-		List<Dto> grantedList = sysDao.list("Auth.listGrantedRolesOfUser", inDto);
+		List<Dto> grantedList = sqlDao.list("Auth.listGrantedRolesOfUser", inDto);
 		return grantedList;
 	}
 

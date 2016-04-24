@@ -32,7 +32,7 @@ import com.google.common.collect.Lists;
 public class CoderService {
 
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 
 	/**
 	 * 列出表字段

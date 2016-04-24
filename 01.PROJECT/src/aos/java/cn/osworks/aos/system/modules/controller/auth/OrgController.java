@@ -31,7 +31,7 @@ public class OrgController {
 	@Autowired
 	private OrgService orgService;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private SystemService systemService;
 
@@ -73,7 +73,7 @@ public class OrgController {
 	public void listOrgs(HttpServletRequest request, HttpServletResponse response) {
 		Dto qDto = Dtos.newDto(request);
 		qDto.setOrder("sort_no_");
-		List<Aos_sys_orgPO> aos_sys_orgPOs = sysDao.list("Auth.listAos_sys_orgPOsPage", qDto);
+		List<Aos_sys_orgPO> aos_sys_orgPOs = sqlDao.list("Auth.listAos_sys_orgPOsPage", qDto);
 		String outString = AOSJson.toGridJson(aos_sys_orgPOs, qDto.getPageTotal());
 		WebCxt.write(response, outString);
 	}

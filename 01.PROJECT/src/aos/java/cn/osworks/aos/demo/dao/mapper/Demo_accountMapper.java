@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import cn.osworks.aos.core.annotation.Mapper;
 import cn.osworks.aos.core.typewrap.Dto;
-import cn.osworks.aos.demo.dao.Mapper;
 import cn.osworks.aos.demo.dao.po.Demo_accountPO;
 
 /**

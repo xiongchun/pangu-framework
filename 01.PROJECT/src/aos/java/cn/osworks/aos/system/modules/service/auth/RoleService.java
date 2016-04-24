@@ -43,7 +43,7 @@ public class RoleService {
 	@Autowired
 	private Aos_sys_orgMapper aos_sys_orgMapper;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private Aos_sys_moduleMapper aos_sys_moduleMapper;
 	@Autowired
@@ -101,11 +101,11 @@ public class RoleService {
 				continue;
 			}
 			// 删除用户-角色关联表
-			sysDao.delete("Auth.deleteAos_sys_user_roleByRole_id_", Dtos.newDto("role_id_", id_));
+			sqlDao.delete("Auth.deleteAos_sys_user_roleByRole_id_", Dtos.newDto("role_id_", id_));
 			// 删除角色-菜单关联表
-			sysDao.delete("Auth.deleteAos_sys_module_roleByRole_id_", Dtos.newDto("role_id_", id_));
+			sqlDao.delete("Auth.deleteAos_sys_module_roleByRole_id_", Dtos.newDto("role_id_", id_));
 			//删除角色-页面元素关联表
-	    	sysDao.delete("Auth.deleteAos_sys_element_grantByRole_id_", id_);
+	    	sqlDao.delete("Auth.deleteAos_sys_element_grantByRole_id_", id_);
 			// 删除角色自己
 			aos_sys_roleMapper.deleteByKey(id_);
 			del++;
@@ -209,7 +209,7 @@ public class RoleService {
 	public Dto getModuleTree4Selected(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		inDto.put("status_", DicCons.ENABLED_YES);
-		List<Aos_sys_modulePO> aos_sys_modulePOs = sysDao.list("Auth.listRoleModuleSelected", inDto);
+		List<Aos_sys_modulePO> aos_sys_modulePOs = sqlDao.list("Auth.listRoleModuleSelected", inDto);
 		List<TreeNode> treeNodes = Lists.newArrayList();
 		for (Aos_sys_modulePO aos_sys_modulePO : aos_sys_modulePOs) {
 			TreeNode treeNode = new TreeNode();
@@ -246,7 +246,7 @@ public class RoleService {
 		delDto.put("role_id_", pDto.getString("role_id_"));
 		delDto.put("grant_type_", pDto.getString("grant_type_"));
 		// 每次授权都将历史数据清零
-		sysDao.delete("Auth.deleteAos_sys_module_roleByDto", delDto);
+		sqlDao.delete("Auth.deleteAos_sys_module_roleByDto", delDto);
 		String[] selections = pDto.getRows();
 		Aos_sys_module_rolePO aos_sys_module_rolePO = new Aos_sys_module_rolePO();
 		for (String module_id_ : selections) {
@@ -307,7 +307,7 @@ public class RoleService {
 	 * @return
 	 */
 	public List<Dto> listGrantedUsersOfRole(Dto inDto){
-		List<Dto> grantedList = sysDao.list("Auth.listGrantedUsersOfRole", inDto);
+		List<Dto> grantedList = sqlDao.list("Auth.listGrantedUsersOfRole", inDto);
 		return grantedList;
 	}
 	

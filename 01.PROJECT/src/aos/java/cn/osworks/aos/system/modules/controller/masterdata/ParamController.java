@@ -53,7 +53,7 @@ public class ParamController {
 	public void listParams(HttpServletRequest request, HttpServletResponse response) {
 		Dto qDto = Dtos.newDto(request);
 		qDto.setOrder("id_ DESC");
-		List<Dto> list = AOSCxt.sysDao.list("MasterData.listParamInfos4Page", qDto);
+		List<Dto> list = AOSCxt.sqlDao.list("MasterData.listParamInfos4Page", qDto);
 		String outString = AOSJson.toGridJson(list, qDto.getPageTotal());
 		WebCxt.write(response, outString);
 	}

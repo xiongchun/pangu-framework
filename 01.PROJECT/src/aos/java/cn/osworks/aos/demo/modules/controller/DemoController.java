@@ -36,13 +36,11 @@ public class DemoController {
 	private static Log log = LogFactory.getLog(DemoController.class);
 
 	@Autowired
-	private SqlDao demoDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private SystemService systemService;
 	@Autowired
 	private Demo_accountMapper demo_accountMapper;
-	@Autowired
-	private SqlDao sysDao;
 
 	/**
 	 * 按钮页面初始化
@@ -178,7 +176,7 @@ public class DemoController {
 	public void listComboBoxData(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request); 
 		inDto.put("parent_id_", "0");
-		List<Dto> list = demoDao.list("Demo.listComboBoxData", inDto);
+		List<Dto> list = sqlDao.list("Demo.listComboBoxData", inDto);
 		WebCxt.write(response, AOSJson.toJson(list));
 	}
 	
@@ -191,7 +189,7 @@ public class DemoController {
 	@RequestMapping(value = "listComboBoxData2")
 	public void listComboBoxData2(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
-		List<Dto> list = demoDao.list("Demo.listComboBoxData", inDto);
+		List<Dto> list = sqlDao.list("Demo.listComboBoxData", inDto);
 		WebCxt.write(response, AOSJson.toJson(list));
 	}
 	
@@ -251,7 +249,7 @@ public class DemoController {
 	@RequestMapping(value = "listModules")
 	public void listModules(HttpServletRequest request, HttpServletResponse response) {
 		Dto qDto = Dtos.newDto(request);
-		List<Dto> treeNodes = sysDao.list("Demo.listModules", qDto);
+		List<Dto> treeNodes = sqlDao.list("Demo.listModules", qDto);
 		String outString = AOSJson.toJson(treeNodes);
 		WebCxt.write(response, outString);
 	}

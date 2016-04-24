@@ -26,7 +26,7 @@ public class DBType {
 	/**
 	 * 获取数据库产品类型标识
 	 * 
-	 * @param sysDao
+	 * @param sqlDao
 	 * @return
 	 * @throws SQLException
 	 */

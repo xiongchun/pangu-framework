@@ -37,7 +37,7 @@ public class ModuleService {
 	@Autowired
 	private Aos_sys_moduleMapper aos_sys_moduleMapper;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private Aos_sys_page_elMapper aos_sys_page_elMapper;
 
@@ -94,7 +94,7 @@ public class ModuleService {
 			Dto dto = Dtos.newDto();
 			dto.put("parent_id_", updatePO.getId_());
 			dto.put("parent_name_", updatePO.getName_());
-			sysDao.update("Resource.updateModuleByParent_id_", dto);
+			sqlDao.update("Resource.updateModuleByParent_id_", dto);
 		}
 		if (!updatePO.getParent_id_().equals(aos_sys_modulePO.getParent_id_())) {
 			//outDto.setAppCode(1); // 是否更新了上级菜单
@@ -227,20 +227,20 @@ public class ModuleService {
 				//删除该模块下的页面元素的授权资源
 				List<Aos_sys_page_elPO> aos_sys_page_elPOs = aos_sys_page_elMapper.list(Dtos.newDto("module_id_", aos_sys_modulePO2.getId_()));
 				for (Aos_sys_page_elPO aos_sys_page_elPO : aos_sys_page_elPOs) {
-					sysDao.delete("Resource.deleteAos_sys_page_el_grant", aos_sys_page_elPO.getId_());
+					sqlDao.delete("Resource.deleteAos_sys_page_el_grant", aos_sys_page_elPO.getId_());
 				}
 				// 删除该模块下的页面元素
-				sysDao.delete("Resource.deleteAos_sys_page_elPOByModule_id_", aos_sys_modulePO2.getId_());
+				sqlDao.delete("Resource.deleteAos_sys_page_elPOByModule_id_", aos_sys_modulePO2.getId_());
 				//删除该模块下的页面
-				sysDao.delete("Resource.deleteAos_sys_page", aos_sys_modulePO2.getId_());
+				sqlDao.delete("Resource.deleteAos_sys_page", aos_sys_modulePO2.getId_());
 				
 				/*删除该模块的页面授权信息  没有对父节点进行级联处理，有可能产生垃圾数据 
 				应该级联判断删除本节点后他的父节点是否为空的树枝节点，如果是则级联删除，但是逻辑实在太复杂了，得考虑多种情况
 				目前尚我找到一个高效便捷的算法。所以垃圾数据忽略了。*/
-				sysDao.delete("Resource.deleteAos_sys_module_user", aos_sys_modulePO2.getId_());
-				sysDao.delete("Resource.deleteAos_sys_module_user_nav", aos_sys_modulePO2.getId_());
-				sysDao.delete("Resource.deleteAos_sys_module_role", aos_sys_modulePO2.getId_());
-				sysDao.delete("Resource.deleteAos_sys_module_post", aos_sys_modulePO2.getId_());
+				sqlDao.delete("Resource.deleteAos_sys_module_user", aos_sys_modulePO2.getId_());
+				sqlDao.delete("Resource.deleteAos_sys_module_user_nav", aos_sys_modulePO2.getId_());
+				sqlDao.delete("Resource.deleteAos_sys_module_role", aos_sys_modulePO2.getId_());
+				sqlDao.delete("Resource.deleteAos_sys_module_post", aos_sys_modulePO2.getId_());
 				
 			}
 		}

@@ -28,7 +28,7 @@ import com.google.common.collect.Lists;
 public class IndexService {
 	
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private SystemService systemService;
 	
@@ -42,8 +42,8 @@ public class IndexService {
 		List<Dto> cardDtos = Lists.newArrayList();
 		//超级用户不做任何限制
 		if (StringUtils.equals(DicCons.USER_TYPE_SUPER, userInfoVO.getType_())) {
-			inDto.put("fnLength", DBDialectUtils.fnLength(sysDao.getDatabaseId()));
-			cardDtos = sysDao.list("Auth.getLeftNavCradListBasedRoot", inDto);
+			inDto.put("fnLength", DBDialectUtils.fnLength(sqlDao.getDatabaseId()));
+			cardDtos = sqlDao.list("Auth.getLeftNavCradListBasedRoot", inDto);
 		}else {
 			inDto.put("user_id_", inDto.getUserInfo().getId_());
 			//获取语义节点ID为5的那层菜单作为一级导航  查询卡片标题
@@ -68,7 +68,7 @@ public class IndexService {
 		List<Aos_sys_modulePO> aos_sys_modulePOs = Lists.newArrayList();
 		if (DicCons.USER_TYPE_SUPER.equals(userInfoVO.getType_())) {
 			//超级用户不做任何限制
-			aos_sys_modulePOs = sysDao.list("Auth.getModuleTreeBasedRoot", inDto);
+			aos_sys_modulePOs = sqlDao.list("Auth.getModuleTreeBasedRoot", inDto);
 			outDto.setStringA(toTreeModal(aos_sys_modulePOs));
 		}else {
 			inDto.put("user_id_", inDto.getUserInfo().getId_());

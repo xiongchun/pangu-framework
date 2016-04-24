@@ -37,7 +37,7 @@ public class CoderController {
 	private CoderService coderService;
 
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 
 	/**
 	 * 主页面初始化

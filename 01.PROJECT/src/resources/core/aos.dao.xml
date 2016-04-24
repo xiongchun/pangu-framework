@@ -57,12 +57,12 @@
 		<!-- 请将com.mycorp.mysystem.**改为你的项目扫描路径 -->
 		<property name="basePackage" value="cn.osworks.aos;com.mycorp.mysystem" />
 		<property name="annotationClass" value="cn.osworks.aos.core.annotation.Mapper" />
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory.sys" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
 	<!-- 平台缺省数据源的SQL通用访问接口 -->
-	<bean id="sysDao" class="cn.osworks.aos.core.dao.SqlDao">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory.sys" />
+	<bean id="sqlDao" class="cn.osworks.aos.core.dao.SqlDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
 </beans>

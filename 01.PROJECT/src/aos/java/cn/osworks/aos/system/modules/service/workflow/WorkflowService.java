@@ -18,7 +18,7 @@ import cn.osworks.aos.core.dao.SqlDao;
 public class WorkflowService {
 
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private TaskService taskService;
 	@Autowired
@@ -46,7 +46,7 @@ public class WorkflowService {
 	@Transactional
 	public void unclaim(String id_) {
 		taskService.unclaim(id_);
-		sysDao.update("Workflow.update_claim_time_when_unclaim", id_);
+		sqlDao.update("Workflow.update_claim_time_when_unclaim", id_);
 	}
 	
 	

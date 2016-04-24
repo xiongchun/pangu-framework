@@ -34,7 +34,7 @@ public class ProcedureController {
 	@Autowired
 	private MiscService miscService;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private Aos_sys_moduleMapper aos_sys_moduleMapper;
 
@@ -58,7 +58,7 @@ public class ProcedureController {
 	public void callProc1(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
 		// 范例只做了Oracle存储过程的演示，其它数据库调用方法是一样的。自己实现相应DB的存储过程即可。
-		if (!StringUtils.equalsIgnoreCase(DBType.ORACLE, sysDao.getDatabaseId())) {
+		if (!StringUtils.equalsIgnoreCase(DBType.ORACLE, sqlDao.getDatabaseId())) {
 			BigDecimal balance_ = inDto.getBigDecimal("number1_").subtract(inDto.getBigDecimal("number2_"));
 			inDto.put("outstring",
 			AOSUtils.merge("你好,  {0}。你的可用余额为：{1} 元。", inDto.getString("name_"), String.valueOf(balance_)));
@@ -80,7 +80,7 @@ public class ProcedureController {
 	public void callProc2(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
 		// 范例只做了Oracle存储过程的演示，其它数据库调用方法是一样的。自己实现相应DB的存储过程即可。
-		if (!StringUtils.equalsIgnoreCase(DBType.ORACLE, sysDao.getDatabaseId())) {
+		if (!StringUtils.equalsIgnoreCase(DBType.ORACLE, sqlDao.getDatabaseId())) {
 			List<Aos_sys_modulePO> list = aos_sys_moduleMapper.like(inDto);
 			WebCxt.write(response, AOSJson.toGridJson(list));
 		}else {

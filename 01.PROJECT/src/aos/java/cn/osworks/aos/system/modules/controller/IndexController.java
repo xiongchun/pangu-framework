@@ -60,7 +60,7 @@ public class IndexController {
 	@Autowired
 	private SystemService systemService;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private LogService logService;
 

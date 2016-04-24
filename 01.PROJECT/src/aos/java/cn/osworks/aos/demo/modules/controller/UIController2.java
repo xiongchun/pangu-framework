@@ -35,7 +35,7 @@ import com.google.common.collect.Lists;
 public class UIController2 {
 	
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private Aos_sys_moduleMapper aos_sys_moduleMapper;
 
@@ -138,7 +138,7 @@ public class UIController2 {
 	public void listTreeNodes(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Dto queryDto = Dtos.newDto(request);
 		// queryDto.put("az02a3", queryDto.getString("node"));
-		List<Dto> list = sysDao.list("Cases.selectAz02POs", queryDto);
+		List<Dto> list = sqlDao.list("Cases.selectAz02POs", queryDto);
 		// 对原始集合进行加工，变为UI树节点能识别的属性。也可以直接在sql语句上加工
 		for (Dto dto : list) {
 			dto.put("id", dto.getString("az02a0"));
@@ -244,7 +244,7 @@ public class UIController2 {
 	@RequestMapping(value = "listTreeGridNodes")
 	public void listTreeGridNodes(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Dto queryDto = Dtos.newDto(request);
-		List<?> list = sysDao.list("Cases.selectAz02POs", queryDto);
+		List<?> list = sqlDao.list("Cases.selectAz02POs", queryDto);
 		// 对原始集合进行加工，变为UI树节点能识别的属性。也可以直接在sql语句上加工
 		for (int i = 0; i < list.size(); i++) {
 			Dto dto = (Dto) list.get(i);

@@ -28,7 +28,7 @@ public class IconService {
 	@Autowired
 	private Aos_sys_iconMapper aos_sys_iconMapper;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 
 	/**
 	 * 同步图标
@@ -50,7 +50,7 @@ public class IconService {
 		path = path + "/webapp/static/icon";
 		File dirFile = new File(path);
 		File[] files = dirFile.listFiles();
-		sysDao.delete("Builder.deleteAos_sys_iconByDto", Dtos.newDto("type_", DicCons.SMALL_FILE_ICON));
+		sqlDao.delete("Builder.deleteAos_sys_iconByDto", Dtos.newDto("type_", DicCons.SMALL_FILE_ICON));
 		for (File file : files) {
 			if (file.isFile()) {
 				String fileName = file.getName();
@@ -79,7 +79,7 @@ public class IconService {
 		path = path + "/webapp/static/icon/big64";
 		File dirFile = new File(path);
 		File[] files = dirFile.listFiles();
-		sysDao.delete("Builder.deleteAos_sys_iconByDto", Dtos.newDto("type_", DicCons.BIG_FILE_ICON));
+		sqlDao.delete("Builder.deleteAos_sys_iconByDto", Dtos.newDto("type_", DicCons.BIG_FILE_ICON));
 		for (File file : files) {
 			if (file.isFile()) {
 				String fileName = file.getName();

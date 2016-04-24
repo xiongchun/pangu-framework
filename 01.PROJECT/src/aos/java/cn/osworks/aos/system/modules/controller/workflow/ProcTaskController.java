@@ -29,7 +29,7 @@ import cn.osworks.aos.system.modules.service.workflow.ProcTaskService;
 public class ProcTaskController {
 
     @Autowired
-    private SqlDao sysDao;
+    private SqlDao sqlDao;
     @Autowired
     private TaskService taskService;
     @Autowired

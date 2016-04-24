@@ -37,7 +37,7 @@ public class PageController {
 	@Autowired
 	private PageService pageService;
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired
 	private ModuleService moduleService;
 

@@ -21,7 +21,7 @@ import cn.osworks.aos.system.dao.po.Aos_sys_orgPO;
 public class MiscService {
 
 	@Autowired
-	private SqlDao sysDao;
+	private SqlDao sqlDao;
 	@Autowired 
 	private Aos_sys_orgMapper aos_sys_orgMapper;
 	
@@ -55,7 +55,7 @@ public class MiscService {
 	 * @return
 	 */
 	public List<Dto> listParams(Dto inDto){
-		List<Dto> outList = sysDao.list("MasterData.listParamInfos4Page", inDto);
+		List<Dto> outList = sqlDao.list("MasterData.listParamInfos4Page", inDto);
 		return outList;
 	}
 
@@ -67,7 +67,7 @@ public class MiscService {
 	 */
 	@Transactional
 	public Dto callProc1(Dto inDto) {
-		sysDao.call("Demo.aos_proc_demo", inDto);
+		sqlDao.call("Demo.aos_proc_demo", inDto);
 		// 入参和出参都包装在了inDto。直接返回即可。
 		return inDto;
 	}
@@ -80,7 +80,7 @@ public class MiscService {
 	 */
 	@Transactional
 	public List<Dto> callProc2(Dto inDto) {
-		sysDao.call("Demo.aos_proc_demo2", inDto);
+		sqlDao.call("Demo.aos_proc_demo2", inDto);
 		@SuppressWarnings("unchecked")
 		List<Dto> outList = (List<Dto>) inDto.getList("cur_list_");
 		// Oracle游标返回的结果集对象中的属性Key不能和其他sql一样通过拦截器统一转换为小写。所以如果前台需要小写的话，在这里显式转换一下。
