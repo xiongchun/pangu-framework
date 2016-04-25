@@ -98,7 +98,7 @@ public final class ResultSetLogger extends BaseJdbcLogger implements InvocationH
 
   private void printColumnValues(int columnCount) throws SQLException {
     StringBuilder row = new StringBuilder();
-    row.append(AOSCons.CONSOLE_FLAG1 + "SQL返回: ");
+    row.append(AOSCons.CONSOLE_FLAG1);
     for (int i = 1; i <= columnCount; i++) {
       String colname;
       try {
