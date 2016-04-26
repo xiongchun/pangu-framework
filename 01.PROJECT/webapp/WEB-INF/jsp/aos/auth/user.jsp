@@ -511,7 +511,7 @@
                     user_id_: AOS.selectone(_g_user).data.id_
                 };
                 _g_cmpofuser_store.getProxy().extraParams = params;
-                _g_cmpofuser_store.load();
+                _g_cmpofuser_store.loadPage();
                 _g_cmpofuser_load_first = false;
             }
 
@@ -590,7 +590,7 @@
                     params.module_id_ = record.raw.id;
                 }
                 _g_cmp_store.getProxy().extraParams = params;
-                _g_cmp_store.load({
+                _g_cmp_store.loadPage(1,{
                     callback: function (records) {
                         if (records.length === 0) {
                             if (flag !== 1) AOS.tip('此功能模块没有绑定的页面元素，不能进行页面元素授权。');
@@ -730,7 +730,7 @@
                     params.org_id_ = '${dept_.id_}';
                 }
                 _g_user_store.getProxy().extraParams = params;
-                _g_user_store.load();
+                _g_user_store.loadPage(1);
             }
 
             //刷新组织树
@@ -1169,7 +1169,7 @@
                     params.org_id_ = '${dept_.id_}';
                 }
                 _g_post_store.getProxy().extraParams = params;
-                _g_post_store.load();
+                _g_post_store.loadPage(1);
             }
 
             //查询用户岗位已授权列表
@@ -1179,7 +1179,7 @@
                     user_id_: AOS.selectone(_g_user).data.id_
                 };
                 _g_post2_store.getProxy().extraParams = params;
-                _g_post2_store.load();
+                _g_post2_store.loadPage(1);
             }
 
             //保存用户岗位授权信息
@@ -1254,7 +1254,7 @@
                     user_id_: AOS.selectone(_g_user).data.id_
                 };
                 _g_role_store.getProxy().extraParams = params;
-                _g_role_store.load();
+                _g_role_store.loadPage(1);
             }
 
             //查询用户角色授权窗口角色列表(已授权)
@@ -1264,7 +1264,7 @@
                     user_id_: AOS.selectone(_g_user).data.id_
                 };
                 _g_role2_store.getProxy().extraParams = params;
-                _g_role2_store.load();
+                _g_role2_store.loadPage(1);
             }
 
             //保存用户角色授权信息

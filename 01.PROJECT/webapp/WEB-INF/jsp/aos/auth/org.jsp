@@ -23,7 +23,7 @@
 				<aos:menuitem  text="刷新" onclick="_t_org_refresh" icon="refresh.png" />
 			</aos:menu>
 		</aos:treepanel>
-		<aos:gridpanel id="_g_org" url="listOrgs.jhtml" autoLoad="true" region="center" onrender="_g_org_query"
+		<aos:gridpanel id="_g_org" url="listOrgs.jhtml" autoLoad="true" region="center" onrender="_g_org_query" 
 			bodyBorder="1 0 1 0" forceFit="false" onitemdblclick="_w_org_u_show" >
 			<aos:docked forceBoder="0 0 1 0">
 				<aos:dockeditem text="新增" tooltip="新增组织" onclick="_w_org_show" icon="add.png" />
@@ -168,7 +168,7 @@
 				params.cascade_id_ = '${dept_.cascade_id_}';				
 			}
 			_g_org_store.getProxy().extraParams = params;
-			_g_org_store.load({
+			_g_org_store.loadPage(1,{
 		    callback : function(a) {
 		    	if(!AOS.empty(record)){
 		    		   var g_record = _g_org_store.find('id_', record.data.id);
@@ -262,7 +262,7 @@
 								cascade_id_:'0'
 						};
 						_g_org_store.getProxy().extraParams = params;
-						_g_org_store.load();
+						_g_org_store.loadPage(1);
 					}else{
 						_t_org_refresh();
 						_g_org_store.reload();

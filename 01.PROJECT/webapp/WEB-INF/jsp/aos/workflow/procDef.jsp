@@ -171,7 +171,7 @@
                	name_: procdef_name_.getValue()
                };
                _g_procdef_store.getProxy().extraParams = params;
-               _g_procdef_store.load();
+               _g_procdef_store.loadPage(1);
            }
 
            //刷新分类树

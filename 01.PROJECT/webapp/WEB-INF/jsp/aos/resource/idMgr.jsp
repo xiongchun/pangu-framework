@@ -164,7 +164,7 @@
 					name_ : _name_.getValue()
 			};
 			_g_id_store.getProxy().extraParams = params;
-			_g_id_store.load();
+			_g_id_store.loadPage(1);
 		 }
         
         //新增ID保存

@@ -64,7 +64,7 @@
 					params.tablename = record.raw.a;
 				}
 				_g_dataobj_store.getProxy().extraParams = params;
-				_g_dataobj_store.load();
+				_g_dataobj_store.loadPage(1);
 			}
 
 			//刷新分类树

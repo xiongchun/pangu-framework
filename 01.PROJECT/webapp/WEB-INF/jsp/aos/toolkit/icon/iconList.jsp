@@ -83,7 +83,7 @@
                     type_: ${type_}
                 };
 			_icons_store.getProxy().extraParams = params;
-			_icons_store.load();
+			_icons_store.loadPage(1);
 		}
 
 		//加载完毕

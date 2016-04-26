@@ -156,14 +156,14 @@
 			}
 			var params = AOS.getValue('_f_query');
 			_g_org_store.getProxy().extraParams = params;
-			_g_org_store.load();
+			_g_org_store.loadPage(1);
 		}
 		
 		//加载组织结构表格②数据
 		function _g_org_query2() {
 			var params = AOS.getValue('_f_query2');
 			_g_org2_store.getProxy().extraParams = params;
-			_g_org2_store.load();
+			_g_org2_store.loadPage(1);
 		}
 		
 		//加载参数配置表数据
@@ -172,12 +172,12 @@
                     keyorvalue: _keyorvalue.getValue()
                 };
                 _g_param_store.getProxy().extraParams = params;
-                _g_param_store.load();			
+                _g_param_store.loadPage(1);			
 		}
 		
 		//加载账户信息表格数据
 		function _g_account_query() {
-			_g_account_store.load();
+			_g_account_store.loadPage(1);
 		}
 		
 		//表格单击事件

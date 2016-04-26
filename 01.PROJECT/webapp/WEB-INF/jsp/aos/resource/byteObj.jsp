@@ -197,7 +197,7 @@
                     params.catalog_cascade_id_ = record.raw.cascade_id_;
                 }
                 _g_byteobj_store.getProxy().extraParams = params;
-                _g_byteobj_store.load();
+                _g_byteobj_store.loadPage(1);
             }
 
             //新增流文件保存(注：文件上传操作不能使用AOS.Ajax()方法，只能使用Form自带的submit()函数)。

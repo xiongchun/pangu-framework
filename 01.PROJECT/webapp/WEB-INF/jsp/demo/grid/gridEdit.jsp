@@ -127,16 +127,16 @@
 				name_ : _name_.getValue()
 			};
 			_g_account_store.getProxy().extraParams = params;
-			_g_account_store.load();
+			_g_account_store.loadPage(1);
 			//cb_sex_store.load();
 		}
 
 		function _g_account2_query() {
-			_g_account2_store.load();
+			_g_account2_store.loadPage(1);
 		}
 
 		function _g_account3_query() {
-			_g_account3_store.load();
+			_g_account3_store.loadPage(1);
 		}
 
 		//监听编辑事件

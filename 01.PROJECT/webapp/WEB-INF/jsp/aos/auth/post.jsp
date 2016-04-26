@@ -347,7 +347,7 @@
 	    		params.module_id_  = record.raw.id;
 	    	}
 	    	_g_cmp_store.getProxy().extraParams = params;
-	    	_g_cmp_store.load({
+	    	_g_cmp_store.loadPage(1,{
 				callback : function(records) {
 					if(records.length === 0){
 						if(flag !== 1) AOS.tip('此功能模块没有绑定的页面元素，不能进行页面元素授权。');
@@ -433,7 +433,7 @@
 	  				hotkey : _hotkey_user2.getValue()
 	  			};
 			_g_user2_store.getProxy().extraParams = params;
-			_g_user2_store.load();
+			_g_user2_store.loadPage(1);
 		}
 		
 		//查询岗位用户授权窗口授权用户列表
@@ -450,7 +450,7 @@
 				params.org_id_ = '${dept_.id_}';
 			}
 			_g_user_store.getProxy().extraParams = params;
-			_g_user_store.load();
+			_g_user_store.loadPage(1);
 		}
 		
 		//保存岗位用户授权信息
@@ -608,7 +608,7 @@
 				params.org_id_ = '${dept_.id_}';
 			}
 			_g_post_store.getProxy().extraParams = params;
-			_g_post_store.load();
+			_g_post_store.loadPage(1);
 		}
 		
 	    //刷新组织树

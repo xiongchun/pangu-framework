@@ -202,7 +202,7 @@
                     params.catalog_cascade_id_ = record.raw.cascade_id_;
                 }
                 _g_index_store.getProxy().extraParams = params;
-                _g_index_store.load({
+                _g_index_store.loadPage(1,{
                     callback: function (records) {
                         _g_dic_store.removeAll();
                         if (_first_load && records.length > 0) {
@@ -224,7 +224,7 @@
                     params.dic_index_id_ = record.data.id_;
                 }
                 _g_dic_store.getProxy().extraParams = params;
-                _g_dic_store.load();
+                _g_dic_store.loadPage();
             }
 
             //删除数据字典对照

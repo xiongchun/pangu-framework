@@ -74,7 +74,7 @@
 				params : params,
 				ok : function(data) {
 					_g_proc_store.proxy.data = data;
-					_g_proc_store.load({
+					_g_proc_store.loadPage(1,{
 						callback : function() {
 							AOS.unmask();
 						}

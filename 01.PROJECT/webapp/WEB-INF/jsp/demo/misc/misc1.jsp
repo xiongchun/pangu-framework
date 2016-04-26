@@ -90,7 +90,7 @@
 		function _g_org_query() {
 			var params = AOS.getValue('_f_query');
 			_g_org_store.getProxy().extraParams = params;
-			_g_org_store.load();
+			_g_org_store.loadPage(1);
 		}
 		
 		//窗口弹出事件监听

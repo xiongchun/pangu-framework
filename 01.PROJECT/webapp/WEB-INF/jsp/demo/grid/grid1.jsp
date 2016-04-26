@@ -41,7 +41,7 @@
 			};
 			//这个Store的命名规则为：表格ID+"_store"。
 			_g_account_store.getProxy().extraParams = params;
-			_g_account_store.load();
+			_g_account_store.loadPage(1);
 		}
 
 		//加载表格数据2  可以动态变更表格加载数据的url（很少用到）
@@ -53,7 +53,7 @@
 			_g_account_store.getProxy().url = 'listAccounts.jhtml';
 			//这个Store的命名规则为：表格ID+"_store"。
 			_g_account_store.getProxy().extraParams = params;
-			_g_account_store.load();
+			_g_account_store.loadPage(1);
 		}
         
 		//获取表格当前行数的API

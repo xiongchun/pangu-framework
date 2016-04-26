@@ -40,7 +40,7 @@
 					query_key_:query_key_.getValue()
 			};
 			_g_session_store.getProxy().extraParams = params;
-			_g_session_store.load();
+			_g_session_store.loadPage(1);
 		}
 		
 		//按钮列

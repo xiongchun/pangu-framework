@@ -107,12 +107,12 @@
 
 		//加载center表格数据
 		function _g_center_query() {
-			_g_center_store.load();
+			_g_center_store.loadPage(1);
 		}
 
 		//加载west表格数据
 		function _g_west_query() {
-			_g_west_store.load();
+			_g_west_store.loadPage(1);
 		}
 
 		//刷新west表格数据
@@ -126,7 +126,7 @@
 				name_ : _name_.getValue()
 			};
 			_g_center_store.getProxy().extraParams = params;
-			_g_north_store.load();
+			_g_north_store.loadPage(1);
 		}
 
 		//表格单击事件

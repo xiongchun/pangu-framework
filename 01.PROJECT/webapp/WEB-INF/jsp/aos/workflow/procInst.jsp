@@ -73,7 +73,7 @@
 	        	name_: AOS.getValue('_proc_name_')
 	        };
 	        _g_procdef_store.getProxy().extraParams = params;
-	        _g_procdef_store.load({
+	        _g_procdef_store.loadPage(1,{
                 callback: function () {
                 	_g_inst_query();
                 }
@@ -91,7 +91,7 @@
 	        	params.proc_def_id_ = record.data.proc_def_id_;
 	        }
 			_g_inst_store.getProxy().extraParams = params;
-			_g_inst_store.load();
+			_g_inst_store.loadPage(1);
 		}
 
 		//挂起

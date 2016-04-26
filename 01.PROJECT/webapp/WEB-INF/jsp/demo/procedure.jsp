@@ -45,7 +45,7 @@
 			};
 			//这个Store的命名规则为：表格ID+"_store"。
 			_g_module_store.getProxy().extraParams = params;
-			_g_module_store.load();
+			_g_module_store.loadPage(1);
 		}
 
 		//调用存储过程1

@@ -56,7 +56,7 @@
 	<script type="text/javascript">
 		//加载表格数据
 		function _g_account_query() {
-			_g_account_store.load();
+			_g_account_store.loadPage(1);
 		}
 
 		//生成HTML报表

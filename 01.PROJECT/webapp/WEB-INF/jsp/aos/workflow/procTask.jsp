@@ -45,7 +45,7 @@
 				name_ : AOS.getValue('name_')
 			};
 			_g_task_store.getProxy().extraParams = params;
-			_g_task_store.load();
+			_g_task_store.loadPage(1);
 		}
 		
 		//设置候选人

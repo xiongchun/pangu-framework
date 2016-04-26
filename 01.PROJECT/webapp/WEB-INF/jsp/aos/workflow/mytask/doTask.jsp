@@ -74,7 +74,7 @@
 	        	name_: AOS.getValue('_task_name_')
 	        };
 	        _g_todo_store.getProxy().extraParams = params;
-	        _g_todo_store.load();
+	        _g_todo_store.loadPage(1);
 	    }
 	    
 	    //查询待签收任务列表
@@ -83,7 +83,7 @@
 	        		name_: AOS.getValue('_task_name_2_')
 	        };
 	        _g_claim_store.getProxy().extraParams = params;
-	        _g_claim_store.load();
+	        _g_claim_store.loadPage(1);
 	    }
     
 	    //弹出任务办理页面

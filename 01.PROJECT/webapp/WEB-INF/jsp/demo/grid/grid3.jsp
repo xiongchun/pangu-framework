@@ -41,7 +41,7 @@
 				url : 'listAccounts4ClientPage.jhtml',
 				ok : function(data) {
 					_g_account_store.proxy.data = data;
-					_g_account_store.load({
+					_g_account_store.loadPage(1,{
 						callback : function() {
 							AOS.unmask();
 						}

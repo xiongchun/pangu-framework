@@ -81,7 +81,7 @@
 					name_ : _name.getValue()
 				};
 			 _g_dao_store.getProxy().extraParams = params;
-			 _g_dao_store.load();
+			 _g_dao_store.loadPage(1);
 		}
 		
 		//数据表的selectionchange事件

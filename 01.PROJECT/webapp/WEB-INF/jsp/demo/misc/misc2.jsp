@@ -139,7 +139,7 @@
 	<script type="text/javascript">
 		//加载center表格数据
 		function _g_center_query() {
-			_g_center_store.load();
+			_g_center_store.loadPage(1);
 		}
 
 		//表格单击事件

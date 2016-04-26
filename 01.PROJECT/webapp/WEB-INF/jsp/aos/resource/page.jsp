@@ -312,7 +312,7 @@
 					params.module_id_ = record.data.id;
 				}
 				_g_page_store.getProxy().extraParams = params;
-				_g_page_store.load();
+				_g_page_store.loadPage(1);
 			}
     
 			//弹出选择所属模块窗口：新增
@@ -387,7 +387,7 @@
 					params.module_id_ = record.data.id;
 				}
 				_g_element_store.getProxy().extraParams = params;
-				_g_element_store.load();
+				_g_element_store.loadPage(1);
 			}
 		    
 		    //查询页面元素列表
@@ -399,7 +399,7 @@
 				params.page_id_ = record_page_.data.id_;
 				params.module_id_ = record_page_.data.module_id_;
 				_g_element_store.getProxy().extraParams = params;
-				_g_element_store.load();
+				_g_element_store.loadPage(1);
 			}
 			
 			//刷新菜单树

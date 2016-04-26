@@ -135,7 +135,7 @@
                     params.catalog_cascade_id_ = record.raw.cascade_id_;
                 }
                 _g_param_store.getProxy().extraParams = params;
-                _g_param_store.load();
+                _g_param_store.loadPage(1);
             }
 
             //删除参数

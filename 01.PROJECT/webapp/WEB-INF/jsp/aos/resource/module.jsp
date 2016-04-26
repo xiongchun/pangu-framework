@@ -165,7 +165,7 @@
 					params.cascade = 'true';
 				}
 				_g_module_store.getProxy().extraParams = params;
-				_g_module_store.load({
+				_g_module_store.loadPage(1,{
 				    callback : function(a) {
 				    	if(!AOS.empty(record)){
 				    		   var g_record = _g_module_store.find('id_', record.data.id);
