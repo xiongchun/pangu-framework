@@ -69,7 +69,7 @@
 						onTrigger1Click="_g_dic_query" trigger1Cls="x-form-search-trigger" width="180" />
 				</aos:docked>
 				<aos:selmodel type="checkbox" mode="multi" />
-				<aos:column type="rowno" />
+				<aos:column type="rowno"/>
 				<aos:column header="流水号" dataIndex="id_" hidden="true" />
 				<aos:column header="字典对照码" dataIndex="code_" />
 				<aos:column header="字典对照值" dataIndex="desc_" flex="1" celltip="true" />
@@ -224,7 +224,7 @@
                     params.dic_index_id_ = record.data.id_;
                 }
                 _g_dic_store.getProxy().extraParams = params;
-                _g_dic_store.loadPage();
+                _g_dic_store.loadPage(1);
             }
 
             //删除数据字典对照
