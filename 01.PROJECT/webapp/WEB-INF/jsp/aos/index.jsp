@@ -29,7 +29,7 @@
 		<table>
 			<tr>
 				<td width="20%"><img src="${cxt}/static/image/logo/${left_logo_}"></td>
-				<td align="left" width="60%">
+				<td align="left" width="70%">
 				<c:if test="${navDto.is_show_top_nav_ == 'true' }">
 						<c:if test="${navDto.nav_button_style == 'tight' }">
 							<div class="button-group">
