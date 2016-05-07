@@ -26,10 +26,10 @@
 	</div>
 	<%-- Banner导航 --%>
 	<div id="_id_north_el" class="x-hidden north_el">
-		<table>
+		<table border="1" width="100%">
 			<tr>
-				<td width="20%"><img src="${cxt}/static/image/logo/${left_logo_}"></td>
-				<td align="left" width="70%">
+				<td width="300px" ><img src="${cxt}/static/image/logo/${left_logo_}"></td>
+				<td align="left">
 				<c:if test="${navDto.is_show_top_nav_ == 'true' }">
 						<c:if test="${navDto.nav_button_style == 'tight' }">
 							<div class="button-group">
@@ -55,7 +55,7 @@
 						</c:if>
 					</c:if>
 				</td>
-				<td align="right" style="padding: 5px">
+				<td align="right" style="padding: 5px;" width="200px" >
 					<table style="border-spacing: 3px;">
 						<tr>
 							<td colspan="4" class="main_text"><nobr>
