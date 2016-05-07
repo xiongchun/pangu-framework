@@ -468,19 +468,6 @@
 			<aos:dockeditem onclick="#_w_preview.hide();" text="关闭" icon="close.png" />
 		</aos:docked>
 	</aos:window>
-	<aos:window id="_w_upload" title="上传用户头像" onshow="_w_upload_onshow">
-		<aos:formpanel id="_f_upload" width="450" layout="anchor" labelWidth="65">
-			<aos:filefield name="myfile_" fieldLabel="用户头像" buttonText="浏览" allowBlank="false" emptyText="请选择用户头像文件..."
-				margin="10 0 10 0" />
-			<aos:displayfield value="提示：文件不能大于${max_size}KB。" padding="0 0 0 68" />
-		</aos:formpanel>
-		<aos:docked dock="bottom" ui="footer">
-			<aos:dockeditem xtype="tbfill" />
-			<aos:dockeditem onclick="_f_upload_submit" text="保存" icon="ok.png" />
-			<aos:dockeditem onclick="_fn_del_user_photo" text="删除" icon="del2.png" />
-			<aos:dockeditem onclick="#_w_upload.hide();" text="关闭" icon="close.png" />
-		</aos:docked>
-	</aos:window>
 
 	<script type="text/javascript">
 
