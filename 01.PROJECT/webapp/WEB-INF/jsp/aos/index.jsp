@@ -26,7 +26,7 @@
 	</div>
 	<%-- Banner导航 --%>
 	<div id="_id_north_el" class="x-hidden north_el">
-		<table border="1" width="100%">
+		<table width="100%">
 			<tr>
 				<td width="300px" ><img src="${cxt}/static/image/logo/${left_logo_}"></td>
 				<td align="left">
