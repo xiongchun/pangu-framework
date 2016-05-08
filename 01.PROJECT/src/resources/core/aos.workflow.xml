@@ -9,8 +9,8 @@
     <!-- 流程引擎的配置 -->
     <bean id="uuidGenerator" class="org.activiti.engine.impl.persistence.StrongUuidGenerator"  />
     <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
-        <property name="dataSource" ref="dataSource.sys"/>
-        <property name="transactionManager" ref="transactionManager.sys"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
         <property name="databaseSchemaUpdate" value="false"/>
         <property name="createDiagramOnDeploy" value="true" />
         <property name="activityFontName" value="宋体"/>
