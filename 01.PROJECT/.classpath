@@ -116,7 +116,7 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons/commons-dbcp-1.4.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jdbc/mysql-connector-java-5.1.37-bin.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/c3p0-0.9.5.2.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_79"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk7"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-cdi.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/c3p0-oracle-thin-extras-0.9.5.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/mchange-commons-java-0.2.11.jar"/>
