@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.SqlSessionUtils;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -162,6 +163,13 @@ public class SqlDao extends SqlSessionDaoSupport {
 	public  String getDatabaseId() {
 		String dataBaseID = getSqlSession().getConfiguration().getDatabaseId();
 		return dataBaseID;
+	}
+	
+	/**
+	 * 返回SqlSession对象
+	 */
+	public SqlSession getSqlSession() {
+		return super.getSqlSession();
 	}
 
 }
