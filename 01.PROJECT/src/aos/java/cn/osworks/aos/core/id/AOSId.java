@@ -44,7 +44,7 @@ public class AOSId {
 	 * @return
 	 */
 	public static String uuid(int index) {
-		String[] uuids = uuid().split("-");
+		String[] uuids = uuid2().split("-");
 		return uuids[index];
 	}
 
