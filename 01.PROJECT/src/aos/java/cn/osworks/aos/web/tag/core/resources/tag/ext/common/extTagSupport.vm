@@ -1,0 +1,10 @@
+#parse("${vmpath}baseTagSupport.vm")
+#if($xtype)
+    xtype : '$xtype',
+#end
+#if($aboutme)
+    aboutme : '$aboutme',
+#end
+#if($listeners)
+    listeners : ${id}_listeners,
+#end

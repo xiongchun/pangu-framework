@@ -1,0 +1,8 @@
+##XTemplate实例化 提示：此组件比较特殊，无任何监听事件
+#if($startTag)
+##开始标签
+var ${id} = Ext.create('Ext.XTemplate',
+#elseif($endTag)
+##结束标签
+);
+#end

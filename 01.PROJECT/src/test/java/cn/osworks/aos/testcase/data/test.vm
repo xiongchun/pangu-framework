@@ -1,0 +1,1 @@
+${title}==#foreach($az01 in $az01List)卡号:${az01.az01a1}姓名:${az01.az01a2}**#end

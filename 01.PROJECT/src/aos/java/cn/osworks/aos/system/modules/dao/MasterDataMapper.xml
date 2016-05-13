@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 基础数据业务域使用的SQL语句 -->
+<mapper namespace="MasterData">
+
+	<!-- 根据Dto查询参数集合 -->
+	<select id="listParamInfos4Page" parameterType="Dto" resultType="Dto">
+		SELECT
+			aos_sys_catalog.name_ AS catalog_name_,   
+		    <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_paramMapper.column2" />
+		FROM aos_sys_param LEFT JOIN aos_sys_catalog ON  aos_sys_param.catalog_id_ = aos_sys_catalog.id_
+		<where>
+		    <if test="keyorvalue != null and keyorvalue != ''">
+			    AND (aos_sys_param.key_ LIKE '%${keyorvalue}%' OR aos_sys_param.value_ LIKE '%${keyorvalue}%')
+			</if>
+		    <if test="cascade != 'true' and catalog_id_ != null and catalog_id_ != ''">
+			    AND aos_sys_param.catalog_id_ = #{catalog_id_} 
+			</if>
+			<if test="cascade = 'true'">
+			    AND aos_sys_param.catalog_cascade_id_ like '%${catalog_cascade_id_}%'
+			</if>
+		</where>	
+	</select>
+	
+		<select id="listParamInfos4Page2" parameterType="Dto" resultType="Aos_sys_paramPO">
+		SELECT
+		    <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_paramMapper.column" />
+		FROM aos_sys_param
+	</select>
+	
+	<!-- 根据Dto查询数据字典索引信息 -->
+	<select id="listDicindexInfos" parameterType="Dto" resultType="Dto">
+		SELECT
+			aos_sys_catalog.name_ AS catalog_name_,   
+			<include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_dic_indexMapper.column2" />
+		FROM aos_sys_dic_index LEFT JOIN aos_sys_catalog ON  aos_sys_dic_index.catalog_id_ = aos_sys_catalog.id_
+		<where>
+            <if test="key_name_ != null and key_name_ != ''">
+			    AND (aos_sys_dic_index.key_ LIKE '%${key_name_}%' OR aos_sys_dic_index.name_ LIKE '%${key_name_}%')
+			</if>
+		    <if test="cascade != 'true'">
+			    AND aos_sys_dic_index.catalog_id_ = #{catalog_id_} 
+			</if>
+			<if test="cascade = 'true'">
+			    AND aos_sys_dic_index.catalog_cascade_id_ like '%${catalog_cascade_id_}%'
+			</if>
+		</where>	
+	</select>
+	
+	<!-- 根据Dto查询并返回Aos_sys_dic数据持久化对象集合 -->
+	<select id="listDicInfos" parameterType="Dto" resultType="Aos_sys_dicPO">
+		SELECT
+			<include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_dicMapper.column" />
+		FROM aos_sys_dic
+		<where>
+		    <if test="code_desc_ != null and code_desc_ != ''">
+			    AND (code_ LIKE '%${code_desc_}%' OR desc_ LIKE '%${code_desc_}%')
+			</if>
+		    <if test="dic_index_id_ != null and dic_index_id_ != ''">
+			    AND dic_index_id_ = #{dic_index_id_} 
+			</if>
+		</where>	
+	</select>
+	
+	<!-- 根据角色删除角色菜单授权信息 -->
+	<delete id="deleteCatalogByCascadeId" parameterType="Dto">
+		DELETE FROM aos_sys_catalog WHERE cascade_id_   like '${cascade_id_}%'
+	</delete>
+	
+</mapper>

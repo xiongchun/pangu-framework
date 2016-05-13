@@ -1,0 +1,76 @@
+#parse("${vmpath}ext/common/extTagSupport.vm")
+#if($region)
+    region: '$region',
+#end
+#if($renderTo)
+    renderTo: $renderTo,
+#end
+#if($width)
+	width: $width,
+#end
+#if($height)
+    height: $height,
+#end
+#if($frame)
+    frame: $frame,
+#end
+#if($border)
+    border: $border,
+#end
+#if($autoScroll)
+    autoScroll: $autoScroll,
+#end
+#if($margin)
+    margin: '$margin',
+#end
+#if($contentEl)
+    contentEl: '$contentEl',
+#end
+#if($html)
+    html: '$html',
+#end
+#if($iconCls)
+    iconCls: '$iconCls',
+#end
+#if($icon)
+    icon: '$icon',
+#end
+#if($style)
+    style: {$style},
+#end
+#if($padding)
+    padding: '$padding',
+#end
+#if($disabled)
+    disabled: $disabled,
+#end
+##if($tooltip)
+    ##tooltip: '$tooltip', 只有button系列组件有此属性
+##end
+#if($columnWidth)
+    columnWidth: $columnWidth,
+#end
+#if($animate)
+    animate: $animate,
+#end
+#if($maxWidth)
+    maxWidth:$maxWidth,
+#end
+#if(${minWidth})
+    minWidth:$minWidth,
+#end
+#if(${maxHeight})
+    maxHeight:$maxHeight,
+#end
+#if($minHeight)
+    minHeight:$minHeight,
+#end
+#if($resizable)
+    resizable:$resizable,
+#end
+#if($tpl)
+	 tpl: $tpl,
+ #end
+#if($plugins)
+    plugins:$plugins,
+#end

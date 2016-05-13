@@ -1,0 +1,44 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##HtmlEditor定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formItemTagSupport.vm")
+#if($enableAlignments)
+    enableAlignments:$enableAlignments,
+#end
+#if($enableColors)
+    enableColors:$enableColors,
+#end
+#if($enableFont)
+    enableFont:$enableFont,
+#end
+#if($enableFontSize)
+    enableFontSize:$enableFontSize,
+#end
+#if($enableFormat)
+    enableFormat:$enableFormat,
+#end
+#if($enableLinks)
+    enableLinks:$enableLinks,
+#end
+#if($enableSourceEdit)
+    enableSourceEdit:$enableSourceEdit,
+#end
+    fontFamilies:["微软雅黑", "宋体", "黑体","Arial", "Times New Roman"],
+    app:169	
+};
+##HtmlEditor实例化
+var ${id} = Ext.create('Ext.form.field.HtmlEditor',${id}_cfg);
+
+## 编辑器里的工具栏边框缺省情况下会和外层容器边框重叠，这里做特殊处理
+#if($hideToolbarBorder == "true")
+        Ext.util.CSS.createStyleSheet('.x-html-editor-tb {border-style: none;padding: 5px 0 2px 5px;}');
+#end
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##表单元素组件实例后设置
+#parse("${vmpath}ext/subvm/afterFormFieldCreated.vm")
+

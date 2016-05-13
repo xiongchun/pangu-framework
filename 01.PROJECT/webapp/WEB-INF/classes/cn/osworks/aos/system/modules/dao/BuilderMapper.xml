@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 开发控制台使用的手工SQL映射 -->
+<mapper namespace="Builder">
+
+	<!-- 根据DTO删除图标集合 -->
+	<delete id="deleteAos_sys_iconByDto" parameterType="Dto">
+		DELETE FROM aos_sys_icon WHERE type_ = #{type_}
+	</delete>
+	
+</mapper>

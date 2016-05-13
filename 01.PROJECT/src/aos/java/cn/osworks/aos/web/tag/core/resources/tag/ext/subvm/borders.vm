@@ -1,0 +1,12 @@
+##处理Border
+#foreach($border in $borders)
+    #if(${border.element}=="header")
+        Ext.util.CSS.createStyleSheet('#${id}_header {border-${border.align}-width: ${border.size}px !important;}','${border.id}');
+	#end
+	#if(${border.element}=="body")
+        Ext.util.CSS.createStyleSheet('#${id}-body {border-${border.align}-width: ${border.size}px !important;}','${border.id}');
+	#end
+	#if(${border.element}=="splitter")
+        Ext.util.CSS.createStyleSheet('#${id}-splitter {border-${border.align}: ${border.size}px solid ${border.color}; !important;}','${border.id}');
+    #end
+#end

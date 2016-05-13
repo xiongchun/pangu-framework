@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_wf_re_model[aos_wf_re_model]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:32 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_wf_re_modelMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_wf_re_modelPO">
+		INSERT INTO aos_wf_re_model (
+		<if test="rev_ != null">
+	         rev_, <!-- rev_ -->
+		</if>
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- name_ -->
+		</if>
+		<if test="key_ != null and key_ != ''">
+	         key_, <!-- key_ -->
+		</if>
+		<if test="category_ != null and category_ != ''">
+	         category_, <!-- category_ -->
+		</if>
+		<if test="create_time_ != null">
+	         create_time_, <!-- create_time_ -->
+		</if>
+		<if test="last_update_time_ != null">
+	         last_update_time_, <!-- last_update_time_ -->
+		</if>
+		<if test="version_ != null">
+	         version_, <!-- version_ -->
+		</if>
+		<if test="meta_info_ != null and meta_info_ != ''">
+	         meta_info_, <!-- meta_info_ -->
+		</if>
+		<if test="deployment_id_ != null and deployment_id_ != ''">
+	         deployment_id_, <!-- deployment_id_ -->
+		</if>
+		<if test="editor_source_value_id_ != null and editor_source_value_id_ != ''">
+	         editor_source_value_id_, <!-- editor_source_value_id_ -->
+		</if>
+		<if test="editor_source_extra_value_id_ != null and editor_source_extra_value_id_ != ''">
+	         editor_source_extra_value_id_, <!-- editor_source_extra_value_id_ -->
+		</if>
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	         tenant_id_, <!-- tenant_id_ -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- id_ -->
+	   </if>
+		)VALUES(
+		<if test="rev_ != null">
+	          #{rev_, jdbcType=INTEGER}, <!-- rev_ -->
+	    </if>
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- name_ -->
+	    </if>
+		<if test="key_ != null and key_ != ''">
+	          #{key_, jdbcType=VARCHAR}, <!-- key_ -->
+	    </if>
+		<if test="category_ != null and category_ != ''">
+	          #{category_, jdbcType=VARCHAR}, <!-- category_ -->
+	    </if>
+		<if test="create_time_ != null">
+	          #{create_time_, jdbcType=TIMESTAMP}, <!-- create_time_ -->
+	    </if>
+		<if test="last_update_time_ != null">
+	          #{last_update_time_, jdbcType=TIMESTAMP}, <!-- last_update_time_ -->
+	    </if>
+		<if test="version_ != null">
+	          #{version_, jdbcType=INTEGER}, <!-- version_ -->
+	    </if>
+		<if test="meta_info_ != null and meta_info_ != ''">
+	          #{meta_info_, jdbcType=VARCHAR}, <!-- meta_info_ -->
+	    </if>
+		<if test="deployment_id_ != null and deployment_id_ != ''">
+	          #{deployment_id_, jdbcType=VARCHAR}, <!-- deployment_id_ -->
+	    </if>
+		<if test="editor_source_value_id_ != null and editor_source_value_id_ != ''">
+	          #{editor_source_value_id_, jdbcType=VARCHAR}, <!-- editor_source_value_id_ -->
+	    </if>
+		<if test="editor_source_extra_value_id_ != null and editor_source_extra_value_id_ != ''">
+	          #{editor_source_extra_value_id_, jdbcType=VARCHAR}, <!-- editor_source_extra_value_id_ -->
+	    </if>
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	          #{tenant_id_, jdbcType=VARCHAR}, <!-- tenant_id_ -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_wf_re_modelPO">
+		INSERT INTO aos_wf_re_model (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+		    #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+		    #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+		    #{key_, jdbcType=VARCHAR},  <!-- key_ -->
+		    #{category_, jdbcType=VARCHAR},  <!-- category_ -->
+		    #{create_time_, jdbcType=TIMESTAMP},  <!-- create_time_ -->
+		    #{last_update_time_, jdbcType=TIMESTAMP},  <!-- last_update_time_ -->
+		    #{version_, jdbcType=INTEGER},  <!-- version_ -->
+		    #{meta_info_, jdbcType=VARCHAR},  <!-- meta_info_ -->
+		    #{deployment_id_, jdbcType=VARCHAR},  <!-- deployment_id_ -->
+		    #{editor_source_value_id_, jdbcType=VARCHAR},  <!-- editor_source_value_id_ -->
+		    #{editor_source_extra_value_id_, jdbcType=VARCHAR},  <!-- editor_source_extra_value_id_ -->
+		    #{tenant_id_, jdbcType=VARCHAR}  <!-- tenant_id_ -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_wf_re_modelPO">
+		UPDATE aos_wf_re_model
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+			</if>
+			<if test="rev_ != null">
+		          rev_ = #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+			</if>
+			<if test="name_ != null">
+		          name_ = #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+			</if>
+			<if test="key_ != null">
+		          key_ = #{key_, jdbcType=VARCHAR},  <!-- key_ -->
+			</if>
+			<if test="category_ != null">
+		          category_ = #{category_, jdbcType=VARCHAR},  <!-- category_ -->
+			</if>
+			<if test="create_time_ != null">
+		          create_time_ = #{create_time_, jdbcType=TIMESTAMP},  <!-- create_time_ -->
+			</if>
+			<if test="last_update_time_ != null">
+		          last_update_time_ = #{last_update_time_, jdbcType=TIMESTAMP},  <!-- last_update_time_ -->
+			</if>
+			<if test="version_ != null">
+		          version_ = #{version_, jdbcType=INTEGER},  <!-- version_ -->
+			</if>
+			<if test="meta_info_ != null">
+		          meta_info_ = #{meta_info_, jdbcType=VARCHAR},  <!-- meta_info_ -->
+			</if>
+			<if test="deployment_id_ != null">
+		          deployment_id_ = #{deployment_id_, jdbcType=VARCHAR},  <!-- deployment_id_ -->
+			</if>
+			<if test="editor_source_value_id_ != null">
+		          editor_source_value_id_ = #{editor_source_value_id_, jdbcType=VARCHAR},  <!-- editor_source_value_id_ -->
+			</if>
+			<if test="editor_source_extra_value_id_ != null">
+		          editor_source_extra_value_id_ = #{editor_source_extra_value_id_, jdbcType=VARCHAR},  <!-- editor_source_extra_value_id_ -->
+			</if>
+			<if test="tenant_id_ != null">
+		          tenant_id_ = #{tenant_id_, jdbcType=VARCHAR},  <!-- tenant_id_ -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_wf_re_model WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_wf_re_modelPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_wf_re_model WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_wf_re_modelPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_wf_re_model
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_wf_re_modelPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_re_model
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_wf_re_modelPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_re_model
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_wf_re_modelPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_re_model
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_wf_re_modelPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_re_model
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_wf_re_model
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_wf_re_model
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- id_ -->
+		  rev_,  <!-- rev_ -->
+		  name_,  <!-- name_ -->
+		  key_,  <!-- key_ -->
+		  category_,  <!-- category_ -->
+		  create_time_,  <!-- create_time_ -->
+		  last_update_time_,  <!-- last_update_time_ -->
+		  version_,  <!-- version_ -->
+		  meta_info_,  <!-- meta_info_ -->
+		  deployment_id_,  <!-- deployment_id_ -->
+		  editor_source_value_id_,  <!-- editor_source_value_id_ -->
+		  editor_source_extra_value_id_,  <!-- editor_source_extra_value_id_ -->
+		  tenant_id_  <!-- tenant_id_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_wf_re_model.id_,  <!-- id_ -->
+		  aos_wf_re_model.rev_,  <!-- rev_ -->
+		  aos_wf_re_model.name_,  <!-- name_ -->
+		  aos_wf_re_model.key_,  <!-- key_ -->
+		  aos_wf_re_model.category_,  <!-- category_ -->
+		  aos_wf_re_model.create_time_,  <!-- create_time_ -->
+		  aos_wf_re_model.last_update_time_,  <!-- last_update_time_ -->
+		  aos_wf_re_model.version_,  <!-- version_ -->
+		  aos_wf_re_model.meta_info_,  <!-- meta_info_ -->
+		  aos_wf_re_model.deployment_id_,  <!-- deployment_id_ -->
+		  aos_wf_re_model.editor_source_value_id_,  <!-- editor_source_value_id_ -->
+		  aos_wf_re_model.editor_source_extra_value_id_,  <!-- editor_source_extra_value_id_ -->
+		  aos_wf_re_model.tenant_id_  <!-- tenant_id_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- id_ -->
+		</if>
+	   <if test="rev_ != null ">
+		      AND rev_ = #{rev_}  <!-- rev_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- name_ -->
+		</if>
+	    <if test="key_ != null and key_ != ''">
+		      AND key_ = #{key_}  <!-- key_ -->
+		</if>
+	    <if test="category_ != null and category_ != ''">
+		      AND category_ = #{category_}  <!-- category_ -->
+		</if>
+	   <if test="create_time_ != null ">
+		      AND create_time_ = #{create_time_}  <!-- create_time_ -->
+		</if>
+	   <if test="last_update_time_ != null ">
+		      AND last_update_time_ = #{last_update_time_}  <!-- last_update_time_ -->
+		</if>
+	   <if test="version_ != null ">
+		      AND version_ = #{version_}  <!-- version_ -->
+		</if>
+	    <if test="meta_info_ != null and meta_info_ != ''">
+		      AND meta_info_ = #{meta_info_}  <!-- meta_info_ -->
+		</if>
+	    <if test="deployment_id_ != null and deployment_id_ != ''">
+		      AND deployment_id_ = #{deployment_id_}  <!-- deployment_id_ -->
+		</if>
+	    <if test="editor_source_value_id_ != null and editor_source_value_id_ != ''">
+		      AND editor_source_value_id_ = #{editor_source_value_id_}  <!-- editor_source_value_id_ -->
+		</if>
+	    <if test="editor_source_extra_value_id_ != null and editor_source_extra_value_id_ != ''">
+		      AND editor_source_extra_value_id_ = #{editor_source_extra_value_id_}  <!-- editor_source_extra_value_id_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ = #{tenant_id_}  <!-- tenant_id_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- name_ -->
+		</if>
+	    <if test="key_ != null and key_ != ''">
+		      AND key_ like '%${key_}%'  <!-- key_ -->
+		</if>
+	    <if test="category_ != null and category_ != ''">
+		      AND category_ like '%${category_}%'  <!-- category_ -->
+		</if>
+	    <if test="meta_info_ != null and meta_info_ != ''">
+		      AND meta_info_ like '%${meta_info_}%'  <!-- meta_info_ -->
+		</if>
+	    <if test="deployment_id_ != null and deployment_id_ != ''">
+		      AND deployment_id_ like '%${deployment_id_}%'  <!-- deployment_id_ -->
+		</if>
+	    <if test="editor_source_value_id_ != null and editor_source_value_id_ != ''">
+		      AND editor_source_value_id_ like '%${editor_source_value_id_}%'  <!-- editor_source_value_id_ -->
+		</if>
+	    <if test="editor_source_extra_value_id_ != null and editor_source_extra_value_id_ != ''">
+		      AND editor_source_extra_value_id_ like '%${editor_source_extra_value_id_}%'  <!-- editor_source_extra_value_id_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ like '%${tenant_id_}%'  <!-- tenant_id_ -->
+		</if>
+	</sql>
+	
+</mapper>

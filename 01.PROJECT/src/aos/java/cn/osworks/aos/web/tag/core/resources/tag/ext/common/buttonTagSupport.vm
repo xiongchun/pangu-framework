@@ -1,0 +1,16 @@
+#parse("${vmpath}ext/common/componentTagSupport.vm")
+#if($text)
+    text:'$text',
+#end
+#if($menuid)
+    menu : ${menuid},
+#end
+#if($tooltip)
+    tooltip: '$tooltip',
+#end
+#if($scale)
+    scale: '$scale',
+#end
+#if($onclick && $onclick != "")
+    handler: $onclick,
+#end

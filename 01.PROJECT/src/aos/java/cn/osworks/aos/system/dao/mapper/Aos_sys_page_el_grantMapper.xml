@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 页面元素授权表[aos_sys_page_el_grant]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:31 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_sys_page_el_grantMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_sys_page_el_grantPO">
+		INSERT INTO aos_sys_page_el_grant (
+		<if test="el_id_ != null and el_id_ != ''">
+	         el_id_, <!-- 页面元素流水号 -->
+		</if>
+		<if test="user_id_ != null and user_id_ != ''">
+	         user_id_, <!-- 用户流水号 -->
+		</if>
+		<if test="role_id_ != null and role_id_ != ''">
+	         role_id_, <!-- 角色流水号 -->
+		</if>
+		<if test="post_id_ != null and post_id_ != ''">
+	         post_id_, <!-- 岗位流水号 -->
+		</if>
+		<if test="grant_type_ != null and grant_type_ != ''">
+	         grant_type_, <!-- 权限类型 -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- 流水号 -->
+	   </if>
+		)VALUES(
+		<if test="el_id_ != null and el_id_ != ''">
+	          #{el_id_, jdbcType=VARCHAR}, <!-- 页面元素流水号 -->
+	    </if>
+		<if test="user_id_ != null and user_id_ != ''">
+	          #{user_id_, jdbcType=VARCHAR}, <!-- 用户流水号 -->
+	    </if>
+		<if test="role_id_ != null and role_id_ != ''">
+	          #{role_id_, jdbcType=VARCHAR}, <!-- 角色流水号 -->
+	    </if>
+		<if test="post_id_ != null and post_id_ != ''">
+	          #{post_id_, jdbcType=VARCHAR}, <!-- 岗位流水号 -->
+	    </if>
+		<if test="grant_type_ != null and grant_type_ != ''">
+	          #{grant_type_, jdbcType=VARCHAR}, <!-- 权限类型 -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- 流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_sys_page_el_grantPO">
+		INSERT INTO aos_sys_page_el_grant (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+		    #{el_id_, jdbcType=VARCHAR},  <!-- 页面元素流水号 -->
+		    #{user_id_, jdbcType=VARCHAR},  <!-- 用户流水号 -->
+		    #{role_id_, jdbcType=VARCHAR},  <!-- 角色流水号 -->
+		    #{post_id_, jdbcType=VARCHAR},  <!-- 岗位流水号 -->
+		    #{grant_type_, jdbcType=VARCHAR}  <!-- 权限类型 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_sys_page_el_grantPO">
+		UPDATE aos_sys_page_el_grant
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+			</if>
+			<if test="el_id_ != null">
+		          el_id_ = #{el_id_, jdbcType=VARCHAR},  <!-- 页面元素流水号 -->
+			</if>
+			<if test="user_id_ != null">
+		          user_id_ = #{user_id_, jdbcType=VARCHAR},  <!-- 用户流水号 -->
+			</if>
+			<if test="role_id_ != null">
+		          role_id_ = #{role_id_, jdbcType=VARCHAR},  <!-- 角色流水号 -->
+			</if>
+			<if test="post_id_ != null">
+		          post_id_ = #{post_id_, jdbcType=VARCHAR},  <!-- 岗位流水号 -->
+			</if>
+			<if test="grant_type_ != null">
+		          grant_type_ = #{grant_type_, jdbcType=VARCHAR},  <!-- 权限类型 -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_sys_page_el_grant WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_sys_page_el_grantPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_sys_page_el_grant WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_sys_page_el_grantPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_sys_page_el_grant
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_sys_page_el_grantPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_page_el_grant
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_sys_page_el_grantPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_page_el_grant
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_sys_page_el_grantPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_page_el_grant
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_sys_page_el_grantPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_page_el_grant
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_sys_page_el_grant
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_sys_page_el_grant
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- 流水号 -->
+		  el_id_,  <!-- 页面元素流水号 -->
+		  user_id_,  <!-- 用户流水号 -->
+		  role_id_,  <!-- 角色流水号 -->
+		  post_id_,  <!-- 岗位流水号 -->
+		  grant_type_  <!-- 权限类型 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_sys_page_el_grant.id_,  <!-- 流水号 -->
+		  aos_sys_page_el_grant.el_id_,  <!-- 页面元素流水号 -->
+		  aos_sys_page_el_grant.user_id_,  <!-- 用户流水号 -->
+		  aos_sys_page_el_grant.role_id_,  <!-- 角色流水号 -->
+		  aos_sys_page_el_grant.post_id_,  <!-- 岗位流水号 -->
+		  aos_sys_page_el_grant.grant_type_  <!-- 权限类型 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- 流水号 -->
+		</if>
+	    <if test="el_id_ != null and el_id_ != ''">
+		      AND el_id_ = #{el_id_}  <!-- 页面元素流水号 -->
+		</if>
+	    <if test="user_id_ != null and user_id_ != ''">
+		      AND user_id_ = #{user_id_}  <!-- 用户流水号 -->
+		</if>
+	    <if test="role_id_ != null and role_id_ != ''">
+		      AND role_id_ = #{role_id_}  <!-- 角色流水号 -->
+		</if>
+	    <if test="post_id_ != null and post_id_ != ''">
+		      AND post_id_ = #{post_id_}  <!-- 岗位流水号 -->
+		</if>
+	    <if test="grant_type_ != null and grant_type_ != ''">
+		      AND grant_type_ = #{grant_type_}  <!-- 权限类型 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- 流水号 -->
+		</if>
+	    <if test="el_id_ != null and el_id_ != ''">
+		      AND el_id_ like '%${el_id_}%'  <!-- 页面元素流水号 -->
+		</if>
+	    <if test="user_id_ != null and user_id_ != ''">
+		      AND user_id_ like '%${user_id_}%'  <!-- 用户流水号 -->
+		</if>
+	    <if test="role_id_ != null and role_id_ != ''">
+		      AND role_id_ like '%${role_id_}%'  <!-- 角色流水号 -->
+		</if>
+	    <if test="post_id_ != null and post_id_ != ''">
+		      AND post_id_ like '%${post_id_}%'  <!-- 岗位流水号 -->
+		</if>
+	    <if test="grant_type_ != null and grant_type_ != ''">
+		      AND grant_type_ like '%${grant_type_}%'  <!-- 权限类型 -->
+		</if>
+	</sql>
+	
+</mapper>

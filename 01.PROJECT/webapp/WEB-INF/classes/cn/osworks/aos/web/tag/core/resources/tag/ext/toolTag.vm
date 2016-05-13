@@ -1,0 +1,10 @@
+##Tool定义
+var ${id} = {
+    #parse("${vmpath}ext/common/extTagSupport.vm")
+#if($onclick)
+    callback: $onclick,
+#end
+    tooltip: '$!tooltip',
+    type: '$type',
+    app:169
+};

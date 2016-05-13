@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_wf_evt_log[aos_wf_evt_log]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:31 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_wf_evt_logMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="log_nr_" parameterType="Aos_wf_evt_logPO">
+		INSERT INTO aos_wf_evt_log (
+		<if test="type_ != null and type_ != ''">
+	         type_, <!-- type_ -->
+		</if>
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	         proc_def_id_, <!-- proc_def_id_ -->
+		</if>
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	         proc_inst_id_, <!-- proc_inst_id_ -->
+		</if>
+		<if test="execution_id_ != null and execution_id_ != ''">
+	         execution_id_, <!-- execution_id_ -->
+		</if>
+		<if test="task_id_ != null and task_id_ != ''">
+	         task_id_, <!-- task_id_ -->
+		</if>
+		<if test="time_stamp_ != null">
+	         time_stamp_, <!-- time_stamp_ -->
+		</if>
+		<if test="user_id_ != null and user_id_ != ''">
+	         user_id_, <!-- user_id_ -->
+		</if>
+		<if test="data_ != null and data_ != ''">
+	         data_, <!-- data_ -->
+		</if>
+		<if test="lock_owner_ != null and lock_owner_ != ''">
+	         lock_owner_, <!-- lock_owner_ -->
+		</if>
+		<if test="lock_time_ != null">
+	         lock_time_, <!-- lock_time_ -->
+		</if>
+		<if test="is_processed_ != null">
+	         is_processed_, <!-- is_processed_ -->
+		</if>
+	          log_nr_
+		)VALUES(
+		<if test="type_ != null and type_ != ''">
+	          #{type_, jdbcType=VARCHAR}, <!-- type_ -->
+	    </if>
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	          #{proc_def_id_, jdbcType=VARCHAR}, <!-- proc_def_id_ -->
+	    </if>
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	          #{proc_inst_id_, jdbcType=VARCHAR}, <!-- proc_inst_id_ -->
+	    </if>
+		<if test="execution_id_ != null and execution_id_ != ''">
+	          #{execution_id_, jdbcType=VARCHAR}, <!-- execution_id_ -->
+	    </if>
+		<if test="task_id_ != null and task_id_ != ''">
+	          #{task_id_, jdbcType=VARCHAR}, <!-- task_id_ -->
+	    </if>
+		<if test="time_stamp_ != null">
+	          #{time_stamp_, jdbcType=TIMESTAMP}, <!-- time_stamp_ -->
+	    </if>
+		<if test="user_id_ != null and user_id_ != ''">
+	          #{user_id_, jdbcType=VARCHAR}, <!-- user_id_ -->
+	    </if>
+		<if test="data_ != null and data_ != ''">
+	          #{data_, jdbcType=VARCHAR}, <!-- data_ -->
+	    </if>
+		<if test="lock_owner_ != null and lock_owner_ != ''">
+	          #{lock_owner_, jdbcType=VARCHAR}, <!-- lock_owner_ -->
+	    </if>
+		<if test="lock_time_ != null">
+	          #{lock_time_, jdbcType=TIMESTAMP}, <!-- lock_time_ -->
+	    </if>
+		<if test="is_processed_ != null">
+	          #{is_processed_, jdbcType=INTEGER}, <!-- is_processed_ -->
+	    </if>
+	          null
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll" useGeneratedKeys="true" keyProperty="log_nr_" parameterType="Aos_wf_evt_logPO">
+		INSERT INTO aos_wf_evt_log (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{log_nr_, jdbcType=INTEGER},  <!-- log_nr_ -->
+		    #{type_, jdbcType=VARCHAR},  <!-- type_ -->
+		    #{proc_def_id_, jdbcType=VARCHAR},  <!-- proc_def_id_ -->
+		    #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+		    #{execution_id_, jdbcType=VARCHAR},  <!-- execution_id_ -->
+		    #{task_id_, jdbcType=VARCHAR},  <!-- task_id_ -->
+		    #{time_stamp_, jdbcType=TIMESTAMP},  <!-- time_stamp_ -->
+		    #{user_id_, jdbcType=VARCHAR},  <!-- user_id_ -->
+		    #{data_, jdbcType=VARCHAR},  <!-- data_ -->
+		    #{lock_owner_, jdbcType=VARCHAR},  <!-- lock_owner_ -->
+		    #{lock_time_, jdbcType=TIMESTAMP},  <!-- lock_time_ -->
+		    #{is_processed_, jdbcType=INTEGER}  <!-- is_processed_ -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_wf_evt_logPO">
+		UPDATE aos_wf_evt_log
+		<set>
+			<if test="log_nr_ != null">
+		          log_nr_ = #{log_nr_, jdbcType=INTEGER},  <!-- log_nr_ -->
+			</if>
+			<if test="type_ != null">
+		          type_ = #{type_, jdbcType=VARCHAR},  <!-- type_ -->
+			</if>
+			<if test="proc_def_id_ != null">
+		          proc_def_id_ = #{proc_def_id_, jdbcType=VARCHAR},  <!-- proc_def_id_ -->
+			</if>
+			<if test="proc_inst_id_ != null">
+		          proc_inst_id_ = #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+			</if>
+			<if test="execution_id_ != null">
+		          execution_id_ = #{execution_id_, jdbcType=VARCHAR},  <!-- execution_id_ -->
+			</if>
+			<if test="task_id_ != null">
+		          task_id_ = #{task_id_, jdbcType=VARCHAR},  <!-- task_id_ -->
+			</if>
+			<if test="time_stamp_ != null">
+		          time_stamp_ = #{time_stamp_, jdbcType=TIMESTAMP},  <!-- time_stamp_ -->
+			</if>
+			<if test="user_id_ != null">
+		          user_id_ = #{user_id_, jdbcType=VARCHAR},  <!-- user_id_ -->
+			</if>
+			<if test="data_ != null">
+		          data_ = #{data_, jdbcType=VARCHAR},  <!-- data_ -->
+			</if>
+			<if test="lock_owner_ != null">
+		          lock_owner_ = #{lock_owner_, jdbcType=VARCHAR},  <!-- lock_owner_ -->
+			</if>
+			<if test="lock_time_ != null">
+		          lock_time_ = #{lock_time_, jdbcType=TIMESTAMP},  <!-- lock_time_ -->
+			</if>
+			<if test="is_processed_ != null">
+		          is_processed_ = #{is_processed_, jdbcType=INTEGER},  <!-- is_processed_ -->
+			</if>
+		</set>
+		WHERE  log_nr_ = #{log_nr_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_wf_evt_log WHERE  log_nr_ = #{log_nr_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_wf_evt_logPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_wf_evt_log WHERE  log_nr_ = #{log_nr_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_wf_evt_logPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_wf_evt_log
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_wf_evt_logPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_evt_log
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_wf_evt_logPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_evt_log
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_wf_evt_logPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_evt_log
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_wf_evt_logPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_evt_log
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_wf_evt_log
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_wf_evt_log
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  log_nr_,  <!-- log_nr_ -->
+		  type_,  <!-- type_ -->
+		  proc_def_id_,  <!-- proc_def_id_ -->
+		  proc_inst_id_,  <!-- proc_inst_id_ -->
+		  execution_id_,  <!-- execution_id_ -->
+		  task_id_,  <!-- task_id_ -->
+		  time_stamp_,  <!-- time_stamp_ -->
+		  user_id_,  <!-- user_id_ -->
+		  data_,  <!-- data_ -->
+		  lock_owner_,  <!-- lock_owner_ -->
+		  lock_time_,  <!-- lock_time_ -->
+		  is_processed_  <!-- is_processed_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_wf_evt_log.log_nr_,  <!-- log_nr_ -->
+		  aos_wf_evt_log.type_,  <!-- type_ -->
+		  aos_wf_evt_log.proc_def_id_,  <!-- proc_def_id_ -->
+		  aos_wf_evt_log.proc_inst_id_,  <!-- proc_inst_id_ -->
+		  aos_wf_evt_log.execution_id_,  <!-- execution_id_ -->
+		  aos_wf_evt_log.task_id_,  <!-- task_id_ -->
+		  aos_wf_evt_log.time_stamp_,  <!-- time_stamp_ -->
+		  aos_wf_evt_log.user_id_,  <!-- user_id_ -->
+		  aos_wf_evt_log.data_,  <!-- data_ -->
+		  aos_wf_evt_log.lock_owner_,  <!-- lock_owner_ -->
+		  aos_wf_evt_log.lock_time_,  <!-- lock_time_ -->
+		  aos_wf_evt_log.is_processed_  <!-- is_processed_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="log_nr_ != null ">
+		      AND log_nr_ = #{log_nr_}  <!-- log_nr_ -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ = #{type_}  <!-- type_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ = #{proc_def_id_}  <!-- proc_def_id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ = #{proc_inst_id_}  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="execution_id_ != null and execution_id_ != ''">
+		      AND execution_id_ = #{execution_id_}  <!-- execution_id_ -->
+		</if>
+	    <if test="task_id_ != null and task_id_ != ''">
+		      AND task_id_ = #{task_id_}  <!-- task_id_ -->
+		</if>
+	   <if test="time_stamp_ != null ">
+		      AND time_stamp_ = #{time_stamp_}  <!-- time_stamp_ -->
+		</if>
+	    <if test="user_id_ != null and user_id_ != ''">
+		      AND user_id_ = #{user_id_}  <!-- user_id_ -->
+		</if>
+	    <if test="data_ != null and data_ != ''">
+		      AND data_ = #{data_}  <!-- data_ -->
+		</if>
+	    <if test="lock_owner_ != null and lock_owner_ != ''">
+		      AND lock_owner_ = #{lock_owner_}  <!-- lock_owner_ -->
+		</if>
+	   <if test="lock_time_ != null ">
+		      AND lock_time_ = #{lock_time_}  <!-- lock_time_ -->
+		</if>
+	   <if test="is_processed_ != null ">
+		      AND is_processed_ = #{is_processed_}  <!-- is_processed_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ like '%${type_}%'  <!-- type_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ like '%${proc_def_id_}%'  <!-- proc_def_id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ like '%${proc_inst_id_}%'  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="execution_id_ != null and execution_id_ != ''">
+		      AND execution_id_ like '%${execution_id_}%'  <!-- execution_id_ -->
+		</if>
+	    <if test="task_id_ != null and task_id_ != ''">
+		      AND task_id_ like '%${task_id_}%'  <!-- task_id_ -->
+		</if>
+	    <if test="user_id_ != null and user_id_ != ''">
+		      AND user_id_ like '%${user_id_}%'  <!-- user_id_ -->
+		</if>
+	    <if test="data_ != null and data_ != ''">
+		      AND data_ like '%${data_}%'  <!-- data_ -->
+		</if>
+	    <if test="lock_owner_ != null and lock_owner_ != ''">
+		      AND lock_owner_ like '%${lock_owner_}%'  <!-- lock_owner_ -->
+		</if>
+	</sql>
+	
+</mapper>

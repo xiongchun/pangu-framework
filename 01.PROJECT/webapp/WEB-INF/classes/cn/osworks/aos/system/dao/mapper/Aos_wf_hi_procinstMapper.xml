@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_wf_hi_procinst[aos_wf_hi_procinst]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:32 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_wf_hi_procinstMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_wf_hi_procinstPO">
+		INSERT INTO aos_wf_hi_procinst (
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	         proc_inst_id_, <!-- proc_inst_id_ -->
+		</if>
+		<if test="business_key_ != null and business_key_ != ''">
+	         business_key_, <!-- business_key_ -->
+		</if>
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	         proc_def_id_, <!-- proc_def_id_ -->
+		</if>
+		<if test="start_time_ != null and start_time_ != ''">
+	         start_time_, <!-- start_time_ -->
+		</if>
+		<if test="end_time_ != null and end_time_ != ''">
+	         end_time_, <!-- end_time_ -->
+		</if>
+		<if test="duration_ != null">
+	         duration_, <!-- duration_ -->
+		</if>
+		<if test="start_user_id_ != null and start_user_id_ != ''">
+	         start_user_id_, <!-- start_user_id_ -->
+		</if>
+		<if test="start_act_id_ != null and start_act_id_ != ''">
+	         start_act_id_, <!-- start_act_id_ -->
+		</if>
+		<if test="end_act_id_ != null and end_act_id_ != ''">
+	         end_act_id_, <!-- end_act_id_ -->
+		</if>
+		<if test="super_process_instance_id_ != null and super_process_instance_id_ != ''">
+	         super_process_instance_id_, <!-- super_process_instance_id_ -->
+		</if>
+		<if test="delete_reason_ != null and delete_reason_ != ''">
+	         delete_reason_, <!-- delete_reason_ -->
+		</if>
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	         tenant_id_, <!-- tenant_id_ -->
+		</if>
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- name_ -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- id_ -->
+	   </if>
+		)VALUES(
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	          #{proc_inst_id_, jdbcType=VARCHAR}, <!-- proc_inst_id_ -->
+	    </if>
+		<if test="business_key_ != null and business_key_ != ''">
+	          #{business_key_, jdbcType=VARCHAR}, <!-- business_key_ -->
+	    </if>
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	          #{proc_def_id_, jdbcType=VARCHAR}, <!-- proc_def_id_ -->
+	    </if>
+		<if test="start_time_ != null and start_time_ != ''">
+	          #{start_time_, jdbcType=VARCHAR}, <!-- start_time_ -->
+	    </if>
+		<if test="end_time_ != null and end_time_ != ''">
+	          #{end_time_, jdbcType=VARCHAR}, <!-- end_time_ -->
+	    </if>
+		<if test="duration_ != null">
+	          #{duration_, jdbcType=INTEGER}, <!-- duration_ -->
+	    </if>
+		<if test="start_user_id_ != null and start_user_id_ != ''">
+	          #{start_user_id_, jdbcType=VARCHAR}, <!-- start_user_id_ -->
+	    </if>
+		<if test="start_act_id_ != null and start_act_id_ != ''">
+	          #{start_act_id_, jdbcType=VARCHAR}, <!-- start_act_id_ -->
+	    </if>
+		<if test="end_act_id_ != null and end_act_id_ != ''">
+	          #{end_act_id_, jdbcType=VARCHAR}, <!-- end_act_id_ -->
+	    </if>
+		<if test="super_process_instance_id_ != null and super_process_instance_id_ != ''">
+	          #{super_process_instance_id_, jdbcType=VARCHAR}, <!-- super_process_instance_id_ -->
+	    </if>
+		<if test="delete_reason_ != null and delete_reason_ != ''">
+	          #{delete_reason_, jdbcType=VARCHAR}, <!-- delete_reason_ -->
+	    </if>
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	          #{tenant_id_, jdbcType=VARCHAR}, <!-- tenant_id_ -->
+	    </if>
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- name_ -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_wf_hi_procinstPO">
+		INSERT INTO aos_wf_hi_procinst (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+		    #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+		    #{business_key_, jdbcType=VARCHAR},  <!-- business_key_ -->
+		    #{proc_def_id_, jdbcType=VARCHAR},  <!-- proc_def_id_ -->
+		    #{start_time_, jdbcType=VARCHAR},  <!-- start_time_ -->
+		    #{end_time_, jdbcType=VARCHAR},  <!-- end_time_ -->
+		    #{duration_, jdbcType=INTEGER},  <!-- duration_ -->
+		    #{start_user_id_, jdbcType=VARCHAR},  <!-- start_user_id_ -->
+		    #{start_act_id_, jdbcType=VARCHAR},  <!-- start_act_id_ -->
+		    #{end_act_id_, jdbcType=VARCHAR},  <!-- end_act_id_ -->
+		    #{super_process_instance_id_, jdbcType=VARCHAR},  <!-- super_process_instance_id_ -->
+		    #{delete_reason_, jdbcType=VARCHAR},  <!-- delete_reason_ -->
+		    #{tenant_id_, jdbcType=VARCHAR},  <!-- tenant_id_ -->
+		    #{name_, jdbcType=VARCHAR}  <!-- name_ -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_wf_hi_procinstPO">
+		UPDATE aos_wf_hi_procinst
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+			</if>
+			<if test="proc_inst_id_ != null">
+		          proc_inst_id_ = #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+			</if>
+			<if test="business_key_ != null">
+		          business_key_ = #{business_key_, jdbcType=VARCHAR},  <!-- business_key_ -->
+			</if>
+			<if test="proc_def_id_ != null">
+		          proc_def_id_ = #{proc_def_id_, jdbcType=VARCHAR},  <!-- proc_def_id_ -->
+			</if>
+			<if test="start_time_ != null">
+		          start_time_ = #{start_time_, jdbcType=VARCHAR},  <!-- start_time_ -->
+			</if>
+			<if test="end_time_ != null">
+		          end_time_ = #{end_time_, jdbcType=VARCHAR},  <!-- end_time_ -->
+			</if>
+			<if test="duration_ != null">
+		          duration_ = #{duration_, jdbcType=INTEGER},  <!-- duration_ -->
+			</if>
+			<if test="start_user_id_ != null">
+		          start_user_id_ = #{start_user_id_, jdbcType=VARCHAR},  <!-- start_user_id_ -->
+			</if>
+			<if test="start_act_id_ != null">
+		          start_act_id_ = #{start_act_id_, jdbcType=VARCHAR},  <!-- start_act_id_ -->
+			</if>
+			<if test="end_act_id_ != null">
+		          end_act_id_ = #{end_act_id_, jdbcType=VARCHAR},  <!-- end_act_id_ -->
+			</if>
+			<if test="super_process_instance_id_ != null">
+		          super_process_instance_id_ = #{super_process_instance_id_, jdbcType=VARCHAR},  <!-- super_process_instance_id_ -->
+			</if>
+			<if test="delete_reason_ != null">
+		          delete_reason_ = #{delete_reason_, jdbcType=VARCHAR},  <!-- delete_reason_ -->
+			</if>
+			<if test="tenant_id_ != null">
+		          tenant_id_ = #{tenant_id_, jdbcType=VARCHAR},  <!-- tenant_id_ -->
+			</if>
+			<if test="name_ != null">
+		          name_ = #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_wf_hi_procinst WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_wf_hi_procinstPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_wf_hi_procinst WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_wf_hi_procinstPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_wf_hi_procinst
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_wf_hi_procinstPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_procinst
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_wf_hi_procinstPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_procinst
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_wf_hi_procinstPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_procinst
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_wf_hi_procinstPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_procinst
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_wf_hi_procinst
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_wf_hi_procinst
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- id_ -->
+		  proc_inst_id_,  <!-- proc_inst_id_ -->
+		  business_key_,  <!-- business_key_ -->
+		  proc_def_id_,  <!-- proc_def_id_ -->
+		  start_time_,  <!-- start_time_ -->
+		  end_time_,  <!-- end_time_ -->
+		  duration_,  <!-- duration_ -->
+		  start_user_id_,  <!-- start_user_id_ -->
+		  start_act_id_,  <!-- start_act_id_ -->
+		  end_act_id_,  <!-- end_act_id_ -->
+		  super_process_instance_id_,  <!-- super_process_instance_id_ -->
+		  delete_reason_,  <!-- delete_reason_ -->
+		  tenant_id_,  <!-- tenant_id_ -->
+		  name_  <!-- name_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_wf_hi_procinst.id_,  <!-- id_ -->
+		  aos_wf_hi_procinst.proc_inst_id_,  <!-- proc_inst_id_ -->
+		  aos_wf_hi_procinst.business_key_,  <!-- business_key_ -->
+		  aos_wf_hi_procinst.proc_def_id_,  <!-- proc_def_id_ -->
+		  aos_wf_hi_procinst.start_time_,  <!-- start_time_ -->
+		  aos_wf_hi_procinst.end_time_,  <!-- end_time_ -->
+		  aos_wf_hi_procinst.duration_,  <!-- duration_ -->
+		  aos_wf_hi_procinst.start_user_id_,  <!-- start_user_id_ -->
+		  aos_wf_hi_procinst.start_act_id_,  <!-- start_act_id_ -->
+		  aos_wf_hi_procinst.end_act_id_,  <!-- end_act_id_ -->
+		  aos_wf_hi_procinst.super_process_instance_id_,  <!-- super_process_instance_id_ -->
+		  aos_wf_hi_procinst.delete_reason_,  <!-- delete_reason_ -->
+		  aos_wf_hi_procinst.tenant_id_,  <!-- tenant_id_ -->
+		  aos_wf_hi_procinst.name_  <!-- name_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ = #{proc_inst_id_}  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="business_key_ != null and business_key_ != ''">
+		      AND business_key_ = #{business_key_}  <!-- business_key_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ = #{proc_def_id_}  <!-- proc_def_id_ -->
+		</if>
+	    <if test="start_time_ != null and start_time_ != ''">
+		      AND start_time_ = #{start_time_}  <!-- start_time_ -->
+		</if>
+	    <if test="end_time_ != null and end_time_ != ''">
+		      AND end_time_ = #{end_time_}  <!-- end_time_ -->
+		</if>
+	   <if test="duration_ != null ">
+		      AND duration_ = #{duration_}  <!-- duration_ -->
+		</if>
+	    <if test="start_user_id_ != null and start_user_id_ != ''">
+		      AND start_user_id_ = #{start_user_id_}  <!-- start_user_id_ -->
+		</if>
+	    <if test="start_act_id_ != null and start_act_id_ != ''">
+		      AND start_act_id_ = #{start_act_id_}  <!-- start_act_id_ -->
+		</if>
+	    <if test="end_act_id_ != null and end_act_id_ != ''">
+		      AND end_act_id_ = #{end_act_id_}  <!-- end_act_id_ -->
+		</if>
+	    <if test="super_process_instance_id_ != null and super_process_instance_id_ != ''">
+		      AND super_process_instance_id_ = #{super_process_instance_id_}  <!-- super_process_instance_id_ -->
+		</if>
+	    <if test="delete_reason_ != null and delete_reason_ != ''">
+		      AND delete_reason_ = #{delete_reason_}  <!-- delete_reason_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ = #{tenant_id_}  <!-- tenant_id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- name_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ like '%${proc_inst_id_}%'  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="business_key_ != null and business_key_ != ''">
+		      AND business_key_ like '%${business_key_}%'  <!-- business_key_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ like '%${proc_def_id_}%'  <!-- proc_def_id_ -->
+		</if>
+	    <if test="start_time_ != null and start_time_ != ''">
+		      AND start_time_ like '%${start_time_}%'  <!-- start_time_ -->
+		</if>
+	    <if test="end_time_ != null and end_time_ != ''">
+		      AND end_time_ like '%${end_time_}%'  <!-- end_time_ -->
+		</if>
+	    <if test="start_user_id_ != null and start_user_id_ != ''">
+		      AND start_user_id_ like '%${start_user_id_}%'  <!-- start_user_id_ -->
+		</if>
+	    <if test="start_act_id_ != null and start_act_id_ != ''">
+		      AND start_act_id_ like '%${start_act_id_}%'  <!-- start_act_id_ -->
+		</if>
+	    <if test="end_act_id_ != null and end_act_id_ != ''">
+		      AND end_act_id_ like '%${end_act_id_}%'  <!-- end_act_id_ -->
+		</if>
+	    <if test="super_process_instance_id_ != null and super_process_instance_id_ != ''">
+		      AND super_process_instance_id_ like '%${super_process_instance_id_}%'  <!-- super_process_instance_id_ -->
+		</if>
+	    <if test="delete_reason_ != null and delete_reason_ != ''">
+		      AND delete_reason_ like '%${delete_reason_}%'  <!-- delete_reason_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ like '%${tenant_id_}%'  <!-- tenant_id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- name_ -->
+		</if>
+	</sql>
+	
+</mapper>

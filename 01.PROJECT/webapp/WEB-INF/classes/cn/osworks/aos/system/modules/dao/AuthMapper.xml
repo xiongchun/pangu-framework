@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 组织与权限业务域使用的SQL语句 -->
+<mapper namespace="Auth">
+
+	<!-- 根据Dto查询并返回Aos_sys_org数据持久化对象集合 -->
+	<select id="listAos_sys_orgPOsPage" parameterType="Dto" resultType="Aos_sys_orgPO">
+		SELECT
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_orgMapper.column" />
+		FROM aos_sys_org
+		<where>
+			<if test="name_ != null and name_ != ''">
+				AND name_ LIKE '%${name_}%'
+			</if>
+			<if test="cascade != 'true'">
+				AND parent_id_ = #{id_}
+			</if>
+			<if test="cascade = 'true'">
+				AND cascade_id_ like '%${cascade_id_}%'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 修改了组织名称，则更新以此节点作为父节点名称的冗余字段 -->
+	<update id="updateAos_sys_orgByParent_id_" parameterType="Dto">
+		UPDATE aos_sys_org SET pareant_name_ = #{pareant_name_}
+		 WHERE parent_id_ = #{parent_id_}
+	</update>
+	
+	<!-- 根据Dto查询并返回Aos_sys_user数据持久化对象集合 -->
+	<select id="listUserInfosPage" parameterType="Dto" resultType="Dto">
+		SELECT
+		  (SELECT name_ FROM aos_sys_org WHERE id_ = aos_sys_user.org_id_) AS org_name_,
+		  (SELECT name_ FROM aos_sys_user WHERE id_ = aos_sys_user.creater_id_) AS creater_name_,
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_userMapper.column" />
+		FROM aos_sys_user
+		<where>
+			<if test="hotkey != null and hotkey != ''">
+			     AND (name_ LIKE '%${hotkey}%' OR account_ LIKE '%${hotkey}%')
+			</if>
+			<if test="org_cascade_id_ != null and org_cascade_id_ != ''">
+				AND org_cascade_id_ like '${org_cascade_id_}%'
+			</if>
+			<if test="cascade != 'true' and org_id_ != null and org_id_ != ''">
+				AND org_id_ = #{org_id_}
+			</if>
+			<if test="grant = true">
+				AND type_ != '2'  <!-- 去除超级用户 -->
+			</if>
+			<if test="user_id_ != null and user_id_ != ''">
+				AND id_ != #{user_id_} <!-- 去除当前用户(普通管理员) -->
+			</if>
+			<if test="delete_flag_ != null and delete_flag_ != ''">
+				AND delete_flag_ = #{delete_flag_}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询岗位已授权用户集合 -->
+	<select id="listGrantedUsersOfPost" parameterType="Dto" resultType="Dto">
+		SELECT
+		  aos_sys_user_post.id_ AS user_post_id_,
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_userMapper.column2" />
+		FROM aos_sys_user, aos_sys_user_post WHERE aos_sys_user.id_ = aos_sys_user_post.user_id_ AND aos_sys_user_post.post_id_ = #{post_id_}
+		<if test="hotkey != null and hotkey != ''">
+				AND (aos_sys_user.name_ LIKE '%${hotkey}%' OR aos_sys_user.account_ LIKE '%${hotkey}%')
+		</if>
+		<if test="delete_flag_ != null and delete_flag_ != ''">
+				AND aos_sys_user.delete_flag_ = #{delete_flag_}
+		</if>
+	</select>
+
+	<!-- 根据Dto查询并返回Aos_sys_post数据持久化对象集合 -->
+	<select id="listPostInfosPage" parameterType="Dto" resultType="Dto">
+		SELECT
+		  (SELECT name_ FROM aos_sys_user WHERE id_ = aos_sys_post.creater_id_) AS creater_name_,
+		  (SELECT name_ FROM aos_sys_org WHERE id_ = aos_sys_post.org_id_) AS org_name_,
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_postMapper.column" />
+		FROM aos_sys_post
+		<where>
+			<if test="hotkey != null and hotkey != ''">
+			    AND name_ LIKE '%${hotkey}%' 
+			</if>
+			<if test="org_cascade_id_ != null and org_cascade_id_ != ''">
+			    AND org_cascade_id_ like '${org_cascade_id_}%' 
+			</if>
+			<if test="cascade != 'true' and org_id_ != null and org_id_ != ''">
+			    AND org_id_ = #{org_id_}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 根据DTO删除用户模块授权信息 -->
+	<delete id="deleteAos_sys_module_userByDto" parameterType="Dto">
+		DELETE FROM aos_sys_module_user WHERE user_id_ = #{user_id_} AND grant_type_ = #{grant_type_}
+	</delete>
+	
+	<!-- 根据用户删除用户模块授权信息 -->
+	<delete id="deleteAos_sys_module_userByUser_id_" parameterType="String">
+		DELETE FROM aos_sys_module_user WHERE user_id_ = #{user_id_}
+	</delete>
+	
+	<!-- 根据用户删除用户-导航菜单授权信息 -->
+	<delete id="deleteAos_sys_module_user_macstyleByUser_id_" parameterType="String">
+		DELETE FROM aos_sys_module_user_nav WHERE user_id_ = #{user_id_}
+	</delete>
+
+	<!-- 查询用户菜单已授权集合 -->
+	<select id="listUserModuleSelected" parameterType="Dto" resultType="Aos_sys_modulePO">
+		SELECT
+			<include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper.column2" />
+		FROM
+			aos_sys_module , aos_sys_module_user
+		WHERE
+			aos_sys_module.id_ = aos_sys_module_user.module_id_ AND aos_sys_module_user.grant_type_ = #{grant_type_} 
+			AND aos_sys_module_user.user_id_ = #{user_id_} AND aos_sys_module.status_ = #{status_}
+		ORDER BY aos_sys_module.sort_no_
+	</select>
+	
+	<!-- 根据用户删除用户角色授权信息 -->
+	<delete id="deleteAos_sys_user_roleByUser_id_" parameterType="Dto">
+		DELETE FROM aos_sys_user_role WHERE user_id_ = #{user_id_}
+	</delete>	
+
+	<!-- 查询岗位菜单已授权集合 -->
+	<select id="listPostModuleSelected" parameterType="Dto" resultType="Aos_sys_modulePO">
+		SELECT
+		    <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper.column2" />
+		FROM
+			aos_sys_module , aos_sys_module_post
+		WHERE
+			aos_sys_module.id_ = aos_sys_module_post.module_id_ AND aos_sys_module_post.grant_type_ = '1'
+			AND aos_sys_module_post.post_id_ = #{post_id_} AND aos_sys_module.status_ = '1'
+	</select>	
+	
+	<!-- 根据岗位删除岗位菜单授权信息 -->
+	<delete id="deleteAos_sys_module_postByPost_id_" parameterType="Dto">
+		DELETE FROM aos_sys_module_post WHERE post_id_ = #{post_id_}
+	</delete>
+	
+	<!-- 根据岗位删除岗位用户授权信息 -->
+	<delete id="deleteAos_sys_user_postByPost_id_" parameterType="Dto">
+		DELETE FROM aos_sys_user_post WHERE post_id_ = #{post_id_}
+	</delete>
+	
+	<!-- 根据用户删除岗位用户授权信息 -->
+	<delete id="deleteAos_sys_user_postByUser_id_" parameterType="String">
+		DELETE FROM aos_sys_user_post WHERE user_id_ = #{user_id_}
+	</delete>
+	
+	<!-- 查询角色菜单已授权集合 -->
+	<select id="listRoleModuleSelected" parameterType="Dto" resultType="Aos_sys_modulePO">
+		SELECT
+		    <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper.column2" />
+		FROM
+			aos_sys_module , aos_sys_module_role
+		WHERE
+			aos_sys_module.id_ = aos_sys_module_role.module_id_ AND aos_sys_module_role.grant_type_ = #{grant_type_} 
+			AND aos_sys_module_role.role_id_ = #{role_id_} AND aos_sys_module.status_ = #{status_}
+	</select>	
+	
+	<!-- 根据角色删除角色菜单授权信息 -->
+	<delete id="deleteAos_sys_module_roleByDto" parameterType="Dto">
+		DELETE FROM aos_sys_module_role WHERE role_id_ = #{role_id_} AND grant_type_ = #{grant_type_}
+	</delete>
+	
+	<!-- 根据角色删除角色菜单授权信息 -->
+	<delete id="deleteAos_sys_module_roleByRole_id_" parameterType="Dto" >
+		DELETE FROM aos_sys_module_role WHERE role_id_ = #{role_id_}
+	</delete>
+	
+	<!-- 根据角色删除用户岗位授权信息 -->
+	<delete id="deleteAos_sys_user_roleByRole_id_" parameterType="Dto">
+		DELETE FROM aos_sys_user_role WHERE role_id_ = #{role_id_}
+	</delete>
+	
+	<!-- 超级用户:获取左侧导航的菜单卡片。 -->
+	<select id="getLeftNavCradListBasedRoot" parameterType="Dto" resultType="Dto">
+		SELECT
+		    <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper.column" />
+		FROM
+			aos_sys_module
+		WHERE
+			aos_sys_module.status_ = '1' AND ${fnLength}(aos_sys_module.cascade_id_) = 5
+		 ORDER BY sort_no_ ASC
+	</select>
+	
+	<!-- 超级用户:获取左侧导航的菜单卡片树 -->
+	<select id="getModuleTreeBasedRoot" parameterType="Dto" resultType="Aos_sys_modulePO">
+		SELECT
+		    <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper.column" />
+		FROM
+			aos_sys_module
+		WHERE
+			aos_sys_module.status_ = '1' AND cascade_id_ like '${cascade_id_}%'
+		 ORDER BY sort_no_ ASC
+	</select>
+	
+	<!-- 查询自定义导航菜单 -->
+	<select id="getNavMenusByUser" parameterType="Dto" resultType="Dto">
+		SELECT
+			aos_sys_module.id_,
+			aos_sys_module.name_,
+			aos_sys_module.url_,
+			aos_sys_module_user_nav.nav_icon_
+		FROM
+			aos_sys_module,
+			aos_sys_module_user_nav
+		WHERE
+			aos_sys_module.id_ = aos_sys_module_user_nav.module_id_
+		AND aos_sys_module_user_nav.user_id_ = #{user_id_}
+		AND aos_sys_module_user_nav.type_ = #{type_}
+		AND aos_sys_module.status_ = '1'
+		ORDER BY aos_sys_module.sort_no_ ASC
+	</select>
+	
+	<!-- 查询并返回Aos_sys_org数据持久化对象集合 -->
+	<select id="listAos_sys_orgPOs" parameterType="Dto" resultType="Aos_sys_orgPO">
+		SELECT
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_orgMapper.column" />
+		FROM aos_sys_org
+		<where>
+			<if test="cascade_id_ != null and cascade_id_ != ''">
+				AND cascade_id_ like '${cascade_id_}%'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询角色已授权用户集合 -->
+	<select id="listGrantedUsersOfRole" parameterType="Dto" resultType="Dto">
+		SELECT
+		  aos_sys_user_role.id_ AS user_role_id_,
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_userMapper.column2" />
+		FROM aos_sys_user, aos_sys_user_role WHERE aos_sys_user.id_ = aos_sys_user_role.user_id_ AND aos_sys_user_role.role_id_ = #{role_id_}
+		<if test="hotkey != null and hotkey != ''">
+				AND (aos_sys_user.name_ LIKE '%${hotkey}%' OR aos_sys_user.account_ LIKE '%${hotkey}%')
+		</if>
+		<if test="delete_flag_ != null and delete_flag_ != ''">
+		       AND aos_sys_user.delete_flag_ = #{delete_flag_}
+		</if>
+	</select>
+	
+	<!-- 查询用户已授权岗位集合 -->
+	<select id="listGrantedPostsOfUser" parameterType="Dto" resultType="Dto">
+		SELECT
+		  (SELECT name_ FROM aos_sys_org WHERE id_ = aos_sys_post.org_id_) AS org_name_,
+		  aos_sys_user_post.id_ AS user_post_id_,
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_postMapper.column2" />
+		FROM aos_sys_post, aos_sys_user_post WHERE aos_sys_post.id_ = aos_sys_user_post.post_id_ AND aos_sys_user_post.user_id_ = #{user_id_}
+		<if test="hotkey != null and hotkey != ''">
+				AND aos_sys_post.name_ LIKE '%${hotkey}%' 
+		</if>
+	</select>
+	
+	<!-- 查询管理功能角色集合 -->
+	<select id="listRoleInfosPage" parameterType="Dto" resultType="Dto">
+		SELECT
+		  (SELECT name_ FROM aos_sys_user WHERE id_ = aos_sys_role.creater_id_) AS creater_name_,
+		  (SELECT name_ FROM aos_sys_org WHERE id_ = aos_sys_role.creater_org_id_) AS creater_org_name_,
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_roleMapper.column2" />
+		FROM aos_sys_role
+		<where>
+			 <if test="creater_org_id_ != null and creater_org_id_ != ''">
+			     AND creater_org_id_ = #{creater_org_id_}
+			</if>
+			<if test="creater_org_cascade_id_ != null and creater_org_cascade_id_ != ''">
+			     AND creater_org_cascade_id_ LIKE '${creater_org_cascade_id_}%'
+			</if>
+			<if test="hotkey != null and hotkey != ''">
+			     AND name_ LIKE '%${hotkey}%'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询用户角色授权待选角色集合 -->
+	<select id="listRoleInfos4UserGrant" parameterType="Dto" resultType="Dto">
+		SELECT
+		  (SELECT name_ FROM aos_sys_user WHERE id_ = aos_sys_role.creater_id_) AS creater_name_,
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_roleMapper.column2" />
+		FROM aos_sys_role WHERE id_ NOT IN (SELECT role_id_ FROM aos_sys_user_role WHERE user_id_ = #{user_id_})
+		 <if test="creater_org_id_ != null and creater_org_id_ != ''">
+		     AND creater_org_id_ = #{creater_org_id_}
+		</if>
+		<if test="creater_org_cascade_id_ != null and creater_org_cascade_id_ != ''">
+			     AND creater_org_cascade_id_ LIKE '${creater_org_cascade_id_}%'
+		</if>
+		<if test="hotkey != null and hotkey != ''">
+		     AND name_ LIKE '%${hotkey}%'
+		</if>
+	</select>
+	
+	<!-- 查询用户已授权角色集合 -->
+	<select id="listGrantedRolesOfUser" parameterType="Dto" resultType="Dto">
+			SELECT
+			  (SELECT name_ FROM aos_sys_user WHERE id_ = aos_sys_role.creater_id_) AS creater_name_,
+			  aos_sys_user_role.id_ AS user_role_id_,
+		     <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_roleMapper.column2" />
+			FROM aos_sys_role, aos_sys_user_role WHERE aos_sys_role.id_ = aos_sys_user_role.role_id_ 
+		      AND aos_sys_user_role.user_id_ = #{user_id_}
+			<if test="hotkey != null and hotkey != ''">
+					AND aos_sys_role.name_ LIKE '%${hotkey}%' 
+			</if>
+	</select>
+	
+	<!-- 删除岗位时清除组件授权资源 -->
+	<delete id="deleteAos_sys_element_grantByPost_id_">
+		DELETE FROM aos_sys_page_el_grant WHERE  post_id_ = #{post_id_}
+	</delete>
+	
+	<!-- 删除角色时清除组件授权资源 -->
+	<delete id="deleteAos_sys_element_grantByRole_id_">
+		DELETE FROM aos_sys_page_el_grant WHERE  role_id_ = #{role_id_}
+	</delete>
+	
+	<!-- 删除用户时时清除组件授权资源 -->
+	<delete id="deleteAos_sys_element_grantByUser_id_">
+		DELETE FROM aos_sys_page_el_grant WHERE  user_id_ = #{user_id_}
+	</delete>
+	
+	<!-- 查询用户菜单直接关联已授权集合 -->
+	<select id="getModulesByUser" parameterType="Dto" resultType="Aos_sys_modulePO">
+		SELECT DISTINCT
+			<include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper.column2" />
+		FROM
+			aos_sys_module , aos_sys_module_user
+		WHERE
+			aos_sys_module.id_ = aos_sys_module_user.module_id_ AND aos_sys_module_user.grant_type_ = #{grant_type_} 
+			AND aos_sys_module_user.user_id_ = #{user_id_} AND aos_sys_module.status_ = '1'
+			<if test="length != null and length != ''">
+				AND ${fnLength}(aos_sys_module.cascade_id_) = ${length}
+			</if>
+		   <if test="cascade_id_ != null and cascade_id_ != ''">
+				AND aos_sys_module.cascade_id_ like '${cascade_id_}%'
+			</if>
+		ORDER BY aos_sys_module.sort_no_ ASC
+	</select>
+	
+	<!-- 根据用户查询通过岗位得到的授权集合 -->
+	<select id="getModulesByPost" parameterType="Dto" resultType="Aos_sys_modulePO">
+		SELECT DISTINCT
+		    <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper.column2" />
+		FROM
+			aos_sys_module , aos_sys_module_post
+		WHERE
+			aos_sys_module.id_ = aos_sys_module_post.module_id_ AND aos_sys_module_post.grant_type_ = #{grant_type_} AND aos_sys_module.status_ = '1'
+			AND aos_sys_module_post.post_id_ IN (SELECT post_id_ FROM aos_sys_user_post WHERE user_id_ = #{user_id_})
+			<if test="length != null and length != ''">
+				AND ${fnLength}(aos_sys_module.cascade_id_) = ${length}
+			</if>			
+			<if test="cascade_id_ != null and cascade_id_ != ''">
+				AND aos_sys_module.cascade_id_ like '${cascade_id_}%'
+			</if>
+			ORDER BY aos_sys_module.sort_no_ ASC
+	</select>
+	
+	<!-- 根据用户查询通过角色得到的授权集合 -->
+	<select id="getModulesByRole" parameterType="Dto" resultType="Aos_sys_modulePO">
+		SELECT DISTINCT
+		    <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper.column2" />
+		FROM
+			aos_sys_module , aos_sys_module_role
+		WHERE
+			aos_sys_module.id_ = aos_sys_module_role.module_id_ AND aos_sys_module_role.grant_type_ = #{grant_type_} AND aos_sys_module.status_ = '1'
+			AND aos_sys_module_role.role_id_ IN (SELECT role_id_ FROM aos_sys_user_role WHERE user_id_ = #{user_id_})
+			<if test="length != null and length != ''">
+				AND ${fnLength}(aos_sys_module.cascade_id_) = ${length}
+			</if>			
+			<if test="cascade_id_ != null and cascade_id_ != ''">
+				AND aos_sys_module.cascade_id_ like '${cascade_id_}%'
+			</if>
+			ORDER BY aos_sys_module.sort_no_ ASC
+	</select>
+	
+	<!-- 查询用户关联岗位的界面组件授权信息 -->
+	<select id="getElementsByPost" parameterType="Dto" resultType="ElementVO">
+		SELECT DISTINCT
+		    aos_sys_page_el_grant.id_,
+			aos_sys_page_el_grant.el_id_,
+			aos_sys_page_el_grant.grant_type_,
+			aos_sys_page_el.dom_id_,
+			aos_sys_page_el.type_,
+			aos_sys_page_el.name_,
+			aos_sys_page_el.module_id_,
+			aos_sys_page_el.page_id_,
+			aos_sys_module.name_ AS module_name_
+		FROM aos_sys_page_el_grant, aos_sys_page_el, aos_sys_module
+		WHERE aos_sys_page_el_grant.el_id_ = aos_sys_page_el.id_
+			AND aos_sys_page_el.module_id_ = aos_sys_module.id_
+			AND aos_sys_page_el_grant.post_id_ IN (
+				SELECT
+					post_id_
+				FROM
+					aos_sys_user_post
+				WHERE
+					user_id_ = #{user_id_} 
+			)
+			<if test="is_tag_ != null and is_tag_ != ''">
+				AND aos_sys_page_el.module_id_ = #{module_id_}
+				AND aos_sys_page_el.page_id_ = #{page_id_}
+			</if>
+			ORDER BY aos_sys_page_el.module_id_
+	</select>
+	
+	<!-- 查询用户关联角色的界面组件授权信息 -->
+	<select id="getElementsByRole" parameterType="Dto" resultType="ElementVO">
+		SELECT DISTINCT
+		    aos_sys_page_el_grant.id_,
+			aos_sys_page_el_grant.el_id_,
+			aos_sys_page_el_grant.grant_type_,
+			aos_sys_page_el.dom_id_,
+			aos_sys_page_el.type_,
+			aos_sys_page_el.name_,
+			aos_sys_page_el.module_id_,
+			aos_sys_page_el.page_id_,
+			aos_sys_module.name_ AS module_name_
+		FROM aos_sys_page_el_grant, aos_sys_page_el, aos_sys_module
+		WHERE aos_sys_page_el_grant.el_id_ = aos_sys_page_el.id_
+			AND aos_sys_page_el.module_id_ = aos_sys_module.id_
+			AND aos_sys_page_el_grant.role_id_ IN (
+				SELECT
+					role_id_
+				FROM
+					aos_sys_user_role
+				WHERE
+					user_id_ = #{user_id_} 
+			)
+			<if test="is_tag_ != null and is_tag_ != ''">
+				AND aos_sys_page_el.module_id_ = #{module_id_}
+				AND aos_sys_page_el.page_id_ = #{page_id_}
+			</if>
+			ORDER BY aos_sys_page_el.module_id_
+	</select>
+	
+	<!-- 查询用户直接自己的界面组件授权信息 -->
+	<select id="getElementsByUser" parameterType="Dto" resultType="ElementVO">
+		SELECT DISTINCT
+		    aos_sys_page_el_grant.id_,
+			aos_sys_page_el_grant.el_id_,
+			aos_sys_page_el_grant.grant_type_,
+			aos_sys_page_el.dom_id_,
+			aos_sys_page_el.type_,
+			aos_sys_page_el.name_,
+			aos_sys_page_el.module_id_,
+			aos_sys_page_el.page_id_,
+			aos_sys_module.name_ AS module_name_
+		FROM
+			aos_sys_page_el_grant,
+			aos_sys_page_el,
+			aos_sys_module
+		WHERE aos_sys_page_el_grant.el_id_ = aos_sys_page_el.id_
+			AND aos_sys_page_el.module_id_ = aos_sys_module.id_
+			AND aos_sys_page_el_grant.user_id_ = #{user_id_}
+			<if test="is_tag_ != null and is_tag_ != ''">
+				AND aos_sys_page_el.module_id_ = #{module_id_}
+				AND aos_sys_page_el.page_id_ = #{page_id_}
+			</if>
+			ORDER BY aos_sys_page_el.module_id_
+	</select>
+	
+	<!-- 根据Dto查询并返回Aos_sys_module_user_navPO数据持久化对象集合 -->
+	<select id="listAos_sys_module_user_navPOs" parameterType="Dto" resultType="Dto">
+		SELECT
+		  (SELECT name_ FROM aos_sys_module WHERE id_ = aos_sys_module_user_nav.module_id_) AS module_name_,
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_module_user_navMapper.column" />
+		FROM aos_sys_module_user_nav
+		<where>
+			<if test="user_id_ != null and user_id_ != ''">
+			    AND user_id_ = #{user_id_}
+			</if>
+			<if test="type_ != null and type_ != ''">
+			    AND type_ = #{type_}
+			</if>
+		</where>
+		ORDER BY sort_no_
+	</select>
+	
+	<!-- 查询用户快捷菜单已授权集合：树型布局 -->
+	<select id="listUserQuickModuleSelected" parameterType="Dto" resultType="Aos_sys_modulePO">
+		SELECT
+			<include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper.column2" />
+		FROM
+			aos_sys_module , aos_sys_module_user_nav
+		WHERE
+			aos_sys_module.id_ = aos_sys_module_user_nav.module_id_ 
+			AND aos_sys_module_user_nav.user_id_ = #{user_id_} AND aos_sys_module.status_ = '1'
+			<if test="type_ != null and type_ != ''">
+			    AND aos_sys_module_user_nav.type_ = #{type_}
+			</if>
+			<if test="is_leaf_ != null and is_leaf_ != ''">
+			    AND aos_sys_module.is_leaf_ = #{is_leaf_}
+			</if>
+		ORDER BY aos_sys_module.sort_no_
+	</select>
+	
+	<!-- 查询用户快捷菜单已授权集合：树型布局 -->
+	<select id="listQuickMenu4Sort" parameterType="Dto" resultType="Dto">
+		SELECT
+			aos_sys_module.name_ AS name_,
+			aos_sys_module_user_nav.id_ AS id_,
+			aos_sys_module_user_nav.sort_no_ AS sort_no_
+		FROM
+			aos_sys_module , aos_sys_module_user_nav
+		WHERE
+			aos_sys_module.id_ = aos_sys_module_user_nav.module_id_ AND aos_sys_module_user_nav.type_ = #{type_} 
+			AND aos_sys_module_user_nav.user_id_ = #{user_id_} AND aos_sys_module.status_ = '1' AND aos_sys_module.is_leaf_ = '1'
+		ORDER BY aos_sys_module_user_nav.sort_no_
+	</select>
+	
+	<!-- 根据DTO删除用户自定义菜单信息 -->
+	<delete id="deleteAos_sys_module_user_navByDto" parameterType="Dto">
+		DELETE FROM aos_sys_module_user_nav WHERE user_id_ = #{user_id_} AND type_ = #{type_}
+	</delete>
+	<delete id="deleteAos_sys_module_user_navByDto2" parameterType="Dto">
+		DELETE FROM aos_sys_module_user_nav WHERE user_id_ = #{user_id_} AND module_id_ = #{module_id_}
+	</delete>
+	
+	<!-- 统计行数自定义菜单是否还有自定义子菜单 -->
+	<select id="rows_aos_sys_module" resultType="Integer" parameterType="Dto">
+		SELECT
+			COUNT(1)
+		FROM
+			aos_sys_module_user_nav
+		WHERE user_id_ = #{user_id_}
+		AND type_ = '1'
+		AND module_id_ IN (
+			SELECT id_ FROM aos_sys_module WHERE parent_id_ = #{module_id_}
+		 )
+	</select>
+	
+</mapper>

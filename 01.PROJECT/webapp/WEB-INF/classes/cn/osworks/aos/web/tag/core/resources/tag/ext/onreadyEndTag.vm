@@ -1,0 +1,31 @@
+#foreach($elementVO in $elementVOs)
+// >>界面组件权限授权
+#if(${elementVO.grant_type_} == '2')
+	    ##显示
+	    Ext.getCmp('${elementVO.dom_id_}').show();
+	#elseif(${elementVO.grant_type_} == '3')
+	    ##隐藏
+	    Ext.getCmp('${elementVO.dom_id_}').hide();
+    #elseif(${elementVO.grant_type_} == '4')
+        ##只读
+		#if(${elementVO.type_} == '3')
+			##表单元素
+			AOS.read(Ext.getCmp('${elementVO.dom_id_}'));
+		#end
+	#elseif(${elementVO.grant_type_} == '5')
+        ##编辑
+		#if(${elementVO.type_} == '3')
+			##表单元素
+		    AOS.edit(Ext.getCmp('${elementVO.dom_id_}'));
+		#end
+	#elseif(${elementVO.grant_type_} == '6')
+        ##禁用
+		Ext.getCmp('${elementVO.dom_id_}').disable();
+	#elseif(${elementVO.grant_type_} == '7')
+        ##激活
+		Ext.getCmp('${elementVO.dom_id_}').enable();
+#end
+// <<界面组件权限授权
+#end
+});
+</script>

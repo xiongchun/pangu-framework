@@ -1,0 +1,13 @@
+#if($backGround == "true")
+<style type="text/css">
+##设置页面背景
+body {
+	background-color: #FFFFFF !important;
+	background-attachment: fixed !important;
+	background-position: bottom center !important;
+	background-repeat: repeat-x !important;
+	background-image:url("${cxt}/static/image/background/main/${curSkin}.png") !important;
+}
+</style>
+#end
+<body#if($id) id="$id"#end#if($class) class="$class"#end>
