@@ -1,2 +1,0 @@
-Ext.ux.window.Notification
-通知插件所需的图片资源
