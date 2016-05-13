@@ -1,0 +1,30 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##CheckboxField定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formItemTagSupport.vm")
+#if($boxLabel)
+    boxLabel:'$boxLabel',
+#end
+#if($boxLabelAlign)
+    boxLabelAlign:'$boxLabelAlign',
+#end
+#if($inputValue)
+    inputValue:'$inputValue',
+#end
+#if($checked)
+    checked:$checked,
+#end
+    app:169	
+};
+##CheckboxField实例化
+#if($instance == "true")
+var ${id} = Ext.create('Ext.form.field.Checkbox',${id}_cfg);
+#end
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##表单元素组件实例后设置
+###parse("${vmpath}ext/subvm/afterFormFieldCreated.vm")

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-web-app xmlns:wls="http://www.bea.com/ns/weblogic/weblogic-web-app"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://www.bea.com/ns/weblogic/weblogic-web-app http://www.bea.com/ns/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd">
+
+	<wls:context-root>aos</wls:context-root>
+
+	<wls:container-descriptor>
+		<wls:prefer-web-inf-classes>true</wls:prefer-web-inf-classes>
+	</wls:container-descriptor>
+
+</wls:weblogic-web-app>

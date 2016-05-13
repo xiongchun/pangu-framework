@@ -1,0 +1,2116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib>
+	<tag name="onready" bodycontent="JSP" parent="" tagclass="cn.osworks.aos.web.tag.impl.ext.general.OnReadyTag"
+		description="Ext OnReady标签">
+		<attribute name="ux" required="false">
+			<description>
+			<![CDATA[
+			缺省情况下，扩展组件会根据所引用到的扩展标签自动启用扩展，但也可以通过此属性在没有使用扩展标签的情况下启用扩展组件的资源依赖。
+			可选值为：statusBar | pagingMemoryProxy | iframe | treePicker | dataView | toggle。多个扩展使用，分割。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="elAuth" required="false" >
+			<description>
+			<![CDATA[
+			是否启用界面组件授权机制。可选：true | false。缺省值：true。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="component" bodycontent="JSP" parent="ComponentTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.general.ComponentTag" description="Component标签">
+
+	</tag>
+	<tag name="container" bodycontent="JSP" parent="ContainerTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.general.ContainerTag" description="Container标签">
+
+	</tag>
+	<tag name="viewport" bodycontent="JSP" parent="ContainerTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.layout.ViewportTag"
+		description="Viewport视窗标签">
+	</tag>
+	<tag name="panel" bodycontent="JSP" parent="PanelTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.panel.PanelTag"
+		description="Panel标签">
+	</tag>
+	<tag name="iframe" bodycontent="empty" parent="PanelTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.ux.IframeTag"
+		 description="Iframe标签">
+		<attribute name="loadMask" required="false">
+			<description>
+			<![CDATA[
+			加载页面时的文本信息。提示：这个文本信息只有后加载模式，即通过iframe.load(url)的方式才会显示。
+			]]>
+			</description>
+		</attribute>
+        <attribute name="src" required="false">
+            <description>
+            <![CDATA[
+            IFrame加载的URL。也可以通过iframe.load(url)的方式来设置。
+            ]]>
+            </description>
+        </attribute>
+		<attribute name="mask" required="false">
+			<description>
+			<![CDATA[
+            是否显示加载页面时的文本信息。可选值：true|false。缺省值：true。
+            ]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="tool" bodycontent="empty" parent="ButtonTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.general.ToolTag"
+		description="Tool标签：显示在容器标题右侧的工具集。如：Panel、GridPanel、Window等。">
+		<attribute name="type" required="true">
+			<description>
+			<![CDATA[
+			工具类型。可选值为：maximize,restore,toggle,gear,prev,next,pin,unpin,right,left,down,up,refresh,plus,minus,search,save,help,print,expand,collapse。分别对应不同的小图标。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="docked" bodycontent="JSP" parent="ContainerTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.docked.DockedTag"
+		description="停靠栏标签。包括工具栏、分页栏、状态栏。">
+		<attribute name="xtype" required="false" rewrite="true">
+			<description>
+			<![CDATA[
+			组件类型。可选类型为：toolbar|statusbar|pagingtoolbar。缺省为：toolbar。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="dock" required="false">
+			<description>
+			<![CDATA[
+			停靠栏停靠外部容器的位置。缺省为top。可选：top|bottom。提示：只有当停靠栏作为容器组件(如：面板、表格、窗口等)的子组件使用才有效。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="ui" required="false">
+			<description>
+			<![CDATA[
+			停靠栏的UI样式类型。缺省为："default"。可选：default|footer。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="text" required="false">
+			<description>
+			<![CDATA[
+			状态栏专用属性。初始化后状态栏现实的文本。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="defaultText" required="false">
+			<description>
+			<![CDATA[
+			状态栏专用属性。状态栏重置后状态栏显示的文本。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="forceBoder" required="false">
+			<description>
+			<![CDATA[
+			停靠栏边框的二次处理。当border解决不了问题的时候，可以考虑使用这个属性。这个属性可以强制边框按照你预期的方式来展示。设置方法:forceBoder="1 0 1 3"代表顺序(top right bottom left)。提示：数值为边框size。0即为隐藏边框。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="dockeditem" bodycontent="JSP" parent="ButtonTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.docked.DockedItemTag"
+		description="停靠栏的停靠项目标签。">
+		<attribute name="xtype" required="false" rewrite="true">
+			<description>
+			<![CDATA[
+			组件类型。可选类型为：tbfill|tbseparator|tbspacer|tbtext|button|splitbutton。提示：如果要在工具栏插入其它组件，如文本框、下拉框等。则直接在工具栏标签内写入相应组件的标签即可。缺省：button。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="on" bodycontent="empty" parent="ComponentTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.general.OnTag"
+		description="事件监听绑定标签,将当前事件绑定的父组件上。相应事件可查阅相应组件的Ext API手册。">
+		<attribute name="event" required="true">
+			<description>
+			<![CDATA[
+			注册的事件名称。事件名称可查阅对应组件的Ext API手册。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="fn" required="true">
+			<description>
+			<![CDATA[
+			响应事件的函数名。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="delay" required="false">
+			<description>
+			<![CDATA[
+			延时执行。单位：毫秒。(1000毫秒=1秒)。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="single" required="false">
+			<description>
+			<![CDATA[
+			事件是否只响应一次。默认：false。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="menu" bodycontent="JSP" parent="PanelTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.menu.MenuTag"
+		description="菜单组件容器面板。">
+		<attribute name="plain" required="false">
+			<description>
+			<![CDATA[
+			为true时，删除菜单左侧向下刻线并且不缩进菜单组件项目。缺省：false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="floating" required="false">
+			<description>
+			<![CDATA[
+			true (the default) will be rendered as an absolutely positioned, floating Component. If configured as floating: false,
+			the Menu may be used as a child item of another Container.Defaults to: true
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="menuitem" bodycontent="JSP" parent="ButtonTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.menu.MenuItemTag"
+		description="菜单项目标签。">
+		<attribute name="plain" required="false">
+			<description>
+			<![CDATA[
+			为true时，删除菜单左侧向下刻线并且不缩进菜单组件项目。缺省：false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="xtype" required="false" rewrite="true">
+			<description>
+			<![CDATA[
+			组件类型。可选类型为：menuseparator|menuitem。默认：menuitem。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="button" bodycontent="JSP" parent="ButtonTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.button.ButtonTag"
+		description="按钮标签。">
+		<attribute name="xtype" required="false" rewrite="true">
+			<description>
+			<![CDATA[
+			组件类型。默认：button。可选类型为：button|splitbutton。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="iconAlign" required="false">
+			<description>
+			<![CDATA[
+			图标对齐模式。默认：left。可选：top|right|bottom|left。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="arrowAlign" required="false">
+			<description>
+			<![CDATA[
+			下拉箭头对齐模式。默认：right。可选：right|bottom。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="textAlign" required="false">
+			<description>
+			<![CDATA[
+			文本对齐模式。默认：center。可选：center|left|right。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="layout" bodycontent="empty" parent="BaseTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.layout.LayoutTag"
+		description="容器布局配置标签">
+		<attribute name="type" required="true">
+			<description>
+			<![CDATA[
+			       此容器所使用的布局类型。如不指定，则使用缺省的Ext.layout.ContainerLayout类型。有效的值可以是：accordion|anchor|absolute|border|card|column|fit|form|table|auto|hbox|vbox。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="titleCollapse" required="false">
+			<description>
+			<![CDATA[
+			    True表示为允许单击头部区域任何一个位置都可收缩面板（当collapsible = true）反之只允许单击工具按钮（默认为false）。提示：Accordion布局的时候默认为true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="animate" required="false">
+			<description>
+			<![CDATA[
+			'true' 表示对所含面板进行展开/收缩时, 面板的打开/关闭使用动画效果. 'false' 则无动画地直接打开/关闭. 注意: 展开/收缩动画由布局提供, 而不是子面板。缺省为：true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="hideCollapseTool" required="false">
+			<description>
+			<![CDATA[
+			'true' 表示隐藏所含Panel的展开/收缩工具按钮, 'false'则显示. 当设为'true'时, titleCollapse将被自动设为'true'。缺省为：false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="multi" required="false">
+			<description>
+			<![CDATA[
+			设为'true'时, 表示允许同时显示多个子面板。缺省为: false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="padding" required="false">
+			<description>
+			<![CDATA[
+			Specifies the padding for this component. The padding can be a single numeric value to apply to all sides or it can be a
+			CSS style specification for each style, for example: '10 5 3 10'(top, right, bottom, left). 如：padding="10 5 3 10"或padding="10"。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="activeOnTop" required="false">
+			<description>
+			<![CDATA[
+			'true'表示当每个面板展开时, 都将面板移动到容器的第一个。 'false' 则保持顺序不变。缺省为: false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="reserveScrollbar" required="false">
+			<description>
+			<![CDATA[
+			设此值为true时, 无论垂直滚动条是否需要出现, 都会在页面为垂直滚动条预留出空间(如果该操作系统下的滚动条需要占用空间)。在某些容器中, 内容的高度会随着操作发生变化, 而此时你又不希望所有子组件的宽度因滚动条的出现和消失而来回改变, 这种情况下此属性会变得很有用. 滚动条将会在预留的空间出现, 子组件的宽度也不会发生改变。缺省为: false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="columns" required="false">
+			<description>
+			<![CDATA[
+			table布局专用属性，设置列数。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="align" required="false">
+			<description>
+			<![CDATA[
+			vbox|hbox布局专用属性，设置子组件对其方式。
+			vbox可选值，left : 默认值 各子组件在容器左边垂直对齐.center : 各子组件在容器中间垂直对齐.stretch : 各子组件的宽度拉伸至与容器的宽度相等.stretchmax : 各子组件的宽度拉伸至与最宽的子组件的宽度相等。
+			hbox可选值，top : 默认值 各子组件在容器顶部水平对齐.middle : 各子组件在容器中间水平对齐.stretch : 各子组件的高度拉伸至与容器的高度相等.stretchmax : 各子组件的高度拉伸至与最高的子组件的高度相等。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="pack" required="false">
+			<description>
+			<![CDATA[
+			vbox|hbox布局专用属性，设置子组件对其方式。可选值：start | center | end。
+			vbox：start，上对齐；center，垂直居中对齐；end，下对齐。
+			hbox：start，左对齐；center，水平居中对齐；end，右对齐。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="tab" bodycontent="JSP" parent="PanelTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.tab.TabTag"
+		description="Tab标签">
+	</tag>
+	<tag name="tabpanel" bodycontent="JSP" parent="PanelTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.tab.TabPanelTag"
+		description="TabPanel标签">
+		<attribute name="activeTab" required="false">
+			<description>
+			<![CDATA[
+			当前活动的选项卡。可以是选项卡索引，索引下标从0开始。也可以是选项卡的id值。缺省显示第一个选项卡。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="plain" required="false">
+			<description>
+			<![CDATA[
+			是否屏蔽选项卡栏的背景。true：不显示背景。可选值：true|false。缺省值：true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="tabBarHeight" required="false">
+			<description>
+			<![CDATA[
+			设置选项标题的高度。缺省为22。提示：高度增高后，在Tab多而溢出时像左向右滚动箭头会有一个空隙。但如下几个高度值例外(做了特殊处理)：22|25|30|35，建议使用这几个高度。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="activeTabBarColor" required="false">
+			<description>
+			<![CDATA[
+			活动页的上边框高亮醒目颜色。如：activeTabBarColor="green"或activeTabBarColor="#0099FF"。缺省值：#0099FF(靓丽的蓝色)。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="tabPosition" required="false">
+			<description>
+			<![CDATA[
+			Tab选项卡栏位显示位置。可选值：top|bottom。缺省值：top。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="window" bodycontent="JSP" parent="PanelTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.window.WindowTag"
+		description="Window标签">
+		<attribute name="maximizable" required="false">
+			<description>
+			<![CDATA[
+			为True时显示最大化工具图标。缺省值：false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="maximized" required="false">
+			<description>
+			<![CDATA[
+			为True时在窗口初始化后自动最大化显示。缺省值：false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="minimizable" required="false">
+			<description>
+			<![CDATA[
+			为True时显示最小化工具图标。缺省值：false。提示：最小化事件响应函数需要自己实现。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="headerPosition" required="false">
+			<description>
+			<![CDATA[
+			窗口标题栏显示的位置。可选值：top|bottom|left|right。缺省值：top。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="modal" required="false">
+			<description>
+			<![CDATA[
+			是否为模态窗口。(窗口置于最顶层，只能对窗口进行操作，限制访问其它UI元素)。缺省值：true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="draggable" required="false">
+			<description>
+			<![CDATA[
+			是否可移动窗口。缺省值：true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="animateTarget" required="false">
+			<description>
+			<![CDATA[
+			打开和关闭窗口时渲染动画的目标元素。值为Ext组件的ID或者Dom元素的ID。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="opacity" required="false">
+			<description>
+			<![CDATA[
+			窗口透明度。有效值：opacity大于等于0；opacity小于等于1。如：opacity="0.8"。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="formpanel" bodycontent="JSP" parent="FormPanelTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.form.FormPanelTag"
+		description="FormPanel标签">
+
+	</tag>
+	<tag name="displayfield" bodycontent="empty" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.DisplayFieldTag" description="DispalyField标签">
+		<attribute name="fieldLabel" required="false" rewrite="true">
+			<description>
+			    <![CDATA[
+			       表单项标签文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="name" required="false" rewrite="true">
+			<description>
+			    <![CDATA[
+			       表单项名称。name作为表单提交的参数名称。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="fillfield" bodycontent="empty" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.FillFieldTag" description="FillField标签：仅占位填充的作用">
+		<attribute name="fieldLabel" required="false" rewrite="true">
+			<description>
+			    <![CDATA[
+			       表单项标签文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="name" required="false" rewrite="true">
+			<description>
+			    <![CDATA[
+			       表单项名称。name作为表单提交的参数名称。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="columnWidth" required="true" rewrite="true">
+			<description>
+			    <![CDATA[
+			       此属性在使用column布局及其子布局的容器的子组件中配置。例如：columnWidth="20%。所有列只和必须为100%，也可以指定某一列的width属性,剩下列之和为100%。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="rowset" bodycontent="JSP" parent="FormPanelTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.RowSetTag" description="RowSet标签">
+
+	</tag>
+	<tag name="rowset2" bodycontent="JSP" parent="FormPanelTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.RowSet2Tag" description="RowSet2标签">
+        <attribute name="checkValue" required="false">
+			<description>
+			    <![CDATA[
+			      误差矫正值。一般设为0.01~0.09之间为宜。提示：一般情况下很少需要设置此值。仅针对一些特殊情况下，RowSet2布局没有达到预期效果时使用。
+				]]>
+			</description>
+	    </attribute>
+	</tag>
+	<tag name="fieldset" bodycontent="JSP" parent="FormPanelTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.FieldSetTag" description="FieldSet标签">
+        <attribute name="checkboxToggle" required="false">
+			<description>
+			    <![CDATA[
+			       设置为true则在 控件组 组头处显示一个复选框,用来 收缩/展开 控件组. 而该 复选框将会随表单一起提交,提交的参数name由checkboxName设置。
+				]]>
+			</description>
+	    </attribute>
+	    <attribute name="checkboxName" required="false">
+			<description>
+			    <![CDATA[
+			       当checkboxToggle="true",分配给FieldSet复选框的 name (默认是 '[fieldset id]-checkbox')。
+				]]>
+			</description>
+	    </attribute>
+	</tag>
+	<tag name="textfield" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.TextFieldTag" description="TextField标签">
+		<attribute name="maxLength" required="false">
+			<description>
+			<![CDATA[
+			校验时表单项允许输入的最大长度。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="minLength" required="false">
+			<description>
+			<![CDATA[
+			校验时表单项允许输入的最小长度。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="triggerfield" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.TriggerFieldTag" description="TriggerField标签">
+		<attribute name="maxLength" required="false">
+			<description>
+			<![CDATA[
+			校验时表单项允许输入的最大长度。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="minLength" required="false">
+			<description>
+			<![CDATA[
+			校验时表单项允许输入的最小长度。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="trigger1Cls" required="false">
+			<description>
+			<![CDATA[
+			输入框右侧按钮1图标样式。可选值：x-form-clear-trigger | x-form-search-trigger | x-form-down-trigger。
+			另外一组可选值(提示：这组只支持blue皮肤和gray皮肤，不支持neptune皮肤)，它们是：x-form-clear1-trigger | x-form-clear2-trigger | x-form-search1-trigger |  x-form-add-trigger。                
+			]]>
+			</description>
+		</attribute>
+		<attribute name="trigger2Cls" required="false">
+			<description>
+			<![CDATA[
+			输入框右侧按钮2图标样式。可选值：x-form-clear-trigger | x-form-search-trigger | x-form-down-trigger。
+			另外一组可选值(提示：这组只支持blue皮肤和gray皮肤，不支持neptune皮肤)，它们是：x-form-clear1-trigger | x-form-clear2-trigger | x-form-search1-trigger |  x-form-add-trigger。 
+			]]>
+			</description>
+		</attribute>
+		<attribute name="trigger3Cls" required="false">
+			<description>
+			<![CDATA[
+            输入框右侧按钮3图标样式。可选值：x-form-clear-trigger | x-form-search-trigger | x-form-down-trigger。
+			另外一组可选值(提示：这组只支持blue皮肤和gray皮肤，不支持neptune皮肤)，它们是：x-form-clear1-trigger | x-form-clear2-trigger | x-form-search1-trigger |  x-form-add-trigger。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="onTrigger1Click" required="false">
+			<description>
+			<![CDATA[
+			输入框右侧按钮1单击事件响应函数。如：onTrigger1Click=“fnclick"。函数定义：function fnclick(){ this.setValue(''); ...}。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="onTrigger2Click" required="false">
+			<description>
+			<![CDATA[
+			输入框右侧按钮2单击事件响应函数。如：onTrigger2Click=“fnclick"。函数定义：function fnclick(){ this.setValue(''); ...}。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="onTrigger3Click" required="false">
+			<description>
+			<![CDATA[
+			输入框右侧按钮3单击事件响应函数。如：onTrigger3Click=“fnclick"。函数定义：function fnclick(){ this.setValue(''); ...}。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="treepicker" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.TreePickerFieldTag" description="TreePickerField标签">
+		<attribute name="url" required="true">
+			<description>
+			<![CDATA[
+			请求远程数据源的URL地址。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="nodeParam" required="true">
+			<description>
+			<![CDATA[
+			异步加载树发出请求时携带节点ID的参数名称。缺省：node。提示：该属性仅对异步树有效。。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="singleExpand" required="false">
+			<description>
+			<![CDATA[
+			是否在同级只能展开一个节点，即展开一个节点，其兄弟节点将闭合。缺省：false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="maxPickerHeight" required="false">
+			<description>
+			<![CDATA[
+			下拉图层的最大高度，当展开树节点超过此高度则出现滚动条。缺省：600。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="rootText" required="false">
+			<description>
+			    <![CDATA[
+			       树的根节点显示的文本值。缺省：根节点。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rootIcon" required="false">
+			<description>
+			    <![CDATA[
+			       树的根节点显示的图标。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="displayField" required="false">
+			<description>
+			<![CDATA[
+			显示在文本框里的文本值所对应的树节点的属性字段名。缺省值：text。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="rootId" required="false">
+			<description>
+			<![CDATA[
+			 第一次发出树加载请求时的nodeParam的值。缺省：0。。缺省值：0。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="rootVisible" required="false">
+			<description>
+			<![CDATA[
+			下拉树根节点是否可见。缺省值：false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="useArrows" required="false">
+			<description>
+			<![CDATA[
+			是否使用小箭头展开下级节点。缺省：false(传统加号图标)。提示：如果设为true则显示一个三角小箭头符号图标。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="rootAttribute" required="false" >
+			<description>
+			    <![CDATA[
+			       根节点的附加属性。如：rootAttribute="a:'a1',b:'b1'"。提示：根节点不会将请求load回来的节点附加属性作为根节点的附加属性，如果需要让根节点有附加属性则需要这里强制附加。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="numberfield" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.NumberFieldTag" description="NumberField标签">
+		<attribute name="maxValue" required="false">
+			<description>
+			<![CDATA[
+			校验时表单项允许输入的最大值。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="minValue" required="false">
+			<description>
+			<![CDATA[
+			校验时表单项允许输入的最小值。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="step" required="false">
+			<description>
+			<![CDATA[
+			指定的数字间隔步长。当用户使用按钮、方向键、滚轮增加或减少表单项的值时起作用。缺省：1。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="hideTrigger" required="false">
+			<description>
+			<![CDATA[
+			设置为true时隐藏trigger按钮，只显示为基础的文本框。缺省值：false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="keyNavEnabled" required="false">
+			<description>
+			<![CDATA[
+			指定向上和向下的方向键是否会触发up和down事件改变输入框框的值。默认是true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="mouseWheelEnabled" required="false">
+			<description>
+			<![CDATA[
+			指定鼠标的滚轴是否会触发up和down事件改变输入框框的值。 默认是true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="allowDecimals" required="false">
+			<description>
+			<![CDATA[
+			设置为false禁用小数。缺省值：true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="decimalPrecision" required="false">
+			<description>
+			<![CDATA[
+			小数点后允许的最大精度。缺省值：2。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="datefield" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.DateFieldTag" description="DateField：日期选择标签">
+		<attribute name="maxValue" required="false">
+			<description>
+			<![CDATA[
+			允许的最大日期。可以是一个符合格式要求的字符串日期。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="minValue" required="false">
+			<description>
+			<![CDATA[
+			允许的最小日期。可以是一个符合格式要求的字符串日期。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="format" required="false">
+			<description>
+			<![CDATA[
+			日期格式字符串。如format="Y-m-d"或format="Y年m月d日"或format="Y-m-d 23:59:59"。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="disabledDays" required="false">
+			<description>
+			<![CDATA[
+			禁用的日期数组(对应一周中的7天), 从0开始。如下：disabledDays="0,1,6"。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="disabledDaysText" required="false">
+			<description>
+			<![CDATA[
+			当日期不符合disabledDays校验规则时的提示信息。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="submitFormat" required="false">
+			<description>
+			<![CDATA[
+			提交后台时的日期格式字符串。如format="Y-m-d"或format="Y年m月d日"或format="Y-m-d 23:59:59"。缺省与format属性相同。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="timefield" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.TimeFieldTag" description="TimeField：时间选择标签">
+		<attribute name="maxValue" required="false">
+			<description>
+			<![CDATA[
+			允许的最大时间点。可以是一个符合格式要求的字符串时间。如："6:00 AM"。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="minValue" required="false">
+			<description>
+			<![CDATA[
+			允许的最小时间点。可以是一个符合格式要求的字符串时间。如："8:00 PM"。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="format" required="false">
+			<description>
+			<![CDATA[
+			时间格式字符串。如format="H点i分"。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="submitFormat" required="false">
+			<description>
+			<![CDATA[
+			提交后台时的时间格式字符串。如format="H:i"。缺省与format属性相同。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="increment" required="false">
+			<description>
+			<![CDATA[
+			生成时间下拉列表项目的间隔时间值。缺省：15，单位：分钟。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="datetimefield" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.DateTimeFieldTag" description="DateTimeField：日期时间选择标签">
+		<attribute name="maxValue" required="false">
+			<description>
+			<![CDATA[
+			允许的最大日期。可以是一个符合格式要求的字符串日期。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="minValue" required="false">
+			<description>
+			<![CDATA[
+			允许的最小日期。可以是一个符合格式要求的字符串日期。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="format" required="false">
+			<description>
+			<![CDATA[
+			日期格式字符串。如format="Y-m-d"或format="Y年m月d日"或format="Y-m-d 23:59:59"。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="disabledDays" required="false">
+			<description>
+			<![CDATA[
+			禁用的日期数组(对应一周中的7天), 从0开始。如下：disabledDays="0,1,6"。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="disabledDaysText" required="false">
+			<description>
+			<![CDATA[
+			当日期不符合disabledDays校验规则时的提示信息。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="submitFormat" required="false">
+			<description>
+			<![CDATA[
+			提交后台时的日期格式字符串。如format="Y-m-d"或format="Y年m月d日"或format="Y-m-d 23:59:59"。缺省与format属性相同。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="filefield" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.FileFieldTag" description="FileField标签">
+		<attribute name="buttonText" required="false">
+			<description>
+			<![CDATA[
+			文件上传表单自带按钮的显示文本。缺省值：浏览。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="hiddenfield" bodycontent="empty" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.HiddenFieldTag" description="HiddenField标签">
+		<attribute name="fieldLabel" required="false" rewrite="true">
+			<description>
+			    <![CDATA[
+			       表单项标签文本。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="textareafield" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.TextAreaFieldTag" description="TextAreaField标签">
+		<attribute name="fieldLabel" required="false" rewrite="true">
+			<description>
+			    <![CDATA[
+			       表单项标签文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="grow" required="false" rewrite="true">
+			<description>
+			    <![CDATA[
+			       文本输入框的高度是否随着内容自动扩展而不出现滚动条。默认：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="maxLength" required="false">
+			<description>
+			<![CDATA[
+			校验时表单项允许输入的最大长度。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="minLength" required="false">
+			<description>
+			<![CDATA[
+			校验时表单项允许输入的最小长度。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="htmleditor" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.HtmlEditorTag" description="HtmlEditor标签">
+		<attribute name="fieldLabel" required="false" rewrite="true">
+			<description>
+			    <![CDATA[
+			       表单项标签文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="enableAlignments" required="false" rewrite="true">
+			<description>
+			 <![CDATA[
+			       启用左对齐、中间对齐、右对齐按钮。默认：true。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="enableColors" required="false">
+			<description>
+			<![CDATA[
+			    启用颜色设置按钮。默认：true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="enableFont" required="false">
+			<description>
+			<![CDATA[
+			    启用字体设置按钮。默认：true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="enableFontSize" required="false">
+			<description>
+			<![CDATA[
+			    启用字体大小设置按钮。默认：true。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="enableFormat" required="false">
+			<description>
+			<![CDATA[
+			    启用黑体、斜体、下划线按钮。默认：true。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="enableLinks" required="false">
+			<description>
+			<![CDATA[
+			    启用超链接创建按钮。默认：true。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="enableSourceEdit" required="false">
+			<description>
+			<![CDATA[
+			    启用切换到源代码编辑按钮。默认：true。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="hideToolbarBorder" required="false">
+			<description>
+			<![CDATA[
+			    编辑器里的工具栏边框缺省情况下会和外层容器边框重叠，此属性设置是否隐藏工具栏边框。默认：true。
+			 ]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="checkbox" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.CheckboxFieldTag" description="CheckboxField标签">
+		<attribute name="fieldLabel" required="false" rewrite="true">
+			<description>
+			    <![CDATA[
+			       表单项标签文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="boxLabel" required="true">
+			<description>
+			<![CDATA[
+			    一个可选的文本标签，它显示在选择框的前面或者后面，这取决于 boxLabelAlign的配置。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="boxLabelAlign" required="false">
+			<description>
+			<![CDATA[
+			    展示在选择框旁边的相对位置。可选值：before|after。缺省值：after。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="inputValue" required="false">
+			<description>
+			<![CDATA[
+			    当复选框被选中，form提交时它被作为一个对应的参数值提交。缺省值：on。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="checked" required="false">
+			<description>
+			<![CDATA[
+			    True值时则在选择框在渲染后初始化为选中的状态。缺省值：on。
+			 ]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="radiobox" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.RadioboxFieldTag" description="RadioboxField标签">
+		<attribute name="fieldLabel" required="false" rewrite="true">
+			<description>
+			    <![CDATA[
+			       表单项标签文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="boxLabel" required="true">
+			<description>
+			<![CDATA[
+			    一个可选的文本标签，它显示在选择框的前面或者后面，这取决于 boxLabelAlign的配置。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="boxLabelAlign" required="false">
+			<description>
+			<![CDATA[
+			    展示在选择框旁边的相对位置。可选值：before|after。缺省值：after。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="inputValue" required="false">
+			<description>
+			<![CDATA[
+			    当复选框被选中，form提交时它被作为一个对应的参数值提交。缺省值：on。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="checked" required="false">
+			<description>
+			<![CDATA[
+			    True值时则在选择框在渲染后初始化为选中的状态。缺省值：on。
+			 ]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="toggle" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.ToggleTag" description="Toggle状态切换标签">
+		<attribute name="xtype" required="false" rewrite="true">
+			<description>
+			<![CDATA[
+			toggle类型。可选类型为：toggle | togglefield。常规缺省值：toggle，如果在formpanel、fieldset、rowset则为togglefield。提示：toggle为独立按钮和工具栏按钮使用，togglefield为Form表单元素时使用，具有表单布局的功能。一般情况下不需要设置，标签库会自动判断。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="onText" required="true">
+			<description>
+				<![CDATA[
+				打开状态的下的文本信息。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="offText" required="true">
+			<description>
+				<![CDATA[
+				关闭状态的下的文本信息。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="resizeHandle" required="false">
+			<description>
+				<![CDATA[
+				是否显示切换是的手柄。可选值：true | false。缺省值：true。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="cls" required="false">
+			<description>
+				<![CDATA[
+				样式定义。改变组件开关后的颜色状态。需要和CSS结合使用，详见相关示例。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="state" required="false">
+			<description>
+				<![CDATA[
+				初始开关状态。可选值：true | false。缺省值：false。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="checkboxgroup" bodycontent="JSP" parent="FormPanelTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.CheckboxGroupTag" description="CheckboxGroup标签">
+		<attribute name="fieldLabel" required="true" >
+			<description>
+			    <![CDATA[
+			       选择组合框标签文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="columns" required="true">
+			<description>
+			<![CDATA[
+			    组合框里选择框的布局列数。自左向右排列，排满后换行。缺省值：1。可选值为数值或固定列宽度的数组或固定列宽度和相对宽度组合的数组。如：columns="3"或columns="[100,150,100]"或columns="[100,0.2,0.8]"
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="vertical" required="false">
+			<description>
+			<![CDATA[
+			    设为True，则columns失效，由组合框根据子组件自动计算布局。缺省值：false。
+			 ]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="radioboxgroup" bodycontent="JSP" parent="FormPanelTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.RadioboxGroupTag" description="RadioboxGroup标签">
+		<attribute name="fieldLabel" required="true" >
+			<description>
+			    <![CDATA[
+			       选择组合框标签文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="columns" required="true">
+			<description>
+			<![CDATA[
+			    组合框里选择框的布局列数。自左向右排列，排满后换行。缺省值：1。可选值为数值或固定列宽度的数组或固定列宽度和相对宽度的组合。如：columns="3"或columns="[100,150,100]"或columns="[100,0.2,0.8]"
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="vertical" required="false">
+			<description>
+			<![CDATA[
+			    设为True，则columns失效，由组合框根据子组件自动计算布局。缺省值：false。
+			 ]]>
+			</description>
+		</attribute>
+	</tag>
+    <tag name="combobox" bodycontent="JSP" parent="FormItemTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.ComboBoxFieldTag" description="ComboBox标签">
+		<attribute name="fieldLabel" required="false" rewrite="true">
+			<description>
+			    <![CDATA[
+			       表单项标签文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="multiSelect" required="false" >
+			<description>
+			    <![CDATA[
+			       是否允许多项选择。缺省值：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="forceSelection" required="false">
+			<description>
+			<![CDATA[
+			    设置输入或选择内容必须是下拉项目之一，不允许任意输入内容。缺省：true。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="editable" required="false">
+			<description>
+			<![CDATA[
+			    下拉框的文本输入域设置为可编辑。缺省：false。提示：若设为false，则只能通过下拉按钮选择下拉项目。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="typeAhead" required="false">
+			<description>
+			<![CDATA[
+			    是否将输入内容后自动匹配选中项的剩余文本自动跳到文本输入域。缺省值：false。
+			 ]]>
+			</description>
+	     </attribute>
+	     <attribute name="url" required="false">
+			<description>
+			<![CDATA[
+			    下拉框数据源查询url地址。提示：缺省情况下，后台返回的Json格式需要至少包含display和value两字段。但也可以自定义，需要综合应用fields、displayField、valueField三个属性。为保证UI代码规范统一，无特殊需求则建议使用缺省方式。
+			 ]]>
+			</description>
+	     </attribute>
+	     <attribute name="displayField" required="false">
+			<description>
+			<![CDATA[
+			    下拉项的文本显示字段。缺省值：display。提示：如果为queryMode="remote"，请注意此属性和你返回的Json数据中的key保持一致。
+			 ]]>
+			</description>
+	     </attribute>
+	     <attribute name="valueField" required="false">
+			<description>
+			<![CDATA[
+			    下拉项提交后台的值使用的字段名称。缺省值：value。提示：如果为queryMode="remote"，请注意此属性和你返回的Json数据中的key保持一致。
+			 ]]>
+			</description>
+	     </attribute>
+	     <attribute name="fields" required="false">
+			<description>
+			<![CDATA[
+			    下拉项的一条记录对应的模型定义。缺省值：[ 'value', 'display', 'c', 'd']。提示：如果为queryMode="remote"，请注意此属性和你返回的Json数据中的key保持一致。
+			 ]]>
+			</description>
+	     </attribute>
+	     <attribute name="dicField" required="false">
+			<description>
+			<![CDATA[
+			    使用数据字典做为下拉项数据源时所对应的数据字典标识键。
+			 ]]>
+			</description>
+	     </attribute>
+	     <attribute name="dicFilter" required="false">
+			<description>
+			<![CDATA[
+			    数据字典数据源的过滤器。过滤器分为选择过滤和排它过滤。如：dicFilter="1,2,3"，表示使用代码为1、2、3的字典作为下拉数据源；dicFilter="!1,2,3"，则为在数据字典数据源中排除代码为1、2、3的字典。
+			 ]]>
+			</description>
+	     </attribute>
+	     <attribute name="dicDataType" required="false">
+			<description>
+			<![CDATA[
+			    字典对照的数据类型，缺省为char。可选值char | number。如果下拉项的数据源返回值为数值类型，则需要设置dicDataType为number。
+			 ]]>
+			</description>
+	     </attribute>
+	     <attribute name="queryMode" required="false">
+			<description>
+			<![CDATA[
+			    数据源类型，缺省为local。可选值local | remote。如果设置了url则自动将此属性设置为remote（此属性没有被显式设置的前提下）；如果设置了url，又把此属性显式设置为local，则需要手工调用store的load()函数，这种情况一般在多级联动的时候使用。
+			 ]]>
+			</description>
+	     </attribute>
+	</tag>
+	<tag name="option" bodycontent="empty" parent="BaseTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.form.field.OptionTag" description="Option标签">
+		<attribute name="value" required="true" >
+			<description>
+			    <![CDATA[
+			       下拉选项选中后提交给后台的值。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="display" required="true">
+			<description>
+			<![CDATA[
+			    下拉选项显示的文本信息。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="c" required="false">
+			<description>
+			<![CDATA[
+			    附加值C。
+			 ]]>
+			</description>
+		</attribute>
+		<attribute name="d" required="false">
+			<description>
+			<![CDATA[
+			    附加值D。
+			 ]]>
+			</description>
+	</attribute>
+	</tag>
+	<tag name="gridpanel" bodycontent="JSP" parent="PanelTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.grid.GridPanelTag" description="GridPanel标签">
+		<attribute name="url" required="false" >
+			<description>
+			    <![CDATA[
+			       请求表格数据的url。如：url="listCards.html"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="pageSize" required="false" >
+			<description>
+			    <![CDATA[
+			       表格分页行数大小。缺省值：50。如果hidePagebar="true" 则缺省值为：Integer.MAX_VALUE。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="forceFit" required="false" >
+			<description>
+			    <![CDATA[
+			       设置为true，则强制将各列填满表格的body区域，不致于在body区域末尾有空白，如果列宽之和已溢出body，则自动压缩列宽避免出现滚动条。缺省值：true。提示：如果各列宽度之和小于等于容器宽度则设置为true合适，让布局自动调整列宽，避免出现滚动条；如果大于等于容器宽度(比如列数较多的情况)，则应该设置为fasle，让容器出现横线滚动条。否则各列将被自动压缩得很窄。特别提示：如果某一列有flex属性，则forceFit失效，只要列宽之和溢出父容器，则将出现横向滚动条。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="hidePagebar" required="false" >
+			<description>
+			    <![CDATA[
+			       设置为true，则隐藏分页工具栏。缺省值：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="pagebardock" required="false" >
+			<description>
+			    <![CDATA[
+			       分页工具栏的停靠位置。有效值：top | bottom。缺省值：bottom。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="pageType" required="false" >
+			<description>
+			    <![CDATA[
+			       分页模式，可以设置为服务器分页或前台客户端分页。有效值：client | server。缺省值：server。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="autoLoad" required="false" >
+			<description>
+			    <![CDATA[
+			       设置为true，则表格初始化后自动提交查询请求。缺省值：false。该属性只针对服务器分页时有效。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="stripeRows" required="false" >
+			<description>
+			    <![CDATA[
+			       设置为true，则表格显示隔行斑马纹。缺省值：true。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="disableSelection" required="false" >
+			<description>
+			    <![CDATA[
+			       设置为true，则禁止选中表格行，表格行只随鼠标焦点高亮显示而无法通过单击鼠标选中行。缺省值：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="columnLines" required="false" >
+			<description>
+			    <![CDATA[
+			       是否显示列纵向分割线。缺省：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rowLines" required="false" >
+			<description>
+			    <![CDATA[
+			       是否显示行横向分割线。缺省：true。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="enableLocking" required="false" >
+			<description>
+			    <![CDATA[
+			       是否启用表格列的锁定功能。缺省：false。提示：如果某一列被设置为locked="true"，则表格列锁定功能被自动启用。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onitemclick" required="false" >
+			<description>
+			    <![CDATA[
+			       响应行单击事件的函数。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onselectionchange" required="false" >
+			<description>
+			    <![CDATA[
+			       响应所选节点发生变化时触发的事件函数。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onitemdblclick" required="false" >
+			<description>
+			    <![CDATA[
+			       响应行双击事件的函数名。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onload" required="false" >
+			<description>
+			    <![CDATA[
+			       监听表格Store对象的load()事件。如：onload="_g_grid_onload"。函数可定义为function _g_grid_onload(myself, records, successful, eOpts){};
+				]]>
+			</description>
+		</attribute>
+		<attribute name="idProperty" required="false" >
+			<description>
+			    <![CDATA[
+			       标记表格行的主键字段名称。设置此属性目的是在js中使用*_store.getById(id)方法获取record对象。缺省：空。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<!-- 特殊：没有自己的VM，依赖GridPanel。属性独立写，不继承父标签属性。 -->
+	<tag name="column" bodycontent="JSP" parent="" tagclass="cn.osworks.aos.web.tag.impl.ext.grid.ColumnTag"
+		description="Grid.Column标签">
+		<attribute name="id" required="false">
+			<description>
+			<![CDATA[
+			    列唯一标识。缺省空。提示：很少用到，一般只有在该列用来做界面组件授权时才需要设置。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="width" required="false">
+			<description>
+			<![CDATA[
+			    数值，列固定宽度。如：width="250"。缺省为：100。单位：px。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="header" required="false">
+			<description>
+			<![CDATA[
+			    表格列标题文本。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="dataIndex" required="false">
+			<description>
+			<![CDATA[
+			    表格列对应的元数据字段名称。可能是一个dto对象的key，也可以是PO、VO等JavaBean对象的属性名。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="hidden" required="false">
+			<description>
+			<![CDATA[
+			   设置为True，则隐藏该列。缺省值：flase。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="hideable" required="false">
+			<description>
+			<![CDATA[
+			   设置为true，则可以通过列标题的下拉菜单隐藏该列。缺省值：true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="sortable" required="false">
+			<description>
+			<![CDATA[
+			   设置为true，则可以通过点击列标题来排序。缺省值：true。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="flex" required="false">
+			<description>
+			<![CDATA[
+			   数值，和其它列按此相对比例分配表格剩余可用宽度。可以理解为此列相对宽度=表格剩余可用宽度 * (此列flex值/所有带flex属性列的flex值之和)。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="format" required="false">
+			<description>
+			<![CDATA[
+			   可以对数值、日期进行格式化显示。前提是必须使用xtype将此列设置为数值列或者日期列，否则无效。如：format="Y-m-d"、format="0,000.00"。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="any" required="false">
+			<description>
+			    <![CDATA[
+			        可以在这里写任意的属性配置。提示：多个配置属性请使用,分隔。如：any="id:'app169',disabled:true"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="type" required="false">
+			<description>
+			    <![CDATA[
+			        表格列类型。有效值：text | date | number | template | rowno | check | action | tree(TreeGrid专用)。缺省值：text。提示：type为checkbox的列，当JSON中为布尔值true或数值1或任意字符串时，选择框选中状态；布尔值false或数值0或空字符串时未选中，字符串值无效。选择框列并非用于表格的行选择功能，而是一个常规列。表格行选择功能见selModel标签的使用。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="defaultValue" required="false">
+			<description>
+			    <![CDATA[
+			        表格列缺省值。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="align" required="false">
+			<description>
+			    <![CDATA[
+			        表格列对齐模式。有效值：left | center | right。金额、统计数值等数值列(type="number")如果没有设置此属性则缺省为right；表格树列(type="tree")如果没有设置此属性则缺省为left。其余列缺省根据参数[GRID_COLUMN_ALGIN]而定。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rendererFn" required="false">
+			<description>
+			    <![CDATA[
+			        表格列渲染器。有效值为一个函数名。本列值将由此函数返回的值来重新渲染。(可以是纯文本字符串，也可以是HTML片段)。在此函数中可以取到表格认识单元格的值。
+			        如：rendererFn=“fnAz01a3Renderer”。函数定义及参数：fnAz01a3Renderer(value[,metaData,record,rowIndex ,colIndex ,store ]){...};
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rendererField" required="false">
+			<description>
+			    <![CDATA[
+			        表格列使用数据字典转换渲染的字段名称。本列值将根据此字段的数据字典配置返回相应的值。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="dataType" required="false">
+			<description>
+			    <![CDATA[
+			        表格列的数据类型(返回JSON对象中类型)。可选值char | number，缺省值char。此属性配合rendererField属性使用，一般情况下不用设置，当列为数值类型时需要设置。否则数据字典转换会有问题。提示：数值型字符串不是数字类型。如何区分？看返回的JSON：【***{column1:'1',***}**】这是char类型；【***{column1:1,***}**】这是数字类型。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="tpl" required="false">
+			<description>
+			    <![CDATA[
+			        模版片段。在这个模版片段里可以通过{field}获取到任意字段值。如：tpl="<b>({az01a3})</b> {az01a9}"。提示：tpl实现的功能都可以由rendererFn来实现。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="editor" required="false">
+			<description>
+			<![CDATA[
+			    编辑模式下的单元格编辑器实例类型。可选值：textfield | numerfield | datefield。提示：如果要对其进行客户端的高级校验或者是下拉框类型的实例请在列标签内部直接写相应标签来实现。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="lockable" required="false">
+			<description>
+			<![CDATA[
+			    表格列是否可锁定。缺省：false。提示：如果gridpanel标签设定了enableLocking="true"，则缺省所有列都可以锁定。
+			]]>
+		   </description>
+		</attribute>
+		<attribute name="locked" required="false">
+			<description>
+			<![CDATA[
+			    表格列是否呈锁定状态。缺省：false。
+			]]>
+		   </description>
+		</attribute>
+		<attribute name="maxWidth" required="false">
+			<description>
+			    <![CDATA[
+			       设置组件最大宽度。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="minWidth" required="false">
+			<description>
+			    <![CDATA[
+			       设置组件最小宽度。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="celltip" required="false">
+			<description>
+			    <![CDATA[
+			       响应鼠标的单元格tip提示信息。缺省：false。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<!-- 特殊：没有自己的VM，依赖GridPanel。属性独立写，不继承父标签属性。 -->
+	<tag name="action" bodycontent="empty" parent="" tagclass="cn.osworks.aos.web.tag.impl.ext.grid.ActionTag"
+		description="Action标签">
+		<attribute name="icon" required="true">
+			<description>
+			    <![CDATA[
+			         表格单元格图标按钮图标文件，图标文件可以在/static/icon中查找。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="tooltip" required="true">
+			<description>
+			    <![CDATA[
+			         表格单元格图标按钮图标鼠标悬停提示信息。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="handler" required="false">
+			<description>
+			    <![CDATA[
+			         表格单元格图标按钮响应事件函数名。如：handler="fnEdit"。对应的事件函数可定义为：function fnEdit(grid, rowIndex, colIndex) {var record = grid.getStore().getAt(rowIndex);...};
+				]]>
+			</description>
+		</attribute>
+		<attribute name="disabledFn" required="false">
+			<description>
+			    <![CDATA[
+			         表格单元格图标按钮的禁用判断函数。返回true，则禁用当前行对应的图标按钮。如：function(view, rowIndex, colIndex, item, record){return true}。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="selmodel" bodycontent="JSP" parent="ExtTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.selecttion.SelModelTag"
+		description="SelModel标签">
+		<attribute name="type" required="true" >
+			<description>
+			    <![CDATA[
+			       表格数据选择模型。有效值：row | cell | checkbox。缺省值：Grid为行选择模式(row)。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="mode" required="true">
+			<description>
+			    <![CDATA[
+			       表格行选择模式。有效值：single | simple | multi。缺省值：single。single：单行选择模式。simple：简单直接的鼠标多选模式。multi：按住CTRL键后鼠标多选模式。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="injectCheckbox" required="false">
+			<description>
+			    <![CDATA[
+			       仅type为checkbox时有效。插入选择框的列索引数值。缺省: 0。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="treepanel" bodycontent="JSP" parent="PanelTagSupport" tagclass="cn.osworks.aos.web.tag.impl.ext.tree.TreePanelTag"
+		description="TreePanel标签">
+		<attribute name="url" required="false" >
+			<description>
+			    <![CDATA[
+			       请求远程数据源的URL地址。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rootVisible" required="false">
+			<description>
+			    <![CDATA[
+			       是否显示根节点。缺省值：true。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rootExpanded" required="false">
+			<description>
+			    <![CDATA[
+			       是否初始时展开根节点。可选值：true | false。缺省值：true。提示：如果设置为true，则组件会自动load()数据，如果不希望组件立即load则应该设置为false，然后再需要load()的时候
+			       调用根节点的expand()方法，会自动触发load()。上述规则必须是rootVisible=true时候才有效，如果根节点不可见，则在初始的时候就会立即load()数据。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rootChecked" required="false">
+			<description>
+			    <![CDATA[
+			       控制根节点是否出现复选框及其选中状态。可选值：true | false。提示：不设置此属性，根节点不出现复选框；true，根节点出现复选框且选中；false，根节点出现复选框但未选中。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="useArrows" required="false">
+			<description>
+			    <![CDATA[
+			       是否使用小箭头展开下级节点。缺省：true。提示：如果设为false则显示一个+符号图标。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="singleExpand" required="false">
+			<description>
+			    <![CDATA[
+			       是否在同级只能展开一个节点，即展开一个节点，其兄弟节点将闭合。缺省：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="expandAll" required="false">
+			<description>
+			    <![CDATA[
+			       是否自动展开节点。缺省：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="lines" required="false">
+			<description>
+			    <![CDATA[
+			       是否显示节点分割线。缺省：true。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="columnLines" required="false" >
+			<description>
+			    <![CDATA[
+			       是否显示列纵向分割线(TreeGrid)。缺省：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rowLines" required="false" >
+			<description>
+			    <![CDATA[
+			       是否显示行横向分割线。如果是treegrid，缺省true，否则false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rootAttribute" required="false" >
+			<description>
+			    <![CDATA[
+			       根节点的附加属性。如：rootAttribute="a:'a1',b:'b1'"。提示：根节点不会将请求load回来的节点附加属性作为根节点的附加属性，如果需要让根节点有附加属性则需要这里强制附加。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="nodeParam" required="false">
+			<description>
+			    <![CDATA[
+			       异步加载树发出请求时携带节点ID的参数名称。缺省：node。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rootId" required="false">
+			<description>
+			    <![CDATA[
+			       第一次发出树加载请求时的nodeParam的值。缺省：0。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rootText" required="false">
+			<description>
+			    <![CDATA[
+			       异步加载树的根节点显示的文本值。缺省：根节点。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rootIcon" required="false">
+			<description>
+			    <![CDATA[
+			       异步加载树的根节点显示的图标。提示：该属性仅对异步树有效。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="cascade" required="false">
+			<description>
+			    <![CDATA[
+			       复选框是否支持级联选择模式。可选：true|false。缺省：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="expandPath" required="false">
+			<description>
+			    <![CDATA[
+			       指定节点展开路径。用节点ID值表示。如：expandPath="/0/001/001001"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="enableLocking" required="false" >
+			<description>
+			    <![CDATA[
+			       是否启用树型表格列的锁定功能。缺省：false。提示：如果某一列被设置为locked="true"，则列锁定功能被自动启用。此设置仅对TreeGrid适用。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onitemclick" required="false" >
+			<description>
+			    <![CDATA[
+			       树节点单击事件的响应函数名。如：onitemclick="fnclick"。函数定义如下：fnclick(view, record, item, index, e){}。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onitemdblclick" required="false" >
+			<description>
+			    <![CDATA[
+			       响应节点双击事件的函数名。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onselectionchange" required="false" >
+			<description>
+			    <![CDATA[
+			       响应所选节点发生变化时触发的事件函数。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="singleClick" required="false" >
+			<description>
+			    <![CDATA[
+			       是否单击响应节点展开与收缩事件。缺省：true。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<!-- 特殊(数据标签：非实例化组件)：属性不继承父标签 -->
+	<tag name="treenode" bodycontent="JSP" parent="" tagclass="cn.osworks.aos.web.tag.impl.ext.tree.TreeNodeTag"
+		description="TreeNodel标签">
+		<attribute name="id" required="false">
+			<description>
+			    <![CDATA[
+			        唯一的组件id（默认为自动分配的id）。用id来获取组件引用这一目的，如：Ext.getCmp(id)。标签也会直接根据id生成一个对实例化组件的引用，在JS中可以直接使用此ID来引用该组件。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="checked" required="false">
+			<description>
+			    <![CDATA[
+			        设置为true或者false，在节点旁显示一个选中状态的复选框或未选中状态的复选框。缺省值：空，即不显示选择框。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="expanded" required="false">
+			<description>
+			    <![CDATA[
+			       节点是否展开。缺省值：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="href" required="false">
+			<description>
+			    <![CDATA[
+			       链接URL。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="hrefTarget" required="false">
+			<description>
+			    <![CDATA[
+			       链接目标对象。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="icon" required="false">
+			<description>
+			    <![CDATA[
+			       节点图标文件。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="iconCls" required="false">
+			<description>
+			    <![CDATA[
+			       应用于本节点的图标的CSS类。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="leaf" required="false">
+			<description>
+			    <![CDATA[
+			       标记是否叶子节点。缺省：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="leaf" required="false">
+			<description>
+			    <![CDATA[
+			       标记是否叶子节点。缺省：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="text" required="true">
+			<description>
+			    <![CDATA[
+			       节点显示的文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="qtip" required="false">
+			<description>
+			    <![CDATA[
+			       鼠标悬停节点时显示的提示信息。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="a" required="false">
+			<description>
+			    <![CDATA[
+			       树节点附加属性A。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="b" required="false">
+			<description>
+			    <![CDATA[
+			       树节点附加属性B。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="c" required="false">
+			<description>
+			    <![CDATA[
+			       树节点附加属性C。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<!-- 不需要继承父标签属性 -->
+	<tag name="plugins" bodycontent="JSP" parent=""
+		tagclass="cn.osworks.aos.web.tag.impl.ext.plugins.PluginsTag" description="Plugins标签">
+
+	</tag>
+	<tag name="editing" bodycontent="empty" parent="BaseTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.plugins.impl.EditingPluginTag" description="Editing插件标签。适用于Grid组件。">
+        <attribute name="ptype" required="false">
+			<description>
+			    <![CDATA[
+			       编辑器插件类型。可选值：rowediting | cellediting。缺省值：rowediting。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="clicksToEdit" required="false" >
+			<description>
+			    <![CDATA[
+			       配置鼠标点击或双击进入编辑模式。可选值：1 | 2。缺省值：2。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="autoCancel" required="false" >
+			<description>
+			    <![CDATA[
+			       配置为True时，则自动取消挂起的编辑内容进入下一行的编辑状态。缺省值：true。提示：此属性仅针对表格行编辑插件rowediting有效。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onedit" required="false" >
+			<description>
+			    <![CDATA[
+			       单元格编辑事件监听函数名。如：onEdit="fnEdit"。监听函数可定义为：function fnedit(editor, e){ e.record;}。
+			        编辑事件(e)的属性列表：
+				    grid - 当前gird。
+					record - 当前要编辑的record。
+					field - 要编辑的字段名称。
+					value - 当前值。
+					row - grid的行序号。
+					column - gird上定义的要编辑的Column。
+					rowIdx - 正在编辑的行索引。
+					colIdx - 正在编辑的列索引。
+					originalValue - 字段编辑前的原始值(只有配置CellEditing的时候有效)。
+					originalValues - 字段编辑前该行的原始值(只有配置RowEditing的时候有效)。
+					newValues - 要设置的新值(只有配置RowEditing的时候有效)。
+					view - 这个grid的视图 (只有配置RowEditing的时候有效)。
+					store - 当前grid的store (只有配置RowEditing的时候有效)。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onbeforeedit" required="false" >
+			<description>
+			    <![CDATA[
+			       单元格编辑前事件监听函数名。如：onbeforeedit="fnBeforeEdit"。监听函数可定义为：function fnedit(editor, e){ e.record;}。
+			        编辑事件(e)的属性列表：
+				    grid - 当前gird。
+					record - 当前要编辑的record。
+					field - 要编辑的字段名称。
+					value - 当前值。
+					row - grid的行序号。
+					column - gird上定义的要编辑的Column。
+					rowIdx - 正在编辑的行索引。
+					colIdx - 正在编辑的列索引。
+					originalValue - 字段编辑前的原始值(只有配置CellEditing的时候有效)。
+					originalValues - 字段编辑前该行的原始值(只有配置RowEditing的时候有效)。
+					newValues - 要设置的新值(只有配置RowEditing的时候有效)。
+					view - 这个grid的视图 (只有配置RowEditing的时候有效)。
+					store - 当前grid的store (只有配置RowEditing的时候有效)。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="oncanceledit" required="false" >
+			<description>
+			    <![CDATA[
+			       单元格编辑取消事件监听函数名。如：oncanceledit="fnCancelEdit"。监听函数可定义为：function fnedit(editor, e){ e.record;}。
+			        编辑事件(e)的属性列表：
+				    grid - 当前gird。
+					record - 当前要编辑的record。
+					field - 要编辑的字段名称。
+					value - 当前值。
+					row - grid的行序号。
+					column - gird上定义的要编辑的Column。
+					rowIdx - 正在编辑的行索引。
+					colIdx - 正在编辑的列索引。
+					originalValue - 字段编辑前的原始值(只有配置CellEditing的时候有效)。
+					originalValues - 字段编辑前该行的原始值(只有配置RowEditing的时候有效)。
+					newValues - 要设置的新值(只有配置RowEditing的时候有效)。
+					view - 这个grid的视图 (只有配置RowEditing的时候有效)。
+					store - 当前grid的store (只有配置RowEditing的时候有效)。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onvalidateedit" required="false" >
+			<description>
+			    <![CDATA[
+			       单元格编辑后，recorde被设置前事件监听函数名。如：onvalidateedit="fnValidateEdit"。监听函数可定义为：function fnedit(editor, e){ e.record;}。
+			        编辑事件(e)的属性列表：
+				    grid - 当前gird。
+					record - 当前要编辑的record。
+					field - 要编辑的字段名称。
+					value - 当前值。
+					row - grid的行序号。
+					column - gird上定义的要编辑的Column。
+					rowIdx - 正在编辑的行索引。
+					colIdx - 正在编辑的列索引。
+					originalValue - 字段编辑前的原始值(只有配置CellEditing的时候有效)。
+					originalValues - 字段编辑前该行的原始值(只有配置RowEditing的时候有效)。
+					newValues - 要设置的新值(只有配置RowEditing的时候有效)。
+					view - 这个grid的视图 (只有配置RowEditing的时候有效)。
+					store - 当前grid的store (只有配置RowEditing的时候有效)。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="dataview" bodycontent="JSP" parent="ComponentTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.dataview.DataViewTag" description="DataView标签">
+		<attribute name="id" required="true" rewrite="true">
+			<description>
+			    <![CDATA[
+			        唯一的组件id。由于数据视图的CSS要引用这个ID，故此组件ID需要显式指定不能自动生成。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="fields" required="true" >
+			<description>
+			    <![CDATA[
+			       数据视图中子项目的属性字段列表，配合数据视图内置的Store使用。如：fields="a,b,c"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="autoLoad" required="false" >
+			<description>
+			    <![CDATA[
+			       内置Store是否自动加载数据。可选值：true | false。缺省值：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="url" required="true" >
+			<description>
+			    <![CDATA[
+			       内置Store加载数据使用的url。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="itemSelector" required="true" >
+			<description>
+			    <![CDATA[
+			       这是必需的设置，通过简单的CSS选择器 (例如： div.some-class or span:first-child) 来确定哪些节点为DataView工作。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="overItemCls" required="false" >
+			<description>
+			    <![CDATA[
+			       鼠标悬停数据视图内组件时的样式。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="multiSelect" required="false" >
+			<description>
+			    <![CDATA[
+			       数据视图内组件是否支持多选。可选值：true | false。缺省值：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onselectionchange" required="false" >
+			<description>
+			    <![CDATA[
+			       所选项目发生变化时触发的事件函数。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="duration" required="false" >
+			<description>
+			    <![CDATA[
+			       数据视图排列动画的速度。缺省值：500。提示：仅当animated="true"时有效。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="idProperty" required="false" >
+			<description>
+			    <![CDATA[
+			       数据视图项目的唯一标识键。缺省：“id”。提示：仅当animated="true"时有效。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="animated" required="false" >
+			<description>
+			    <![CDATA[
+			       项目过滤重组的时候是否显示动画(仅适用dataview标签)。可选值：true | false。缺省值：false。提示1：开启了动画则第二次load store的时候会出现bug，所以如果开启了动画则只能一次load数据之后使用过滤功能。提示2：如果客户端是IE，则忽略JSP的设置由标签内部强行禁止动画。否则动画会出现瑕疵。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onload" required="false" >
+			<description>
+			    <![CDATA[
+			       绑定用户数据视图加载数据的Store对象的onload事件函数。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="tabCloseMenu" bodycontent="empty" parent="BaseTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.plugins.impl.TabCloseMenuPluginTag" description="Tab卡片的右键关闭菜单插件。">
+        <attribute name="closeTabText" required="false">
+			<description>
+			    <![CDATA[
+			       关闭按钮的显示文本。缺省值：关闭。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="showCloseOthers" required="false">
+			<description>
+			    <![CDATA[
+			       标识是否显示关闭其它按钮。可选值：true | false。缺省值：true。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="closeOthersTabsText" required="false">
+			<description>
+			    <![CDATA[
+			       关闭其它按钮的显示文本。缺省值：关闭其它。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="showCloseAll" required="false">
+			<description>
+			    <![CDATA[
+			       标识是否显示关闭全部按钮。可选值：true | false。缺省值：true。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="closeAllTabsText" required="false">
+			<description>
+			    <![CDATA[
+			       关闭全部按钮的显示文本。缺省值：关闭全部。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="extraItemsTail1" required="false">
+			<description>
+			    <![CDATA[
+			       尾部扩展菜单1，可在关闭按钮组后加菜单项。格式为：【菜单文本:句柄函数:菜单图标】。如：extraItemsTail1="刷新:fn_refresh:refresh.png"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="extraItemsTail2" required="false">
+			<description>
+			    <![CDATA[
+			       尾部扩展菜单2，可在关闭按钮组后加菜单项。格式为：【菜单文本:句柄函数:菜单图标】。如：extraItemsTail1="刷新:fn_refresh:refresh.png"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="showCloseItemIcon" required="false">
+			<description>
+			    <![CDATA[
+			       是否显示关闭菜单图标。可选值：true | false。缺省值：true。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="tabReorderer" bodycontent="empty" parent="BaseTagSupport"
+		tagclass="cn.osworks.aos.web.tag.impl.ext.plugins.impl.TabReordererPluginTag" description="Tab卡片的拖拽重排序插件。">
+    </tag>
+	<tag name="xtemplate" bodycontent="JSP" parent=""
+		tagclass="cn.osworks.aos.web.tag.impl.ext.general.XTemplateTag" description="XTemplate标签">
+		<attribute name="id" required="false" >
+			<description>
+			    <![CDATA[
+			        唯一的组件id（默认为自动分配的id）。用id来获取组件引用这一目的，如：Ext.getCmp(id)。标签也会直接根据id生成一个对实例化组件的引用，在JS中可以直接使用此ID来引用该组件。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+</taglib>

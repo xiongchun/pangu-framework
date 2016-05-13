@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <process id="_id_01" name="_name_process1">
+        <documentation>
+            文本描述
+        </documentation>
+    </process>
+</root>

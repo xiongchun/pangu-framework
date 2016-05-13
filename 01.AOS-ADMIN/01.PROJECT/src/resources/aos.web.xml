@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+	default-lazy-init="true">
+
+	<description>Spring WebMVC 配置</description>
+
+	<!-- 扫描@Controller组件 -->
+	<!-- 提示：将com.mycorp.mysystem该为您的业务系统的包路径 -->
+	<context:component-scan base-package="cn.osworks.aos;com.mycorp.mysystem"
+		use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+
+	<!-- MVC注解驱动配置 -->
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+		<mvc:message-converters register-defaults="true">
+			<!-- 设定StringHttpMessageConverter的默认编码 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<!-- 支持文件上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"  >
+         <property name="defaultEncoding" value="UTF-8" />
+         <!--文件上传最大值 单位: byte 1048576为1兆。缺省设置100兆。-->  
+        <property name="maxUploadSize" value="104857600"/> 
+    </bean>
+
+	<!-- content-negotiation-manager配置,mvc:annotation-driven引用 -->
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean" />
+
+	<!-- 将无法mapping到Controller的path以及静态资源的Path交给default处理 -->
+	<mvc:default-servlet-handler />
+
+	<!-- jsp视图解析器 -->
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+	</bean>
+	
+	<!-- velocity视图解析器 
+    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">  
+        <property name="cache" value="true"/>  
+        <property name="prefix" value="/"/>   
+    </bean>  
+    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">  
+        <property name="configLocation" value="/WEB-INF/velocity.properties"/>  
+        <property name="resourceLoaderPath" value="/WEB-INF/velocity/"/>  
+    </bean> 
+    -->
+
+</beans>

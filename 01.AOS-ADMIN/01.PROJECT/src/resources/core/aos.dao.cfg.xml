@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+
+<!-- MyBatis数据持久层配置文件 -->
+<configuration>
+
+	<!-- 参数设置 -->
+	<settings>
+        <!-- ！！特别提示：平台提供了自己的缓存实现，不建议使用mybatis缓存。平台缓存用法请参阅相关文档。 -->
+		<setting name="cacheEnabled" value="false" />
+	</settings>
+	
+	<!-- 通用别名设置 -->
+	<typeAliases>
+		<typeAlias type="cn.osworks.aos.core.typewrap.impl.HashDto" alias="Dto" />
+	</typeAliases>
+
+	<!-- 插件 -->
+	<plugins>
+		<!-- StatementHandler插件 -->
+		<plugin interceptor="cn.osworks.aos.core.dao.plugin.StatementHandlerPlugin">
+			<property name="sqlid" value=".*Page" />
+		</plugin>
+		<!-- ResultSetHandler插件 -->
+		<plugin interceptor="cn.osworks.aos.core.dao.plugin.ResultSetHandlerPlugin" />
+		
+	</plugins>
+
+</configuration>

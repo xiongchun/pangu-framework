@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_wf_ru_event_subscr[aos_wf_ru_event_subscr]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:32 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_wf_ru_event_subscrMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_wf_ru_event_subscrPO">
+		INSERT INTO aos_wf_ru_event_subscr (
+		<if test="rev_ != null">
+	         rev_, <!-- rev_ -->
+		</if>
+		<if test="event_type_ != null and event_type_ != ''">
+	         event_type_, <!-- event_type_ -->
+		</if>
+		<if test="event_name_ != null and event_name_ != ''">
+	         event_name_, <!-- event_name_ -->
+		</if>
+		<if test="execution_id_ != null and execution_id_ != ''">
+	         execution_id_, <!-- execution_id_ -->
+		</if>
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	         proc_inst_id_, <!-- proc_inst_id_ -->
+		</if>
+		<if test="activity_id_ != null and activity_id_ != ''">
+	         activity_id_, <!-- activity_id_ -->
+		</if>
+		<if test="configuration_ != null and configuration_ != ''">
+	         configuration_, <!-- configuration_ -->
+		</if>
+		<if test="created_ != null">
+	         created_, <!-- created_ -->
+		</if>
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	         proc_def_id_, <!-- proc_def_id_ -->
+		</if>
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	         tenant_id_, <!-- tenant_id_ -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- id_ -->
+	   </if>
+		)VALUES(
+		<if test="rev_ != null">
+	          #{rev_, jdbcType=INTEGER}, <!-- rev_ -->
+	    </if>
+		<if test="event_type_ != null and event_type_ != ''">
+	          #{event_type_, jdbcType=VARCHAR}, <!-- event_type_ -->
+	    </if>
+		<if test="event_name_ != null and event_name_ != ''">
+	          #{event_name_, jdbcType=VARCHAR}, <!-- event_name_ -->
+	    </if>
+		<if test="execution_id_ != null and execution_id_ != ''">
+	          #{execution_id_, jdbcType=VARCHAR}, <!-- execution_id_ -->
+	    </if>
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	          #{proc_inst_id_, jdbcType=VARCHAR}, <!-- proc_inst_id_ -->
+	    </if>
+		<if test="activity_id_ != null and activity_id_ != ''">
+	          #{activity_id_, jdbcType=VARCHAR}, <!-- activity_id_ -->
+	    </if>
+		<if test="configuration_ != null and configuration_ != ''">
+	          #{configuration_, jdbcType=VARCHAR}, <!-- configuration_ -->
+	    </if>
+		<if test="created_ != null">
+	          #{created_, jdbcType=TIMESTAMP}, <!-- created_ -->
+	    </if>
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	          #{proc_def_id_, jdbcType=VARCHAR}, <!-- proc_def_id_ -->
+	    </if>
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	          #{tenant_id_, jdbcType=VARCHAR}, <!-- tenant_id_ -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_wf_ru_event_subscrPO">
+		INSERT INTO aos_wf_ru_event_subscr (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+		    #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+		    #{event_type_, jdbcType=VARCHAR},  <!-- event_type_ -->
+		    #{event_name_, jdbcType=VARCHAR},  <!-- event_name_ -->
+		    #{execution_id_, jdbcType=VARCHAR},  <!-- execution_id_ -->
+		    #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+		    #{activity_id_, jdbcType=VARCHAR},  <!-- activity_id_ -->
+		    #{configuration_, jdbcType=VARCHAR},  <!-- configuration_ -->
+		    #{created_, jdbcType=TIMESTAMP},  <!-- created_ -->
+		    #{proc_def_id_, jdbcType=VARCHAR},  <!-- proc_def_id_ -->
+		    #{tenant_id_, jdbcType=VARCHAR}  <!-- tenant_id_ -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_wf_ru_event_subscrPO">
+		UPDATE aos_wf_ru_event_subscr
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+			</if>
+			<if test="rev_ != null">
+		          rev_ = #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+			</if>
+			<if test="event_type_ != null">
+		          event_type_ = #{event_type_, jdbcType=VARCHAR},  <!-- event_type_ -->
+			</if>
+			<if test="event_name_ != null">
+		          event_name_ = #{event_name_, jdbcType=VARCHAR},  <!-- event_name_ -->
+			</if>
+			<if test="execution_id_ != null">
+		          execution_id_ = #{execution_id_, jdbcType=VARCHAR},  <!-- execution_id_ -->
+			</if>
+			<if test="proc_inst_id_ != null">
+		          proc_inst_id_ = #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+			</if>
+			<if test="activity_id_ != null">
+		          activity_id_ = #{activity_id_, jdbcType=VARCHAR},  <!-- activity_id_ -->
+			</if>
+			<if test="configuration_ != null">
+		          configuration_ = #{configuration_, jdbcType=VARCHAR},  <!-- configuration_ -->
+			</if>
+			<if test="created_ != null">
+		          created_ = #{created_, jdbcType=TIMESTAMP},  <!-- created_ -->
+			</if>
+			<if test="proc_def_id_ != null">
+		          proc_def_id_ = #{proc_def_id_, jdbcType=VARCHAR},  <!-- proc_def_id_ -->
+			</if>
+			<if test="tenant_id_ != null">
+		          tenant_id_ = #{tenant_id_, jdbcType=VARCHAR},  <!-- tenant_id_ -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_wf_ru_event_subscr WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_wf_ru_event_subscrPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_wf_ru_event_subscr WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_wf_ru_event_subscrPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_wf_ru_event_subscr
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_wf_ru_event_subscrPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_ru_event_subscr
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_wf_ru_event_subscrPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_ru_event_subscr
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_wf_ru_event_subscrPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_ru_event_subscr
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_wf_ru_event_subscrPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_ru_event_subscr
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_wf_ru_event_subscr
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_wf_ru_event_subscr
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- id_ -->
+		  rev_,  <!-- rev_ -->
+		  event_type_,  <!-- event_type_ -->
+		  event_name_,  <!-- event_name_ -->
+		  execution_id_,  <!-- execution_id_ -->
+		  proc_inst_id_,  <!-- proc_inst_id_ -->
+		  activity_id_,  <!-- activity_id_ -->
+		  configuration_,  <!-- configuration_ -->
+		  created_,  <!-- created_ -->
+		  proc_def_id_,  <!-- proc_def_id_ -->
+		  tenant_id_  <!-- tenant_id_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_wf_ru_event_subscr.id_,  <!-- id_ -->
+		  aos_wf_ru_event_subscr.rev_,  <!-- rev_ -->
+		  aos_wf_ru_event_subscr.event_type_,  <!-- event_type_ -->
+		  aos_wf_ru_event_subscr.event_name_,  <!-- event_name_ -->
+		  aos_wf_ru_event_subscr.execution_id_,  <!-- execution_id_ -->
+		  aos_wf_ru_event_subscr.proc_inst_id_,  <!-- proc_inst_id_ -->
+		  aos_wf_ru_event_subscr.activity_id_,  <!-- activity_id_ -->
+		  aos_wf_ru_event_subscr.configuration_,  <!-- configuration_ -->
+		  aos_wf_ru_event_subscr.created_,  <!-- created_ -->
+		  aos_wf_ru_event_subscr.proc_def_id_,  <!-- proc_def_id_ -->
+		  aos_wf_ru_event_subscr.tenant_id_  <!-- tenant_id_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- id_ -->
+		</if>
+	   <if test="rev_ != null ">
+		      AND rev_ = #{rev_}  <!-- rev_ -->
+		</if>
+	    <if test="event_type_ != null and event_type_ != ''">
+		      AND event_type_ = #{event_type_}  <!-- event_type_ -->
+		</if>
+	    <if test="event_name_ != null and event_name_ != ''">
+		      AND event_name_ = #{event_name_}  <!-- event_name_ -->
+		</if>
+	    <if test="execution_id_ != null and execution_id_ != ''">
+		      AND execution_id_ = #{execution_id_}  <!-- execution_id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ = #{proc_inst_id_}  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="activity_id_ != null and activity_id_ != ''">
+		      AND activity_id_ = #{activity_id_}  <!-- activity_id_ -->
+		</if>
+	    <if test="configuration_ != null and configuration_ != ''">
+		      AND configuration_ = #{configuration_}  <!-- configuration_ -->
+		</if>
+	   <if test="created_ != null ">
+		      AND created_ = #{created_}  <!-- created_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ = #{proc_def_id_}  <!-- proc_def_id_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ = #{tenant_id_}  <!-- tenant_id_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- id_ -->
+		</if>
+	    <if test="event_type_ != null and event_type_ != ''">
+		      AND event_type_ like '%${event_type_}%'  <!-- event_type_ -->
+		</if>
+	    <if test="event_name_ != null and event_name_ != ''">
+		      AND event_name_ like '%${event_name_}%'  <!-- event_name_ -->
+		</if>
+	    <if test="execution_id_ != null and execution_id_ != ''">
+		      AND execution_id_ like '%${execution_id_}%'  <!-- execution_id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ like '%${proc_inst_id_}%'  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="activity_id_ != null and activity_id_ != ''">
+		      AND activity_id_ like '%${activity_id_}%'  <!-- activity_id_ -->
+		</if>
+	    <if test="configuration_ != null and configuration_ != ''">
+		      AND configuration_ like '%${configuration_}%'  <!-- configuration_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ like '%${proc_def_id_}%'  <!-- proc_def_id_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ like '%${tenant_id_}%'  <!-- tenant_id_ -->
+		</if>
+	</sql>
+	
+</mapper>

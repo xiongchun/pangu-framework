@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_wf_hi_taskinst[aos_wf_hi_taskinst]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:32 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_wf_hi_taskinstMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_wf_hi_taskinstPO">
+		INSERT INTO aos_wf_hi_taskinst (
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	         proc_def_id_, <!-- proc_def_id_ -->
+		</if>
+		<if test="task_def_key_ != null and task_def_key_ != ''">
+	         task_def_key_, <!-- task_def_key_ -->
+		</if>
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	         proc_inst_id_, <!-- proc_inst_id_ -->
+		</if>
+		<if test="execution_id_ != null and execution_id_ != ''">
+	         execution_id_, <!-- execution_id_ -->
+		</if>
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- name_ -->
+		</if>
+		<if test="parent_task_id_ != null and parent_task_id_ != ''">
+	         parent_task_id_, <!-- parent_task_id_ -->
+		</if>
+		<if test="description_ != null and description_ != ''">
+	         description_, <!-- description_ -->
+		</if>
+		<if test="owner_ != null and owner_ != ''">
+	         owner_, <!-- owner_ -->
+		</if>
+		<if test="assignee_ != null and assignee_ != ''">
+	         assignee_, <!-- assignee_ -->
+		</if>
+		<if test="start_time_ != null and start_time_ != ''">
+	         start_time_, <!-- start_time_ -->
+		</if>
+		<if test="claim_time_ != null and claim_time_ != ''">
+	         claim_time_, <!-- claim_time_ -->
+		</if>
+		<if test="end_time_ != null and end_time_ != ''">
+	         end_time_, <!-- end_time_ -->
+		</if>
+		<if test="duration_ != null">
+	         duration_, <!-- duration_ -->
+		</if>
+		<if test="delete_reason_ != null and delete_reason_ != ''">
+	         delete_reason_, <!-- delete_reason_ -->
+		</if>
+		<if test="priority_ != null">
+	         priority_, <!-- priority_ -->
+		</if>
+		<if test="due_date_ != null and due_date_ != ''">
+	         due_date_, <!-- due_date_ -->
+		</if>
+		<if test="form_key_ != null and form_key_ != ''">
+	         form_key_, <!-- form_key_ -->
+		</if>
+		<if test="category_ != null and category_ != ''">
+	         category_, <!-- category_ -->
+		</if>
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	         tenant_id_, <!-- tenant_id_ -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- id_ -->
+	   </if>
+		)VALUES(
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	          #{proc_def_id_, jdbcType=VARCHAR}, <!-- proc_def_id_ -->
+	    </if>
+		<if test="task_def_key_ != null and task_def_key_ != ''">
+	          #{task_def_key_, jdbcType=VARCHAR}, <!-- task_def_key_ -->
+	    </if>
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	          #{proc_inst_id_, jdbcType=VARCHAR}, <!-- proc_inst_id_ -->
+	    </if>
+		<if test="execution_id_ != null and execution_id_ != ''">
+	          #{execution_id_, jdbcType=VARCHAR}, <!-- execution_id_ -->
+	    </if>
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- name_ -->
+	    </if>
+		<if test="parent_task_id_ != null and parent_task_id_ != ''">
+	          #{parent_task_id_, jdbcType=VARCHAR}, <!-- parent_task_id_ -->
+	    </if>
+		<if test="description_ != null and description_ != ''">
+	          #{description_, jdbcType=VARCHAR}, <!-- description_ -->
+	    </if>
+		<if test="owner_ != null and owner_ != ''">
+	          #{owner_, jdbcType=VARCHAR}, <!-- owner_ -->
+	    </if>
+		<if test="assignee_ != null and assignee_ != ''">
+	          #{assignee_, jdbcType=VARCHAR}, <!-- assignee_ -->
+	    </if>
+		<if test="start_time_ != null and start_time_ != ''">
+	          #{start_time_, jdbcType=VARCHAR}, <!-- start_time_ -->
+	    </if>
+		<if test="claim_time_ != null and claim_time_ != ''">
+	          #{claim_time_, jdbcType=VARCHAR}, <!-- claim_time_ -->
+	    </if>
+		<if test="end_time_ != null and end_time_ != ''">
+	          #{end_time_, jdbcType=VARCHAR}, <!-- end_time_ -->
+	    </if>
+		<if test="duration_ != null">
+	          #{duration_, jdbcType=INTEGER}, <!-- duration_ -->
+	    </if>
+		<if test="delete_reason_ != null and delete_reason_ != ''">
+	          #{delete_reason_, jdbcType=VARCHAR}, <!-- delete_reason_ -->
+	    </if>
+		<if test="priority_ != null">
+	          #{priority_, jdbcType=INTEGER}, <!-- priority_ -->
+	    </if>
+		<if test="due_date_ != null and due_date_ != ''">
+	          #{due_date_, jdbcType=VARCHAR}, <!-- due_date_ -->
+	    </if>
+		<if test="form_key_ != null and form_key_ != ''">
+	          #{form_key_, jdbcType=VARCHAR}, <!-- form_key_ -->
+	    </if>
+		<if test="category_ != null and category_ != ''">
+	          #{category_, jdbcType=VARCHAR}, <!-- category_ -->
+	    </if>
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	          #{tenant_id_, jdbcType=VARCHAR}, <!-- tenant_id_ -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_wf_hi_taskinstPO">
+		INSERT INTO aos_wf_hi_taskinst (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+		    #{proc_def_id_, jdbcType=VARCHAR},  <!-- proc_def_id_ -->
+		    #{task_def_key_, jdbcType=VARCHAR},  <!-- task_def_key_ -->
+		    #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+		    #{execution_id_, jdbcType=VARCHAR},  <!-- execution_id_ -->
+		    #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+		    #{parent_task_id_, jdbcType=VARCHAR},  <!-- parent_task_id_ -->
+		    #{description_, jdbcType=VARCHAR},  <!-- description_ -->
+		    #{owner_, jdbcType=VARCHAR},  <!-- owner_ -->
+		    #{assignee_, jdbcType=VARCHAR},  <!-- assignee_ -->
+		    #{start_time_, jdbcType=VARCHAR},  <!-- start_time_ -->
+		    #{claim_time_, jdbcType=VARCHAR},  <!-- claim_time_ -->
+		    #{end_time_, jdbcType=VARCHAR},  <!-- end_time_ -->
+		    #{duration_, jdbcType=INTEGER},  <!-- duration_ -->
+		    #{delete_reason_, jdbcType=VARCHAR},  <!-- delete_reason_ -->
+		    #{priority_, jdbcType=INTEGER},  <!-- priority_ -->
+		    #{due_date_, jdbcType=VARCHAR},  <!-- due_date_ -->
+		    #{form_key_, jdbcType=VARCHAR},  <!-- form_key_ -->
+		    #{category_, jdbcType=VARCHAR},  <!-- category_ -->
+		    #{tenant_id_, jdbcType=VARCHAR}  <!-- tenant_id_ -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_wf_hi_taskinstPO">
+		UPDATE aos_wf_hi_taskinst
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+			</if>
+			<if test="proc_def_id_ != null">
+		          proc_def_id_ = #{proc_def_id_, jdbcType=VARCHAR},  <!-- proc_def_id_ -->
+			</if>
+			<if test="task_def_key_ != null">
+		          task_def_key_ = #{task_def_key_, jdbcType=VARCHAR},  <!-- task_def_key_ -->
+			</if>
+			<if test="proc_inst_id_ != null">
+		          proc_inst_id_ = #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+			</if>
+			<if test="execution_id_ != null">
+		          execution_id_ = #{execution_id_, jdbcType=VARCHAR},  <!-- execution_id_ -->
+			</if>
+			<if test="name_ != null">
+		          name_ = #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+			</if>
+			<if test="parent_task_id_ != null">
+		          parent_task_id_ = #{parent_task_id_, jdbcType=VARCHAR},  <!-- parent_task_id_ -->
+			</if>
+			<if test="description_ != null">
+		          description_ = #{description_, jdbcType=VARCHAR},  <!-- description_ -->
+			</if>
+			<if test="owner_ != null">
+		          owner_ = #{owner_, jdbcType=VARCHAR},  <!-- owner_ -->
+			</if>
+			<if test="assignee_ != null">
+		          assignee_ = #{assignee_, jdbcType=VARCHAR},  <!-- assignee_ -->
+			</if>
+			<if test="start_time_ != null">
+		          start_time_ = #{start_time_, jdbcType=VARCHAR},  <!-- start_time_ -->
+			</if>
+			<if test="claim_time_ != null">
+		          claim_time_ = #{claim_time_, jdbcType=VARCHAR},  <!-- claim_time_ -->
+			</if>
+			<if test="end_time_ != null">
+		          end_time_ = #{end_time_, jdbcType=VARCHAR},  <!-- end_time_ -->
+			</if>
+			<if test="duration_ != null">
+		          duration_ = #{duration_, jdbcType=INTEGER},  <!-- duration_ -->
+			</if>
+			<if test="delete_reason_ != null">
+		          delete_reason_ = #{delete_reason_, jdbcType=VARCHAR},  <!-- delete_reason_ -->
+			</if>
+			<if test="priority_ != null">
+		          priority_ = #{priority_, jdbcType=INTEGER},  <!-- priority_ -->
+			</if>
+			<if test="due_date_ != null">
+		          due_date_ = #{due_date_, jdbcType=VARCHAR},  <!-- due_date_ -->
+			</if>
+			<if test="form_key_ != null">
+		          form_key_ = #{form_key_, jdbcType=VARCHAR},  <!-- form_key_ -->
+			</if>
+			<if test="category_ != null">
+		          category_ = #{category_, jdbcType=VARCHAR},  <!-- category_ -->
+			</if>
+			<if test="tenant_id_ != null">
+		          tenant_id_ = #{tenant_id_, jdbcType=VARCHAR},  <!-- tenant_id_ -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_wf_hi_taskinst WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_wf_hi_taskinstPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_wf_hi_taskinst WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_wf_hi_taskinstPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_wf_hi_taskinst
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_wf_hi_taskinstPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_taskinst
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_wf_hi_taskinstPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_taskinst
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_wf_hi_taskinstPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_taskinst
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_wf_hi_taskinstPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_taskinst
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_wf_hi_taskinst
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_wf_hi_taskinst
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- id_ -->
+		  proc_def_id_,  <!-- proc_def_id_ -->
+		  task_def_key_,  <!-- task_def_key_ -->
+		  proc_inst_id_,  <!-- proc_inst_id_ -->
+		  execution_id_,  <!-- execution_id_ -->
+		  name_,  <!-- name_ -->
+		  parent_task_id_,  <!-- parent_task_id_ -->
+		  description_,  <!-- description_ -->
+		  owner_,  <!-- owner_ -->
+		  assignee_,  <!-- assignee_ -->
+		  start_time_,  <!-- start_time_ -->
+		  claim_time_,  <!-- claim_time_ -->
+		  end_time_,  <!-- end_time_ -->
+		  duration_,  <!-- duration_ -->
+		  delete_reason_,  <!-- delete_reason_ -->
+		  priority_,  <!-- priority_ -->
+		  due_date_,  <!-- due_date_ -->
+		  form_key_,  <!-- form_key_ -->
+		  category_,  <!-- category_ -->
+		  tenant_id_  <!-- tenant_id_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_wf_hi_taskinst.id_,  <!-- id_ -->
+		  aos_wf_hi_taskinst.proc_def_id_,  <!-- proc_def_id_ -->
+		  aos_wf_hi_taskinst.task_def_key_,  <!-- task_def_key_ -->
+		  aos_wf_hi_taskinst.proc_inst_id_,  <!-- proc_inst_id_ -->
+		  aos_wf_hi_taskinst.execution_id_,  <!-- execution_id_ -->
+		  aos_wf_hi_taskinst.name_,  <!-- name_ -->
+		  aos_wf_hi_taskinst.parent_task_id_,  <!-- parent_task_id_ -->
+		  aos_wf_hi_taskinst.description_,  <!-- description_ -->
+		  aos_wf_hi_taskinst.owner_,  <!-- owner_ -->
+		  aos_wf_hi_taskinst.assignee_,  <!-- assignee_ -->
+		  aos_wf_hi_taskinst.start_time_,  <!-- start_time_ -->
+		  aos_wf_hi_taskinst.claim_time_,  <!-- claim_time_ -->
+		  aos_wf_hi_taskinst.end_time_,  <!-- end_time_ -->
+		  aos_wf_hi_taskinst.duration_,  <!-- duration_ -->
+		  aos_wf_hi_taskinst.delete_reason_,  <!-- delete_reason_ -->
+		  aos_wf_hi_taskinst.priority_,  <!-- priority_ -->
+		  aos_wf_hi_taskinst.due_date_,  <!-- due_date_ -->
+		  aos_wf_hi_taskinst.form_key_,  <!-- form_key_ -->
+		  aos_wf_hi_taskinst.category_,  <!-- category_ -->
+		  aos_wf_hi_taskinst.tenant_id_  <!-- tenant_id_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- id_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ = #{proc_def_id_}  <!-- proc_def_id_ -->
+		</if>
+	    <if test="task_def_key_ != null and task_def_key_ != ''">
+		      AND task_def_key_ = #{task_def_key_}  <!-- task_def_key_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ = #{proc_inst_id_}  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="execution_id_ != null and execution_id_ != ''">
+		      AND execution_id_ = #{execution_id_}  <!-- execution_id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- name_ -->
+		</if>
+	    <if test="parent_task_id_ != null and parent_task_id_ != ''">
+		      AND parent_task_id_ = #{parent_task_id_}  <!-- parent_task_id_ -->
+		</if>
+	    <if test="description_ != null and description_ != ''">
+		      AND description_ = #{description_}  <!-- description_ -->
+		</if>
+	    <if test="owner_ != null and owner_ != ''">
+		      AND owner_ = #{owner_}  <!-- owner_ -->
+		</if>
+	    <if test="assignee_ != null and assignee_ != ''">
+		      AND assignee_ = #{assignee_}  <!-- assignee_ -->
+		</if>
+	    <if test="start_time_ != null and start_time_ != ''">
+		      AND start_time_ = #{start_time_}  <!-- start_time_ -->
+		</if>
+	    <if test="claim_time_ != null and claim_time_ != ''">
+		      AND claim_time_ = #{claim_time_}  <!-- claim_time_ -->
+		</if>
+	    <if test="end_time_ != null and end_time_ != ''">
+		      AND end_time_ = #{end_time_}  <!-- end_time_ -->
+		</if>
+	   <if test="duration_ != null ">
+		      AND duration_ = #{duration_}  <!-- duration_ -->
+		</if>
+	    <if test="delete_reason_ != null and delete_reason_ != ''">
+		      AND delete_reason_ = #{delete_reason_}  <!-- delete_reason_ -->
+		</if>
+	   <if test="priority_ != null ">
+		      AND priority_ = #{priority_}  <!-- priority_ -->
+		</if>
+	    <if test="due_date_ != null and due_date_ != ''">
+		      AND due_date_ = #{due_date_}  <!-- due_date_ -->
+		</if>
+	    <if test="form_key_ != null and form_key_ != ''">
+		      AND form_key_ = #{form_key_}  <!-- form_key_ -->
+		</if>
+	    <if test="category_ != null and category_ != ''">
+		      AND category_ = #{category_}  <!-- category_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ = #{tenant_id_}  <!-- tenant_id_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- id_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ like '%${proc_def_id_}%'  <!-- proc_def_id_ -->
+		</if>
+	    <if test="task_def_key_ != null and task_def_key_ != ''">
+		      AND task_def_key_ like '%${task_def_key_}%'  <!-- task_def_key_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ like '%${proc_inst_id_}%'  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="execution_id_ != null and execution_id_ != ''">
+		      AND execution_id_ like '%${execution_id_}%'  <!-- execution_id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- name_ -->
+		</if>
+	    <if test="parent_task_id_ != null and parent_task_id_ != ''">
+		      AND parent_task_id_ like '%${parent_task_id_}%'  <!-- parent_task_id_ -->
+		</if>
+	    <if test="description_ != null and description_ != ''">
+		      AND description_ like '%${description_}%'  <!-- description_ -->
+		</if>
+	    <if test="owner_ != null and owner_ != ''">
+		      AND owner_ like '%${owner_}%'  <!-- owner_ -->
+		</if>
+	    <if test="assignee_ != null and assignee_ != ''">
+		      AND assignee_ like '%${assignee_}%'  <!-- assignee_ -->
+		</if>
+	    <if test="start_time_ != null and start_time_ != ''">
+		      AND start_time_ like '%${start_time_}%'  <!-- start_time_ -->
+		</if>
+	    <if test="claim_time_ != null and claim_time_ != ''">
+		      AND claim_time_ like '%${claim_time_}%'  <!-- claim_time_ -->
+		</if>
+	    <if test="end_time_ != null and end_time_ != ''">
+		      AND end_time_ like '%${end_time_}%'  <!-- end_time_ -->
+		</if>
+	    <if test="delete_reason_ != null and delete_reason_ != ''">
+		      AND delete_reason_ like '%${delete_reason_}%'  <!-- delete_reason_ -->
+		</if>
+	    <if test="due_date_ != null and due_date_ != ''">
+		      AND due_date_ like '%${due_date_}%'  <!-- due_date_ -->
+		</if>
+	    <if test="form_key_ != null and form_key_ != ''">
+		      AND form_key_ like '%${form_key_}%'  <!-- form_key_ -->
+		</if>
+	    <if test="category_ != null and category_ != ''">
+		      AND category_ like '%${category_}%'  <!-- category_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ like '%${tenant_id_}%'  <!-- tenant_id_ -->
+		</if>
+	</sql>
+	
+</mapper>
