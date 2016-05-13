@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+	<display-name>AOS</display-name>
+	<description>AOS应用基础平台</description>
+
+	<!-- 应用上下文配置文件 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+            classpath:aos.cxt.xml
+        </param-value>
+	</context-param>
+
+	<!-- 字符集编码过滤器 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.jhtml</url-pattern>
+	</filter-mapping>
+
+	<!-- Http请求拦截过滤器 -->
+	<filter>
+		<filter-name>httpRequestFilter</filter-name>
+		<filter-class>cn.osworks.aos.web.asset.HttpRequestFilter</filter-class>
+		<init-param>
+			<param-name>enabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>excludes</param-name>
+			<param-value>login.jhtml,/esb/</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>httpRequestFilter</filter-name>
+		<url-pattern>*.jhtml</url-pattern>
+	</filter-mapping>
+
+	<!-- 卸载Web应用时刷新缓存(必须注册为第一个监听器) -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+
+	<!-- 初始化应用上下文环境 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 导出WebApplicationContext对象 -->
+	<listener>
+		<listener-class>cn.osworks.aos.web.asset.WebApplicationContextExporterListener</listener-class>
+	</listener>
+
+	<!-- 系统启动监听器 -->
+	<listener>
+		<listener-class>cn.osworks.aos.core.asset.AOSInitListener</listener-class>
+	</listener>
+	
+	<!-- Http会话监听器 -->
+	<listener>
+		<listener-class>cn.osworks.aos.core.asset.AOSHttpSessionListener</listener-class>
+	</listener>
+
+	<!-- 设置Session时长:以分钟为单位 -->
+	<session-config>
+		<session-timeout>120</session-timeout>
+	</session-config>
+
+	<!-- SpringDispatcherServlet配置 -->
+	<servlet>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:aos.web.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<url-pattern>*.jhtml</url-pattern>
+	</servlet-mapping>
+
+	<!-- 验证码Servlet -->
+	<servlet>
+		<servlet-name>verCodeServlet</servlet-name>
+		<servlet-class>cn.osworks.aos.web.asset.VerCodeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>verCodeServlet</servlet-name>
+		<url-pattern>/verCodeServlet.png</url-pattern>
+	</servlet-mapping>
+
+	<!-- 缺省首页 -->
+	<welcome-file-list>
+		<welcome-file>/login.htm</welcome-file>
+	</welcome-file-list>
+
+	<!-- 错误响应页面 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/common/404.jsp</location>
+	</error-page>
+	-->
+</web-app>

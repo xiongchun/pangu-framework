@@ -1,0 +1,6 @@
+#if($readOnly == "true")
+   AOS.read($id);
+#end
+#if($disabled == "true")
+   AOS.disable($id);
+#end

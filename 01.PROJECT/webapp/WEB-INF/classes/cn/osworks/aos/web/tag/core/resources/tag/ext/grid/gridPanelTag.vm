@@ -1,0 +1,230 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##Store.Fields
+var ${id}_store_fields = [
+    #foreach($fielddto in $fields)
+        {
+		#if(${fielddto.name})
+			name: '${fielddto.name}',
+		#end
+		##date列要对在此进行一次时分秒格式化，然后再在column里格式化成自己想要的格式。
+		##如果不设置，则在FF和IE下进行column格式化时，将被错误的格式化为：0NaN-NaN-NaN。或者在服务器格式化后以文本列输出也是可以的。
+		#if(${fielddto.type} == "date")
+			type:'date',
+			dateFormat : 'Y-m-d H:i:s',
+		#else
+			type:'auto',
+		#end
+		#if(${fielddto.defaultValue})
+			defaultValue:'${fielddto.defaultValue}',
+		#end
+		    app:169
+		}#if($velocityCount != $fields.size()),#end
+    #end
+];
+
+##Store定义
+var ${id}_store = Ext.create('Ext.data.Store', {
+	 fields : ${id}_store_fields,
+	 pageSize:$pageSize,
+	 #if($autoLoad)
+		 autoLoad: $autoLoad,
+	 #end
+	 #if($pageType == "client")
+		 proxy : {
+    				##将load的提交方式强制改为POST，缺省为GET。GET会导致在部分Web容器里中文参数乱码的情况。
+    				actionMethods: {  
+                        read: 'POST'  
+                    },
+					type : 'pagingmemory'
+				}
+	 #else
+    	 proxy : {
+    			type : 'ajax',
+    			url:'$url',
+				##将load的提交方式强制改为POST，缺省为GET。GET会导致在部分Web容器里中文参数乱码的情况。
+				actionMethods: {  
+                    read: 'POST'  
+                },
+    			reader : {
+    				type : 'json',
+    				totalProperty: '$totalProperty', 
+    				#if($idProperty)
+    					idProperty: '$idProperty',
+            	    #end
+    				root: '$root'
+    			}
+    		}
+    #end
+});
+
+##绑定Store的事件
+#if(${onload})
+	${id}_store.on('load', $onload);
+#end
+
+##Grid.Columns
+var ${id}_grid_columns = [
+    #foreach($columndto in $columns)
+        {
+			id:'${columndto.id}',
+			stopSelection:false,
+		#if(${columndto.width})
+			width:${columndto.width},
+		#end
+        #if(${columndto.header})
+			header:'<span class="app-grid-column-header">${columndto.header}</span>',
+		#end
+		#if(${columndto.dataIndex})
+			dataIndex:'${columndto.dataIndex}',
+	   #end
+	   #if(${columndto.hidden})
+			hidden:${columndto.hidden},
+	   #end
+	   #if(${columndto.hideable})
+			hideable:${columndto.hideable},
+	   #end
+	   #if(${columndto.sortable})
+			sortable:${columndto.sortable},
+	   #end
+	   #if(${columndto.flex})
+			flex:${columndto.flex},
+	   #end
+	   #if(${columndto.rendererField})
+			renderer:function(value,metaData,record,rowIndex ,colIndex ,store){
+			 #set($dicList = ${columndto.dicList})
+			 if(Ext.isEmpty(value)) return '';
+			    ##返回的JSON中的数值类型
+				#if(${columndto.dataType} == "number")
+					#foreach($dic in $dicList)
+					    if(value === $dic.code_) return '$dic.desc_';
+					#end
+				#else
+					#foreach($dic in $dicList)
+					    if(value === '$dic.code_') return '$dic.desc_';
+					#end					
+				#end
+			 return value;
+			},
+	   #end
+	   #if((${columndto.rendererFn} || ${columndto.celltip}) && !${columndto.rendererField})
+			renderer:function(value,metaData,record,rowIndex ,colIndex ,store){
+			      #if(${columndto.celltip})
+			          metaData.tdAttr = 'data-qtip="'+value+'"';
+				  #end
+				  #if(${columndto.rendererFn})
+			          return ${columndto.rendererFn}(value,metaData,record,rowIndex ,colIndex ,store);
+			      #else
+					  return value;
+				  #end
+			},
+	   #end
+	   #if(${columndto.format})
+			format:'${columndto.format}',
+	   #end
+	   #if(${columndto.align})
+			align:'${columndto.align}',
+	   #end
+	   #if(${columndto.editor} && !${columndto.editor2})
+			editor:'${columndto.editor}',
+	   #end
+	   #if(${columndto.editor2})
+			editor:${columndto.editor2},
+	   #end
+	   #if(${columndto.lockable})
+			lockable:${columndto.lockable},
+	   #end
+	   #if(${columndto.locked})
+			locked:${columndto.locked},
+	   #end
+	   #if(${columndto.maxWidth})
+			maxWidth:${columndto.maxWidth},
+	   #end
+	   #if(${columndto.minWidth})
+			minWidth:${columndto.minWidth},
+	   #end
+	   #if(${columndto.any})
+			${columndto.any},
+	   #end
+	   #if(${columndto.type} == "action")
+	   #set($actionDtos = ${columndto.actionDtos})
+    		items: [
+    		 #foreach($actionDto in $actionDtos)
+				#if($velocityCount != "1")
+				  '-',
+				#end
+				{
+				#if(${actionDto.icon})
+			        icon: '${actionDto.icon}',
+				#end
+				#if(${actionDto.tooltip})
+			        tooltip: '${actionDto.tooltip}',
+				#end
+				#if(${actionDto.handler})
+			        handler: ${actionDto.handler},
+				#end
+				#if(${actionDto.disabledFn})
+			        isDisabled: ${actionDto.disabledFn},
+				#end	
+				    app:169
+				}#if($velocityCount != $actionDtos.size()),#end
+    		 #end
+    		],
+		#end
+	   	    xtype: '${columndto.xtype}'
+	   #if(${columndto.tpl})
+			,tpl:'${columndto.tpl}'
+	   #end
+		}#if($velocityCount != $columns.size()),#end
+    #end
+];
+
+##Grid定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/panelTagSupport.vm")
+#if($enableLocking)
+	enableLocking:$enableLocking,
+#end
+#if($disableSelection)
+	disableSelection:$disableSelection,
+#end
+#if($forceFit)
+	forceFit:$forceFit,
+#end
+#if($columnLines)
+	columnLines:$columnLines,
+#end
+#if($rowLines)
+	rowLines:$rowLines,
+#end
+#if($selModel)
+	selModel:$selModel,
+#end
+  store: ${id}_store,
+  columns:${id}_grid_columns,
+  viewConfig: {
+          enableTextSelection:true,
+      #if($stripeRows)
+          stripeRows: $stripeRows
+	  #end
+  },
+#if($hidePagebar != "true")
+	    dockedItems: [{
+	        xtype: 'pagingtoolbar',
+	        store: ${id}_store,
+	        dock: '$pagebardock',
+	        displayInfo: true
+        }],
+#end
+	app: 169
+};
+
+##Grid实例化
+var ${id} = Ext.create('Ext.grid.Panel',${id}_cfg);
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##处理Border
+#parse("${vmpath}ext/subvm/borders.vm")

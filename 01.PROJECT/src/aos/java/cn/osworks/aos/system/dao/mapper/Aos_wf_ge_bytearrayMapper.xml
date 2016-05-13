@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_wf_ge_bytearray[aos_wf_ge_bytearray]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:32 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_wf_ge_bytearrayMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_wf_ge_bytearrayPO">
+		INSERT INTO aos_wf_ge_bytearray (
+		<if test="rev_ != null">
+	         rev_, <!-- rev_ -->
+		</if>
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- name_ -->
+		</if>
+		<if test="deployment_id_ != null and deployment_id_ != ''">
+	         deployment_id_, <!-- deployment_id_ -->
+		</if>
+		<if test="bytes_ != null and bytes_ != ''">
+	         bytes_, <!-- bytes_ -->
+		</if>
+		<if test="generated_ != null">
+	         generated_, <!-- generated_ -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- id_ -->
+	   </if>
+		)VALUES(
+		<if test="rev_ != null">
+	          #{rev_, jdbcType=INTEGER}, <!-- rev_ -->
+	    </if>
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- name_ -->
+	    </if>
+		<if test="deployment_id_ != null and deployment_id_ != ''">
+	          #{deployment_id_, jdbcType=VARCHAR}, <!-- deployment_id_ -->
+	    </if>
+		<if test="bytes_ != null and bytes_ != ''">
+	          #{bytes_, jdbcType=VARCHAR}, <!-- bytes_ -->
+	    </if>
+		<if test="generated_ != null">
+	          #{generated_, jdbcType=INTEGER}, <!-- generated_ -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_wf_ge_bytearrayPO">
+		INSERT INTO aos_wf_ge_bytearray (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+		    #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+		    #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+		    #{deployment_id_, jdbcType=VARCHAR},  <!-- deployment_id_ -->
+		    #{bytes_, jdbcType=VARCHAR},  <!-- bytes_ -->
+		    #{generated_, jdbcType=INTEGER}  <!-- generated_ -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_wf_ge_bytearrayPO">
+		UPDATE aos_wf_ge_bytearray
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+			</if>
+			<if test="rev_ != null">
+		          rev_ = #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+			</if>
+			<if test="name_ != null">
+		          name_ = #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+			</if>
+			<if test="deployment_id_ != null">
+		          deployment_id_ = #{deployment_id_, jdbcType=VARCHAR},  <!-- deployment_id_ -->
+			</if>
+			<if test="bytes_ != null">
+		          bytes_ = #{bytes_, jdbcType=VARCHAR},  <!-- bytes_ -->
+			</if>
+			<if test="generated_ != null">
+		          generated_ = #{generated_, jdbcType=INTEGER},  <!-- generated_ -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_wf_ge_bytearray WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_wf_ge_bytearrayPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_wf_ge_bytearray WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_wf_ge_bytearrayPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_wf_ge_bytearray
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_wf_ge_bytearrayPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_ge_bytearray
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_wf_ge_bytearrayPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_ge_bytearray
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_wf_ge_bytearrayPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_ge_bytearray
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_wf_ge_bytearrayPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_ge_bytearray
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_wf_ge_bytearray
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_wf_ge_bytearray
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- id_ -->
+		  rev_,  <!-- rev_ -->
+		  name_,  <!-- name_ -->
+		  deployment_id_,  <!-- deployment_id_ -->
+		  bytes_,  <!-- bytes_ -->
+		  generated_  <!-- generated_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_wf_ge_bytearray.id_,  <!-- id_ -->
+		  aos_wf_ge_bytearray.rev_,  <!-- rev_ -->
+		  aos_wf_ge_bytearray.name_,  <!-- name_ -->
+		  aos_wf_ge_bytearray.deployment_id_,  <!-- deployment_id_ -->
+		  aos_wf_ge_bytearray.bytes_,  <!-- bytes_ -->
+		  aos_wf_ge_bytearray.generated_  <!-- generated_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- id_ -->
+		</if>
+	   <if test="rev_ != null ">
+		      AND rev_ = #{rev_}  <!-- rev_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- name_ -->
+		</if>
+	    <if test="deployment_id_ != null and deployment_id_ != ''">
+		      AND deployment_id_ = #{deployment_id_}  <!-- deployment_id_ -->
+		</if>
+	    <if test="bytes_ != null and bytes_ != ''">
+		      AND bytes_ = #{bytes_}  <!-- bytes_ -->
+		</if>
+	   <if test="generated_ != null ">
+		      AND generated_ = #{generated_}  <!-- generated_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- name_ -->
+		</if>
+	    <if test="deployment_id_ != null and deployment_id_ != ''">
+		      AND deployment_id_ like '%${deployment_id_}%'  <!-- deployment_id_ -->
+		</if>
+	    <if test="bytes_ != null and bytes_ != ''">
+		      AND bytes_ like '%${bytes_}%'  <!-- bytes_ -->
+		</if>
+	</sql>
+	
+</mapper>

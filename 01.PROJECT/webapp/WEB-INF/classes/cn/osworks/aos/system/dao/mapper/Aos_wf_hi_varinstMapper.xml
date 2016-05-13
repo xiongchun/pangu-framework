@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_wf_hi_varinst[aos_wf_hi_varinst]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:32 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_wf_hi_varinstMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_wf_hi_varinstPO">
+		INSERT INTO aos_wf_hi_varinst (
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	         proc_inst_id_, <!-- proc_inst_id_ -->
+		</if>
+		<if test="execution_id_ != null and execution_id_ != ''">
+	         execution_id_, <!-- execution_id_ -->
+		</if>
+		<if test="task_id_ != null and task_id_ != ''">
+	         task_id_, <!-- task_id_ -->
+		</if>
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- name_ -->
+		</if>
+		<if test="var_type_ != null and var_type_ != ''">
+	         var_type_, <!-- var_type_ -->
+		</if>
+		<if test="rev_ != null">
+	         rev_, <!-- rev_ -->
+		</if>
+		<if test="bytearray_id_ != null and bytearray_id_ != ''">
+	         bytearray_id_, <!-- bytearray_id_ -->
+		</if>
+		<if test="double_ != null and double_ != ''">
+	         double_, <!-- double_ -->
+		</if>
+		<if test="long_ != null">
+	         long_, <!-- long_ -->
+		</if>
+		<if test="text_ != null and text_ != ''">
+	         text_, <!-- text_ -->
+		</if>
+		<if test="text2_ != null and text2_ != ''">
+	         text2_, <!-- text2_ -->
+		</if>
+		<if test="create_time_ != null and create_time_ != ''">
+	         create_time_, <!-- create_time_ -->
+		</if>
+		<if test="last_updated_time_ != null and last_updated_time_ != ''">
+	         last_updated_time_, <!-- last_updated_time_ -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- id_ -->
+	   </if>
+		)VALUES(
+		<if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+	          #{proc_inst_id_, jdbcType=VARCHAR}, <!-- proc_inst_id_ -->
+	    </if>
+		<if test="execution_id_ != null and execution_id_ != ''">
+	          #{execution_id_, jdbcType=VARCHAR}, <!-- execution_id_ -->
+	    </if>
+		<if test="task_id_ != null and task_id_ != ''">
+	          #{task_id_, jdbcType=VARCHAR}, <!-- task_id_ -->
+	    </if>
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- name_ -->
+	    </if>
+		<if test="var_type_ != null and var_type_ != ''">
+	          #{var_type_, jdbcType=VARCHAR}, <!-- var_type_ -->
+	    </if>
+		<if test="rev_ != null">
+	          #{rev_, jdbcType=INTEGER}, <!-- rev_ -->
+	    </if>
+		<if test="bytearray_id_ != null and bytearray_id_ != ''">
+	          #{bytearray_id_, jdbcType=VARCHAR}, <!-- bytearray_id_ -->
+	    </if>
+		<if test="double_ != null and double_ != ''">
+	          #{double_, jdbcType=VARCHAR}, <!-- double_ -->
+	    </if>
+		<if test="long_ != null">
+	          #{long_, jdbcType=INTEGER}, <!-- long_ -->
+	    </if>
+		<if test="text_ != null and text_ != ''">
+	          #{text_, jdbcType=VARCHAR}, <!-- text_ -->
+	    </if>
+		<if test="text2_ != null and text2_ != ''">
+	          #{text2_, jdbcType=VARCHAR}, <!-- text2_ -->
+	    </if>
+		<if test="create_time_ != null and create_time_ != ''">
+	          #{create_time_, jdbcType=VARCHAR}, <!-- create_time_ -->
+	    </if>
+		<if test="last_updated_time_ != null and last_updated_time_ != ''">
+	          #{last_updated_time_, jdbcType=VARCHAR}, <!-- last_updated_time_ -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_wf_hi_varinstPO">
+		INSERT INTO aos_wf_hi_varinst (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+		    #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+		    #{execution_id_, jdbcType=VARCHAR},  <!-- execution_id_ -->
+		    #{task_id_, jdbcType=VARCHAR},  <!-- task_id_ -->
+		    #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+		    #{var_type_, jdbcType=VARCHAR},  <!-- var_type_ -->
+		    #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+		    #{bytearray_id_, jdbcType=VARCHAR},  <!-- bytearray_id_ -->
+		    #{double_, jdbcType=VARCHAR},  <!-- double_ -->
+		    #{long_, jdbcType=INTEGER},  <!-- long_ -->
+		    #{text_, jdbcType=VARCHAR},  <!-- text_ -->
+		    #{text2_, jdbcType=VARCHAR},  <!-- text2_ -->
+		    #{create_time_, jdbcType=VARCHAR},  <!-- create_time_ -->
+		    #{last_updated_time_, jdbcType=VARCHAR}  <!-- last_updated_time_ -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_wf_hi_varinstPO">
+		UPDATE aos_wf_hi_varinst
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+			</if>
+			<if test="proc_inst_id_ != null">
+		          proc_inst_id_ = #{proc_inst_id_, jdbcType=VARCHAR},  <!-- proc_inst_id_ -->
+			</if>
+			<if test="execution_id_ != null">
+		          execution_id_ = #{execution_id_, jdbcType=VARCHAR},  <!-- execution_id_ -->
+			</if>
+			<if test="task_id_ != null">
+		          task_id_ = #{task_id_, jdbcType=VARCHAR},  <!-- task_id_ -->
+			</if>
+			<if test="name_ != null">
+		          name_ = #{name_, jdbcType=VARCHAR},  <!-- name_ -->
+			</if>
+			<if test="var_type_ != null">
+		          var_type_ = #{var_type_, jdbcType=VARCHAR},  <!-- var_type_ -->
+			</if>
+			<if test="rev_ != null">
+		          rev_ = #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+			</if>
+			<if test="bytearray_id_ != null">
+		          bytearray_id_ = #{bytearray_id_, jdbcType=VARCHAR},  <!-- bytearray_id_ -->
+			</if>
+			<if test="double_ != null">
+		          double_ = #{double_, jdbcType=VARCHAR},  <!-- double_ -->
+			</if>
+			<if test="long_ != null">
+		          long_ = #{long_, jdbcType=INTEGER},  <!-- long_ -->
+			</if>
+			<if test="text_ != null">
+		          text_ = #{text_, jdbcType=VARCHAR},  <!-- text_ -->
+			</if>
+			<if test="text2_ != null">
+		          text2_ = #{text2_, jdbcType=VARCHAR},  <!-- text2_ -->
+			</if>
+			<if test="create_time_ != null">
+		          create_time_ = #{create_time_, jdbcType=VARCHAR},  <!-- create_time_ -->
+			</if>
+			<if test="last_updated_time_ != null">
+		          last_updated_time_ = #{last_updated_time_, jdbcType=VARCHAR},  <!-- last_updated_time_ -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_wf_hi_varinst WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_wf_hi_varinstPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_wf_hi_varinst WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_wf_hi_varinstPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_wf_hi_varinst
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_wf_hi_varinstPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_varinst
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_wf_hi_varinstPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_varinst
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_wf_hi_varinstPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_varinst
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_wf_hi_varinstPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_hi_varinst
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_wf_hi_varinst
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_wf_hi_varinst
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- id_ -->
+		  proc_inst_id_,  <!-- proc_inst_id_ -->
+		  execution_id_,  <!-- execution_id_ -->
+		  task_id_,  <!-- task_id_ -->
+		  name_,  <!-- name_ -->
+		  var_type_,  <!-- var_type_ -->
+		  rev_,  <!-- rev_ -->
+		  bytearray_id_,  <!-- bytearray_id_ -->
+		  double_,  <!-- double_ -->
+		  long_,  <!-- long_ -->
+		  text_,  <!-- text_ -->
+		  text2_,  <!-- text2_ -->
+		  create_time_,  <!-- create_time_ -->
+		  last_updated_time_  <!-- last_updated_time_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_wf_hi_varinst.id_,  <!-- id_ -->
+		  aos_wf_hi_varinst.proc_inst_id_,  <!-- proc_inst_id_ -->
+		  aos_wf_hi_varinst.execution_id_,  <!-- execution_id_ -->
+		  aos_wf_hi_varinst.task_id_,  <!-- task_id_ -->
+		  aos_wf_hi_varinst.name_,  <!-- name_ -->
+		  aos_wf_hi_varinst.var_type_,  <!-- var_type_ -->
+		  aos_wf_hi_varinst.rev_,  <!-- rev_ -->
+		  aos_wf_hi_varinst.bytearray_id_,  <!-- bytearray_id_ -->
+		  aos_wf_hi_varinst.double_,  <!-- double_ -->
+		  aos_wf_hi_varinst.long_,  <!-- long_ -->
+		  aos_wf_hi_varinst.text_,  <!-- text_ -->
+		  aos_wf_hi_varinst.text2_,  <!-- text2_ -->
+		  aos_wf_hi_varinst.create_time_,  <!-- create_time_ -->
+		  aos_wf_hi_varinst.last_updated_time_  <!-- last_updated_time_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ = #{proc_inst_id_}  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="execution_id_ != null and execution_id_ != ''">
+		      AND execution_id_ = #{execution_id_}  <!-- execution_id_ -->
+		</if>
+	    <if test="task_id_ != null and task_id_ != ''">
+		      AND task_id_ = #{task_id_}  <!-- task_id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- name_ -->
+		</if>
+	    <if test="var_type_ != null and var_type_ != ''">
+		      AND var_type_ = #{var_type_}  <!-- var_type_ -->
+		</if>
+	   <if test="rev_ != null ">
+		      AND rev_ = #{rev_}  <!-- rev_ -->
+		</if>
+	    <if test="bytearray_id_ != null and bytearray_id_ != ''">
+		      AND bytearray_id_ = #{bytearray_id_}  <!-- bytearray_id_ -->
+		</if>
+	    <if test="double_ != null and double_ != ''">
+		      AND double_ = #{double_}  <!-- double_ -->
+		</if>
+	   <if test="long_ != null ">
+		      AND long_ = #{long_}  <!-- long_ -->
+		</if>
+	    <if test="text_ != null and text_ != ''">
+		      AND text_ = #{text_}  <!-- text_ -->
+		</if>
+	    <if test="text2_ != null and text2_ != ''">
+		      AND text2_ = #{text2_}  <!-- text2_ -->
+		</if>
+	    <if test="create_time_ != null and create_time_ != ''">
+		      AND create_time_ = #{create_time_}  <!-- create_time_ -->
+		</if>
+	    <if test="last_updated_time_ != null and last_updated_time_ != ''">
+		      AND last_updated_time_ = #{last_updated_time_}  <!-- last_updated_time_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- id_ -->
+		</if>
+	    <if test="proc_inst_id_ != null and proc_inst_id_ != ''">
+		      AND proc_inst_id_ like '%${proc_inst_id_}%'  <!-- proc_inst_id_ -->
+		</if>
+	    <if test="execution_id_ != null and execution_id_ != ''">
+		      AND execution_id_ like '%${execution_id_}%'  <!-- execution_id_ -->
+		</if>
+	    <if test="task_id_ != null and task_id_ != ''">
+		      AND task_id_ like '%${task_id_}%'  <!-- task_id_ -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- name_ -->
+		</if>
+	    <if test="var_type_ != null and var_type_ != ''">
+		      AND var_type_ like '%${var_type_}%'  <!-- var_type_ -->
+		</if>
+	    <if test="bytearray_id_ != null and bytearray_id_ != ''">
+		      AND bytearray_id_ like '%${bytearray_id_}%'  <!-- bytearray_id_ -->
+		</if>
+	    <if test="double_ != null and double_ != ''">
+		      AND double_ like '%${double_}%'  <!-- double_ -->
+		</if>
+	    <if test="text_ != null and text_ != ''">
+		      AND text_ like '%${text_}%'  <!-- text_ -->
+		</if>
+	    <if test="text2_ != null and text2_ != ''">
+		      AND text2_ like '%${text2_}%'  <!-- text2_ -->
+		</if>
+	    <if test="create_time_ != null and create_time_ != ''">
+		      AND create_time_ like '%${create_time_}%'  <!-- create_time_ -->
+		</if>
+	    <if test="last_updated_time_ != null and last_updated_time_ != ''">
+		      AND last_updated_time_ like '%${last_updated_time_}%'  <!-- last_updated_time_ -->
+		</if>
+	</sql>
+	
+</mapper>

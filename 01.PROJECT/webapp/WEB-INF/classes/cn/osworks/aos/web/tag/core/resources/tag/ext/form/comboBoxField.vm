@@ -1,0 +1,69 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##ComboBoxStore定义
+#if($queryMode == "local" && !$url)
+var ${id}_store = Ext.create('Ext.data.Store', {
+	 fields : $fields,
+	 proxy : {
+			type : 'memory',
+			reader : {
+				type : 'json'
+			},
+		},
+	 data : $jsonString
+});
+#else
+var ${id}_store = Ext.create('Ext.data.Store', {
+	 fields : $fields,
+	 proxy : {
+			type : 'ajax',
+			url:'$url',
+			reader : {
+				type : 'json'
+			}
+		}
+});
+#end
+
+##ComboBoxField定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formItemTagSupport.vm")
+#if($hiddenName)
+    hiddenName:'$hiddenName',
+#end
+#if($multiSelect)
+    multiSelect:$multiSelect,
+#end
+#if($forceSelection)
+    forceSelection:$forceSelection,
+#end
+#if($editable)
+    editable:$editable,
+#end
+#if($typeAhead)
+    typeAhead:$typeAhead,
+	typeAheadDelay:2000,
+#end
+#if($queryMode)
+    queryMode:'$queryMode',
+#end
+#if($displayField)
+    displayField:'$displayField',
+#end
+#if($valueField)
+    valueField:'$valueField',
+#end
+    store:${id}_store,
+    app:169	
+};
+##ComboBoxField实例化
+#if($instance == "true")
+var ${id} = Ext.create('Ext.form.field.ComboBox',${id}_cfg);
+#end
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##表单元素组件实例后设置
+#parse("${vmpath}ext/subvm/afterFormFieldCreated.vm")

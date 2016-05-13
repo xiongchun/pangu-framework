@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 资源业务域使用的SQL语句 -->
+<mapper namespace="Resource">
+	
+	<!-- 根据Dto查询并返回Aos_sys_module数据持久化对象集合 -->
+	<select id="listAos_sys_modulePOs" parameterType="Dto" resultType="Aos_sys_modulePO">
+		SELECT
+            <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_moduleMapper.column" />
+		FROM aos_sys_module
+		<where>
+		    <if test="name_ != null and name_ != ''">
+			    AND name_ LIKE '%${name_}%' 
+			</if>
+		    <if test="cascade != 'true'">
+			    AND parent_id_ = #{id_} 
+			</if>
+			<if test="cascade = 'true'">
+			    AND cascade_id_ like '%${cascade_id_}%'
+			</if>
+		</where>	
+	</select>
+	
+	<!-- 修改了菜单名称，则更新以此节点作为父节点名称的冗余字段 -->
+	<update id="updateModuleByParent_id_" parameterType="Dto">
+		UPDATE aos_sys_module SET parent_name_ = #{parent_name_}
+		 WHERE parent_id_ = #{parent_id_}
+	</update>
+	
+	<!-- 根据id_删除数据持久化对象 -->
+	<delete id="deleteAos_sys_page_elPOByModule_id_" parameterType="String">
+		DELETE FROM aos_sys_page_el WHERE  module_id_ = #{module_id_}
+	</delete>
+	
+	<!-- 删除组件时清除组件授权资源 -->
+	<delete id="deleteAos_sys_page_el_grant" parameterType="String">
+		DELETE FROM aos_sys_page_el_grant WHERE  el_id_ = #{el_id_}
+	</delete>
+	
+	<!-- 删除模块时清除模块下面的页面 -->
+	<delete id="deleteAos_sys_page"  parameterType="String">
+		DELETE FROM aos_sys_page WHERE  module_id_ = #{module_id_}
+	</delete>
+	
+	<!-- 删除模块时清除模块授权信息 -->
+	<delete id="deleteAos_sys_module_user"  parameterType="String">
+		DELETE FROM aos_sys_module_user WHERE  module_id_ = #{module_id_}
+	</delete>
+	
+	<!-- 删除模块时清除模块授权信息 -->
+	<delete id="deleteAos_sys_module_user_nav"  parameterType="String">
+		DELETE FROM aos_sys_module_user_nav WHERE  module_id_ = #{module_id_}
+	</delete>
+	
+	<!-- 删除模块时清除模块授权信息 -->
+	<delete id="deleteAos_sys_module_role"  parameterType="String">
+		DELETE FROM aos_sys_module_role WHERE  module_id_ = #{module_id_}
+	</delete>
+	
+	<!-- 删除模块时清除模块授权信息 -->
+	<delete id="deleteAos_sys_module_post"  parameterType="String">
+		DELETE FROM aos_sys_module_post WHERE  module_id_ = #{module_id_}
+	</delete>
+	
+	<!-- 查询页面集合 -->
+	<select id="listPages4Mgr" parameterType="Dto" resultType="PageVO" >
+		SELECT
+		   (SELECT name_ FROM aos_sys_module WHERE id_ = aos_sys_page.module_id_) AS module_name_,
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_pageMapper.column" />
+		FROM aos_sys_page
+		<where>
+			<if test="hotkey != null and hotkey != ''">
+			     AND name_ LIKE '%${hotkey}%'
+			</if>
+			<if test="module_id_ != null and module_id_ != ''">
+				AND module_id_ = #{module_id_}
+			</if>
+		</where>
+		ORDER BY module_id_, sort_no_, id_
+	</select>
+	
+	<!-- 查询模块主页面集合 -->
+	<select id="listModuleMainPages" parameterType="Dto" resultType="PageVO" >
+		SELECT
+		   id_ as id_,
+		   id_ as module_id_,
+		   name_ as module_name_,
+		   name_ as name_,
+		   url_ as url_,
+		   '1' as type_,
+		   '1' as enabled_,
+		   sort_no_ as sort_no_,
+		   '0' as is_default_,
+		   icon_name_ as icon_,
+		   vector_ as vector_,
+		   '' as icon_big_
+		FROM aos_sys_module
+		<where>
+			<if test="hotkey != null and hotkey != ''">
+			     AND name_ LIKE '%${hotkey}%'
+			</if>
+			<if test="module_id_ != null and module_id_ != ''">
+				AND id_ = #{module_id_}
+			</if>
+			AND is_leaf_ = '1' AND (url_ is not null OR url_ != '')
+		</where>
+		ORDER BY id_, sort_no_
+	</select>
+	
+	<!-- 查询元素组件 -->
+	<select id="listElements4Mgr" parameterType="Dto" resultType="Dto" >
+		SELECT
+		   (SELECT name_ FROM aos_sys_module WHERE id_ = aos_sys_page_el.module_id_) AS module_name_,
+		   (SELECT name_ FROM aos_sys_page WHERE id_ = aos_sys_page_el.page_id_) AS page_name_,
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_page_elMapper.column" />
+		FROM aos_sys_page_el
+		<where>
+			<if test="hotkey != null and hotkey != ''">
+			     AND (dom_id_ LIKE '%${hotkey}%' OR name_ LIKE '%${hotkey}%')
+			</if>
+			<if test="module_id_ != null and module_id_ != ''">
+				AND module_id_ = #{module_id_}
+			</if>
+			<if test="page_id_ != null and page_id_ != ''">
+				AND page_id_ = #{page_id_}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询界面组件 授权使用 -->
+	<select id="listElement4Grant" parameterType="Dto" resultType="Dto">
+		SELECT
+		  (SELECT name_ FROM aos_sys_module WHERE id_ = aos_sys_page_el.module_id_) AS module_name_,
+		  (SELECT name_ FROM aos_sys_page WHERE id_ = aos_sys_page_el.page_id_) AS page_name_,
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_page_elMapper.column" />
+		FROM aos_sys_page_el
+		<where>
+			<if test="hotkey != null and hotkey != ''">
+			     AND (dom_id_ LIKE '%${hotkey}%' OR name_ LIKE '%${hotkey}%')
+			</if>
+			<if test="module_id_ != null and module_id_ != ''">
+				AND module_id_ = #{module_id_}
+			</if>
+		</where>
+	</select>
+
+	<!-- 根据Dto查询流文件集合 -->
+	<select id="listByteObjs4Page" parameterType="Dto" resultType="Dto">
+		SELECT
+			(SELECT name_ FROM aos_sys_user WHERE id_ = aos_sys_bytearray.creater_id_) AS creater_name_,
+			aos_sys_catalog.name_ AS catalog_name_,
+			aos_sys_bytearray.id_, 
+			aos_sys_bytearray.key_,  
+			aos_sys_bytearray.name_,  
+			aos_sys_bytearray.catalog_id_,  
+			aos_sys_bytearray.catalog_cascade_id_,  
+			aos_sys_bytearray.content_type_, 
+			aos_sys_bytearray.size_, 
+			aos_sys_bytearray.create_time_,  
+			aos_sys_bytearray.creater_id_,  
+			aos_sys_bytearray.title_,  
+			aos_sys_bytearray.remark_  
+		FROM aos_sys_bytearray LEFT JOIN aos_sys_catalog ON  aos_sys_bytearray.catalog_id_ = aos_sys_catalog.id_
+		<where>
+			<if test="keyorname != null and keyorname != ''">
+				AND (aos_sys_bytearray.key_ LIKE '%${keyorname}%' OR aos_sys_bytearray.name_ LIKE '%${keyorname}%')
+			</if>
+			<if test="cascade != 'true' and catalog_id_ != null and catalog_id_ != ''">
+				AND aos_sys_bytearray.catalog_id_ = #{catalog_id_}
+			</if>
+			<if test="cascade = 'true'">
+				AND aos_sys_bytearray.catalog_cascade_id_ like '%${catalog_cascade_id_}%'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 根据模块编号获取模块的子页面导航菜单 -->
+	<select id="getSubNavMenuByModuleID" parameterType="Dto" resultType="Aos_sys_pagePO" >
+		SELECT
+		  <include refid="cn.osworks.aos.system.dao.mapper.Aos_sys_pageMapper.column" />
+		FROM aos_sys_page
+	  WHERE module_id_ = #{module_id_} AND type_ IN ('2', '4')
+		ORDER BY sort_no_, id_
+	</select>
+	
+</mapper>

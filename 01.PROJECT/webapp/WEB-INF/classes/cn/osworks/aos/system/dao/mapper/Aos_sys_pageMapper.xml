@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 模块页面表[aos_sys_page]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:31 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_sys_pageMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_sys_pagePO">
+		INSERT INTO aos_sys_page (
+		<if test="module_id_ != null and module_id_ != ''">
+	         module_id_, <!-- 功能模块ID -->
+		</if>
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- 名称 -->
+		</if>
+		<if test="url_ != null and url_ != ''">
+	         url_, <!-- 页面URL -->
+		</if>
+		<if test="type_ != null and type_ != ''">
+	         type_, <!-- 类型 -->
+		</if>
+		<if test="enabled_ != null and enabled_ != ''">
+	         enabled_, <!-- 使能状态 -->
+		</if>
+		<if test="is_default_ != null and is_default_ != ''">
+	         is_default_, <!-- 是否缺省子页面 -->
+		</if>
+		<if test="icon_ != null and icon_ != ''">
+	         icon_, <!-- 小图标 -->
+		</if>
+		<if test="icon_big_ != null and icon_big_ != ''">
+	         icon_big_, <!-- 大图标 -->
+		</if>
+		<if test="vector_ != null and vector_ != ''">
+	         vector_, <!-- 矢量图标 -->
+		</if>
+		<if test="sort_no_ != null">
+	         sort_no_, <!-- 排序号 -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- 流水号 -->
+	   </if>
+		)VALUES(
+		<if test="module_id_ != null and module_id_ != ''">
+	          #{module_id_, jdbcType=VARCHAR}, <!-- 功能模块ID -->
+	    </if>
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- 名称 -->
+	    </if>
+		<if test="url_ != null and url_ != ''">
+	          #{url_, jdbcType=VARCHAR}, <!-- 页面URL -->
+	    </if>
+		<if test="type_ != null and type_ != ''">
+	          #{type_, jdbcType=VARCHAR}, <!-- 类型 -->
+	    </if>
+		<if test="enabled_ != null and enabled_ != ''">
+	          #{enabled_, jdbcType=VARCHAR}, <!-- 使能状态 -->
+	    </if>
+		<if test="is_default_ != null and is_default_ != ''">
+	          #{is_default_, jdbcType=VARCHAR}, <!-- 是否缺省子页面 -->
+	    </if>
+		<if test="icon_ != null and icon_ != ''">
+	          #{icon_, jdbcType=VARCHAR}, <!-- 小图标 -->
+	    </if>
+		<if test="icon_big_ != null and icon_big_ != ''">
+	          #{icon_big_, jdbcType=VARCHAR}, <!-- 大图标 -->
+	    </if>
+		<if test="vector_ != null and vector_ != ''">
+	          #{vector_, jdbcType=VARCHAR}, <!-- 矢量图标 -->
+	    </if>
+		<if test="sort_no_ != null">
+	          #{sort_no_, jdbcType=INTEGER}, <!-- 排序号 -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- 流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_sys_pagePO">
+		INSERT INTO aos_sys_page (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+		    #{module_id_, jdbcType=VARCHAR},  <!-- 功能模块ID -->
+		    #{name_, jdbcType=VARCHAR},  <!-- 名称 -->
+		    #{url_, jdbcType=VARCHAR},  <!-- 页面URL -->
+		    #{type_, jdbcType=VARCHAR},  <!-- 类型 -->
+		    #{enabled_, jdbcType=VARCHAR},  <!-- 使能状态 -->
+		    #{is_default_, jdbcType=VARCHAR},  <!-- 是否缺省子页面 -->
+		    #{icon_, jdbcType=VARCHAR},  <!-- 小图标 -->
+		    #{icon_big_, jdbcType=VARCHAR},  <!-- 大图标 -->
+		    #{vector_, jdbcType=VARCHAR},  <!-- 矢量图标 -->
+		    #{sort_no_, jdbcType=INTEGER}  <!-- 排序号 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_sys_pagePO">
+		UPDATE aos_sys_page
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+			</if>
+			<if test="module_id_ != null">
+		          module_id_ = #{module_id_, jdbcType=VARCHAR},  <!-- 功能模块ID -->
+			</if>
+			<if test="name_ != null">
+		          name_ = #{name_, jdbcType=VARCHAR},  <!-- 名称 -->
+			</if>
+			<if test="url_ != null">
+		          url_ = #{url_, jdbcType=VARCHAR},  <!-- 页面URL -->
+			</if>
+			<if test="type_ != null">
+		          type_ = #{type_, jdbcType=VARCHAR},  <!-- 类型 -->
+			</if>
+			<if test="enabled_ != null">
+		          enabled_ = #{enabled_, jdbcType=VARCHAR},  <!-- 使能状态 -->
+			</if>
+			<if test="is_default_ != null">
+		          is_default_ = #{is_default_, jdbcType=VARCHAR},  <!-- 是否缺省子页面 -->
+			</if>
+			<if test="icon_ != null">
+		          icon_ = #{icon_, jdbcType=VARCHAR},  <!-- 小图标 -->
+			</if>
+			<if test="icon_big_ != null">
+		          icon_big_ = #{icon_big_, jdbcType=VARCHAR},  <!-- 大图标 -->
+			</if>
+			<if test="vector_ != null">
+		          vector_ = #{vector_, jdbcType=VARCHAR},  <!-- 矢量图标 -->
+			</if>
+			<if test="sort_no_ != null">
+		          sort_no_ = #{sort_no_, jdbcType=INTEGER},  <!-- 排序号 -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_sys_page WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_sys_pagePO">
+		SELECT
+		<include refid="column" />
+		FROM aos_sys_page WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_sys_pagePO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_sys_page
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_sys_pagePO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_page
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_sys_pagePO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_page
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_sys_pagePO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_page
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_sys_pagePO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_page
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_sys_page
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_sys_page
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- 流水号 -->
+		  module_id_,  <!-- 功能模块ID -->
+		  name_,  <!-- 名称 -->
+		  url_,  <!-- 页面URL -->
+		  type_,  <!-- 类型 -->
+		  enabled_,  <!-- 使能状态 -->
+		  is_default_,  <!-- 是否缺省子页面 -->
+		  icon_,  <!-- 小图标 -->
+		  icon_big_,  <!-- 大图标 -->
+		  vector_,  <!-- 矢量图标 -->
+		  sort_no_  <!-- 排序号 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_sys_page.id_,  <!-- 流水号 -->
+		  aos_sys_page.module_id_,  <!-- 功能模块ID -->
+		  aos_sys_page.name_,  <!-- 名称 -->
+		  aos_sys_page.url_,  <!-- 页面URL -->
+		  aos_sys_page.type_,  <!-- 类型 -->
+		  aos_sys_page.enabled_,  <!-- 使能状态 -->
+		  aos_sys_page.is_default_,  <!-- 是否缺省子页面 -->
+		  aos_sys_page.icon_,  <!-- 小图标 -->
+		  aos_sys_page.icon_big_,  <!-- 大图标 -->
+		  aos_sys_page.vector_,  <!-- 矢量图标 -->
+		  aos_sys_page.sort_no_  <!-- 排序号 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- 流水号 -->
+		</if>
+	    <if test="module_id_ != null and module_id_ != ''">
+		      AND module_id_ = #{module_id_}  <!-- 功能模块ID -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- 名称 -->
+		</if>
+	    <if test="url_ != null and url_ != ''">
+		      AND url_ = #{url_}  <!-- 页面URL -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ = #{type_}  <!-- 类型 -->
+		</if>
+	    <if test="enabled_ != null and enabled_ != ''">
+		      AND enabled_ = #{enabled_}  <!-- 使能状态 -->
+		</if>
+	    <if test="is_default_ != null and is_default_ != ''">
+		      AND is_default_ = #{is_default_}  <!-- 是否缺省子页面 -->
+		</if>
+	    <if test="icon_ != null and icon_ != ''">
+		      AND icon_ = #{icon_}  <!-- 小图标 -->
+		</if>
+	    <if test="icon_big_ != null and icon_big_ != ''">
+		      AND icon_big_ = #{icon_big_}  <!-- 大图标 -->
+		</if>
+	    <if test="vector_ != null and vector_ != ''">
+		      AND vector_ = #{vector_}  <!-- 矢量图标 -->
+		</if>
+	   <if test="sort_no_ != null ">
+		      AND sort_no_ = #{sort_no_}  <!-- 排序号 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- 流水号 -->
+		</if>
+	    <if test="module_id_ != null and module_id_ != ''">
+		      AND module_id_ like '%${module_id_}%'  <!-- 功能模块ID -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- 名称 -->
+		</if>
+	    <if test="url_ != null and url_ != ''">
+		      AND url_ like '%${url_}%'  <!-- 页面URL -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ like '%${type_}%'  <!-- 类型 -->
+		</if>
+	    <if test="enabled_ != null and enabled_ != ''">
+		      AND enabled_ like '%${enabled_}%'  <!-- 使能状态 -->
+		</if>
+	    <if test="is_default_ != null and is_default_ != ''">
+		      AND is_default_ like '%${is_default_}%'  <!-- 是否缺省子页面 -->
+		</if>
+	    <if test="icon_ != null and icon_ != ''">
+		      AND icon_ like '%${icon_}%'  <!-- 小图标 -->
+		</if>
+	    <if test="icon_big_ != null and icon_big_ != ''">
+		      AND icon_big_ like '%${icon_big_}%'  <!-- 大图标 -->
+		</if>
+	    <if test="vector_ != null and vector_ != ''">
+		      AND vector_ like '%${vector_}%'  <!-- 矢量图标 -->
+		</if>
+	</sql>
+	
+</mapper>

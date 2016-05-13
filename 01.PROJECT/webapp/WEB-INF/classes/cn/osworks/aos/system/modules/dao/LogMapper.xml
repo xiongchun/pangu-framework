@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 工作流业务域使用的SQL语句 -->
+<mapper namespace="Log">
+
+   <!-- 查会话日志数据  -->
+    <select id="listSessionsPage" parameterType="Dto" resultType="Aos_log_sessionPO">
+	    SELECT
+			  id_,  <!-- 会话ID -->
+			  user_id_,  <!-- 用户ID -->
+			  account_,  <!-- 登录账户 -->
+			  user_name_,  <!-- 用户姓名 -->
+			  ip_address_,  <!-- 客户端IP地址 -->
+			  client_type_,  <!-- 客户端类型 -->
+			  owner_, <!-- 宿主 -->
+			  create_time_  <!-- 登录时间 -->
+		 FROM aos_log_session
+        <where>
+            <if test="query_key_ != null and query_key_ != ''">
+                AND (account_ LIKE '%${query_key_}%' OR user_name_ LIKE '%${query_key_}%')
+            </if>
+          </where>
+        ORDER BY create_time_ DESC
+    </select>
+    
+    <!-- 批量删除会话日志信息 -->
+    <delete id="deleteSessionLogs" parameterType="Dto" >
+          DELETE FROM aos_log_session
+    </delete>
+
+</mapper>

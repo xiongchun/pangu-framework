@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 用户扩展信息表[aos_sys_user_ext]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2016-01-24 16:35:16 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_sys_user_extMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_sys_user_extPO">
+		INSERT INTO aos_sys_user_ext (
+		<if test="email_ != null and email_ != ''">
+	         email_, <!-- 电子邮件 -->
+		</if>
+		<if test="fixed_phone_ != null and fixed_phone_ != ''">
+	         fixed_phone_, <!-- 固定电话 -->
+		</if>
+		<if test="mobile_phone_ != null and mobile_phone_ != ''">
+	         mobile_phone_, <!-- 移动电话 -->
+		</if>
+		<if test="address_ != null and address_ != ''">
+	         address_, <!-- 联系地址 -->
+		</if>
+		<if test="zip_ != null and zip_ != ''">
+	         zip_, <!-- 邮编 -->
+		</if>
+		<if test="birthday_ != null and birthday_ != ''">
+	         birthday_, <!-- 生日 -->
+		</if>
+		<if test="idno_ != null and idno_ != ''">
+	         idno_, <!-- 身份证号 -->
+		</if>
+		<if test="qq_ != null and qq_ != ''">
+	         qq_, <!-- QQ -->
+		</if>
+		<if test="dynamic_field_ != null and dynamic_field_ != ''">
+	         dynamic_field_, <!-- 动态扩展字段 -->
+		</if>
+		<if test="remark_ != null and remark_ != ''">
+	         remark_, <!-- 备注 -->
+		</if>
+		<if test="filed1_ != null and filed1_ != ''">
+	         filed1_, <!-- 静态扩展字段1 -->
+		</if>
+		<if test="filed2_ != null and filed2_ != ''">
+	         filed2_, <!-- 静态扩展字段2 -->
+		</if>
+		<if test="filed3_ != null and filed3_ != ''">
+	         filed3_, <!-- 静态扩展字段3 -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- 用户ID -->
+	   </if>
+		)VALUES(
+		<if test="email_ != null and email_ != ''">
+	          #{email_, jdbcType=VARCHAR}, <!-- 电子邮件 -->
+	    </if>
+		<if test="fixed_phone_ != null and fixed_phone_ != ''">
+	          #{fixed_phone_, jdbcType=VARCHAR}, <!-- 固定电话 -->
+	    </if>
+		<if test="mobile_phone_ != null and mobile_phone_ != ''">
+	          #{mobile_phone_, jdbcType=VARCHAR}, <!-- 移动电话 -->
+	    </if>
+		<if test="address_ != null and address_ != ''">
+	          #{address_, jdbcType=VARCHAR}, <!-- 联系地址 -->
+	    </if>
+		<if test="zip_ != null and zip_ != ''">
+	          #{zip_, jdbcType=VARCHAR}, <!-- 邮编 -->
+	    </if>
+		<if test="birthday_ != null and birthday_ != ''">
+	          #{birthday_, jdbcType=VARCHAR}, <!-- 生日 -->
+	    </if>
+		<if test="idno_ != null and idno_ != ''">
+	          #{idno_, jdbcType=VARCHAR}, <!-- 身份证号 -->
+	    </if>
+		<if test="qq_ != null and qq_ != ''">
+	          #{qq_, jdbcType=VARCHAR}, <!-- QQ -->
+	    </if>
+		<if test="dynamic_field_ != null and dynamic_field_ != ''">
+	          #{dynamic_field_, jdbcType=VARCHAR}, <!-- 动态扩展字段 -->
+	    </if>
+		<if test="remark_ != null and remark_ != ''">
+	          #{remark_, jdbcType=VARCHAR}, <!-- 备注 -->
+	    </if>
+		<if test="filed1_ != null and filed1_ != ''">
+	          #{filed1_, jdbcType=VARCHAR}, <!-- 静态扩展字段1 -->
+	    </if>
+		<if test="filed2_ != null and filed2_ != ''">
+	          #{filed2_, jdbcType=VARCHAR}, <!-- 静态扩展字段2 -->
+	    </if>
+		<if test="filed3_ != null and filed3_ != ''">
+	          #{filed3_, jdbcType=VARCHAR}, <!-- 静态扩展字段3 -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- 用户ID -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_sys_user_extPO">
+		INSERT INTO aos_sys_user_ext (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- 用户ID -->
+		    #{email_, jdbcType=VARCHAR},  <!-- 电子邮件 -->
+		    #{fixed_phone_, jdbcType=VARCHAR},  <!-- 固定电话 -->
+		    #{mobile_phone_, jdbcType=VARCHAR},  <!-- 移动电话 -->
+		    #{address_, jdbcType=VARCHAR},  <!-- 联系地址 -->
+		    #{zip_, jdbcType=VARCHAR},  <!-- 邮编 -->
+		    #{birthday_, jdbcType=VARCHAR},  <!-- 生日 -->
+		    #{idno_, jdbcType=VARCHAR},  <!-- 身份证号 -->
+		    #{qq_, jdbcType=VARCHAR},  <!-- QQ -->
+		    #{dynamic_field_, jdbcType=VARCHAR},  <!-- 动态扩展字段 -->
+		    #{remark_, jdbcType=VARCHAR},  <!-- 备注 -->
+		    #{filed1_, jdbcType=VARCHAR},  <!-- 静态扩展字段1 -->
+		    #{filed2_, jdbcType=VARCHAR},  <!-- 静态扩展字段2 -->
+		    #{filed3_, jdbcType=VARCHAR}  <!-- 静态扩展字段3 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_sys_user_extPO">
+		UPDATE aos_sys_user_ext
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- 用户ID -->
+			</if>
+			<if test="email_ != null">
+		          email_ = #{email_, jdbcType=VARCHAR},  <!-- 电子邮件 -->
+			</if>
+			<if test="fixed_phone_ != null">
+		          fixed_phone_ = #{fixed_phone_, jdbcType=VARCHAR},  <!-- 固定电话 -->
+			</if>
+			<if test="mobile_phone_ != null">
+		          mobile_phone_ = #{mobile_phone_, jdbcType=VARCHAR},  <!-- 移动电话 -->
+			</if>
+			<if test="address_ != null">
+		          address_ = #{address_, jdbcType=VARCHAR},  <!-- 联系地址 -->
+			</if>
+			<if test="zip_ != null">
+		          zip_ = #{zip_, jdbcType=VARCHAR},  <!-- 邮编 -->
+			</if>
+			<if test="birthday_ != null">
+		          birthday_ = #{birthday_, jdbcType=VARCHAR},  <!-- 生日 -->
+			</if>
+			<if test="idno_ != null">
+		          idno_ = #{idno_, jdbcType=VARCHAR},  <!-- 身份证号 -->
+			</if>
+			<if test="qq_ != null">
+		          qq_ = #{qq_, jdbcType=VARCHAR},  <!-- QQ -->
+			</if>
+			<if test="dynamic_field_ != null">
+		          dynamic_field_ = #{dynamic_field_, jdbcType=VARCHAR},  <!-- 动态扩展字段 -->
+			</if>
+			<if test="remark_ != null">
+		          remark_ = #{remark_, jdbcType=VARCHAR},  <!-- 备注 -->
+			</if>
+			<if test="filed1_ != null">
+		          filed1_ = #{filed1_, jdbcType=VARCHAR},  <!-- 静态扩展字段1 -->
+			</if>
+			<if test="filed2_ != null">
+		          filed2_ = #{filed2_, jdbcType=VARCHAR},  <!-- 静态扩展字段2 -->
+			</if>
+			<if test="filed3_ != null">
+		          filed3_ = #{filed3_, jdbcType=VARCHAR},  <!-- 静态扩展字段3 -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_sys_user_ext WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_sys_user_extPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_sys_user_ext WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_sys_user_extPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_sys_user_ext
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_sys_user_extPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_user_ext
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_sys_user_extPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_user_ext
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_sys_user_extPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_user_ext
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_sys_user_extPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_user_ext
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_sys_user_ext
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_sys_user_ext
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- 用户ID -->
+		  email_,  <!-- 电子邮件 -->
+		  fixed_phone_,  <!-- 固定电话 -->
+		  mobile_phone_,  <!-- 移动电话 -->
+		  address_,  <!-- 联系地址 -->
+		  zip_,  <!-- 邮编 -->
+		  birthday_,  <!-- 生日 -->
+		  idno_,  <!-- 身份证号 -->
+		  qq_,  <!-- QQ -->
+		  dynamic_field_,  <!-- 动态扩展字段 -->
+		  remark_,  <!-- 备注 -->
+		  filed1_,  <!-- 静态扩展字段1 -->
+		  filed2_,  <!-- 静态扩展字段2 -->
+		  filed3_  <!-- 静态扩展字段3 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_sys_user_ext.id_,  <!-- 用户ID -->
+		  aos_sys_user_ext.email_,  <!-- 电子邮件 -->
+		  aos_sys_user_ext.fixed_phone_,  <!-- 固定电话 -->
+		  aos_sys_user_ext.mobile_phone_,  <!-- 移动电话 -->
+		  aos_sys_user_ext.address_,  <!-- 联系地址 -->
+		  aos_sys_user_ext.zip_,  <!-- 邮编 -->
+		  aos_sys_user_ext.birthday_,  <!-- 生日 -->
+		  aos_sys_user_ext.idno_,  <!-- 身份证号 -->
+		  aos_sys_user_ext.qq_,  <!-- QQ -->
+		  aos_sys_user_ext.dynamic_field_,  <!-- 动态扩展字段 -->
+		  aos_sys_user_ext.remark_,  <!-- 备注 -->
+		  aos_sys_user_ext.filed1_,  <!-- 静态扩展字段1 -->
+		  aos_sys_user_ext.filed2_,  <!-- 静态扩展字段2 -->
+		  aos_sys_user_ext.filed3_  <!-- 静态扩展字段3 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- 用户ID -->
+		</if>
+	    <if test="email_ != null and email_ != ''">
+		      AND email_ = #{email_}  <!-- 电子邮件 -->
+		</if>
+	    <if test="fixed_phone_ != null and fixed_phone_ != ''">
+		      AND fixed_phone_ = #{fixed_phone_}  <!-- 固定电话 -->
+		</if>
+	    <if test="mobile_phone_ != null and mobile_phone_ != ''">
+		      AND mobile_phone_ = #{mobile_phone_}  <!-- 移动电话 -->
+		</if>
+	    <if test="address_ != null and address_ != ''">
+		      AND address_ = #{address_}  <!-- 联系地址 -->
+		</if>
+	    <if test="zip_ != null and zip_ != ''">
+		      AND zip_ = #{zip_}  <!-- 邮编 -->
+		</if>
+	    <if test="birthday_ != null and birthday_ != ''">
+		      AND birthday_ = #{birthday_}  <!-- 生日 -->
+		</if>
+	    <if test="idno_ != null and idno_ != ''">
+		      AND idno_ = #{idno_}  <!-- 身份证号 -->
+		</if>
+	    <if test="qq_ != null and qq_ != ''">
+		      AND qq_ = #{qq_}  <!-- QQ -->
+		</if>
+	    <if test="dynamic_field_ != null and dynamic_field_ != ''">
+		      AND dynamic_field_ = #{dynamic_field_}  <!-- 动态扩展字段 -->
+		</if>
+	    <if test="remark_ != null and remark_ != ''">
+		      AND remark_ = #{remark_}  <!-- 备注 -->
+		</if>
+	    <if test="filed1_ != null and filed1_ != ''">
+		      AND filed1_ = #{filed1_}  <!-- 静态扩展字段1 -->
+		</if>
+	    <if test="filed2_ != null and filed2_ != ''">
+		      AND filed2_ = #{filed2_}  <!-- 静态扩展字段2 -->
+		</if>
+	    <if test="filed3_ != null and filed3_ != ''">
+		      AND filed3_ = #{filed3_}  <!-- 静态扩展字段3 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- 用户ID -->
+		</if>
+	    <if test="email_ != null and email_ != ''">
+		      AND email_ like '%${email_}%'  <!-- 电子邮件 -->
+		</if>
+	    <if test="fixed_phone_ != null and fixed_phone_ != ''">
+		      AND fixed_phone_ like '%${fixed_phone_}%'  <!-- 固定电话 -->
+		</if>
+	    <if test="mobile_phone_ != null and mobile_phone_ != ''">
+		      AND mobile_phone_ like '%${mobile_phone_}%'  <!-- 移动电话 -->
+		</if>
+	    <if test="address_ != null and address_ != ''">
+		      AND address_ like '%${address_}%'  <!-- 联系地址 -->
+		</if>
+	    <if test="zip_ != null and zip_ != ''">
+		      AND zip_ like '%${zip_}%'  <!-- 邮编 -->
+		</if>
+	    <if test="birthday_ != null and birthday_ != ''">
+		      AND birthday_ like '%${birthday_}%'  <!-- 生日 -->
+		</if>
+	    <if test="idno_ != null and idno_ != ''">
+		      AND idno_ like '%${idno_}%'  <!-- 身份证号 -->
+		</if>
+	    <if test="qq_ != null and qq_ != ''">
+		      AND qq_ like '%${qq_}%'  <!-- QQ -->
+		</if>
+	    <if test="dynamic_field_ != null and dynamic_field_ != ''">
+		      AND dynamic_field_ like '%${dynamic_field_}%'  <!-- 动态扩展字段 -->
+		</if>
+	    <if test="remark_ != null and remark_ != ''">
+		      AND remark_ like '%${remark_}%'  <!-- 备注 -->
+		</if>
+	    <if test="filed1_ != null and filed1_ != ''">
+		      AND filed1_ like '%${filed1_}%'  <!-- 静态扩展字段1 -->
+		</if>
+	    <if test="filed2_ != null and filed2_ != ''">
+		      AND filed2_ like '%${filed2_}%'  <!-- 静态扩展字段2 -->
+		</if>
+	    <if test="filed3_ != null and filed3_ != ''">
+		      AND filed3_ like '%${filed3_}%'  <!-- 静态扩展字段3 -->
+		</if>
+	</sql>
+	
+</mapper>

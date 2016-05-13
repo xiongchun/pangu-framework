@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 银行组织机构表[demo_org]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台开发插件自动生成-禁止手工修改 2015-07-24 19:31:13 -->
+<mapper namespace="cn.osworks.aos.demo.dao.mapper.Demo_orgMapper">
+
+	<!-- 表字段 -->
+	<sql id="column">
+		id_,  <!-- 流水号 -->
+		cascade_id_,  <!-- 节点语义ID -->
+		name_,  <!-- 组织名称 -->
+		hotkey_,  <!-- 热键 -->
+		parent_id_,  <!-- 父节点流水号 -->
+		is_leaf_,  <!-- 是否叶子节点 -->
+		is_auto_expand_,  <!-- 是否自动展开 -->
+		icon_name_,  <!-- 节点图标文件名称 -->
+		address_,  <!-- 地址 -->
+		create_user_id_,  <!-- 创建人ID -->
+		create_time_,  <!-- 创建时间 -->
+		sort_no_  <!-- 排序号 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		demo_org.id_,  <!-- 流水号 -->
+		demo_org.cascade_id_,  <!-- 节点语义ID -->
+		demo_org.name_,  <!-- 组织名称 -->
+		demo_org.hotkey_,  <!-- 热键 -->
+		demo_org.parent_id_,  <!-- 父节点流水号 -->
+		demo_org.is_leaf_,  <!-- 是否叶子节点 -->
+		demo_org.is_auto_expand_,  <!-- 是否自动展开 -->
+		demo_org.icon_name_,  <!-- 节点图标文件名称 -->
+		demo_org.address_,  <!-- 地址 -->
+		demo_org.create_user_id_,  <!-- 创建人ID -->
+		demo_org.create_time_,  <!-- 创建时间 -->
+		demo_org.sort_no_  <!-- 排序号 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		    AND id_ = #{id_}  <!-- 流水号 -->
+		</if>
+	    <if test="cascade_id_ != null and cascade_id_ != ''">
+		    AND cascade_id_ = #{cascade_id_}  <!-- 节点语义ID -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		    AND name_ = #{name_}  <!-- 组织名称 -->
+		</if>
+	    <if test="hotkey_ != null and hotkey_ != ''">
+		    AND hotkey_ = #{hotkey_}  <!-- 热键 -->
+		</if>
+	    <if test="parent_id_ != null and parent_id_ != ''">
+		    AND parent_id_ = #{parent_id_}  <!-- 父节点流水号 -->
+		</if>
+	   <if test="is_leaf_ != null ">
+		    AND is_leaf_ = #{is_leaf_}  <!-- 是否叶子节点 -->
+		</if>
+	   <if test="is_auto_expand_ != null ">
+		    AND is_auto_expand_ = #{is_auto_expand_}  <!-- 是否自动展开 -->
+		</if>
+	    <if test="icon_name_ != null and icon_name_ != ''">
+		    AND icon_name_ = #{icon_name_}  <!-- 节点图标文件名称 -->
+		</if>
+	    <if test="address_ != null and address_ != ''">
+		    AND address_ = #{address_}  <!-- 地址 -->
+		</if>
+	    <if test="create_user_id_ != null and create_user_id_ != ''">
+		    AND create_user_id_ = #{create_user_id_}  <!-- 创建人ID -->
+		</if>
+	   <if test="create_time_ != null ">
+		    AND create_time_ = #{create_time_}  <!-- 创建时间 -->
+		</if>
+	   <if test="sort_no_ != null ">
+		    AND sort_no_ = #{sort_no_}  <!-- 排序号 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		    AND id_ like '%${id_}%'  <!-- 流水号 -->
+		</if>
+	    <if test="cascade_id_ != null and cascade_id_ != ''">
+		    AND cascade_id_ like '%${cascade_id_}%'  <!-- 节点语义ID -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		    AND name_ like '%${name_}%'  <!-- 组织名称 -->
+		</if>
+	    <if test="hotkey_ != null and hotkey_ != ''">
+		    AND hotkey_ like '%${hotkey_}%'  <!-- 热键 -->
+		</if>
+	    <if test="parent_id_ != null and parent_id_ != ''">
+		    AND parent_id_ like '%${parent_id_}%'  <!-- 父节点流水号 -->
+		</if>
+	    <if test="icon_name_ != null and icon_name_ != ''">
+		    AND icon_name_ like '%${icon_name_}%'  <!-- 节点图标文件名称 -->
+		</if>
+	    <if test="address_ != null and address_ != ''">
+		    AND address_ like '%${address_}%'  <!-- 地址 -->
+		</if>
+	    <if test="create_user_id_ != null and create_user_id_ != ''">
+		    AND create_user_id_ like '%${create_user_id_}%'  <!-- 创建人ID -->
+		</if>
+	</sql>
+
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll" parameterType="Demo_orgPO">
+		INSERT INTO demo_org (
+		    <include refid="column" />
+		)
+		VALUES (
+		#{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+		#{cascade_id_, jdbcType=VARCHAR},  <!-- 节点语义ID -->
+		#{name_, jdbcType=VARCHAR},  <!-- 组织名称 -->
+		#{hotkey_, jdbcType=VARCHAR},  <!-- 热键 -->
+		#{parent_id_, jdbcType=VARCHAR},  <!-- 父节点流水号 -->
+		#{is_leaf_, jdbcType=INTEGER},  <!-- 是否叶子节点 -->
+		#{is_auto_expand_, jdbcType=INTEGER},  <!-- 是否自动展开 -->
+		#{icon_name_, jdbcType=VARCHAR},  <!-- 节点图标文件名称 -->
+		#{address_, jdbcType=VARCHAR},  <!-- 地址 -->
+		#{create_user_id_, jdbcType=VARCHAR},  <!-- 创建人ID -->
+		#{create_time_, jdbcType=TIMESTAMP},  <!-- 创建时间 -->
+		#{sort_no_, jdbcType=INTEGER}  <!-- 排序号 -->
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert" parameterType="Demo_orgPO">
+		INSERT INTO demo_org (
+		<if test="cascade_id_ != null and cascade_id_ != ''">
+	          cascade_id_, <!-- 节点语义ID -->
+	   </if>
+		<if test="name_ != null and name_ != ''">
+	          name_, <!-- 组织名称 -->
+	   </if>
+		<if test="hotkey_ != null and hotkey_ != ''">
+	          hotkey_, <!-- 热键 -->
+	   </if>
+		<if test="parent_id_ != null and parent_id_ != ''">
+	          parent_id_, <!-- 父节点流水号 -->
+	   </if>
+		<if test="is_leaf_ != null">
+	          is_leaf_, <!-- 是否叶子节点 -->
+	   </if>
+		<if test="is_auto_expand_ != null">
+	          is_auto_expand_, <!-- 是否自动展开 -->
+	   </if>
+		<if test="icon_name_ != null and icon_name_ != ''">
+	          icon_name_, <!-- 节点图标文件名称 -->
+	   </if>
+		<if test="address_ != null and address_ != ''">
+	          address_, <!-- 地址 -->
+	   </if>
+		<if test="create_user_id_ != null and create_user_id_ != ''">
+	          create_user_id_, <!-- 创建人ID -->
+	   </if>
+		<if test="create_time_ != null">
+	          create_time_, <!-- 创建时间 -->
+	   </if>
+		<if test="sort_no_ != null">
+	          sort_no_, <!-- 排序号 -->
+	   </if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- ID_ -->
+	   </if>
+		)VALUES(
+		<if test="cascade_id_ != null and cascade_id_ != ''">
+		      #{cascade_id_, jdbcType=VARCHAR}, <!-- 节点语义ID -->
+	    </if>
+		<if test="name_ != null and name_ != ''">
+		      #{name_, jdbcType=VARCHAR}, <!-- 组织名称 -->
+	    </if>
+		<if test="hotkey_ != null and hotkey_ != ''">
+		      #{hotkey_, jdbcType=VARCHAR}, <!-- 热键 -->
+	    </if>
+		<if test="parent_id_ != null and parent_id_ != ''">
+		      #{parent_id_, jdbcType=VARCHAR}, <!-- 父节点流水号 -->
+	    </if>
+		<if test="is_leaf_ != null">
+		      #{is_leaf_, jdbcType=INTEGER}, <!-- 是否叶子节点 -->
+	    </if>
+		<if test="is_auto_expand_ != null">
+		      #{is_auto_expand_, jdbcType=INTEGER}, <!-- 是否自动展开 -->
+	    </if>
+		<if test="icon_name_ != null and icon_name_ != ''">
+		      #{icon_name_, jdbcType=VARCHAR}, <!-- 节点图标文件名称 -->
+	    </if>
+		<if test="address_ != null and address_ != ''">
+		      #{address_, jdbcType=VARCHAR}, <!-- 地址 -->
+	    </if>
+		<if test="create_user_id_ != null and create_user_id_ != ''">
+		      #{create_user_id_, jdbcType=VARCHAR}, <!-- 创建人ID -->
+	    </if>
+		<if test="create_time_ != null">
+		      #{create_time_, jdbcType=TIMESTAMP}, <!-- 创建时间 -->
+	    </if>
+		<if test="sort_no_ != null">
+		      #{sort_no_, jdbcType=INTEGER}, <!-- 排序号 -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- ID_ -->
+	    </if>
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Demo_orgPO">
+		UPDATE demo_org
+		<set>
+			<if test="id_ != null">
+				id_ = #{id_},  <!-- 流水号 -->
+			</if>
+			<if test="cascade_id_ != null">
+				cascade_id_ = #{cascade_id_},  <!-- 节点语义ID -->
+			</if>
+			<if test="name_ != null">
+				name_ = #{name_},  <!-- 组织名称 -->
+			</if>
+			<if test="hotkey_ != null">
+				hotkey_ = #{hotkey_},  <!-- 热键 -->
+			</if>
+			<if test="parent_id_ != null">
+				parent_id_ = #{parent_id_},  <!-- 父节点流水号 -->
+			</if>
+			<if test="is_leaf_ != null">
+				is_leaf_ = #{is_leaf_},  <!-- 是否叶子节点 -->
+			</if>
+			<if test="is_auto_expand_ != null">
+				is_auto_expand_ = #{is_auto_expand_},  <!-- 是否自动展开 -->
+			</if>
+			<if test="icon_name_ != null">
+				icon_name_ = #{icon_name_},  <!-- 节点图标文件名称 -->
+			</if>
+			<if test="address_ != null">
+				address_ = #{address_},  <!-- 地址 -->
+			</if>
+			<if test="create_user_id_ != null">
+				create_user_id_ = #{create_user_id_},  <!-- 创建人ID -->
+			</if>
+			<if test="create_time_ != null">
+				create_time_ = #{create_time_},  <!-- 创建时间 -->
+			</if>
+			<if test="sort_no_ != null">
+				sort_no_ = #{sort_no_},  <!-- 排序号 -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Demo_orgPO">
+		SELECT
+		<include refid="column" />
+		FROM demo_org WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Demo_orgPO">
+		SELECT
+		    <include refid="column" />
+		FROM demo_org
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Demo_orgPO">
+		SELECT
+			<include refid="column" />	
+		FROM demo_org
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Demo_orgPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM demo_org
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Demo_orgPO">
+		SELECT
+			<include refid="column" />	
+		FROM demo_org
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Demo_orgPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM demo_org
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM demo_org WHERE  id_ = #{id_}
+	</delete>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM demo_org
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM demo_org
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+</mapper>

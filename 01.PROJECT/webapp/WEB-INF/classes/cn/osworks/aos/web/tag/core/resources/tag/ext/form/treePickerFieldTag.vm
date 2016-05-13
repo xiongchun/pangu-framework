@@ -1,0 +1,69 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##远程异步数据源
+#if($url)
+var ${id}_store = Ext.create('Ext.data.TreeStore', {
+#if($nodeParam)
+	nodeParam : '$nodeParam',
+#end
+	proxy : {
+		type : 'ajax',
+		url : '$url'
+	},
+	root : {
+        #if($rootAttribute)
+        ##根节点不会将请求load回来的节点附加属性作为根节点的附加属性，如果需要让根节点有附加属性则需要这里强制附加。
+        	   	$rootAttribute,
+        #end	
+		##只能为null，否则表单重置时候会将根节点的值重置到文本显示区域带来表单校验不该通过却通过的bug。
+		#if($rootVisible == 'false')
+			text : null,
+		#else
+			text : '$rootText',
+		#end
+		#if($rootIcon)
+	        icon : '$rootIcon',
+        #end
+		id : '$rootId',
+		##必须为true,否则下拉层滚动条有问题
+		expanded : true
+	}
+});	
+#end
+
+##TextField定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formItemTagSupport.vm")
+#if($useArrows)
+    useArrows:$useArrows,
+#end
+#if($nodeParam)
+    nodeParam:'$nodeParam',
+#end
+#if($singleExpand)
+    singleExpand:$singleExpand,
+#end
+#if($maxPickerHeight)
+    maxPickerHeight:$maxPickerHeight,
+#end
+#if($displayField)
+    displayField:'$displayField',
+#end
+#if($rootVisible)
+    rootVisible:$rootVisible,
+#end
+    store:${id}_store,
+    app:169	
+};
+##实例化
+#if($instance == "true")
+var ${id} = Ext.create('AOS.ux.TreePicker',${id}_cfg);
+#end
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##表单元素组件实例后设置
+#parse("${vmpath}ext/subvm/afterFormFieldCreated.vm")
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 演示系统使用的SQL语句(手工映射部分) -->
+<mapper namespace="Demo">
+
+	<!-- 查询客户端分页表格的数据 -->
+	<select id="listAccounts4Client" resultType="Demo_accountPO" parameterType="Dto">
+		SELECT
+		<include refid="cn.osworks.aos.demo.dao.mapper.Demo_accountMapper.column" />
+		FROM
+		demo_account
+		LIMIT 250 OFFSET 0
+	</select>
+	
+	<!-- 查询下拉列表数据 -->
+	<select id="listComboBoxData" resultType="Dto">
+		SELECT
+		    id_ AS value, name_ AS display
+		FROM
+		    demo_org
+		WHERE parent_id_ = #{parent_id_}
+	</select>
+	
+	<!-- 查询下拉列表快捷过滤数据 -->
+	<select id="listModules" resultType="Dto">
+		SELECT
+		    id_ AS value, name_ AS display
+		FROM
+		    aos_sys_module
+		WHERE is_leaf_ = '1' AND (name_ like  '%${name_}%' OR hotkey_ like  '%${hotkey_}%')
+	</select>
+	
+	<!-- 调用存储过程aos_proc_demo -->
+	<update id="aos_proc_demo" parameterType="Dto" statementType="CALLABLE">
+		CALL aos_proc_demo(
+		#{name_,jdbcType=VARCHAR,mode=IN},
+		#{number1_,jdbcType=DOUBLE,mode=IN},
+		#{number2_,jdbcType=DOUBLE,mode=IN},
+		#{outstring,jdbcType=VARCHAR,mode=OUT, javaType=java.lang.String},
+		#{appcode,jdbcType=INTEGER,mode=OUT, javaType=java.lang.Integer},
+		#{appmsg,jdbcType=VARCHAR,mode=OUT, javaType=java.lang.String}
+		)
+	</update>
+
+	<!-- 调用存储过程aos_proc_demo2：通过游标返回结果集 -->
+	<resultMap id="moduleList" type="Dto">
+		<result property="usid" column="usid" />
+		<result property="accountNumber" column="account_number" />
+		<result property="headendInEEg" column="headend_in_eeg" />
+		<result property="customerType" column="customer_type" />
+		<result property="corp" column="corp" />
+	</resultMap>
+	<select id="aos_proc_demo2" parameterType="Dto" statementType="CALLABLE">
+		CALL aos_proc_demo2(
+		#{name_ ,jdbcType=VARCHAR,mode=IN},
+		#{cur_list_,jdbcType=CURSOR,mode=OUT, resultMap=moduleList,javaType=java.sql.ResultSet},
+		#{appcode,jdbcType=INTEGER,mode=OUT, javaType=java.lang.Integer},
+		#{appmsg,jdbcType=VARCHAR,mode=OUT, javaType=java.lang.String}
+		)
+	</select>
+
+</mapper>

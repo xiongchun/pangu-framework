@@ -1,0 +1,39 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+##TabPanel定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/panelTagSupport.vm")
+    plain: $plain,
+    tabPosition: '$tabPosition',
+#if($tabBarHeight)
+    tabBar : {
+    	height : $tabBarHeight,
+    	defaults : {
+    		height : $tabBarHeight - 2
+    	}
+    },
+#end
+	app: 169
+};
+
+##TabPanel实例化
+var ${id} = Ext.create('Ext.tab.Panel',${id}_cfg);
+##注册Items子组件
+#parse("${vmpath}ext/subvm/items.vm")
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##当前活动页在此用函数方式处理，规避配置项处理初始化时的一点显示瑕疵
+#if($activeTab)
+    ${id}.setActiveTab($activeTab);
+#end
+
+##活动页的高亮下边框样式
+#if($activeTabBarColor)
+    Ext.util.CSS.createStyleSheet('.x-tab-default-${tabPosition}-active {border-${tabPosition}: 2px solid ${activeTabBarColor};}','${id}_style');
+#end
+
+##处理Border
+#parse("${vmpath}ext/subvm/borders.vm")
+

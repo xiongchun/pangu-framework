@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 参数配置文件 -->
+<configurations>
+<!-- JDBC执行模式。1：只读模式；2：全功能模式。 -->
+<config key="jdbc_execute" value="2" />
+<!-- ICON图标文件存储路径 -->
+<config key="icon_path" value="/static/icon/" />
+<!-- 用户密码加解密算法密钥：密钥不能小于8位 -->
+<config key="codekey" value="It's AOS!" />
+<!-- 是否在系统启动时使用当前配置的加密密钥重新生成用户密码密文。有效值： 0 | 1。缺省值：0。建议：修改密钥时将此值改为1，服务器启动一次后将此配置项改为缺省值0，避免每次启动都重新生成密文。 -->
+<config key="regen_pwd" value="0" />
+<!-- 会话缓存实现方式。1：Ehcache；2：Redis -->
+<config key="session_cache_type" value="1" />
+
+<!-- 测试用例检测 -->
+<config key="testkey1" value="It's AOS!" />
+</configurations>

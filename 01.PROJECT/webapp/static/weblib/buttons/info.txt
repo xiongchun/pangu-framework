@@ -1,0 +1,2 @@
+1、使用下拉菜单才需要引入buttons.js。
+2、图标依赖fontawesome库。

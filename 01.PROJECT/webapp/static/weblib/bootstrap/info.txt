@@ -1,0 +1,7 @@
+Version
+=======
+3.0
+
+dependencies
+============
+jquery>= 1.9.0

@@ -1,0 +1,57 @@
+##导入WEBUI库
+#if($ext)
+#if($skin == "neptune")
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/resources/css/ext-all-neptune.css" />
+<link rel="stylesheet" type="text/css" href="$cxt/static/css/skin/neptune.css" />
+ #elseif($skin == "gray")
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/resources/css/ext-all-gray.css" />
+<link rel="stylesheet" type="text/css" href="$cxt/static/css/skin/gray.css" />
+ #elseif($skin == "aos")
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/resources/css/ext-all-aos.css" />
+ #else
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/resources/css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="$cxt/static/css/skin/blue.css" />
+#end
+<link rel="stylesheet" type="text/css" href="$cxt/static/css/aos-all.css" />
+##<script type="text/javascript" src="$cxt/static/weblib/ext/bootstrap.js"></script>
+<script type="text/javascript" src="$cxt/static/weblib/ext/ext-all.js"></script>
+<script type="text/javascript" src="$cxt/static/weblib/ext/locale/ext-lang-zh_CN.js"></script>
+<script type="text/javascript" src="$cxt/static/js/aos.js"></script>
+#end
+#if($jquery)
+<script type="text/javascript" src="$cxt/static/weblib/jquery/jquery.min-1.10.2.js"></script>
+#end
+#if($buttons)
+##如果需要使用下拉菜单，则还需要引入buttons.js
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/buttons/css/buttons.css" />
+#end
+#if($raphael)
+<script type="text/javascript" src="$cxt/static/weblib/raphael/raphael.js"></script>
+#end
+#if($bootstrap)
+##TODO
+#end
+#if($jqueryui)
+##TODO
+#end
+##导入指定的资源文件
+#if($css)
+<link rel="stylesheet" type="text/css" href="$css" />
+#end
+#if($js)
+<script type="text/javascript" src="$js"></script>
+#end
+
+##导出用户信息和系统参数
+#if($var)
+<script type="text/javascript">
+##当前用户对象及用户配置信息(无算法计算,为用户参数原始值)
+#if($userString)
+AOS.User =  ${userString};
+#end
+##系统配置参数(算法计算：根据是否允许用户参数覆盖和是否有对应的用户配置参数来计算最终值)
+#if($sysCfgString)
+AOS.SysCfg = ${sysCfgString};
+#end
+</script>
+#end

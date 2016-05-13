@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 页面元素表[aos_sys_page_el]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:31 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_sys_page_elMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_sys_page_elPO">
+		INSERT INTO aos_sys_page_el (
+		<if test="dom_id_ != null and dom_id_ != ''">
+	         dom_id_, <!-- DOM ID -->
+		</if>
+		<if test="name_ != null and name_ != ''">
+	         name_, <!-- 名称 -->
+		</if>
+		<if test="type_ != null and type_ != ''">
+	         type_, <!-- 类型 -->
+		</if>
+		<if test="module_id_ != null and module_id_ != ''">
+	         module_id_, <!-- 所属功能模块流水号 -->
+		</if>
+		<if test="page_id_ != null and page_id_ != ''">
+	         page_id_, <!-- 页面ID -->
+		</if>
+		<if test="remark_ != null and remark_ != ''">
+	         remark_, <!-- 备注 -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- 流水号 -->
+	   </if>
+		)VALUES(
+		<if test="dom_id_ != null and dom_id_ != ''">
+	          #{dom_id_, jdbcType=VARCHAR}, <!-- DOM ID -->
+	    </if>
+		<if test="name_ != null and name_ != ''">
+	          #{name_, jdbcType=VARCHAR}, <!-- 名称 -->
+	    </if>
+		<if test="type_ != null and type_ != ''">
+	          #{type_, jdbcType=VARCHAR}, <!-- 类型 -->
+	    </if>
+		<if test="module_id_ != null and module_id_ != ''">
+	          #{module_id_, jdbcType=VARCHAR}, <!-- 所属功能模块流水号 -->
+	    </if>
+		<if test="page_id_ != null and page_id_ != ''">
+	          #{page_id_, jdbcType=VARCHAR}, <!-- 页面ID -->
+	    </if>
+		<if test="remark_ != null and remark_ != ''">
+	          #{remark_, jdbcType=VARCHAR}, <!-- 备注 -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- 流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_sys_page_elPO">
+		INSERT INTO aos_sys_page_el (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+		    #{dom_id_, jdbcType=VARCHAR},  <!-- DOM ID -->
+		    #{name_, jdbcType=VARCHAR},  <!-- 名称 -->
+		    #{type_, jdbcType=VARCHAR},  <!-- 类型 -->
+		    #{module_id_, jdbcType=VARCHAR},  <!-- 所属功能模块流水号 -->
+		    #{page_id_, jdbcType=VARCHAR},  <!-- 页面ID -->
+		    #{remark_, jdbcType=VARCHAR}  <!-- 备注 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_sys_page_elPO">
+		UPDATE aos_sys_page_el
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+			</if>
+			<if test="dom_id_ != null">
+		          dom_id_ = #{dom_id_, jdbcType=VARCHAR},  <!-- DOM ID -->
+			</if>
+			<if test="name_ != null">
+		          name_ = #{name_, jdbcType=VARCHAR},  <!-- 名称 -->
+			</if>
+			<if test="type_ != null">
+		          type_ = #{type_, jdbcType=VARCHAR},  <!-- 类型 -->
+			</if>
+			<if test="module_id_ != null">
+		          module_id_ = #{module_id_, jdbcType=VARCHAR},  <!-- 所属功能模块流水号 -->
+			</if>
+			<if test="page_id_ != null">
+		          page_id_ = #{page_id_, jdbcType=VARCHAR},  <!-- 页面ID -->
+			</if>
+			<if test="remark_ != null">
+		          remark_ = #{remark_, jdbcType=VARCHAR},  <!-- 备注 -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_sys_page_el WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_sys_page_elPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_sys_page_el WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_sys_page_elPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_sys_page_el
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_sys_page_elPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_page_el
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_sys_page_elPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_page_el
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_sys_page_elPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_sys_page_el
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_sys_page_elPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_sys_page_el
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_sys_page_el
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_sys_page_el
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- 流水号 -->
+		  dom_id_,  <!-- DOM ID -->
+		  name_,  <!-- 名称 -->
+		  type_,  <!-- 类型 -->
+		  module_id_,  <!-- 所属功能模块流水号 -->
+		  page_id_,  <!-- 页面ID -->
+		  remark_  <!-- 备注 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_sys_page_el.id_,  <!-- 流水号 -->
+		  aos_sys_page_el.dom_id_,  <!-- DOM ID -->
+		  aos_sys_page_el.name_,  <!-- 名称 -->
+		  aos_sys_page_el.type_,  <!-- 类型 -->
+		  aos_sys_page_el.module_id_,  <!-- 所属功能模块流水号 -->
+		  aos_sys_page_el.page_id_,  <!-- 页面ID -->
+		  aos_sys_page_el.remark_  <!-- 备注 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- 流水号 -->
+		</if>
+	    <if test="dom_id_ != null and dom_id_ != ''">
+		      AND dom_id_ = #{dom_id_}  <!-- DOM ID -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ = #{name_}  <!-- 名称 -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ = #{type_}  <!-- 类型 -->
+		</if>
+	    <if test="module_id_ != null and module_id_ != ''">
+		      AND module_id_ = #{module_id_}  <!-- 所属功能模块流水号 -->
+		</if>
+	    <if test="page_id_ != null and page_id_ != ''">
+		      AND page_id_ = #{page_id_}  <!-- 页面ID -->
+		</if>
+	    <if test="remark_ != null and remark_ != ''">
+		      AND remark_ = #{remark_}  <!-- 备注 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- 流水号 -->
+		</if>
+	    <if test="dom_id_ != null and dom_id_ != ''">
+		      AND dom_id_ like '%${dom_id_}%'  <!-- DOM ID -->
+		</if>
+	    <if test="name_ != null and name_ != ''">
+		      AND name_ like '%${name_}%'  <!-- 名称 -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ like '%${type_}%'  <!-- 类型 -->
+		</if>
+	    <if test="module_id_ != null and module_id_ != ''">
+		      AND module_id_ like '%${module_id_}%'  <!-- 所属功能模块流水号 -->
+		</if>
+	    <if test="page_id_ != null and page_id_ != ''">
+		      AND page_id_ like '%${page_id_}%'  <!-- 页面ID -->
+		</if>
+	    <if test="remark_ != null and remark_ != ''">
+		      AND remark_ like '%${remark_}%'  <!-- 备注 -->
+		</if>
+	</sql>
+	
+</mapper>

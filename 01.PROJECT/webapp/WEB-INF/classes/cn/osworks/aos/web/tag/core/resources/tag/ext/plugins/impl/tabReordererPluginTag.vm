@@ -1,0 +1,1 @@
+Ext.create('Ext.ux.TabReorderer')

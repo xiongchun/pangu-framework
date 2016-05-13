@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_wf_ru_job[aos_wf_ru_job]SQLMapper自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2015-12-22 22:10:32 -->
+<mapper namespace="cn.osworks.aos.system.dao.mapper.Aos_wf_ru_jobMapper">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="Aos_wf_ru_jobPO">
+		INSERT INTO aos_wf_ru_job (
+		<if test="rev_ != null">
+	         rev_, <!-- rev_ -->
+		</if>
+		<if test="type_ != null and type_ != ''">
+	         type_, <!-- type_ -->
+		</if>
+		<if test="lock_exp_time_ != null">
+	         lock_exp_time_, <!-- lock_exp_time_ -->
+		</if>
+		<if test="lock_owner_ != null and lock_owner_ != ''">
+	         lock_owner_, <!-- lock_owner_ -->
+		</if>
+		<if test="exclusive_ != null">
+	         exclusive_, <!-- exclusive_ -->
+		</if>
+		<if test="execution_id_ != null and execution_id_ != ''">
+	         execution_id_, <!-- execution_id_ -->
+		</if>
+		<if test="process_instance_id_ != null and process_instance_id_ != ''">
+	         process_instance_id_, <!-- process_instance_id_ -->
+		</if>
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	         proc_def_id_, <!-- proc_def_id_ -->
+		</if>
+		<if test="retries_ != null">
+	         retries_, <!-- retries_ -->
+		</if>
+		<if test="exception_stack_id_ != null and exception_stack_id_ != ''">
+	         exception_stack_id_, <!-- exception_stack_id_ -->
+		</if>
+		<if test="exception_msg_ != null and exception_msg_ != ''">
+	         exception_msg_, <!-- exception_msg_ -->
+		</if>
+		<if test="duedate_ != null">
+	         duedate_, <!-- duedate_ -->
+		</if>
+		<if test="repeat_ != null and repeat_ != ''">
+	         repeat_, <!-- repeat_ -->
+		</if>
+		<if test="handler_type_ != null and handler_type_ != ''">
+	         handler_type_, <!-- handler_type_ -->
+		</if>
+		<if test="handler_cfg_ != null and handler_cfg_ != ''">
+	         handler_cfg_, <!-- handler_cfg_ -->
+		</if>
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	         tenant_id_, <!-- tenant_id_ -->
+		</if>
+		<if test="id_ != null and id_ != ''">
+	          id_  <!-- id_ -->
+	   </if>
+		)VALUES(
+		<if test="rev_ != null">
+	          #{rev_, jdbcType=INTEGER}, <!-- rev_ -->
+	    </if>
+		<if test="type_ != null and type_ != ''">
+	          #{type_, jdbcType=VARCHAR}, <!-- type_ -->
+	    </if>
+		<if test="lock_exp_time_ != null">
+	          #{lock_exp_time_, jdbcType=TIMESTAMP}, <!-- lock_exp_time_ -->
+	    </if>
+		<if test="lock_owner_ != null and lock_owner_ != ''">
+	          #{lock_owner_, jdbcType=VARCHAR}, <!-- lock_owner_ -->
+	    </if>
+		<if test="exclusive_ != null">
+	          #{exclusive_, jdbcType=INTEGER}, <!-- exclusive_ -->
+	    </if>
+		<if test="execution_id_ != null and execution_id_ != ''">
+	          #{execution_id_, jdbcType=VARCHAR}, <!-- execution_id_ -->
+	    </if>
+		<if test="process_instance_id_ != null and process_instance_id_ != ''">
+	          #{process_instance_id_, jdbcType=VARCHAR}, <!-- process_instance_id_ -->
+	    </if>
+		<if test="proc_def_id_ != null and proc_def_id_ != ''">
+	          #{proc_def_id_, jdbcType=VARCHAR}, <!-- proc_def_id_ -->
+	    </if>
+		<if test="retries_ != null">
+	          #{retries_, jdbcType=INTEGER}, <!-- retries_ -->
+	    </if>
+		<if test="exception_stack_id_ != null and exception_stack_id_ != ''">
+	          #{exception_stack_id_, jdbcType=VARCHAR}, <!-- exception_stack_id_ -->
+	    </if>
+		<if test="exception_msg_ != null and exception_msg_ != ''">
+	          #{exception_msg_, jdbcType=VARCHAR}, <!-- exception_msg_ -->
+	    </if>
+		<if test="duedate_ != null">
+	          #{duedate_, jdbcType=TIMESTAMP}, <!-- duedate_ -->
+	    </if>
+		<if test="repeat_ != null and repeat_ != ''">
+	          #{repeat_, jdbcType=VARCHAR}, <!-- repeat_ -->
+	    </if>
+		<if test="handler_type_ != null and handler_type_ != ''">
+	          #{handler_type_, jdbcType=VARCHAR}, <!-- handler_type_ -->
+	    </if>
+		<if test="handler_cfg_ != null and handler_cfg_ != ''">
+	          #{handler_cfg_, jdbcType=VARCHAR}, <!-- handler_cfg_ -->
+	    </if>
+		<if test="tenant_id_ != null and tenant_id_ != ''">
+	          #{tenant_id_, jdbcType=VARCHAR}, <!-- tenant_id_ -->
+	    </if>
+		<if test="id_ != null and id_ != ''">
+		     #{id_, jdbcType=VARCHAR}  <!-- id_ -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="Aos_wf_ru_jobPO">
+		INSERT INTO aos_wf_ru_job (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+		    #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+		    #{type_, jdbcType=VARCHAR},  <!-- type_ -->
+		    #{lock_exp_time_, jdbcType=TIMESTAMP},  <!-- lock_exp_time_ -->
+		    #{lock_owner_, jdbcType=VARCHAR},  <!-- lock_owner_ -->
+		    #{exclusive_, jdbcType=INTEGER},  <!-- exclusive_ -->
+		    #{execution_id_, jdbcType=VARCHAR},  <!-- execution_id_ -->
+		    #{process_instance_id_, jdbcType=VARCHAR},  <!-- process_instance_id_ -->
+		    #{proc_def_id_, jdbcType=VARCHAR},  <!-- proc_def_id_ -->
+		    #{retries_, jdbcType=INTEGER},  <!-- retries_ -->
+		    #{exception_stack_id_, jdbcType=VARCHAR},  <!-- exception_stack_id_ -->
+		    #{exception_msg_, jdbcType=VARCHAR},  <!-- exception_msg_ -->
+		    #{duedate_, jdbcType=TIMESTAMP},  <!-- duedate_ -->
+		    #{repeat_, jdbcType=VARCHAR},  <!-- repeat_ -->
+		    #{handler_type_, jdbcType=VARCHAR},  <!-- handler_type_ -->
+		    #{handler_cfg_, jdbcType=VARCHAR},  <!-- handler_cfg_ -->
+		    #{tenant_id_, jdbcType=VARCHAR}  <!-- tenant_id_ -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="Aos_wf_ru_jobPO">
+		UPDATE aos_wf_ru_job
+		<set>
+			<if test="id_ != null">
+		          id_ = #{id_, jdbcType=VARCHAR},  <!-- id_ -->
+			</if>
+			<if test="rev_ != null">
+		          rev_ = #{rev_, jdbcType=INTEGER},  <!-- rev_ -->
+			</if>
+			<if test="type_ != null">
+		          type_ = #{type_, jdbcType=VARCHAR},  <!-- type_ -->
+			</if>
+			<if test="lock_exp_time_ != null">
+		          lock_exp_time_ = #{lock_exp_time_, jdbcType=TIMESTAMP},  <!-- lock_exp_time_ -->
+			</if>
+			<if test="lock_owner_ != null">
+		          lock_owner_ = #{lock_owner_, jdbcType=VARCHAR},  <!-- lock_owner_ -->
+			</if>
+			<if test="exclusive_ != null">
+		          exclusive_ = #{exclusive_, jdbcType=INTEGER},  <!-- exclusive_ -->
+			</if>
+			<if test="execution_id_ != null">
+		          execution_id_ = #{execution_id_, jdbcType=VARCHAR},  <!-- execution_id_ -->
+			</if>
+			<if test="process_instance_id_ != null">
+		          process_instance_id_ = #{process_instance_id_, jdbcType=VARCHAR},  <!-- process_instance_id_ -->
+			</if>
+			<if test="proc_def_id_ != null">
+		          proc_def_id_ = #{proc_def_id_, jdbcType=VARCHAR},  <!-- proc_def_id_ -->
+			</if>
+			<if test="retries_ != null">
+		          retries_ = #{retries_, jdbcType=INTEGER},  <!-- retries_ -->
+			</if>
+			<if test="exception_stack_id_ != null">
+		          exception_stack_id_ = #{exception_stack_id_, jdbcType=VARCHAR},  <!-- exception_stack_id_ -->
+			</if>
+			<if test="exception_msg_ != null">
+		          exception_msg_ = #{exception_msg_, jdbcType=VARCHAR},  <!-- exception_msg_ -->
+			</if>
+			<if test="duedate_ != null">
+		          duedate_ = #{duedate_, jdbcType=TIMESTAMP},  <!-- duedate_ -->
+			</if>
+			<if test="repeat_ != null">
+		          repeat_ = #{repeat_, jdbcType=VARCHAR},  <!-- repeat_ -->
+			</if>
+			<if test="handler_type_ != null">
+		          handler_type_ = #{handler_type_, jdbcType=VARCHAR},  <!-- handler_type_ -->
+			</if>
+			<if test="handler_cfg_ != null">
+		          handler_cfg_ = #{handler_cfg_, jdbcType=VARCHAR},  <!-- handler_cfg_ -->
+			</if>
+			<if test="tenant_id_ != null">
+		          tenant_id_ = #{tenant_id_, jdbcType=VARCHAR},  <!-- tenant_id_ -->
+			</if>
+		</set>
+		WHERE  id_ = #{id_}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_wf_ru_job WHERE  id_ = #{id_}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="Aos_wf_ru_jobPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_wf_ru_job WHERE  id_ = #{id_}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="Aos_wf_ru_jobPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_wf_ru_job
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="Aos_wf_ru_jobPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_ru_job
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="Aos_wf_ru_jobPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_ru_job
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="Aos_wf_ru_jobPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_wf_ru_job
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="Aos_wf_ru_jobPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FROM aos_wf_ru_job
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_wf_ru_job
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_wf_ru_job
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id_,  <!-- id_ -->
+		  rev_,  <!-- rev_ -->
+		  type_,  <!-- type_ -->
+		  lock_exp_time_,  <!-- lock_exp_time_ -->
+		  lock_owner_,  <!-- lock_owner_ -->
+		  exclusive_,  <!-- exclusive_ -->
+		  execution_id_,  <!-- execution_id_ -->
+		  process_instance_id_,  <!-- process_instance_id_ -->
+		  proc_def_id_,  <!-- proc_def_id_ -->
+		  retries_,  <!-- retries_ -->
+		  exception_stack_id_,  <!-- exception_stack_id_ -->
+		  exception_msg_,  <!-- exception_msg_ -->
+		  duedate_,  <!-- duedate_ -->
+		  repeat_,  <!-- repeat_ -->
+		  handler_type_,  <!-- handler_type_ -->
+		  handler_cfg_,  <!-- handler_cfg_ -->
+		  tenant_id_  <!-- tenant_id_ -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_wf_ru_job.id_,  <!-- id_ -->
+		  aos_wf_ru_job.rev_,  <!-- rev_ -->
+		  aos_wf_ru_job.type_,  <!-- type_ -->
+		  aos_wf_ru_job.lock_exp_time_,  <!-- lock_exp_time_ -->
+		  aos_wf_ru_job.lock_owner_,  <!-- lock_owner_ -->
+		  aos_wf_ru_job.exclusive_,  <!-- exclusive_ -->
+		  aos_wf_ru_job.execution_id_,  <!-- execution_id_ -->
+		  aos_wf_ru_job.process_instance_id_,  <!-- process_instance_id_ -->
+		  aos_wf_ru_job.proc_def_id_,  <!-- proc_def_id_ -->
+		  aos_wf_ru_job.retries_,  <!-- retries_ -->
+		  aos_wf_ru_job.exception_stack_id_,  <!-- exception_stack_id_ -->
+		  aos_wf_ru_job.exception_msg_,  <!-- exception_msg_ -->
+		  aos_wf_ru_job.duedate_,  <!-- duedate_ -->
+		  aos_wf_ru_job.repeat_,  <!-- repeat_ -->
+		  aos_wf_ru_job.handler_type_,  <!-- handler_type_ -->
+		  aos_wf_ru_job.handler_cfg_,  <!-- handler_cfg_ -->
+		  aos_wf_ru_job.tenant_id_  <!-- tenant_id_ -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ = #{id_}  <!-- id_ -->
+		</if>
+	   <if test="rev_ != null ">
+		      AND rev_ = #{rev_}  <!-- rev_ -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ = #{type_}  <!-- type_ -->
+		</if>
+	   <if test="lock_exp_time_ != null ">
+		      AND lock_exp_time_ = #{lock_exp_time_}  <!-- lock_exp_time_ -->
+		</if>
+	    <if test="lock_owner_ != null and lock_owner_ != ''">
+		      AND lock_owner_ = #{lock_owner_}  <!-- lock_owner_ -->
+		</if>
+	   <if test="exclusive_ != null ">
+		      AND exclusive_ = #{exclusive_}  <!-- exclusive_ -->
+		</if>
+	    <if test="execution_id_ != null and execution_id_ != ''">
+		      AND execution_id_ = #{execution_id_}  <!-- execution_id_ -->
+		</if>
+	    <if test="process_instance_id_ != null and process_instance_id_ != ''">
+		      AND process_instance_id_ = #{process_instance_id_}  <!-- process_instance_id_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ = #{proc_def_id_}  <!-- proc_def_id_ -->
+		</if>
+	   <if test="retries_ != null ">
+		      AND retries_ = #{retries_}  <!-- retries_ -->
+		</if>
+	    <if test="exception_stack_id_ != null and exception_stack_id_ != ''">
+		      AND exception_stack_id_ = #{exception_stack_id_}  <!-- exception_stack_id_ -->
+		</if>
+	    <if test="exception_msg_ != null and exception_msg_ != ''">
+		      AND exception_msg_ = #{exception_msg_}  <!-- exception_msg_ -->
+		</if>
+	   <if test="duedate_ != null ">
+		      AND duedate_ = #{duedate_}  <!-- duedate_ -->
+		</if>
+	    <if test="repeat_ != null and repeat_ != ''">
+		      AND repeat_ = #{repeat_}  <!-- repeat_ -->
+		</if>
+	    <if test="handler_type_ != null and handler_type_ != ''">
+		      AND handler_type_ = #{handler_type_}  <!-- handler_type_ -->
+		</if>
+	    <if test="handler_cfg_ != null and handler_cfg_ != ''">
+		      AND handler_cfg_ = #{handler_cfg_}  <!-- handler_cfg_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ = #{tenant_id_}  <!-- tenant_id_ -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="id_ != null and id_ != ''">
+		      AND id_ like '%${id_}%'  <!-- id_ -->
+		</if>
+	    <if test="type_ != null and type_ != ''">
+		      AND type_ like '%${type_}%'  <!-- type_ -->
+		</if>
+	    <if test="lock_owner_ != null and lock_owner_ != ''">
+		      AND lock_owner_ like '%${lock_owner_}%'  <!-- lock_owner_ -->
+		</if>
+	    <if test="execution_id_ != null and execution_id_ != ''">
+		      AND execution_id_ like '%${execution_id_}%'  <!-- execution_id_ -->
+		</if>
+	    <if test="process_instance_id_ != null and process_instance_id_ != ''">
+		      AND process_instance_id_ like '%${process_instance_id_}%'  <!-- process_instance_id_ -->
+		</if>
+	    <if test="proc_def_id_ != null and proc_def_id_ != ''">
+		      AND proc_def_id_ like '%${proc_def_id_}%'  <!-- proc_def_id_ -->
+		</if>
+	    <if test="exception_stack_id_ != null and exception_stack_id_ != ''">
+		      AND exception_stack_id_ like '%${exception_stack_id_}%'  <!-- exception_stack_id_ -->
+		</if>
+	    <if test="exception_msg_ != null and exception_msg_ != ''">
+		      AND exception_msg_ like '%${exception_msg_}%'  <!-- exception_msg_ -->
+		</if>
+	    <if test="repeat_ != null and repeat_ != ''">
+		      AND repeat_ like '%${repeat_}%'  <!-- repeat_ -->
+		</if>
+	    <if test="handler_type_ != null and handler_type_ != ''">
+		      AND handler_type_ like '%${handler_type_}%'  <!-- handler_type_ -->
+		</if>
+	    <if test="handler_cfg_ != null and handler_cfg_ != ''">
+		      AND handler_cfg_ like '%${handler_cfg_}%'  <!-- handler_cfg_ -->
+		</if>
+	    <if test="tenant_id_ != null and tenant_id_ != ''">
+		      AND tenant_id_ like '%${tenant_id_}%'  <!-- tenant_id_ -->
+		</if>
+	</sql>
+	
+</mapper>

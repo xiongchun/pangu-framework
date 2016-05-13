@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 工作流业务域使用的SQL语句 -->
+<mapper namespace="Workflow">
+
+   <!-- 查询待办任务数据  -->
+    <select id="listTodoTasksPage" parameterType="Dto" resultType="Dto">
+        SELECT
+        (SELECT name_ FROM aos_act_ru_execution WHERE id_ = aos_act_ru_task.proc_inst_id_ AND parent_id_ IS NULL) AS proc_inst_name_,
+        (SELECT claim_time_ FROM aos_act_hi_taskinst WHERE id_ = aos_act_ru_task.id_) AS claim_time_,
+        (SELECT name_ FROM aos_sys_user WHERE id_ = aos_act_ru_task.assignee_) AS assignee_user_
+        FROM aos_act_ru_task LEFT JOIN aos_act_ru_identitylink ON aos_act_ru_task.id_ = aos_act_ru_identitylink.task_id_
+        WHERE aos_act_ru_task.assignee_ = #{assignee_}
+            <if test="suspension_state_ != null and suspension_state_ != ''">
+                AND aos_act_ru_task.suspension_state_ = #{suspension_state_}
+            </if>
+            <if test="name_ != null and name_ != ''">
+                AND aos_act_ru_task.name_ LIKE '%${name_}%'
+            </if>
+        ORDER BY aos_act_ru_task.create_time_ DESC
+    </select>
+
+</mapper>

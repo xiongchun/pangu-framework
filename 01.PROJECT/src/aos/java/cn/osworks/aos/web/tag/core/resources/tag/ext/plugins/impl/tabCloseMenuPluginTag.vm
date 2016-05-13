@@ -1,0 +1,36 @@
+Ext.create('Ext.ux.TabCloseMenu', {
+#if($closeTabText)
+    closeTabText: '$closeTabText',
+#end
+#if($showCloseOthers)
+    showCloseOthers: $showCloseOthers,
+#end
+#if($closeOthersTabsText)
+    closeOthersTabsText: '$closeOthersTabsText',
+#end
+#if($showCloseAll)
+    showCloseAll: $showCloseAll,
+#end
+#if($closeAllTabsText)
+    closeAllTabsText: '$closeAllTabsText',
+#end
+closeTabIcon:'$!closeTabIcon',
+closeOthersTabsIcon:'$!closeOthersTabsIcon',
+closeAllTabsIcon:'$!closeAllTabsIcon',
+##如果需要可以继续开发更多扩展菜单以及头部菜单
+##第一个尾巴扩展菜单项
+#if($extraItemsTailDtos.size()>0)
+    extraItemsTail: [
+                        '-',
+#foreach($extraItemsTailDto in $extraItemsTailDtos)
+                        {
+                            text: '$extraItemsTailDto.text',
+    	                    handler: $extraItemsTailDto.handler,
+							icon:'$!extraItemsTailDto.icon',
+							mc_:169
+    	                    }#if($velocityCount != $extraItemsTailDtos.size()),#end
+#end
+    	                ],
+#end
+	 mc_:169
+    }) 

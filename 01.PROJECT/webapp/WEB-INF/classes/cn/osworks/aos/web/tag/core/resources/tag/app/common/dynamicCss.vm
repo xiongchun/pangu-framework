@@ -1,0 +1,17 @@
+## 动态CSS文件
+<style type="text/css">
+##滑动通知所需
+.ux-notification-light {
+  background-image: url('$cxt/static/image/notification/${skin}.png');
+}
+##neptune主题的滑动通知地板是蓝色的,设置高亮字体颜色
+#if($skin == "neptune")
+.ux-notification-light .x-window-body {
+	color:#FFFFFF;
+}
+#end
+##树节点光标设置
+.x-tree-node-text{
+  cursor:$!treenode_cursor;
+}
+</style>
