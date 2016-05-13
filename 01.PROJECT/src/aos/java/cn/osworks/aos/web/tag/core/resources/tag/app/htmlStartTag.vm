@@ -1,8 +1,0 @@
-<!--
-AOS应用基础平台
-http://git.oschina.net/osworks/AOS
--->
-#if($html5 == "true")
-<!DOCTYPE html>
-#end
-<html>
