@@ -8,6 +8,8 @@ GIT：```git@git.oschina.net:osworks/AOS.git```<br>
 ZIP：[http://git.oschina.net/osworks/AOS/tags](http://git.oschina.net/osworks/AOS/tags)<br>
 
 ### AOS开发套件组成
+##### AOS-ADMIN ：AOS管理系统开发平台
+适合构建和开发中大型企业管理系统、各级政务信息化系统审批办公系统、各类电商、社交、互联网金融项目后台管理系统。
 
 ### 作者微博互粉
 [http://weibo.com/afghan007](http://weibo.com/afghan007)
