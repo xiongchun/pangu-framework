@@ -10,6 +10,7 @@ ZIP：[http://git.oschina.net/osworks/AOS/tags](http://git.oschina.net/osworks/A
 ### AOS开发套件组成
 ##### AOS-ADMIN ：AOS管理系统开发平台
 适合构建和开发中大型企业管理系统；各级政务信息化系统、流程审批办公系统；各类电商、社交、互联网金融项目后台管理系统。
+在线演示：[http://42.120.21.17/aos](http://42.120.21.17/aos) 登录帐户/密码：```root/111111```
 
 ### 作者微博互粉
 [http://weibo.com/afghan007](http://weibo.com/afghan007)
