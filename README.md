@@ -13,6 +13,8 @@ ZIP：[http://git.oschina.net/osworks/AOS/tags](http://git.oschina.net/osworks/A
 在线演示：[http://42.120.21.17/aos](http://42.120.21.17/aos) 登录帐户/密码：```root/111111```
 ##### AOS-ESB ：AOS企业服务总线
 适合作为互联网和移动互联网项目后台服务接口开发的基础框架，也可用于基于SOA架构的企业管理系统的服务治理模块使用。它提供了一系列服务接口系统互联互通的基础设施和水平扩展、高可用部署需求的应用层技术支持。
+##### AOS-WEB ：AOS网站开发框架
+适合用于企业、政府门户网站；APP产品介绍网站、互联网金融产品交易网站、其它互联网产品的网页版开发框架等。
 
 ### 作者微博互粉
 [http://weibo.com/afghan007](http://weibo.com/afghan007)
