@@ -7,7 +7,7 @@ SVN：```svn://git.oschina.net/osworks/AOS```<br>
 GIT：```git@git.oschina.net:osworks/AOS.git```<br>
 ZIP：[http://git.oschina.net/osworks/AOS/tags](http://git.oschina.net/osworks/AOS/tags)
 ##### 作者微博互粉
-```[http://weibo.com/afghan007](作者微博互粉)```
+[http://weibo.com/afghan007](```作者微博互粉```)
 
 ### AOS开发套件组成
 ##### AOS-ADMIN ：AOS管理系统开发平台
