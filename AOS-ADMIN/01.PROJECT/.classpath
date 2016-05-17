@@ -122,7 +122,7 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/mchange-commons-java-0.2.11.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/quartz-all-2.1.5.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/mybatis-3.2.2.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/mybatis-spring-1.2.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/activiti/activiti-aos-5.18.0.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/mybatis-spring-1.2.0.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>
 </classpath>
