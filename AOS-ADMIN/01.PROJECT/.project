@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>AOS</name>
-	<comment>AOS：JavaEE应用基础平台</comment>
+	<name>AOS-ADMIN</name>
+	<comment>AOS管理系统开发平台</comment>
 	<projects>
 	</projects>
 	<buildSpec>
