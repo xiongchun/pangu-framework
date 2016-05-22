@@ -11,6 +11,7 @@
 	<aos:viewport>
 		<aos:formpanel id="_f_info" autoShow="true" width="650" layout="column" labelWidth="70" title="表单元素"
 			icon="icon152.png" msgTarget="qtip" center="true">
+			<aos:hiddenfield name="id_" value="001" />
 			<aos:fieldset title="文本输入" labelWidth="70" columnWidth="1" border="true">
 				<aos:textfield name="card_id_" fieldLabel="卡号" maxLength="10" allowBlank="false" columnWidth="0.5" />
 				<aos:textfield name="name_" fieldLabel="姓名" maxLength="20" columnWidth="0.49" />
