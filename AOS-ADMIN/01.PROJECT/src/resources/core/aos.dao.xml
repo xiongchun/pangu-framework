@@ -52,7 +52,7 @@
 		<property name="configLocation" value="classpath:core/aos.dao.cfg.xml" />
 	</bean>
 
-	<!-- 扫描实体数据访问对象Mapper。!待解决。这会导致Mybatis的SQLMapper文件校验出错信息打印输出的问题 -->
+	<!-- 扫描实体数据访问对象Mapper -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 请将com.mycorp.mysystem.**改为你的项目扫描路径 -->
 		<property name="basePackage" value="cn.osworks.aos;com.mycorp.mysystem" />
