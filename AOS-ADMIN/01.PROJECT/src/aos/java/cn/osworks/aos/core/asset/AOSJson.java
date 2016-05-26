@@ -49,9 +49,7 @@ public class AOSJson {
 			pDateFormat = AOSCons.DATATIME;
 		}
 		GsonBuilder builder = new GsonBuilder();
-		if (AOSCons.JSON_FORMAT.equals(WebCxt.getCfgOfDB("json_format"))) {
-			builder.setPrettyPrinting();
-		}
+		//builder.setPrettyPrinting(); 是否格式化输出JSON
 		builder.setDateFormat(pDateFormat);
 		Gson gson = builder.create();
 		jsonString = gson.toJson(pObject);

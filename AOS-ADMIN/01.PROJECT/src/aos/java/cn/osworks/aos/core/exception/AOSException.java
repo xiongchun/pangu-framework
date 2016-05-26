@@ -1,5 +1,8 @@
 package cn.osworks.aos.core.exception;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import cn.osworks.aos.core.asset.AOSUtils;
 
 /**
@@ -10,6 +13,8 @@ import cn.osworks.aos.core.asset.AOSUtils;
 public class AOSException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
+	
+	private static Log log = LogFactory.getLog(AOSException.class);
 
 	public AOSException() {
 		super();
@@ -62,6 +67,7 @@ public class AOSException extends RuntimeException {
 	 */
 	public AOSException(String pMsg) {
 		super(pMsg);
+		log.error(pMsg);
 	}
 
 	/**
