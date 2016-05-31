@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 演示系统使用的SQL语句(手工映射部分) -->
+<mapper namespace="Http">
+
+	<!-- 测试数据库连接 -->
+	<select id="selectAccountInfo" resultType="Dto" parameterType="Dto">
+		SELECT * FROM demo_account LIMIT 1
+	</select>
+
+</mapper>
