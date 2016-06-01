@@ -6,8 +6,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import cn.osworks.aos.core.dao.SqlDao;
-import cn.osworks.aos.system.dao.po.Aos_sys_dicPO;
-import cn.osworks.aos.system.service.AOSService;
+import cn.osworks.aos.modules.cache.CacheService;
+import cn.osworks.aos.modules.cache.DicVO;
+import cn.osworks.aos.modules.context.AOSService;
 
 
 /**
@@ -86,38 +87,36 @@ public class AOSCxt {
 		String valueString = AOSPropertiesHandler.getProperty(key);
 		return valueString;
 	}
-
+	
 	/**
-	 * 根据数据字典标识键获取字典对照集合
-	 * 
-	 * @param dickey
-	 *            数据字典标识键
+	 * 从缓存中获取全局参数配置值
+	 * @param key
 	 * @return
 	 */
-	public static List<Aos_sys_dicPO> getDicList(String dickey) {
-		List<Aos_sys_dicPO> dicList = AOSCxt.aosService.getAosSysDicPOListFromCache(dickey);
-		return dicList;
+	public static String getParam(String key){
+		CacheService cacheService = (CacheService)getBean("cacheService");
+		return cacheService.getParam(key);
 	}
-
+	
 	/**
-	 * 根据数据字典标识键和字典对照代码获取字典对照值
-	 * 
-	 * @param dickey
-	 *            数据字典标识键
-	 * @param code
-	 *            数据字典对照代码
+	 * 从缓存中获取字典对照集合
+	 * @param key
 	 * @return
 	 */
-	public static String getDicCodeDesc(String dickey, String code) {
-		String desc = "";
-		List<Aos_sys_dicPO> dicList = AOSCxt.aosService.getAosSysDicPOListFromCache(dickey);
-		for (Aos_sys_dicPO aos_sys_dicPO : dicList) {
-			if (aos_sys_dicPO.getCode_().equals(code)) {
-				desc = aos_sys_dicPO.getDesc_();
-				break;
-			}
-		}
-		return desc;
+	public static List<DicVO> getDicList(String key){
+		CacheService cacheService = (CacheService)getBean("cacheService");
+		return cacheService.getDicList(key);
+	}
+	
+	/**
+	 * 从缓存中获取字典对照描述
+	 * @param key
+	 * @param code
+	 * @return
+	 */
+	public static String getDicDesc(String key, String code){
+		CacheService cacheService = (CacheService)getBean("cacheService");
+		return cacheService.getDicDesc(key, code);
 	}
 
 }

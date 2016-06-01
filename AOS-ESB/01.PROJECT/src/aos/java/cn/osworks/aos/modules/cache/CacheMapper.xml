@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 缓存相关映射SQL语句 -->
+<mapper namespace="Cache">
+
+	<!-- 查询全局参数信息 -->
+	<select id="listParamVOs" resultType="ParamVO" >
+		SELECT key_,  value_  FROM aos_sys_param
+	</select>
+	
+	<!-- 查询字典索引信息 -->
+	<select id="listDicIndexs" resultType="String" >
+		SELECT key_  FROM aos_sys_dic_index
+	</select>
+	
+	<!-- 查询字典详细信息 -->
+	<select id="listDicVOs" resultType="DicVO" >
+		SELECT
+		  aos_sys_dic_index.key_,
+		  aos_sys_dic_index.name_,
+		  aos_sys_dic.code_,
+		  aos_sys_dic.desc_
+		FROM
+			aos_sys_dic, aos_sys_dic_index
+		WHERE aos_sys_dic_index.id_ = aos_sys_dic.dic_index_id_
+		  and aos_sys_dic.status_ = '1'
+		ORDER BY aos_sys_dic_index.key_, aos_sys_dic.code_
+	</select>
+
+</mapper>

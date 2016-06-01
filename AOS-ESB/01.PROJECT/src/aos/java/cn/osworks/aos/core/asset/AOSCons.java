@@ -266,9 +266,9 @@ public interface AOSCons {
 	 */
 	public static  final class CACHE_PREFIX{
 		//全局参数
-		public static final String PARAM = "aos.cache.param.key_:";
+		public static final String PARAM = AOSPropertiesHandler.getProperty("redis_global_key") + ".param.key_:";
 		//字典
-		public static final String DIC = "aos.cache.dic.key_:";
+		public static final String DIC = AOSPropertiesHandler.getProperty("redis_global_key") + ".dic.key_:";
 	}
 
 }

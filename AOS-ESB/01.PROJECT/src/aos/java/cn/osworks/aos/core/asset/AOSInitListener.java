@@ -4,6 +4,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import cn.osworks.aos.modules.cache.CacheService;
+
 
 /**
  * <b>系统启动监听器</b>
@@ -16,6 +18,7 @@ public class AOSInitListener implements ServletContextListener{
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		initSystemVars(sce.getServletContext());
+		initBaseCache();
 	}
 	
 	/**
@@ -28,6 +31,14 @@ public class AOSInitListener implements ServletContextListener{
 		System.setProperty(AOSCons.CXT_KEY, cxtString);
 	}
 	
+	/**
+	 * 初始缓存加载(全局参数 | 字典)
+	 */
+	private void initBaseCache(){
+		CacheService cacheService = (CacheService)AOSBeanLoader.getSpringBean("cacheService");
+		cacheService.cacheParamData();
+		cacheService.cacheDicData();
+	}
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
