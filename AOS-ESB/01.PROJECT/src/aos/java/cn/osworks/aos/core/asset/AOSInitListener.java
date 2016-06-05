@@ -4,6 +4,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import org.apache.commons.lang3.StringUtils;
+
 import cn.osworks.aos.modules.cache.CacheService;
 
 
@@ -17,8 +19,16 @@ public class AOSInitListener implements ServletContextListener{
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		initSystemVars(sce.getServletContext());
-		initBaseCache();
+		try {
+			initSystemVars(sce.getServletContext());
+			String cacheFlag = AOSPropertiesHandler.getProperty("cache_init_config_resource");
+			if (StringUtils.equalsIgnoreCase(cacheFlag, "true")) {
+				initBaseCache();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	/**
