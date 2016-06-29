@@ -22,6 +22,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import cn.osworks.aos.core.asset.AOSUtils;
+
 /**
  * Http客户端
  * 
@@ -43,19 +45,18 @@ public class AOSHttpClient {
 	 * 
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("all")
 	public static HttpResponseVO execute(HttpRequestVO httpRequestVO) {
 		HttpResponseVO httpResponseVO = new HttpResponseVO();
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		try {
 			RequestBuilder requestBuilder = null;
-			if (StringUtils.equalsIgnoreCase(httpRequestVO.getRequestMethod(), REQUEST_METHOD.GET)) {
+			if (StringUtils.equalsIgnoreCase(httpRequestVO.getRequestMethod(), REQUEST_METHOD.POST)) {
 				requestBuilder = RequestBuilder.post().setUri(new URI(httpRequestVO.getUri()));
 			}else{
 				requestBuilder = RequestBuilder.get().setUri(new URI(httpRequestVO.getUri()));
 			}
 			Map<String, String> paramMap = httpRequestVO.getParamMap();
-			@SuppressWarnings("rawtypes")
 			Iterator<String> keyIterator = (Iterator) paramMap.keySet().iterator();
 			while (keyIterator.hasNext()) {
 				String key = (String) keyIterator.next();
@@ -64,6 +65,17 @@ public class AOSHttpClient {
 				requestBuilder.addParameter(key, value);
 			}
 			HttpUriRequest httpUriRequest = requestBuilder.build();
+			
+			Map<String, String> headMap = httpRequestVO.getHeadMap();
+			if (AOSUtils.isNotEmpty(headMap)) {
+				Iterator<String> headIterator = (Iterator) headMap.keySet().iterator();
+				while (headIterator.hasNext()) {
+					String key = (String) headIterator.next();
+					String value = headMap.get(key);
+					httpUriRequest.addHeader(key, value);
+				}
+			}
+			
 			CloseableHttpResponse httpResponse = null;
 			try {
 				httpResponse = httpclient.execute(httpUriRequest);

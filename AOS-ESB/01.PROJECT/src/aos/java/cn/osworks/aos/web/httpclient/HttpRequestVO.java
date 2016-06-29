@@ -35,9 +35,23 @@ public class HttpRequestVO implements Serializable{
 	 * @param pUrl
 	 * @param pParamMap
 	 */
-	public HttpRequestVO(String pUrl, Map<String, String> pParamMap){
+	public HttpRequestVO(String pUrl, Map<String, String> paramMap){
 		setUri(pUrl);
-		setParamMap(pParamMap);
+		setParamMap(paramMap);
+		setRequestMethod(AOSHttpClient.REQUEST_METHOD.POST);
+	}
+	
+	/**
+	 * 构造
+	 * 
+	 * @param pUrl
+	 * @param paramMap
+	 * @param headMap
+	 */
+	public HttpRequestVO(String pUrl, Map<String, String> paramMap, Map<String, String> headMap){
+		setUri(pUrl);
+		setParamMap(paramMap);
+		setHeadMap(headMap);
 		setRequestMethod(AOSHttpClient.REQUEST_METHOD.POST);
 	}
 	
@@ -50,6 +64,11 @@ public class HttpRequestVO implements Serializable{
 	 * 请求参数
 	 */
 	private Map<String, String> paramMap;
+	
+	/**
+	 * 头对象
+	 */
+	private Map<String, String> headMap;
 	
 	/**
 	 * 请求上传文件参数参数
@@ -91,5 +110,13 @@ public class HttpRequestVO implements Serializable{
 
 	public void setFileMap(Map<String, File> fileMap) {
 		this.fileMap = fileMap;
+	}
+
+	public Map<String, String> getHeadMap() {
+		return headMap;
+	}
+
+	public void setHeadMap(Map<String, String> headMap) {
+		this.headMap = headMap;
 	}
 }
