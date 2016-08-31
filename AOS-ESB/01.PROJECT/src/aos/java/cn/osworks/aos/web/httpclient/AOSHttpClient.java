@@ -9,6 +9,8 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.EntityBuilder;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -20,6 +22,7 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import cn.osworks.aos.core.asset.AOSUtils;
@@ -38,6 +41,61 @@ public class AOSHttpClient {
 	public static final class REQUEST_METHOD {
 		public static final String POST = "POST";
 		public static final String GET = "GET";
+	}
+	
+	/**
+	 * 发起POST请求
+	 * 
+	 * @return
+	 */
+	@SuppressWarnings("all")
+	public static HttpResponseVO execute2(HttpRequestVO httpRequestVO) {
+		HttpResponseVO httpResponseVO = new HttpResponseVO();
+		
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		
+		try {
+			RequestBuilder requestBuilder = null;
+			if (StringUtils.equalsIgnoreCase(httpRequestVO.getRequestMethod(), REQUEST_METHOD.POST)) {
+				requestBuilder = RequestBuilder.post().setUri(new URI(httpRequestVO.getUri()));
+			}else{
+				requestBuilder = RequestBuilder.get().setUri(new URI(httpRequestVO.getUri()));
+			}
+			EntityBuilder builder = EntityBuilder.create();
+			builder.setParameters(new BasicNameValuePair("name_", "熊春"));
+			//requestBuilder.setEntity(builder.build());
+
+			//HttpUriRequest httpUriRequest = requestBuilder.build();
+			
+			HttpPost httpPost = new HttpPost(httpRequestVO.getUri());
+			
+			httpPost.setEntity(builder.build());
+			httpPost.addHeader("Content-Type","application/json;charset=UTF-8");
+			
+			CloseableHttpResponse httpResponse = null;
+			try {
+				httpResponse = httpclient.execute(httpPost);
+				int status = httpResponse.getStatusLine().getStatusCode();
+				httpResponseVO.setStatus(String.valueOf(status));
+				HttpEntity entity = httpResponse.getEntity();
+				String outString = entity != null ? EntityUtils.toString(entity) : null;
+				httpResponseVO.setOut(outString);
+				if (entity != null) {
+					EntityUtils.consume(entity);
+				}
+			} finally {
+				httpResponse.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				httpclient.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return httpResponseVO;
 	}
 
 	/**

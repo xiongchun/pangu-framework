@@ -90,6 +90,7 @@ public class HttpController {
 		Dto outDto = Dtos.newOutDto();
 		try {
 			Dto inDto = Dtos.newDto(request);
+			inDto.println();
 			outDto = httpService.save(inDto);
 		} catch (Exception e) {
 			outDto.setAppCode(AOSCons.ERROR);

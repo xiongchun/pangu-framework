@@ -40,7 +40,17 @@ public class AOSCodec {
 		try {
 			MessageDigest md5 = MessageDigest.getInstance("MD5");
 			byte[] outByte = md5.digest(strSrc.getBytes("UTF-8"));
-			outString = outByte.toString();
+			int i;
+            StringBuffer buf = new StringBuffer("");
+            for (int offset = 0; offset < outByte.length; offset++) {
+                i = outByte[offset];
+                if (i < 0)
+                    i += 256;
+                if (i < 16)
+                    buf.append("0");
+                buf.append(Integer.toHexString(i));
+            }
+            outString = buf.toString();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

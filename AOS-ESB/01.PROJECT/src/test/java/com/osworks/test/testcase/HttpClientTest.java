@@ -18,9 +18,9 @@ import cn.osworks.aos.web.httpclient.HttpResponseVO;
 public class HttpClientTest {
 
 	public static void main(String[] args) {
-		//doPost();
+		doPost();
 		//doGet();
-		doUpload();
+		//doUpload();
 	}
 	
 	/**
