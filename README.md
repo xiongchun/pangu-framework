@@ -24,7 +24,7 @@ ZIP：[http://git.oschina.net/osworks/AOS/tags](http://git.oschina.net/osworks/A
 ##### AOS-WEIXIN ：AOS微信平台开发框架
 提供基于微信平台开发相关H5产品的基础框架。
 ##### AOS-ANDROID ：AOS Android APP开发框架
-可作为开发原生Android APP或Hybird混合架构App的基础开发框架。
+可作为开发原生Android APP或Hybrid混合架构App的基础开发框架。
 ##### AOS-MYAOS ：AOS开发助手
 提供了自动生成AOS产品线相关代码和一些辅助开发人员进行二次开发的便捷功能。
 
