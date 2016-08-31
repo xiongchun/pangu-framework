@@ -41,7 +41,9 @@
 			};
 			//这个Store的命名规则为：表格ID+"_store"。
 			_g_account_store.getProxy().extraParams = params;
-			_g_account_store.loadPage(1);
+			_g_account_store.loadPage(1,function(){
+				
+			});
 		}
 
 		//加载表格数据2  可以动态变更表格加载数据的url（很少用到）

@@ -26,7 +26,7 @@
 					columnWidth="0.5" />
 				<aos:datefield name="start_time_" fieldLabel="起始日期" value="2015-03-10" format="Y-m-d 00:00:00" editable="false"
 					columnWidth="0.49" />
-				<aos:datefield name="end_time_" fieldLabel="截止日期" format="Y-m-d 23:59:59" editable="false" maxValue="${maxValue}"
+				<aos:datefield name="end_time_" fieldLabel="截止日期" format="Y-m-d 23:59:59" editable="false" maxValue="${maxValue}" disabledDaysText="测试"
 					minValue="${minValue}" columnWidth="0.5" />
 				<aos:datefield name="disable_date_" fieldLabel="审批日期" disabledDays="0,6" disabledDaysText="不能选择周末做为审批日期"
 					editable="false" columnWidth="0.49" />

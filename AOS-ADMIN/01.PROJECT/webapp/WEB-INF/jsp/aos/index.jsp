@@ -312,14 +312,14 @@
 	Ext.EventManager.on(window, 'load', function() {
 		AOS.job(function() {
 			Ext.get('loading').fadeOut({
-				duration : 500, //遮罩渐渐消失
+				duration : 100, //遮罩渐渐消失
 				remove : true
 			});
 			Ext.get('loading-mask').fadeOut({
-				duration : 500,
+				duration : 100,
 				remove : true
 			});
-		}, 50); //做这个延时，只是为在Dom加载很快的时候GIF动画效果更稍微显著一点
+		}, 0); //做这个延时，只是为在Dom加载很快的时候GIF动画效果更稍微显著一点
 
 	});
 

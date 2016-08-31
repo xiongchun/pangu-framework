@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src/aos/java"/>
 	<classpathentry kind="src" path="src/project/java"/>
-	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/resources"/>
+	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/asm-3.3.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/cglib-2.2.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/javassist-3.17.1.jar"/>
