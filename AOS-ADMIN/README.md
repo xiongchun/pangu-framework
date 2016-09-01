@@ -16,4 +16,4 @@ ZIP：[http://git.oschina.net/osworks/AOS/tags](http://git.oschina.net/osworks/A
 ##### AOS-WEB ：AOS网站开发框架
 适合用于企业、政府门户网站；APP产品介绍网站；互联网金融产品交易网站；其它互联网产品的网页版开发框架等。
 ##### AOS-MOBILE ：AOS移动端开发框架
-提供基于微信平台App和Hybrid混合架构App的基础开发框架。
+提供微信平台App和Hybrid混合架构App的基础开发框架。
