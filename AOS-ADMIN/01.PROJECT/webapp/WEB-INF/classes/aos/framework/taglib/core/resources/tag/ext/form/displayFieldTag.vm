@@ -1,0 +1,14 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##DisplayField定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formItemTagSupport.vm")
+    app:169	
+};
+##DisplayField实例化
+var ${id} = Ext.create('Ext.form.field.Display',${id}_cfg);
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+

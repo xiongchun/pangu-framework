@@ -1,0 +1,5 @@
+/* 对面板型容器组件进行标题背景扁平化处理 */
+.x-panel-header-default{
+	background-image:-webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#ececec),color-stop(100%,#ececec)) !important;
+	background-image:-moz-linear-gradient(center top , #ececec, #ececec 45%, #ececec 46%, #ececec 50%, #ececec 51%, #ececec) !important;
+	}

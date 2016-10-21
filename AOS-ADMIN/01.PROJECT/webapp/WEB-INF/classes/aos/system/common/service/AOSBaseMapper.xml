@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 信贷系统服务基类使用的SQL语句 -->
+<mapper namespace="AOSBase">
+
+	<!-- 测试数据库连接 -->
+	<select id="testSql" resultType="Dto" parameterType="Dto">
+		SELECT 1
+	</select>
+
+</mapper>

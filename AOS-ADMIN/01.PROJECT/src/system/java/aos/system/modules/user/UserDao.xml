@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 用户管理模块使用的SQL语句 -->
+<mapper namespace="User">
+
+	<!-- 查询用户列表 -->
+	<select id="listUsersPage" resultType="Dto" parameterType="Dto">
+			SELECT
+			     aos_org.name_ AS org_name_,
+                <include refid="aos.framework.dao.Aos_userDao.column2" />
+            FROM aos_user, aos_org
+            WHERE aos_user.org_id_ = aos_org.id_
+			    <if test="na_ != null and na_ != ''">
+				    AND (aos_user.name_ LIKE '%${na_}%' OR aos_user.account_ LIKE '%${na_}%')
+				</if>
+			    <if test="cascade_ == 0">
+				    AND aos_user.org_id_ = #{org_id_, jdbcType=VARCHAR} 
+				</if>
+				<if test="cascade_ == 1">
+				    AND aos_org.cascade_id_ like '${org_cascade_id_}%'
+				</if>
+				<if test="is_del_ != null and is_del_ != ''">
+				    AND aos_user.is_del_ = #{is_del_} 
+				</if>
+			 ORDER BY aos_user.id_ DESC
+	</select>
+	
+	<!-- 查询用户所属角色列表 -->
+	<select id="listRolesOfUser" resultType="AOS_rolePO" parameterType="String">
+			SELECT
+                <include refid="aos.system.dao.Aos_roleDao.column" />
+            FROM aos_role
+            WHERE id_ IN (SELECT role_id_ FROM aos_user_role WHERE user_id_ = #{user_id_})
+			ORDER BY id_ DESC
+	</select>
+	
+	<!-- 查询可选角色列表 -->
+	<select id="listToSelectRoles" resultType="Dto" parameterType="Dto">
+	        SELECT * FROM(
+			     SELECT
+			     (SELECT cascade_id_ FROM aos_org WHERE id_= (SELECT org_id_ FROM aos_user WHERE id_ = aos_role.create_by_)) AS org_cascade_id_,
+                <include refid="aos.system.dao.Aos_roleDao.column" />
+	            FROM aos_role
+	          WHERE id_ NOT IN (SELECT role_id_ FROM aos_user_role WHERE user_id_ = #{user_id_})
+				ORDER BY id_ DESC
+			) t WHERE t.org_cascade_id_ LIKE '${org_cascade_id_}%'
+	</select>
+	
+	<!-- 查询已选角色列表 -->
+	<select id="listSelectedRoles" resultType="Dto" parameterType="Dto">
+			     SELECT
+			        aos_user_role.id_ as user_role_id_,
+                   <include refid="aos.system.dao.Aos_roleDao.column2" />
+                 FROM  aos_role
+                 LEFT JOIN aos_user_role ON aos_user_role.role_id_ = aos_role.id_
+                 WHERE aos_user_role.user_id_ = #{user_id_}
+                 <if test="name_ != null and name_ != ''">
+			        AND aos_role.name_ LIKE '%${name_}%'
+				</if>
+	</select>	
+
+</mapper>

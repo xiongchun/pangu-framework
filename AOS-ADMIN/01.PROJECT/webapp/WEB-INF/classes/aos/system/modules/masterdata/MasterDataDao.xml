@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 基础数据模块使用的SQL语句 -->
+<mapper namespace="MasterData">
+
+	<!-- 查询键值参数列表 -->
+	<select id="listParamInfosPage" resultType="Dto" parameterType="Dto">
+			SELECT
+            <include refid="aos.framework.dao.Aos_paramsDao.column" />
+            FROM aos_params
+            <where>
+			    <if test="nkv_ != null and nkv_ != ''">
+				    AND (name_ LIKE '%${nkv_}%' OR key_ LIKE '%${nkv_}%' OR value_ LIKE '%${nkv_}%')
+				</if>
+				<if test="group_ != null and group_ != ''">
+				    AND group_ = #{group_}
+				</if>
+			</where>
+			 ORDER BY id_ DESC
+	</select>
+	
+	<!-- 查询字典列表 -->
+	<select id="listDicsPage" resultType="Dto" parameterType="Dto">
+			SELECT
+            <include refid="aos.framework.dao.Aos_dicDao.column" />
+            FROM aos_dic
+            <where>
+			    <if test="where1_ != null and where1_ != ''">
+				    AND (name_ LIKE '%${where1_}%' OR key_ LIKE '%${where1_}%')
+				</if>
+				<if test="where2_ != null and where2_ != ''">
+				    AND (code_ LIKE  '%${where2_}%' OR desc_ LIKE '%${where2_}%')
+				</if>
+				<if test="group_ != null and group_ != ''">
+				    AND group_ = #{group_}
+				</if>
+				<if test="key_ != null and key_ != ''">
+				    AND key_ = #{key_}
+				</if>
+			</where>
+			 ORDER BY id_ DESC, key_ DESC, sort_no_ ASC
+	</select>
+
+</mapper>

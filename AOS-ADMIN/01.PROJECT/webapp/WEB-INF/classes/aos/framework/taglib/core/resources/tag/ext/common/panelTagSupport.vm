@@ -1,0 +1,34 @@
+#parse("${vmpath}ext/common/containerTagSupport.vm")
+#if($title)
+    title: '$title',
+#end
+#if($collapsible)
+    collapsible: $collapsible,
+#end
+#if($collapsed)
+    collapsed: $collapsed,
+#end
+#if($titleCollapse)
+    titleCollapse: $titleCollapse,
+#end
+#if($bodyStyle)
+	bodyStyle: {$bodyStyle},
+#end
+#if($bodyPadding)
+    bodyPadding: '$bodyPadding',
+#end
+#if($closable)
+    closable: $closable,
+#end
+#if($closeAction)
+    closeAction: '$closeAction',
+#end
+#if($collapseMode)
+    collapseMode: '$collapseMode',
+#end
+#if($header)
+    header: $header,
+#end
+#if($reorderable)
+    reorderable: $reorderable,
+#end

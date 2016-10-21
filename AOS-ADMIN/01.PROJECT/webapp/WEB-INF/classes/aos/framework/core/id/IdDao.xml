@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ID服务相关映射SQL语句 -->
+<mapper namespace="Id">
+
+	<!-- 查询指定序列的NextVal。提示：此SQL为MySQL版本 -->
+	<select id="nextVal" resultType="BigInteger" parameterType="String">
+		  SELECT nextval (#{seq_name_})
+	</select>
+	
+</mapper>
