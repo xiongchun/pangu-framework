@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>AOS-ADMIN</name>
-	<comment>AOS-ADMIN：后端管理系统开发平台</comment>
+	<comment>AOS-ADMIN：AOS管理系统开发平台</comment>
 	<projects>
 	</projects>
 	<buildSpec>
