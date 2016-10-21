@@ -1,7 +1,0 @@
-#if($plugins)  
-	[
-	#foreach($plugin in $plugins)
-	$plugin#if($velocityCount != $plugins.size()),#end
-	#end
-	]
-#end
