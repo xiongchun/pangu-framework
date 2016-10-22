@@ -165,13 +165,11 @@
 		<aos:formpanel id="_f_myinfo" width="650" labelWidth="65">
 			<aos:fieldset title="基础信息" labelWidth="75" columnWidth="1">
 				<aos:textfield name="org_name_" fieldLabel="所属部门" readOnly="true" columnWidth="0.5" />
-				<aos:textfield name="account_" fieldLabel="登录帐号" readOnly="true" maxLength="20" columnWidth="0.49" />
-				<aos:textfield name="name_" fieldLabel="姓名" allowBlank="false" maxLength="20" columnWidth="0.5" />
-				<aos:combobox name="sex_" fieldLabel="性别" allowBlank="false" dicField="sex_" value="3" columnWidth="0.49" />
-				<aos:textfield name="email_" fieldLabel="电子邮件" vtype="email" maxLength="50" columnWidth="0.5" />
-				<aos:textfield name="mobile_" fieldLabel="联系电话" maxLength="50" columnWidth="0.49" />
-				<aos:textfield name="idno_" fieldLabel="身份证号" maxLength="50" columnWidth="0.5" />
-				<aos:combobox name="status_" fieldLabel="用户状态" readOnly="true" dicField="user_status_" columnWidth="0.49" />
+				<aos:textfield name="name_" fieldLabel="姓名" allowBlank="false" maxLength="20" columnWidth="0.49" />
+				<aos:combobox name="sex_" fieldLabel="性别" allowBlank="false" dicField="sex_" value="3" columnWidth="0.5" />
+				<aos:textfield name="email_" fieldLabel="电子邮件" vtype="email" maxLength="50" columnWidth="0.49" />
+				<aos:textfield name="mobile_" fieldLabel="联系电话" maxLength="50" columnWidth="0.5" />
+				<aos:textfield name="idno_" fieldLabel="身份证号" maxLength="50" columnWidth="0.49" />
 				<aos:textfield name="address_" fieldLabel="联系地址" maxLength="500" columnWidth="0.99" />
 				<aos:textareafield name="remark_" fieldLabel="备注" maxLength="4000" height="60" columnWidth="0.99" />
 			</aos:fieldset>
