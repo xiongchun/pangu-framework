@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import aos.framework.core.exception.AOSException;
 import aos.framework.core.typewrap.Dto;
+import aos.framework.core.utils.AOSCons;
+import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.web.router.HttpModel;
@@ -58,6 +60,9 @@ public class OnlineUserService {
 		Dto inDto = httpModel.getInDto();
 		if (StringUtils.equalsIgnoreCase(inDto.getString("juid_"), httpModel.getUserModel().getJuid())) {
 			throw new AOSException("不能自杀 :(");
+		}
+		if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode_"))) {
+			throw new AOSException(13);
 		}
 		cacheUserDataService.logout(inDto.getString("juid_"));
 		httpModel.setOutMsg(AOSUtils.merge("用户[{0}]已被强制下线。", inDto.getString("name_")));

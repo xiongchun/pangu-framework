@@ -14,7 +14,7 @@
 				<aos:triggerfield emptyText="请输入JUID进行查询..." id="id_juid" margin="0 0 0 5" trigger1Cls="x-form-search-trigger"
 					onTrigger1Click="_g_user_query" width="280" />
 				<aos:dockeditem xtype="tbfill" />
-				<aos:toggle id="id_toggle_" offText="关闭" onText="刷新" state="false" />
+				<%-- <aos:toggle id="id_toggle_" offText="关闭刷新" onText="5秒刷新" state="false" /> --%>
 			</aos:docked>
 			<aos:menu>
 				<aos:menuitem text="刷新" onclick="#_g_user_store.reload();" icon="refresh.png" />
