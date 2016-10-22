@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50628
 File Encoding         : 65001
 
-Date: 2016-10-22 18:14:55
+Date: 2016-10-23 01:42:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -897,17 +897,17 @@ INSERT INTO `aos_module` VALUES ('1608211848140002', '0.001', '1608211848140001'
 INSERT INTO `aos_module` VALUES ('1608211848140004', '0.002', '1608211848140001', '范例', '', 'folder9.png', '0', '1', '1', 'fa-bug', '20');
 INSERT INTO `aos_module` VALUES ('1608211848140005', '0.002.001', '1608211848140004', '范例一', '', 'icon75.png', '1', '0', '1', '', '1');
 INSERT INTO `aos_module` VALUES ('1609251712430092', '0.001.007', '1608211848140002', '资源', '', 'folder1.png', '0', '1', '1', '', '10');
-INSERT INTO `aos_module` VALUES ('1609251713430093', '0.001.007.001', '1609251712430092', '键值参数', 'masterDataService.initParam', '', '1', '0', '1', '', '10');
-INSERT INTO `aos_module` VALUES ('1609251714230094', '0.001.007.002', '1609251712430092', '数据字典', 'masterDataService.initDictionary', null, '1', '0', '1', null, '20');
-INSERT INTO `aos_module` VALUES ('1609251714520095', '0.001.007.003', '1609251712430092', '功能模块', 'moduleService.init', null, '1', '0', '1', null, '30');
+INSERT INTO `aos_module` VALUES ('1609251713430093', '0.001.007.001', '1609251712430092', '键值参数', 'masterDataService.initParam', 'icon153.png', '1', '0', '1', '', '10');
+INSERT INTO `aos_module` VALUES ('1609251714230094', '0.001.007.002', '1609251712430092', '数据字典', 'masterDataService.initDictionary', 'icon152.png', '1', '0', '1', '', '20');
+INSERT INTO `aos_module` VALUES ('1609251714520095', '0.001.007.003', '1609251712430092', '功能模块', 'moduleService.init', 'icon154.png', '1', '0', '1', '', '30');
 INSERT INTO `aos_module` VALUES ('1609251716000096', '0.001.008', '1608211848140002', '权限', '', 'folder1.png', '0', '1', '1', '', '20');
-INSERT INTO `aos_module` VALUES ('1609251717240097', '0.001.008.001', '1609251716000096', '部门管理', 'orgService.init', null, '1', '0', '1', null, '10');
-INSERT INTO `aos_module` VALUES ('1609251717510098', '0.001.008.002', '1609251716000096', '用户管理', 'userService.init', null, '1', '0', '1', null, '20');
-INSERT INTO `aos_module` VALUES ('1609251718170099', '0.001.008.003', '1609251716000096', '角色管理', 'roleService.init', null, '1', '0', '1', null, '30');
+INSERT INTO `aos_module` VALUES ('1609251717240097', '0.001.008.001', '1609251716000096', '部门管理', 'orgService.init', 'org.png', '1', '0', '1', '', '10');
+INSERT INTO `aos_module` VALUES ('1609251717510098', '0.001.008.002', '1609251716000096', '用户管理', 'userService.init', 'user6.png', '1', '0', '1', '', '20');
+INSERT INTO `aos_module` VALUES ('1609251718170099', '0.001.008.003', '1609251716000096', '角色管理', 'roleService.init', 'own.png', '1', '0', '1', '', '30');
 INSERT INTO `aos_module` VALUES ('1609251719000100', '0.001.009', '1608211848140002', '监控', '', 'folder1.png', '0', '1', '1', '', '30');
-INSERT INTO `aos_module` VALUES ('1609251719200101', '0.001.009.001', '1609251719000100', '在线用户', 'onlineUserService.init', '', '1', '0', '1', '', '10');
+INSERT INTO `aos_module` VALUES ('1609251719200101', '0.001.009.001', '1609251719000100', '在线用户', 'onlineUserService.init', 'terminal.png', '1', '0', '1', '', '10');
 INSERT INTO `aos_module` VALUES ('1609271530350000', '0.001.010', '1608211848140002', '工具', '', 'folder1.png', '0', '1', '1', '', '40');
-INSERT INTO `aos_module` VALUES ('1609271607190016', '0.001.010.001', '1609271530350000', '图标', 'iconService.init', null, '1', '0', '1', null, '10');
+INSERT INTO `aos_module` VALUES ('1609271607190016', '0.001.010.001', '1609271530350000', '图标', 'iconService.init', 'pictures.png', '1', '0', '1', '', '10');
 
 -- ----------------------------
 -- Table structure for aos_org
