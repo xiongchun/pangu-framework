@@ -9,7 +9,6 @@ import javax.servlet.jsp.tagext.Tag;
 import org.apache.commons.lang3.StringUtils;
 
 import aos.framework.core.asset.WebCxt;
-import aos.framework.core.utils.AOSCfgHandler;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSUtils;
 import aos.system.common.model.UserModel;
@@ -23,6 +22,7 @@ import aos.system.common.model.UserModel;
 public class AOSTagUtils {
 
 	private static final String STANDARD_TAG = "org.apache.taglibs.standard";
+	public static final String ICON_PATH = "/static/icon/";
 
 	/**
 	 * 非空常量状态标志
@@ -98,9 +98,8 @@ public class AOSTagUtils {
 	 * @return
 	 */
 	public static String getIcon(String icon, PageContext pageContext) {
-		String iconPath = AOSCfgHandler.getValue("icon_path");
 		if (AOSUtils.isNotEmpty(icon)) {
-			icon = pageContext.getServletContext().getContextPath() + iconPath + icon;
+			icon = pageContext.getServletContext().getContextPath() + ICON_PATH + icon;
 		}
 		return icon;
 	}

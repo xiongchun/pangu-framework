@@ -145,7 +145,7 @@ public class OrgService extends AOSBaseService{
 	public void deleteOrg(HttpModel httpModel) {
 		Dto outDto = Dtos.newOutDto();
 		String[] selectionIds = httpModel.getInDto().getRows();
-		Aos_orgPO aos_orgPO = (Aos_orgPO)sqlDao.selectOne("Resource.checkRootNode", Dtos.newDto("ids", StringUtils.join(selectionIds, ",")));
+		Aos_orgPO aos_orgPO = (Aos_orgPO)sqlDao.selectOne("Org.checkRootNode", Dtos.newDto("ids", StringUtils.join(selectionIds, ",")));
 		if (AOSUtils.isNotEmpty(aos_orgPO)) {
 			outDto.setAppCode(AOSCons.ERROR);
 			outDto.setAppMsg(AOSUtils.merge("操作失败，根节点[{0}]不能删除。", aos_orgPO.getName_()));

@@ -52,19 +52,19 @@ Ext.Ajax.on('beforerequest', function(conn, options, eopts) {
 });
 ##监听请求异常回调
 Ext.Ajax.on('requestexception', function(conn, response, options, eopts) {
-	if (response.status === 500) {
+	if (response.status == 500) {
 	    ##服务器异常
 		#if($run_mode_ == "2")
-		Ext.Msg.alert('提示', '在线演示系统为只读模式，部分功能可能不流畅。完美体验请搭建本地环境。');
+		AOS.err('在线演示系统为只读模式，部分功能可能不流畅。完美体验请搭建本地环境。');
 		#else
-		Ext.Msg.alert('提示', response.responseText);
+		AOS.err(response.responseText);
 		#end
 	} else if (response.status === 0) {
 	    ##网络异常或服务器关闭
-		Ext.Msg.alert('提示', response.responseText);
+		AOS.err(response.responseText);
 	} else {
 	    ##其它异常
-		Ext.Msg.alert('提示', response.responseText);
+		AOS.err(response.responseText);
 	}
 });
 ##=====Ajax的全局设定结束

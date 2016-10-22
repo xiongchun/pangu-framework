@@ -45,16 +45,6 @@ public class AOSCons {
 	public static final String STR_FALSE = "0";
 
 	/**
-	 * 系统运行模式：开发模式
-	 */
-	public static final String RUNAS_DEV = "0";
-
-	/**
-	 * 系统运行模式：生产模式
-	 */
-	public static final String RUNAS_PRO = "1";
-
-	/**
 	 * Json输出模式。格式化输出模式。
 	 */
 	public static final String JSON_FORMAT = "0";
@@ -200,11 +190,6 @@ public class AOSCons {
 	public static final String NAV_QUICK_LAYOUT_TREE = "2";
 	
 	/**
-	 * JDBC执行模式。1：只读模式。
-	 */
-	public static final String JDBC_EXECUTE_ONLYREAD = "1";
-	
-	/**
 	 * AOS官网
 	 */
 	public static final String OSWORKS_WEBSITE = "http://git.oschina.net/osworks/AOS";
@@ -248,9 +233,19 @@ public class AOSCons {
 	}
 	
 	/**
+	 * 系统运行模式
+	 *
+	 */
+	public static  final class RUN_MODE{
+		public static final String DEV = "0";
+		public static final String PRO = "1";
+		public static final String DEMO = "2";
+	}
+	
+	/**
 	 * App应用全局Key标识
 	 */
-	public static  final String APP_KEY = AOSCfgHandler.getValue("global_key");
+	public static  final String APP_KEY = AOSCfgHandler.getValue("app_key");
 	
 	/**
 	 *Redis全局Key前缀

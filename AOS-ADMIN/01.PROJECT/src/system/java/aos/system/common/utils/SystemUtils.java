@@ -11,10 +11,10 @@ import aos.framework.core.exception.AOSException;
 import aos.framework.core.redis.JedisUtil;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
-import aos.framework.core.utils.AOSCfgHandler;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
+import aos.framework.taglib.asset.AOSTagUtils;
 import aos.framework.taglib.core.model.TreeBuilder;
 import aos.framework.taglib.core.model.TreeNode;
 
@@ -61,7 +61,7 @@ public class SystemUtils {
 	 */
 	public static String toTreeModalAsyncLoad(List<Dto> treeModels){
 		List<Dto> treeNodes = new ArrayList<Dto>();
-		String icon_path = JedisUtil.getString(SystemCons.CXT) + AOSCfgHandler.getValue("icon_path");
+		String icon_path = JedisUtil.getString(SystemCons.CXT) + AOSTagUtils.ICON_PATH;
 		for (Dto model : treeModels) {
 			Dto treeNode = Dtos.newDto();
 			treeNode.put("id", model.getString("id_"));

@@ -106,6 +106,7 @@ public class HomeService extends AOSBaseService {
 		httpModel.setAttribute("run_mode_", AOSCxt.getParam("run_mode_"));
 		httpModel.setAttribute("page_load_gif_", AOSCxt.getParam("page_load_gif_"));
 		httpModel.setAttribute("navDto", initNavBarStyle(userModel.getSkin_()));
+		httpModel.setAttribute("qq_group_link_", AOSCxt.getParam("qq_group_link_"));
 		
 		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
 		

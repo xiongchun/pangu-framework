@@ -41,8 +41,8 @@ import aos.framework.core.dao.plugin.dialect.db.OracleDialect;
 import aos.framework.core.dao.plugin.dialect.db.SqlServerDialect;
 import aos.framework.core.exception.AOSException;
 import aos.framework.core.typewrap.Dto;
-import aos.framework.core.utils.AOSCfgHandler;
 import aos.framework.core.utils.AOSCons;
+import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSUtils;
 
 
@@ -92,8 +92,8 @@ public class StatementHandlerPlugin implements Interceptor {
 		}
 		//如果是update相关操作则退出拦截继续执行代码
 		if (update) {
-			//实现一个辅助的小功能：如果配置jdbc_execute为只读模式的话，则不允许执行update操作
-			if (StringUtils.equals(AOSCons.JDBC_EXECUTE_ONLYREAD, AOSCfgHandler.getValue("jdbc_execute"))) {
+			//实现一个辅助的小功能：如果系统以演示模式启动的话则不允许进行update操作
+			if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode_"))) {
 				throw new AOSException(13);
 			}
 		}		

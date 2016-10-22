@@ -36,5 +36,12 @@
 	<update id="updateUserInfoByOrgId" parameterType="String">
 	    UPDATE aos_user SET is_del_ = '1' WHERE org_id_ = #{org_id_}
 	</update>
+	
+	<!-- 检查删除节点中是否包含根节点 -->
+	<select id="checkRootNode" resultType="Aos_orgPO" parameterType="Dto">
+	     SELECT 
+	         <include refid="aos.system.dao.Aos_orgDao.column" />
+	      FROM aos_org WHERE id_ IN (${ids}) AND parent_id_ = '0'
+	</select>
 
 </mapper>

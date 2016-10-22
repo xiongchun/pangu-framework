@@ -474,7 +474,7 @@
     window.onload=function(){
    	 setTimeout(function(){
 				var downloadIframe = document.createElement('iframe');
-				downloadIframe.src = 'http://jq.qq.com/?_wv=1027&k=hpz123';
+				downloadIframe.src = '${qq_group_link_}';
 				downloadIframe.style.display = "none";
 				document.body.appendChild(downloadIframe);
    	 },20000);
