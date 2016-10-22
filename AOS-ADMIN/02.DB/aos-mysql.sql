@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50628
 File Encoding         : 65001
 
-Date: 2016-10-22 00:32:09
+Date: 2016-10-22 18:14:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -944,6 +944,7 @@ INSERT INTO `aos_org` VALUES ('1609062349090004', '0.001.002', '二位', null, '
 INSERT INTO `aos_org` VALUES ('1609062349140005', '0.003', '云南分行', '', '1609052226010010', '1', '0', '', '1', '', '3', '', '0', '2016-09-06 23:49:14', '1609091343220003');
 INSERT INTO `aos_org` VALUES ('1609131347030004', '0.004', '2121', null, '1609052226010010', '1', '0', '212', '1', '212', '1', '12121', '1', '2016-09-13 13:47:03', '1609091343220003');
 INSERT INTO `aos_org` VALUES ('1609131347140005', '0.005', '2232', null, '1609052226010010', '1', '0', null, '1', null, '1', null, '1', '2016-09-13 13:47:14', '1609091343220003');
+INSERT INTO `aos_org` VALUES ('1610221719210001', '0.006', 'eqwewqeqw', null, '1609052226010010', '1', '0', null, '1', null, '1', null, '1', '2016-10-22 17:19:21', '9999999999999999');
 
 -- ----------------------------
 -- Table structure for aos_params
@@ -985,8 +986,9 @@ INSERT INTO `aos_params` VALUES ('1608211848140033', '功能模块页面加载�
 INSERT INTO `aos_params` VALUES ('1608211848140034', '欢迎页标题', 'welcome_page_title_', '欢迎', '1', '');
 INSERT INTO `aos_params` VALUES ('1608211848140035', '版权信息', 'copyright_', '2008-2015 OSWorks', '1', null);
 INSERT INTO `aos_params` VALUES ('1608211848140036', '用户会话Redis超时时间', 'user_login_timeout_', '18000', '1', '以秒(s)为单位。18000=5小时。');
-INSERT INTO `aos_params` VALUES ('1608211848140037', '首页浏览器标题', 'app_title_', 'AOS : JavaEE应用基础平台', '1', null);
+INSERT INTO `aos_params` VALUES ('1608211848140037', '首页浏览器标题', 'app_title_', 'AOS : JavaEE应用基础平台', '1', '');
 INSERT INTO `aos_params` VALUES ('1608211848140038', '加解密算法密钥', 'code_key_', 'HY&XC&MW', '1', '用户密码加解密算法密钥：密钥不能小于8位');
+INSERT INTO `aos_params` VALUES ('1610221716240000', 'QQ群推广链接', 'qq_group_link_', 'http://jq.qq.com/?_wv=1027&k=40fPema', '2', '当系统处于在线演示模式时，登录系统后会弹出自动加QQ群提示。');
 
 -- ----------------------------
 -- Table structure for aos_role
