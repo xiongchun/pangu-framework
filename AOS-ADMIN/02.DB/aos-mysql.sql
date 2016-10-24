@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50628
 File Encoding         : 65001
 
-Date: 2016-10-23 01:42:23
+Date: 2016-10-24 19:47:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -988,7 +988,7 @@ INSERT INTO `aos_params` VALUES ('1608211848140035', '版权信息', 'copyright_
 INSERT INTO `aos_params` VALUES ('1608211848140036', '用户会话Redis超时时间', 'user_login_timeout_', '18000', '1', '以秒(s)为单位。18000=5小时。');
 INSERT INTO `aos_params` VALUES ('1608211848140037', '首页浏览器标题', 'app_title_', 'AOS : JavaEE应用基础平台', '1', '');
 INSERT INTO `aos_params` VALUES ('1608211848140038', '加解密算法密钥', 'code_key_', 'HY&XC&MW', '1', '用户密码加解密算法密钥：密钥不能小于8位');
-INSERT INTO `aos_params` VALUES ('1610221716240000', 'QQ群推广链接', 'qq_group_link_', 'http://jq.qq.com/?_wv=1027&k=40fPema', '2', '当系统处于在线演示模式时，登录系统后会弹出自动加QQ群提示。');
+INSERT INTO `aos_params` VALUES ('1610221716240000', 'QQ群推广链接', 'qq_group_link_', 'http://jq.qq.com/?_wv=1027&k=40fPema', '1', '当系统处于在线演示模式时，登录系统后会弹出自动加QQ群提示。');
 
 -- ----------------------------
 -- Table structure for aos_role
@@ -1090,18 +1090,16 @@ CREATE TABLE `aos_user` (
   `is_del_` varchar(255) NOT NULL COMMENT '是否已删除',
   `create_time_` datetime NOT NULL COMMENT ' 创建时间',
   `create_by_` varchar(20) NOT NULL COMMENT '创建人ID',
-  `test` varchar(500) DEFAULT NULL,
-  `address1_` varchar(500) DEFAULT NULL COMMENT '序列号名称',
   PRIMARY KEY (`id_`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户基本信息表';
 
 -- ----------------------------
 -- Records of aos_user
 -- ----------------------------
-INSERT INTO `aos_user` VALUES ('1609091343220004', 'mowen', 'a2c292420f2af5038fefd1bb63eeb736', '莫雯', '3', '1', '1', '1609062349140005', '', '', '', 'blue', '', null, '', '0', '2016-09-09 13:43:22', '9999999999999999', null, null);
-INSERT INTO `aos_user` VALUES ('1609091506420005', 'huangyu', 'a2c292420f2af5038fefd1bb63eeb736', '黄玉', '3', '1', '1', '1609062349140005', null, null, null, 'blue', null, null, null, '0', '2016-09-09 15:06:42', '9999999999999999', null, null);
-INSERT INTO `aos_user` VALUES ('1609131347400006', '3232', 'b06e3b3a5c8e32927979fd0a304779a2', '23232', '3', '1', '1', '1609052226010010', '', '', '', 'blue', '3232323', null, '323223232', '1', '2016-09-13 13:47:40', '9999999999999999', null, null);
-INSERT INTO `aos_user` VALUES ('9999999999999999', 'root', 'a2c292420f2af5038fefd1bb63eeb736', '超级用户', '1', '1', '1', '1609052226010010', '', '', '', 'blue', '', '', '', '0', '2016-08-12 17:38:19', '9999999999999999', null, null);
+INSERT INTO `aos_user` VALUES ('1609091343220004', 'mowen', 'a2c292420f2af5038fefd1bb63eeb736', '莫雯', '3', '1', '1', '1609062349140005', '', '', '', 'blue', '', null, '', '0', '2016-09-09 13:43:22', '9999999999999999');
+INSERT INTO `aos_user` VALUES ('1609091506420005', 'huangyu', 'a2c292420f2af5038fefd1bb63eeb736', '黄玉', '3', '1', '1', '1609062349140005', null, null, null, 'blue', null, null, null, '0', '2016-09-09 15:06:42', '9999999999999999');
+INSERT INTO `aos_user` VALUES ('1609131347400006', '3232', 'b06e3b3a5c8e32927979fd0a304779a2', '23232', '3', '1', '1', '1609052226010010', '', '', '', 'blue', '3232323', null, '323223232', '1', '2016-09-13 13:47:40', '9999999999999999');
+INSERT INTO `aos_user` VALUES ('9999999999999999', 'root', 'a2c292420f2af5038fefd1bb63eeb736', '超级用户', '1', '1', '1', '1609052226010010', '', '', '', 'blue', '', '', '', '0', '2016-08-12 17:38:19', '9999999999999999');
 
 -- ----------------------------
 -- Table structure for aos_user_role
