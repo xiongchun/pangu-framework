@@ -217,7 +217,7 @@
 		<attribute name="resizable" required="false">
 			<description>
 			    <![CDATA[
-			       设置是否可以改变组件大小。可选值：true | false。缺省值：true。
+			       设置是否可以改变组件大小。可选值：true | false。缺省值：不同组件缺省值可能不同。
 				]]>
 			</description>
 		</attribute>

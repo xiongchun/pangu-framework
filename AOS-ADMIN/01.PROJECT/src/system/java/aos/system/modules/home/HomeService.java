@@ -123,7 +123,7 @@ public class HomeService extends AOSBaseService {
 	public void initPortal(HttpModel httpModel) {
 		UserModel userModel = httpModel.getUserModel();
 		httpModel.setAttribute("curSkin", userModel.getSkin_());
-
+		httpModel.setAttribute("run_mode_", AOSCxt.getParam("run_mode_"));
 		httpModel.setViewPath("system/portal.jsp");
 	}
 	

@@ -31,7 +31,7 @@
 		<url-pattern>*</url-pattern>
 	</filter-mapping>
 
-	<!-- Http过滤器 -->
+	<!-- Http过滤器 
 	<filter>
 		<filter-name>httpFilter</filter-name>
 		<filter-class>aos.framework.web.filter.HttpFilter</filter-class>
@@ -40,6 +40,7 @@
 		<filter-name>httpFilter</filter-name>
 		<url-pattern>*.jhtml</url-pattern>
 	</filter-mapping>
+	-->
 	
 	<!-- Http过滤器 -->
 	<filter>
@@ -50,6 +51,7 @@
 		<filter-name>httpLoginFilter</filter-name>
 		<url-pattern>/http/*</url-pattern>
 	</filter-mapping>
+
 
 	<!-- 卸载Web应用时刷新缓存(必须注册为第一个监听器) -->
 	<listener>
