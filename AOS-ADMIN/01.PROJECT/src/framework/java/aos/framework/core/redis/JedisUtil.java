@@ -25,24 +25,41 @@ public class JedisUtil {
 	static {
 		String host = AOSCfgHandler.getValue("redis_host");
 		int port = Integer.valueOf(AOSCfgHandler.getValue("redis_port"));
-		JedisPoolConfig config = new JedisPoolConfig();
-		config.setTestOnBorrow(true);
-		config.setTestOnReturn(true);
-		config.setTestWhileIdle(true);
-		config.setMinEvictableIdleTimeMillis(60000l);
-		config.setTimeBetweenEvictionRunsMillis(3000l);
-		config.setNumTestsPerEvictionRun(-1);
+        JedisPoolConfig config = new JedisPoolConfig();
+        config.setMaxTotal(Integer.valueOf(AOSCfgHandler.getValue("redis_maxTotal")));
+        config.setMaxIdle(Integer.valueOf(AOSCfgHandler.getValue("redis_maxIdle")));
+        config.setMinIdle(Integer.valueOf(AOSCfgHandler.getValue("redis_minIdle")));
+        config.setMaxWaitMillis(Integer.valueOf(AOSCfgHandler.getValue("redis_maxWaitMillis")));
+        config.setTestOnBorrow(true);
+        config.setTestOnReturn(true);
+        //Idle时进行连接扫描
+        config.setTestWhileIdle(true);
+        //表示idle object evitor两次扫描之间要sleep的毫秒数
+        config.setTimeBetweenEvictionRunsMillis(30000);
+        //表示idle object evitor每次扫描的最多的对象数
+        config.setNumTestsPerEvictionRun(10);
+        //表示一个对象至少停留在idle状态的最短时间，然后才能被idle object evitor扫描并驱逐；这一项只有在timeBetweenEvictionRunsMillis大于0时才有意义
+        config.setMinEvictableIdleTimeMillis(60000);
 		jedisPool = new JedisPool(config, host, port);
 	}
 
-	/**
-	 * 获取Jedis连接池
-	 * 
-	 * @param pKey
-	 * @return
-	 */
-	public static JedisPool getJedisPool() {
-		return jedisPool;
+    /**
+     * 获取Jedis连接客户端
+     * 
+     * @return
+     */
+	public static Jedis getJedisClient() {
+		Jedis jedis = null;
+		try {
+			jedis = jedisPool.getResource();
+		} catch (Exception e) {
+			logger.error("获取Redis客户端连接失败。");
+			e.printStackTrace();
+		}
+		if (jedis == null) {
+			logger.warn("没有获取到Redis客户端连接。");
+		}
+		return jedis;
 	}
 
 	/**
@@ -78,7 +95,7 @@ public class JedisUtil {
 		}
 		Jedis jedis = null;
 		try {
-			jedis = jedisPool.getResource();
+			jedis = getJedisClient();
 			jedis.set(key, value);
 			if (timeout > 0) {
 				jedis.expire(key, timeout);
@@ -106,7 +123,7 @@ public class JedisUtil {
 		}
 		Jedis jedis = null;
 		try {
-			jedis = jedisPool.getResource();
+			jedis = getJedisClient();
 			jedis.expire(key, timeout);
 		} catch (Exception e) {
 			jedisPool.returnBrokenResource(jedis);
@@ -133,7 +150,7 @@ public class JedisUtil {
 		}
 		Jedis jedis = null;
 		try {
-			jedis = jedisPool.getResource();
+			jedis = getJedisClient();
 			jedis.set(key.getBytes(), value);
 			if (timeout > 0) {
 				jedis.expire(key, timeout);
@@ -159,7 +176,7 @@ public class JedisUtil {
 		String value = null;
 		Jedis jedis = null;
 		try {
-			jedis = jedisPool.getResource();
+			jedis = getJedisClient();
 			value = jedis.get(key);
 		} catch (Exception e) {
 			jedisPool.returnBrokenResource(jedis);
@@ -183,7 +200,7 @@ public class JedisUtil {
 		byte[] value = null;
 		Jedis jedis = null;
 		try {
-			jedis = jedisPool.getResource();
+			jedis = getJedisClient();
 			value = jedis.get(key.getBytes());
 		} catch (Exception e) {
 			jedisPool.returnBrokenResource(jedis);
@@ -205,7 +222,7 @@ public class JedisUtil {
 		}
 		Jedis jedis = null;
 		try {
-			jedis = jedisPool.getResource();
+			jedis = getJedisClient();
 			jedis.del(key.getBytes());
 		} catch (Exception e) {
 			jedisPool.returnBrokenResource(jedis);
@@ -226,7 +243,7 @@ public class JedisUtil {
 		}
 		Jedis jedis = null;
 		try {
-			jedis = jedisPool.getResource();
+			jedis = getJedisClient();
 			jedis.del(key);
 		} catch (Exception e) {
 			jedisPool.returnBrokenResource(jedis);
@@ -244,7 +261,7 @@ public class JedisUtil {
 	public static void flushDB() {
 		Jedis jedis = null;
 		try {
-			jedis = jedisPool.getResource();
+			jedis = getJedisClient();
 			jedis.flushDB();
 			logger.info("Redsi缓存DB重置成功。");
 		} catch (Exception e) {

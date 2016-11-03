@@ -14,6 +14,7 @@ import com.google.common.collect.Maps;
 
 import aos.framework.core.redis.JedisUtil;
 import aos.framework.core.typewrap.Dtos;
+import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.dao.Aos_dicDao;
@@ -21,7 +22,6 @@ import aos.framework.dao.Aos_dicPO;
 import aos.framework.dao.Aos_paramsDao;
 import aos.framework.dao.Aos_paramsPO;
 import aos.system.common.service.AOSBaseService;
-import aos.system.common.utils.SystemCons;
 import redis.clients.jedis.Jedis;
 
 /**
@@ -49,8 +49,8 @@ public class CacheMasterDataService extends AOSBaseService{
 			cacheMap.put(aos_paramsPO.getKey_(), aos_paramsPO.getValue_());
 		}
 		if (AOSUtils.isNotEmpty(cacheMap)) {
-			Jedis jedis = JedisUtil.getJedisPool().getResource();
-			jedis.hmset(SystemCons.KEYS.PARAM_KEY, cacheMap);
+			Jedis jedis = JedisUtil.getJedisClient();
+			jedis.hmset(AOSCons.KEYS.PARAM_KEY, cacheMap);
 			JedisUtil.close(jedis);
 		}
 	}
@@ -61,8 +61,8 @@ public class CacheMasterDataService extends AOSBaseService{
 	 * @param value 参数值
 	 */
 	public void cacheParamOption(String fieldKey, String value) {
-		Jedis jedis = JedisUtil.getJedisPool().getResource();
-		jedis.hset(SystemCons.KEYS.PARAM_KEY, fieldKey, value);
+		Jedis jedis = JedisUtil.getJedisClient();
+		jedis.hset(AOSCons.KEYS.PARAM_KEY, fieldKey, value);
 		JedisUtil.close(jedis);
 	}
 	
@@ -71,8 +71,8 @@ public class CacheMasterDataService extends AOSBaseService{
 	 * @param fieldKey 参数KEY
 	 */
 	public void delParamOption(String fieldKey) {
-		Jedis jedis = JedisUtil.getJedisPool().getResource();
-		jedis.hdel(SystemCons.KEYS.PARAM_KEY, fieldKey);
+		Jedis jedis = JedisUtil.getJedisClient();
+		jedis.hdel(AOSCons.KEYS.PARAM_KEY, fieldKey);
 		JedisUtil.close(jedis);
 	}
 
@@ -88,8 +88,8 @@ public class CacheMasterDataService extends AOSBaseService{
 			log.error("获取参数失败：全局参数配置Key不能为空。");
 			return value;
 		}
-		Jedis jedis = JedisUtil.getJedisPool().getResource();
-		value = jedis.hget(SystemCons.KEYS.PARAM_KEY, key);
+		Jedis jedis = JedisUtil.getJedisClient();
+		value = jedis.hget(AOSCons.KEYS.PARAM_KEY, key);
 		JedisUtil.close(jedis);
 		return value;
 	}
@@ -98,11 +98,11 @@ public class CacheMasterDataService extends AOSBaseService{
 	 * 将字典表刷到缓存
 	 */
 	public void cacheDicData() {
-		List<Aos_dicPO> aos_dicPOs = aos_dicDao.list(Dtos.newDto("is_enable_", SystemCons.IS.YES));
-		Jedis jedis = JedisUtil.getJedisPool().getResource();
+		List<Aos_dicPO> aos_dicPOs = aos_dicDao.list(Dtos.newDto("is_enable_", AOSCons.IS.YES));
+		Jedis jedis = JedisUtil.getJedisClient();
 		// 将字典对照项目载入缓存
 		for (Aos_dicPO aos_dicPO : aos_dicPOs) {
-			jedis.hset(SystemCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_(), AOSJson.toJson(aos_dicPO));
+			jedis.hset(AOSCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_(), AOSJson.toJson(aos_dicPO));
 		}
 		JedisUtil.close(jedis);
 	}
@@ -111,8 +111,8 @@ public class CacheMasterDataService extends AOSBaseService{
 	 * 将单个字典刷到缓存
 	 */
 	public void cacheDic(Aos_dicPO aos_dicPO) {
-		Jedis jedis = JedisUtil.getJedisPool().getResource();
-		jedis.hset(SystemCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_(), AOSJson.toJson(aos_dicPO));
+		Jedis jedis = JedisUtil.getJedisClient();
+		jedis.hset(AOSCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_(), AOSJson.toJson(aos_dicPO));
 		JedisUtil.close(jedis);
 	}
 	
@@ -120,8 +120,8 @@ public class CacheMasterDataService extends AOSBaseService{
 	 * 将单个字典从缓存中删除
 	 */
 	public void delDic(Aos_dicPO aos_dicPO) {
-		Jedis jedis = JedisUtil.getJedisPool().getResource();
-		jedis.hdel(SystemCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_());
+		Jedis jedis = JedisUtil.getJedisClient();
+		jedis.hdel(AOSCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_());
 		JedisUtil.close(jedis);
 	}
 
@@ -137,8 +137,8 @@ public class CacheMasterDataService extends AOSBaseService{
 			log.error("获取字典对照失败：字典Key不能为空。");
 			return aos_dicPOs;
 		}
-		Jedis jedis = JedisUtil.getJedisPool().getResource();
-		List<String> dicList = jedis.hvals(SystemCons.KEYS.DIC_KEY + key);
+		Jedis jedis = JedisUtil.getJedisClient();
+		List<String> dicList = jedis.hvals(AOSCons.KEYS.DIC_KEY + key);
 		JedisUtil.close(jedis);
 		if (AOSUtils.isEmpty(dicList)) {
 			log.error(AOSUtils.merge("没有获取到Key为[{0}]的数据字典。", key));
@@ -167,8 +167,8 @@ public class CacheMasterDataService extends AOSBaseService{
 			log.error("获取字典对照失败：字典code不能为空。");
 			return desc;
 		}
-		Jedis jedis = JedisUtil.getJedisPool().getResource();
-		String dicJson = jedis.hget(SystemCons.KEYS.DIC_KEY + key, code);
+		Jedis jedis = JedisUtil.getJedisClient();
+		String dicJson = jedis.hget(AOSCons.KEYS.DIC_KEY + key, code);
 		JedisUtil.close(jedis);
 		if (AOSUtils.isNotEmpty(dicJson)) {
 		    Aos_dicPO aos_dicPO = (Aos_dicPO)AOSJson.fromJson(dicJson, Aos_dicPO.class);

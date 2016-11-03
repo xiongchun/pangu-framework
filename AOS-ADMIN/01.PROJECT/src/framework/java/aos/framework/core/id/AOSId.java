@@ -7,8 +7,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import aos.framework.core.asset.AOSBeanLoader;
 import aos.framework.core.redis.JedisUtil;
+import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSUtils;
-import aos.system.common.utils.SystemCons;
 
 /**
  * <b>ID工具类</b>
@@ -46,7 +46,7 @@ public class AOSId {
 	 * @return
 	 */
 	public static String appId(String idType, String prefix){
-		String key = SystemCons.KEYS.ID + idType;
+		String key = AOSCons.KEYS.ID + idType;
 		String seq = prefix == null ? "" : prefix + AOSUtils.getDateStr("yyMMddHHmmss");
 		String temp = JedisUtil.getString(key);
 		if (AOSUtils.isEmpty(temp)) {

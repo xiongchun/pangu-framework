@@ -125,7 +125,7 @@ public class CacheUserDataService {
 		userModel.setClient_key_(httpServletRequest.getHeader("USER-AGENT"));
 		cacheUserModel(userModel);
 		//维护在线用户列表
-		Jedis jedis = JedisUtil.getJedisPool().getResource();
+		Jedis jedis = JedisUtil.getJedisClient();
 		jedis.lpush(SystemCons.KEYS.USER_LIST_KEY, userModel.getJuid());
 		JedisUtil.close(jedis);
 		return juid;
@@ -140,7 +140,7 @@ public class CacheUserDataService {
 		//重置缓存用户信息
 		resetUserModel(juid);
 		//维护在线用户列表
-		Jedis jedis = JedisUtil.getJedisPool().getResource();
+		Jedis jedis = JedisUtil.getJedisClient();
 		jedis.lrem(SystemCons.KEYS.USER_LIST_KEY, 0, juid);
 		JedisUtil.close(jedis);
 	}
@@ -173,7 +173,7 @@ public class CacheUserDataService {
 		}
 		int start = inDto.getPageStart();
 		int limit = inDto.getPageLimit();
-		Jedis jedis = JedisUtil.getJedisPool().getResource();
+		Jedis jedis = JedisUtil.getJedisClient();
 		List<String> juidList = jedis.lrange(SystemCons.KEYS.USER_LIST_KEY,start, start + limit);
 		for (String juid : juidList) {
 			UserModel userModel = getUserModel(juid);
