@@ -186,8 +186,13 @@ var ${id}_treegrid_columns = [
 ];
 #end
 
-##TreePanel实例化
-var ${id} = Ext.create('Ext.tree.Panel',{
+## TreePanel实例化
+## #if($treefilter == "true")
+## var ${id} = Ext.create('AOS.ux.TreeFilterPanel',{
+## #else
+## var ${id} = Ext.create('Ext.tree.Panel',{
+## #end
+var ${id} = Ext.create('AOS.ux.TreeFilterPanel',{
 #parse("${vmpath}ext/common/panelTagSupport.vm")
 #if($treegrid == "true")
 	columns:${id}_treegrid_columns,

@@ -14,8 +14,6 @@ import aos.system.dao.Aos_cmpDao;
 @Service
 public class DemoService {
 	
-	
-	
 	@Autowired
 	Aos_cmpDao aos_cmpDao;
 	

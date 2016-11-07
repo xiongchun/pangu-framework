@@ -42,7 +42,7 @@
 			<name>lib</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
-			<description>打包引入WebUI库所需资源。缺省值：""；引入多个lib可用逗号分割。可选值：ext | bootstrap | jquery| jqueryui | buttons | raphael。
+			<description>打包引入WebUI库所需资源。缺省值：""；引入多个lib可用逗号分割。可选值：ext | bootstrap | jquery| jqueryui | buttons | filter | raphael。
 			</description>
 		</attribute>
 		<attribute>

@@ -15,6 +15,10 @@
 <script type="text/javascript" src="$cxt/static/weblib/ext/locale/ext-lang-zh_CN.js"></script>
 <script type="text/javascript" src="$cxt/static/js/aos.js"></script>
 #end
+#if($filter)
+<script type="text/javascript" src="$cxt/static/weblib/pinyin/pinyin.dict.firstletter.js"></script>
+<script type="text/javascript" src="$cxt/static/weblib/pinyin/pinyin.util.js"></script>
+#end
 #if($jquery)
 <script type="text/javascript" src="$cxt/static/weblib/jquery/jquery.min-1.10.2.js"></script>
 #end

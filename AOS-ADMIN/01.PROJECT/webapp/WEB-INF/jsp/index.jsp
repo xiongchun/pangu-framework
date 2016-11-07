@@ -3,7 +3,7 @@
 <aos:html>
 <aos:head title="${app_title_}">
 	<aos:base href="http" />
-	<aos:include lib="ext,buttons" />
+	<aos:include lib="ext,buttons,filter" />
 	<aos:include css="${cxt}/static/css/modules/index.css" />
 	<style type="text/css">
 .north_el {
@@ -127,8 +127,8 @@
 			maxWidth="300" border="true" minWidth="220" width="240" collapsible="true" collapseMode="mini" header="false">
 			<aos:tab id="_sys_nav" title="系统导航" layout="accordion" animate="false">
 				<aos:docked forceBoder="0 0 1 0">
-					<aos:triggerfield emptyText="查找功能菜单..." trigger1Cls="x-form-search-trigger" onenterkey="fn_find_modules"
-						onTrigger1Click="fn_find_modules" width="185" />
+					<aos:triggerfield id="id_filter" emptyText="过滤功能菜单..." trigger1Cls="x-form-search-trigger"
+						onchang="fn_find_modules" onTrigger1Click="fn_find_modules" width="185" />
 					<aos:dockeditem xtype="tbfill" />
 					<aos:dockeditem text="" tooltip="更多选型" icon="icon141.png">
 						<aos:menu>
@@ -141,7 +141,7 @@
 					</aos:dockeditem>
 				</aos:docked>
 				<c:forEach var="card" items="${cardDtos}">
-					<aos:treepanel id="_id_card_${card.id_}" onitemclick="fn_node_click" onexpand="_fn_card_onexpand"
+					<aos:treepanel id="_id_card_${card.id_}" onitemclick="fn_node_click" onexpand="_fn_card_onexpand" oncollapse="fn_find_modules"
 						icon="${card.icon_name_}" title="${card.name_}" rootVisible="false" rootId="${card.cascade_id_}"
 						url="homeService.getCardTree" nodeParam="cascade_id_">
 					</aos:treepanel>
@@ -185,7 +185,8 @@
 		</aos:docked>
 	</aos:window>
 
-	<aos:window id="_w_mypwd" title="修改密码" iconVec="fa-key" iconVecSize="15" resizable="false" onshow="#AOS.reset(_f_mypwd);">
+	<aos:window id="_w_mypwd" title="修改密码" iconVec="fa-key" iconVecSize="15" resizable="false"
+		onshow="#AOS.reset(_f_mypwd);">
 		<aos:formpanel id="_f_mypwd" width="400" labelWidth="75">
 			<aos:textfield name="password_" fieldLabel="原密码" inputType="password" allowBlank="false" maxLength="20"
 				columnWidth="0.99" />
@@ -202,8 +203,11 @@
 	</aos:window>
 
 	<script type="text/javascript">
+	    //快速过滤
 		function fn_find_modules(){
-			AOS.tip('预留功能接口，暂未实现……');
+			<c:forEach var="card" items="${cardDtos}">
+			    	Ext.getCmp('_id_card_${card.id_}').filterByText(id_filter.getValue());
+			</c:forEach>
 		}
 		
 		//获取我的个人设置信息

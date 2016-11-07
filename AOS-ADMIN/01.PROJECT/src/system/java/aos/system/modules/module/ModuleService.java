@@ -106,6 +106,8 @@ public class ModuleService extends AOSBaseService {
 		aos_modulePO.setCascade_id_(cascade_id_);
 		
 		aos_modulePO.setIs_leaf_(SystemCons.IS.YES);
+		//对关键字段入库前的trim处理
+		aos_modulePO.setUrl_(StringUtils.trim(aos_modulePO.getUrl_()));
 		aos_moduleDao.insert(aos_modulePO);
 		
 		//更新父节点的是否叶子节点字段

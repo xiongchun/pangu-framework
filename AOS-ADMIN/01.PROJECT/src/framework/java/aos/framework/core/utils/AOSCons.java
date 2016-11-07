@@ -266,5 +266,10 @@ public class AOSCons {
 		//卡片导航树
 		public static final String CARD_TREE = GLOBAL + "card_tree_";
 	}
+	
+	/**
+	 * 通用SQL数据访问对象Bean名称
+	 */
+	public static  final String SQLDAO = "sqlDao";
 
 }

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import aos.framework.core.asset.AOSBeanLoader;
 import aos.framework.core.cache.CacheMasterDataService;
+import aos.framework.core.dao.SqlDao;
 import aos.framework.dao.Aos_dicPO;
 import aos.system.common.model.UserModel;
 import aos.system.modules.cache.CacheUserDataService;
@@ -36,6 +37,17 @@ public class AOSCxt {
 	public static Object getBean(String springBeaID) {
 		Object bean = AOSBeanLoader.getSpringBean(springBeaID);
 		return bean;
+	}
+	
+	/**
+	 * 从Spring容器上下文中获取SpringBean组件
+	 * 
+	 * @param springBeaID
+	 *            SpringBeaID
+	 * @return
+	 */
+	public static SqlDao getSqlDao() {
+		return  (SqlDao)AOSBeanLoader.getSpringBean(AOSCons.SQLDAO);
 	}
 	
 	/**
