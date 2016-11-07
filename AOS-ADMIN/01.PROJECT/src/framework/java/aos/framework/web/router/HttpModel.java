@@ -66,13 +66,16 @@ public class HttpModel implements Serializable{
 	public String toJson() {
 		String Json = StringUtils.EMPTY;
 		if (AOSUtils.isNotEmpty(getInDto())) {
-			Json = Json + " InDto: " + AOSJson.toJson(getInDto());
+			Json = Json + " 〓入参: " + AOSJson.toJson(getInDto());
 		}
 		if (AOSUtils.isNotEmpty(getUserModel())) {
-			Json = Json + " UserModel: " + AOSJson.toJson(getUserModel());
+			Dto userDto = Dtos.newDto();
+			userDto.put("account_", getUserModel().getAccount_());
+			userDto.put("name_", getUserModel().getName_());
+			Json = Json + " 〓当前用户: " + AOSJson.toJson(userDto);
 		}
 		if (AOSUtils.isNotEmpty(getOutMsg())) {
-			Json = Json + " OutMsg: " + outMsg;
+			Json = Json + " 〓出参: " + outMsg;
 		}
 		return Json;
 	}

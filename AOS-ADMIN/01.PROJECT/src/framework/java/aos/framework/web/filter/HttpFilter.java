@@ -11,16 +11,16 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import aos.framework.core.utils.AOSUtils;
+import aos.framework.core.asset.WebCxt;
+import aos.framework.core.utils.AOSCons;
 
 /**
  * <b>拦截器</b>
- * <p>拦截所有请求
+ * <p>
+ * 拦截所有请求
  * 
  * @author xiongchun
  */
@@ -34,7 +34,7 @@ public class HttpFilter implements Filter {
 	 */
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		
+
 	}
 
 	/**
@@ -45,7 +45,11 @@ public class HttpFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		//System.out.println("HttpFilter：第一过滤链" + httpRequest.getRequestURI());
+		/*
+		log.info(AOSCons.CONSOLE_FLAG3 + "ClientIP：{}，URI：{}，ROUTER：{}，JUID：{}", WebCxt.getClientIpAddr(httpRequest), httpRequest.getRequestURI(),
+				httpRequest.getParameter("router"), httpRequest.getParameter("juid"));
+		*/
+		//System.out.println(WebCxt.getClientIpAddr(httpRequest) + "，" + httpRequest.getRequestURI());
 		chain.doFilter(httpRequest, httpResponse);
 	}
 
