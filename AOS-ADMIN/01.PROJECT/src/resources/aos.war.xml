@@ -67,7 +67,7 @@
 	<!-- 编译 -->
 	<target name="3.COMPILE" depends="2.RESOURCE">
 		<echo message="编译开始..." />
-		<javac srcdir="${dist.src}" destdir="${dist.classes}" encoding="utf-8" includeantruntime="on" listfiles="false">
+		<javac srcdir="${dist.src}" destdir="${dist.classes}" encoding="utf-8" debug="true" debuglevel="lines,vars,source" includeantruntime="on" listfiles="false">
 			<!-- <compilerarg value="-Xlint:unchecked"/> -->
 			<classpath>
 				<fileset dir="${webapp}/WEB-INF/lib">
