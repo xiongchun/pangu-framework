@@ -276,7 +276,9 @@ public class JedisUtil {
 	 * 测试
 	 */
 	public static void main(String[] args) {
-		flushDB();
+		//flushDB();
+		JedisUtil.setString("a", "abc", 0);
+		System.out.println(JedisUtil.getString("a"));
 	}
 
 }

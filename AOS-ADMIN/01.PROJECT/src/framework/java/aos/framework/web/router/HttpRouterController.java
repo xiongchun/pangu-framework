@@ -45,7 +45,7 @@ public class HttpRouterController {
 		router = AOSUtils.isEmpty(router) ? httpModel.getInDto().getString("router") : router;
 		try {
 			if (AOSUtils.isEmpty(router) || StringUtils.lastIndexOf(router, ".") == StringUtils.INDEX_NOT_FOUND) {
-				throw new AOSException("请求路由规则参数缺失或路由规则不合法，请检查。");
+				throw new AOSException("请求路由规则参数缺失或路由规则不合法，请检查。" );
 			}
 			String[] routerArr = StringUtils.split(router, ".");
 			if (routerArr.length != 2) {

@@ -4,8 +4,4 @@
 .ux-notification-light {
   background-image: url('$cxt/static/image/notification/${skin}.png');
 }
-##树节点光标设置
-.x-tree-node-text{
-  cursor:$!treenode_cursor;
-}
 </style>

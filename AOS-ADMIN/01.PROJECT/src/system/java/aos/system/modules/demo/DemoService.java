@@ -1,9 +1,15 @@
 package aos.system.modules.demo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aos.system.dao.Aos_cmpDao;
+import aos.demo.dao.Demo_accountDao;
+import aos.demo.dao.Demo_accountPO;
+import aos.framework.core.typewrap.Dto;
+import aos.framework.core.utils.AOSJson;
+import aos.framework.web.router.HttpModel;
 
 /**
  * 范例
@@ -15,19 +21,38 @@ import aos.system.dao.Aos_cmpDao;
 public class DemoService {
 	
 	@Autowired
-	Aos_cmpDao aos_cmpDao;
+	private Demo_accountDao demo_accountDao;
 	
-	public static void demo1(String name){
-		System.out.println("Hi，" + name + "!");
-		
+	/**
+	 * 范例1
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initMisc1(HttpModel httpModel) {
+		httpModel.setViewPath("demo/misc/misc1.jsp");
 	}
 	
-	public void demo2(String name){
-		System.out.println("Hello，" + name + "!");
+	/**
+	 * 查询账户信息列表
+	 * @param httpModel
+	 */
+	public void listAccounts(HttpModel httpModel) {
+		Dto inDto = httpModel.getInDto();
+		List<Demo_accountPO> accountPOs = demo_accountDao.listPage(inDto);
+		httpModel.setOutMsg(AOSJson.toGridJson(accountPOs, inDto.getPageTotal()));
 	}
 	
-	public void demo3(String name){
-		System.out.println("Hey，" + name + "!");
+	/**
+	 * 查询账户信息
+	 * @param httpModel
+	 */
+	public void getOrgInfo(HttpModel httpModel) {
+		Dto inDto = httpModel.getInDto();
+		Demo_accountPO demo_accountPo = demo_accountDao.selectByKey(inDto.getString("id_"));
+		httpModel.setOutMsg(AOSJson.toJson(demo_accountPo));
 	}
+	
+	
 	
 }
