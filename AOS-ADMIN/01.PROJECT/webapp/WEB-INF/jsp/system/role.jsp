@@ -1,12 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
-<aos:html>
-<aos:head title="角色管理">
-	<aos:include lib="ext" />
-	<aos:base href="http" />
-</aos:head>
-<aos:body>
-</aos:body>
+
+<aos:html title="角色管理" base="http" lib="ext">
+	<aos:body>
+	</aos:body>
+</aos:html>
+
 <aos:onready>
 	<aos:viewport layout="fit">
 		<aos:gridpanel id="_g_role" url="roleService.listRole" onrender="_g_role_query" forceFit="true"
@@ -36,7 +35,7 @@
 			<aos:column header="创建人" dataIndex="create_by_" fixedWidth="150" />
 			<aos:column header="创建时间" dataIndex="create_time_" fixedWidth="150" />
 			<aos:column header="备注" dataIndex="remark_" celltip="true" />
-			<aos:column header="授权" rendererFn="_btn_grant_render" align="center" fixedWidth="50" />
+			<aos:column header="授权" rendererFn="_btn_grant_render" align="center" fixedWidth="60" />
 			<aos:column header="选择用户" rendererFn="_btn_user_render" align="center" fixedWidth="80" />
 		</aos:gridpanel>
 	</aos:viewport>
@@ -432,6 +431,7 @@
 
         </script>
 </aos:onready>
+
 <script type="text/javascript">
    function _btn_grant_onclick(){
 	   Ext.getCmp('_w_role_module').show();
@@ -440,4 +440,3 @@
 	   Ext.getCmp('_w_role_user').show();
    }
 </script>
-</aos:html>

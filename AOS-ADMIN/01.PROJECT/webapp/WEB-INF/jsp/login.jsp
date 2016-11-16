@@ -1,10 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
-<aos:html>
-<aos:head title="${app_title_}">
-	<aos:base href="http" />
-	<aos:include lib="ext" />
-	<style>
+<aos:html title="${app_title_}" base="http" lib="ext">
+<style type="text/css">
 .bodyclass {
 	background-image:
 		url('${cxt}/static/image/background/${login_back_img_}');
@@ -20,7 +17,6 @@
 		url('${cxt}/static/image/background/login/${north_back_img_}');
 }
 </style>
-</aos:head>
 <aos:body class2="bodyclass">
 	<div id="_north_el" class="x-hidden north_el">
 		<table>
@@ -30,13 +26,15 @@
 		</table>
 	</div>
 	<div id="_div_vercode" class="x-hidden " align="center">
-		<aos:vercode id="_vercode" uuid="${vercode_uuid_}" fontSize="28" characters="${vercode_characters_}" length="${vercode_length_}" />
+		<aos:vercode id="_vercode" uuid="${vercode_uuid_}" fontSize="28" characters="${vercode_characters_}"
+			length="${vercode_length_}" />
 	</div>
 </aos:body>
+</aos:html>
 
 <aos:onready>
-	<aos:window id="_w_login" title="欢迎使用${app_title_}" maximizable="false" autoShow="false" closable="false" modal="false" draggable="false"
-		onshow="_w_login_onshow" resizable="false" opacity="0" y="0" width="550" layout="anchor"
+	<aos:window id="_w_login" title="欢迎使用${app_title_}" maximizable="false" autoShow="false" closable="false" modal="false"
+		draggable="false" onshow="_w_login_onshow" resizable="false" opacity="0" y="0" width="550" layout="anchor"
 		header="true">
 		<aos:panel contentEl="_north_el" anchor="100%" />
 		<aos:tabpanel id="_id_tabs" activeTab="0" plain="false" tabBarHeight="30" height="250" anchor="100%">
@@ -69,8 +67,8 @@
 	</aos:window>
 	<script type="text/javascript">
 		_w_login.show();
-        //开发人员自动登录标志
-        var login_dev_ = '${login_dev_}';
+		//开发人员自动登录标志
+		var login_dev_ = '${login_dev_}';
 		//窗口显示监听事件
 		function _w_login_onshow() {
 			var cmp = AOS.get('_f_login.account_');
@@ -100,9 +98,9 @@
 			if (AOS.empty(obj.getValue())) {
 				obj.validate();
 			} else {
-				if('${vercode_show}' === '1'){
+				if ('${vercode_show}' === '1') {
 					AOS.get('_f_login.vercode').focus();
-				}else{
+				} else {
 					_fn_login();
 				}
 			}
@@ -149,65 +147,72 @@
 				return;
 			}
 			AOS.mask('${login_wait_msg_}');
-			AOS.ajax({
-				forms : _f_login,
-				url : 'homeService.login',
-				wait : false,
-				ok : function(data) {
-					if (data.appcode === '1') {
-						Ext.util.Cookies.set('juid', data.juid);
-						_fn_login_success();
-						window.location.href = 'do.jhtml?router=homeService.initIndex&juid=' + data.juid;
-					} else {
-						Ext.util.Cookies.clear('juid');
-						AOS.unmask();
-						AOS.info(data.appmsg, function() {
-							if (data.appcode === '000') {
-								//验证码错误
-								AOS.get('_f_login.vercode').focus();
-							} else if (data.appcode === '001') {
-								//帐号错误
-								AOS.get('_f_login.account_').focus();
-							} else if (data.appcode === '002') {
-								//密码错误
-								AOS.get('_f_login.password_').reset();
-								AOS.get('_f_login.password_').focus();
-								AOS.get('_f_login.password_').validate();
+			AOS
+					.ajax({
+						forms : _f_login,
+						url : 'homeService.login',
+						wait : false,
+						ok : function(data) {
+							if (data.appcode === '1') {
+								Ext.util.Cookies.set('juid', data.juid);
+								_fn_login_success();
+								window.location.href = 'do.jhtml?router=homeService.initIndex&juid='
+										+ data.juid;
+							} else {
+								Ext.util.Cookies.clear('juid');
+								AOS.unmask();
+								AOS.info(data.appmsg, function() {
+									if (data.appcode === '000') {
+										//验证码错误
+										AOS.get('_f_login.vercode').focus();
+									} else if (data.appcode === '001') {
+										//帐号错误
+										AOS.get('_f_login.account_').focus();
+									} else if (data.appcode === '002') {
+										//密码错误
+										AOS.get('_f_login.password_').reset();
+										AOS.get('_f_login.password_').focus();
+										AOS.get('_f_login.password_')
+												.validate();
+									}
+								});
 							}
-						});
-					}
-				}
-			});
+						}
+					});
 		}
-		
+
 		//开发者快捷登录提交
 		function _fn_login_dev() {
 			AOS.mask('${login_wait_msg_}');
-			AOS.ajax({
-				params:{account_:'${login_dev_account_}'},
-				url : 'homeService.loginDev',
-				wait : false,
-				ok : function(data) {
-					if (data.appcode == '1') {
-						Ext.util.Cookies.set('juid', data.juid);
-						_fn_login_success();
-						window.location.href = 'do.jhtml?router=homeService.initIndex&juid=' + data.juid;
-					}else{
-						AOS.err('开发用户快捷登录发生错误。');
-					}
-				}
-			});
+			AOS
+					.ajax({
+						params : {
+							account_ : '${login_dev_account_}'
+						},
+						url : 'homeService.loginDev',
+						wait : false,
+						ok : function(data) {
+							if (data.appcode == '1') {
+								Ext.util.Cookies.set('juid', data.juid);
+								_fn_login_success();
+								window.location.href = 'do.jhtml?router=homeService.initIndex&juid='
+										+ data.juid;
+							} else {
+								AOS.err('开发用户快捷登录发生错误。');
+							}
+						}
+					});
 		}
-		
+
 		//开发者快捷登录
-		AOS.job(function(){
-			if(login_dev_ == '1'){
+		AOS.job(function() {
+			if (login_dev_ == '1') {
 				_fn_login_dev();
 			}
-		},1500);
-		
+		}, 1500);
+
 		//登录成功动画
-		function _fn_login_success(){
+		function _fn_login_success() {
 			Ext.create('Ext.fx.Animator', {
 				target : _w_login,
 				duration : 350,
@@ -232,4 +237,3 @@
 		}
 	</script>
 </aos:onready>
-</aos:html>

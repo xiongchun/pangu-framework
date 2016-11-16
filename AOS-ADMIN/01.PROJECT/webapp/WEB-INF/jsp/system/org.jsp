@@ -1,12 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
-<aos:html>
-<aos:head title="部门管理">
-	<aos:include lib="ext" />
-	<aos:base href="http" />
-</aos:head>
-<aos:body>
-</aos:body>
+
+<aos:html title="部门管理" base="http" lib="ext">
+	<aos:body>
+	</aos:body>
+</aos:html>
+
 <aos:onready>
 	<aos:viewport layout="border">
 		<aos:treepanel id="_t_org" region="west" bodyBorder="0 1 0 0" width="250" singleClick="false" onitemclick="_g_org_query"
@@ -230,4 +229,3 @@
 	   
 		</script>
 </aos:onready>
-</aos:html>

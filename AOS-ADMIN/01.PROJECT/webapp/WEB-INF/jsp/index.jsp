@@ -1,11 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
-<aos:html>
-<aos:head title="${app_title_}">
-	<aos:base href="http" />
-	<aos:include lib="ext,buttons,filter" />
-	<aos:include css="${cxt}/static/css/modules/index.css" />
-	<style type="text/css">
+
+<aos:html title="${app_title_}" base="http" lib="ext,buttons,filter">
+<link rel="stylesheet" type="text/css" href="${cxt}/static/css/modules/index.css" />
+<style type="text/css">
 .north_el {
 	height: 60px;
 	background-image:
@@ -13,14 +11,11 @@
 }
 
 .main_text {
-	color: ${main_text_color_
+	color: ${main_text_color_}
 }
 
-}
 .nav_text {
-	color: ${nav_text_color_
-}
-
+	color: ${nav_text_color_}
 }
 #loading-mask {
 	z-index: 20000;
@@ -31,12 +26,9 @@
 	height: 100%;
 	opacity: 0.5;
 	filter: alpha(opacity = 50);
-	background-color: ${south_back_color_
-}
-;
+	background-color: ${south_back_color_};
 }
 </style>
-</aos:head>
 <aos:body>
 	<%-- 显示loading --%>
 	<div id="loading-mask"></div>
@@ -112,6 +104,7 @@
 		</div>
 	</div>
 </aos:body>
+</aos:html>
 
 <aos:onready ux="iframe">
 	<aos:viewport layout="border" id="_test">
@@ -141,9 +134,9 @@
 					</aos:dockeditem>
 				</aos:docked>
 				<c:forEach var="card" items="${cardDtos}">
-					<aos:treepanel id="_id_card_${card.id_}" onitemclick="fn_node_click" onexpand="_fn_card_onexpand" oncollapse="fn_find_modules"
-						icon="${card.icon_name_}" title="${card.name_}" rootVisible="false" rootId="${card.cascade_id_}"
-						url="homeService.getCardTree" nodeParam="cascade_id_">
+					<aos:treepanel id="_id_card_${card.id_}" onitemclick="fn_node_click" onexpand="_fn_card_onexpand"
+						oncollapse="fn_find_modules" icon="${card.icon_name_}" title="${card.name_}" rootVisible="false"
+						rootId="${card.cascade_id_}" url="homeService.getCardTree" nodeParam="cascade_id_">
 					</aos:treepanel>
 				</c:forEach>
 			</aos:tab>
@@ -297,6 +290,7 @@
 		_west.setActiveTab(0);
 	</script>
 </aos:onready>
+
 <script type="text/javascript">
 	//打开菜单功能页面
 	function fnaddtab(url, menuname, module_id_, root_id_) {
@@ -483,4 +477,3 @@
     };	
    </c:if>
 </script>
-</aos:html>

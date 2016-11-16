@@ -1,10 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
-<aos:html>
-<aos:head title="图标">
-	<aos:base href="http" />
-	<aos:include lib="ext" />
-	<style type="text/css">
+<aos:html title="图标" base="http" lib="ext">
+<style type="text/css">
 		#_icons div.icon {
 			float: left;
 			padding: 5px 5px;
@@ -31,10 +28,11 @@
 		#_icons .x-item-selected {
 			border: 1px solid #EEEEEE !important;
 		}
-    </style>
-</aos:head>
+</style>
 <aos:body>
 </aos:body>
+</aos:html>
+
 <aos:onready>
 	<aos:viewport layout="fit">
 		<aos:panel border="false" autoScroll="true">
@@ -123,4 +121,3 @@
 		
 	</script>
 </aos:onready>
-</aos:html>

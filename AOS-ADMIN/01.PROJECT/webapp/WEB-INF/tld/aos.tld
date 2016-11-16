@@ -20,43 +20,27 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>是否生成Html5文档声明代码。缺省值:true。</description>
 		</attribute>
-	</tag>
-	<tag>
-		<name>head</name>
-		<tag-class>aos.framework.taglib.impl.app.HeadTag</tag-class>
-		<body-content>JSP</body-content>
-		<description>Head标签</description>
 		<attribute>
 			<name>title</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>title标记的属性值。缺省值：""。</description>
 		</attribute>
-	</tag>
-	<tag>
-		<name>include</name>
-		<tag-class>aos.framework.taglib.impl.app.IncludeTag</tag-class>
-		<body-content>empty</body-content>
-		<description>import标签：资源导入</description>
+		<attribute>
+			<name>base</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    本页面请求的相对参考地址。一般设置为某个Controller的映射地址，比如：href="/example/tagdemo/"。则本页中所有的请求地址都将自动将此地址作为前缀。
+			</description>
+		</attribute>
 		<attribute>
 			<name>lib</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>打包引入WebUI库所需资源。缺省值：""；引入多个lib可用逗号分割。可选值：ext | bootstrap | jquery| jqueryui | buttons | filter | raphael。
 			</description>
-		</attribute>
-		<attribute>
-			<name>js</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<description>引入JS资源。缺省值：""；只能导入单个资源。可选值：JS资源文件路径。</description>
-		</attribute>
-		<attribute>
-			<name>css</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<description>引入CSS资源。缺省值：""；只能导入单个资源可选值：CSS资源文件路径。</description>
-		</attribute>
+		</attribute>		
 	</tag>
 	<tag>
 		<name>body</name>
@@ -80,20 +64,6 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>根据皮肤自动选择合适的背景平铺页面。可选值：true | false。缺省值：false。</description>
-		</attribute>
-	</tag>
-	<tag>
-		<name>base</name>
-		<tag-class>aos.framework.taglib.impl.app.HtmlBaseTag</tag-class>
-		<body-content>empty</body-content>
-		<description>Base标签</description>
-		<attribute>
-			<name>href</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<description>
-			    本页面请求的相对参考地址。一般设置为某个Controller的映射地址，比如：href="/example/tagdemo/"。则本页中所有的请求地址都将自动将此地址作为前缀。
-			</description>
 		</attribute>
 	</tag>
 	<tag>

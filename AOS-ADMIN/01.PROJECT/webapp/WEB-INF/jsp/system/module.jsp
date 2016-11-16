@@ -1,12 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
-<aos:html>
-<aos:head title="资源管理">
-	<aos:include lib="ext" />
-	<aos:base href="http" />
-</aos:head>
-<aos:body>
-</aos:body>
+
+<aos:html title="资源管理" base="http" lib="ext">
+	<aos:body>
+	</aos:body>
+</aos:html>
+
 <aos:onready>
 	<aos:viewport layout="border">
 		<aos:treepanel id="_t_module" region="west" bodyBorder="0 1 0 0" width="250" rootText="${rootPO.name_}"
@@ -224,4 +223,3 @@
 
 	</script>
 </aos:onready>
-</aos:html>

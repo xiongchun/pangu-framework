@@ -1,12 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
-<aos:html>
-<aos:head title="用户管理">
-	<aos:include lib="ext" />
-	<aos:base href="http" />
-</aos:head>
-<aos:body>
-</aos:body>
+
+<aos:html title="用户管理" base="http" lib="ext">
+	<aos:body>
+	</aos:body>
+</aos:html>
+
 <aos:onready>
 	<aos:viewport layout="border">
 		<aos:treepanel id="_t_org" region="west" bodyBorder="0 1 0 0" width="250" singleClick="false"
@@ -479,11 +478,10 @@
         }
 	</script>
 </aos:onready>
-	<script type="text/javascript">
-	
+
+<script type="text/javascript">
 	//选择角色按钮
 	function _btn_role_onclick(){
 		Ext.getCmp('_w_user_role').show();
 	}
-	</script>
-</aos:html>
+</script>

@@ -1,12 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
-<aos:html>
-<aos:head title="参数表">
-	<aos:include lib="ext" />
-	<aos:base href="http" />
-</aos:head>
-<aos:body>
-</aos:body>
+
+<aos:html title="参数表" base="http" lib="ext">
+	<aos:body>
+	</aos:body>
+</aos:html>
+
 <aos:onready>
 	<aos:viewport layout="fit">
 		<aos:gridpanel id="_g_param" url="masterDataService.listParam" onrender="_g_param_query"  forceFit="true"
@@ -153,4 +152,3 @@
 
         </script>
 </aos:onready>
-</aos:html>

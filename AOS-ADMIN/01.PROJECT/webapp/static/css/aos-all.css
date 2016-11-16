@@ -260,3 +260,8 @@ body {
 div.x-form-spinner-up, div.x-form-spinner-down{
 	height:12.5px;
 }
+
+/* 树节点光标设置 */
+.x-tree-node-text{
+  cursor:pointer !important;
+}

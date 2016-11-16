@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
-<aos:html>
-<aos:head title="数据字典">
-	<aos:include lib="ext" />
-	<aos:base href="http" />
-</aos:head>
-<aos:body />
+
+<aos:html title="数据字典" base="http" lib="ext">
+	<aos:body >
+	</aos:body>
+</aos:html>
+
 <aos:onready>
 	<aos:viewport layout="fit">
 		<aos:gridpanel id="_g_dic" url="masterDataService.listDic" onrender="_g_dic_query" onitemdblclick="_g_dic_dbclick"
@@ -188,4 +188,3 @@
 
         </script>
 </aos:onready>
-</aos:html>

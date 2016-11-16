@@ -1,12 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
-<aos:html>
-<aos:head title="在线用户">
-	<aos:include lib="ext" />
-	<aos:base href="http" />
-</aos:head>
-<aos:body>
-</aos:body>
+
+<aos:html title="在线用户" base="http" lib="ext">
+	<aos:body>
+	</aos:body>
+</aos:html>
+
 <aos:onready>
 	<aos:viewport layout="fit">
 		<aos:gridpanel id="_g_user" url="onlineUserService.listUsers" onrender="_g_user_query">
@@ -32,7 +31,6 @@
 	</aos:viewport>
 
 	<script type="text/javascript">
-	
 		//定时自动刷新
 		AOS.task(function() {
 			if(id_toggle_.getValue()){
@@ -60,6 +58,7 @@
 		
 	</script>
 </aos:onready>
+
 <script type="text/javascript">
     //强制下线
     function killUser(){
@@ -84,4 +83,3 @@
         });
     }
 </script>
-</aos:html>
