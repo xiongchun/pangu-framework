@@ -47,7 +47,7 @@
         
         <%-- 通过这个弹窗表单演示再查询一次DB加载数据的方法 --%>
 		<aos:window id="_w_account" title="账户预览1[演示实时查询]" onshow="_w_account_onshow">
-			<aos:formpanel id="_f_org" width="400" layout="anchor" labelWidth="70" >
+			<aos:formpanel id="_f_account" width="400" layout="anchor" labelWidth="70" >
 				<aos:textfield name="name_" fieldLabel="持卡人" readOnly="true" />
 				<aos:textfield name="card_id_" fieldLabel="信用卡号" readOnly="true" />
 				<aos:textfield name="id_no_" fieldLabel="身份证号" readOnly="true" />
@@ -64,7 +64,7 @@
 		
 		<%-- 通过这个弹窗表单演示直接 --%>
 		<aos:window id="_w_account2" title="账户预览2[演示客户端取值]" onshow="_w_account2_onshow">
-			<aos:formpanel id="_f_org2" width="400" layout="anchor" labelWidth="70" >
+			<aos:formpanel id="_f_account2" width="400" layout="anchor" labelWidth="70" >
 				<aos:textfield name="name_" fieldLabel="持卡人" readOnly="true" />
 				<aos:textfield name="card_id_" fieldLabel="信用卡号" readOnly="true" />
 				<aos:textfield name="id_no_" fieldLabel="身份证号" readOnly="true" />
@@ -96,9 +96,9 @@
             	params : {
             		id_: record.data.id_
             	},
-                url: 'demoService.getOrgInfo',
+                url: 'demoService.getAccountInfo',
                 ok: function (data) {
-                	_f_org.form.setValues(data);
+                	_f_account.form.setValues(data);
                 }
             });
 		}
@@ -106,7 +106,7 @@
 		//窗口弹出事件监听
 		function _w_account2_onshow() {
 			var record = AOS.selectone(_g_account, true);
-			_f_org2.loadRecord(record);
+			_f_account2.loadRecord(record);
 		}
 		
 		//按钮列转换
