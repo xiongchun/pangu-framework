@@ -31,8 +31,9 @@
 				<aos:dockeditem xtype="tbseparator" />
 				<aos:dockeditem text="新增" icon="add.png" onclick="#_w_account.show();AOS.reset(_f_account);" />
 				<aos:dockeditem text="修改" icon="edit.png" onclick="#_w_account2.show();" />
-				<aos:dockeditem text="批量删除" icon="del.png" onclick="#_w_account2.show();" />
+				<aos:dockeditem text="批量删除" icon="del.png" onclick="_g_acount_del" />
 			</aos:docked>
+			<aos:selmodel type="checkbox" mode="multi" />
 			<aos:column type="rowno" />
 			<aos:column header="流水号" dataIndex="id_" hidden="true" />
 			<aos:column header="信用卡号" dataIndex="card_id_" width="90" />
@@ -136,6 +137,33 @@
 					}
 			});
 		}
+		
+        //删除账户信息
+	 	function _g_acount_del(){
+				var selection = AOS.selection(_g_account, 'id_');
+				if(AOS.empty(selection)){
+					AOS.tip('删除前请先选中数据。');
+					return;
+				}
+				var rows = AOS.rows(_g_account);
+				var msg =  AOS.merge('确认要删除选中的{0}个账户吗？', rows);
+				AOS.confirm(msg, function(btn){
+					if(btn === 'cancel'){
+						AOS.tip('删除操作被取消。');
+						return;
+					}
+					AOS.ajax({
+						url : 'demoService.delAccountInfos',
+						params:{
+							aos_rows_: selection
+						},
+						ok : function(data) {
+							AOS.tip(data.appmsg);
+							_g_account_store.reload();
+						}
+					});
+				});
+			}
 		
 		//按钮列转换
 		function fn_button_render(value, metaData, record) {
