@@ -564,22 +564,14 @@ public class AOSUtils {
 	 * 将字符串型日期转换为日期型
 	 * 
 	 * @param strDate
-	 *            字符串型日期
-	 * @param srcDateFormat
-	 *            源日期格式
-	 * @param dstDateFormat
-	 *            目标日期格式
-	 * @return Date 返回的util.Date型日期
+	 * @return
 	 */
-	public static Date stringToDate(String strDate, String srcDateFormat, String dstDateFormat) {
-		Date rtDate = null;
-		Date tmpDate = (new SimpleDateFormat(srcDateFormat)).parse(strDate, new ParsePosition(0));
-		String tmpString = null;
-		if (tmpDate != null)
-			tmpString = (new SimpleDateFormat(dstDateFormat)).format(tmpDate);
-		if (tmpString != null)
-			rtDate = (new SimpleDateFormat(dstDateFormat)).parse(tmpString, new ParsePosition(0));
-		return rtDate;
+	public static Date stringToDate(String strDate) {
+		Date tmpDate = (new SimpleDateFormat(AOSCons.DATATIME)).parse(strDate, new ParsePosition(0));
+		if (tmpDate == null) {
+			tmpDate = (new SimpleDateFormat(AOSCons.DATA)).parse(strDate, new ParsePosition(0));
+		}
+		return tmpDate;
 	}
 
 	/**

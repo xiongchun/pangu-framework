@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import aos.demo.dao.Demo_accountDao;
 import aos.demo.dao.Demo_accountPO;
@@ -11,19 +12,25 @@ import aos.framework.core.id.AOSId;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
+import aos.framework.dao.Aos_paramsPO;
 import aos.framework.web.router.HttpModel;
+import aos.system.common.service.AOSBaseService;
+import aos.system.dao.Aos_orgDao;
+import aos.system.dao.Aos_orgPO;
 
 /**
- * 范例
+ * 范例：综合实例
  * 
  * @author xiongchun
  *
  */
 @Service
-public class DemoService {
+public class DemoService extends AOSBaseService{
 	
 	@Autowired
 	private Demo_accountDao demo_accountDao;
+	@Autowired
+	private Aos_orgDao aos_orgDao;
 	
 	/**
 	 * 范例1(简单查询)
@@ -43,6 +50,36 @@ public class DemoService {
 	 */
 	public void initMisc2(HttpModel httpModel) {
 		httpModel.setViewPath("demo/misc/misc2.jsp");
+	}
+	
+	/**
+	 * 范例3(常用布局一)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initMisc3(HttpModel httpModel) {
+		httpModel.setViewPath("demo/misc/misc3.jsp");
+	}
+	
+	/**
+	 * 范例4(常用布局二)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initMisc4(HttpModel httpModel) {
+		httpModel.setViewPath("demo/misc/misc4.jsp");
+	}
+	
+	/**
+	 * 范例5(常用布局三)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initMisc5(HttpModel httpModel) {
+		httpModel.setViewPath("demo/misc/misc5.jsp");
 	}
 	
 	/**
@@ -107,15 +144,37 @@ public class DemoService {
 	}
 	
 	/**
-	 * 批量删除账户信息
+	 * 批量删除
 	 * @param httpModel
 	 */
+	@Transactional
 	public void delAccountInfos(HttpModel httpModel) {
-		Dto inDto = httpModel.getInDto();
-		demo_accountDao.deleteByKey(inDto.getString("id_"));
-		httpModel.setOutMsg("账户信息删除成功");
+		String[] selectionIds = httpModel.getInDto().getRows();
+		for (String id_ : selectionIds) {
+			demo_accountDao.deleteByKey(id_);
+		}
+		httpModel.setOutMsg("批量删除账户数据成功。");
 	}
 	
+	/**
+	 * 查询账户信息列表
+	 * @param httpModel
+	 */
+	public void listOrgs(HttpModel httpModel) {
+		Dto inDto = httpModel.getInDto();
+		List<Aos_orgPO> orgPOs = aos_orgDao.listPage(inDto);
+		httpModel.setOutMsg(AOSJson.toGridJson(orgPOs, inDto.getPageTotal()));
+	}
+	
+	/**
+	 * 查询参数信息列表
+	 * @param httpModel
+	 */
+	public void listParams(HttpModel httpModel) {
+		Dto inDto = httpModel.getInDto();
+		List<Aos_paramsPO> paramPOs = sqlDao.list("Demo.listParamsPage", inDto);
+		httpModel.setOutMsg(AOSJson.toGridJson(paramPOs, inDto.getPageTotal()));
+	}
 	
 	
 }

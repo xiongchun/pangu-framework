@@ -7,7 +7,7 @@
 <config key="app_key" value="aos-admin" />
 
 <!-- Redis配置项 -->
-<config key="redis_host" value="127.0.0.1"/>
+<config key="redis_host" value="192.168.15.152"/>
 <config key="redis_port" value="6379" />
 <config key="redis_maxTotal" value="200" />
 <config key="redis_maxIdle" value="50" />

@@ -1,6 +1,7 @@
 package aos.framework.core.utils;
 
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -8,6 +9,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
 import aos.framework.core.typewrap.Dto;
@@ -28,6 +33,13 @@ public class AOSJson {
 
 	static {
 		GsonBuilder builder = new GsonBuilder();
+		// 注册日期时间类型反序列化时的适配器(针对反序列化到JavaBean的情况，Map类型不需要处理)
+		builder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
+			public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+					throws JsonParseException {
+				return AOSUtils.stringToDate(json.getAsString());
+			}
+		});
 		gson = builder.create();
 	}
 
@@ -52,9 +64,9 @@ public class AOSJson {
 			pDateFormat = AOSCons.DATATIME;
 		}
 		GsonBuilder builder = new GsonBuilder();
-		//可将null字段输出
-		//GsonBuilder builder = new GsonBuilder().serializeNulls();
-		//builder.setPrettyPrinting(); 是否格式化输出JSON
+		// 可将null字段输出
+		// GsonBuilder builder = new GsonBuilder().serializeNulls();
+		// builder.setPrettyPrinting(); 是否格式化输出JSON
 		builder.setDateFormat(pDateFormat);
 		Gson gson = builder.create();
 		jsonString = gson.toJson(pObject);
@@ -81,8 +93,10 @@ public class AOSJson {
 	 * 缺省的日期时间类型为：yyyy-MM-dd HH:mm:ss
 	 * <p>
 	 * 
-	 * @param pList 集合对象
-	 * @param total 集合总数 
+	 * @param pList
+	 *            集合对象
+	 * @param total
+	 *            集合总数
 	 * @return
 	 */
 	public static final String toGridJson(List<? extends Object> pList, int total) {
@@ -92,14 +106,15 @@ public class AOSJson {
 		String jsonString = toJson(tempDto, AOSCons.DATATIME);
 		return jsonString;
 	}
-	
+
 	/**
 	 * 将Java集合对象序列化为表格分页所需的Json对象<b>(前台客户端分页或不分页)</b>
 	 * <p>
 	 * 缺省的日期时间类型为：yyyy-MM-dd HH:mm:ss
 	 * <p>
 	 * 
-	 * @param pList 集合对象
+	 * @param pList
+	 *            集合对象
 	 * @return
 	 */
 	public static final String toGridJson(List<? extends Object> pList) {
@@ -114,8 +129,8 @@ public class AOSJson {
 	 * @param type
 	 *            如果Java对象是一个普通类则直接JsonUtils.fromJson(json,
 	 *            HashDto.class);即可。如果是一个泛型类(如一个dto集合类)则需要
-	 *            使用如下方式传参：JsonUtils.fromJson(json, new
-	 *            TypeToken<List<HashDto>>() {}.getType());
+	 *            使用如下方式传参：JsonUtils.fromJson(json, new TypeToken<List
+	 *            <HashDto>>() {}.getType());
 	 * @return
 	 */
 	public static final <T> T fromJson(String json, Type type) {

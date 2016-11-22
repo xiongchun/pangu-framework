@@ -37,14 +37,14 @@ import aos.system.modules.cache.CacheUserDataService;
  */
 @Service
 public class HomeService extends AOSBaseService {
-	
+
 	private static Logger logger = LoggerFactory.getLogger(HomeService.class);
-	
+
 	@Autowired
 	private CacheUserDataService cacheUserDataService;
 	@Autowired
 	private Aos_userDao aos_userDao;
-	
+
 	/**
 	 * 注册页面初始化
 	 * 
@@ -52,6 +52,7 @@ public class HomeService extends AOSBaseService {
 	 * @return
 	 */
 	public void initLogin(HttpModel httpModel) {
+
 		httpModel.setAttribute("app_title_", AOSCxt.getParam("app_title_"));
 		httpModel.setAttribute("left_logo_", AOSCxt.getParam("left_logo_"));
 		httpModel.setAttribute("vercode_characters_", AOSCxt.getParam("vercode_characters_"));
@@ -74,7 +75,7 @@ public class HomeService extends AOSBaseService {
 		}
 		httpModel.setAttribute("row_space_", row_space_);
 		httpModel.setAttribute("padding_", padding_);
-		//用来标识登录页面校验验证码用的
+		// 用来标识登录页面校验验证码用的
 		httpModel.setAttribute("vercode_uuid_", AOSId.uuid());
 		httpModel.setViewPath("login.jsp");
 	}
@@ -88,8 +89,8 @@ public class HomeService extends AOSBaseService {
 	public void initIndex(HttpModel httpModel) {
 		UserModel userModel = httpModel.getUserModel();
 		// 构造卡片菜单
-        httpModel.setAttribute("cardDtos", getCardListFromCache(userModel.getId_()));
-		
+		httpModel.setAttribute("cardDtos", getCardListFromCache(userModel.getId_()));
+
 		httpModel.setAttribute("north_back_img_", userModel.getSkin_() + ".png");
 		httpModel.setAttribute("south_back_color_", AOSCxt.getDicDesc("south_back_color_", userModel.getSkin_()));
 		httpModel.setAttribute("copyright_", AOSCxt.getParam("copyright_"));
@@ -107,13 +108,12 @@ public class HomeService extends AOSBaseService {
 		httpModel.setAttribute("page_load_gif_", AOSCxt.getParam("page_load_gif_"));
 		httpModel.setAttribute("navDto", initNavBarStyle(userModel.getSkin_()));
 		httpModel.setAttribute("qq_group_link_", AOSCxt.getParam("qq_group_link_"));
-		
+
 		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
-		
-		httpModel.setViewPath("index.jsp");		
+
+		httpModel.setViewPath("index.jsp");
 	}
-	
-	
+
 	/**
 	 * Portal页面初始化
 	 * 
@@ -126,7 +126,7 @@ public class HomeService extends AOSBaseService {
 		httpModel.setAttribute("run_mode_", AOSCxt.getParam("run_mode_"));
 		httpModel.setViewPath("system/portal.jsp");
 	}
-	
+
 	/**
 	 * 用户登录
 	 * 
@@ -147,7 +147,7 @@ public class HomeService extends AOSBaseService {
 				return;
 			}
 		}
-		
+
 		// 帐号存在校验
 		Dto qDto = Dtos.newDto("account_", inDto.getString("account_"));
 		qDto.put("is_del_", SystemCons.IS.NO);
@@ -173,20 +173,20 @@ public class HomeService extends AOSBaseService {
 				}
 			}
 		}
-		
+
 		if (!is_pass) {
 			httpModel.setOutMsg(AOSJson.toJson(outDto));
 			return;
 		}
-		
+
 		// 通过检查
 		outDto.setAppCode(AOSCons.SUCCESS);
 		String juid = cacheUserDataService.login(aos_userPO, httpModel.getRequest());
 		outDto.put("juid", juid);
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
-		
+
 	}
-	
+
 	/**
 	 * 开发用户快捷登录
 	 * 
@@ -202,7 +202,7 @@ public class HomeService extends AOSBaseService {
 		outDto.put("juid", juid);
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
 	}
-	
+
 	/**
 	 * 用户注销
 	 * 
@@ -216,24 +216,24 @@ public class HomeService extends AOSBaseService {
 			cacheUserDataService.logout(juid);
 		}
 	}
-	
+
 	/**
 	 * 获取用户卡片菜单
 	 * 
 	 * @param inDto
 	 * @return
 	 */
-	private List<Dto> getCardListFromCache(String user_id_){
+	private List<Dto> getCardListFromCache(String user_id_) {
 		final String cacheKey = SystemCons.KEYS.CARDLIST + user_id_;
 		List<Dto> cardList = null;
 		String cardListJson = JedisUtil.getString(cacheKey);
 		if (AOSUtils.isNotEmpty(cardListJson)) {
 			cardList = AOSJson.fromJson(cardListJson);
-		}else {
+		} else {
 			Dto qDto = Dtos.newDto();
 			qDto.put("user_id_", user_id_);
 			qDto.put("grant_type_", SystemCons.GRANT_TYPE_.BIZ);
-			//取CASCADE_ID_长度为5的菜单出来作为卡片
+			// 取CASCADE_ID_长度为5的菜单出来作为卡片
 			qDto.put("length", '5');
 			qDto.put("fnLength", DBDialectUtils.fnLength(sqlDao.getDatabaseId()));
 			cardList = sqlDao.list("Home.selectModulesOfUser", qDto);
@@ -243,19 +243,19 @@ public class HomeService extends AOSBaseService {
 		}
 		return cardList;
 	}
-	
+
 	/**
 	 * 获取卡片导航菜单树
 	 * 
 	 * @param inDto
 	 * @return
 	 */
-	public void getCardTree(HttpModel httpModel){
+	public void getCardTree(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
 		String user_id_ = httpModel.getUserModel().getId_();
 		String cascade_id_ = inDto.getString("cascade_id_");
 		String cardTree = null;
-		//每个用户会有多个卡片树
+		// 每个用户会有多个卡片树
 		final String cacheKey = SystemCons.KEYS.CARD_TREE + user_id_ + "." + cascade_id_;
 		List<Dto> moduleList = null;
 		cardTree = JedisUtil.getString(cacheKey);
@@ -272,21 +272,21 @@ public class HomeService extends AOSBaseService {
 		}
 		httpModel.setOutMsg(cardTree);
 	}
-	
+
 	/**
 	 * 获取首选项页面的用户初始信息
 	 * 
 	 * @param inDto
 	 * @return
 	 */
-	public void getUser(HttpModel httpModel){
+	public void getUser(HttpModel httpModel) {
 		Aos_userPO aos_userPO = aos_userDao.selectByKey(httpModel.getUserModel().getId_());
 		aos_userPO.setPassword_(StringUtils.EMPTY);
 		Dto outDto = aos_userPO.toDto();
 		outDto.put("org_name_", httpModel.getUserModel().getAos_orgPO().getName_());
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
 	}
-	
+
 	/**
 	 * 修改我的个人资料信息
 	 * 
@@ -309,7 +309,7 @@ public class HomeService extends AOSBaseService {
 		outDto.setAppMsg("我的个人资料数据保存成功。");
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
 	}
-	
+
 	/**
 	 * 修改我的个人密码
 	 * 
@@ -322,12 +322,12 @@ public class HomeService extends AOSBaseService {
 		if (!StringUtils.equals(inDto.getString("confirm_new_password_"), inDto.getString("new_password_"))) {
 			outDto.setAppCode(AOSCons.NO);
 			outDto.setAppMsg("两次密码输入不一致，请确认。");
-		}else {
+		} else {
 			Aos_userPO aos_userPO = aos_userDao.selectByKey(httpModel.getUserModel().getId_());
 			if (!StringUtils.equals(aos_userPO.getPassword_(), AOSCodec.password(inDto.getString("password_")))) {
 				outDto.setAppCode(AOSCons.NO);
 				outDto.setAppMsg("原密码输入错误，请确认。");
-			}else {
+			} else {
 				aos_userPO.setPassword_(AOSCodec.password(inDto.getString("new_password_")));
 				aos_userDao.updateByKey(aos_userPO);
 				outDto.setAppMsg("密码修改成功。");
@@ -377,7 +377,7 @@ public class HomeService extends AOSBaseService {
 		navDto.put("right_button_style", right_button_style);
 		return navDto;
 	}
-	
+
 	/**
 	 * 生成问候信息
 	 * 

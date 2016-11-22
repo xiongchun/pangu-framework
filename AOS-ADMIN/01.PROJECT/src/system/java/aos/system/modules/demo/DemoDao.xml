@@ -4,5 +4,11 @@
 
 <!-- 范例使用的SQL语句 -->
 <mapper namespace="Demo">
-
+    <!-- 查询 -->
+	<select id="listParamsPage" resultType="Aos_paramsPO" parameterType="Dto">
+			SELECT
+            <include refid="aos.framework.dao.Aos_paramsDao.column" />
+            FROM aos_params WHERE
+			key_ LIKE '%${keyorvalue}%' OR value_ LIKE '%${keyorvalue}%' 
+	</select>
 </mapper>
