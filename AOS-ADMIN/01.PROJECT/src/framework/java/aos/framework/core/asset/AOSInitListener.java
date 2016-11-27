@@ -5,7 +5,7 @@ import javax.servlet.ServletContextListener;
 
 import aos.framework.core.cache.CacheMasterDataService;
 import aos.framework.core.redis.JedisUtil;
-import aos.system.common.utils.SystemCons;
+import aos.framework.core.utils.AOSCons;
 
 
 /**
@@ -33,7 +33,7 @@ public class AOSInitListener implements ServletContextListener{
 		CacheMasterDataService cacheMasterDataService = (CacheMasterDataService)AOSBeanLoader.getSpringBean("cacheMasterDataService");
 		cacheMasterDataService.cacheParamData();
 		cacheMasterDataService.cacheDicData();
-		JedisUtil.setString(SystemCons.CXT, sce.getServletContext().getContextPath(), 0);
+		JedisUtil.setString(AOSCons.KEYS.CXT, sce.getServletContext().getContextPath(), 0);
 	}
 
 	@Override

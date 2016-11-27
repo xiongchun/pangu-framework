@@ -38,8 +38,9 @@ http://git.oschina.net/osworks/AOS
  #if($skin == "gray")
 <link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/resources/css/ext-all-gray.css" />
 <link rel="stylesheet" type="text/css" href="$cxt/static/css/skin/gray.css" />
- #elseif($skin == "aos")
-<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/resources/css/ext-all-aos.css" />
+ #elseif($skin == "neptune")
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/resources/css/ext-all-neptune.css" />
+<link rel="stylesheet" type="text/css" href="$cxt/static/css/skin/neptune.css" />
  #else
 <link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/resources/css/ext-all.css" />
 <link rel="stylesheet" type="text/css" href="$cxt/static/css/skin/blue.css" />

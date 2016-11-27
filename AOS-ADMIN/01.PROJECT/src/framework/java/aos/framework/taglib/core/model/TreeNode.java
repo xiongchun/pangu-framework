@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import aos.framework.core.redis.JedisUtil;
+import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.taglib.asset.AOSTagUtils;
-import aos.system.common.utils.SystemCons;
 
 
 
@@ -141,7 +141,7 @@ public class TreeNode {
 
 	public void setIcon(String icon) {
 		if (AOSUtils.isNotEmpty(icon)) {
-			String iconPath = JedisUtil.getString(SystemCons.CXT) + AOSTagUtils.ICON_PATH;
+			String iconPath = JedisUtil.getString(AOSCons.KEYS.CXT) + AOSTagUtils.ICON_PATH;
 			this.icon = iconPath + icon;
 		}
 	}

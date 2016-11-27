@@ -61,7 +61,7 @@ public class SystemUtils {
 	 */
 	public static String toTreeModalAsyncLoad(List<Dto> treeModels){
 		List<Dto> treeNodes = new ArrayList<Dto>();
-		String icon_path = JedisUtil.getString(SystemCons.CXT) + AOSTagUtils.ICON_PATH;
+		String icon_path = JedisUtil.getString(AOSCons.KEYS.CXT) + AOSTagUtils.ICON_PATH;
 		for (Dto model : treeModels) {
 			Dto treeNode = Dtos.newDto();
 			treeNode.put("id", model.getString("id_"));

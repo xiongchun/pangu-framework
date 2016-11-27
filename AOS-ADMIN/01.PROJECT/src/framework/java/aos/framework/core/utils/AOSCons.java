@@ -253,6 +253,8 @@ public class AOSCons {
 	public static final class KEYS{
 		//全局KEY
 		public static final String GLOBAL = APP_KEY + ":";
+		//应用上下文
+		public static final String CXT = GLOBAL + "cxt_";
 		//序列号
 		public static final String ID = GLOBAL + "id_";
 		//卡片组

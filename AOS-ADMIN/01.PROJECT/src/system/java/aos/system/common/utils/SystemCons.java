@@ -19,11 +19,6 @@ public class SystemCons extends AOSCons{
 	}
 	
 	/**
-	 * 应用上下文变量
-	 */
-	public static  final String CXT = "cxt";
-	
-	/**
 	 * 授权类型
 	 */
 	public static final class GRANT_TYPE_{

@@ -87,11 +87,5 @@ public class AOSId {
 		IdService idService = (IdService)AOSBeanLoader.getSpringBean("idService");
 		return idService.nextVal(sequenceName);
 	}
-	
-	public static void main(String[] args) {
-		for (int i = 0; i < 1000; i++) {
-			System.out.println(nextVal("seq_test"));
-		}
-	}
 
 }

@@ -52,6 +52,7 @@ public class CacheUserDataService {
 		Aos_orgPO aos_orgPO = aos_orgDao.selectByKey(userModel.getOrg_id_());
 		userModel.setAos_orgPO(aos_orgPO);
 		String userJson = AOSJson.toJson(userModel);
+		//由于Redis无法对hash结构里的单条记录设置超时销毁时间，所以用户信息只能缓存在Redis的更目录上。
 		JedisUtil.setString(userModel.getJuid(), userJson, Integer.valueOf(AOSCxt.getParam("user_login_timeout_")));
 	}
 
