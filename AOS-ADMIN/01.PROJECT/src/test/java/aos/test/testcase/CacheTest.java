@@ -12,8 +12,7 @@ import redis.clients.jedis.Jedis;
 public class CacheTest {
 
 	public static void main(String[] args) {
-		Jedis jedis = JedisUtil.getJedisClient();
-		System.out.println(jedis.info());
+
 	}
 
 }
