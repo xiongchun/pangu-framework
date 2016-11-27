@@ -1,8 +1,5 @@
 package aos.test.testcase;
 
-import aos.framework.core.redis.JedisUtil;
-import redis.clients.jedis.Jedis;
-
 /**
  * 缓存测试
  * 
