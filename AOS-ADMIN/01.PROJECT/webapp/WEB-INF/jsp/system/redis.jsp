@@ -65,6 +65,7 @@
 			}
 			if (AOS.empty(params.key_)) {
 				AOS.tip('缓存Key不能为空，请先输入...');
+				return;
 			}
 			_g_key_store.getProxy().extraParams = params;
 			_g_key_store.loadPage(1);
