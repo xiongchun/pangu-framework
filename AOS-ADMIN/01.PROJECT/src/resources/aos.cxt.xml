@@ -22,7 +22,8 @@
 	</bean>
 
 	<!-- Spring服务组件扫描(排除@Controller相关组件) -->
-	<context:component-scan base-package="aos" use-default-filters="false">
+	<!-- 提醒：请将com.corp.project修改为您的真实项目路径 -->
+	<context:component-scan base-package="aos;com.corp.project" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
@@ -66,14 +67,16 @@
 	<!-- 平台缺省数据源 SqlSessionFactory配置 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="typeAliasesPackage" value="aos" />
+		<!-- 提醒：请将com.corp.project修改为您的真实项目路径 -->
+		<property name="typeAliasesPackage" value="aos;com.corp.project" />
 		<property name="mapperLocations" value="classpath*:**/*Dao.xml" />
 		<property name="configLocation" value="classpath:aos.sqlmap.xml" />
 	</bean>
 
-	<!-- 扫描实体数据访问对象 -->
+	<!-- 扫描数据访问对象 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="aos" />
+	    <!-- 提醒：请将com.corp.project修改为您的真实项目路径 -->
+		<property name="basePackage" value="aos;com.corp.project" />
 		<property name="annotationClass" value="aos.framework.core.annotation.Dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
