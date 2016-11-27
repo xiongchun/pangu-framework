@@ -204,6 +204,45 @@ body {
 }
 /* =======表格列按钮结束======= */
 
+/* =======标签提示开始======= */
+.tip_info{
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 13px;
+	font-family: "宋体";
+	border: 1px solid #3598DC;
+	padding:1px;
+	background: #3598DC;
+	color: #FFFFFF
+}
+
+.tip_danger{
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 13px;
+	font-family: "宋体";
+	border: 1px solid #F3565D;
+	padding:1px;
+	background: #F3565D;
+	color: #FFFFFF
+}
+
+.tip_warn{
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 13px;
+	font-family: "宋体";
+	border: 1px solid #DFBA49;
+	padding:1px;
+	background: #DFBA49;
+	color: #FFFFFF
+}
+
+/* =======标签提示结束======= */
+
 /* 树节点的行高度 */
 .x-tree-panel .x-grid-row .x-grid-cell-inner {
     line-height: 20px;
