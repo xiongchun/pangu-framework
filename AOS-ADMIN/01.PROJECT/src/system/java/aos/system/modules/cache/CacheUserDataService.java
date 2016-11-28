@@ -1,6 +1,7 @@
 package aos.system.modules.cache;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +18,7 @@ import aos.framework.core.id.AOSId;
 import aos.framework.core.redis.JedisUtil;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
+import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
@@ -209,6 +211,19 @@ public class CacheUserDataService {
 		userDto.put("login_time_", userModel.getLogin_time_());
 		userDto.put("client_key_", userModel.getClient_key_());
 		return userDto;
+	}
+	
+	/**
+	 * 清除所有用户的功能权限数据(应用重启等时候调用)
+	 * 
+	 */
+	public void clearGrantData(){
+		Jedis jedis = JedisUtil.getJedisClient();
+		Set<String> keys = jedis.keys(AOSCons.KEYS.FUNCTION_GRANT + "*");
+		for (String key : keys) {
+			jedis.del(key);
+		}
+		JedisUtil.close(jedis);
 	}
 
 }

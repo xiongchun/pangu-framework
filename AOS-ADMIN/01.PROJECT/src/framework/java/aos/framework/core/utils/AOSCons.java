@@ -18,7 +18,7 @@ public class AOSCons {
 	 * 日期时间格式
 	 */
 	public static final String DATATIME = "yyyy-MM-dd HH:mm:ss";
-	
+
 	/**
 	 * 存储过程业务成功状态码：成功
 	 */
@@ -68,12 +68,12 @@ public class AOSCons {
 	 * Dto对象中的内部变量：交易状态信息
 	 */
 	public static final String APPMSG_KEY = "appmsg";
-	
+
 	/**
 	 * Dto对象中的内部变量：异常堆栈信息
 	 */
 	public static final String TRACEMSG_KEY = "tracemsg";
-	
+
 	/**
 	 * 请求相应成功标志
 	 */
@@ -88,7 +88,7 @@ public class AOSCons {
 	 * 控制台醒目标记2
 	 */
 	public static final String CONSOLE_FLAG2 = "●● ";
-	
+
 	/**
 	 * 控制台醒目标记3
 	 */
@@ -143,135 +143,137 @@ public class AOSCons {
 	 * DTO缺省Boolean Key
 	 */
 	public static final String DEFAULT_BOOLEAN_KEY = "_default_boolean_a";
-	
+
 	/**
 	 * WEBAPPCXT是否成功的标志KEY
 	 */
 	public static final String WEBAPPCXT_IS_SUCCESS_KEY = "_webappcxt_is_success";
-	
+
 	/**
 	 * JOSQL AOSListUtils 中使用的KEY
 	 */
 	public static final String AOSLIST_KEY = ":AOSList";
-	
+
 	/**
 	 * 排序器在参数对象中的Key
 	 */
 	public static final String ORDER_KEY = "_order";
-	
+
 	/**
 	 * 点击菜单节点自动拼接到URL上面的菜单模块编号参数
 	 */
 	public static final String MODULE_ID_KEY = "aos_module_id_";
-	
+
 	/**
 	 * 点击主页面上二级导航页面的页面ID参数
 	 */
 	public static final String PAGE_ID_KEY = "aos_page_id_";
-	
+
 	/**
 	 * 角色授权模式。1：可见当前管理员创建的角色和当前管理员所属组织的其他管理员创建的角色。
 	 */
 	public static final String ROLE_GRANT_MODE_NOCASCADE = "1";
-	
+
 	/**
 	 * 角色授权模式。2：可见当前管理员创建的角色和当前管理员所属组织及其下级子孙组织的其他管理员创建的角色。
 	 */
 	public static final String ROLE_GRANT_MODE_CASCADE = "2";
-	
+
 	/**
 	 * 快捷菜单布局风格。1：平铺。
 	 */
 	public static final String NAV_QUICK_LAYOUT_FLAT = "1";
-	
+
 	/**
 	 * 快捷菜单布局风格。2：树状。
 	 */
 	public static final String NAV_QUICK_LAYOUT_TREE = "2";
-	
+
 	/**
 	 * AOS官网
 	 */
 	public static final String OSWORKS_WEBSITE = "http://git.oschina.net/osworks/AOS";
-	
+
 	/**
 	 * 功能模块根节点ID
 	 */
 	public static final String MODULE_ROOT_ID = "2a4c060f44d944ea926fe44522ce7b39";
-	
+
 	/**
 	 * 组织根节点ID
 	 */
 	public static final String ORG_ROOT_ID = "63cf387a243d4d9799367d773b853346";
-	
+
 	/**
 	 * 对象删除规则
 	 *
 	 */
-	public static  final class OBJECT_DELETE_RULE{
-		//逻辑删除
+	public static final class OBJECT_DELETE_RULE {
+		// 逻辑删除
 		public static final String UPDATE = "update";
-		//物理删除
+		// 物理删除
 		public static final String DELETE = "delete";
 	}
-	
+
 	/**
 	 * 是否标识
 	 */
-	public static final class IS{
+	public static final class IS {
 		public static final String YES = "1";
 		public static final String NO = "0";
 	}
-	
+
 	/**
 	 * 系统皮肤类型
 	 *
 	 */
-	public static  final class SKIN{
+	public static final class SKIN {
 		public static final String BLUE = "blue";
 		public static final String GRAY = "gray";
 	}
-	
+
 	/**
 	 * 系统运行模式
 	 *
 	 */
-	public static  final class RUN_MODE{
+	public static final class RUN_MODE {
 		public static final String DEV = "0";
 		public static final String PRO = "1";
 		public static final String DEMO = "2";
 	}
-	
+
 	/**
 	 * App应用全局Key标识
 	 */
-	public static  final String APP_KEY = AOSCfgHandler.getValue("app_key");
-	
+	public static final String APP_KEY = AOSCfgHandler.getValue("app_key");
+
 	/**
-	 *Redis全局Key前缀
+	 * Redis全局Key前缀
 	 */
-	public static final class KEYS{
-		//全局KEY
+	public static final class KEYS {
+		// 全局KEY
 		public static final String GLOBAL = APP_KEY + ":";
-		//应用上下文
+		// 应用上下文
 		public static final String CXT = GLOBAL + "cxt_";
-		//序列号
+		// 序列号
 		public static final String ID = GLOBAL + "id_";
-		//卡片组
-		public static final String CARDLIST= GLOBAL + "cardlist_";
-		//全局参数
+		// 功能权限授权命名空间 (方便缓存重置)
+		public static final String FUNCTION_GRANT = GLOBAL + "grant_";
+		// 卡片组
+		public static final String CARDLIST = FUNCTION_GRANT + "card_";
+		// 卡片导航树
+		public static final String CARD_TREE = FUNCTION_GRANT + "card_tree_";
+		// 全局参数
 		public static final String PARAM_KEY = GLOBAL + "param_";
-		//数据字典
-	    public static final String DIC_KEY = GLOBAL + "dic_";
-		//在线用户集合
+		// 数据字典
+		public static final String DIC_KEY = GLOBAL + "dic_";
+		// 在线用户集合
 		public static final String USER_LIST_KEY = GLOBAL + "online_users_";
-		//卡片导航树
-		public static final String CARD_TREE = GLOBAL + "card_tree_";
 	}
-	
+
 	/**
 	 * 通用SQL数据访问对象Bean名称
 	 */
-	public static  final String SQLDAO = "sqlDao";
+	public static final String SQLDAO = "sqlDao";
 
 }
