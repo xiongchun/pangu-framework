@@ -78,28 +78,24 @@ public class DefaultDialect implements Dialect {
 	 */
 	@Override
 	public String getCountSql(String pSql){
-
 	    int a = getPairIndex(pSql, "select", "from");
-        if(a != -1) pSql = pSql.substring(0, a) + "FRoM" + pSql.substring(a + 4);
-
-		if (StringUtils.indexOf(pSql, "FRoM") != -1) {
-			 pSql = getShortSql(pSql);
-		}
-		String countSql = "SELECT COUNT(0) FROM (" + pSql + ") AS aos_count_";
+		String shortSql = "SELECT 1 FROM";
+		//处理子查询SQL语句 (砍掉结果集字段，只要条件块)
+		shortSql = shortSql + pSql.substring(a + 4);
+		shortSql = removeOrder(shortSql);
+		String countSql = "SELECT COUNT(0) FROM (" + shortSql + ") AS aos_count_";
 		return countSql;
 	}
-
-    /**
-     * 改sql太烦了,自动转换好了
-     * 获取串中,左串匹配的右串位置,大小写不敏感
-     * <p>
-     *     如,"AAbbb",匹配第0个A的是第3个b
-     * </p>
-     * @param plainStr
-     * @param lPair
-     * @param rPair
-     * @return
-     */
+    
+	/**
+	 * 匹配主干sql的from关键字
+	 * 
+	 * @author Kun
+	 * @param plainStr
+	 * @param lPair
+	 * @param rPair
+	 * @return
+	 */
     private int getPairIndex(String plainStr, String lPair, String rPair) {
 
         Stack<Integer> queue = new Stack<>();
@@ -108,10 +104,11 @@ public class DefaultDialect implements Dialect {
         int index = -1;
         while (m.find()) {
             index = m.start();
-            if(lPair.equalsIgnoreCase(m.group())) {
+            String group = m.group().toLowerCase();
+            if(group.matches(lPair)) {
                 queue.push(index);
             }
-            if(rPair.equalsIgnoreCase(m.group())) {
+            if(group.matches(rPair)) {
                 queue.pop();
             }
             if(queue.isEmpty()) {
@@ -120,36 +117,30 @@ public class DefaultDialect implements Dialect {
         }
         return -1;
     }
-
-	/**
-	 * 处理子查询SQL语句
-	 * 
-	 * @param pSql
-	 * @return
-	 */
-	private String getShortSql(String pSql){
-		String shortSql = "SELECT 1 FROM";
-		pSql = StringUtils.substringAfter(pSql, "FRoM");
-        pSql = removeOrder(pSql);
-		return shortSql + pSql;
-	}
     
-	/**
-	 * 移除排序
-	 * 
-	 * @param str
-	 * @return
-	 */
+    /**
+     * 移除条件中最外层的orderby
+     * 
+     * @author Kun
+     * @param str
+     * @return
+     */
     private String removeOrder(String str) {
-        StringBuffer sb = new StringBuffer();
-        //忽略大小写进行匹配
-        Pattern p = Pattern.compile("order\\s+by.*", Pattern.CASE_INSENSITIVE);
+        Pattern p = Pattern.compile("order\\s+by\\s+", Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(str);
+        int lastIndex = -1;
         while (m.find()) {
-            m.appendReplacement(sb, "");
+            lastIndex = m.start();
         }
-        m.appendTail(sb);
-        return sb.toString();
+        if(lastIndex != -1) {
+            String orderSql = str.substring(lastIndex);
+            // 跳过子句中的order by语句
+            if(!orderSql.contains(")")
+                    || getPairIndex(orderSql, "\\)", "\\(") != -1) {
+                return str.substring(0, lastIndex);
+            }
+        }
+        return str;
     }
 
 }

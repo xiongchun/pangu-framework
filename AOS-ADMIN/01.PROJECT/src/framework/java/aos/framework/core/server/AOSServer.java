@@ -52,6 +52,9 @@ public class AOSServer {
         setPort(pPort);
     }
 
+    /**
+     * 启动Jetty容器
+     */
     public void start() throws Exception {
         long start = System.currentTimeMillis();
         final String webRoot = System.getProperty("user.dir") + "/webapp";
@@ -68,6 +71,8 @@ public class AOSServer {
         WebAppContext context = new WebAppContext();
         context.setResourceBase(webRoot);
         context.setContextPath(webContext);
+        //设置表单提交大小 (缺省值：200000)
+        context.setMaxFormContentSize(10000000);
         context.setParentLoaderPriority(true);
         //针对jetty使用jstl的特殊设置，扫描tld文件。指定哪些jar中可能含有tld。
         context.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*/.*jsp-api-[^/]*\\.jar$|.*/.*jsp-[^/]*\\.jar$|.*/.*taglibs[^/]*\\.jar$|.*/.*jstl[^/]*\\.jar$");
