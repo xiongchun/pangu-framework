@@ -56,7 +56,7 @@ public class AOSJson {
 	 */
 	public static final String toJson(Object pObject, String pDateFormat) {
 		if (pObject == null) {
-			log.debug("跟踪到JSON序列化对象为null。");
+			log.debug("JSON序列化对象为null，请确认。");
 			return null;
 		}
 		String jsonString = "";
