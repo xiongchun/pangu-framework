@@ -31,7 +31,7 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    本页面请求的相对参考地址。一般设置为某个Controller的映射地址，比如：href="/example/tagdemo/"。则本页中所有的请求地址都将自动将此地址作为前缀。
+			    本页面请求的相对参考地址。一般设置为某个Controller的映射地址，比如：base="/example/tagdemo/"。则本页中所有的请求地址都将自动将此地址作为前缀。
 			</description>
 		</attribute>
 		<attribute>
@@ -1273,6 +1273,14 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    下拉项中是否显示[全部]下拉选。缺省值：true。可选值：true| false。这个属性仅对数据字典源有效。
+			</description>
+		</attribute>
+		<attribute>
+			<name>dicDataType</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    字典在业务表中存储的数据类型。缺省值：char。可选值：number| char。指定此属性解决form.loadRecord()时因数据类型不匹配导致的代码无法转换的问题。提示：我们建议业务表中字典数据类型存储为字符串类型。
 			</description>
 		</attribute>
 	</tag>

@@ -20,6 +20,7 @@
 				<aos:dockeditem xtype="tbfill" />
 				<aos:dockeditem xtype="button" text="查询" onclick="_g_account_query" icon="query.png" />
 				<aos:dockeditem xtype="button" text="重置" onclick="AOS.reset(_f_query);" icon="refresh.png" />
+				<aos:dockeditem xtype="button" text="导出" onclick="fn_export_excel" icon="icon70.png" />
 				<aos:dockeditem xtype="tbfill" />
 			</aos:docked>
 		</aos:formpanel>
@@ -107,6 +108,13 @@
 		function _w_account2_onshow() {
 			var record = AOS.selectone(_g_account, true);
 			_f_account2.loadRecord(record);
+		}
+		
+		//导出excel
+		function fn_export_excel(){
+			//juid需要再这个页面的初始化方法中赋值,这里才引用得到
+			//httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
+			AOS.file('do.jhtml?router=demoService.exportExcel&juid=${juid}');
 		}
 		
 		//按钮列转换
