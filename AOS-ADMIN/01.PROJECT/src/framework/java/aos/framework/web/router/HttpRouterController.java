@@ -39,7 +39,7 @@ public class HttpRouterController {
 	 */
 	@RequestMapping(value = "do")
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		HttpModel httpModel = new HttpModel(request);
+		HttpModel httpModel = new HttpModel(request, response);
 		String router = request.getHeader("router");
 		
 		router = AOSUtils.isEmpty(router) ? httpModel.getInDto().getString("router") : router;

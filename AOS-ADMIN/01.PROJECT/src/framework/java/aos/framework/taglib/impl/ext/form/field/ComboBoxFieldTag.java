@@ -55,6 +55,8 @@ public class ComboBoxFieldTag extends FormItemTagSupport {
 	private String dicFilter;
 	
 	private String selectAll = FALSE;
+	
+	private String dicDataType;
 
 	// 内部变量,不暴露给JSP
 	private List<Dto> optionDtos = new ArrayList<Dto>();
@@ -169,7 +171,12 @@ public class ComboBoxFieldTag extends FormItemTagSupport {
 		// 类型处理
 		for (Aos_dicPO aos_dic_optionsPO : aos_dicPOs) {
 			Dto dto = Dtos.newDto();
-			dto.put("value", aos_dic_optionsPO.getCode_());
+			//特殊处理：若字典数据类型为数值型，则form.loadRecord()；的时候，下拉框不能被正常转换。所以这里尽最大努力将字符数值的代码转换为数值类型。
+			if (StringUtils.equalsIgnoreCase(getDicDataType(), "number")) {
+				dto.put("value", Integer.valueOf(aos_dic_optionsPO.getCode_()));
+			}else{
+				dto.put("value", aos_dic_optionsPO.getCode_());
+			}
 			dto.put("display", aos_dic_optionsPO.getDesc_());
 			dicList.add(dto);
 		}
@@ -310,6 +317,14 @@ public class ComboBoxFieldTag extends FormItemTagSupport {
 
 	public void setSelectAll(String selectAll) {
 		this.selectAll = selectAll;
+	}
+
+	public String getDicDataType() {
+		return dicDataType;
+	}
+
+	public void setDicDataType(String dicDataType) {
+		this.dicDataType = dicDataType;
 	}
 
 }

@@ -3,6 +3,7 @@ package aos.framework.web.router;
 import java.io.Serializable;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -40,6 +41,11 @@ public class HttpModel implements Serializable{
 	private HttpServletRequest request;
 	
 	/**
+	 * Reponse对象
+	 */
+	private HttpServletResponse response;
+	
+	/**
 	 * 视图路径
 	 */
 	private String viewPath;
@@ -53,8 +59,9 @@ public class HttpModel implements Serializable{
 	 * 构造方法
 	 * @param request
 	 */
-	public HttpModel(HttpServletRequest request){
+	public HttpModel(HttpServletRequest request, HttpServletResponse response){
 		this.request = request;
+		this.response = response;
 		this.setInDto(WebCxt.getParamAsDto(request));
 		this.setUserModel(WebCxt.getUserModel(request));
 	}
@@ -171,6 +178,14 @@ public class HttpModel implements Serializable{
 
 	public String getOutMsg() {
 		return outMsg;
+	}
+
+	public HttpServletResponse getResponse() {
+		return response;
+	}
+
+	public void setResponse(HttpServletResponse response) {
+		this.response = response;
 	}
 
 }

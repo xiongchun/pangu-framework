@@ -1,6 +1,15 @@
 package aos.system.modules.demo;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +48,7 @@ public class DemoService extends AOSBaseService{
 	 * @return
 	 */
 	public void initMisc1(HttpModel httpModel) {
+		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
 		httpModel.setViewPath("demo/misc/misc1.jsp");
 	}
 	
@@ -176,5 +186,47 @@ public class DemoService extends AOSBaseService{
 		httpModel.setOutMsg(AOSJson.toGridJson(paramPOs, inDto.getPageTotal()));
 	}
 	
+	/**
+	 * 导出电子表格
+	 * 
+	 * excel导出的几个注意点
+	 * 1、查询条件建议在执行表格查询时候将查询条件缓存到Redis(根据模块标识)；
+	 * 2、导出数量需要控制，不能太大。建议10000以内。
+	 * 3、其实如果条件允许，导出功能需要考虑和业务系统分离设计的(由业务系统发起导出任务，由专门的导出服务器完成导出到服务器磁盘并返回路径给业务系统。由业务系统操作员去主动下载)。
+	 *     导出功能容易给业务系统带来很大的不稳定因素(数据量大和并发时容易占用很大内存和CPU瞬间高峰)。
+	 * 
+	 * @param httpModel
+	 */
+	public void exportExcel(HttpModel httpModel) {
+		//这里只是演示获取httpmodel获取response对象，具体的表格生成请自行使用poi生成电子表格
+		HttpServletResponse response = httpModel.getResponse();
+		String filename = AOSUtils.encodeChineseDownloadFileName(httpModel.getRequest().getHeader("USER-AGENT"), "文件名称.css");
+		response.setHeader("Content-Disposition", "attachment; filename=" + filename + ";");
+		String path = httpModel.getRequest().getServletContext().getRealPath("/");
+		File file = new File(path + "/static/css/aos-all.css");
+		BufferedInputStream in;
+		ServletOutputStream os = null;
+		try {
+			in = new BufferedInputStream(new FileInputStream(file));
+			ByteArrayOutputStream out = new ByteArrayOutputStream(1024);
+			byte[] temp = new byte[1024];
+			int size = 0;
+			while ((size = in.read(temp)) != -1) {
+				out.write(temp, 0, size);
+			}
+			in.close();
+			os = response.getOutputStream();
+			os.write(out.toByteArray());
+			os.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				os.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 }
