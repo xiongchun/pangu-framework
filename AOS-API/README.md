@@ -11,7 +11,7 @@ ZIP：[http://git.oschina.net/osworks/AOS/releases](http://git.oschina.net/oswor
 ##### AOS-ADMIN ：AOSuite管理系统开发平台
 适合构建和开发中大型企业管理系统；各级政务信息化系统、流程审批办公系统；各类电商、社交、互联网金融项目后台管理系统。<br>
 在线演示：[http://121.41.231.94/aos-admin](http://121.41.231.94/aos-admin) 登录帐户/密码：```root/111111```
-##### AOS-API ：AOS接口开发框架
+##### AOS-API ：AOSuite接口开发框架
 适合作为互联网和移动互联网项目后台服务接口开发的基础框架，也可用于基于SOA架构的企业管理系统的服务治理模块使用。它提供了一系列服务接口系统互联互通的基础设施和水平扩展、高可用部署需求的应用层技术支持。
 ##### AOS-MOBILE ：AOSuite移动端开发框架
 提供微信平台App和Hybrid混合架构App的基础开发框架。
