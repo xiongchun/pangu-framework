@@ -278,6 +278,7 @@
 					url : 'roleService.saveGrantInfo',
 					ok : function(data) {
 						AOS.tip(data.appmsg);
+						_t_module_load(true);
 					 }
 	  		});
 			}
