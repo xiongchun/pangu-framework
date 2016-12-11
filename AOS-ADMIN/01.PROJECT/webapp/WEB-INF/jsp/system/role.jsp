@@ -2,8 +2,8 @@
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
 
 <aos:html title="角色管理" base="http" lib="ext">
-	<aos:body>
-	</aos:body>
+<aos:body>
+</aos:body>
 </aos:html>
 
 <aos:onready>
@@ -252,7 +252,9 @@
 		   function _role_module_save(){
 			  var record = AOS.selectone(_g_role);
 			  var params = {
-					role_id_ : record.data.id_
+					role_id_ : record.data.id_,
+					save_biz_ : true,
+					save_admin_: true
 				};
 			  var grant_rows = AOS.selection(_t_module, 'id');
 			  if(init_grant_rows != grant_rows){
@@ -273,7 +275,13 @@
 					  return;
 				  }
 			  }else{
-				  if(init_grant_rows == grant_rows && init_admin_rows == admin_rows){
+				  if(init_grant_rows == grant_rows){
+					  params.save_biz_=false;
+				  }
+                  if(init_admin_rows == admin_rows){
+                	  params.save_admin_=false;
+				  }
+				  if(!params.save_biz_ && !params.save_admin_){
 					  AOS.tip("授权数据无变化，不需要保存。");
 					  return;
 				  }
