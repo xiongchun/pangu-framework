@@ -267,6 +267,11 @@
 					  AOS.tip("授权数据无变化，不需要保存。");
 					  return;
 				  }
+				  //角色管理菜单为必选的内置菜单，不能取消授权
+				  if(grant_rows.indexOf('${role_module_id_}') == -1){
+					  AOS.err("操作被取消。【角色管理】是超级用户角色内置必选菜单,不能取消授权。请重新选择。");
+					  return;
+				  }
 			  }else{
 				  if(init_grant_rows == grant_rows && init_admin_rows == admin_rows){
 					  AOS.tip("授权数据无变化，不需要保存。");
