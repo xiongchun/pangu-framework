@@ -452,6 +452,24 @@ AOS.err = function (msg, title) {
 };
 
 /**
+ * 警告信息
+ */
+AOS.warn = function (msg, title) {
+    if (Ext.isEmpty(title)) {
+        title = '提示';
+    }
+    Ext.Msg.show({
+        title: '<span class="app-container-title-normal">' + title + '</span>',
+        msg: msg,
+        buttons: Ext.Msg.OK,
+        buttonText: {
+            ok: '<span class="app-normal">确定</span>'
+        },
+        icon: Ext.Msg.WARNING
+    });
+};
+
+/**
  * 确认信息
  */
 AOS.confirm = function (msg, fn, title) {
