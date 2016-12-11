@@ -144,7 +144,8 @@ public class RoleService extends AOSBaseService {
 		for (Aos_modulePO aos_modulePO : aos_modulePOs) {
 			modelDtos.add(aos_modulePO.toDto());
 		}
-		String treeJson = SystemUtils.toTreeModalAllInOne(toCheckedTreeModel(modelDtos, inDto, SystemCons.GRANT_TYPE_.BIZ));
+		String treeJson = SystemUtils
+				.toTreeModalAllInOne(toCheckedTreeModel(modelDtos, inDto, SystemCons.GRANT_TYPE_.BIZ));
 
 		httpModel.setOutMsg(treeJson);
 	}
@@ -170,7 +171,8 @@ public class RoleService extends AOSBaseService {
 		for (Aos_modulePO aos_modulePO : aos_modulePOs) {
 			modelDtos.add(aos_modulePO.toDto());
 		}
-		String treeJson = SystemUtils.toTreeModalAllInOne(toCheckedTreeModel(modelDtos, inDto, SystemCons.GRANT_TYPE_.ADMIN));
+		String treeJson = SystemUtils
+				.toTreeModalAllInOne(toCheckedTreeModel(modelDtos, inDto, SystemCons.GRANT_TYPE_.ADMIN));
 
 		httpModel.setOutMsg(treeJson);
 	}
@@ -188,10 +190,11 @@ public class RoleService extends AOSBaseService {
 			Dto qDto = Dtos.newDto("role_id_", inDto.getString("role_id_"));
 			qDto.put("module_id_", modelDto.getString("id_"));
 			qDto.put("grant_type_", grant_type_);
-			List<Aos_role_modulePO> subPOs = AOSListUtils.select(aos_role_modulePOs, Aos_role_modulePO.class, jqlText, qDto);
+			List<Aos_role_modulePO> subPOs = AOSListUtils.select(aos_role_modulePOs, Aos_role_modulePO.class, jqlText,
+					qDto);
 			if (AOSUtils.isNotEmpty(subPOs)) {
 				modelDto.put("checked", true);
-			} else{
+			} else {
 				modelDto.put("checked", false);
 			}
 		}
@@ -208,14 +211,14 @@ public class RoleService extends AOSBaseService {
 		Dto inDto = httpModel.getInDto();
 		Dto outDto = Dtos.newOutDto();
 		String role_id_ = inDto.getString("role_id_");
-		String user_id_ = httpModel.getUserModel().getId_();		
+		String user_id_ = httpModel.getUserModel().getId_();
 		Timestamp sysDate = AOSUtils.getDateTime();
 		// 经办权限
-		String grant_rows = inDto.getString("grant_rows");
-		if (AOSUtils.isNotEmpty(grant_rows)) {
-			Dto delDto = Dtos.newDto("role_id_", role_id_);
-			delDto.put("grant_type_", SystemCons.GRANT_TYPE_.BIZ);
-			sqlDao.delete("Role.deleteRoleModuleByRoleID", delDto);
+		if (inDto.getBoolean("save_biz_")) {
+			String grant_rows = inDto.getString("grant_rows");
+			Dto delBizDto = Dtos.newDto("role_id_", role_id_);
+			delBizDto.put("grant_type_", SystemCons.GRANT_TYPE_.BIZ);
+			sqlDao.delete("Role.deleteRoleModuleByRoleID", delBizDto);
 			for (String id_ : StringUtils.split(grant_rows, ",")) {
 				Aos_role_modulePO aos_role_modulePO = new Aos_role_modulePO();
 				aos_role_modulePO.setId_(AOSId.appId(SystemCons.ID.SYSTEM));
@@ -226,7 +229,7 @@ public class RoleService extends AOSBaseService {
 				aos_role_modulePO.setCreate_time_(sysDate);
 				aos_role_moduleDao.insert(aos_role_modulePO);
 			}
-			//重置和这个角色相关的用户的授权信息
+			// 重置删除和这个角色相关的用户的授权信息
 			List<Aos_user_rolePO> aos_user_rolePOs = aos_user_roleDao.list(Dtos.newDto("role_id_", role_id_));
 			for (Aos_user_rolePO aos_user_rolePO : aos_user_rolePOs) {
 				cacheUserDataService.resetGrantInfoOfUser(aos_user_rolePO.getUser_id_());
@@ -234,11 +237,11 @@ public class RoleService extends AOSBaseService {
 		}
 
 		// 管理权限
-		String admin_rows = inDto.getString("admin_rows");
-		if (AOSUtils.isNotEmpty(admin_rows)) {
-			Dto delDto = Dtos.newDto("role_id_", inDto.getString("role_id_"));
-			delDto.put("grant_type_", SystemCons.GRANT_TYPE_.ADMIN);
-			sqlDao.delete("Role.deleteRoleModuleByRoleID", delDto);
+		if (inDto.getBoolean("save_admin_")) {
+			String admin_rows = inDto.getString("admin_rows");
+			Dto delAdminDto = Dtos.newDto("role_id_", inDto.getString("role_id_"));
+			delAdminDto.put("grant_type_", SystemCons.GRANT_TYPE_.ADMIN);
+			sqlDao.delete("Role.deleteRoleModuleByRoleID", delAdminDto);
 			for (String id_ : StringUtils.split(admin_rows, ",")) {
 				Aos_role_modulePO aos_role_modulePO = new Aos_role_modulePO();
 				aos_role_modulePO.setId_(AOSId.appId(SystemCons.ID.SYSTEM));
@@ -248,14 +251,14 @@ public class RoleService extends AOSBaseService {
 				aos_role_modulePO.setCreate_by_(user_id_);
 				aos_role_modulePO.setCreate_time_(sysDate);
 				aos_role_moduleDao.insert(aos_role_modulePO);
-			} 
+			}
 		}
 		outDto.setAppMsg("角色数据授权成功。");
-		
+
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
-		
+
 	}
-	
+
 	/**
 	 * 查询待选用户列表
 	 * 
@@ -274,10 +277,10 @@ public class RoleService extends AOSBaseService {
 		qDto.put("is_del_", SystemCons.IS.NO);
 		qDto.put("cascade_", qDto.getBoolean("cascade_") ? 1 : 0);
 		List<Dto> userDtos = sqlDao.list("Role.listUsersPage", qDto);
-		
+
 		httpModel.setOutMsg(AOSJson.toGridJson(userDtos, qDto.getPageTotal()));
 	}
-	
+
 	/**
 	 * 查询已选用户列表
 	 * 
@@ -295,10 +298,10 @@ public class RoleService extends AOSBaseService {
 		}
 		qDto.put("is_del_", SystemCons.IS.NO);
 		List<Dto> userDtos = sqlDao.list("Role.listSelectedUsersPage", qDto);
-		
+
 		httpModel.setOutMsg(AOSJson.toGridJson(userDtos, qDto.getPageTotal()));
 	}
-	
+
 	/**
 	 * 保存角色用户关联关系
 	 * 
@@ -321,7 +324,7 @@ public class RoleService extends AOSBaseService {
 		}
 		httpModel.setOutMsg("角色用户关联关系保存成功。");
 	}
-	
+
 	/**
 	 * 撤消角色用户关联关系
 	 * 
@@ -337,5 +340,5 @@ public class RoleService extends AOSBaseService {
 		}
 		httpModel.setOutMsg("撤消角色用户关联关系成功。");
 	}
-	
+
 }
