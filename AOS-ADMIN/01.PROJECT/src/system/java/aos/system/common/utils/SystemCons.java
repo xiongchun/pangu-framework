@@ -58,14 +58,19 @@ public class SystemCons extends AOSCons{
 	public static  final String ROOTNODE_PARENT_ID = "0";
 	
 	/**
-	 * 超级用户流水号
+	 * 超级管理员流水号
 	 */
 	public static  final String SUPER_USER_ID = "9999999999999999";
 	
 	/**
-	 * 超级用户角色流水号
+	 * 超级管理员角色流水号
 	 */
 	public static  final String SUPER_ROLE_ID = "9999999999999999";
+	
+	/**
+	 * 角色管理菜单流水号
+	 */
+	public static  final String ROLE_MODULE_id_ = "1609251718170099";
 	
 	
 }

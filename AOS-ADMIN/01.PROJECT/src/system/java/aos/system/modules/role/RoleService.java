@@ -60,6 +60,7 @@ public class RoleService extends AOSBaseService {
 	public void init(HttpModel httpModel) {
 		httpModel.setAttribute("orgPO", httpModel.getUserModel().getAos_orgPO());
 		httpModel.setAttribute("super_role_id", SystemCons.SUPER_ROLE_ID);
+		httpModel.setAttribute("role_module_id_", SystemCons.ROLE_MODULE_id_);
 		httpModel.setViewPath("system/role.jsp");
 	}
 
@@ -190,8 +191,9 @@ public class RoleService extends AOSBaseService {
 			List<Aos_role_modulePO> subPOs = AOSListUtils.select(aos_role_modulePOs, Aos_role_modulePO.class, jqlText, qDto);
 			if (AOSUtils.isNotEmpty(subPOs)) {
 				modelDto.put("checked", true);
-			} else
+			} else{
 				modelDto.put("checked", false);
+			}
 		}
 		return modelDtos;
 	}
@@ -205,16 +207,15 @@ public class RoleService extends AOSBaseService {
 	public void saveGrantInfo(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
 		Dto outDto = Dtos.newOutDto();
-		
-		String user_id_ = httpModel.getUserModel().getId_();
+		String role_id_ = inDto.getString("role_id_");
+		String user_id_ = httpModel.getUserModel().getId_();		
 		Timestamp sysDate = AOSUtils.getDateTime();
 		// 经办权限
 		String grant_rows = inDto.getString("grant_rows");
 		if (AOSUtils.isNotEmpty(grant_rows)) {
-			Dto delDto = Dtos.newDto("role_id_", inDto.getString("role_id_"));
+			Dto delDto = Dtos.newDto("role_id_", role_id_);
 			delDto.put("grant_type_", SystemCons.GRANT_TYPE_.BIZ);
 			sqlDao.delete("Role.deleteRoleModuleByRoleID", delDto);
-			String role_id_ = inDto.getString("role_id_");
 			for (String id_ : StringUtils.split(grant_rows, ",")) {
 				Aos_role_modulePO aos_role_modulePO = new Aos_role_modulePO();
 				aos_role_modulePO.setId_(AOSId.appId(SystemCons.ID.SYSTEM));
