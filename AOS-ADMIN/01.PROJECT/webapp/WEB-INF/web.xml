@@ -31,7 +31,7 @@
 		<url-pattern>*</url-pattern>
 	</filter-mapping>
 
-	<!-- Http过滤器 -->
+	<!-- Http最外层过滤器 -->
 	<filter>
 		<filter-name>httpFilter</filter-name>
 		<filter-class>aos.framework.web.filter.HttpFilter</filter-class>
@@ -41,14 +41,24 @@
 		<url-pattern>*.jhtml</url-pattern>
 	</filter-mapping>
 	
-	<!-- Http过滤器 -->
+	<!-- 后台管理系统过滤器 -->
 	<filter>
-		<filter-name>httpLoginFilter</filter-name>
-		<filter-class>aos.framework.web.filter.HttpLoginFilter</filter-class>
+		<filter-name>httpBackendFilter</filter-name>
+		<filter-class>aos.framework.web.filter.HttpBackendFilter</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>httpLoginFilter</filter-name>
+		<filter-name>httpBackendFilter</filter-name>
 		<url-pattern>/http/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- Http API接口过滤器 -->
+	<filter>
+		<filter-name>httpApiFilter</filter-name>
+		<filter-class>aos.framework.web.filter.HttpApiFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>httpApiFilter</filter-name>
+		<url-pattern>/api/*</url-pattern>
 	</filter-mapping>
 
 
