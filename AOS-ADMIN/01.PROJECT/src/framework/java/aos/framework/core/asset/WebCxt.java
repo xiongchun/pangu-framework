@@ -94,7 +94,7 @@ public class WebCxt {
 	 *            提示信息，这个提示信息被转换为Json的key为:appmsg。前台根据appmsg取出。
 	 */
 	private static String writeMsg(String msg) {
-		Dto dto = Dtos.newOutDto();
+		Dto dto = Dtos.newDto();
 		dto.put(AOSCons.APPCODE_KEY, AOSCons.SUCCESS);
 		dto.put(AOSCons.APPMSG_KEY, msg);
 		String outString = AOSJson.toJson(dto);
@@ -114,7 +114,7 @@ public class WebCxt {
 	 *            状态码
 	 */
 	public static void write(HttpServletResponse response, int appCode, String appMsg) {
-		Dto dto = Dtos.newOutDto();
+		Dto dto = Dtos.newDto();
 		dto.put(AOSCons.APPCODE_KEY, appCode);
 		dto.put(AOSCons.APPMSG_KEY, appMsg);
 		String outString = AOSJson.toJson(dto);

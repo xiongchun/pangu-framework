@@ -18,16 +18,16 @@ import aos.framework.core.asset.WebCxt;
 import aos.framework.core.utils.AOSCons;
 
 /**
- * <b>拦截器</b>
+ * <b>API接口拦截器</b>
  * <p>
- * 最外层的拦截器。可以拦截所有请求。仅为模版代码，无任何实现。
+ * 拦截/api/*后台接口请求。无实现，可自行扩展。
  * 
  * @author xiongchun
  */
 @SuppressWarnings("all")
-public class HttpFilter implements Filter {
+public class HttpApiFilter implements Filter {
 
-	private static Logger log = LoggerFactory.getLogger(HttpFilter.class);
+	private static Logger logger = LoggerFactory.getLogger(HttpApiFilter.class);
 
 	/**
 	 * 初始化
@@ -45,8 +45,11 @@ public class HttpFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
-        //这里可以扩展自己的相应实现
-		
+		// 这里可以扩展自己的相应实现
+		logger.info(AOSCons.CONSOLE_FLAG3 + "ClientIP：{}，URI：{}", WebCxt.getClientIpAddr(httpRequest),
+				httpRequest.getRequestURI());
+		// 无实现，可自行扩展
+		// do anything
 		chain.doFilter(httpRequest, httpResponse);
 	}
 

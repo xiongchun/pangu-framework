@@ -14,6 +14,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MIME;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -41,7 +42,9 @@ public class AOSHttpClient {
 	}
 
 	/**
-	 * 发起POST请求
+	 * 发起请求（兼容Get和Post）
+	 * <p>
+	 * 兼容参数以K-V表单方式提交和以JSON方式提交(设置"Content-type", "application/json"即可)
 	 * 
 	 * @return
 	 */
@@ -53,7 +56,7 @@ public class AOSHttpClient {
 			RequestBuilder requestBuilder = null;
 			if (StringUtils.equalsIgnoreCase(httpRequestVO.getRequestMethod(), REQUEST_METHOD.POST)) {
 				requestBuilder = RequestBuilder.post().setUri(new URI(httpRequestVO.getUri()));
-			}else{
+			} else {
 				requestBuilder = RequestBuilder.get().setUri(new URI(httpRequestVO.getUri()));
 			}
 			Map<String, String> paramMap = httpRequestVO.getParamMap();
@@ -62,12 +65,17 @@ public class AOSHttpClient {
 				while (keyIterator.hasNext()) {
 					String key = (String) keyIterator.next();
 					String value = paramMap.get(key);
-					// NameValuePair nvp = new BasicNameValuePair(key, value);
 					requestBuilder.addParameter(key, value);
 				}
 			}
-			HttpUriRequest httpUriRequest = requestBuilder.build();
 			
+			//提交JSON
+			if (httpRequestVO.getJsonEntityData() != null) {
+				HttpEntity entity = new StringEntity(httpRequestVO.getJsonEntityData(), "utf-8");
+				requestBuilder.setEntity(entity);
+			}
+			
+			HttpUriRequest httpUriRequest = requestBuilder.build();
 			Map<String, String> headMap = httpRequestVO.getHeadMap();
 			if (AOSUtils.isNotEmpty(headMap)) {
 				Iterator<String> headIterator = (Iterator) headMap.keySet().iterator();
@@ -78,13 +86,14 @@ public class AOSHttpClient {
 				}
 			}
 			
+
 			CloseableHttpResponse httpResponse = null;
 			try {
 				httpResponse = httpclient.execute(httpUriRequest);
 				int status = httpResponse.getStatusLine().getStatusCode();
 				httpResponseVO.setStatus(String.valueOf(status));
 				HttpEntity entity = httpResponse.getEntity();
-				String outString = entity != null ? EntityUtils.toString(entity) : null;
+				String outString = entity != null ? EntityUtils.toString(entity, "utf-8") : null;
 				httpResponseVO.setOut(outString);
 				if (entity != null) {
 					EntityUtils.consume(entity);
@@ -120,9 +129,8 @@ public class AOSHttpClient {
 		try {
 			HttpPost httppost = new HttpPost(httpRequestVO.getUri());
 			MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
-			//mode 和 charset组合解决上传文件名中文乱码问题
-			multipartEntityBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE)
-			.setCharset(Charset.forName("UTF-8"));
+			// mode 和 charset组合解决上传文件名中文乱码问题
+			multipartEntityBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE).setCharset(Charset.forName("UTF-8"));
 			ContentType textContent = ContentType.create("text/plain", MIME.UTF8_CHARSET);
 			Map<String, String> paramMap = httpRequestVO.getParamMap();
 			if (AOSUtils.isNotEmpty(paramMap)) {
@@ -150,7 +158,7 @@ public class AOSHttpClient {
 				int status = httpResponse.getStatusLine().getStatusCode();
 				httpResponseVO.setStatus(String.valueOf(status));
 				HttpEntity entity = httpResponse.getEntity();
-				String outString = entity != null ? EntityUtils.toString(entity) : null;
+				String outString = entity != null ? EntityUtils.toString(entity, "utf-8") : null;
 				httpResponseVO.setOut(outString);
 				if (entity != null) {
 					EntityUtils.consume(entity);

@@ -1,5 +1,8 @@
 package aos.framework.core.typewrap;
 
+import javax.servlet.http.HttpServletRequest;
+
+import aos.framework.core.asset.WebCxt;
 import aos.framework.core.typewrap.impl.HashDto;
 import aos.framework.core.utils.AOSCons;
 
@@ -21,9 +24,17 @@ public class Dtos {
 	}
 	
 	/**
+	 * 创建一个封装了请求参数的Dto对象
+	 * 
+	 */
+	public static Dto newInDto(HttpServletRequest request) {
+		return WebCxt.getParamAsDto(request);
+	}
+	
+	/**
 	 * 创建一个响应Request的Dto对象
 	 * <p>
-	 * 缺省加入KV变量：outDto.setAppCode(AOSCons.SUCCESS);<br>
+	 * 缺省加入KV变量(业务处理成功标识)：outDto.setAppCode(AOSCons.SUCCESS);<br>
 	 * setAppCode()可覆盖。
 	 * </P>
 	 */

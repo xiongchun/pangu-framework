@@ -21,15 +21,15 @@ import aos.system.common.model.UserModel;
 import aos.system.modules.cache.CacheUserDataService;
 
 /**
- * <b>拦截器</b>
+ * <b>后台管理系统动态资源请求拦截器</b>
  * <p>
- * 拦截http路径的请求，进行登录身份验证和登录有效期展期
+ *    拦截http路径的请求，进行登录身份验证和登录有效期展期 (维持心跳)
  * 
  * @author xiongchun
  */
-public class HttpLoginFilter implements Filter {
+public class HttpBackendFilter implements Filter {
 
-	private static Logger log = LoggerFactory.getLogger(HttpLoginFilter.class);
+	private static Logger log = LoggerFactory.getLogger(HttpBackendFilter.class);
 
 	/**
 	 * 初始化

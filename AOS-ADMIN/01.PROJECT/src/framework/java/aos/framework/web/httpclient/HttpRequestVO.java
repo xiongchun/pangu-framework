@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.Map;
 
+import com.google.common.collect.Maps;
+
 /**
  * HTTP请求值对象
  * 
@@ -13,6 +15,36 @@ import java.util.Map;
 public class HttpRequestVO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 请求路径地址
+	 */
+	private String uri;
+	
+	/**
+	 * 请求参数
+	 */
+	private Map<String, String> paramMap;
+	
+	/**
+	 * 头对象
+	 */
+	private Map<String, String> headMap;
+	
+	/**
+	 * 请求上传文件参数参数
+	 */
+	private Map<String, File> fileMap;
+	
+	/**
+	 * 请求类型
+	 */
+	private String requestMethod;
+	
+	/**
+	 * 请求JSON实体数据
+	 */
+	private String JsonEntityData;
 	
 	/**
 	 * 构造
@@ -42,43 +74,30 @@ public class HttpRequestVO implements Serializable{
 	}
 	
 	/**
-	 * 构造
+	 * 快捷设置头信息
 	 * 
-	 * @param pUrl
-	 * @param paramMap
-	 * @param headMap
+	 * @param type
+	 * @param value
 	 */
-	public HttpRequestVO(String pUrl, Map<String, String> paramMap, Map<String, String> headMap){
-		setUri(pUrl);
-		setParamMap(paramMap);
-		setHeadMap(headMap);
-		setRequestMethod(AOSHttpClient.REQUEST_METHOD.POST);
+	public void addHeader(String type, String value){
+		if (headMap == null) {
+			headMap = Maps.newHashMap();
+		}
+		headMap.put(type, value);
 	}
 	
 	/**
-	 * 请求路径地址
+	 * 设置Json实体数据
+	 * 
+	 * @param jsonEntityData
 	 */
-	private String uri;
-	
-	/**
-	 * 请求参数
-	 */
-	private Map<String, String> paramMap;
-	
-	/**
-	 * 头对象
-	 */
-	private Map<String, String> headMap;
-	
-	/**
-	 * 请求上传文件参数参数
-	 */
-	private Map<String, File> fileMap;
-	
-	/**
-	 * 请求类型
-	 */
-	private String requestMethod;
+	public void setJsonEntityData(String jsonEntityData) {
+		//直接提交Json实体
+		addHeader("Content-type", "application/json");
+		//将参数Map设为null，这种情况下paramMap是无用的
+		setParamMap(null);
+		JsonEntityData = jsonEntityData;
+	}
 
 	public String getUri() {
 		return uri;
@@ -118,5 +137,9 @@ public class HttpRequestVO implements Serializable{
 
 	public void setHeadMap(Map<String, String> headMap) {
 		this.headMap = headMap;
+	}
+
+	public String getJsonEntityData() {
+		return JsonEntityData;
 	}
 }
