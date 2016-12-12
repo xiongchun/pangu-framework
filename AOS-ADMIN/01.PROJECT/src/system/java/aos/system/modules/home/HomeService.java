@@ -135,7 +135,8 @@ public class HomeService extends AOSBaseService {
 	 */
 	public void login(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		Dto outDto = Dtos.newOutDto();
+		Dto outDto = Dtos.newDto();
+		outDto.setAppCode(AOSCons.SUCCESS);
 		String is_show_vercode_ = AOSCxt.getParam("is_show_vercode_");
 		// 配置为无验证码机制则跳过验证
 		if (StringUtils.equals(is_show_vercode_, SystemCons.IS.YES)) {
