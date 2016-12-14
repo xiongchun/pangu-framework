@@ -3,7 +3,7 @@ package aos.framework.core.redis;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import aos.framework.core.utils.AOSCfgHandler;
+import aos.framework.core.utils.AOSPropertiesHandler;
 import aos.framework.core.utils.AOSUtils;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -23,13 +23,13 @@ public class JedisUtil {
 	private static JedisPool jedisPool;
 
 	static {
-		String host = AOSCfgHandler.getValue("redis_host");
-		int port = Integer.valueOf(AOSCfgHandler.getValue("redis_port"));
+		String host = AOSPropertiesHandler.getProperty("redis_host");
+		int port = Integer.valueOf(AOSPropertiesHandler.getProperty("redis_port"));
         JedisPoolConfig config = new JedisPoolConfig();
-        config.setMaxTotal(Integer.valueOf(AOSCfgHandler.getValue("redis_maxTotal")));
-        config.setMaxIdle(Integer.valueOf(AOSCfgHandler.getValue("redis_maxIdle")));
-        config.setMinIdle(Integer.valueOf(AOSCfgHandler.getValue("redis_minIdle")));
-        config.setMaxWaitMillis(Integer.valueOf(AOSCfgHandler.getValue("redis_maxWaitMillis")));
+        config.setMaxTotal(Integer.valueOf(AOSPropertiesHandler.getProperty("redis_maxTotal")));
+        config.setMaxIdle(Integer.valueOf(AOSPropertiesHandler.getProperty("redis_maxIdle")));
+        config.setMinIdle(Integer.valueOf(AOSPropertiesHandler.getProperty("redis_minIdle")));
+        config.setMaxWaitMillis(Integer.valueOf(AOSPropertiesHandler.getProperty("redis_maxWaitMillis")));
         config.setTestOnBorrow(true);
         config.setTestOnReturn(true);
         //Idle时进行连接扫描

@@ -43,7 +43,7 @@ public class AOSPropertiesHandler {
 			}
 			parametersDto = new HashDto();
 			//application.properties
-			InputStream is = classLoader.getResourceAsStream("misc/aos.options.properties");
+			InputStream is = classLoader.getResourceAsStream("aos.properties");
 			defaultProperties = new Properties();
 			defaultProperties.load(is);
 			parametersDto.put(DEFAULT, defaultProperties);

@@ -4,14 +4,6 @@
 <configurations>
 
 <!-- 应用系统全局标识键 -->
-<config key="app_key" value="aos-admin" />
-
-<!-- Redis配置项 -->
-<config key="redis_host" value="127.0.0.1"/>
-<config key="redis_port" value="6379" />
-<config key="redis_maxTotal" value="200" />
-<config key="redis_maxIdle" value="50" />
-<config key="redis_minIdle" value="10" />
-<config key="redis_maxWaitMillis" value="10000" />
+<config key="app_key" value="aosuite" />
 
 </configurations>
