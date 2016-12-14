@@ -3,7 +3,7 @@
 <!-- 生产环境下部署Web应用打包脚本 -->
 <!-- 提示：配置信息动态调整请找到4.RECONFIG -->
 <project name="AOSuite" default="5.PACKAGE" basedir="../../../">
-     
+
 	<!-- 全局变量定义 -->
 	<target name="1.INIT">
 		<property name="war.name" value="aosuite" />
@@ -78,23 +78,37 @@
 	<!-- 打包前的配置信息适配 -->
 	<target name="4.RECONFIG" depends="3.COMPILE">
 		<echo message="配置信息适配开始..." />
+		<!-- 完成属性配置文件适配 -->
 		<propertyfile file="${dist}/bin/WEB-INF/classes/aos.properties">
-				<!-- Redis配置(未列出的信息不建议修改)-->
-				<entry key="redis_host" value="127.0.0.1" />
-				<entry key="redis_port" value="6379" />
-				<!-- 数据源配置 -->
-				<entry key="jdbc.url" value="jdbc:mysql://127.0.0.1:3306/aos?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false" />
-				<entry key="jdbc.username" value="root" />
-				<entry key="jdbc.password" value="root" />
-				<!-- Logback日志配置 -->
-				<entry key="dao" value="DEBUG" />
-				<entry key="aos" value="DEBUG" />
-				<entry key="aos.framework.web.filter.HttpFilter" value="DEBUG" />
-				<entry key="aos.framework.web.router.HttpRouterController" value="DEBUG" />
-				<!-- 其它需要根据部署环境动态调整的配置 -->
+			<!-- Redis配置(未列出的信息不建议修改)-->
+			<entry key="redis_host" value="127.0.0.1" />
+			<entry key="redis_port" value="6379" />
+			<!-- 数据源配置 -->
+			<entry key="jdbc.url" value="jdbc:mysql://127.0.0.1:3306/aos?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false" />
+			<entry key="jdbc.username" value="root" />
+			<entry key="jdbc.password" value="root" />
+			<!-- Logback日志配置 -->
+			<entry key="dao" value="DEBUG" />
+			<entry key="aos" value="DEBUG" />
+			<entry key="aos.framework.web.filter.HttpFilter" value="DEBUG" />
+			<entry key="aos.framework.web.router.HttpRouterController" value="DEBUG" />
 		</propertyfile>
-		<replace file="${dist}/bin/WEB-INF/classes/aos.properties" token="\:" value=":" encoding="utf-8"/>
-        <replace file="${dist}/bin/WEB-INF/classes/aos.properties" token="\=" value="=" encoding="utf-8"/>
+		<replace file="${dist}/bin/WEB-INF/classes/aos.properties" token="\:" value=":" encoding="utf-8" />
+		<replace file="${dist}/bin/WEB-INF/classes/aos.properties" token="\=" value="=" encoding="utf-8" />
+		<!-- 定义XML任务 -->
+		<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask">
+			<classpath>
+				<fileset dir="${basedir}/webapp/WEB-INF/lib">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</taskdef>
+		<!-- 使用XMLTask完成XML配置文件适配 -->
+		<xmltask source="${dist}/bin/WEB-INF/classes/aos.cfg.xml" dest="${dist}/bin/WEB-INF/classes/aos.cfg.xml">
+			 <!-- 这里只是举个栗子而已，如有需求可自行编辑 
+			 <replace path="//configurations/config[@key='app_key']/@value" withText="aosuite"  />
+			 -->
+		</xmltask>
 		<echo message="配置信息适配结束..." />
 	</target>
 
