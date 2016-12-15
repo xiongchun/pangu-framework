@@ -104,7 +104,7 @@
 			</classpath>
 		</taskdef>
 		<!-- 使用XMLTask完成XML配置文件适配 -->
-		<xmltask source="${dist}/bin/WEB-INF/classes/aos.cfg.xml" dest="${dist}/bin/WEB-INF/classes/aos.cfg.xml">
+		<xmltask source="${dist}/bin/WEB-INF/classes/aos.cfg.xml" dest="${dist}/bin/WEB-INF/classes/aos.cfg.xml" encoding="utf-8">
 			 <!-- 这里只是举个栗子而已，如有需求可自行编辑 
 			 <replace path="//configurations/config[@key='app_key']/@value" withText="aosuite"  />
 			 -->
