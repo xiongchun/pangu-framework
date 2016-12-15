@@ -9,6 +9,7 @@ import aos.framework.core.asset.AOSBeanLoader;
 import aos.framework.core.redis.JedisUtil;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSUtils;
+import redis.clients.jedis.Jedis;
 
 /**
  * <b>ID工具类</b>
@@ -46,24 +47,26 @@ public class AOSId {
 	 * @return
 	 */
 	public static String appId(String idType, String prefix){
+		Jedis jedis = JedisUtil.getJedisClient();
+		String id = null;
+		final String IDSET = "IDSET";
 		String key = AOSCons.KEYS.ID + idType;
-		String seq = prefix == null ? "" : prefix + AOSUtils.getDateStr("yyMMddHHmmss");
-		String temp = JedisUtil.getString(key);
-		if (AOSUtils.isEmpty(temp)) {
-			temp = "0";
-			JedisUtil.setString(key, temp, 0);
-		}else {
-			if (Integer.valueOf(temp) == 9999) {
-				temp = "0";
-				JedisUtil.setString(key, temp, 0);
-			}else {
-				temp =String.valueOf( Integer.valueOf(temp) + 1);
-				JedisUtil.setString(key, temp, 0);
+		while (true) {
+			long myIncrLong = jedis.incr(key);
+			if (myIncrLong > 9999) {
+				jedis.del(key);
+				myIncrLong = jedis.incr(key);
+			}
+			String myIncrStr = String.format("%4d", myIncrLong).replace(" ", "0");
+			String myPrefix = prefix == null ? "" : prefix + AOSUtils.getDateStr("yyMMddHHmmss");
+			id = myPrefix + myIncrStr;
+			if (!jedis.sismember(IDSET, id)) {
+				jedis.sadd(IDSET, id);
+				break;
 			}
 		}
-		temp = String.format("%4d", Integer.valueOf(temp)).replace(" ", "0");
-		seq = seq + temp;
-		return seq;
+		JedisUtil.close(jedis);
+		return id;
 	}
 	
 	/**
