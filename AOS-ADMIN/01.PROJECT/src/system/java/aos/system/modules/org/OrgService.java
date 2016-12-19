@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.google.common.collect.Lists;
 
 import aos.framework.core.id.AOSId;
+import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCons;
@@ -17,7 +18,6 @@ import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.web.router.HttpModel;
 import aos.system.common.model.UserModel;
-import aos.system.common.service.AOSBaseService;
 import aos.system.common.utils.SystemCons;
 import aos.system.common.utils.SystemUtils;
 import aos.system.dao.Aos_orgDao;

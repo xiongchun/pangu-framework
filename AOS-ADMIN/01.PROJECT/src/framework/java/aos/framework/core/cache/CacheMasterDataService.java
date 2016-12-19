@@ -13,6 +13,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import aos.framework.core.redis.JedisUtil;
+import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSJson;
@@ -21,7 +22,6 @@ import aos.framework.dao.Aos_dicDao;
 import aos.framework.dao.Aos_dicPO;
 import aos.framework.dao.Aos_paramsDao;
 import aos.framework.dao.Aos_paramsPO;
-import aos.system.common.service.AOSBaseService;
 import redis.clients.jedis.Jedis;
 
 /**

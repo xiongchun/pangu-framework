@@ -62,7 +62,7 @@
 	</bean>
 
 	<!-- 注解驱动的声明式事务管理 -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
 	<!-- 平台缺省数据源 SqlSessionFactory配置 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

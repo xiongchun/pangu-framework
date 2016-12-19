@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 import org.springframework.stereotype.Service;
 
-import aos.system.common.service.AOSBaseService;
+import aos.framework.core.service.AOSBaseService;
 
 /**
  * <b>ID生成服务</b>

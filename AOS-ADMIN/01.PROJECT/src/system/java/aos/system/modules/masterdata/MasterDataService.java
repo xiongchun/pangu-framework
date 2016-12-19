@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import aos.framework.core.cache.CacheMasterDataService;
 import aos.framework.core.id.AOSId;
+import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCons;
@@ -19,7 +20,6 @@ import aos.framework.dao.Aos_dicPO;
 import aos.framework.dao.Aos_paramsDao;
 import aos.framework.dao.Aos_paramsPO;
 import aos.framework.web.router.HttpModel;
-import aos.system.common.service.AOSBaseService;
 import aos.system.common.utils.SystemCons;
 
 /**

@@ -11,6 +11,7 @@ import com.google.common.collect.Lists;
 
 import aos.framework.core.exception.AOSException;
 import aos.framework.core.redis.JedisUtil;
+import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCfgHandler;
@@ -19,7 +20,6 @@ import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.web.router.HttpModel;
-import aos.system.common.service.AOSBaseService;
 import redis.clients.jedis.Jedis;
 
 /**

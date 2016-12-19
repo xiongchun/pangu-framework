@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aos.framework.core.exception.AOSException;
+import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSCxt;
@@ -22,7 +23,7 @@ import aos.system.modules.cache.CacheUserDataService;
  *
  */
 @Service
-public class OnlineUserService {
+public class OnlineUserService extends AOSBaseService{
 	
 	@Autowired
 	private CacheUserDataService cacheUserDataService;

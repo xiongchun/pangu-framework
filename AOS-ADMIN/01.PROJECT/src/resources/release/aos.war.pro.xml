@@ -66,6 +66,8 @@
 		<echo message="编译开始..." />
 		<javac srcdir="${dist}/src" destdir="${dist}/bin/WEB-INF/classes" encoding="utf-8" debug="true" debuglevel="lines,vars,source" includeantruntime="on" listfiles="false">
 			<!-- <compilerarg value="-Xlint:unchecked"/> -->
+			<!-- 忽略符号表ct.sym, 直接查找rt.jar。防止找不到部分com.sun等私有依赖类。 -->
+			<compilerarg value="-XDignore.symbol.file" />
 			<classpath>
 				<fileset dir="${src.webapp}/WEB-INF/lib">
 					<include name="**/*.jar" />
@@ -105,7 +107,7 @@
 		</taskdef>
 		<!-- 使用XMLTask完成XML配置文件适配 -->
 		<xmltask source="${dist}/bin/WEB-INF/classes/aos.cfg.xml" dest="${dist}/bin/WEB-INF/classes/aos.cfg.xml" encoding="utf-8">
-			 <!-- 这里只是举个栗子而已，如有需求可自行编辑 
+			<!-- 这里只是举个栗子而已，如有需求可自行编辑 
 			 <replace path="//configurations/config[@key='app_key']/@value" withText="aosuite"  />
 			 -->
 		</xmltask>
