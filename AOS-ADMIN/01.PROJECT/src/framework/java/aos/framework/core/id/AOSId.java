@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.apache.commons.lang3.StringUtils;
 
 import aos.framework.core.asset.AOSBeanLoader;
+import aos.framework.core.exception.AOSException;
 import aos.framework.core.redis.JedisUtil;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSUtils;
@@ -40,25 +41,31 @@ public class AOSId {
 	
 	/**
 	 * <p>获取规则序列号：基于Redis生成</p>
-	 * 生成规则：[前缀] + 年月日时分秒 + 4位递增重复循环的序列
+	 * 生成规则：[前缀] + 时间戳 + 递增重复循环的序列
 	 * 
 	 * @param idType ID类型 用于作为Redis Key的一部分。标识ID的唯一性。
-	 * @param prefix ID的前缀 如不需要前缀，可以传null或空字符串
+	 * @param timeFormat 时间戳的格式 缺省值：yyMMddHHmmss
+	 * @param maxIncr 循环递增序列最大值 99999
 	 * @return
 	 */
-	public static String appId(String idType, String prefix){
+	public static String appId(String idType, String timeFormat, String maxIncr){
+		if (AOSUtils.isEmpty(idType)) {
+			throw new AOSException("idType不能为空，请分配ID类型标识。");
+		}
 		Jedis jedis = JedisUtil.getJedisClient();
 		String id = null;
-		final String IDSET = "IDSET";
+		String IDSET = "IDSET";
 		String key = AOSCons.KEYS.ID + idType;
+		timeFormat = AOSUtils.isEmpty(timeFormat) ? "yyMMddHHmmss" : timeFormat;
+		maxIncr = AOSUtils.isEmpty(maxIncr) ? "99999" : maxIncr;
 		while (true) {
 			long myIncrLong = jedis.incr(key);
-			if (myIncrLong > 9999) {
+			if (myIncrLong > Integer.valueOf(maxIncr)) {
 				jedis.del(key);
 				myIncrLong = jedis.incr(key);
 			}
-			String myIncrStr = String.format("%4d", myIncrLong).replace(" ", "0");
-			String myPrefix = prefix == null ? "" : prefix + AOSUtils.getDateStr("yyMMddHHmmss");
+			String myIncrStr = String.format("%" + maxIncr.length() + "d", myIncrLong).replace(" ", "0");
+			String myPrefix = AOSUtils.getDateStr(timeFormat);
 			id = myPrefix + myIncrStr;
 			if (!jedis.sismember(IDSET, id)) {
 				jedis.sadd(IDSET, id);
@@ -76,7 +83,7 @@ public class AOSId {
 	 * @return
 	 */
 	public static String appId(String idType){
-		return appId(idType, StringUtils.EMPTY);
+		return appId(idType, null, null);
 	}
 
 	/**
