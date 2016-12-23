@@ -2,8 +2,8 @@
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
 
 <aos:html title="实例④-常用布局二" base="http" lib="ext">
-	<aos:body>
-	</aos:body>
+<aos:body>
+</aos:body>
 </aos:html>
 
 <aos:onready>
@@ -19,7 +19,7 @@
 			<aos:docked dock="bottom" ui="footer" margin="0 0 8 0">
 				<aos:dockeditem xtype="tbfill" />
 				<aos:dockeditem xtype="button" text="查询" onclick="_g_org_query" icon="query.png" />
-				<aos:dockeditem xtype="button" text="重置" onclick="AOS.reset(_f_query);" icon="refresh.png" />
+				<aos:dockeditem xtype="button" text="重置" onclick="#AOS.reset(_f_query);" icon="refresh.png" />
 				<aos:dockeditem xtype="tbfill" />
 			</aos:docked>
 		</aos:formpanel>
@@ -42,11 +42,13 @@
 					<aos:column header="扩展码" dataIndex="biz_code_" />
 					<aos:column header="已删除" dataIndex="is_del_" rendererField="is_" width="80" />
 					<aos:column header="备注" dataIndex="remark_" />
+					<aos:column header="查看" rendererFn="fn_button_render" align="center" fixedWidth="60" />
 				</aos:gridpanel>
 			</aos:tab>
 
 			<aos:tab title="配置参数信息" id="_tab_param">
-				<aos:gridpanel id="_g_param" url="demoService.listParams" onrender="_g_param_query" border="false" pageSize="20" forceFit="false">
+				<aos:gridpanel id="_g_param" url="demoService.listParams" onrender="_g_param_query" border="false" pageSize="20"
+					forceFit="false">
 					<aos:docked forceBoder="0 0 1 0">
 						<aos:dockeditem text="新增" onclick="#AOS.tip('您点击了新增按钮');" icon="add.png" />
 						<aos:dockeditem text="修改" onclick="#AOS.tip('您点击了修改按钮');" icon="edit.png" />
@@ -74,8 +76,8 @@
 					<aos:column header="卡类型" dataIndex="card_type_" rendererField="card_type_" width="60" />
 					<aos:column header="身份证号" dataIndex="id_no_" width="140" />
 					<aos:column header="持卡人" dataIndex="name_" width="80" />
-					<aos:column header="信用额度" dataIndex="credit_line_" type="number" width="100"  />
-					<aos:column header="可用余额" dataIndex="balance_" type="number" width="100"  />
+					<aos:column header="信用额度" dataIndex="credit_line_" type="number" width="100" />
+					<aos:column header="可用余额" dataIndex="balance_" type="number" width="100" />
 					<aos:column header="性别" dataIndex="sex_" rendererField="sex_" width="60" />
 					<aos:column header="出生日期" dataIndex="birthday_" type="date" format="Y-m-d" width="100" />
 					<aos:column header="年龄" dataIndex="age_" width="60" />
@@ -126,6 +128,37 @@
 
 		</aos:tabpanel>
 
+		<aos:window id="_w_detail" layout="border" title="部门信息" width="800" height="530" onshow="_w_detail_onshow">
+			<aos:gridpanel id="_g_org3" region="center" url="demoService.listOrgs" hidePagebar="true" onrender="_g_org_query3"
+				onitemclick="fn_g_org3_click">
+				<aos:docked forceBoder="0 0 1 0">
+					<aos:dockeditem xtype="tbtext" text="部门列表信息[测试数据]" />
+				</aos:docked>
+				<aos:column type="rowno" />
+				<aos:column header="部门流水号" dataIndex="id_" width="150" />
+				<aos:column header="上级部门流水号" dataIndex="parent_id_" width="150" />
+				<aos:column header="节点语义ID" dataIndex="cascade_id_" width="180" />
+				<aos:column header="部门名称" dataIndex="name_" width="220" />
+				<aos:column header="部门类型" dataIndex="type_" rendererField="org_type_" />
+				<aos:column header="排序号" dataIndex="sort_no_" width="60" />
+			</aos:gridpanel>
+			<aos:panel region="south" layout="fit">
+				<aos:formpanel id="_f_dept" layout="column" labelWidth="70" border="false">
+					<aos:docked forceBoder="1 0 1 0">
+						<aos:dockeditem xtype="tbtext" text="重设部门基础信息" />
+					</aos:docked>
+					<aos:textfield name="name_" fieldLabel="部门名称" columnWidth="0.33" />
+					<aos:combobox name="type_" fieldLabel="部门类型" dicField="org_type_" columnWidth="0.33" />
+					<aos:dockeditem xtype="button" text="保存" margin="0 0 0 15" onclick="#AOS.tip('仅演示布局，无保存实现。');" icon="query.png"
+						width="60" />
+				</aos:formpanel>
+			</aos:panel>
+			<aos:docked dock="bottom" ui="footer">
+				<aos:dockeditem xtype="tbfill" />
+				<aos:dockeditem onclick="#_w_detail.hide();" text="关闭" icon="close.png" />
+			</aos:docked>
+		</aos:window>
+
 	</aos:viewport>
 	<script type="text/javascript">
 	
@@ -144,6 +177,11 @@
 			var params = AOS.getValue('_f_query2');
 			_g_org2_store.getProxy().extraParams = params;
 			_g_org2_store.loadPage(1);
+		}
+		
+		//加载部门结构表格③数据
+		function _g_org_query3() {
+			_g_org3_store.loadPage(1);
 		}
 		
 		//加载参数配置表数据
@@ -165,5 +203,27 @@
 			_f_info.loadRecord(record);
 		}
 		
+		//表格单击事件
+		function fn_g_org3_click(obj, record) {
+			_f_dept.loadRecord(record);
+		}
+		
+		//监听窗口弹出事件
+		function _w_detail_onshow(){
+			var record = AOS.selectone(_g_org, true);
+			_w_detail.setTitle('<span class="app-container-title-normal">部门信息：' + record.data.name_ + '</span>');
+		}
+		
+		//按钮列转换
+		function fn_button_render(value, metaData, record, rowIndex, colIndex, store) {
+			return '<input type="button" value="查看" class="cbtn" onclick="_w_detail_show();" />';
+		}
+		
 	</script>
 </aos:onready>
+
+<script type="text/javascript">
+	function _w_detail_show(){
+		Ext.getCmp('_w_detail').show();
+	}
+</script>
