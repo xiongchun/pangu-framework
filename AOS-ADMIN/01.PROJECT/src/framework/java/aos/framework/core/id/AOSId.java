@@ -3,8 +3,6 @@ package aos.framework.core.id;
 import java.math.BigInteger;
 import java.util.UUID;
 
-import org.apache.commons.lang3.StringUtils;
-
 import aos.framework.core.asset.AOSBeanLoader;
 import aos.framework.core.exception.AOSException;
 import aos.framework.core.redis.JedisUtil;
