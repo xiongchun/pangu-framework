@@ -29,8 +29,12 @@ public class BuilderUtils {
         Dto tableDto = tableVO.toDto();
         //先全部转为小写，再首字母大写。变态的Oracle、H2表名全部返回大写字母。
         String name = StringUtils.lowerCase(tableVO.getName());
-        tableDto.put("upname", StringUtils.capitalize(name));
         tableDto.put("name", name);
+		while(StringUtils.indexOf(name, "_") > 0){
+			String charString = StringUtils.substring(name, StringUtils.indexOf(name, "_")+1,StringUtils.indexOf(name, "_") + 2);
+			name  = StringUtils.replace(name, "_" + charString, charString.toUpperCase());
+		}
+		tableDto.put("upname", StringUtils.capitalize(name));
         tableDto.put("autoincrementPkName", tableVO.getAutoincrementPkName());
         return tableDto;
     }

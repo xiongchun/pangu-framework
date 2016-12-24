@@ -8,7 +8,7 @@
 	<!-- 查询部门列表 -->
 	<select id="listOrgsPage" resultType="Dto" parameterType="Dto">
 			SELECT
-            <include refid="aos.system.dao.Aos_orgDao.column" />
+            <include refid="aos.system.dao.AosOrgDao.column" />
             FROM aos_org
 			<where>
 			    <if test="name_ != null and name_ != ''">
@@ -38,9 +38,9 @@
 	</update>
 	
 	<!-- 检查删除节点中是否包含根节点 -->
-	<select id="checkRootNode" resultType="Aos_orgPO" parameterType="Dto">
+	<select id="checkRootNode" resultType="AosOrgPO" parameterType="Dto">
 	     SELECT 
-	         <include refid="aos.system.dao.Aos_orgDao.column" />
+	         <include refid="aos.system.dao.AosOrgDao.column" />
 	      FROM aos_org WHERE id_ IN (${ids}) AND parent_id_ = '0'
 	</select>
 

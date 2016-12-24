@@ -6,18 +6,18 @@
 <mapper namespace="Demo">
 
 	<!-- 查询参数数据 -->
-	<select id="listParamsPage" resultType="Aos_paramsPO"
+	<select id="listParamsPage" resultType="AosParamsPO"
 		parameterType="Dto">
 		SELECT
-		<include refid="aos.framework.dao.Aos_paramsDao.column" />
+		<include refid="aos.framework.dao.AosParamsDao.column" />
 		FROM aos_params WHERE
 		key_ LIKE '%${keyorvalue}%' OR value_ LIKE '%${keyorvalue}%'
 	</select>
 
 	<!-- 查询测试 -->
-	<select id="listAccountPage" resultType="Demo_accountPO" parameterType="Dto">
+	<select id="listAccountPage" resultType="DemoAccountPO" parameterType="Dto">
 		SELECT
-		<include refid="aos.demo.dao.Demo_accountDao.column" />
+		<include refid="aos.demo.dao.DemoAccountDao.column" />
 		FROM demo_account WHERE 1=1
 		<if test="name_ != null and name_ != ''">
 			AND name_ = #{name_} 

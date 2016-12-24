@@ -20,8 +20,8 @@ import aos.framework.web.router.HttpModel;
 import aos.system.common.model.UserModel;
 import aos.system.common.utils.SystemCons;
 import aos.system.common.utils.SystemUtils;
-import aos.system.dao.Aos_orgDao;
-import aos.system.dao.Aos_orgPO;
+import aos.system.dao.AosOrgDao;
+import aos.system.dao.AosOrgPO;
 
 /**
  * 部门管理
@@ -33,7 +33,7 @@ import aos.system.dao.Aos_orgPO;
 public class OrgService extends AOSBaseService{
 	
 	@Autowired
-	private Aos_orgDao aos_orgDao;
+	private AosOrgDao aosOrgDao;
 	
 	/**
 	 * 部门管理页面初始化
@@ -42,8 +42,8 @@ public class OrgService extends AOSBaseService{
 	 * @return
 	 */
 	public void init(HttpModel httpModel) {
-		Aos_orgPO aos_orgPO = aos_orgDao.selectOne(Dtos.newDto("parent_id_", SystemCons.ROOTNODE_PARENT_ID));
-		httpModel.setAttribute("rootPO", aos_orgPO);
+		AosOrgPO aosOrgPO = aosOrgDao.selectOne(Dtos.newDto("parent_id_", SystemCons.ROOTNODE_PARENT_ID));
+		httpModel.setAttribute("rootPO", aosOrgPO);
 		httpModel.setViewPath("system/org.jsp");
 	}
 	
@@ -57,10 +57,10 @@ public class OrgService extends AOSBaseService{
 		Dto inDto = httpModel.getInDto();
 		inDto.setOrder("sort_no_");
 		inDto.put("is_del_", SystemCons.IS.NO);
-		List<Aos_orgPO> aos_orgPOs = aos_orgDao.list(inDto);
+		List<AosOrgPO> aosOrgPOs = aosOrgDao.list(inDto);
 		List<Dto> modelDtos = Lists.newArrayList();
-		for (Aos_orgPO aos_orgPO : aos_orgPOs) {
-			modelDtos.add(aos_orgPO.toDto());
+		for (AosOrgPO aosOrgPO : aosOrgPOs) {
+			modelDtos.add(aosOrgPO.toDto());
 		}
 		String treeJson = SystemUtils.toTreeModalAsyncLoad(modelDtos);
 		httpModel.setOutMsg(treeJson);
@@ -89,34 +89,34 @@ public class OrgService extends AOSBaseService{
 	public void saveOrg(HttpModel httpModel) {
 		UserModel userModel = httpModel.getUserModel();
 		Dto inDto = httpModel.getInDto();
-		Aos_orgPO aos_orgPO = new Aos_orgPO();
-		aos_orgPO.copyProperties(inDto);
-		aos_orgPO.setId_(AOSId.appId(SystemCons.ID.SYSTEM));
+		AosOrgPO aosOrgPO = new AosOrgPO();
+		aosOrgPO.copyProperties(inDto);
+		aosOrgPO.setId_(AOSId.appId(SystemCons.ID.SYSTEM));
 		
 		// 生成语义ID
-		Aos_orgPO parentAos_orgPO = aos_orgDao.selectByKey(aos_orgPO.getParent_id_());
-		String max_cascade_id_ = (String)sqlDao.selectOne("Org.getMaxCascadeId", aos_orgPO.getParent_id_());
+		AosOrgPO parentAosOrgPO = aosOrgDao.selectByKey(aosOrgPO.getParent_id_());
+		String max_cascade_id_ = (String)sqlDao.selectOne("Org.getMaxCascadeId", aosOrgPO.getParent_id_());
 		if (AOSUtils.isEmpty(max_cascade_id_)) {
 			String temp = "0";
-			if (AOSUtils.isNotEmpty(parentAos_orgPO)) {
-				temp = parentAos_orgPO.getCascade_id_();
+			if (AOSUtils.isNotEmpty(parentAosOrgPO)) {
+				temp = parentAosOrgPO.getCascade_id_();
 			}
 			max_cascade_id_ = temp + ".000";
 		}
 		String cascade_id_ = SystemUtils.genCascadeTreeId(max_cascade_id_, 999);
-		aos_orgPO.setCascade_id_(cascade_id_);
+		aosOrgPO.setCascade_id_(cascade_id_);
 		
-		aos_orgPO.setIs_leaf_(SystemCons.IS.YES);
-		aos_orgPO.setCreate_by_(userModel.getId_());
-		aos_orgPO.setCreate_time_(AOSUtils.getDateTime());
-		aos_orgPO.setIs_del_(SystemCons.IS.NO);
-		aos_orgDao.insert(aos_orgPO);
+		aosOrgPO.setIs_leaf_(SystemCons.IS.YES);
+		aosOrgPO.setCreate_by_(userModel.getId_());
+		aosOrgPO.setCreate_time_(AOSUtils.getDateTime());
+		aosOrgPO.setIs_del_(SystemCons.IS.NO);
+		aosOrgDao.insert(aosOrgPO);
 		
 		//更新父节点的是否叶子节点字段
-		Aos_orgPO updatePO = new Aos_orgPO();
-		updatePO.setId_(aos_orgPO.getParent_id_());
+		AosOrgPO updatePO = new AosOrgPO();
+		updatePO.setId_(aosOrgPO.getParent_id_());
 		updatePO.setIs_leaf_(SystemCons.IS.NO);
-		aos_orgDao.updateByKey(updatePO);
+		aosOrgDao.updateByKey(updatePO);
 		
 		httpModel.setOutMsg("部门新增成功。");
 	}
@@ -130,9 +130,9 @@ public class OrgService extends AOSBaseService{
 	@Transactional
 	public void updateOrg(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		Aos_orgPO aos_orgPO = new Aos_orgPO();
-		aos_orgPO.copyProperties(inDto);
-		aos_orgDao.updateByKey(aos_orgPO);
+		AosOrgPO aosOrgPO = new AosOrgPO();
+		aosOrgPO.copyProperties(inDto);
+		aosOrgDao.updateByKey(aosOrgPO);
 		httpModel.setOutMsg("部门修改成功。");
 	}
 	
@@ -145,22 +145,22 @@ public class OrgService extends AOSBaseService{
 	public void deleteOrg(HttpModel httpModel) {
 		Dto outDto = Dtos.newOutDto();
 		String[] selectionIds = httpModel.getInDto().getRows();
-		Aos_orgPO aos_orgPO = (Aos_orgPO)sqlDao.selectOne("Org.checkRootNode", Dtos.newDto("ids", StringUtils.join(selectionIds, ",")));
-		if (AOSUtils.isNotEmpty(aos_orgPO)) {
+		AosOrgPO aosOrgPO = (AosOrgPO)sqlDao.selectOne("Org.checkRootNode", Dtos.newDto("ids", StringUtils.join(selectionIds, ",")));
+		if (AOSUtils.isNotEmpty(aosOrgPO)) {
 			outDto.setAppCode(AOSCons.ERROR);
-			outDto.setAppMsg(AOSUtils.merge("操作失败，根节点[{0}]不能删除。", aos_orgPO.getName_()));
+			outDto.setAppMsg(AOSUtils.merge("操作失败，根节点[{0}]不能删除。", aosOrgPO.getName_()));
 		}else {
 			for (String id_ : selectionIds) {
-				Aos_orgPO delPO = aos_orgDao.selectByKey(id_); 
+				AosOrgPO delPO = aosOrgDao.selectByKey(id_); 
 				if (AOSUtils.isEmpty(delPO)) {
 					continue;
 				}
 				
-				List<Aos_orgPO> subDelList = aos_orgDao.like(Dtos.newDto("cascade_id_", delPO.getCascade_id_()));
-				for (Aos_orgPO subDelPO : subDelList) {
+				List<AosOrgPO> subDelList = aosOrgDao.like(Dtos.newDto("cascade_id_", delPO.getCascade_id_()));
+				for (AosOrgPO subDelPO : subDelList) {
 					//逻辑删除部门
 					subDelPO.setIs_del_(SystemCons.IS.YES);
-					aos_orgDao.updateByKey(subDelPO);
+					aosOrgDao.updateByKey(subDelPO);
 					//逻辑删除部门下辖的用户
 					sqlDao.update("Org.updateUserInfoByOrgId", subDelPO.getId_());
 				}
@@ -168,12 +168,12 @@ public class OrgService extends AOSBaseService{
 				//更需父节点的是否叶子节点属性
 				Dto checkDto = Dtos.newDto("parent_id_", delPO.getParent_id_());
 				checkDto.put("is_del_", SystemCons.IS.NO);
-				if (aos_orgDao.rows(checkDto) == 0) {
-					Aos_orgPO updatePO = new Aos_orgPO();
+				if (aosOrgDao.rows(checkDto) == 0) {
+					AosOrgPO updatePO = new AosOrgPO();
 					updatePO.setId_(delPO.getParent_id_());
 					updatePO.setIs_auto_expand_(SystemCons.IS.NO);
 					updatePO.setIs_leaf_(SystemCons.IS.YES);
-					aos_orgDao.updateByKey(updatePO);
+					aosOrgDao.updateByKey(updatePO);
 				}
 				
 			}

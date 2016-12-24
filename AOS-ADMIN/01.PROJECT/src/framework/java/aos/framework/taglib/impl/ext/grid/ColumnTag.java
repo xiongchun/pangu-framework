@@ -9,7 +9,7 @@ import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.impl.HashDto;
 import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSUtils;
-import aos.framework.dao.Aos_dicPO;
+import aos.framework.dao.AosDicPO;
 import aos.framework.taglib.asset.Xtypes;
 import aos.framework.taglib.impl.ext.ComponentTagSupport;
 import aos.framework.taglib.impl.ext.tree.TreePanelTag;
@@ -172,7 +172,7 @@ public class ColumnTag extends ComponentTagSupport {
 		columnDto.put("rendererField", getRendererField());
 		columnDto.put("actionDtos", getActionDtos());
 		if (AOSUtils.isNotEmpty(getRendererField())) {
-			List<Aos_dicPO> aos_dicPOs= AOSCxt.getDicList(getRendererField());
+			List<AosDicPO> aos_dicPOs= AOSCxt.getDicList(getRendererField());
 			columnDto.put("dicList", aos_dicPOs);
 		}
 		if (getParent() instanceof GridPanelTag) {

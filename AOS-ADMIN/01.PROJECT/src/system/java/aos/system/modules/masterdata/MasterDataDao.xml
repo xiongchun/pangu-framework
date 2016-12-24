@@ -8,7 +8,7 @@
 	<!-- 查询键值参数列表 -->
 	<select id="listParamInfosPage" resultType="Dto" parameterType="Dto">
 			SELECT
-            <include refid="aos.framework.dao.Aos_paramsDao.column" />
+            <include refid="aos.framework.dao.AosParamsDao.column" />
             FROM aos_params
             <where>
 			    <if test="nkv_ != null and nkv_ != ''">
@@ -24,7 +24,7 @@
 	<!-- 查询字典列表 -->
 	<select id="listDicsPage" resultType="Dto" parameterType="Dto">
 			SELECT
-            <include refid="aos.framework.dao.Aos_dicDao.column" />
+            <include refid="aos.framework.dao.AosDicDao.column" />
             FROM aos_dic
             <where>
 			    <if test="where1_ != null and where1_ != ''">

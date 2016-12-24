@@ -18,10 +18,10 @@ import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
-import aos.framework.dao.Aos_dicDao;
-import aos.framework.dao.Aos_dicPO;
-import aos.framework.dao.Aos_paramsDao;
-import aos.framework.dao.Aos_paramsPO;
+import aos.framework.dao.AosDicDao;
+import aos.framework.dao.AosDicPO;
+import aos.framework.dao.AosParamsDao;
+import aos.framework.dao.AosParamsPO;
 import redis.clients.jedis.Jedis;
 
 /**
@@ -35,17 +35,17 @@ public class CacheMasterDataService extends AOSBaseService{
 	private static Logger log = LoggerFactory.getLogger(CacheMasterDataService.class);
 	
 	@Autowired
-	private Aos_dicDao aos_dicDao;
+	private AosDicDao aosDicDao;
 	@Autowired
-	private Aos_paramsDao aos_paramsDao;
+	private AosParamsDao aosParamsDao;
 
 	/**
 	 * 将全局参数信息刷到缓存
 	 */
 	public void cacheParamData() {
-		List<Aos_paramsPO> aos_paramsPOs = aos_paramsDao.list(null);
+		List<AosParamsPO> aos_paramsPOs = aosParamsDao.list(null);
 		Map<String, String> cacheMap = Maps.newHashMap();
-		for (Aos_paramsPO aos_paramsPO : aos_paramsPOs) {
+		for (AosParamsPO aos_paramsPO : aos_paramsPOs) {
 			cacheMap.put(aos_paramsPO.getKey_(), aos_paramsPO.getValue_());
 		}
 		if (AOSUtils.isNotEmpty(cacheMap)) {
@@ -98,10 +98,10 @@ public class CacheMasterDataService extends AOSBaseService{
 	 * 将字典表刷到缓存
 	 */
 	public void cacheDicData() {
-		List<Aos_dicPO> aos_dicPOs = aos_dicDao.list(Dtos.newDto("is_enable_", AOSCons.IS.YES));
+		List<AosDicPO> aos_dicPOs = aosDicDao.list(Dtos.newDto("is_enable_", AOSCons.IS.YES));
 		Jedis jedis = JedisUtil.getJedisClient();
 		// 将字典对照项目载入缓存
-		for (Aos_dicPO aos_dicPO : aos_dicPOs) {
+		for (AosDicPO aos_dicPO : aos_dicPOs) {
 			jedis.hset(AOSCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_(), AOSJson.toJson(aos_dicPO));
 		}
 		JedisUtil.close(jedis);
@@ -110,7 +110,7 @@ public class CacheMasterDataService extends AOSBaseService{
 	/**
 	 * 将单个字典刷到缓存
 	 */
-	public void cacheDic(Aos_dicPO aos_dicPO) {
+	public void cacheDic(AosDicPO aos_dicPO) {
 		Jedis jedis = JedisUtil.getJedisClient();
 		jedis.hset(AOSCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_(), AOSJson.toJson(aos_dicPO));
 		JedisUtil.close(jedis);
@@ -119,7 +119,7 @@ public class CacheMasterDataService extends AOSBaseService{
 	/**
 	 * 将单个字典从缓存中删除
 	 */
-	public void delDic(Aos_dicPO aos_dicPO) {
+	public void delDic(AosDicPO aos_dicPO) {
 		Jedis jedis = JedisUtil.getJedisClient();
 		jedis.hdel(AOSCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_());
 		JedisUtil.close(jedis);
@@ -131,8 +131,8 @@ public class CacheMasterDataService extends AOSBaseService{
 	 * @param key
 	 * @return
 	 */
-	public List<Aos_dicPO> getDicList(String key) {
-		List<Aos_dicPO> aos_dicPOs = Lists.newArrayList();
+	public List<AosDicPO> getDicList(String key) {
+		List<AosDicPO> aos_dicPOs = Lists.newArrayList();
 		if (AOSUtils.isEmpty(key)) {
 			log.error("获取字典对照失败：字典Key不能为空。");
 			return aos_dicPOs;
@@ -144,7 +144,7 @@ public class CacheMasterDataService extends AOSBaseService{
 			log.error(AOSUtils.merge("没有获取到Key为[{0}]的数据字典。", key));
 		}else {
 			for (String dicString : dicList) {
-				aos_dicPOs.add((Aos_dicPO)AOSJson.fromJson(dicString, Aos_dicPO.class));
+				aos_dicPOs.add((AosDicPO)AOSJson.fromJson(dicString, AosDicPO.class));
 			}
 		}
 		return aos_dicPOs;
@@ -171,7 +171,7 @@ public class CacheMasterDataService extends AOSBaseService{
 		String dicJson = jedis.hget(AOSCons.KEYS.DIC_KEY + key, code);
 		JedisUtil.close(jedis);
 		if (AOSUtils.isNotEmpty(dicJson)) {
-		    Aos_dicPO aos_dicPO = (Aos_dicPO)AOSJson.fromJson(dicJson, Aos_dicPO.class);
+		    AosDicPO aos_dicPO = (AosDicPO)AOSJson.fromJson(dicJson, AosDicPO.class);
 		    desc = aos_dicPO.getDesc_();
 		}
 		return desc;

@@ -15,18 +15,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import aos.demo.dao.Demo_accountDao;
-import aos.demo.dao.Demo_accountPO;
+import aos.demo.dao.DemoAccountDao;
+import aos.demo.dao.DemoAccountPO;
 import aos.framework.core.id.AOSId;
 import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
-import aos.framework.dao.Aos_paramsPO;
+import aos.framework.dao.AosParamsPO;
 import aos.framework.web.router.HttpModel;
-import aos.system.dao.Aos_orgDao;
-import aos.system.dao.Aos_orgPO;
+import aos.system.dao.AosOrgDao;
+import aos.system.dao.AosOrgPO;
 
 /**
  * 范例：综合实例
@@ -38,9 +38,9 @@ import aos.system.dao.Aos_orgPO;
 public class DemoService extends AOSBaseService {
 
 	@Autowired
-	private Demo_accountDao demo_accountDao;
+	private DemoAccountDao demoAccountDao;
 	@Autowired
-	private Aos_orgDao aos_orgDao;
+	private AosOrgDao aosOrgDao;
 
 	/**
 	 * 范例1(简单查询)
@@ -100,7 +100,7 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void listAccounts(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		List<Demo_accountPO> accountPOs = demo_accountDao.listPage(inDto);
+		List<DemoAccountPO> accountPOs = demoAccountDao.listPage(inDto);
 		httpModel.setOutMsg(AOSJson.toGridJson(accountPOs, inDto.getPageTotal()));
 	}
 
@@ -111,7 +111,7 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void getAccountInfo(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		Demo_accountPO demo_accountPo = demo_accountDao.selectByKey(inDto.getString("id_"));
+		DemoAccountPO demo_accountPo = demoAccountDao.selectByKey(inDto.getString("id_"));
 		httpModel.setOutMsg(AOSJson.toJson(demo_accountPo));
 	}
 
@@ -122,14 +122,14 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void saveAccountInfo(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		Demo_accountPO demo_accountPO = new Demo_accountPO();
+		DemoAccountPO demo_accountPO = new DemoAccountPO();
 		// 如果表示自增列，则不需要预先对主键ID赋值
 		demo_accountPO.setId_(String.valueOf(AOSId.nextVal("seq_demo")));
 		demo_accountPO.copyProperties(inDto);
 		demo_accountPO.setOrg_id_("000");
 		demo_accountPO.setCreate_time_(AOSUtils.getDateTime());
 		demo_accountPO.setCreate_user_id_("1");
-		demo_accountDao.insert(demo_accountPO);
+		demoAccountDao.insert(demo_accountPO);
 		// 不管是自增列主键还是非自增列的主键，都可以通过下面的语句获取到主键值
 		// demo_accountPO.getId_();
 		httpModel.setOutMsg("账户信息新增成功");
@@ -142,9 +142,9 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void updateAccountInfo(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		Demo_accountPO demo_accountPO = new Demo_accountPO();
+		DemoAccountPO demo_accountPO = new DemoAccountPO();
 		demo_accountPO.copyProperties(inDto);
-		demo_accountDao.updateByKey(demo_accountPO);
+		demoAccountDao.updateByKey(demo_accountPO);
 		httpModel.setOutMsg("账户信息修改成功");
 	}
 	
@@ -155,10 +155,10 @@ public class DemoService extends AOSBaseService {
 	 */
 	@Transactional
 	public void transactionDemo1(HttpModel httpModel) {
-		Demo_accountPO demo_accountPO = new Demo_accountPO();
+		DemoAccountPO demo_accountPO = new DemoAccountPO();
 		demo_accountPO.setId_("10000");
 		demo_accountPO.setName_("测试1");
-		demo_accountDao.updateByKey(demo_accountPO);
+		demoAccountDao.updateByKey(demo_accountPO);
 		//同一个service方法内部的方法调用，要想被调用的方法按照预期传播行为就需要按照切面代理方式调用。
 		//跨Service的事务方法调用则可以直接调用
 		 ((DemoService)AOSCxt.getBean("demoService")).transactionDemo1_1();
@@ -169,10 +169,10 @@ public class DemoService extends AOSBaseService {
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	private void transactionDemo1_1() {
-		Demo_accountPO demo_accountPO = new Demo_accountPO();
+		DemoAccountPO demo_accountPO = new DemoAccountPO();
 		demo_accountPO.setId_("10006");
 		demo_accountPO.setName_("测试2");
-		demo_accountDao.updateByKey(demo_accountPO);
+		demoAccountDao.updateByKey(demo_accountPO);
 	}
 
 	/**
@@ -182,7 +182,7 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void delAccountInfo(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		demo_accountDao.deleteByKey(inDto.getString("id_"));
+		demoAccountDao.deleteByKey(inDto.getString("id_"));
 		httpModel.setOutMsg("账户信息删除成功");
 	}
 
@@ -195,7 +195,7 @@ public class DemoService extends AOSBaseService {
 	public void delAccountInfos(HttpModel httpModel) {
 		String[] selectionIds = httpModel.getInDto().getRows();
 		for (String id_ : selectionIds) {
-			demo_accountDao.deleteByKey(id_);
+			demoAccountDao.deleteByKey(id_);
 		}
 		httpModel.setOutMsg("批量删除账户数据成功。");
 	}
@@ -207,7 +207,7 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void listOrgs(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		List<Aos_orgPO> orgPOs = aos_orgDao.listPage(inDto);
+		List<AosOrgPO> orgPOs = aosOrgDao.listPage(inDto);
 		httpModel.setOutMsg(AOSJson.toGridJson(orgPOs, inDto.getPageTotal()));
 	}
 
@@ -218,7 +218,7 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void listParams(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		List<Aos_paramsPO> paramPOs = sqlDao.list("Demo.listParamsPage", inDto);
+		List<AosParamsPO> paramPOs = sqlDao.list("Demo.listParamsPage", inDto);
 		httpModel.setOutMsg(AOSJson.toGridJson(paramPOs, inDto.getPageTotal()));
 	}
 

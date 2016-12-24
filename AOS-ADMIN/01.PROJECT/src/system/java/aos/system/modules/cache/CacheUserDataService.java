@@ -22,11 +22,11 @@ import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
-import aos.framework.dao.Aos_userPO;
+import aos.framework.dao.AosUserPO;
 import aos.system.common.model.UserModel;
 import aos.system.common.utils.SystemCons;
-import aos.system.dao.Aos_orgDao;
-import aos.system.dao.Aos_orgPO;
+import aos.system.dao.AosOrgDao;
+import aos.system.dao.AosOrgPO;
 import redis.clients.jedis.Jedis;
 
 /**
@@ -40,7 +40,7 @@ public class CacheUserDataService {
 	private static Logger log = LoggerFactory.getLogger(CacheUserDataService.class);
 
 	@Autowired
-	private Aos_orgDao aos_orgDao;
+	private AosOrgDao aosOrgDao;
 	
 	/**
 	 * 将用户信息刷到缓存
@@ -51,8 +51,8 @@ public class CacheUserDataService {
 		if (AOSUtils.isEmpty(userModel.getJuid())) {
 			throw new AOSException("JUID不能为空");
 		}
-		Aos_orgPO aos_orgPO = aos_orgDao.selectByKey(userModel.getOrg_id_());
-		userModel.setAos_orgPO(aos_orgPO);
+		AosOrgPO aosOrgPO = aosOrgDao.selectByKey(userModel.getOrg_id_());
+		userModel.setAosOrgPO(aosOrgPO);
 		String userJson = AOSJson.toJson(userModel);
 		//由于Redis无法对hash结构里的单条记录设置超时销毁时间，所以用户信息只能缓存在Redis的更目录上。
 		JedisUtil.setString(userModel.getJuid(), userJson, Integer.valueOf(AOSCxt.getParam("user_login_timeout_")));
@@ -115,14 +115,14 @@ public class CacheUserDataService {
 	 * @param userId
 	 * @return
 	 */
-	public String login(Aos_userPO aos_userPO, HttpServletRequest httpServletRequest){
+	public String login(AosUserPO aosUserPO, HttpServletRequest httpServletRequest){
 		//缓存用户信息
 		String juid = AOSId.uuid();
 		UserModel userModel = new UserModel();
-		AOSUtils.copyProperties(aos_userPO, userModel);
+		AOSUtils.copyProperties(aosUserPO, userModel);
 		userModel.setJuid(juid);
-		Aos_orgPO aos_orgPO = aos_orgDao.selectByKey(userModel.getOrg_id_());
-		userModel.setAos_orgPO(aos_orgPO);
+		AosOrgPO aosOrgPO = aosOrgDao.selectByKey(userModel.getOrg_id_());
+		userModel.setAosOrgPO(aosOrgPO);
 		userModel.setLogin_time_(AOSUtils.getDateTimeStr());
 		userModel.setClient_ip_(WebCxt.getClientIpAddr(httpServletRequest));
 		userModel.setClient_key_(httpServletRequest.getHeader("USER-AGENT"));

@@ -9,7 +9,7 @@
 	<select id="listUsersPage" resultType="Dto" parameterType="Dto">
 			SELECT
 			     aos_org.name_ AS org_name_,
-                <include refid="aos.framework.dao.Aos_userDao.column2" />
+                <include refid="aos.framework.dao.AosUserDao.column2" />
             FROM aos_user, aos_org
             WHERE aos_user.org_id_ = aos_org.id_
 			    <if test="na_ != null and na_ != ''">
@@ -28,9 +28,9 @@
 	</select>
 	
 	<!-- 查询用户所属角色列表 -->
-	<select id="listRolesOfUser" resultType="AOS_rolePO" parameterType="String">
+	<select id="listRolesOfUser" resultType="AosRolePO" parameterType="String">
 			SELECT
-                <include refid="aos.system.dao.Aos_roleDao.column" />
+                <include refid="aos.system.dao.AosRoleDao.column" />
             FROM aos_role
             WHERE id_ IN (SELECT role_id_ FROM aos_user_role WHERE user_id_ = #{user_id_})
 			ORDER BY id_ DESC
@@ -41,7 +41,7 @@
 	        SELECT * FROM(
 			     SELECT
 			     (SELECT cascade_id_ FROM aos_org WHERE id_= (SELECT org_id_ FROM aos_user WHERE id_ = aos_role.create_by_)) AS org_cascade_id_,
-                <include refid="aos.system.dao.Aos_roleDao.column" />
+                <include refid="aos.system.dao.AosRoleDao.column" />
 	            FROM aos_role
 	          WHERE id_ NOT IN (SELECT role_id_ FROM aos_user_role WHERE user_id_ = #{user_id_})
 				ORDER BY id_ DESC
@@ -52,7 +52,7 @@
 	<select id="listSelectedRoles" resultType="Dto" parameterType="Dto">
 			     SELECT
 			        aos_user_role.id_ as user_role_id_,
-                   <include refid="aos.system.dao.Aos_roleDao.column2" />
+                   <include refid="aos.system.dao.AosRoleDao.column2" />
                  FROM  aos_role
                  LEFT JOIN aos_user_role ON aos_user_role.role_id_ = aos_role.id_
                  WHERE aos_user_role.user_id_ = #{user_id_}

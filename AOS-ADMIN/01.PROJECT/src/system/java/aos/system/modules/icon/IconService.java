@@ -15,8 +15,8 @@ import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.web.router.HttpModel;
 import aos.system.common.utils.SystemCons;
-import aos.system.dao.Aos_iconDao;
-import aos.system.dao.Aos_iconPO;
+import aos.system.dao.AosIconDao;
+import aos.system.dao.AosIconPO;
 
 /**
  * 图标
@@ -28,7 +28,7 @@ import aos.system.dao.Aos_iconPO;
 public class IconService extends AOSBaseService {
 
 	@Autowired
-	private Aos_iconDao aos_iconDao;
+	private AosIconDao aosIconDao;
 
 	/**
 	 * 在线用户监控页面初始化
@@ -56,22 +56,22 @@ public class IconService extends AOSBaseService {
 		String cxt = httpModel.getRequest().getServletContext().getContextPath();
 		Dto inDto = httpModel.getInDto();
 		inDto.setOrder("type_, name_");
-		List<Aos_iconPO> list = aos_iconDao.like(inDto);
+		List<AosIconPO> list = aosIconDao.like(inDto);
 		List<Dto> newList = Lists.newArrayList();
 		Dto dto = Dtos.newDto();
-		for (Aos_iconPO aos_iconPO : list) {
-			dto = aos_iconPO.toDto();
+		for (AosIconPO aosIconPO : list) {
+			dto = aosIconPO.toDto();
 			// 截取过长字符串
-			dto.put("name_s", StringUtils.substring(aos_iconPO.getName_(), 0, 14));
+			dto.put("name_s", StringUtils.substring(aosIconPO.getName_(), 0, 14));
 			String htmlString = "";
-			if (aos_iconPO.getType_().equals("1")) {
-				htmlString = "<img width=\"16\" height=\"16\" src=\"" + cxt + "/static/icon/" + aos_iconPO.getName_()
+			if (aosIconPO.getType_().equals("1")) {
+				htmlString = "<img width=\"16\" height=\"16\" src=\"" + cxt + "/static/icon/" + aosIconPO.getName_()
 						+ "\" />";
-			} else if (aos_iconPO.getType_().equals("2")) {
+			} else if (aosIconPO.getType_().equals("2")) {
 				htmlString = "<img width=\"64\" height=\"64\" src=\"" + cxt + "/static/icon/big64/"
-						+ aos_iconPO.getName_() + "\" />";
-			} else if (aos_iconPO.getType_().equals("3")) {
-				htmlString = "<i class=\"fa " + aos_iconPO.getName_() + " fa-lg\"></i>";
+						+ aosIconPO.getName_() + "\" />";
+			} else if (aosIconPO.getType_().equals("3")) {
+				htmlString = "<i class=\"fa " + aosIconPO.getName_() + " fa-lg\"></i>";
 			}
 			dto.put("html", htmlString);
 			newList.add(dto);

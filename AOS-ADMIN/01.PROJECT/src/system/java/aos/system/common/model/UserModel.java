@@ -2,7 +2,7 @@ package aos.system.common.model;
 
 import java.io.Serializable;
 
-import aos.system.dao.Aos_orgPO;
+import aos.system.dao.AosOrgPO;
 
 /**
  * 
@@ -78,7 +78,7 @@ public class UserModel implements Serializable{
 	/**
 	 * 所属组织
 	 */
-	private Aos_orgPO aos_orgPO;
+	private AosOrgPO aosOrgPO;
 
 	/**
 	 * 流水号
@@ -252,17 +252,17 @@ public class UserModel implements Serializable{
 	 * 
 	 * @return
 	 */
-	public Aos_orgPO getAos_orgPO() {
-		return aos_orgPO;
+	public AosOrgPO getAosOrgPO() {
+		return aosOrgPO;
 	}
 
 	/**
 	 * 所属组织
 	 * 
-	 * @param aos_orgPO
+	 * @param aosOrgPO
 	 */
-	public void setAos_orgPO(Aos_orgPO aos_orgPO) {
-		this.aos_orgPO = aos_orgPO;
+	public void setAosOrgPO(AosOrgPO aosOrgPO) {
+		this.aosOrgPO = aosOrgPO;
 	}
 
 	/**

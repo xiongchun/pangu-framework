@@ -20,8 +20,8 @@ import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
-import aos.framework.dao.Aos_userDao;
-import aos.framework.dao.Aos_userPO;
+import aos.framework.dao.AosUserDao;
+import aos.framework.dao.AosUserPO;
 import aos.framework.web.router.HttpModel;
 import aos.system.common.model.UserModel;
 import aos.system.common.utils.ErrorCode;
@@ -43,7 +43,7 @@ public class HomeService extends AOSBaseService {
 	@Autowired
 	private CacheUserDataService cacheUserDataService;
 	@Autowired
-	private Aos_userDao aos_userDao;
+	private AosUserDao aosUserDao;
 
 	/**
 	 * 注册页面初始化
@@ -97,7 +97,7 @@ public class HomeService extends AOSBaseService {
 		httpModel.setAttribute("app_title_", AOSCxt.getParam("app_title_"));
 		httpModel.setAttribute("welcome_page_title_", AOSCxt.getParam("welcome_page_title_"));
 		httpModel.setAttribute("user_name_", userModel.getName_());
-		httpModel.setAttribute("org_name_", userModel.getAos_orgPO().getName_());
+		httpModel.setAttribute("org_name_", userModel.getAosOrgPO().getName_());
 		httpModel.setAttribute("welcome_msg_", getWelcomeMsg());
 		httpModel.setAttribute("date_", AOSUtils.getDateStr());
 		httpModel.setAttribute("week_", AOSUtils.getWeekDayByDate(AOSUtils.getDateStr()));
@@ -152,22 +152,22 @@ public class HomeService extends AOSBaseService {
 		// 帐号存在校验
 		Dto qDto = Dtos.newDto("account_", inDto.getString("account_"));
 		qDto.put("is_del_", SystemCons.IS.NO);
-		Aos_userPO aos_userPO = aos_userDao.selectOne(qDto);
+		AosUserPO aosUserPO = aosUserDao.selectOne(qDto);
 		Boolean is_pass = true;
-		if (AOSUtils.isEmpty(aos_userPO)) {
+		if (AOSUtils.isEmpty(aosUserPO)) {
 			outDto.setAppCode(ErrorCode.ACCOUNT_ERROR);
 			outDto.setAppMsg("帐号输入错误，请重新输入。");
 			is_pass = false;
 		} else {
 			// 密码校验
 			String password = AOSCodec.password(inDto.getString("password_"));
-			if (!StringUtils.equals(password, aos_userPO.getPassword_())) {
+			if (!StringUtils.equals(password, aosUserPO.getPassword_())) {
 				outDto.setAppCode(ErrorCode.PASSWORD_ERROR);
 				outDto.setAppMsg("密码输入错误，请重新输入。");
 				is_pass = false;
 			} else {
 				// 状态校验
-				if (!aos_userPO.getStatus_().equals(SystemCons.USER_STATUS.NORMAL)) {
+				if (!aosUserPO.getStatus_().equals(SystemCons.USER_STATUS.NORMAL)) {
 					outDto.setAppCode(ErrorCode.LOCKED_ERROR);
 					outDto.setAppMsg("该帐号已锁定或已停用，请联系管理员。");
 					is_pass = false;
@@ -182,7 +182,7 @@ public class HomeService extends AOSBaseService {
 
 		// 通过检查
 		outDto.setAppCode(AOSCons.SUCCESS);
-		String juid = cacheUserDataService.login(aos_userPO, httpModel.getRequest());
+		String juid = cacheUserDataService.login(aosUserPO, httpModel.getRequest());
 		outDto.put("juid", juid);
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
 
@@ -197,9 +197,9 @@ public class HomeService extends AOSBaseService {
 	public void loginDev(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
 		Dto outDto = Dtos.newOutDto();
-		Aos_userPO aos_userPO = aos_userDao.selectOne(Dtos.newDto("account_", inDto.getString("account_")));
+		AosUserPO aosUserPO = aosUserDao.selectOne(Dtos.newDto("account_", inDto.getString("account_")));
 		outDto.setAppCode(AOSCons.SUCCESS);
-		String juid = cacheUserDataService.login(aos_userPO, httpModel.getRequest());
+		String juid = cacheUserDataService.login(aosUserPO, httpModel.getRequest());
 		outDto.put("juid", juid);
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
 	}
@@ -281,10 +281,10 @@ public class HomeService extends AOSBaseService {
 	 * @return
 	 */
 	public void getUser(HttpModel httpModel) {
-		Aos_userPO aos_userPO = aos_userDao.selectByKey(httpModel.getUserModel().getId_());
-		aos_userPO.setPassword_(StringUtils.EMPTY);
-		Dto outDto = aos_userPO.toDto();
-		outDto.put("org_name_", httpModel.getUserModel().getAos_orgPO().getName_());
+		AosUserPO aosUserPO = aosUserDao.selectByKey(httpModel.getUserModel().getId_());
+		aosUserPO.setPassword_(StringUtils.EMPTY);
+		Dto outDto = aosUserPO.toDto();
+		outDto.put("org_name_", httpModel.getUserModel().getAosOrgPO().getName_());
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
 	}
 
@@ -297,15 +297,15 @@ public class HomeService extends AOSBaseService {
 	public void updateMyInfo(HttpModel httpModel) {
 		Dto outDto = Dtos.newOutDto();
 		Dto inDto = httpModel.getInDto();
-		Aos_userPO aos_userPO = new Aos_userPO();
-		aos_userPO.copyProperties(inDto);
-		aos_userPO.setId_(httpModel.getUserModel().getId_());
-		aos_userDao.updateByKey(aos_userPO);
-		if (!StringUtils.equals(aos_userPO.getSkin_(), httpModel.getUserModel().getSkin_())) {
+		AosUserPO aosUserPO = new AosUserPO();
+		aosUserPO.copyProperties(inDto);
+		aosUserPO.setId_(httpModel.getUserModel().getId_());
+		aosUserDao.updateByKey(aosUserPO);
+		if (!StringUtils.equals(aosUserPO.getSkin_(), httpModel.getUserModel().getSkin_())) {
 			outDto.put("is_skin_changed_", AOSCons.YES);
 		}
 		UserModel userModel = httpModel.getUserModel();
-		AOSUtils.copyProperties(aos_userDao.selectByKey(aos_userPO.getId_()), userModel);
+		AOSUtils.copyProperties(aosUserDao.selectByKey(aosUserPO.getId_()), userModel);
 		cacheUserDataService.cacheUserModel(userModel);
 		outDto.setAppMsg("我的个人资料数据保存成功。");
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
@@ -324,13 +324,13 @@ public class HomeService extends AOSBaseService {
 			outDto.setAppCode(AOSCons.NO);
 			outDto.setAppMsg("两次密码输入不一致，请确认。");
 		} else {
-			Aos_userPO aos_userPO = aos_userDao.selectByKey(httpModel.getUserModel().getId_());
-			if (!StringUtils.equals(aos_userPO.getPassword_(), AOSCodec.password(inDto.getString("password_")))) {
+			AosUserPO aosUserPO = aosUserDao.selectByKey(httpModel.getUserModel().getId_());
+			if (!StringUtils.equals(aosUserPO.getPassword_(), AOSCodec.password(inDto.getString("password_")))) {
 				outDto.setAppCode(AOSCons.NO);
 				outDto.setAppMsg("原密码输入错误，请确认。");
 			} else {
-				aos_userPO.setPassword_(AOSCodec.password(inDto.getString("new_password_")));
-				aos_userDao.updateByKey(aos_userPO);
+				aosUserPO.setPassword_(AOSCodec.password(inDto.getString("new_password_")));
+				aosUserDao.updateByKey(aosUserPO);
 				outDto.setAppMsg("密码修改成功。");
 			}
 		}

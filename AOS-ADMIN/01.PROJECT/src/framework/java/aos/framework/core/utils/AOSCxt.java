@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import aos.framework.core.asset.AOSBeanLoader;
 import aos.framework.core.cache.CacheMasterDataService;
 import aos.framework.core.dao.SqlDao;
-import aos.framework.dao.Aos_dicPO;
+import aos.framework.dao.AosDicPO;
 import aos.system.common.model.UserModel;
 import aos.system.modules.cache.CacheUserDataService;
 
@@ -76,7 +76,7 @@ public class AOSCxt {
 	 * @param key
 	 * @return
 	 */
-	public static List<Aos_dicPO> getDicList(String key){
+	public static List<AosDicPO> getDicList(String key){
 		return cacheMasterDataService.getDicList(key);
 	}
 	

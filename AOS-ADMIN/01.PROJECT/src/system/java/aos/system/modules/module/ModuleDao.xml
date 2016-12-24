@@ -8,7 +8,7 @@
 	<!-- 查询资源模块列表 -->
 	<select id="listModulesPage" resultType="Dto" parameterType="Dto">
 			SELECT
-            <include refid="aos.system.dao.Aos_moduleDao.column" />
+            <include refid="aos.system.dao.AosModuleDao.column" />
             FROM aos_module
 			<where>
 			    <if test="name_ != null and name_ != ''">
@@ -30,9 +30,9 @@
 	</select>
 	
 	<!-- 检查删除节点中是否包含根节点 -->
-	<select id="checkRootNode" resultType="Aos_modulePO" parameterType="Dto">
+	<select id="checkRootNode" resultType="AosModulePO" parameterType="Dto">
 	     SELECT 
-	         <include refid="aos.system.dao.Aos_moduleDao.column" />
+	         <include refid="aos.system.dao.AosModuleDao.column" />
 	      FROM aos_module WHERE id_ IN (${ids}) AND parent_id_ = '0'
 	</select>
 	

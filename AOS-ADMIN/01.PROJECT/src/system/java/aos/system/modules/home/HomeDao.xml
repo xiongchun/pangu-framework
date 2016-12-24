@@ -8,7 +8,7 @@
 	<!-- 查询用户的功能模块权限 -->
 	<select id="selectModulesOfUser" resultType="Dto" parameterType="Dto" >
 			SELECT DISTINCT
-            <include refid="aos.system.dao.Aos_moduleDao.column2" />
+            <include refid="aos.system.dao.AosModuleDao.column2" />
 			FROM
 				aos_module,
 				aos_role_module

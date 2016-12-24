@@ -10,7 +10,7 @@
 	       SELECT * FROM (
 			SELECT
 			(SELECT cascade_id_ FROM aos_org WHERE id_ = (SELECT org_id_ FROM aos_user WHERE id_ = aos_role.create_by_)) AS org_cascade_id_,
-            <include refid="aos.system.dao.Aos_roleDao.column" />
+            <include refid="aos.system.dao.AosRoleDao.column" />
             FROM aos_role
 			<where>
 			    <if test="name_ != null and name_ != ''">
@@ -30,9 +30,9 @@
 	</delete>
 	
 	<!-- 查询授权树 -->
-	<select id="listTreeData4Grant" resultType="Aos_modulePO" parameterType="Dto">
+	<select id="listTreeData4Grant" resultType="AosModulePO" parameterType="Dto">
 			SELECT
-            <include refid="aos.system.dao.Aos_moduleDao.column" />
+            <include refid="aos.system.dao.AosModuleDao.column" />
             FROM aos_module WHERE
 				id_ IN (
 					SELECT
@@ -61,7 +61,7 @@
 	<select id="listUsersPage" resultType="Dto" parameterType="Dto">
 			SELECT
 			     aos_org.name_ AS org_name_,
-                <include refid="aos.framework.dao.Aos_userDao.column2" />
+                <include refid="aos.framework.dao.AosUserDao.column2" />
             FROM aos_user, aos_org WHERE aos_user.org_id_ = aos_org.id_
               AND aos_user.id_ NOT IN (SELECT user_id_ FROM aos_user_role WHERE role_id_ = #{role_id_})
 		    <if test="na_ != null and na_ != ''">
@@ -84,7 +84,7 @@
 			SELECT
 				aos_org.name_ as org_name_,
 				aos_user_role.id_ as user_role_id_,
-                <include refid="aos.framework.dao.Aos_userDao.column2" />
+                <include refid="aos.framework.dao.AosUserDao.column2" />
             FROM aos_user
 			LEFT JOIN aos_user_role ON aos_user_role.user_id_ = aos_user.id_
 			LEFT JOIN aos_org ON aos_org.id_ = aos_user.org_id_

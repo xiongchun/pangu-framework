@@ -16,7 +16,7 @@ import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSListUtils;
 import aos.framework.core.utils.AOSUtils;
-import aos.framework.dao.Aos_dicPO;
+import aos.framework.dao.AosDicPO;
 import aos.framework.taglib.asset.AOSTagUtils;
 import aos.framework.taglib.asset.Xtypes;
 import aos.framework.taglib.core.model.TagDto;
@@ -155,21 +155,21 @@ public class ComboBoxFieldTag extends FormItemTagSupport {
 	 */
 	private String getDicListJson() {
 		List<Dto> dicList = Lists.newArrayList();
-		List<Aos_dicPO> aos_dicPOs = AOSCxt.getDicList(getDicField());
+		List<AosDicPO> aos_dicPOs = AOSCxt.getDicList(getDicField());
 		if (AOSUtils.isNotEmpty(dicFilter)) {
 			String expression = getJqlExpression(dicFilter);
 			if (StringUtils.startsWith(dicFilter, "!")) {
 				// 排它过滤
 				String jql = AOSUtils.merge("SELECT * FROM :AOSList WHERE code_ NOT IN ({0})", expression);
-				aos_dicPOs = AOSListUtils.select(aos_dicPOs, Aos_dicPO.class, jql, null);
+				aos_dicPOs = AOSListUtils.select(aos_dicPOs, AosDicPO.class, jql, null);
 			} else {
 				// 选择过滤
 				String jql = AOSUtils.merge("SELECT * FROM :AOSList WHERE code_ IN ({0})", expression);
-				aos_dicPOs = AOSListUtils.select(aos_dicPOs, Aos_dicPO.class, jql, null);
+				aos_dicPOs = AOSListUtils.select(aos_dicPOs, AosDicPO.class, jql, null);
 			}
 		}
 		// 类型处理
-		for (Aos_dicPO aos_dic_optionsPO : aos_dicPOs) {
+		for (AosDicPO aos_dic_optionsPO : aos_dicPOs) {
 			Dto dto = Dtos.newDto();
 			//特殊处理：若字典数据类型为数值型，则form.loadRecord()；的时候，下拉框不能被正常转换。所以这里尽最大努力将字符数值的代码转换为数值类型。
 			if (StringUtils.equalsIgnoreCase(getDicDataType(), "number")) {
