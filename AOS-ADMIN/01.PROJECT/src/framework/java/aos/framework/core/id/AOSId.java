@@ -45,7 +45,7 @@ public class AOSId {
 	 * 
 	 * @param idType ID类型 用于作为Redis Key的一部分。标识ID的唯一性。
 	 * @param timeFormat 时间戳的格式 缺省值：yyMMddHHmmss
-	 * @param maxIncr 循环递增序列最大值 99999
+	 * @param maxIncr 循环递增序列最大值 9999
 	 * @return
 	 */
 	public static String appId(String idType, String timeFormat, String maxIncr){
@@ -57,7 +57,7 @@ public class AOSId {
 		String IDSET = "IDSET";
 		String key = AOSCons.KEYS.ID + idType;
 		timeFormat = AOSUtils.isEmpty(timeFormat) ? "yyMMddHHmmss" : timeFormat;
-		maxIncr = AOSUtils.isEmpty(maxIncr) ? "99999" : maxIncr;
+		maxIncr = AOSUtils.isEmpty(maxIncr) ? "9999" : maxIncr;
 		while (true) {
 			long myIncrLong = jedis.incr(key);
 			if (myIncrLong > Integer.valueOf(maxIncr)) {
