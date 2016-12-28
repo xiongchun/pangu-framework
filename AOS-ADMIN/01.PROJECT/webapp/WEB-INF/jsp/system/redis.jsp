@@ -36,7 +36,7 @@
 				<aos:docked forceBoder="0 0 1 0">
 					<aos:dockeditem xtype="tbtext" text="值列表" />
 				</aos:docked>
-				<aos:column type="rowno" />
+				<aos:column type="rowno" width="38" />
 				<aos:column header="Field" dataIndex="field_" width="180" celltip="true" />
 				<aos:column header="Value" dataIndex="value_" flex="1" />
 			</aos:gridpanel>
