@@ -11,12 +11,13 @@
 		<aos:gridpanel id="_g_key" url="cacheManageService.listKeys" onrender="_g_key_query" region="west" width="450"
 			onitemclick="show_detail_list">
 			<aos:docked forceBoder="0 0 1 0">
-				<aos:triggerfield emptyText="请输入缓存Key" id="id_key_" value="${app_key}" margin="0 0 0 5" allowBlank="false"
+				<aos:triggerfield emptyText="请输入缓存Key" id="id_key_" value="${app_key}" margin="0 0 0 5" 
 					trigger1Cls="x-form-search-trigger" onTrigger1Click="_g_key_query" onenterkey="_g_key_query" width="280" />
 				<aos:dockeditem xtype="tbfill" />
-				<aos:dockeditem text="执行命令" tooltip="更多选型" icon="icon146.png">
+				<aos:dockeditem text="操作"  icon="icon146.png">
 					<aos:menu>
-						<aos:menuitem text="清空缓存" icon="monitor.png" onclick="fn_flush" />
+					    <aos:menuitem text="命令窗口" icon="monitor.png" onclick="#_w_cmd.show();" />
+						<aos:menuitem text="清空缓存" icon="refresh.png" onclick="fn_flush" />
 						<aos:menuitem text="缓存服务器健康检查" icon="freelance.png" onclick="#_w_info.show();" />
 					</aos:menu>
 				</aos:dockeditem>
@@ -47,15 +48,31 @@
 				<aos:iframe src="do.jhtml?router=cacheManageService.initCodeEditor&juid=${juid}" />
 			</aos:panel>
 		</aos:panel>
-
-		<aos:window id="_w_info" width="500" height="-20" title="Redis缓存服务器健康状态"  onshow="_w_info_onshow">
+		
+	</aos:viewport>
+	
+	 <aos:window id="_w_info" width="500" height="-20" title="Redis缓存服务器健康状态"  onshow="_w_info_onshow">
 			<aos:textareafield id="_info" readOnly="true" />
 			<aos:docked dock="bottom" ui="footer">
 				<aos:dockeditem xtype="tbfill" />
 				<aos:dockeditem onclick="#_w_info.hide();" text="关闭" icon="close.png" />
 			</aos:docked>
-		</aos:window>
-	</aos:viewport>
+	</aos:window>
+	
+	<aos:window id="_w_cmd" title="命令窗口" onshow="AOS.reset(_f_cmd);" width="800" height="600" maximizable="true">
+		<aos:formpanel id="_f_cmd" width="500" layout="anchor" labelWidth="60">
+			<aos:combobox name="type_" fieldLabel="类型" allowBlank="false" dicField="cmd_type_" value="1" />
+			<aos:numberfield name="timeout_" fieldLabel="时效(秒)" allowBlank="false" value="0" />
+			<aos:textfield name="key_" fieldLabel="键" allowBlank="false"  />
+			<aos:textareafield name="content_" fieldLabel="值" height="430" allowBlank="false" />
+		</aos:formpanel>
+		<aos:docked dock="bottom" ui="footer">
+			<aos:dockeditem xtype="tbfill" />
+			<aos:dockeditem onclick="_f_cmd_save" text="执行" icon="ok.png" />
+			<aos:dockeditem onclick="#_w_cmd.hide();" text="关闭" icon="close.png" />
+		</aos:docked>
+	</aos:window>
+	
 
 	<script type="text/javascript">
 		//加载表格数据
@@ -63,10 +80,10 @@
 			var params = {
 				key_ : id_key_.getValue()
 			}
-			if (AOS.empty(params.key_)) {
+/* 			if (AOS.empty(params.key_)) {
 				AOS.tip('缓存Key不能为空，请先输入...');
 				return;
-			}
+			} */
 			_g_key_store.getProxy().extraParams = params;
 			_g_key_store.loadPage(1);
 		}
@@ -86,6 +103,20 @@
 							}
 						}
 					});
+		}
+		
+		//命令窗口
+		function _f_cmd_save(){
+				AOS.ajax({
+					forms : _f_cmd,
+					url : 'cacheManageService.saveCmd',
+					ok : function(data) {
+						AOS.tip(data.appmsg);
+						_w_cmd.hide();
+						AOS.setValue('id_key_', AOS.getValue('_f_cmd.key_'));
+						_g_key_query();
+					}
+			});
 		}
 
 		//显示详细
