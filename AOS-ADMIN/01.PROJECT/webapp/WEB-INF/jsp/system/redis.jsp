@@ -31,7 +31,7 @@
 			</aos:column>
 		</aos:gridpanel>
 		<aos:panel region="center" layout="border" border="false" bodyBorder="0 0 0 1">
-			<aos:gridpanel id="_g_values" url="cacheManageService.listValues" region="north" height="250"
+			<aos:gridpanel id="_g_values" url="cacheManageService.listValues" region="north" height="250" pageSize="1000"
 				onitemclick="show_detail">
 				<aos:docked forceBoder="0 0 1 0">
 					<aos:dockeditem xtype="tbtext" text="值列表" />
