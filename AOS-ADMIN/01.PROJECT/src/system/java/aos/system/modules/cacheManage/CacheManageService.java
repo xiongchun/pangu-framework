@@ -1,25 +1,30 @@
 package aos.system.modules.cacheManage;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 import aos.framework.core.exception.AOSException;
 import aos.framework.core.redis.JedisUtil;
 import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
+import aos.framework.core.typewrap.impl.HashDto;
 import aos.framework.core.utils.AOSCfgHandler;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.web.router.HttpModel;
+import aos.system.common.utils.SystemCons;
 import redis.clients.jedis.Jedis;
 
 /**
@@ -127,6 +132,16 @@ public class CacheManageService extends AOSBaseService{
 				outList.add(dto);
 			}
 			total = jedis.llen(key).intValue();
+		}else if (StringUtils.equalsIgnoreCase(type, "set")) {
+			//由于API的限制，不能对SET类型进行有效的分页操作。所以随机取出10000条记录返回。
+			List<String> valueList = jedis.srandmember(key, 10000);
+			for (String value : valueList) {
+				Dto dto = Dtos.newDto();
+				dto.put("field_", "-");
+				dto.put("value_", value);
+				outList.add(dto);
+			}
+			total = jedis.scard(key).intValue();
 		}
 		
 		JedisUtil.close(jedis);
@@ -176,6 +191,49 @@ public class CacheManageService extends AOSBaseService{
 		String key = inDto.getString("key_");
 		JedisUtil.delString(key);
 		httpModel.setOutMsg(AOSUtils.merge("键[{0}]已成功删除。", key));
+	}
+	
+	/**
+	 * 执行命令
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void saveCmd(HttpModel httpModel) {
+		Dto inDto = httpModel.getInDto();
+		Jedis jedis = JedisUtil.getJedisClient();
+		String key = inDto.getString("key_");
+		String type_ = inDto.getString("type_");
+		String content = inDto.getString("content_");
+		if (StringUtils.equals(type_, SystemCons.CMD_TYPE.STRING)) {
+			jedis.set(key, content);
+		} else if (StringUtils.equals(type_, SystemCons.CMD_TYPE.LIST)) {
+			List<Dto> list = AOSJson.fromJson(content);
+			for (Dto dto : list) {
+				jedis.lpush(key, AOSJson.toJson(dto));
+			}
+		} else if (StringUtils.equals(type_, SystemCons.CMD_TYPE.SET)) {
+			List<Dto> list = AOSJson.fromJson(content);
+			for (Dto dto : list) {
+				jedis.sadd(key, AOSJson.toJson(dto));
+			}
+		} else if (StringUtils.equals(type_, SystemCons.CMD_TYPE.MAP)) {
+			Dto dto = AOSJson.fromJson(content, HashDto.class);
+			Map<String, String> map = Maps.newHashMap();
+			@SuppressWarnings({ "rawtypes", "unchecked" })
+			Iterator<String> keyIterator = (Iterator) dto.keySet().iterator();
+			while (keyIterator.hasNext()) {
+				String myKey = (String) keyIterator.next();
+				String value = dto.getString(myKey);
+				map.put(myKey, value);
+			}
+			jedis.hmset(key, map);
+		}
+		if (inDto.getInteger("timeout_") > 0) {
+			jedis.expire(key, inDto.getInteger("timeout_"));
+		}
+		JedisUtil.close(jedis);
+		httpModel.setOutMsg(AOSUtils.merge("键[{0}]已成功加入缓存。", key));
 	}
 	
 }

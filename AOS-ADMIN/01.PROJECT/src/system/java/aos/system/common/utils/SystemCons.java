@@ -53,6 +53,20 @@ public class SystemCons extends AOSCons{
 	}
 	
 	/**
+	 * Redis命令数据类型
+	 */
+	public static final class CMD_TYPE{
+		//String
+	    public static final String STRING = "1";
+		//MAP
+		public static final String MAP = "2";
+		//LIST
+		public static final String LIST = "3";
+		//SET
+		public static final String SET = "4";
+	}
+	
+	/**
 	 * 树组件的更节点的父节点ID
 	 */
 	public static  final String ROOTNODE_PARENT_ID = "0";
