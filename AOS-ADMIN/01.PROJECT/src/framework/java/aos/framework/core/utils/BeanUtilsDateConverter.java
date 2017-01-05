@@ -2,6 +2,7 @@ package aos.framework.core.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import org.apache.commons.beanutils.Converter;
 
@@ -31,7 +32,12 @@ public class BeanUtilsDateConverter implements Converter {
 					SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日");
 					return (T) df.parse(myObj.toString());
 				} catch (ParseException e2) {
-					e2.printStackTrace();
+					try {
+						SimpleDateFormat dfParse = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+						return (T) dfParse.parse(myObj.toString());
+					} catch (ParseException e3) {
+						e3.printStackTrace();
+					}
 				}
 			}
 		}

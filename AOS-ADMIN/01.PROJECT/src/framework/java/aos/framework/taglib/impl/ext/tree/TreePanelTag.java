@@ -146,9 +146,6 @@ public class TreePanelTag extends PanelTagSupport {
 		}
 		setFieldDtos(null);
 		setColumnDtos(null);
-		// 通知onready标签引入依赖资源
-		OnReadyTag onReadyTag = (OnReadyTag) findAncestorWithClass(this, OnReadyTag.class);
-		onReadyTag.setTreePicker(TRUE);
 	}
 
 	/**

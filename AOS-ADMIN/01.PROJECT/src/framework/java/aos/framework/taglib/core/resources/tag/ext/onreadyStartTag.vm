@@ -27,9 +27,6 @@ Ext.require('Ext.ux.data.PagingMemoryProxy');
 #if($iframe == "true")
 Ext.require('AOS.ux.IFrame');
 #end
-#if($treePicker == "true")
-Ext.require('AOS.ux.TreePicker');
-#end
 #if($dataView == "true")
 Ext.require('Ext.ux.DataView.Animated');
 #end

@@ -31,7 +31,6 @@ public class OnReadyTag extends BaseTagSupport {
 	public String statusBar;
 	private String pagingMemoryProxy;
 	private String iframe;
-	private String treePicker;
 	private String dataView;
 	private String toggle;
 	private String key; //页面标识，用于界面组件授权使用
@@ -67,7 +66,6 @@ public class OnReadyTag extends BaseTagSupport {
 		tagDto.put("statusBar", getStatusBar());
 		tagDto.put("pagingMemoryProxy", getPagingMemoryProxy());
 		tagDto.put("iframe", getIframe());
-		tagDto.put("treePicker", getTreePicker());
 		tagDto.put("dataView", getDataView());
 		tagDto.put("toggle", getToggle());
 		tagDto.put("run_mode_", AOSCxt.getParam("run_mode_"));
@@ -128,7 +126,6 @@ public class OnReadyTag extends BaseTagSupport {
 	private void doClear() throws JspException {
 		setUx(null);
 		setStatusBar(null);
-		setTreePicker(null);
 		setPagingMemoryProxy(null);
 		setIframe(null);
 		setDataView(null);
@@ -165,14 +162,6 @@ public class OnReadyTag extends BaseTagSupport {
 
 	public void setIframe(String iframe) {
 		this.iframe = iframe;
-	}
-
-	public String getTreePicker() {
-		return treePicker;
-	}
-
-	public void setTreePicker(String treePicker) {
-		this.treePicker = treePicker;
 	}
 
 	public String getStatusBar() {
