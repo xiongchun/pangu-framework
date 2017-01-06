@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import org.apache.commons.beanutils.Converter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Bean属性复制工具类的日期类型转换器
@@ -13,6 +15,8 @@ import org.apache.commons.beanutils.Converter;
  * @date 2015-10-25
  */
 public class BeanUtilsDateConverter implements Converter {
+	
+	private static Logger logger = LoggerFactory.getLogger(BeanUtilsDateConverter.class);
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -36,6 +40,7 @@ public class BeanUtilsDateConverter implements Converter {
 						SimpleDateFormat dfParse = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
 						return (T) dfParse.parse(myObj.toString());
 					} catch (ParseException e3) {
+						logger.warn("对象间日期类型属性复制时由于格式问题解析失败，属性值【{}】复制失败。", myObj.toString());
 						e3.printStackTrace();
 					}
 				}
