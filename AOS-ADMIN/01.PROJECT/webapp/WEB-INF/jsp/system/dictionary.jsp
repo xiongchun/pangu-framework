@@ -52,7 +52,7 @@
 			<aos:textfield name="key_" fieldLabel="字典标识" allowBlank="false" maxLength="255" />
 			<aos:textfield name="name_" fieldLabel="字典名称" maxLength="100" allowBlank="false" />
 			<aos:textfield name="code_" fieldLabel="对照码" maxLength="100" allowBlank="false" />
-			<aos:textareafield name="desc_" fieldLabel="对照值" maxLength="100" allowBlank="false" height="60" />
+			<aos:textareafield name="desc_" fieldLabel="对照值" maxLength="4000" allowBlank="false" height="80" />
 			<aos:combobox name="is_enable_" fieldLabel="是否启用" dicField="is_" value="1" allowBlank="false" />
 			<aos:numberfield name="sort_no_" fieldLabel="排序号" value="1" minValue="1" maxValue="9999" allowBlank="false" />
 			<aos:textareafield name="remark_" fieldLabel="备注" maxLength="2000" height="60" />
@@ -70,7 +70,7 @@
 			<aos:textfield name="key_" fieldLabel="字典标识" allowBlank="false" maxLength="50" />
 			<aos:textfield name="name_" fieldLabel="字典名称" maxLength="100" allowBlank="false" />
 			<aos:textfield name="code_" fieldLabel="对照码" maxLength="100" allowBlank="false" />
-			<aos:textareafield name="desc_" fieldLabel="对照值" maxLength="100" allowBlank="false" height="60" />
+			<aos:textareafield name="desc_" fieldLabel="对照值" maxLength="4000" allowBlank="false" height="80" />
 			<aos:combobox name="is_enable_" fieldLabel="是否启用" dicField="is_" value="1" allowBlank="false" />
 			<aos:numberfield name="sort_no_" fieldLabel="排序号" value="0" minValue="0" maxValue="9999" allowBlank="false" />
 			<aos:textareafield name="remark_" fieldLabel="备注" maxLength="2000" height="60" />

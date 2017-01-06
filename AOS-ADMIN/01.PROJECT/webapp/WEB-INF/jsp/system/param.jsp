@@ -41,7 +41,7 @@
 		    <aos:combobox name="group_" fieldLabel="所属分组" dicField="params_group_"  value="2" allowBlank="false" />
 			<aos:textfield name="name_" fieldLabel="参数名称" allowBlank="false" maxLength="50" />
 			<aos:textfield name="key_" fieldLabel="参数键" allowBlank="false" maxLength="50" />
-			<aos:textareafield name="value_" fieldLabel="参数值" maxLength="2000" allowBlank="false" height="60" />
+			<aos:textareafield name="value_" fieldLabel="参数值" maxLength="4000" allowBlank="false" height="80" />
 			<aos:textareafield fieldLabel="备注" name="remark_" maxLength="2000" height="60" />
 		</aos:formpanel>
 		<aos:docked dock="bottom" ui="footer">
@@ -56,7 +56,7 @@
 			<aos:combobox name="group_" fieldLabel="所属分组" dicField="params_group_" allowBlank="false" />
 			<aos:textfield name="name_" fieldLabel="参数名称" allowBlank="false"  maxLength="50" />
 			<aos:textfield name="key_" fieldLabel="参数键" allowBlank="false" maxLength="50" />
-			<aos:textareafield name="value_" fieldLabel="参数值" maxLength="2000" allowBlank="false" height="60" />
+			<aos:textareafield name="value_" fieldLabel="参数值" maxLength="4000" allowBlank="false" height="80" />
 			<aos:textareafield fieldLabel="备注" name="remark_" maxLength="2000" height="60" />
 		</aos:formpanel>
 		<aos:docked dock="bottom" ui="footer">
