@@ -95,7 +95,6 @@ public class UserService extends AOSBaseService {
 			qDto.put("org_cascade_id_", aosOrgPO.getCascade_id_());
 		}
 		qDto.put("is_del_", SystemCons.IS.NO);
-		qDto.put("cascade_", qDto.getBoolean("cascade_") ? 1 : 0);
 		List<Dto> userDtos = sqlDao.list("User.listUsersPage", qDto);
 		for (Dto dto : userDtos) {
 			String roles_ = "";

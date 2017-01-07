@@ -14,11 +14,11 @@
 			    <if test="name_ != null and name_ != ''">
 				    AND name_ LIKE '%${name_}%' 
 				</if>
-			    <if test="cascade_ != 'true'">
-				    AND parent_id_ = #{id_} 
+			    <if test="cascade_ == 'false'">
+				    AND parent_id_ = #{id_, jdbcType=VARCHAR} 
 				</if>
-				<if test="cascade_ = 'true'">
-				    AND cascade_id_ like '%${cascade_id_}%'
+				<if test="cascade_ == 'true'">
+				    AND cascade_id_ like '${cascade_id_}%'
 				</if>
 			</where>	
 			 ORDER BY sort_no_ ASC, id_ DESC

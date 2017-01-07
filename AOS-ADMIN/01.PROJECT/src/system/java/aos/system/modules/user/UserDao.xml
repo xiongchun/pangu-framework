@@ -15,10 +15,10 @@
 			    <if test="na_ != null and na_ != ''">
 				    AND (aos_user.name_ LIKE '%${na_}%' OR aos_user.account_ LIKE '%${na_}%')
 				</if>
-			    <if test="cascade_ == 0">
+			    <if test="cascade_ == 'false'">
 				    AND aos_user.org_id_ = #{org_id_, jdbcType=VARCHAR} 
 				</if>
-				<if test="cascade_ == 1">
+				<if test="cascade_ == 'true'">
 				    AND aos_org.cascade_id_ like '${org_cascade_id_}%'
 				</if>
 				<if test="is_del_ != null and is_del_ != ''">

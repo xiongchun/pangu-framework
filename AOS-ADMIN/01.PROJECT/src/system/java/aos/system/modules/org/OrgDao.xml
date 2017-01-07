@@ -14,11 +14,11 @@
 			    <if test="name_ != null and name_ != ''">
 				    AND name_ LIKE '%${name_}%' 
 				</if>
-			    <if test="cascade_ != 'true'">
+			    <if test="cascade_ == 'false'">
 				    AND parent_id_ = #{id_} 
 				</if>
-				<if test="cascade_ = 'true'">
-				    AND cascade_id_ like '%${cascade_id_}%'
+				<if test="cascade_ == 'true'">
+				    AND cascade_id_ like '${cascade_id_}%'
 				</if>
 				<if test="is_del_ != null and is_del_ != ''">
 				    AND is_del_ = #{is_del_} 
