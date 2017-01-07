@@ -2,8 +2,8 @@
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
 
 <aos:html title="资源管理" base="http" lib="ext">
-	<aos:body>
-	</aos:body>
+<aos:body>
+</aos:body>
 </aos:html>
 
 <aos:onready>
@@ -14,7 +14,7 @@
 			<aos:docked forceBoder="0 1 1 0">
 				<aos:dockeditem xtype="tbtext" text="功能模块模块树" />
 				<aos:dockeditem xtype="tbfill" />
-				<aos:checkbox boxLabel="级联显示" id="id_cascade" onchang="_g_module_query" checked="true" />
+				<aos:checkbox boxLabel="级联显示" id="id_cascade" onchang="_g_module_query" checked="false" />
 			</aos:docked>
 			<aos:menu>
 				<aos:menuitem text="新增模块" onclick="_w_module_show" icon="add.png" />
@@ -22,8 +22,8 @@
 				<aos:menuitem text="刷新" onclick="_t_module_refresh" icon="refresh.png" />
 			</aos:menu>
 		</aos:treepanel>
-		<aos:gridpanel id="_g_module" url="moduleService.listModules" region="center" pageSize="200"
-			onitemdblclick="_w_module_u_show" onrender="_g_module_query" bodyBorder="1 0 1 0">
+		<aos:gridpanel id="_g_module" url="moduleService.listModules" region="center" onitemdblclick="_w_module_u_show"
+			onrender="_g_module_query" bodyBorder="1 0 1 0">
 			<aos:docked forceBoder="0 0 1 0">
 				<aos:dockeditem text="新增" onclick="_w_module_show" icon="add.png" />
 				<aos:dockeditem text="修改" onclick="_w_module_u_show" icon="edit.png" />
@@ -112,7 +112,8 @@
 		//自动选中根节点
 		AOS.job(function(){
 			_t_module.getSelectionModel().select(_t_module.getRootNode());
-		},500);
+			_g_module_query();
+		},10);
 	
 		//弹出新增功能模块菜单
 		function _w_module_show(){

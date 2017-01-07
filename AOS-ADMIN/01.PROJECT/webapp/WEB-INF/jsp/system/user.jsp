@@ -2,8 +2,8 @@
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
 
 <aos:html title="用户管理" base="http" lib="ext">
-	<aos:body>
-	</aos:body>
+<aos:body>
+</aos:body>
 </aos:html>
 
 <aos:onready>
@@ -23,7 +23,7 @@
 				<aos:menuitem text="刷新" onclick="_t_org_refresh" icon="refresh.png" />
 			</aos:menu>
 		</aos:treepanel>
-		<aos:gridpanel id="_g_user" url="userService.listUsers" region="center" onrender="_g_user_query" bodyBorder="1 0 1 0"
+		<aos:gridpanel id="_g_user" url="userService.listUsers" region="center" bodyBorder="1 0 1 0"
 			onitemdblclick="#_w_user_u.show();">
 			<aos:docked forceBoder="0 0 1 0">
 				<aos:dockeditem text="新增" onclick="#_w_user.show();" icon="add.png" />
@@ -32,7 +32,7 @@
 				<aos:dockeditem xtype="tbseparator" />
 				<aos:dockeditem text="重置密码" onclick="_w_pwd_show" icon="key.png" />
 				<aos:dockeditem xtype="tbseparator" />
-				<aos:triggerfield emptyText="登录账号|姓名" id="id_na_" onenterkey="_g_user_query" trigger1Cls="x-form-search-trigger" 
+				<aos:triggerfield emptyText="登录账号|姓名" id="id_na_" onenterkey="_g_user_query" trigger1Cls="x-form-search-trigger"
 					onTrigger1Click="_g_user_query" width="180" />
 			</aos:docked>
 			<aos:menu>
@@ -152,14 +152,14 @@
 			<aos:dockeditem onclick="#_w_pwd.hide();" text="关闭" icon="close.png" />
 		</aos:docked>
 	</aos:window>
-	
+
 	<aos:window id="_w_user_role" title="选择角色" width="800" height="-10" layout="border" onshow="_w_user_role_onshow">
 		<aos:gridpanel id="_g_role" bodyBorder="1 0 0 0" url="userService.listRoles" hidePagebar="true" region="center">
 			<aos:docked forceBoder="0 0 1 0">
 				<aos:dockeditem xtype="tbtext" text="待选角色" />
 				<aos:dockeditem xtype="tbfill" />
-				<aos:triggerfield emptyText="角色名称" id="id_role_name_" onenterkey="_g_role_query"
-					trigger1Cls="x-form-search-trigger" onTrigger1Click="_g_role_query" width="180" />
+				<aos:triggerfield emptyText="角色名称" id="id_role_name_" onenterkey="_g_role_query" trigger1Cls="x-form-search-trigger"
+					onTrigger1Click="_g_role_query" width="180" />
 			</aos:docked>
 			<aos:menu>
 				<aos:menuitem onclick="_user_role_save" text="选中授权" icon="ok1.png" />
@@ -180,12 +180,12 @@
 				<aos:button onclick="_user_role_cancel" margin="20 0 0 0" text="撤消" tooltip="撤消授权" iconVec="fa-angle-double-left"
 					iconVecSize="16" />
 			</aos:panel>
-			<aos:gridpanel id="_g_role_selected" forceFit="false" url="userService.listSelectedRoles" width="345" bodyBorder="1 0 0 0"
-				hidePagebar="true">
+			<aos:gridpanel id="_g_role_selected" forceFit="false" url="userService.listSelectedRoles" width="345"
+				bodyBorder="1 0 0 0" hidePagebar="true">
 				<aos:docked forceBoder="0 0 1 0">
 					<aos:dockeditem xtype="tbtext" text="已选角色" />
 					<aos:dockeditem xtype="tbfill" />
-					<aos:triggerfield emptyText="角色名称"  id="id_role_name_selected_" onenterkey="_g_role_selected_query"
+					<aos:triggerfield emptyText="角色名称" id="id_role_name_selected_" onenterkey="_g_role_selected_query"
 						trigger1Cls="x-form-search-trigger" onTrigger1Click="_g_role_selected_query" width="180" />
 				</aos:docked>
 				<aos:menu>
@@ -337,7 +337,8 @@
 		//自动选中根节点
 		AOS.job(function(){
 			_t_org.getSelectionModel().select(_t_org.getRootNode());
-		},500);
+			_g_user_query();
+		},10);
 		
 	    //弹出新增人员窗口
 		function _w_user_onshow(){

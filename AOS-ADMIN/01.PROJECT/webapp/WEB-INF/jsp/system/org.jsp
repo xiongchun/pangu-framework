@@ -2,35 +2,36 @@
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
 
 <aos:html title="部门管理" base="http" lib="ext">
-	<aos:body>
-	</aos:body>
+<aos:body>
+</aos:body>
 </aos:html>
 
 <aos:onready>
 	<aos:viewport layout="border">
-		<aos:treepanel id="_t_org" region="west" bodyBorder="0 1 0 0" width="250" singleClick="false" onitemclick="_g_org_query"
-			url="orgService.getTreeData" nodeParam="parent_id_" rootId="${rootPO.id_}" rootText="${rootPO.name_}" rootVisible="true"
-			rootIcon="${rootPO.icon_name_}"  rootAttribute="cascade_id_:'${rootPO.cascade_id_}'">
+		<aos:treepanel id="_t_org" region="west" bodyBorder="0 1 0 0" width="250" singleClick="false"
+			onitemclick="_g_org_query" url="orgService.getTreeData" nodeParam="parent_id_" rootId="${rootPO.id_}"
+			rootText="${rootPO.name_}" rootVisible="true" rootIcon="${rootPO.icon_name_}"
+			rootAttribute="cascade_id_:'${rootPO.cascade_id_}'">
 			<aos:docked forceBoder="0 1 1 0">
 				<aos:dockeditem xtype="tbtext" text="组织部门树" />
 				<aos:dockeditem xtype="tbfill" />
-				<aos:checkbox boxLabel="级联显示" id="id_cascade_" onchang="_g_org_query" checked="true"  />
+				<aos:checkbox boxLabel="级联显示" id="id_cascade_" onchang="_g_org_query" checked="false" />
 			</aos:docked>
 			<aos:menu>
 				<aos:menuitem text="新增部门" onclick="_w_org_show" icon="add.png" />
 				<aos:menuitem xtype="menuseparator" />
-				<aos:menuitem  text="刷新" onclick="_t_org_refresh" icon="refresh.png" />
+				<aos:menuitem text="刷新" onclick="_t_org_refresh" icon="refresh.png" />
 			</aos:menu>
 		</aos:treepanel>
-		<aos:gridpanel id="_g_org" url="orgService.listOrgs" region="center" onrender="_g_org_query" pageSize="200"
-			bodyBorder="1 0 1 0" onitemdblclick="_w_org_u_show" >
+		<aos:gridpanel id="_g_org" url="orgService.listOrgs" region="center" bodyBorder="1 0 1 0"
+			onitemdblclick="_w_org_u_show">
 			<aos:docked forceBoder="0 0 1 0">
-				<aos:dockeditem text="新增"  onclick="_w_org_show" icon="add.png" />
-				<aos:dockeditem text="修改"  onclick="_w_org_u_show" icon="edit.png" />
-				<aos:dockeditem text="删除"  onclick="_g_org_del" icon="del.png" />
+				<aos:dockeditem text="新增" onclick="_w_org_show" icon="add.png" />
+				<aos:dockeditem text="修改" onclick="_w_org_u_show" icon="edit.png" />
+				<aos:dockeditem text="删除" onclick="_g_org_del" icon="del.png" />
 				<aos:dockeditem xtype="tbseparator" />
-				<aos:triggerfield emptyText="部门名称" id="id_name_" onenterkey="_g_org_query"
-					trigger1Cls="x-form-search-trigger" onTrigger1Click="_g_org_query" width="180" />
+				<aos:triggerfield emptyText="部门名称" id="id_name_" onenterkey="_g_org_query" trigger1Cls="x-form-search-trigger"
+					onTrigger1Click="_g_org_query" width="180" />
 			</aos:docked>
 			<aos:menu>
 				<aos:menuitem xtype="menuseparator" />
@@ -54,7 +55,7 @@
 			<aos:column header="叶子节点" dataIndex="is_leaf_" rendererField="is_" fixedWidth="80" />
 			<aos:column header="部门类型" dataIndex="type_" rendererField="org_type_" fixedWidth="80" />
 			<aos:column header="扩展码" dataIndex="biz_code_" fixedWidth="150" />
-			<aos:column header="备注" dataIndex="remark_"  celltip="true" />
+			<aos:column header="备注" dataIndex="remark_" celltip="true" />
 		</aos:gridpanel>
 	</aos:viewport>
 
@@ -81,7 +82,7 @@
 		<aos:formpanel id="_f_org_u" width="400" layout="anchor" labelWidth="65">
 			<aos:hiddenfield fieldLabel="部门流水号" name="id_" />
 			<aos:hiddenfield fieldLabel="上级部门流水号" name="parent_id_" />
-			<aos:textfield name="name_" fieldLabel="部门名称" allowBlank="false"  maxLength="50" />
+			<aos:textfield name="name_" fieldLabel="部门名称" allowBlank="false" maxLength="50" />
 			<aos:textfield name="hotkey_" fieldLabel="热键" maxLength="50" />
 			<aos:combobox name="type_" fieldLabel="部门类型" allowBlank="false" dicField="org_type_" value="1" emptyText="请选择..." />
 			<aos:combobox name="is_auto_expand_" fieldLabel="自动展开" allowBlank="false" value="0" dicField="is_" />
@@ -96,7 +97,7 @@
 			<aos:dockeditem onclick="#_w_org_u.hide();" text="关闭" icon="close.png" />
 		</aos:docked>
 	</aos:window>
-	
+
 	<script type="text/javascript">
 	
 		//查询部门列表
@@ -117,7 +118,8 @@
 		//自动选中根节点
 		AOS.job(function(){
 			_t_org.getSelectionModel().select(_t_org.getRootNode());
-		},500);
+			_g_org_query();
+		},10);
 		
 		//刷新部门树  flag:parent 刷新父节点；root：刷新根节点
 		function _t_org_refresh(flag) {
