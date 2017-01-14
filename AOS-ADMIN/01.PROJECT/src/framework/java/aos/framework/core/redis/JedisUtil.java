@@ -25,6 +25,7 @@ public class JedisUtil {
 	static {
 		String host = AOSPropertiesHandler.getProperty("redis_host");
 		int port = Integer.valueOf(AOSPropertiesHandler.getProperty("redis_port"));
+		String password = AOSPropertiesHandler.getProperty("redis_pwd");
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMaxTotal(Integer.valueOf(AOSPropertiesHandler.getProperty("redis_maxTotal")));
         config.setMaxIdle(Integer.valueOf(AOSPropertiesHandler.getProperty("redis_maxIdle")));
@@ -40,7 +41,11 @@ public class JedisUtil {
         config.setNumTestsPerEvictionRun(10);
         //表示一个对象至少停留在idle状态的最短时间，然后才能被idle object evitor扫描并驱逐；这一项只有在timeBetweenEvictionRunsMillis大于0时才有意义
         config.setMinEvictableIdleTimeMillis(60000);
-		jedisPool = new JedisPool(config, host, port);
+        if (AOSUtils.isEmpty(password)) {
+        	jedisPool = new JedisPool(config, host, port);
+		}else{
+			jedisPool = new JedisPool(config, host, port, 0, password);
+		}
 	}
 
     /**
@@ -276,7 +281,11 @@ public class JedisUtil {
 	 * 测试
 	 */
 	public static void main(String[] args) {
-		
+		Jedis jedis = JedisUtil.getJedisClient();
+		jedis.set("XC", "1");
+		System.out.println(jedis.get("XC"));
+		System.out.println(jedis.info());
+		JedisUtil.close(jedis);
 	}
 
 }

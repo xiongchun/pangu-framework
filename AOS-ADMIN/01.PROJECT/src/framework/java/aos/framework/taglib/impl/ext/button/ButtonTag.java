@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.servlet.jsp.JspException;
 
+import org.apache.commons.lang3.StringUtils;
+
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.taglib.asset.Xtypes;
@@ -38,10 +40,18 @@ public class ButtonTag extends ButtonTagSupport {
 		if (AOSUtils.isEmpty(getXtype())) {
 			setXtype(Xtypes.BUTTON);
 		}
+		
+		if (StringUtils.equals(getIconAlign(), "top") || StringUtils.equals(getIconAlign(), "bottom") ) {
+			if (AOSUtils.isEmpty(getScale())) {
+				setScale("medium");
+			}
+		}
+		
 		//设置按钮缺省高度
 		if (AOSUtils.isEmpty(getScale()) && AOSUtils.isEmpty(getHeight())) {
 			setHeight("25");
 		}
+		
 		resetListenerContainer();
 	}
 
@@ -61,8 +71,8 @@ public class ButtonTag extends ButtonTagSupport {
 		super.pkgProperties(tagDto);
 		// Native
 		tagDto.put("iconAlign", getIconAlign());
-		tagDto.put("arrowAlign", getIconAlign());
-		tagDto.put("textAlign", getIconAlign());
+		tagDto.put("arrowAlign", getArrowAlign());
+		tagDto.put("textAlign", getTextAlign());
 		// Logic
 		String classtype = "Ext.button.Button";
 		if (AOSUtils.isNotEmpty(getXtype())) {
@@ -93,6 +103,10 @@ public class ButtonTag extends ButtonTagSupport {
 	 */
 	private void doClear() throws JspException {
 		setId(null);
+		setScale(null);
+		setIconAlign(null);
+		setArrowAlign(null);
+		setTextAlign(null);
 	}
 
 	/**

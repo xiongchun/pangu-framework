@@ -87,6 +87,11 @@ body {
     background: transparent no-repeat 3px 0;
     background-image: url(../../static/image/gif/loading.gif);
 }
+.status-ok{
+	padding-left: 25px !important;
+    background: transparent no-repeat 3px 0;
+    background-image: url(../../static/icon/ok1.png);
+}
 /* 状态栏专用结束 */
 
 /* 修复了<aos:textarea />文本域标签在Firefox浏览器下的字体显示问题 */

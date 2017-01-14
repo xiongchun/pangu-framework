@@ -24,7 +24,7 @@
 			</aos:docked>
 		</aos:formpanel>
 
-		<aos:tabpanel id="_tabpanel" region="center" activeTab="0" bodyBorder="0 0 0 0" tabBarHeight="30">
+		<aos:tabpanel id="_tabpanel" region="center" bodyBorder="0 0 0 0">
 
 			<aos:tab title="部门信息" id="_tab_org">
 				<aos:gridpanel id="_g_org" url="demoService.listOrgs" onrender="_g_org_query">

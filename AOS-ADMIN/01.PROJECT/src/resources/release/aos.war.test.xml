@@ -85,6 +85,7 @@
 			<!-- Redis配置(未列出的信息不建议修改)-->
 			<entry key="redis_host" value="127.0.0.1" />
 			<entry key="redis_port" value="6379" />
+			<entry key="redis_pwd" value="" />
 			<!-- 数据源配置 -->
 			<entry key="jdbc.url" value="jdbc:mysql://127.0.0.1:3306/aos?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false" />
 			<entry key="jdbc.username" value="root" />

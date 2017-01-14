@@ -43,57 +43,6 @@ public class DemoService extends AOSBaseService {
 	private AosOrgDao aosOrgDao;
 
 	/**
-	 * 范例1(简单查询)
-	 * 
-	 * @param httpModel
-	 * @return
-	 */
-	public void initMisc1(HttpModel httpModel) {
-		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
-		httpModel.setViewPath("showcase/misc/misc1.jsp");
-	}
-
-	/**
-	 * 范例2(增删改查)
-	 * 
-	 * @param httpModel
-	 * @return
-	 */
-	public void initMisc2(HttpModel httpModel) {
-		httpModel.setViewPath("showcase/misc/misc2.jsp");
-	}
-
-	/**
-	 * 范例3(常用布局一)
-	 * 
-	 * @param httpModel
-	 * @return
-	 */
-	public void initMisc3(HttpModel httpModel) {
-		httpModel.setViewPath("showcase/misc/misc3.jsp");
-	}
-
-	/**
-	 * 范例4(常用布局二)
-	 * 
-	 * @param httpModel
-	 * @return
-	 */
-	public void initMisc4(HttpModel httpModel) {
-		httpModel.setViewPath("showcase/misc/misc4.jsp");
-	}
-
-	/**
-	 * 范例5(常用布局三)
-	 * 
-	 * @param httpModel
-	 * @return
-	 */
-	public void initMisc5(HttpModel httpModel) {
-		httpModel.setViewPath("showcase/misc/misc5.jsp");
-	}
-
-	/**
 	 * 查询账户信息列表
 	 * 
 	 * @param httpModel
@@ -263,6 +212,67 @@ public class DemoService extends AOSBaseService {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	/**
+	 * 范例1(简单查询)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initMisc1(HttpModel httpModel) {
+		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
+		httpModel.setViewPath("showcase/misc/misc1.jsp");
+	}
+
+	/**
+	 * 范例2(增删改查)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initMisc2(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/misc/misc2.jsp");
+	}
+
+	/**
+	 * 范例3(常用布局一)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initMisc3(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/misc/misc3.jsp");
+	}
+
+	/**
+	 * 范例4(常用布局二)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initMisc4(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/misc/misc4.jsp");
+	}
+
+	/**
+	 * 范例5(常用布局三)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initMisc5(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/misc/misc5.jsp");
+	}
+	
+	/**
+	 * 范例1(基本组件)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initBasic1(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/basic/basic1.jsp");
 	}
 
 }

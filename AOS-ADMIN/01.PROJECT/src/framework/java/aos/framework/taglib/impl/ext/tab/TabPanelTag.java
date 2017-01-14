@@ -49,7 +49,11 @@ public class TabPanelTag extends PanelTag {
 		resetObjInContainerTag();
 
 		if (AOSUtils.isEmpty(getTabBarHeight())) {
-			setTabBarHeight("25");
+			setTabBarHeight("30");
+		}
+		
+		if (AOSUtils.isEmpty(getActiveTab())) {
+			setActiveTab("0");
 		}
 
 		// 设置缺省活动卡片高亮颜色
