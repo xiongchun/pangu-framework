@@ -1,0 +1,4 @@
+##注册Items子组件
+#foreach($item in $items)
+	Ext.getCmp('$id').add(${item.id});
+#end

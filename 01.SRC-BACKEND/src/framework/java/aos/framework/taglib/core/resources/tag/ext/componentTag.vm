@@ -1,0 +1,12 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##Component定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/componentTagSupport.vm")
+	app: 169
+};
+##Component实例化
+var ${id} = Ext.create('Ext.Component', ${id}_cfg);
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")

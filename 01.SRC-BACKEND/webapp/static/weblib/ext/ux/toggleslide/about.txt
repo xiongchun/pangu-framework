@@ -1,0 +1,2 @@
+这个扩展来自第三方，并不是官方出品。
+http://harrydeluxe.github.io/extjs-ux

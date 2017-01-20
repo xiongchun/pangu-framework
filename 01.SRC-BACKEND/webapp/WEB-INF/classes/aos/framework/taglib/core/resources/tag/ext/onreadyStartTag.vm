@@ -1,0 +1,82 @@
+##导入相关插件依赖的CSS资源
+#if($toggle == "true")
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/ux/toggleslide/css/style.css" />
+#end
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/myux/clearbutton/css/ClearButton.css" />
+
+<script type="text/javascript">
+##导入Ext扩展依赖资源
+Ext.Loader.setConfig({  
+   enabled: true,  
+   paths : { 
+      'Ext.ux' : '$cxt/static/weblib/ext/ux',
+      'AOS.ux' : '$cxt/static/weblib/myux'
+   }  
+});
+##声明插件依赖资源，在下面声明的只要声明就算页面没使用这个组件页面就会加载这个资源。
+##现在新增的插件都别再这里声明了，使用自动依赖加载即可。前提是需要使用Ext.create()的方式创建组件，这个组件的依赖资源才会被
+##自动加载，new()则不行。
+Ext.require('AOS.ux.Notification');
+Ext.require('AOS.ux.clearbutton.ClearButton');
+#if($statusBar == "true")
+Ext.require('Ext.ux.statusbar.StatusBar');
+#end
+#if($pagingMemoryProxy == "true")
+Ext.require('Ext.ux.data.PagingMemoryProxy');
+#end
+#if($iframe == "true")
+Ext.require('AOS.ux.IFrame');
+#end
+#if($dataView == "true")
+Ext.require('Ext.ux.DataView.Animated');
+#end
+#if($toggle == "true")
+Ext.require([ 'Ext.ux.form.field.ToggleSlide']);
+Ext.require([ 'Ext.ux.toggleslide.ToggleSlide']);
+#end
+
+##=====Ajax的全局设定开始
+##将缺省超时时间设置为120s
+Ext.Ajax.timeout = 120000;
+##TODO:改变提示信息弹出方式
+##监听请求提交前事件
+Ext.Ajax.on('beforerequest', function(conn, options, eopts) {
+    ##追加Ajax请求全局参数
+	Ext.Ajax.extraParams = {
+	    'juid' : Ext.util.Cookies.get('juid'),
+		'app' : '169'
+	};
+});
+##监听请求异常回调
+Ext.Ajax.on('requestexception', function(conn, response, options, eopts) {
+	if (response.status == 500) {
+	    ##服务器异常
+		#if($run_mode_ == "2")
+		AOS.err('在线演示系统为只读模式，部分功能可能不流畅。完美体验请搭建本地环境。');
+		#else
+		AOS.err(response.responseText);
+		#end
+	} else if (response.status === 0) {
+	    ##网络异常或服务器关闭
+		AOS.err(response.responseText);
+	} else {
+	    ##其它异常
+		AOS.err(response.responseText);
+	}
+});
+##=====Ajax的全局设定结束
+
+##表单必录项的高亮提示
+var x_field_required = '<span class="mustinput-label">*</span>';
+
+##Ext组件开始实例化
+Ext.onReady(function(){
+Ext.QuickTips.init();
+##表单校验失败时的全局消息提示方式
+Ext.form.Field.prototype.msgTarget = '$msgtarget_';
+##屏蔽浏览器右键
+#if($preventDefault == "true")
+Ext.getDoc().on("contextmenu", function(e){
+    e.preventDefault();
+});
+#end

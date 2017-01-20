@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 范例使用的手工SQL语句 -->
+<mapper namespace="Demo">
+
+	<!-- 查询参数数据 -->
+	<select id="listParamsPage" resultType="AosParamsPO"
+		parameterType="Dto">
+		SELECT
+		<include refid="aos.framework.dao.AosParamsDao.column" />
+		FROM aos_params WHERE
+		key_ LIKE '%${keyorvalue}%' OR value_ LIKE '%${keyorvalue}%'
+	</select>
+
+	<!-- 查询测试 -->
+	<select id="listAccountPage" resultType="DemoAccountPO" parameterType="Dto">
+		SELECT
+		<include refid="aos.demo.dao.DemoAccountDao.column" />
+		FROM demo_account WHERE 1=1
+		<if test="name_ != null and name_ != ''">
+			AND name_ = #{name_} 
+		</if>
+	</select>
+	
+</mapper>

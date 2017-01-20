@@ -1,0 +1,8 @@
+##FillField定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formItemTagSupport.vm")
+    app:169	
+};
+##FillField实例化(使用DisplayFiled作为FillField的实例类)
+var ${id} = Ext.create('Ext.form.field.Display',${id}_cfg);
+

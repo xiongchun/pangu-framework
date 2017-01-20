@@ -1,0 +1,162 @@
+2017-01-17 10:34:20 INFO [Class:o.e.j.s.Server->Thread:main] jetty-8.1.17.v20150415 
+2017-01-17 10:34:21 INFO [Class:o.e.j.s.h.ContextHandler$Context->Thread:main] Initializing Spring root WebApplicationContext 
+2017-01-17 10:34:23 INFO [Class:c.a.d.p.DruidDataSource->Thread:main] {dataSource-1} inited 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ●● SQL语句: SELECT id_, name_, key_, value_, group_, remark_ FROM aos_params  
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● SQL参数:  
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140012, 登录请求等待信息, login_wait_msg_, 正在拼命带你飞, 请稍候..., 1,  
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140013, 开发用户快捷登录账户, login_dev_account_, root, 1, 可设置为任意一个系统存在的账户。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140014, 开发用户快捷登录开关, login_dev_, 1, 1, 可选值：1 | 0。1：打开；0：关闭。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140016, 系统缺省皮肤, skin_, blue, 1, 可选值：blue|gray|aos。优先级低于用户自己的皮肤配置。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140017, 登录页面的背景图片, login_back_img_, -1, 1, 登录页面的背景图片。可选的预设背景图片为：0.jpg、1.jpg、2.jpg。如果需要随机出现背景，则将其设置为-1。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140018, 是否显示验证码, is_show_vercode_, 1, 1, 是否在登录页面显示验证码及后台验证码验证。可选值：0(否) | 1(是)。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140019, 验证码长度, vercode_length_, 4, 1, null 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140020, 验证码待选字符集, vercode_characters_, abcdetx2345678, 1, null 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140022, Tab高亮颜色, tab_focus_color_, #0099FF, 1, 缺省的当前Tab卡片高亮提示颜色 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140023, 表格分页行数, page_size_, 50, 1, 缺省的分页大小。JSP页面的属性设置会覆盖这个配置。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140024, 表格列单元格内容对齐方式, grid_column_algin_, left, 1, 表格列对齐模式。有效值：left|center|right。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140025, 全局右键, prevent_rightclick_, false, 1, 阻止浏览器缺省鼠标右键事件。可选值：true|false。缺省值：true。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140026, 下拉选择框的缺省提示信息, combobox_emptytext_, 请选择..., 1, null 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140028, 表单校验消息提示方式, msgtarget_, qtip, 1, 可选值必须是下列值之一 (1)、qtip 当用户鼠标悬停在该域之上时显示包含了消息的迅速提示。(2)、title 显示消息以浏览器默认的title属性弹出。 (3)、under 在域下方添加一块包含了错误消息的div。(4)、side 添加一个错误图标在域的右边，鼠标悬停上面时弹出显示消息。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140029, 水平导航条按钮风格, nav_button_style_, tight, 1, 顶部水平导航条的按钮样式风格。tight：组合按钮；standalone：独立按钮。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140030, 是否显示水平导航条, is_show_top_nav_, 1, 1, 是否显示水平导航条。可选值：1 | 0。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140031, 页面刷新动画文件, page_load_gif_, wheel.gif, 1, 页面刷新动画文件。可选的预设动画文件：run.gif、wheel.gif。动画path：/static/image/gif/pageload。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140032, 运行模式, run_mode_, 0, 1, 0：开发模式；1：生产模式；2：在线体验模式 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140033, 功能模块页面加载等待提示信息, page_load_msg_, 正在拼命带你飞, 请稍候..., 1,  
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140034, 欢迎页标题, welcome_page_title_, 欢迎, 1,  
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140035, 版权信息, copyright_, 2008-2016 AOSuite, 1,  
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140036, 用户会话Redis超时时间, user_login_timeout_, 18000, 1, 以秒(s)为单位。18000=5小时。 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140037, 首页浏览器标题, app_title_, AOSuite : JavaEE应用开发套件, 1,  
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140038, 加解密算法密钥, code_key_, HY&XC&MW, 1, 用户密码加解密算法密钥：密钥不能小于8位 
+2017-01-17 10:34:24 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1610221716240000, QQ群推广链接, qq_group_link_, http://jq.qq.com/?_wv=1027&k=40fPema, 1, 当系统处于在线演示模式时，登录系统后会弹出自动加QQ群提示。 
+2017-01-17 10:34:24 DEBUG [Class:a.f.c.u.AOSPropertiesHandler->Thread:main] 开始装载属性资源参数文件... 
+2017-01-17 10:34:24 DEBUG [Class:a.f.c.u.AOSCfgHandler->Thread:main] 解析XML参数配置文件... 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ●● SQL语句: SELECT id_, name_, key_, code_, desc_, is_enable_, hotkey_, group_, sort_no_, remark_ FROM aos_dic WHERE is_enable_ = ?  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● SQL参数: 1(String) 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120001, 性别, sex_, 1, 男, 1, , 1, 1,  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120002, 性别, sex_, 2, 女, 1, null, 1, 2, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120003, 性别, sex_, 3, 未知, 1, null, 1, 3, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120004, 组件边框颜色, cmp_border_color_, blue, #99BCE8, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120005, 组件边框颜色, cmp_border_color_, gray, #BCB0B0, 1, null, 1, 2, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120006, 主页面south区域背景颜色, south_back_color_, blue, #DFE8F6, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120007, 主页面south区域背景颜色, south_back_color_, gray, #F0F0F0, 1, null, 1, 2, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120008, 文本主体色调, main_text_color_, blue, #6699CC, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120009, 文本主体色调, main_text_color_, gray, #888888, 1, null, 1, 2, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120010, 导航文字颜色, nav_text_color_, blue, #3399FF, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120011, 导航文字颜色, nav_text_color_, gray, #555555, 1, null, 1, 2, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120012, 用户类型, user_type_, 1, 缺省, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120013, 用户状态, user_status_, 1, 正常, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120014, 用户状态, user_status_, 2, 锁定, 1, null, 1, 2, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120015, 用户状态, user_status_, 3, 停用, 1, null, 1, 3, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120016, 是否开关, is_, 1, 是, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120017, 是否开关, is_, 0, 否, 1, null, 1, 2, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120018, 组织类型, org_type_, 1, 缺省, 1, , 1, 1,  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120020, 角色授权类型, role_grant_type_, 1, 业务办理权限, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120021, 角色授权类型, role_grant_type_, 2, 管理授权权限, 1, null, 1, 1,  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120022, 参数分组, params_group_, 1, 系统缺省参数, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120023, 参数分组, params_group_, 2, 产品业务参数, 1, null, 1, 2, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120024, 字典分组, dic_group_, 1, 系统缺省字典, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120025, 字典分组, dic_group_, 2, 产品业务字典, 1, null, 1, 1,  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609082331410000, 界面皮肤, skin_, blue, 经典蓝, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609082333290001, 界面皮肤, skin_, gray, 魅力灰, 1, null, 1, 2,  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609112054530003, 角色类型, role_type_, 1, 缺省, 1, null, 1, 1,  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609281541100768, 图标类型, icon_type_, 1, 小图标, 1, null, 1, 1, null 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609281541340769, 图标类型, icon_type_, 2, 大图标, 1, null, 1, 2,  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609281541530770, 图标类型, icon_type_, 3, 字体图标, 1, null, 1, 3,  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1611152302520036, 卡类型, card_type_, 1, 普卡, 1, null, 2, 1, 演示模块使用 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1611152303240037, 卡类型, card_type_, 2, 金卡, 1, null, 2, 2, 演示模块使用 
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1612290039290002, Redis数据类型, cmd_type_, 1, String, 1, null, 1, 1,  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1612290039520003, Redis数据类型, cmd_type_, 2, HashMap, 1, null, 1, 2,  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1612290040070004, Redis数据类型, cmd_type_, 3, List, 1, null, 1, 3,  
+2017-01-17 10:34:25 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1612290040280005, Redis数据类型, cmd_type_, 4, Set, 1, null, 1, 4,  
+2017-01-17 10:34:25 INFO [Class:o.e.j.s.h.ContextHandler$Context->Thread:main] Initializing Spring FrameworkServlet 'springDispatcherServlet' 
+2017-01-17 10:34:25 INFO [Class:o.e.j.s.AbstractConnector->Thread:main] Started SelectChannelConnector@0.0.0.0:10010 
+2017-01-17 10:34:42 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp2085702895-24] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 10:35:09 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp2085702895-20] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml1 
+2017-01-17 10:39:16 INFO [Class:o.e.j.s.Server->Thread:main] jetty-8.1.17.v20150415 
+2017-01-17 10:39:17 INFO [Class:o.e.j.s.h.ContextHandler$Context->Thread:main] Initializing Spring root WebApplicationContext 
+2017-01-17 10:39:19 INFO [Class:c.a.d.p.DruidDataSource->Thread:main] {dataSource-1} inited 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ●● SQL语句: SELECT id_, name_, key_, value_, group_, remark_ FROM aos_params  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● SQL参数:  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140012, 登录请求等待信息, login_wait_msg_, 正在拼命带你飞, 请稍候..., 1,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140013, 开发用户快捷登录账户, login_dev_account_, root, 1, 可设置为任意一个系统存在的账户。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140014, 开发用户快捷登录开关, login_dev_, 1, 1, 可选值：1 | 0。1：打开；0：关闭。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140016, 系统缺省皮肤, skin_, blue, 1, 可选值：blue|gray|aos。优先级低于用户自己的皮肤配置。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140017, 登录页面的背景图片, login_back_img_, -1, 1, 登录页面的背景图片。可选的预设背景图片为：0.jpg、1.jpg、2.jpg。如果需要随机出现背景，则将其设置为-1。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140018, 是否显示验证码, is_show_vercode_, 1, 1, 是否在登录页面显示验证码及后台验证码验证。可选值：0(否) | 1(是)。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140019, 验证码长度, vercode_length_, 4, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140020, 验证码待选字符集, vercode_characters_, abcdetx2345678, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140022, Tab高亮颜色, tab_focus_color_, #0099FF, 1, 缺省的当前Tab卡片高亮提示颜色 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140023, 表格分页行数, page_size_, 50, 1, 缺省的分页大小。JSP页面的属性设置会覆盖这个配置。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140024, 表格列单元格内容对齐方式, grid_column_algin_, left, 1, 表格列对齐模式。有效值：left|center|right。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140025, 全局右键, prevent_rightclick_, false, 1, 阻止浏览器缺省鼠标右键事件。可选值：true|false。缺省值：true。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140026, 下拉选择框的缺省提示信息, combobox_emptytext_, 请选择..., 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140028, 表单校验消息提示方式, msgtarget_, qtip, 1, 可选值必须是下列值之一 (1)、qtip 当用户鼠标悬停在该域之上时显示包含了消息的迅速提示。(2)、title 显示消息以浏览器默认的title属性弹出。 (3)、under 在域下方添加一块包含了错误消息的div。(4)、side 添加一个错误图标在域的右边，鼠标悬停上面时弹出显示消息。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140029, 水平导航条按钮风格, nav_button_style_, tight, 1, 顶部水平导航条的按钮样式风格。tight：组合按钮；standalone：独立按钮。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140030, 是否显示水平导航条, is_show_top_nav_, 1, 1, 是否显示水平导航条。可选值：1 | 0。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140031, 页面刷新动画文件, page_load_gif_, wheel.gif, 1, 页面刷新动画文件。可选的预设动画文件：run.gif、wheel.gif。动画path：/static/image/gif/pageload。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140032, 运行模式, run_mode_, 0, 1, 0：开发模式；1：生产模式；2：在线体验模式 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140033, 功能模块页面加载等待提示信息, page_load_msg_, 正在拼命带你飞, 请稍候..., 1,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140034, 欢迎页标题, welcome_page_title_, 欢迎, 1,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140035, 版权信息, copyright_, 2008-2016 AOSuite, 1,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140036, 用户会话Redis超时时间, user_login_timeout_, 18000, 1, 以秒(s)为单位。18000=5小时。 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140037, 首页浏览器标题, app_title_, AOSuite : JavaEE应用开发套件, 1,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848140038, 加解密算法密钥, code_key_, HY&XC&MW, 1, 用户密码加解密算法密钥：密钥不能小于8位 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1610221716240000, QQ群推广链接, qq_group_link_, http://jq.qq.com/?_wv=1027&k=40fPema, 1, 当系统处于在线演示模式时，登录系统后会弹出自动加QQ群提示。 
+2017-01-17 10:39:21 DEBUG [Class:a.f.c.u.AOSPropertiesHandler->Thread:main] 开始装载属性资源参数文件... 
+2017-01-17 10:39:21 DEBUG [Class:a.f.c.u.AOSCfgHandler->Thread:main] 解析XML参数配置文件... 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ●● SQL语句: SELECT id_, name_, key_, code_, desc_, is_enable_, hotkey_, group_, sort_no_, remark_ FROM aos_dic WHERE is_enable_ = ?  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● SQL参数: 1(String) 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120001, 性别, sex_, 1, 男, 1, , 1, 1,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120002, 性别, sex_, 2, 女, 1, null, 1, 2, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120003, 性别, sex_, 3, 未知, 1, null, 1, 3, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120004, 组件边框颜色, cmp_border_color_, blue, #99BCE8, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120005, 组件边框颜色, cmp_border_color_, gray, #BCB0B0, 1, null, 1, 2, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120006, 主页面south区域背景颜色, south_back_color_, blue, #DFE8F6, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120007, 主页面south区域背景颜色, south_back_color_, gray, #F0F0F0, 1, null, 1, 2, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120008, 文本主体色调, main_text_color_, blue, #6699CC, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120009, 文本主体色调, main_text_color_, gray, #888888, 1, null, 1, 2, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120010, 导航文字颜色, nav_text_color_, blue, #3399FF, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120011, 导航文字颜色, nav_text_color_, gray, #555555, 1, null, 1, 2, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120012, 用户类型, user_type_, 1, 缺省, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120013, 用户状态, user_status_, 1, 正常, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120014, 用户状态, user_status_, 2, 锁定, 1, null, 1, 2, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120015, 用户状态, user_status_, 3, 停用, 1, null, 1, 3, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120016, 是否开关, is_, 1, 是, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120017, 是否开关, is_, 0, 否, 1, null, 1, 2, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120018, 组织类型, org_type_, 1, 缺省, 1, , 1, 1,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120020, 角色授权类型, role_grant_type_, 1, 业务办理权限, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120021, 角色授权类型, role_grant_type_, 2, 管理授权权限, 1, null, 1, 1,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120022, 参数分组, params_group_, 1, 系统缺省参数, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120023, 参数分组, params_group_, 2, 产品业务参数, 1, null, 1, 2, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120024, 字典分组, dic_group_, 1, 系统缺省字典, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1608211848120025, 字典分组, dic_group_, 2, 产品业务字典, 1, null, 1, 1,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609082331410000, 界面皮肤, skin_, blue, 经典蓝, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609082333290001, 界面皮肤, skin_, gray, 魅力灰, 1, null, 1, 2,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609112054530003, 角色类型, role_type_, 1, 缺省, 1, null, 1, 1,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609281541100768, 图标类型, icon_type_, 1, 小图标, 1, null, 1, 1, null 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609281541340769, 图标类型, icon_type_, 2, 大图标, 1, null, 1, 2,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1609281541530770, 图标类型, icon_type_, 3, 字体图标, 1, null, 1, 3,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1611152302520036, 卡类型, card_type_, 1, 普卡, 1, null, 2, 1, 演示模块使用 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1611152303240037, 卡类型, card_type_, 2, 金卡, 1, null, 2, 2, 演示模块使用 
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1612290039290002, Redis数据类型, cmd_type_, 1, String, 1, null, 1, 1,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1612290039520003, Redis数据类型, cmd_type_, 2, HashMap, 1, null, 1, 2,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1612290040070004, Redis数据类型, cmd_type_, 3, List, 1, null, 1, 3,  
+2017-01-17 10:39:21 DEBUG [Class:o.a.i.l.j.BaseJdbcLogger->Thread:main] ● 1612290040280005, Redis数据类型, cmd_type_, 4, Set, 1, null, 1, 4,  
+2017-01-17 10:39:21 INFO [Class:o.e.j.s.h.ContextHandler$Context->Thread:main] Initializing Spring FrameworkServlet 'springDispatcherServlet' 
+2017-01-17 10:39:22 INFO [Class:o.e.j.s.AbstractConnector->Thread:main] Started SelectChannelConnector@0.0.0.0:10010 
+2017-01-17 13:11:30 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-24] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 13:12:08 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-25] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 14:01:10 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-23] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 14:02:20 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-24] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 14:11:28 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-23] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 14:19:17 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-26] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 15:26:46 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-28] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 15:31:05 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-27] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 15:31:31 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-27] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 15:35:26 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-26] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 15:36:52 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-24] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register1.jhtml 
+2017-01-17 15:41:12 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-24] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register1.jhtml 
+2017-01-17 15:41:58 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-28] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register1.jhtml 
+2017-01-17 16:14:34 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-27] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 16:34:18 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-25] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 
+2017-01-17 17:02:05 INFO [Class:a.f.w.f.HttpApiFilter->Thread:qtp131312334-24] ●●● ClientIP：127.0.0.1，URI：/aosuite/api/creditCard/register.jhtml 

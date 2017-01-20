@@ -1,0 +1,76 @@
+<!--
+AOS JavaEE应用开发套件
+http://git.oschina.net/osworks/AOS
+-->
+#if($html5 == "true")
+<!DOCTYPE html>
+#end
+<html>
+
+<!-- =========head开始 ==========-->
+<head>
+#if($base)
+<base href="$base" />
+#end
+#if($title)
+<title>$title</title>
+#end
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="keywords" content="AOS应用基础平台">
+##IE10及以上版本统一使用10来渲染。
+#if($ie_version >= 10)
+<meta http-equiv="X-UA-Compatible" content="IE=10">
+#end
+##IE10以下版本统一使用自己的最高版本来渲染。如果安装了GCF，则使用GCF来渲染页面，如果没有则使用IE最高模式进行渲染。
+##GCF只会对678版本有效。
+#if($ie_version < 10)
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+#end
+##可以让部分国产双核浏览器默认采用高速模式渲染页面
+<meta name="renderer" content="webkit">
+<link rel="shortcut icon" href="${cxt}/static/image/ico/aos.ico" />
+##awesome组件为标配组件
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/awesome/css/font-awesome.min.css" />
+#parse("${vmpath}app/common/dynamicCss.vm")
+
+##导入WEBUI库
+#if($ext)
+ #if($skin == "gray")
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/resources/css/ext-all-gray.css" />
+<link rel="stylesheet" type="text/css" href="$cxt/static/css/skin/gray.css" />
+ #elseif($skin == "neptune")
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/resources/css/ext-all-neptune.css" />
+<link rel="stylesheet" type="text/css" href="$cxt/static/css/skin/neptune.css" />
+ #else
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/ext/resources/css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="$cxt/static/css/skin/blue.css" />
+#end
+<link rel="stylesheet" type="text/css" href="$cxt/static/css/aos-all.css" />
+##<script type="text/javascript" src="$cxt/static/weblib/ext/bootstrap.js"></script>
+<script type="text/javascript" src="$cxt/static/weblib/ext/ext-all.js"></script>
+<script type="text/javascript" src="$cxt/static/weblib/ext/locale/ext-lang-zh_CN.js"></script>
+<script type="text/javascript" src="$cxt/static/js/aos.js"></script>
+#end
+#if($filter)
+<script type="text/javascript" src="$cxt/static/weblib/pinyin/pinyin.dict.firstletter.js"></script>
+<script type="text/javascript" src="$cxt/static/weblib/pinyin/pinyin.util.js"></script>
+#end
+#if($jquery)
+<script type="text/javascript" src="$cxt/static/weblib/jquery/jquery.min-1.10.2.js"></script>
+#end
+#if($buttons)
+##如果需要使用下拉菜单，则还需要引入buttons.js
+<link rel="stylesheet" type="text/css" href="$cxt/static/weblib/buttons/css/buttons.css" />
+#end
+#if($raphael)
+<script type="text/javascript" src="$cxt/static/weblib/raphael/raphael.js"></script>
+#end
+#if($bootstrap)
+##TODO
+#end
+#if($jqueryui)
+##TODO
+#end
+
+</head>
+<!-- =========head结束 ==========-->

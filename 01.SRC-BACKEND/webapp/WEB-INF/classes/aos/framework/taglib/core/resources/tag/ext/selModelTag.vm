@@ -1,0 +1,16 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##Panel实例化
+var ${id} = Ext.create('$classname',{
+#parse("${vmpath}ext/common/extTagSupport.vm")
+#if($mode)
+	mode:'$mode',
+#end
+#if($injectCheckbox)
+	injectCheckbox:$injectCheckbox,
+#end
+    ##总是允许反选
+    allowDeselect:true,
+	app: 169
+});

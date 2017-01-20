@@ -1,0 +1,49 @@
+#parse("${vmpath}ext/common/componentTagSupport.vm")
+#if($layoutconfigvos)
+    layout:{
+	#foreach($config in $layoutconfigvos)
+		${config.key}: ${config.value},
+	#end
+	#if($layout == "table")
+		tableAttrs : {
+						style : {
+							width : '100%'
+						}
+					},
+    #end
+	    app: 169
+	},
+#elseif($layout)
+    layout:'$layout',
+#end
+#if($split)
+    split: $split,
+#end
+#if($anchor)
+    anchor: '$anchor',
+#end
+#if($x)
+    x: $x,
+#end
+#if($y)
+    y: $y,
+#end
+#if($rowspan)
+    rowspan: $rowspan,
+#end
+#if($colspan)
+    colspan: $colspan,
+#end
+#if($flex)
+    flex: $flex,
+#end
+#if($constrain)
+	constrain: $constrain,
+#end
+#if($loaderInit)
+    loader : {},
+#end
+#if($autoShow == "true")
+    autoRender:true,
+    autoShow:true,
+#end

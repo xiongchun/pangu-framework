@@ -1,0 +1,19 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##菜单定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/panelTagSupport.vm")
+#if($plain)
+    plain : $plain,
+#end
+#if($floating)
+	floating: $floating, 
+#end
+	app:169
+};
+##菜单实例化
+var ${id} = Ext.create('Ext.menu.Menu', ${id}_cfg);
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
