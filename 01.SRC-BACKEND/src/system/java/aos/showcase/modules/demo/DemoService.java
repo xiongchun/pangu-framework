@@ -274,5 +274,15 @@ public class DemoService extends AOSBaseService {
 	public void initBasic1(HttpModel httpModel) {
 		httpModel.setViewPath("showcase/basic/basic1.jsp");
 	}
+	
+	/**
+	 * 范例2(容器组件)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initBasic2(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/basic/basic2.jsp");
+	}
 
 }
