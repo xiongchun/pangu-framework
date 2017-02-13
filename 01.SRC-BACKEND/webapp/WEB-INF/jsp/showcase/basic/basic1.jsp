@@ -68,8 +68,22 @@
 						<aos:button text="删除" icon="del.png" iconAlign="bottom" onclick="#AOS.tip('你点击了我。')" margin="0 0 0 20" />
 					</aos:panel>
 
+					<aos:iframe src="do.jhtml?router=demoService.initToggle&juid=${juid}" margin="40 0 0 20"   anchor="100% 50%" />
+
 				</aos:panel>
 
+			</aos:tab>
+
+			<aos:tab title="消息提示">
+				<aos:panel layout="hbox" margin="50 0 0 20" anchor="100%">
+					<aos:button text="提示信息" onclick="fnmsg1" scale="medium" />
+					<aos:button text="警告信息" onclick="#AOS.warn('这是一个警告信息');" scale="medium" margin="0 0 0 20" />
+					<aos:button text="错误信息" onclick="fnmsg2" scale="medium" margin="0 0 0 20" />
+					<aos:button text="确认信息" onclick="fnmsg3" scale="medium" margin="0 0 0 20" />
+					<aos:button text="等待信息" onclick="fnmsg4" scale="medium" margin="0 0 0 20" />
+					<aos:button text="滑动信息" onclick="fnmsg5" scale="medium" margin="0 0 0 20" />
+					<aos:button text="滑动信息全家福" onclick="msgAll()" scale="medium" margin="0 0 0 20" />
+				</aos:panel>
 			</aos:tab>
 
 			<aos:tab title="停靠栏(工具栏、状态栏)" layout="anchor" onactivate="fnBusy2">
@@ -120,9 +134,8 @@
 				</aos:panel>
 				<aos:panel title="面板3：信用卡申请人影像件（演示状态栏）" anchor="100% 50%" headerBorder="1 0 0 0">
 
-
-					<aos:docked id="_id_statusbar" forceBoder="1 0 1 0" xtype="statusbar" dock="bottom" iconCls="status-ok" text="影像件加载完成"
-						defaultText="缺省文本信息">
+					<aos:docked id="_id_statusbar" forceBoder="1 0 1 0" xtype="statusbar" dock="bottom" iconCls="status-ok"
+						text="影像件加载完成" defaultText="缺省文本信息">
 						<aos:dockeditem xtype="button" text="加载" onclick="fnBusy" icon="down.png" />
 						<aos:dockeditem xtype="button" text="加载完成" onclick="fnOk" icon="ok1.png" />
 						<aos:dockeditem xtype="tbseparator" />
@@ -136,6 +149,7 @@
 	</aos:viewport>
 
 	<script type="text/javascript">
+	
 		//响应事件
 		function fn_add(){
 			AOS.tip('你点击了新增按钮。');
@@ -191,7 +205,7 @@
 	    function fnBusy2(){
 	    	AOS.job(function(){
 	    		_id_statusbar.showBusy('正在加载影像件...');
-	    	},1000);
+	    	},500);
 	    }
 
 	    //状态栏加载完成
@@ -207,6 +221,126 @@
 	    //状态栏重置
 		function fnClear() {
 			_id_statusbar.clearStatus();
+		}
+	    
+		function fnmsg1() {
+			AOS.info('数据保存成功');
+		}
+
+		function fnmsg2() {
+			AOS.err('程序出错啦!');
+		}
+
+		function fnmsg3() {
+			AOS.confirm('真的要放弃保存数据吗？', function(btn) {
+				if(btn == 'ok'){
+					AOS.info('你点击了确认按钮');
+				}else{
+					AOS.warn('你点击了取消按钮');
+				}
+			});
+		}
+
+		function fnmsg4() {
+			AOS.wait('正在保存数据，请稍候...');
+			AOS.job(function() {
+				//请在需要结束等待窗口的地方调用此函数
+				AOS.hide();
+			}, 1000);
+		}
+
+		function fnmsg5() {
+			AOS.tip('演示滑动提示框！');
+		}
+		
+	    var msg1 = 'AOSuite开发套件基于JavaEE技术体系，以“标准功能可复用、通用模块可配置、行业需求快速开发、异构系统无缝集成”为目标，为软件开发团队提供高效可控、随需应变、快速实现业务需求的全栈式技术解决方案。帮助企业落实IT策略、屏蔽技术壁垒，快速实现业务愿景。使其获得更低成本、更高质量、更快交付业务和运维支持的核心技术竞争力。';
+		
+	    function fnnoti1() {
+			Ext.create(
+							'widget.uxNotification',
+							{
+								position : 'br',
+								title : '<span class="app-container-title-normal"><i class="fa fa-bell-o"></i> 通知</span>',
+								closable : false,
+								autoCloseDelay : 2000,
+								slideInDuration : 200,
+								useXAxis : false,
+								width : 400,
+								html : msg1
+							}).show();
+		}
+
+		function fnnoti6() {
+			Ext.create(
+							'widget.uxNotification',
+							{
+								position : 'bl',
+								title : '<span class="app-container-title-normal"><i class="fa fa-bell-o"></i> 通知</span>',
+								closable : false,
+								autoCloseDelay : 2000,
+								slideInDuration : 200,
+								useXAxis : true,
+								width : 400,
+								html : msg1
+								}).show();
+		}
+
+		function fnnoti2() {
+			Ext.create(
+							'widget.uxNotification',
+							{
+								position : 'tl',
+								title : '<span class="app-container-title-normal"><i class="fa fa-volume-up"></i> 通知</span>',
+								closable : true,
+								autoCloseDelay : 1000,
+								slideInDuration : 1500,
+								slideInAnimation : 'elasticIn',
+								html : '细节决定成败，态度决定品质！'
+							}).show();
+		}
+
+		function fnnoti3() {
+			Ext.create(
+							'widget.uxNotification',
+							{
+								position : 't',
+								cls : 'ux-notification-light',
+								closable : true,
+								title : '<span class="app-container-title-normal"><i class="fa fa-bell-o"></i> 通知</span>',
+								slideInDuration : 200,
+								slideBackDuration : 1000,
+								autoCloseDelay : 2000,
+								slideInAnimation : 'ease',
+								html : '细节决定成败，态度决定品质！'
+							}).show();
+		}
+
+		function fnnoti4() {
+			Ext.create(
+							'widget.uxNotification',
+							{
+								position : 'tr',
+								cls : 'ux-notification-light',
+								closable : true,
+								title : '<span class="app-container-title-normal"><i class="fa fa-bell-o"></i> 通知</span>',
+								slideInDuration : 200,
+								autoCloseDelay : 1000,
+								width : 320,
+								html : "It's AOSuite, enjoy it!"
+							}).show();
+		}
+
+		function fnnoti5() {
+			AOS.tip('AOSuite开发套件');
+		}
+		
+		function msgAll(){
+			fnnoti1();
+			fnnoti2();
+			fnnoti3();
+			fnnoti4();
+			fnnoti5();
+			fnnoti6();
 		}
 	    
 	</script>

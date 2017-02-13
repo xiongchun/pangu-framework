@@ -424,7 +424,7 @@
 				var rows = AOS.rows(_g_user);
 				var msg =  AOS.merge('确认要删除选中的{0}个用户吗？', rows);
 				AOS.confirm(msg, function(btn){
-					if(btn === 'cancel'){
+					if(btn == 'cancel'){
 						AOS.tip('删除操作被取消。');
 						return;
 					}
