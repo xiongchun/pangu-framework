@@ -10,7 +10,7 @@
 	<aos:viewport layout="fit">
 		<aos:gridpanel id="_g_dic" url="masterDataService.listDic" onrender="_g_dic_query" onitemdblclick="_g_dic_dbclick"
 			forceFit="true">
-			<aos:docked>
+			<aos:docked forceBoder="0 0 1 0" >
 				<aos:dockeditem text="新增" onclick="#_w_dic.show();" icon="add.png" />
 				<aos:dockeditem text="修改" onclick="_w_dic_u_show" icon="edit.png" />
 				<aos:dockeditem text="删除" onclick="_g_dic_del" icon="del.png" />

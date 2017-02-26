@@ -10,9 +10,9 @@
 	<aos:viewport layout="border">
 		<aos:treepanel id="_t_module" region="west" bodyBorder="0 1 0 0" width="250" rootText="${rootPO.name_}"
 			singleClick="false" url="moduleService.getTreeData" nodeParam="parent_id_" rootId="${rootPO.id_}"
-			onitemclick="_g_module_query" rootIcon="${rootPO.icon_name_}" rootAttribute="cascade_id_:'${rootPO.cascade_id_}'">
+			onitemclick="_g_module_query" rootIcon="${rootPO.icon_name_}" rootAttribute="a:'${rootPO.cascade_id_}'">
 			<aos:docked forceBoder="0 1 1 0">
-				<aos:dockeditem xtype="tbtext" text="功能模块模块树" />
+				<aos:dockeditem xtype="tbtext" text="功能模块树" />
 				<aos:dockeditem xtype="tbfill" />
 				<aos:checkbox boxLabel="级联显示" id="id_cascade" onchang="_g_module_query" checked="false" />
 			</aos:docked>
@@ -103,7 +103,7 @@
 			var record = AOS.selectone(_t_module);
 			if(!AOS.empty(record)){
 				params.id_ = record.raw.id;
-				params.cascade_id_ = record.raw.cascade_id_;
+				params.cascade_id_ = record.raw.a;
 			}
 			_g_module_store.getProxy().extraParams = params;
 			_g_module_store.loadPage(1);

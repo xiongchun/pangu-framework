@@ -525,7 +525,7 @@ AOS.hide = function () {
  * 滑出方式的系统通知框
  */
 AOS.tip = function (msg, title) {
-    if (Ext.isEmpty()) {
+    if (Ext.isEmpty(title)) {
         title = '系统提示';
     }
     title = '<i class="fa fa-bell-o"></i> ' + title;

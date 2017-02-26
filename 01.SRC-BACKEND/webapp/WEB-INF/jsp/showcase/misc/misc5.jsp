@@ -79,7 +79,6 @@
 
 			<aos:panel flex="1" layout="fit">
 				<aos:gridpanel id="_g_account" url="demoService.listAccounts" onrender="_g_account_query">
-					<aos:column type="rowno" />
 					<aos:docked forceBoder="1 0 1 0">
 						<aos:dockeditem xtype="tbtext" text="信用卡账户信息" />
 					</aos:docked>

@@ -666,7 +666,7 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    设置选项标题的高度。缺省为22。提示：高度增高后，在Tab多而溢出时像左向右滚动箭头会有一个空隙。但如下几个高度值例外(做了特殊处理)：22|25|30|35，建议使用这几个高度。
+			    设置选项标题的高度。缺省为30。提示：高度增高后，在Tab多而溢出时像左向右滚动箭头会有一个空隙。但如下几个高度值例外(做了特殊处理)：22|25|30|35，建议使用这几个高度。
 			</description>
 		</attribute>
 		<attribute>
@@ -11979,6 +11979,14 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    可以在这里写任意的属性配置。提示：多个配置属性请使用,分隔。如：any="id:'app169',disabled:true"。
+			</description>
+		</attribute>
+		<attribute>
+			<name>standardSubmit</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    表单是否使用同步方式进行数据提交。可选值：true | false。缺省：false。若为true，则id_form.getForm().submit({url:'url'});就可以完成表单同步提交。
 			</description>
 		</attribute>
 	</tag>

@@ -8,7 +8,7 @@ Ext.define('AOS.ux.IFrame', {
 
     alias: 'widget.appuxiframe',
 
-    loadMask: '正在处理您的请求, 请稍候...',
+    loadMask: '正在拼命带你飞, 请稍候...',
     
     //modify 缺省使用mask
     mask:true,

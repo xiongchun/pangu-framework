@@ -319,7 +319,7 @@
 		   _w_org_find.show();
 	   }
 	
-		//查询部门列表
+		//查询人员列表
 		function _g_user_query() {
 			var params = {
 				na_ : id_na_.getValue(),
@@ -328,7 +328,7 @@
 			var record = AOS.selectone(_t_org);
 			if(!AOS.empty(record)){
 				params.org_id_ = record.raw.id;
-				params.org_cascade_id_ = record.raw.cascade_id_;
+				params.org_cascade_id_ = record.raw.a;
 			}
 			_g_user_store.getProxy().extraParams = params;
 			_g_user_store.loadPage(1);

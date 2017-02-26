@@ -109,7 +109,7 @@
 			var record = AOS.selectone(_t_org);
 			if(!AOS.empty(record)){
 				params.id_ = record.raw.id;
-				params.cascade_id_ = record.raw.cascade_id_;
+				params.cascade_id_ = record.raw.a;
 			}
 			_g_org_store.getProxy().extraParams = params;
 			_g_org_store.loadPage(1);
