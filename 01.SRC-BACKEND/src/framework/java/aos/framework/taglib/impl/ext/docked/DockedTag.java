@@ -1,10 +1,11 @@
 package aos.framework.taglib.impl.ext.docked;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.jsp.JspException;
+
+import com.google.common.collect.Lists;
 
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.utils.AOSUtils;
@@ -16,8 +17,6 @@ import aos.framework.taglib.core.model.vo.BorderVO;
 import aos.framework.taglib.impl.ext.ContainerTagSupport;
 import aos.framework.taglib.impl.ext.ExtTagSupport;
 import aos.framework.taglib.impl.ext.general.OnReadyTag;
-import aos.framework.taglib.impl.ext.grid.GridPanelTag;
-import aos.framework.taglib.impl.ext.tree.TreePanelTag;
 
 
 /**
@@ -43,7 +42,7 @@ public class DockedTag extends ContainerTagSupport {
 
 	// 针对边框的二次强制处理
 	private String forceBoder;
-
+	
 	/**
 	 * 预处理和标签逻辑校验
 	 * 
@@ -56,12 +55,13 @@ public class DockedTag extends ContainerTagSupport {
 		}
 		resetListenerContainer();
 		resetObjInContainerTag();
-		if (AOSUtils.isEmpty(getForceBoder())) {
+		//这个地方画蛇添足，不应该在这里来设置这个属性
+/*		if (AOSUtils.isEmpty(getForceBoder())) {
 			// 已知window组件的直系docked不能设置此属性,否则边框有问题
 			if (getParent() instanceof GridPanelTag || getParent() instanceof TreePanelTag) {
 				setForceBoder("0 0 1 0");
 			}
-		}
+		}*/
 		// 设置缺省高度 ext api缺省为auto 这里强行设置具体的缺省高度
 		if (AOSUtils.isEmpty(getHeight())) {
 			setHeight("32");
@@ -137,6 +137,7 @@ public class DockedTag extends ContainerTagSupport {
 	private void doClear() throws JspException {
 		setId(null);
 		setHeight(null);
+		setForceBoder(null);
 	}
 
 	/**
@@ -145,7 +146,7 @@ public class DockedTag extends ContainerTagSupport {
 	 * @return
 	 */
 	protected List<BorderVO> getForceBorders() {
-		List<BorderVO> borders = new ArrayList<BorderVO>();
+		List<BorderVO> borders = Lists.newArrayList();
 		if (AOSUtils.isNotEmpty(getForceBoder())) {
 			String[] forceBorders = getForceBoder().split(" ");
 			int i = 0;

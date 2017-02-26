@@ -29,6 +29,7 @@ public class DistributedLock {
 	 * 所以，在tryLock方法返回redis连接，供释放锁时候使用。
 	 * 
 	 * @param key
+	 * @param timeOut 超时自动释放锁时间
 	 * @return
 	 */
 	public static Jedis tryLock(String key, int timeOut) {

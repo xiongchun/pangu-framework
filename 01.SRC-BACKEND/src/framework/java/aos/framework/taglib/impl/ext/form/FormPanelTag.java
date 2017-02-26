@@ -10,7 +10,6 @@ import aos.framework.taglib.asset.Xtypes;
 import aos.framework.taglib.core.model.TagDto;
 import aos.framework.taglib.impl.ext.FormPanelTagSupport;
 
-
 /**
  * <b>FormPanel标签实现类</b>
  * 
@@ -20,6 +19,9 @@ import aos.framework.taglib.impl.ext.FormPanelTagSupport;
 public class FormPanelTag extends FormPanelTagSupport {
 
 	private static final long serialVersionUID = 1L;
+
+	// 标识这个表单使用同步提交模式
+	private String standardSubmit;
 
 	/**
 	 * 预处理和标签逻辑校验
@@ -42,6 +44,9 @@ public class FormPanelTag extends FormPanelTagSupport {
 		}
 		if (AOSUtils.isEmpty(getConstrain())) {
 			setConstrain(TRUE);
+		}
+		if (AOSUtils.isEmpty(getAutoScroll())) {
+			setAutoScroll(TRUE);
 		}
 		/**
 		 * FormPanel(anchor)缺省布局的行间距是5,但是如果formPanel使用的column布局的话则无行间距
@@ -69,6 +74,7 @@ public class FormPanelTag extends FormPanelTagSupport {
 	public int doEndTag() throws JspException {
 		Dto tagDto = new TagDto();
 		super.pkgProperties(tagDto);
+		tagDto.put("standardSubmit", getStandardSubmit());
 		String jspString = mergeFileTemplate(EXTVM + "form/formPanelTag.vm", tagDto);
 		try {
 			pageContext.getOut().write(jspString);
@@ -88,6 +94,7 @@ public class FormPanelTag extends FormPanelTagSupport {
 	public void doClear() throws JspException {
 		super.doClear();
 		setId(null);
+		setStandardSubmit(null);
 	}
 
 	/**
@@ -95,6 +102,14 @@ public class FormPanelTag extends FormPanelTagSupport {
 	 */
 	public void release() {
 		super.release();
+	}
+
+	public String getStandardSubmit() {
+		return standardSubmit;
+	}
+
+	public void setStandardSubmit(String standardSubmit) {
+		this.standardSubmit = standardSubmit;
 	}
 
 }

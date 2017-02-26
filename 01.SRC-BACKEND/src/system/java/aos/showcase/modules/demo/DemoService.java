@@ -10,22 +10,34 @@ import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.google.common.collect.Lists;
 
 import aos.demo.dao.DemoAccountDao;
 import aos.demo.dao.po.DemoAccountPO;
 import aos.framework.core.id.AOSId;
 import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dto;
+import aos.framework.core.typewrap.Dtos;
+import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.dao.po.AosParamsPO;
+import aos.framework.taglib.core.model.TreeBuilder;
+import aos.framework.taglib.core.model.TreeNode;
 import aos.framework.web.router.HttpModel;
+import aos.system.common.utils.SystemCons;
+import aos.system.dao.AosModuleDao;
 import aos.system.dao.AosOrgDao;
+import aos.system.dao.po.AosModulePO;
 import aos.system.dao.po.AosOrgPO;
 
 /**
@@ -41,6 +53,9 @@ public class DemoService extends AOSBaseService {
 	private DemoAccountDao demoAccountDao;
 	@Autowired
 	private AosOrgDao aosOrgDao;
+	@Autowired
+	private AosModuleDao aosModuleDao;
+	private static Logger logger = LoggerFactory.getLogger(DemoService.class);
 
 	/**
 	 * 查询账户信息列表
@@ -103,6 +118,7 @@ public class DemoService extends AOSBaseService {
 	 * @param httpModel
 	 */
 	@Transactional
+	@SuppressWarnings("unused")
 	public void transactionDemo1(HttpModel httpModel) {
 		DemoAccountPO demo_accountPO = new DemoAccountPO();
 		demo_accountPO.setId_("10000");
@@ -111,7 +127,6 @@ public class DemoService extends AOSBaseService {
 		//同一个service方法内部的方法调用，要想被调用的方法按照预期传播行为就需要按照切面代理方式调用。
 		//跨Service的事务方法调用则可以直接调用
 		 ((DemoService)AOSCxt.getBean("demoService")).transactionDemo1_1();
-		@SuppressWarnings("unused")
 		int i = 3 /0 ;
 		httpModel.setOutMsg("账户信息修改成功");
 	}
@@ -215,6 +230,196 @@ public class DemoService extends AOSBaseService {
 	}
 	
 	/**
+	 * 获取树组件数据(一次性全部加载树节点)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void getTreeData(HttpModel httpModel) {
+		List<TreeNode> treeNodes = Lists.newArrayList();
+		List<AosModulePO> aosModulePOs = aosModuleDao.list(null);
+		for (AosModulePO aosModulePO : aosModulePOs) {
+			TreeNode treeNode = new TreeNode();
+			treeNode.setId(aosModulePO.getId_());
+			treeNode.setText(aosModulePO.getName_());
+			treeNode.setParentId(aosModulePO.getParent_id_());
+			treeNode.setIcon(aosModulePO.getIcon_name_());
+			//这个决定是否在节点上初选复选框，true为初始选中
+			//treeNode.setChecked(true);
+			treeNode.setLeaf(StringUtils.equals(aosModulePO.getIs_leaf_(), SystemCons.IS.YES) ? true : false );
+			treeNode.setExpanded(StringUtils.equals(aosModulePO.getIs_auto_expand_(), SystemCons.IS.YES) ? true : false );
+			//附加属性
+			treeNode.setA(aosModulePO.getUrl_());
+			treeNodes.add(treeNode);
+		}
+		String jsonString = TreeBuilder.build(treeNodes);
+		httpModel.setOutMsg(jsonString);
+	}
+	
+	/**
+	 * 获取树组件数据(一次性全部加载树节点)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void getCheckboxTreeData(HttpModel httpModel) {
+		List<TreeNode> treeNodes = Lists.newArrayList();
+		List<AosModulePO> aosModulePOs = aosModuleDao.list(null);
+		for (AosModulePO aosModulePO : aosModulePOs) {
+			TreeNode treeNode = new TreeNode();
+			treeNode.setId(aosModulePO.getId_());
+			treeNode.setText(aosModulePO.getName_());
+			treeNode.setParentId(aosModulePO.getParent_id_());
+			treeNode.setIcon(aosModulePO.getIcon_name_());
+			//这个决定是否在节点上初选复选框，true为初始选中
+			treeNode.setChecked(false);
+			treeNode.setLeaf(StringUtils.equals(aosModulePO.getIs_leaf_(), SystemCons.IS.YES) ? true : false );
+			treeNode.setExpanded(StringUtils.equals(aosModulePO.getIs_auto_expand_(), SystemCons.IS.YES) ? true : false );
+			//附加属性
+			treeNode.setA(aosModulePO.getUrl_());
+			treeNodes.add(treeNode);
+		}
+		String jsonString = TreeBuilder.build(treeNodes);
+		httpModel.setOutMsg(jsonString);
+	}
+	
+	/**
+	 * 获取按需加载树
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void getAsyncTreeData(HttpModel httpModel) {
+		Dto inDto = httpModel.getInDto();
+		inDto.setOrder("sort_no_");
+		List<AosModulePO> aosModulePOs = aosModuleDao.list(inDto);
+		List<TreeNode> treeNodes = Lists.newArrayList();
+		for (AosModulePO aosModulePO : aosModulePOs) {
+			TreeNode treeNode = new TreeNode();
+			treeNode.setId(aosModulePO.getId_());
+			treeNode.setText(aosModulePO.getName_());
+			String icon_ = aosModulePO.getIcon_name_();
+			if (AOSUtils.isNotEmpty(icon_)) {
+				treeNode.setIcon(icon_);
+			}
+			String is_leaf_ = aosModulePO.getIs_leaf_();
+			treeNode.setLeaf(AOSCons.YES.equals(is_leaf_) ? true : false);
+			//String is_auto_expand_ = aosModulePO.getIs_auto_expand_();
+			//treeNode.setExpanded(AOSCons.YES.equals(is_auto_expand_) ? true : false);
+			treeNode.setExpanded(false);
+			treeNode.setA(aosModulePO.getCascade_id_());
+			treeNodes.add(treeNode);
+		}
+		httpModel.setOutMsg(AOSJson.toJson(treeNodes));
+	}
+	
+	/**
+	 * 查询自定义下拉组件数据
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void listComboBoxData(HttpModel httpModel) {
+		List<Dto> list = sqlDao.list("Demo.listComboBoxData", null);
+		httpModel.setOutMsg(AOSJson.toJson(list));
+	}
+	
+	/**
+	 * 查询多级联动下拉框数据(第一级)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void listComboBoxCascadeData(HttpModel httpModel) {
+		List<Dto> list = sqlDao.list("Demo.listComboBoxCascadeData", httpModel.getInDto());
+		httpModel.setOutMsg(AOSJson.toJson(list));
+	}
+	
+	/**
+	 * 查询多级联动下拉框数据(第二级)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void listComboBoxCascadeSubData(HttpModel httpModel) {
+		List<Dto> list = sqlDao.list("Demo.listComboBoxCascadeSubData", httpModel.getInDto());
+		httpModel.setOutMsg(AOSJson.toJson(list));
+	}
+	
+	/**
+	 * 表单数据加载
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void loadFormInfo(HttpModel httpModel) {
+		Dto dto = Dtos.newDto();
+		dto.put("name_", "凤姐");
+		dto.put("age_", 18);
+		dto.put("sex_", "1");
+		dto.put("birthday_", AOSUtils.getDateStr()); //日期类型必须是yyyy-mm-dd格式的日期字符串
+		String[] c1={"1","2","3"}; //也可以是List
+		dto.put("c1", c1);
+		dto.put("r1", "2");
+		dto.put("home_", "华盛顿白宫8号院");
+		dto.put("operateTime_", AOSUtils.getDateTime());
+		httpModel.setOutMsg(AOSJson.toJson(dto));
+	}
+	
+	/**
+	 * 表单数据提交(异步Aiax)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void submitSync(HttpModel httpModel) {
+		Dto inDto = httpModel.getInDto();
+		logger.info("接收到提交的数据：{}", inDto);
+		httpModel.setOutMsg("接收数据成功，请查看控制台。");
+		//如果要给前端返回一些数据，可以返回JSON
+		//httpModel.setOutMsg(AOSJson.toJson(dto));
+	}
+	
+	/**
+	 * 表单数据提交(异步Aiax)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void submitAsync(HttpModel httpModel) {
+		Dto inDto = httpModel.getInDto();
+		logger.info("接收到提交的数据：{}", inDto);
+		httpModel.setAttribute("data", AOSJson.toJson(inDto));
+		httpModel.setViewPath("showcase/basic/formSubmitAsync.jsp");	
+	}
+	
+	/**
+	 * 行编辑表格提交的数据，一次只会提交一条记录
+	 * @param httpModel
+	 */
+	public void saveEditGrid(HttpModel httpModel) {
+		Dto inDto = httpModel.getInDto();
+		AOSUtils.debug("====表格编辑行数据[新增的或修改的]====");
+		inDto.println();
+		httpModel.setOutMsg("接收数据成功，请查看控制台。");
+	}
+	
+	/**
+	 * 单元格编辑表格提交的数据，一次有可能会提交多条记录
+	 * @param httpModel
+	 */
+	public void saveCellEditGrid(HttpModel httpModel) {
+		Dto inDto = httpModel.getInDto();
+		List<Dto> modifies = inDto.getRows();
+		//根据是否有id_值来区分是新增还是修改
+		AOSUtils.debug("====表格编辑数据[含新增的和修改的]====");
+		for (Dto dto : modifies) {
+			dto.println();
+		}
+		httpModel.setOutMsg("接收数据成功，请查看控制台。");
+	}
+	
+	/**
 	 * 范例1(简单查询)
 	 * 
 	 * @param httpModel
@@ -222,9 +427,9 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void initMisc1(HttpModel httpModel) {
 		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
-		httpModel.setViewPath("showcase/misc/misc1.jsp");
+		httpModel.setViewPath("showcase/misc/misc1.jsp");		
 	}
-
+	
 	/**
 	 * 范例2(增删改查)
 	 * 
@@ -272,6 +477,7 @@ public class DemoService extends AOSBaseService {
 	 * @return
 	 */
 	public void initBasic1(HttpModel httpModel) {
+		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
 		httpModel.setViewPath("showcase/basic/basic1.jsp");
 	}
 	
@@ -283,6 +489,48 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void initBasic2(HttpModel httpModel) {
 		httpModel.setViewPath("showcase/basic/basic2.jsp");
+	}
+	
+	/**
+	 * 开关按钮页
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initToggle(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/basic/toggle.jsp");
+	}
+	
+	/**
+	 * 初始化树组件
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initTree(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/basic/tree.jsp");
+	}
+	
+	/**
+	 * 初始化表单组件
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initForm(HttpModel httpModel) {
+		httpModel.setAttribute("vercode_uuid_", AOSId.uuid());
+		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
+		httpModel.setViewPath("showcase/basic/form.jsp");
+	}
+	
+	/**
+	 * 初始化表格组件
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initGrid(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/basic/grid.jsp");
 	}
 
 }

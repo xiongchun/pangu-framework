@@ -47,7 +47,7 @@ public class HttpBackendFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		// String uri = httpRequest.getRequestURI();
+		String uri = httpRequest.getRequestURI();
 		String router = httpRequest.getParameter("router");
 		// TODO 改为REDIS缓存 和URL授权时候一起考虑
 		if (StringUtils.equalsIgnoreCase(router, "homeService.initLogin")
@@ -73,7 +73,7 @@ public class HttpBackendFilter implements Filter {
 			}
 		}
 		if (!pass) {
-			log.warn("请求被重定向到登录页。");
+			log.warn("请求被重定向到登录页。【URL：{}】", uri);
 			httpResponse.getWriter().write("<script type=\"text/javascript\">parent.location.href='"
 					+ httpRequest.getContextPath() + "/http/do.jhtml?router=homeService.initLogin'</script>");
 			httpResponse.getWriter().flush();

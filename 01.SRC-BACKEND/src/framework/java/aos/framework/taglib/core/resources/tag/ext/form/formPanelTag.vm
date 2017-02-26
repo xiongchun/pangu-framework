@@ -4,6 +4,9 @@
 ##FormPanel定义
 var ${id}_cfg = {
 #parse("${vmpath}ext/common/formPanelTagSupport.vm")
+#if($standardSubmit)
+    standardSubmit:$standardSubmit,
+#end
 	app: 169
 };
 ##FormPanel实例化

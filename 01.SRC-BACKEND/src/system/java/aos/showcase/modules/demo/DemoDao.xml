@@ -24,4 +24,28 @@
 		</if>
 	</select>
 	
+	<!-- 查询自定义下拉组件数据(重点是字段的别名) -->
+	<select id="listComboBoxData" resultType="Dto">
+		SELECT
+		    id_ AS value, name_ AS display
+		FROM
+		    aos_role LIMIT 10
+	</select>
+	
+	<!-- 查询多级联动下拉框数据(第一级) -->
+	<select id="listComboBoxCascadeData" resultType="Dto">
+		SELECT
+		    id_ AS value, name_ AS display
+		FROM
+		    aos_module WHERE length(cascade_id_) = ${length}
+	</select>
+	
+	<!-- 查询多级联动下拉框数据(第二级) -->
+	<select id="listComboBoxCascadeSubData" resultType="Dto">
+		SELECT
+		    id_ AS value, name_ AS display
+		FROM
+		    aos_module WHERE parent_id_ = #{parent_id_}
+	</select>
+	
 </mapper>

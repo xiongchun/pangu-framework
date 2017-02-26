@@ -1,6 +1,5 @@
 package aos.system.common.utils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -8,13 +7,10 @@ import org.apache.commons.lang3.StringUtils;
 import com.google.common.collect.Lists;
 
 import aos.framework.core.exception.AOSException;
-import aos.framework.core.redis.JedisUtil;
 import aos.framework.core.typewrap.Dto;
-import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
-import aos.framework.taglib.asset.AOSTagUtils;
 import aos.framework.taglib.core.model.TreeBuilder;
 import aos.framework.taglib.core.model.TreeNode;
 
@@ -56,26 +52,23 @@ public class SystemUtils {
 	/**
 	 * 将后台树结构转换为前端树模型 (异步加载)
 	 * 
-	 * @param aos_sys_modulePOs
 	 * @return
 	 */
 	public static String toTreeModalAsyncLoad(List<Dto> treeModels){
-		List<Dto> treeNodes = new ArrayList<Dto>();
-		String icon_path = JedisUtil.getString(AOSCons.KEYS.CXT) + AOSTagUtils.ICON_PATH;
+		List<TreeNode> treeNodes = Lists.newArrayList();
 		for (Dto model : treeModels) {
-			Dto treeNode = Dtos.newDto();
-			treeNode.put("id", model.getString("id_"));
-			treeNode.put("text", model.getString("name_"));
-			//这个字段可以没有
-			treeNode.put("cascade_id_", model.getString("cascade_id_"));
+			TreeNode treeNode = new TreeNode();
+			treeNode.setId(model.getString("id_"));
+			treeNode.setText(model.getString("name_"));
 			String icon_ = model.getString("icon_name_");
 			if (AOSUtils.isNotEmpty(icon_)) {
-				treeNode.put("icon", icon_path + icon_);
+				treeNode.setIcon(icon_);
 			}
 			String is_leaf_ = model.getString("is_leaf_");
-			treeNode.put("leaf", AOSCons.YES.equals(is_leaf_) ? true : false);
+			treeNode.setLeaf(AOSCons.YES.equals(is_leaf_) ? true : false);
 			String is_auto_expand_ = model.getString("is_auto_expand_");
-			treeNode.put("expanded", AOSCons.YES.equals(is_auto_expand_) ? true : false);
+			treeNode.setExpanded(AOSCons.YES.equals(is_auto_expand_) ? true : false);
+			treeNode.setA(model.getString("cascade_id_"));
 			treeNodes.add(treeNode);
 		}
 		return AOSJson.toJson(treeNodes);
