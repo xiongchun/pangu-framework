@@ -868,11 +868,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -1896,11 +1896,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -2819,6 +2819,14 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    设为True，则columns失效，由组合框根据子组件自动计算布局。缺省值：false。
+			</description>
+		</attribute>
+		<attribute>
+			<name>onchange</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    监听复选框组的选择事件。groupChange(me,newValue)，newValue.name(选择框的name)为选中复选框的inputValue值。
 			</description>
 		</attribute>
 	</tag>
@@ -3784,11 +3792,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -4326,11 +4334,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -4914,11 +4922,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -6725,6 +6733,14 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    设为True，则columns失效，由组合框根据子组件自动计算布局。缺省值：false。
+			</description>
+		</attribute>
+		<attribute>
+			<name>onchange</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    监听单选框组的选择事件。radioGroupChange(me,newValue)，newValue.name(name为选择框的name)为选中单选框的inputValue值。
 			</description>
 		</attribute>
 	</tag>
@@ -9342,11 +9358,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -12561,6 +12577,22 @@
 			    响应鼠标的单元格tip提示信息。缺省：false。
 			</description>
 		</attribute>
+		<attribute>
+			<name>summaryType</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    统计汇总类型。注：仅针对当前页的统计汇总（后台返回的JSON结果集中，统计列必须为数值型，count例外。），仅支持如下统计函数：count,sum,min,max,average。所有页的全量统计，请查看相关范例。
+			</description>
+		</attribute>
+		<attribute>
+			<name>summaryRenderer</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    当前页统计汇总值格式化函数或所有页统计汇总值取值函数。根据上下文不同，作用不同。
+			</description>
+		</attribute>
 	</tag>
 	<tag>
 		<name>datefield</name>
@@ -12752,11 +12784,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -13308,11 +13340,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -14388,11 +14420,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -14922,11 +14954,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -15448,11 +15480,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -15950,11 +15982,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -17550,11 +17582,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -18440,11 +18472,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -18934,11 +18966,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -19458,11 +19490,11 @@
 			</description>
 		</attribute>
 		<attribute>
-			<name>onchang</name>
+			<name>onchange</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表单输入域的值发生变化时触发的响应事件函数名。如：onchang="fnTest"。
+			    表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
 			</description>
 		</attribute>
 		<attribute>
@@ -20437,6 +20469,22 @@
 			<rtexprvalue>true</rtexprvalue>
 			<description>
 			    设置是否显示分页栏右边的文字信息。可选值：true | false。缺省：true。
+			</description>
+		</attribute>
+		<attribute>
+			<name>enableColumnHide</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    设置是否启用可隐藏列的功能。可选值：true | false。缺省：true。
+			</description>
+		</attribute>
+		<attribute>
+			<name>features</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    表格原生高级特性开启组件。目前可选值为：summary。多个feature可以使用逗号分隔。
 			</description>
 		</attribute>
 	</tag>

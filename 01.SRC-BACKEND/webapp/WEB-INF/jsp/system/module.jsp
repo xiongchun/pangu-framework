@@ -14,7 +14,7 @@
 			<aos:docked forceBoder="0 1 1 0">
 				<aos:dockeditem xtype="tbtext" text="功能模块树" />
 				<aos:dockeditem xtype="tbfill" />
-				<aos:checkbox boxLabel="级联显示" id="id_cascade" onchang="_g_module_query" checked="false" />
+				<aos:checkbox boxLabel="级联显示" id="id_cascade" onchange="_g_module_query" checked="false" />
 			</aos:docked>
 			<aos:menu>
 				<aos:menuitem text="新增模块" onclick="_w_module_show" icon="add.png" />

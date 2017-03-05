@@ -13,7 +13,7 @@
 	</table>
 </aos:body>
 <aos:onready>
-	<aos:toggle offText="否" onText="是" state="true" renderTo="_my02" onchang="fn_onchange" />
+	<aos:toggle offText="否" onText="是" state="true" renderTo="_my02" onchange="fn_onchange" />
 	<aos:toggle offText="注销" onText="正常" state="false" renderTo="_my03" />
 	<%-- 自定义显示样式 --%>
 	<aos:toggle id="id_toggle1" offText="国民党" onText="共产党" state="true" renderTo="_my04" />

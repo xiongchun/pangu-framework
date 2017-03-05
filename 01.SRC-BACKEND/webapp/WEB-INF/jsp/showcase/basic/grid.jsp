@@ -15,7 +15,7 @@
 				<aos:gridpanel id="_grid1" url="demoService.listAccounts" onrender="_grid1_query" title="表格1(基本表格、行双击事件、获取当前选中行)" pageSize="5" anchor="100%" height="260" border="true"
 					margin="5" onitemdblclick="_grid_click">
 					<aos:docked>
-						<aos:dockeditem text="获取当前行" onclick="_grid1_cur_row" icon="ok.png" />
+						<aos:dockeditem text="获取当前行" onclick="_grid1_cur_row" icon="bullet_green.png" />
 						<aos:dockeditem text="刷新" onclick="_grid1_refresh" icon="refresh.png" />
 					</aos:docked>
 					<aos:column type="rowno" />
@@ -36,9 +36,9 @@
 				<aos:gridpanel id="_grid2" url="demoService.listAccounts" autoLoad="true" title="表格2(复选、按钮、渲染等)" pageSize="10" collapsible="true" anchor="100%" height="350" border="true"
 					margin="5">
 					<aos:docked>
-						<aos:dockeditem text="获取当前选中行" onclick="_grid2_selected" icon="ok.png" />
-						<aos:dockeditem text="获取当前选中行2" onclick="_grid2_selected2" icon="ok.png" />
-						<aos:dockeditem text="选中行数" onclick="_grid2_rows" icon="ok.png" />
+						<aos:dockeditem text="获取当前选中行" onclick="_grid2_selected" icon="bullet_blue.png" />
+						<aos:dockeditem text="获取当前选中行2" onclick="_grid2_selected2" icon="bullet_blue.png" />
+						<aos:dockeditem text="选中行数" onclick="_grid2_rows" icon="bullet_blue.png" />
 					</aos:docked>
 					<aos:column type="rowno" />
 					<aos:selmodel type="checkbox" mode="multi" />
@@ -183,6 +183,7 @@
 	</aos:viewport>
 
 	<script type="text/javascript">
+	
 		//客户端新增记录
 		function fn_add_row2() {
 			editing = _grid6.getPlugin('id_plugin');

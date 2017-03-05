@@ -100,7 +100,7 @@
 			<aos:docked forceBoder="0 1 1 0">
 				<aos:dockeditem xtype="tbtext" text="组织部门树" />
 				<aos:dockeditem xtype="tbfill" />
-				<aos:checkbox boxLabel="级联显示" id="id_cascade_user" onchang="_g_user_query" checked="true" />
+				<aos:checkbox boxLabel="级联显示" id="id_cascade_user" onchange="_g_user_query" checked="true" />
 			</aos:docked>
 			<aos:menu>
 				<aos:menuitem text="刷新" onclick="#_t_org_role_store.reload();" icon="refresh.png" />

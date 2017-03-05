@@ -69,6 +69,13 @@ body {
 	 line-height:20px;
 	 vertical-align:center;
  }
+ 
+ /* 表格统计行样式 */
+.x-grid-row-summary .x-grid-cell-inner {
+            color:blue;
+            font-size:14px;
+            background-color : #FAFAFA;
+}
 
 /* 表单元素输入框区域样式 fieldCls属性：去掉输入框内区域的立体效果 */ 
 .app-form-fieldcls { 

@@ -15,7 +15,7 @@
 			<aos:docked forceBoder="0 1 1 0">
 				<aos:dockeditem xtype="tbtext" text="组织部门树" />
 				<aos:dockeditem xtype="tbfill" />
-				<aos:checkbox boxLabel="级联显示" id="id_cascade_" onchang="_g_org_query" checked="false" />
+				<aos:checkbox boxLabel="级联显示" id="id_cascade_" onchange="_g_org_query" checked="false" />
 			</aos:docked>
 			<aos:menu>
 				<aos:menuitem text="新增部门" onclick="_w_org_show" icon="add.png" />

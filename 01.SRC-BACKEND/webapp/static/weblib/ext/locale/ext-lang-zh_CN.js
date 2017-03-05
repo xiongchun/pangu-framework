@@ -264,11 +264,15 @@ Ext.define("Ext.locale.zh_CN.grid.header.Container", {
     //update
     sortDescText: "倒序",
     //update
-    lockText: "锁定列",
-    //update
-    unlockText: "解除锁定",
-    //update
     columnsText: "列"
+});
+
+Ext.define("Ext.locale.zh_CN.grid.locking.Lockable", {
+    override: "Ext.grid.locking.Lockable",
+    //update
+    lockText: "列锁定",
+    //update
+    unlockText: "解锁",
 });
 
 Ext.define("Ext.locale.zh_CN.grid.PropertyColumnModel", {

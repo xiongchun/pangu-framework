@@ -44,13 +44,13 @@
 					</aos:fieldset>
 
 					<aos:fieldset title="单选、复选输入" labelWidth="70" columnWidth="1" border="true">
-						<aos:checkboxgroup fieldLabel="性格特点" columns="[120,80,100,120]">
+						<aos:checkboxgroup fieldLabel="性格特点" columns="[120,80,100,120]" columnWidth="0.5">
 							<aos:checkbox name="c1" boxLabel="活波开朗" inputValue="1" />
 							<aos:checkbox name="c1" boxLabel="闷骚" checked="true" inputValue="2" />
 							<aos:checkbox name="c1" boxLabel="抑郁寡欢" inputValue="3" />
 							<aos:checkbox name="c1" boxLabel="傻逼250一个" checked="true" inputValue="4" />
 						</aos:checkboxgroup>
-						<aos:radioboxgroup fieldLabel="婚姻状态" columns="[120,80,100,100,100]">
+						<aos:radioboxgroup fieldLabel="婚姻状态" columns="[120,80,100,100,100]" columnWidth="0.5">
 							<aos:radiobox name="r1" boxLabel="单身狗" inputValue="1" />
 							<aos:radiobox name="r1" boxLabel="已离" inputValue="2" />
 							<aos:radiobox name="r1" boxLabel="脑残" checked="true" inputValue="3" />
@@ -83,7 +83,9 @@
 						<%-- 隐藏域用来存储弹出树选中节点ID --%>
 						<aos:hiddenfield name="parent_id_" />
 						<aos:triggerfield fieldLabel="弹出选择树" name="parent_id_desc" editable="false" trigger1Cls="x-form-search-trigger" onTrigger1Click="_w_org_find_show" columnWidth="0.25" />
-						<aos:triggerfield fieldLabel="弹出选择表格" name="card_id2_" editable="false" trigger1Cls="x-form-search-trigger" onTrigger1Click="_w_account_find_show" columnWidth="0.25" />
+						<%-- 隐藏域用来存储弹出表格选中的ID --%>
+						<aos:hiddenfield name="card_id2_" />
+						<aos:triggerfield fieldLabel="弹出选择表格" name="name_" editable="false" trigger1Cls="x-form-search-trigger" onTrigger1Click="_w_account_find_show" columnWidth="0.25" />
 					</aos:fieldset>
 
 					<aos:fieldset title="简单富文本编辑器" labelWidth="70" columnWidth="1" border="true">
@@ -125,17 +127,27 @@
 				</aos:formpanel>
 
 				<aos:formpanel id="_form3" layout="column" labelWidth="110" title="表单3：事件绑定" border="true" anchor="100%" margin="5">
-					<aos:textfield fieldLabel="绑定获取焦点事件" onfocus="fn_onfocus" emptyText="获取焦点后触发事件" name="event1_" columnWidth="0.99" />
-					<aos:textfield fieldLabel="绑定任意事件" emptyText="使用aos:on标签绑定任意事件" name="event0_" columnWidth="0.99">
+					<aos:textfield fieldLabel="绑定获取焦点事件" onfocus="fn_onfocus" emptyText="获取焦点后触发事件" name="event1_" columnWidth="0.5" />
+					<aos:textfield fieldLabel="绑定任意事件" emptyText="使用aos:on标签绑定任意事件" name="event0_" columnWidth="0.5">
 						<%-- 这种方式可以对其父标签绑定任何Ext支持的事件 --%>
 						<aos:on fn="fn_onfocus" event="focus" />
 					</aos:textfield>
-					<aos:textfield fieldLabel="绑定回车键事件" onenterkey="fn_onenterkey" emptyText="输入后敲回车触发事件" name="event2_" columnWidth="0.99" />
-					<aos:textfield fieldLabel="绑定值变化事件" onchang="fn_onchange" emptyText="输入内容后触发事件" name="event3_" columnWidth="0.99" />
-					<aos:combobox fieldLabel="绑定下拉选择事件" onselect="fn_onselect" emptyText="选择下拉项后触发事件" name="event4_" columnWidth="0.99">
-						<aos:option value="1" display="男" />
-						<aos:option value="2" display="女" />
-					</aos:combobox>
+					<aos:textfield fieldLabel="绑定回车键事件" onenterkey="fn_onenterkey" emptyText="输入后敲回车触发事件" name="event2_" columnWidth="0.5" />
+					<aos:textfield fieldLabel="绑定值变化事件" onchange="fn_onchange" emptyText="输入内容后触发事件" name="event3_" columnWidth="0.5" />
+					<aos:combobox fieldLabel="绑定下拉选择事件" onselect="fn_onselect" dicField="sex_" emptyText="选择下拉项后触发事件" name="event4_" columnWidth="0.5" />
+					<aos:radioboxgroup fieldLabel="单选框选择事件" columns="[120,80,100,100,100]" columnWidth="0.5" onchange="radioGroupChange">
+						<aos:radiobox name="marriage_status_" boxLabel="单身狗" inputValue="1" />
+						<aos:radiobox name="marriage_status_" boxLabel="已离" inputValue="2" />
+						<aos:radiobox name="marriage_status_" boxLabel="脑残" checked="true" inputValue="3" />
+						<aos:radiobox name="marriage_status_" boxLabel="热恋中" inputValue="4" />
+						<aos:radiobox name="marriage_status_" boxLabel="基情中" inputValue="5" />
+					</aos:radioboxgroup>
+					<aos:checkboxgroup fieldLabel="复选框选择事件" columns="[120,80,120,120]" columnWidth="0.51" onchange="checkGroupChange">
+						<aos:checkbox name="feature_" boxLabel="活波开朗" inputValue="1" />
+						<aos:checkbox name="feature_" boxLabel="闷骚" inputValue="2" />
+						<aos:checkbox name="feature_" boxLabel="傻*250一个" inputValue="3" />
+						<aos:checkbox name="feature_" boxLabel="负无穷" inputValue="4" />
+					</aos:checkboxgroup>
 				</aos:formpanel>
 
 				<aos:formpanel id="_form4" layout="column" labelWidth="80" title="表单4：表单校验" border="true" anchor="100%" margin="5">
@@ -200,7 +212,6 @@
 						<aos:dockeditem icon="bullet_green.png" onclick="loadData" text="数据加载" />
 						<aos:dockeditem icon="bullet_green.png" onclick="submitSync" text="数据提交(异步Ajax1)" />
 						<aos:dockeditem icon="bullet_green.png" onclick="submitSync2" text="数据提交(异步Ajax2)" />
-						<aos:dockeditem icon="bullet_green.png" onclick="submitAsync" text="数据提交(同步提交)" />
 						<aos:dockeditem xtype="tbseparator" />
 						<aos:dockeditem xtype="button" text="重置" onclick="#AOS.reset(id_form_data2)" icon="refresh.png" />
 					</aos:docked>
@@ -224,7 +235,7 @@
 					<aos:datetimefield name="operateTime_" editable="false" fieldLabel="经办时间" columnWidth="0.25" />
 				</aos:formpanel>
 
-				<aos:formpanel id="id_form_data3" layout="column" labelWidth="70" title="表单2：后端数据交互(表单同步提交)"  standardSubmit="true" anchor="100%" border="true" margin="5" >
+				<aos:formpanel id="id_form_data3" layout="column" labelWidth="70" title="表单2：后端数据交互(表单同步提交)" standardSubmit="true" anchor="100%" border="true" margin="5">
 					<aos:docked>
 						<aos:dockeditem icon="bullet_green.png" onclick="submitAsync" text="数据提交(同步提交)" />
 					</aos:docked>
@@ -233,7 +244,6 @@
 					<aos:combobox name="sex_" fieldLabel="性别" value="2" dicField="sex_" columnWidth="0.25" />
 					<aos:datefield name="birthday_" fieldLabel="出生日期" value="1982-11-17" format="Y-m-d" columnWidth="0.25" />
 				</aos:formpanel>
-
 
 			</aos:tab>
 
@@ -320,7 +330,7 @@
 
 		<aos:window id="_w_account_find" title="信用卡号[双击选择]" height="-200" width="800" layout="fit" onshow="_g_account_query">
 			<aos:gridpanel id="_g_account" url="demoService.listAccounts" onrender="_g_account_query" onitemdblclick="_g_account_dbclick">
-				<aos:docked>
+				<aos:docked forceBoder="0 0 1 0">
 					<aos:triggerfield emptyText="姓名" id="id_name_" onenterkey="_g_account_query" trigger1Cls="x-form-search-trigger" onTrigger1Click="_g_account_query" width="250" />
 				</aos:docked>
 				<aos:column type="rowno" />
@@ -333,11 +343,21 @@
 			</aos:gridpanel>
 		</aos:window>
 
-
-
 	</aos:viewport>
 
 	<script type="text/javascript">
+	
+	  //单选框分组事件
+	  function radioGroupChange(me,newValue){
+		  //元素值为单选框的inputValue值
+		 AOS.tip('单选框组选择事件监听：' + newValue.marriage_status_);
+	  }
+	  
+	 //复选框分组事件
+	 function checkGroupChange(me,newValue){
+		  //元素值为单选框的inputValue值
+		 AOS.tip('复选框组选择事件监听：' + newValue.feature_);
+	  }
 	
 		//数据加载
 		function loadData() {
@@ -448,9 +468,11 @@
 			_g_account_store.getProxy().extraParams = params;
 			_g_account_store.load();
 		}
+		
 		//账户表格双击事件
 		function _g_account_dbclick(obj, record) {
 			AOS.setValue('_f_info.card_id2_',record.raw.card_id_);
+			AOS.setValue('_f_info.name2_',record.raw.name_);
 			_w_account_find.hide();
 		}
 	

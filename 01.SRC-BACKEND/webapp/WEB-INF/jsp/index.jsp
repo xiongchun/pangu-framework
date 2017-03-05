@@ -121,7 +121,7 @@
 			<aos:tab id="_sys_nav" title="系统导航" layout="accordion" animate="false">
 				<aos:docked forceBoder="0 0 1 0">
 					<aos:triggerfield id="id_filter" emptyText="过滤功能菜单..." trigger1Cls="x-form-search-trigger"
-						onchang="fn_find_modules" onTrigger1Click="fn_find_modules" width="185" />
+						onchange="fn_find_modules" onTrigger1Click="fn_find_modules" width="185" />
 					<aos:dockeditem xtype="tbfill" />
 					<aos:dockeditem text="" tooltip="更多选型" icon="icon141.png">
 						<aos:menu>
