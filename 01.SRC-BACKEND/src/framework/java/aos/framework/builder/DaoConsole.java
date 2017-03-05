@@ -29,23 +29,21 @@ public class DaoConsole {
 		driverOpt.setIp("127.0.0.1");
 		driverOpt.setPort("3306");
 		//数据库名或数据库实例名
-		driverOpt.setCatalog("aos");
+		driverOpt.setCatalog("aosuite");
 		driverOpt.setUserName("root");
 		driverOpt.setPassword("root");
 		//===================
 		Dto dto = Dtos.newDto();
 		//改为自己存放相关文件的磁盘文件路径
-		dto.put("outPath", "G:/01.AOSuite/01.SVN/01.SRC-BACKEND/src/dao/java/aos/system/dao");
+		dto.put("outPath", "G:/01.AOSuite/01.SVN/01.SRC-BACKEND/src/dao/java/aos/demo/dao");
 		//改为自己相关文件的包路径
-		dto.put("package", "aos.system.dao");
+		//dto.put("package", "aos.system.dao");
 		//dto.put("package", "aos.framework.dao");
-		//dto.put("package", "aos.demo.dao");
+		dto.put("package", "aos.demo.dao");
 		dto.put("author", "xiongchun");
 		//指定多张表请用逗号分隔；
 		//!!表名区分大小写的喔
-		//dto.put("tables", "aos_module, aos_org, aos_role, aos_role_module, aos_user_role,aos_cmp,aos_icon");
-		//dto.put("tables", "aos_dic,aos_params,aos_user");
-		dto.put("tables", "aos_cmp, aos_icon, aos_module, aos_org, aos_role, aos_role_module, aos_sequence, aos_user_role");
+		dto.put("tables", "demo_account");
 		//===================
 		Connection connection = DBMetaInfoUtils.newConnection(driverOpt);
 		DaoBuilder.buildDao(connection, dto);

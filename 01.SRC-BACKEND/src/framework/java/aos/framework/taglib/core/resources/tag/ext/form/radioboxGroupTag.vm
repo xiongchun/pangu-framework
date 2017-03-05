@@ -31,3 +31,6 @@ var ${id}_cfg = {
 var ${id} = Ext.create('Ext.form.RadioGroup',${id}_cfg);
 ##注册Items子组件
 #parse("${vmpath}ext/subvm/items.vm")
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")

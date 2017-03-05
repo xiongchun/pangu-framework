@@ -91,10 +91,10 @@
 			<entry key="jdbc.username" value="root" />
 			<entry key="jdbc.password" value="root" />
 			<!-- Logback日志配置 -->
-			<entry key="dao" value="DEBUG" />
-			<entry key="aos" value="DEBUG" />
-			<entry key="aos.framework.web.filter.HttpFilter" value="DEBUG" />
-			<entry key="aos.framework.web.router.HttpRouterController" value="DEBUG" />
+			<entry key="dao" value="ERROR" />
+			<entry key="aos" value="ERROR" />
+			<entry key="aos.framework.web.filter.HttpFilter" value="ERROR" />
+			<entry key="aos.framework.web.router.HttpRouterController" value="ERROR" />
 		</propertyfile>
 		<replace file="${dist}/bin/WEB-INF/classes/aos.properties" token="\:" value=":" encoding="utf-8" />
 		<replace file="${dist}/bin/WEB-INF/classes/aos.properties" token="\=" value="=" encoding="utf-8" />

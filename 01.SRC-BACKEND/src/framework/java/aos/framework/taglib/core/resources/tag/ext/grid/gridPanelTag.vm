@@ -75,6 +75,12 @@ var ${id}_grid_columns = [
 		#if(${columndto.width})
 			width:${columndto.width},
 		#end
+		#if(${columndto.summaryType})
+			summaryType:'${columndto.summaryType}',
+		#end
+		#if(${columndto.summaryRenderer})
+			summaryRenderer:${columndto.summaryRenderer},
+		#end
         #if(${columndto.header})
 			header:'<span class="app-grid-column-header">${columndto.header}</span>',
 		#end
@@ -179,8 +185,14 @@ var ${id}_grid_columns = [
 ##Grid定义
 var ${id}_cfg = {
 #parse("${vmpath}ext/common/panelTagSupport.vm")
+#if($features)
+features : [ $featuresScript ],
+#end
 #if($enableLocking)
 	enableLocking:$enableLocking,
+#end
+#if($enableColumnHide)
+	enableColumnHide:$enableColumnHide,
 #end
 #if($disableSelection)
 	disableSelection:$disableSelection,
@@ -193,6 +205,9 @@ var ${id}_cfg = {
 #end
 #if($rowLines)
 	rowLines:$rowLines,
+#end
+#if($emptyText)
+	emptyText:'$emptyText',
 #end
 #if($selModel)
 	selModel:$selModel,

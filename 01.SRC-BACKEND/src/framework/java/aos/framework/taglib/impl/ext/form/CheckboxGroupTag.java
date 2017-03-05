@@ -25,6 +25,8 @@ public class CheckboxGroupTag extends FormPanelTagSupport {
 	private String columns = "1";
 
 	private String vertical;
+	
+	private String onchange;
 
 	/**
 	 * 预处理和标签逻辑校验
@@ -56,6 +58,7 @@ public class CheckboxGroupTag extends FormPanelTagSupport {
 		tagDto.put("fieldLabel", getFieldLabel());
 		tagDto.put("columns", getColumns());
 		tagDto.put("vertical", getVertical());
+		tagDto.put("onchange", getOnchange());
 		String jspString = mergeFileTemplate(EXTVM + "form/checkboxGroupTag.vm", tagDto);
 		try {
 			pageContext.getOut().write(jspString);
@@ -108,5 +111,14 @@ public class CheckboxGroupTag extends FormPanelTagSupport {
 	public void setVertical(String vertical) {
 		this.vertical = vertical;
 	}
+
+	public String getOnchange() {
+		return onchange;
+	}
+
+	public void setOnchange(String onchange) {
+		this.onchange = onchange;
+	}
+
 
 }

@@ -11,41 +11,66 @@
 		SELECT
 		<include refid="aos.framework.dao.AosParamsDao.column" />
 		FROM aos_params WHERE
-		key_ LIKE '%${keyorvalue}%' OR value_ LIKE '%${keyorvalue}%'
+		key_ LIKE '%${keyorvalue}%' OR value_ LIKE
+		'%${keyorvalue}%'
 	</select>
 
 	<!-- 查询测试 -->
-	<select id="listAccountPage" resultType="DemoAccountPO" parameterType="Dto">
+	<select id="listAccountPage" resultType="DemoAccountPO"
+		parameterType="Dto">
 		SELECT
 		<include refid="aos.demo.dao.DemoAccountDao.column" />
 		FROM demo_account WHERE 1=1
 		<if test="name_ != null and name_ != ''">
-			AND name_ = #{name_} 
+			AND name_ = #{name_}
 		</if>
 	</select>
-	
+
 	<!-- 查询自定义下拉组件数据(重点是字段的别名) -->
 	<select id="listComboBoxData" resultType="Dto">
 		SELECT
-		    id_ AS value, name_ AS display
+		id_ AS value, name_ AS display
 		FROM
-		    aos_role LIMIT 10
+		aos_role LIMIT 10
 	</select>
-	
+
 	<!-- 查询多级联动下拉框数据(第一级) -->
 	<select id="listComboBoxCascadeData" resultType="Dto">
 		SELECT
-		    id_ AS value, name_ AS display
+		id_ AS value, name_ AS display
 		FROM
-		    aos_module WHERE length(cascade_id_) = ${length}
+		aos_module WHERE length(cascade_id_) = ${length}
 	</select>
-	
+
 	<!-- 查询多级联动下拉框数据(第二级) -->
 	<select id="listComboBoxCascadeSubData" resultType="Dto">
 		SELECT
-		    id_ AS value, name_ AS display
+		id_ AS value, name_ AS display
 		FROM
-		    aos_module WHERE parent_id_ = #{parent_id_}
+		aos_module WHERE parent_id_ = #{parent_id_}
 	</select>
-	
+
+	<!-- 查询统计数据 -->
+	<select id="querySummary" resultType="Dto" parameterType="Dto">
+		SELECT
+			count(id_) as count_,
+			IFNULL(sum(balance_),0) as sum_balance_,
+			IFNULL(sum(credit_line_),0) as sum_credit_line_,
+			IFNULL(max(age_),0) as max_age_
+		FROM
+		demo_account
+		<where>
+			<if test="name_ != null and name_ != ''">
+				AND name_ = #{name_}
+			</if>
+			<if test="card_type_ != null and card_type_ != ''">
+				AND card_type_ = #{card_type_}
+			</if>
+			<if test="card_id_ != null and card_id_ != ''">
+				AND card_id_ = #{card_id_}
+			</if>
+		</where>
+
+	</select>
+
 </mapper>

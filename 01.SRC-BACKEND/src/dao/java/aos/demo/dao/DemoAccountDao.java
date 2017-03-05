@@ -1,7 +1,6 @@
 package aos.demo.dao;
 
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 import aos.framework.core.annotation.Dao;
@@ -16,7 +15,7 @@ import aos.demo.dao.po.DemoAccountPO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:22:53
+ * @date 2017-03-01 21:15:45
  */
 @Dao("demoAccountDao")
 public interface DemoAccountDao {

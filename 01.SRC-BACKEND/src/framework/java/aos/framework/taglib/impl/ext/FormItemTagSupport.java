@@ -69,7 +69,7 @@ public class FormItemTagSupport extends ComponentTagSupport {
 
     private String selectOnFocus;
 
-    private String onchang;
+    private String onchange;
 
     private String onkeydown;
 
@@ -140,7 +140,7 @@ public class FormItemTagSupport extends ComponentTagSupport {
         tagDto.put("hideTrigger", getHideTrigger());
         tagDto.put("star", getStar());
         tagDto.put("selectOnFocus", getSelectOnFocus());
-        tagDto.put("onchang", getOnchang());
+        tagDto.put("onchange", getOnchange());
         tagDto.put("onkeydown", getOnkeydown());
         tagDto.put("onkeyup", getOnkeyup());
         tagDto.put("onfocus", getOnfocus());
@@ -344,14 +344,6 @@ public class FormItemTagSupport extends ComponentTagSupport {
         this.hideTrigger = hideTrigger;
     }
 
-    public String getOnchang() {
-        return onchang;
-    }
-
-    public void setOnchang(String onchang) {
-        this.onchang = onchang;
-    }
-
     public String getOnkeydown() {
         return onkeydown;
     }
@@ -439,4 +431,12 @@ public class FormItemTagSupport extends ComponentTagSupport {
     public void setSelectOnFocus(String selectOnFocus) {
         this.selectOnFocus = selectOnFocus;
     }
+
+	public String getOnchange() {
+		return onchange;
+	}
+
+	public void setOnchange(String onchange) {
+		this.onchange = onchange;
+	}
 }

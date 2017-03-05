@@ -62,10 +62,14 @@ public class GridPanelTag extends PanelTagSupport {
 	private String rowLines;
 
 	private String enableLocking;
+	
+	private String enableColumnHide;
 
 	private String idProperty;
 	
 	private String displayInfo = TRUE;
+	
+	private String features;
 
 	// 内部变量,不暴露给JSP,由selModeTag标签设定
 	private String selModel;
@@ -170,8 +174,23 @@ public class GridPanelTag extends PanelTagSupport {
 		tagDto.put("columnLines", getColumnLines());
 		tagDto.put("rowLines", getRowLines());
 		tagDto.put("enableLocking", getEnableLocking());
+		tagDto.put("enableColumnHide", getEnableColumnHide());
 		tagDto.put("idProperty", getIdProperty());
 		tagDto.put("displayInfo", getDisplayInfo());
+		tagDto.put("emptyText", AOSCxt.getParam("grid_empty_text_"));
+		tagDto.put("features", getFeatures());
+		String[] featuresArray = StringUtils.split(getFeatures(), ",");
+		if (featuresArray != null) {
+			String featuresScript = "";
+			for (String feature : featuresArray) {
+				if (StringUtils.equals(feature, "summary")) {
+					featuresScript = "{ftype : 'summary', dock : 'bottom'},";
+				}
+				//其它feature...
+			}
+			tagDto.put("featuresScript", StringUtils.substringBeforeLast(featuresScript, ","));
+		}
+		
 		String jspString = mergeFileTemplate(EXTVM + "grid/gridPanelTag.vm", tagDto);
 		try {
 			pageContext.getOut().write(jspString);
@@ -384,6 +403,22 @@ public class GridPanelTag extends PanelTagSupport {
 
 	public void setDisplayInfo(String displayInfo) {
 		this.displayInfo = displayInfo;
+	}
+
+	public String getEnableColumnHide() {
+		return enableColumnHide;
+	}
+
+	public void setEnableColumnHide(String enableColumnHide) {
+		this.enableColumnHide = enableColumnHide;
+	}
+
+	public String getFeatures() {
+		return features;
+	}
+
+	public void setFeatures(String features) {
+		this.features = features;
 	}
 
 }

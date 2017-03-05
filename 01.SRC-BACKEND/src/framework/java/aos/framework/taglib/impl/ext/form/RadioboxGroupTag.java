@@ -11,7 +11,7 @@ import aos.framework.taglib.impl.ext.FormPanelTagSupport;
 
 
 /**
- * <b>CheckboxGroup标签实现类</b>
+ * <b>RadioboxGroup标签实现类</b>
  * 
  * @author xiongchun
  * @date 2014-04-01
@@ -25,6 +25,8 @@ public class RadioboxGroupTag extends FormPanelTagSupport {
 	private String columns = "1";
 
 	private String vertical;
+	
+	private String onchange;
 
 	/**
 	 * 预处理和标签逻辑校验
@@ -56,6 +58,7 @@ public class RadioboxGroupTag extends FormPanelTagSupport {
 		tagDto.put("fieldLabel", getFieldLabel());
 		tagDto.put("columns", getColumns());
 		tagDto.put("vertical", getVertical());
+		tagDto.put("onchange", getOnchange());
 		String jspString = mergeFileTemplate(EXTVM + "form/radioboxGroupTag.vm", tagDto);
 		try {
 			pageContext.getOut().write(jspString);
@@ -107,5 +110,13 @@ public class RadioboxGroupTag extends FormPanelTagSupport {
 
 	public void setVertical(String vertical) {
 		this.vertical = vertical;
+	}
+
+	public String getOnchange() {
+		return onchange;
+	}
+
+	public void setOnchange(String onchange) {
+		this.onchange = onchange;
 	}
 }

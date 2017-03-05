@@ -31,7 +31,7 @@ public class SqlDao extends SqlSessionDaoSupport {
 	 *            SQL语句ID号
 	 * @param pObject
 	 *            查询条件对象,可以是常规JavaBean、PO、Dto等。无参传null。
-	 * @return Object 返回*Mapper.xml配置的返回类型对象
+	 * @return Object 返回*Dao.xml配置的返回类型对象
 	 */
 	public Object selectOne(String pSqlId, Object pObject) {
 		Object resultObject = getSqlSession().selectOne(pSqlId, pObject);
@@ -45,7 +45,7 @@ public class SqlDao extends SqlSessionDaoSupport {
 	 *            SQL语句ID号
 	 * @param pObject
 	 *            查询条件对象,可以是常规JavaBean、PO、Dto等。无参传null。
-	 * @return Object 返回Dto对象,如果*Mapper.xml的返回类型配置为PO,则将被内部转换为Dto.
+	 * @return Object 返回Dto对象,如果*Dao.xml的返回类型配置为PO,则将被内部转换为Dto.
 	 */
 	public Dto selectDto(String pSqlId, Object pObject) {
 		Object resultObject = getSqlSession().selectOne(pSqlId, pObject);

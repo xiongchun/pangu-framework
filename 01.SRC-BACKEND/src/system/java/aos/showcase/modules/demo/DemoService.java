@@ -420,6 +420,18 @@ public class DemoService extends AOSBaseService {
 	}
 	
 	/**
+	 * 返回统计汇总对象
+	 * @param httpModel
+	 */
+	public void querySummary(HttpModel httpModel) {
+		Dto inDto = httpModel.getInDto();
+		//根据inDto参数去统计相关信息
+		Dto outDto = sqlDao.selectDto("Demo.querySummary", inDto);
+		httpModel.setOutMsg(AOSJson.toJson(outDto));
+	}
+	
+	
+	/**
 	 * 范例1(简单查询)
 	 * 
 	 * @param httpModel
@@ -531,6 +543,46 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void initGrid(HttpModel httpModel) {
 		httpModel.setViewPath("showcase/basic/grid.jsp");
+	}
+	
+	/**
+	 * 初始化表格组件
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initGrid2(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/basic/grid2.jsp");
+	}
+	
+	/**
+	 * 测试1
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initTest1(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/test/test1.jsp");
+	}
+	
+	/**
+	 * 测试2
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initTest2(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/test/test2.jsp");
+	}
+	
+	/**
+	 * 测试3
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initTest3(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/test/test3.jsp");
 	}
 
 }

@@ -2,7 +2,6 @@ package aos.framework.taglib.impl.ext.general;
 
 import javax.servlet.jsp.JspException;
 
-import aos.framework.core.utils.AOSUtils;
 import aos.framework.taglib.asset.AOSTagUtils;
 import aos.framework.taglib.core.model.vo.ListenerVO;
 import aos.framework.taglib.impl.ext.ComponentTagSupport;

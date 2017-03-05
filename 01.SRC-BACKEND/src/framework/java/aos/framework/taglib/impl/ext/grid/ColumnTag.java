@@ -66,6 +66,10 @@ public class ColumnTag extends ComponentTagSupport {
 	private String rendererField;
 	
 	private String fixedWidth;
+	
+	private String summaryType;
+	
+	private String summaryRenderer;
 
 	private List<Dto> actionDtos;
 
@@ -171,6 +175,8 @@ public class ColumnTag extends ComponentTagSupport {
 		columnDto.put("dataType", getDataType());
 		columnDto.put("rendererField", getRendererField());
 		columnDto.put("actionDtos", getActionDtos());
+		columnDto.put("summaryType", getSummaryType());
+		columnDto.put("summaryRenderer", getSummaryRenderer());
 		if (AOSUtils.isNotEmpty(getRendererField())) {
 			List<AosDicPO> aos_dicPOs= AOSCxt.getDicList(getRendererField());
 			columnDto.put("dicList", aos_dicPOs);
@@ -402,5 +408,21 @@ public class ColumnTag extends ComponentTagSupport {
 
 	public void setFixedWidth(String fixedWidth) {
 		this.fixedWidth = fixedWidth;
+	}
+
+	public String getSummaryType() {
+		return summaryType;
+	}
+
+	public void setSummaryType(String summaryType) {
+		this.summaryType = summaryType;
+	}
+
+	public String getSummaryRenderer() {
+		return summaryRenderer;
+	}
+
+	public void setSummaryRenderer(String summaryRenderer) {
+		this.summaryRenderer = summaryRenderer;
 	}
 }

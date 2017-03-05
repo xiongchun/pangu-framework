@@ -1,6 +1,7 @@
 package aos.demo.dao.po;
 
 import aos.framework.core.typewrap.PO;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:22:53
+ * @date 2017-03-01 21:15:45
  */
 public class DemoAccountPO extends PO {
 
@@ -39,12 +40,12 @@ public class DemoAccountPO extends PO {
 	/**
 	 * 可用余额
 	 */
-	private String balance_;
+	private BigDecimal balance_;
 	
 	/**
 	 * 信用额度
 	 */
-	private String credit_line_;
+	private BigDecimal credit_line_;
 	
 	/**
 	 * 所属银行机构ID
@@ -128,7 +129,7 @@ public class DemoAccountPO extends PO {
 	 * 
 	 * @return balance_
 	 */
-	public String getBalance_() {
+	public BigDecimal getBalance_() {
 		return balance_;
 	}
 	
@@ -137,7 +138,7 @@ public class DemoAccountPO extends PO {
 	 * 
 	 * @return credit_line_
 	 */
-	public String getCredit_line_() {
+	public BigDecimal getCredit_line_() {
 		return credit_line_;
 	}
 	
@@ -255,7 +256,7 @@ public class DemoAccountPO extends PO {
 	 * 
 	 * @param balance_
 	 */
-	public void setBalance_(String balance_) {
+	public void setBalance_(BigDecimal balance_) {
 		this.balance_ = balance_;
 	}
 	
@@ -264,7 +265,7 @@ public class DemoAccountPO extends PO {
 	 * 
 	 * @param credit_line_
 	 */
-	public void setCredit_line_(String credit_line_) {
+	public void setCredit_line_(BigDecimal credit_line_) {
 		this.credit_line_ = credit_line_;
 	}
 	
