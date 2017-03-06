@@ -27,6 +27,7 @@ public class DistributedLock {
 	 * <p>
 	 * 注意：同一个业务线程里用不同的redis连接去操作同一个key(锁标识)，在高并发压力的时候会有问题。
 	 * 所以，在tryLock方法返回redis连接，供释放锁时候使用。
+	 * 特别注意：在trylock和unlock之间的业务代码，如果要对redis进行操作，则应该使用trylock返回的jedis进行操作。否则，测试没问题，并发起来就出等待的问题。
 	 * 
 	 * @param key
 	 * @param timeOut 超时自动释放锁时间
