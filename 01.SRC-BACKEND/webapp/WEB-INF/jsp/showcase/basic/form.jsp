@@ -25,7 +25,7 @@
 						<aos:textfield name="name_" fieldLabel="姓名" maxLength="20" columnWidth="0.25" />
 						<aos:textfield name="card_id_" fieldLabel="验证码" maxLength="10" allowBlank="false" columnWidth="0.25" />
 						<aos:panel contentEl="div_vercode" columnWidth="0.1" border="false" />
-						<aos:textareafield fieldLabel="摘要信息" name="desc_" grow="true" height="40" emptyText="文本块输入" columnWidth="0.99" />
+						<aos:textareafield name="desc_" fieldLabel="摘要信息" grow="true" height="40" emptyText="文本块输入" columnWidth="0.99" />
 					</aos:fieldset>
 
 					<aos:fieldset title="数字输入" labelWidth="70" columnWidth="1" border="true">
@@ -85,7 +85,7 @@
 						<aos:triggerfield fieldLabel="弹出选择树" name="parent_id_desc" editable="false" trigger1Cls="x-form-search-trigger" onTrigger1Click="_w_org_find_show" columnWidth="0.25" />
 						<%-- 隐藏域用来存储弹出表格选中的ID --%>
 						<aos:hiddenfield name="card_id2_" />
-						<aos:triggerfield fieldLabel="弹出选择表格" name="name_" editable="false" trigger1Cls="x-form-search-trigger" onTrigger1Click="_w_account_find_show" columnWidth="0.25" />
+						<aos:triggerfield fieldLabel="弹出选择表格" name="name_desc_" editable="false" trigger1Cls="x-form-search-trigger" onTrigger1Click="_w_account_find_show" columnWidth="0.25" />
 					</aos:fieldset>
 
 					<aos:fieldset title="简单富文本编辑器" labelWidth="70" columnWidth="1" border="true">
@@ -472,7 +472,7 @@
 		//账户表格双击事件
 		function _g_account_dbclick(obj, record) {
 			AOS.setValue('_f_info.card_id2_',record.raw.card_id_);
-			AOS.setValue('_f_info.name2_',record.raw.name_);
+			AOS.setValue('_f_info.name_desc_',record.raw.name_);
 			_w_account_find.hide();
 		}
 	

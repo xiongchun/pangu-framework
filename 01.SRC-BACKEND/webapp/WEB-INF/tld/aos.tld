@@ -12486,7 +12486,7 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<description>
-			    表格列类型。有效值：text | date | number | template | rowno | check | action | tree(TreeGrid专用)。缺省值：text。提示：type为checkbox的列，当JSON中为布尔值true或数值1或任意字符串时，选择框选中状态；布尔值false或数值0或空字符串时未选中，字符串值无效。选择框列并非用于表格的行选择功能，而是一个常规列。表格行选择功能见selModel标签的使用。
+			    表格列类型。有效值：text | date | number | template | rowno | check | action | tree(TreeGrid专用) | group(AOSuite扩展类型，用于表头分组列)。缺省值：text。提示：type为checkbox的列，当JSON中为布尔值true或数值1或任意字符串时，选择框选中状态；布尔值false或数值0或空字符串时未选中，字符串值无效。
 			</description>
 		</attribute>
 		<attribute>

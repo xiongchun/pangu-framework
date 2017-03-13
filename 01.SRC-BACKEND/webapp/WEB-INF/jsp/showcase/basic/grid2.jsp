@@ -10,10 +10,49 @@
 	<aos:viewport layout="border">
 		<aos:tabpanel id="_id_tabs" region="center" tabPosition="bottom" bodyBorder="0 0 0 0" margin="0 0 2 0">
 
-			<%-- 
-		    <aos:tab title="表头分组表格" layout="anchor" border="false" autoScroll="true">
+
+			<aos:tab title="表头分组表格" layout="anchor" border="false" autoScroll="true">
+				<aos:gridpanel id="_grid3" url="demoService.listAccounts" autoLoad="true" title="表头分组(2级分组)" anchor="100% 40%" border="true" margin="5">
+					<aos:column type="rowno" />
+					<aos:column header="个人基本信息" type="group">
+						<aos:column header="身份证号" dataIndex="id_no_" width="140" />
+						<aos:column header="持卡人" dataIndex="name_" width="80" />
+						<aos:column header="性别" dataIndex="sex_" rendererField="sex_" width="60" />
+						<aos:column header="年龄" dataIndex="age_" width="60" />
+					</aos:column>
+					<aos:column header="信用卡信息" type="group">
+						<aos:column header="信用卡号" dataIndex="card_id_" width="90" />
+						<aos:column header="卡类型" dataIndex="card_type_" rendererField="card_type_" width="60" />
+						<aos:column header="信用额度" dataIndex="credit_line_" type="number" width="100" />
+						<aos:column header="可用余额" dataIndex="balance_" type="number" width="100" />
+					</aos:column>
+					<aos:column header="银行机构ID" dataIndex="org_id_" width="100" />
+					<aos:column header="创建时间" dataIndex="create_time_" width="160" />
+					<aos:column header="持卡人住址" dataIndex="address_" width="180" />
+				</aos:gridpanel>
+				
+				<aos:gridpanel id="_grid4" url="demoService.listAccounts" autoLoad="true" title="表头分组(3级分组)" anchor="100% 60%" border="true" margin="5">
+					<aos:column type="rowno" />
+					<aos:column header="个人账户信息" type="group">
+						<aos:column header="基本信息" type="group">
+							<aos:column header="身份证号" dataIndex="id_no_" width="140" />
+							<aos:column header="持卡人" dataIndex="name_" width="80" />
+							<aos:column header="性别" dataIndex="sex_" rendererField="sex_" width="60" />
+							<aos:column header="年龄" dataIndex="age_" width="60" />
+						</aos:column>
+						<aos:column header="信用卡信息" type="group">
+							<aos:column header="信用卡号" dataIndex="card_id_" width="90" />
+							<aos:column header="卡类型" dataIndex="card_type_" rendererField="card_type_" width="60" />
+							<aos:column header="信用额度" dataIndex="credit_line_" type="number" width="100" />
+							<aos:column header="可用余额" dataIndex="balance_" type="number" width="100" />
+						</aos:column>
+					</aos:column>
+					<aos:column header="银行机构ID" dataIndex="org_id_" width="100" />
+					<aos:column header="创建时间" dataIndex="create_time_" width="160" />
+					<aos:column header="持卡人住址" dataIndex="address_" width="180" />
+				</aos:gridpanel>
+				
 			</aos:tab>
-			--%>
 
 			<aos:tab title="统计汇总表格" layout="anchor" border="false" autoScroll="true">
 				<!-- 演示客户端对当前页进行统计 -->
@@ -46,14 +85,14 @@
 					<aos:gridpanel id="_grid2" url="demoService.listAccounts" onrender="_grid2_query" features="summary" region="center" bodyBorder="1 0 1 0">
 						<aos:column type="rowno" />
 						<aos:column header="流水号" dataIndex="id_" hidden="true" />
-						<aos:column header="信用卡号" dataIndex="card_id_" summaryRenderer="function(){return '共 ' + summary.count_ + ' 人'}"  width="90" />
+						<aos:column header="信用卡号" dataIndex="card_id_" summaryRenderer="function(){return '共 ' + summary.count_ + ' 人'}" width="90" />
 						<aos:column header="卡类型" dataIndex="card_type_" rendererField="card_type_" width="60" />
 						<aos:column header="身份证号" dataIndex="id_no_" />
 						<aos:column header="持卡人" dataIndex="name_" width="80" />
 						<aos:column header="信用额度" dataIndex="credit_line_" type="number" summaryRenderer="function(){return '合计:' + summary.sum_credit_line_}" width="100" />
 						<aos:column header="可用余额" dataIndex="balance_" type="number" summaryRenderer="function(){return '合计:' + summary.sum_balance_}" width="100" />
 						<aos:column header="性别" dataIndex="sex_" fixedWidth="60" />
-						<aos:column header="年龄" dataIndex="age_" summaryRenderer="function(){return '最大:' + summary.max_age_} "  width=" 100"  />
+						<aos:column header="年龄" dataIndex="age_" summaryRenderer="function(){return '最大:' + summary.max_age_} " width=" 100" />
 						<aos:column header="出生日期" dataIndex="birthday_" type="date" format="Y-m-d" width="100" />
 					</aos:gridpanel>
 				</aos:panel>
@@ -64,7 +103,7 @@
 	<script type="text/javascript">
 		//全量统计+表格查询
 		var summary = {
-				sum_credit_line_:0
+			sum_credit_line_ : 0
 		}
 		function _grid2_query() {
 			var params = AOS.getValue('_f_query');

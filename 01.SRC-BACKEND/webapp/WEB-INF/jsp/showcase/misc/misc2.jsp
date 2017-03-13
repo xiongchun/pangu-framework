@@ -24,8 +24,7 @@
 			</aos:docked>
 		</aos:formpanel>
 
-		<aos:gridpanel id="_g_account" url="demoService.listAccounts" onrender="_g_account_query"
-			onitemdblclick="#_w_account2.show();" region="center">
+		<aos:gridpanel id="_g_account" url="demoService.listAccounts" onrender="_g_account_query" onitemdblclick="#_w_account2.show();" region="center">
 			<aos:docked forceBoder="1 0 1 0">
 				<aos:dockeditem xtype="tbtext" text="信用卡账户信息" />
 				<aos:dockeditem xtype="tbseparator" />
@@ -36,15 +35,19 @@
 			<aos:selmodel type="checkbox" mode="multi" />
 			<aos:column type="rowno" />
 			<aos:column header="流水号" dataIndex="id_" hidden="true" />
-			<aos:column header="信用卡号" dataIndex="card_id_" width="90" />
-			<aos:column header="卡类型" dataIndex="card_type_" rendererField="card_type_" width="60" />
-			<aos:column header="身份证号" dataIndex="id_no_" width="140" />
-			<aos:column header="持卡人" dataIndex="name_" width="80" />
-			<aos:column header="信用额度" dataIndex="credit_line_" type="number" width="100" />
-			<aos:column header="可用余额" dataIndex="balance_" type="number" width="100" />
-			<aos:column header="性别" dataIndex="sex_" rendererField="sex_" width="60" />
-			<aos:column header="出生日期" dataIndex="birthday_" type="date" format="Y-m-d" width="100" />
-			<aos:column header="年龄" dataIndex="age_" width="60" />
+			<aos:column header="个人基本信息" type="group">
+				<aos:column header="身份证号" dataIndex="id_no_" width="140" />
+				<aos:column header="持卡人" dataIndex="name_" width="80" />
+				<aos:column header="性别" dataIndex="sex_" rendererField="sex_" width="60" />
+				<aos:column header="出生日期" dataIndex="birthday_" type="date" format="Y-m-d" width="100" />
+				<aos:column header="年龄" dataIndex="age_" width="60" />
+			</aos:column>
+			<aos:column header="信用卡信息" type="group">
+				<aos:column header="信用卡号" dataIndex="card_id_" width="90" />
+				<aos:column header="卡类型" dataIndex="card_type_" rendererField="card_type_" width="60" />
+				<aos:column header="信用额度" dataIndex="credit_line_" type="number" width="100" />
+				<aos:column header="可用余额" dataIndex="balance_" type="number" width="100" />
+			</aos:column>
 			<aos:column header="银行机构ID" dataIndex="org_id_" width="100" />
 			<aos:column header="创建时间" dataIndex="create_time_" width="160" />
 			<aos:column header="持卡人住址" dataIndex="address_" width="180" />

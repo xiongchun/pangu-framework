@@ -59,11 +59,11 @@
 			</aos:docked>
 	</aos:window>
 	
-	<aos:window id="_w_cmd" title="命令窗口" onshow="AOS.reset(_f_cmd);" width="800" height="600" maximizable="true">
-		<aos:formpanel id="_f_cmd" width="500" layout="column" labelWidth="60">
+	<aos:window id="_w_cmd" title="命令窗口" onshow="AOS.reset(_f_cmd);" width="800" maximizable="true">
+		<aos:formpanel id="_f_cmd" width="500" layout="column" labelWidth="70">
 			<aos:combobox name="type_" fieldLabel="类型" allowBlank="false" dicField="cmd_type_" value="1" columnWidth="1" />
-			<aos:numberfield name="timeout_" fieldLabel="时效" allowBlank="false" value="0" minValue="0" columnWidth="0.79" />
-			<aos:displayfield value="（0为永久有效，单位：秒。）" columnWidth="0.21"/>
+			<aos:numberfield name="timeout_" fieldLabel="过期时间" allowBlank="false" value="0" minValue="0" columnWidth="0.75" />
+			<aos:displayfield value="（0为永久有效，单位：秒。）" columnWidth="0.25"/>
 			<aos:textfield name="key_" fieldLabel="键" allowBlank="false" columnWidth="1" />
 			<aos:textareafield name="content_" fieldLabel="值" height="430" allowBlank="false" columnWidth="1" />
 		</aos:formpanel>
