@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.jsp.JspException;
 
+import com.google.common.collect.Lists;
+
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.impl.HashDto;
 import aos.framework.core.utils.AOSCxt;
@@ -72,6 +74,21 @@ public class ColumnTag extends ComponentTagSupport {
 	private String summaryRenderer;
 
 	private List<Dto> actionDtos;
+	
+	// 内部变量,不暴露给JSP。
+	private List<Dto> columnDtos = new ArrayList<Dto>();
+	
+	/**
+	 * 提供给Column标签调用
+	 * 
+	 * @param columnDto
+	 */
+	public void addColumnDto(Dto columnDto) {
+		if (columnDtos == null) {
+			columnDtos = Lists.newArrayList();
+		}
+		columnDtos.add(columnDto);
+	}
 
 	/**
 	 * 提供给Action标签调用
@@ -110,9 +127,16 @@ public class ColumnTag extends ComponentTagSupport {
 			setXtype(Xtypes.GRIDCOLUMN);
 		} else if ("tree".equalsIgnoreCase(getType())) {
 			setXtype(Xtypes.TREECOLUMN);
-		} else {
+		}  else {
 			setXtype(Xtypes.GRIDCOLUMN);
 		}
+		
+		if ("group".equalsIgnoreCase(getType())) {
+			//禁用表格的隐藏列功能
+			GridPanelTag gridPanelTag = (GridPanelTag)findAncestorWithClass(this, GridPanelTag.class);
+			gridPanelTag.setEnableColumnHide(FALSE);
+		}
+		
 		if ("rowno".equalsIgnoreCase(getType()) || "check".equalsIgnoreCase(getType())) {
 			if (AOSUtils.isEmpty(getWidth())) {
 				// 如果是行号列，则设置缺省值30。(可容纳3位大小大行号)
@@ -177,11 +201,15 @@ public class ColumnTag extends ComponentTagSupport {
 		columnDto.put("actionDtos", getActionDtos());
 		columnDto.put("summaryType", getSummaryType());
 		columnDto.put("summaryRenderer", getSummaryRenderer());
+		columnDto.put("columns", getColumnDtos());
 		if (AOSUtils.isNotEmpty(getRendererField())) {
 			List<AosDicPO> aos_dicPOs= AOSCxt.getDicList(getRendererField());
 			columnDto.put("dicList", aos_dicPOs);
 		}
-		if (getParent() instanceof GridPanelTag) {
+		if(getParent() instanceof ColumnTag){
+			ColumnTag parentTag = (ColumnTag) getParent();
+			parentTag.addColumnDto(columnDto);
+		}else if (getParent() instanceof GridPanelTag) {
 			// Grid
 			GridPanelTag parentTag = (GridPanelTag) getParent();
 			parentTag.addColumnDto(columnDto);
@@ -193,20 +221,21 @@ public class ColumnTag extends ComponentTagSupport {
 			parentTag.setTreegrid(TRUE);
 		}
 
-		// 非值域列才构造field对象
+		// 值域列才构造field对象
 		if (AOSUtils.isNotEmpty(getDataIndex())) {
 			Dto fieldDto = new HashDto();
 			fieldDto.put("name", getDataIndex());
 			fieldDto.put("defaultValue", getDefaultValue());
 			fieldDto.put("type", getType());
-			if (getParent() instanceof GridPanelTag) {
-				// Grid
-				GridPanelTag parentTag = (GridPanelTag) getParent();
-				parentTag.addFieldDto(fieldDto);
-			} else if (getParent() instanceof TreePanelTag) {
+			if (getParent() instanceof TreePanelTag) {
 				// TreeGrid
 				TreePanelTag parentTag = (TreePanelTag) getParent();
 				parentTag.addFieldDto(fieldDto);
+			} else {
+				// gridpaneltag或者columntag
+				//获取靠得最近的一个符合条件的父标签返回。
+				GridPanelTag gridPanelTag = (GridPanelTag)findAncestorWithClass(this, GridPanelTag.class);
+				gridPanelTag.addFieldDto(fieldDto);
 			}
 		}
 
@@ -225,6 +254,7 @@ public class ColumnTag extends ComponentTagSupport {
 		setAlign(null);
 		setRendererField(null);
 		setFixedWidth(null);
+		setColumnDtos(null);
 	}
 
 	/**
@@ -425,4 +455,13 @@ public class ColumnTag extends ComponentTagSupport {
 	public void setSummaryRenderer(String summaryRenderer) {
 		this.summaryRenderer = summaryRenderer;
 	}
+
+	public List<Dto> getColumnDtos() {
+		return columnDtos;
+	}
+
+	public void setColumnDtos(List<Dto> columnDtos) {
+		this.columnDtos = columnDtos;
+	}
+
 }

@@ -17,6 +17,7 @@ import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSJson;
+import aos.framework.core.utils.AOSListUtils;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.dao.AosDicDao;
 import aos.framework.dao.AosParamsDao;
@@ -147,6 +148,8 @@ public class CacheMasterDataService extends AOSBaseService{
 				aos_dicPOs.add((AosDicPO)AOSJson.fromJson(dicString, AosDicPO.class));
 			}
 		}
+		String jql = "SELECT * FROM :AOSList ORDER BY sort_no_";
+		aos_dicPOs = AOSListUtils.select(aos_dicPOs, AosDicPO.class, jql, null);
 		return aos_dicPOs;
 	}
 

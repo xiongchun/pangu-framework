@@ -3,6 +3,7 @@ package aos.framework.core.redis;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import aos.framework.core.exception.AOSException;
 import aos.framework.core.utils.AOSPropertiesHandler;
 import aos.framework.core.utils.AOSUtils;
 import redis.clients.jedis.Jedis;
@@ -58,11 +59,7 @@ public class JedisUtil {
 		try {
 			jedis = jedisPool.getResource();
 		} catch (Exception e) {
-			logger.error("获取Redis客户端连接失败。");
-			e.printStackTrace();
-		}
-		if (jedis == null) {
-			logger.warn("没有获取到Redis客户端连接。");
+			throw new AOSException("获取Redis客户端连接失败。", e);
 		}
 		return jedis;
 	}

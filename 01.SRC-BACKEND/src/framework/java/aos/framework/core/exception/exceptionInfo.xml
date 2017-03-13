@@ -11,6 +11,6 @@
 	<exception id="10" info="创建连接失败。" suggest="请检查数据库连接参数配置。" />
 	<exception id="11" info="表单行标签里的元素columnWidth属性之和不能大于1。" suggest="请检查页面rowset或rowset2标签表单元素的columnWidth属性。" />
 	<exception id="13" info="当前系统为在线演示模式，仅支持只读操作。" suggest="请确认系统运行模式。" />
-	
+	<exception id="14" info="获取Redis客户端连接失败。" suggest="AOSuite依赖Redis，请确认您已安装并在aos.properties中正确配置了连接信息。" />
 
 </exceptionInfos>

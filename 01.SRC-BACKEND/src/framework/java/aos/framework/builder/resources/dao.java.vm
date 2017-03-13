@@ -1,6 +1,12 @@
 package ${package};
 
 import java.util.List;
+#if(${importDto.bigDecimal})
+import java.math.BigDecimal;
+#end
+#if(${importDto.bigInteger})
+import java.math.BigInteger;
+#end
 import org.apache.ibatis.annotations.Param;
 
 import aos.framework.core.annotation.Dao;

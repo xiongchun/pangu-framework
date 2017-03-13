@@ -32,8 +32,7 @@ public class AOSException extends RuntimeException {
 		if (AOSUtils.isNotEmpty(vo)) {
 			String errMsg = "异常编号：" + errID;
 			errMsg = errMsg + "\n异常摘要：" + AOSUtils.merge(vo.getInfo(), args);
-			errMsg = errMsg + "\n异常排查建议：" + vo.getSuggest() + " 更多信息请访问开发者社区：www.osworks.cn";
-			errMsg = errMsg + "\n异常详细堆栈信息";
+			errMsg = errMsg + "\n异常排查建议：" + vo.getSuggest() + " 更多信息请访问开发者社区：http://git.oschina.net/osworks/AOS";
 			System.out.println(errMsg);
 		} else {
 			System.out.println("没有查询到异常编号为[" + errID + "]的异常配置信息。");
@@ -51,8 +50,7 @@ public class AOSException extends RuntimeException {
 		if (AOSUtils.isNotEmpty(vo)) {
 			String errMsg = "异常编号：" + errID;
 			errMsg = errMsg + "\n异常摘要：" + AOSUtils.merge(vo.getInfo(), "");
-			errMsg = errMsg + "\n异常排查建议：" + vo.getSuggest() + " 更多信息请访问开发者社区：www.osworks.cn";
-			errMsg = errMsg + "\n异常详细堆栈信息";
+			errMsg = errMsg + "\n异常排查建议：" + vo.getSuggest() + " 更多信息请访问开发者社区：http://git.oschina.net/osworks/AOS";
 			System.out.println(errMsg);
 		} else {
 			System.out.println("没有查询到异常编号为[" + errID + "]的异常配置信息。");
