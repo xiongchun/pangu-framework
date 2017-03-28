@@ -3,42 +3,42 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- aos_cmp[aos_cmp]SQL自动映射 -->
-<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-01-18 22:42:01 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-23 17:54:25 -->
 <mapper namespace="aos.system.dao.AosCmpDao">
 	
 	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
 	<insert id="insert"  parameterType="AosCmpPO">
 		INSERT INTO aos_cmp (
-		<if test="name_ != null and name_ != ''">
-	         name_, <!-- 组件名称 -->
+		<if test="name != null and name != ''">
+	         name, <!-- 组件名称 -->
 		</if>
-		<if test="dom_id_ != null and dom_id_ != ''">
-	         dom_id_, <!-- 界面组件ID -->
+		<if test="dom_id != null and dom_id != ''">
+	         dom_id, <!-- 界面组件ID -->
 		</if>
-		<if test="page_key_ != null and page_key_ != ''">
-	         page_key_, <!-- 所属页面标识 -->
+		<if test="page_key != null and page_key != ''">
+	         page_key, <!-- 所属页面标识 -->
 		</if>
-		<if test="page_name_ != null and page_name_ != ''">
-	         page_name_, <!-- 所属页面名称 -->
+		<if test="page_name != null and page_name != ''">
+	         page_name, <!-- 所属页面名称 -->
 		</if>
-		<if test="id_ != null and id_ != ''">
-	          id_  <!-- 流水号 -->
+		<if test="id != null">
+	          id  <!-- 流水号 -->
 	   </if>
 		)VALUES(
-		<if test="name_ != null and name_ != ''">
-	          #{name_, jdbcType=VARCHAR}, <!-- 组件名称 -->
+		<if test="name != null and name != ''">
+	          #{name, jdbcType=VARCHAR}, <!-- 组件名称 -->
 	    </if>
-		<if test="dom_id_ != null and dom_id_ != ''">
-	          #{dom_id_, jdbcType=VARCHAR}, <!-- 界面组件ID -->
+		<if test="dom_id != null and dom_id != ''">
+	          #{dom_id, jdbcType=VARCHAR}, <!-- 界面组件ID -->
 	    </if>
-		<if test="page_key_ != null and page_key_ != ''">
-	          #{page_key_, jdbcType=VARCHAR}, <!-- 所属页面标识 -->
+		<if test="page_key != null and page_key != ''">
+	          #{page_key, jdbcType=VARCHAR}, <!-- 所属页面标识 -->
 	    </if>
-		<if test="page_name_ != null and page_name_ != ''">
-	          #{page_name_, jdbcType=VARCHAR}, <!-- 所属页面名称 -->
+		<if test="page_name != null and page_name != ''">
+	          #{page_name, jdbcType=VARCHAR}, <!-- 所属页面名称 -->
 	    </if>
-		<if test="id_ != null and id_ != ''">
-		     #{id_, jdbcType=VARCHAR}  <!-- 流水号 -->
+		<if test="id != null">
+		     #{id, jdbcType=INTEGER}  <!-- 流水号 -->
 	    </if>
 		)
 	</insert>
@@ -49,11 +49,11 @@
 		    <include refid="column" />
 		)
 		VALUES (
-		    #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
-		    #{name_, jdbcType=VARCHAR},  <!-- 组件名称 -->
-		    #{dom_id_, jdbcType=VARCHAR},  <!-- 界面组件ID -->
-		    #{page_key_, jdbcType=VARCHAR},  <!-- 所属页面标识 -->
-		    #{page_name_, jdbcType=VARCHAR}  <!-- 所属页面名称 -->
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{name, jdbcType=VARCHAR},  <!-- 组件名称 -->
+		    #{dom_id, jdbcType=VARCHAR},  <!-- 界面组件ID -->
+		    #{page_key, jdbcType=VARCHAR},  <!-- 所属页面标识 -->
+		    #{page_name, jdbcType=VARCHAR}  <!-- 所属页面名称 -->
 		)
 	</insert>
 
@@ -61,35 +61,35 @@
 	<update id="updateByKey" parameterType="AosCmpPO">
 		UPDATE aos_cmp
 		<set>
-			<if test="id_ != null">
-		          id_ = #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
 			</if>
-			<if test="name_ != null">
-		          name_ = #{name_, jdbcType=VARCHAR},  <!-- 组件名称 -->
+			<if test="name != null">
+		          name = #{name, jdbcType=VARCHAR},  <!-- 组件名称 -->
 			</if>
-			<if test="dom_id_ != null">
-		          dom_id_ = #{dom_id_, jdbcType=VARCHAR},  <!-- 界面组件ID -->
+			<if test="dom_id != null">
+		          dom_id = #{dom_id, jdbcType=VARCHAR},  <!-- 界面组件ID -->
 			</if>
-			<if test="page_key_ != null">
-		          page_key_ = #{page_key_, jdbcType=VARCHAR},  <!-- 所属页面标识 -->
+			<if test="page_key != null">
+		          page_key = #{page_key, jdbcType=VARCHAR},  <!-- 所属页面标识 -->
 			</if>
-			<if test="page_name_ != null">
-		          page_name_ = #{page_name_, jdbcType=VARCHAR},  <!-- 所属页面名称 -->
+			<if test="page_name != null">
+		          page_name = #{page_name, jdbcType=VARCHAR},  <!-- 所属页面名称 -->
 			</if>
 		</set>
-		WHERE  id_ = #{id_}
+		WHERE  id = #{id}
 	</update>
 	
 	<!-- 根据主键删除数据持久化对象 -->
 	<delete id="deleteByKey">
-		DELETE FROM aos_cmp WHERE  id_ = #{id_}
+		DELETE FROM aos_cmp WHERE  id = #{id}
 	</delete>
 
 	<!-- 根据主键查询并返回数据持久化对象 -->
 	<select id="selectByKey" resultType="AosCmpPO">
 		SELECT
 		<include refid="column" />
-		FROM aos_cmp WHERE  id_ = #{id_}
+		FROM aos_cmp WHERE  id = #{id}
 	</select>
 
 	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
@@ -162,57 +162,54 @@
 	
 	<!-- 表字段 -->
 	<sql id="column">
-		  id_,  <!-- 流水号 -->
-		  name_,  <!-- 组件名称 -->
-		  dom_id_,  <!-- 界面组件ID -->
-		  page_key_,  <!-- 所属页面标识 -->
-		  page_name_  <!-- 所属页面名称 -->
+		  id,  <!-- 流水号 -->
+		  name,  <!-- 组件名称 -->
+		  dom_id,  <!-- 界面组件ID -->
+		  page_key,  <!-- 所属页面标识 -->
+		  page_name  <!-- 所属页面名称 -->
 	</sql>
 	
 	<!-- 表字段(用于外表的关联时引用) -->
 	<sql id="column2">
-		  aos_cmp.id_,  <!-- 流水号 -->
-		  aos_cmp.name_,  <!-- 组件名称 -->
-		  aos_cmp.dom_id_,  <!-- 界面组件ID -->
-		  aos_cmp.page_key_,  <!-- 所属页面标识 -->
-		  aos_cmp.page_name_  <!-- 所属页面名称 -->
+		  aos_cmp.id,  <!-- 流水号 -->
+		  aos_cmp.name,  <!-- 组件名称 -->
+		  aos_cmp.dom_id,  <!-- 界面组件ID -->
+		  aos_cmp.page_key,  <!-- 所属页面标识 -->
+		  aos_cmp.page_name  <!-- 所属页面名称 -->
 	</sql>
 
 	<!-- Where精确匹配字段 -->
 	<sql id="equal">
-	    <if test="id_ != null and id_ != ''">
-		      AND id_ = #{id_}  <!-- 流水号 -->
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
 		</if>
-	    <if test="name_ != null and name_ != ''">
-		      AND name_ = #{name_}  <!-- 组件名称 -->
+	    <if test="name != null and name != ''">
+		      AND name = #{name}  <!-- 组件名称 -->
 		</if>
-	    <if test="dom_id_ != null and dom_id_ != ''">
-		      AND dom_id_ = #{dom_id_}  <!-- 界面组件ID -->
+	    <if test="dom_id != null and dom_id != ''">
+		      AND dom_id = #{dom_id}  <!-- 界面组件ID -->
 		</if>
-	    <if test="page_key_ != null and page_key_ != ''">
-		      AND page_key_ = #{page_key_}  <!-- 所属页面标识 -->
+	    <if test="page_key != null and page_key != ''">
+		      AND page_key = #{page_key}  <!-- 所属页面标识 -->
 		</if>
-	    <if test="page_name_ != null and page_name_ != ''">
-		      AND page_name_ = #{page_name_}  <!-- 所属页面名称 -->
+	    <if test="page_name != null and page_name != ''">
+		      AND page_name = #{page_name}  <!-- 所属页面名称 -->
 		</if>
 	</sql>
 	
 	<!-- Where模糊匹配字段 -->
 	<sql id="like">
-	    <if test="id_ != null and id_ != ''">
-		      AND id_ like '%${id_}%'  <!-- 流水号 -->
+	    <if test="name != null and name != ''">
+		      AND name like '${name}%'  <!-- 组件名称 -->
 		</if>
-	    <if test="name_ != null and name_ != ''">
-		      AND name_ like '%${name_}%'  <!-- 组件名称 -->
+	    <if test="dom_id != null and dom_id != ''">
+		      AND dom_id like '${dom_id}%'  <!-- 界面组件ID -->
 		</if>
-	    <if test="dom_id_ != null and dom_id_ != ''">
-		      AND dom_id_ like '%${dom_id_}%'  <!-- 界面组件ID -->
+	    <if test="page_key != null and page_key != ''">
+		      AND page_key like '${page_key}%'  <!-- 所属页面标识 -->
 		</if>
-	    <if test="page_key_ != null and page_key_ != ''">
-		      AND page_key_ like '%${page_key_}%'  <!-- 所属页面标识 -->
-		</if>
-	    <if test="page_name_ != null and page_name_ != ''">
-		      AND page_name_ like '%${page_name_}%'  <!-- 所属页面名称 -->
+	    <if test="page_name != null and page_name != ''">
+		      AND page_name like '${page_name}%'  <!-- 所属页面名称 -->
 		</if>
 	</sql>
 	

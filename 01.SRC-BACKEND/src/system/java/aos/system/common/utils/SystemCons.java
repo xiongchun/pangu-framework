@@ -11,17 +11,19 @@ import aos.framework.core.utils.AOSCons;
 public class SystemCons extends AOSCons{
 	
 	/**
-	 * 生成SEQ时的业务类型
+	 * 基于数据表的AOS_SEQUENCE的序列名称
 	 */
-	public static final class ID{
-		//系统管理业务统一使用一个ID标识
-		public static final String SYSTEM = "system_";
+	public static final class SEQ{
+		//系统模块使用的序列号
+		public static final String SEQ_SYSTEM = "seq_system";
+		//演示模块使用的序列号
+		public static final String SEQ_DEMO = "seq_demo";
 	}
 	
 	/**
 	 * 授权类型
 	 */
-	public static final class GRANT_TYPE_{
+	public static final class GRANT_TYPE{
 		//业务办理权限
 		public static final String BIZ = "1";
 		//管理授权权限
@@ -74,17 +76,17 @@ public class SystemCons extends AOSCons{
 	/**
 	 * 超级管理员流水号
 	 */
-	public static  final String SUPER_USER_ID = "9999999999999999";
+	public static  final String SUPER_USER_ID = "-1";
 	
 	/**
 	 * 超级管理员角色流水号
 	 */
-	public static  final String SUPER_ROLE_ID = "9999999999999999";
+	public static  final String SUPER_ROLE_ID = "-1";
 	
 	/**
 	 * 角色管理菜单流水号
 	 */
-	public static  final String ROLE_MODULE_id_ = "1609251718170099";
+	public static  final String ROLE_MODULE_ID = "-1";
 	
 	
 }

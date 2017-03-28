@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
 
-import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSJson;
@@ -25,7 +24,7 @@ import aos.system.dao.po.AosIconPO;
  *
  */
 @Service
-public class IconService extends AOSBaseService {
+public class IconService {
 
 	@Autowired
 	private AosIconDao aosIconDao;
@@ -38,11 +37,11 @@ public class IconService extends AOSBaseService {
 	 */
 	public void init(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		String type_ = inDto.getString("type_");
+		String type_ = inDto.getString("type");
 		type_ = AOSUtils.isEmpty(type_) ? SystemCons.ICON_TYPE.SMALL : type_;
-		httpModel.setAttribute("type_", type_);
+		httpModel.setAttribute("type", type_);
 		int height_ = StringUtils.equalsIgnoreCase(type_, SystemCons.ICON_TYPE.BIG) ? 100 : 50;
-		httpModel.setAttribute("height_", height_);
+		httpModel.setAttribute("height", height_);
 		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
 		httpModel.setViewPath("system/icon.jsp");
 	}
@@ -55,23 +54,23 @@ public class IconService extends AOSBaseService {
 	public void listIcons(HttpModel httpModel) {
 		String cxt = httpModel.getRequest().getServletContext().getContextPath();
 		Dto inDto = httpModel.getInDto();
-		inDto.setOrder("type_, name_");
+		inDto.setOrder("type, name");
 		List<AosIconPO> list = aosIconDao.like(inDto);
 		List<Dto> newList = Lists.newArrayList();
 		Dto dto = Dtos.newDto();
 		for (AosIconPO aosIconPO : list) {
 			dto = aosIconPO.toDto();
 			// 截取过长字符串
-			dto.put("name_s", StringUtils.substring(aosIconPO.getName_(), 0, 14));
+			dto.put("name_s", StringUtils.substring(aosIconPO.getName(), 0, 14));
 			String htmlString = "";
-			if (aosIconPO.getType_().equals("1")) {
-				htmlString = "<img width=\"16\" height=\"16\" src=\"" + cxt + "/static/icon/" + aosIconPO.getName_()
+			if (aosIconPO.getType().equals("1")) {
+				htmlString = "<img width=\"16\" height=\"16\" src=\"" + cxt + "/static/icon/" + aosIconPO.getName()
 						+ "\" />";
-			} else if (aosIconPO.getType_().equals("2")) {
+			} else if (aosIconPO.getType().equals("2")) {
 				htmlString = "<img width=\"64\" height=\"64\" src=\"" + cxt + "/static/icon/big64/"
-						+ aosIconPO.getName_() + "\" />";
-			} else if (aosIconPO.getType_().equals("3")) {
-				htmlString = "<i class=\"fa " + aosIconPO.getName_() + " fa-lg\"></i>";
+						+ aosIconPO.getName() + "\" />";
+			} else if (aosIconPO.getType().equals("3")) {
+				htmlString = "<i class=\"fa " + aosIconPO.getName() + " fa-lg\"></i>";
 			}
 			dto.put("html", htmlString);
 			newList.add(dto);

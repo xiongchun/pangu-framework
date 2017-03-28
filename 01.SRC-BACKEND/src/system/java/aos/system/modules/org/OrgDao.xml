@@ -11,37 +11,37 @@
             <include refid="aos.system.dao.AosOrgDao.column" />
             FROM aos_org
 			<where>
-			    <if test="name_ != null and name_ != ''">
-				    AND name_ LIKE '%${name_}%' 
+			    <if test="name != null and name != ''">
+				    AND name LIKE '%${name}%' 
 				</if>
-			    <if test="cascade_ == 'false'">
-				    AND parent_id_ = #{id_} 
+			    <if test="cascade == 'false'">
+				    AND parent_id = #{id} 
 				</if>
-				<if test="cascade_ == 'true'">
-				    AND cascade_id_ like '${cascade_id_}%'
+				<if test="cascade == 'true'">
+				    AND cascade_id like '${cascade_id}%'
 				</if>
-				<if test="is_del_ != null and is_del_ != ''">
-				    AND is_del_ = #{is_del_} 
+				<if test="is_del != null and is_del != ''">
+				    AND is_del = #{is_del} 
 				</if>
 			</where>	
-			 ORDER BY sort_no_ ASC, id_ DESC
+			 ORDER BY sort_no ASC, id DESC
 	</select>
 	
 	<!-- 查询某节点下子节点的最大语义ID -->
 	<select id="getMaxCascadeId" resultType="String" parameterType="String">
-	     SELECT MAX(cascade_id_) AS max_cascade_id_ FROM aos_org WHERE parent_id_ = #{parent_id_}
+	     SELECT MAX(cascade_id) AS max_cascade_id FROM aos_org WHERE parent_id = #{parent_id}
 	</select>
 	
 	<!-- 逻辑删除部门下用户信息 -->
 	<update id="updateUserInfoByOrgId" parameterType="String">
-	    UPDATE aos_user SET is_del_ = '1' WHERE org_id_ = #{org_id_}
+	    UPDATE aos_user SET is_del = '1' WHERE org_id = #{org_id}
 	</update>
 	
 	<!-- 检查删除节点中是否包含根节点 -->
 	<select id="checkRootNode" resultType="AosOrgPO" parameterType="Dto">
 	     SELECT 
 	         <include refid="aos.system.dao.AosOrgDao.column" />
-	      FROM aos_org WHERE id_ IN (${ids}) AND parent_id_ = '0'
+	      FROM aos_org WHERE id IN (${ids}) AND parent_id = '0'
 	</select>
 
 </mapper>

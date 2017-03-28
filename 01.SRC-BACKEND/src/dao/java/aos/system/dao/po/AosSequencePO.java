@@ -10,7 +10,7 @@ import java.math.BigInteger;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:02
+ * @date 2017-03-23 17:54:25
  */
 public class AosSequencePO extends PO {
 
@@ -19,72 +19,72 @@ public class AosSequencePO extends PO {
 	/**
 	 * 序列号名称
 	 */
-	private String name_;
+	private String name;
 	
 	/**
 	 * 当前值
 	 */
-	private BigInteger current_value_;
+	private BigInteger current_value;
 	
 	/**
 	 * 增长步长
 	 */
-	private Integer increment_;
+	private Integer increment;
 	
 
 	/**
 	 * 序列号名称
 	 * 
-	 * @return name_
+	 * @return name
 	 */
-	public String getName_() {
-		return name_;
+	public String getName() {
+		return name;
 	}
 	
 	/**
 	 * 当前值
 	 * 
-	 * @return current_value_
+	 * @return current_value
 	 */
-	public BigInteger getCurrent_value_() {
-		return current_value_;
+	public BigInteger getCurrent_value() {
+		return current_value;
 	}
 	
 	/**
 	 * 增长步长
 	 * 
-	 * @return increment_
+	 * @return increment
 	 */
-	public Integer getIncrement_() {
-		return increment_;
+	public Integer getIncrement() {
+		return increment;
 	}
 	
 
 	/**
 	 * 序列号名称
 	 * 
-	 * @param name_
+	 * @param name
 	 */
-	public void setName_(String name_) {
-		this.name_ = name_;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/**
 	 * 当前值
 	 * 
-	 * @param current_value_
+	 * @param current_value
 	 */
-	public void setCurrent_value_(BigInteger current_value_) {
-		this.current_value_ = current_value_;
+	public void setCurrent_value(BigInteger current_value) {
+		this.current_value = current_value;
 	}
 	
 	/**
 	 * 增长步长
 	 * 
-	 * @param increment_
+	 * @param increment
 	 */
-	public void setIncrement_(Integer increment_) {
-		this.increment_ = increment_;
+	public void setIncrement(Integer increment) {
+		this.increment = increment;
 	}
 	
 

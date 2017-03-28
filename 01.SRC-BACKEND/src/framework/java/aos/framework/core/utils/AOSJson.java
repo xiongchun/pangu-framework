@@ -40,6 +40,25 @@ public class AOSJson {
 				return AOSUtils.stringToDate(json.getAsString());
 			}
 		});
+		
+/*		builder.registerTypeAdapter(new TypeToken<TreeMap<String, Object>>() {
+		}.getType(), new JsonDeserializer<TreeMap<String, Object>>() {
+			public TreeMap<String, Object> deserialize(JsonElement json, Type typeOfT,
+					JsonDeserializationContext context) throws JsonParseException {
+				TreeMap<String, Object> treeMap = new TreeMap<>();
+				JsonObject jsonObject = json.getAsJsonObject();
+				Set<Map.Entry<String, JsonElement>> entrySet = jsonObject.entrySet();
+				for (Map.Entry<String, JsonElement> entry : entrySet) {
+					Object ot = entry.getValue();
+					if (ot instanceof JsonPrimitive) {
+						treeMap.put(entry.getKey(), ((JsonPrimitive) ot).getAsString());
+					} else {
+						treeMap.put(entry.getKey(), ot);
+					}
+				}
+				return treeMap;
+			}
+		});*/
 		gson = builder.create();
 	}
 

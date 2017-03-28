@@ -22,8 +22,7 @@ import com.google.common.collect.Lists;
 
 import aos.demo.dao.DemoAccountDao;
 import aos.demo.dao.po.DemoAccountPO;
-import aos.framework.core.id.AOSId;
-import aos.framework.core.service.AOSBaseService;
+import aos.framework.core.dao.SqlDao;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCons;
@@ -34,6 +33,7 @@ import aos.framework.dao.po.AosParamsPO;
 import aos.framework.taglib.core.model.TreeBuilder;
 import aos.framework.taglib.core.model.TreeNode;
 import aos.framework.web.router.HttpModel;
+import aos.system.common.id.IdService;
 import aos.system.common.utils.SystemCons;
 import aos.system.dao.AosModuleDao;
 import aos.system.dao.AosOrgDao;
@@ -47,7 +47,7 @@ import aos.system.dao.po.AosOrgPO;
  *
  */
 @Service
-public class DemoService extends AOSBaseService {
+public class DemoService {
 
 	@Autowired
 	private DemoAccountDao demoAccountDao;
@@ -55,6 +55,11 @@ public class DemoService extends AOSBaseService {
 	private AosOrgDao aosOrgDao;
 	@Autowired
 	private AosModuleDao aosModuleDao;
+	@Autowired
+	private SqlDao sqlDao;
+	@Autowired
+	private IdService idService;
+	
 	private static Logger logger = LoggerFactory.getLogger(DemoService.class);
 
 	/**
@@ -75,7 +80,7 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void getAccountInfo(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		DemoAccountPO demo_accountPo = demoAccountDao.selectByKey(inDto.getString("id_"));
+		DemoAccountPO demo_accountPo = demoAccountDao.selectByKey(inDto.getInteger("id"));
 		httpModel.setOutMsg(AOSJson.toJson(demo_accountPo));
 	}
 
@@ -87,15 +92,16 @@ public class DemoService extends AOSBaseService {
 	public void saveAccountInfo(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
 		DemoAccountPO demo_accountPO = new DemoAccountPO();
-		// 如果表示自增列，则不需要预先对主键ID赋值
-		demo_accountPO.setId_(String.valueOf(AOSId.nextVal("seq_demo")));
+		// 如果主键字段是自增列，则不需要预先对主键ID赋值。
+		//演示模块为了兼容各种数据库处理的便利性，使用了非自增列。业务系统的主键策略，请根据自己的实际情况而定。
+		demo_accountPO.setId(idService.nextValue("seq_demo").intValue());
 		demo_accountPO.copyProperties(inDto);
-		demo_accountPO.setOrg_id_("000");
-		demo_accountPO.setCreate_time_(AOSUtils.getDateTime());
-		demo_accountPO.setCreate_user_id_("1");
+		demo_accountPO.setOrg_id("000");
+		demo_accountPO.setCreate_time(AOSUtils.getDateTime());
+		demo_accountPO.setCreate_user_id("1");
 		demoAccountDao.insert(demo_accountPO);
 		// 不管是自增列主键还是非自增列的主键，都可以通过下面的语句获取到主键值
-		// demo_accountPO.getId_();
+		// demo_accountPO.getId();
 		httpModel.setOutMsg("账户信息新增成功");
 	}
 
@@ -121,8 +127,8 @@ public class DemoService extends AOSBaseService {
 	@SuppressWarnings("unused")
 	public void transactionDemo1(HttpModel httpModel) {
 		DemoAccountPO demo_accountPO = new DemoAccountPO();
-		demo_accountPO.setId_("10000");
-		demo_accountPO.setName_("测试1");
+		demo_accountPO.setId(10000);
+		demo_accountPO.setName("测试1");
 		demoAccountDao.updateByKey(demo_accountPO);
 		//同一个service方法内部的方法调用，要想被调用的方法按照预期传播行为就需要按照切面代理方式调用。
 		//跨Service的事务方法调用则可以直接调用
@@ -134,8 +140,8 @@ public class DemoService extends AOSBaseService {
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	private void transactionDemo1_1() {
 		DemoAccountPO demo_accountPO = new DemoAccountPO();
-		demo_accountPO.setId_("10006");
-		demo_accountPO.setName_("测试2");
+		demo_accountPO.setId(10006);
+		demo_accountPO.setName("测试2");
 		demoAccountDao.updateByKey(demo_accountPO);
 	}
 
@@ -146,7 +152,7 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void delAccountInfo(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		demoAccountDao.deleteByKey(inDto.getString("id_"));
+		demoAccountDao.deleteByKey(inDto.getInteger("id"));
 		httpModel.setOutMsg("账户信息删除成功");
 	}
 
@@ -158,8 +164,8 @@ public class DemoService extends AOSBaseService {
 	@Transactional
 	public void delAccountInfos(HttpModel httpModel) {
 		String[] selectionIds = httpModel.getInDto().getRows();
-		for (String id_ : selectionIds) {
-			demoAccountDao.deleteByKey(id_);
+		for (String id : selectionIds) {
+			demoAccountDao.deleteByKey(Integer.valueOf(id));
 		}
 		httpModel.setOutMsg("批量删除账户数据成功。");
 	}
@@ -240,16 +246,16 @@ public class DemoService extends AOSBaseService {
 		List<AosModulePO> aosModulePOs = aosModuleDao.list(null);
 		for (AosModulePO aosModulePO : aosModulePOs) {
 			TreeNode treeNode = new TreeNode();
-			treeNode.setId(aosModulePO.getId_());
-			treeNode.setText(aosModulePO.getName_());
-			treeNode.setParentId(aosModulePO.getParent_id_());
-			treeNode.setIcon(aosModulePO.getIcon_name_());
+			treeNode.setId(aosModulePO.getId().toString());
+			treeNode.setText(aosModulePO.getName());
+			treeNode.setParentId(aosModulePO.getParent_id().toString());
+			treeNode.setIcon(aosModulePO.getIcon_name());
 			//这个决定是否在节点上初选复选框，true为初始选中
 			//treeNode.setChecked(true);
-			treeNode.setLeaf(StringUtils.equals(aosModulePO.getIs_leaf_(), SystemCons.IS.YES) ? true : false );
-			treeNode.setExpanded(StringUtils.equals(aosModulePO.getIs_auto_expand_(), SystemCons.IS.YES) ? true : false );
+			treeNode.setLeaf(StringUtils.equals(aosModulePO.getIs_leaf(), SystemCons.IS.YES) ? true : false );
+			treeNode.setExpanded(StringUtils.equals(aosModulePO.getIs_auto_expand(), SystemCons.IS.YES) ? true : false );
 			//附加属性
-			treeNode.setA(aosModulePO.getUrl_());
+			treeNode.setA(aosModulePO.getUrl());
 			treeNodes.add(treeNode);
 		}
 		String jsonString = TreeBuilder.build(treeNodes);
@@ -267,16 +273,16 @@ public class DemoService extends AOSBaseService {
 		List<AosModulePO> aosModulePOs = aosModuleDao.list(null);
 		for (AosModulePO aosModulePO : aosModulePOs) {
 			TreeNode treeNode = new TreeNode();
-			treeNode.setId(aosModulePO.getId_());
-			treeNode.setText(aosModulePO.getName_());
-			treeNode.setParentId(aosModulePO.getParent_id_());
-			treeNode.setIcon(aosModulePO.getIcon_name_());
+			treeNode.setId(aosModulePO.getId().toString());
+			treeNode.setText(aosModulePO.getName());
+			treeNode.setParentId(aosModulePO.getParent_id().toString());
+			treeNode.setIcon(aosModulePO.getIcon_name());
 			//这个决定是否在节点上初选复选框，true为初始选中
 			treeNode.setChecked(false);
-			treeNode.setLeaf(StringUtils.equals(aosModulePO.getIs_leaf_(), SystemCons.IS.YES) ? true : false );
-			treeNode.setExpanded(StringUtils.equals(aosModulePO.getIs_auto_expand_(), SystemCons.IS.YES) ? true : false );
+			treeNode.setLeaf(StringUtils.equals(aosModulePO.getIs_leaf(), SystemCons.IS.YES) ? true : false );
+			treeNode.setExpanded(StringUtils.equals(aosModulePO.getIs_auto_expand(), SystemCons.IS.YES) ? true : false );
 			//附加属性
-			treeNode.setA(aosModulePO.getUrl_());
+			treeNode.setA(aosModulePO.getUrl());
 			treeNodes.add(treeNode);
 		}
 		String jsonString = TreeBuilder.build(treeNodes);
@@ -291,23 +297,23 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void getAsyncTreeData(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		inDto.setOrder("sort_no_");
+		inDto.setOrder("sort_no");
 		List<AosModulePO> aosModulePOs = aosModuleDao.list(inDto);
 		List<TreeNode> treeNodes = Lists.newArrayList();
 		for (AosModulePO aosModulePO : aosModulePOs) {
 			TreeNode treeNode = new TreeNode();
-			treeNode.setId(aosModulePO.getId_());
-			treeNode.setText(aosModulePO.getName_());
-			String icon_ = aosModulePO.getIcon_name_();
+			treeNode.setId(aosModulePO.getId().toString());
+			treeNode.setText(aosModulePO.getName());
+			String icon_ = aosModulePO.getIcon_name();
 			if (AOSUtils.isNotEmpty(icon_)) {
 				treeNode.setIcon(icon_);
 			}
-			String is_leaf_ = aosModulePO.getIs_leaf_();
+			String is_leaf_ = aosModulePO.getIs_leaf();
 			treeNode.setLeaf(AOSCons.YES.equals(is_leaf_) ? true : false);
-			//String is_auto_expand_ = aosModulePO.getIs_auto_expand_();
+			//String is_auto_expand_ = aosModulePO.getIs_auto_expand();
 			//treeNode.setExpanded(AOSCons.YES.equals(is_auto_expand_) ? true : false);
 			treeNode.setExpanded(false);
-			treeNode.setA(aosModulePO.getCascade_id_());
+			treeNode.setA(aosModulePO.getCascade_id());
 			treeNodes.add(treeNode);
 		}
 		httpModel.setOutMsg(AOSJson.toJson(treeNodes));
@@ -354,15 +360,15 @@ public class DemoService extends AOSBaseService {
 	 */
 	public void loadFormInfo(HttpModel httpModel) {
 		Dto dto = Dtos.newDto();
-		dto.put("name_", "凤姐");
-		dto.put("age_", 18);
-		dto.put("sex_", "1");
-		dto.put("birthday_", AOSUtils.getDateStr()); //日期类型必须是yyyy-mm-dd格式的日期字符串
+		dto.put("name", "凤姐");
+		dto.put("age", 18);
+		dto.put("sex", "1");
+		dto.put("birthday", AOSUtils.getDateStr()); //日期类型必须是yyyy-mm-dd格式的日期字符串
 		String[] c1={"1","2","3"}; //也可以是List
 		dto.put("c1", c1);
 		dto.put("r1", "2");
-		dto.put("home_", "华盛顿白宫8号院");
-		dto.put("operateTime_", AOSUtils.getDateTime());
+		dto.put("home", "华盛顿白宫8号院");
+		dto.put("operateTime", AOSUtils.getDateTime());
 		httpModel.setOutMsg(AOSJson.toJson(dto));
 	}
 	
@@ -530,7 +536,7 @@ public class DemoService extends AOSBaseService {
 	 * @return
 	 */
 	public void initForm(HttpModel httpModel) {
-		httpModel.setAttribute("vercode_uuid_", AOSId.uuid());
+		httpModel.setAttribute("vercode_uuid", idService.uuid());
 		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
 		httpModel.setViewPath("showcase/basic/form.jsp");
 	}

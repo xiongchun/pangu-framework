@@ -3,42 +3,42 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- aos_user_role[aos_user_role]SQL自动映射 -->
-<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-01-18 22:42:02 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-23 17:54:25 -->
 <mapper namespace="aos.system.dao.AosUserRoleDao">
 	
 	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
 	<insert id="insert"  parameterType="AosUserRolePO">
 		INSERT INTO aos_user_role (
-		<if test="user_id_ != null and user_id_ != ''">
-	         user_id_, <!-- 用户流水号 -->
+		<if test="user_id != null">
+	         user_id, <!-- 用户流水号 -->
 		</if>
-		<if test="role_id_ != null and role_id_ != ''">
-	         role_id_, <!-- 角色流水号 -->
+		<if test="role_id != null">
+	         role_id, <!-- 角色流水号 -->
 		</if>
-		<if test="create_time_ != null and create_time_ != ''">
-	         create_time_, <!-- 创建时间 -->
+		<if test="create_time != null and create_time != ''">
+	         create_time, <!-- 创建时间 -->
 		</if>
-		<if test="create_by_ != null and create_by_ != ''">
-	         create_by_, <!-- 创建人ID -->
+		<if test="create_by != null">
+	         create_by, <!-- 创建人ID -->
 		</if>
-		<if test="id_ != null and id_ != ''">
-	          id_  <!-- 流水号 -->
+		<if test="id != null">
+	          id  <!-- 流水号 -->
 	   </if>
 		)VALUES(
-		<if test="user_id_ != null and user_id_ != ''">
-	          #{user_id_, jdbcType=VARCHAR}, <!-- 用户流水号 -->
+		<if test="user_id != null">
+	          #{user_id, jdbcType=INTEGER}, <!-- 用户流水号 -->
 	    </if>
-		<if test="role_id_ != null and role_id_ != ''">
-	          #{role_id_, jdbcType=VARCHAR}, <!-- 角色流水号 -->
+		<if test="role_id != null">
+	          #{role_id, jdbcType=INTEGER}, <!-- 角色流水号 -->
 	    </if>
-		<if test="create_time_ != null and create_time_ != ''">
-	          #{create_time_, jdbcType=VARCHAR}, <!-- 创建时间 -->
+		<if test="create_time != null and create_time != ''">
+	          #{create_time, jdbcType=VARCHAR}, <!-- 创建时间 -->
 	    </if>
-		<if test="create_by_ != null and create_by_ != ''">
-	          #{create_by_, jdbcType=VARCHAR}, <!-- 创建人ID -->
+		<if test="create_by != null">
+	          #{create_by, jdbcType=INTEGER}, <!-- 创建人ID -->
 	    </if>
-		<if test="id_ != null and id_ != ''">
-		     #{id_, jdbcType=VARCHAR}  <!-- 流水号 -->
+		<if test="id != null">
+		     #{id, jdbcType=INTEGER}  <!-- 流水号 -->
 	    </if>
 		)
 	</insert>
@@ -49,11 +49,11 @@
 		    <include refid="column" />
 		)
 		VALUES (
-		    #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
-		    #{user_id_, jdbcType=VARCHAR},  <!-- 用户流水号 -->
-		    #{role_id_, jdbcType=VARCHAR},  <!-- 角色流水号 -->
-		    #{create_time_, jdbcType=VARCHAR},  <!-- 创建时间 -->
-		    #{create_by_, jdbcType=VARCHAR}  <!-- 创建人ID -->
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{user_id, jdbcType=INTEGER},  <!-- 用户流水号 -->
+		    #{role_id, jdbcType=INTEGER},  <!-- 角色流水号 -->
+		    #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
+		    #{create_by, jdbcType=INTEGER}  <!-- 创建人ID -->
 		)
 	</insert>
 
@@ -61,35 +61,35 @@
 	<update id="updateByKey" parameterType="AosUserRolePO">
 		UPDATE aos_user_role
 		<set>
-			<if test="id_ != null">
-		          id_ = #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
 			</if>
-			<if test="user_id_ != null">
-		          user_id_ = #{user_id_, jdbcType=VARCHAR},  <!-- 用户流水号 -->
+			<if test="user_id != null">
+		          user_id = #{user_id, jdbcType=INTEGER},  <!-- 用户流水号 -->
 			</if>
-			<if test="role_id_ != null">
-		          role_id_ = #{role_id_, jdbcType=VARCHAR},  <!-- 角色流水号 -->
+			<if test="role_id != null">
+		          role_id = #{role_id, jdbcType=INTEGER},  <!-- 角色流水号 -->
 			</if>
-			<if test="create_time_ != null">
-		          create_time_ = #{create_time_, jdbcType=VARCHAR},  <!-- 创建时间 -->
+			<if test="create_time != null">
+		          create_time = #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
 			</if>
-			<if test="create_by_ != null">
-		          create_by_ = #{create_by_, jdbcType=VARCHAR},  <!-- 创建人ID -->
+			<if test="create_by != null">
+		          create_by = #{create_by, jdbcType=INTEGER},  <!-- 创建人ID -->
 			</if>
 		</set>
-		WHERE  id_ = #{id_}
+		WHERE  id = #{id}
 	</update>
 	
 	<!-- 根据主键删除数据持久化对象 -->
 	<delete id="deleteByKey">
-		DELETE FROM aos_user_role WHERE  id_ = #{id_}
+		DELETE FROM aos_user_role WHERE  id = #{id}
 	</delete>
 
 	<!-- 根据主键查询并返回数据持久化对象 -->
 	<select id="selectByKey" resultType="AosUserRolePO">
 		SELECT
 		<include refid="column" />
-		FROM aos_user_role WHERE  id_ = #{id_}
+		FROM aos_user_role WHERE  id = #{id}
 	</select>
 
 	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
@@ -162,57 +162,45 @@
 	
 	<!-- 表字段 -->
 	<sql id="column">
-		  id_,  <!-- 流水号 -->
-		  user_id_,  <!-- 用户流水号 -->
-		  role_id_,  <!-- 角色流水号 -->
-		  create_time_,  <!-- 创建时间 -->
-		  create_by_  <!-- 创建人ID -->
+		  id,  <!-- 流水号 -->
+		  user_id,  <!-- 用户流水号 -->
+		  role_id,  <!-- 角色流水号 -->
+		  create_time,  <!-- 创建时间 -->
+		  create_by  <!-- 创建人ID -->
 	</sql>
 	
 	<!-- 表字段(用于外表的关联时引用) -->
 	<sql id="column2">
-		  aos_user_role.id_,  <!-- 流水号 -->
-		  aos_user_role.user_id_,  <!-- 用户流水号 -->
-		  aos_user_role.role_id_,  <!-- 角色流水号 -->
-		  aos_user_role.create_time_,  <!-- 创建时间 -->
-		  aos_user_role.create_by_  <!-- 创建人ID -->
+		  aos_user_role.id,  <!-- 流水号 -->
+		  aos_user_role.user_id,  <!-- 用户流水号 -->
+		  aos_user_role.role_id,  <!-- 角色流水号 -->
+		  aos_user_role.create_time,  <!-- 创建时间 -->
+		  aos_user_role.create_by  <!-- 创建人ID -->
 	</sql>
 
 	<!-- Where精确匹配字段 -->
 	<sql id="equal">
-	    <if test="id_ != null and id_ != ''">
-		      AND id_ = #{id_}  <!-- 流水号 -->
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
 		</if>
-	    <if test="user_id_ != null and user_id_ != ''">
-		      AND user_id_ = #{user_id_}  <!-- 用户流水号 -->
+	   <if test="user_id != null ">
+		      AND user_id = #{user_id}  <!-- 用户流水号 -->
 		</if>
-	    <if test="role_id_ != null and role_id_ != ''">
-		      AND role_id_ = #{role_id_}  <!-- 角色流水号 -->
+	   <if test="role_id != null ">
+		      AND role_id = #{role_id}  <!-- 角色流水号 -->
 		</if>
-	    <if test="create_time_ != null and create_time_ != ''">
-		      AND create_time_ = #{create_time_}  <!-- 创建时间 -->
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time = #{create_time}  <!-- 创建时间 -->
 		</if>
-	    <if test="create_by_ != null and create_by_ != ''">
-		      AND create_by_ = #{create_by_}  <!-- 创建人ID -->
+	   <if test="create_by != null ">
+		      AND create_by = #{create_by}  <!-- 创建人ID -->
 		</if>
 	</sql>
 	
 	<!-- Where模糊匹配字段 -->
 	<sql id="like">
-	    <if test="id_ != null and id_ != ''">
-		      AND id_ like '%${id_}%'  <!-- 流水号 -->
-		</if>
-	    <if test="user_id_ != null and user_id_ != ''">
-		      AND user_id_ like '%${user_id_}%'  <!-- 用户流水号 -->
-		</if>
-	    <if test="role_id_ != null and role_id_ != ''">
-		      AND role_id_ like '%${role_id_}%'  <!-- 角色流水号 -->
-		</if>
-	    <if test="create_time_ != null and create_time_ != ''">
-		      AND create_time_ like '%${create_time_}%'  <!-- 创建时间 -->
-		</if>
-	    <if test="create_by_ != null and create_by_ != ''">
-		      AND create_by_ like '%${create_by_}%'  <!-- 创建人ID -->
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time like '${create_time}%'  <!-- 创建时间 -->
 		</if>
 	</sql>
 	

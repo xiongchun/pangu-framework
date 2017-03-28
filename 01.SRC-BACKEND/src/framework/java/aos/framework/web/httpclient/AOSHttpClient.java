@@ -77,9 +77,9 @@ public class AOSHttpClient {
 			}
 
 			// 创建连接超时时间(缺省值：3s)
-			int connectionTimeout = httpRequestVO.getConnectionTimeout() == 0 ? 3 * 1000 : 0;
+			int connectionTimeout = httpRequestVO.getConnectionTimeout() == 0 ? 3 * 1000 : httpRequestVO.getConnectionTimeout();
 			// 等待响应超时时间(缺省值：30s)
-			int readTimeout = httpRequestVO.getReadTimeout() == 0 ? 30 * 1000 : 0;
+			int readTimeout = httpRequestVO.getReadTimeout() == 0 ? 30 * 1000 : httpRequestVO.getReadTimeout();
 			RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(readTimeout)
 					.setConnectTimeout(connectionTimeout).build();
 			HttpUriRequest httpUriRequest = requestBuilder.setConfig(requestConfig).build();

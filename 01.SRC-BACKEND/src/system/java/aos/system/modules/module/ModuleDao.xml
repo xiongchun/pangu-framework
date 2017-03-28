@@ -11,35 +11,35 @@
             <include refid="aos.system.dao.AosModuleDao.column" />
             FROM aos_module
 			<where>
-			    <if test="name_ != null and name_ != ''">
-				    AND name_ LIKE '%${name_}%' 
+			    <if test="name != null and name != ''">
+				    AND name LIKE '%${name}%' 
 				</if>
-			    <if test="cascade_ == 'false'">
-				    AND parent_id_ = #{id_, jdbcType=VARCHAR} 
+			    <if test="cascade == 'false'">
+				    AND parent_id = #{id, jdbcType=INTEGER}
 				</if>
-				<if test="cascade_ == 'true'">
-				    AND cascade_id_ like '${cascade_id_}%'
+				<if test="cascade == 'true'">
+				    AND cascade_id like '${cascade_id}%'
 				</if>
 			</where>	
-			 ORDER BY sort_no_ ASC, id_ DESC
+			 ORDER BY sort_no ASC, id DESC
 	</select>
 	
 	<!-- 查询某节点下子节点的最大语义ID -->
 	<select id="getMaxCascadeId" resultType="String" parameterType="String">
-	     SELECT MAX(cascade_id_) AS max_cascade_id_ FROM aos_module WHERE parent_id_ = #{parent_id_}
+	     SELECT MAX(cascade_id) AS max_cascade_id FROM aos_module WHERE parent_id = #{parent_id}
 	</select>
 	
 	<!-- 检查删除节点中是否包含根节点 -->
 	<select id="checkRootNode" resultType="AosModulePO" parameterType="Dto">
 	     SELECT 
 	         <include refid="aos.system.dao.AosModuleDao.column" />
-	      FROM aos_module WHERE id_ IN (${ids}) AND parent_id_ = '0'
+	      FROM aos_module WHERE id IN (${ids}) AND parent_id = '0'
 	</select>
 	
 	<!-- 查询和指定模块相关的用户列表 -->
 	<select id="listUsersDependOnModule" resultType="String" parameterType="Dto">
-		SELECT DISTINCT user_id_ FROM aos_user_role where role_id_ IN (
-		SELECT DISTINCT role_id_ from aos_role_module where module_id_ = #{module_id_})
+		SELECT DISTINCT user_id FROM aos_user_role where role_id IN (
+		SELECT DISTINCT role_id from aos_role_module where module_id = #{module_id})
 	</select>
 
 </mapper>

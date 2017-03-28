@@ -5,11 +5,9 @@
 	${id}.on('change', $onchange); 
 #end
 #if($onkeydown)
-	enableKeyEvents : true,
 	${id}.on('keydown', $onkeydown); 
 #end
 #if($onkeyup)
-	enableKeyEvents : true,
 	${id}.on('keyup', $onkeyup); 
 #end
 #if($onfocus)
@@ -22,7 +20,6 @@
 	${id}.on('blur', $onblur); 
 #end
 #if($onenterkey)
-	enableKeyEvents : true,
 	${id}.on('specialkey', function(obj,e){
 	if (e.getKey() == Ext.EventObject.ENTER) {
 	  $onenterkey(obj, e);
@@ -30,7 +27,6 @@
 	}); 
 #end
 #if($onspecialkey)
-	enableKeyEvents : true,
 	${id}.on('specialkey', $onspecialkey); 
 #end
 

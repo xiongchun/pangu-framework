@@ -178,7 +178,7 @@ public class AOSCodec {
 	 * @return
 	 */
 	public static String password(String password) {
-		return md5(encrypt(password, AOSCxt.getParam("code_key_")));
+		return md5(encrypt(password, AOSCxt.getParam("code_key")));
 	}
 	
 	/**

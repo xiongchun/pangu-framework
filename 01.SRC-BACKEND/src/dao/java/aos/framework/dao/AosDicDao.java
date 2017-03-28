@@ -1,7 +1,6 @@
 package aos.framework.dao;
 
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 import aos.framework.core.annotation.Dao;
@@ -16,7 +15,7 @@ import aos.framework.dao.po.AosDicPO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:28:56
+ * @date 2017-03-24 10:46:25
  */
 @Dao("aosDicDao")
 public interface AosDicDao {
@@ -54,7 +53,7 @@ public interface AosDicDao {
 	 * 
 	 * @return AosDicPO
 	 */
-	AosDicPO selectByKey(@Param(value = "id_") String id_);
+	AosDicPO selectByKey(@Param(value = "id") Integer id);
 
 	/**
 	 * 根据唯一组合条件查询并返回数据持久化对象
@@ -96,7 +95,7 @@ public interface AosDicDao {
 	 *
 	 * @return 影响行数
 	 */
-	int deleteByKey(@Param(value = "id_") String id_);
+	int deleteByKey(@Param(value = "id") Integer id);
 	
 	/**
 	 * 根据Dto统计行数

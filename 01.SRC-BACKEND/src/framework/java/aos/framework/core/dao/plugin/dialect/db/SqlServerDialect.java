@@ -36,7 +36,7 @@ public class SqlServerDialect  implements Dialect {
 		pSql = StringUtils.replace(pSql, "select", "SELECT");
 		stringBuilder.append(StringUtils.substringAfter(pSql, "SELECT"));
 		stringBuilder.append(") SELECT * FROM aos_query_ WHERE aos_rn_ BETWEEN ");
-		stringBuilder.append(start).append(" AND ").append(end).append(" ORDER BY aos_rn_");
+		stringBuilder.append(start).append(" AND ").append(end).append(" ORDER BY aos_rn");
 		return stringBuilder.toString();
 	}
 
@@ -54,7 +54,7 @@ public class SqlServerDialect  implements Dialect {
 	@Override
 	public String getCountSql(String pSql) {
 		StringBuilder stringBuilder = new StringBuilder("WITH aos_query_ AS (");
-		stringBuilder.append(pSql).append(")SELECT COUNT (0) from aos_query_ AS aos_count_");
+		stringBuilder.append(pSql).append(")SELECT COUNT (0) from aos_query_ AS aos_count");
 		return stringBuilder.toString();
 	}
 

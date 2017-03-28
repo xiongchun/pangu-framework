@@ -15,7 +15,7 @@ import aos.demo.dao.po.DemoAccountPO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-03-01 21:15:45
+ * @date 2017-03-23 17:55:41
  */
 @Dao("demoAccountDao")
 public interface DemoAccountDao {
@@ -53,7 +53,7 @@ public interface DemoAccountDao {
 	 * 
 	 * @return DemoAccountPO
 	 */
-	DemoAccountPO selectByKey(@Param(value = "id_") String id_);
+	DemoAccountPO selectByKey(@Param(value = "id") Integer id);
 
 	/**
 	 * 根据唯一组合条件查询并返回数据持久化对象
@@ -95,7 +95,7 @@ public interface DemoAccountDao {
 	 *
 	 * @return 影响行数
 	 */
-	int deleteByKey(@Param(value = "id_") String id_);
+	int deleteByKey(@Param(value = "id") Integer id);
 	
 	/**
 	 * 根据Dto统计行数

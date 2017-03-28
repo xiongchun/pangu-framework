@@ -61,15 +61,15 @@ public class OnReadyTag extends BaseTagSupport {
 		doPrepare();
 		Dto tagDto = new TagDto();
 		super.pkgProperties(tagDto);
-		String preventDefault = AOSCxt.getParam("prevent_rightclick_");
+		String preventDefault = AOSCxt.getParam("prevent_rightclick");
 		tagDto.put("preventDefault", preventDefault);
 		tagDto.put("statusBar", getStatusBar());
 		tagDto.put("pagingMemoryProxy", getPagingMemoryProxy());
 		tagDto.put("iframe", getIframe());
 		tagDto.put("dataView", getDataView());
 		tagDto.put("toggle", getToggle());
-		tagDto.put("run_mode_", AOSCxt.getParam("run_mode_"));
-		tagDto.put("msgtarget_", AOSCxt.getParam("msgtarget_"));
+		tagDto.put("run_mode", AOSCxt.getParam("run_mode"));
+		tagDto.put("msgtarget", AOSCxt.getParam("msgtarget"));
 		// 标签ux属性可以强制引入依赖
 		// 缺省情况下，扩展组件会根据所引用到的扩展标签自动启用扩展，但也可以通过此属性在没有使用扩展标签的情况下启用扩展组件的资源依赖。
 		if (AOSUtils.isNotEmpty(ux)) {

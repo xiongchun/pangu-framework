@@ -349,7 +349,7 @@ public class AOSTagUtils {
 		String skin_ = null;
 		UserModel userModel = WebCxt.getUserModel(request);
 		if (AOSUtils.isNotEmpty(userModel)) {
-			skin_ = userModel.getSkin_();
+			skin_ = userModel.getSkin();
 		}
 		if (AOSUtils.isEmpty(skin_)) {
 			skin_ = AOSCons.SKIN.BLUE;

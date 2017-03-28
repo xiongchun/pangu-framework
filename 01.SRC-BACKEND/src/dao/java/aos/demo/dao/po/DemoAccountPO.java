@@ -11,7 +11,7 @@ import java.util.Date;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-03-01 21:15:45
+ * @date 2017-03-23 17:55:40
  */
 public class DemoAccountPO extends PO {
 
@@ -20,325 +20,325 @@ public class DemoAccountPO extends PO {
 	/**
 	 * 流水号
 	 */
-	private String id_;
+	private Integer id;
 	
 	/**
 	 * 姓名
 	 */
-	private String name_;
+	private String name;
 	
 	/**
 	 * 卡号
 	 */
-	private String card_id_;
+	private String card_id;
 	
 	/**
 	 * 卡类型
 	 */
-	private String card_type_;
+	private String card_type;
 	
 	/**
 	 * 可用余额
 	 */
-	private BigDecimal balance_;
+	private BigDecimal balance;
 	
 	/**
 	 * 信用额度
 	 */
-	private BigDecimal credit_line_;
+	private BigDecimal credit_line;
 	
 	/**
 	 * 所属银行机构ID
 	 */
-	private String org_id_;
+	private String org_id;
 	
 	/**
 	 * 身份证号
 	 */
-	private String id_no_;
+	private String id_no;
 	
 	/**
 	 * 性别
 	 */
-	private String sex_;
+	private String sex;
 	
 	/**
 	 * 生日
 	 */
-	private Date birthday_;
+	private Date birthday;
 	
 	/**
 	 * 年龄
 	 */
-	private Integer age_;
+	private Integer age;
 	
 	/**
 	 * 地址
 	 */
-	private String address_;
+	private String address;
 	
 	/**
 	 * 创建时间
 	 */
-	private Date create_time_;
+	private Date create_time;
 	
 	/**
 	 * 创建人ID
 	 */
-	private String create_user_id_;
+	private String create_user_id;
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @return id_
+	 * @return id
 	 */
-	public String getId_() {
-		return id_;
+	public Integer getId() {
+		return id;
 	}
 	
 	/**
 	 * 姓名
 	 * 
-	 * @return name_
+	 * @return name
 	 */
-	public String getName_() {
-		return name_;
+	public String getName() {
+		return name;
 	}
 	
 	/**
 	 * 卡号
 	 * 
-	 * @return card_id_
+	 * @return card_id
 	 */
-	public String getCard_id_() {
-		return card_id_;
+	public String getCard_id() {
+		return card_id;
 	}
 	
 	/**
 	 * 卡类型
 	 * 
-	 * @return card_type_
+	 * @return card_type
 	 */
-	public String getCard_type_() {
-		return card_type_;
+	public String getCard_type() {
+		return card_type;
 	}
 	
 	/**
 	 * 可用余额
 	 * 
-	 * @return balance_
+	 * @return balance
 	 */
-	public BigDecimal getBalance_() {
-		return balance_;
+	public BigDecimal getBalance() {
+		return balance;
 	}
 	
 	/**
 	 * 信用额度
 	 * 
-	 * @return credit_line_
+	 * @return credit_line
 	 */
-	public BigDecimal getCredit_line_() {
-		return credit_line_;
+	public BigDecimal getCredit_line() {
+		return credit_line;
 	}
 	
 	/**
 	 * 所属银行机构ID
 	 * 
-	 * @return org_id_
+	 * @return org_id
 	 */
-	public String getOrg_id_() {
-		return org_id_;
+	public String getOrg_id() {
+		return org_id;
 	}
 	
 	/**
 	 * 身份证号
 	 * 
-	 * @return id_no_
+	 * @return id_no
 	 */
-	public String getId_no_() {
-		return id_no_;
+	public String getId_no() {
+		return id_no;
 	}
 	
 	/**
 	 * 性别
 	 * 
-	 * @return sex_
+	 * @return sex
 	 */
-	public String getSex_() {
-		return sex_;
+	public String getSex() {
+		return sex;
 	}
 	
 	/**
 	 * 生日
 	 * 
-	 * @return birthday_
+	 * @return birthday
 	 */
-	public Date getBirthday_() {
-		return birthday_;
+	public Date getBirthday() {
+		return birthday;
 	}
 	
 	/**
 	 * 年龄
 	 * 
-	 * @return age_
+	 * @return age
 	 */
-	public Integer getAge_() {
-		return age_;
+	public Integer getAge() {
+		return age;
 	}
 	
 	/**
 	 * 地址
 	 * 
-	 * @return address_
+	 * @return address
 	 */
-	public String getAddress_() {
-		return address_;
+	public String getAddress() {
+		return address;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @return create_time_
+	 * @return create_time
 	 */
-	public Date getCreate_time_() {
-		return create_time_;
+	public Date getCreate_time() {
+		return create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @return create_user_id_
+	 * @return create_user_id
 	 */
-	public String getCreate_user_id_() {
-		return create_user_id_;
+	public String getCreate_user_id() {
+		return create_user_id;
 	}
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @param id_
+	 * @param id
 	 */
-	public void setId_(String id_) {
-		this.id_ = id_;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	/**
 	 * 姓名
 	 * 
-	 * @param name_
+	 * @param name
 	 */
-	public void setName_(String name_) {
-		this.name_ = name_;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/**
 	 * 卡号
 	 * 
-	 * @param card_id_
+	 * @param card_id
 	 */
-	public void setCard_id_(String card_id_) {
-		this.card_id_ = card_id_;
+	public void setCard_id(String card_id) {
+		this.card_id = card_id;
 	}
 	
 	/**
 	 * 卡类型
 	 * 
-	 * @param card_type_
+	 * @param card_type
 	 */
-	public void setCard_type_(String card_type_) {
-		this.card_type_ = card_type_;
+	public void setCard_type(String card_type) {
+		this.card_type = card_type;
 	}
 	
 	/**
 	 * 可用余额
 	 * 
-	 * @param balance_
+	 * @param balance
 	 */
-	public void setBalance_(BigDecimal balance_) {
-		this.balance_ = balance_;
+	public void setBalance(BigDecimal balance) {
+		this.balance = balance;
 	}
 	
 	/**
 	 * 信用额度
 	 * 
-	 * @param credit_line_
+	 * @param credit_line
 	 */
-	public void setCredit_line_(BigDecimal credit_line_) {
-		this.credit_line_ = credit_line_;
+	public void setCredit_line(BigDecimal credit_line) {
+		this.credit_line = credit_line;
 	}
 	
 	/**
 	 * 所属银行机构ID
 	 * 
-	 * @param org_id_
+	 * @param org_id
 	 */
-	public void setOrg_id_(String org_id_) {
-		this.org_id_ = org_id_;
+	public void setOrg_id(String org_id) {
+		this.org_id = org_id;
 	}
 	
 	/**
 	 * 身份证号
 	 * 
-	 * @param id_no_
+	 * @param id_no
 	 */
-	public void setId_no_(String id_no_) {
-		this.id_no_ = id_no_;
+	public void setId_no(String id_no) {
+		this.id_no = id_no;
 	}
 	
 	/**
 	 * 性别
 	 * 
-	 * @param sex_
+	 * @param sex
 	 */
-	public void setSex_(String sex_) {
-		this.sex_ = sex_;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	
 	/**
 	 * 生日
 	 * 
-	 * @param birthday_
+	 * @param birthday
 	 */
-	public void setBirthday_(Date birthday_) {
-		this.birthday_ = birthday_;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 	
 	/**
 	 * 年龄
 	 * 
-	 * @param age_
+	 * @param age
 	 */
-	public void setAge_(Integer age_) {
-		this.age_ = age_;
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 	
 	/**
 	 * 地址
 	 * 
-	 * @param address_
+	 * @param address
 	 */
-	public void setAddress_(String address_) {
-		this.address_ = address_;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @param create_time_
+	 * @param create_time
 	 */
-	public void setCreate_time_(Date create_time_) {
-		this.create_time_ = create_time_;
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @param create_user_id_
+	 * @param create_user_id
 	 */
-	public void setCreate_user_id_(String create_user_id_) {
-		this.create_user_id_ = create_user_id_;
+	public void setCreate_user_id(String create_user_id) {
+		this.create_user_id = create_user_id;
 	}
 	
 

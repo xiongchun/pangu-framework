@@ -32,17 +32,17 @@ public class SystemUtils {
 		List<TreeNode> treeNodes = Lists.newArrayList();
 		for (Dto nodeDto : nodeDtos) {
 			TreeNode treeNode = new TreeNode();
-			treeNode.setId(nodeDto.getString("id_"));
-			treeNode.setText(nodeDto.getString("name_"));
-			treeNode.setParentId(nodeDto.getString("parent_id_"));
-			treeNode.setIcon(nodeDto.getString("icon_name_"));
+			treeNode.setId(nodeDto.getString("id"));
+			treeNode.setText(nodeDto.getString("name"));
+			treeNode.setParentId(nodeDto.getString("parent_id"));
+			treeNode.setIcon(nodeDto.getString("icon_name"));
 			if (AOSUtils.isNotEmpty(nodeDto.getBoolean("checked"))) {
 				treeNode.setChecked(nodeDto.getBoolean("checked"));
 			}
-			treeNode.setA(nodeDto.getString("url_"));
-			treeNode.setB(nodeDto.getString("cascade_id_"));
-			treeNode.setLeaf(StringUtils.equals(nodeDto.getString("is_leaf_"), SystemCons.IS.YES) ? true : false );
-			treeNode.setExpanded(StringUtils.equals(nodeDto.getString("is_auto_expand_"), SystemCons.IS.YES) ? true : false );
+			treeNode.setA(nodeDto.getString("url"));
+			treeNode.setB(nodeDto.getString("cascade_id"));
+			treeNode.setLeaf(StringUtils.equals(nodeDto.getString("is_leaf"), SystemCons.IS.YES) ? true : false );
+			treeNode.setExpanded(StringUtils.equals(nodeDto.getString("is_auto_expand"), SystemCons.IS.YES) ? true : false );
 			treeNodes.add(treeNode);
 		}
 		String jsonString = TreeBuilder.build(treeNodes);
@@ -58,17 +58,17 @@ public class SystemUtils {
 		List<TreeNode> treeNodes = Lists.newArrayList();
 		for (Dto model : treeModels) {
 			TreeNode treeNode = new TreeNode();
-			treeNode.setId(model.getString("id_"));
-			treeNode.setText(model.getString("name_"));
-			String icon_ = model.getString("icon_name_");
+			treeNode.setId(model.getString("id"));
+			treeNode.setText(model.getString("name"));
+			String icon_ = model.getString("icon_name");
 			if (AOSUtils.isNotEmpty(icon_)) {
 				treeNode.setIcon(icon_);
 			}
-			String is_leaf_ = model.getString("is_leaf_");
+			String is_leaf_ = model.getString("is_leaf");
 			treeNode.setLeaf(AOSCons.YES.equals(is_leaf_) ? true : false);
-			String is_auto_expand_ = model.getString("is_auto_expand_");
+			String is_auto_expand_ = model.getString("is_auto_expand");
 			treeNode.setExpanded(AOSCons.YES.equals(is_auto_expand_) ? true : false);
-			treeNode.setA(model.getString("cascade_id_"));
+			treeNode.setA(model.getString("cascade_id"));
 			treeNodes.add(treeNode);
 		}
 		return AOSJson.toJson(treeNodes);

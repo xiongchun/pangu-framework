@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
 
-import aos.framework.core.id.AOSId;
-import aos.framework.core.service.AOSBaseService;
+import aos.framework.core.dao.SqlDao;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.web.router.HttpModel;
+import aos.system.common.id.IdService;
 import aos.system.common.utils.SystemCons;
 import aos.system.common.utils.SystemUtils;
 import aos.system.dao.AosModuleDao;
@@ -30,12 +30,16 @@ import aos.system.modules.cache.CacheUserDataService;
  *
  */
 @Service
-public class ModuleService extends AOSBaseService {
+public class ModuleService {
 
 	@Autowired
 	private AosModuleDao aosModuleDao;
 	@Autowired
 	private CacheUserDataService cacheUserDataService;
+	@Autowired
+	private SqlDao sqlDao;
+	@Autowired
+	private IdService idService;
 
 	/**
 	 * 模块管理页面初始化
@@ -44,7 +48,7 @@ public class ModuleService extends AOSBaseService {
 	 * @return
 	 */
 	public void init(HttpModel httpModel) {
-		AosModulePO aosModulePO = aosModuleDao.selectOne(Dtos.newDto("parent_id_", SystemCons.ROOTNODE_PARENT_ID));
+		AosModulePO aosModulePO = aosModuleDao.selectOne(Dtos.newDto("parent_id", SystemCons.ROOTNODE_PARENT_ID));
 		httpModel.setAttribute("rootPO", aosModulePO);
 		httpModel.setViewPath("system/module.jsp");
 	}
@@ -57,7 +61,7 @@ public class ModuleService extends AOSBaseService {
 	 */
 	public void getTreeData(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		inDto.setOrder("sort_no_");
+		inDto.setOrder("sort_no");
 		List<AosModulePO> aosModulePOs = aosModuleDao.list(inDto);
 		List<Dto> modelDtos = Lists.newArrayList();
 		for (AosModulePO aosModulePO : aosModulePOs) {
@@ -90,30 +94,30 @@ public class ModuleService extends AOSBaseService {
 		Dto inDto = httpModel.getInDto();
 		AosModulePO aosModulePO = new AosModulePO();
 		aosModulePO.copyProperties(inDto);
-		aosModulePO.setId_(AOSId.appId(SystemCons.ID.SYSTEM));
+		aosModulePO.setId(idService.nextValue(SystemCons.SEQ.SEQ_SYSTEM).intValue());
 		
 		// 生成语义ID
-		AosModulePO parentAosModulePO = aosModuleDao.selectByKey(aosModulePO.getParent_id_());
-		String max_cascade_id_ = (String)sqlDao.selectOne("Module.getMaxCascadeId", aosModulePO.getParent_id_());
+		AosModulePO parentAosModulePO = aosModuleDao.selectByKey(aosModulePO.getParent_id());
+		String max_cascade_id_ = (String)sqlDao.selectOne("Module.getMaxCascadeId", aosModulePO.getParent_id());
 		if (AOSUtils.isEmpty(max_cascade_id_)) {
 			String temp = "0";
 			if (AOSUtils.isNotEmpty(parentAosModulePO)) {
-				temp = parentAosModulePO.getCascade_id_();
+				temp = parentAosModulePO.getCascade_id();
 			}
 			max_cascade_id_ = temp + ".000";
 		}
 		String cascade_id_ = SystemUtils.genCascadeTreeId(max_cascade_id_, 999);
-		aosModulePO.setCascade_id_(cascade_id_);
+		aosModulePO.setCascade_id(cascade_id_);
 		
-		aosModulePO.setIs_leaf_(SystemCons.IS.YES);
+		aosModulePO.setIs_leaf(SystemCons.IS.YES);
 		//对关键字段入库前的trim处理
-		aosModulePO.setUrl_(StringUtils.trim(aosModulePO.getUrl_()));
+		aosModulePO.setUrl(StringUtils.trim(aosModulePO.getUrl()));
 		aosModuleDao.insert(aosModulePO);
 		
 		//更新父节点的是否叶子节点字段
 		AosModulePO updatePO = new AosModulePO();
-		updatePO.setId_(aosModulePO.getParent_id_());
-		updatePO.setIs_leaf_(SystemCons.IS.NO);
+		updatePO.setId(aosModulePO.getParent_id());
+		updatePO.setIs_leaf(SystemCons.IS.NO);
 		aosModuleDao.updateByKey(updatePO);
 		
 		httpModel.setOutMsg("功能模块新增成功。");
@@ -132,7 +136,7 @@ public class ModuleService extends AOSBaseService {
 		aosModulePO.copyProperties(inDto);
 		aosModuleDao.updateByKey(aosModulePO);
 		//重置和这个模块相关的授权缓存信息
-		resetUserGrantWhenModuleChange(aosModulePO.getId_());
+		resetUserGrantWhenModuleChange(aosModulePO.getId());
 		httpModel.setOutMsg("功能模块修改成功。");
 	}
 	
@@ -148,27 +152,27 @@ public class ModuleService extends AOSBaseService {
 		AosModulePO aosModulePO = (AosModulePO)sqlDao.selectOne("Module.checkRootNode", Dtos.newDto("ids", StringUtils.join(selectionIds, ",")));
 		if (AOSUtils.isNotEmpty(aosModulePO)) {
 			outDto.setAppCode(AOSCons.ERROR);
-			outDto.setAppMsg(AOSUtils.merge("操作失败，根节点[{0}]不能删除。", aosModulePO.getName_()));
+			outDto.setAppMsg(AOSUtils.merge("操作失败，根节点[{0}]不能删除。", aosModulePO.getName()));
 		}else {
-			for (String id_ : selectionIds) {
-				AosModulePO delPO = aosModuleDao.selectByKey(id_); 
+			for (String id : selectionIds) {
+				AosModulePO delPO = aosModuleDao.selectByKey(Integer.valueOf(id)); 
 				if (AOSUtils.isEmpty(delPO)) {
 					continue;
 				}
 				
-				List<AosModulePO> subDelList = aosModuleDao.like(Dtos.newDto("cascade_id_", delPO.getCascade_id_()));
+				List<AosModulePO> subDelList = aosModuleDao.like(Dtos.newDto("cascade_id", delPO.getCascade_id()));
 				for (AosModulePO subDelPO : subDelList) {
-					aosModuleDao.deleteByKey(subDelPO.getId_());
+					aosModuleDao.deleteByKey(subDelPO.getId());
 					//重置和这个模块相关的授权缓存信息
-					resetUserGrantWhenModuleChange(subDelPO.getId_());
+					resetUserGrantWhenModuleChange(subDelPO.getId());
 				}
 				
 				//更需父节点的是否叶子节点属性
-				if (aosModuleDao.rows(Dtos.newDto("parent_id_", delPO.getParent_id_())) == 0) {
+				if (aosModuleDao.rows(Dtos.newDto("parent_id", delPO.getParent_id())) == 0) {
 					AosModulePO updatePO = new AosModulePO();
-					updatePO.setId_(delPO.getParent_id_());
-					updatePO.setIs_auto_expand_(SystemCons.IS.NO);
-					updatePO.setIs_leaf_(SystemCons.IS.YES);
+					updatePO.setId(delPO.getParent_id());
+					updatePO.setIs_auto_expand(SystemCons.IS.NO);
+					updatePO.setIs_leaf(SystemCons.IS.YES);
 					aosModuleDao.updateByKey(updatePO);
 				}
 				
@@ -183,10 +187,10 @@ public class ModuleService extends AOSBaseService {
 	 * 
 	 * @param moduleId
 	 */
-	private void resetUserGrantWhenModuleChange(String moduleId){
-		List<String> userList = sqlDao.list("Module.listUsersDependOnModule", Dtos.newDto("module_id_", moduleId));
+	private void resetUserGrantWhenModuleChange(Integer moduleId){
+		List<String> userList = sqlDao.list("Module.listUsersDependOnModule", Dtos.newDto("module_id", moduleId));
 		for (String userId : userList) {
-			cacheUserDataService.resetGrantInfoOfUser(userId);
+			cacheUserDataService.resetGrantInfoOfUser(Integer.valueOf(userId));
 		}
 	}
 

@@ -9,8 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
 
-import aos.framework.core.id.AOSId;
-import aos.framework.core.service.AOSBaseService;
+import aos.framework.core.dao.SqlDao;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCodec;
@@ -19,6 +18,7 @@ import aos.framework.core.utils.AOSUtils;
 import aos.framework.dao.AosUserDao;
 import aos.framework.dao.po.AosUserPO;
 import aos.framework.web.router.HttpModel;
+import aos.system.common.id.IdService;
 import aos.system.common.model.UserModel;
 import aos.system.common.utils.SystemCons;
 import aos.system.common.utils.SystemUtils;
@@ -36,7 +36,7 @@ import aos.system.modules.cache.CacheUserDataService;
  *
  */
 @Service
-public class UserService extends AOSBaseService {
+public class UserService {
 
 	@Autowired
 	private AosUserDao aosUserDao;
@@ -46,6 +46,10 @@ public class UserService extends AOSBaseService {
 	private AosUserRoleDao aosUserRoleDao;
 	@Autowired
 	private CacheUserDataService cacheUserDataService;
+	@Autowired
+	private SqlDao sqlDao;
+	@Autowired
+	private IdService idService;
 	
 	/**
 	 * 用户管理页面初始化
@@ -54,7 +58,7 @@ public class UserService extends AOSBaseService {
 	 * @return
 	 */
 	public void init(HttpModel httpModel) {
-		AosOrgPO aosOrgPO = aosOrgDao.selectByKey(httpModel.getUserModel().getAosOrgPO().getId_());
+		AosOrgPO aosOrgPO = aosOrgDao.selectByKey(httpModel.getUserModel().getAosOrgPO().getId());
 		httpModel.setAttribute("rootPO", aosOrgPO);
 		httpModel.setAttribute("super_user_id", SystemCons.SUPER_USER_ID);
 		httpModel.setViewPath("system/user.jsp");
@@ -68,8 +72,8 @@ public class UserService extends AOSBaseService {
 	 */
 	public void getTreeData(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		inDto.setOrder("sort_no_");
-		inDto.put("is_del_", SystemCons.IS.NO);
+		inDto.setOrder("sort_no");
+		inDto.put("is_del", SystemCons.IS.NO);
 		List<AosOrgPO> aosOrgPOs = aosOrgDao.list(inDto);
 		List<Dto> modelDtos = Lists.newArrayList();
 		for (AosOrgPO aosOrgPO : aosOrgPOs) {
@@ -88,21 +92,21 @@ public class UserService extends AOSBaseService {
 	public void listUsers(HttpModel httpModel) {
 		Dto qDto = httpModel.getInDto();
 		AosOrgPO aosOrgPO = httpModel.getUserModel().getAosOrgPO();
-		if (AOSUtils.isEmpty(qDto.getString("org_id_"))) {
-			qDto.put("org_id_", aosOrgPO.getId_());
+		if (AOSUtils.isEmpty(qDto.getString("org_id"))) {
+			qDto.put("org_id", aosOrgPO.getId());
 		}
-		if (AOSUtils.isEmpty(qDto.getString("org_cascade_id_"))) {
-			qDto.put("org_cascade_id_", aosOrgPO.getCascade_id_());
+		if (AOSUtils.isEmpty(qDto.getString("org_cascade_id"))) {
+			qDto.put("org_cascade_id", aosOrgPO.getCascade_id());
 		}
-		qDto.put("is_del_", SystemCons.IS.NO);
+		qDto.put("is_del", SystemCons.IS.NO);
 		List<Dto> userDtos = sqlDao.list("User.listUsersPage", qDto);
 		for (Dto dto : userDtos) {
 			String roles_ = "";
-			List<AosRolePO> aosRolePOs = sqlDao.list("User.listRolesOfUser", dto.getString("id_"));
+			List<AosRolePO> aosRolePOs = sqlDao.list("User.listRolesOfUser", dto.getString("id"));
 			for (AosRolePO aosRolePO : aosRolePOs) {
-				roles_ = roles_ + aosRolePO.getName_() + " | ";
+				roles_ = roles_ + aosRolePO.getName() + " | ";
 			}
-			dto.put("roles_", StringUtils.substringBeforeLast(roles_, "|"));
+			dto.put("roles", StringUtils.substringBeforeLast(roles_, "|"));
 		}
 		httpModel.setOutMsg(AOSJson.toGridJson(userDtos, qDto.getPageTotal()));
 	}
@@ -120,19 +124,19 @@ public class UserService extends AOSBaseService {
 		UserModel userModel = httpModel.getUserModel();
 		AosUserPO aosUserPO = new AosUserPO();
 		aosUserPO.copyProperties(inDto);
-		Dto checkDto = Dtos.newDto("account_", aosUserPO.getAccount_());
-		checkDto.put("is_del_", SystemCons.IS.NO);
+		Dto checkDto = Dtos.newDto("account", aosUserPO.getAccount());
+		checkDto.put("is_del", SystemCons.IS.NO);
 		if (aosUserDao.rows(checkDto) == 0) {
-			aosUserPO.setId_(AOSId.appId(SystemCons.ID.SYSTEM));
-			aosUserPO.setCreate_by_(userModel.getId_());
-			aosUserPO.setCreate_time_(AOSUtils.getDateTime());
-			aosUserPO.setIs_del_(SystemCons.IS.NO);
-			aosUserPO.setPassword_(AOSCodec.password(aosUserPO.getPassword_()));
+			aosUserPO.setId(idService.nextValue(SystemCons.SEQ.SEQ_SYSTEM).intValue());
+			aosUserPO.setCreate_by(userModel.getId());
+			aosUserPO.setCreate_time(AOSUtils.getDateTime());
+			aosUserPO.setIs_del(SystemCons.IS.NO);
+			aosUserPO.setPassword(AOSCodec.password(aosUserPO.getPassword()));
 			aosUserDao.insert(aosUserPO);
 			outDto.setAppMsg("用户新增成功。");
 		} else {
 			outDto.setAppCode(SystemCons.ERROR);
-			outDto.setAppMsg(AOSUtils.merge("用户新增失败，登录账号[{0}]已经存在。", aosUserPO.getAccount_()));
+			outDto.setAppMsg(AOSUtils.merge("用户新增失败，登录账号[{0}]已经存在。", aosUserPO.getAccount()));
 		}
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
 	}
@@ -148,20 +152,20 @@ public class UserService extends AOSBaseService {
 		Dto inDto = httpModel.getInDto();
 		AosUserPO aosUserPO = new AosUserPO();
 		aosUserPO.copyProperties(inDto);
-		AosUserPO oldPO = aosUserDao.selectByKey(aosUserPO.getId_());
-		if (!StringUtils.equalsIgnoreCase(aosUserPO.getAccount_(), oldPO.getAccount_())) {
-			Dto checkDto = Dtos.newDto("account_", aosUserPO.getAccount_());
-			checkDto.put("is_del_", SystemCons.IS.NO);
+		AosUserPO oldPO = aosUserDao.selectByKey(aosUserPO.getId());
+		if (!StringUtils.equalsIgnoreCase(aosUserPO.getAccount(), oldPO.getAccount())) {
+			Dto checkDto = Dtos.newDto("account", aosUserPO.getAccount());
+			checkDto.put("is_del", SystemCons.IS.NO);
 			if (aosUserDao.rows(checkDto) > 0) {
 				outDto.setAppCode(SystemCons.ERROR);
-				outDto.setAppMsg(AOSUtils.merge("修改失败，用户账户[{0}]已经存在。", aosUserPO.getAccount_()));
+				outDto.setAppMsg(AOSUtils.merge("修改失败，用户账户[{0}]已经存在。", aosUserPO.getAccount()));
 			} 
 		}
 		if (StringUtils.equals(outDto.getAppCode(), SystemCons.SUCCESS)) {
-			if (!StringUtils.equals(inDto.getString("old_org_id_"), inDto.getString("org_id_"))) {
+			if (!StringUtils.equals(inDto.getString("old_org_id"), inDto.getString("org_id"))) {
 				//修改所属部门
-				AosOrgPO aosOrgPO = aosOrgDao.selectByKey(aosUserPO.getOrg_id_());
-				aosUserPO.setOrg_id_(aosOrgPO.getId_());
+				AosOrgPO aosOrgPO = aosOrgDao.selectByKey(aosUserPO.getOrg_id());
+				aosUserPO.setOrg_id(aosOrgPO.getId());
 			}
 			aosUserDao.updateByKey(aosUserPO);
 			outDto.setAppMsg("用户修改成功。");
@@ -177,13 +181,13 @@ public class UserService extends AOSBaseService {
 	 */
 	public void getUser(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		AosUserPO aosUserPO = aosUserDao.selectByKey(inDto.getString("id_"));
-		aosUserPO.setPassword_(null);
+		AosUserPO aosUserPO = aosUserDao.selectByKey(inDto.getInteger("id"));
+		aosUserPO.setPassword(null);
 		Dto outDto = aosUserPO.toDto();
-		AosOrgPO aosOrgPO = aosOrgDao.selectByKey(aosUserPO.getOrg_id_());
-		outDto.put("org_id_", aosOrgPO.getId_());
-		outDto.put("old_org_id_", aosOrgPO.getId_());
-		outDto.put("org_name_", aosOrgPO.getName_());
+		AosOrgPO aosOrgPO = aosOrgDao.selectByKey(aosUserPO.getOrg_id());
+		outDto.put("org_id", aosOrgPO.getId());
+		outDto.put("old_org_id", aosOrgPO.getId());
+		outDto.put("org_name", aosOrgPO.getName());
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
 	}
 
@@ -195,14 +199,14 @@ public class UserService extends AOSBaseService {
 	@Transactional
 	public void deleteUser(HttpModel httpModel) {
 		String[] selectionIds = httpModel.getInDto().getRows();
-		for (String id_ : selectionIds) {
+		for (String id : selectionIds) {
 			// 自己不能删除自己
-			if (StringUtils.equals(httpModel.getUserModel().getId_().toString(), id_)) {
+			if (StringUtils.equals(httpModel.getUserModel().getId().toString(), id)) {
 				continue;
 			}
 			AosUserPO aosUserPO = new AosUserPO();
-			aosUserPO.setId_(id_);
-			aosUserPO.setIs_del_(SystemCons.IS.YES);
+			aosUserPO.setId(Integer.valueOf(id));
+			aosUserPO.setIs_del(SystemCons.IS.YES);
 			aosUserDao.updateByKey(aosUserPO);
 		}
 		httpModel.setOutMsg("删除用户数据成功。");
@@ -217,10 +221,10 @@ public class UserService extends AOSBaseService {
 	public void resetPassword(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
 		String[] selectionIds = inDto.getRows();
-		for (String id_ : selectionIds) {
+		for (String id : selectionIds) {
 			AosUserPO aosUserPO = new AosUserPO();
-			aosUserPO.setId_(id_);
-			aosUserPO.setPassword_(AOSCodec.password(inDto.getString("password_")));
+			aosUserPO.setId(Integer.valueOf(id));
+			aosUserPO.setPassword(AOSCodec.password(inDto.getString("password")));
 			aosUserDao.updateByKey(aosUserPO);
 		}
 		httpModel.setOutMsg("用户密码重置成功。");
@@ -235,7 +239,7 @@ public class UserService extends AOSBaseService {
 	public void listRoles(HttpModel httpModel) {
 		AosOrgPO aosOrgPO = httpModel.getUserModel().getAosOrgPO();
 		Dto qDto = httpModel.getInDto();
-		qDto.put("org_cascade_id_", aosOrgPO.getCascade_id_());
+		qDto.put("org_cascade_id", aosOrgPO.getCascade_id());
 		List<Dto> roleDtos = sqlDao.list("User.listToSelectRoles", qDto);
 		
 		httpModel.setOutMsg(AOSJson.toGridJson(roleDtos, roleDtos.size()));
@@ -250,7 +254,7 @@ public class UserService extends AOSBaseService {
 	public void listSelectedRoles(HttpModel httpModel) {
 		AosOrgPO aosOrgPO = httpModel.getUserModel().getAosOrgPO();
 		Dto qDto = httpModel.getInDto();
-		qDto.put("org_cascade_id_", aosOrgPO.getCascade_id_());
+		qDto.put("org_cascade_id", aosOrgPO.getCascade_id());
 		List<Dto> roleDtos = sqlDao.list("User.listSelectedRoles", qDto);
 		
 		httpModel.setOutMsg(AOSJson.toGridJson(roleDtos, roleDtos.size()));
@@ -264,18 +268,18 @@ public class UserService extends AOSBaseService {
 	@Transactional
 	public void saveUserRoleGrantInfo(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		String user_id_ = inDto.getString("user_id_");
+		Integer user_id = inDto.getInteger("user_id");
 		String[] selectionIds = httpModel.getInDto().getRows();
-		for (String id_ : selectionIds) {
+		for (String id : selectionIds) {
 			AosUserRolePO aosUserRolePO = new AosUserRolePO();
-			aosUserRolePO.setId_(AOSId.appId(SystemCons.ID.SYSTEM));
-			aosUserRolePO.setRole_id_(id_);
-			aosUserRolePO.setUser_id_(user_id_);
-			aosUserRolePO.setCreate_by_(httpModel.getUserModel().getId_());
-			aosUserRolePO.setCreate_time_(AOSUtils.getDateTime());
+			aosUserRolePO.setId(idService.nextValue(SystemCons.SEQ.SEQ_SYSTEM).intValue());
+			aosUserRolePO.setRole_id(Integer.valueOf(id));
+			aosUserRolePO.setUser_id(user_id);
+			aosUserRolePO.setCreate_by(httpModel.getUserModel().getId());
+			aosUserRolePO.setCreate_time(AOSUtils.getDateTime());
 			aosUserRoleDao.insert(aosUserRolePO);
 		}
-		cacheUserDataService.resetGrantInfoOfUser(user_id_);
+		cacheUserDataService.resetGrantInfoOfUser(user_id);
 		httpModel.setOutMsg("用户角色关联关系保存成功。");
 	}
 	
@@ -287,10 +291,10 @@ public class UserService extends AOSBaseService {
 	@Transactional
 	public void delUserRoleGrantInfo(HttpModel httpModel) {
 		String[] selectionIds = httpModel.getInDto().getRows();
-		for (String id_ : selectionIds) {
-			AosUserRolePO aosUserRolePO = aosUserRoleDao.selectByKey(id_);
-			aosUserRoleDao.deleteByKey(id_);
-			cacheUserDataService.resetGrantInfoOfUser(aosUserRolePO.getUser_id_());
+		for (String id : selectionIds) {
+			AosUserRolePO aosUserRolePO = aosUserRoleDao.selectByKey(Integer.valueOf(id));
+			aosUserRoleDao.deleteByKey(Integer.valueOf(id));
+			cacheUserDataService.resetGrantInfoOfUser(aosUserRolePO.getUser_id());
 		}
 		httpModel.setOutMsg("撤消用户角色关联关系成功。");
 	}

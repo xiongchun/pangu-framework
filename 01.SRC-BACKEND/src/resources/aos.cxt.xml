@@ -67,13 +67,15 @@
 	<!-- 平台缺省数据源 SqlSessionFactory配置 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<!-- 扫描SQL映射文件中使用到的持久化对象(PO、VO等) -->
 		<!-- 提醒：请将com.corp.project修改为您的真实项目路径 -->
 		<property name="typeAliasesPackage" value="aos;com.corp.project" />
+		<!-- 扫描SQL映射文件 -->
 		<property name="mapperLocations" value="classpath*:**/*Dao.xml" />
 		<property name="configLocation" value="classpath:aos.sqlmap.xml" />
 	</bean>
 
-	<!-- 扫描数据访问对象 -->
+	<!-- 扫描数据访问对象(*Dao对象) -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	    <!-- 提醒：请将com.corp.project修改为您的真实项目路径 -->
 		<property name="basePackage" value="aos;com.corp.project" />

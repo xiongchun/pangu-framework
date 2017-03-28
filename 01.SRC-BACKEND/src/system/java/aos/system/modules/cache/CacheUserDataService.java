@@ -14,7 +14,6 @@ import com.google.common.collect.Lists;
 
 import aos.framework.core.asset.WebCxt;
 import aos.framework.core.exception.AOSException;
-import aos.framework.core.id.AOSId;
 import aos.framework.core.redis.JedisUtil;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
@@ -23,6 +22,7 @@ import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.dao.po.AosUserPO;
+import aos.system.common.id.IdService;
 import aos.system.common.model.UserModel;
 import aos.system.common.utils.SystemCons;
 import aos.system.dao.AosOrgDao;
@@ -41,6 +41,8 @@ public class CacheUserDataService {
 
 	@Autowired
 	private AosOrgDao aosOrgDao;
+	@Autowired
+	private IdService idService;
 	
 	/**
 	 * 将用户信息刷到缓存
@@ -51,11 +53,11 @@ public class CacheUserDataService {
 		if (AOSUtils.isEmpty(userModel.getJuid())) {
 			throw new AOSException("JUID不能为空");
 		}
-		AosOrgPO aosOrgPO = aosOrgDao.selectByKey(userModel.getOrg_id_());
+		AosOrgPO aosOrgPO = aosOrgDao.selectByKey(userModel.getOrg_id());
 		userModel.setAosOrgPO(aosOrgPO);
 		String userJson = AOSJson.toJson(userModel);
 		//由于Redis无法对hash结构里的单条记录设置超时销毁时间，所以用户信息只能缓存在Redis的更目录上。
-		JedisUtil.setString(userModel.getJuid(), userJson, Integer.valueOf(AOSCxt.getParam("user_login_timeout_")));
+		JedisUtil.setString(userModel.getJuid(), userJson, Integer.valueOf(AOSCxt.getParam("user_login_timeout")));
 	}
 
 	/**
@@ -74,7 +76,7 @@ public class CacheUserDataService {
 	 * 
 	 * @param userId
 	 */
-	public void resetGrantInfoOfUser(String userId) {
+	public void resetGrantInfoOfUser(Integer userId) {
 		if (AOSUtils.isNotEmpty(userId)) {
 			String cardKey = SystemCons.KEYS.CARDLIST + userId;
 			String cardListJson = JedisUtil.getString(cardKey);
@@ -82,7 +84,7 @@ public class CacheUserDataService {
 			if (AOSUtils.isNotEmpty(cardList)) {
 				for (Dto dto : cardList) {
 					//卡片内部的导航树
-					JedisUtil.delString(SystemCons.KEYS.CARD_TREE + userId + "." + dto.getString("cascade_id_"));
+					JedisUtil.delString(SystemCons.KEYS.CARD_TREE + userId + "." + dto.getString("cascade_id"));
 				}
 			}
 			//卡片
@@ -117,15 +119,15 @@ public class CacheUserDataService {
 	 */
 	public String login(AosUserPO aosUserPO, HttpServletRequest httpServletRequest){
 		//缓存用户信息
-		String juid = AOSId.uuid();
+		String juid = idService.uuid();
 		UserModel userModel = new UserModel();
 		AOSUtils.copyProperties(aosUserPO, userModel);
 		userModel.setJuid(juid);
-		AosOrgPO aosOrgPO = aosOrgDao.selectByKey(userModel.getOrg_id_());
+		AosOrgPO aosOrgPO = aosOrgDao.selectByKey(userModel.getOrg_id());
 		userModel.setAosOrgPO(aosOrgPO);
-		userModel.setLogin_time_(AOSUtils.getDateTimeStr());
-		userModel.setClient_ip_(WebCxt.getClientIpAddr(httpServletRequest));
-		userModel.setClient_key_(httpServletRequest.getHeader("USER-AGENT"));
+		userModel.setLogin_time(AOSUtils.getDateTimeStr());
+		userModel.setClient_ip(WebCxt.getClientIpAddr(httpServletRequest));
+		userModel.setClient_key(httpServletRequest.getHeader("USER-AGENT"));
 		cacheUserModel(userModel);
 		//维护在线用户列表
 		Jedis jedis = JedisUtil.getJedisClient();
@@ -154,7 +156,7 @@ public class CacheUserDataService {
 	 * @param juid
 	 */
 	public void heartbeat(String juid){
-		JedisUtil.exprString(juid, Integer.valueOf(AOSCxt.getParam("user_login_timeout_")));
+		JedisUtil.exprString(juid, Integer.valueOf(AOSCxt.getParam("user_login_timeout")));
 	}
 	
 	/**
@@ -165,9 +167,9 @@ public class CacheUserDataService {
 	 */
 	public List<Dto> listOnlineUsersPage(Dto inDto){
 		List<Dto> usersList = Lists.newArrayList();
-		String juid_ = inDto.getString("juid_");
-		if(AOSUtils.isNotEmpty(juid_)){
-			UserModel userModel = getUserModel(juid_);
+		String juid = inDto.getString("juidQuery");
+		if(AOSUtils.isNotEmpty(juid)){
+			UserModel userModel = getUserModel(juid);
 			if (AOSUtils.isNotEmpty(userModel)) {
 				usersList.add(userModel2OnlineUserDto(userModel));
 				inDto.setPageTotal(1);
@@ -178,13 +180,13 @@ public class CacheUserDataService {
 		int limit = inDto.getPageLimit();
 		Jedis jedis = JedisUtil.getJedisClient();
 		List<String> juidList = jedis.lrange(SystemCons.KEYS.USER_LIST_KEY,start, start + limit);
-		for (String juid : juidList) {
-			UserModel userModel = getUserModel(juid);
+		for (String juidStr : juidList) {
+			UserModel userModel = getUserModel(juidStr);
 			if (AOSUtils.isEmpty(userModel)) {
 				//删除用户模型
-				resetUserModel(juid);
+				resetUserModel(juidStr);
 				//删除在线用户列表项
-				jedis.lrem(SystemCons.KEYS.USER_LIST_KEY, 0, juid);
+				jedis.lrem(SystemCons.KEYS.USER_LIST_KEY, 0, juidStr);
 				continue;
 			}
 			usersList.add(userModel2OnlineUserDto(userModel));
@@ -204,12 +206,12 @@ public class CacheUserDataService {
 	private Dto userModel2OnlineUserDto(UserModel userModel){
 		Dto userDto = Dtos.newDto();
 		userDto.put("juid", userModel.getJuid());
-		userDto.put("id_", userModel.getId_());
-		userDto.put("account_", userModel.getAccount_());
-		userDto.put("name_", userModel.getName_());
-		userDto.put("client_ip_", userModel.getClient_ip_());
-		userDto.put("login_time_", userModel.getLogin_time_());
-		userDto.put("client_key_", userModel.getClient_key_());
+		userDto.put("id", userModel.getId());
+		userDto.put("account", userModel.getAccount());
+		userDto.put("name", userModel.getName());
+		userDto.put("client_ip", userModel.getClient_ip());
+		userDto.put("login_time", userModel.getLogin_time());
+		userDto.put("client_key", userModel.getClient_key());
 		return userDto;
 	}
 	

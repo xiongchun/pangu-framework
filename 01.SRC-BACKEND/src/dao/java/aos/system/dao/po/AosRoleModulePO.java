@@ -10,7 +10,7 @@ import java.util.Date;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:02
+ * @date 2017-03-23 17:54:25
  */
 public class AosRoleModulePO extends PO {
 
@@ -19,141 +19,141 @@ public class AosRoleModulePO extends PO {
 	/**
 	 * 流水号
 	 */
-	private String id_;
+	private Integer id;
 	
 	/**
 	 *  角色流水号
 	 */
-	private String role_id_;
+	private Integer role_id;
 	
 	/**
 	 * 功能模块流水号
 	 */
-	private String module_id_;
+	private Integer module_id;
 	
 	/**
 	 * 权限类型
 	 */
-	private String grant_type_;
+	private String grant_type;
 	
 	/**
 	 * 创建时间
 	 */
-	private Date create_time_;
+	private Date create_time;
 	
 	/**
 	 * 创建人ID
 	 */
-	private String create_by_;
+	private Integer create_by;
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @return id_
+	 * @return id
 	 */
-	public String getId_() {
-		return id_;
+	public Integer getId() {
+		return id;
 	}
 	
 	/**
 	 *  角色流水号
 	 * 
-	 * @return role_id_
+	 * @return role_id
 	 */
-	public String getRole_id_() {
-		return role_id_;
+	public Integer getRole_id() {
+		return role_id;
 	}
 	
 	/**
 	 * 功能模块流水号
 	 * 
-	 * @return module_id_
+	 * @return module_id
 	 */
-	public String getModule_id_() {
-		return module_id_;
+	public Integer getModule_id() {
+		return module_id;
 	}
 	
 	/**
 	 * 权限类型
 	 * 
-	 * @return grant_type_
+	 * @return grant_type
 	 */
-	public String getGrant_type_() {
-		return grant_type_;
+	public String getGrant_type() {
+		return grant_type;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @return create_time_
+	 * @return create_time
 	 */
-	public Date getCreate_time_() {
-		return create_time_;
+	public Date getCreate_time() {
+		return create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @return create_by_
+	 * @return create_by
 	 */
-	public String getCreate_by_() {
-		return create_by_;
+	public Integer getCreate_by() {
+		return create_by;
 	}
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @param id_
+	 * @param id
 	 */
-	public void setId_(String id_) {
-		this.id_ = id_;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	/**
 	 *  角色流水号
 	 * 
-	 * @param role_id_
+	 * @param role_id
 	 */
-	public void setRole_id_(String role_id_) {
-		this.role_id_ = role_id_;
+	public void setRole_id(Integer role_id) {
+		this.role_id = role_id;
 	}
 	
 	/**
 	 * 功能模块流水号
 	 * 
-	 * @param module_id_
+	 * @param module_id
 	 */
-	public void setModule_id_(String module_id_) {
-		this.module_id_ = module_id_;
+	public void setModule_id(Integer module_id) {
+		this.module_id = module_id;
 	}
 	
 	/**
 	 * 权限类型
 	 * 
-	 * @param grant_type_
+	 * @param grant_type
 	 */
-	public void setGrant_type_(String grant_type_) {
-		this.grant_type_ = grant_type_;
+	public void setGrant_type(String grant_type) {
+		this.grant_type = grant_type;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @param create_time_
+	 * @param create_time
 	 */
-	public void setCreate_time_(Date create_time_) {
-		this.create_time_ = create_time_;
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @param create_by_
+	 * @param create_by
 	 */
-	public void setCreate_by_(String create_by_) {
-		this.create_by_ = create_by_;
+	public void setCreate_by(Integer create_by) {
+		this.create_by = create_by;
 	}
 	
 

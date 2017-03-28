@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
 
-import aos.framework.core.id.AOSId;
-import aos.framework.core.service.AOSBaseService;
+import aos.framework.core.dao.SqlDao;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.web.router.HttpModel;
+import aos.system.common.id.IdService;
 import aos.system.common.model.UserModel;
 import aos.system.common.utils.SystemCons;
 import aos.system.common.utils.SystemUtils;
@@ -30,10 +30,14 @@ import aos.system.dao.po.AosOrgPO;
  *
  */
 @Service
-public class OrgService extends AOSBaseService{
+public class OrgService {
 	
 	@Autowired
 	private AosOrgDao aosOrgDao;
+	@Autowired
+	private SqlDao sqlDao;
+	@Autowired
+	private IdService idService;	
 	
 	/**
 	 * 部门管理页面初始化
@@ -42,7 +46,7 @@ public class OrgService extends AOSBaseService{
 	 * @return
 	 */
 	public void init(HttpModel httpModel) {
-		AosOrgPO aosOrgPO = aosOrgDao.selectOne(Dtos.newDto("parent_id_", SystemCons.ROOTNODE_PARENT_ID));
+		AosOrgPO aosOrgPO = aosOrgDao.selectOne(Dtos.newDto("parent_id", SystemCons.ROOTNODE_PARENT_ID));
 		httpModel.setAttribute("rootPO", aosOrgPO);
 		httpModel.setViewPath("system/org.jsp");
 	}
@@ -55,8 +59,8 @@ public class OrgService extends AOSBaseService{
 	 */
 	public void getTreeData(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		inDto.setOrder("sort_no_");
-		inDto.put("is_del_", SystemCons.IS.NO);
+		inDto.setOrder("sort_no");
+		inDto.put("is_del", SystemCons.IS.NO);
 		List<AosOrgPO> aosOrgPOs = aosOrgDao.list(inDto);
 		List<Dto> modelDtos = Lists.newArrayList();
 		for (AosOrgPO aosOrgPO : aosOrgPOs) {
@@ -74,7 +78,7 @@ public class OrgService extends AOSBaseService{
 	 */
 	public void listOrgs(HttpModel httpModel) {
 		Dto qDto = httpModel.getInDto();
-		qDto.put("is_del_", SystemCons.IS.NO);
+		qDto.put("is_del", SystemCons.IS.NO);
 		List<Dto> orgDtos = sqlDao.list("Org.listOrgsPage", qDto);
 		httpModel.setOutMsg(AOSJson.toGridJson(orgDtos, qDto.getPageTotal()));
 	}
@@ -91,31 +95,31 @@ public class OrgService extends AOSBaseService{
 		Dto inDto = httpModel.getInDto();
 		AosOrgPO aosOrgPO = new AosOrgPO();
 		aosOrgPO.copyProperties(inDto);
-		aosOrgPO.setId_(AOSId.appId(SystemCons.ID.SYSTEM));
+		aosOrgPO.setId(idService.nextValue(SystemCons.SEQ.SEQ_SYSTEM).intValue());
 		
 		// 生成语义ID
-		AosOrgPO parentAosOrgPO = aosOrgDao.selectByKey(aosOrgPO.getParent_id_());
-		String max_cascade_id_ = (String)sqlDao.selectOne("Org.getMaxCascadeId", aosOrgPO.getParent_id_());
-		if (AOSUtils.isEmpty(max_cascade_id_)) {
+		AosOrgPO parentAosOrgPO = aosOrgDao.selectByKey(aosOrgPO.getParent_id());
+		String max_cascade_id = (String)sqlDao.selectOne("Org.getMaxCascadeId", aosOrgPO.getParent_id());
+		if (AOSUtils.isEmpty(max_cascade_id)) {
 			String temp = "0";
 			if (AOSUtils.isNotEmpty(parentAosOrgPO)) {
-				temp = parentAosOrgPO.getCascade_id_();
+				temp = parentAosOrgPO.getCascade_id();
 			}
-			max_cascade_id_ = temp + ".000";
+			max_cascade_id = temp + ".000";
 		}
-		String cascade_id_ = SystemUtils.genCascadeTreeId(max_cascade_id_, 999);
-		aosOrgPO.setCascade_id_(cascade_id_);
+		String cascade_id = SystemUtils.genCascadeTreeId(max_cascade_id, 999);
+		aosOrgPO.setCascade_id(cascade_id);
 		
-		aosOrgPO.setIs_leaf_(SystemCons.IS.YES);
-		aosOrgPO.setCreate_by_(userModel.getId_());
-		aosOrgPO.setCreate_time_(AOSUtils.getDateTime());
-		aosOrgPO.setIs_del_(SystemCons.IS.NO);
+		aosOrgPO.setIs_leaf(SystemCons.IS.YES);
+		aosOrgPO.setCreate_by(userModel.getId());
+		aosOrgPO.setCreate_time(AOSUtils.getDateTime());
+		aosOrgPO.setIs_del(SystemCons.IS.NO);
 		aosOrgDao.insert(aosOrgPO);
 		
 		//更新父节点的是否叶子节点字段
 		AosOrgPO updatePO = new AosOrgPO();
-		updatePO.setId_(aosOrgPO.getParent_id_());
-		updatePO.setIs_leaf_(SystemCons.IS.NO);
+		updatePO.setId(aosOrgPO.getParent_id());
+		updatePO.setIs_leaf(SystemCons.IS.NO);
 		aosOrgDao.updateByKey(updatePO);
 		
 		httpModel.setOutMsg("部门新增成功。");
@@ -148,31 +152,31 @@ public class OrgService extends AOSBaseService{
 		AosOrgPO aosOrgPO = (AosOrgPO)sqlDao.selectOne("Org.checkRootNode", Dtos.newDto("ids", StringUtils.join(selectionIds, ",")));
 		if (AOSUtils.isNotEmpty(aosOrgPO)) {
 			outDto.setAppCode(AOSCons.ERROR);
-			outDto.setAppMsg(AOSUtils.merge("操作失败，根节点[{0}]不能删除。", aosOrgPO.getName_()));
+			outDto.setAppMsg(AOSUtils.merge("操作失败，根节点[{0}]不能删除。", aosOrgPO.getName()));
 		}else {
-			for (String id_ : selectionIds) {
-				AosOrgPO delPO = aosOrgDao.selectByKey(id_); 
+			for (String id : selectionIds) {
+				AosOrgPO delPO = aosOrgDao.selectByKey(Integer.valueOf(id)); 
 				if (AOSUtils.isEmpty(delPO)) {
 					continue;
 				}
 				
-				List<AosOrgPO> subDelList = aosOrgDao.like(Dtos.newDto("cascade_id_", delPO.getCascade_id_()));
+				List<AosOrgPO> subDelList = aosOrgDao.like(Dtos.newDto("cascade_id", delPO.getCascade_id()));
 				for (AosOrgPO subDelPO : subDelList) {
 					//逻辑删除部门
-					subDelPO.setIs_del_(SystemCons.IS.YES);
+					subDelPO.setIs_del(SystemCons.IS.YES);
 					aosOrgDao.updateByKey(subDelPO);
 					//逻辑删除部门下辖的用户
-					sqlDao.update("Org.updateUserInfoByOrgId", subDelPO.getId_());
+					sqlDao.update("Org.updateUserInfoByOrgId", subDelPO.getId());
 				}
 				
 				//更需父节点的是否叶子节点属性
-				Dto checkDto = Dtos.newDto("parent_id_", delPO.getParent_id_());
-				checkDto.put("is_del_", SystemCons.IS.NO);
+				Dto checkDto = Dtos.newDto("parent_id", delPO.getParent_id());
+				checkDto.put("is_del", SystemCons.IS.NO);
 				if (aosOrgDao.rows(checkDto) == 0) {
 					AosOrgPO updatePO = new AosOrgPO();
-					updatePO.setId_(delPO.getParent_id_());
-					updatePO.setIs_auto_expand_(SystemCons.IS.NO);
-					updatePO.setIs_leaf_(SystemCons.IS.YES);
+					updatePO.setId(delPO.getParent_id());
+					updatePO.setIs_auto_expand(SystemCons.IS.NO);
+					updatePO.setIs_leaf(SystemCons.IS.YES);
 					aosOrgDao.updateByKey(updatePO);
 				}
 				

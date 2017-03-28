@@ -77,8 +77,8 @@ public class HttpModel implements Serializable{
 		}
 		if (AOSUtils.isNotEmpty(getUserModel())) {
 			Dto userDto = Dtos.newDto();
-			userDto.put("account_", getUserModel().getAccount_());
-			userDto.put("name_", getUserModel().getName_());
+			userDto.put("account", getUserModel().getAccount());
+			userDto.put("name", getUserModel().getName());
 			Json = Json + " 〓当前用户: " + AOSJson.toJson(userDto);
 		}
 		if (AOSUtils.isNotEmpty(getOutMsg())) {

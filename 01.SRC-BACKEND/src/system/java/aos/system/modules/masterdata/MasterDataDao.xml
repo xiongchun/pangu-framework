@@ -11,14 +11,14 @@
             <include refid="aos.framework.dao.AosParamsDao.column" />
             FROM aos_params
             <where>
-			    <if test="nkv_ != null and nkv_ != ''">
-				    AND (name_ LIKE '%${nkv_}%' OR key_ LIKE '%${nkv_}%' OR value_ LIKE '%${nkv_}%')
+			    <if test="nkv != null and nkv != ''">
+				    AND (name LIKE '%${nkv}%' OR params_key LIKE '%${nkv}%' OR params_value LIKE '%${nkv}%')
 				</if>
-				<if test="group_ != null and group_ != ''">
-				    AND group_ = #{group_}
+				<if test="params_group != null and params_group != ''">
+				    AND params_group = #{params_group}
 				</if>
 			</where>
-			 ORDER BY id_ DESC
+			 ORDER BY id DESC
 	</select>
 	
 	<!-- 查询字典列表 -->
@@ -27,20 +27,20 @@
             <include refid="aos.framework.dao.AosDicDao.column" />
             FROM aos_dic
             <where>
-			    <if test="where1_ != null and where1_ != ''">
-				    AND (name_ LIKE '%${where1_}%' OR key_ LIKE '%${where1_}%')
+			    <if test="where1 != null and where1 != ''">
+				    AND (name LIKE '%${where1}%' OR dic_key LIKE '%${where1}%')
 				</if>
-				<if test="where2_ != null and where2_ != ''">
-				    AND (code_ LIKE  '%${where2_}%' OR desc_ LIKE '%${where2_}%')
+				<if test="where2 != null and where2 != ''">
+				    AND (code LIKE  '%${where2}%' OR dic_desc LIKE '%${where2}%')
 				</if>
-				<if test="group_ != null and group_ != ''">
-				    AND group_ = #{group_}
+				<if test="dic_group != null and dic_group != ''">
+				    AND dic_group = #{dic_group}
 				</if>
-				<if test="key_ != null and key_ != ''">
-				    AND key_ = #{key_}
+				<if test="dic_key != null and dic_key != ''">
+				    AND dic_key = #{dic_key}
 				</if>
 			</where>
-			 ORDER BY id_ DESC, key_ DESC, sort_no_ ASC
+			 ORDER BY id DESC, dic_key DESC, sort_no ASC
 	</select>
 
 </mapper>

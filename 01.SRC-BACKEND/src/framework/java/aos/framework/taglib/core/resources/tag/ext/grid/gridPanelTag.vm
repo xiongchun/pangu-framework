@@ -67,6 +67,7 @@ var ${id}_store = Ext.create('Ext.data.Store', {
 #end
 
 ##Grid.Columns
+##嗨，你已进入雷区，切莫乱动？-- 阿老表
 var ${id}_grid_columns = [
     #foreach($columndto in $columns)
         {
@@ -103,7 +104,6 @@ var ${id}_grid_columns = [
 		}#if($velocityCount != $columns.size()),#end
     #end
 ];
-##嗨，小屁孩。别再努力了，以你的智商再努力也看不懂上面这段代码的。-- 阿老表
 
 ##Grid定义
 var ${id}_cfg = {

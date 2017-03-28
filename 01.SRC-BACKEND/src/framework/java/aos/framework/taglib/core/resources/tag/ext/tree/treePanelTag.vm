@@ -106,11 +106,11 @@ var ${id}_treegrid_columns = [
 			    ##返回的JSON中的数值类型
 				#if(${columndto.dataType} == "number")
 					#foreach($dic in $dicList)
-					    if(value === $dic.code_) return '$dic.desc_';
+					    if(value === $dic.code) return '$dic.desc';
 					#end
 				#else
 					#foreach($dic in $dicList)
-					    if(value === '$dic.code_') return '$dic.desc_';
+					    if(value === '$dic.code') return '$dic.desc';
 					#end					
 				#end
 			 return value;

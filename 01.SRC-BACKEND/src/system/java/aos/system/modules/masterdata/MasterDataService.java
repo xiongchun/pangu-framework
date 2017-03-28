@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import aos.framework.core.cache.CacheMasterDataService;
-import aos.framework.core.id.AOSId;
-import aos.framework.core.service.AOSBaseService;
+import aos.framework.core.dao.SqlDao;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCons;
@@ -20,6 +19,7 @@ import aos.framework.dao.AosParamsDao;
 import aos.framework.dao.po.AosDicPO;
 import aos.framework.dao.po.AosParamsPO;
 import aos.framework.web.router.HttpModel;
+import aos.system.common.id.IdService;
 import aos.system.common.utils.SystemCons;
 
 /**
@@ -29,7 +29,7 @@ import aos.system.common.utils.SystemCons;
  *
  */
 @Service
-public class MasterDataService extends AOSBaseService{
+public class MasterDataService{
 	
 	@Autowired
 	private AosParamsDao aosParamsDao;
@@ -37,6 +37,10 @@ public class MasterDataService extends AOSBaseService{
 	private AosDicDao aosDicDao;
 	@Autowired
 	private CacheMasterDataService cacheMasterDataService;
+	@Autowired
+	private SqlDao sqlDao;
+	@Autowired
+	private IdService idService;
 
 	/**
 	 * 键值参数管理页面初始化
@@ -81,15 +85,15 @@ public class MasterDataService extends AOSBaseService{
 	public void saveParam(HttpModel httpModel) {
 		Dto outDto = Dtos.newOutDto();
 		Dto inDto = httpModel.getInDto();
-		if (aosParamsDao.rows(Dtos.newDto("key_", inDto.getString("key_"))) > 0) {
+		if (aosParamsDao.rows(Dtos.newDto("params_key", inDto.getString("params_key"))) > 0) {
 			outDto.setAppCode(AOSCons.ERROR);
-			outDto.setAppMsg(AOSUtils.merge("操作失败，键[{0}]已经存在。", inDto.getString("key_")));
+			outDto.setAppMsg(AOSUtils.merge("操作失败，键[{0}]已经存在。", inDto.getString("params_key")));
 		}else {
 			AosParamsPO aos_paramsPO = new AosParamsPO();
 			aos_paramsPO.copyProperties(inDto);
-			aos_paramsPO.setId_(AOSId.appId(SystemCons.ID.SYSTEM));
+			aos_paramsPO.setId(idService.nextValue(SystemCons.SEQ.SEQ_SYSTEM).intValue());
 			aosParamsDao.insert(aos_paramsPO);
-			cacheMasterDataService.cacheParamOption(aos_paramsPO.getKey_(), aos_paramsPO.getValue_());
+			cacheMasterDataService.cacheParamOption(aos_paramsPO.getParams_key(), aos_paramsPO.getValue());
 			outDto.setAppMsg("键值参数新增成功");
 		}
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
@@ -104,18 +108,18 @@ public class MasterDataService extends AOSBaseService{
 	public void updateParam(HttpModel httpModel) {
 		Dto outDto = Dtos.newOutDto();
 		Dto inDto = httpModel.getInDto();
-		AosParamsPO aos_paramsOldPO = aosParamsDao.selectByKey(inDto.getString("id_"));
-		if (!StringUtils.equals(aos_paramsOldPO.getKey_(), inDto.getString("key_"))) {
-			if (aosParamsDao.rows(Dtos.newDto("key_", inDto.getString("key_"))) > 0) {
+		AosParamsPO aos_paramsOldPO = aosParamsDao.selectByKey(inDto.getInteger("id"));
+		if (!StringUtils.equals(aos_paramsOldPO.getParams_key(), inDto.getString("params_key"))) {
+			if (aosParamsDao.rows(Dtos.newDto("params_key", inDto.getString("params_key"))) > 0) {
 				outDto.setAppCode(AOSCons.ERROR);
-				outDto.setAppMsg(AOSUtils.merge("操作失败，键[{0}]已经存在。", inDto.getString("key_")));
+				outDto.setAppMsg(AOSUtils.merge("操作失败，键[{0}]已经存在。", inDto.getString("params_key")));
 			}
 		}
 		if (StringUtils.equals(outDto.getAppCode(), SystemCons.SUCCESS)) {
 			AosParamsPO aos_paramsPO = new AosParamsPO();
 			aos_paramsPO.copyProperties(inDto);
 			aosParamsDao.updateByKey(aos_paramsPO);
-			cacheMasterDataService.cacheParamOption(aos_paramsPO.getKey_(), aos_paramsPO.getValue_());
+			cacheMasterDataService.cacheParamOption(aos_paramsPO.getParams_key(), aos_paramsPO.getValue());
 			outDto.setAppMsg("键值参数修改成功");
 		}
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
@@ -130,10 +134,10 @@ public class MasterDataService extends AOSBaseService{
 	public void deleteParam(HttpModel httpModel) {
 		String[] selectionIds = httpModel.getInDto().getRows();
 		int rows = 0;
-		for (String id_ : selectionIds) {
-			AosParamsPO aos_paramsPO = aosParamsDao.selectByKey(id_);
-			aosParamsDao.deleteByKey(id_);
-			cacheMasterDataService.delParamOption(aos_paramsPO.getKey_());
+		for (String id : selectionIds) {
+			AosParamsPO aos_paramsPO = aosParamsDao.selectByKey(Integer.valueOf(id));
+			aosParamsDao.deleteByKey(Integer.valueOf(id));
+			cacheMasterDataService.delParamOption(aos_paramsPO.getParams_key());
 			rows++;
 		}
 		httpModel.setOutMsg(AOSUtils.merge("操作成功，成功删除[{0}]条参数数据。", rows));
@@ -160,15 +164,15 @@ public class MasterDataService extends AOSBaseService{
 	public void saveDic(HttpModel httpModel) {
 		Dto outDto = Dtos.newOutDto();
 		Dto inDto = httpModel.getInDto();
-		Dto checkDto = Dtos.newDto("key_", inDto.getString("key_"));
-		checkDto.put("code_", inDto.getString("code_"));
+		Dto checkDto = Dtos.newDto("dic_key", inDto.getString("dic_key"));
+		checkDto.put("code", inDto.getString("code"));
 		if (aosDicDao.rows(checkDto) > 0) {
 			outDto.setAppCode(AOSCons.ERROR);
-			outDto.setAppMsg(AOSUtils.merge("操作失败，字典[{0}]的代码对照[{1}]已经存在。", inDto.getString("key_"), inDto.getString("code_")));
+			outDto.setAppMsg(AOSUtils.merge("操作失败，字典[{0}]的代码对照[{1}]已经存在。", inDto.getString("dic_key"), inDto.getString("code")));
 		}else {
 			AosDicPO aos_dicPO = new AosDicPO();
 			aos_dicPO.copyProperties(inDto);
-			aos_dicPO.setId_(AOSId.appId(SystemCons.ID.SYSTEM));
+			aos_dicPO.setId(idService.nextValue(SystemCons.SEQ.SEQ_SYSTEM).intValue());
 			aosDicDao.insert(aos_dicPO);
 			cacheMasterDataService.cacheDic(aos_dicPO);
 			outDto.setAppMsg("数据字典新增成功。");
@@ -185,13 +189,13 @@ public class MasterDataService extends AOSBaseService{
 	public void updateDic(HttpModel httpModel) {
 		Dto outDto = Dtos.newOutDto();
 		Dto inDto = httpModel.getInDto();
-		AosDicPO aos_dicOldPO = aosDicDao.selectByKey(inDto.getString("id_"));
-		if (!StringUtils.equals(aos_dicOldPO.getCode_(), inDto.getString("code_"))) {
-			Dto checkDto = Dtos.newDto("key_", inDto.getString("key_"));
-			checkDto.put("code_", inDto.getString("code_"));
+		AosDicPO aos_dicOldPO = aosDicDao.selectByKey(inDto.getInteger("id"));
+		if (!StringUtils.equals(aos_dicOldPO.getCode(), inDto.getString("code"))) {
+			Dto checkDto = Dtos.newDto("dic_key", inDto.getString("dic_key"));
+			checkDto.put("code", inDto.getString("code"));
 			if (aosDicDao.rows(checkDto) > 0) {
 				outDto.setAppCode(AOSCons.ERROR);
-				outDto.setAppMsg(AOSUtils.merge("操作失败，字典[{0}]的代码对照[{1}]已经存在。", inDto.getString("key_"), inDto.getString("code_")));
+				outDto.setAppMsg(AOSUtils.merge("操作失败，字典[{0}]的代码对照[{1}]已经存在。", inDto.getString("dic_key"), inDto.getString("code")));
 			}
 		}else {
 			AosDicPO aos_dicPO = new AosDicPO();
@@ -211,9 +215,9 @@ public class MasterDataService extends AOSBaseService{
 	public void deleteDic(HttpModel httpModel) {
 		String[] selectionIds = httpModel.getInDto().getRows();
 		int rows = 0;
-		for (String id_ : selectionIds) {
-			AosDicPO aos_dicPO = aosDicDao.selectByKey(id_);
-			aosDicDao.deleteByKey(id_);
+		for (String id : selectionIds) {
+			AosDicPO aos_dicPO = aosDicDao.selectByKey(Integer.valueOf(id));
+			aosDicDao.deleteByKey(Integer.valueOf(id));
 			cacheMasterDataService.delDic(aos_dicPO);
 			rows++;
 		}

@@ -15,7 +15,7 @@ import aos.system.dao.po.AosCmpPO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:01
+ * @date 2017-03-23 17:54:25
  */
 @Dao("aosCmpDao")
 public interface AosCmpDao {
@@ -53,7 +53,7 @@ public interface AosCmpDao {
 	 * 
 	 * @return AosCmpPO
 	 */
-	AosCmpPO selectByKey(@Param(value = "id_") String id_);
+	AosCmpPO selectByKey(@Param(value = "id") Integer id);
 
 	/**
 	 * 根据唯一组合条件查询并返回数据持久化对象
@@ -95,7 +95,7 @@ public interface AosCmpDao {
 	 *
 	 * @return 影响行数
 	 */
-	int deleteByKey(@Param(value = "id_") String id_);
+	int deleteByKey(@Param(value = "id") Integer id);
 	
 	/**
 	 * 根据Dto统计行数

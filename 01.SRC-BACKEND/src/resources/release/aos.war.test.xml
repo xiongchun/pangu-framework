@@ -87,7 +87,7 @@
 			<entry key="redis_port" value="6379" />
 			<entry key="redis_pwd" value="" />
 			<!-- 数据源配置 -->
-			<entry key="jdbc.url" value="jdbc:mysql://127.0.0.1:3306/aosuite?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false" />
+			<entry key="jdbc.url" value="jdbc:mysql://127.0.0.1:3306/aosuite?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;allowMultiQueries=true" />
 			<entry key="jdbc.username" value="root" />
 			<entry key="jdbc.password" value="root" />
 			<!-- Logback日志配置 -->

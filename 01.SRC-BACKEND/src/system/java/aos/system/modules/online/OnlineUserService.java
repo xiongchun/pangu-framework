@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aos.framework.core.exception.AOSException;
-import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSCxt;
@@ -23,7 +22,7 @@ import aos.system.modules.cache.CacheUserDataService;
  *
  */
 @Service
-public class OnlineUserService extends AOSBaseService{
+public class OnlineUserService{
 	
 	@Autowired
 	private CacheUserDataService cacheUserDataService;
@@ -59,14 +58,14 @@ public class OnlineUserService extends AOSBaseService{
 	 */
 	public void killUser(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		if (StringUtils.equalsIgnoreCase(inDto.getString("juid_"), httpModel.getUserModel().getJuid())) {
+		if (StringUtils.equalsIgnoreCase(inDto.getString("juidSelected"), httpModel.getUserModel().getJuid())) {
 			throw new AOSException("不能自杀 :(");
 		}
-		if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode_"))) {
+		if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode"))) {
 			throw new AOSException(13);
 		}
-		cacheUserDataService.logout(inDto.getString("juid_"));
-		httpModel.setOutMsg(AOSUtils.merge("用户[{0}]已被强制下线。", inDto.getString("name_")));
+		cacheUserDataService.logout(inDto.getString("juidSelected"));
+		httpModel.setOutMsg(AOSUtils.merge("用户[{0}]已被强制下线。", inDto.getString("name")));
 	}
 	
 }

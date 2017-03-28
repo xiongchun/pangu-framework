@@ -9,81 +9,58 @@ import aos.framework.core.typewrap.PO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:01
+ * @date 2017-03-23 17:54:25
  */
 public class AosIconPO extends PO {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 流水号
-	 */
-	private String id_;
-	
-	/**
 	 * 名称
 	 */
-	private String name_;
+	private String name;
 	
 	/**
 	 * 类型
 	 */
-	private String type_;
+	private String type;
 	
 
 	/**
-	 * 流水号
-	 * 
-	 * @return id_
-	 */
-	public String getId_() {
-		return id_;
-	}
-	
-	/**
 	 * 名称
 	 * 
-	 * @return name_
+	 * @return name
 	 */
-	public String getName_() {
-		return name_;
+	public String getName() {
+		return name;
 	}
 	
 	/**
 	 * 类型
 	 * 
-	 * @return type_
+	 * @return type
 	 */
-	public String getType_() {
-		return type_;
+	public String getType() {
+		return type;
 	}
 	
 
 	/**
-	 * 流水号
-	 * 
-	 * @param id_
-	 */
-	public void setId_(String id_) {
-		this.id_ = id_;
-	}
-	
-	/**
 	 * 名称
 	 * 
-	 * @param name_
+	 * @param name
 	 */
-	public void setName_(String name_) {
-		this.name_ = name_;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/**
 	 * 类型
 	 * 
-	 * @param type_
+	 * @param type
 	 */
-	public void setType_(String type_) {
-		this.type_ = type_;
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 

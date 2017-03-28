@@ -13,7 +13,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import aos.framework.core.redis.JedisUtil;
-import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSJson;
@@ -31,7 +30,7 @@ import redis.clients.jedis.Jedis;
  * @author xiongchun
  */
 @Service
-public class CacheMasterDataService extends AOSBaseService{
+public class CacheMasterDataService {
 
 	private static Logger log = LoggerFactory.getLogger(CacheMasterDataService.class);
 	
@@ -47,7 +46,7 @@ public class CacheMasterDataService extends AOSBaseService{
 		List<AosParamsPO> aos_paramsPOs = aosParamsDao.list(null);
 		Map<String, String> cacheMap = Maps.newHashMap();
 		for (AosParamsPO aos_paramsPO : aos_paramsPOs) {
-			cacheMap.put(aos_paramsPO.getKey_(), aos_paramsPO.getValue_());
+			cacheMap.put(aos_paramsPO.getParams_key(), aos_paramsPO.getValue());
 		}
 		if (AOSUtils.isNotEmpty(cacheMap)) {
 			Jedis jedis = JedisUtil.getJedisClient();
@@ -99,11 +98,11 @@ public class CacheMasterDataService extends AOSBaseService{
 	 * 将字典表刷到缓存
 	 */
 	public void cacheDicData() {
-		List<AosDicPO> aos_dicPOs = aosDicDao.list(Dtos.newDto("is_enable_", AOSCons.IS.YES));
+		List<AosDicPO> aos_dicPOs = aosDicDao.list(Dtos.newDto("is_enable", AOSCons.IS.YES));
 		Jedis jedis = JedisUtil.getJedisClient();
 		// 将字典对照项目载入缓存
 		for (AosDicPO aos_dicPO : aos_dicPOs) {
-			jedis.hset(AOSCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_(), AOSJson.toJson(aos_dicPO));
+			jedis.hset(AOSCons.KEYS.DIC_KEY + aos_dicPO.getDic_key(), aos_dicPO.getCode(), AOSJson.toJson(aos_dicPO));
 		}
 		JedisUtil.close(jedis);
 	}
@@ -113,7 +112,7 @@ public class CacheMasterDataService extends AOSBaseService{
 	 */
 	public void cacheDic(AosDicPO aos_dicPO) {
 		Jedis jedis = JedisUtil.getJedisClient();
-		jedis.hset(AOSCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_(), AOSJson.toJson(aos_dicPO));
+		jedis.hset(AOSCons.KEYS.DIC_KEY + aos_dicPO.getDic_key(), aos_dicPO.getCode(), AOSJson.toJson(aos_dicPO));
 		JedisUtil.close(jedis);
 	}
 	
@@ -122,7 +121,7 @@ public class CacheMasterDataService extends AOSBaseService{
 	 */
 	public void delDic(AosDicPO aos_dicPO) {
 		Jedis jedis = JedisUtil.getJedisClient();
-		jedis.hdel(AOSCons.KEYS.DIC_KEY + aos_dicPO.getKey_(), aos_dicPO.getCode_());
+		jedis.hdel(AOSCons.KEYS.DIC_KEY + aos_dicPO.getDic_key(), aos_dicPO.getCode());
 		JedisUtil.close(jedis);
 	}
 
@@ -148,7 +147,7 @@ public class CacheMasterDataService extends AOSBaseService{
 				aos_dicPOs.add((AosDicPO)AOSJson.fromJson(dicString, AosDicPO.class));
 			}
 		}
-		String jql = "SELECT * FROM :AOSList ORDER BY sort_no_";
+		String jql = "SELECT * FROM :AOSList ORDER BY sort_no";
 		aos_dicPOs = AOSListUtils.select(aos_dicPOs, AosDicPO.class, jql, null);
 		return aos_dicPOs;
 	}
@@ -175,7 +174,7 @@ public class CacheMasterDataService extends AOSBaseService{
 		JedisUtil.close(jedis);
 		if (AOSUtils.isNotEmpty(dicJson)) {
 		    AosDicPO aos_dicPO = (AosDicPO)AOSJson.fromJson(dicJson, AosDicPO.class);
-		    desc = aos_dicPO.getDesc_();
+		    desc = aos_dicPO.getDic_desc();
 		}
 		return desc;
 	}

@@ -9,7 +9,7 @@ import aos.framework.core.typewrap.PO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:01
+ * @date 2017-03-23 17:54:24
  */
 public class AosCmpPO extends PO {
 
@@ -18,118 +18,118 @@ public class AosCmpPO extends PO {
 	/**
 	 * 流水号
 	 */
-	private String id_;
+	private Integer id;
 	
 	/**
 	 * 组件名称
 	 */
-	private String name_;
+	private String name;
 	
 	/**
 	 * 界面组件ID
 	 */
-	private String dom_id_;
+	private String dom_id;
 	
 	/**
 	 * 所属页面标识
 	 */
-	private String page_key_;
+	private String page_key;
 	
 	/**
 	 * 所属页面名称
 	 */
-	private String page_name_;
+	private String page_name;
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @return id_
+	 * @return id
 	 */
-	public String getId_() {
-		return id_;
+	public Integer getId() {
+		return id;
 	}
 	
 	/**
 	 * 组件名称
 	 * 
-	 * @return name_
+	 * @return name
 	 */
-	public String getName_() {
-		return name_;
+	public String getName() {
+		return name;
 	}
 	
 	/**
 	 * 界面组件ID
 	 * 
-	 * @return dom_id_
+	 * @return dom_id
 	 */
-	public String getDom_id_() {
-		return dom_id_;
+	public String getDom_id() {
+		return dom_id;
 	}
 	
 	/**
 	 * 所属页面标识
 	 * 
-	 * @return page_key_
+	 * @return page_key
 	 */
-	public String getPage_key_() {
-		return page_key_;
+	public String getPage_key() {
+		return page_key;
 	}
 	
 	/**
 	 * 所属页面名称
 	 * 
-	 * @return page_name_
+	 * @return page_name
 	 */
-	public String getPage_name_() {
-		return page_name_;
+	public String getPage_name() {
+		return page_name;
 	}
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @param id_
+	 * @param id
 	 */
-	public void setId_(String id_) {
-		this.id_ = id_;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	/**
 	 * 组件名称
 	 * 
-	 * @param name_
+	 * @param name
 	 */
-	public void setName_(String name_) {
-		this.name_ = name_;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/**
 	 * 界面组件ID
 	 * 
-	 * @param dom_id_
+	 * @param dom_id
 	 */
-	public void setDom_id_(String dom_id_) {
-		this.dom_id_ = dom_id_;
+	public void setDom_id(String dom_id) {
+		this.dom_id = dom_id;
 	}
 	
 	/**
 	 * 所属页面标识
 	 * 
-	 * @param page_key_
+	 * @param page_key
 	 */
-	public void setPage_key_(String page_key_) {
-		this.page_key_ = page_key_;
+	public void setPage_key(String page_key) {
+		this.page_key = page_key;
 	}
 	
 	/**
 	 * 所属页面名称
 	 * 
-	 * @param page_name_
+	 * @param page_name
 	 */
-	public void setPage_name_(String page_name_) {
-		this.page_name_ = page_name_;
+	public void setPage_name(String page_name) {
+		this.page_name = page_name;
 	}
 	
 

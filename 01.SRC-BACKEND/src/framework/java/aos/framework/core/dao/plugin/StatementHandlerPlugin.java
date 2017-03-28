@@ -93,7 +93,7 @@ public class StatementHandlerPlugin implements Interceptor {
 		//如果是update相关操作则退出拦截继续执行代码
 		if (update) {
 			//实现一个辅助的小功能：如果系统以演示模式启动的话则不允许进行update操作
-			if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode_"))) {
+			if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode"))) {
 				throw new AOSException(13);
 			}
 		}		

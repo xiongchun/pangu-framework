@@ -10,7 +10,7 @@ import java.util.Date;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:02
+ * @date 2017-03-23 17:54:25
  */
 public class AosRolePO extends PO {
 
@@ -19,187 +19,187 @@ public class AosRolePO extends PO {
 	/**
 	 *  流水号
 	 */
-	private String id_;
+	private Integer id;
 	
 	/**
 	 * 角色名称
 	 */
-	private String name_;
+	private String name;
 	
 	/**
 	 * 是否启用
 	 */
-	private String is_enable_;
+	private String is_enable;
 	
 	/**
 	 * 角色类型
 	 */
-	private String type_;
+	private String type;
 	
 	/**
 	 * 扩展码
 	 */
-	private String biz_code_;
+	private String biz_code;
 	
 	/**
 	 * 备注
 	 */
-	private String remark_;
+	private String remark;
 	
 	/**
 	 * 创建时间
 	 */
-	private Date create_time_;
+	private Date create_time;
 	
 	/**
 	 * 创建人ID
 	 */
-	private String create_by_;
+	private Integer create_by;
 	
 
 	/**
 	 *  流水号
 	 * 
-	 * @return id_
+	 * @return id
 	 */
-	public String getId_() {
-		return id_;
+	public Integer getId() {
+		return id;
 	}
 	
 	/**
 	 * 角色名称
 	 * 
-	 * @return name_
+	 * @return name
 	 */
-	public String getName_() {
-		return name_;
+	public String getName() {
+		return name;
 	}
 	
 	/**
 	 * 是否启用
 	 * 
-	 * @return is_enable_
+	 * @return is_enable
 	 */
-	public String getIs_enable_() {
-		return is_enable_;
+	public String getIs_enable() {
+		return is_enable;
 	}
 	
 	/**
 	 * 角色类型
 	 * 
-	 * @return type_
+	 * @return type
 	 */
-	public String getType_() {
-		return type_;
+	public String getType() {
+		return type;
 	}
 	
 	/**
 	 * 扩展码
 	 * 
-	 * @return biz_code_
+	 * @return biz_code
 	 */
-	public String getBiz_code_() {
-		return biz_code_;
+	public String getBiz_code() {
+		return biz_code;
 	}
 	
 	/**
 	 * 备注
 	 * 
-	 * @return remark_
+	 * @return remark
 	 */
-	public String getRemark_() {
-		return remark_;
+	public String getRemark() {
+		return remark;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @return create_time_
+	 * @return create_time
 	 */
-	public Date getCreate_time_() {
-		return create_time_;
+	public Date getCreate_time() {
+		return create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @return create_by_
+	 * @return create_by
 	 */
-	public String getCreate_by_() {
-		return create_by_;
+	public Integer getCreate_by() {
+		return create_by;
 	}
 	
 
 	/**
 	 *  流水号
 	 * 
-	 * @param id_
+	 * @param id
 	 */
-	public void setId_(String id_) {
-		this.id_ = id_;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	/**
 	 * 角色名称
 	 * 
-	 * @param name_
+	 * @param name
 	 */
-	public void setName_(String name_) {
-		this.name_ = name_;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/**
 	 * 是否启用
 	 * 
-	 * @param is_enable_
+	 * @param is_enable
 	 */
-	public void setIs_enable_(String is_enable_) {
-		this.is_enable_ = is_enable_;
+	public void setIs_enable(String is_enable) {
+		this.is_enable = is_enable;
 	}
 	
 	/**
 	 * 角色类型
 	 * 
-	 * @param type_
+	 * @param type
 	 */
-	public void setType_(String type_) {
-		this.type_ = type_;
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	/**
 	 * 扩展码
 	 * 
-	 * @param biz_code_
+	 * @param biz_code
 	 */
-	public void setBiz_code_(String biz_code_) {
-		this.biz_code_ = biz_code_;
+	public void setBiz_code(String biz_code) {
+		this.biz_code = biz_code;
 	}
 	
 	/**
 	 * 备注
 	 * 
-	 * @param remark_
+	 * @param remark
 	 */
-	public void setRemark_(String remark_) {
-		this.remark_ = remark_;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @param create_time_
+	 * @param create_time
 	 */
-	public void setCreate_time_(Date create_time_) {
-		this.create_time_ = create_time_;
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @param create_by_
+	 * @param create_by
 	 */
-	public void setCreate_by_(String create_by_) {
-		this.create_by_ = create_by_;
+	public void setCreate_by(Integer create_by) {
+		this.create_by = create_by;
 	}
 	
 

@@ -10,7 +10,7 @@ import java.util.Date;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:28:56
+ * @date 2017-03-23 17:57:02
  */
 public class AosUserPO extends PO {
 
@@ -19,417 +19,417 @@ public class AosUserPO extends PO {
 	/**
 	 * 流水号
 	 */
-	private String id_;
+	private Integer id;
 	
 	/**
 	 * 用户登录帐号
 	 */
-	private String account_;
+	private String account;
 	
 	/**
 	 * 密码
 	 */
-	private String password_;
+	private String password;
 	
 	/**
 	 * 用户姓名
 	 */
-	private String name_;
+	private String name;
 	
 	/**
 	 * 性别
 	 */
-	private String sex_;
+	private String sex;
 	
 	/**
 	 * 用户状态
 	 */
-	private String status_;
+	private String status;
 	
 	/**
 	 * 用户类型
 	 */
-	private String type_;
+	private String type;
 	
 	/**
 	 * 所属部门流水号
 	 */
-	private String org_id_;
+	private Integer org_id;
 	
 	/**
 	 * 电子邮件
 	 */
-	private String email_;
+	private String email;
 	
 	/**
 	 * 联系电话
 	 */
-	private String mobile_;
+	private String mobile;
 	
 	/**
 	 * 身份证号
 	 */
-	private String idno_;
+	private String idno;
 	
 	/**
 	 * 用户界面皮肤
 	 */
-	private String skin_;
+	private String skin;
 	
 	/**
 	 * 业务对照码
 	 */
-	private String biz_code_;
+	private String biz_code;
 	
 	/**
 	 * 联系地址
 	 */
-	private String address_;
+	private String address;
 	
 	/**
 	 * 备注
 	 */
-	private String remark_;
+	private String remark;
 	
 	/**
 	 * 是否已删除
 	 */
-	private String is_del_;
+	private String is_del;
 	
 	/**
 	 * 创建时间
 	 */
-	private Date create_time_;
+	private Date create_time;
 	
 	/**
 	 * 创建人ID
 	 */
-	private String create_by_;
+	private Integer create_by;
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @return id_
+	 * @return id
 	 */
-	public String getId_() {
-		return id_;
+	public Integer getId() {
+		return id;
 	}
 	
 	/**
 	 * 用户登录帐号
 	 * 
-	 * @return account_
+	 * @return account
 	 */
-	public String getAccount_() {
-		return account_;
+	public String getAccount() {
+		return account;
 	}
 	
 	/**
 	 * 密码
 	 * 
-	 * @return password_
+	 * @return password
 	 */
-	public String getPassword_() {
-		return password_;
+	public String getPassword() {
+		return password;
 	}
 	
 	/**
 	 * 用户姓名
 	 * 
-	 * @return name_
+	 * @return name
 	 */
-	public String getName_() {
-		return name_;
+	public String getName() {
+		return name;
 	}
 	
 	/**
 	 * 性别
 	 * 
-	 * @return sex_
+	 * @return sex
 	 */
-	public String getSex_() {
-		return sex_;
+	public String getSex() {
+		return sex;
 	}
 	
 	/**
 	 * 用户状态
 	 * 
-	 * @return status_
+	 * @return status
 	 */
-	public String getStatus_() {
-		return status_;
+	public String getStatus() {
+		return status;
 	}
 	
 	/**
 	 * 用户类型
 	 * 
-	 * @return type_
+	 * @return type
 	 */
-	public String getType_() {
-		return type_;
+	public String getType() {
+		return type;
 	}
 	
 	/**
 	 * 所属部门流水号
 	 * 
-	 * @return org_id_
+	 * @return org_id
 	 */
-	public String getOrg_id_() {
-		return org_id_;
+	public Integer getOrg_id() {
+		return org_id;
 	}
 	
 	/**
 	 * 电子邮件
 	 * 
-	 * @return email_
+	 * @return email
 	 */
-	public String getEmail_() {
-		return email_;
+	public String getEmail() {
+		return email;
 	}
 	
 	/**
 	 * 联系电话
 	 * 
-	 * @return mobile_
+	 * @return mobile
 	 */
-	public String getMobile_() {
-		return mobile_;
+	public String getMobile() {
+		return mobile;
 	}
 	
 	/**
 	 * 身份证号
 	 * 
-	 * @return idno_
+	 * @return idno
 	 */
-	public String getIdno_() {
-		return idno_;
+	public String getIdno() {
+		return idno;
 	}
 	
 	/**
 	 * 用户界面皮肤
 	 * 
-	 * @return skin_
+	 * @return skin
 	 */
-	public String getSkin_() {
-		return skin_;
+	public String getSkin() {
+		return skin;
 	}
 	
 	/**
 	 * 业务对照码
 	 * 
-	 * @return biz_code_
+	 * @return biz_code
 	 */
-	public String getBiz_code_() {
-		return biz_code_;
+	public String getBiz_code() {
+		return biz_code;
 	}
 	
 	/**
 	 * 联系地址
 	 * 
-	 * @return address_
+	 * @return address
 	 */
-	public String getAddress_() {
-		return address_;
+	public String getAddress() {
+		return address;
 	}
 	
 	/**
 	 * 备注
 	 * 
-	 * @return remark_
+	 * @return remark
 	 */
-	public String getRemark_() {
-		return remark_;
+	public String getRemark() {
+		return remark;
 	}
 	
 	/**
 	 * 是否已删除
 	 * 
-	 * @return is_del_
+	 * @return is_del
 	 */
-	public String getIs_del_() {
-		return is_del_;
+	public String getIs_del() {
+		return is_del;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @return create_time_
+	 * @return create_time
 	 */
-	public Date getCreate_time_() {
-		return create_time_;
+	public Date getCreate_time() {
+		return create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @return create_by_
+	 * @return create_by
 	 */
-	public String getCreate_by_() {
-		return create_by_;
+	public Integer getCreate_by() {
+		return create_by;
 	}
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @param id_
+	 * @param id
 	 */
-	public void setId_(String id_) {
-		this.id_ = id_;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	/**
 	 * 用户登录帐号
 	 * 
-	 * @param account_
+	 * @param account
 	 */
-	public void setAccount_(String account_) {
-		this.account_ = account_;
+	public void setAccount(String account) {
+		this.account = account;
 	}
 	
 	/**
 	 * 密码
 	 * 
-	 * @param password_
+	 * @param password
 	 */
-	public void setPassword_(String password_) {
-		this.password_ = password_;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	/**
 	 * 用户姓名
 	 * 
-	 * @param name_
+	 * @param name
 	 */
-	public void setName_(String name_) {
-		this.name_ = name_;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/**
 	 * 性别
 	 * 
-	 * @param sex_
+	 * @param sex
 	 */
-	public void setSex_(String sex_) {
-		this.sex_ = sex_;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	
 	/**
 	 * 用户状态
 	 * 
-	 * @param status_
+	 * @param status
 	 */
-	public void setStatus_(String status_) {
-		this.status_ = status_;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	/**
 	 * 用户类型
 	 * 
-	 * @param type_
+	 * @param type
 	 */
-	public void setType_(String type_) {
-		this.type_ = type_;
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	/**
 	 * 所属部门流水号
 	 * 
-	 * @param org_id_
+	 * @param org_id
 	 */
-	public void setOrg_id_(String org_id_) {
-		this.org_id_ = org_id_;
+	public void setOrg_id(Integer org_id) {
+		this.org_id = org_id;
 	}
 	
 	/**
 	 * 电子邮件
 	 * 
-	 * @param email_
+	 * @param email
 	 */
-	public void setEmail_(String email_) {
-		this.email_ = email_;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	/**
 	 * 联系电话
 	 * 
-	 * @param mobile_
+	 * @param mobile
 	 */
-	public void setMobile_(String mobile_) {
-		this.mobile_ = mobile_;
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 	
 	/**
 	 * 身份证号
 	 * 
-	 * @param idno_
+	 * @param idno
 	 */
-	public void setIdno_(String idno_) {
-		this.idno_ = idno_;
+	public void setIdno(String idno) {
+		this.idno = idno;
 	}
 	
 	/**
 	 * 用户界面皮肤
 	 * 
-	 * @param skin_
+	 * @param skin
 	 */
-	public void setSkin_(String skin_) {
-		this.skin_ = skin_;
+	public void setSkin(String skin) {
+		this.skin = skin;
 	}
 	
 	/**
 	 * 业务对照码
 	 * 
-	 * @param biz_code_
+	 * @param biz_code
 	 */
-	public void setBiz_code_(String biz_code_) {
-		this.biz_code_ = biz_code_;
+	public void setBiz_code(String biz_code) {
+		this.biz_code = biz_code;
 	}
 	
 	/**
 	 * 联系地址
 	 * 
-	 * @param address_
+	 * @param address
 	 */
-	public void setAddress_(String address_) {
-		this.address_ = address_;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	/**
 	 * 备注
 	 * 
-	 * @param remark_
+	 * @param remark
 	 */
-	public void setRemark_(String remark_) {
-		this.remark_ = remark_;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	
 	/**
 	 * 是否已删除
 	 * 
-	 * @param is_del_
+	 * @param is_del
 	 */
-	public void setIs_del_(String is_del_) {
-		this.is_del_ = is_del_;
+	public void setIs_del(String is_del) {
+		this.is_del = is_del;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @param create_time_
+	 * @param create_time
 	 */
-	public void setCreate_time_(Date create_time_) {
-		this.create_time_ = create_time_;
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @param create_by_
+	 * @param create_by
 	 */
-	public void setCreate_by_(String create_by_) {
-		this.create_by_ = create_by_;
+	public void setCreate_by(Integer create_by) {
+		this.create_by = create_by;
 	}
 	
 

@@ -10,7 +10,7 @@ import java.util.Date;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:02
+ * @date 2017-03-23 17:54:25
  */
 public class AosUserRolePO extends PO {
 
@@ -19,118 +19,118 @@ public class AosUserRolePO extends PO {
 	/**
 	 * 流水号
 	 */
-	private String id_;
+	private Integer id;
 	
 	/**
 	 * 用户流水号
 	 */
-	private String user_id_;
+	private Integer user_id;
 	
 	/**
 	 * 角色流水号
 	 */
-	private String role_id_;
+	private Integer role_id;
 	
 	/**
 	 * 创建时间
 	 */
-	private Date create_time_;
+	private Date create_time;
 	
 	/**
 	 * 创建人ID
 	 */
-	private String create_by_;
+	private Integer create_by;
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @return id_
+	 * @return id
 	 */
-	public String getId_() {
-		return id_;
+	public Integer getId() {
+		return id;
 	}
 	
 	/**
 	 * 用户流水号
 	 * 
-	 * @return user_id_
+	 * @return user_id
 	 */
-	public String getUser_id_() {
-		return user_id_;
+	public Integer getUser_id() {
+		return user_id;
 	}
 	
 	/**
 	 * 角色流水号
 	 * 
-	 * @return role_id_
+	 * @return role_id
 	 */
-	public String getRole_id_() {
-		return role_id_;
+	public Integer getRole_id() {
+		return role_id;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @return create_time_
+	 * @return create_time
 	 */
-	public Date getCreate_time_() {
-		return create_time_;
+	public Date getCreate_time() {
+		return create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @return create_by_
+	 * @return create_by
 	 */
-	public String getCreate_by_() {
-		return create_by_;
+	public Integer getCreate_by() {
+		return create_by;
 	}
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @param id_
+	 * @param id
 	 */
-	public void setId_(String id_) {
-		this.id_ = id_;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	/**
 	 * 用户流水号
 	 * 
-	 * @param user_id_
+	 * @param user_id
 	 */
-	public void setUser_id_(String user_id_) {
-		this.user_id_ = user_id_;
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
 	}
 	
 	/**
 	 * 角色流水号
 	 * 
-	 * @param role_id_
+	 * @param role_id
 	 */
-	public void setRole_id_(String role_id_) {
-		this.role_id_ = role_id_;
+	public void setRole_id(Integer role_id) {
+		this.role_id = role_id;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @param create_time_
+	 * @param create_time
 	 */
-	public void setCreate_time_(Date create_time_) {
-		this.create_time_ = create_time_;
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @param create_by_
+	 * @param create_by
 	 */
-	public void setCreate_by_(String create_by_) {
-		this.create_by_ = create_by_;
+	public void setCreate_by(Integer create_by) {
+		this.create_by = create_by;
 	}
 	
 

@@ -52,12 +52,12 @@ public class AOSCons {
 	/**
 	 * Ext Reader对象的totalProperty属性名称
 	 */
-	public static final String READER_TOTAL_PROPERTY = "_total";
+	public static final String READER_TOTAL_PROPERTY = "total";
 
 	/**
 	 * Ext Reader对象的root属性名称
 	 */
-	public static final String READER_ROOT_PROPERTY = "_rows";
+	public static final String READER_ROOT_PROPERTY = "rows";
 
 	/**
 	 * Dto对象中的内部变量：交易状态码
@@ -97,12 +97,12 @@ public class AOSCons {
 	/**
 	 * User对象在上下文重的KEY
 	 */
-	public static final String USERINFOKEY = "aos_user_model_";
+	public static final String USERINFOKEY = "aos_user_model";
 
 	/**
 	 * 获取前端UI选择模型选中的标识字段的数组，前端请求参数key应为：aos_rows_，方能取到。
 	 */
-	public static final String AOS_ROWS_ = "aos_rows_";
+	public static final String AOS_ROWS_ = "aos_rows";
 
 	/**
 	 * 是
@@ -117,37 +117,37 @@ public class AOSCons {
 	/**
 	 * 数序运算SQL的参数Dto中的运算表达式Key。
 	 */
-	public static final String CALCEXPR = "_expr";
+	public static final String CALCEXPR = "expr";
 
 	/**
 	 * DTO缺省字符串Key
 	 */
-	public static final String DEFAULT_STRING_KEY = "_default_string_a";
+	public static final String DEFAULT_STRING_KEY = "default_string_a";
 
 	/**
 	 * DTO缺省List Key
 	 */
-	public static final String DEFAULT_LIST_KEY = "_default_list_a";
+	public static final String DEFAULT_LIST_KEY = "default_list_a";
 
 	/**
 	 * DTO缺省BigDecimal Key
 	 */
-	public static final String DEFAULT_BIGDECIMAL_KEY = "_default_bigdecimal_a";
+	public static final String DEFAULT_BIGDECIMAL_KEY = "default_bigdecimal_a";
 
 	/**
 	 * DTO缺省Integer Key
 	 */
-	public static final String DEFAULT_INTEGER_KEY = "_default_integer_a";
+	public static final String DEFAULT_INTEGER_KEY = "default_integer_a";
 
 	/**
 	 * DTO缺省Boolean Key
 	 */
-	public static final String DEFAULT_BOOLEAN_KEY = "_default_boolean_a";
+	public static final String DEFAULT_BOOLEAN_KEY = "default_boolean_a";
 
 	/**
 	 * WEBAPPCXT是否成功的标志KEY
 	 */
-	public static final String WEBAPPCXT_IS_SUCCESS_KEY = "_webappcxt_is_success";
+	public static final String WEBAPPCXT_IS_SUCCESS_KEY = "webappcxt_is_success";
 
 	/**
 	 * JOSQL AOSListUtils 中使用的KEY
@@ -157,17 +157,17 @@ public class AOSCons {
 	/**
 	 * 排序器在参数对象中的Key
 	 */
-	public static final String ORDER_KEY = "_order";
+	public static final String ORDER_KEY = "order";
 
 	/**
 	 * 点击菜单节点自动拼接到URL上面的菜单模块编号参数
 	 */
-	public static final String MODULE_ID_KEY = "aos_module_id_";
+	public static final String MODULE_ID_KEY = "aos_module_id";
 
 	/**
 	 * 点击主页面上二级导航页面的页面ID参数
 	 */
-	public static final String PAGE_ID_KEY = "aos_page_id_";
+	public static final String PAGE_ID_KEY = "aos_page_id";
 
 	/**
 	 * 角色授权模式。1：可见当前管理员创建的角色和当前管理员所属组织的其他管理员创建的角色。
@@ -194,15 +194,6 @@ public class AOSCons {
 	 */
 	public static final String OSWORKS_WEBSITE = "http://git.oschina.net/osworks/AOS";
 
-	/**
-	 * 功能模块根节点ID
-	 */
-	public static final String MODULE_ROOT_ID = "2a4c060f44d944ea926fe44522ce7b39";
-
-	/**
-	 * 组织根节点ID
-	 */
-	public static final String ORG_ROOT_ID = "63cf387a243d4d9799367d773b853346";
 
 	/**
 	 * 对象删除规则
@@ -254,21 +245,21 @@ public class AOSCons {
 		// 全局KEY
 		public static final String GLOBAL = APP_KEY + ":";
 		// 应用上下文
-		public static final String CXT = GLOBAL + "cxt_";
+		public static final String CXT = GLOBAL + "cxt";
 		// 序列号
-		public static final String ID = GLOBAL + "id_";
+		public static final String ID = GLOBAL + "id";
 		// 功能权限授权命名空间 (方便缓存重置)
-		public static final String FUNCTION_GRANT = GLOBAL + "grant_";
+		public static final String FUNCTION_GRANT = GLOBAL + "grant";
 		// 卡片组
-		public static final String CARDLIST = FUNCTION_GRANT + "card_";
+		public static final String CARDLIST = FUNCTION_GRANT + "card";
 		// 卡片导航树
-		public static final String CARD_TREE = FUNCTION_GRANT + "card_tree_";
+		public static final String CARD_TREE = FUNCTION_GRANT + "card_tree";
 		// 全局参数
-		public static final String PARAM_KEY = GLOBAL + "param_";
+		public static final String PARAM_KEY = GLOBAL + "param";
 		// 数据字典
-		public static final String DIC_KEY = GLOBAL + "dic_";
+		public static final String DIC_KEY = GLOBAL + "dic";
 		// 在线用户集合
-		public static final String USER_LIST_KEY = GLOBAL + "online_users_";
+		public static final String USER_LIST_KEY = GLOBAL + "online_users";
 	}
 
 	/**

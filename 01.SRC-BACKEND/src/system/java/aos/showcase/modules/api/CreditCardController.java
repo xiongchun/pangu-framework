@@ -39,7 +39,7 @@ public class CreditCardController {
 	
 	/**
 	 * 注册接口<br>
-	 * <p>这种方式的前提是H5 Ajax的dataType:"json",contentType:"application/json"时或Android、IOS直接提交JSON的情况
+	 * <p>这种方式的前提是H5 Ajax的dataType:"json",contentType:"application/json"时或Android、IOS通过Http类库直接提交JSON的情况
 	 * @param jsonString
 	 * @param response
 	 */

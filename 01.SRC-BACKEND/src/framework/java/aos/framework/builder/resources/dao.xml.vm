@@ -207,7 +207,7 @@
 ##只对VARCHAR类型使用非空字符串测试
 #if(${columnDto.jdbctype} == "VARCHAR")	
 	    <if test="${columnDto.name} != null and ${columnDto.name} != ''">
-		      AND ${columnDto.name} like '%${${columnDto.name}}%'  <!-- ${columnDto.comment} -->
+		      AND ${columnDto.name} like '${${columnDto.name}}%'  <!-- ${columnDto.comment} -->
 		</if>
 #end
 #end

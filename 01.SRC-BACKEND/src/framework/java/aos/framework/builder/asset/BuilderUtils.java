@@ -137,12 +137,12 @@ public class BuilderUtils {
 	}
 
 	/**
-	 * 生成导入包识别枚举
+	 * 生成导入包识别枚举(PO文件)
 	 * 
 	 * @param columnVOs
 	 * @return
 	 */
-	public static Dto getImportDto(List<Dto> columnDtos) {
+	public static Dto getImportDto4PO(List<Dto> columnDtos) {
 		Dto importDto = Dtos.newDto();
 		for (Dto columnDto : columnDtos) {
 			String javatype = columnDto.getString("javatype");
@@ -153,6 +153,27 @@ public class BuilderUtils {
 			} else if ("BigDecimal".equalsIgnoreCase(javatype)) {
 				importDto.put("bigDecimal", true);
 			}else if ("BigInteger".equalsIgnoreCase(javatype)) {
+				importDto.put("bigInteger", true);
+			} else {
+				// java.lang.*下的类型不需要导入
+			}
+		}
+		return importDto;
+	}
+	
+	/**
+	 * 生成导入包识别枚举(DAO文件)
+	 * 
+	 * @param columnVOs
+	 * @return
+	 */
+	public static Dto getImportDto4Dao(List<Dto> columnDtos) {
+		Dto importDto = Dtos.newDto();
+		for (Dto columnDto : columnDtos) {
+			String javatype = columnDto.getString("javatype");
+			if ("BigDecimal".equalsIgnoreCase(javatype) && columnDto.getBoolean("isPkey")) {
+				importDto.put("bigDecimal", true);
+			}else if ("BigInteger".equalsIgnoreCase(javatype) && columnDto.getBoolean("isPkey")) {
 				importDto.put("bigInteger", true);
 			} else {
 				// java.lang.*下的类型不需要导入

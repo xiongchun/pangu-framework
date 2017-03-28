@@ -83,7 +83,7 @@ public class DefaultDialect implements Dialect {
 		//处理子查询SQL语句 (砍掉结果集字段，只要条件块)
 		shortSql = shortSql + pSql.substring(a + 4);
 		shortSql = removeOrder(shortSql);
-		String countSql = "SELECT COUNT(0) FROM (" + shortSql + ") AS aos_count_";
+		String countSql = "SELECT COUNT(0) FROM (" + shortSql + ") AS aos_count";
 		return countSql;
 	}
     

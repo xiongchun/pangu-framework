@@ -15,7 +15,7 @@ import aos.system.dao.po.AosUserRolePO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:02
+ * @date 2017-03-23 17:54:25
  */
 @Dao("aosUserRoleDao")
 public interface AosUserRoleDao {
@@ -53,7 +53,7 @@ public interface AosUserRoleDao {
 	 * 
 	 * @return AosUserRolePO
 	 */
-	AosUserRolePO selectByKey(@Param(value = "id_") String id_);
+	AosUserRolePO selectByKey(@Param(value = "id") Integer id);
 
 	/**
 	 * 根据唯一组合条件查询并返回数据持久化对象
@@ -95,7 +95,7 @@ public interface AosUserRoleDao {
 	 *
 	 * @return 影响行数
 	 */
-	int deleteByKey(@Param(value = "id_") String id_);
+	int deleteByKey(@Param(value = "id") Integer id);
 	
 	/**
 	 * 根据Dto统计行数

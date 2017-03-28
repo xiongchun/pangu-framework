@@ -1,6 +1,7 @@
 package aos.system.modules.home;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -9,10 +10,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.common.collect.Lists;
+import com.google.gson.reflect.TypeToken;
+
+import aos.framework.core.dao.SqlDao;
 import aos.framework.core.dao.asset.DBDialectUtils;
-import aos.framework.core.id.AOSId;
 import aos.framework.core.redis.JedisUtil;
-import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.utils.AOSCodec;
@@ -23,6 +26,7 @@ import aos.framework.core.utils.AOSUtils;
 import aos.framework.dao.AosUserDao;
 import aos.framework.dao.po.AosUserPO;
 import aos.framework.web.router.HttpModel;
+import aos.system.common.id.IdService;
 import aos.system.common.model.UserModel;
 import aos.system.common.utils.ErrorCode;
 import aos.system.common.utils.SystemCons;
@@ -36,7 +40,7 @@ import aos.system.modules.cache.CacheUserDataService;
  *
  */
 @Service
-public class HomeService extends AOSBaseService {
+public class HomeService {
 
 	private static Logger logger = LoggerFactory.getLogger(HomeService.class);
 
@@ -44,6 +48,10 @@ public class HomeService extends AOSBaseService {
 	private CacheUserDataService cacheUserDataService;
 	@Autowired
 	private AosUserDao aosUserDao;
+	@Autowired
+	private SqlDao sqlDao;
+	@Autowired
+	private IdService idService;
 
 	/**
 	 * 注册页面初始化
@@ -53,30 +61,30 @@ public class HomeService extends AOSBaseService {
 	 */
 	public void initLogin(HttpModel httpModel) {
 
-		httpModel.setAttribute("app_title_", AOSCxt.getParam("app_title_"));
-		httpModel.setAttribute("left_logo_", AOSCxt.getParam("left_logo_"));
-		httpModel.setAttribute("vercode_characters_", AOSCxt.getParam("vercode_characters_"));
-		httpModel.setAttribute("vercode_length_", AOSCxt.getParam("vercode_length_"));
-		httpModel.setAttribute("is_show_vercode_", AOSCxt.getParam("is_show_vercode_"));
-		httpModel.setAttribute("login_wait_msg_", AOSCxt.getParam("login_wait_msg_"));
-		httpModel.setAttribute("north_back_img_", AOSCxt.getParam("skin_") + ".png");
-		httpModel.setAttribute("login_dev_", AOSCxt.getParam("login_dev_"));
-		httpModel.setAttribute("login_dev_account_", AOSCxt.getParam("login_dev_account_"));
-		String login_back_img_ = AOSCxt.getParam("login_back_img_");
-		if (StringUtils.equals(login_back_img_, "-1")) {
+		httpModel.setAttribute("app_title", AOSCxt.getParam("app_title"));
+		httpModel.setAttribute("left_logo", AOSCxt.getParam("left_logo"));
+		httpModel.setAttribute("vercode_characters", AOSCxt.getParam("vercode_characters"));
+		httpModel.setAttribute("vercode_length", AOSCxt.getParam("vercode_length"));
+		httpModel.setAttribute("is_show_vercode", AOSCxt.getParam("is_show_vercode"));
+		httpModel.setAttribute("login_wait_msg", AOSCxt.getParam("login_wait_msg"));
+		httpModel.setAttribute("north_back_img", AOSCxt.getParam("skin") + ".png");
+		httpModel.setAttribute("login_dev", AOSCxt.getParam("login_dev"));
+		httpModel.setAttribute("login_dev_account", AOSCxt.getParam("login_dev_account"));
+		String login_back_img = AOSCxt.getParam("login_back_img");
+		if (StringUtils.equals(login_back_img, "-1")) {
 			int backImgIndex = RandomUtils.nextInt(3); // [0,3)
-			login_back_img_ = backImgIndex + ".jpg";
+			login_back_img = backImgIndex + ".jpg";
 		}
-		httpModel.setAttribute("login_back_img_", login_back_img_);
+		httpModel.setAttribute("login_back_img", login_back_img);
 		int row_space_ = 25, padding_ = 50;
-		if (StringUtils.equals(AOSCxt.getParam("is_show_vercode_"), SystemCons.IS.YES)) {
+		if (StringUtils.equals(AOSCxt.getParam("is_show_vercode"), SystemCons.IS.YES)) {
 			row_space_ = 15;
 			padding_ = 30;
 		}
-		httpModel.setAttribute("row_space_", row_space_);
-		httpModel.setAttribute("padding_", padding_);
+		httpModel.setAttribute("row_space", row_space_);
+		httpModel.setAttribute("padding", padding_);
 		// 用来标识登录页面校验验证码用的
-		httpModel.setAttribute("vercode_uuid_", AOSId.uuid());
+		httpModel.setAttribute("vercode_uuid", idService.uuid());
 		httpModel.setViewPath("login.jsp");
 	}
 
@@ -89,25 +97,25 @@ public class HomeService extends AOSBaseService {
 	public void initIndex(HttpModel httpModel) {
 		UserModel userModel = httpModel.getUserModel();
 		// 构造卡片菜单
-		httpModel.setAttribute("cardDtos", getCardListFromCache(userModel.getId_()));
+		httpModel.setAttribute("cardDtos", getCardListFromCache(userModel.getId()));
 
-		httpModel.setAttribute("north_back_img_", userModel.getSkin_() + ".png");
-		httpModel.setAttribute("south_back_color_", AOSCxt.getDicDesc("south_back_color_", userModel.getSkin_()));
-		httpModel.setAttribute("copyright_", AOSCxt.getParam("copyright_"));
-		httpModel.setAttribute("app_title_", AOSCxt.getParam("app_title_"));
-		httpModel.setAttribute("welcome_page_title_", AOSCxt.getParam("welcome_page_title_"));
-		httpModel.setAttribute("user_name_", userModel.getName_());
-		httpModel.setAttribute("org_name_", userModel.getAosOrgPO().getName_());
-		httpModel.setAttribute("welcome_msg_", getWelcomeMsg());
-		httpModel.setAttribute("date_", AOSUtils.getDateStr());
-		httpModel.setAttribute("week_", AOSUtils.getWeekDayByDate(AOSUtils.getDateStr()));
-		httpModel.setAttribute("main_text_color_", AOSCxt.getDicDesc("main_text_color_", userModel.getSkin_()));
-		httpModel.setAttribute("nav_text_color_", AOSCxt.getDicDesc("nav_text_color_", userModel.getSkin_()));
-		httpModel.setAttribute("page_load_msg_", AOSCxt.getParam("page_load_msg_"));
-		httpModel.setAttribute("run_mode_", AOSCxt.getParam("run_mode_"));
-		httpModel.setAttribute("page_load_gif_", AOSCxt.getParam("page_load_gif_"));
-		httpModel.setAttribute("navDto", initNavBarStyle(userModel.getSkin_()));
-		httpModel.setAttribute("qq_group_link_", AOSCxt.getParam("qq_group_link_"));
+		httpModel.setAttribute("north_back_img", userModel.getSkin() + ".png");
+		httpModel.setAttribute("south_back_color", AOSCxt.getDicDesc("south_back_color", userModel.getSkin()));
+		httpModel.setAttribute("copyright", AOSCxt.getParam("copyright"));
+		httpModel.setAttribute("app_title", AOSCxt.getParam("app_title"));
+		httpModel.setAttribute("welcome_page_title", AOSCxt.getParam("welcome_page_title"));
+		httpModel.setAttribute("user_name", userModel.getName());
+		httpModel.setAttribute("org_name", userModel.getAosOrgPO().getName());
+		httpModel.setAttribute("welcome_msg", getWelcomeMsg());
+		httpModel.setAttribute("date", AOSUtils.getDateStr());
+		httpModel.setAttribute("week", AOSUtils.getWeekDayByDate(AOSUtils.getDateStr()));
+		httpModel.setAttribute("main_text_color", AOSCxt.getDicDesc("main_text_color", userModel.getSkin()));
+		httpModel.setAttribute("nav_text_color", AOSCxt.getDicDesc("nav_text_color", userModel.getSkin()));
+		httpModel.setAttribute("page_load_msg", AOSCxt.getParam("page_load_msg"));
+		httpModel.setAttribute("run_mode", AOSCxt.getParam("run_mode"));
+		httpModel.setAttribute("page_load_gif", AOSCxt.getParam("page_load_gif"));
+		httpModel.setAttribute("navDto", initNavBarStyle(userModel.getSkin()));
+		httpModel.setAttribute("qq_group_link", AOSCxt.getParam("qq_group_link"));
 
 		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
 
@@ -122,8 +130,8 @@ public class HomeService extends AOSBaseService {
 	 */
 	public void initPortal(HttpModel httpModel) {
 		UserModel userModel = httpModel.getUserModel();
-		httpModel.setAttribute("curSkin", userModel.getSkin_());
-		httpModel.setAttribute("run_mode_", AOSCxt.getParam("run_mode_"));
+		httpModel.setAttribute("curSkin", userModel.getSkin());
+		httpModel.setAttribute("run_mode", AOSCxt.getParam("run_mode"));
 		httpModel.setViewPath("system/portal.jsp");
 	}
 
@@ -137,11 +145,11 @@ public class HomeService extends AOSBaseService {
 		Dto inDto = httpModel.getInDto();
 		Dto outDto = Dtos.newDto();
 		outDto.setAppCode(AOSCons.SUCCESS);
-		String is_show_vercode_ = AOSCxt.getParam("is_show_vercode_");
+		String is_show_vercode_ = AOSCxt.getParam("is_show_vercode");
 		// 配置为无验证码机制则跳过验证
 		if (StringUtils.equals(is_show_vercode_, SystemCons.IS.YES)) {
-			String cached_vercode_ = JedisUtil.getString(inDto.getString("vercode_uuid_"));
-			if (!StringUtils.equalsIgnoreCase(cached_vercode_, inDto.getString("vercode_"))) {
+			String cached_vercode_ = JedisUtil.getString(inDto.getString("vercode_uuid"));
+			if (!StringUtils.equalsIgnoreCase(cached_vercode_, inDto.getString("vercode"))) {
 				outDto.setAppCode(ErrorCode.VERCODE_ERROR);
 				outDto.setAppMsg("验证码不对，请重新输入。");
 				httpModel.setOutMsg(AOSJson.toJson(outDto));
@@ -150,8 +158,8 @@ public class HomeService extends AOSBaseService {
 		}
 
 		// 帐号存在校验
-		Dto qDto = Dtos.newDto("account_", inDto.getString("account_"));
-		qDto.put("is_del_", SystemCons.IS.NO);
+		Dto qDto = Dtos.newDto("account", inDto.getString("account"));
+		qDto.put("is_del", SystemCons.IS.NO);
 		AosUserPO aosUserPO = aosUserDao.selectOne(qDto);
 		Boolean is_pass = true;
 		if (AOSUtils.isEmpty(aosUserPO)) {
@@ -160,14 +168,14 @@ public class HomeService extends AOSBaseService {
 			is_pass = false;
 		} else {
 			// 密码校验
-			String password = AOSCodec.password(inDto.getString("password_"));
-			if (!StringUtils.equals(password, aosUserPO.getPassword_())) {
+			String password = AOSCodec.password(inDto.getString("password"));
+			if (!StringUtils.equals(password, aosUserPO.getPassword())) {
 				outDto.setAppCode(ErrorCode.PASSWORD_ERROR);
 				outDto.setAppMsg("密码输入错误，请重新输入。");
 				is_pass = false;
 			} else {
 				// 状态校验
-				if (!aosUserPO.getStatus_().equals(SystemCons.USER_STATUS.NORMAL)) {
+				if (!aosUserPO.getStatus().equals(SystemCons.USER_STATUS.NORMAL)) {
 					outDto.setAppCode(ErrorCode.LOCKED_ERROR);
 					outDto.setAppMsg("该帐号已锁定或已停用，请联系管理员。");
 					is_pass = false;
@@ -197,7 +205,7 @@ public class HomeService extends AOSBaseService {
 	public void loginDev(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
 		Dto outDto = Dtos.newOutDto();
-		AosUserPO aosUserPO = aosUserDao.selectOne(Dtos.newDto("account_", inDto.getString("account_")));
+		AosUserPO aosUserPO = aosUserDao.selectOne(Dtos.newDto("account", inDto.getString("account")));
 		outDto.setAppCode(AOSCons.SUCCESS);
 		String juid = cacheUserDataService.login(aosUserPO, httpModel.getRequest());
 		outDto.put("juid", juid);
@@ -213,7 +221,7 @@ public class HomeService extends AOSBaseService {
 	public void logout(HttpModel httpModel) {
 		String juid = httpModel.getInDto().getString("juid");
 		if (AOSUtils.isNotEmpty(juid)) {
-			logger.info(AOSUtils.merge("用户[{0}]成功注销。", httpModel.getUserModel().getName_()));
+			logger.info(AOSUtils.merge("用户[{0}]成功注销。", httpModel.getUserModel().getName()));
 			cacheUserDataService.logout(juid);
 		}
 	}
@@ -224,17 +232,22 @@ public class HomeService extends AOSBaseService {
 	 * @param inDto
 	 * @return
 	 */
-	private List<Dto> getCardListFromCache(String user_id_) {
+	private List<Dto> getCardListFromCache(Integer user_id_) {
 		final String cacheKey = SystemCons.KEYS.CARDLIST + user_id_;
-		List<Dto> cardList = null;
+		List<Dto> cardList = Lists.newArrayList();
 		String cardListJson = JedisUtil.getString(cacheKey);
 		if (AOSUtils.isNotEmpty(cardListJson)) {
-			cardList = AOSJson.fromJson(cardListJson);
+			List<Map<String, String>> cardMapList = AOSJson.fromJson(cardListJson,
+					new TypeToken<List<Map<String, String>>>() {
+					}.getType());
+			for (Map<String, String> map : cardMapList) {
+				cardList.add(Dtos.newDto(map));
+			}
 		} else {
 			Dto qDto = Dtos.newDto();
-			qDto.put("user_id_", user_id_);
-			qDto.put("grant_type_", SystemCons.GRANT_TYPE_.BIZ);
-			// 取CASCADE_ID_长度为5的菜单出来作为卡片
+			qDto.put("user_id", user_id_);
+			qDto.put("grant_type", SystemCons.GRANT_TYPE.BIZ);
+			// 取CASCADE_ID长度为5的菜单出来作为卡片
 			qDto.put("length", '5');
 			qDto.put("fnLength", DBDialectUtils.fnLength(sqlDao.getDatabaseId()));
 			cardList = sqlDao.list("Home.selectModulesOfUser", qDto);
@@ -253,8 +266,8 @@ public class HomeService extends AOSBaseService {
 	 */
 	public void getCardTree(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
-		String user_id_ = httpModel.getUserModel().getId_();
-		String cascade_id_ = inDto.getString("cascade_id_");
+		Integer user_id_ = httpModel.getUserModel().getId();
+		String cascade_id_ = inDto.getString("cascade_id");
 		String cardTree = null;
 		// 每个用户会有多个卡片树
 		final String cacheKey = SystemCons.KEYS.CARD_TREE + user_id_ + "." + cascade_id_;
@@ -262,9 +275,9 @@ public class HomeService extends AOSBaseService {
 		cardTree = JedisUtil.getString(cacheKey);
 		if (AOSUtils.isEmpty(cardTree)) {
 			Dto qDto = Dtos.newDto();
-			qDto.put("user_id_", user_id_);
-			qDto.put("grant_type_", SystemCons.GRANT_TYPE_.BIZ);
-			qDto.put("cascade_id_", cascade_id_);
+			qDto.put("user_id", user_id_);
+			qDto.put("grant_type", SystemCons.GRANT_TYPE.BIZ);
+			qDto.put("cascade_id", cascade_id_);
 			moduleList = sqlDao.list("Home.selectModulesOfUser", qDto);
 			if (AOSUtils.isNotEmpty(moduleList)) {
 				cardTree = SystemUtils.toTreeModalAllInOne(moduleList);
@@ -281,10 +294,10 @@ public class HomeService extends AOSBaseService {
 	 * @return
 	 */
 	public void getUser(HttpModel httpModel) {
-		AosUserPO aosUserPO = aosUserDao.selectByKey(httpModel.getUserModel().getId_());
-		aosUserPO.setPassword_(StringUtils.EMPTY);
+		AosUserPO aosUserPO = aosUserDao.selectByKey(httpModel.getUserModel().getId());
+		aosUserPO.setPassword(StringUtils.EMPTY);
 		Dto outDto = aosUserPO.toDto();
-		outDto.put("org_name_", httpModel.getUserModel().getAosOrgPO().getName_());
+		outDto.put("org_name", httpModel.getUserModel().getAosOrgPO().getName());
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
 	}
 
@@ -299,13 +312,13 @@ public class HomeService extends AOSBaseService {
 		Dto inDto = httpModel.getInDto();
 		AosUserPO aosUserPO = new AosUserPO();
 		aosUserPO.copyProperties(inDto);
-		aosUserPO.setId_(httpModel.getUserModel().getId_());
+		aosUserPO.setId(httpModel.getUserModel().getId());
 		aosUserDao.updateByKey(aosUserPO);
-		if (!StringUtils.equals(aosUserPO.getSkin_(), httpModel.getUserModel().getSkin_())) {
-			outDto.put("is_skin_changed_", AOSCons.YES);
+		if (!StringUtils.equals(aosUserPO.getSkin(), httpModel.getUserModel().getSkin())) {
+			outDto.put("is_skin_changed", AOSCons.YES);
 		}
 		UserModel userModel = httpModel.getUserModel();
-		AOSUtils.copyProperties(aosUserDao.selectByKey(aosUserPO.getId_()), userModel);
+		AOSUtils.copyProperties(aosUserDao.selectByKey(aosUserPO.getId()), userModel);
 		cacheUserDataService.cacheUserModel(userModel);
 		outDto.setAppMsg("我的个人资料数据保存成功。");
 		httpModel.setOutMsg(AOSJson.toJson(outDto));
@@ -320,16 +333,16 @@ public class HomeService extends AOSBaseService {
 	public void updateMyPwd(HttpModel httpModel) {
 		Dto outDto = Dtos.newOutDto();
 		Dto inDto = httpModel.getInDto();
-		if (!StringUtils.equals(inDto.getString("confirm_new_password_"), inDto.getString("new_password_"))) {
+		if (!StringUtils.equals(inDto.getString("confirm_new_password"), inDto.getString("new_password"))) {
 			outDto.setAppCode(AOSCons.NO);
 			outDto.setAppMsg("两次密码输入不一致，请确认。");
 		} else {
-			AosUserPO aosUserPO = aosUserDao.selectByKey(httpModel.getUserModel().getId_());
-			if (!StringUtils.equals(aosUserPO.getPassword_(), AOSCodec.password(inDto.getString("password_")))) {
+			AosUserPO aosUserPO = aosUserDao.selectByKey(httpModel.getUserModel().getId());
+			if (!StringUtils.equals(aosUserPO.getPassword(), AOSCodec.password(inDto.getString("password")))) {
 				outDto.setAppCode(AOSCons.NO);
 				outDto.setAppMsg("原密码输入错误，请确认。");
 			} else {
-				aosUserPO.setPassword_(AOSCodec.password(inDto.getString("new_password_")));
+				aosUserPO.setPassword(AOSCodec.password(inDto.getString("new_password")));
 				aosUserDao.updateByKey(aosUserPO);
 				outDto.setAppMsg("密码修改成功。");
 			}
@@ -345,9 +358,9 @@ public class HomeService extends AOSBaseService {
 	 */
 	private Dto initNavBarStyle(String curSkin) {
 		Dto navDto = Dtos.newDto();
-		navDto.put("is_show_top_nav_", AOSCxt.getParam("is_show_top_nav_"));
-		String nav_button_style_ = AOSCxt.getParam("nav_button_style_");
-		navDto.put("nav_button_style_", nav_button_style_);
+		navDto.put("is_show_top_nav", AOSCxt.getParam("is_show_top_nav"));
+		String nav_button_style_ = AOSCxt.getParam("nav_button_style");
+		navDto.put("nav_button_style", nav_button_style_);
 		String nav_bar_style = StringUtils.EMPTY;
 		String nav_bar_style_visited = StringUtils.EMPTY;
 		String right_button_style = StringUtils.EMPTY;

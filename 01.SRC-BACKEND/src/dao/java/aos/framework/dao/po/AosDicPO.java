@@ -9,7 +9,7 @@ import aos.framework.core.typewrap.PO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:28:56
+ * @date 2017-03-24 10:46:25
  */
 public class AosDicPO extends PO {
 
@@ -18,233 +18,233 @@ public class AosDicPO extends PO {
 	/**
 	 * 流水号
 	 */
-	private String id_;
+	private Integer id;
 	
 	/**
 	 * 字典名称
 	 */
-	private String name_;
+	private String name;
 	
 	/**
 	 * 字典KEY
 	 */
-	private String key_;
+	private String dic_key;
 	
 	/**
 	 * 对照码
 	 */
-	private String code_;
+	private String code;
 	
 	/**
 	 * 对照值
 	 */
-	private String desc_;
+	private String dic_desc;
 	
 	/**
 	 * 是否启用
 	 */
-	private String is_enable_;
+	private String is_enable;
 	
 	/**
 	 *  热键
 	 */
-	private String hotkey_;
+	private String hotkey;
 	
 	/**
 	 * 所属分组
 	 */
-	private String group_;
+	private String dic_group;
 	
 	/**
 	 * 排序号
 	 */
-	private Integer sort_no_;
+	private Integer sort_no;
 	
 	/**
 	 * 备注
 	 */
-	private String remark_;
+	private String remark;
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @return id_
+	 * @return id
 	 */
-	public String getId_() {
-		return id_;
+	public Integer getId() {
+		return id;
 	}
 	
 	/**
 	 * 字典名称
 	 * 
-	 * @return name_
+	 * @return name
 	 */
-	public String getName_() {
-		return name_;
+	public String getName() {
+		return name;
 	}
 	
 	/**
 	 * 字典KEY
 	 * 
-	 * @return key_
+	 * @return dic_key
 	 */
-	public String getKey_() {
-		return key_;
+	public String getDic_key() {
+		return dic_key;
 	}
 	
 	/**
 	 * 对照码
 	 * 
-	 * @return code_
+	 * @return code
 	 */
-	public String getCode_() {
-		return code_;
+	public String getCode() {
+		return code;
 	}
 	
 	/**
 	 * 对照值
 	 * 
-	 * @return desc_
+	 * @return dic_desc
 	 */
-	public String getDesc_() {
-		return desc_;
+	public String getDic_desc() {
+		return dic_desc;
 	}
 	
 	/**
 	 * 是否启用
 	 * 
-	 * @return is_enable_
+	 * @return is_enable
 	 */
-	public String getIs_enable_() {
-		return is_enable_;
+	public String getIs_enable() {
+		return is_enable;
 	}
 	
 	/**
 	 *  热键
 	 * 
-	 * @return hotkey_
+	 * @return hotkey
 	 */
-	public String getHotkey_() {
-		return hotkey_;
+	public String getHotkey() {
+		return hotkey;
 	}
 	
 	/**
 	 * 所属分组
 	 * 
-	 * @return group_
+	 * @return dic_group
 	 */
-	public String getGroup_() {
-		return group_;
+	public String getDic_group() {
+		return dic_group;
 	}
 	
 	/**
 	 * 排序号
 	 * 
-	 * @return sort_no_
+	 * @return sort_no
 	 */
-	public Integer getSort_no_() {
-		return sort_no_;
+	public Integer getSort_no() {
+		return sort_no;
 	}
 	
 	/**
 	 * 备注
 	 * 
-	 * @return remark_
+	 * @return remark
 	 */
-	public String getRemark_() {
-		return remark_;
+	public String getRemark() {
+		return remark;
 	}
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @param id_
+	 * @param id
 	 */
-	public void setId_(String id_) {
-		this.id_ = id_;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	/**
 	 * 字典名称
 	 * 
-	 * @param name_
+	 * @param name
 	 */
-	public void setName_(String name_) {
-		this.name_ = name_;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/**
 	 * 字典KEY
 	 * 
-	 * @param key_
+	 * @param dic_key
 	 */
-	public void setKey_(String key_) {
-		this.key_ = key_;
+	public void setDic_key(String dic_key) {
+		this.dic_key = dic_key;
 	}
 	
 	/**
 	 * 对照码
 	 * 
-	 * @param code_
+	 * @param code
 	 */
-	public void setCode_(String code_) {
-		this.code_ = code_;
+	public void setCode(String code) {
+		this.code = code;
 	}
 	
 	/**
 	 * 对照值
 	 * 
-	 * @param desc_
+	 * @param dic_desc
 	 */
-	public void setDesc_(String desc_) {
-		this.desc_ = desc_;
+	public void setDic_desc(String dic_desc) {
+		this.dic_desc = dic_desc;
 	}
 	
 	/**
 	 * 是否启用
 	 * 
-	 * @param is_enable_
+	 * @param is_enable
 	 */
-	public void setIs_enable_(String is_enable_) {
-		this.is_enable_ = is_enable_;
+	public void setIs_enable(String is_enable) {
+		this.is_enable = is_enable;
 	}
 	
 	/**
 	 *  热键
 	 * 
-	 * @param hotkey_
+	 * @param hotkey
 	 */
-	public void setHotkey_(String hotkey_) {
-		this.hotkey_ = hotkey_;
+	public void setHotkey(String hotkey) {
+		this.hotkey = hotkey;
 	}
 	
 	/**
 	 * 所属分组
 	 * 
-	 * @param group_
+	 * @param dic_group
 	 */
-	public void setGroup_(String group_) {
-		this.group_ = group_;
+	public void setDic_group(String dic_group) {
+		this.dic_group = dic_group;
 	}
 	
 	/**
 	 * 排序号
 	 * 
-	 * @param sort_no_
+	 * @param sort_no
 	 */
-	public void setSort_no_(Integer sort_no_) {
-		this.sort_no_ = sort_no_;
+	public void setSort_no(Integer sort_no) {
+		this.sort_no = sort_no;
 	}
 	
 	/**
 	 * 备注
 	 * 
-	 * @param remark_
+	 * @param remark
 	 */
-	public void setRemark_(String remark_) {
-		this.remark_ = remark_;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	
 

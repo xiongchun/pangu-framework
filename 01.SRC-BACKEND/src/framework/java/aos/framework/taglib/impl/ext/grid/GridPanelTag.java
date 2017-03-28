@@ -64,8 +64,9 @@ public class GridPanelTag extends PanelTagSupport {
 	private String enableLocking;
 	
 	private String enableColumnHide;
-
-	private String idProperty;
+	
+	//Ext表格行的缺省唯一索引标识KEY
+	private String idProperty="rowId";
 	
 	private String displayInfo = TRUE;
 	
@@ -134,7 +135,7 @@ public class GridPanelTag extends PanelTagSupport {
 			}
 		} else {
 			if (AOSUtils.isEmpty(getPageSize())) {
-				setPageSize(AOSCxt.getParam("page_size_"));
+				setPageSize(AOSCxt.getParam("page_size"));
 			}
 		}
 	}
@@ -177,7 +178,7 @@ public class GridPanelTag extends PanelTagSupport {
 		tagDto.put("enableColumnHide", getEnableColumnHide());
 		tagDto.put("idProperty", getIdProperty());
 		tagDto.put("displayInfo", getDisplayInfo());
-		tagDto.put("emptyText", AOSCxt.getParam("grid_empty_text_"));
+		tagDto.put("emptyText", AOSCxt.getParam("grid_empty_text"));
 		tagDto.put("features", getFeatures());
 		String[] featuresArray = StringUtils.split(getFeatures(), ",");
 		if (featuresArray != null) {

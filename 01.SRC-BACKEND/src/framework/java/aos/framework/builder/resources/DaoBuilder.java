@@ -50,7 +50,7 @@ public class DaoBuilder {
 		vmDto.put("columnDtos", columnDtos);
 		vmDto.put("tableDto", tableDto);
 		vmDto.put("package", packageString);
-		vmDto.put("importDto", BuilderUtils.getImportDto(columnDtos));
+		vmDto.put("importDto", BuilderUtils.getImportDto4PO(columnDtos));
 		vmDto.put("author", inDto.getString("author"));
 		vmDto.put("sysdate", AOSUtils.getDateTimeStr());
 		StringWriter writer = VelocityHelper.mergeFileTemplate(Resources.PO_JAVA_VM, vmDto);
@@ -87,7 +87,7 @@ public class DaoBuilder {
 		vmDto.put("author", inDto.getString("author"));
 		vmDto.put("sysdate", AOSUtils.getDateTimeStr());
 		List<Dto> columnDtos = BuilderUtils.convertColumnVO(columnVOs);
-		vmDto.put("importDto", BuilderUtils.getImportDto(columnDtos));
+		vmDto.put("importDto", BuilderUtils.getImportDto4Dao(columnDtos));
 		StringWriter writer = VelocityHelper.mergeFileTemplate(Resources.DAO_JAVA_VM, vmDto);
 		try {
 			String outPath = inDto.getString("outPath") + "//";

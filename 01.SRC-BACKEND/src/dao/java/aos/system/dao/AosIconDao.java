@@ -15,7 +15,7 @@ import aos.system.dao.po.AosIconPO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:01
+ * @date 2017-03-23 17:54:25
  */
 @Dao("aosIconDao")
 public interface AosIconDao {
@@ -53,7 +53,7 @@ public interface AosIconDao {
 	 * 
 	 * @return AosIconPO
 	 */
-	AosIconPO selectByKey(@Param(value = "id_") String id_);
+	AosIconPO selectByKey(@Param(value = "name") String name);
 
 	/**
 	 * 根据唯一组合条件查询并返回数据持久化对象
@@ -95,7 +95,7 @@ public interface AosIconDao {
 	 *
 	 * @return 影响行数
 	 */
-	int deleteByKey(@Param(value = "id_") String id_);
+	int deleteByKey(@Param(value = "name") String name);
 	
 	/**
 	 * 根据Dto统计行数

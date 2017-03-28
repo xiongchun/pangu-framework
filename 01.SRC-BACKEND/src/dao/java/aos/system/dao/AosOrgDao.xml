@@ -3,102 +3,102 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- aos_org[aos_org]SQL自动映射 -->
-<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-01-18 22:42:02 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-23 17:54:25 -->
 <mapper namespace="aos.system.dao.AosOrgDao">
 	
 	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
 	<insert id="insert"  parameterType="AosOrgPO">
 		INSERT INTO aos_org (
-		<if test="cascade_id_ != null and cascade_id_ != ''">
-	         cascade_id_, <!-- 节点语义ID -->
+		<if test="cascade_id != null and cascade_id != ''">
+	         cascade_id, <!-- 节点语义ID -->
 		</if>
-		<if test="name_ != null and name_ != ''">
-	         name_, <!-- 组织名称 -->
+		<if test="name != null and name != ''">
+	         name, <!-- 组织名称 -->
 		</if>
-		<if test="hotkey_ != null and hotkey_ != ''">
-	         hotkey_, <!-- 热键 -->
+		<if test="hotkey != null and hotkey != ''">
+	         hotkey, <!-- 热键 -->
 		</if>
-		<if test="parent_id_ != null and parent_id_ != ''">
-	         parent_id_, <!-- 父节点流水号 -->
+		<if test="parent_id != null">
+	         parent_id, <!-- 父节点流水号 -->
 		</if>
-		<if test="is_leaf_ != null and is_leaf_ != ''">
-	         is_leaf_, <!-- 是否叶子节点 -->
+		<if test="is_leaf != null and is_leaf != ''">
+	         is_leaf, <!-- 是否叶子节点 -->
 		</if>
-		<if test="is_auto_expand_ != null and is_auto_expand_ != ''">
-	         is_auto_expand_, <!-- 是否自动展开 -->
+		<if test="is_auto_expand != null and is_auto_expand != ''">
+	         is_auto_expand, <!-- 是否自动展开 -->
 		</if>
-		<if test="icon_name_ != null and icon_name_ != ''">
-	         icon_name_, <!-- 节点图标文件名称 -->
+		<if test="icon_name != null and icon_name != ''">
+	         icon_name, <!-- 节点图标文件名称 -->
 		</if>
-		<if test="type_ != null and type_ != ''">
-	         type_, <!-- 组织类型 -->
+		<if test="type != null and type != ''">
+	         type, <!-- 组织类型 -->
 		</if>
-		<if test="biz_code_ != null and biz_code_ != ''">
-	         biz_code_, <!-- 扩展码 -->
+		<if test="biz_code != null and biz_code != ''">
+	         biz_code, <!-- 扩展码 -->
 		</if>
-		<if test="sort_no_ != null">
-	         sort_no_, <!-- 排序号 -->
+		<if test="sort_no != null">
+	         sort_no, <!-- 排序号 -->
 		</if>
-		<if test="remark_ != null and remark_ != ''">
-	         remark_, <!-- 备注 -->
+		<if test="remark != null and remark != ''">
+	         remark, <!-- 备注 -->
 		</if>
-		<if test="is_del_ != null and is_del_ != ''">
-	         is_del_, <!-- 是否已删除 -->
+		<if test="is_del != null and is_del != ''">
+	         is_del, <!-- 是否已删除 -->
 		</if>
-		<if test="create_time_ != null and create_time_ != ''">
-	         create_time_, <!-- 创建时间 -->
+		<if test="create_time != null and create_time != ''">
+	         create_time, <!-- 创建时间 -->
 		</if>
-		<if test="create_by_ != null and create_by_ != ''">
-	         create_by_, <!-- 创建人ID -->
+		<if test="create_by != null">
+	         create_by, <!-- 创建人ID -->
 		</if>
-		<if test="id_ != null and id_ != ''">
-	          id_  <!-- 流水号 -->
+		<if test="id != null">
+	          id  <!-- 流水号 -->
 	   </if>
 		)VALUES(
-		<if test="cascade_id_ != null and cascade_id_ != ''">
-	          #{cascade_id_, jdbcType=VARCHAR}, <!-- 节点语义ID -->
+		<if test="cascade_id != null and cascade_id != ''">
+	          #{cascade_id, jdbcType=VARCHAR}, <!-- 节点语义ID -->
 	    </if>
-		<if test="name_ != null and name_ != ''">
-	          #{name_, jdbcType=VARCHAR}, <!-- 组织名称 -->
+		<if test="name != null and name != ''">
+	          #{name, jdbcType=VARCHAR}, <!-- 组织名称 -->
 	    </if>
-		<if test="hotkey_ != null and hotkey_ != ''">
-	          #{hotkey_, jdbcType=VARCHAR}, <!-- 热键 -->
+		<if test="hotkey != null and hotkey != ''">
+	          #{hotkey, jdbcType=VARCHAR}, <!-- 热键 -->
 	    </if>
-		<if test="parent_id_ != null and parent_id_ != ''">
-	          #{parent_id_, jdbcType=VARCHAR}, <!-- 父节点流水号 -->
+		<if test="parent_id != null">
+	          #{parent_id, jdbcType=INTEGER}, <!-- 父节点流水号 -->
 	    </if>
-		<if test="is_leaf_ != null and is_leaf_ != ''">
-	          #{is_leaf_, jdbcType=VARCHAR}, <!-- 是否叶子节点 -->
+		<if test="is_leaf != null and is_leaf != ''">
+	          #{is_leaf, jdbcType=VARCHAR}, <!-- 是否叶子节点 -->
 	    </if>
-		<if test="is_auto_expand_ != null and is_auto_expand_ != ''">
-	          #{is_auto_expand_, jdbcType=VARCHAR}, <!-- 是否自动展开 -->
+		<if test="is_auto_expand != null and is_auto_expand != ''">
+	          #{is_auto_expand, jdbcType=VARCHAR}, <!-- 是否自动展开 -->
 	    </if>
-		<if test="icon_name_ != null and icon_name_ != ''">
-	          #{icon_name_, jdbcType=VARCHAR}, <!-- 节点图标文件名称 -->
+		<if test="icon_name != null and icon_name != ''">
+	          #{icon_name, jdbcType=VARCHAR}, <!-- 节点图标文件名称 -->
 	    </if>
-		<if test="type_ != null and type_ != ''">
-	          #{type_, jdbcType=VARCHAR}, <!-- 组织类型 -->
+		<if test="type != null and type != ''">
+	          #{type, jdbcType=VARCHAR}, <!-- 组织类型 -->
 	    </if>
-		<if test="biz_code_ != null and biz_code_ != ''">
-	          #{biz_code_, jdbcType=VARCHAR}, <!-- 扩展码 -->
+		<if test="biz_code != null and biz_code != ''">
+	          #{biz_code, jdbcType=VARCHAR}, <!-- 扩展码 -->
 	    </if>
-		<if test="sort_no_ != null">
-	          #{sort_no_, jdbcType=INTEGER}, <!-- 排序号 -->
+		<if test="sort_no != null">
+	          #{sort_no, jdbcType=INTEGER}, <!-- 排序号 -->
 	    </if>
-		<if test="remark_ != null and remark_ != ''">
-	          #{remark_, jdbcType=VARCHAR}, <!-- 备注 -->
+		<if test="remark != null and remark != ''">
+	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
 	    </if>
-		<if test="is_del_ != null and is_del_ != ''">
-	          #{is_del_, jdbcType=VARCHAR}, <!-- 是否已删除 -->
+		<if test="is_del != null and is_del != ''">
+	          #{is_del, jdbcType=VARCHAR}, <!-- 是否已删除 -->
 	    </if>
-		<if test="create_time_ != null and create_time_ != ''">
-	          #{create_time_, jdbcType=VARCHAR}, <!-- 创建时间 -->
+		<if test="create_time != null and create_time != ''">
+	          #{create_time, jdbcType=VARCHAR}, <!-- 创建时间 -->
 	    </if>
-		<if test="create_by_ != null and create_by_ != ''">
-	          #{create_by_, jdbcType=VARCHAR}, <!-- 创建人ID -->
+		<if test="create_by != null">
+	          #{create_by, jdbcType=INTEGER}, <!-- 创建人ID -->
 	    </if>
-		<if test="id_ != null and id_ != ''">
-		     #{id_, jdbcType=VARCHAR}  <!-- 流水号 -->
+		<if test="id != null">
+		     #{id, jdbcType=INTEGER}  <!-- 流水号 -->
 	    </if>
 		)
 	</insert>
@@ -109,21 +109,21 @@
 		    <include refid="column" />
 		)
 		VALUES (
-		    #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
-		    #{cascade_id_, jdbcType=VARCHAR},  <!-- 节点语义ID -->
-		    #{name_, jdbcType=VARCHAR},  <!-- 组织名称 -->
-		    #{hotkey_, jdbcType=VARCHAR},  <!-- 热键 -->
-		    #{parent_id_, jdbcType=VARCHAR},  <!-- 父节点流水号 -->
-		    #{is_leaf_, jdbcType=VARCHAR},  <!-- 是否叶子节点 -->
-		    #{is_auto_expand_, jdbcType=VARCHAR},  <!-- 是否自动展开 -->
-		    #{icon_name_, jdbcType=VARCHAR},  <!-- 节点图标文件名称 -->
-		    #{type_, jdbcType=VARCHAR},  <!-- 组织类型 -->
-		    #{biz_code_, jdbcType=VARCHAR},  <!-- 扩展码 -->
-		    #{sort_no_, jdbcType=INTEGER},  <!-- 排序号 -->
-		    #{remark_, jdbcType=VARCHAR},  <!-- 备注 -->
-		    #{is_del_, jdbcType=VARCHAR},  <!-- 是否已删除 -->
-		    #{create_time_, jdbcType=VARCHAR},  <!-- 创建时间 -->
-		    #{create_by_, jdbcType=VARCHAR}  <!-- 创建人ID -->
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{cascade_id, jdbcType=VARCHAR},  <!-- 节点语义ID -->
+		    #{name, jdbcType=VARCHAR},  <!-- 组织名称 -->
+		    #{hotkey, jdbcType=VARCHAR},  <!-- 热键 -->
+		    #{parent_id, jdbcType=INTEGER},  <!-- 父节点流水号 -->
+		    #{is_leaf, jdbcType=VARCHAR},  <!-- 是否叶子节点 -->
+		    #{is_auto_expand, jdbcType=VARCHAR},  <!-- 是否自动展开 -->
+		    #{icon_name, jdbcType=VARCHAR},  <!-- 节点图标文件名称 -->
+		    #{type, jdbcType=VARCHAR},  <!-- 组织类型 -->
+		    #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
+		    #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+		    #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
+		    #{is_del, jdbcType=VARCHAR},  <!-- 是否已删除 -->
+		    #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
+		    #{create_by, jdbcType=INTEGER}  <!-- 创建人ID -->
 		)
 	</insert>
 
@@ -131,65 +131,65 @@
 	<update id="updateByKey" parameterType="AosOrgPO">
 		UPDATE aos_org
 		<set>
-			<if test="id_ != null">
-		          id_ = #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
 			</if>
-			<if test="cascade_id_ != null">
-		          cascade_id_ = #{cascade_id_, jdbcType=VARCHAR},  <!-- 节点语义ID -->
+			<if test="cascade_id != null">
+		          cascade_id = #{cascade_id, jdbcType=VARCHAR},  <!-- 节点语义ID -->
 			</if>
-			<if test="name_ != null">
-		          name_ = #{name_, jdbcType=VARCHAR},  <!-- 组织名称 -->
+			<if test="name != null">
+		          name = #{name, jdbcType=VARCHAR},  <!-- 组织名称 -->
 			</if>
-			<if test="hotkey_ != null">
-		          hotkey_ = #{hotkey_, jdbcType=VARCHAR},  <!-- 热键 -->
+			<if test="hotkey != null">
+		          hotkey = #{hotkey, jdbcType=VARCHAR},  <!-- 热键 -->
 			</if>
-			<if test="parent_id_ != null">
-		          parent_id_ = #{parent_id_, jdbcType=VARCHAR},  <!-- 父节点流水号 -->
+			<if test="parent_id != null">
+		          parent_id = #{parent_id, jdbcType=INTEGER},  <!-- 父节点流水号 -->
 			</if>
-			<if test="is_leaf_ != null">
-		          is_leaf_ = #{is_leaf_, jdbcType=VARCHAR},  <!-- 是否叶子节点 -->
+			<if test="is_leaf != null">
+		          is_leaf = #{is_leaf, jdbcType=VARCHAR},  <!-- 是否叶子节点 -->
 			</if>
-			<if test="is_auto_expand_ != null">
-		          is_auto_expand_ = #{is_auto_expand_, jdbcType=VARCHAR},  <!-- 是否自动展开 -->
+			<if test="is_auto_expand != null">
+		          is_auto_expand = #{is_auto_expand, jdbcType=VARCHAR},  <!-- 是否自动展开 -->
 			</if>
-			<if test="icon_name_ != null">
-		          icon_name_ = #{icon_name_, jdbcType=VARCHAR},  <!-- 节点图标文件名称 -->
+			<if test="icon_name != null">
+		          icon_name = #{icon_name, jdbcType=VARCHAR},  <!-- 节点图标文件名称 -->
 			</if>
-			<if test="type_ != null">
-		          type_ = #{type_, jdbcType=VARCHAR},  <!-- 组织类型 -->
+			<if test="type != null">
+		          type = #{type, jdbcType=VARCHAR},  <!-- 组织类型 -->
 			</if>
-			<if test="biz_code_ != null">
-		          biz_code_ = #{biz_code_, jdbcType=VARCHAR},  <!-- 扩展码 -->
+			<if test="biz_code != null">
+		          biz_code = #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
 			</if>
-			<if test="sort_no_ != null">
-		          sort_no_ = #{sort_no_, jdbcType=INTEGER},  <!-- 排序号 -->
+			<if test="sort_no != null">
+		          sort_no = #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
 			</if>
-			<if test="remark_ != null">
-		          remark_ = #{remark_, jdbcType=VARCHAR},  <!-- 备注 -->
+			<if test="remark != null">
+		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
 			</if>
-			<if test="is_del_ != null">
-		          is_del_ = #{is_del_, jdbcType=VARCHAR},  <!-- 是否已删除 -->
+			<if test="is_del != null">
+		          is_del = #{is_del, jdbcType=VARCHAR},  <!-- 是否已删除 -->
 			</if>
-			<if test="create_time_ != null">
-		          create_time_ = #{create_time_, jdbcType=VARCHAR},  <!-- 创建时间 -->
+			<if test="create_time != null">
+		          create_time = #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
 			</if>
-			<if test="create_by_ != null">
-		          create_by_ = #{create_by_, jdbcType=VARCHAR},  <!-- 创建人ID -->
+			<if test="create_by != null">
+		          create_by = #{create_by, jdbcType=INTEGER},  <!-- 创建人ID -->
 			</if>
 		</set>
-		WHERE  id_ = #{id_}
+		WHERE  id = #{id}
 	</update>
 	
 	<!-- 根据主键删除数据持久化对象 -->
 	<delete id="deleteByKey">
-		DELETE FROM aos_org WHERE  id_ = #{id_}
+		DELETE FROM aos_org WHERE  id = #{id}
 	</delete>
 
 	<!-- 根据主键查询并返回数据持久化对象 -->
 	<select id="selectByKey" resultType="AosOrgPO">
 		SELECT
 		<include refid="column" />
-		FROM aos_org WHERE  id_ = #{id_}
+		FROM aos_org WHERE  id = #{id}
 	</select>
 
 	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
@@ -262,134 +262,125 @@
 	
 	<!-- 表字段 -->
 	<sql id="column">
-		  id_,  <!-- 流水号 -->
-		  cascade_id_,  <!-- 节点语义ID -->
-		  name_,  <!-- 组织名称 -->
-		  hotkey_,  <!-- 热键 -->
-		  parent_id_,  <!-- 父节点流水号 -->
-		  is_leaf_,  <!-- 是否叶子节点 -->
-		  is_auto_expand_,  <!-- 是否自动展开 -->
-		  icon_name_,  <!-- 节点图标文件名称 -->
-		  type_,  <!-- 组织类型 -->
-		  biz_code_,  <!-- 扩展码 -->
-		  sort_no_,  <!-- 排序号 -->
-		  remark_,  <!-- 备注 -->
-		  is_del_,  <!-- 是否已删除 -->
-		  create_time_,  <!-- 创建时间 -->
-		  create_by_  <!-- 创建人ID -->
+		  id,  <!-- 流水号 -->
+		  cascade_id,  <!-- 节点语义ID -->
+		  name,  <!-- 组织名称 -->
+		  hotkey,  <!-- 热键 -->
+		  parent_id,  <!-- 父节点流水号 -->
+		  is_leaf,  <!-- 是否叶子节点 -->
+		  is_auto_expand,  <!-- 是否自动展开 -->
+		  icon_name,  <!-- 节点图标文件名称 -->
+		  type,  <!-- 组织类型 -->
+		  biz_code,  <!-- 扩展码 -->
+		  sort_no,  <!-- 排序号 -->
+		  remark,  <!-- 备注 -->
+		  is_del,  <!-- 是否已删除 -->
+		  create_time,  <!-- 创建时间 -->
+		  create_by  <!-- 创建人ID -->
 	</sql>
 	
 	<!-- 表字段(用于外表的关联时引用) -->
 	<sql id="column2">
-		  aos_org.id_,  <!-- 流水号 -->
-		  aos_org.cascade_id_,  <!-- 节点语义ID -->
-		  aos_org.name_,  <!-- 组织名称 -->
-		  aos_org.hotkey_,  <!-- 热键 -->
-		  aos_org.parent_id_,  <!-- 父节点流水号 -->
-		  aos_org.is_leaf_,  <!-- 是否叶子节点 -->
-		  aos_org.is_auto_expand_,  <!-- 是否自动展开 -->
-		  aos_org.icon_name_,  <!-- 节点图标文件名称 -->
-		  aos_org.type_,  <!-- 组织类型 -->
-		  aos_org.biz_code_,  <!-- 扩展码 -->
-		  aos_org.sort_no_,  <!-- 排序号 -->
-		  aos_org.remark_,  <!-- 备注 -->
-		  aos_org.is_del_,  <!-- 是否已删除 -->
-		  aos_org.create_time_,  <!-- 创建时间 -->
-		  aos_org.create_by_  <!-- 创建人ID -->
+		  aos_org.id,  <!-- 流水号 -->
+		  aos_org.cascade_id,  <!-- 节点语义ID -->
+		  aos_org.name,  <!-- 组织名称 -->
+		  aos_org.hotkey,  <!-- 热键 -->
+		  aos_org.parent_id,  <!-- 父节点流水号 -->
+		  aos_org.is_leaf,  <!-- 是否叶子节点 -->
+		  aos_org.is_auto_expand,  <!-- 是否自动展开 -->
+		  aos_org.icon_name,  <!-- 节点图标文件名称 -->
+		  aos_org.type,  <!-- 组织类型 -->
+		  aos_org.biz_code,  <!-- 扩展码 -->
+		  aos_org.sort_no,  <!-- 排序号 -->
+		  aos_org.remark,  <!-- 备注 -->
+		  aos_org.is_del,  <!-- 是否已删除 -->
+		  aos_org.create_time,  <!-- 创建时间 -->
+		  aos_org.create_by  <!-- 创建人ID -->
 	</sql>
 
 	<!-- Where精确匹配字段 -->
 	<sql id="equal">
-	    <if test="id_ != null and id_ != ''">
-		      AND id_ = #{id_}  <!-- 流水号 -->
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
 		</if>
-	    <if test="cascade_id_ != null and cascade_id_ != ''">
-		      AND cascade_id_ = #{cascade_id_}  <!-- 节点语义ID -->
+	    <if test="cascade_id != null and cascade_id != ''">
+		      AND cascade_id = #{cascade_id}  <!-- 节点语义ID -->
 		</if>
-	    <if test="name_ != null and name_ != ''">
-		      AND name_ = #{name_}  <!-- 组织名称 -->
+	    <if test="name != null and name != ''">
+		      AND name = #{name}  <!-- 组织名称 -->
 		</if>
-	    <if test="hotkey_ != null and hotkey_ != ''">
-		      AND hotkey_ = #{hotkey_}  <!-- 热键 -->
+	    <if test="hotkey != null and hotkey != ''">
+		      AND hotkey = #{hotkey}  <!-- 热键 -->
 		</if>
-	    <if test="parent_id_ != null and parent_id_ != ''">
-		      AND parent_id_ = #{parent_id_}  <!-- 父节点流水号 -->
+	   <if test="parent_id != null ">
+		      AND parent_id = #{parent_id}  <!-- 父节点流水号 -->
 		</if>
-	    <if test="is_leaf_ != null and is_leaf_ != ''">
-		      AND is_leaf_ = #{is_leaf_}  <!-- 是否叶子节点 -->
+	    <if test="is_leaf != null and is_leaf != ''">
+		      AND is_leaf = #{is_leaf}  <!-- 是否叶子节点 -->
 		</if>
-	    <if test="is_auto_expand_ != null and is_auto_expand_ != ''">
-		      AND is_auto_expand_ = #{is_auto_expand_}  <!-- 是否自动展开 -->
+	    <if test="is_auto_expand != null and is_auto_expand != ''">
+		      AND is_auto_expand = #{is_auto_expand}  <!-- 是否自动展开 -->
 		</if>
-	    <if test="icon_name_ != null and icon_name_ != ''">
-		      AND icon_name_ = #{icon_name_}  <!-- 节点图标文件名称 -->
+	    <if test="icon_name != null and icon_name != ''">
+		      AND icon_name = #{icon_name}  <!-- 节点图标文件名称 -->
 		</if>
-	    <if test="type_ != null and type_ != ''">
-		      AND type_ = #{type_}  <!-- 组织类型 -->
+	    <if test="type != null and type != ''">
+		      AND type = #{type}  <!-- 组织类型 -->
 		</if>
-	    <if test="biz_code_ != null and biz_code_ != ''">
-		      AND biz_code_ = #{biz_code_}  <!-- 扩展码 -->
+	    <if test="biz_code != null and biz_code != ''">
+		      AND biz_code = #{biz_code}  <!-- 扩展码 -->
 		</if>
-	   <if test="sort_no_ != null ">
-		      AND sort_no_ = #{sort_no_}  <!-- 排序号 -->
+	   <if test="sort_no != null ">
+		      AND sort_no = #{sort_no}  <!-- 排序号 -->
 		</if>
-	    <if test="remark_ != null and remark_ != ''">
-		      AND remark_ = #{remark_}  <!-- 备注 -->
+	    <if test="remark != null and remark != ''">
+		      AND remark = #{remark}  <!-- 备注 -->
 		</if>
-	    <if test="is_del_ != null and is_del_ != ''">
-		      AND is_del_ = #{is_del_}  <!-- 是否已删除 -->
+	    <if test="is_del != null and is_del != ''">
+		      AND is_del = #{is_del}  <!-- 是否已删除 -->
 		</if>
-	    <if test="create_time_ != null and create_time_ != ''">
-		      AND create_time_ = #{create_time_}  <!-- 创建时间 -->
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time = #{create_time}  <!-- 创建时间 -->
 		</if>
-	    <if test="create_by_ != null and create_by_ != ''">
-		      AND create_by_ = #{create_by_}  <!-- 创建人ID -->
+	   <if test="create_by != null ">
+		      AND create_by = #{create_by}  <!-- 创建人ID -->
 		</if>
 	</sql>
 	
 	<!-- Where模糊匹配字段 -->
 	<sql id="like">
-	    <if test="id_ != null and id_ != ''">
-		      AND id_ like '%${id_}%'  <!-- 流水号 -->
+	    <if test="cascade_id != null and cascade_id != ''">
+		      AND cascade_id like '${cascade_id}%'  <!-- 节点语义ID -->
 		</if>
-	    <if test="cascade_id_ != null and cascade_id_ != ''">
-		      AND cascade_id_ like '%${cascade_id_}%'  <!-- 节点语义ID -->
+	    <if test="name != null and name != ''">
+		      AND name like '${name}%'  <!-- 组织名称 -->
 		</if>
-	    <if test="name_ != null and name_ != ''">
-		      AND name_ like '%${name_}%'  <!-- 组织名称 -->
+	    <if test="hotkey != null and hotkey != ''">
+		      AND hotkey like '${hotkey}%'  <!-- 热键 -->
 		</if>
-	    <if test="hotkey_ != null and hotkey_ != ''">
-		      AND hotkey_ like '%${hotkey_}%'  <!-- 热键 -->
+	    <if test="is_leaf != null and is_leaf != ''">
+		      AND is_leaf like '${is_leaf}%'  <!-- 是否叶子节点 -->
 		</if>
-	    <if test="parent_id_ != null and parent_id_ != ''">
-		      AND parent_id_ like '%${parent_id_}%'  <!-- 父节点流水号 -->
+	    <if test="is_auto_expand != null and is_auto_expand != ''">
+		      AND is_auto_expand like '${is_auto_expand}%'  <!-- 是否自动展开 -->
 		</if>
-	    <if test="is_leaf_ != null and is_leaf_ != ''">
-		      AND is_leaf_ like '%${is_leaf_}%'  <!-- 是否叶子节点 -->
+	    <if test="icon_name != null and icon_name != ''">
+		      AND icon_name like '${icon_name}%'  <!-- 节点图标文件名称 -->
 		</if>
-	    <if test="is_auto_expand_ != null and is_auto_expand_ != ''">
-		      AND is_auto_expand_ like '%${is_auto_expand_}%'  <!-- 是否自动展开 -->
+	    <if test="type != null and type != ''">
+		      AND type like '${type}%'  <!-- 组织类型 -->
 		</if>
-	    <if test="icon_name_ != null and icon_name_ != ''">
-		      AND icon_name_ like '%${icon_name_}%'  <!-- 节点图标文件名称 -->
+	    <if test="biz_code != null and biz_code != ''">
+		      AND biz_code like '${biz_code}%'  <!-- 扩展码 -->
 		</if>
-	    <if test="type_ != null and type_ != ''">
-		      AND type_ like '%${type_}%'  <!-- 组织类型 -->
+	    <if test="remark != null and remark != ''">
+		      AND remark like '${remark}%'  <!-- 备注 -->
 		</if>
-	    <if test="biz_code_ != null and biz_code_ != ''">
-		      AND biz_code_ like '%${biz_code_}%'  <!-- 扩展码 -->
+	    <if test="is_del != null and is_del != ''">
+		      AND is_del like '${is_del}%'  <!-- 是否已删除 -->
 		</if>
-	    <if test="remark_ != null and remark_ != ''">
-		      AND remark_ like '%${remark_}%'  <!-- 备注 -->
-		</if>
-	    <if test="is_del_ != null and is_del_ != ''">
-		      AND is_del_ like '%${is_del_}%'  <!-- 是否已删除 -->
-		</if>
-	    <if test="create_time_ != null and create_time_ != ''">
-		      AND create_time_ like '%${create_time_}%'  <!-- 创建时间 -->
-		</if>
-	    <if test="create_by_ != null and create_by_ != ''">
-		      AND create_by_ like '%${create_by_}%'  <!-- 创建人ID -->
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time like '${create_time}%'  <!-- 创建时间 -->
 		</if>
 	</sql>
 	

@@ -88,7 +88,7 @@ public class ComboBoxFieldTag extends FormItemTagSupport {
 		}
 		if (AOSUtils.isEmpty(getEmptyText())) {
 			if (!StringUtils.equalsIgnoreCase(getReadOnly(), TRUE)&&!StringUtils.equalsIgnoreCase(getDisabled(), TRUE)) {
-				setEmptyText(AOSCxt.getParam("combobox_emptytext_"));
+				setEmptyText(AOSCxt.getParam("combobox_emptytext"));
 			}
 		}
 	}
@@ -160,11 +160,11 @@ public class ComboBoxFieldTag extends FormItemTagSupport {
 			String expression = getJqlExpression(dicFilter);
 			if (StringUtils.startsWith(dicFilter, "!")) {
 				// 排它过滤
-				String jql = AOSUtils.merge("SELECT * FROM :AOSList WHERE code_ NOT IN ({0})", expression);
+				String jql = AOSUtils.merge("SELECT * FROM :AOSList WHERE code NOT IN ({0})", expression);
 				aos_dicPOs = AOSListUtils.select(aos_dicPOs, AosDicPO.class, jql, null);
 			} else {
 				// 选择过滤
-				String jql = AOSUtils.merge("SELECT * FROM :AOSList WHERE code_ IN ({0})", expression);
+				String jql = AOSUtils.merge("SELECT * FROM :AOSList WHERE code IN ({0})", expression);
 				aos_dicPOs = AOSListUtils.select(aos_dicPOs, AosDicPO.class, jql, null);
 			}
 		}
@@ -173,11 +173,11 @@ public class ComboBoxFieldTag extends FormItemTagSupport {
 			Dto dto = Dtos.newDto();
 			//特殊处理：若字典数据类型为数值型，则form.loadRecord()；的时候，下拉框不能被正常转换。所以这里尽最大努力将字符数值的代码转换为数值类型。
 			if (StringUtils.equalsIgnoreCase(getDicDataType(), "number")) {
-				dto.put("value", Integer.valueOf(aos_dic_optionsPO.getCode_()));
+				dto.put("value", Integer.valueOf(aos_dic_optionsPO.getCode()));
 			}else{
-				dto.put("value", aos_dic_optionsPO.getCode_());
+				dto.put("value", aos_dic_optionsPO.getCode());
 			}
-			dto.put("display", aos_dic_optionsPO.getDesc_());
+			dto.put("display", aos_dic_optionsPO.getDic_desc());
 			dicList.add(dto);
 		}
 		//只对数据字典源的下拉项有效的

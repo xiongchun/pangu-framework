@@ -153,7 +153,7 @@ public class ColumnTag extends ComponentTagSupport {
 				setAlign("left");
 			} else {
 				//常规列
-				String grid_column_algin = AOSCxt.getParam("grid_column_algin_");
+				String grid_column_algin = AOSCxt.getParam("grid_column_algin");
 				setAlign(grid_column_algin);
 			}
 		}

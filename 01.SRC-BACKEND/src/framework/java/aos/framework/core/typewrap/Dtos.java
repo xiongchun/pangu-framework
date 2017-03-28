@@ -1,5 +1,7 @@
 package aos.framework.core.typewrap;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import aos.framework.core.asset.WebCxt;
@@ -21,6 +23,16 @@ public class Dtos {
 	 */
 	public static Dto newDto() {
 		return new HashDto();
+	}
+	
+	/**
+	 * 在Map的基础上克隆一个常规Dto对象
+	 * 
+	 */
+	public static Dto newDto(Map<String, ?> map) {
+		Dto newDto = new HashDto();
+		newDto.putAll(map);
+		return newDto;
 	}
 	
 	/**

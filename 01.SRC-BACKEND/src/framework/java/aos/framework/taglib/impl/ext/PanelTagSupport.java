@@ -154,7 +154,7 @@ public class PanelTagSupport extends ContainerTagSupport {
 
 		if (AOSUtils.isNotEmpty(getSplitterBorder())) {
 			String curSkin = AOSTagUtils.getCurSkin((HttpServletRequest)pageContext.getRequest());
-			String color = AOSCxt.getDicDesc("cmp_border_color_", curSkin);
+			String color = AOSCxt.getDicDesc("cmp_border_color", curSkin);
 			String[] splitterBorders = getSplitterBorder().split(" ");
 			int i = 0;
 			// Splliter边框处理

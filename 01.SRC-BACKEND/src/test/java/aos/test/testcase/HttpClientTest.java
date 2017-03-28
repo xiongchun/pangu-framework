@@ -18,9 +18,10 @@ import aos.framework.web.httpclient.HttpResponseVO;
 public class HttpClientTest {
 
 	public static void main(String[] args) {
-		doPost();
+		//doPost();
 		//doGet();
 		//doUpload();
+		doPost2();
 	}
 	
 	/**
@@ -28,8 +29,8 @@ public class HttpClientTest {
 	 */
 	public static void doPost() {
 		Map<String, String> inMap = Maps.newHashMap();
-		inMap.put("name_", "熊春");
-		inMap.put("age_", "30");
+		inMap.put("name", "熊春");
+		inMap.put("age", "30");
 		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aosuite/api/creditCard/register.jhtml", inMap);
 		try {
 			HttpResponseVO httpResponseVO = AOSHttpClient.execute(httpRequestVO);
@@ -48,7 +49,7 @@ public class HttpClientTest {
 	 * POST请求 以JSON参数形式提交请求 (接口实现和接口调用是配套的，详见接口实现：api/creditCard/register2.jhtml)
 	 */
 	public static void doPost2() {
-		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aos-admin/api/creditCard/register2.jhtml");
+		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aosuite/api/creditCard/register2.jhtml");
 		httpRequestVO.setJsonEntityData("{\"mobile_\":\"18616786188\",\"name_\":\"熊春\"}");
 		HttpResponseVO httpResponseVO = AOSHttpClient.execute(httpRequestVO);
 		System.out.println("HTTP状态码：" + httpResponseVO.getStatus());
@@ -60,9 +61,9 @@ public class HttpClientTest {
 	 */
 	public static void doGet() {
 		Map<String, String> inMap = Maps.newHashMap();
-		inMap.put("name_", "熊春");
-		inMap.put("age_", "30");
-		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aos-esb/demo/http/savehtm", inMap);
+		inMap.put("name", "熊春");
+		inMap.put("age", "30");
+		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aosuite/demo/http/savehtm", inMap);
 		httpRequestVO.setRequestMethod(AOSHttpClient.REQUEST_METHOD.GET);
 		HttpResponseVO httpResponseVO = AOSHttpClient.execute(httpRequestVO);
 		System.out.println("HTTP状态码：" + httpResponseVO.getStatus());
@@ -73,10 +74,10 @@ public class HttpClientTest {
 	 * 上传文件POST请求
 	 */
 	public static void doUpload() {
-		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aos-esb/demo/http/uploadhtm");
+		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aosuite/demo/http/uploadhtm");
 		Map<String, String> inMap = Maps.newHashMap();
-		inMap.put("name_", "熊春");
-		inMap.put("age_", "30");
+		inMap.put("name", "熊春");
+		inMap.put("age", "30");
 		httpRequestVO.setParamMap(inMap);
 		Map<String, File> fileMap = Maps.newHashMap();
 		fileMap.put("myFile1", new File("c:/测试01.jpg"));

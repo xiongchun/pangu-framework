@@ -253,7 +253,7 @@ public interface Dto extends Map<String, Object> {
 	/**
 	 * 设置排序器
 	 * <p>
-	 * 用法：qDto.setOrder("sort_no_ DESC");
+	 * 用法：qDto.setOrder("sort_no DESC");
 	 * </p>
 	 * 
 	 * @param order

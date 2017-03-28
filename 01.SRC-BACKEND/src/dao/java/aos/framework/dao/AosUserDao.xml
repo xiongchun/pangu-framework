@@ -3,120 +3,120 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- aos_user[aos_user]SQL自动映射 -->
-<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-01-18 22:28:56 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-23 17:57:02 -->
 <mapper namespace="aos.framework.dao.AosUserDao">
 	
 	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
 	<insert id="insert"  parameterType="AosUserPO">
 		INSERT INTO aos_user (
-		<if test="account_ != null and account_ != ''">
-	         account_, <!-- 用户登录帐号 -->
+		<if test="account != null and account != ''">
+	         account, <!-- 用户登录帐号 -->
 		</if>
-		<if test="password_ != null and password_ != ''">
-	         password_, <!-- 密码 -->
+		<if test="password != null and password != ''">
+	         password, <!-- 密码 -->
 		</if>
-		<if test="name_ != null and name_ != ''">
-	         name_, <!-- 用户姓名 -->
+		<if test="name != null and name != ''">
+	         name, <!-- 用户姓名 -->
 		</if>
-		<if test="sex_ != null and sex_ != ''">
-	         sex_, <!-- 性别 -->
+		<if test="sex != null and sex != ''">
+	         sex, <!-- 性别 -->
 		</if>
-		<if test="status_ != null and status_ != ''">
-	         status_, <!-- 用户状态 -->
+		<if test="status != null and status != ''">
+	         status, <!-- 用户状态 -->
 		</if>
-		<if test="type_ != null and type_ != ''">
-	         type_, <!-- 用户类型 -->
+		<if test="type != null and type != ''">
+	         type, <!-- 用户类型 -->
 		</if>
-		<if test="org_id_ != null and org_id_ != ''">
-	         org_id_, <!-- 所属部门流水号 -->
+		<if test="org_id != null">
+	         org_id, <!-- 所属部门流水号 -->
 		</if>
-		<if test="email_ != null and email_ != ''">
-	         email_, <!-- 电子邮件 -->
+		<if test="email != null and email != ''">
+	         email, <!-- 电子邮件 -->
 		</if>
-		<if test="mobile_ != null and mobile_ != ''">
-	         mobile_, <!-- 联系电话 -->
+		<if test="mobile != null and mobile != ''">
+	         mobile, <!-- 联系电话 -->
 		</if>
-		<if test="idno_ != null and idno_ != ''">
-	         idno_, <!-- 身份证号 -->
+		<if test="idno != null and idno != ''">
+	         idno, <!-- 身份证号 -->
 		</if>
-		<if test="skin_ != null and skin_ != ''">
-	         skin_, <!-- 用户界面皮肤 -->
+		<if test="skin != null and skin != ''">
+	         skin, <!-- 用户界面皮肤 -->
 		</if>
-		<if test="biz_code_ != null and biz_code_ != ''">
-	         biz_code_, <!-- 业务对照码 -->
+		<if test="biz_code != null and biz_code != ''">
+	         biz_code, <!-- 业务对照码 -->
 		</if>
-		<if test="address_ != null and address_ != ''">
-	         address_, <!-- 联系地址 -->
+		<if test="address != null and address != ''">
+	         address, <!-- 联系地址 -->
 		</if>
-		<if test="remark_ != null and remark_ != ''">
-	         remark_, <!-- 备注 -->
+		<if test="remark != null and remark != ''">
+	         remark, <!-- 备注 -->
 		</if>
-		<if test="is_del_ != null and is_del_ != ''">
-	         is_del_, <!-- 是否已删除 -->
+		<if test="is_del != null and is_del != ''">
+	         is_del, <!-- 是否已删除 -->
 		</if>
-		<if test="create_time_ != null and create_time_ != ''">
-	         create_time_, <!-- 创建时间 -->
+		<if test="create_time != null and create_time != ''">
+	         create_time, <!-- 创建时间 -->
 		</if>
-		<if test="create_by_ != null and create_by_ != ''">
-	         create_by_, <!-- 创建人ID -->
+		<if test="create_by != null">
+	         create_by, <!-- 创建人ID -->
 		</if>
-		<if test="id_ != null and id_ != ''">
-	          id_  <!-- 流水号 -->
+		<if test="id != null">
+	          id  <!-- 流水号 -->
 	   </if>
 		)VALUES(
-		<if test="account_ != null and account_ != ''">
-	          #{account_, jdbcType=VARCHAR}, <!-- 用户登录帐号 -->
+		<if test="account != null and account != ''">
+	          #{account, jdbcType=VARCHAR}, <!-- 用户登录帐号 -->
 	    </if>
-		<if test="password_ != null and password_ != ''">
-	          #{password_, jdbcType=VARCHAR}, <!-- 密码 -->
+		<if test="password != null and password != ''">
+	          #{password, jdbcType=VARCHAR}, <!-- 密码 -->
 	    </if>
-		<if test="name_ != null and name_ != ''">
-	          #{name_, jdbcType=VARCHAR}, <!-- 用户姓名 -->
+		<if test="name != null and name != ''">
+	          #{name, jdbcType=VARCHAR}, <!-- 用户姓名 -->
 	    </if>
-		<if test="sex_ != null and sex_ != ''">
-	          #{sex_, jdbcType=VARCHAR}, <!-- 性别 -->
+		<if test="sex != null and sex != ''">
+	          #{sex, jdbcType=VARCHAR}, <!-- 性别 -->
 	    </if>
-		<if test="status_ != null and status_ != ''">
-	          #{status_, jdbcType=VARCHAR}, <!-- 用户状态 -->
+		<if test="status != null and status != ''">
+	          #{status, jdbcType=VARCHAR}, <!-- 用户状态 -->
 	    </if>
-		<if test="type_ != null and type_ != ''">
-	          #{type_, jdbcType=VARCHAR}, <!-- 用户类型 -->
+		<if test="type != null and type != ''">
+	          #{type, jdbcType=VARCHAR}, <!-- 用户类型 -->
 	    </if>
-		<if test="org_id_ != null and org_id_ != ''">
-	          #{org_id_, jdbcType=VARCHAR}, <!-- 所属部门流水号 -->
+		<if test="org_id != null">
+	          #{org_id, jdbcType=INTEGER}, <!-- 所属部门流水号 -->
 	    </if>
-		<if test="email_ != null and email_ != ''">
-	          #{email_, jdbcType=VARCHAR}, <!-- 电子邮件 -->
+		<if test="email != null and email != ''">
+	          #{email, jdbcType=VARCHAR}, <!-- 电子邮件 -->
 	    </if>
-		<if test="mobile_ != null and mobile_ != ''">
-	          #{mobile_, jdbcType=VARCHAR}, <!-- 联系电话 -->
+		<if test="mobile != null and mobile != ''">
+	          #{mobile, jdbcType=VARCHAR}, <!-- 联系电话 -->
 	    </if>
-		<if test="idno_ != null and idno_ != ''">
-	          #{idno_, jdbcType=VARCHAR}, <!-- 身份证号 -->
+		<if test="idno != null and idno != ''">
+	          #{idno, jdbcType=VARCHAR}, <!-- 身份证号 -->
 	    </if>
-		<if test="skin_ != null and skin_ != ''">
-	          #{skin_, jdbcType=VARCHAR}, <!-- 用户界面皮肤 -->
+		<if test="skin != null and skin != ''">
+	          #{skin, jdbcType=VARCHAR}, <!-- 用户界面皮肤 -->
 	    </if>
-		<if test="biz_code_ != null and biz_code_ != ''">
-	          #{biz_code_, jdbcType=VARCHAR}, <!-- 业务对照码 -->
+		<if test="biz_code != null and biz_code != ''">
+	          #{biz_code, jdbcType=VARCHAR}, <!-- 业务对照码 -->
 	    </if>
-		<if test="address_ != null and address_ != ''">
-	          #{address_, jdbcType=VARCHAR}, <!-- 联系地址 -->
+		<if test="address != null and address != ''">
+	          #{address, jdbcType=VARCHAR}, <!-- 联系地址 -->
 	    </if>
-		<if test="remark_ != null and remark_ != ''">
-	          #{remark_, jdbcType=VARCHAR}, <!-- 备注 -->
+		<if test="remark != null and remark != ''">
+	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
 	    </if>
-		<if test="is_del_ != null and is_del_ != ''">
-	          #{is_del_, jdbcType=VARCHAR}, <!-- 是否已删除 -->
+		<if test="is_del != null and is_del != ''">
+	          #{is_del, jdbcType=VARCHAR}, <!-- 是否已删除 -->
 	    </if>
-		<if test="create_time_ != null and create_time_ != ''">
-	          #{create_time_, jdbcType=VARCHAR}, <!-- 创建时间 -->
+		<if test="create_time != null and create_time != ''">
+	          #{create_time, jdbcType=VARCHAR}, <!-- 创建时间 -->
 	    </if>
-		<if test="create_by_ != null and create_by_ != ''">
-	          #{create_by_, jdbcType=VARCHAR}, <!-- 创建人ID -->
+		<if test="create_by != null">
+	          #{create_by, jdbcType=INTEGER}, <!-- 创建人ID -->
 	    </if>
-		<if test="id_ != null and id_ != ''">
-		     #{id_, jdbcType=VARCHAR}  <!-- 流水号 -->
+		<if test="id != null">
+		     #{id, jdbcType=INTEGER}  <!-- 流水号 -->
 	    </if>
 		)
 	</insert>
@@ -127,24 +127,24 @@
 		    <include refid="column" />
 		)
 		VALUES (
-		    #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
-		    #{account_, jdbcType=VARCHAR},  <!-- 用户登录帐号 -->
-		    #{password_, jdbcType=VARCHAR},  <!-- 密码 -->
-		    #{name_, jdbcType=VARCHAR},  <!-- 用户姓名 -->
-		    #{sex_, jdbcType=VARCHAR},  <!-- 性别 -->
-		    #{status_, jdbcType=VARCHAR},  <!-- 用户状态 -->
-		    #{type_, jdbcType=VARCHAR},  <!-- 用户类型 -->
-		    #{org_id_, jdbcType=VARCHAR},  <!-- 所属部门流水号 -->
-		    #{email_, jdbcType=VARCHAR},  <!-- 电子邮件 -->
-		    #{mobile_, jdbcType=VARCHAR},  <!-- 联系电话 -->
-		    #{idno_, jdbcType=VARCHAR},  <!-- 身份证号 -->
-		    #{skin_, jdbcType=VARCHAR},  <!-- 用户界面皮肤 -->
-		    #{biz_code_, jdbcType=VARCHAR},  <!-- 业务对照码 -->
-		    #{address_, jdbcType=VARCHAR},  <!-- 联系地址 -->
-		    #{remark_, jdbcType=VARCHAR},  <!-- 备注 -->
-		    #{is_del_, jdbcType=VARCHAR},  <!-- 是否已删除 -->
-		    #{create_time_, jdbcType=VARCHAR},  <!-- 创建时间 -->
-		    #{create_by_, jdbcType=VARCHAR}  <!-- 创建人ID -->
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{account, jdbcType=VARCHAR},  <!-- 用户登录帐号 -->
+		    #{password, jdbcType=VARCHAR},  <!-- 密码 -->
+		    #{name, jdbcType=VARCHAR},  <!-- 用户姓名 -->
+		    #{sex, jdbcType=VARCHAR},  <!-- 性别 -->
+		    #{status, jdbcType=VARCHAR},  <!-- 用户状态 -->
+		    #{type, jdbcType=VARCHAR},  <!-- 用户类型 -->
+		    #{org_id, jdbcType=INTEGER},  <!-- 所属部门流水号 -->
+		    #{email, jdbcType=VARCHAR},  <!-- 电子邮件 -->
+		    #{mobile, jdbcType=VARCHAR},  <!-- 联系电话 -->
+		    #{idno, jdbcType=VARCHAR},  <!-- 身份证号 -->
+		    #{skin, jdbcType=VARCHAR},  <!-- 用户界面皮肤 -->
+		    #{biz_code, jdbcType=VARCHAR},  <!-- 业务对照码 -->
+		    #{address, jdbcType=VARCHAR},  <!-- 联系地址 -->
+		    #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
+		    #{is_del, jdbcType=VARCHAR},  <!-- 是否已删除 -->
+		    #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
+		    #{create_by, jdbcType=INTEGER}  <!-- 创建人ID -->
 		)
 	</insert>
 
@@ -152,74 +152,74 @@
 	<update id="updateByKey" parameterType="AosUserPO">
 		UPDATE aos_user
 		<set>
-			<if test="id_ != null">
-		          id_ = #{id_, jdbcType=VARCHAR},  <!-- 流水号 -->
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
 			</if>
-			<if test="account_ != null">
-		          account_ = #{account_, jdbcType=VARCHAR},  <!-- 用户登录帐号 -->
+			<if test="account != null">
+		          account = #{account, jdbcType=VARCHAR},  <!-- 用户登录帐号 -->
 			</if>
-			<if test="password_ != null">
-		          password_ = #{password_, jdbcType=VARCHAR},  <!-- 密码 -->
+			<if test="password != null">
+		          password = #{password, jdbcType=VARCHAR},  <!-- 密码 -->
 			</if>
-			<if test="name_ != null">
-		          name_ = #{name_, jdbcType=VARCHAR},  <!-- 用户姓名 -->
+			<if test="name != null">
+		          name = #{name, jdbcType=VARCHAR},  <!-- 用户姓名 -->
 			</if>
-			<if test="sex_ != null">
-		          sex_ = #{sex_, jdbcType=VARCHAR},  <!-- 性别 -->
+			<if test="sex != null">
+		          sex = #{sex, jdbcType=VARCHAR},  <!-- 性别 -->
 			</if>
-			<if test="status_ != null">
-		          status_ = #{status_, jdbcType=VARCHAR},  <!-- 用户状态 -->
+			<if test="status != null">
+		          status = #{status, jdbcType=VARCHAR},  <!-- 用户状态 -->
 			</if>
-			<if test="type_ != null">
-		          type_ = #{type_, jdbcType=VARCHAR},  <!-- 用户类型 -->
+			<if test="type != null">
+		          type = #{type, jdbcType=VARCHAR},  <!-- 用户类型 -->
 			</if>
-			<if test="org_id_ != null">
-		          org_id_ = #{org_id_, jdbcType=VARCHAR},  <!-- 所属部门流水号 -->
+			<if test="org_id != null">
+		          org_id = #{org_id, jdbcType=INTEGER},  <!-- 所属部门流水号 -->
 			</if>
-			<if test="email_ != null">
-		          email_ = #{email_, jdbcType=VARCHAR},  <!-- 电子邮件 -->
+			<if test="email != null">
+		          email = #{email, jdbcType=VARCHAR},  <!-- 电子邮件 -->
 			</if>
-			<if test="mobile_ != null">
-		          mobile_ = #{mobile_, jdbcType=VARCHAR},  <!-- 联系电话 -->
+			<if test="mobile != null">
+		          mobile = #{mobile, jdbcType=VARCHAR},  <!-- 联系电话 -->
 			</if>
-			<if test="idno_ != null">
-		          idno_ = #{idno_, jdbcType=VARCHAR},  <!-- 身份证号 -->
+			<if test="idno != null">
+		          idno = #{idno, jdbcType=VARCHAR},  <!-- 身份证号 -->
 			</if>
-			<if test="skin_ != null">
-		          skin_ = #{skin_, jdbcType=VARCHAR},  <!-- 用户界面皮肤 -->
+			<if test="skin != null">
+		          skin = #{skin, jdbcType=VARCHAR},  <!-- 用户界面皮肤 -->
 			</if>
-			<if test="biz_code_ != null">
-		          biz_code_ = #{biz_code_, jdbcType=VARCHAR},  <!-- 业务对照码 -->
+			<if test="biz_code != null">
+		          biz_code = #{biz_code, jdbcType=VARCHAR},  <!-- 业务对照码 -->
 			</if>
-			<if test="address_ != null">
-		          address_ = #{address_, jdbcType=VARCHAR},  <!-- 联系地址 -->
+			<if test="address != null">
+		          address = #{address, jdbcType=VARCHAR},  <!-- 联系地址 -->
 			</if>
-			<if test="remark_ != null">
-		          remark_ = #{remark_, jdbcType=VARCHAR},  <!-- 备注 -->
+			<if test="remark != null">
+		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
 			</if>
-			<if test="is_del_ != null">
-		          is_del_ = #{is_del_, jdbcType=VARCHAR},  <!-- 是否已删除 -->
+			<if test="is_del != null">
+		          is_del = #{is_del, jdbcType=VARCHAR},  <!-- 是否已删除 -->
 			</if>
-			<if test="create_time_ != null">
-		          create_time_ = #{create_time_, jdbcType=VARCHAR},  <!-- 创建时间 -->
+			<if test="create_time != null">
+		          create_time = #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
 			</if>
-			<if test="create_by_ != null">
-		          create_by_ = #{create_by_, jdbcType=VARCHAR},  <!-- 创建人ID -->
+			<if test="create_by != null">
+		          create_by = #{create_by, jdbcType=INTEGER},  <!-- 创建人ID -->
 			</if>
 		</set>
-		WHERE  id_ = #{id_}
+		WHERE  id = #{id}
 	</update>
 	
 	<!-- 根据主键删除数据持久化对象 -->
 	<delete id="deleteByKey">
-		DELETE FROM aos_user WHERE  id_ = #{id_}
+		DELETE FROM aos_user WHERE  id = #{id}
 	</delete>
 
 	<!-- 根据主键查询并返回数据持久化对象 -->
 	<select id="selectByKey" resultType="AosUserPO">
 		SELECT
 		<include refid="column" />
-		FROM aos_user WHERE  id_ = #{id_}
+		FROM aos_user WHERE  id = #{id}
 	</select>
 
 	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
@@ -292,161 +292,152 @@
 	
 	<!-- 表字段 -->
 	<sql id="column">
-		  id_,  <!-- 流水号 -->
-		  account_,  <!-- 用户登录帐号 -->
-		  password_,  <!-- 密码 -->
-		  name_,  <!-- 用户姓名 -->
-		  sex_,  <!-- 性别 -->
-		  status_,  <!-- 用户状态 -->
-		  type_,  <!-- 用户类型 -->
-		  org_id_,  <!-- 所属部门流水号 -->
-		  email_,  <!-- 电子邮件 -->
-		  mobile_,  <!-- 联系电话 -->
-		  idno_,  <!-- 身份证号 -->
-		  skin_,  <!-- 用户界面皮肤 -->
-		  biz_code_,  <!-- 业务对照码 -->
-		  address_,  <!-- 联系地址 -->
-		  remark_,  <!-- 备注 -->
-		  is_del_,  <!-- 是否已删除 -->
-		  create_time_,  <!-- 创建时间 -->
-		  create_by_  <!-- 创建人ID -->
+		  id,  <!-- 流水号 -->
+		  account,  <!-- 用户登录帐号 -->
+		  password,  <!-- 密码 -->
+		  name,  <!-- 用户姓名 -->
+		  sex,  <!-- 性别 -->
+		  status,  <!-- 用户状态 -->
+		  type,  <!-- 用户类型 -->
+		  org_id,  <!-- 所属部门流水号 -->
+		  email,  <!-- 电子邮件 -->
+		  mobile,  <!-- 联系电话 -->
+		  idno,  <!-- 身份证号 -->
+		  skin,  <!-- 用户界面皮肤 -->
+		  biz_code,  <!-- 业务对照码 -->
+		  address,  <!-- 联系地址 -->
+		  remark,  <!-- 备注 -->
+		  is_del,  <!-- 是否已删除 -->
+		  create_time,  <!-- 创建时间 -->
+		  create_by  <!-- 创建人ID -->
 	</sql>
 	
 	<!-- 表字段(用于外表的关联时引用) -->
 	<sql id="column2">
-		  aos_user.id_,  <!-- 流水号 -->
-		  aos_user.account_,  <!-- 用户登录帐号 -->
-		  aos_user.password_,  <!-- 密码 -->
-		  aos_user.name_,  <!-- 用户姓名 -->
-		  aos_user.sex_,  <!-- 性别 -->
-		  aos_user.status_,  <!-- 用户状态 -->
-		  aos_user.type_,  <!-- 用户类型 -->
-		  aos_user.org_id_,  <!-- 所属部门流水号 -->
-		  aos_user.email_,  <!-- 电子邮件 -->
-		  aos_user.mobile_,  <!-- 联系电话 -->
-		  aos_user.idno_,  <!-- 身份证号 -->
-		  aos_user.skin_,  <!-- 用户界面皮肤 -->
-		  aos_user.biz_code_,  <!-- 业务对照码 -->
-		  aos_user.address_,  <!-- 联系地址 -->
-		  aos_user.remark_,  <!-- 备注 -->
-		  aos_user.is_del_,  <!-- 是否已删除 -->
-		  aos_user.create_time_,  <!-- 创建时间 -->
-		  aos_user.create_by_  <!-- 创建人ID -->
+		  aos_user.id,  <!-- 流水号 -->
+		  aos_user.account,  <!-- 用户登录帐号 -->
+		  aos_user.password,  <!-- 密码 -->
+		  aos_user.name,  <!-- 用户姓名 -->
+		  aos_user.sex,  <!-- 性别 -->
+		  aos_user.status,  <!-- 用户状态 -->
+		  aos_user.type,  <!-- 用户类型 -->
+		  aos_user.org_id,  <!-- 所属部门流水号 -->
+		  aos_user.email,  <!-- 电子邮件 -->
+		  aos_user.mobile,  <!-- 联系电话 -->
+		  aos_user.idno,  <!-- 身份证号 -->
+		  aos_user.skin,  <!-- 用户界面皮肤 -->
+		  aos_user.biz_code,  <!-- 业务对照码 -->
+		  aos_user.address,  <!-- 联系地址 -->
+		  aos_user.remark,  <!-- 备注 -->
+		  aos_user.is_del,  <!-- 是否已删除 -->
+		  aos_user.create_time,  <!-- 创建时间 -->
+		  aos_user.create_by  <!-- 创建人ID -->
 	</sql>
 
 	<!-- Where精确匹配字段 -->
 	<sql id="equal">
-	    <if test="id_ != null and id_ != ''">
-		      AND id_ = #{id_}  <!-- 流水号 -->
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
 		</if>
-	    <if test="account_ != null and account_ != ''">
-		      AND account_ = #{account_}  <!-- 用户登录帐号 -->
+	    <if test="account != null and account != ''">
+		      AND account = #{account}  <!-- 用户登录帐号 -->
 		</if>
-	    <if test="password_ != null and password_ != ''">
-		      AND password_ = #{password_}  <!-- 密码 -->
+	    <if test="password != null and password != ''">
+		      AND password = #{password}  <!-- 密码 -->
 		</if>
-	    <if test="name_ != null and name_ != ''">
-		      AND name_ = #{name_}  <!-- 用户姓名 -->
+	    <if test="name != null and name != ''">
+		      AND name = #{name}  <!-- 用户姓名 -->
 		</if>
-	    <if test="sex_ != null and sex_ != ''">
-		      AND sex_ = #{sex_}  <!-- 性别 -->
+	    <if test="sex != null and sex != ''">
+		      AND sex = #{sex}  <!-- 性别 -->
 		</if>
-	    <if test="status_ != null and status_ != ''">
-		      AND status_ = #{status_}  <!-- 用户状态 -->
+	    <if test="status != null and status != ''">
+		      AND status = #{status}  <!-- 用户状态 -->
 		</if>
-	    <if test="type_ != null and type_ != ''">
-		      AND type_ = #{type_}  <!-- 用户类型 -->
+	    <if test="type != null and type != ''">
+		      AND type = #{type}  <!-- 用户类型 -->
 		</if>
-	    <if test="org_id_ != null and org_id_ != ''">
-		      AND org_id_ = #{org_id_}  <!-- 所属部门流水号 -->
+	   <if test="org_id != null ">
+		      AND org_id = #{org_id}  <!-- 所属部门流水号 -->
 		</if>
-	    <if test="email_ != null and email_ != ''">
-		      AND email_ = #{email_}  <!-- 电子邮件 -->
+	    <if test="email != null and email != ''">
+		      AND email = #{email}  <!-- 电子邮件 -->
 		</if>
-	    <if test="mobile_ != null and mobile_ != ''">
-		      AND mobile_ = #{mobile_}  <!-- 联系电话 -->
+	    <if test="mobile != null and mobile != ''">
+		      AND mobile = #{mobile}  <!-- 联系电话 -->
 		</if>
-	    <if test="idno_ != null and idno_ != ''">
-		      AND idno_ = #{idno_}  <!-- 身份证号 -->
+	    <if test="idno != null and idno != ''">
+		      AND idno = #{idno}  <!-- 身份证号 -->
 		</if>
-	    <if test="skin_ != null and skin_ != ''">
-		      AND skin_ = #{skin_}  <!-- 用户界面皮肤 -->
+	    <if test="skin != null and skin != ''">
+		      AND skin = #{skin}  <!-- 用户界面皮肤 -->
 		</if>
-	    <if test="biz_code_ != null and biz_code_ != ''">
-		      AND biz_code_ = #{biz_code_}  <!-- 业务对照码 -->
+	    <if test="biz_code != null and biz_code != ''">
+		      AND biz_code = #{biz_code}  <!-- 业务对照码 -->
 		</if>
-	    <if test="address_ != null and address_ != ''">
-		      AND address_ = #{address_}  <!-- 联系地址 -->
+	    <if test="address != null and address != ''">
+		      AND address = #{address}  <!-- 联系地址 -->
 		</if>
-	    <if test="remark_ != null and remark_ != ''">
-		      AND remark_ = #{remark_}  <!-- 备注 -->
+	    <if test="remark != null and remark != ''">
+		      AND remark = #{remark}  <!-- 备注 -->
 		</if>
-	    <if test="is_del_ != null and is_del_ != ''">
-		      AND is_del_ = #{is_del_}  <!-- 是否已删除 -->
+	    <if test="is_del != null and is_del != ''">
+		      AND is_del = #{is_del}  <!-- 是否已删除 -->
 		</if>
-	    <if test="create_time_ != null and create_time_ != ''">
-		      AND create_time_ = #{create_time_}  <!-- 创建时间 -->
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time = #{create_time}  <!-- 创建时间 -->
 		</if>
-	    <if test="create_by_ != null and create_by_ != ''">
-		      AND create_by_ = #{create_by_}  <!-- 创建人ID -->
+	   <if test="create_by != null ">
+		      AND create_by = #{create_by}  <!-- 创建人ID -->
 		</if>
 	</sql>
 	
 	<!-- Where模糊匹配字段 -->
 	<sql id="like">
-	    <if test="id_ != null and id_ != ''">
-		      AND id_ like '%${id_}%'  <!-- 流水号 -->
+	    <if test="account != null and account != ''">
+		      AND account like '${account}%'  <!-- 用户登录帐号 -->
 		</if>
-	    <if test="account_ != null and account_ != ''">
-		      AND account_ like '%${account_}%'  <!-- 用户登录帐号 -->
+	    <if test="password != null and password != ''">
+		      AND password like '${password}%'  <!-- 密码 -->
 		</if>
-	    <if test="password_ != null and password_ != ''">
-		      AND password_ like '%${password_}%'  <!-- 密码 -->
+	    <if test="name != null and name != ''">
+		      AND name like '${name}%'  <!-- 用户姓名 -->
 		</if>
-	    <if test="name_ != null and name_ != ''">
-		      AND name_ like '%${name_}%'  <!-- 用户姓名 -->
+	    <if test="sex != null and sex != ''">
+		      AND sex like '${sex}%'  <!-- 性别 -->
 		</if>
-	    <if test="sex_ != null and sex_ != ''">
-		      AND sex_ like '%${sex_}%'  <!-- 性别 -->
+	    <if test="status != null and status != ''">
+		      AND status like '${status}%'  <!-- 用户状态 -->
 		</if>
-	    <if test="status_ != null and status_ != ''">
-		      AND status_ like '%${status_}%'  <!-- 用户状态 -->
+	    <if test="type != null and type != ''">
+		      AND type like '${type}%'  <!-- 用户类型 -->
 		</if>
-	    <if test="type_ != null and type_ != ''">
-		      AND type_ like '%${type_}%'  <!-- 用户类型 -->
+	    <if test="email != null and email != ''">
+		      AND email like '${email}%'  <!-- 电子邮件 -->
 		</if>
-	    <if test="org_id_ != null and org_id_ != ''">
-		      AND org_id_ like '%${org_id_}%'  <!-- 所属部门流水号 -->
+	    <if test="mobile != null and mobile != ''">
+		      AND mobile like '${mobile}%'  <!-- 联系电话 -->
 		</if>
-	    <if test="email_ != null and email_ != ''">
-		      AND email_ like '%${email_}%'  <!-- 电子邮件 -->
+	    <if test="idno != null and idno != ''">
+		      AND idno like '${idno}%'  <!-- 身份证号 -->
 		</if>
-	    <if test="mobile_ != null and mobile_ != ''">
-		      AND mobile_ like '%${mobile_}%'  <!-- 联系电话 -->
+	    <if test="skin != null and skin != ''">
+		      AND skin like '${skin}%'  <!-- 用户界面皮肤 -->
 		</if>
-	    <if test="idno_ != null and idno_ != ''">
-		      AND idno_ like '%${idno_}%'  <!-- 身份证号 -->
+	    <if test="biz_code != null and biz_code != ''">
+		      AND biz_code like '${biz_code}%'  <!-- 业务对照码 -->
 		</if>
-	    <if test="skin_ != null and skin_ != ''">
-		      AND skin_ like '%${skin_}%'  <!-- 用户界面皮肤 -->
+	    <if test="address != null and address != ''">
+		      AND address like '${address}%'  <!-- 联系地址 -->
 		</if>
-	    <if test="biz_code_ != null and biz_code_ != ''">
-		      AND biz_code_ like '%${biz_code_}%'  <!-- 业务对照码 -->
+	    <if test="remark != null and remark != ''">
+		      AND remark like '${remark}%'  <!-- 备注 -->
 		</if>
-	    <if test="address_ != null and address_ != ''">
-		      AND address_ like '%${address_}%'  <!-- 联系地址 -->
+	    <if test="is_del != null and is_del != ''">
+		      AND is_del like '${is_del}%'  <!-- 是否已删除 -->
 		</if>
-	    <if test="remark_ != null and remark_ != ''">
-		      AND remark_ like '%${remark_}%'  <!-- 备注 -->
-		</if>
-	    <if test="is_del_ != null and is_del_ != ''">
-		      AND is_del_ like '%${is_del_}%'  <!-- 是否已删除 -->
-		</if>
-	    <if test="create_time_ != null and create_time_ != ''">
-		      AND create_time_ like '%${create_time_}%'  <!-- 创建时间 -->
-		</if>
-	    <if test="create_by_ != null and create_by_ != ''">
-		      AND create_by_ like '%${create_by_}%'  <!-- 创建人ID -->
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time like '${create_time}%'  <!-- 创建时间 -->
 		</if>
 	</sql>
 	

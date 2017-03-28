@@ -9,7 +9,7 @@ import aos.framework.core.typewrap.PO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:01
+ * @date 2017-03-23 17:54:25
  */
 public class AosModulePO extends PO {
 
@@ -18,256 +18,256 @@ public class AosModulePO extends PO {
 	/**
 	 * 功能模块流水号
 	 */
-	private String id_;
+	private Integer id;
 	
 	/**
 	 * 节点语义ID
 	 */
-	private String cascade_id_;
+	private String cascade_id;
 	
 	/**
 	 * 父节点流水号
 	 */
-	private String parent_id_;
+	private Integer parent_id;
 	
 	/**
 	 * 功能模块名称
 	 */
-	private String name_;
+	private String name;
 	
 	/**
 	 * 主页面URL
 	 */
-	private String url_;
+	private String url;
 	
 	/**
 	 * 节点图标文件名称
 	 */
-	private String icon_name_;
+	private String icon_name;
 	
 	/**
 	 * 是否叶子节点
 	 */
-	private String is_leaf_;
+	private String is_leaf;
 	
 	/**
 	 * 是否自动展开
 	 */
-	private String is_auto_expand_;
+	private String is_auto_expand;
 	
 	/**
 	 * 是否启用
 	 */
-	private String is_enable_;
+	private String is_enable;
 	
 	/**
 	 * 矢量图标
 	 */
-	private String vector_;
+	private String vector;
 	
 	/**
 	 * 排序号
 	 */
-	private Integer sort_no_;
+	private Integer sort_no;
 	
 
 	/**
 	 * 功能模块流水号
 	 * 
-	 * @return id_
+	 * @return id
 	 */
-	public String getId_() {
-		return id_;
+	public Integer getId() {
+		return id;
 	}
 	
 	/**
 	 * 节点语义ID
 	 * 
-	 * @return cascade_id_
+	 * @return cascade_id
 	 */
-	public String getCascade_id_() {
-		return cascade_id_;
+	public String getCascade_id() {
+		return cascade_id;
 	}
 	
 	/**
 	 * 父节点流水号
 	 * 
-	 * @return parent_id_
+	 * @return parent_id
 	 */
-	public String getParent_id_() {
-		return parent_id_;
+	public Integer getParent_id() {
+		return parent_id;
 	}
 	
 	/**
 	 * 功能模块名称
 	 * 
-	 * @return name_
+	 * @return name
 	 */
-	public String getName_() {
-		return name_;
+	public String getName() {
+		return name;
 	}
 	
 	/**
 	 * 主页面URL
 	 * 
-	 * @return url_
+	 * @return url
 	 */
-	public String getUrl_() {
-		return url_;
+	public String getUrl() {
+		return url;
 	}
 	
 	/**
 	 * 节点图标文件名称
 	 * 
-	 * @return icon_name_
+	 * @return icon_name
 	 */
-	public String getIcon_name_() {
-		return icon_name_;
+	public String getIcon_name() {
+		return icon_name;
 	}
 	
 	/**
 	 * 是否叶子节点
 	 * 
-	 * @return is_leaf_
+	 * @return is_leaf
 	 */
-	public String getIs_leaf_() {
-		return is_leaf_;
+	public String getIs_leaf() {
+		return is_leaf;
 	}
 	
 	/**
 	 * 是否自动展开
 	 * 
-	 * @return is_auto_expand_
+	 * @return is_auto_expand
 	 */
-	public String getIs_auto_expand_() {
-		return is_auto_expand_;
+	public String getIs_auto_expand() {
+		return is_auto_expand;
 	}
 	
 	/**
 	 * 是否启用
 	 * 
-	 * @return is_enable_
+	 * @return is_enable
 	 */
-	public String getIs_enable_() {
-		return is_enable_;
+	public String getIs_enable() {
+		return is_enable;
 	}
 	
 	/**
 	 * 矢量图标
 	 * 
-	 * @return vector_
+	 * @return vector
 	 */
-	public String getVector_() {
-		return vector_;
+	public String getVector() {
+		return vector;
 	}
 	
 	/**
 	 * 排序号
 	 * 
-	 * @return sort_no_
+	 * @return sort_no
 	 */
-	public Integer getSort_no_() {
-		return sort_no_;
+	public Integer getSort_no() {
+		return sort_no;
 	}
 	
 
 	/**
 	 * 功能模块流水号
 	 * 
-	 * @param id_
+	 * @param id
 	 */
-	public void setId_(String id_) {
-		this.id_ = id_;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	/**
 	 * 节点语义ID
 	 * 
-	 * @param cascade_id_
+	 * @param cascade_id
 	 */
-	public void setCascade_id_(String cascade_id_) {
-		this.cascade_id_ = cascade_id_;
+	public void setCascade_id(String cascade_id) {
+		this.cascade_id = cascade_id;
 	}
 	
 	/**
 	 * 父节点流水号
 	 * 
-	 * @param parent_id_
+	 * @param parent_id
 	 */
-	public void setParent_id_(String parent_id_) {
-		this.parent_id_ = parent_id_;
+	public void setParent_id(Integer parent_id) {
+		this.parent_id = parent_id;
 	}
 	
 	/**
 	 * 功能模块名称
 	 * 
-	 * @param name_
+	 * @param name
 	 */
-	public void setName_(String name_) {
-		this.name_ = name_;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/**
 	 * 主页面URL
 	 * 
-	 * @param url_
+	 * @param url
 	 */
-	public void setUrl_(String url_) {
-		this.url_ = url_;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 	/**
 	 * 节点图标文件名称
 	 * 
-	 * @param icon_name_
+	 * @param icon_name
 	 */
-	public void setIcon_name_(String icon_name_) {
-		this.icon_name_ = icon_name_;
+	public void setIcon_name(String icon_name) {
+		this.icon_name = icon_name;
 	}
 	
 	/**
 	 * 是否叶子节点
 	 * 
-	 * @param is_leaf_
+	 * @param is_leaf
 	 */
-	public void setIs_leaf_(String is_leaf_) {
-		this.is_leaf_ = is_leaf_;
+	public void setIs_leaf(String is_leaf) {
+		this.is_leaf = is_leaf;
 	}
 	
 	/**
 	 * 是否自动展开
 	 * 
-	 * @param is_auto_expand_
+	 * @param is_auto_expand
 	 */
-	public void setIs_auto_expand_(String is_auto_expand_) {
-		this.is_auto_expand_ = is_auto_expand_;
+	public void setIs_auto_expand(String is_auto_expand) {
+		this.is_auto_expand = is_auto_expand;
 	}
 	
 	/**
 	 * 是否启用
 	 * 
-	 * @param is_enable_
+	 * @param is_enable
 	 */
-	public void setIs_enable_(String is_enable_) {
-		this.is_enable_ = is_enable_;
+	public void setIs_enable(String is_enable) {
+		this.is_enable = is_enable;
 	}
 	
 	/**
 	 * 矢量图标
 	 * 
-	 * @param vector_
+	 * @param vector
 	 */
-	public void setVector_(String vector_) {
-		this.vector_ = vector_;
+	public void setVector(String vector) {
+		this.vector = vector;
 	}
 	
 	/**
 	 * 排序号
 	 * 
-	 * @param sort_no_
+	 * @param sort_no
 	 */
-	public void setSort_no_(Integer sort_no_) {
-		this.sort_no_ = sort_no_;
+	public void setSort_no(Integer sort_no) {
+		this.sort_no = sort_no;
 	}
 	
 

@@ -32,7 +32,7 @@
 			 if(Ext.isEmpty(value)) return '';
 			    ##返回的JSON中的数值类型
 					#foreach($dic in $dicList)
-					    if(value == '$dic.code_') return '$dic.desc_';
+					    if(value == '$dic.code') return '$dic.dic_desc';
 					#end	
 			 return value;
 			},

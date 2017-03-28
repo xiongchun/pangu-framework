@@ -9,7 +9,7 @@ import aos.framework.core.typewrap.PO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:28:56
+ * @date 2017-03-24 10:46:24
  */
 public class AosParamsPO extends PO {
 
@@ -18,141 +18,141 @@ public class AosParamsPO extends PO {
 	/**
 	 * 流水号
 	 */
-	private String id_;
+	private Integer id;
 	
 	/**
 	 * 参数名称
 	 */
-	private String name_;
+	private String name;
 	
 	/**
 	 * 参数键
 	 */
-	private String key_;
+	private String params_key;
 	
 	/**
 	 * 参数值
 	 */
-	private String value_;
+	private String value;
 	
 	/**
-	 * 分组
+	 * 参数分组
 	 */
-	private String group_;
+	private String params_group;
 	
 	/**
 	 * 备注
 	 */
-	private String remark_;
+	private String remark;
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @return id_
+	 * @return id
 	 */
-	public String getId_() {
-		return id_;
+	public Integer getId() {
+		return id;
 	}
 	
 	/**
 	 * 参数名称
 	 * 
-	 * @return name_
+	 * @return name
 	 */
-	public String getName_() {
-		return name_;
+	public String getName() {
+		return name;
 	}
 	
 	/**
 	 * 参数键
 	 * 
-	 * @return key_
+	 * @return params_key
 	 */
-	public String getKey_() {
-		return key_;
+	public String getParams_key() {
+		return params_key;
 	}
 	
 	/**
 	 * 参数值
 	 * 
-	 * @return value_
+	 * @return value
 	 */
-	public String getValue_() {
-		return value_;
+	public String getValue() {
+		return value;
 	}
 	
 	/**
-	 * 分组
+	 * 参数分组
 	 * 
-	 * @return group_
+	 * @return params_group
 	 */
-	public String getGroup_() {
-		return group_;
+	public String getParams_group() {
+		return params_group;
 	}
 	
 	/**
 	 * 备注
 	 * 
-	 * @return remark_
+	 * @return remark
 	 */
-	public String getRemark_() {
-		return remark_;
+	public String getRemark() {
+		return remark;
 	}
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @param id_
+	 * @param id
 	 */
-	public void setId_(String id_) {
-		this.id_ = id_;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	/**
 	 * 参数名称
 	 * 
-	 * @param name_
+	 * @param name
 	 */
-	public void setName_(String name_) {
-		this.name_ = name_;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/**
 	 * 参数键
 	 * 
-	 * @param key_
+	 * @param params_key
 	 */
-	public void setKey_(String key_) {
-		this.key_ = key_;
+	public void setParams_key(String params_key) {
+		this.params_key = params_key;
 	}
 	
 	/**
 	 * 参数值
 	 * 
-	 * @param value_
+	 * @param value
 	 */
-	public void setValue_(String value_) {
-		this.value_ = value_;
+	public void setValue(String value) {
+		this.value = value;
 	}
 	
 	/**
-	 * 分组
+	 * 参数分组
 	 * 
-	 * @param group_
+	 * @param params_group
 	 */
-	public void setGroup_(String group_) {
-		this.group_ = group_;
+	public void setParams_group(String params_group) {
+		this.params_group = params_group;
 	}
 	
 	/**
 	 * 备注
 	 * 
-	 * @param remark_
+	 * @param remark
 	 */
-	public void setRemark_(String remark_) {
-		this.remark_ = remark_;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	
 

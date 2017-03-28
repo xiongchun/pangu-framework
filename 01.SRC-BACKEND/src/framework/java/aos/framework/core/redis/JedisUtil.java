@@ -279,9 +279,7 @@ public class JedisUtil {
 	 */
 	public static void main(String[] args) {
 		Jedis jedis = JedisUtil.getJedisClient();
-		jedis.set("XC", "1");
-		System.out.println(jedis.get("XC"));
-		System.out.println(jedis.info());
+		jedis.flushAll();
 		JedisUtil.close(jedis);
 	}
 

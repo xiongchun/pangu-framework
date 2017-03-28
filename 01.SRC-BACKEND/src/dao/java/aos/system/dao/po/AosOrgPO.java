@@ -10,7 +10,7 @@ import java.util.Date;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:02
+ * @date 2017-03-23 17:54:25
  */
 public class AosOrgPO extends PO {
 
@@ -19,348 +19,348 @@ public class AosOrgPO extends PO {
 	/**
 	 * 流水号
 	 */
-	private String id_;
+	private Integer id;
 	
 	/**
 	 * 节点语义ID
 	 */
-	private String cascade_id_;
+	private String cascade_id;
 	
 	/**
 	 * 组织名称
 	 */
-	private String name_;
+	private String name;
 	
 	/**
 	 * 热键
 	 */
-	private String hotkey_;
+	private String hotkey;
 	
 	/**
 	 * 父节点流水号
 	 */
-	private String parent_id_;
+	private Integer parent_id;
 	
 	/**
 	 * 是否叶子节点
 	 */
-	private String is_leaf_;
+	private String is_leaf;
 	
 	/**
 	 * 是否自动展开
 	 */
-	private String is_auto_expand_;
+	private String is_auto_expand;
 	
 	/**
 	 * 节点图标文件名称
 	 */
-	private String icon_name_;
+	private String icon_name;
 	
 	/**
 	 * 组织类型
 	 */
-	private String type_;
+	private String type;
 	
 	/**
 	 * 扩展码
 	 */
-	private String biz_code_;
+	private String biz_code;
 	
 	/**
 	 * 排序号
 	 */
-	private Integer sort_no_;
+	private Integer sort_no;
 	
 	/**
 	 * 备注
 	 */
-	private String remark_;
+	private String remark;
 	
 	/**
 	 * 是否已删除
 	 */
-	private String is_del_;
+	private String is_del;
 	
 	/**
 	 * 创建时间
 	 */
-	private Date create_time_;
+	private Date create_time;
 	
 	/**
 	 * 创建人ID
 	 */
-	private String create_by_;
+	private Integer create_by;
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @return id_
+	 * @return id
 	 */
-	public String getId_() {
-		return id_;
+	public Integer getId() {
+		return id;
 	}
 	
 	/**
 	 * 节点语义ID
 	 * 
-	 * @return cascade_id_
+	 * @return cascade_id
 	 */
-	public String getCascade_id_() {
-		return cascade_id_;
+	public String getCascade_id() {
+		return cascade_id;
 	}
 	
 	/**
 	 * 组织名称
 	 * 
-	 * @return name_
+	 * @return name
 	 */
-	public String getName_() {
-		return name_;
+	public String getName() {
+		return name;
 	}
 	
 	/**
 	 * 热键
 	 * 
-	 * @return hotkey_
+	 * @return hotkey
 	 */
-	public String getHotkey_() {
-		return hotkey_;
+	public String getHotkey() {
+		return hotkey;
 	}
 	
 	/**
 	 * 父节点流水号
 	 * 
-	 * @return parent_id_
+	 * @return parent_id
 	 */
-	public String getParent_id_() {
-		return parent_id_;
+	public Integer getParent_id() {
+		return parent_id;
 	}
 	
 	/**
 	 * 是否叶子节点
 	 * 
-	 * @return is_leaf_
+	 * @return is_leaf
 	 */
-	public String getIs_leaf_() {
-		return is_leaf_;
+	public String getIs_leaf() {
+		return is_leaf;
 	}
 	
 	/**
 	 * 是否自动展开
 	 * 
-	 * @return is_auto_expand_
+	 * @return is_auto_expand
 	 */
-	public String getIs_auto_expand_() {
-		return is_auto_expand_;
+	public String getIs_auto_expand() {
+		return is_auto_expand;
 	}
 	
 	/**
 	 * 节点图标文件名称
 	 * 
-	 * @return icon_name_
+	 * @return icon_name
 	 */
-	public String getIcon_name_() {
-		return icon_name_;
+	public String getIcon_name() {
+		return icon_name;
 	}
 	
 	/**
 	 * 组织类型
 	 * 
-	 * @return type_
+	 * @return type
 	 */
-	public String getType_() {
-		return type_;
+	public String getType() {
+		return type;
 	}
 	
 	/**
 	 * 扩展码
 	 * 
-	 * @return biz_code_
+	 * @return biz_code
 	 */
-	public String getBiz_code_() {
-		return biz_code_;
+	public String getBiz_code() {
+		return biz_code;
 	}
 	
 	/**
 	 * 排序号
 	 * 
-	 * @return sort_no_
+	 * @return sort_no
 	 */
-	public Integer getSort_no_() {
-		return sort_no_;
+	public Integer getSort_no() {
+		return sort_no;
 	}
 	
 	/**
 	 * 备注
 	 * 
-	 * @return remark_
+	 * @return remark
 	 */
-	public String getRemark_() {
-		return remark_;
+	public String getRemark() {
+		return remark;
 	}
 	
 	/**
 	 * 是否已删除
 	 * 
-	 * @return is_del_
+	 * @return is_del
 	 */
-	public String getIs_del_() {
-		return is_del_;
+	public String getIs_del() {
+		return is_del;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @return create_time_
+	 * @return create_time
 	 */
-	public Date getCreate_time_() {
-		return create_time_;
+	public Date getCreate_time() {
+		return create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @return create_by_
+	 * @return create_by
 	 */
-	public String getCreate_by_() {
-		return create_by_;
+	public Integer getCreate_by() {
+		return create_by;
 	}
 	
 
 	/**
 	 * 流水号
 	 * 
-	 * @param id_
+	 * @param id
 	 */
-	public void setId_(String id_) {
-		this.id_ = id_;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	/**
 	 * 节点语义ID
 	 * 
-	 * @param cascade_id_
+	 * @param cascade_id
 	 */
-	public void setCascade_id_(String cascade_id_) {
-		this.cascade_id_ = cascade_id_;
+	public void setCascade_id(String cascade_id) {
+		this.cascade_id = cascade_id;
 	}
 	
 	/**
 	 * 组织名称
 	 * 
-	 * @param name_
+	 * @param name
 	 */
-	public void setName_(String name_) {
-		this.name_ = name_;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/**
 	 * 热键
 	 * 
-	 * @param hotkey_
+	 * @param hotkey
 	 */
-	public void setHotkey_(String hotkey_) {
-		this.hotkey_ = hotkey_;
+	public void setHotkey(String hotkey) {
+		this.hotkey = hotkey;
 	}
 	
 	/**
 	 * 父节点流水号
 	 * 
-	 * @param parent_id_
+	 * @param parent_id
 	 */
-	public void setParent_id_(String parent_id_) {
-		this.parent_id_ = parent_id_;
+	public void setParent_id(Integer parent_id) {
+		this.parent_id = parent_id;
 	}
 	
 	/**
 	 * 是否叶子节点
 	 * 
-	 * @param is_leaf_
+	 * @param is_leaf
 	 */
-	public void setIs_leaf_(String is_leaf_) {
-		this.is_leaf_ = is_leaf_;
+	public void setIs_leaf(String is_leaf) {
+		this.is_leaf = is_leaf;
 	}
 	
 	/**
 	 * 是否自动展开
 	 * 
-	 * @param is_auto_expand_
+	 * @param is_auto_expand
 	 */
-	public void setIs_auto_expand_(String is_auto_expand_) {
-		this.is_auto_expand_ = is_auto_expand_;
+	public void setIs_auto_expand(String is_auto_expand) {
+		this.is_auto_expand = is_auto_expand;
 	}
 	
 	/**
 	 * 节点图标文件名称
 	 * 
-	 * @param icon_name_
+	 * @param icon_name
 	 */
-	public void setIcon_name_(String icon_name_) {
-		this.icon_name_ = icon_name_;
+	public void setIcon_name(String icon_name) {
+		this.icon_name = icon_name;
 	}
 	
 	/**
 	 * 组织类型
 	 * 
-	 * @param type_
+	 * @param type
 	 */
-	public void setType_(String type_) {
-		this.type_ = type_;
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	/**
 	 * 扩展码
 	 * 
-	 * @param biz_code_
+	 * @param biz_code
 	 */
-	public void setBiz_code_(String biz_code_) {
-		this.biz_code_ = biz_code_;
+	public void setBiz_code(String biz_code) {
+		this.biz_code = biz_code;
 	}
 	
 	/**
 	 * 排序号
 	 * 
-	 * @param sort_no_
+	 * @param sort_no
 	 */
-	public void setSort_no_(Integer sort_no_) {
-		this.sort_no_ = sort_no_;
+	public void setSort_no(Integer sort_no) {
+		this.sort_no = sort_no;
 	}
 	
 	/**
 	 * 备注
 	 * 
-	 * @param remark_
+	 * @param remark
 	 */
-	public void setRemark_(String remark_) {
-		this.remark_ = remark_;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	
 	/**
 	 * 是否已删除
 	 * 
-	 * @param is_del_
+	 * @param is_del
 	 */
-	public void setIs_del_(String is_del_) {
-		this.is_del_ = is_del_;
+	public void setIs_del(String is_del) {
+		this.is_del = is_del;
 	}
 	
 	/**
 	 * 创建时间
 	 * 
-	 * @param create_time_
+	 * @param create_time
 	 */
-	public void setCreate_time_(Date create_time_) {
-		this.create_time_ = create_time_;
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
 	}
 	
 	/**
 	 * 创建人ID
 	 * 
-	 * @param create_by_
+	 * @param create_by
 	 */
-	public void setCreate_by_(String create_by_) {
-		this.create_by_ = create_by_;
+	public void setCreate_by(Integer create_by) {
+		this.create_by = create_by;
 	}
 	
 

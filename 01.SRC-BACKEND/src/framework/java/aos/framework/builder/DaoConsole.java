@@ -35,15 +35,16 @@ public class DaoConsole {
 		//===================
 		Dto dto = Dtos.newDto();
 		//改为自己存放相关文件的磁盘文件路径
-		dto.put("outPath", "G:/01.AOSuite/01.SVN/01.SRC-BACKEND/src/dao/java/aos/demo/dao");
+		dto.put("outPath", "G:/01.AOSuite/01.SVN/01.SRC-BACKEND/src/dao/java/aos/framework/dao");
 		//改为自己相关文件的包路径
 		//dto.put("package", "aos.system.dao");
-		//dto.put("package", "aos.framework.dao");
-		dto.put("package", "aos.demo.dao");
+		//dto.put("package", "aos.system.dao");
+		dto.put("package", "aos.framework.dao");
 		dto.put("author", "xiongchun");
 		//指定多张表请用逗号分隔；
 		//!!表名区分大小写的喔
-		dto.put("tables", "demo");
+		dto.put("tables", "aos_params,aos_dic");
+		//dto.put("tables", "aos_cmp, aos_icon, aos_module, aos_org, aos_role, aos_role_module, aos_sequence, aos_user_role");
 		//===================
 		Connection connection = DBMetaInfoUtils.newConnection(driverOpt);
 		DaoBuilder.buildDao(connection, dto);

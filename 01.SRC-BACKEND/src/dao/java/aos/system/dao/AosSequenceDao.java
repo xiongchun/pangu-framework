@@ -15,7 +15,7 @@ import aos.system.dao.po.AosSequencePO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-01-18 22:42:02
+ * @date 2017-03-23 17:54:25
  */
 @Dao("aosSequenceDao")
 public interface AosSequenceDao {
@@ -53,7 +53,7 @@ public interface AosSequenceDao {
 	 * 
 	 * @return AosSequencePO
 	 */
-	AosSequencePO selectByKey(@Param(value = "name_") String name_);
+	AosSequencePO selectByKey(@Param(value = "name") String name);
 
 	/**
 	 * 根据唯一组合条件查询并返回数据持久化对象
@@ -95,7 +95,7 @@ public interface AosSequenceDao {
 	 *
 	 * @return 影响行数
 	 */
-	int deleteByKey(@Param(value = "name_") String name_);
+	int deleteByKey(@Param(value = "name") String name);
 	
 	/**
 	 * 根据Dto统计行数

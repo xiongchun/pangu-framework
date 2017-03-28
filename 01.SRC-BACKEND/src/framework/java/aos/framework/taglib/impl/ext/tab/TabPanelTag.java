@@ -58,7 +58,7 @@ public class TabPanelTag extends PanelTag {
 
 		// 设置缺省活动卡片高亮颜色
 		if (AOSUtils.isEmpty(getActiveTabBarColor())) {
-			String colorString = AOSCxt.getParam("tab_focus_color_");
+			String colorString = AOSCxt.getParam("tab_focus_color");
 			setActiveTabBarColor(colorString);
 		}
 		

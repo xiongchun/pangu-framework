@@ -15,7 +15,6 @@ import com.google.gson.reflect.TypeToken;
 
 import aos.framework.core.exception.AOSException;
 import aos.framework.core.redis.JedisUtil;
-import aos.framework.core.service.AOSBaseService;
 import aos.framework.core.typewrap.Dto;
 import aos.framework.core.typewrap.Dtos;
 import aos.framework.core.typewrap.impl.HashDto;
@@ -34,7 +33,7 @@ import redis.clients.jedis.Jedis;
  * @author xiongchun
  */
 @Service
-public class CacheManageService extends AOSBaseService {
+public class CacheManageService {
 
 	/**
 	 * 页面初始化
@@ -69,15 +68,15 @@ public class CacheManageService extends AOSBaseService {
 	public void listKeys(HttpModel httpModel) {
 		Dto inDto = httpModel.getInDto();
 		Jedis jedis = JedisUtil.getJedisClient();
-		Set<String> keySet = jedis.keys("*" + inDto.getString("key_") + "*");
+		Set<String> keySet = jedis.keys("*" + inDto.getString("key") + "*");
 		List<String> keyList = new ArrayList<String>(keySet);
 		List<Dto> list = Lists.newArrayList();
 		for (String key_ : keyList) {
 			Dto dto = Dtos.newDto();
-			dto.put("key_", key_);
-			dto.put("type_", jedis.type(key_));
+			dto.put("key", key_);
+			dto.put("type", jedis.type(key_));
 			long ttl_ = jedis.ttl(key_);
-			dto.put("ttl_", ttl_ == -1 ? "永久有效" : ttl_ + "秒");
+			dto.put("ttl", ttl_ == -1 ? "永久有效" : ttl_ + "秒");
 			list.add(dto);
 		}
 		JedisUtil.close(jedis);
@@ -99,13 +98,13 @@ public class CacheManageService extends AOSBaseService {
 		List<Dto> outList = Lists.newArrayList();
 		Dto inDto = httpModel.getInDto();
 		Jedis jedis = JedisUtil.getJedisClient();
-		String key = inDto.getString("key_");
-		String type = inDto.getString("type_");
+		String key = inDto.getString("key");
+		String type = inDto.getString("type");
 		int total = 0;
 		if (StringUtils.equalsIgnoreCase(type, "string")) {
 			Dto dto = Dtos.newDto();
-			dto.put("field_", "-");
-			dto.put("value_", jedis.get(key));
+			dto.put("field", "-");
+			dto.put("value", jedis.get(key));
 			outList.add(dto);
 			total = outList.size();
 		} else if (StringUtils.equalsIgnoreCase(type, "hash")) {
@@ -118,8 +117,8 @@ public class CacheManageService extends AOSBaseService {
 			fiedList = fiedList.subList(start, end);
 			for (String field : fiedList) {
 				Dto dto = Dtos.newDto();
-				dto.put("field_", field);
-				dto.put("value_", jedis.hget(key, field));
+				dto.put("field", field);
+				dto.put("value", jedis.hget(key, field));
 				outList.add(dto);
 			}
 		} else if (StringUtils.equalsIgnoreCase(type, "list")) {
@@ -128,8 +127,8 @@ public class CacheManageService extends AOSBaseService {
 			List<String> valueList = jedis.lrange(key, start, start + limit);
 			for (String value : valueList) {
 				Dto dto = Dtos.newDto();
-				dto.put("field_", "-");
-				dto.put("value_", value);
+				dto.put("field", "-");
+				dto.put("value", value);
 				outList.add(dto);
 			}
 			total = jedis.llen(key).intValue();
@@ -138,8 +137,8 @@ public class CacheManageService extends AOSBaseService {
 			List<String> valueList = jedis.srandmember(key, 10000);
 			for (String value : valueList) {
 				Dto dto = Dtos.newDto();
-				dto.put("field_", "-");
-				dto.put("value_", value);
+				dto.put("field", "-");
+				dto.put("value", value);
 				outList.add(dto);
 			}
 			total = jedis.scard(key).intValue();
@@ -156,7 +155,7 @@ public class CacheManageService extends AOSBaseService {
 	 * @return
 	 */
 	public void flushAll(HttpModel httpModel) {
-		if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode_"))) {
+		if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode"))) {
 			throw new AOSException(13);
 		}
 		Jedis jedis = JedisUtil.getJedisClient();
@@ -185,11 +184,11 @@ public class CacheManageService extends AOSBaseService {
 	 * @return
 	 */
 	public void delByKey(HttpModel httpModel) {
-		if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode_"))) {
+		if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode"))) {
 			throw new AOSException(13);
 		}
 		Dto inDto = httpModel.getInDto();
-		String key = inDto.getString("key_");
+		String key = inDto.getString("key");
 		JedisUtil.delString(key);
 		httpModel.setOutMsg(AOSUtils.merge("键[{0}]已成功删除。", key));
 	}
@@ -201,14 +200,14 @@ public class CacheManageService extends AOSBaseService {
 	 * @return
 	 */
 	public void saveCmd(HttpModel httpModel) {
-		if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode_"))) {
+		if (StringUtils.equals(AOSCons.RUN_MODE.DEMO, AOSCxt.getParam("run_mode"))) {
 			throw new AOSException(13);
 		}
 		Dto inDto = httpModel.getInDto();
 		Jedis jedis = JedisUtil.getJedisClient();
-		String key = inDto.getString("key_");
-		String type_ = inDto.getString("type_");
-		String content = inDto.getString("content_");
+		String key = inDto.getString("key");
+		String type_ = inDto.getString("type");
+		String content = inDto.getString("content");
 		content = StringUtils.replace(content, "\n", "");
 		jedis.del(key);
 		if (StringUtils.equals(type_, SystemCons.CMD_TYPE.STRING)) {
@@ -250,8 +249,8 @@ public class CacheManageService extends AOSBaseService {
 			}
 			jedis.hmset(key, map);
 		}
-		if (inDto.getInteger("timeout_") > 0) {
-			jedis.expire(key, inDto.getInteger("timeout_"));
+		if (inDto.getInteger("timeout") > 0) {
+			jedis.expire(key, inDto.getInteger("timeout"));
 		}
 		JedisUtil.close(jedis);
 		httpModel.setOutMsg(AOSUtils.merge("键[{0}]已成功加入缓存。", key));

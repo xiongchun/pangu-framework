@@ -9,24 +9,24 @@
 	<select id="listRolesPage" resultType="Dto" parameterType="Dto">
 	       SELECT * FROM (
 			SELECT
-			(SELECT cascade_id_ FROM aos_org WHERE id_ = (SELECT org_id_ FROM aos_user WHERE id_ = aos_role.create_by_)) AS org_cascade_id_,
+			(SELECT cascade_id FROM aos_org WHERE id = (SELECT org_id FROM aos_user WHERE id = aos_role.create_by)) AS org_cascade_id,
             <include refid="aos.system.dao.AosRoleDao.column" />
             FROM aos_role
 			<where>
-			    <if test="name_ != null and name_ != ''">
-				    AND name_ LIKE '%${name_}%' 
+			    <if test="name != null and name != ''">
+				    AND name LIKE '%${name}%' 
 				</if>
-				<if test="type_ != null and type_ != ''">
-				    AND type_ = #{type_}
+				<if test="type != null and type != ''">
+				    AND type = #{type}
 				</if>
 			</where>	
-			) t WHERE t.org_cascade_id_ LIKE '${org_cascade_id_}%' 
-			ORDER BY id_ DESC
+			) t WHERE t.org_cascade_id LIKE '${org_cascade_id}%' 
+			ORDER BY id DESC
 	</select>
 	
 	<!-- 删除人员角色关联表 -->
 	<delete id="deleteUserRoleByRoleID" parameterType="String">
-	   DELETE FROM aos_user_role WHERE role_id_ = #{role_id_}
+	   DELETE FROM aos_user_role WHERE role_id = #{role_id}
 	</delete>
 	
 	<!-- 查询授权树 -->
@@ -34,69 +34,69 @@
 			SELECT
             <include refid="aos.system.dao.AosModuleDao.column" />
             FROM aos_module WHERE
-				id_ IN (
+				id IN (
 					SELECT
-						module_id_
+						module_id
 					FROM
 						aos_role_module
 					WHERE
-						grant_type_ = '2'
-					AND role_id_ IN (
+						grant_type = '2'
+					AND role_id IN (
 						SELECT
-							role_id_
+							role_id
 						FROM
 							aos_user_role
 						WHERE
-							user_id_ = #{user_id_}
+							user_id = #{user_id}
 					))
-			 ORDER BY sort_no_
+			 ORDER BY sort_no
 	</select>
 	
 	<!-- 删除角色模块关联表 -->
 	<delete id="deleteRoleModuleByRoleID" parameterType="Dto">
-	   DELETE FROM aos_role_module WHERE role_id_ = #{role_id_} AND grant_type_ = #{grant_type_}
+	   DELETE FROM aos_role_module WHERE role_id = #{role_id} AND grant_type = #{grant_type}
 	</delete>
 	
 	<!-- 查询用户列表 -->
 	<select id="listUsersPage" resultType="Dto" parameterType="Dto">
 			SELECT
-			     aos_org.name_ AS org_name_,
+			     aos_org.name AS org_name,
                 <include refid="aos.framework.dao.AosUserDao.column2" />
-            FROM aos_user, aos_org WHERE aos_user.org_id_ = aos_org.id_
-              AND aos_user.id_ NOT IN (SELECT user_id_ FROM aos_user_role WHERE role_id_ = #{role_id_})
-		    <if test="na_ != null and na_ != ''">
-			    AND (aos_user.name_ LIKE '%${na_}%' OR aos_user.account_ LIKE '%${na_}%')
+            FROM aos_user, aos_org WHERE aos_user.org_id = aos_org.id
+              AND aos_user.id NOT IN (SELECT user_id FROM aos_user_role WHERE role_id = #{role_id})
+		    <if test="na != null and na != ''">
+			    AND (aos_user.name LIKE '%${na}%' OR aos_user.account LIKE '%${na}%')
 			</if>
-		    <if test="cascade_ == 0">
-			    AND aos_user.org_id_ = #{org_id_, jdbcType=VARCHAR} 
+		    <if test="cascade == 0">
+			    AND aos_user.org_id = #{org_id, jdbcType=VARCHAR} 
 			</if>
-			<if test="cascade_ == 1">
-			    AND aos_org.cascade_id_ like '${org_cascade_id_}%'
+			<if test="cascade == 1">
+			    AND aos_org.cascade_id like '${org_cascade_id}%'
 			</if>
-			<if test="is_del_ != null and is_del_ != ''">
-			    AND aos_user.is_del_ = #{is_del_} 
+			<if test="is_del != null and is_del != ''">
+			    AND aos_user.is_del = #{is_del} 
 			</if>
-			 ORDER BY aos_user.id_ DESC
+			 ORDER BY aos_user.id DESC
 	</select>
 	
 	<!-- 查询已选用户列表 -->
 	<select id="listSelectedUsersPage" resultType="Dto" parameterType="Dto">
 			SELECT
-				aos_org.name_ as org_name_,
-				aos_user_role.id_ as user_role_id_,
+				aos_org.name as org_name,
+				aos_user_role.id as user_role_id,
                 <include refid="aos.framework.dao.AosUserDao.column2" />
             FROM aos_user
-			LEFT JOIN aos_user_role ON aos_user_role.user_id_ = aos_user.id_
-			LEFT JOIN aos_org ON aos_org.id_ = aos_user.org_id_
-            WHERE aos_user.id_ IN (SELECT user_id_ FROM aos_user_role WHERE role_id_ = #{role_id_})
-                AND aos_user_role.role_id_ = #{role_id_}
-		    <if test="na_ != null and na_ != ''">
-			    AND (aos_user.name_ LIKE '%${na_}%' OR aos_user.account_ LIKE '%${na_}%')
+			LEFT JOIN aos_user_role ON aos_user_role.user_id = aos_user.id
+			LEFT JOIN aos_org ON aos_org.id = aos_user.org_id
+            WHERE aos_user.id IN (SELECT user_id FROM aos_user_role WHERE role_id = #{role_id})
+                AND aos_user_role.role_id = #{role_id}
+		    <if test="na != null and na != ''">
+			    AND (aos_user.name LIKE '%${na}%' OR aos_user.account LIKE '%${na}%')
 			</if>
-			<if test="is_del_ != null and is_del_ != ''">
-			    AND aos_user.is_del_ = #{is_del_} 
+			<if test="is_del != null and is_del != ''">
+			    AND aos_user.is_del = #{is_del} 
 			</if>
-			 ORDER BY aos_user.id_ DESC
+			 ORDER BY aos_user.id DESC
 	</select>
 
 </mapper>

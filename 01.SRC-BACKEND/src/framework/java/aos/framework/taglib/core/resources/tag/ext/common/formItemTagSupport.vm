@@ -1,4 +1,6 @@
 #parse("${vmpath}ext/common/componentTagSupport.vm")
+##keydown、keyup事件需要
+enableKeyEvents: true,
 ##表单元素输入框区域样式 fieldCls属性：去掉输入框内区域的立体效果。选择框不能应用此样式。
 #if($fieldCls)
     fieldCls:'$fieldCls',
