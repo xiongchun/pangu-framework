@@ -21,7 +21,7 @@
 			</aos:treepanel>
 
 			<aos:treepanel id="idTree3" flex="1" title="按需加载(展开树枝节点时加载数据)" singleClick="false" rootVisible="false"
-				url="demoService.getAsyncTreeData" nodeParam="parent_id_" rootId="0" margin="5" border="true" rootExpanded="true">
+				url="demoService.getAsyncTreeData" nodeParam="parent_id" rootId="0" margin="5" border="true" rootExpanded="true">
 				<%-- 树节点右键菜单 --%>
 				<aos:menu>
 					<aos:menuitem text="刷新" icon="refresh.png" onclick="refresh" />

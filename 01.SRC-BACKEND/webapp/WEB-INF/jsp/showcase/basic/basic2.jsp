@@ -19,7 +19,7 @@
 
 <aos:onready>
 	<aos:viewport layout="border">
-		<aos:tabpanel id="_id_tabs" region="center" tabPosition="bottom" bodyBorder="0 0 0 0" margin="0 0 2 0">
+		<aos:tabpanel id="id_tabs" region="center" tabPosition="bottom" bodyBorder="0 0 0 0" margin="0 0 2 0">
 
 			<aos:tab title="容器组件" layout="anchor">
 
@@ -31,7 +31,7 @@
 					<aos:tool type="pin" onclick="call()" />
 				</aos:panel>
 
-				<aos:tabpanel id="_id_tabs2" anchor="100% 35%" margin="10" plain="true">
+				<aos:tabpanel id="id_tabs2" anchor="100% 35%" margin="10" plain="true">
 					<aos:tab title="选项卡一">
 						<aos:panel html="上海" bodyBorder="0 1 1 1">
 						</aos:panel>
@@ -40,7 +40,7 @@
 						<aos:panel html="昆明" bodyBorder="0 1 1 1">
 						</aos:panel>
 					</aos:tab>
-					<aos:tab title="选项卡三" id="_id_tab3">
+					<aos:tab title="选项卡三" id="id_tab3">
 						<aos:panel html="苏州" bodyBorder="0 1 1 1">
 						</aos:panel>
 					</aos:tab>
