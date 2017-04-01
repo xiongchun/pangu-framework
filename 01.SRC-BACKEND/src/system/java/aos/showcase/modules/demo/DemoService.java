@@ -562,6 +562,16 @@ public class DemoService {
 	}
 	
 	/**
+	 * 范例(常用布局四)
+	 * 
+	 * @param httpModel
+	 * @return
+	 */
+	public void initMisc6(HttpModel httpModel) {
+		httpModel.setViewPath("showcase/misc/misc6.jsp");
+	}
+	
+	/**
 	 * 测试1
 	 * 
 	 * @param httpModel

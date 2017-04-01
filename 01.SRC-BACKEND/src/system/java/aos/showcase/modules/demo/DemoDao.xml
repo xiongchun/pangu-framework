@@ -11,8 +11,7 @@
 		SELECT
 		<include refid="aos.framework.dao.AosParamsDao.column" />
 		FROM aos_params WHERE
-		paramskey LIKE '%${keyorvalue}%' OR value LIKE
-		'%${keyorvalue}%'
+		params_key LIKE '%${keyorvalue}%' OR value LIKE '%${keyorvalue}%'
 	</select>
 
 	<!-- 查询测试 -->
