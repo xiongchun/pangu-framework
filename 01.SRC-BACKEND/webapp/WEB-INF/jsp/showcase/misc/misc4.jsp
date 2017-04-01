@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
 
-<aos:html title="实例④-常用布局二" base="http" lib="ext">
+<aos:html title="常用布局二" base="http" lib="ext">
 <aos:body>
 </aos:body>
 </aos:html>
@@ -24,7 +24,7 @@
 			</aos:docked>
 		</aos:formpanel>
 
-		<aos:tabpanel id="_tabpanel" region="center" bodyBorder="0 0 0 0">
+		<aos:tabpanel id="tabpanel" region="center" bodyBorder="0 0 0 0" >
 
 			<aos:tab title="部门信息" id="_tab_org">
 				<aos:gridpanel id="g_org" url="demoService.listOrgs" onrender="g_org_query">
@@ -165,7 +165,7 @@
 		//加载部门结构表格数据
 		function g_org_query() {
 			if(!_tab_org.isVisible()){
-				_tabpanel.setActiveTab(_tab_org);
+				tabpanel.setActiveTab(_tab_org);
 			}
 			var params = AOS.getValue('f_query');
 			g_org_store.getProxy().extraParams = params;

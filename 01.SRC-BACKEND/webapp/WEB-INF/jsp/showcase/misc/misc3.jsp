@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
 
-<aos:html title="实例③-常用布局一" base="http" lib="ext">
+<aos:html title="常用布局一" base="http" lib="ext">
 <aos:body>
 	<div id="div_tips" class="x-hidden" style="line-height: 25px; margin-right: 10px;">
 		<ul>

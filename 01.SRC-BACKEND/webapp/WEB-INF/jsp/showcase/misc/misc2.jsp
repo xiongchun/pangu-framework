@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
 
-<aos:html title="实例②-增删改查" base="http" lib="ext">
+<aos:html title="增删改查" base="http" lib="ext">
 <aos:body>
 </aos:body>
 </aos:html>
