@@ -13,8 +13,6 @@ import aos.framework.core.typewrap.Dtos;
 /**
  * 数据访问层代码生成器
  * 
- * <p>
- * 提示：已经支持可视化生成。请访问：开发工具箱->WebIDE集成开发。
  * 
  * @author xiongchun
  * @throws SQLException 
