@@ -114,7 +114,7 @@
             //查询数据字典列表
             function g_dic_query() {
                 var params = {
-                    group: id_group.getValue(),
+                	dic_group: id_group.getValue(),
                     where1: id_where1.getValue(),
                     where2: id_where2.getValue(),
                     dic_key:dic_key
