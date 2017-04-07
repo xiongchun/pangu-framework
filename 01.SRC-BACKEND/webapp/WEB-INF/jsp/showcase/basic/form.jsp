@@ -273,12 +273,17 @@
 						<aos:textfield fieldLabel="卡号" name="card" allowBlank="false" columnWidth="0.25" />
 						<aos:button text="查询" margin="0 0 0 10" icon="query.png" />
 					</aos:fieldset>
-					<aos:fieldset title="发卡行信息(复杂表单布局)" columnWidth="1">
+					<aos:fieldset title="发卡行信息(强制换行)" columnWidth="1">
 						<aos:rowset>
 							<aos:numberfield fieldLabel="上班时间" name="satrt1" value="8" columnWidth="0.2" />
 							<aos:displayfield value="点" padding="0 0 0 5" columnWidth="0.02" />
 							<aos:numberfield name="name1" value="30" columnWidth="0.1" />
-							<aos:displayfield value="分 (强制换行)" padding="0 0 0 5" columnWidth="0.3" />
+							<aos:displayfield value="分 " padding="0 0 0 5" columnWidth="0.3" />
+						</aos:rowset>
+						<aos:rowset>
+							<aos:textfield fieldLabel="姓名" name="name" columnWidth="0.25" allowBlank="false" />
+							<aos:numberfield fieldLabel="年龄" name="age" minWidth="1" maxValue="120" columnWidth="0.25" />
+							<aos:textfield fieldLabel="身份证号" name="id_no" columnWidth="0.25" />
 						</aos:rowset>
 						<aos:textfield fieldLabel="邮编" name="bankName" columnWidth="0.5" />
 						<aos:textfield fieldLabel="地址" name="bankName" columnWidth="0.49" />
@@ -302,14 +307,14 @@
 					</aos:fieldset>
 					<aos:fieldset title="用户头像" labelWidth="70" columnWidth="0.35" contentEl="div_photo" height="200" />
 					<aos:fieldset title="辅助信息" labelWidth="70" columnWidth="1" border="true">
-						<aos:textfield name="idno" fieldLabel="身份证号" maxLength="50" columnWidth="0.5" />
-						<aos:datefield name="birthday" fieldLabel="生日" format="Y-m-d" editable="false" columnWidth="0.49" />
-						<aos:textfield name="fixed_phone" fieldLabel="固定电话" maxLength="50" columnWidth="0.5" />
-						<aos:textfield name="mobile_phone" fieldLabel="移动电话" maxLength="50" columnWidth="0.49" />
-						<aos:textfield name="email" fieldLabel="电子邮件" vtype="email" columnWidth="0.5" />
-						<aos:textfield name="qq" fieldLabel="QQ" maxLength="50" columnWidth="0.49" />
-						<aos:textfield name="zip" fieldLabel="邮编" maxLength="20" columnWidth="0.5" />
-						<aos:textfield name="address" fieldLabel="联系地址" maxLength="200" columnWidth="0.49" />
+						<aos:textfield name="idno" fieldLabel="身份证号" maxLength="50" columnWidth="0.25" />
+						<aos:datefield name="birthday" fieldLabel="生日" format="Y-m-d" editable="false" columnWidth="0.25" />
+						<aos:textfield name="fixed_phone" fieldLabel="固定电话" maxLength="50" columnWidth="0.25" />
+						<aos:textfield name="mobile_phone" fieldLabel="移动电话" maxLength="50" columnWidth="0.24" />
+						<aos:textfield name="email" fieldLabel="电子邮件" vtype="email" columnWidth="0.25" />
+						<aos:textfield name="qq" fieldLabel="QQ" maxLength="50" columnWidth="0.25" />
+						<aos:textfield name="zip" fieldLabel="邮编" maxLength="20" columnWidth="0.25" />
+						<aos:textfield name="address" fieldLabel="联系地址" maxLength="200" columnWidth="0.24" />
 						<aos:textareafield name="remark" fieldLabel="备注" maxLength="4000" columnWidth="0.99" />
 					</aos:fieldset>
 					<aos:fieldset title="扩展信息" labelWidth="70" border="true">
