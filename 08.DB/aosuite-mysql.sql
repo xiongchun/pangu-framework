@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50628
 File Encoding         : 65001
 
-Date: 2017-03-28 23:08:08
+Date: 2017-04-08 00:49:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -913,11 +913,11 @@ INSERT INTO `aos_module` VALUES ('49', '0.001.009', '38', '监控', '', 'folder1
 INSERT INTO `aos_module` VALUES ('50', '0.001.009.001', '49', '在线用户', 'onlineUserService.init', 'text_list.png', '1', '0', '1', '', '10');
 INSERT INTO `aos_module` VALUES ('51', '0.001.010', '38', '工具', '', 'folder1.png', '0', '1', '1', '', '40');
 INSERT INTO `aos_module` VALUES ('52', '0.001.010.001', '51', '图标', 'iconService.init', 'pictures.png', '1', '0', '1', '', '90');
-INSERT INTO `aos_module` VALUES ('53', '0.002.001.001', '40', '实例①-简单查询', 'demoService.initMisc1', '', '1', '0', '1', '', '10');
-INSERT INTO `aos_module` VALUES ('54', '0.002.001.002', '40', '实例②-增删改查', 'demoService.initMisc2', '', '1', '0', '1', '', '20');
-INSERT INTO `aos_module` VALUES ('55', '0.002.001.003', '40', '实例③-常用布局一', 'demoService.initMisc3', '', '1', '0', '1', '', '30');
-INSERT INTO `aos_module` VALUES ('56', '0.002.001.004', '40', '实例④-常用布局二', 'demoService.initMisc4', '', '1', '0', '1', '', '40');
-INSERT INTO `aos_module` VALUES ('57', '0.002.001.005', '40', '实例⑤-常用布局三', 'demoService.initMisc5', '', '1', '0', '1', '', '50');
+INSERT INTO `aos_module` VALUES ('53', '0.002.001.001', '40', '简单查询', 'demoService.initMisc1', '', '1', '0', '1', '', '10');
+INSERT INTO `aos_module` VALUES ('54', '0.002.001.002', '40', '增删改查', 'demoService.initMisc2', '', '1', '0', '1', '', '20');
+INSERT INTO `aos_module` VALUES ('55', '0.002.001.003', '40', '常用布局一', 'demoService.initMisc3', '', '1', '0', '1', '', '30');
+INSERT INTO `aos_module` VALUES ('56', '0.002.001.004', '40', '常用布局二', 'demoService.initMisc4', '', '1', '0', '1', '', '40');
+INSERT INTO `aos_module` VALUES ('57', '0.002.001.005', '40', '常用布局三', 'demoService.initMisc5', '', '1', '0', '1', '', '50');
 INSERT INTO `aos_module` VALUES ('58', '0.001.010.002', '51', 'Redis缓存管理', 'cacheManageService.init', 'freelance.png', '1', '0', '1', '', '10');
 INSERT INTO `aos_module` VALUES ('59', '0.002.002', '39', '基础组件', '', '', '0', '1', '1', '', '10');
 INSERT INTO `aos_module` VALUES ('60', '0.002.002.001', '59', '按钮|停靠栏|信息提示', 'demoService.initBasic1', '', '1', '0', '1', '', '10');
@@ -932,6 +932,7 @@ INSERT INTO `aos_module` VALUES ('68', '0.002.004.001', '67', '测试1', 'demoSe
 INSERT INTO `aos_module` VALUES ('69', '0.002.004.002', '67', '测试2', 'demoService.initTest2', '', '1', '0', '1', '', '20');
 INSERT INTO `aos_module` VALUES ('70', '0.002.004.003', '67', '测试3', 'demoService.initTest3', null, '1', '0', '1', null, '30');
 INSERT INTO `aos_module` VALUES ('71', '0.002.002.006', '59', '表格组件二', 'demoService.initGrid2', '', '1', '0', '1', '', '41');
+INSERT INTO `aos_module` VALUES ('358', '0.002.001.006', '40', '常用布局四', 'demoService.initMisc6', null, '1', '0', '1', null, '60');
 
 -- ----------------------------
 -- Table structure for aos_org
@@ -1057,39 +1058,36 @@ INSERT INTO `aos_role_module` VALUES ('299', '296', '41', '1', '2017-03-26 23:43
 INSERT INTO `aos_role_module` VALUES ('300', '296', '42', '1', '2017-03-26 23:43:37', '-1');
 INSERT INTO `aos_role_module` VALUES ('301', '296', '43', '1', '2017-03-26 23:43:37', '-1');
 INSERT INTO `aos_role_module` VALUES ('302', '296', '44', '1', '2017-03-26 23:43:37', '-1');
-INSERT INTO `aos_role_module` VALUES ('313', '-1', '37', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('314', '-1', '38', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('315', '-1', '41', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('316', '-1', '42', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('317', '-1', '43', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('318', '-1', '44', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('319', '-1', '45', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('320', '-1', '46', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('321', '-1', '47', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('322', '-1', '-1', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('323', '-1', '49', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('324', '-1', '50', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('325', '-1', '51', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('326', '-1', '58', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('327', '-1', '52', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('328', '-1', '39', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('329', '-1', '59', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('330', '-1', '60', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('331', '-1', '63', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('332', '-1', '65', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('333', '-1', '66', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('334', '-1', '71', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('335', '-1', '64', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('336', '-1', '40', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('337', '-1', '53', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('338', '-1', '54', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('339', '-1', '55', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('340', '-1', '56', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('341', '-1', '57', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('342', '-1', '67', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('343', '-1', '68', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('344', '-1', '69', '1', '2017-03-26 23:47:36', '-1');
-INSERT INTO `aos_role_module` VALUES ('345', '-1', '70', '1', '2017-03-26 23:47:36', '-1');
+INSERT INTO `aos_role_module` VALUES ('393', '-1', '37', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('394', '-1', '38', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('395', '-1', '41', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('396', '-1', '42', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('397', '-1', '43', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('398', '-1', '44', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('399', '-1', '45', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('400', '-1', '46', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('401', '-1', '47', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('402', '-1', '-1', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('403', '-1', '49', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('404', '-1', '50', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('405', '-1', '51', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('406', '-1', '58', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('407', '-1', '52', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('408', '-1', '39', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('409', '-1', '59', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('410', '-1', '60', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('411', '-1', '63', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('412', '-1', '65', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('413', '-1', '66', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('414', '-1', '71', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('415', '-1', '64', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('416', '-1', '40', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('417', '-1', '53', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('418', '-1', '54', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('419', '-1', '55', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('420', '-1', '56', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('421', '-1', '57', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `aos_role_module` VALUES ('422', '-1', '358', '1', '2017-04-08 00:48:45', '-1');
 
 -- ----------------------------
 -- Table structure for aos_sequence
@@ -1106,7 +1104,7 @@ CREATE TABLE `aos_sequence` (
 -- Records of aos_sequence
 -- ----------------------------
 INSERT INTO `aos_sequence` VALUES ('seq_demo', '10027', '1');
-INSERT INTO `aos_sequence` VALUES ('seq_system', '356', '1');
+INSERT INTO `aos_sequence` VALUES ('seq_system', '422', '1');
 
 -- ----------------------------
 -- Table structure for aos_user
