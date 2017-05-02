@@ -6,6 +6,9 @@ QQ交流群：```161298057```   作者微博互粉：[http://weibo.com/afghan007
 AOSuite开发套件由后台管理系统开发平台、WebAPI服务接口开发框架、移动端开发框架组成。
 适合构建和开发传统软件行业中大型企业应用管理系统、各级政务信息化系统、银行保险医疗等典型行业管理系统；或构建基于(移动)互联网的各类电商、投资理财等互联网+相关应用。<br>
 
+##### AOSuite开发手册
+[http://osworks.oschina.io/aos-doc/](http://osworks.oschina.io/aos-doc/)
+
 ##### 如何获取100%无死角全开源全免费的代码
 SVN：```svn://git.oschina.net/osworks/AOS```<br>
 GIT：```git@git.oschina.net:osworks/AOS.git```<br>
