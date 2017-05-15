@@ -1,4 +1,4 @@
 ### G4Studio简介  (100%>360度>无死角—>免费又开源)
 G4Studio行业应用二次快速开发平台基于JavaEE技术体系，面向中小软件企业。以“标准功能可复用、通用模块可配置、行业需求快速开发、异构系统无缝集成”为目标，为中小软件开发团队提供强有力的一站式解决方案。<br>
 ### 提示
-你也可以了解一下G4Studio的大表哥：[AOS应用基础平台](http://git.oschina.net/osworks/AOS)
+G4Studio已于2014年停止维护。但，你可以了解一下TA的升级版：[AOS应用基础平台](http://git.oschina.net/osworks/AOS)
