@@ -1,4 +1,4 @@
-package aos.showcase.modules.api;
+package aos.showcase.api;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
