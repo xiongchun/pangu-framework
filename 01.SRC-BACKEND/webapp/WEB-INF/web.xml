@@ -99,7 +99,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>springDispatcherServlet</servlet-name>
-		<url-pattern>*.jhtml</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
 	<!-- 验证码Servlet -->
