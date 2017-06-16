@@ -2,6 +2,7 @@ package aos.system.modules.cache;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +23,6 @@ import aos.framework.core.utils.AOSCxt;
 import aos.framework.core.utils.AOSJson;
 import aos.framework.core.utils.AOSUtils;
 import aos.framework.dao.po.AosUserPO;
-import aos.system.common.id.IdService;
 import aos.system.common.model.UserModel;
 import aos.system.common.utils.SystemCons;
 import aos.system.dao.AosOrgDao;
@@ -41,8 +41,6 @@ public class CacheUserDataService {
 
 	@Autowired
 	private AosOrgDao aosOrgDao;
-	@Autowired
-	private IdService idService;
 	
 	/**
 	 * 将用户信息刷到缓存
@@ -119,7 +117,7 @@ public class CacheUserDataService {
 	 */
 	public String login(AosUserPO aosUserPO, HttpServletRequest httpServletRequest){
 		//缓存用户信息
-		String juid = idService.uuid();
+		String juid = UUID.randomUUID().toString();
 		UserModel userModel = new UserModel();
 		AOSUtils.copyProperties(aosUserPO, userModel);
 		userModel.setJuid(juid);

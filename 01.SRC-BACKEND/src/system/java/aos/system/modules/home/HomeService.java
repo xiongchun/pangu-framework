@@ -2,6 +2,7 @@ package aos.system.modules.home;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -26,7 +27,6 @@ import aos.framework.core.utils.AOSUtils;
 import aos.framework.dao.AosUserDao;
 import aos.framework.dao.po.AosUserPO;
 import aos.framework.web.router.HttpModel;
-import aos.system.common.id.IdService;
 import aos.system.common.model.UserModel;
 import aos.system.common.utils.ErrorCode;
 import aos.system.common.utils.SystemCons;
@@ -50,8 +50,6 @@ public class HomeService {
 	private AosUserDao aosUserDao;
 	@Autowired
 	private SqlDao sqlDao;
-	@Autowired
-	private IdService idService;
 
 	/**
 	 * 注册页面初始化
@@ -84,7 +82,7 @@ public class HomeService {
 		httpModel.setAttribute("row_space", row_space_);
 		httpModel.setAttribute("padding", padding_);
 		// 用来标识登录页面校验验证码用的
-		httpModel.setAttribute("vercode_uuid", idService.uuid());
+		httpModel.setAttribute("vercode_uuid", UUID.randomUUID().toString());
 		httpModel.setViewPath("login.jsp");
 	}
 

@@ -19,7 +19,7 @@ import aos.framework.core.utils.AOSCons;
 import aos.framework.core.utils.AOSUtils;
 
 /**
- * HTTP路由转发器&服务输出包装类
+ * HTTP请求路由转发器
  * 
  * @author xiongchun
  *

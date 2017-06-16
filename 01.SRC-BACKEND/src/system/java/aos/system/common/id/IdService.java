@@ -27,25 +27,6 @@ public class IdService {
 	private SqlDao sqlDao;
 	@Autowired
 	AosSequenceDao aosSequenceDao;
-    
-	/**
-	 * 返回去除连接符-的UUID
-	 * 
-	 * @return
-	 */
-	public String uuid() {
-		String uuid = rawUuid();
-		return uuid.replaceAll("-", "");
-	}
-	
-	/**
-	 * 返回原生UUID
-	 * 
-	 * @return
-	 */
-	public String rawUuid() {
-		return UUID.randomUUID().toString();
-	}
 	
 	/**
 	 * 基于Redis和时间戳的分布式ID（保证集群多节点部署环境下的带语义规则ID的唯一性）

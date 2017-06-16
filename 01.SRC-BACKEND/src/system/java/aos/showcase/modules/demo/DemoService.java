@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -536,7 +537,7 @@ public class DemoService {
 	 * @return
 	 */
 	public void initForm(HttpModel httpModel) {
-		httpModel.setAttribute("vercode_uuid", idService.uuid());
+		httpModel.setAttribute("vercode_uuid", UUID.randomUUID().toString());
 		httpModel.setAttribute("juid", httpModel.getInDto().getString("juid"));
 		httpModel.setViewPath("showcase/basic/form.jsp");
 	}
