@@ -71,10 +71,10 @@ public class CreditCardController {
 	 * @param request
 	 * @param response
 	 */
-	@RequestMapping(value = "getCardInfo/{version}/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "info/{id}", method = RequestMethod.GET)
 	public void getCardInfo(@PathVariable String version, @PathVariable String id, HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println(version);
+		System.out.println(id);
 		WebCxt.write(response, "收到数据!");
 	}
 

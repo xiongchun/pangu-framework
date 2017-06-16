@@ -128,7 +128,7 @@ public class DemoService {
 	public void transactionDemo1(HttpModel httpModel) {
 		DemoAccountPO demo_accountPO = new DemoAccountPO();
 		demo_accountPO.setId(10000);
-		demo_accountPO.setName("测试1");
+		demo_accountPO.setName("测试100");
 		demoAccountDao.updateByKey(demo_accountPO);
 		//同一个service方法内部的方法调用，要想被调用的方法按照预期传播行为就需要按照切面代理方式调用。
 		//跨Service的事务方法调用则可以直接调用
@@ -138,10 +138,10 @@ public class DemoService {
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	private void transactionDemo1_1() {
+	public void transactionDemo1_1() {
 		DemoAccountPO demo_accountPO = new DemoAccountPO();
 		demo_accountPO.setId(10006);
-		demo_accountPO.setName("测试2");
+		demo_accountPO.setName("测试200");
 		demoAccountDao.updateByKey(demo_accountPO);
 	}
 

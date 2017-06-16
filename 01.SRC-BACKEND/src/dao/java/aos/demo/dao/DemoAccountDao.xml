@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- demo_account[demo_account]SQL自动映射 -->
-<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-23 17:55:41 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-06-04 01:32:55 -->
 <mapper namespace="aos.demo.dao.DemoAccountDao">
 	
 	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->

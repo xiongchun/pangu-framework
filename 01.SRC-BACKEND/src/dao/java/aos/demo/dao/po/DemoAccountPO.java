@@ -11,7 +11,7 @@ import java.util.Date;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-03-23 17:55:40
+ * @date 2017-06-04 01:32:55
  */
 public class DemoAccountPO extends PO {
 

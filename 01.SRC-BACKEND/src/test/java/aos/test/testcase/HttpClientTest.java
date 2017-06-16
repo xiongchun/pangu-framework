@@ -19,11 +19,11 @@ public class HttpClientTest {
 
 	public static void main(String[] args) {
 		//doPost();
-		//doGet();
-		//doUpload();
-		doPost2();
+		doGet();
+		// doUpload();
+		//doPost2();
 	}
-	
+
 	/**
 	 * POST请求 以K-V参数形式提交请求
 	 */
@@ -31,31 +31,30 @@ public class HttpClientTest {
 		Map<String, String> inMap = Maps.newHashMap();
 		inMap.put("name", "熊春");
 		inMap.put("age", "30");
-		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aosuite/api/creditCard/register.jhtml", inMap);
-		try {
-			HttpResponseVO httpResponseVO = AOSHttpClient.execute(httpRequestVO);
-			//响应内容
-			httpResponseVO.getOut();
-			//Http状态码 (注意和业务状态码区分)
-			httpResponseVO.getStatus();
-		} catch (Exception e) {
-			System.out.println("超时了或者是其他未检测错误");
-		}
-		System.out.println("其它业务代码继续执行");
-		
+		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aosuite/api/creditCard/register",
+				inMap);
+		HttpResponseVO httpResponseVO = AOSHttpClient.execute(httpRequestVO);
+		// 响应内容
+		httpResponseVO.getOut();
+		// Http状态码 (注意和业务状态码区分)
+		httpResponseVO.getStatus();
+		System.out.println("HTTP状态码：" + httpResponseVO.getStatus());
+		System.out.println("返回值：" + httpResponseVO.getOut());
+
 	}
-	
+
 	/**
-	 * POST请求 以JSON参数形式提交请求 (接口实现和接口调用是配套的，详见接口实现：api/creditCard/register2.jhtml)
+	 * POST请求 以JSON参数形式提交请求
+	 * (接口实现和接口调用是配套的，详见接口实现：api/creditCard/register2.jhtml)
 	 */
 	public static void doPost2() {
-		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aosuite/api/creditCard/register2.jhtml");
+		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aosuite/api/creditCard/register2");
 		httpRequestVO.setJsonEntityData("{\"mobile_\":\"18616786188\",\"name_\":\"熊春\"}");
 		HttpResponseVO httpResponseVO = AOSHttpClient.execute(httpRequestVO);
 		System.out.println("HTTP状态码：" + httpResponseVO.getStatus());
 		System.out.println("返回值：" + httpResponseVO.getOut());
 	}
-	
+
 	/**
 	 * GET请求
 	 */
@@ -63,13 +62,13 @@ public class HttpClientTest {
 		Map<String, String> inMap = Maps.newHashMap();
 		inMap.put("name", "熊春");
 		inMap.put("age", "30");
-		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aosuite/demo/http/savehtm", inMap);
+		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/aosuite/api/creditCard/info/1000", inMap);
 		httpRequestVO.setRequestMethod(AOSHttpClient.REQUEST_METHOD.GET);
 		HttpResponseVO httpResponseVO = AOSHttpClient.execute(httpRequestVO);
 		System.out.println("HTTP状态码：" + httpResponseVO.getStatus());
 		System.out.println("返回值：" + httpResponseVO.getOut());
 	}
-	
+
 	/**
 	 * 上传文件POST请求
 	 */

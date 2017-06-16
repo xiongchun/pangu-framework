@@ -15,7 +15,7 @@ import aos.demo.dao.po.DemoAccountPO;
  * </p>
  * 
  * @author xiongchun
- * @date 2017-03-23 17:55:41
+ * @date 2017-06-04 01:32:55
  */
 @Dao("demoAccountDao")
 public interface DemoAccountDao {
