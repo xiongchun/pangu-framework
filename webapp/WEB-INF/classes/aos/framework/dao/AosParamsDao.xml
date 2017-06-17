@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_params[aos_params]SQL自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-24 10:46:25 -->
+<mapper namespace="aos.framework.dao.AosParamsDao">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="AosParamsPO">
+		INSERT INTO aos_params (
+		<if test="name != null and name != ''">
+	         name, <!-- 参数名称 -->
+		</if>
+		<if test="params_key != null and params_key != ''">
+	         params_key, <!-- 参数键 -->
+		</if>
+		<if test="value != null and value != ''">
+	         value, <!-- 参数值 -->
+		</if>
+		<if test="params_group != null and params_group != ''">
+	         params_group, <!-- 参数分组 -->
+		</if>
+		<if test="remark != null and remark != ''">
+	         remark, <!-- 备注 -->
+		</if>
+		<if test="id != null">
+	          id  <!-- 流水号 -->
+	   </if>
+		)VALUES(
+		<if test="name != null and name != ''">
+	          #{name, jdbcType=VARCHAR}, <!-- 参数名称 -->
+	    </if>
+		<if test="params_key != null and params_key != ''">
+	          #{params_key, jdbcType=VARCHAR}, <!-- 参数键 -->
+	    </if>
+		<if test="value != null and value != ''">
+	          #{value, jdbcType=VARCHAR}, <!-- 参数值 -->
+	    </if>
+		<if test="params_group != null and params_group != ''">
+	          #{params_group, jdbcType=VARCHAR}, <!-- 参数分组 -->
+	    </if>
+		<if test="remark != null and remark != ''">
+	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
+	    </if>
+		<if test="id != null">
+		     #{id, jdbcType=INTEGER}  <!-- 流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="AosParamsPO">
+		INSERT INTO aos_params (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{name, jdbcType=VARCHAR},  <!-- 参数名称 -->
+		    #{params_key, jdbcType=VARCHAR},  <!-- 参数键 -->
+		    #{value, jdbcType=VARCHAR},  <!-- 参数值 -->
+		    #{params_group, jdbcType=VARCHAR},  <!-- 参数分组 -->
+		    #{remark, jdbcType=VARCHAR}  <!-- 备注 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="AosParamsPO">
+		UPDATE aos_params
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="name != null">
+		          name = #{name, jdbcType=VARCHAR},  <!-- 参数名称 -->
+			</if>
+			<if test="params_key != null">
+		          params_key = #{params_key, jdbcType=VARCHAR},  <!-- 参数键 -->
+			</if>
+			<if test="value != null">
+		          value = #{value, jdbcType=VARCHAR},  <!-- 参数值 -->
+			</if>
+			<if test="params_group != null">
+		          params_group = #{params_group, jdbcType=VARCHAR},  <!-- 参数分组 -->
+			</if>
+			<if test="remark != null">
+		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
+			</if>
+		</set>
+		WHERE  id = #{id}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_params WHERE  id = #{id}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="AosParamsPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_params WHERE  id = #{id}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="AosParamsPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_params
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="AosParamsPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_params
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="AosParamsPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_params
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="AosParamsPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_params
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="AosParamsPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_params
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_params
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_params
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id,  <!-- 流水号 -->
+		  name,  <!-- 参数名称 -->
+		  params_key,  <!-- 参数键 -->
+		  value,  <!-- 参数值 -->
+		  params_group,  <!-- 参数分组 -->
+		  remark  <!-- 备注 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_params.id,  <!-- 流水号 -->
+		  aos_params.name,  <!-- 参数名称 -->
+		  aos_params.params_key,  <!-- 参数键 -->
+		  aos_params.value,  <!-- 参数值 -->
+		  aos_params.params_group,  <!-- 参数分组 -->
+		  aos_params.remark  <!-- 备注 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
+		</if>
+	    <if test="name != null and name != ''">
+		      AND name = #{name}  <!-- 参数名称 -->
+		</if>
+	    <if test="params_key != null and params_key != ''">
+		      AND params_key = #{params_key}  <!-- 参数键 -->
+		</if>
+	    <if test="value != null and value != ''">
+		      AND value = #{value}  <!-- 参数值 -->
+		</if>
+	    <if test="params_group != null and params_group != ''">
+		      AND params_group = #{params_group}  <!-- 参数分组 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark = #{remark}  <!-- 备注 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="name != null and name != ''">
+		      AND name like '${name}%'  <!-- 参数名称 -->
+		</if>
+	    <if test="params_key != null and params_key != ''">
+		      AND params_key like '${params_key}%'  <!-- 参数键 -->
+		</if>
+	    <if test="value != null and value != ''">
+		      AND value like '${value}%'  <!-- 参数值 -->
+		</if>
+	    <if test="params_group != null and params_group != ''">
+		      AND params_group like '${params_group}%'  <!-- 参数分组 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark like '${remark}%'  <!-- 备注 -->
+		</if>
+	</sql>
+	
+</mapper>

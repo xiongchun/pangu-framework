@@ -1,0 +1,38 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##DateField定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formItemTagSupport.vm")
+#if($format)
+    format:'$format',
+#end
+#if($disabledDays)
+    disabledDays:[$disabledDays],
+#end
+#if($disabledDaysText)
+    disabledDaysText:'$disabledDaysText',
+#end
+#if($maxValue)
+    maxValue:'$maxValue',
+#end
+#if($minValue)
+    minValue:'$minValue',
+#end
+#if($submitFormat)
+    submitFormat:'$submitFormat',
+#end
+    plugins: ['clearbutton'],
+    app:169	
+};
+
+##DateField实例化
+#if($instance == "true")
+var ${id} = Ext.create('Ext.form.field.Date',${id}_cfg);
+#end
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##表单元素组件实例后设置
+#parse("${vmpath}ext/subvm/afterFormFieldCreated.vm")

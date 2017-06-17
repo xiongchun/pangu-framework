@@ -1,0 +1,4 @@
+业务系统源文件夹
+===========
+1、请将包路径修改为自己真实项目实际情况。如：com.google.earth等。
+2、如果修改了包路径，请到resources/aos.cxt.xml|aos.web.xml修改注解扫描路径。

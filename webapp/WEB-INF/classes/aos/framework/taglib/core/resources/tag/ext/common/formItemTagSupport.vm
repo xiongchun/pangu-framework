@@ -1,0 +1,79 @@
+#parse("${vmpath}ext/common/componentTagSupport.vm")
+##keydown、keyup事件需要
+enableKeyEvents: true,
+##表单元素输入框区域样式 fieldCls属性：去掉输入框内区域的立体效果。选择框不能应用此样式。
+#if($fieldCls)
+    fieldCls:'$fieldCls',
+#end
+#if($fieldLabel)
+    fieldLabel:'$fieldLabel',
+#end
+#if($name)
+    name:'$name',
+#end
+#if($value)
+    value:'$value',
+#end
+#if($emptyText)
+    emptyText:'$emptyText',
+#end
+#if($anchor)
+    anchor:'$anchor',
+#end
+#if($labelWidth)
+    labelWidth:$labelWidth,
+#end
+#if($labelAlign)
+    labelAlign : '$labelAlign',
+#end
+#if($labelSeparator)
+    labelSeparator : '$labelSeparator',
+#end
+#if($labelPad)
+    labelPad : $labelPad,
+#end
+#if($allowBlank)
+    allowBlank:$allowBlank,
+#end
+#if($allowBlank == "false" && $star == "true")
+    afterLabelTextTpl:x_field_required,
+#end
+#if($tabIndex)
+    tabIndex:$tabIndex,
+#end
+#if($inputType)
+    inputType:'$inputType',
+#end
+#if($readOnly)
+    readOnly:$readOnly,
+#end
+#if($vtype)
+    vtype:'$vtype',
+#end
+#if($vtypeText)
+    vtypeText:'$vtypeText',
+#end
+#if($regex)
+    regex:$regex,
+#end
+#if($regexText)
+    regexText:'$regexText',
+#end
+#if($editable)
+    editable:$editable,
+#end
+#if($msgTarget)
+    msgTarget:'$msgTarget',
+#end
+#if($hideTrigger)
+    hideTrigger:'$hideTrigger',
+#end
+#if($blankText)
+    blankText:'$blankText',
+#end
+#if($selectOnFocus)
+    selectOnFocus:$selectOnFocus,
+#end
+#if(!$padding && $parentRowSpace)
+  padding : '0 0 $parentRowSpace 0',
+#end

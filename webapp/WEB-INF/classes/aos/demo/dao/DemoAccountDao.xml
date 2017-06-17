@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- demo_account[demo_account]SQL自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-06-04 01:32:55 -->
+<mapper namespace="aos.demo.dao.DemoAccountDao">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="DemoAccountPO">
+		INSERT INTO demo_account (
+		<if test="name != null and name != ''">
+	         name, <!-- 姓名 -->
+		</if>
+		<if test="card_id != null and card_id != ''">
+	         card_id, <!-- 卡号 -->
+		</if>
+		<if test="card_type != null and card_type != ''">
+	         card_type, <!-- 卡类型 -->
+		</if>
+		<if test="balance != null">
+	         balance, <!-- 可用余额 -->
+		</if>
+		<if test="credit_line != null">
+	         credit_line, <!-- 信用额度 -->
+		</if>
+		<if test="org_id != null and org_id != ''">
+	         org_id, <!-- 所属银行机构ID -->
+		</if>
+		<if test="id_no != null and id_no != ''">
+	         id_no, <!-- 身份证号 -->
+		</if>
+		<if test="sex != null and sex != ''">
+	         sex, <!-- 性别 -->
+		</if>
+		<if test="birthday != null">
+	         birthday, <!-- 生日 -->
+		</if>
+		<if test="age != null">
+	         age, <!-- 年龄 -->
+		</if>
+		<if test="address != null and address != ''">
+	         address, <!-- 地址 -->
+		</if>
+		<if test="create_time != null and create_time != ''">
+	         create_time, <!-- 创建时间 -->
+		</if>
+		<if test="create_user_id != null and create_user_id != ''">
+	         create_user_id, <!-- 创建人ID -->
+		</if>
+		<if test="id != null">
+	          id  <!-- 流水号 -->
+	   </if>
+		)VALUES(
+		<if test="name != null and name != ''">
+	          #{name, jdbcType=VARCHAR}, <!-- 姓名 -->
+	    </if>
+		<if test="card_id != null and card_id != ''">
+	          #{card_id, jdbcType=VARCHAR}, <!-- 卡号 -->
+	    </if>
+		<if test="card_type != null and card_type != ''">
+	          #{card_type, jdbcType=VARCHAR}, <!-- 卡类型 -->
+	    </if>
+		<if test="balance != null">
+	          #{balance, jdbcType=NUMERIC}, <!-- 可用余额 -->
+	    </if>
+		<if test="credit_line != null">
+	          #{credit_line, jdbcType=NUMERIC}, <!-- 信用额度 -->
+	    </if>
+		<if test="org_id != null and org_id != ''">
+	          #{org_id, jdbcType=VARCHAR}, <!-- 所属银行机构ID -->
+	    </if>
+		<if test="id_no != null and id_no != ''">
+	          #{id_no, jdbcType=VARCHAR}, <!-- 身份证号 -->
+	    </if>
+		<if test="sex != null and sex != ''">
+	          #{sex, jdbcType=VARCHAR}, <!-- 性别 -->
+	    </if>
+		<if test="birthday != null">
+	          #{birthday, jdbcType=DATE}, <!-- 生日 -->
+	    </if>
+		<if test="age != null">
+	          #{age, jdbcType=INTEGER}, <!-- 年龄 -->
+	    </if>
+		<if test="address != null and address != ''">
+	          #{address, jdbcType=VARCHAR}, <!-- 地址 -->
+	    </if>
+		<if test="create_time != null and create_time != ''">
+	          #{create_time, jdbcType=VARCHAR}, <!-- 创建时间 -->
+	    </if>
+		<if test="create_user_id != null and create_user_id != ''">
+	          #{create_user_id, jdbcType=VARCHAR}, <!-- 创建人ID -->
+	    </if>
+		<if test="id != null">
+		     #{id, jdbcType=INTEGER}  <!-- 流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="DemoAccountPO">
+		INSERT INTO demo_account (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{name, jdbcType=VARCHAR},  <!-- 姓名 -->
+		    #{card_id, jdbcType=VARCHAR},  <!-- 卡号 -->
+		    #{card_type, jdbcType=VARCHAR},  <!-- 卡类型 -->
+		    #{balance, jdbcType=NUMERIC},  <!-- 可用余额 -->
+		    #{credit_line, jdbcType=NUMERIC},  <!-- 信用额度 -->
+		    #{org_id, jdbcType=VARCHAR},  <!-- 所属银行机构ID -->
+		    #{id_no, jdbcType=VARCHAR},  <!-- 身份证号 -->
+		    #{sex, jdbcType=VARCHAR},  <!-- 性别 -->
+		    #{birthday, jdbcType=DATE},  <!-- 生日 -->
+		    #{age, jdbcType=INTEGER},  <!-- 年龄 -->
+		    #{address, jdbcType=VARCHAR},  <!-- 地址 -->
+		    #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
+		    #{create_user_id, jdbcType=VARCHAR}  <!-- 创建人ID -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="DemoAccountPO">
+		UPDATE demo_account
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="name != null">
+		          name = #{name, jdbcType=VARCHAR},  <!-- 姓名 -->
+			</if>
+			<if test="card_id != null">
+		          card_id = #{card_id, jdbcType=VARCHAR},  <!-- 卡号 -->
+			</if>
+			<if test="card_type != null">
+		          card_type = #{card_type, jdbcType=VARCHAR},  <!-- 卡类型 -->
+			</if>
+			<if test="balance != null">
+		          balance = #{balance, jdbcType=NUMERIC},  <!-- 可用余额 -->
+			</if>
+			<if test="credit_line != null">
+		          credit_line = #{credit_line, jdbcType=NUMERIC},  <!-- 信用额度 -->
+			</if>
+			<if test="org_id != null">
+		          org_id = #{org_id, jdbcType=VARCHAR},  <!-- 所属银行机构ID -->
+			</if>
+			<if test="id_no != null">
+		          id_no = #{id_no, jdbcType=VARCHAR},  <!-- 身份证号 -->
+			</if>
+			<if test="sex != null">
+		          sex = #{sex, jdbcType=VARCHAR},  <!-- 性别 -->
+			</if>
+			<if test="birthday != null">
+		          birthday = #{birthday, jdbcType=DATE},  <!-- 生日 -->
+			</if>
+			<if test="age != null">
+		          age = #{age, jdbcType=INTEGER},  <!-- 年龄 -->
+			</if>
+			<if test="address != null">
+		          address = #{address, jdbcType=VARCHAR},  <!-- 地址 -->
+			</if>
+			<if test="create_time != null">
+		          create_time = #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
+			</if>
+			<if test="create_user_id != null">
+		          create_user_id = #{create_user_id, jdbcType=VARCHAR},  <!-- 创建人ID -->
+			</if>
+		</set>
+		WHERE  id = #{id}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM demo_account WHERE  id = #{id}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="DemoAccountPO">
+		SELECT
+		<include refid="column" />
+		FROM demo_account WHERE  id = #{id}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="DemoAccountPO">
+		SELECT
+		    <include refid="column" />
+		FROM demo_account
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="DemoAccountPO">
+		SELECT
+			<include refid="column" />	
+		FROM demo_account
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="DemoAccountPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM demo_account
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="DemoAccountPO">
+		SELECT
+			<include refid="column" />	
+		FROM demo_account
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="DemoAccountPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM demo_account
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM demo_account
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM demo_account
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id,  <!-- 流水号 -->
+		  name,  <!-- 姓名 -->
+		  card_id,  <!-- 卡号 -->
+		  card_type,  <!-- 卡类型 -->
+		  balance,  <!-- 可用余额 -->
+		  credit_line,  <!-- 信用额度 -->
+		  org_id,  <!-- 所属银行机构ID -->
+		  id_no,  <!-- 身份证号 -->
+		  sex,  <!-- 性别 -->
+		  birthday,  <!-- 生日 -->
+		  age,  <!-- 年龄 -->
+		  address,  <!-- 地址 -->
+		  create_time,  <!-- 创建时间 -->
+		  create_user_id  <!-- 创建人ID -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  demo_account.id,  <!-- 流水号 -->
+		  demo_account.name,  <!-- 姓名 -->
+		  demo_account.card_id,  <!-- 卡号 -->
+		  demo_account.card_type,  <!-- 卡类型 -->
+		  demo_account.balance,  <!-- 可用余额 -->
+		  demo_account.credit_line,  <!-- 信用额度 -->
+		  demo_account.org_id,  <!-- 所属银行机构ID -->
+		  demo_account.id_no,  <!-- 身份证号 -->
+		  demo_account.sex,  <!-- 性别 -->
+		  demo_account.birthday,  <!-- 生日 -->
+		  demo_account.age,  <!-- 年龄 -->
+		  demo_account.address,  <!-- 地址 -->
+		  demo_account.create_time,  <!-- 创建时间 -->
+		  demo_account.create_user_id  <!-- 创建人ID -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
+		</if>
+	    <if test="name != null and name != ''">
+		      AND name = #{name}  <!-- 姓名 -->
+		</if>
+	    <if test="card_id != null and card_id != ''">
+		      AND card_id = #{card_id}  <!-- 卡号 -->
+		</if>
+	    <if test="card_type != null and card_type != ''">
+		      AND card_type = #{card_type}  <!-- 卡类型 -->
+		</if>
+	   <if test="balance != null ">
+		      AND balance = #{balance}  <!-- 可用余额 -->
+		</if>
+	   <if test="credit_line != null ">
+		      AND credit_line = #{credit_line}  <!-- 信用额度 -->
+		</if>
+	    <if test="org_id != null and org_id != ''">
+		      AND org_id = #{org_id}  <!-- 所属银行机构ID -->
+		</if>
+	    <if test="id_no != null and id_no != ''">
+		      AND id_no = #{id_no}  <!-- 身份证号 -->
+		</if>
+	    <if test="sex != null and sex != ''">
+		      AND sex = #{sex}  <!-- 性别 -->
+		</if>
+	   <if test="birthday != null ">
+		      AND birthday = #{birthday}  <!-- 生日 -->
+		</if>
+	   <if test="age != null ">
+		      AND age = #{age}  <!-- 年龄 -->
+		</if>
+	    <if test="address != null and address != ''">
+		      AND address = #{address}  <!-- 地址 -->
+		</if>
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time = #{create_time}  <!-- 创建时间 -->
+		</if>
+	    <if test="create_user_id != null and create_user_id != ''">
+		      AND create_user_id = #{create_user_id}  <!-- 创建人ID -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="name != null and name != ''">
+		      AND name like '${name}%'  <!-- 姓名 -->
+		</if>
+	    <if test="card_id != null and card_id != ''">
+		      AND card_id like '${card_id}%'  <!-- 卡号 -->
+		</if>
+	    <if test="card_type != null and card_type != ''">
+		      AND card_type like '${card_type}%'  <!-- 卡类型 -->
+		</if>
+	    <if test="org_id != null and org_id != ''">
+		      AND org_id like '${org_id}%'  <!-- 所属银行机构ID -->
+		</if>
+	    <if test="id_no != null and id_no != ''">
+		      AND id_no like '${id_no}%'  <!-- 身份证号 -->
+		</if>
+	    <if test="sex != null and sex != ''">
+		      AND sex like '${sex}%'  <!-- 性别 -->
+		</if>
+	    <if test="address != null and address != ''">
+		      AND address like '${address}%'  <!-- 地址 -->
+		</if>
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time like '${create_time}%'  <!-- 创建时间 -->
+		</if>
+	    <if test="create_user_id != null and create_user_id != ''">
+		      AND create_user_id like '${create_user_id}%'  <!-- 创建人ID -->
+		</if>
+	</sql>
+	
+</mapper>

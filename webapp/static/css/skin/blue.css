@@ -1,0 +1,78 @@
+/* 对面板型容器组件进行标题背景扁平化处理 */
+.x-panel-header-default{
+	background-image:-webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#dae7f6),color-stop(45%,#dae7f6),color-stop(46%,#dae7f6),color-stop(50%,#dae7f6),color-stop(51%,#dae7f6),color-stop(100%,#dae7f6)) !important;
+	background-image:-moz-linear-gradient(center top , #dae7f6, #dae7f6 45%, #dae7f6 46%, #dae7f6 50%, #dae7f6 51%, #dae7f6) !important;
+	}
+
+/* 对按钮进行扁平化处理 */
+.x-btn-default-small{
+	background-image:-webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#fff),color-stop(100%,#eee));
+	background-image:-moz-linear-gradient(center top , #fff, #f9f9f9 48%, #f9f9f9 52%, #eee) !important;
+}
+.x-btn-default-small-over{
+	border: 1px solid #0099CC;
+}
+.x-btn-default-small-focus{
+	border: 1px solid #0099CC;
+	background-image:-webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#eee),color-stop(100%,#eee));
+	background-image:-moz-linear-gradient(center top , #eee, #eee 100%, #eee 100%, #eee) !important;
+}
+.x-btn-default-medium{
+	background-image:-webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#fff),color-stop(100%,#eee));
+	background-image:-moz-linear-gradient(center top , #fff, #f9f9f9 48%, #f9f9f9 52%, #eee) !important;
+}
+.x-btn-default-medium-over{
+	border: 1px solid #0099CC;
+}
+.x-btn-default-medium-focus{
+	border: 1px solid #0099CC;
+	background-image:-webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#eee),color-stop(100%,#eee));
+	background-image:-moz-linear-gradient(center top , #eee, #eee 100%, #eee 100%, #eee) !important;
+}
+.x-btn-default-large{
+	background-image:-webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#fff),color-stop(100%,#eee));
+	background-image:-moz-linear-gradient(center top , #fff, #f9f9f9 48%, #f9f9f9 52%, #eee) !important;
+}
+.x-btn-default-large-over{
+	border: 1px solid #0099CC;
+}
+.x-btn-default-large-focus{
+	border: 1px solid #0099CC;
+	background-image:-webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#eee),color-stop(100%,#eee));
+	background-image:-moz-linear-gradient(center top , #eee, #eee 100%, #eee 100%, #eee) !important;
+}
+
+/** 表格细节处理 (树组件也会同步起效) **/
+.x-grid-row-before-over .x-grid-td {
+  border-bottom-style: solid;
+  border-bottom-color: #99bce8;
+}
+.x-grid-row-over .x-grid-td {
+  border-bottom-style: solid;
+  border-bottom-color: #99bce8;
+  background-color: #F1F5FB;
+}
+.x-grid-row-before-selected .x-grid-td {
+  border-bottom-style: solid;
+  border-bottom-color: #99bce8;
+}
+.x-grid-row-selected .x-grid-td {
+  border-bottom-style: solid;
+  border-bottom-color: #99bce8;
+}
+.x-grid-row-selected .x-grid-td {
+  background-color: #F1F5FB;
+}
+
+/* 下拉项颜色设置 */
+.x-boundlist-item-over{
+	background-color: #F1F5FB;
+}
+/* 下拉项颜色设置 */
+.x-boundlist-selected {
+  background: #F1F5FB;
+}
+/* 表单域获取焦点后样式 */
+.x-form-focus{
+	border-color:#0099ff;
+}

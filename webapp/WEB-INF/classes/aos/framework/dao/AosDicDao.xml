@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_dic[aos_dic]SQL自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-24 10:46:25 -->
+<mapper namespace="aos.framework.dao.AosDicDao">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="AosDicPO">
+		INSERT INTO aos_dic (
+		<if test="name != null and name != ''">
+	         name, <!-- 字典名称 -->
+		</if>
+		<if test="dic_key != null and dic_key != ''">
+	         dic_key, <!-- 字典KEY -->
+		</if>
+		<if test="code != null and code != ''">
+	         code, <!-- 对照码 -->
+		</if>
+		<if test="dic_desc != null and dic_desc != ''">
+	         dic_desc, <!-- 对照值 -->
+		</if>
+		<if test="is_enable != null and is_enable != ''">
+	         is_enable, <!-- 是否启用 -->
+		</if>
+		<if test="hotkey != null and hotkey != ''">
+	         hotkey, <!--  热键 -->
+		</if>
+		<if test="dic_group != null and dic_group != ''">
+	         dic_group, <!-- 所属分组 -->
+		</if>
+		<if test="sort_no != null">
+	         sort_no, <!-- 排序号 -->
+		</if>
+		<if test="remark != null and remark != ''">
+	         remark, <!-- 备注 -->
+		</if>
+		<if test="id != null">
+	          id  <!-- 流水号 -->
+	   </if>
+		)VALUES(
+		<if test="name != null and name != ''">
+	          #{name, jdbcType=VARCHAR}, <!-- 字典名称 -->
+	    </if>
+		<if test="dic_key != null and dic_key != ''">
+	          #{dic_key, jdbcType=VARCHAR}, <!-- 字典KEY -->
+	    </if>
+		<if test="code != null and code != ''">
+	          #{code, jdbcType=VARCHAR}, <!-- 对照码 -->
+	    </if>
+		<if test="dic_desc != null and dic_desc != ''">
+	          #{dic_desc, jdbcType=VARCHAR}, <!-- 对照值 -->
+	    </if>
+		<if test="is_enable != null and is_enable != ''">
+	          #{is_enable, jdbcType=VARCHAR}, <!-- 是否启用 -->
+	    </if>
+		<if test="hotkey != null and hotkey != ''">
+	          #{hotkey, jdbcType=VARCHAR}, <!--  热键 -->
+	    </if>
+		<if test="dic_group != null and dic_group != ''">
+	          #{dic_group, jdbcType=VARCHAR}, <!-- 所属分组 -->
+	    </if>
+		<if test="sort_no != null">
+	          #{sort_no, jdbcType=INTEGER}, <!-- 排序号 -->
+	    </if>
+		<if test="remark != null and remark != ''">
+	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
+	    </if>
+		<if test="id != null">
+		     #{id, jdbcType=INTEGER}  <!-- 流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="AosDicPO">
+		INSERT INTO aos_dic (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{name, jdbcType=VARCHAR},  <!-- 字典名称 -->
+		    #{dic_key, jdbcType=VARCHAR},  <!-- 字典KEY -->
+		    #{code, jdbcType=VARCHAR},  <!-- 对照码 -->
+		    #{dic_desc, jdbcType=VARCHAR},  <!-- 对照值 -->
+		    #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+		    #{hotkey, jdbcType=VARCHAR},  <!--  热键 -->
+		    #{dic_group, jdbcType=VARCHAR},  <!-- 所属分组 -->
+		    #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+		    #{remark, jdbcType=VARCHAR}  <!-- 备注 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="AosDicPO">
+		UPDATE aos_dic
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="name != null">
+		          name = #{name, jdbcType=VARCHAR},  <!-- 字典名称 -->
+			</if>
+			<if test="dic_key != null">
+		          dic_key = #{dic_key, jdbcType=VARCHAR},  <!-- 字典KEY -->
+			</if>
+			<if test="code != null">
+		          code = #{code, jdbcType=VARCHAR},  <!-- 对照码 -->
+			</if>
+			<if test="dic_desc != null">
+		          dic_desc = #{dic_desc, jdbcType=VARCHAR},  <!-- 对照值 -->
+			</if>
+			<if test="is_enable != null">
+		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+			</if>
+			<if test="hotkey != null">
+		          hotkey = #{hotkey, jdbcType=VARCHAR},  <!--  热键 -->
+			</if>
+			<if test="dic_group != null">
+		          dic_group = #{dic_group, jdbcType=VARCHAR},  <!-- 所属分组 -->
+			</if>
+			<if test="sort_no != null">
+		          sort_no = #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+			</if>
+			<if test="remark != null">
+		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
+			</if>
+		</set>
+		WHERE  id = #{id}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_dic WHERE  id = #{id}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="AosDicPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_dic WHERE  id = #{id}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="AosDicPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_dic
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="AosDicPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_dic
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="AosDicPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_dic
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="AosDicPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_dic
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="AosDicPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_dic
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_dic
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_dic
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id,  <!-- 流水号 -->
+		  name,  <!-- 字典名称 -->
+		  dic_key,  <!-- 字典KEY -->
+		  code,  <!-- 对照码 -->
+		  dic_desc,  <!-- 对照值 -->
+		  is_enable,  <!-- 是否启用 -->
+		  hotkey,  <!--  热键 -->
+		  dic_group,  <!-- 所属分组 -->
+		  sort_no,  <!-- 排序号 -->
+		  remark  <!-- 备注 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_dic.id,  <!-- 流水号 -->
+		  aos_dic.name,  <!-- 字典名称 -->
+		  aos_dic.dic_key,  <!-- 字典KEY -->
+		  aos_dic.code,  <!-- 对照码 -->
+		  aos_dic.dic_desc,  <!-- 对照值 -->
+		  aos_dic.is_enable,  <!-- 是否启用 -->
+		  aos_dic.hotkey,  <!--  热键 -->
+		  aos_dic.dic_group,  <!-- 所属分组 -->
+		  aos_dic.sort_no,  <!-- 排序号 -->
+		  aos_dic.remark  <!-- 备注 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
+		</if>
+	    <if test="name != null and name != ''">
+		      AND name = #{name}  <!-- 字典名称 -->
+		</if>
+	    <if test="dic_key != null and dic_key != ''">
+		      AND dic_key = #{dic_key}  <!-- 字典KEY -->
+		</if>
+	    <if test="code != null and code != ''">
+		      AND code = #{code}  <!-- 对照码 -->
+		</if>
+	    <if test="dic_desc != null and dic_desc != ''">
+		      AND dic_desc = #{dic_desc}  <!-- 对照值 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable = #{is_enable}  <!-- 是否启用 -->
+		</if>
+	    <if test="hotkey != null and hotkey != ''">
+		      AND hotkey = #{hotkey}  <!--  热键 -->
+		</if>
+	    <if test="dic_group != null and dic_group != ''">
+		      AND dic_group = #{dic_group}  <!-- 所属分组 -->
+		</if>
+	   <if test="sort_no != null ">
+		      AND sort_no = #{sort_no}  <!-- 排序号 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark = #{remark}  <!-- 备注 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="name != null and name != ''">
+		      AND name like '${name}%'  <!-- 字典名称 -->
+		</if>
+	    <if test="dic_key != null and dic_key != ''">
+		      AND dic_key like '${dic_key}%'  <!-- 字典KEY -->
+		</if>
+	    <if test="code != null and code != ''">
+		      AND code like '${code}%'  <!-- 对照码 -->
+		</if>
+	    <if test="dic_desc != null and dic_desc != ''">
+		      AND dic_desc like '${dic_desc}%'  <!-- 对照值 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable like '${is_enable}%'  <!-- 是否启用 -->
+		</if>
+	    <if test="hotkey != null and hotkey != ''">
+		      AND hotkey like '${hotkey}%'  <!--  热键 -->
+		</if>
+	    <if test="dic_group != null and dic_group != ''">
+		      AND dic_group like '${dic_group}%'  <!-- 所属分组 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark like '${remark}%'  <!-- 备注 -->
+		</if>
+	</sql>
+	
+</mapper>

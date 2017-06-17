@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_cmp[aos_cmp]SQL自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-23 17:54:25 -->
+<mapper namespace="aos.system.dao.AosCmpDao">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="AosCmpPO">
+		INSERT INTO aos_cmp (
+		<if test="name != null and name != ''">
+	         name, <!-- 组件名称 -->
+		</if>
+		<if test="dom_id != null and dom_id != ''">
+	         dom_id, <!-- 界面组件ID -->
+		</if>
+		<if test="page_key != null and page_key != ''">
+	         page_key, <!-- 所属页面标识 -->
+		</if>
+		<if test="page_name != null and page_name != ''">
+	         page_name, <!-- 所属页面名称 -->
+		</if>
+		<if test="id != null">
+	          id  <!-- 流水号 -->
+	   </if>
+		)VALUES(
+		<if test="name != null and name != ''">
+	          #{name, jdbcType=VARCHAR}, <!-- 组件名称 -->
+	    </if>
+		<if test="dom_id != null and dom_id != ''">
+	          #{dom_id, jdbcType=VARCHAR}, <!-- 界面组件ID -->
+	    </if>
+		<if test="page_key != null and page_key != ''">
+	          #{page_key, jdbcType=VARCHAR}, <!-- 所属页面标识 -->
+	    </if>
+		<if test="page_name != null and page_name != ''">
+	          #{page_name, jdbcType=VARCHAR}, <!-- 所属页面名称 -->
+	    </if>
+		<if test="id != null">
+		     #{id, jdbcType=INTEGER}  <!-- 流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="AosCmpPO">
+		INSERT INTO aos_cmp (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{name, jdbcType=VARCHAR},  <!-- 组件名称 -->
+		    #{dom_id, jdbcType=VARCHAR},  <!-- 界面组件ID -->
+		    #{page_key, jdbcType=VARCHAR},  <!-- 所属页面标识 -->
+		    #{page_name, jdbcType=VARCHAR}  <!-- 所属页面名称 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="AosCmpPO">
+		UPDATE aos_cmp
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="name != null">
+		          name = #{name, jdbcType=VARCHAR},  <!-- 组件名称 -->
+			</if>
+			<if test="dom_id != null">
+		          dom_id = #{dom_id, jdbcType=VARCHAR},  <!-- 界面组件ID -->
+			</if>
+			<if test="page_key != null">
+		          page_key = #{page_key, jdbcType=VARCHAR},  <!-- 所属页面标识 -->
+			</if>
+			<if test="page_name != null">
+		          page_name = #{page_name, jdbcType=VARCHAR},  <!-- 所属页面名称 -->
+			</if>
+		</set>
+		WHERE  id = #{id}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_cmp WHERE  id = #{id}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="AosCmpPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_cmp WHERE  id = #{id}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="AosCmpPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_cmp
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="AosCmpPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_cmp
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="AosCmpPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_cmp
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="AosCmpPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_cmp
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="AosCmpPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_cmp
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_cmp
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_cmp
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id,  <!-- 流水号 -->
+		  name,  <!-- 组件名称 -->
+		  dom_id,  <!-- 界面组件ID -->
+		  page_key,  <!-- 所属页面标识 -->
+		  page_name  <!-- 所属页面名称 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_cmp.id,  <!-- 流水号 -->
+		  aos_cmp.name,  <!-- 组件名称 -->
+		  aos_cmp.dom_id,  <!-- 界面组件ID -->
+		  aos_cmp.page_key,  <!-- 所属页面标识 -->
+		  aos_cmp.page_name  <!-- 所属页面名称 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
+		</if>
+	    <if test="name != null and name != ''">
+		      AND name = #{name}  <!-- 组件名称 -->
+		</if>
+	    <if test="dom_id != null and dom_id != ''">
+		      AND dom_id = #{dom_id}  <!-- 界面组件ID -->
+		</if>
+	    <if test="page_key != null and page_key != ''">
+		      AND page_key = #{page_key}  <!-- 所属页面标识 -->
+		</if>
+	    <if test="page_name != null and page_name != ''">
+		      AND page_name = #{page_name}  <!-- 所属页面名称 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="name != null and name != ''">
+		      AND name like '${name}%'  <!-- 组件名称 -->
+		</if>
+	    <if test="dom_id != null and dom_id != ''">
+		      AND dom_id like '${dom_id}%'  <!-- 界面组件ID -->
+		</if>
+	    <if test="page_key != null and page_key != ''">
+		      AND page_key like '${page_key}%'  <!-- 所属页面标识 -->
+		</if>
+	    <if test="page_name != null and page_name != ''">
+		      AND page_name like '${page_name}%'  <!-- 所属页面名称 -->
+		</if>
+	</sql>
+	
+</mapper>

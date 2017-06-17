@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_role_module[aos_role_module]SQL自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-23 17:54:25 -->
+<mapper namespace="aos.system.dao.AosRoleModuleDao">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="AosRoleModulePO">
+		INSERT INTO aos_role_module (
+		<if test="role_id != null">
+	         role_id, <!--  角色流水号 -->
+		</if>
+		<if test="module_id != null">
+	         module_id, <!-- 功能模块流水号 -->
+		</if>
+		<if test="grant_type != null and grant_type != ''">
+	         grant_type, <!-- 权限类型 -->
+		</if>
+		<if test="create_time != null and create_time != ''">
+	         create_time, <!-- 创建时间 -->
+		</if>
+		<if test="create_by != null">
+	         create_by, <!-- 创建人ID -->
+		</if>
+		<if test="id != null">
+	          id  <!-- 流水号 -->
+	   </if>
+		)VALUES(
+		<if test="role_id != null">
+	          #{role_id, jdbcType=INTEGER}, <!--  角色流水号 -->
+	    </if>
+		<if test="module_id != null">
+	          #{module_id, jdbcType=INTEGER}, <!-- 功能模块流水号 -->
+	    </if>
+		<if test="grant_type != null and grant_type != ''">
+	          #{grant_type, jdbcType=VARCHAR}, <!-- 权限类型 -->
+	    </if>
+		<if test="create_time != null and create_time != ''">
+	          #{create_time, jdbcType=VARCHAR}, <!-- 创建时间 -->
+	    </if>
+		<if test="create_by != null">
+	          #{create_by, jdbcType=INTEGER}, <!-- 创建人ID -->
+	    </if>
+		<if test="id != null">
+		     #{id, jdbcType=INTEGER}  <!-- 流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="AosRoleModulePO">
+		INSERT INTO aos_role_module (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{role_id, jdbcType=INTEGER},  <!--  角色流水号 -->
+		    #{module_id, jdbcType=INTEGER},  <!-- 功能模块流水号 -->
+		    #{grant_type, jdbcType=VARCHAR},  <!-- 权限类型 -->
+		    #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
+		    #{create_by, jdbcType=INTEGER}  <!-- 创建人ID -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="AosRoleModulePO">
+		UPDATE aos_role_module
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="role_id != null">
+		          role_id = #{role_id, jdbcType=INTEGER},  <!--  角色流水号 -->
+			</if>
+			<if test="module_id != null">
+		          module_id = #{module_id, jdbcType=INTEGER},  <!-- 功能模块流水号 -->
+			</if>
+			<if test="grant_type != null">
+		          grant_type = #{grant_type, jdbcType=VARCHAR},  <!-- 权限类型 -->
+			</if>
+			<if test="create_time != null">
+		          create_time = #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
+			</if>
+			<if test="create_by != null">
+		          create_by = #{create_by, jdbcType=INTEGER},  <!-- 创建人ID -->
+			</if>
+		</set>
+		WHERE  id = #{id}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_role_module WHERE  id = #{id}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="AosRoleModulePO">
+		SELECT
+		<include refid="column" />
+		FROM aos_role_module WHERE  id = #{id}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="AosRoleModulePO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_role_module
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="AosRoleModulePO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_role_module
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="AosRoleModulePO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_role_module
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="AosRoleModulePO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_role_module
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="AosRoleModulePO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_role_module
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_role_module
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_role_module
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id,  <!-- 流水号 -->
+		  role_id,  <!--  角色流水号 -->
+		  module_id,  <!-- 功能模块流水号 -->
+		  grant_type,  <!-- 权限类型 -->
+		  create_time,  <!-- 创建时间 -->
+		  create_by  <!-- 创建人ID -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_role_module.id,  <!-- 流水号 -->
+		  aos_role_module.role_id,  <!--  角色流水号 -->
+		  aos_role_module.module_id,  <!-- 功能模块流水号 -->
+		  aos_role_module.grant_type,  <!-- 权限类型 -->
+		  aos_role_module.create_time,  <!-- 创建时间 -->
+		  aos_role_module.create_by  <!-- 创建人ID -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
+		</if>
+	   <if test="role_id != null ">
+		      AND role_id = #{role_id}  <!--  角色流水号 -->
+		</if>
+	   <if test="module_id != null ">
+		      AND module_id = #{module_id}  <!-- 功能模块流水号 -->
+		</if>
+	    <if test="grant_type != null and grant_type != ''">
+		      AND grant_type = #{grant_type}  <!-- 权限类型 -->
+		</if>
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time = #{create_time}  <!-- 创建时间 -->
+		</if>
+	   <if test="create_by != null ">
+		      AND create_by = #{create_by}  <!-- 创建人ID -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="grant_type != null and grant_type != ''">
+		      AND grant_type like '${grant_type}%'  <!-- 权限类型 -->
+		</if>
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time like '${create_time}%'  <!-- 创建时间 -->
+		</if>
+	</sql>
+	
+</mapper>
