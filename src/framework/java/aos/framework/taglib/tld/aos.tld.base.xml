@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<basetaglib>
+	<tag name="BaseTagSupport" parent="">
+		<attribute name="id" required="false">
+			<description>
+			    <![CDATA[
+			        唯一的组件id（默认为自动分配的id）。用id来获取组件引用这一目的，如：Ext.getCmp(id)。标签也会直接根据id生成一个对实例化组件的引用，在JS中可以直接使用此ID来引用该组件。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="any" required="false">
+			<description>
+			    <![CDATA[
+			        可以在这里写任意的属性配置。提示：多个配置属性请使用,分隔。如：any="id:'app169',disabled:true"。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="ExtTagSupport" parent="BaseTagSupport">
+		<attribute name="xtype" required="false">
+			<description>
+			    <![CDATA[
+			    Ext组件类型。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="ComponentTagSupport" parent="ExtTagSupport">
+		<attribute name="region" required="false">
+			<description>
+			    <![CDATA[
+			        组件region属性，可选项。缺省值为''。该属性配合border布局模式使用。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="renderTo" required="false">
+			<description>
+			    <![CDATA[
+			        组件渲染的那个节点的id，或是DOM节点，又或者是与DIV相当的现有元素。提示：如果是使用JS脚本，则使用语义表达式输出。如：renderTo="!document.body"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="width" required="false">
+			<description>
+			    <![CDATA[
+			       组件的宽度。有效值：数值|auto。不同组件在不同的布局下其缺省值不一样。提示：如果为负数，则表示在document的宽度上减去所设置的负数。如：-20表示，document.body.clientWidth - 20。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="height" required="false">
+			<description>
+			    <![CDATA[
+			       此组件的高度（单位象素）（缺省为auto）。提示：如果为负数，则表示在document的高度度上减去所设置的负数。如：-20表示，document.body.clientHeight - 20。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="frame" required="false">
+			<description>
+			    <![CDATA[
+			       设置为 'true' 则为组件填充背景画面。默认：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="border" required="false">
+			<description>
+			    <![CDATA[
+			    True表示为显示出组件body元素的边框，false则隐藏（缺省为true）。默认下，边框是一套2px宽的内边框。也可以对边框分别设置，设置方法:border="1 0 1 3"代表顺序(top right bottom left)。提示：数值为边框size。0即为隐藏边框。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="autoScroll" required="false">
+			<description>
+			    <![CDATA[
+			    True表示在组件body元素上当内容溢出时出现滚动条，false表示不出现滚动条,裁剪所有溢出的内容（默认为false）。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="margin" required="false">
+			<description>
+			    <![CDATA[
+			    Specifies the margin for this component. The margin can be a single numeric value to apply to all sides or it can be a CSS
+				style specification for each style, for example: '10 5 3 10' (top,right, bottom, left) or '10' (top,right, bottom, left).
+				]]>
+			</description>
+		</attribute>
+		<attribute name="contentEl" required="false">
+			<description>
+			    <![CDATA[
+			       指定一个已存在的HTML元素, 或者一个已存在HTML元素的 id , 它们将被用作当前组件的内容.此配置选项被用来将一个已存在的HTML元素 插入到一个新组件(在组件渲染之后它简单地移动DOM元素) 的layout元素中, 使它成为该组件的内容。
+			       提示：可以为div添加 x-hidden 或者 x-hide-display 类, 以防在内容渲染到panel时发生闪烁.
+				]]>
+			</description>
+		</attribute>
+		<attribute name="html" required="false">
+			<description>
+			    <![CDATA[
+			       一个 HTML 片段, 或者一个 DomHelper 描述, 用作 layout 元素的内容. 这个 HTML 内容在组件渲染之后才被添加, 所以在 render 触发的时候, document 中尚未包含此 HTML. 但是这个内容将会在所有配置的 contentEl 之前被插入到 body 标签中。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="iconCls" required="false">
+			<description>
+			    <![CDATA[
+			       为组件设定一个CSS的样式类，用于显示出一个图标。这个样式类可以在myext.css中查找。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="icon" required="false">
+			<description>
+			    <![CDATA[
+			       为组件设定一个图标文件，用于显示出一个图标。图标文件可以在/static/icon中查找。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="iconVec" required="false">
+			<description>
+			    <![CDATA[
+			       矢量图标。图标名称可在[图标大全]模块中查找。如：iconVec="fa-wifi"。提示：该属性将应用到有title属性或text属性的视图组件上。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="iconVecSize" required="false">
+			<description>
+			    <![CDATA[
+			       矢量图标显示大小。缺省为13px。有效值，数值。如：iconVecSize="16"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="iconVecAlign" required="false">
+			<description>
+			    <![CDATA[
+			       矢量图标对齐方式，参考对象为和其一起显示的文本。缺省值：left（左对齐）。有效值：left | right。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="style" required="false">
+			<description>
+			    <![CDATA[
+			       应用于该组件的自定义样式字符串，应该是Ext.Element.applyStyles的一个有效参数。.如：style="color:'#FFFFFF',backgroundColor:'#000000'"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="padding" required="false">
+			<description>
+			    <![CDATA[
+			    Specifies the padding for this component. The padding
+				can be a single numeric value to apply to all sides or it can be a
+				CSS style specification for each style, for example: '10 5 3 10'
+				(top, right, bottom, left). 如：padding="10 5 3 10"或padding="10"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="disabled" required="false">
+			<description>
+			    <![CDATA[
+			       渲染该组件为禁用状态（默认为false）。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="tooltip" required="false">
+			<description>
+			    <![CDATA[
+			       组件提示信息文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="columnWidth" required="false">
+			<description>
+			    <![CDATA[
+			       此属性在使用column布局及其子布局的容器的子组件中配置。例如：columnWidth="0.2。所有列只和必须为1，也可以指定某一列的width属性,剩下列之和为1。列宽累加大于等于1则换行。如果是在FormPanel里使用的话可以通过使用formrow标签也可以强制换行。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="center" required="false">
+			<description>
+			    <![CDATA[
+			       是否将当前组件设置到其父容器的中间位置。true：中间显示。缺省：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="animate" required="false">
+			<description>
+			    <![CDATA[
+			       是否动画效果。缺省：true。提示：这只是一个简易配置，动画参数可以通过animate()指定。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="maxWidth" required="false">
+			<description>
+			    <![CDATA[
+			       设置组件最大宽度。提示：如果为负数，则表示在document的宽度上减去所设置的负数。如：-20表示，document.body.clientWidth - 20。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="minWidth" required="false">
+			<description>
+			    <![CDATA[
+			       设置组件最小宽度。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="maxHeight" required="false">
+			<description>
+			    <![CDATA[
+			       设置组件最大高度。提示：如果为负数，则表示在document的高度度上减去所设置的负数。如：-20表示，document.body.clientHeight - 20。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="minHeight" required="false">
+			<description>
+			    <![CDATA[
+			       设置组件最小高度。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="resizable" required="false">
+			<description>
+			    <![CDATA[
+			       设置是否可以改变组件大小。可选值：true | false。缺省值：不同组件缺省值可能不同。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="ContainerTagSupport" parent="ComponentTagSupport">
+		<attribute name="autoShow" required="false">
+			<description>
+			<![CDATA[
+			True：自动构造和渲染组件到页面主体区域。缺省值：false。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="layout" required="false">
+			<description>
+			    <![CDATA[
+			       此容器所使用的布局类型。常规容器缺省布局：auto；表单系列的布局面板使用的缺省布局：column；window容器的缺省布局：fit。可选值：accordion|anchor|absolute|border|card|column|fit|form|table|auto|hbox|vbox。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="constrain" required="false">
+			<description>
+			<![CDATA[
+			    设置是否禁止在组件内容溢出时父容器是包容隐藏子组件。缺省值：在window组件和FormPanel组件中为true，其它容器组件为空。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="split" required="false">
+			<description>
+			    <![CDATA[
+			       布局辅助项。split:true属性的区域都将得到 一个Splitter并允许手动调整大小。(除中心区域) 缺省：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="anchor" required="false">
+			<description>
+			    <![CDATA[
+			       此属性在使用anchor布局及其子布局的容器的子组件中配置。
+			       模式1：百分比， 例如:anchor="100% 50%" 表示子组件的宽度为即等于容器的宽度, 高度为容器的1/2。
+			       模式2：偏移量，例如anchor="-50 -100" 表示子组件的宽度为容器的宽度减50px, 高度为容器的高度减100px.				
+				模式3：混合模式，例如anchor="-50 75%"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="x" required="false">
+			<description>
+			    <![CDATA[
+			       此属性在使用absolute布局及其子布局的容器的子组件中配置。表示离容器左边距的距离。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="y" required="false">
+			<description>
+			    <![CDATA[
+			       此属性在使用absolute布局及其子布局的容器的子组件中配置。表示离容器上边距的距离。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rowspan" required="false">
+			<description>
+			    <![CDATA[
+			    Table布局专用属性。跨行数目。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="colspan" required="false">
+			<description>
+			    <![CDATA[
+			    Table布局专用属性。跨列数目。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="flex" required="false">
+			<description>
+			    <![CDATA[
+			    vbox|hbox布局专用属性，根据当前子项的flex值与所有其他含flex值子项的值的和 的相对比例进行伸缩('hbox'中横向, 'vbox'中纵向). 任何'flex=0'或'flex=undefined'的子项将不被伸缩(即组件原始尺寸不会被修改)。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onactivate" required="false">
+			<description>
+			    <![CDATA[
+			    组件激活后触发。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onclose" required="false">
+			<description>
+			    <![CDATA[
+			    可关闭组件关闭后触发。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="oncollapse" required="false">
+			<description>
+			    <![CDATA[
+			    可折叠组件折叠后触发。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onexpand" required="false">
+			<description>
+			    <![CDATA[
+			    可展开组件展开后触发。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onhide" required="false">
+			<description>
+			    <![CDATA[
+			    组件隐藏后触发。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onrender" required="false">
+			<description>
+			    <![CDATA[
+			    组件被渲染后触发。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onshow" required="false">
+			<description>
+			    <![CDATA[
+			    组件被显示后触发。如：onclick="fnSave()"或onclick="fnSave"或onclick="!fnSave"，最后一种带!的方式可以将当前组件对象和句柄传递给对应函数。提示：对于按钮系列的onclick也
+			    可以这样用：直接执行一段合法的JS代码片段。如：onclick="#AOS.reset(_f_param);" 。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="PanelTagSupport" parent="ContainerSupport">
+		<attribute name="title" required="false">
+			<description>
+			    <![CDATA[
+			       显示在面板头部的文本标题(默认为'')。如有指定了titile那么头部元素header会自动生成和显示，除非header强制设为false。如果你不想在写配置时指定好title，
+				不过想在后面才加入的话，你必须先指定一个非空的标题（具体说是空白字符''亦可或header：true），这样才保证容器元素生成出来。提示：缺省标题为常规字体，如果想显示为加粗字体，可以在标题文本前加语义表达式!。如:title="!我是粗体标题"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="collapsible" required="false">
+			<description>
+			    <![CDATA[
+			    True表示为面板是可收缩的，并自动渲染一个展开/收缩的轮换按钮在头部工具条。false表示为保持面板为一个静止的尺寸（缺省为false）。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="collapsed" required="false">
+			<description>
+			    <![CDATA[
+			    True 表示为渲染面板后即闭合（默认为false）。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="titleCollapse" required="false">
+			<description>
+			    <![CDATA[
+			    True表示为允许单击头部区域任何一个位置都可收缩面板（当collapsible = true）反之只允许单击工具按钮（默认为false）。提示：Accordion布局的时候默认为true。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="bodyStyle" required="false">
+			<description>
+			    <![CDATA[
+			       	应用于该组件的Body元素的自定义样式字符串，应该是Ext.Element.applyStyles的一个有效参数。.如：style="color:'#FFFFFF',backgroundColor:'#000000'"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="bodyPadding" required="false">
+			<description>
+			    <![CDATA[
+			       设置容器body区域的内边距。在body元素上设置padding样式的快捷方式。这个值可以是一个数字被应用到所有的边界， 或者是一个正规的CSS字符串用于设定padding。默认为undefined。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="headerBorder" required="false">
+			<description>
+			    <![CDATA[
+			      设置面板型组件的Header边框(标题所占区域)。防止组件边框重叠。设置方法:headerBorder="0 0 1"代表顺序(top right left)。提示：无bottom边框，数值为边框size。0即为隐藏边框。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="bodyBorder" required="false">
+			<description>
+			    <![CDATA[
+			      设置面板型组件的body边框(主体区域)。防止组件边框重叠。设置方法:bodyBorder="1 0 1 1"代表顺序(top right bottom left)。提示：数值为边框size。0即为隐藏边框。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="splitterBorder" required="false">
+			<description>
+			    <![CDATA[
+			      设置面板型组件之间手动滑柄栏的边框。防止组件边框重叠。设置方法:splitterBorder="1 0 1 1"代表顺序(top right bottom left)。提示：数值为边框size。0即为隐藏边框。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="closable" required="false">
+			<description>
+			    <![CDATA[
+			       组件显示关闭图标。缺省调用close方法，这将销毁组件中的元素不能再被使用。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="closeAction" required="false">
+			<description>
+			    <![CDATA[
+			       当标题头的关闭按钮被单击这个动作将被执行。可选：destroy|hide。默认：hide。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="collapseMode" required="false">
+			<description>
+			    <![CDATA[
+			      Border布局下组件折叠收缩模式。header：收缩后显示头部栏位。mini：收缩后不显示头部栏位。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="header" required="false">
+			<description>
+			    <![CDATA[
+			       通过设置false来阻止面板型组件的标题头被创建与渲染，默认为true。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="reorderable" required="false">
+			<description>
+			    <![CDATA[
+			       当面板组件被作为Tab卡片的时候，设置是否允许拖动。默认为true。提示：需要配合TabPanel的拖动插件才有效。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="ButtonTagSupport" parent="ComponentTagSupport">
+		<attribute name="text" required="false">
+			<description>
+			    <![CDATA[
+			       组件显示的主体文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onclick" required="false">
+			<description>
+			    <![CDATA[
+			       当点击按钮触发的函数。如：onclick="fnSave()"或onclick="fnSave"或onclick="!fnSave"，最后一种带!的方式可以将当前组件对象和句柄传递给对应函数。提示：对于按钮系列的onclick也
+			       可以这样用：直接执行一段合法的JS代码片段。如：onclick="#id_mywindow.hide();" 。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="scale" required="false">
+			<description>
+			<![CDATA[
+			按钮大小。默认：small。可选：small|medium|large。
+			]]>
+			</description>
+		</attribute>		
+	</tag>
+	<tag name="FormItemTagSupport" parent="ComponentTagSupport">
+		<attribute name="fieldLabel" required="false">
+				<description>
+				    <![CDATA[
+				       表单项标签文本。
+					]]>
+				</description>
+		</attribute>
+		<attribute name="instance" required="false">
+				<description>
+				    <![CDATA[
+				       是否实例化。缺省值：true。
+					]]>
+				</description>
+		</attribute>
+		<attribute name="name" required="false">
+			<description>
+			    <![CDATA[
+			       表单项名称。name作为表单提交的参数名称。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="value" required="false">
+			<description>
+			    <![CDATA[
+			       表单项的初始化值。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="emptyText" required="false">
+			<description>
+			    <![CDATA[
+			       放置到空表单项中的默认文本(默认为null)。注意: 如果当前表单栏处于有效状态并且被配置了一个名称，那么此值会被 提交到服务器。 为了防止提交可以设置Ext.form.Basic.submit中的submitEmptyText 选项为false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="anchor" required="false">
+			<description>
+			    <![CDATA[
+			       表单项的在Anchor布局下的所占百分比。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="labelWidth" required="false">
+			<description>
+			    <![CDATA[
+			       表单项的标签宽度。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="labelSeparator" required="false">
+			<description>
+			    <![CDATA[
+			     表单项标签文本和输入域之间的占位符。缺省为冒号。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="labelPad" required="false">
+			<description>
+			    <![CDATA[
+			     标签文本和输入域之间的像素空间的合计大小。数值类型，缺省值：5。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="labelAlign" required="false">
+			<description>
+			<![CDATA[
+			当前面板直属表单元素标签文本域的对其方式。可选值：top|left|right。缺省值：right。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="allowBlank" required="false">
+			<description>
+			    <![CDATA[
+			       是否允许为空。True:允许空值。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="tabIndex" required="false">
+			<description>
+			    <![CDATA[
+			       Tab键的索引顺序。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="inputType" required="false">
+			<description>
+			    <![CDATA[
+			        输入栏的类型属性。常用到的有密码输入框，可设置为inputType="password"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="readOnly" required="false">
+			<description>
+			    <![CDATA[
+			        是否只读。true:只读。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="vtype" required="false">
+			<description>
+			    <![CDATA[
+			        一个校验类型名。可选值：alpha|alphanum|email|url。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="vtypeText" required="false">
+			<description>
+			    <![CDATA[
+			        一个自定义的出错消息，用来替代为当前表单项所设置的vtype所提供的默认消息。 提示:只有设置了 vtype 时才应用此项，否则忽略。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="regex" required="false">
+			<description>
+			    <![CDATA[
+			        在校验时，需要在表单项上进行测试的JavaScript RegExp对象(默认为 null)。 如果测试失败，表单项将会使用 regexText 或者 invalidText 进行校验失败标记。
+			        提示：正则表达式需要写在一堆转义标记(//)内。如：/表达式/。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="regexText" required="false">
+			<description>
+			    <![CDATA[
+			        如果使用了regex并且在校验失败时显示的出错文本。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="editable" required="false">
+			<description>
+			    <![CDATA[
+			        设置为false阻止直接在表单项的文本框中输入字符；这时表单项只能通过从按钮的方式来设置值。提示：此设置仅针对下拉框、日期选择框等带有按钮操作的表单项有效。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="msgTarget" required="false">
+			<description>
+			<![CDATA[
+			错误消息文本应该显示的位置。缺省值：参数表配置参数[msgtarget_]的值。可选值必须是下列值之一：(1)、qtip 当用户鼠标悬停在该域之上时显示包含了消息的迅速提示。(2)、title 显示消息在默认浏览器title属性弹出。
+			(3)、under 在域下方添加一块包含了错误消息的div。(4)、side 添加一个错误图标在域的右边，鼠标悬停上面时弹出显示消息。
+			(5)、[element id] 直接把错误消息添加到一个指定元素的innerHTML。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="hideTrigger" required="false">
+			<description>
+			    <![CDATA[
+			        设置为true时隐藏右角trigger按钮(如下拉组件、日期组件等)，只显示为基础的文本框。缺省：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="star" required="false">
+			<description>
+			    <![CDATA[
+			        非空必输字段是否出现小红星标注。可选值：true | false。缺省：true。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="selectOnFocus" required="false">
+			<description>
+				<![CDATA[
+			        当表单项获得输入焦点时是否自动选中文本。可选值：true | false。缺省：false。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onchange" required="false">
+			<description>
+			    <![CDATA[
+			        表单输入域的值发生变化时触发的响应事件函数名。如：onchange="fnTest"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onkeydown" required="false">
+			<description>
+			    <![CDATA[
+			        表单输入域的键盘按键响应事件函数名。如：onkeydown="fnTest"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onkeyup" required="false">
+			<description>
+			    <![CDATA[
+			        表单输入域的键盘按键松开时响应事件函数名。如：onkeyup="fnTest"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onfocus" required="false">
+			<description>
+			    <![CDATA[
+			        表单输入域获得焦点时响应事件函数名。如：onfocus="fnTest"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onselect" required="false">
+			<description>
+			    <![CDATA[
+			        下拉选择框ComboBox选中下拉项目时响应事件函数名。如：onselect="fnTest"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onblur" required="false">
+			<description>
+			    <![CDATA[
+			       表单输入域失去焦点时响应事件函数名。如：onselect="fnTest"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onenterkey" required="false">
+			<description>
+			    <![CDATA[
+			        表单输入域的回车键按下时响应事件函数名。如：onenterkey="fnTest"。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="onspecialkey" required="false">
+			<description>
+			    <![CDATA[
+			        表单输入域的特殊键按下时响应事件函数名。如：specialkey="fnTest"。提示：响应什么特殊键的按下事件需要根据按键事件的句柄在JS函数中判断。
+				]]>
+			</description>
+		</attribute>
+	</tag>
+	<tag name="FormPanelTagSupport" parent="PanelTagSupport">
+		<attribute name="labelWidth" required="false">
+			<description>
+			<![CDATA[
+			当前面板直属表单元素标签文本域的宽度。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="labelSeparator" required="false">
+			<description>
+			    <![CDATA[
+			     表单项标签文本和输入域之间的占位符。缺省为冒号。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="labelAlign" required="false">
+			<description>
+			<![CDATA[
+			当前面板直属表单元素标签文本域的对其方式。可选值：top|left|right。缺省值：right。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="labelPad" required="false">
+			<description>
+			    <![CDATA[
+			     标签文本和输入域之间的像素空间的合计大小。数值类型，缺省值：5。
+				]]>
+			</description>
+		</attribute>
+		<attribute name="rowSpace" required="false">
+			<description>
+			<![CDATA[
+			当前面板直属表单元素行间距。如：rowSpace="5"。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="itemAnchor" required="false">
+			<description>
+			<![CDATA[
+			当前面板直属表单元素所占百分比。如：activeTabBarColor="80%"。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="defaultType" required="false">
+			<description>
+			<![CDATA[
+			直系表单项缺省xtype类型。缺省值：textfield。
+			]]>
+			</description>
+		</attribute>
+		<attribute name="msgTarget" required="false">
+			<description>
+			<![CDATA[
+			错误消息文本应该显示的位置。缺省值：参数表配置参数[msgtarget_]的值。可选值必须是下列值之一 (1)、qtip 当用户鼠标悬停在该域之上时显示包含了消息的迅速提示。(2)、title 显示消息以浏览器默认的title属性弹出。
+			(3)、under 在域下方添加一块包含了错误消息的div。(4)、side 添加一个错误图标在域的右边，鼠标悬停上面时弹出显示消息。
+			(5)、[element id] 直接把错误消息添加到一个指定元素的innerHTML。
+			]]>
+			</description>
+		</attribute>
+	</tag>
+</basetaglib>
