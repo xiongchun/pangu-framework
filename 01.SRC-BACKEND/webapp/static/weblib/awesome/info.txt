@@ -1,2 +1,0 @@
-https://github.com/FortAwesome/Font-Awesome
-version:4.2

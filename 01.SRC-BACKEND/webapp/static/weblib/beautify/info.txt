@@ -1,3 +1,0 @@
-https://github.com/beautify-web/js-beautify/tree/master/js/lib
-=========================================
-代码美化，可以对JS\JSON\CSS\HTML进行格式化
