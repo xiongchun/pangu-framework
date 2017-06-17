@@ -1,0 +1,33 @@
+##停靠边栏定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/containerTagSupport.vm")  
+#if($dock)
+    dock: '$dock',
+#end
+#if($text)
+    text: '$text',
+#end
+#if($defaultText)
+    defaultText: '$defaultText',
+#end
+#if($ui)
+    ui: '$ui',
+#end
+    enableOverflow: true,
+	app: 169
+};
+##停靠边栏实例化
+var ${id} = Ext.create('$barType', ${id}_cfg);
+
+##注册Items子组件
+#parse("${vmpath}ext/subvm/items.vm")
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+## 强行设置各边框。docked在容器里的时候，边框会被各种组合造成被随机覆盖。
+##和其它的boders.vm机制不一样，所以这里特殊处理
+##Ext.util.CSS.createStyleSheet('#${id} {border-bottom-width: 1px !important;}','docked_css_${id}');
+#foreach($border in $forceBorders)
+    Ext.util.CSS.createStyleSheet('#${id} {border-${border.align}-width: ${border.size}px !important;}','${border.id}');
+#end

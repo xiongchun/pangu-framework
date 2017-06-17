@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 测试环境下部署Web应用打包脚本 -->
+<!-- 提示：配置信息动态调整请找到4.RECONFIG -->
+<project name="AOSuite" default="5.PACKAGE" basedir="../../../">
+
+	<!-- 全局变量定义 -->
+	<target name="1.INIT">
+		<property name="war.name" value="aosuite" />
+		<property name="src.resources" value="${basedir}/src/resources" />
+		<property name="src.dao" value="${basedir}/src/dao/java" />
+		<property name="src.framework" value="${basedir}/src/framework/java" />
+		<property name="src.system" value="${basedir}/src/system/java" />
+		<property name="src.project" value="${basedir}/src/project/java" />
+		<property name="src.webapp" value="${basedir}/webapp" />
+		<property name="dist" value="${basedir}/dist" />
+	</target>
+
+	<!-- 复制打包资源 -->
+	<target name="2.RESOURCE" depends="1.INIT">
+		<echo message="启动AOS Web应用打包程序..." />
+		<echo message="清理打包环境..." />
+		<delete dir="${dist}" />
+		<echo message="复制打包资源..." />
+		<copy todir="${dist}/src">
+			<fileset dir="${src.resources}" />
+			<fileset dir="${src.dao}" />
+			<fileset dir="${src.framework}" />
+			<fileset dir="${src.system}" />
+			<fileset dir="${src.project}" />
+		</copy>
+		<copy todir="${dist}/bin">
+			<fileset dir="${src.webapp}">
+				<exclude name="WEB-INF/classes/**" />
+				<exclude name="WEB-INF/lib/**" />
+			</fileset>
+		</copy>
+		<copy todir="${dist}/bin/WEB-INF/classes">
+			<fileset dir="${src.resources}" />
+		</copy>
+		<!-- 复制隐藏在java包里的一些资源文件 -->
+		<copy todir="${dist}/bin/WEB-INF/classes">
+			<fileset dir="${src.dao}">
+				<exclude name="**/*.java" />
+			</fileset>
+			<fileset dir="${src.framework}">
+				<exclude name="**/*.java" />
+			</fileset>
+			<fileset dir="${src.system}">
+				<exclude name="**/*.java" />
+			</fileset>
+			<fileset dir="${src.project}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<copy todir="${dist}/bin/WEB-INF/lib">
+			<fileset dir="${src.webapp}/WEB-INF/lib" includes="*.jar" />
+			<fileset dir="${src.webapp}/WEB-INF/lib/commons" includes="*.jar" />
+			<fileset dir="${src.webapp}/WEB-INF/lib/jdbc" includes="*.jar" />
+			<fileset dir="${src.webapp}/WEB-INF/lib/spring" includes="*.jar" />
+		</copy>
+	</target>
+
+	<!-- 编译 -->
+	<target name="3.COMPILE" depends="2.RESOURCE">
+		<echo message="编译开始..." />
+		<javac srcdir="${dist}/src" destdir="${dist}/bin/WEB-INF/classes" encoding="utf-8" debug="true" debuglevel="lines,vars,source" includeantruntime="on" listfiles="false">
+			<!-- <compilerarg value="-Xlint:unchecked"/> -->
+			<!-- 忽略符号表ct.sym, 直接查找rt.jar。防止找不到部分com.sun等私有依赖类。 -->
+			<compilerarg value="-XDignore.symbol.file" />
+			<classpath>
+				<fileset dir="${src.webapp}/WEB-INF/lib">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+		<echo message="编译完成。如有警告提示可忽略。" />
+	</target>
+
+	<!-- 打包前的配置信息适配 -->
+	<target name="4.RECONFIG" depends="3.COMPILE">
+		<echo message="配置信息适配开始..." />
+		<!-- 完成属性配置文件适配 -->
+		<propertyfile file="${dist}/bin/WEB-INF/classes/aos.properties">
+			<!-- Redis配置(未列出的信息不建议修改)-->
+			<entry key="redis_host" value="127.0.0.1" />
+			<entry key="redis_port" value="6379" />
+			<entry key="redis_pwd" value="" />
+			<!-- 数据源配置 -->
+			<entry key="jdbc.url" value="jdbc:mysql://127.0.0.1:3306/aosuite?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;allowMultiQueries=true" />
+			<entry key="jdbc.username" value="root" />
+			<entry key="jdbc.password" value="root" />
+			<!-- Logback日志配置 -->
+			<entry key="dao" value="ERROR" />
+			<entry key="aos" value="ERROR" />
+			<entry key="aos.framework.web.filter.HttpFilter" value="ERROR" />
+			<entry key="aos.framework.web.router.HttpRouterController" value="ERROR" />
+		</propertyfile>
+		<replace file="${dist}/bin/WEB-INF/classes/aos.properties" token="\:" value=":" encoding="utf-8" />
+		<replace file="${dist}/bin/WEB-INF/classes/aos.properties" token="\=" value="=" encoding="utf-8" />
+		<!-- 定义XML任务 -->
+		<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask">
+			<classpath>
+				<fileset dir="${basedir}/webapp/WEB-INF/lib">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</taskdef>
+		<!-- 使用XMLTask完成XML配置文件适配 -->
+		<xmltask source="${dist}/bin/WEB-INF/classes/aos.cfg.xml" dest="${dist}/bin/WEB-INF/classes/aos.cfg.xml" encoding="utf-8">
+			<!-- 这里只是举个栗子而已，如有需求可自行编辑 
+			 <replace path="//configurations/config[@key='app_key']/@value" withText="aosuite"  />
+			 -->
+		</xmltask>
+		<echo message="配置信息适配结束..." />
+	</target>
+
+	<!-- 打war包 -->
+	<target name="5.PACKAGE" depends="4.RECONFIG">
+		<echo message="正在生成war包..." />
+		<war warfile="${dist}/${war.name}.war" webxml="${dist}/bin/WEB-INF/web.xml">
+			<fileset dir="${dist}/bin" />
+		</war>
+		<echo message="清理临时缓存..." />
+		<delete dir="${dist}/bin" />
+		<delete dir="${dist}/src" />
+		<echo message="打包完成。[保存路径见上面的输出war包信息]" />
+		<echo message="你可将其部署到Weblogic、Websphere、JBoss、Tomcat、Jetty等容器中。Good Luck!" />
+	</target>
+
+</project>

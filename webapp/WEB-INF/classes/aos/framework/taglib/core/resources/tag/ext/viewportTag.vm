@@ -1,0 +1,27 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##Viewport定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/containerTagSupport.vm")
+	app: 169
+};
+##Viewport实例化
+var ${id} = Ext.create('Ext.container.Viewport',${id}_cfg);
+
+##注册Items子组件
+#parse("${vmpath}ext/subvm/items.vm")
+
+##必须地方在注册Items子组件之后
+#if($centerCmpId)
+	${centerCmpId}.center();
+	Ext.EventManager.onWindowResize(function() {
+			var left = (Ext.getBody().getViewSize().width - ${centerCmpId}.getWidth()) / 2;
+			var top = (Ext.getBody().getViewSize().height - ${centerCmpId}.getHeight()) / 2;
+			${centerCmpId}.setPosition(left, top, true)
+		});
+#end
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+

@@ -1,0 +1,22 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##FormPanel定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formPanelTagSupport.vm")
+#if($standardSubmit)
+    standardSubmit:$standardSubmit,
+#end
+	app: 169
+};
+##FormPanel实例化
+var ${id} = Ext.create('Ext.form.Panel',${id}_cfg);
+##注册Items子组件
+#parse("${vmpath}ext/subvm/items.vm")
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##处理Border
+#parse("${vmpath}ext/subvm/borders.vm")
+

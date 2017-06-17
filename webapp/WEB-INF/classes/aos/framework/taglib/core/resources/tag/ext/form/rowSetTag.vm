@@ -1,0 +1,21 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##RowSet定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formPanelTagSupport.vm")
+##针对表单行标签的特殊设置
+  border : false,
+  collapsible : false,
+#if(!$padding)
+  padding : '0 0 0 0',
+#end
+#if(!$margin)
+  margin : '0 0 0 0',
+#end
+	app: 169
+};
+##RowSet实例化
+var ${id} = Ext.create('Ext.form.FieldSet',${id}_cfg);
+##注册Items子组件
+#parse("${vmpath}ext/subvm/items.vm")
