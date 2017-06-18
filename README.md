@@ -11,4 +11,4 @@
 - [AOSuite版本变更日志](http://git.oschina.net/osworks/AOS/wikis/%E3%80%8AAOSuite%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E3%80%8B%E4%B9%8BAOSuite%E7%89%88%E6%9C%AC%E5%8F%98%E6%9B%B4%E6%97%A5%E5%BF%97)
 
 ###  :fa-cogs: AOSuite在线演示
-[http://121.41.231.94/aosuite](http://http://121.41.231.94/aosuite)
+[http://121.41.231.94/aosuite](http://121.41.231.94/aosuite)
