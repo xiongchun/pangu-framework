@@ -1,6 +1,0 @@
-#if($id)
-    id:'$id',
-#end
-#if($any)
-    $any,
-#end
