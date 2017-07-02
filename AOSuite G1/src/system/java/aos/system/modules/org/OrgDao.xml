@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 部门管理模块使用的SQL语句 -->
+<mapper namespace="Org">
+
+	<!-- 查询部门列表 -->
+	<select id="listOrgsPage" resultType="Dto" parameterType="Dto">
+			SELECT
+            <include refid="aos.system.dao.AosOrgDao.column" />
+            FROM aos_org
+			<where>
+			    <if test="name != null and name != ''">
+				    AND name LIKE '%${name}%' 
+				</if>
+			    <if test="cascade == 'false'">
+				    AND parent_id = #{id} 
+				</if>
+				<if test="cascade == 'true'">
+				    AND cascade_id like '${cascade_id}%'
+				</if>
+				<if test="is_del != null and is_del != ''">
+				    AND is_del = #{is_del} 
+				</if>
+			</where>	
+			 ORDER BY sort_no ASC, id DESC
+	</select>
+	
+	<!-- 查询某节点下子节点的最大语义ID -->
+	<select id="getMaxCascadeId" resultType="String" parameterType="String">
+	     SELECT MAX(cascade_id) AS max_cascade_id FROM aos_org WHERE parent_id = #{parent_id}
+	</select>
+	
+	<!-- 逻辑删除部门下用户信息 -->
+	<update id="updateUserInfoByOrgId" parameterType="String">
+	    UPDATE aos_user SET is_del = '1' WHERE org_id = #{org_id}
+	</update>
+	
+	<!-- 检查删除节点中是否包含根节点 -->
+	<select id="checkRootNode" resultType="AosOrgPO" parameterType="Dto">
+	     SELECT 
+	         <include refid="aos.system.dao.AosOrgDao.column" />
+	      FROM aos_org WHERE id IN (${ids}) AND parent_id = '0'
+	</select>
+
+</mapper>

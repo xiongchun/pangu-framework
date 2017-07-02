@@ -1,0 +1,73 @@
+##on属性注册组件的事件监听
+
+##下面这组主要是表单元素系列的常用事件
+#if($onchange)
+	${id}.on('change', $onchange); 
+#end
+#if($onkeydown)
+	${id}.on('keydown', $onkeydown); 
+#end
+#if($onkeyup)
+	${id}.on('keyup', $onkeyup); 
+#end
+#if($onfocus)
+	${id}.on('focus', $onfocus); 
+#end
+#if($onselect)
+	${id}.on('select', $onselect); 
+#end
+#if($onblur)
+	${id}.on('blur', $onblur); 
+#end
+#if($onenterkey)
+	${id}.on('specialkey', function(obj,e){
+	if (e.getKey() == Ext.EventObject.ENTER) {
+	  $onenterkey(obj, e);
+	}
+	}); 
+#end
+#if($onspecialkey)
+	${id}.on('specialkey', $onspecialkey); 
+#end
+
+##下面这组主要是容器面板系列的常用事件
+#if($onactivate)
+	${id}.on('activate', $onactivate); 
+#end
+#if($onclose)
+	${id}.on('close', $onclose); 
+#end
+#if($oncollapse)
+	${id}.on('collapse', $oncollapse); 
+#end
+#if($onexpand)
+	${id}.on('expand', $onexpand); 
+#end
+#if($onhide)
+	${id}.on('hide', $onhide); 
+#end
+#if($onrender)
+	${id}.on('render', $onrender); 
+#end
+#if($onshow)
+	${id}.on('show', $onshow); 
+#end
+
+##表格事件 树事件
+#if($onitemclick)
+	${id}.on('itemclick', $onitemclick); 
+#end
+#if($onitemdblclick)
+	${id}.on('itemdblclick', $onitemdblclick); 
+#end
+#if($contextMenuID)
+    ${id}.on('itemcontextmenu', function(view, record, item, index, event, options) {
+    	event.preventDefault();
+    	${contextMenuID}.showAt(event.getXY());
+    });
+#end
+
+##具有选择功能的组件
+#if($onselectionchange)
+	${id}.on('selectionchange', $onselectionchange); 
+#end

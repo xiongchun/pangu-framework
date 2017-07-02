@@ -1,0 +1,26 @@
+#parse("${vmpath}ext/common/panelTagSupport.vm")
+    defaults : {
+    	#if($itemAnchor)
+            anchor : '$itemAnchor',
+		#end
+    },
+	fieldDefaults: {
+    	#if($labelWidth)
+            labelWidth : $labelWidth,
+    	#end
+    	#if($labelAlign)
+            labelAlign : '$labelAlign',
+    	#end
+    	#if($labelSeparator)
+            labelSeparator : '$labelSeparator',
+    	#end
+        #if($labelPad)
+            labelPad : $labelPad,
+    	#end
+		#if($msgTarget)
+            msgTarget : '$msgTarget',
+		#end
+    },
+	#if($defaultType)
+            defaultType : '$defaultType',
+    #end

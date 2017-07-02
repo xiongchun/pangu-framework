@@ -1,0 +1,318 @@
+@CHARSET "UTF-8";
+
+/* body样式 */
+body {
+	overflow: hidden;
+}
+
+/* Trigger自定义组件使用 */
+.icon-add {
+    background-image: url(../../static/icon/add.png) !important;
+ }
+.trigger-search1{
+    background-image: url(../../static/image/triggerfield/trigger-search1.png) !important;
+ }
+.trigger-add {
+    background-image: url(../../static/image/triggerfield/trigger-add.png) !important;
+ }
+.trigger-clear1{
+    background-image: url(../../static/image/triggerfield/trigger-clear1.png) !important;
+ }
+.trigger-clear2 {
+    background-image: url(../../static/image/triggerfield/trigger-clear2.png) !important;
+ }
+ .trigger-filter{
+    background-image: url(../../static/image/triggerfield/trigger-filter.png) !important;
+ }
+
+/*粗体文本*/
+.app-bold {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/* 必录项的高亮提醒 */
+.mustinput-label{
+	color: red;
+	font-weight: bold;
+}
+
+/*常规体文本*/
+.app-normal {
+	font-weight: normal;
+}
+
+/* 手型鼠标 */
+.app_cursor_pointer{
+	cursor: pointer;
+}
+
+/*容器类组件标题文本1*/
+.app-container-title-normal {
+	font-size: 13px;
+	font-weight: normal;
+}
+
+/*容器类组件标题文本2*/
+.app-container-title-bold{
+	font-size: 13px;
+	font-weight: bold;
+}
+
+/*表格列标题文本*/
+.app-grid-column-header {
+	font-weight: normal;
+}
+
+/* 表格行高 */
+ .x-grid-row td{
+	 line-height:20px;
+	 vertical-align:center;
+ }
+ 
+ /* 表格统计行样式 */
+.x-grid-row-summary .x-grid-cell-inner {
+            color:blue;
+            font-size:14px;
+            background-color : #FAFAFA;
+}
+
+/* 表单元素输入框区域样式 fieldCls属性：去掉输入框内区域的立体效果 */ 
+.app-form-fieldcls { 
+	background: #FFFFFF;
+}
+
+/* 等待提示框使用的动画图标 */
+.app-wait-msg-saving {
+    background: url("../../static/image/gif/ajax7.gif") no-repeat scroll 6px 0px transparent;
+    height: 32px!important;
+}
+
+/* 状态栏专用开始 */
+.x-statusbar .x-status-busy {
+    padding-left: 25px !important;
+    background: transparent no-repeat 3px 0;
+    background-image: url(../../static/image/gif/loading.gif);
+}
+.status-ok{
+	padding-left: 25px !important;
+    background: transparent no-repeat 3px 0;
+    background-image: url(../../static/icon/ok1.png);
+}
+/* 状态栏专用结束 */
+
+/* 修复了<aos:textarea />文本域标签在Firefox浏览器下的字体显示问题 */
+.x-form-textarea{
+	font-size: 13px;
+	font-family: Arial;
+}
+
+/* =========滑动提示框 >>========== */
+.ux-notification-window .x-window-body {
+	text-align: left;
+	padding: 10px 5px 10px 5px;
+	line-height:20px;
+	background-color:#FFFFFF;
+}
+.ux-notification-light .x-window-header {
+	background-color: transparent;
+	border:none;
+}
+.ux-notification-light .x-window-body {
+	padding: 5px 8px 10px 8px;
+	background-color: transparent;
+	line-height:20px;
+	border:none;
+}
+/* =========<<滑动提示框结束========== */
+
+/* =========Webkit 滚动条开始========== */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #CCCCCC;
+	height: 50px;
+	outline-offset: -2px;
+	outline: 2px solid white;
+	-webkit-border-radius: 4px;
+	border: 2px solid white;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: #999999;
+	height: 50px;
+	-webkit-border-radius: 4px;
+}
+::-webkit-scrollbar-track-piece {
+	background-color: white;
+	-webkit-border-radius: 0;
+}
+/* =========Webkit 滚动条结束========== */
+
+/* =======表格列按钮开始======= */
+.cbtn{
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	border: 0px;
+	font-size: 12px;
+	font-family: "宋体";
+	border: 1px solid #3598DC;
+	background: transparent;
+	color: #3598DC
+}
+.cbtn:focus {
+	background: #3598DC;
+	color: white
+}
+.cbtn:hover {
+	cursor:pointer;
+	transition: all 0.1s ease-in-out 0s;
+	background: #3598DC;
+	color: white
+}
+.cbtn_danger{
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	border: 0px;
+	font-size: 12px;
+	font-family: "宋体";
+	border: 1px solid #F3565D;
+	background: transparent;
+	color: #F3565D
+}
+.cbtn_danger:focus {
+	background: #F3565D;
+	color: white
+}
+.cbtn_danger:hover {
+	cursor:pointer;
+	transition: all 0.1s ease-in-out 0s;
+	background: #F3565D;
+	color: white
+}
+.cbtn_warn{
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	border: 0px;
+	font-size: 12px;
+	font-family: "宋体";
+	border: 1px solid #DFBA49;
+	background: transparent;
+	color: #DFBA49
+}
+.cbtn_warn:focus {
+	background: #DFBA49;
+	color: white
+}
+.cbtn_warn:hover {
+	cursor:pointer;
+	transition: all 0.1s ease-in-out 0s;
+	background: #DFBA49;
+	color: white
+}
+/* =======表格列按钮结束======= */
+
+/* =======标签提示开始======= */
+.tip_info{
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 13px;
+	font-family: "宋体";
+	border: 1px solid #3598DC;
+	padding:1px;
+	background: #3598DC;
+	color: #FFFFFF
+}
+
+.tip_danger{
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 13px;
+	font-family: "宋体";
+	border: 1px solid #F3565D;
+	padding:1px;
+	background: #F3565D;
+	color: #FFFFFF
+}
+
+.tip_warn{
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 13px;
+	font-family: "宋体";
+	border: 1px solid #DFBA49;
+	padding:1px;
+	background: #DFBA49;
+	color: #FFFFFF
+}
+
+/* =======标签提示结束======= */
+
+/* 树节点的行高度 */
+.x-tree-panel .x-grid-row .x-grid-cell-inner {
+    line-height: 20px;
+}
+
+/* 校正树节点图表和节点文字的相对位置 */
+.x-tree-icon,
+.x-tree-elbow-img,
+.x-tree-checkbox {
+  margin-top: -3px;
+  margin-bottom: -4px; 
+ }
+ /* 只对webkit有效 */
+@media screen and (-webkit-min-device-pixel-ratio:0){
+	.x-tree-icon,
+	.x-tree-elbow-img,
+	.x-tree-checkbox {
+	  margin-top: 0px;
+	  margin-bottom: -4px;
+	}
+}
+
+/* 下拉项的行高 */
+.x-boundlist-item{
+	line-height: 25px;
+}
+/* 触发输入域的小图标高度 */
+.x-form-trigger, .x-field-toolbar .x-form-trigger {
+  height: 25px;
+}
+/* 重设表单域的缺省高度 */
+.x-form-text, .x-field-toolbar .x-form-text{
+	height: 25px;
+}
+/* 重设校验非法时候的文本框样式 */
+.x-form-type-text textarea.x-form-invalid-field, .x-form-type-text input.x-form-invalid-field,
+.x-form-type-password textarea.x-form-invalid-field,
+.x-form-type-password input.x-form-invalid-field,
+.x-form-type-number textarea.x-form-invalid-field,
+.x-form-type-number input.x-form-invalid-field,
+.x-form-type-email textarea.x-form-invalid-field,
+.x-form-type-email input.x-form-invalid-field,
+.x-form-type-search textarea.x-form-invalid-field,
+.x-form-type-search input.x-form-invalid-field,
+.x-form-type-tel textarea.x-form-invalid-field,
+.x-form-type-tel input.x-form-invalid-field {
+  background-color: white;
+  border-color: #D9534F;
+  background-image: none;
+  background-position:bottom;
+}
+
+/* 数字输入框的上下按键 */
+div.x-form-spinner-up, div.x-form-spinner-down{
+	height:12.5px;
+}
+
+/* 树节点光标设置 */
+.x-tree-node-text{
+  cursor:pointer !important;
+}

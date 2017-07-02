@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_role[aos_role]SQL自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-23 17:54:25 -->
+<mapper namespace="aos.system.dao.AosRoleDao">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="AosRolePO">
+		INSERT INTO aos_role (
+		<if test="name != null and name != ''">
+	         name, <!-- 角色名称 -->
+		</if>
+		<if test="is_enable != null and is_enable != ''">
+	         is_enable, <!-- 是否启用 -->
+		</if>
+		<if test="type != null and type != ''">
+	         type, <!-- 角色类型 -->
+		</if>
+		<if test="biz_code != null and biz_code != ''">
+	         biz_code, <!-- 扩展码 -->
+		</if>
+		<if test="remark != null and remark != ''">
+	         remark, <!-- 备注 -->
+		</if>
+		<if test="create_time != null and create_time != ''">
+	         create_time, <!-- 创建时间 -->
+		</if>
+		<if test="create_by != null">
+	         create_by, <!-- 创建人ID -->
+		</if>
+		<if test="id != null">
+	          id  <!--  流水号 -->
+	   </if>
+		)VALUES(
+		<if test="name != null and name != ''">
+	          #{name, jdbcType=VARCHAR}, <!-- 角色名称 -->
+	    </if>
+		<if test="is_enable != null and is_enable != ''">
+	          #{is_enable, jdbcType=VARCHAR}, <!-- 是否启用 -->
+	    </if>
+		<if test="type != null and type != ''">
+	          #{type, jdbcType=VARCHAR}, <!-- 角色类型 -->
+	    </if>
+		<if test="biz_code != null and biz_code != ''">
+	          #{biz_code, jdbcType=VARCHAR}, <!-- 扩展码 -->
+	    </if>
+		<if test="remark != null and remark != ''">
+	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
+	    </if>
+		<if test="create_time != null and create_time != ''">
+	          #{create_time, jdbcType=VARCHAR}, <!-- 创建时间 -->
+	    </if>
+		<if test="create_by != null">
+	          #{create_by, jdbcType=INTEGER}, <!-- 创建人ID -->
+	    </if>
+		<if test="id != null">
+		     #{id, jdbcType=INTEGER}  <!--  流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="AosRolePO">
+		INSERT INTO aos_role (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id, jdbcType=INTEGER},  <!--  流水号 -->
+		    #{name, jdbcType=VARCHAR},  <!-- 角色名称 -->
+		    #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+		    #{type, jdbcType=VARCHAR},  <!-- 角色类型 -->
+		    #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
+		    #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
+		    #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
+		    #{create_by, jdbcType=INTEGER}  <!-- 创建人ID -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="AosRolePO">
+		UPDATE aos_role
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!--  流水号 -->
+			</if>
+			<if test="name != null">
+		          name = #{name, jdbcType=VARCHAR},  <!-- 角色名称 -->
+			</if>
+			<if test="is_enable != null">
+		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+			</if>
+			<if test="type != null">
+		          type = #{type, jdbcType=VARCHAR},  <!-- 角色类型 -->
+			</if>
+			<if test="biz_code != null">
+		          biz_code = #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
+			</if>
+			<if test="remark != null">
+		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
+			</if>
+			<if test="create_time != null">
+		          create_time = #{create_time, jdbcType=VARCHAR},  <!-- 创建时间 -->
+			</if>
+			<if test="create_by != null">
+		          create_by = #{create_by, jdbcType=INTEGER},  <!-- 创建人ID -->
+			</if>
+		</set>
+		WHERE  id = #{id}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_role WHERE  id = #{id}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="AosRolePO">
+		SELECT
+		<include refid="column" />
+		FROM aos_role WHERE  id = #{id}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="AosRolePO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_role
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="AosRolePO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_role
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="AosRolePO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_role
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="AosRolePO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_role
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="AosRolePO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_role
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_role
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_role
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id,  <!--  流水号 -->
+		  name,  <!-- 角色名称 -->
+		  is_enable,  <!-- 是否启用 -->
+		  type,  <!-- 角色类型 -->
+		  biz_code,  <!-- 扩展码 -->
+		  remark,  <!-- 备注 -->
+		  create_time,  <!-- 创建时间 -->
+		  create_by  <!-- 创建人ID -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_role.id,  <!--  流水号 -->
+		  aos_role.name,  <!-- 角色名称 -->
+		  aos_role.is_enable,  <!-- 是否启用 -->
+		  aos_role.type,  <!-- 角色类型 -->
+		  aos_role.biz_code,  <!-- 扩展码 -->
+		  aos_role.remark,  <!-- 备注 -->
+		  aos_role.create_time,  <!-- 创建时间 -->
+		  aos_role.create_by  <!-- 创建人ID -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="id != null ">
+		      AND id = #{id}  <!--  流水号 -->
+		</if>
+	    <if test="name != null and name != ''">
+		      AND name = #{name}  <!-- 角色名称 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable = #{is_enable}  <!-- 是否启用 -->
+		</if>
+	    <if test="type != null and type != ''">
+		      AND type = #{type}  <!-- 角色类型 -->
+		</if>
+	    <if test="biz_code != null and biz_code != ''">
+		      AND biz_code = #{biz_code}  <!-- 扩展码 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark = #{remark}  <!-- 备注 -->
+		</if>
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time = #{create_time}  <!-- 创建时间 -->
+		</if>
+	   <if test="create_by != null ">
+		      AND create_by = #{create_by}  <!-- 创建人ID -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="name != null and name != ''">
+		      AND name like '${name}%'  <!-- 角色名称 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable like '${is_enable}%'  <!-- 是否启用 -->
+		</if>
+	    <if test="type != null and type != ''">
+		      AND type like '${type}%'  <!-- 角色类型 -->
+		</if>
+	    <if test="biz_code != null and biz_code != ''">
+		      AND biz_code like '${biz_code}%'  <!-- 扩展码 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark like '${remark}%'  <!-- 备注 -->
+		</if>
+	    <if test="create_time != null and create_time != ''">
+		      AND create_time like '${create_time}%'  <!-- 创建时间 -->
+		</if>
+	</sql>
+	
+</mapper>

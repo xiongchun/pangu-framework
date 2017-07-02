@@ -1,0 +1,19 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+##Panel定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/panelTagSupport.vm")
+	app: 169
+};
+
+##Panel实例化
+var ${id} = Ext.create('Ext.panel.Panel',${id}_cfg);
+##注册Items子组件
+#parse("${vmpath}ext/subvm/items.vm")
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##处理Border
+#parse("${vmpath}ext/subvm/borders.vm")
+

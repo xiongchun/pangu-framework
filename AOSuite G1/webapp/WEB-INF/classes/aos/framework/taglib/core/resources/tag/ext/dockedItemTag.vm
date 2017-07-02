@@ -1,0 +1,7 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+##BarItem定义
+var ${id} = {
+#parse("${vmpath}ext/common/buttonTagSupport.vm")
+    app:169	
+};

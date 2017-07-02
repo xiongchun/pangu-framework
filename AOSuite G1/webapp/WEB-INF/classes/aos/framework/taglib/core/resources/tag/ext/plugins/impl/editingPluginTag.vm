@@ -1,0 +1,36 @@
+##标签实现将单元格编辑器和行编辑合并到了一起
+{
+##官方插件才会有ptype
+	    ptype : '$ptype',
+		##id: '$id',
+		##插件是通过pluginId来操作的。
+		pluginId: '$id',
+	#if($clicksToEdit)
+        clicksToEdit: $clicksToEdit,
+	#end
+	#if($autoCancel)
+        autoCancel: $autoCancel,
+	#end
+	listeners:{
+        #if($onbeforeedit)
+            beforeedit: $onbeforeedit,
+		#end
+		#if($oncanceledit)
+            canceledit: $oncanceledit,
+		#end
+		#if($onedit)
+            edit: $onedit,
+		#end
+		#if($onvalidateedit)
+            validateedit: $onvalidateedit,
+    	#end
+	},
+	#if($ptype == 'rowediting')
+	    ##汉化
+	    saveBtnText:'保存',
+	    cancelBtnText: '取消',  
+        errorsText: '提示',  
+        dirtyText: '数据已修改，请先保存或取消。',
+     #end
+		app: 169
+}

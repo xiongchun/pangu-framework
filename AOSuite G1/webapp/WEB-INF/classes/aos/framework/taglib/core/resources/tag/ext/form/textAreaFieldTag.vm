@@ -1,0 +1,26 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##TextAreaField定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formItemTagSupport.vm")
+#if($maxLength)
+    maxLength:$maxLength,
+#end
+#if($minLength)
+    minLength:$minLength,
+#end
+#if($grow)
+    grow:$grow,
+#end
+    plugins: ['clearbutton'],
+    app:169
+};
+##TextAreaField实例化
+var ${id} = Ext.create('Ext.form.field.TextArea',${id}_cfg);
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##表单元素组件实例后设置
+#parse("${vmpath}ext/subvm/afterFormFieldCreated.vm")

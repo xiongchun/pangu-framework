@@ -1,0 +1,10 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##HiddenField定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formItemTagSupport.vm")
+    app:169	
+};
+##HiddenField实例化
+var ${id} = Ext.create('Ext.form.field.Hidden',${id}_cfg);

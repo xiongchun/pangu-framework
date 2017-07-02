@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_module[aos_module]SQL自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-23 17:54:25 -->
+<mapper namespace="aos.system.dao.AosModuleDao">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="AosModulePO">
+		INSERT INTO aos_module (
+		<if test="cascade_id != null and cascade_id != ''">
+	         cascade_id, <!-- 节点语义ID -->
+		</if>
+		<if test="parent_id != null">
+	         parent_id, <!-- 父节点流水号 -->
+		</if>
+		<if test="name != null and name != ''">
+	         name, <!-- 功能模块名称 -->
+		</if>
+		<if test="url != null and url != ''">
+	         url, <!-- 主页面URL -->
+		</if>
+		<if test="icon_name != null and icon_name != ''">
+	         icon_name, <!-- 节点图标文件名称 -->
+		</if>
+		<if test="is_leaf != null and is_leaf != ''">
+	         is_leaf, <!-- 是否叶子节点 -->
+		</if>
+		<if test="is_auto_expand != null and is_auto_expand != ''">
+	         is_auto_expand, <!-- 是否自动展开 -->
+		</if>
+		<if test="is_enable != null and is_enable != ''">
+	         is_enable, <!-- 是否启用 -->
+		</if>
+		<if test="vector != null and vector != ''">
+	         vector, <!-- 矢量图标 -->
+		</if>
+		<if test="sort_no != null">
+	         sort_no, <!-- 排序号 -->
+		</if>
+		<if test="id != null">
+	          id  <!-- 功能模块流水号 -->
+	   </if>
+		)VALUES(
+		<if test="cascade_id != null and cascade_id != ''">
+	          #{cascade_id, jdbcType=VARCHAR}, <!-- 节点语义ID -->
+	    </if>
+		<if test="parent_id != null">
+	          #{parent_id, jdbcType=INTEGER}, <!-- 父节点流水号 -->
+	    </if>
+		<if test="name != null and name != ''">
+	          #{name, jdbcType=VARCHAR}, <!-- 功能模块名称 -->
+	    </if>
+		<if test="url != null and url != ''">
+	          #{url, jdbcType=VARCHAR}, <!-- 主页面URL -->
+	    </if>
+		<if test="icon_name != null and icon_name != ''">
+	          #{icon_name, jdbcType=VARCHAR}, <!-- 节点图标文件名称 -->
+	    </if>
+		<if test="is_leaf != null and is_leaf != ''">
+	          #{is_leaf, jdbcType=VARCHAR}, <!-- 是否叶子节点 -->
+	    </if>
+		<if test="is_auto_expand != null and is_auto_expand != ''">
+	          #{is_auto_expand, jdbcType=VARCHAR}, <!-- 是否自动展开 -->
+	    </if>
+		<if test="is_enable != null and is_enable != ''">
+	          #{is_enable, jdbcType=VARCHAR}, <!-- 是否启用 -->
+	    </if>
+		<if test="vector != null and vector != ''">
+	          #{vector, jdbcType=VARCHAR}, <!-- 矢量图标 -->
+	    </if>
+		<if test="sort_no != null">
+	          #{sort_no, jdbcType=INTEGER}, <!-- 排序号 -->
+	    </if>
+		<if test="id != null">
+		     #{id, jdbcType=INTEGER}  <!-- 功能模块流水号 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="AosModulePO">
+		INSERT INTO aos_module (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id, jdbcType=INTEGER},  <!-- 功能模块流水号 -->
+		    #{cascade_id, jdbcType=VARCHAR},  <!-- 节点语义ID -->
+		    #{parent_id, jdbcType=INTEGER},  <!-- 父节点流水号 -->
+		    #{name, jdbcType=VARCHAR},  <!-- 功能模块名称 -->
+		    #{url, jdbcType=VARCHAR},  <!-- 主页面URL -->
+		    #{icon_name, jdbcType=VARCHAR},  <!-- 节点图标文件名称 -->
+		    #{is_leaf, jdbcType=VARCHAR},  <!-- 是否叶子节点 -->
+		    #{is_auto_expand, jdbcType=VARCHAR},  <!-- 是否自动展开 -->
+		    #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+		    #{vector, jdbcType=VARCHAR},  <!-- 矢量图标 -->
+		    #{sort_no, jdbcType=INTEGER}  <!-- 排序号 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="AosModulePO">
+		UPDATE aos_module
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 功能模块流水号 -->
+			</if>
+			<if test="cascade_id != null">
+		          cascade_id = #{cascade_id, jdbcType=VARCHAR},  <!-- 节点语义ID -->
+			</if>
+			<if test="parent_id != null">
+		          parent_id = #{parent_id, jdbcType=INTEGER},  <!-- 父节点流水号 -->
+			</if>
+			<if test="name != null">
+		          name = #{name, jdbcType=VARCHAR},  <!-- 功能模块名称 -->
+			</if>
+			<if test="url != null">
+		          url = #{url, jdbcType=VARCHAR},  <!-- 主页面URL -->
+			</if>
+			<if test="icon_name != null">
+		          icon_name = #{icon_name, jdbcType=VARCHAR},  <!-- 节点图标文件名称 -->
+			</if>
+			<if test="is_leaf != null">
+		          is_leaf = #{is_leaf, jdbcType=VARCHAR},  <!-- 是否叶子节点 -->
+			</if>
+			<if test="is_auto_expand != null">
+		          is_auto_expand = #{is_auto_expand, jdbcType=VARCHAR},  <!-- 是否自动展开 -->
+			</if>
+			<if test="is_enable != null">
+		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+			</if>
+			<if test="vector != null">
+		          vector = #{vector, jdbcType=VARCHAR},  <!-- 矢量图标 -->
+			</if>
+			<if test="sort_no != null">
+		          sort_no = #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+			</if>
+		</set>
+		WHERE  id = #{id}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_module WHERE  id = #{id}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="AosModulePO">
+		SELECT
+		<include refid="column" />
+		FROM aos_module WHERE  id = #{id}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="AosModulePO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_module
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="AosModulePO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_module
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="AosModulePO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_module
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="AosModulePO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_module
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="AosModulePO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_module
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_module
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_module
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id,  <!-- 功能模块流水号 -->
+		  cascade_id,  <!-- 节点语义ID -->
+		  parent_id,  <!-- 父节点流水号 -->
+		  name,  <!-- 功能模块名称 -->
+		  url,  <!-- 主页面URL -->
+		  icon_name,  <!-- 节点图标文件名称 -->
+		  is_leaf,  <!-- 是否叶子节点 -->
+		  is_auto_expand,  <!-- 是否自动展开 -->
+		  is_enable,  <!-- 是否启用 -->
+		  vector,  <!-- 矢量图标 -->
+		  sort_no  <!-- 排序号 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_module.id,  <!-- 功能模块流水号 -->
+		  aos_module.cascade_id,  <!-- 节点语义ID -->
+		  aos_module.parent_id,  <!-- 父节点流水号 -->
+		  aos_module.name,  <!-- 功能模块名称 -->
+		  aos_module.url,  <!-- 主页面URL -->
+		  aos_module.icon_name,  <!-- 节点图标文件名称 -->
+		  aos_module.is_leaf,  <!-- 是否叶子节点 -->
+		  aos_module.is_auto_expand,  <!-- 是否自动展开 -->
+		  aos_module.is_enable,  <!-- 是否启用 -->
+		  aos_module.vector,  <!-- 矢量图标 -->
+		  aos_module.sort_no  <!-- 排序号 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 功能模块流水号 -->
+		</if>
+	    <if test="cascade_id != null and cascade_id != ''">
+		      AND cascade_id = #{cascade_id}  <!-- 节点语义ID -->
+		</if>
+	   <if test="parent_id != null ">
+		      AND parent_id = #{parent_id}  <!-- 父节点流水号 -->
+		</if>
+	    <if test="name != null and name != ''">
+		      AND name = #{name}  <!-- 功能模块名称 -->
+		</if>
+	    <if test="url != null and url != ''">
+		      AND url = #{url}  <!-- 主页面URL -->
+		</if>
+	    <if test="icon_name != null and icon_name != ''">
+		      AND icon_name = #{icon_name}  <!-- 节点图标文件名称 -->
+		</if>
+	    <if test="is_leaf != null and is_leaf != ''">
+		      AND is_leaf = #{is_leaf}  <!-- 是否叶子节点 -->
+		</if>
+	    <if test="is_auto_expand != null and is_auto_expand != ''">
+		      AND is_auto_expand = #{is_auto_expand}  <!-- 是否自动展开 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable = #{is_enable}  <!-- 是否启用 -->
+		</if>
+	    <if test="vector != null and vector != ''">
+		      AND vector = #{vector}  <!-- 矢量图标 -->
+		</if>
+	   <if test="sort_no != null ">
+		      AND sort_no = #{sort_no}  <!-- 排序号 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="cascade_id != null and cascade_id != ''">
+		      AND cascade_id like '${cascade_id}%'  <!-- 节点语义ID -->
+		</if>
+	    <if test="name != null and name != ''">
+		      AND name like '${name}%'  <!-- 功能模块名称 -->
+		</if>
+	    <if test="url != null and url != ''">
+		      AND url like '${url}%'  <!-- 主页面URL -->
+		</if>
+	    <if test="icon_name != null and icon_name != ''">
+		      AND icon_name like '${icon_name}%'  <!-- 节点图标文件名称 -->
+		</if>
+	    <if test="is_leaf != null and is_leaf != ''">
+		      AND is_leaf like '${is_leaf}%'  <!-- 是否叶子节点 -->
+		</if>
+	    <if test="is_auto_expand != null and is_auto_expand != ''">
+		      AND is_auto_expand like '${is_auto_expand}%'  <!-- 是否自动展开 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable like '${is_enable}%'  <!-- 是否启用 -->
+		</if>
+	    <if test="vector != null and vector != ''">
+		      AND vector like '${vector}%'  <!-- 矢量图标 -->
+		</if>
+	</sql>
+	
+</mapper>

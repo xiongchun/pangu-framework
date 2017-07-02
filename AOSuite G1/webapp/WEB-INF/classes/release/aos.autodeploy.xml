@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 远程自动部署脚本 -->
+<!-- 提示：该脚本可以实现自动部署到远程主机 -->
+<project name="AOSuite" basedir="../../../">
+     
+</project>

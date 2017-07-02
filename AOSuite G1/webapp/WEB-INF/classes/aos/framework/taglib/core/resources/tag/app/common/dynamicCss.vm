@@ -1,0 +1,7 @@
+## 动态CSS文件
+<style type="text/css">
+##滑动通知所需
+.ux-notification-light {
+  background-image: url('$cxt/static/image/notification/${skin}.png');
+}
+</style>

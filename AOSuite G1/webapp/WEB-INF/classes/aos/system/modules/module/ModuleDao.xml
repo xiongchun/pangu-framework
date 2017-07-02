@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 资源管理模块使用的SQL语句 -->
+<mapper namespace="Module">
+
+	<!-- 查询资源模块列表 -->
+	<select id="listModulesPage" resultType="Dto" parameterType="Dto">
+			SELECT
+            <include refid="aos.system.dao.AosModuleDao.column" />
+            FROM aos_module
+			<where>
+			    <if test="name != null and name != ''">
+				    AND name LIKE '%${name}%' 
+				</if>
+			    <if test="cascade == 'false'">
+				    AND parent_id = #{id, jdbcType=INTEGER}
+				</if>
+				<if test="cascade == 'true'">
+				    AND cascade_id like '${cascade_id}%'
+				</if>
+			</where>	
+			 ORDER BY sort_no ASC, id DESC
+	</select>
+	
+	<!-- 查询某节点下子节点的最大语义ID -->
+	<select id="getMaxCascadeId" resultType="String" parameterType="String">
+	     SELECT MAX(cascade_id) AS max_cascade_id FROM aos_module WHERE parent_id = #{parent_id}
+	</select>
+	
+	<!-- 检查删除节点中是否包含根节点 -->
+	<select id="checkRootNode" resultType="AosModulePO" parameterType="Dto">
+	     SELECT 
+	         <include refid="aos.system.dao.AosModuleDao.column" />
+	      FROM aos_module WHERE id IN (${ids}) AND parent_id = '0'
+	</select>
+	
+	<!-- 查询和指定模块相关的用户列表 -->
+	<select id="listUsersDependOnModule" resultType="String" parameterType="Dto">
+		SELECT DISTINCT user_id FROM aos_user_role where role_id IN (
+		SELECT DISTINCT role_id from aos_role_module where module_id = #{module_id})
+	</select>
+
+</mapper>
