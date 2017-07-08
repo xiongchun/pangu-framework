@@ -1,0 +1,794 @@
+2017-07-08 14:07:46 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.aosuite.showcase.DemoTests], using SpringBootContextLoader 
+2017-07-08 14:07:46 INFO [Class:o.s.t.c.s.AbstractContextLoader->Thread:main] Could not detect default resource locations for test class [com.aosuite.showcase.DemoTests]: no resource found for suffixes {-context.xml, Context.groovy}. 
+2017-07-08 14:07:46 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] 
+2017-07-08 14:07:46 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute] 
+2017-07-08 14:07:46 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext] 
+2017-07-08 14:07:46 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource] 
+2017-07-08 14:07:46 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@9353778, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6a28ffa4, org.springframework.test.context.support.DirtiesContextTestExecutionListener@48ae9b55, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1700915, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@21de60b4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@c267ef4, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@30ee2816, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@31d7b7bf, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@635eaaf1] 
+2017-07-08 14:07:47 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 7840 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:07:47 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 14:07:47 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@5f16132a: startup date [Sat Jul 08 14:07:47 CST 2017]; root of context hierarchy 
+2017-07-08 14:07:47 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:07:47 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:07:47 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 7840 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:07:47 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 14:07:47 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@1cf56a1c: startup date [Sat Jul 08 14:07:47 CST 2017]; root of context hierarchy 
+2017-07-08 14:07:47 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:07:47 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:07:47 ERROR [Class:o.s.t.c.TestContextManager->Thread:main] Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6a28ffa4] to prepare test instance [com.aosuite.showcase.DemoTests@51bf5add] 
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:125)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:104)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:47)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:242)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:226)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:245)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:189)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:565)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:89)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:354)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:579)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:305)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:233)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:303)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:747)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:138)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:117)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1478)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1089)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1050)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:562)
+	... 42 common frames omitted
+2017-07-08 14:08:16 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting Application on XIONGCHUN with PID 15280 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:08:16 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 14:08:16 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@16448c6a: startup date [Sat Jul 08 14:08:16 CST 2017]; root of context hierarchy 
+2017-07-08 14:08:17 INFO [Class:o.s.b.d.a.OptionalLiveReloadServer->Thread:restartedMain] LiveReload server is running on port 35729 
+2017-07-08 14:08:17 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Registering beans for JMX exposure on startup 
+2017-07-08 14:08:17 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Started Application in 1.597 seconds (JVM running for 2.451) 
+2017-07-08 14:08:17 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:Thread-8] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@16448c6a: startup date [Sat Jul 08 14:08:16 CST 2017]; root of context hierarchy 
+2017-07-08 14:08:17 INFO [Class:o.s.j.e.MBeanExporter->Thread:Thread-8] Unregistering JMX-exposed beans on shutdown 
+2017-07-08 14:08:58 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.aosuite.showcase.DemoTests], using SpringBootContextLoader 
+2017-07-08 14:08:58 INFO [Class:o.s.t.c.s.AbstractContextLoader->Thread:main] Could not detect default resource locations for test class [com.aosuite.showcase.DemoTests]: no resource found for suffixes {-context.xml, Context.groovy}. 
+2017-07-08 14:08:59 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] 
+2017-07-08 14:08:59 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext] 
+2017-07-08 14:08:59 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource] 
+2017-07-08 14:08:59 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute] 
+2017-07-08 14:08:59 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@30ee2816, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@31d7b7bf, org.springframework.test.context.support.DirtiesContextTestExecutionListener@635eaaf1, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5c30a9b0, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1ddf84b8, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1139b2f3, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7a69b07, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5e82df6a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3f197a46] 
+2017-07-08 14:08:59 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 18420 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:08:59 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 14:08:59 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@3c947bc5: startup date [Sat Jul 08 14:08:59 CST 2017]; root of context hierarchy 
+2017-07-08 14:08:59 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:08:59 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:08:59 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 18420 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:08:59 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 14:08:59 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2e570ded: startup date [Sat Jul 08 14:08:59 CST 2017]; root of context hierarchy 
+2017-07-08 14:08:59 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:08:59 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:08:59 ERROR [Class:o.s.t.c.TestContextManager->Thread:main] Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@31d7b7bf] to prepare test instance [com.aosuite.showcase.DemoTests@6ca18a14] 
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:125)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:104)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:47)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:242)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:226)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:245)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:189)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:565)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:89)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:354)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:579)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:305)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:233)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:303)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:747)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:138)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:117)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1478)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1089)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1050)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:562)
+	... 42 common frames omitted
+2017-07-08 14:10:06 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.aosuite.showcase.DemoTests], using SpringBootContextLoader 
+2017-07-08 14:10:06 INFO [Class:o.s.t.c.s.AbstractContextLoader->Thread:main] Could not detect default resource locations for test class [com.aosuite.showcase.DemoTests]: no resource found for suffixes {-context.xml, Context.groovy}. 
+2017-07-08 14:10:07 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] 
+2017-07-08 14:10:07 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute] 
+2017-07-08 14:10:07 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext] 
+2017-07-08 14:10:07 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource] 
+2017-07-08 14:10:07 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4b7dc788, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6304101a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5170bcf4, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2812b107, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@df6620a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4e31276e, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1a72a540, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@27d5a580, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@198d6542] 
+2017-07-08 14:10:07 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 17420 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:10:07 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 14:10:07 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@362045c0: startup date [Sat Jul 08 14:10:07 CST 2017]; root of context hierarchy 
+2017-07-08 14:10:07 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:10:07 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:10:07 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 17420 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:10:07 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 14:10:07 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6de54b40: startup date [Sat Jul 08 14:10:07 CST 2017]; root of context hierarchy 
+2017-07-08 14:10:07 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:10:07 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:10:07 ERROR [Class:o.s.t.c.TestContextManager->Thread:main] Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6304101a] to prepare test instance [com.aosuite.showcase.DemoTests@2755d705] 
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:125)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:104)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:47)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:242)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:226)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:245)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:189)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:565)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:89)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:354)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:579)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:305)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:233)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:303)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:747)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:138)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:117)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1478)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1089)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1050)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:562)
+	... 42 common frames omitted
+2017-07-08 14:11:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.aosuite.showcase.DemoTests], using SpringBootContextLoader 
+2017-07-08 14:11:48 INFO [Class:o.s.t.c.s.AbstractContextLoader->Thread:main] Could not detect default resource locations for test class [com.aosuite.showcase.DemoTests]: no resource found for suffixes {-context.xml, Context.groovy}. 
+2017-07-08 14:11:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] 
+2017-07-08 14:11:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext] 
+2017-07-08 14:11:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource] 
+2017-07-08 14:11:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute] 
+2017-07-08 14:11:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@30ee2816, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@31d7b7bf, org.springframework.test.context.support.DirtiesContextTestExecutionListener@635eaaf1, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5c30a9b0, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1ddf84b8, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1139b2f3, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7a69b07, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5e82df6a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3f197a46] 
+2017-07-08 14:11:48 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 19212 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:11:48 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 14:11:49 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@3c947bc5: startup date [Sat Jul 08 14:11:49 CST 2017]; root of context hierarchy 
+2017-07-08 14:11:49 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:11:49 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:11:49 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 19212 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:11:49 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 14:11:49 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2e570ded: startup date [Sat Jul 08 14:11:49 CST 2017]; root of context hierarchy 
+2017-07-08 14:11:49 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:11:49 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:11:49 ERROR [Class:o.s.t.c.TestContextManager->Thread:main] Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@31d7b7bf] to prepare test instance [com.aosuite.showcase.DemoTests@6ca18a14] 
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:125)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:104)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:47)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:242)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:226)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:245)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:189)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:565)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:89)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:354)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:579)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:305)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:233)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:303)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:747)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:138)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:117)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1478)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1089)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1050)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:562)
+	... 42 common frames omitted
+2017-07-08 14:13:03 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.aosuite.showcase.DemoTests], using SpringBootContextLoader 
+2017-07-08 14:13:03 INFO [Class:o.s.t.c.s.AbstractContextLoader->Thread:main] Could not detect default resource locations for test class [com.aosuite.showcase.DemoTests]: no resource found for suffixes {-context.xml, Context.groovy}. 
+2017-07-08 14:13:04 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] 
+2017-07-08 14:13:04 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext] 
+2017-07-08 14:13:04 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource] 
+2017-07-08 14:13:04 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute] 
+2017-07-08 14:13:04 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@30ee2816, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@31d7b7bf, org.springframework.test.context.support.DirtiesContextTestExecutionListener@635eaaf1, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5c30a9b0, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1ddf84b8, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1139b2f3, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7a69b07, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5e82df6a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3f197a46] 
+2017-07-08 14:13:04 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 14516 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:13:04 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 14:13:04 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@3c947bc5: startup date [Sat Jul 08 14:13:04 CST 2017]; root of context hierarchy 
+2017-07-08 14:13:04 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:13:04 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:13:04 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 14516 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:13:04 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 14:13:04 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2e570ded: startup date [Sat Jul 08 14:13:04 CST 2017]; root of context hierarchy 
+2017-07-08 14:13:04 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:13:04 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:13:04 ERROR [Class:o.s.t.c.TestContextManager->Thread:main] Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@31d7b7bf] to prepare test instance [com.aosuite.showcase.DemoTests@6ca18a14] 
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:125)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:104)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:47)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:242)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:226)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:245)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:189)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:565)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:89)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:354)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:579)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:305)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:233)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:303)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:747)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:138)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:117)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1478)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1089)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1050)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:562)
+	... 42 common frames omitted
+2017-07-08 14:16:02 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting Application on XIONGCHUN with PID 15308 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:16:02 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 14:16:02 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@16daf9a3: startup date [Sat Jul 08 14:16:02 CST 2017]; root of context hierarchy 
+2017-07-08 14:16:03 INFO [Class:o.s.b.d.a.OptionalLiveReloadServer->Thread:restartedMain] LiveReload server is running on port 35729 
+2017-07-08 14:16:03 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Registering beans for JMX exposure on startup 
+2017-07-08 14:16:03 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Started Application in 1.411 seconds (JVM running for 2.138) 
+2017-07-08 14:16:03 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:Thread-8] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@16daf9a3: startup date [Sat Jul 08 14:16:02 CST 2017]; root of context hierarchy 
+2017-07-08 14:16:03 INFO [Class:o.s.j.e.MBeanExporter->Thread:Thread-8] Unregistering JMX-exposed beans on shutdown 
+2017-07-08 14:24:48 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests2 on XIONGCHUN with PID 17344 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:24:48 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 14:24:48 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@79faa67c: startup date [Sat Jul 08 14:24:48 CST 2017]; root of context hierarchy 
+2017-07-08 14:24:49 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests2': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:24:49 INFO [Class:o.s.b.a.l.AutoConfigurationReportLoggingInitializer->Thread:restartedMain] 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled. 
+2017-07-08 14:24:50 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:restartedMain] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests2 required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:26:00 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests2 on XIONGCHUN with PID 18352 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:26:00 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 14:26:00 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@79faa67c: startup date [Sat Jul 08 14:26:00 CST 2017]; root of context hierarchy 
+2017-07-08 14:26:01 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests2': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:26:01 INFO [Class:o.s.b.a.l.AutoConfigurationReportLoggingInitializer->Thread:restartedMain] 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled. 
+2017-07-08 14:26:01 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:restartedMain] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests2 required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:29:04 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests2 on XIONGCHUN with PID 16156 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:29:04 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 14:29:04 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@1bdc846e: startup date [Sat Jul 08 14:29:04 CST 2017]; root of context hierarchy 
+2017-07-08 14:29:05 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests2': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 14:29:05 INFO [Class:o.s.b.a.l.AutoConfigurationReportLoggingInitializer->Thread:restartedMain] 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled. 
+2017-07-08 14:29:05 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:restartedMain] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests2 required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 14:29:48 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests2 on XIONGCHUN with PID 12100 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:29:48 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 14:29:48 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@18847533: startup date [Sat Jul 08 14:29:48 CST 2017]; root of context hierarchy 
+2017-07-08 14:29:49 INFO [Class:o.s.b.d.a.OptionalLiveReloadServer->Thread:restartedMain] LiveReload server is running on port 35729 
+2017-07-08 14:29:49 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Registering beans for JMX exposure on startup 
+2017-07-08 14:29:49 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Started DemoTests2 in 1.898 seconds (JVM running for 2.774) 
+2017-07-08 14:29:49 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@18847533: startup date [Sat Jul 08 14:29:48 CST 2017]; root of context hierarchy 
+2017-07-08 14:29:49 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Unregistering JMX-exposed beans on shutdown 
+2017-07-08 14:30:51 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests2 on XIONGCHUN with PID 12700 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:30:51 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 14:30:51 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@439c061: startup date [Sat Jul 08 14:30:51 CST 2017]; root of context hierarchy 
+2017-07-08 14:30:52 INFO [Class:o.s.b.d.a.OptionalLiveReloadServer->Thread:restartedMain] LiveReload server is running on port 35729 
+2017-07-08 14:30:52 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Registering beans for JMX exposure on startup 
+2017-07-08 14:30:52 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Started DemoTests2 in 1.874 seconds (JVM running for 2.757) 
+2017-07-08 14:30:52 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@439c061: startup date [Sat Jul 08 14:30:51 CST 2017]; root of context hierarchy 
+2017-07-08 14:30:52 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Unregistering JMX-exposed beans on shutdown 
+2017-07-08 14:32:12 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests2 on XIONGCHUN with PID 18236 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:32:12 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 14:32:12 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@1bdc846e: startup date [Sat Jul 08 14:32:12 CST 2017]; root of context hierarchy 
+2017-07-08 14:32:13 INFO [Class:o.s.b.d.a.OptionalLiveReloadServer->Thread:restartedMain] LiveReload server is running on port 35729 
+2017-07-08 14:32:13 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Registering beans for JMX exposure on startup 
+2017-07-08 14:32:13 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Started DemoTests2 in 1.481 seconds (JVM running for 2.233) 
+2017-07-08 14:32:13 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:Thread-9] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@1bdc846e: startup date [Sat Jul 08 14:32:12 CST 2017]; root of context hierarchy 
+2017-07-08 14:32:13 INFO [Class:o.s.j.e.MBeanExporter->Thread:Thread-9] Unregistering JMX-exposed beans on shutdown 
+2017-07-08 14:32:47 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests2 on XIONGCHUN with PID 17764 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 14:32:47 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 14:32:47 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@439c061: startup date [Sat Jul 08 14:32:47 CST 2017]; root of context hierarchy 
+2017-07-08 14:32:48 INFO [Class:o.s.b.d.a.OptionalLiveReloadServer->Thread:restartedMain] LiveReload server is running on port 35729 
+2017-07-08 14:32:48 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Registering beans for JMX exposure on startup 
+2017-07-08 14:32:48 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Started DemoTests2 in 1.589 seconds (JVM running for 2.43) 
+2017-07-08 14:32:48 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@439c061: startup date [Sat Jul 08 14:32:47 CST 2017]; root of context hierarchy 
+2017-07-08 14:32:48 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Unregistering JMX-exposed beans on shutdown 
+2017-07-08 16:54:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.aosuite.showcase.DemoTests], using SpringBootContextLoader 
+2017-07-08 16:54:48 INFO [Class:o.s.t.c.s.AbstractContextLoader->Thread:main] Could not detect default resource locations for test class [com.aosuite.showcase.DemoTests]: no resource found for suffixes {-context.xml, Context.groovy}. 
+2017-07-08 16:54:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] 
+2017-07-08 16:54:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute] 
+2017-07-08 16:54:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext] 
+2017-07-08 16:54:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource] 
+2017-07-08 16:54:48 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@9353778, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6a28ffa4, org.springframework.test.context.support.DirtiesContextTestExecutionListener@48ae9b55, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1700915, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@21de60b4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@c267ef4, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@30ee2816, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@31d7b7bf, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@635eaaf1] 
+2017-07-08 16:54:49 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 17760 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 16:54:49 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 16:54:49 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@5f16132a: startup date [Sat Jul 08 16:54:49 CST 2017]; root of context hierarchy 
+2017-07-08 16:54:49 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 16:54:49 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 16:54:49 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 17760 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 16:54:49 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 16:54:49 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@1cf56a1c: startup date [Sat Jul 08 16:54:49 CST 2017]; root of context hierarchy 
+2017-07-08 16:54:49 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 16:54:49 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.DemoTests required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 16:54:49 ERROR [Class:o.s.t.c.TestContextManager->Thread:main] Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6a28ffa4] to prepare test instance [com.aosuite.showcase.DemoTests@51bf5add] 
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:125)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:104)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:47)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:242)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:226)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:245)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:189)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:565)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:89)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:354)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:579)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:305)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:233)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:303)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:747)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:138)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:117)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1478)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1089)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1050)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:562)
+	... 42 common frames omitted
+2017-07-08 16:55:12 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests2 on XIONGCHUN with PID 19528 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 16:55:12 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 16:55:13 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@439c061: startup date [Sat Jul 08 16:55:13 CST 2017]; root of context hierarchy 
+2017-07-08 16:55:13 INFO [Class:o.s.b.d.a.OptionalLiveReloadServer->Thread:restartedMain] LiveReload server is running on port 35729 
+2017-07-08 16:55:14 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Registering beans for JMX exposure on startup 
+2017-07-08 16:55:14 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Started DemoTests2 in 1.48 seconds (JVM running for 2.193) 
+2017-07-08 16:55:14 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@439c061: startup date [Sat Jul 08 16:55:13 CST 2017]; root of context hierarchy 
+2017-07-08 16:55:14 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Unregistering JMX-exposed beans on shutdown 
+2017-07-08 16:56:07 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests21 on XIONGCHUN with PID 15188 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 16:56:07 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 16:56:07 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@79faa67c: startup date [Sat Jul 08 16:56:07 CST 2017]; root of context hierarchy 
+2017-07-08 16:56:08 INFO [Class:o.s.b.d.a.OptionalLiveReloadServer->Thread:restartedMain] LiveReload server is running on port 35729 
+2017-07-08 16:56:08 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Registering beans for JMX exposure on startup 
+2017-07-08 16:56:08 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Started DemoTests21 in 1.667 seconds (JVM running for 2.43) 
+2017-07-08 16:56:08 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@79faa67c: startup date [Sat Jul 08 16:56:07 CST 2017]; root of context hierarchy 
+2017-07-08 16:56:08 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Unregistering JMX-exposed beans on shutdown 
+2017-07-08 16:56:43 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests21 on XIONGCHUN with PID 13260 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 16:56:43 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 16:56:43 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4f42eae3: startup date [Sat Jul 08 16:56:43 CST 2017]; root of context hierarchy 
+2017-07-08 16:56:44 WARN [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'demoTests21': Unsatisfied dependency expressed through field 'demoService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.aosuite.showcase.service.DemoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)} 
+2017-07-08 16:56:44 INFO [Class:o.s.b.a.l.AutoConfigurationReportLoggingInitializer->Thread:restartedMain] 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled. 
+2017-07-08 16:56:44 ERROR [Class:o.s.b.d.LoggingFailureAnalysisReporter->Thread:restartedMain] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field demoService in com.aosuite.showcase.test.DemoTests21 required a bean of type 'com.aosuite.showcase.service.DemoService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.aosuite.showcase.service.DemoService' in your configuration.
+ 
+2017-07-08 17:16:53 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests21 on XIONGCHUN with PID 3900 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 17:16:53 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 17:16:53 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@541e3aec: startup date [Sat Jul 08 17:16:53 CST 2017]; root of context hierarchy 
+2017-07-08 17:16:54 INFO [Class:o.s.b.d.a.OptionalLiveReloadServer->Thread:restartedMain] LiveReload server is running on port 35729 
+2017-07-08 17:16:54 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Registering beans for JMX exposure on startup 
+2017-07-08 17:16:54 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Started DemoTests21 in 1.662 seconds (JVM running for 2.489) 
+2017-07-08 17:16:54 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@541e3aec: startup date [Sat Jul 08 17:16:53 CST 2017]; root of context hierarchy 
+2017-07-08 17:16:54 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Unregistering JMX-exposed beans on shutdown 
+2017-07-08 17:17:43 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.aosuite.showcase.DemoTests], using SpringBootContextLoader 
+2017-07-08 17:17:43 INFO [Class:o.s.t.c.s.AbstractContextLoader->Thread:main] Could not detect default resource locations for test class [com.aosuite.showcase.DemoTests]: no resource found for suffixes {-context.xml, Context.groovy}. 
+2017-07-08 17:17:43 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] 
+2017-07-08 17:17:43 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext] 
+2017-07-08 17:17:43 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource] 
+2017-07-08 17:17:43 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute] 
+2017-07-08 17:17:43 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4ac3c60d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4facf68f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@76508ed1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@41e36e46, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@15c43bd9, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3d74bf60, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4f209819, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@15eb5ee5, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2145b572] 
+2017-07-08 17:17:44 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 10980 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 17:17:44 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 17:17:44 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@68e965f5: startup date [Sat Jul 08 17:17:44 CST 2017]; root of context hierarchy 
+2017-07-08 17:17:45 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Started DemoTests in 1.176 seconds (JVM running for 2.487) 
+2017-07-08 17:17:45 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:Thread-4] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@68e965f5: startup date [Sat Jul 08 17:17:44 CST 2017]; root of context hierarchy 
+2017-07-08 17:18:55 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.aosuite.showcase.DemoTests], using SpringBootContextLoader 
+2017-07-08 17:18:55 INFO [Class:o.s.t.c.s.AbstractContextLoader->Thread:main] Could not detect default resource locations for test class [com.aosuite.showcase.DemoTests]: no resource found for suffixes {-context.xml, Context.groovy}. 
+2017-07-08 17:18:55 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] 
+2017-07-08 17:18:55 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext] 
+2017-07-08 17:18:55 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource] 
+2017-07-08 17:18:55 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute] 
+2017-07-08 17:18:55 INFO [Class:o.s.t.c.s.AbstractTestContextBootstrapper->Thread:main] Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4ac3c60d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4facf68f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@76508ed1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@41e36e46, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@15c43bd9, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3d74bf60, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4f209819, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@15eb5ee5, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2145b572] 
+2017-07-08 17:18:55 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting DemoTests on XIONGCHUN with PID 19980 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 17:18:55 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-07-08 17:18:55 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@68e965f5: startup date [Sat Jul 08 17:18:55 CST 2017]; root of context hierarchy 
+2017-07-08 17:18:56 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Started DemoTests in 1.173 seconds (JVM running for 2.264) 
+2017-07-08 17:18:56 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:Thread-4] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@68e965f5: startup date [Sat Jul 08 17:18:55 CST 2017]; root of context hierarchy 
+2017-07-08 17:19:09 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting DemoTests21 on XIONGCHUN with PID 16780 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 17:19:09 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 17:19:09 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@229370be: startup date [Sat Jul 08 17:19:09 CST 2017]; root of context hierarchy 
+2017-07-08 17:19:10 INFO [Class:o.s.b.d.a.OptionalLiveReloadServer->Thread:restartedMain] LiveReload server is running on port 35729 
+2017-07-08 17:19:10 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Registering beans for JMX exposure on startup 
+2017-07-08 17:19:10 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Started DemoTests21 in 1.573 seconds (JVM running for 2.393) 
+2017-07-08 17:19:10 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@229370be: startup date [Sat Jul 08 17:19:09 CST 2017]; root of context hierarchy 
+2017-07-08 17:19:10 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Unregistering JMX-exposed beans on shutdown 
+2017-07-08 17:22:33 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Starting Application on XIONGCHUN with PID 20236 (started by lenovo in G:\01.AOSuite\01.SVN\AOSuite G2\showcase\a.springboot) 
+2017-07-08 17:22:33 INFO [Class:o.s.b.SpringApplication->Thread:restartedMain] No active profile set, falling back to default profiles: default 
+2017-07-08 17:22:33 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:restartedMain] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@53efc04e: startup date [Sat Jul 08 17:22:33 CST 2017]; root of context hierarchy 
+2017-07-08 17:22:34 INFO [Class:o.s.b.d.a.OptionalLiveReloadServer->Thread:restartedMain] LiveReload server is running on port 35729 
+2017-07-08 17:22:34 INFO [Class:o.s.j.e.MBeanExporter->Thread:restartedMain] Registering beans for JMX exposure on startup 
+2017-07-08 17:22:34 INFO [Class:o.s.b.StartupInfoLogger->Thread:restartedMain] Started Application in 1.615 seconds (JVM running for 2.611) 
+2017-07-08 17:22:34 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:Thread-8] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@53efc04e: startup date [Sat Jul 08 17:22:33 CST 2017]; root of context hierarchy 
+2017-07-08 17:22:34 INFO [Class:o.s.j.e.MBeanExporter->Thread:Thread-8] Unregistering JMX-exposed beans on shutdown 
