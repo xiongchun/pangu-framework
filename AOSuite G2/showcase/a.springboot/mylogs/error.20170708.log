@@ -1,0 +1,2 @@
+2017-07-08 23:59:27 WARN [Class:c.a.s.s.i.DemoServiceImpl->Thread:main] 日志测试，这是警告信息[WARN] 
+2017-07-08 23:59:27 ERROR [Class:c.a.s.s.i.DemoServiceImpl->Thread:main] 日志测试，这是出错信息[ERROR] 
