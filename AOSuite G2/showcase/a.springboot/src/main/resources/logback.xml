@@ -48,6 +48,6 @@
     </root>
     
     <!-- 可以指定多个 -->
-    <logger name="com.showcase" level="DEBUG" />
+    <logger name="com.aosuite" level="DEBUG" />
     
 </configuration>
