@@ -17,9 +17,22 @@ public class DemoTests {
 	@Autowired
 	private DemoService demoService;
 	
+	//测试Spring容器初始化是否成功
 	@Test
 	public void contextLoads() {
-		demoService.getSum(1);
+		
+	}
+	
+	//测试SpringBean注入功能
+	@Test
+	public void beanLoad() {
+		demoService.getSum(2);
+	}
+	
+	//测试Logback日志输出功能
+	@Test
+	public void logback() {
+		
 	}
 
 }
