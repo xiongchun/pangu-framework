@@ -32,7 +32,7 @@ public class DemoTests {
 	//测试Logback日志输出功能
 	@Test
 	public void logback() {
-		
+		demoService.log();
 	}
 
 }
