@@ -19,4 +19,9 @@ public interface DemoService {
      */
 	double getSum(int quantity);
 	
+	/**
+	 * 日志输出
+	 */
+	void log();
+	
 }
