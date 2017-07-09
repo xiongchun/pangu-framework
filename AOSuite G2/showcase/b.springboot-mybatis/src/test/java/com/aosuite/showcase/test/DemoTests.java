@@ -17,10 +17,14 @@ public class DemoTests {
 	@Autowired
 	private DemoService demoService;
 	
-	//测试Spring容器初始化是否成功
 	@Test
-	public void contextLoads() {
-		
+	public void getPetBasicInfoEntity() {
+		demoService.getPetBasicInfoEntity(1);
+	}
+	
+	@Test
+	public void getAvgPetAge() {
+		demoService.getAvgPetAge();
 	}
 
 }

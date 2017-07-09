@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  手工维护的SQL可以写在这里 -->
+<mapper namespace="DemoDao">
+
+	<!-- 统计宠物的平均年龄 -->
+	<select id="avgPetAge" resultType="Integer" >
+		SELECT avg(age) as avgAge FROM pet_basic_info
+	</select>
+	
+</mapper>

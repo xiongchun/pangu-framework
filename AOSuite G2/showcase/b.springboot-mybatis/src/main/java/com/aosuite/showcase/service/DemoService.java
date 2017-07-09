@@ -19,5 +19,12 @@ public interface DemoService {
 	 * @return
 	 */
 	 PetBasicInfoEntity getPetBasicInfoEntity(Integer id);
+	 
+	 /**
+	  * 统计宠物平均年龄
+	  * 
+	  * @return
+	  */
+	 Integer getAvgPetAge();
 	
 }

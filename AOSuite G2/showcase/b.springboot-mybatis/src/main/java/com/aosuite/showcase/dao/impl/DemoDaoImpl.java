@@ -19,8 +19,15 @@ public class DemoDaoImpl implements DemoDao {
 
 	@Override
 	public PetBasicInfoEntity getPetBasicInfoEntity(Integer id) {
-		
+		//调用代码生成根据自动生成的SQL
 		return petBasicInfoMapper.selectByKey(id);
+	}
+	
+	@Override
+	public Integer getAvgPetAge() {
+		//调用手工编写的自定义SQL
+		Integer avgAge = sqlSession.selectOne("DemoDao.avgPetAge");
+		return avgAge;
 	}
 
 }
