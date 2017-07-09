@@ -22,17 +22,5 @@ public class DemoTests {
 	public void contextLoads() {
 		
 	}
-	
-	//测试SpringBean注入功能
-	@Test
-	public void beanLoad() {
-		demoService.getSum(2);
-	}
-	
-	//测试Logback日志输出功能
-	@Test
-	public void logback() {
-		demoService.log();
-	}
 
 }

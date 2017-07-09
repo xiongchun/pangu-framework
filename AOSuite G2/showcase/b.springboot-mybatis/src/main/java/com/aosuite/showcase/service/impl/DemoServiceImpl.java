@@ -16,20 +16,5 @@ public class DemoServiceImpl implements DemoService{
 	@Autowired
 	private DemoDao demoDao;
 	
-	@Override
-	public double getSum(int quantity){
-		double price = demoDao.getPrice();
-		double sum = price * 2.5;
-		logger.info("总价：{}", sum);
-		return sum;
-	}
-
-	@Override
-	public void log() {
-		logger.debug("日志测试，这是{}","调试信息[DEBUG]");
-		logger.info("{}测试，这是{}","日志", "提示信息[INFO]");
-		logger.warn("日志测试，这是警告信息[WARN]");
-		logger.error("日志测试，这是出错信息[ERROR]");
-	}
 	
 }
