@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aosuite.showcase.dao.DemoDao;
+import com.aosuite.showcase.mapper.entity.PetBasicInfoEntity;
 import com.aosuite.showcase.service.DemoService;
 
 @Service
@@ -16,5 +17,7 @@ public class DemoServiceImpl implements DemoService{
 	@Autowired
 	private DemoDao demoDao;
 	
-	
+	public PetBasicInfoEntity getPetBasicInfoEntity(Integer id){
+		return demoDao.getPetBasicInfoEntity(id);
+	}
 }
