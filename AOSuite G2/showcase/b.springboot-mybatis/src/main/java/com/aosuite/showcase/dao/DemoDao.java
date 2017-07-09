@@ -1,5 +1,7 @@
 package com.aosuite.showcase.dao;
 
+import com.aosuite.showcase.mapper.entity.PetBasicInfoEntity;
+
 /**
  * 数据访问对象
  * 
@@ -7,11 +9,11 @@ package com.aosuite.showcase.dao;
  *
  */
 public interface DemoDao {
-
+	
 	/**
-	 * 获取单价
+	 * 查询宠物基本信息
 	 * 
 	 * @return
 	 */
-	 double getPrice();
+	 PetBasicInfoEntity getPetBasicInfoEntity(Integer id);
 }
