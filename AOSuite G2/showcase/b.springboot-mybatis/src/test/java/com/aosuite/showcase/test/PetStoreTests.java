@@ -7,24 +7,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.aosuite.showcase.service.DemoService;
+import com.aosuite.showcase.service.PetStoreService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=DemoTests.class)
+@SpringBootTest(classes=PetStoreTests.class)
 @ComponentScan(basePackages={"com.aosuite"}) 
-public class DemoTests {
+public class PetStoreTests {
 
 	@Autowired
-	private DemoService demoService;
+	private PetStoreService petStoreService;
 	
 	@Test
 	public void getPetBasicInfoEntity() {
-		demoService.getPetBasicInfoEntity(1);
+		petStoreService.getPetBasicInfoEntity(1);
 	}
 	
 	@Test
 	public void getAvgPetAge() {
-		demoService.getAvgPetAge();
+		petStoreService.getAvgPetAge();
 	}
 
 }

@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!--  手工维护的SQL可以写在这里 -->
-<mapper namespace="DemoDao">
+<mapper namespace="PetStore">
 
 	<!-- 统计宠物的平均年龄 -->
 	<select id="avgPetAge" resultType="Integer" >
