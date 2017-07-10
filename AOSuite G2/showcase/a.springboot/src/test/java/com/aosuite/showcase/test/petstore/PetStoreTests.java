@@ -10,9 +10,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.aosuite.showcase.petstore.service.PetStoreService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=DemoTests.class)
+@SpringBootTest(classes=PetStoreTests.class)
 @ComponentScan(basePackages={"com.aosuite"}) 
-public class DemoTests {
+public class PetStoreTests {
 
 	@Autowired
 	private PetStoreService petStoreService;
