@@ -1,4 +1,4 @@
-package com.aosuite.showcase;
+package com.aosuite.showcase.petstore;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.aosuite.showcase.service.PetStoreService;
+import com.aosuite.showcase.petstore.service.PetStoreService;
 
 /**
  * SpringBoot应用入口

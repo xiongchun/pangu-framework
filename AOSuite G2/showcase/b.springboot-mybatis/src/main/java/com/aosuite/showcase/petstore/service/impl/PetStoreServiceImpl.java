@@ -1,4 +1,4 @@
-package com.aosuite.showcase.service.impl;
+package com.aosuite.showcase.petstore.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.aosuite.showcase.dao.PetStoreDao;
-import com.aosuite.showcase.mapper.entity.PetBasicInfoEntity;
-import com.aosuite.showcase.service.PetStoreService;
+import com.aosuite.showcase.petstore.dao.PetStoreDao;
+import com.aosuite.showcase.petstore.mapper.entity.PetBasicInfoEntity;
+import com.aosuite.showcase.petstore.service.PetStoreService;
 
 @Service
 public class PetStoreServiceImpl implements PetStoreService{

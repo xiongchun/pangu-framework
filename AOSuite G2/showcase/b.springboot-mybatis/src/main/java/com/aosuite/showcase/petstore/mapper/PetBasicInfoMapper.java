@@ -1,8 +1,8 @@
-package com.aosuite.showcase.mapper;
+package com.aosuite.showcase.petstore.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.aosuite.showcase.mapper.entity.PetBasicInfoEntity;
+import com.aosuite.showcase.petstore.mapper.entity.PetBasicInfoEntity;
 
 /**
  * 宠物基本信息单表SQL映射接口

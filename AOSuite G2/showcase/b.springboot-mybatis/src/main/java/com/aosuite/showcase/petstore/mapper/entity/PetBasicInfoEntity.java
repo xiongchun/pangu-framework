@@ -1,4 +1,4 @@
-package com.aosuite.showcase.mapper.entity;
+package com.aosuite.showcase.petstore.mapper.entity;
 
 import java.io.Serializable;
 import java.util.Date;

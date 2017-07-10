@@ -1,17 +1,14 @@
-package com.aosuite.showcase.service;
+package com.aosuite.showcase.petstore.dao;
 
-import org.springframework.stereotype.Service;
-
-import com.aosuite.showcase.mapper.entity.PetBasicInfoEntity;
+import com.aosuite.showcase.petstore.mapper.entity.PetBasicInfoEntity;
 
 /**
- * 演示SpringBean注解功能
+ * 数据访问对象
  * 
  * @author xiongchun
  *
  */
-@Service
-public interface PetStoreService {
+public interface PetStoreDao {
 	
 	/**
 	 * 查询宠物基本信息
@@ -26,5 +23,4 @@ public interface PetStoreService {
 	  * @return
 	  */
 	 Integer getAvgPetAge();
-	
 }
