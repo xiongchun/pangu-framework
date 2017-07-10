@@ -1,4 +1,4 @@
-package com.aosuite.showcase.service;
+package com.aosuite.showcase.petstore.service;
 
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public interface DemoService {
+public interface PetStoreService {
 
     /**
      * 计算应付金额

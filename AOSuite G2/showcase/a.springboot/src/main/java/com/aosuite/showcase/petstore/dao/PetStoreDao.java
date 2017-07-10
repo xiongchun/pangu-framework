@@ -1,4 +1,4 @@
-package com.aosuite.showcase.dao;
+package com.aosuite.showcase.petstore.dao;
 
 /**
  * 数据访问对象
@@ -6,7 +6,7 @@ package com.aosuite.showcase.dao;
  * @author xiongchun
  *
  */
-public interface DemoDao {
+public interface PetStoreDao {
 
 	/**
 	 * 获取单价

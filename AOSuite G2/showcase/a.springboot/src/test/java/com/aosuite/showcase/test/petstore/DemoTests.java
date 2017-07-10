@@ -1,4 +1,4 @@
-package com.aosuite.showcase.test;
+package com.aosuite.showcase.test.petstore;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.aosuite.showcase.service.DemoService;
+import com.aosuite.showcase.petstore.service.PetStoreService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=DemoTests.class)
@@ -15,7 +15,7 @@ import com.aosuite.showcase.service.DemoService;
 public class DemoTests {
 
 	@Autowired
-	private DemoService demoService;
+	private PetStoreService petStoreService;
 	
 	//测试Spring容器初始化是否成功
 	@Test
@@ -26,13 +26,13 @@ public class DemoTests {
 	//测试SpringBean注入功能
 	@Test
 	public void beanLoad() {
-		demoService.getSum(2);
+		petStoreService.getSum(2);
 	}
 	
 	//测试Logback日志输出功能
 	@Test
 	public void logback() {
-		demoService.log();
+		petStoreService.log();
 	}
 
 }

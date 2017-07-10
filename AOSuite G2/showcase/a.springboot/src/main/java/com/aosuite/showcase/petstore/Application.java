@@ -1,4 +1,4 @@
-package com.aosuite.showcase;
+package com.aosuite.showcase.petstore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

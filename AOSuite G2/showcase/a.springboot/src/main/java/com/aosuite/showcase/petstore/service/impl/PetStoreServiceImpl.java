@@ -1,24 +1,24 @@
-package com.aosuite.showcase.service.impl;
+package com.aosuite.showcase.petstore.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.aosuite.showcase.dao.DemoDao;
-import com.aosuite.showcase.service.DemoService;
+import com.aosuite.showcase.petstore.dao.PetStoreDao;
+import com.aosuite.showcase.petstore.service.PetStoreService;
 
 @Service
-public class DemoServiceImpl implements DemoService{
+public class PetStoreServiceImpl implements PetStoreService{
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
-	private DemoDao demoDao;
+	private PetStoreDao petStoreDao;
 	
 	@Override
 	public double getSum(int quantity){
-		double price = demoDao.getPrice();
+		double price = petStoreDao.getPrice();
 		double sum = price * 2.5;
 		logger.info("总价：{}", sum);
 		return sum;
