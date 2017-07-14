@@ -12,7 +12,7 @@
             FROM aos_params
             <where>
 			    <if test="nkv != null and nkv != ''">
-				    AND (name LIKE '%${nkv}%' OR params_key LIKE '%${nkv}%' OR params_value LIKE '%${nkv}%')
+				    AND (name LIKE '%${nkv}%' OR params_key LIKE '%${nkv}%' OR value LIKE '%${nkv}%')
 				</if>
 				<if test="params_group != null and params_group != ''">
 				    AND params_group = #{params_group}
