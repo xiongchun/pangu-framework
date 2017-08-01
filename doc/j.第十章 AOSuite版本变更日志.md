@@ -1,6 +1,6 @@
->AOSuite G1经历了早期[G4Studio](http://git.oschina.net/osworks/G4Studio)的孵化时期(2008~2014)，直到2015年涅槃重生发布了AOSuite G1的第一个版本，标志着进入了一个全新的发展阶段和相对成熟稳定的时期。但，TA并未止步于此……
+>AOSuite经历了早期[G4Studio](http://git.oschina.net/osworks/G4Studio)的孵化时期(2008~2014)，直到2015年涅槃重生发布了AOSuite的第一个版本，标志着进入了一个全新的发展阶段和相对成熟稳定的时期。但，TA并未止步于此……
 
-#### §22. AOSuite G1-3.0-RELEASE 2017-03-26
+#### §22. AOSuite-3.0-RELEASE 2017-03-26
 - 【新增】 新引入了标准标签fn标签库和fmt标签库。
 - 【修复】 修复了Httpclient工具类设置连接超时时间和等待响应时间无效的bug。
 - 【新增】 在表格管理中加入了表格列分割线的范例。
@@ -14,7 +14,7 @@
 - 【优化】 重构了数据库表及字段命名规范。将表命名aos_org_改为aos_org、字段命名parent_id_改为parent_id，并对程序中波及到的相应代码进行了重构。[批注：以前表和字典末尾带_的命名规则参考了工作流引擎activiti的命名规则，虽然能最大限度的保持对不通数据库版本保留字的兼容性，但对程序代码规范和整洁性破坏挺大的。
 - 【修复】修复表单元素的keydown和keyup事件无法绑定的bug。
 
-#### §21. AOSuite G1-2.9-RELEASE 2017-03-12
+#### §21. AOSuite-2.9-RELEASE 2017-03-12
 - 【修复】 修复了bigint作为数据表主键时，代码生成数据访问接口*Dao.java时候缺失BinInteger类导入的bug。
 - 【新增】 新增表格的表头分组功能实现。并在【表格组件二】中演示了其基本用法。
 - 【优化】 完善了【Redis缓存管理】模块中的命令窗口的UI布局缺陷。
@@ -22,50 +22,50 @@
 - 【新增】 新增了启动时的Redis环境检测机制，如果缺失Redis连接，给新手提出友好的排错引导和建议信息。
 - 【修复】 修复了依赖字典数据源的下拉框的下拉项没有按照排序号升序排序的缺陷。
 - 【修复】 修复【表单组件】范例模块中弹出选择表格双击后不能回填赋值的bug。
-#### §20. AOSuite G1-2.8-RELEASE 2017-03-07
+#### §20. AOSuite-2.8-RELEASE 2017-03-07
 - 【修复】 修复了表格列锁定Ext原菜单未汉化的问题。
 - 【新增】 新增了表格数据查询时无结果集时表格内部的显示信息。
-- 【新增】 新增了AOSuite G1:gridpanel标签的enableColumnHide属性，用于设置是否启用表格列的隐藏功能。缺省true。
+- 【新增】 新增了AOSuite:gridpanel标签的enableColumnHide属性，用于设置是否启用表格列的隐藏功能。缺省true。
 - 【新增】 在【表单组件】范例模块加入了单选框和复选框选择事件监听的例子。
-- 【新增】 AOSuite G1:gridpanel标签新增了features属性、AOSuite G1:column标签新增了summaryType属性和summaryRenderer属性，实现了表格统计汇总功能。
+- 【新增】 AOSuite:gridpanel标签新增了features属性、AOSuite:column标签新增了summaryType属性和summaryRenderer属性，实现了表格统计汇总功能。
 - 【新增】 新增了【基础组件-表格组件二】范例，演示了表格统计汇总功能。
-#### §19. AOSuite G1-2.7-RELEASE 2017-02-26
-- 【新增】 在【基础组件->按钮|停靠栏|信息提示】演示模块中增加了消息提示的各种标准方式以及开关按钮（AOSuite G1:toggle）标签组件的使用方式。
+#### §19. AOSuite-2.7-RELEASE 2017-02-26
+- 【新增】 在【基础组件->按钮|停靠栏|信息提示】演示模块中增加了消息提示的各种标准方式以及开关按钮（AOSuite:toggle）标签组件的使用方式。
 - 【新增】 新增了【基础组件->容器组件及常用布局】演示模块。分别演示了面板组件、Tab组件、窗口组件、Iframe组件的用法及其常用布局方式（Fit布局、Absolute布局、Accordion布局、Border布局、Anchor布局、Column布局、Hbox布局、Vbox布局）。
 - 【新增】 新增了基于Redis单线程原理的分布式锁实现。
-- 【优化】 完善了AOSuite G1:formPanel标签，当表单元素溢出时缺省自动出现滚动条，不需再设置autoScroll=“true”属性。
-- 【修复】 修复了AOSuite G1:docekd标签由于资源释放问题导致在某些情况下组件边框重合或缺失的bug。
-- 【新增】 新增了AOSuite G1:formpanel标签的standardSubmit属性，用于完成对表单传统同步提交方式的支持。
+- 【优化】 完善了AOSuite:formPanel标签，当表单元素溢出时缺省自动出现滚动条，不需再设置autoScroll=“true”属性。
+- 【修复】 修复了AOSuite:docekd标签由于资源释放问题导致在某些情况下组件边框重合或缺失的bug。
+- 【新增】 新增了AOSuite:formpanel标签的standardSubmit属性，用于完成对表单传统同步提交方式的支持。
 - 【新增】 新增了【基础组件->表单组件】范例，演示了基本表单元素、常用表单API、表单数据交互、常用表单布局等表单相关用法。
 - 【新增】 新增了【基础组件->表格组件】范例，演示了表格相关基础功能和高级特性的用法。
 - 【修复】 修复了可编辑表格在行编辑模式下数据校验时，如果初始数据校验不通过，则修正数据后保存按钮也不能激活的bug。
-#### §18. AOSuite G1-2.6-RELEASE 2017-01-21
+#### §18. AOSuite-2.6-RELEASE 2017-01-21
 - 【优化】 将【功能模块】、【部门管理】的表格数据显示模式调为缺省非级联显示模式。
-- 【优化】 将AOSuite G1:tabPanel标签的tab标题高度缺省设置为30，解决了未指定activeTab属性初始时，第一个卡片不显示高亮选中状态的问题。
-- 【修复】 修复AOSuite G1:button标签当iconAlign属性为top或bottom时，icon和text文本相对位置错类的bug。
+- 【优化】 将AOSuite:tabPanel标签的tab标题高度缺省设置为30，解决了未指定activeTab属性初始时，第一个卡片不显示高亮选中状态的问题。
+- 【修复】 修复AOSuite:button标签当iconAlign属性为top或bottom时，icon和text文本相对位置错类的bug。
 - 【新增】 新增了【按钮|停靠栏】功能模块范例，演示了按钮和停靠栏（工具栏、状态栏）的基本用法。
 - 【优化】 完善了Redis连接方法，增加了Redis服务器密码校验功能。
 - 【优化】 完善了自动生成的Dao代码相关文件的一些缺陷和命名规范。
 - 【优化】 完善了AOSHttpClient封装类，提供了创建连接超时时间和等待响应超时时间设置（缺省30s）。
-#### §17. AOSuite G1-2.5-RELEASE 2017-01-07
+#### §17. AOSuite-2.5-RELEASE 2017-01-07
 - 【优化】 优化Ant打包脚本，增加-XDignore.symbol.file编译选项，忽略符号表ct.sym, 直接查找rt.jar。防止找不到部分com.sun等私有依赖类。
 - 【新增】 在demoService中增加了嵌套事务时配置传播行为的使用方法。
 - 【新增】 在【实例④：常用菜单2】中增加了一种常用的弹出窗口布局。
-- 【优化】 优化了代码生成器。将形如AOSuite G1_user_module数据表对应的代码文件命名优化为AOSuite G1UserModuleDao.java等驼峰命名规则。
+- 【优化】 优化了代码生成器。将形如AOSuite_user_module数据表对应的代码文件命名优化为AOSuiteUserModuleDao.java等驼峰命名规则。
 - 【优化】 优化了【Redis缓存管理】模块，加入对Set数据类型的支持，加入了命令窗口功能。
-- 【删除】 删除了AOSuite G1:treepicker 标签。
+- 【删除】 删除了AOSuite:treepicker 标签。
 - 【修复】 修复了对象之间属性值拷贝当属性的日期格式为EEE MMM dd HH:mm:ss z yyyy时无法拷贝的错误（fixed by zyz）。
-#### §16. AOSuite G1-2.4-RELEASE 2016-12-14
+#### §16. AOSuite-2.4-RELEASE 2016-12-14
 - 【优化】 优化了MyBatis一级缓存的配置，使得注解事务时的数据库隔离级别设置能有效工作。
 - 【修复】 修复了角色管理不能完全取消角色权限授权信息的bug。
 - 【优化】 角色授权管理针对超级用户角色定义了内置菜单，防止因误操作使超级用户丢失基本的权限管理功能。
-- 【优化】 将提示信息分为AOSuite G1.info()一般弹窗提示、AOSuite G1.warn()警告弹窗信息、AOSuite G1.err()错误弹窗信息和AOSuite G1.tip()一般滑动层提示信息。
-- 【修复】 修复了AOSuite G1Httpclient接收中文响应乱码的bug。
-- 【优化】 优化了AOSuite G1Httpclient，兼容了K-V参数和直接发送JSON请求数据的情况。
+- 【优化】 将提示信息分为AOSuite.info()一般弹窗提示、AOSuite.warn()警告弹窗信息、AOSuite.err()错误弹窗信息和AOSuite.tip()一般滑动层提示信息。
+- 【修复】 修复了AOSuiteHttpclient接收中文响应乱码的bug。
+- 【优化】 优化了AOSuiteHttpclient，兼容了K-V参数和直接发送JSON请求数据的情况。
 - 【新增】 新增了API接口开发的例子CreditCardController(api/creditCard)。
 - 【优化】 优化了Http拦截器，分离了后台管理系统Http请求和API接口请求。
 - 【优化】 完善了发布打包机制，可针对部署环境不同(测试、生产等)在打包过程中动态修改配置文件配置信息（提供了Ant脚本修改属性文件和XML配置文件的功能）。
-#### §15. AOSuite G1-2.3-RELEASE 2016-12-02
+#### §15. AOSuite-2.3-RELEASE 2016-12-02
 - 【优化】 优化了缓存Key的存储结构。
 - 【优化】 优化了配置文件中扫描包路径的配置项。
 - 【新增】 新增了【工具->Redis缓存管理】模块，对Redis进行可视化管理和缓存服务器的健康状态检查。
@@ -74,48 +74,48 @@
 - 【优化】 优化了内嵌服务器Jetty的表单提交大小。
 - 【新增】 ComboBox标签新增dicDataType属性，解决当业务表中存储字典数据类型为数值型时，从表格中form.loadRecord()无法将下拉代码正确转换的问题。
 - 【优化】 在httpModel模型中注入了HttpServletResponse对象用于导出电子表格或其他输出流对象。
-#### §14. AOSuite G1-2.2-RELEASE 2016-11-22
-- 【删除】 删除了AOSuite G1:base 标签、AOSuite G1:head 标签、AOSuite G1:include 标签，相关功能精简或合并到了AOSuite G1:html 标签。
+#### §14. AOSuite-2.2-RELEASE 2016-11-22
+- 【删除】 删除了AOSuite:base 标签、AOSuite:head 标签、AOSuite:include 标签，相关功能精简或合并到了AOSuite:html 标签。
 - 【新增】 新增了范例->综合实例->实例①：简单查询。
 - 【新增】 新增了范例->综合实例->实例②：增删改查。
 - 【新增】 新增了范例->综合实例->实例③：常用布局一。
 - 【新增】 新增了范例->综合实例->实例④：常用布局二。
 - 【新增】 新增了范例->综合实例->实例⑤：常用布局三。
 - 【修复】 修复了Json反序列化到JavaBean时候，日期时间类型适配问题。
-#### §13. AOSuite G1-2.1-RELEASE 2016-11-08
+#### §13. AOSuite-2.1-RELEASE 2016-11-08
 - 【优化】 优化了SqlDao类，新增了返回SqlSession对象的方法。
 - 【修复】 修复了redis连接在空闲连接管理方面的唤醒问题。
 - 【优化】 优化了日志输出相关信息。
 - 【新增】 在AOSCxt中新增了获取通用数据访问对象Bean sqlDao实例的方法。
 - 【新增】 新增树组件的客户端filter功能，顺便实现了系统导航菜单的快速过滤功能。
-- 【修复】 生产环境下日志错误信息只能定位到方法不能精确定位到源码行数的缺陷。（打包脚本AOSuite G1.war.xml缺少相关编译参数）。
+- 【修复】 生产环境下日志错误信息只能定位到方法不能精确定位到源码行数的缺陷。（打包脚本AOSuite.war.xml缺少相关编译参数）。
 
-#### §12. AOSuite G1-2.0-RELEASE 2016-10-23
-此版本是一个全新的换代升级版本。在AOSuite G11.X的基础上扬长避短，以更轻、更快、更安全、同时拥抱企业应用和互联网后端应用为目标进行了大刀阔斧的重构和完善。
-- 【优化】 完善了AOSuite G1标签库，美化了Ext样式。
+#### §12. AOSuite-2.0-RELEASE 2016-10-23
+此版本是一个全新的换代升级版本。在AOSuite1.X的基础上扬长避短，以更轻、更快、更安全、同时拥抱企业应用和互联网后端应用为目标进行了大刀阔斧的重构和完善。
+- 【优化】 完善了AOSuite标签库，美化了Ext样式。
 - 【优化】 重新设计和实现了权限管理系统。
 - 【优化】 抽象了控制层，2.0中将不再需要对Controller层进行编码。
 - 【新增】 封装了Htpp Request和Response为HttpModel对象，使得Service拥有统一的方法签名结构。
 - 【优化】 废除了Servlet容器会话机制，实现了基于Redis的Session集中式管理，为分布式部署带来天然便利。
 - 【优化】 重构了核心库和工程结构。
 - 【优化】 日志框架由log4j切换到logback
-#### §11. AOSuite G1-1.1-RELEASE 2016-09-01
+#### §11. AOSuite-1.1-RELEASE 2016-09-01
 - 【优化】 优化了SqlDao类，新增了返回SqlSession对象的方法。
-- 【修复】 修复了AOSuite G1ID.java类中获取UUID分组的一个bug。
+- 【修复】 修复了AOSuiteID.java类中获取UUID分组的一个bug。
 - 【修复】 修复了*Mapper.**数据操作接口不能打印出结果集合日志的bug。
-- 【删除】 删除了直接引入第三方依赖包的源码，将其打为jar包引入(源码均已一并打到JAR中)。activiti-AOSuite G1-5.18.0.jar。
+- 【删除】 删除了直接引入第三方依赖包的源码，将其打为jar包引入(源码均已一并打到JAR中)。activiti-AOSuite-5.18.0.jar。
 - 【删除】 删除了AOSJson.java中的格式化配置属性：json_format。
 - 【修复】 修复了启动时解析*Mapper.xml文件出错日志不输出的bug。
-- 【修复】 修复工作流activiti-AOSuite G1-5.18.0.jar包中mappings.xml文件不存在导致getMyBatisXmlConfigurationSteam返回的InputStream为null。
+- 【修复】 修复工作流activiti-AOSuite-5.18.0.jar包中mappings.xml文件不存在导致getMyBatisXmlConfigurationSteam返回的InputStream为null。
 - 【优化】 优化了表格数据加载时间，缺省设置为120秒。
-#### §10. AOSuite G1-1.0-RELEASE 2016-04-29
-- 【优化】 优化了 AOSuite G1:combobox 标签，在readonly和disable模式下不出现“请选择…”提示。
+#### §10. AOSuite-1.0-RELEASE 2016-04-29
+- 【优化】 优化了 AOSuite:combobox 标签，在readonly和disable模式下不出现“请选择…”提示。
 - 【优化】 将缺省连接池管理由DBCP变更为c3p0。
 - 【优化】 将MySQL的连接驱动升级为mysql-connector-java-5.1.37-bin.jar。
 - 【优化】 优化了请求过滤器的日志输出。
 - 【删除】 移除了范例功能模块对H2数据库的依赖。
 - 【修复】 修复了所有表格翻页后再进行条件查询时的bug。
-#### §09. AOSuite G1-0.9-RELEASE 2016-04-05
+#### §09. AOSuite-0.9-RELEASE 2016-04-05
 - 【新增】 新增了范例[综合实例④]，演示了一些复杂布局的使用方法。
 - 【新增】 新增了表格超链接列按钮范例。
 - 【修复】 修复Oracle数据版本下页面组件权限授权的bug。
@@ -123,26 +123,26 @@
 - 【优化】 将字典数据\参数配置数据\部分授权数据进行了缓存存取服务，有效提升60.84%的页面加载速度。
 - 【优化】 优化了JDBC日志输出规范。
 - 【新增】 新增JGroups依赖，完成EHcache缓存的分布式集群部署的缓存复制。
-#### §08. AOSuite G1-0.8-RELEASE 2016-03-14
-- 【优化】 JS API从AOS.selection()变更为AOSuite G1.select2json()。
+#### §08. AOSuite-0.8-RELEASE 2016-03-14
+- 【优化】 JS API从AOS.selection()变更为AOSuite.select2json()。
 - 【新增】 新增了[综合实例②]功能模块，演示了表格、表单、弹出窗口等基本组件的组合使用和布局演示；
 - 【修复】 在树和表格的Store对象中将load的提交方式强制改为POST，缺省为GET。GET会导致在部分Web容器里中文参数乱码的情况。
 - 【新增】 集成了EHCache缓存框架及相关使用范例。
 - 【新增】 集成了Redis缓存的客户端框架Jedis及相关使用范例。
 - 【优化】 重构了AOSException类和平台异常处理方式。
-- 【新增】 新增了数据校验类。AOSValidator.java进行后端数据校验。[注：JSR303不符合AOSuite G1标准，不使用JSR303的校验框架]
+- 【新增】 新增了数据校验类。AOSValidator.java进行后端数据校验。[注：JSR303不符合AOSuite标准，不使用JSR303的校验框架]
 - 【优化】 优化了AOS:Tab标签的border属性和layout属性的缺省设置。
 - 【新增】 新增了[综合实例③]功能模块，重点演示了Tab、Form、Grid、Window等组件的组合使用与布局范例。
 - 【优化】 将AOS:panel标签的layout缺省属性设置为：fit，减少了标签代码的冗余属性的配置。减少了出现非预期布局效果的出现概率。
-#### §07. AOSuite G1-0.7-RELEASE 2016-03-05
+#### §07. AOSuite-0.7-RELEASE 2016-03-05
 - 【修复】 修复了【功能模块】功能里的新增模块时无法选择上级模块菜单的bug(由0.6版本的升级引发的新问题)。
 - 【修复】 修复【组织架构】树不能删除根节点的最后一个子节点的bug。
 - 【新增】 在【综合实例①】的基础上新增了一个复杂布局的弹出窗口(新增办卡申请)。
 - 【修复】 修复了代码生成器在oracle数据库，如果同一个实例下不同用户下有相同表名的时候生成字段会重复的问题。(由relinson提交)
 - 【优化】 修复了表格单元格不能选中复制的缺陷。
-- 【修复】 修复AOSuite G1JSON.tojson()中对自定义日期时间格式处理的bug。(由tangxiucai2提交)
+- 【修复】 修复AOSuiteJSON.tojson()中对自定义日期时间格式处理的bug。(由tangxiucai2提交)
 - 【优化】 解决身份证校验方法的bug。(由tangxiucai2提交)
-#### §06. AOSuite G1-0.6-RELEASE 2016-02-16
+#### §06. AOSuite-0.6-RELEASE 2016-02-16
 - 【修复】 解决[分类科目]功能模块中，删除树枝节点，其子孙节点在DB中没有被级联删除的bug。
 - 【新增】 新增了部分系统图标文件。
 - 【优化】 重构了系统导航菜单的名称和级联关系。
@@ -154,7 +154,7 @@
 - 【优化】 优化了代码生成工具生成的sql映射文件中 update 语句中字段没有显式指明jdbcType在某些情况下回导致bug的缺陷。
 - 【新增】 在范例[表格2]中新增了单元格中嵌入超链接并单击触发点击事件的例子。
 - 【修复】 修复了AOS.star()和AOS.unstar()两个行数在去除和显示必录项时仅仅控制了红星而没真正控制到是否必录的bug。
-- 【优化】 调整工作流历史记录级别为full模式。[AOSuite G1.bpm.xml]
+- 【优化】 调整工作流历史记录级别为full模式。[AOSuite.bpm.xml]
 - 【优化】 将报表模版存放位置由原来的/report调整为 /WEB-INF/template/report/。
 - 【新增】 在范例[杂项->页面组件复用]范例中演示了如何将页面组件打包为多个JSP公用的组件。
 - 【修复】 修复了代码生成器在Oracle数据库下错将number字段识别为varchar字段的bug。
@@ -172,7 +172,7 @@
 - 【优化】 将所有表中的主键ID_改为使用UUID策略重新生成了主键。
 - 【优化】 重构了范例系统里的大部分功能模块。
 - 【删除】 删除了SQL-Server的数据库支持脚本，目前版本只提供MySQL和Oracle两种DB脚本的支持。(1.0版本后会支持多种DB)
-#### §05. AOSuite G1-0.5-RELEASE 2015-10-31
+#### §05. AOSuite-0.5-RELEASE 2015-10-31
 - 【修复】 解决了代码生成器在Oracle环境下生成Dao代码出现列名无效的bug。
 - 【修复】 解决了border布局里的容器组件设置center=”true”情况下布局错乱的bug。
 - 【新增】 新增了[表单元素常用API]范例。
@@ -181,7 +181,7 @@
 - 【新增】 新增了[表单数据交互]范例。
 - 【修复】 重构了Java对象之间属性值拷贝API。AOS.apply()重命名为AOSUtil.copyProperties()；解决了Bigdecimal空属性值拷贝错误的bug和日期类型属性拷贝错误的bug。
 - 【修复】 解决了在某些数据结构的情况下无法删除部门节点的bug。
-#### §04. AOSuite G1-0.4-RELEASE 2015-10-07
+#### §04. AOSuite-0.4-RELEASE 2015-10-07
 - 【优化】 完善了WebIDE在Oracle下查出了不相关表和回收站垃圾表的修复。
 - 【优化】 重构了./resources配置文件命名规则和互相依赖关系。
 - 【新增】 新增了properties属性配置文件和相应的存取API。
@@ -204,10 +204,10 @@
 - 【新增】 新增了[常用表单元素]范例。
 - 【修复】 解决了Dao组件在H2数据库下SQL语句中字段AS别名无效的bug。
 - 【新增】 新增了[组合选择框]范例。
-#### §03. AOSuite G1-0.3-RELEASE 2015-07-30
+#### §03. AOSuite-0.3-RELEASE 2015-07-30
 - 【新增】 新增了嵌入式数据库 H2的Dao层代码生成功能，新增了H2的数据库物理分页实现。
-- 【新增】 新增了AOSuite G1标签库按钮范例演示模块。
-- 【新增】 新增了AOSuite G1标签库基本表格特性展示范例演示模块。
+- 【新增】 新增了AOSuite标签库按钮范例演示模块。
+- 【新增】 新增了AOSuite标签库基本表格特性展示范例演示模块。
 - 【新增】 新增了报表开发的功能。支持HTML报表、PDF报表、XLS报表、XLSX报表、DOCX报表、PPTX报表。
 - 【新增】 新增了报表开发范例。
 - 【新增】 新增了可编辑表格的前端和后端相应的封装。
@@ -226,11 +226,11 @@
 - 【新增】 新增[WebIDE集成开发]功能模快的Dao代码可视化生成的功能。
 - 【优化】 重构了AOS.js的命名空间，App->AOS。
 - 【修复】 解决了卡片菜单没有设置矢量图标的时候无法切换的bug。
-#### §02. AOSuite G1-0.2-RELEASE 2015-07-13
+#### §02. AOSuite-0.2-RELEASE 2015-07-13
 - 【新增】 新增了MySQL的数据脚本文件和其Dao层实现。
 - 【新增】 新增了Oracle的数据脚本和其Dao层实现。
 - 【新增】 新增了MS-SQLServer的数据脚本和其Dao层实现。
-- 【新增】 新增了控制台运行的Dao层代码生成器。(后续版本将集成进AOSuite G1的Eclipse开发插件)
+- 【新增】 新增了控制台运行的Dao层代码生成器。(后续版本将集成进AOSuite的Eclipse开发插件)
 - 【新增】 新增注解驱动的声明式事务管理。
 - 【新增】 新增了打包脚本用于生成生产环境下部署的war包资源。
 - 【新增】 新增了Tab的右键关闭插件标签和拖拽重排序标签。
@@ -248,8 +248,8 @@
 - 【新增】 为首页布局的Tabpanel增加了右键关闭Tab和刷新的功能、增加了拖拽重排序Tab的功能。
 - 【修复】 修复了在进行功能模块授权后将模块删除，在某些特殊和巧合的情况下导致界面树UI不断请求进入无限循环模式的Bug。
 
-#### §01. AOSuite G1-0.1-RELEASE 2015-05-01
-    原开源项目G4Studio终于毕业了，正式更名为AOSuite G1。涅槃重生，版本初始化……
+#### §01. AOSuite-0.1-RELEASE 2015-05-01
+    原开源项目G4Studio终于毕业了，正式更名为AOSuite。涅槃重生，版本初始化……
 
 #### §00. G4Studio-0.1~5.2-RELEASE 2008~2014
-    AOSuite G1的前世G4Studio经历了6年的孵化培育期。点击了解G4Studio项目。
+    AOSuite的前世G4Studio经历了6年的孵化培育期。点击了解G4Studio项目。

@@ -1,4 +1,4 @@
->本教程将简单介绍一下如何在AOSuite G1下开发Http接口，供前端Web、App或其它系统/模块调用。 数据接口交互方式很多，就不展开叙述了。这里缺省使用http协议+json序列化格式的轻量级组合作为接口交互方式。提示：更多实例请参阅范例代码 aos.showcase.api.CreditCardController.java和aos.test.testcase.HttpClientTest.java
+>本教程将简单介绍一下如何在AOSuite下开发Http接口，供前端Web、App或其它系统/模块调用。 数据接口交互方式很多，就不展开叙述了。这里缺省使用http协议+json序列化格式的轻量级组合作为接口交互方式。提示：更多实例请参阅范例代码 aos.showcase.api.CreditCardController.java和aos.test.testcase.HttpClientTest.java
 
 #### §1. 发布接口及调用实例一
 这种方式使用表单提交的方式来传递请求参数，Content Type为application/x-www-form-urlencoded。  
@@ -29,7 +29,7 @@
 	 * (接口实现和接口调用是配套的，详见接口实现：api/creditCard/register2)
 	 */
 	public static void doPost2() {
-		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/AOSuite G1/api/creditCard/register2");
+		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/AOSuite/api/creditCard/register2");
 		httpRequestVO.setJsonEntityData("{"mobile_":"18616786188","name_":"熊春"}");
 		HttpResponseVO httpResponseVO = AOSHttpClient.execute(httpRequestVO);
 		System.out.println("HTTP状态码：" + httpResponseVO.getStatus());
@@ -67,7 +67,7 @@
 	 * (接口实现和接口调用是配套的，详见接口实现：api/creditCard/register2)
 	 */
 	public static void doPost2() {
-		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/AOSuite G1/api/creditCard/register2");
+		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/AOSuite/api/creditCard/register2");
 		httpRequestVO.setJsonEntityData("{"mobile_":"18616786188","name_":"熊春"}");
 		HttpResponseVO httpResponseVO = AOSHttpClient.execute(httpRequestVO);
 		System.out.println("HTTP状态码：" + httpResponseVO.getStatus());
@@ -104,7 +104,7 @@
 		Map inMap = Maps.newHashMap();
 		inMap.put("name", "熊春");
 		inMap.put("age", "30");
-		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/AOSuite G1/api/creditCard/info/1000", inMap);
+		HttpRequestVO httpRequestVO = new HttpRequestVO("http://localhost:10010/AOSuite/api/creditCard/info/1000", inMap);
 		httpRequestVO.setRequestMethod(AOSHttpClient.REQUEST_METHOD.GET);
 		HttpResponseVO httpResponseVO = AOSHttpClient.execute(httpRequestVO);
 		System.out.println("HTTP状态码：" + httpResponseVO.getStatus());
