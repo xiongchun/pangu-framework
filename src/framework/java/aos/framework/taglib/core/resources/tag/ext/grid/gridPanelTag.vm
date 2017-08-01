@@ -1,0 +1,164 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##Store.Fields
+var ${id}_store_fields = [
+    #foreach($fielddto in $fields)
+        {
+		#if(${fielddto.name})
+			name: '${fielddto.name}',
+		#end
+		##date列要对在此进行一次时分秒格式化，然后再在column里格式化成自己想要的格式。
+		##如果不设置，则在FF和IE下进行column格式化时，将被错误的格式化为：0NaN-NaN-NaN。或者在服务器格式化后以文本列输出也是可以的。
+		#if(${fielddto.type} == "date")
+			type:'date',
+			dateFormat : 'Y-m-d H:i:s',
+		#else
+			type:'auto',
+		#end
+		#if(${fielddto.defaultValue})
+			defaultValue:'${fielddto.defaultValue}',
+		#end
+		    app:169
+		}#if($velocityCount != $fields.size()),#end
+    #end
+];
+
+##Store定义
+var ${id}_store = Ext.create('Ext.data.Store', {
+	 fields : ${id}_store_fields,
+	 pageSize:$pageSize,
+	 #if($autoLoad)
+		 autoLoad: $autoLoad,
+	 #end
+	 #if($pageType == "client")
+		 proxy : {
+    				##将load的提交方式强制改为POST，缺省为GET。GET会导致在部分Web容器里中文参数乱码的情况。
+    				actionMethods: {  
+                        read: 'POST'  
+                    },
+					type : 'pagingmemory'
+				}
+	 #else
+    	 proxy : {
+    			type : 'ajax',
+    			url:'$url',
+    			##表格数据加载超时时间
+    			timeout:120000,
+				##将load的提交方式强制改为POST，缺省为GET。GET会导致在部分Web容器里中文参数乱码的情况。
+				actionMethods: {  
+                    read: 'POST'  
+                },
+    			reader : {
+    				type : 'json',
+    				totalProperty: '$totalProperty', 
+    				#if($idProperty)
+    					idProperty: '$idProperty',
+            	    #end
+    				root: '$root'
+    			}
+    		}
+    #end
+});
+
+##绑定Store的事件
+#if(${onload})
+	${id}_store.on('load', $onload);
+#end
+
+##Grid.Columns
+##嗨，你已进入雷区，切莫乱动？-- 阿老表
+var ${id}_grid_columns = [
+    #foreach($columndto in $columns)
+        {
+		    #if(${columndto.type} != "group")
+		       #parse("${vmpath}ext/grid/columns.vm")
+		    #else
+		       #set($subColumns = ${columndto.columns})
+		       header:'<span class="app-grid-column-header">${columndto.header}</span>',
+		       columns:[
+		       #foreach($columndto in $subColumns)
+		         {
+		         #if(${columndto.type} != "group")
+			       #parse("${vmpath}ext/grid/columns.vm")
+			     #else
+			        #set($subColumns2 = ${columndto.columns})
+			        header:'<span class="app-grid-column-header">${columndto.header}</span>',
+			        columns:[
+			             #foreach($columndto in $subColumns2)
+			             {
+					         #if(${columndto.type} != "group")
+						       #parse("${vmpath}ext/grid/columns.vm")
+						     #end
+						     id:'${columndto.id}'
+			             }#if($velocityCount != $subColumns2.size()),#end
+			             #end
+			          ],
+			     #end
+		         id:'${columndto.id}'
+		         }#if($velocityCount != $subColumns.size()),#end
+		       #end
+		       ],
+		    #end
+		    id:'${columndto.id}'
+		}#if($velocityCount != $columns.size()),#end
+    #end
+];
+
+##Grid定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/panelTagSupport.vm")
+#if($features)
+features : [ $featuresScript ],
+#end
+#if($enableLocking)
+	enableLocking:$enableLocking,
+#end
+#if($enableColumnHide)
+	enableColumnHide:$enableColumnHide,
+#end
+#if($disableSelection)
+	disableSelection:$disableSelection,
+#end
+#if($forceFit)
+	forceFit:$forceFit,
+#end
+#if($columnLines)
+	columnLines:$columnLines,
+#end
+#if($rowLines)
+	rowLines:$rowLines,
+#end
+#if($emptyText)
+	emptyText:'$emptyText',
+#end
+#if($selModel)
+	selModel:$selModel,
+#end
+  store: ${id}_store,
+  columns:${id}_grid_columns,
+  viewConfig: {
+          enableTextSelection:true,
+      #if($stripeRows)
+          stripeRows: $stripeRows
+	  #end
+  },
+#if($hidePagebar != "true")
+	    dockedItems: [{
+	        xtype: 'pagingtoolbar',
+	        store: ${id}_store,
+	        dock: '$pagebardock',
+	        displayInfo: $displayInfo
+        }],
+#end
+	app: 169
+};
+
+##Grid实例化
+var ${id} = Ext.create('Ext.grid.Panel',${id}_cfg);
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##处理Border
+#parse("${vmpath}ext/subvm/borders.vm")

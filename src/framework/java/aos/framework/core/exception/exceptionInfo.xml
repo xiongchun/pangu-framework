@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<exceptionInfos desc="异常信息配置文件:只配置标签库异常和平台级异常,运行时系统异常请配置到业务异常参数表中">
+	<exception id="1" info="没有查询到对应IDNAME的ID配置对象" suggest="请检查IDNAME参数是否正确。" />
+	<exception id="2" info="ID生成器[{0}]号源用尽" suggest="请通过[ID管理]功能设置ID相应参数。" />
+    <exception id="5" info="参数{0}不能为空。" suggest="请检查相应参数。" />
+    <exception id="6" info="标签{0}属性值不合法，请检查。" suggest="请查看标签属性使用提示，设置正确的属性值。" />
+    <exception id="7" info="端口{0}被占用。" suggest="1)、有可能是你上次启动Server没关闭，请先正常关闭再重启。2)、其它程序占用端口，请在Server启动类AOS.java中使用aosServer.setPort();重设端口。" />
+	<exception id="8" info="你指定的报表文件{0}不存在。" suggest="请检查相应参数。" />
+	<exception id="9" info="没有在当前会话中根据你指定KEY[{0}]找到对应的报表对象。" suggest="1)、没有将AOSPrint对象存入会话。2)、如果使用的是自定义会话Key的话，请确保url中的参数值和你存储AOISPrint对象的会话Key保持一致。" />
+	<exception id="10" info="创建连接失败。" suggest="请检查数据库连接参数配置。" />
+	<exception id="11" info="表单行标签里的元素columnWidth属性之和不能大于1。" suggest="请检查页面rowset或rowset2标签表单元素的columnWidth属性。" />
+	<exception id="13" info="当前系统为在线演示模式，仅支持只读操作。" suggest="请确认系统运行模式。" />
+	<exception id="14" info="获取Redis客户端连接失败。" suggest="AOSuite依赖Redis，请确认您已安装并在aos.properties中正确配置了连接信息。" />
+
+</exceptionInfos>

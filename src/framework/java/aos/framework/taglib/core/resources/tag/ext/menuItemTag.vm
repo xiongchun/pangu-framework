@@ -1,0 +1,30 @@
+## MenuItem定义
+var ${id}_cfg =  {
+#parse("${vmpath}ext/common/buttonTagSupport.vm")
+#if($plain)
+    plain : $plain,
+#end
+#if($subMenuId)
+	menu : {
+		id : '$subMenuId',
+		xtype : 'menu',
+		items : []
+	},
+#end 
+#if($subMenuItemList)
+    listeners : {
+    	afterrender : {
+    		fn : function() {
+    		#foreach($submenuitem in $subMenuItemList)
+    			Ext.getCmp('$subMenuId').add(${submenuitem.subMenuItemId}_cfg);
+    		#end
+    		}
+    	}
+    },
+#end
+    app:169	
+};
+
+#if($parentXalias == "menu")
+${parentID}.add(${id}_cfg);
+#end

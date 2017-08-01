@@ -1,0 +1,25 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+##Panel定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/panelTagSupport.vm")
+#if($loadMask)
+loadMask: '$loadMask',
+#end
+#if($src)
+src: '$src',
+#end
+#if($mask)
+mask: $mask,
+#end
+app: 169
+};
+
+##IFrame实例化
+var ${id} = Ext.create('AOS.ux.IFrame',${id}_cfg);
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##处理Border
+#parse("${vmpath}ext/subvm/borders.vm")

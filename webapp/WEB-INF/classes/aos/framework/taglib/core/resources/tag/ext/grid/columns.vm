@@ -1,0 +1,107 @@
+		    stopSelection:false,
+		#if(${columndto.header})
+		    header:'<span class="app-grid-column-header">${columndto.header}</span>',
+	    #end
+		#if(${columndto.width})
+			width:${columndto.width},
+		#end
+		#if(${columndto.summaryType})
+			summaryType:'${columndto.summaryType}',
+		#end
+		#if(${columndto.summaryRenderer})
+			summaryRenderer:${columndto.summaryRenderer},
+		#end
+		#if(${columndto.dataIndex})
+			dataIndex:'${columndto.dataIndex}',
+	   #end
+	   #if(${columndto.hidden})
+			hidden:${columndto.hidden},
+	   #end
+	   #if(${columndto.hideable})
+			hideable:${columndto.hideable},
+	   #end
+	   #if(${columndto.sortable})
+			sortable:${columndto.sortable},
+	   #end
+	   #if(${columndto.flex})
+			flex:${columndto.flex},
+	   #end
+	   #if(${columndto.rendererField})
+			renderer:function(value,metaData,record,rowIndex ,colIndex ,store){
+			 #set($dicList = ${columndto.dicList})
+			 if(Ext.isEmpty(value)) return '';
+			    ##返回的JSON中的数值类型
+					#foreach($dic in $dicList)
+					    if(value == '$dic.code') return '$dic.dic_desc';
+					#end	
+			 return value;
+			},
+	   #end
+	   #if((${columndto.rendererFn} || ${columndto.celltip}) && !${columndto.rendererField})
+			renderer:function(value,metaData,record,rowIndex ,colIndex ,store){
+			      #if(${columndto.celltip})
+			          metaData.tdAttr = 'data-qtip="'+value+'"';
+				  #end
+				  #if(${columndto.rendererFn})
+			          return ${columndto.rendererFn}(value,metaData,record,rowIndex ,colIndex ,store);
+			      #else
+					  return value;
+				  #end
+			},
+	   #end
+	   #if(${columndto.format})
+			format:'${columndto.format}',
+	   #end
+	   #if(${columndto.align})
+			align:'${columndto.align}',
+	   #end
+	   #if(${columndto.editor} && !${columndto.editor2})
+			editor:'${columndto.editor}',
+	   #end
+	   #if(${columndto.editor2})
+			editor:${columndto.editor2},
+	   #end
+	   #if(${columndto.lockable})
+			lockable:${columndto.lockable},
+	   #end
+	   #if(${columndto.locked})
+			locked:${columndto.locked},
+	   #end
+	   #if(${columndto.maxWidth})
+			maxWidth:${columndto.maxWidth},
+	   #end
+	   #if(${columndto.minWidth})
+			minWidth:${columndto.minWidth},
+	   #end
+	   #if(${columndto.any})
+			${columndto.any},
+	   #end
+	   #if(${columndto.type} == "action")
+	   #set($actionDtos = ${columndto.actionDtos})
+    		items: [
+    		 #foreach($actionDto in $actionDtos)
+				#if($velocityCount != "1")
+				  '-',
+				#end
+				{
+				#if(${actionDto.icon})
+			        icon: '${actionDto.icon}',
+				#end
+				#if(${actionDto.tooltip})
+			        tooltip: '${actionDto.tooltip}',
+				#end
+				#if(${actionDto.handler})
+			        handler: ${actionDto.handler},
+				#end
+				#if(${actionDto.disabledFn})
+			        isDisabled: ${actionDto.disabledFn},
+				#end	
+				    app:169
+				}#if($velocityCount != $actionDtos.size()),#end
+    		 #end
+    		],
+		#end
+	   #if(${columndto.tpl})
+			tpl:'${columndto.tpl}',
+	   #end
+	        xtype: '${columndto.xtype}',

@@ -1,0 +1,38 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##ToggleTag定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formItemTagSupport.vm")
+    onText:'$onText',
+	offText:'$offText',
+#if($resizeHandle)
+    resizeHandle:$resizeHandle,
+#end
+#if($resizeContainer)
+    resizeContainer:$resizeContainer,
+#end
+#if($cls)
+    cls:'$cls',
+#end
+#if($state)
+    state:$state,
+#end
+    booleanMode:true,
+    app:169	
+};
+
+##实例化
+#if($instance == "true")
+    #if($xtype == "toggleslide")
+		var ${id} = Ext.create('Ext.ux.toggleslide.ToggleSlide',${id}_cfg);
+    #elseif($xtype == "toggleslidefield")
+		var ${id} = Ext.create('Ext.ux.form.field.ToggleSlide',${id}_cfg);
+    #end
+#end
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##表单元素组件实例后设置
+#parse("${vmpath}ext/subvm/afterFormFieldCreated.vm")

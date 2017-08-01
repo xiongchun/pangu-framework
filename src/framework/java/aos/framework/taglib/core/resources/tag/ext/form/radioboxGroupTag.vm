@@ -1,0 +1,36 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+##RadioboxGroup定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formPanelTagSupport.vm")
+#if($fieldLabel)
+	fieldLabel:'$fieldLabel',
+#end
+#if($columns)
+	columns:$columns,
+#end
+#if($vertical)
+	vertical:$vertical,
+#end
+#if($labelWidth)
+    labelWidth:$labelWidth,
+#end
+#if($labelAlign)
+    labelAlign : '$labelAlign',
+#end
+#if($labelSeparator)
+    labelSeparator : '$labelSeparator',
+#end
+#if($labelPad)
+    labelPad : $labelPad,
+#end
+	app: 169
+};
+
+##RadioboxGroup实例化
+var ${id} = Ext.create('Ext.form.RadioGroup',${id}_cfg);
+##注册Items子组件
+#parse("${vmpath}ext/subvm/items.vm")
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")

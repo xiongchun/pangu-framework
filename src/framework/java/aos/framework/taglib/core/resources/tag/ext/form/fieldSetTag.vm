@@ -1,0 +1,28 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##FieldSet定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/formPanelTagSupport.vm")
+#if($checkboxToggle)
+    checkboxToggle : $checkboxToggle,
+#end
+#if($checkboxName)
+    checkboxName : '$checkboxName',
+#end
+##如果没设置padding，则为FIeldSet设置一个固定的下边距。和上边距匹配对称。缺省情况下，上下边距不对称。
+#if(!$padding)
+  padding : '0 0 3 0',
+#end
+	app: 169
+};
+##FieldSet实例化
+var ${id} = Ext.create('Ext.form.FieldSet',${id}_cfg);
+##注册Items子组件
+#parse("${vmpath}ext/subvm/items.vm")
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##处理Border
+#parse("${vmpath}ext/subvm/borders.vm")

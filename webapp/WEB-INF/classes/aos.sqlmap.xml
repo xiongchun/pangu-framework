@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+
+<!-- MyBatis数据持久层配置文件 -->
+<configuration>
+
+	<!-- 参数设置 -->
+	<settings>
+	     <!-- 禁用二级缓存 -->
+		<setting name="cacheEnabled" value="false" />
+		<!-- 配置一级缓存 可选值：STATEMENT|SESSION。
+		       STATEMENT：相当于禁用了SqlSession级的一级缓存。
+		       SESSION：则启用了一级缓存，这时如果要针对某个SQL设置的话也可以在SQL上面配置flushCache="true"属性。（SQL的userCache属性设置的是二级缓存。）
+		       建议：强计算型系统(如金融、保险、财务、证券、税务、电商等)都配置为STATEMENT。只有这里设置为STATEMENT，事务隔离级别的配置（@Transactional(isolation=Isolation.READ_COMMITTED)）才会按照你的预期工作。
+		       比如：想把mysql的缺省REPEATABLE_READ改为READ_COMMITTED。
+		  -->
+		<setting name="localCacheScope" value="STATEMENT" />
+		<setting name="logImpl" value="SLF4J" />
+		<setting name="logPrefix" value="dao."/>
+	</settings>
+	
+	<!-- 通用别名设置 -->
+	<typeAliases>
+		<typeAlias type="aos.framework.core.typewrap.impl.HashDto" alias="Dto" />
+	</typeAliases>
+
+	<!-- 插件 -->
+	<plugins>
+		<!-- StatementHandler插件 -->
+		<plugin interceptor="aos.framework.core.dao.plugin.StatementHandlerPlugin">
+			<property name="sqlid" value=".*Page" />
+		</plugin>
+		<!-- ResultSetHandler插件 -->
+		<plugin interceptor="aos.framework.core.dao.plugin.ResultSetHandlerPlugin" />
+		
+	</plugins>
+
+</configuration>

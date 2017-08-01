@@ -1,0 +1,50 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+##View使用的Store
+#if($url)
+    var ${id}_store = Ext.create('Ext.data.Store', {
+        fields: [$fields],
+        autoLoad: $autoLoad,
+        proxy : {
+	        type : 'ajax',
+	        url:'$url',
+	        reader : {
+		        type : 'json'
+	           }
+        }
+    });
+    ##绑定Store的事件
+    #if(${onload})
+    	${id}_store.on('load', $onload);
+    #end
+#end
+	
+##View配置项定义
+var ${id}_cfg = {
+#parse("${vmpath}ext/common/componentTagSupport.vm")
+     plugins : [
+	 #if($animated == "true")
+        Ext.create('Ext.ux.DataView.Animated', {
+			#if($idProperty)
+		       idProperty: '$idProperty',
+	        #end
+               duration  : $duration
+        })
+	   #end
+    ], 		
+	#if($url)
+		 store: ${id}_store,
+	#end
+    #if($itemSelector)
+		 itemSelector: '$itemSelector',
+	 #end	
+    #if($overItemCls)
+		 overItemCls: '$overItemCls',
+	#end
+		 multiSelect: $multiSelect,
+	     app: 169
+};
+##View实例化
+var ${id} = Ext.create('Ext.view.View', ${id}_cfg);
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")

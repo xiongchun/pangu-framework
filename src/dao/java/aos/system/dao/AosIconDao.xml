@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- aos_icon[aos_icon]SQL自动映射 -->
+<!--  注意:此文件由AOS平台自动生成-禁止手工修改 2017-03-23 17:54:25 -->
+<mapper namespace="aos.system.dao.AosIconDao">
+	
+	<!-- 插入一个数据持久化对象(插入字段为传入PO实体的非空属性) -->
+	<insert id="insert"  parameterType="AosIconPO">
+		INSERT INTO aos_icon (
+		<if test="type != null and type != ''">
+	         type, <!-- 类型 -->
+		</if>
+		<if test="name != null and name != ''">
+	          name  <!-- 名称 -->
+	   </if>
+		)VALUES(
+		<if test="type != null and type != ''">
+	          #{type, jdbcType=VARCHAR}, <!-- 类型 -->
+	    </if>
+		<if test="name != null and name != ''">
+		     #{name, jdbcType=VARCHAR}  <!-- 名称 -->
+	    </if>
+		)
+	</insert>
+	
+	<!-- 插入一个数据持久化对象(含所有字段) -->
+	<insert id="insertAll"  parameterType="AosIconPO">
+		INSERT INTO aos_icon (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{name, jdbcType=VARCHAR},  <!-- 名称 -->
+		    #{type, jdbcType=VARCHAR}  <!-- 类型 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据持久化对象 -->
+	<update id="updateByKey" parameterType="AosIconPO">
+		UPDATE aos_icon
+		<set>
+			<if test="name != null">
+		          name = #{name, jdbcType=VARCHAR},  <!-- 名称 -->
+			</if>
+			<if test="type != null">
+		          type = #{type, jdbcType=VARCHAR},  <!-- 类型 -->
+			</if>
+		</set>
+		WHERE  name = #{name}
+	</update>
+	
+	<!-- 根据主键删除数据持久化对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM aos_icon WHERE  name = #{name}
+	</delete>
+
+	<!-- 根据主键查询并返回数据持久化对象 -->
+	<select id="selectByKey" resultType="AosIconPO">
+		SELECT
+		<include refid="column" />
+		FROM aos_icon WHERE  name = #{name}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据持久化对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="AosIconPO">
+		SELECT
+		    <include refid="column" />
+		FROM aos_icon
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据持久化对象集合 -->
+	<select id="list" parameterType="Dto" resultType="AosIconPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_icon
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据持久化对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="AosIconPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_icon
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="AosIconPO">
+		SELECT
+			<include refid="column" />	
+		FROM aos_icon
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据持久化对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="AosIconPO" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM aos_icon
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM aos_icon
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM aos_icon
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  name,  <!-- 名称 -->
+		  type  <!-- 类型 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  aos_icon.name,  <!-- 名称 -->
+		  aos_icon.type  <!-- 类型 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	    <if test="name != null and name != ''">
+		      AND name = #{name}  <!-- 名称 -->
+		</if>
+	    <if test="type != null and type != ''">
+		      AND type = #{type}  <!-- 类型 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="name != null and name != ''">
+		      AND name like '${name}%'  <!-- 名称 -->
+		</if>
+	    <if test="type != null and type != ''">
+		      AND type like '${type}%'  <!-- 类型 -->
+		</if>
+	</sql>
+	
+</mapper>

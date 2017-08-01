@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd" version="2.0">
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>AOSTag</short-name>
+	<uri>http://www.osworks.cn/tag/aos</uri>
+	<display-name>AOS标签库</display-name>
+	<description>AOS标签库</description>
+
+	<tag>
+		<name>html</name>
+		<tag-class>aos.framework.taglib.impl.app.HtmlTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>Html标签</description>
+		<attribute>
+			<name>html5</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>是否生成Html5文档声明代码。缺省值:true。</description>
+		</attribute>
+		<attribute>
+			<name>title</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>title标记的属性值。缺省值：""。</description>
+		</attribute>
+		<attribute>
+			<name>base</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    本页面请求的相对参考地址。一般设置为某个Controller的映射地址，比如：base="/example/tagdemo/"。则本页中所有的请求地址都将自动将此地址作为前缀。
+			</description>
+		</attribute>
+		<attribute>
+			<name>lib</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>打包引入WebUI库所需资源。缺省值：""；引入多个lib可用逗号分割。可选值：ext | bootstrap | jquery| jqueryui | buttons | filter | raphael。
+			</description>
+		</attribute>		
+	</tag>
+	<tag>
+		<name>body</name>
+		<tag-class>aos.framework.taglib.impl.app.BodyTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>Body标签</description>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>生成html dom文档的id属性。缺省值:""。</description>
+		</attribute>
+		<attribute>
+			<name>class2</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>生成html dom文档的class属性。缺省值:""。</description>
+		</attribute>
+		<attribute>
+			<name>backGround</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>根据皮肤自动选择合适的背景平铺页面。可选值：true | false。缺省值：false。</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>vercode</name>
+		<tag-class>aos.framework.taglib.impl.app.VerCodeTag</tag-class>
+		<body-content>empty</body-content>
+		<description>验证码标签</description>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+            <description>
+             组件的id属性。缺省值:系统自动生成。
+            </description>
+		</attribute>
+		<attribute>
+			<name>uuid</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+            <description>
+             组件的uuid属性。用于存储验证码的KEY。
+            </description>
+		</attribute>
+		<attribute>
+			<name>url</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+            <description>
+             生成验证码图片的url。缺省值："/verCodeServlet.png"。
+            </description>
+		</attribute>
+		<attribute>
+			<name>title</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+            <description>
+             鼠标悬停验证码图片的提示信息。缺省值："点击刷新"。
+            </description>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+            <description>
+             高度。缺省值："30"。
+            </description>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+            <description>
+             宽度。缺省值："100"。
+            </description>
+		</attribute>
+		<attribute>
+			<name>length</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+            <description>
+             验证码字符串长度。缺省值："4"。
+            </description>
+		</attribute>
+		<attribute>
+			<name>characters</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+            <description>
+             验证码待选字符。缺省值："abcdefhkty2345678"。
+            </description>
+		</attribute>
+		<attribute>
+			<name>fontSize</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+            <description>
+             验证码字体大小。缺省值："25"。
+            </description>
+		</attribute>
+		<attribute>
+			<name>animate</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+            <description>
+             刷新验证码时是否出现动画效果。可选值：true | false。缺省值："true"。
+            </description>
+		</attribute>
+	</tag>
+#foreach($tagVO in $tagVOs)
+#set($tagAttributeVOs = ${tagVO.tagAttributeVOs})
+	<tag>
+		<name>${tagVO.name}</name>
+		<tag-class>${tagVO.tagclass}</tag-class>
+		<body-content>${tagVO.bodycontent}</body-content>
+		<description>${tagVO.description}</description>
+#foreach($tagAttributeVO in $tagAttributeVOs)
+		<attribute>
+			<name>${tagAttributeVO.name}</name>
+			<required>${tagAttributeVO.required}</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+			    ${tagAttributeVO.description}
+			</description>
+		</attribute>
+#end
+	</tag>
+#end
+</taglib>

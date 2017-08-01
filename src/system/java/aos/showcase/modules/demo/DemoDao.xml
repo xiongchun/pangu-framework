@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 范例使用的手工SQL语句 -->
+<mapper namespace="Demo">
+
+	<!-- 查询参数数据 -->
+	<select id="listParamsPage" resultType="AosParamsPO"
+		parameterType="Dto">
+		SELECT
+		<include refid="aos.framework.dao.AosParamsDao.column" />
+		FROM aos_params WHERE
+		params_key LIKE '%${keyorvalue}%' OR value LIKE '%${keyorvalue}%'
+	</select>
+
+	<!-- 查询测试 -->
+	<select id="listAccountPage" resultType="DemoAccountPO"
+		parameterType="Dto">
+		SELECT
+		<include refid="aos.demo.dao.DemoAccountDao.column" />
+		FROM demo_account WHERE 1=1
+		<if test="name_ != null and name_ != ''">
+			AND name = #{name}
+		</if>
+	</select>
+
+	<!-- 查询自定义下拉组件数据(重点是字段的别名) -->
+	<select id="listComboBoxData" resultType="Dto">
+		SELECT
+		id AS value, name AS display
+		FROM
+		aos_role LIMIT 10
+	</select>
+
+	<!-- 查询多级联动下拉框数据(第一级) -->
+	<select id="listComboBoxCascadeData" resultType="Dto">
+		SELECT
+		id AS value, name AS display
+		FROM
+		aos_module WHERE length(cascade_id) = ${length}
+	</select>
+
+	<!-- 查询多级联动下拉框数据(第二级) -->
+	<select id="listComboBoxCascadeSubData" resultType="Dto">
+		SELECT
+		id AS value, name AS display
+		FROM
+		aos_module WHERE parent_id = #{parent_id}
+	</select>
+
+	<!-- 查询统计数据 -->
+	<select id="querySummary" resultType="Dto" parameterType="Dto">
+		SELECT
+			count(id) as count,
+			IFNULL(sum(balance),0) as sum_balance,
+			IFNULL(sum(credit_line),0) as sum_credit_line,
+			IFNULL(max(age),0) as max_age
+		FROM
+		demo_account
+		<where>
+			<if test="name != null and name != ''">
+				AND name = #{name}
+			</if>
+			<if test="card_type != null and card_type != ''">
+				AND card_type = #{card_type}
+			</if>
+			<if test="card_id != null and card_id != ''">
+				AND card_id = #{card_id}
+			</if>
+		</where>
+
+	</select>
+
+</mapper>

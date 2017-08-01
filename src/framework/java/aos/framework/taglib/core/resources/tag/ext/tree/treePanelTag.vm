@@ -1,0 +1,298 @@
+##注册事件监听器
+#parse("${vmpath}ext/subvm/listeners.vm")
+
+##客户端数据源
+#if(!$url)
+var ${id}_store = Ext.create('Ext.data.TreeStore', {
+  ##从node标签生成的Json
+  #if($rootJson)
+      root: $rootJson
+  #end
+});
+#end
+
+##TreeGrid.Store.Fields
+#if($treegrid == "true")
+var ${id}_treegrid_store_fields = [
+    #foreach($fielddto in $fields)
+        {
+		#if(${fielddto.name})
+			name: '${fielddto.name}',
+		#end
+		##date列要对在此进行一次时分秒格式化，然后再在column里格式化成自己想要的格式。
+		##如果不设置，则在FF和IE下进行column格式化时，将被错误的格式化为：0NaN-NaN-NaN。或者在服务器格式化后以文本列输出也是可以的。
+		#if(${fielddto.type} == "date")
+			type:'date',
+			dateFormat : 'Y-m-d H:i:s',
+		#else
+			type:'auto',
+		#end
+		#if(${fielddto.defaultValue})
+			defaultValue:'${fielddto.defaultValue}',
+		#end
+		    app:169
+		}#if($velocityCount != $fields.size()),#end
+    #end
+];
+#end
+
+##远程异步数据源
+#if($url)
+var ${id}_store = Ext.create('Ext.data.TreeStore', {
+#if($treegrid == "true")
+	fields: ${id}_treegrid_store_fields,
+#end
+#if($nodeParam)
+	nodeParam : '$nodeParam',
+#end
+	proxy : {
+		##将load的提交方式强制改为POST，缺省为GET。GET会导致在部分Web容器里中文参数乱码的情况。
+		actionMethods: {
+            read: 'POST'  
+        },
+		type : 'ajax',
+		url : '$url'
+	},
+	root : {
+	    text : '$rootText',
+		id : '$rootId',
+#if($rootAttribute)
+##根节点不会将请求load回来的节点附加属性作为根节点的附加属性，如果需要让根节点有附加属性则需要这里强制附加。
+	   	$rootAttribute,
+#end	
+#if($rootIcon)
+	   icon : '$rootIcon',
+#end
+#if($rootChecked)
+##级联时候有bug，根节点不能参与级联选择。因为根节点不会触发checkchange事件。如果要解决此问题，可以考虑在一级节点上虚拟一个根节点出来。
+	   checked : $rootChecked,
+#end
+		expanded : $rootExpanded
+	}
+});	
+#end
+
+##TreeGrid.Columns
+#if($treegrid == "true")
+var ${id}_treegrid_columns = [
+    #foreach($columndto in $columns)
+        {
+			id:'${columndto.id}',
+		#if(${columndto.width})
+			width:${columndto.width},
+		#end
+        #if(${columndto.header})
+			header:'<span class="app-grid-column-header">${columndto.header}</span>',
+		#end
+		#if(${columndto.dataIndex})
+			dataIndex:'${columndto.dataIndex}',
+	   #end
+	   #if(${columndto.hidden})
+			hidden:${columndto.hidden},
+	   #end
+	   #if(${columndto.hideable})
+			hideable:${columndto.hideable},
+	   #end
+	   #if(${columndto.sortable})
+			sortable:${columndto.sortable},
+	   #end
+	   #if(${columndto.flex})
+			flex:${columndto.flex},
+	   #end
+	   #if(${columndto.rendererField})
+			renderer:function(value,metaData,record,rowIndex ,colIndex ,store){
+			 #set($dicList = ${columndto.dicList})
+			 if(Ext.isEmpty(value)) return '';
+			    ##返回的JSON中的数值类型
+				#if(${columndto.dataType} == "number")
+					#foreach($dic in $dicList)
+					    if(value === $dic.code) return '$dic.desc';
+					#end
+				#else
+					#foreach($dic in $dicList)
+					    if(value === '$dic.code') return '$dic.desc';
+					#end					
+				#end
+			 return value;
+			},
+	   #end
+	   #if((${columndto.rendererFn} || ${columndto.celltip}) && !${columndto.rendererField})
+			renderer:function(value,metaData,record,rowIndex ,colIndex ,store){
+			      #if(${columndto.celltip})
+			          metaData.tdAttr = 'data-qtip="'+value+'"';
+				  #end
+				  #if(${columndto.rendererFn})
+			          return ${columndto.rendererFn}(value,metaData,record,rowIndex ,colIndex ,store);
+			      #else
+					  return value;
+				  #end
+			},
+	   #end
+	   #if(${columndto.format})
+			format:'${columndto.format}',
+	   #end
+	   #if(${columndto.align})
+			align:'${columndto.align}',
+	   #end
+	   #if(${columndto.editor} && !${columndto.editor2})
+			editor:'${columndto.editor}',
+	   #end
+	   #if(${columndto.editor2})
+			editor:${columndto.editor2},
+	   #end
+	   #if(${columndto.lockable})
+			lockable:${columndto.lockable},
+	   #end
+	   #if(${columndto.locked})
+			locked:${columndto.locked},
+	   #end
+	   #if(${columndto.maxWidth})
+			maxWidth:${columndto.maxWidth},
+	   #end
+	   #if(${columndto.minWidth})
+			minWidth:${columndto.minWidth},
+	   #end
+	   #if(${columndto.any})
+			${columndto.any},
+	   #end
+	   #if(${columndto.type} == "action")
+	   #set($actionDtos = ${columndto.actionDtos})
+    		items: [
+    		 #foreach($actionDto in $actionDtos)
+				#if($velocityCount != "1")
+				  '-',
+				#end
+				{
+				#if(${actionDto.icon})
+			        icon: '${actionDto.icon}',
+				#end
+				#if(${actionDto.tooltip})
+			        tooltip: '${actionDto.tooltip}',
+				#end
+				#if(${actionDto.handler})
+			        handler: ${actionDto.handler},
+				#end
+				    app:169
+				}#if($velocityCount != $actionDtos.size()),#end
+    		 #end
+    		],
+		#end
+	   	    xtype: '${columndto.xtype}'
+	   #if(${columndto.tpl})
+			,tpl:'${columndto.tpl}'
+	   #end
+		}#if($velocityCount != $columns.size()),#end
+    #end
+];
+#end
+
+## TreePanel实例化
+## #if($treefilter == "true")
+## var ${id} = Ext.create('AOS.ux.TreeFilterPanel',{
+## #else
+## var ${id} = Ext.create('Ext.tree.Panel',{
+## #end
+var ${id} = Ext.create('AOS.ux.TreeFilterPanel',{
+#parse("${vmpath}ext/common/panelTagSupport.vm")
+#if($treegrid == "true")
+	columns:${id}_treegrid_columns,
+	#if($enableLocking)
+	   enableLocking:$enableLocking,
+    #end
+#end
+#if($columnLines)
+    columnLines: $columnLines,
+#end
+#if($rowLines)
+    rowLines: $rowLines,
+#end
+#if($rootVisible)
+    rootVisible: $rootVisible,
+#end
+#if($useArrows)
+    useArrows: $useArrows,
+#end
+#if($singleExpand)
+    singleExpand: $singleExpand,
+#end
+#if($lines)
+    lines: $lines,
+#end
+    store: ${id}_store,
+	app: 169
+});
+
+##展开所有节点
+#if($expandAll == "true")
+${id}.expandAll();
+#end
+
+##展开指定路径的节点
+#if($expandPath)
+${id}.expandPath('$expandPath');
+#end
+
+##处理单击、双击进行节点的展开和收缩操作
+#if($singleClick == "true")
+${id}.on('itemclick', function (view, record, item, index, e) {
+				if (record.isExpanded()) {
+					record.collapse();
+				} else {
+					record.expand();
+				}
+			}); 
+#end
+
+##配合复选框级联选择
+#if($cascade == "true")
+	//递归选中、反选父节点
+	var ${id}_eachParent = function(node, checked) {
+		if (!node.isRoot() && checked == true) {
+			if (!Ext.isEmpty(node.get('checked'))) {
+				node.set('checked', checked);
+				node.commit();
+			}
+			${id}_eachParent(node.parentNode, checked);
+		} else if (!node.isRoot()) {
+			if (!Ext.isEmpty(node.get('checked'))) {
+				var flag = false;
+				node.eachChild(function(n) {
+					if (n.get("checked")) {
+						flag = true;
+					}
+				});
+				if (!flag) {
+					node.set('checked', checked);
+					node.commit();
+					${id}_eachParent(node.parentNode, checked);
+				}
+			}
+		}
+	};
+	//递归选中、反选孩子节点 
+	var ${id}_eachChild = function(node, checked) {
+		node.eachChild(function(n) {
+			if (!Ext.isEmpty(n.get('checked'))) {
+				n.set('checked', checked);
+				n.commit();
+			}
+			${id}_eachChild(n, checked);
+		});
+	};
+	//监听
+	${id}.on('checkchange', function(node, checked, eOpts) {
+		${id}_eachParent(node.parentNode, checked);
+		${id}_eachChild(node, checked);
+	});	
+#end
+
+##组件常用事件绑定
+#parse("${vmpath}ext/subvm/events.vm")
+
+##处理Border
+#parse("${vmpath}ext/subvm/borders.vm")
+
+## treegrid的标题列的左右边框设置，防止边框线重叠
+#if($treegrid == "true")
+Ext.util.CSS.createStyleSheet('.x-grid-header-ct {border-left-width: 0px !important;border-right-width: 0px !important;}','treegrid_${id}');
+#end

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 角色管理模块使用的SQL语句 -->
+<mapper namespace="Role">
+
+	<!-- 查询角色列表 -->
+	<select id="listRolesPage" resultType="Dto" parameterType="Dto">
+	       SELECT * FROM (
+			SELECT
+			(SELECT cascade_id FROM aos_org WHERE id = (SELECT org_id FROM aos_user WHERE id = aos_role.create_by)) AS org_cascade_id,
+            <include refid="aos.system.dao.AosRoleDao.column" />
+            FROM aos_role
+			<where>
+			    <if test="name != null and name != ''">
+				    AND name LIKE '%${name}%' 
+				</if>
+				<if test="type != null and type != ''">
+				    AND type = #{type}
+				</if>
+			</where>	
+			) t WHERE t.org_cascade_id LIKE '${org_cascade_id}%' 
+			ORDER BY id DESC
+	</select>
+	
+	<!-- 删除人员角色关联表 -->
+	<delete id="deleteUserRoleByRoleID" parameterType="String">
+	   DELETE FROM aos_user_role WHERE role_id = #{role_id}
+	</delete>
+	
+	<!-- 查询授权树 -->
+	<select id="listTreeData4Grant" resultType="AosModulePO" parameterType="Dto">
+			SELECT
+            <include refid="aos.system.dao.AosModuleDao.column" />
+            FROM aos_module WHERE
+				id IN (
+					SELECT
+						module_id
+					FROM
+						aos_role_module
+					WHERE
+						grant_type = '2'
+					AND role_id IN (
+						SELECT
+							role_id
+						FROM
+							aos_user_role
+						WHERE
+							user_id = #{user_id}
+					))
+			 ORDER BY sort_no
+	</select>
+	
+	<!-- 删除角色模块关联表 -->
+	<delete id="deleteRoleModuleByRoleID" parameterType="Dto">
+	   DELETE FROM aos_role_module WHERE role_id = #{role_id} AND grant_type = #{grant_type}
+	</delete>
+	
+	<!-- 查询用户列表 -->
+	<select id="listUsersPage" resultType="Dto" parameterType="Dto">
+			SELECT
+			     aos_org.name AS org_name,
+                <include refid="aos.framework.dao.AosUserDao.column2" />
+            FROM aos_user, aos_org WHERE aos_user.org_id = aos_org.id
+              AND aos_user.id NOT IN (SELECT user_id FROM aos_user_role WHERE role_id = #{role_id})
+		    <if test="na != null and na != ''">
+			    AND (aos_user.name LIKE '%${na}%' OR aos_user.account LIKE '%${na}%')
+			</if>
+		    <if test="cascade == 0">
+			    AND aos_user.org_id = #{org_id, jdbcType=VARCHAR} 
+			</if>
+			<if test="cascade == 1">
+			    AND aos_org.cascade_id like '${org_cascade_id}%'
+			</if>
+			<if test="is_del != null and is_del != ''">
+			    AND aos_user.is_del = #{is_del} 
+			</if>
+			 ORDER BY aos_user.id DESC
+	</select>
+	
+	<!-- 查询已选用户列表 -->
+	<select id="listSelectedUsersPage" resultType="Dto" parameterType="Dto">
+			SELECT
+				aos_org.name as org_name,
+				aos_user_role.id as user_role_id,
+                <include refid="aos.framework.dao.AosUserDao.column2" />
+            FROM aos_user
+			LEFT JOIN aos_user_role ON aos_user_role.user_id = aos_user.id
+			LEFT JOIN aos_org ON aos_org.id = aos_user.org_id
+            WHERE aos_user.id IN (SELECT user_id FROM aos_user_role WHERE role_id = #{role_id})
+                AND aos_user_role.role_id = #{role_id}
+		    <if test="na != null and na != ''">
+			    AND (aos_user.name LIKE '%${na}%' OR aos_user.account LIKE '%${na}%')
+			</if>
+			<if test="is_del != null and is_del != ''">
+			    AND aos_user.is_del = #{is_del} 
+			</if>
+			 ORDER BY aos_user.id DESC
+	</select>
+
+</mapper>

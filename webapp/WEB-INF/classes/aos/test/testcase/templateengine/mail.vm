@@ -1,0 +1,12 @@
+<html>
+<title>${title}</title>
+<body>
+发送人：${sender}
+<hr>
+#if(${receivers})
+接收人：${receivers}
+#end
+<hr>
+${content}
+</body>
+</html>

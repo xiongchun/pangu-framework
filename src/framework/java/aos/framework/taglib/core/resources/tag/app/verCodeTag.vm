@@ -1,0 +1,25 @@
+<img id="$id" alt="验证码图片" title="${title}" src="${cxt}$url" onclick="${id}_refresh()" style="cursor: pointer;" />  
+<script type="text/javascript">
+/**
+ * 刷新验证码
+ */
+function ${id}_refresh() {
+    imgObj = document.getElementById("${id}");
+	var index = imgObj.src.indexOf("random");
+	if(index === -1) {
+	    if(imgObj.src.indexOf("?") === -1) {
+		    imgObj.src = imgObj.src + "?random=" + Math.random();
+		}else{
+		    imgObj.src = imgObj.src + "&random=" + Math.random();
+		}
+	} else {
+	    var url = imgObj.src.substring(0,index-1);
+        imgObj.src = url + "&random=" + Math.random();
+	}
+#if($animate == "true")
+	var el = Ext.get('${id}');
+	el.switchOff();
+	el.fadeIn();
+#end
+}
+</script>
