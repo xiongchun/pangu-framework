@@ -252,4 +252,4 @@
     原开源项目G4Studio终于毕业了，正式更名为AOSuite。涅槃重生，版本初始化……
 
 #### §00. G4Studio-0.1~5.2-RELEASE 2008~2014
-    AOSuite的前世G4Studio经历了6年的孵化培育期。点击了解[G4Studio](https://gitee.com/osworks/G4Studio)项目。
+    AOSuite的前世G4Studio经历了6年的孵化培育期。点击了解[G4Studio](http://git.oschina.net/osworks/G4Studio)项目。
