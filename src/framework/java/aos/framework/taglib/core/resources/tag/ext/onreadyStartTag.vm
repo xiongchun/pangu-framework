@@ -51,7 +51,7 @@ Ext.Ajax.on('beforerequest', function(conn, options, eopts) {
 Ext.Ajax.on('requestexception', function(conn, response, options, eopts) {
 	if (response.status == 500) {
 	    ##服务器异常
-		#if($run_mode_ == "2")
+		#if($run_mode == "2")
 		AOS.err('在线演示系统为只读模式，部分功能可能不流畅。完美体验请搭建本地环境。');
 		#else
 		AOS.err(response.responseText);
