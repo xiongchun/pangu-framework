@@ -465,7 +465,7 @@
 		}
 	}
 	
-	<c:if test="${run_mode_ == '2'}">
+	<c:if test="${run_mode == '2'}">
     //在线演示系统自动弹出加入QQ群对话框
     window.onload=function(){
    	 setTimeout(function(){
