@@ -73,7 +73,7 @@ var x_field_required = '<span class="mustinput-label">*</span>';
 Ext.onReady(function(){
 Ext.QuickTips.init();
 ##表单校验失败时的全局消息提示方式
-Ext.form.Field.prototype.msgTarget = '$msgtarget_';
+Ext.form.Field.prototype.msgTarget = '$msgtarget';
 ##屏蔽浏览器右键
 #if($preventDefault == "true")
 Ext.getDoc().on("contextmenu", function(e){
