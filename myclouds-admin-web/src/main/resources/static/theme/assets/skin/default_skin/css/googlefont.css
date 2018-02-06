@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/*===============================================
+  googlefont based 360cdn https://cdn.baomitu.com/index/fonts
+================================================= */
+/* open-sans-normal - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-300.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans'), local('OpenSans-Normal'),
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-300.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-300.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+  
+/* open-sans-normal - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: regular;
+  src: url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans'), local('OpenSans-Normal'),
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+  
+/* open-sans-normal - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-600.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans'), local('OpenSans-Normal'),
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v15-latin-600.svg#OpenSans') format('svg'); /* Legacy iOS */
+}

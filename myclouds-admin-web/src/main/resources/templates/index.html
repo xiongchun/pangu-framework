@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<th:block th:replace="/fragments/head" />
+</head>
+
+<body class="dashboard-page sb-l-o">
+	<!--/* 主题设置面板 */-->
+	<div th:replace="/fragments/skin-toolbox"></div>
+
+	<!-- BEGIN: 主页面 -->
+	<div id="main">
+		<!--/* 顶部导航 */-->
+		<header th:replace="/fragments/header-banner"></header>
+		<!--/* 左侧功能菜单导航 */-->
+		<aside th:replace="/fragments/aside"></aside>
+		<!-- BEGIN: Content-Wrapper -->
+		<section id="content_wrapper">
+			<!--/* 模块路径导航条 */-->
+			<header th:replace="/fragments/header-breadcrumb"></header>
+
+			<!-- Begin: 业务办理区 -->
+			<section id="content" class="animated fadeIn">
+				<div class="row ml5">欢迎来到 MyClouds的世界。</div>
+			</section>
+			<!-- End: 业务办理区 -->
+
+			<!--/* 页脚 */-->
+			<footer th:replace="/fragments/footer"></footer>
+
+		</section>
+		<!-- End: Content-Wrapper -->
+
+	</div>
+	<!-- End: 主页面 -->
+
+	<!--/* 公共脚本文件 */-->
+	<th:block th:include="/fragments/scripts" />
+
+
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			"use strict";
+			Core.init();
+			//TODO
+
+		});
+	</script>
+
+</body>
+
+</html>
