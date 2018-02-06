@@ -1,0 +1,31 @@
+spring:
+    application:
+        name: myclouds-gateway
+server:
+    port: 5555
+zuul:
+  ignored-services: "*"
+  routes:
+    mydemo: #转发策略：直接转发，无负载均衡。访问路径：http://127.0.0.1:5555/mydemo/param/list
+      path: /mydemo/**
+      url: http://127.0.0.1:8200
+    myadmin: #转发策略：看下文的myadmin配置。访问路径：http://127.0.0.1:5555/myadmin/param/list
+      path: /myadmin/**
+myadmin: # 使用ribbon进行负载均衡
+  ribbon: 
+     listOfServers: 127.0.0.1:8200,127.0.0.1:8200 #逗号分隔
+
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+  
+management:
+   security:
+       enabled:false
+endpoints:
+    health:
+        enabled:true
+        sensitive:false
+    metrics:
+       enabled:true
+       sensitive:false
