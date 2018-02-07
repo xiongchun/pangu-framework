@@ -41,7 +41,7 @@ public class MiscTest {
 		MyEnumEntity myEnumEntity = myCxt.getEnumElement("sex", "1");
 		log.info("枚举元素对象JSON序列化值：{}", myEnumEntity.toJson());
 		//直接获取枚举元素参数值
-		String enumElementValue = myCxt.getEnumElementValue("sex", "1");
+		String enumElementValue = myCxt.getEnumElementValue("sex", "2");
 		log.info("枚举元素参数值：{}", enumElementValue);
 		assertNotNull(paramValue);
 		assertNotNull(enumElementValue);
