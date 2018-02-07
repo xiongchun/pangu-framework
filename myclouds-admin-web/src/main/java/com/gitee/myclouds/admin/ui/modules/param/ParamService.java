@@ -18,6 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "myadmin-service")
 public interface ParamService {
 	
-	@RequestMapping(value = "/myadmin/param/list",method = RequestMethod.POST)
+	@RequestMapping(value = "/param/list",method = RequestMethod.POST)
 	String getParams(@RequestParam("inMap") Map<String,Object> inMap);
 }
