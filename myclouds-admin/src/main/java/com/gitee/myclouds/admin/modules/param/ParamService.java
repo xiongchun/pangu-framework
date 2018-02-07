@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.basicdata;
+package com.gitee.myclouds.admin.modules.param;
 
 import java.util.List;
 
