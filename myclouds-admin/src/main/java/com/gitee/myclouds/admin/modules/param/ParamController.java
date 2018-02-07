@@ -23,7 +23,7 @@ public class ParamController {
 	
 	@Autowired
 	private ParamService paramService;
-	
+
 	@RequestMapping(value = "list",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	public String list(@RequestParam Map<String,Object> inMap){
 		Dto inDto = Dtos.newDto(inMap);
