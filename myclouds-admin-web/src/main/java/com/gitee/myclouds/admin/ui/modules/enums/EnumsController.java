@@ -15,13 +15,13 @@ import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
- * 键值参数管理
+ * 枚举类型管理
  * 
  * @author xiongchun
  *
  */
 @Controller
-@RequestMapping("param")
+@RequestMapping("enums")
 public class EnumsController {
 
 	@Autowired
@@ -30,7 +30,7 @@ public class EnumsController {
 	@RequestMapping("init")
 	public String init(ModelMap map) {
 
-		return "modules/param";
+		return "modules/enums";
 	}
 
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
