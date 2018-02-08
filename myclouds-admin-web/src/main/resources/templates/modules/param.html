@@ -112,9 +112,9 @@
 								<div class="form-group">
 									<label class="col-md-3 control-label">所属系统：</label>
 									<div class="col-md-9">
-										<select name="sys_key" class="basic-single form-control"  style="width:250px">
+										<select name="sys_key" class="basic-single form-control" style="width: 250px">
+											<option></option>
 											<option value="0">平台全局</option>
-											<option value="1">平台全局2</option>
 										</select>
 									</div>
 								</div>
@@ -160,19 +160,22 @@
 		jQuery(document).ready(function() {
 			"use strict";
 			Core.init();
-			$(".basic-single").select2({
-				placeholder : "请选择...",
-				width:'100%',
-				allowClear : true
-			});
+			/******* 事件监听.start ********/
 			$("#btn_query").on("click", function(e) {
 				queryParams();
 			});
 			$("#btn_new").on("click", function(e) {
 				My.popup('#w-add-param');
 			});
-
 			$('#dt_param').on('init.dt', queryParams);
+			/******* 事件监听.end ********/
+
+			$(".basic-single").select2({
+				placeholder : "请选择...",
+				width : '100%',
+				minimumResultsForSearch : -1, //隐藏搜索框
+				allowClear : true
+			});
 
 			$('#dt_param').dataTable({
 				dom : 'tr<"dt-panelfooter clearfix"lip>',
