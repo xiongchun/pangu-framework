@@ -5,6 +5,7 @@
   margin: 0;
   position: relative;
   vertical-align: middle;
+  /* width: 100% !important;  xiongchun updated */
 }
 /* line 1, ../scss/_single.scss */
 .select2-container .select2-selection--single {
