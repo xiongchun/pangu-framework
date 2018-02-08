@@ -31,19 +31,19 @@
 					<div class="panel-body">
 						<form id="fo_query" class="form-horizontal" role="form">
 							<div class="form-group">
-								<label for="inputStandard" class="col-md-1 control-label">参数名称：</label>
+								<label class="col-md-1 control-label">参数名称：</label>
 								<div class="col-md-2">
 									<input name="name" class="form-control" />
 								</div>
-								<label for="disabledInput" class="col-md-1 control-label">参数键：</label>
+								<label class="col-md-1 control-label">参数键：</label>
 								<div class="col-md-2">
 									<input name="param_key" class="form-control" />
 								</div>
-								<label for="disabledInput" class="col-md-1 control-label">参数值</label>
+								<label class="col-md-1 control-label">参数值</label>
 								<div class="col-md-2">
 									<input name="value" class="form-control" />
 								</div>
-								<label for="inputSelect" class="col-md-1 control-label">所属系统：</label>
+								<label class="col-md-1 control-label">所属系统：</label>
 								<div class="col-md-2">
 									<select name="sys_key" class="basic-single form-control">
 										<option></option>
@@ -69,7 +69,7 @@
 							<div class="panel-heading">
 								<span class="panel-title">键值参数列表</span>
 								<div class="widget-menu pull-right mr5">
-									<button id="btn_new" class="btn btn-default btn-gradient btn-sm ph15" type="button">
+									<button id="btn_new" class="btn btn-default btn-gradient btn-sm ph15">
 										<span class="glyphicon glyphicon-plus"></span> 新增
 									</button>
 								</div>
@@ -95,83 +95,46 @@
 				</div>
 
 				<!-- 新增参数窗口 -->
-				<div id="w-add-param" class=" popup-basic admin-form mfp-with-anim mfp-hide">
+				<div id="w-add-param" class="popup-basic admin-form mfp-with-anim mfp-hide" data-effect="mfp-zoomOut">
 					<div class="panel">
 						<div class="panel-heading">
-							<span class="panel-title"><i class="fa fa-rocket"></i>Leave a comment</span>
+							<span class="panel-title"><i class="fa fa-rocket"></i>新增键值参数</span>
 						</div>
 						<!-- end .panel-heading section -->
-
-						<form id="comment">
-							<div class="panel-body p25">
-								<div class="section row">
-									<div class="col-md-6">
-										<label for="firstname" class="field prepend-icon">
-											<input type="text" name="firstname" id="firstname" class="gui-input" placeholder="First name..." />
-											<label for="firstname" class="field-icon">
-												<i class="fa fa-user"></i>
-											</label>
-										</label>
+						<div class="panel-body">
+							<form class="form-horizontal" role="form">
+								<div class="form-group ">
+									<label class="col-md-3 control-label">* 参数名称：</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" />
 									</div>
-									<!-- end section -->
-
-									<div class="col-md-6">
-										<label for="lastname" class="field prepend-icon">
-											<input type="text" name="lastname" id="lastname" class="gui-input" placeholder="Last name..." />
-											<label for="lastname" class="field-icon">
-												<i class="fa fa-user"></i>
-											</label>
-										</label>
-									</div>
-									<!-- end section -->
-
 								</div>
-								<!-- end section row section -->
-
-								<div class="section row">
-									<div class="col-md-6">
-										<label for="email" class="field prepend-icon">
-											<input type="email" name="email" id="email" class="gui-input" placeholder="Email address" />
-											<label for="email" class="field-icon">
-												<i class="fa fa-envelope"></i>
-											</label>
-										</label>
+								<div class="form-group">
+									<label class="col-md-3 control-label">所属系统：</label>
+									<div class="col-md-9">
+										<select name="sys_key" class="basic-single form-control"  style="width:250px">
+											<option value="0">平台全局</option>
+											<option value="1">平台全局2</option>
+										</select>
 									</div>
-									<!-- end section -->
-
-									<div class="col-md-6">
-										<label for="website" class="field prepend-icon">
-											<input type="url" name="website" id="lastname" class="gui-input" placeholder="Website url..." />
-											<label for="website" class="field-icon">
-												<i class="fa fa-globe"></i>
-											</label>
-										</label>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 control-label">Disabled</label>
+									<div class="col-md-9">
+										<input class="form-control" id="disabledInput" type="text" placeholder="A Disabled Form" />
 									</div>
-									<!-- end section -->
-
 								</div>
-								<!-- end section row section -->
-
-								<div class="section">
-									<label for="comment" class="field prepend-icon">
-										<textarea class="gui-textarea" id="comment" name="comment" placeholder="Your comment"></textarea>
-										<label for="comment" class="field-icon">
-											<i class="fa fa-comments"></i>
-										</label>
-										<span class="input-footer"> <strong>Hey You:</strong> We expect a great comment...
-										</span>
-									</label>
+								<div class="form-group">
+									<label class="col-md-3 control-label">Text Area Expand</label>
+									<div class="col-md-9">
+										<textarea class="form-control textarea-grow" id="textArea1" rows="4"></textarea>
+									</div>
 								</div>
-								<!-- end section -->
-
-							</div>
-							<!-- end .form-body section -->
-
-							<div class="panel-footer">
-								<button type="submit" class="button btn-primary">Post Comment</button>
-							</div>
-							<!-- end .form-footer section -->
-						</form>
+							</form>
+						</div>
+						<div class="panel-footer text-right">
+							<button type="submit" class="button btn-primary">保存</button>
+						</div>
 					</div>
 					<!-- end: .panel -->
 				</div>
@@ -197,13 +160,17 @@
 		jQuery(document).ready(function() {
 			"use strict";
 			Core.init();
-			$("#btn_query").on("click", function(event) {
+			$(".basic-single").select2({
+				placeholder : "请选择...",
+				allowClear : true
+			});
+			$("#btn_query").on("click", function(e) {
 				queryParams();
 			});
-			$("#btn_new").on("click", function(event) {
-				openNewParam();
+			$("#btn_new").on("click", function(e) {
+				My.popup('#w-add-param');
 			});
-			
+
 			$('#dt_param').on('init.dt', queryParams);
 
 			$('#dt_param').dataTable({
@@ -235,11 +202,6 @@
 				} ]
 			});
 
-			$(".basic-single").select2({
-				placeholder : "请选择...",
-				allowClear : true
-			});
-
 			function queryParams() {
 				var ajax = {
 					url : "list",
@@ -248,14 +210,6 @@
 				}
 				$('#dt_param').DataTable().settings()[0].ajax = ajax;
 				$('#dt_param').DataTable().ajax.reload();
-			}
-			
-			function openNewParam(){
-                $.magnificPopup.open({
-                    items: {
-                        src: '#w-add-param'
-                    }
-                });
 			}
 
 		});
