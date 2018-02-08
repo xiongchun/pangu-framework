@@ -20,9 +20,30 @@ var My = function() {
 		});
 		return formParams;
 	}
+	
+	/**
+	 * 弹出窗口
+	 * 
+	 * @selector JQuery支持的元素选择器表达式
+	 * @beforeEvent 监听打开前事件
+	 * @afterEvent 监听关闭后事件
+	 */
+	var popup = function(selector, beforeEvent, afterEvent){
+        $.magnificPopup.open({
+            items: {
+                src: selector
+            },
+            mainClass : $(selector).attr('data-effect'),
+            callbacks: {
+                beforeOpen: beforeEvent,
+                afterClose: afterEvent
+            }
+        });		
+	}
 
 	return {
-		params : params
+		params : params,
+		popup : popup
 	}
 
 }();
