@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/*===============================================
+  myclouds.css Helpers
+================================================= */
+/* 
+  * 表单必录项的高亮处理
+*/
+label.required {
+    
+}
+label.required:before {
+    color: #E9573F;
+    content: '* ';
+    display:inline;
+}
