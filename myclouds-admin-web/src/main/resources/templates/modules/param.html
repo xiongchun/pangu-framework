@@ -103,30 +103,36 @@
 						<!-- end .panel-heading section -->
 						<div class="panel-body">
 							<form class="form-horizontal" role="form">
-								<div class="form-group ">
-									<label class="col-md-3 control-label">* 参数名称：</label>
-									<div class="col-md-9">
-										<input  type="text" name="name" class="form-control" />
-									</div>
-								</div>
 								<div class="form-group">
-									<label class="col-md-3 control-label">所属系统：</label>
+									<label class="col-md-3 control-label">* 所属系统：</label>
 									<div class="col-md-9">
 										<select name="sys_key" class="basic-single form-control" style="width: 250px">
 											<option value="0">缺省全局</option>
 										</select>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="col-md-3 control-label">Disabled</label>
+								<div class="form-group ">
+									<label class="col-md-3 control-label">* 参数名称：</label>
 									<div class="col-md-9">
-										<input class="form-control" id="disabledInput" type="text" placeholder="A Disabled Form" />
+										<input type="text" name="name" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 control-label">Text Area Expand</label>
+									<label class="col-md-3 control-label">* 参数键：</label>
 									<div class="col-md-9">
-										<textarea class="form-control textarea-grow" id="textArea1" rows="4"></textarea>
+										<input class="form-control" type="text" name="param_key" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 control-label">参数值：</label>
+									<div class="col-md-9">
+										<input name="value" class="form-control" type="text" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 control-label">备注</label>
+									<div class="col-md-9">
+										<textarea name="remark" class="form-control textarea-grow" rows="4"></textarea>
 									</div>
 								</div>
 							</form>
