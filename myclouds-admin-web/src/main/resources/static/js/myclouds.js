@@ -25,25 +25,27 @@ var My = function() {
 	 * 弹出窗口
 	 * 
 	 * @selector JQuery支持的元素选择器表达式
-	 * @beforeEvent 监听打开前事件
-	 * @afterEvent 监听关闭后事件
 	 */
-	var popup = function(selector, beforeEvent, afterEvent){
+	var popup = function(selector){
         $.magnificPopup.open({
             items: {
                 src: selector
             },
-            mainClass : $(selector).attr('data-effect'),
-            callbacks: {
-                beforeOpen: beforeEvent,
-                afterClose: afterEvent
-            }
+            mainClass : $(selector).attr('data-effect')
         });		
+	}
+	
+	/**
+	 * 关闭弹出窗口
+	 */
+	var close = function(){
+		$.magnificPopup.close();
 	}
 
 	return {
 		params : params,
-		popup : popup
+		popup : popup,
+		close : close
 	}
 
 }();

@@ -9,7 +9,7 @@ label.required {
     
 }
 label.required:before {
-    color: #E9573F;
+    color: #E63F24;
     content: '* ';
     display:inline;
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
@@ -37,6 +38,14 @@ public class ParamController {
 	public String list(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
 		String jsonString = paramService.getParams(inDto);
+		return jsonString;
+	}
+	
+	@RequestMapping(value = "save", method = { RequestMethod.POST}, produces = "application/json")
+	@ResponseBody
+	public String save(HttpServletRequest request, HttpServletResponse response) {
+		Dto inDto = Dtos.newDto(request);
+		String jsonString = JSON.toJSONString(inDto);
 		return jsonString;
 	}
 	

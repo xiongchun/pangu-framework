@@ -54,12 +54,13 @@
 						</form>
 					</div>
 					<div class="panel-footer text-center">
-						<button id="btn_query" class="btn btn-default btn-gradient btn-sm ph15" type="button">
+						<button id="btn-query" class="btn btn-default btn-gradient btn-sm ph15" type="button">
 							<span class="glyphicon glyphicon-search"></span> 查询
 						</button>
 						<button class="btn btn-default btn-gradient btn-sm ph15" type="button">
 							<span class="glyphicon glyphicon-repeat"></span> 重置
 						</button>
+						<a href="#" class="btn btn-primary mb10 mr5 notification" data-note-stack="stack_top_left" data-note-style="warning">Top Left</a>
 					</div>
 				</div>
 
@@ -69,13 +70,13 @@
 							<div class="panel-heading">
 								<span class="panel-title">键值参数列表</span>
 								<div class="widget-menu pull-right mr5">
-									<button id="btn_new" class="btn btn-default btn-gradient btn-sm ph15">
+									<button id="btn-new" class="btn btn-default btn-gradient btn-sm ph15">
 										<span class="glyphicon glyphicon-plus"></span> 新增
 									</button>
 								</div>
 							</div>
 							<div class="panel-body pn">
-								<table id="dt_param" class="table table-striped table-hover" cellspacing="0" width="100%">
+								<table id="dt-param" class="table table-striped table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
 											<th>编号</th>
@@ -98,11 +99,12 @@
 				<div id="w-add-param" class="popup-basic admin-form mfp-with-anim mfp-hide" data-effect="mfp-zoomOut">
 					<div class="panel">
 						<div class="panel-heading">
-							<span class="panel-title"><i class="fa fa-rocket"></i>新增键值参数</span>
+							<i class="fa fa-plus fa-2x"></i>
+							<span class="panel-title ml5">新增键值参数</span>
 						</div>
 						<!-- end .panel-heading section -->
 						<div class="panel-body">
-							<form class="form-horizontal" role="form">
+							<form id="fo_add_param" class="form-horizontal" role="form">
 								<div class="form-group">
 									<label class="col-md-3 control-label required">所属系统：</label>
 									<div class="col-md-9">
@@ -138,7 +140,7 @@
 							</form>
 						</div>
 						<div class="panel-footer text-right">
-							<button type="submit" class="button btn-primary">保存</button>
+							<button id="btn-save" class="button btn-primary">保存</button>
 						</div>
 					</div>
 					<!-- end: .panel -->
@@ -166,15 +168,106 @@
 			"use strict";
 			Core.init();
 			/******* 事件监听.start ********/
-			$("#btn_query").on("click", function(e) {
-				queryParams();
-			});
-			$("#btn_new").on("click", function(e) {
+			$("#btn-query").on("click", queryParams);
+			$('#dt-param').on('init.dt', queryParams);
+			$('#btn-save').on('click', saveParam);
+			$("#btn-new").on("click", function(e) {
 				My.popup('#w-add-param');
 			});
-			$('#dt_param').on('init.dt', queryParams);
 			/******* 事件监听.end ********/
 
+			// A "stack" controls the direction and position
+			// of a notification. Here we create an array w
+			// with several custom stacks that we use later
+			var Stacks = {
+				stack_top_right : {
+					"dir1" : "down",
+					"dir2" : "left",
+					"push" : "top",
+					"spacing1" : 10,
+					"spacing2" : 10
+				},
+				stack_top_left : {
+					"dir1" : "down",
+					"dir2" : "right",
+					"push" : "top",
+					"spacing1" : 10,
+					"spacing2" : 10
+				},
+				stack_bottom_left : {
+					"dir1" : "right",
+					"dir2" : "up",
+					"push" : "top",
+					"spacing1" : 10,
+					"spacing2" : 10
+				},
+				stack_bottom_right : {
+					"dir1" : "left",
+					"dir2" : "up",
+					"push" : "top",
+					"spacing1" : 10,
+					"spacing2" : 10
+				},
+				stack_bar_top : {
+					"dir1" : "down",
+					"dir2" : "right",
+					"push" : "top",
+					"spacing1" : 0,
+					"spacing2" : 0
+				},
+				stack_bar_bottom : {
+					"dir1" : "up",
+					"dir2" : "right",
+					"spacing1" : 0,
+					"spacing2" : 0
+				},
+				stack_context : {
+					"dir1" : "down",
+					"dir2" : "left",
+					"context" : $("#stack-context")
+				},
+			}
+
+			// PNotify Plugin Event Init
+			$('.notification').on('click', function(e) {
+				var noteStyle = $(this).data('note-style');
+				var noteShadow = $(this).data('note-shadow');
+				var noteOpacity = $(this).data('note-opacity');
+				var noteStack = $(this).data('note-stack');
+				var width = "290px";
+
+				// If notification stack or opacity is not defined set a default
+				var noteStack = noteStack ? noteStack : "stack_top_right";
+				var noteOpacity = noteOpacity ? noteOpacity : "1";
+
+				// We modify the width option if the selected stack is a fullwidth style
+				function findWidth() {
+					if (noteStack == "stack_bar_top") {
+						return "100%";
+					}
+					if (noteStack == "stack_bar_bottom") {
+						return "70%";
+					} else {
+						return "290px";
+					}
+				}
+
+				// Create new Notification
+				new PNotify({
+					title : 'Bootstrap Themed',
+					text : 'Look at my beautiful styling! ^_^',
+					shadow : noteShadow,
+					opacity : noteOpacity,
+					addclass : noteStack,
+					type : noteStyle,
+					stack : Stacks[noteStack],
+					width : findWidth(),
+					delay : 1400
+				});
+
+			});
+
+			//初始化下拉框
 			$(".basic-single").select2({
 				placeholder : "请选择...",
 				width : '100%',
@@ -182,7 +275,8 @@
 				allowClear : true
 			});
 
-			$('#dt_param').dataTable({
+			//初始化表格
+			$('#dt-param').dataTable({
 				dom : 'tr<"dt-panelfooter clearfix"lip>',
 				pageLength : 20,
 				lengthMenu : [ [ 10, 20, 50, 200, 500 ], [ 10, 20, 50, 200, 500 ] ],
@@ -211,14 +305,29 @@
 				} ]
 			});
 
+			//查询参数列表
 			function queryParams() {
 				var ajax = {
 					url : "list",
 					type : "POST",
 					data : My.params('#fo_query')
 				}
-				$('#dt_param').DataTable().settings()[0].ajax = ajax;
-				$('#dt_param').DataTable().ajax.reload();
+				$('#dt-param').DataTable().settings()[0].ajax = ajax;
+				$('#dt-param').DataTable().ajax.reload();
+			}
+
+			//保存参数
+			function saveParam() {
+				$.ajax({
+					type : 'post',
+					url : 'save',
+					data : My.params('#fo_add_param'),
+					success : function(data) {
+						console.log(data);
+						My.close();
+						queryParams();
+					}
+				});
 			}
 
 		});
