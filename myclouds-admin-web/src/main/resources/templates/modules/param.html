@@ -60,7 +60,7 @@
 						<button class="btn btn-default btn-gradient btn-sm ph15" type="button">
 							<span class="glyphicon glyphicon-repeat"></span> 重置
 						</button>
-						<a href="#" class="btn btn-primary mb10 mr5 notification" data-note-stack="stack_top_left" data-note-style="warning">Top Left</a>
+						<a href="#" class="btn btn-primary mb10 mr5 notification" data-note-stack="stack_top_right" data-note-style="success">Top Left</a>
 					</div>
 				</div>
 
@@ -254,15 +254,15 @@
 
 				// Create new Notification
 				new PNotify({
-					title : 'Bootstrap Themed',
-					text : 'Look at my beautiful styling! ^_^',
+					title : '提示',
+					text : '键值参数保存成功!',
 					shadow : noteShadow,
-					opacity : noteOpacity,
-					addclass : noteStack,
-					type : noteStyle,
-					stack : Stacks[noteStack],
-					width : findWidth(),
-					delay : 1400
+					type : 'danger',
+					//stack : Stacks[noteStack],
+					stack : Stacks['stack_top_right'],
+					//width : findWidth(),
+					width : '50%',
+					delay : 1000
 				});
 
 			});
