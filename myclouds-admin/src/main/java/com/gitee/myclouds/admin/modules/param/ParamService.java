@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.common.MyCxt;
 import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
 import com.gitee.myclouds.admin.domain.myparam.MyParamMapper;
 import com.gitee.myclouds.admin.modules.cache.CacheCfgService;
+import com.gitee.myclouds.toolbox.util.MyUtil;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
@@ -26,8 +26,6 @@ public class ParamService {
 	private MyParamMapper myParamMapper;
 	@Autowired
 	private CacheCfgService cacheCfgService;
-	@Autowired
-	private MyCxt myCxt;
 	
 	/**
 	 * 查询参数列表
@@ -51,13 +49,16 @@ public class ParamService {
 	 * @return
 	 */
 	public Dto saveParam(Dto inDto){
-		Dto outDto = Dtos.newDto();
+		Dto outDto = null;
 		MyParamEntity myParamEntity = new MyParamEntity().copyFrom(inDto);
-		myParamMapper.insert(myParamEntity);
-		cacheCfgService.cacheParam(myParamEntity);
-		outDto.put("a", "a");
+		if (MyUtil.isEmpty(myParamMapper.selectByUkey1(myParamEntity.getParam_key()))) {
+			myParamMapper.insert(myParamEntity);
+			cacheCfgService.cacheParam(myParamEntity);
+			outDto = Dtos.newPlainDto("code:1", "msg:键值参数保存成功");
+		}else {
+			outDto = Dtos.newPlainDto("code:-1", "msg:参数键已经存在，请重新输入...");
+		}
 		return outDto;
-	}
-	
+	}	
 	
 	}
