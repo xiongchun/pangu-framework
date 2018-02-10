@@ -22,5 +22,5 @@ public interface ParamService {
 	String getParams(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	@RequestMapping(value = "/param/save",method = RequestMethod.POST)
-	String saveParam(@RequestParam("inDto") Map<String,Object> inDto);
+	Map<String, Object> saveParam(@RequestParam("inDto") Map<String,Object> inDto);
 }

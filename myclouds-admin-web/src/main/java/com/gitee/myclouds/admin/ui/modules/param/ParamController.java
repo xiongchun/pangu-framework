@@ -43,8 +43,7 @@ public class ParamController {
 	@ResponseBody
 	public Dto saveParam(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
-		paramService.saveParam(inDto);
-		return Dtos.newDto("msg", "键值参数保存成功");
+		return Dtos.newDto(paramService.saveParam(inDto));
 	}
 	
 }
