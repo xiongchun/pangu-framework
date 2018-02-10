@@ -45,10 +45,20 @@ public class ${tableDto.upname}Entity extends Entity {
 #if(${columnDto.type} == "date")
     @JSONField (format="yyyy-MM-dd")
 #end
-	private ${columnDto.javatype} ${columnDto.name};
-	
+	private ${columnDto.javatype} ${columnDto.name};	
 #end
 
+	/**
+	 * 将参数对象中的属性复制到当前对象中
+	 * 
+	 * @param inObj 参数对象
+	 * @return
+	 */
+	public ${tableDto.upname}Entity copyFrom(Object inObj) {
+		super.copyProperties(inObj);
+		return this;
+	}
+	
 ##get方法
 #foreach($columnDto in $columnDtos)
 	/**
