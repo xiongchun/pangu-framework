@@ -10,9 +10,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.gitee.myclouds.admin.common.MyCxt;
 import com.gitee.myclouds.admin.modules.cache.CacheCfgService;
 
-@RunWith(SpringRunner.class)
+/*@RunWith(SpringRunner.class)
 @SpringBootTest(classes=TempTest.class)
-@ComponentScan(basePackages={"com.gitee.myclouds"}) 
+@ComponentScan(basePackages={"com.gitee.myclouds"})*/ 
 public class TempTest {
 
 	@Autowired
@@ -20,7 +20,7 @@ public class TempTest {
 	@Autowired
 	private CacheCfgService cacheCfgService;
 	
-	@Test
+	/*@Test*/
 	public  void test1() {
 		System.out.println(1);
 	}
