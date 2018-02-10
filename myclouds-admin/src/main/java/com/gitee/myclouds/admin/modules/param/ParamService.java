@@ -37,4 +37,18 @@ public class ParamService {
 		outDto.put("recordsFiltered", myParamEntities.size());
 		return JSON.toJSONString(outDto);
 	}
+	
+	/**
+	 * 保存参数信息
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public void saveParam(Dto inDto){
+		MyParamEntity myParamEntity = new MyParamEntity().copyFrom(inDto);
+		myParamMapper.insertAll(myParamEntity);
+		
+	}
+	
+	
 	}

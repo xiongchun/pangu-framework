@@ -13,6 +13,7 @@ import com.gitee.myclouds.admin.domain.myenum.MyEnumMapper;
 import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
 import com.gitee.myclouds.admin.domain.myparam.MyParamMapper;
 import com.gitee.myclouds.toolbox.util.MyCons;
+import com.gitee.myclouds.toolbox.util.MyUtil;
 
 /**
  * 配置项缓存服务
@@ -62,6 +63,18 @@ public class CacheCfgService {
 			stringRedisTemplate.opsForHash().put(key, myEnumEntity.getElement_key(), myEnumEntity.toJson());
 		}
 		log.info("完成枚举参数初始化缓存");
+	}
+	
+	/**
+	 * 缓存\刷新指定键值参数
+	 * @param myParamEntity
+	 */
+	public void cacheParam(MyParamEntity myParamEntity) {
+		if (MyUtil.isNotEmpty(myParamEntity)) {
+			String key = MyCons.CacheKeyPrefix.MyParam.getValue() + myParamEntity.getParam_key();
+			stringRedisTemplate.opsForValue().set(key, myParamEntity.toJson());
+			log.info("缓存或刷新指定键值参数成功");
+		}
 	}
 
 }
