@@ -18,9 +18,9 @@ import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
  * @author xiongchun
  *
  */
-public class MiscTest {
+public class CfgCacheApiTest {
 	
-	private static Logger log = LoggerFactory.getLogger(MiscTest.class);
+	private static Logger log = LoggerFactory.getLogger(CfgCacheApiTest.class);
 	
 	private MyCxt myCxt;
 	
