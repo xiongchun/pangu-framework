@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
@@ -26,9 +25,12 @@ public class ParamController {
 
 	@RequestMapping(value = "list",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	public String list(@RequestParam Map<String,Object> inMap){
-		Dto inDto = Dtos.newDto(inMap);
-		String outJson = paramService.listAll(inDto);
-		return outJson;
+		return paramService.listAll(Dtos.newDto(inMap));
+	}
+	
+	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
+	public String save(@RequestParam Map<String,Object> inMap){
+		return paramService.saveParam(Dtos.newDto(inMap));
 	}
 	
 }
