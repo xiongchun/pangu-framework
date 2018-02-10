@@ -54,6 +54,15 @@ public class MyParamEntity extends Entity {
 	 */
 	private String remark;
 	
+	/**
+	 * 将参数对象中的属性复制到源对象中
+	 * 
+	 */
+	public MyParamEntity copyFrom(Object inObj) {
+		super.copyProperties(inObj);
+		return this;
+	}
+	
 
 	/**
 	 * 流水号
