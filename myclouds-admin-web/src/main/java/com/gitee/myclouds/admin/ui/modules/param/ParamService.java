@@ -19,5 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ParamService {
 	
 	@RequestMapping(value = "/param/list",method = RequestMethod.POST)
-	String getParams(@RequestParam("inMap") Map<String,Object> inMap);
+	String getParams(@RequestParam("inDto") Map<String,Object> inDto);
+	
+	@RequestMapping(value = "/param/save",method = RequestMethod.POST)
+	String saveParam(@RequestParam("inDto") Map<String,Object> inDto);
 }
