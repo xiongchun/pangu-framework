@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.gitee.myclouds.toolbox.util.WebCxt;
 import com.gitee.myclouds.toolbox.wrap.impl.HashDto;
 
@@ -57,6 +59,24 @@ public class Dtos {
 	 */
 	public static Dto newDto(HttpServletRequest request) {
 		return WebCxt.getParamAsDto(request);
+	}
+	
+	/**
+	 * 创建一个通过任意多个字符串型KV键值对初始化的Dto对象
+	 * 
+	 * @param kvs 满足形如 name:xiongchun 这样的键值对参数
+	 * @return
+	 */
+	public static Dto newPlainDto(String... kvs) {
+		Dto dto = new HashDto();
+		for (String kv : kvs) {
+			if (StringUtils.indexOf(kv, ":") == -1) {
+				throw new IllegalArgumentException("传入的键值对参数非法。" + kv);
+			}
+			String[] kvArr = StringUtils.split(kv, ":");
+			dto.put(StringUtils.trim(kvArr[0]), StringUtils.trim(kvArr[1]));
+		}
+		return dto;
 	}
 
 }
