@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
+import com.google.common.collect.Maps;
 
 /**
  * 键值参数管理
@@ -37,16 +38,14 @@ public class ParamController {
 	@ResponseBody
 	public String list(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
-		String jsonString = paramService.getParams(inDto);
-		return jsonString;
+		return paramService.getParams(inDto);
 	}
 	
 	@RequestMapping(value = "save", method = { RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
-	public String save(HttpServletRequest request, HttpServletResponse response) {
+	public Dto save(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
-		String jsonString = JSON.toJSONString(inDto);
-		return jsonString;
+		return Dtos.newDto("msg", "键值参数保存成功");
 	}
 	
 }
