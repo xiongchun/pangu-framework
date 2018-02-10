@@ -52,9 +52,8 @@ public class ParamService {
 	 */
 	public String saveParam(Dto inDto){
 		MyParamEntity myParamEntity = new MyParamEntity().copyFrom(inDto);
-		myParamMapper.insertAll(myParamEntity);
+		myParamMapper.insert(myParamEntity);
 		cacheCfgService.cacheParam(myParamEntity);
-		System.out.println(myCxt.getParamValue(myParamEntity.getParam_key()));
 		return null;
 	}
 	
