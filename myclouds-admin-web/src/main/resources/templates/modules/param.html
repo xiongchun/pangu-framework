@@ -232,7 +232,8 @@
 					url : 'save',
 					data : My.params('#fo_add_param'),
 					success : function(data) {
-						My.notify(data.name);
+						console.log(data);
+						My.notify(data);
 						My.close();
 						queryParams();
 					}
