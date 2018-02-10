@@ -1,9 +1,8 @@
 package com.gitee.myclouds.admin.domain.myenum;
 
-import java.util.Date;
-
-import com.alibaba.fastjson.annotation.JSONField;
 import com.gitee.myclouds.toolbox.wrap.Entity;
+import com.alibaba.fastjson.annotation.JSONField;
+import java.util.Date;
 
 /**
  * <b>枚举类型参数表[my_enum]数据实体对象</b>
@@ -12,7 +11,7 @@ import com.gitee.myclouds.toolbox.wrap.Entity;
  * </p>
  * 
  * @author myclouds team
- * @date 2018-01-31 15:08:11
+ * @date 2018-02-10 19:26:35
  */
 public class MyEnumEntity extends Entity {
 
@@ -21,55 +20,56 @@ public class MyEnumEntity extends Entity {
 	/**
 	 * 流水号
 	 */
-	private Integer id;
-	
+	private Integer id;	
 	/**
 	 * 枚举类型KEY
 	 */
-	private String enum_key;
-	
+	private String enum_key;	
 	/**
 	 * 枚举类型名称
 	 */
-	private String enum_name;
-	
+	private String enum_name;	
 	/**
 	 * 枚举元素KEY
 	 */
-	private String element_key;
-	
+	private String element_key;	
 	/**
 	 * 枚举元素值
 	 */
-	private String element_value;
-	
+	private String element_value;	
 	/**
 	 * 是否启用
 	 */
-	private String is_enable;
-	
+	private String is_enable;	
 	/**
 	 * 所属系统识别码
 	 */
-	private String sys_key;
-	
+	private String sys_key;	
 	/**
 	 * 排序号
 	 */
-	private Integer sort_no;
-	
+	private Integer sort_no;	
 	/**
 	 * 更新时间
 	 */
     @JSONField (format="yyyy-MM-dd HH:mm:ss")
-	private Date update_time;
-	
+	private Date update_time;	
 	/**
 	 * 备注
 	 */
-	private String remark;
-	
+	private String remark;	
 
+	/**
+	 * 将参数对象中的属性复制到当前对象中
+	 * 
+	 * @param inObj 参数对象
+	 * @return
+	 */
+	public MyEnumEntity copyFrom(Object inObj) {
+		super.copyProperties(inObj);
+		return this;
+	}
+	
 	/**
 	 * 流水号
 	 * 

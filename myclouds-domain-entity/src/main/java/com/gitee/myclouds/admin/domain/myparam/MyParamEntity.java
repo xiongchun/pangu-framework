@@ -1,9 +1,8 @@
 package com.gitee.myclouds.admin.domain.myparam;
 
-import java.util.Date;
-
-import com.alibaba.fastjson.annotation.JSONField;
 import com.gitee.myclouds.toolbox.wrap.Entity;
+import com.alibaba.fastjson.annotation.JSONField;
+import java.util.Date;
 
 /**
  * <b>键值参数表[my_param]数据实体对象</b>
@@ -12,7 +11,7 @@ import com.gitee.myclouds.toolbox.wrap.Entity;
  * </p>
  * 
  * @author myclouds team
- * @date 2018-01-31 15:08:12
+ * @date 2018-02-10 19:26:36
  */
 public class MyParamEntity extends Entity {
 
@@ -21,49 +20,44 @@ public class MyParamEntity extends Entity {
 	/**
 	 * 流水号
 	 */
-	private Integer id;
-	
+	private Integer id;	
 	/**
 	 * 参数名称
 	 */
-	private String name;
-	
+	private String name;	
 	/**
 	 * 参数键
 	 */
-	private String param_key;
-	
+	private String param_key;	
 	/**
 	 * 参数值
 	 */
-	private String value;
-	
+	private String value;	
 	/**
 	 * 所属系统识别码
 	 */
-	private String sys_key;
-	
+	private String sys_key;	
 	/**
 	 * 更新时间
 	 */
     @JSONField (format="yyyy-MM-dd HH:mm:ss")
-	private Date update_time;
-	
+	private Date update_time;	
 	/**
 	 * 备注
 	 */
-	private String remark;
-	
+	private String remark;	
+
 	/**
-	 * 将参数对象中的属性复制到源对象中
+	 * 将参数对象中的属性复制到当前对象中
 	 * 
+	 * @param inObj 参数对象
+	 * @return
 	 */
 	public MyParamEntity copyFrom(Object inObj) {
 		super.copyProperties(inObj);
 		return this;
 	}
 	
-
 	/**
 	 * 流水号
 	 * 
