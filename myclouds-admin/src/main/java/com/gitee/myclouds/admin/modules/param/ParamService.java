@@ -50,11 +50,13 @@ public class ParamService {
 	 * @param inDto
 	 * @return
 	 */
-	public String saveParam(Dto inDto){
+	public Dto saveParam(Dto inDto){
+		Dto outDto = Dtos.newDto();
 		MyParamEntity myParamEntity = new MyParamEntity().copyFrom(inDto);
 		myParamMapper.insert(myParamEntity);
 		cacheCfgService.cacheParam(myParamEntity);
-		return null;
+		outDto.put("a", "a");
+		return outDto;
 	}
 	
 	

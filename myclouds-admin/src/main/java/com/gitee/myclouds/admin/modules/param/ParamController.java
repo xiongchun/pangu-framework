@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
@@ -29,7 +30,7 @@ public class ParamController {
 	}
 	
 	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
-	public String saveParam(@RequestParam Map<String,Object> inMap){
+	public Dto saveParam(@RequestParam Map<String,Object> inMap){
 		return paramService.saveParam(Dtos.newDto(inMap));
 	}
 	
