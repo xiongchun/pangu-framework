@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
+import com.gitee.myclouds.admin.common.MyCxt;
 import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
 import com.gitee.myclouds.admin.domain.myparam.MyParamMapper;
+import com.gitee.myclouds.admin.modules.cache.CacheCfgService;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
@@ -22,6 +24,10 @@ public class ParamService {
 	
 	@Autowired
 	private MyParamMapper myParamMapper;
+	@Autowired
+	private CacheCfgService cacheCfgService;
+	@Autowired
+	private MyCxt myCxt;
 	
 	/**
 	 * 查询参数列表
@@ -44,10 +50,12 @@ public class ParamService {
 	 * @param inDto
 	 * @return
 	 */
-	public void saveParam(Dto inDto){
+	public String saveParam(Dto inDto){
 		MyParamEntity myParamEntity = new MyParamEntity().copyFrom(inDto);
 		myParamMapper.insertAll(myParamEntity);
-		
+		cacheCfgService.cacheParam(myParamEntity);
+		System.out.println(myCxt.getParamValue(myParamEntity.getParam_key()));
+		return null;
 	}
 	
 	
