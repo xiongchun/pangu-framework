@@ -173,6 +173,7 @@
 			$('#btn-save').on('click', saveParam);
 			$("#btn-new").on("click", function(e) {
 				My.popup('#w-add-param');
+				$("#fo_add_param")[0].reset();
 			});
 			/******* 事件监听.end ********/
 
@@ -232,9 +233,13 @@
 					url : 'save',
 					data : My.params('#fo_add_param'),
 					success : function(data) {
-						My.notify(data.msg);
-						My.close();
-						queryParams();
+						if (data.code == '1') {
+							My.notify(data.msg);
+							My.close();
+							queryParams();
+						} else {
+							My.notify(data.msg, 'danger');
+						}
 					}
 				});
 			}

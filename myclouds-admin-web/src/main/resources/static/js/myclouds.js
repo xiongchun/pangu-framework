@@ -23,6 +23,7 @@ var My = function() {
 
 	/**
 	 * 弹出窗口
+	 * 窗口事件可以通过其他方式绑定
 	 * 
 	 * @selector JQuery支持的元素选择器表达式
 	 */
@@ -64,15 +65,33 @@ var My = function() {
 			type : type,
 			stack : Stacks[stack],
 			width : '25%',
-			delay : 500
+			delay : 1000
 		});
+	}
+
+	/**
+	 * 常规alert提示框
+	 * 
+	 * @text 提示信息
+	 * @size 提示框大小 small large  缺省 null
+	 * @title 标题
+	 * @size 回调函数
+	 */
+	var alert = function(text, size, title, callback) {
+		bootbox.alert({
+			message : text,
+			size:size,
+			title:title,
+			callback : callback
+		})
 	}
 
 	return {
 		params : params,
 		popup : popup,
 		close : close,
-		notify : notify
+		notify : notify,
+		alert : alert
 	}
 
 }();
