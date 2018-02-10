@@ -24,12 +24,12 @@ public class ParamController {
 	private ParamService paramService;
 
 	@RequestMapping(value = "list",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
-	public String list(@RequestParam Map<String,Object> inMap){
+	public String listParams(@RequestParam Map<String,Object> inMap){
 		return paramService.listAll(Dtos.newDto(inMap));
 	}
 	
 	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
-	public String save(@RequestParam Map<String,Object> inMap){
+	public String saveParam(@RequestParam Map<String,Object> inMap){
 		return paramService.saveParam(Dtos.newDto(inMap));
 	}
 	
