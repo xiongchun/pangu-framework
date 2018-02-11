@@ -88,6 +88,7 @@ var My = function() {
 
 	/**
 	 * 表单校验
+	 * TODO 需要进一步封装
 	 * 
 	 * @formSelector 表单选择符
 	 * @submitHandler 表单提交响应事件
@@ -97,35 +98,9 @@ var My = function() {
 		$(formSelector).validate({
 			errorElement : "em",
 			// 校验规则
-			rules : {
-				name : {
-					required : true
-				},
-				param_key : {
-					required : true
-				},
-				sys_key : {
-					required : true
-				},
-				value : {
-					required : true
-				}
-			},
+			rules : options.rules,
 			// 提示信息
-			messages : {
-				name : {
-					required : '请输入参数名称'
-				},
-				param_key : {
-					required : '请输入参数键'
-				},
-				sys_key : {
-					required : '请选择所属系统'
-				},
-				value : {
-					required : '请输入参数值'
-				}
-			},
+			messages : options.messages,
 
 			highlight : function(element, errorClass, validClass) {
 				$(element).closest('.field').addClass('has-error');
