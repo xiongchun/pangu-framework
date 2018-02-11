@@ -225,8 +225,12 @@
 				$('#dt-param').DataTable().settings()[0].ajax = ajax;
 				$('#dt-param').DataTable().ajax.reload();
 			}
+			
+			My.validate('#fo_add_param',saveParam,{
+				
+			});
 
-			$("#fo_add_param").validate({
+/* 			$("#fo_add_param").validate({
 				errorElement : "em",
 				//校验规则
 				rules : {
@@ -255,7 +259,7 @@
 						required : '请选择所属系统'
 					},
 					value : {
-						required : '请选择参数值'
+						required : '请输入参数值'
 					}
 				},
 
@@ -274,7 +278,7 @@
 				} ,
 				//拦截并阻止原生submit事件，提供新的事件句柄接口
 				submitHandler : saveParam
-			});
+			}); */
 
 			//保存参数
 			function saveParam() {
