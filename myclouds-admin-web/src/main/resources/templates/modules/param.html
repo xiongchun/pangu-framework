@@ -225,13 +225,9 @@
 				$('#dt-param').DataTable().settings()[0].ajax = ajax;
 				$('#dt-param').DataTable().ajax.reload();
 			}
-			
-			My.validate('#fo_add_param',saveParam,{
-				
-			});
 
-/* 			$("#fo_add_param").validate({
-				errorElement : "em",
+			//表单校验规则
+			var validateOptions = {
 				//校验规则
 				rules : {
 					name : {
@@ -261,24 +257,11 @@
 					value : {
 						required : '请输入参数值'
 					}
-				},
+				}
+			}
 
-				highlight : function(element, errorClass, validClass) {
-					$(element).closest('.field').addClass('has-error');
-				},
-				success : function(element, errorClass, validClass) {
-					$(element).closest('.field').removeClass('has-error');
-				},
-				errorPlacement : function(error, element) {
-					if (element.is(":radio") || element.is(":checkbox")) {
-						element.closest('.option-group').after(error);
-					} else {
-						error.insertAfter(element);
-					}
-				} ,
-				//拦截并阻止原生submit事件，提供新的事件句柄接口
-				submitHandler : saveParam
-			}); */
+			//绑定新增参数表单校验和提交响应时间
+			My.validate('#fo_add_param', saveParam, validateOptions);
 
 			//保存参数
 			function saveParam() {
