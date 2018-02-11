@@ -13,3 +13,9 @@ label.required:before {
     content: '* ';
     display:inline;
 }
+
+/* 表单校验非法提示文本样式 */
+em.error{
+	color: #E63F24;
+	font-style:normal;
+}

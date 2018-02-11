@@ -103,11 +103,12 @@
 							<span class="panel-title ml5">新增键值参数</span>
 						</div>
 						<!-- end .panel-heading section -->
-						<div class="panel-body">
-							<form id="fo_add_param" class="form-horizontal" role="form">
+
+						<form id="fo_add_param" class="form-horizontal" role="form">
+							<div class="panel-body">
 								<div class="form-group">
 									<label class="col-md-3 control-label required">所属系统：</label>
-									<div class="col-md-9">
+									<div class="col-md-9 field">
 										<select name="sys_key" class="basic-single form-control" style="width: 250px">
 											<option value="0">缺省全局</option>
 										</select>
@@ -115,33 +116,33 @@
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label required">参数名称：</label>
-									<div class="col-md-9">
+									<div class="col-md-9 field">
 										<input type="text" name="name" class="form-control" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label required">参数键：</label>
-									<div class="col-md-9">
+									<div class="col-md-9 field">
 										<input class="form-control" type="text" name="param_key" />
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 control-label">参数值：</label>
-									<div class="col-md-9">
+									<label class="col-md-3 control-label required">参数值：</label>
+									<div class="col-md-9 field">
 										<input name="value" class="form-control" type="text" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">备注</label>
-									<div class="col-md-9">
+									<div class="col-md-9 field">
 										<textarea name="remark" class="form-control textarea-grow" rows="4"></textarea>
 									</div>
 								</div>
-							</form>
-						</div>
-						<div class="panel-footer text-right">
-							<button id="btn-save" class="button btn-primary">保存</button>
-						</div>
+							</div>
+							<div class="panel-footer text-right">
+								<button type="submit" class="button btn-primary">保存</button>
+							</div>
+						</form>
 					</div>
 					<!-- end: .panel -->
 				</div>
@@ -170,7 +171,6 @@
 			/******* 事件监听.start ********/
 			$("#btn-query").on("click", queryParams);
 			$('#dt-param').on('init.dt', queryParams);
-			$('#btn-save').on('click', saveParam);
 			$("#btn-new").on("click", function(e) {
 				My.popup('#w-add-param');
 				$("#fo_add_param")[0].reset();
@@ -225,6 +225,56 @@
 				$('#dt-param').DataTable().settings()[0].ajax = ajax;
 				$('#dt-param').DataTable().ajax.reload();
 			}
+
+			$("#fo_add_param").validate({
+				errorElement : "em",
+				//校验规则
+				rules : {
+					name : {
+						required : true
+					},
+					param_key : {
+						required : true
+					},
+					sys_key : {
+						required : true
+					},
+					value : {
+						required : true
+					}
+				},
+				//提示信息
+				messages : {
+					name : {
+						required : '请输入参数名称'
+					},
+					param_key : {
+						required : '请输入参数键'
+					},
+					sys_key : {
+						required : '请选择所属系统'
+					},
+					value : {
+						required : '请选择参数值'
+					}
+				},
+
+				highlight : function(element, errorClass, validClass) {
+					$(element).closest('.field').addClass('has-error');
+				},
+				success : function(element, errorClass, validClass) {
+					$(element).closest('.field').removeClass('has-error');
+				},
+				errorPlacement : function(error, element) {
+					if (element.is(":radio") || element.is(":checkbox")) {
+						element.closest('.option-group').after(error);
+					} else {
+						error.insertAfter(element);
+					}
+				} ,
+				//拦截并阻止原生submit事件，提供新的事件句柄接口
+				submitHandler : saveParam
+			});
 
 			//保存参数
 			function saveParam() {
