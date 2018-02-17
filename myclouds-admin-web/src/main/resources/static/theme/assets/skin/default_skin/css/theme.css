@@ -16332,6 +16332,9 @@ ol.timeline-list li.timeline-item .timeline-date {
 .mrn {
   margin-right: 0 !important;
 }
+.mr3 {
+  margin-right: 3px !important;
+}
 .mr5 {
   margin-right: 5px !important;
 }
@@ -16394,6 +16397,9 @@ ol.timeline-list li.timeline-item .timeline-date {
 }
 .mln {
   margin-left: 0 !important;
+}
+.ml3 {
+  margin-left: 3px !important;
 }
 .ml5 {
   margin-left: 5px !important;

@@ -25,11 +25,11 @@
 
 				<!-- Input Fields -->
 				<div class="panel">
-					<div class="panel-heading">
-						<span class="panel-title">查询条件</span>
-					</div>
-					<div class="panel-body">
-						<form id="fo_query" class="form-horizontal" role="form">
+					<form id="fo_query" class="form-horizontal">
+						<div class="panel-heading">
+							<span class="panel-title">查询条件</span>
+						</div>
+						<div class="panel-body">
 							<div class="form-group">
 								<label class="col-md-1 control-label">参数名称：</label>
 								<div class="col-md-2">
@@ -51,17 +51,17 @@
 									</select>
 								</div>
 							</div>
-						</form>
-					</div>
-					<div class="panel-footer text-center">
-						<button id="btn-query" class="btn btn-default btn-gradient btn-sm ph15" type="button">
-							<span class="glyphicon glyphicon-search"></span> 查询
-						</button>
-						<button class="btn btn-default btn-gradient btn-sm ph15" type="button">
-							<span class="glyphicon glyphicon-repeat"></span> 重置
-						</button>
+						</div>
+						<div class="panel-footer text-center">
+							<button id="btn-query" class="btn btn-default btn-gradient btn-sm ph15" type="button">
+								<span class="glyphicon glyphicon-search mr3"></span>查询
+							</button>
+							<button class="btn btn-default btn-gradient btn-sm ph15" type="reset">
+								<span class="glyphicon glyphicon-repeat mr3"></span>重置
+							</button>
+						</div>
+					</form>
 
-					</div>
 				</div>
 
 				<div class="row">
@@ -71,7 +71,7 @@
 								<span class="panel-title">键值参数列表</span>
 								<div class="widget-menu pull-right mr5">
 									<button id="btn-new" class="btn btn-default btn-gradient btn-sm ph15">
-										<span class="glyphicon glyphicon-plus"></span> 新增
+										<span class="fa fa-plus mr3"></span>新增
 									</button>
 								</div>
 							</div>
@@ -85,6 +85,7 @@
 											<th>参数值</th>
 											<th>所属系统</th>
 											<th>更新时间</th>
+											<th class="text-center">操作</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -100,11 +101,11 @@
 					<div class="panel">
 						<div class="panel-heading">
 							<i class="fa fa-plus fa-2x"></i>
-							<span class="panel-title ml5">新增键值参数</span>
+							<span class="panel-title ml3">新增键值参数</span>
 						</div>
 						<!-- end .panel-heading section -->
 
-						<form id="fo_add_param" class="form-horizontal" role="form">
+						<form id="fo_add_param" class="form-horizontal">
 							<div class="panel-body">
 								<div class="form-group">
 									<label class="col-md-3 control-label required">所属系统：</label>
@@ -140,7 +141,9 @@
 								</div>
 							</div>
 							<div class="panel-footer text-right">
-								<button type="submit" class="button btn-primary">保存</button>
+								<button type="submit" class="btn btn-default btn-gradient btn-sm ph15">
+									<span class="fa fa-save mr3"></span>保存
+								</button>
 							</div>
 						</form>
 					</div>
@@ -165,123 +168,142 @@
 
 	<script th:inline="javascript">
 		/*<![CDATA[*/
-		jQuery(document).ready(function() {
-			"use strict";
-			Core.init();
-			/******* 事件监听.start ********/
-			$("#btn-query").on("click", queryParams);
-			$('#dt-param').on('init.dt', queryParams);
-			$("#btn-new").on("click", function(e) {
-				My.popup('#w-add-param');
-				$("#fo_add_param")[0].reset();
-			});
-			/******* 事件监听.end ********/
+		jQuery(document)
+				.ready(
+						function() {
+							"use strict";
+							Core.init();
+							/******* 事件监听.start ********/
+							$("#btn-query").on("click", queryParams);
+							$('#dt-param').on('init.dt', queryParams);
+							$("#btn-new").on("click", function(e) {
+								My.popup('#w-add-param');
+								$("#fo_add_param")[0].reset();
+							});
+							/******* 事件监听.end ********/
 
-			//初始化下拉框
-			$(".basic-single").select2({
-				placeholder : "请选择...",
-				width : '100%',
-				minimumResultsForSearch : -1, //隐藏搜索框
-				allowClear : true
-			});
+							//初始化下拉框
+							$(".basic-single").select2({
+								placeholder : "请选择...",
+								width : '100%',
+								minimumResultsForSearch : -1, //隐藏搜索框
+								allowClear : true
+							});
 
-			//初始化表格
-			$('#dt-param').dataTable({
-				dom : 'tr<"dt-panelfooter clearfix"lip>',
-				pageLength : 20,
-				lengthMenu : [ [ 10, 20, 50, 200, 500 ], [ 10, 20, 50, 200, 500 ] ],
-				ordering : false,
-				processing : true,
-				serverSide : false, //false：一次查询，客户端分页的模式；true：服务端分页模式
-				deferLoading : 0, //屏蔽初始化后自动加载数据
-				pagingType : "full_numbers",
-				columns : [ {
-					data : "id",
-					width : 60
-				}, {
-					data : "name",
-					width : 200
-				}, {
-					data : "param_key",
-					width : 150
-				}, {
-					data : "value"
-				}, {
-					data : "sys_key",
-					width : 200
-				}, {
-					data : "update_time",
-					width : 150
-				} ]
-			});
+							//初始化表格
+							$('#dt-param')
+									.dataTable(
+											{
+												dom : 'tr<"dt-panelfooter clearfix"lip>',
+												pageLength : 20,
+												lengthMenu : [ [ 10, 20, 50, 200, 500 ], [ 10, 20, 50, 200, 500 ] ],
+												ordering : false,
+												processing : true,
+												serverSide : false, //false：一次查询，客户端分页的模式；true：服务端分页模式
+												deferLoading : 0, //屏蔽初始化后自动加载数据
+												pagingType : "full_numbers",
+												columns : [ {
+													data : "id",
+													width : 60
+												}, {
+													data : "name",
+													width : 200
+												}, {
+													data : "param_key",
+													width : 150
+												}, {
+													data : "value"
+												}, {
+													data : "sys_key",
+													width : 200
+												}, {
+													data : "update_time",
+													width : 150
+												} ],
+												columnDefs : [ {
+													targets : [ 6 ],//动作列
+													width : 50,
+													data : {},
+													render : function(data, type, full) {
+														var html = "<div class='text-center'><button class='btn btn-danger btn-xs btn-gradient' onclick='delParam(" + data.id + ")'>删除</button></div>";
+														return html;
+													}
+												} ],
+											});
 
-			//查询参数列表
-			function queryParams() {
-				var ajax = {
-					url : "list",
-					type : "POST",
-					data : My.params('#fo_query')
-				}
-				$('#dt-param').DataTable().settings()[0].ajax = ajax;
-				$('#dt-param').DataTable().ajax.reload();
-			}
+							//查询参数列表
+							function queryParams() {
+								var ajax = {
+									url : "list",
+									type : "POST",
+									data : My.params('#fo_query')
+								}
+								$('#dt-param').DataTable().settings()[0].ajax = ajax;
+								$('#dt-param').DataTable().ajax.reload();
+							}
 
-			//表单校验规则
-			var validateOptions = {
-				//校验规则
-				rules : {
-					name : {
-						required : true
-					},
-					param_key : {
-						required : true
-					},
-					sys_key : {
-						required : true
-					},
-					value : {
-						required : true
-					}
-				},
-				//提示信息
-				messages : {
-					name : {
-						required : '请输入参数名称'
-					},
-					param_key : {
-						required : '请输入参数键'
-					},
-					sys_key : {
-						required : '请选择所属系统'
-					},
-					value : {
-						required : '请输入参数值'
-					}
-				}
-			}
+							//表单校验规则
+							var validateOptions = {
+								//校验规则
+								rules : {
+									name : {
+										required : true
+									},
+									param_key : {
+										required : true
+									},
+									sys_key : {
+										required : true
+									},
+									value : {
+										required : true
+									}
+								},
+								//提示信息
+								messages : {
+									name : {
+										required : '请输入参数名称'
+									},
+									param_key : {
+										required : '请输入参数键'
+									},
+									sys_key : {
+										required : '请选择所属系统'
+									},
+									value : {
+										required : '请输入参数值'
+									}
+								}
+							}
 
-			//绑定新增参数表单校验和提交响应时间
-			My.validate('#fo_add_param', saveParam, validateOptions);
+							//绑定新增参数表单校验和提交响应时间
+							My.validate('#fo_add_param', saveParam, validateOptions);
 
-			//保存参数
-			function saveParam() {
-				$.ajax({
-					type : 'post',
-					url : 'save',
-					data : My.params('#fo_add_param'),
-					success : function(data) {
-						if (data.code == '1') {
-							My.notify(data.msg);
-							My.close();
-							queryParams();
-						} else {
-							My.notify(data.msg, 'danger');
-						}
-					}
-				});
-			}
+							//保存参数
+							function saveParam() {
+								$.ajax({
+									type : 'post',
+									url : 'save',
+									data : My.params('#fo_add_param'),
+									success : function(data) {
+										if (data.code == '1') {
+											My.notify(data.msg);
+											My.close();
+											queryParams();
+										} else {
+											My.notify(data.msg, 'danger');
+										}
+									}
+								});
+							}
 
-		});
+						});
+
+		//删除参数
+		function delParam(id) {
+			console.log(id);
+		}
+
 		/*]]>*/
 	</script>
 
