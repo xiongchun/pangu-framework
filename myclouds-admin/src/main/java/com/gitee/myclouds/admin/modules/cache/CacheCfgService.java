@@ -32,7 +32,7 @@ public class CacheCfgService {
 	private MyEnumMapper myEnumMapper;
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
-	
+
 	/**
 	 * 初始化缓存参数
 	 */
@@ -64,9 +64,10 @@ public class CacheCfgService {
 		}
 		log.info("完成枚举参数初始化缓存");
 	}
-	
+
 	/**
 	 * 缓存\刷新指定键值参数
+	 * 
 	 * @param myParamEntity
 	 */
 	public void cacheParam(MyParamEntity myParamEntity) {
@@ -74,6 +75,19 @@ public class CacheCfgService {
 			String key = MyCons.CacheKeyPrefix.MyParam.getValue() + myParamEntity.getParam_key();
 			stringRedisTemplate.opsForValue().set(key, myParamEntity.toJson());
 			log.info("缓存或刷新指定键值参数成功");
+		}
+	}
+
+	/**
+	 * 从缓存系统中删除指定键值参数
+	 * 
+	 * @param myParamEntity
+	 */
+	public void deleteParamFromCache(String paramKey) {
+		if (MyUtil.isNotEmpty(paramKey)) {
+			String key = MyCons.CacheKeyPrefix.MyParam.getValue() + paramKey;
+			stringRedisTemplate.delete(key);
+			log.info("删除指定键值参数成功");
 		}
 	}
 
