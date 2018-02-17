@@ -301,7 +301,23 @@
 
 		//删除参数
 		function delParam(id) {
-			console.log(id);
+			My.confirm('确认删除当前键值参数吗?',function(result){
+				if(result){
+					$.ajax({
+						type : 'post',
+						url : 'delete',
+						data : {id:id},
+						success : function(data) {
+							if (data.code == '1') {
+								My.notify(data.msg);
+								queryParams();
+							} else {
+								My.notify(data.msg, 'danger');
+							}
+						}
+					});
+				}
+			});
 		}
 
 		/*]]>*/

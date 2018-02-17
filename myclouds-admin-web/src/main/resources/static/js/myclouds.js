@@ -70,12 +70,12 @@ var My = function() {
 	}
 
 	/**
-	 * 常规alert提示框
+	 * alert常规提示框
 	 * 
 	 * @text 提示信息
 	 * @size 提示框大小 small large 缺省 null
 	 * @title 标题
-	 * @size 回调函数
+	 * @callback 回调函数
 	 */
 	var alert = function(text, size, title, callback) {
 		bootbox.alert({
@@ -84,6 +84,30 @@ var My = function() {
 			title : title,
 			callback : callback
 		})
+	}
+	
+	/**
+	 * confirm确认提示框
+	 * 
+	 * @text 提示信息
+	 * @title 标题
+	 * @callback 回调函数
+	 */
+	var confirm = function(text,callback){
+		bootbox.confirm({
+		    message: text,
+		    buttons: {
+		        confirm: {
+		            label: '确定',
+		            className: 'btn-gradient btn-sm btn-success'
+		        },
+		        cancel: {
+		            label: '取消',
+		            className: 'btn-gradient btn-sm btn-danger'
+		        }
+		    },
+		    callback: callback
+		});
 	}
 
 	/**
@@ -126,6 +150,7 @@ var My = function() {
 		close : close,
 		notify : notify,
 		alert : alert,
+		confirm : confirm,
 		validate : validate
 	}
 
