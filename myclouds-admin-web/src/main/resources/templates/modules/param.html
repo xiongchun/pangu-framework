@@ -225,7 +225,8 @@
 													width : 50,
 													data : {},
 													render : function(data, type, full) {
-														var html = "<div class='text-center'><button class='btn btn-danger btn-xs btn-gradient' onclick='delParam(" + data.id + ")'>删除</button></div>";
+														var html = "<div class='text-center'><button class='btn btn-danger btn-xs btn-gradient' onclick='delParam("
+																+ data.id + ")'>删除</button></div>";
 														return html;
 													}
 												} ],
@@ -301,19 +302,17 @@
 
 		//删除参数
 		function delParam(id) {
-			My.confirm('确认删除当前键值参数吗?',function(result){
-				if(result){
+			My.confirm('确认删除当前键值参数吗?', function(result) {
+				if (result) {
 					$.ajax({
 						type : 'post',
 						url : 'delete',
-						data : {id:id},
+						data : {
+							id : id
+						},
 						success : function(data) {
-							if (data.code == '1') {
-								My.notify(data.msg);
-								queryParams();
-							} else {
-								My.notify(data.msg, 'danger');
-							}
+							My.notify(data.msg);
+							queryParams();
 						}
 					});
 				}
