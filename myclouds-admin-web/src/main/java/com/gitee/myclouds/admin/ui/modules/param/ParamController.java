@@ -51,11 +51,11 @@ public class ParamController {
 		return paramService.getParams(inDto);
 	}
 	
-	@RequestMapping(value = "save", method = { RequestMethod.POST}, produces = "application/json")
+	@RequestMapping(value = "delete", method = { RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
 	public Dto saveParam(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(paramService.saveParam(inDto));
+		return Dtos.newDto(paramService.deleteParam(inDto));
 	}
 	
 }

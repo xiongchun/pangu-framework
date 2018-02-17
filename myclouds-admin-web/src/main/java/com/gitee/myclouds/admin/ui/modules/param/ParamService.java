@@ -18,9 +18,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "myadmin-service")
 public interface ParamService {
 	
+	/**
+	 * 查询参数列表
+	 * 
+	 * @param inDto
+	 * @return
+	 */
 	@RequestMapping(value = "/param/list",method = RequestMethod.POST)
 	String getParams(@RequestParam("inDto") Map<String,Object> inDto);
 	
+	/**
+	 * 新增参数对象
+	 * @param inDto
+	 * @return
+	 */
 	@RequestMapping(value = "/param/save",method = RequestMethod.POST)
 	Map<String, Object> saveParam(@RequestParam("inDto") Map<String,Object> inDto);
+	
+	/**
+	 * 删除参数对象
+	 * @param inDto
+	 * @return
+	 */
+	@RequestMapping(value = "/param/delete",method = RequestMethod.POST)
+	Map<String, Object> deleteParam(@RequestParam("inDto") Map<String,Object> inDto);
 }
