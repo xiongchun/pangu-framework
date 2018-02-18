@@ -34,4 +34,9 @@ public class ParamController {
 		return paramService.saveParam(Dtos.newDto(inMap));
 	}
 	
+	@RequestMapping(value = "delete",method = { RequestMethod.POST}, produces = "application/json")
+	public Dto deleteParam(@RequestParam Map<String,Object> inMap){
+		return paramService.deleteParam(Dtos.newDto(inMap));
+	}
+	
 }
