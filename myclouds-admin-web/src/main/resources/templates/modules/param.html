@@ -232,17 +232,6 @@
 												} ],
 											});
 
-							//查询参数列表
-							function queryParams() {
-								var ajax = {
-									url : "list",
-									type : "POST",
-									data : My.params('#fo_query')
-								}
-								$('#dt-param').DataTable().settings()[0].ajax = ajax;
-								$('#dt-param').DataTable().ajax.reload();
-							}
-
 							//表单校验规则
 							var validateOptions = {
 								//校验规则
@@ -280,25 +269,36 @@
 							//绑定新增参数表单校验和提交响应时间
 							My.validate('#fo_add_param', saveParam, validateOptions);
 
-							//保存参数
-							function saveParam() {
-								$.ajax({
-									type : 'post',
-									url : 'save',
-									data : My.params('#fo_add_param'),
-									success : function(data) {
-										if (data.code == '1') {
-											My.notify(data.msg);
-											My.close();
-											queryParams();
-										} else {
-											My.notify(data.msg, 'danger');
-										}
-									}
-								});
-							}
-
 						});
+
+		//查询参数列表
+		function queryParams() {
+			var ajax = {
+				url : "list",
+				type : "POST",
+				data : My.params('#fo_query')
+			}
+			$('#dt-param').DataTable().settings()[0].ajax = ajax;
+			$('#dt-param').DataTable().ajax.reload();
+		}
+
+		//保存参数
+		function saveParam() {
+			$.ajax({
+				type : 'post',
+				url : 'save',
+				data : My.params('#fo_add_param'),
+				success : function(data) {
+					if (data.code == '1') {
+						My.notify(data.msg);
+						My.close();
+						queryParams();
+					} else {
+						My.notify(data.msg, 'danger');
+					}
+				}
+			});
+		}
 
 		//删除参数
 		function delParam(row) {
