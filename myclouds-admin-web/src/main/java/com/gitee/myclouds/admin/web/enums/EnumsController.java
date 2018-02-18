@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.ui.modules.enums;
+package com.gitee.myclouds.admin.web.enums;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.gitee.myclouds.admin.ui.modules.param.ParamService;
+import com.gitee.myclouds.admin.web.param.ParamService;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 

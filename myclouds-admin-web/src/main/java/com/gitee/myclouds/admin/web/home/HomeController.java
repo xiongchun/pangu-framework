@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.ui.modules.home;
+package com.gitee.myclouds.admin.web.home;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

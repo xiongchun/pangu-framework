@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.ui.modules.param;
+package com.gitee.myclouds.admin.web.param;
 
 import java.util.Map;
 

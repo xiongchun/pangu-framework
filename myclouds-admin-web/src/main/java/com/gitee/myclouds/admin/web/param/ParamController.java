@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.ui.modules.param;
+package com.gitee.myclouds.admin.web.param;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
