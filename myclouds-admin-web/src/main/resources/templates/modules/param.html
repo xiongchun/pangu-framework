@@ -53,10 +53,10 @@
 							</div>
 						</div>
 						<div class="panel-footer text-center">
-							<button id="btn-query" class="btn btn-default btn-gradient btn-sm ph15" type="button">
+							<button id="btn-query" class="btn btn-default btn-gradient btn-sm" type="button">
 								<span class="glyphicon glyphicon-search mr3"></span>查询
 							</button>
-							<button class="btn btn-default btn-gradient btn-sm ph15" type="reset">
+							<button class="btn btn-default btn-gradient btn-sm" type="reset">
 								<span class="glyphicon glyphicon-repeat mr3"></span>重置
 							</button>
 						</div>
@@ -70,13 +70,21 @@
 							<div class="panel-heading">
 								<span class="panel-title">键值参数列表</span>
 								<div class="widget-menu pull-right mr5">
-									<button id="btn-new" class="btn btn-default btn-gradient btn-sm ph15">
-										<span class="fa fa-plus mr3"></span>新增
-									</button>
+									<div class="btn-group">
+										<button id="btn-new" class="btn btn-default btn-gradient btn-sm">
+											<span class="fa fa-plus mr3"></span>新增
+										</button>
+										<button id="btn-edit" class="btn btn-default btn-gradient btn-sm">
+											<span class="fa fa-pencil mr3"></span>修改
+										</button>
+										<button id="btn-del" class="btn btn-default btn-gradient btn-sm">
+											<span class="fa fa-times mr3"></span>删除
+										</button>
+									</div>
 								</div>
 							</div>
 							<div class="panel-body pn">
-								<table id="dt-param" class="table table-striped table-hover" cellspacing="0" width="100%">
+								<table id="dt-param" class="table my table-striped table-hover ">
 									<thead>
 										<tr>
 											<th>编号</th>
@@ -97,59 +105,62 @@
 				</div>
 
 				<!-- 新增参数窗口 -->
-				<div id="w-add-param" class="popup-basic admin-form mfp-with-anim mfp-hide" data-effect="mfp-zoomOut">
-					<div class="panel">
-						<div class="panel-heading">
-							<i class="fa fa-plus fa-2x"></i>
-							<span class="panel-title ml3">新增键值参数</span>
-						</div>
-						<!-- end .panel-heading section -->
-
-						<form id="fo_add_param" class="form-horizontal">
-							<div class="panel-body">
-								<div class="form-group">
-									<label class="col-md-3 control-label required">所属系统：</label>
-									<div class="col-md-9 field">
-										<select name="sys_key" class="basic-single form-control" style="width: 250px">
-											<option value="0">缺省全局</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 control-label required">参数名称：</label>
-									<div class="col-md-9 field">
-										<input type="text" name="name" class="form-control" />
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 control-label required">参数键：</label>
-									<div class="col-md-9 field">
-										<input class="form-control" type="text" name="param_key" />
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 control-label required">参数值：</label>
-									<div class="col-md-9 field">
-										<input name="value" class="form-control" type="text" />
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 control-label">备注</label>
-									<div class="col-md-9 field">
-										<textarea name="remark" class="form-control textarea-grow" rows="4"></textarea>
-									</div>
-								</div>
-							</div>
-							<div class="panel-footer text-right">
-								<button type="submit" class="btn btn-default btn-gradient btn-sm ph15">
-									<span class="fa fa-save mr3"></span>保存
+				<div class="modal fade" id="w-add-param" tabindex="-1" data-backdrop="static">
+					<div class="modal-dialog w450">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
 								</button>
+								<h3 class="modal-title">新增键值参数</h3>
 							</div>
-						</form>
+							<div class="modal-body">
+								<form id="fo_add_param" class="form-horizontal">
+									<div class="form-group">
+										<label class="col-md-3 control-label required">所属系统：</label>
+										<div class="col-md-9 field">
+											<select name="sys_key" class="basic-single form-control" style="width: 250px">
+												<option value="0">缺省全局</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label required">参数名称：</label>
+										<div class="col-md-9 field">
+											<input type="text" name="name" class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label required">参数键：</label>
+										<div class="col-md-9 field">
+											<input class="form-control" type="text" name="param_key" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label required">参数值：</label>
+										<div class="col-md-9 field">
+											<input name="value" class="form-control" type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">备注</label>
+										<div class="col-md-9 field">
+											<textarea name="remark" class="form-control textarea-grow" rows="4"></textarea>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" form="fo_add_param" class="btn btn-sm btn-success btn-gradient">保存</button>
+								<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
 					</div>
-					<!-- end: .panel -->
+					<!-- /.modal-dialog -->
 				</div>
-				<!-- end: 新增参数窗口 -->
+				<!-- /.modal -->
+
 
 			</section>
 			<!-- End: 业务办理区 -->
@@ -177,8 +188,14 @@
 							$("#btn-query").on("click", queryParams);
 							$('#dt-param').on('init.dt', queryParams);
 							$("#btn-new").on("click", function(e) {
-								My.popup('#w-add-param');
+								$('#w-add-param').modal();
 								$("#fo_add_param")[0].reset();
+							});
+							$("#btn-edit").on("click", function(e) {
+								My.notify('修改功能正在完善中...', 'info');
+							});
+							$("#btn-del").on("click", function(e) {
+								My.notify('批量删除功能正在完善中...', 'info');
 							});
 							/******* 事件监听.end ********/
 
@@ -291,7 +308,7 @@
 				success : function(data) {
 					if (data.code == '1') {
 						My.notify(data.msg);
-						My.close();
+						$('#w-add-param').modal('hide');
 						queryParams();
 					} else {
 						My.notify(data.msg, 'danger');
