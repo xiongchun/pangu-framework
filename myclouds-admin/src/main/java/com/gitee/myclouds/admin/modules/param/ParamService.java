@@ -68,10 +68,9 @@ public class ParamService {
 	 * @return
 	 */
 	public Dto deleteParam(Dto inDto) {
-		Dto outDto = null;
 		myParamMapper.deleteByKey(inDto.getInteger("id"));
 		cacheCfgService.deleteParamFromCache(inDto.getString("param_key"));
-		outDto = Dtos.newPlainDto("code:1", "msg:键值参数删除成功");
+		Dto outDto = Dtos.newPlainDto("code:1", "msg:键值参数删除成功");
 		return outDto;
 	}
 
