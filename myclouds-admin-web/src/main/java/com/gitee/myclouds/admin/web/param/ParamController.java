@@ -31,18 +31,6 @@ public class ParamController {
 
 		return "modules/param";
 	}
-	
-	@RequestMapping("init2")
-	public String init2(ModelMap map) {
-
-		return "modules/param2";
-	}
-	
-	@RequestMapping("init3")
-	public String init3(ModelMap map) {
-
-		return "modules/param3";
-	}
 
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	@ResponseBody
