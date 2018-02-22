@@ -19,10 +19,10 @@ public class HomeController {
         return "index";  
     }
 	
-	@RequestMapping("test")
+	@RequestMapping("login")
     public String test(ModelMap map) {
         map.addAttribute("host", "hi,mw!");
-        return "test";  
+        return "login";  
     }
 	
 }
