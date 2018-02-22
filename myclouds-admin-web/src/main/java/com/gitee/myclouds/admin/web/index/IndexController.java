@@ -19,10 +19,4 @@ public class IndexController {
         return "index";  
     }
 	
-	@RequestMapping("login")
-    public String test(ModelMap map) {
-        map.addAttribute("host", "hi!");
-        return "login";  
-    }
-	
 }
