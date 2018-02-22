@@ -5,45 +5,126 @@
 <th:block th:replace="/fragments/head" />
 </head>
 
-<body class="dashboard-page sb-l-o">
-	<!--/* 主题设置面板 */-->
-	<div th:replace="/fragments/skin-toolbox"></div>
+<body class="external-page sb-l-c sb-r-c">
+	<!-- Start: Main -->
+	<div id="main" class="animated fadeIn">
 
-	<!-- BEGIN: 主页面 -->
-	<div id="main">
-		<!--/* 顶部导航 */-->
-		<header th:replace="/fragments/header-banner"></header>
-		<!--/* 左侧功能菜单导航 */-->
-		<aside th:replace="/fragments/aside"></aside>
-		<!-- BEGIN: Content-Wrapper -->
+		<!-- Start: Content-Wrapper -->
 		<section id="content_wrapper">
-			<!--/* 模块路径导航条 */-->
-			<header th:replace="/fragments/header-breadcrumb"></header>
 
-			<!-- Begin: 业务办理区 -->
-			<section id="content" class="animated fadeIn">
-				<div class="row ml5">欢迎来到 MyClouds的世界。</div>
+			<!-- begin canvas animation bg -->
+			<div id="canvas-wrapper">
+				<canvas id="login-canvas"></canvas>
+			</div>
+
+			<!-- Begin: Content -->
+			<section id="content">
+
+				<div class="admin-form theme-info" id="login1">
+
+					<div class="row mb15 table-layout">
+
+						<div class="col-xs-6 text-right va-b pull-right">
+							<div class="login-links">
+								<a href="./login" class="active" title="登录">登录</a>
+								<span class="text-white"> | </span>
+								<a href="./login" class="" title="注册">注册</a>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="panel panel-info mt10 br-n">
+
+
+						<!-- end .form-header section -->
+						<form method="post"  id="contact">
+							<div class="panel-body bg-light p30">
+								<div class="row">
+									<div class="col-sm-7 pr30">
+
+										<div class="section">
+											<label for="username" class="field-label text-muted mb10 fs15">账号</label>
+											<label for="username" class="field prepend-icon">
+												<input type="text" name="username" id="username" class="gui-input" placeholder="请输入登录账号" />
+												<label for="username" class="field-icon">
+													<i class="fa fa-user"></i>
+												</label>
+											</label>
+										</div>
+										<!-- end section -->
+
+										<div class="section">
+											<label for="username" class="field-label text-muted mb10 fs15">密码</label>
+											<label for="password" class="field prepend-icon">
+												<input type="password" name="password" id="password" class="gui-input" placeholder="请输入密码" />
+												<label for="password" class="field-icon">
+													<i class="fa fa-lock"></i>
+												</label>
+											</label>
+										</div>
+										<!-- end section -->
+
+									</div>
+									<div class="col-sm-5 br-l br-grey pl30">
+										<h3 class="mb25">产品介绍或Logo</h3>
+										<p class="mb15">
+											<span class="fa fa-check text-success pr5"></span> Unlimited Email Storage
+										</p>
+										<p class="mb15">
+											<span class="fa fa-check text-success pr5"></span> Unlimited Photo Sharing/Storage
+										</p>
+										<p class="mb15">
+											<span class="fa fa-check text-success pr5"></span> Unlimited Downloads
+										</p>
+										<p class="mb15">
+											<span class="fa fa-check text-success pr5"></span> Unlimited Service Tickets
+										</p>
+									</div>
+								</div>
+							</div>
+							<!-- end .form-body section -->
+							<div class="panel-footer clearfix p10 ph15">
+								<button type="submit" class="button btn-primary mr5 pull-right">登录</button>
+								<label class="switch ib switch-primary pull-left input-align mt10">
+									<input type="checkbox" name="remember" id="remember" checked="true" />
+									<label for="remember" data-on="是" data-off="否"></label>
+									<span>记住我</span>
+								</label>
+							</div>
+							<!-- end .form-footer section -->
+						</form>
+					</div>
+				</div>
+
 			</section>
-			<!-- End: 业务办理区 -->
-
-			<!--/* 页脚 */-->
-			<footer th:replace="/fragments/footer"></footer>
+			<!-- End: Content -->
 
 		</section>
 		<!-- End: Content-Wrapper -->
 
 	</div>
-	<!-- End: 主页面 -->
+	<!-- End: Main -->
 
 	<!--/* 公共脚本文件 */-->
 	<th:block th:include="/fragments/scripts" />
 
+	<!-- CanvasBG Plugin(creates mousehover effect) -->
+	<script src="/theme/vendor/plugins/canvasbg/canvasbg.js"></script>
 
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			"use strict";
 			Core.init();
-			//TODO
+
+			// Init CanvasBG and pass target starting location
+			CanvasBG.init({
+				Loc : {
+					x : window.innerWidth / 2,
+					y : window.innerHeight / 3.3
+				},
+			});
 
 		});
 	</script>

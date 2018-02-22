@@ -9,7 +9,7 @@ var CanvasBG = function (options) {
         largeHeader = document.getElementById('canvas-wrapper');
         // largeHeader.style.height = height+'px';
 
-        canvas = document.getElementById('demo-canvas');
+        canvas = document.getElementById('login-canvas');
         canvas.width = width;
         canvas.height = height;
         ctx = canvas.getContext('2d');
