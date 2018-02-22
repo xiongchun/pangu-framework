@@ -39,7 +39,7 @@
 
 
 						<!-- end .form-header section -->
-						<form method="post"  id="contact">
+						<form id="fo-login">
 							<div class="panel-body bg-light p30">
 								<div class="row">
 									<div class="col-sm-7 pr30">
@@ -126,7 +126,37 @@
 				},
 			});
 
+			//表单校验规则
+			var validateOptions = {
+				//校验规则
+				rules : {
+					username : {
+						required : true
+					},
+					password : {
+						required : true
+					}
+				},
+				//提示信息
+				messages : {
+					username : {
+						required : '登录账号不能为空'
+					},
+					password : {
+						required : '密码不能为空'
+					}
+				}
+			}
+
+			//绑定新增参数表单校验和提交响应时间
+			My.validate('#fo-login', doLogin, validateOptions);
+
 		});
+		
+		//登录请求
+		function doLogin(){
+			My.alert('OK1');
+		}
 	</script>
 
 </body>
