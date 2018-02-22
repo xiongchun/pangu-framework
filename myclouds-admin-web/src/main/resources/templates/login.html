@@ -39,7 +39,7 @@
 
 
 						<!-- end .form-header section -->
-						<form id="fo-login">
+						<form id="fo_login">
 							<div class="panel-body bg-light p30">
 								<div class="row">
 									<div class="col-sm-7 pr30">
@@ -149,13 +149,24 @@
 			}
 
 			//绑定新增参数表单校验和提交响应时间
-			My.validate('#fo-login', doLogin, validateOptions);
+			My.validate('#fo_login', doLogin, validateOptions);
 
 		});
-		
+
 		//登录请求
-		function doLogin(){
-			My.alert('OK1');
+		function doLogin() {
+			$.ajax({
+				type : 'post',
+				url : '/login/go',
+				data : My.params('#fo_login'),
+				success : function(data) {
+					if (data.code == '1') {
+						My.notify(data.msg);
+					} else {
+						My.notify(data.msg, 'danger');
+					}
+				}
+			});
 		}
 	</script>
 
