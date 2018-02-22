@@ -21,7 +21,7 @@ public class HomeController {
 	
 	@RequestMapping("login")
     public String test(ModelMap map) {
-        map.addAttribute("host", "hi,mw!");
+        map.addAttribute("host", "hi!");
         return "login";  
     }
 	
