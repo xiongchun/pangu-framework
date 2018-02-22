@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.web.home;
+package com.gitee.myclouds.admin.web.index;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
-public class HomeController {
+public class IndexController {
 
 	@RequestMapping("/")
     public String index(ModelMap map) {
