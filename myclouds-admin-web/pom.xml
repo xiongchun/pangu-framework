@@ -46,6 +46,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		
+		<!-- spring-session-data-redis -->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-data-redis</artifactId>
+		</dependency>
 
 		<!-- 一个转义库，解决thymeleaf依赖的版本过低导致报错。 -->
 		<dependency>
