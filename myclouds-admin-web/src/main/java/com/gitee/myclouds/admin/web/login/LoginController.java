@@ -1,7 +1,6 @@
 package com.gitee.myclouds.admin.web.login;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,9 +26,15 @@ public class LoginController {
         return "login";  
     }
 	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value = "login/go", method = { RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
-	public Dto deleteParam(HttpServletRequest request, HttpServletResponse response) {
+	public Dto deleteParam(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto();
 	}

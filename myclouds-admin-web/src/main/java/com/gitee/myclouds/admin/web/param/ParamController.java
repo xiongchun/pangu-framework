@@ -1,7 +1,6 @@
 package com.gitee.myclouds.admin.web.param;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,21 +33,21 @@ public class ParamController {
 
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	@ResponseBody
-	public String listParams(HttpServletRequest request, HttpServletResponse response) {
+	public String listParams(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return paramService.getParams(inDto);
 	}
 	
 	@RequestMapping(value = "save", method = { RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
-	public Dto saveParam(HttpServletRequest request, HttpServletResponse response) {
+	public Dto saveParam(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto(paramService.saveParam(inDto));
 	}
 	
 	@RequestMapping(value = "delete", method = { RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
-	public Dto deleteParam(HttpServletRequest request, HttpServletResponse response) {
+	public Dto deleteParam(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto(paramService.deleteParam(inDto));
 	}
