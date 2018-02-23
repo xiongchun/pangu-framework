@@ -2,6 +2,7 @@ package com.gitee.myclouds.admin.web.login;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,9 @@ import com.gitee.myclouds.toolbox.wrap.Dtos;
  */
 @Controller
 public class LoginController {
+	
+	@Autowired
+	private LoginService loginService;
 
 	@RequestMapping("login")
     public String login(ModelMap map) {
@@ -34,7 +38,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "login/go", method = { RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
-	public Dto deleteParam(HttpServletRequest request) {
+	public Dto loginCheck(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto();
 	}
