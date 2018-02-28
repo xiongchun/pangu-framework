@@ -21,6 +21,9 @@
 		<setting name="mapUnderscoreToCamelCase" value="false"/>
 		<!-- 当插入对象属性为空时的jdbcType类型，配了次属性则映射的SQL语句里可以省去指定jdbcType类型的麻烦。 -->
 		<setting name="jdbcTypeForNull" value="NULL"/>
+		<!-- 配合logback.xml使用，解决手工映射SQL日志的输出问题 -->
+		<setting name="logImpl" value="SLF4J" />
+		<setting name="logPrefix" value="mapper."/>
 	</settings>
 	
 	<!-- 通用别名设置 -->

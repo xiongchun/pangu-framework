@@ -49,5 +49,5 @@
     
     <!-- 可以指定多个 -->
     <logger name="com.gitee" level="DEBUG" />
-    
+    <logger name="mapper" level="DEBUG" />
 </configuration>
