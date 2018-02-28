@@ -33,7 +33,7 @@ public class ParamService {
 	 * @param inDto
 	 * @return
 	 */
-	public String listAll(Dto inDto) {
+	public String list(Dto inDto) {
 		Dto outDto = Dtos.newDto();
 		List<MyParamEntity> myParamEntities = myParamMapper.list(inDto);
 		outDto.put("data", myParamEntities);
@@ -48,7 +48,7 @@ public class ParamService {
 	 * @param inDto
 	 * @return
 	 */
-	public Dto saveParam(Dto inDto) {
+	public Dto save(Dto inDto) {
 		Dto outDto = null;
 		//拷贝参数对象中的属性到实体对象中
 		MyParamEntity myParamEntity = new MyParamEntity().copyFrom(inDto);
@@ -68,7 +68,7 @@ public class ParamService {
 	 * @param inDto
 	 * @return
 	 */
-	public Dto deleteParam(Dto inDto) {
+	public Dto delete(Dto inDto) {
 		myParamMapper.deleteByKey(inDto.getInteger("id"));
 		cacheCfgService.deleteParamFromCache(inDto.getString("param_key"));
 		Dto outDto = Dtos.newPlainDto("code:1", "msg:键值参数删除成功");

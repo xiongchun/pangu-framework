@@ -24,19 +24,37 @@ public class ParamController {
 	@Autowired
 	private ParamService paramService;
 
+	/**
+	 * 查询列表
+	 * 
+	 * @param inMap
+	 * @return
+	 */
 	@RequestMapping(value = "list",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	public String list(@RequestParam Map<String,Object> inMap){
-		return paramService.listAll(Dtos.newDto(inMap));
+		return paramService.list(Dtos.newDto(inMap));
 	}
 	
+	/**
+	 * 新增
+	 * 
+	 * @param inMap
+	 * @return
+	 */
 	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto save(@RequestParam Map<String,Object> inMap){
-		return paramService.saveParam(Dtos.newDto(inMap));
+		return paramService.save(Dtos.newDto(inMap));
 	}
 	
+	/**
+	 * 删除
+	 * 
+	 * @param inMap
+	 * @return
+	 */
 	@RequestMapping(value = "delete",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto delete(@RequestParam Map<String,Object> inMap){
-		return paramService.deleteParam(Dtos.newDto(inMap));
+		return paramService.delete(Dtos.newDto(inMap));
 	}
 	
 }

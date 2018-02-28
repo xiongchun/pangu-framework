@@ -77,6 +77,19 @@ public class CacheCfgService {
 			log.info("缓存或刷新指定键值参数成功");
 		}
 	}
+	
+	/**
+	 * 缓存\刷新指定枚举元素
+	 * 
+	 * @param myParamEntity
+	 */
+	public void cacheEnum(MyEnumEntity myEnumEntity) {
+		if (MyUtil.isNotEmpty(myEnumEntity)) {
+			String key = MyCons.CacheKeyPrefix.myEnum.getValue() + myEnumEntity.getEnum_key();
+			stringRedisTemplate.opsForHash().put(key, myEnumEntity.getElement_key(), myEnumEntity.toJson());
+			log.info("缓存或刷新指定键值参数成功");
+		}
+	}
 
 	/**
 	 * 从缓存系统中删除指定键值参数
