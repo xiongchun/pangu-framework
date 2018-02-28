@@ -5,7 +5,7 @@
 <th:block th:replace="/fragments/head" />
 </head>
 
-<body class="dashboard-page sb-l-o">
+<body class="sb-l-o">
 	<!--/* 主题设置面板 */-->
 	<div th:replace="/fragments/skin-toolbox"></div>
 
@@ -105,7 +105,7 @@
 				</div>
 
 				<!-- 新增参数窗口 -->
-				<div class="modal fade" id="w-add-param" tabindex="-1" data-backdrop="static">
+				<div class="modal fade" id="w-new" tabindex="-1" data-backdrop="static">
 					<div class="modal-dialog w450">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -115,7 +115,7 @@
 								<h3 class="modal-title">新增键值参数</h3>
 							</div>
 							<div class="modal-body">
-								<form id="fo_add_param" class="form-horizontal">
+								<form id="fo-new" class="form-horizontal">
 									<div class="form-group">
 										<label class="col-md-3 control-label required">所属系统：</label>
 										<div class="col-md-9 field">
@@ -151,7 +151,7 @@
 								</form>
 							</div>
 							<div class="modal-footer">
-								<button type="submit" form="fo_add_param" class="btn btn-sm btn-success btn-gradient">保存</button>
+								<button type="submit" form="fo-new" class="btn btn-sm btn-success btn-gradient">保存</button>
 								<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
 							</div>
 						</div>
@@ -185,11 +185,11 @@
 							"use strict";
 							Core.init();
 							/******* 事件监听.start ********/
-							$("#btn-query").on("click", queryParams);
-							$('#dt-param').on('init.dt', queryParams);
+							$("#btn-query").on("click", fnQuery);
+							$('#dt-param').on('init.dt', fnQuery);
 							$("#btn-new").on("click", function(e) {
-								$('#w-add-param').modal();
-								$("#fo_add_param")[0].reset();
+								$('#w-new').modal();
+								$("#fo-new")[0].reset();
 							});
 							$("#btn-edit").on("click", function(e) {
 								My.notify('修改功能正在完善中...', 'info');
@@ -242,8 +242,9 @@
 													width : 50,
 													data : {},
 													render : function(row, type, full) {
-														var html = "<div class='text-center'><button class='btn btn-danger btn-xs btn-gradient' onclick='delParam("
-																+ JSON.stringify(row) + ")'>删除</button></div>";
+														var html = "<div class='text-center'><button class='btn btn-danger btn-xs btn-gradient' onclick='fnDelete("
+																+ JSON.stringify(row) 
+																+ ")'>删除</button></div>";
 														return html;
 													}
 												} ],
@@ -283,13 +284,13 @@
 								}
 							}
 
-							//绑定新增参数表单校验和提交响应时间
-							My.validate('#fo_add_param', saveParam, validateOptions);
+							//绑定新增表单校验和提交响应事件
+							My.validate('#fo-new', fnNew, validateOptions);
 
 						});
 
-		//查询参数列表
-		function queryParams() {
+		//查询列表
+		function fnQuery() {
 			var ajax = {
 				url : "list",
 				type : "POST",
@@ -299,17 +300,17 @@
 			$('#dt-param').DataTable().ajax.reload();
 		}
 
-		//保存参数
-		function saveParam() {
+		//保存
+		function fnNew() {
 			$.ajax({
 				type : 'post',
 				url : 'save',
-				data : My.params('#fo_add_param'),
+				data : My.params('#fo-new'),
 				success : function(data) {
 					if (data.code == '1') {
 						My.notify(data.msg);
-						$('#w-add-param').modal('hide');
-						queryParams();
+						$('#w-new').modal('hide');
+						fnQuery();
 					} else {
 						My.notify(data.msg, 'danger');
 					}
@@ -317,8 +318,8 @@
 			});
 		}
 
-		//删除参数
-		function delParam(row) {
+		//删除
+		function fnDelete(row) {
 			My.confirm('确认删除当前键值参数吗？', function(result) {
 				if (result) {
 					$.ajax({
@@ -327,7 +328,7 @@
 						data : row,
 						success : function(data) {
 							My.notify(data.msg);
-							queryParams();
+							fnQuery();
 						}
 					});
 				}
