@@ -45,4 +45,17 @@ public class EnumsService {
 		return JSON.toJSONString(outDto);
 	}
 	
+	/**
+	 * 删除枚举类型
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public Dto deleteEnum(Dto inDto) {
+		myEnumMapper.deleteByKey(inDto.getInteger("id"));
+		cacheCfgService.deleteEnumFromCache(inDto.getString("enum_key"), inDto.getString("element_key"));
+		Dto outDto = Dtos.newPlainDto("code:1", "msg:枚举元素删除成功");
+		return outDto;
+	}
+	
 }

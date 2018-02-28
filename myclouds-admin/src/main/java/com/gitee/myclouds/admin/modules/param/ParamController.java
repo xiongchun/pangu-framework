@@ -25,17 +25,17 @@ public class ParamController {
 	private ParamService paramService;
 
 	@RequestMapping(value = "list",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
-	public String listParams(@RequestParam Map<String,Object> inMap){
+	public String list(@RequestParam Map<String,Object> inMap){
 		return paramService.listAll(Dtos.newDto(inMap));
 	}
 	
 	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto saveParam(@RequestParam Map<String,Object> inMap){
+	public Dto save(@RequestParam Map<String,Object> inMap){
 		return paramService.saveParam(Dtos.newDto(inMap));
 	}
 	
 	@RequestMapping(value = "delete",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto deleteParam(@RequestParam Map<String,Object> inMap){
+	public Dto delete(@RequestParam Map<String,Object> inMap){
 		return paramService.deleteParam(Dtos.newDto(inMap));
 	}
 	

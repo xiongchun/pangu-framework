@@ -90,5 +90,18 @@ public class CacheCfgService {
 			log.info("删除指定键值参数成功");
 		}
 	}
+	
+	/**
+	 * 从缓存系统中删除指定枚举元素
+	 * 
+	 * @param myParamEntity
+	 */
+	public void deleteEnumFromCache(String enumKey, String elementKey) {
+		if (MyUtil.isNotEmpty(enumKey) && MyUtil.isNotEmpty(elementKey)) {
+			String key = MyCons.CacheKeyPrefix.myEnum.getValue() + enumKey;
+			stringRedisTemplate.opsForHash().delete(key, elementKey);
+			log.info("删除指定枚举元素成功");
+		}
+	}
 
 }

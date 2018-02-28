@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
@@ -24,7 +25,12 @@ public class EnumsController {
 	private EnumsService enumsService;
 
 	@RequestMapping(value = "list",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
-	public String listEnums(@RequestParam Map<String,Object> inMap){
+	public String list(@RequestParam Map<String,Object> inMap){
 		return enumsService.listEnums(Dtos.newDto(inMap));
+	}
+	
+	@RequestMapping(value = "delete",method = { RequestMethod.POST}, produces = "application/json")
+	public Dto delete(@RequestParam Map<String,Object> inMap){
+		return enumsService.deleteEnum(Dtos.newDto(inMap));
 	}
 }
