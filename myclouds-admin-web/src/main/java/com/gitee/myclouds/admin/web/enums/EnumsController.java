@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.gitee.myclouds.admin.web.param.ParamService;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
@@ -25,7 +24,7 @@ import com.gitee.myclouds.toolbox.wrap.Dtos;
 public class EnumsController {
 
 	@Autowired
-	private ParamService paramService;
+	private EnumsService enumsService;
 
 	@RequestMapping("init")
 	public String init(ModelMap map) {
@@ -37,7 +36,7 @@ public class EnumsController {
 	@ResponseBody
 	public String list(HttpServletRequest request, HttpServletResponse response) {
 		Dto inDto = Dtos.newDto(request);
-		String jsonString = paramService.getParams(inDto);
+		String jsonString = enumsService.getEnums(inDto);
 		return jsonString;
 	}
 	
