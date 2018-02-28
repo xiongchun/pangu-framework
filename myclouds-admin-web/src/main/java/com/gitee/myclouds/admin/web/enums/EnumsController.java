@@ -45,4 +45,17 @@ public class EnumsController {
 		return jsonString;
 	}
 	
+	/**
+	 * 删除
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "delete", method = { RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Dto deleteParam(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(enumsService.delete(inDto));
+	}
+	
 }
