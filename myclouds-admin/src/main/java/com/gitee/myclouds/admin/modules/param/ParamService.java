@@ -50,6 +50,7 @@ public class ParamService {
 	 */
 	public Dto saveParam(Dto inDto) {
 		Dto outDto = null;
+		//拷贝参数对象中的属性到实体对象中
 		MyParamEntity myParamEntity = new MyParamEntity().copyFrom(inDto);
 		if (MyUtil.isEmpty(myParamMapper.selectByUkey1(myParamEntity.getParam_key()))) {
 			myParamMapper.insert(myParamEntity);
