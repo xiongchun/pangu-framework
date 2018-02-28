@@ -1,7 +1,6 @@
 package com.gitee.myclouds.admin.web.enums;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,14 +28,20 @@ public class EnumsController {
 	@RequestMapping("init")
 	public String init(ModelMap map) {
 
-		return "modules/enums";
+		return "modules/sys/enums";
 	}
 
+	/**
+	 * 查询列表
+	 * 
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	@ResponseBody
-	public String list(HttpServletRequest request, HttpServletResponse response) {
+	public String list(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		String jsonString = enumsService.getEnums(inDto);
+		String jsonString = enumsService.list(inDto);
 		return jsonString;
 	}
 	

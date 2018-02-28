@@ -28,28 +28,46 @@ public class ParamController {
 	@RequestMapping("init")
 	public String init(ModelMap map) {
 
-		return "modules/param";
+		return "modules/sys/param";
 	}
 
+	/**
+	 * 查询列表
+	 * 
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	@ResponseBody
 	public String listParams(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return paramService.getParams(inDto);
 	}
-	
-	@RequestMapping(value = "save", method = { RequestMethod.POST}, produces = "application/json")
+
+	/**
+	 * 新增
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "save", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
 	public Dto saveParam(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto(paramService.saveParam(inDto));
 	}
-	
-	@RequestMapping(value = "delete", method = { RequestMethod.POST}, produces = "application/json")
+
+	/**
+	 * 删除
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "delete", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
 	public Dto deleteParam(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto(paramService.deleteParam(inDto));
 	}
-	
+
 }

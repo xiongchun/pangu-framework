@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * 键值参数FeignClient客户端
+ * 枚举类型参数FeignClient客户端
  * 
  * @author xiongchun
  *
@@ -19,12 +19,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface EnumsService {
 	
 	/**
-	 * 查询枚举参数列表
+	 * 查询列表
 	 * 
 	 * @param inDto
 	 * @return
 	 */
 	@RequestMapping(value = "/enums/list",method = RequestMethod.POST)
-	String getEnums(@RequestParam("inDto") Map<String,Object> inDto);
+	String list(@RequestParam("inDto") Map<String,Object> inDto);
+	
+	/**
+	 * 删除参数对象
+	 * @param inDto
+	 * @return
+	 */
+	@RequestMapping(value = "/enums/delete",method = RequestMethod.POST)
+	Map<String, Object> delete(@RequestParam("inDto") Map<String,Object> inDto);
 
 }
