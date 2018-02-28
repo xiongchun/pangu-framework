@@ -1,11 +1,11 @@
 package com.gitee.myclouds.admin.domain.myenum;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Mapper;
 
 import com.gitee.myclouds.toolbox.wrap.Dto;
+import com.gitee.myclouds.admin.domain.myenum.MyEnumEntity;
 
 /**
  * <b>枚举类型参数表[my_enum]数据访问接口</b>
@@ -15,7 +15,7 @@ import com.gitee.myclouds.toolbox.wrap.Dto;
  * </p>
  * 
  * @author myclouds team
- * @date 2018-01-31 15:08:12
+ * @date 2018-02-27 16:57:11
  */
 @Mapper
 public interface MyEnumMapper {

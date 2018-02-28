@@ -1,11 +1,11 @@
 package com.gitee.myclouds.admin.domain.myparam;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Mapper;
 
 import com.gitee.myclouds.toolbox.wrap.Dto;
+import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
 
 /**
  * <b>键值参数表[my_param]数据访问接口</b>
@@ -15,7 +15,7 @@ import com.gitee.myclouds.toolbox.wrap.Dto;
  * </p>
  * 
  * @author myclouds team
- * @date 2018-01-31 15:08:12
+ * @date 2018-02-27 16:44:07
  */
 @Mapper
 public interface MyParamMapper {

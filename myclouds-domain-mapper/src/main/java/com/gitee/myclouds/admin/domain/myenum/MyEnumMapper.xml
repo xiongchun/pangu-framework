@@ -3,11 +3,11 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 枚举类型参数表[my_enum]SQL自动映射 -->
-<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-01-31 15:08:12 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-02-27 16:57:12 -->
 <mapper namespace="com.gitee.myclouds.admin.domain.myenum.MyEnumMapper">
 	
 	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
-	<insert id="insert"  parameterType="MyEnumEntity">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="MyEnumEntity">
 		INSERT INTO my_enum (
 		<if test="enum_key != null and enum_key != ''">
 	         enum_key, <!-- 枚举类型KEY -->
@@ -36,9 +36,7 @@
 		<if test="remark != null and remark != ''">
 	         remark, <!-- 备注 -->
 		</if>
-		<if test="id != null">
-	          id  <!-- 流水号 -->
-	   </if>
+	          id
 		)VALUES(
 		<if test="enum_key != null and enum_key != ''">
 	          #{enum_key, jdbcType=VARCHAR}, <!-- 枚举类型KEY -->
@@ -67,14 +65,12 @@
 		<if test="remark != null and remark != ''">
 	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
 	    </if>
-		<if test="id != null">
-		     #{id, jdbcType=INTEGER}  <!-- 流水号 -->
-	    </if>
+	          null
 		)
 	</insert>
 	
 	<!-- 插入一个数据实体对象(含所有字段) -->
-	<insert id="insertAll"  parameterType="MyEnumEntity">
+	<insert id="insertAll" useGeneratedKeys="true" keyProperty="id" parameterType="MyEnumEntity">
 		INSERT INTO my_enum (
 		    <include refid="column" />
 		)
