@@ -28,7 +28,7 @@ public class ParamService {
 	private CacheCfgService cacheCfgService;
 
 	/**
-	 * 查询参数列表
+	 * 查询列表
 	 * 
 	 * @param inDto
 	 * @return
@@ -43,7 +43,7 @@ public class ParamService {
 	}
 
 	/**
-	 * 保存参数信息
+	 * 保存
 	 * 
 	 * @param inDto
 	 * @return
@@ -55,15 +55,15 @@ public class ParamService {
 		if (MyUtil.isEmpty(myParamMapper.selectByUkey1(myParamEntity.getParam_key()))) {
 			myParamMapper.insert(myParamEntity);
 			cacheCfgService.cacheParam(myParamEntity);
-			outDto = Dtos.newPlainDto("code:1", "msg:键值参数保存成功");
+			outDto = Dtos.newDto().put2("code", "1").put2("msg", "键值参数保存成功");
 		} else {
-			outDto = Dtos.newPlainDto("code:-1", "msg:参数键已经存在，请重新输入...");
+			outDto = Dtos.newDto().put2("code", "-1").put2("msg", "参数键已经存在，请重新输入...");
 		}
 		return outDto;
 	}
 
 	/**
-	 * 删除参数信息
+	 * 删除
 	 * 
 	 * @param inDto
 	 * @return
@@ -71,7 +71,7 @@ public class ParamService {
 	public Dto delete(Dto inDto) {
 		myParamMapper.deleteByKey(inDto.getInteger("id"));
 		cacheCfgService.deleteParamFromCache(inDto.getString("param_key"));
-		Dto outDto = Dtos.newPlainDto("code:1", "msg:键值参数删除成功");
+		Dto outDto = Dtos.newDto().put2("code", "1").put2("msg", "参数键删除成功");
 		return outDto;
 	}
 

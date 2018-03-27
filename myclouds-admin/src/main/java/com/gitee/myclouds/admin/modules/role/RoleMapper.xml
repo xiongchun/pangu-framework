@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 角色模块SQL映射 -->
+<mapper namespace="sql.role">
+
+	<!-- 删除my_user_role关联数据 -->
+	<delete id="deleteMyUserRole" parameterType="Integer">
+		DELETE
+		FROM my_user_role WHERE role_id = #{role_id}
+	</delete>
+	
+	<!-- 删除my_role_module关联数据 -->
+	<delete id="deleteMyRoleModule" parameterType="Integer">
+		DELETE
+		FROM my_role_module WHERE role_id = #{role_id}
+	</delete>
+
+    <!-- 查询待授权菜单树 -->
+	<select id="listToGrantTree" resultType="ZTreeNodeVO">
+	    SELECT
+			id,
+			parent_id AS pId,
+			name
+		FROM
+			my_module 
+		WHERE is_enable = '1'
+         ORDER BY id, sort_no
+	</select>
+
+</mapper>

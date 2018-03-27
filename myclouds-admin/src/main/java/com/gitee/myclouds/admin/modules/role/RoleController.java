@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.enums;
+package com.gitee.myclouds.admin.modules.role;
 
 import java.util.Map;
 
@@ -12,17 +12,17 @@ import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
- * 枚举参数 服务发布
+ * 角色 服务发布
  * 
  * @author xiongchun
  *
  */
 @RestController
-@RequestMapping("enums")
-public class EnumsController {
-	
+@RequestMapping("role")
+public class RoleController {
+
 	@Autowired
-	private EnumsService enumsService;
+	private RoleService roleService;
 	
 	/**
 	 * 查询列表
@@ -32,7 +32,7 @@ public class EnumsController {
 	 */
 	@RequestMapping(value = "list",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	public String list(@RequestParam Map<String,Object> inMap){
-		return enumsService.list(Dtos.newDto(inMap));
+		return roleService.list(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class EnumsController {
 	 */
 	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto save(@RequestParam Map<String,Object> inMap){
-		return enumsService.save(Dtos.newDto(inMap));
+		return roleService.save(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -54,7 +54,29 @@ public class EnumsController {
 	 */
 	@RequestMapping(value = "delete",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto delete(@RequestParam Map<String,Object> inMap){
-		return enumsService.delete(Dtos.newDto(inMap));
+		return roleService.delete(Dtos.newDto(inMap));
+	}
+	
+	/**
+	 * 查询授权树
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "listGrantTree",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	public String listGrantTree(@RequestParam Integer roleId){
+		return roleService.listGrantTree(roleId);
+	}
+	
+	/**
+	 * 授权
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "grant",method = { RequestMethod.POST}, produces = "application/json")
+	public Dto grant(@RequestParam Map<String,Object> inMap){
+		return roleService.grant(Dtos.newDto(inMap));
 	}
 	
 }

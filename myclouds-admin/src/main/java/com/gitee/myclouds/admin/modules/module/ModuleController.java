@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.enums;
+package com.gitee.myclouds.admin.modules.module;
 
 import java.util.Map;
 
@@ -12,17 +12,17 @@ import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
- * 枚举参数 服务发布
+ * 资源模块 服务发布
  * 
  * @author xiongchun
  *
  */
 @RestController
-@RequestMapping("enums")
-public class EnumsController {
-	
+@RequestMapping("module")
+public class ModuleController {
+
 	@Autowired
-	private EnumsService enumsService;
+	private ModuleService moduleService;
 	
 	/**
 	 * 查询列表
@@ -32,7 +32,7 @@ public class EnumsController {
 	 */
 	@RequestMapping(value = "list",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	public String list(@RequestParam Map<String,Object> inMap){
-		return enumsService.list(Dtos.newDto(inMap));
+		return moduleService.list(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class EnumsController {
 	 */
 	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto save(@RequestParam Map<String,Object> inMap){
-		return enumsService.save(Dtos.newDto(inMap));
+		return moduleService.save(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class EnumsController {
 	 */
 	@RequestMapping(value = "delete",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto delete(@RequestParam Map<String,Object> inMap){
-		return enumsService.delete(Dtos.newDto(inMap));
+		return moduleService.delete(Dtos.newDto(inMap));
 	}
 	
 }

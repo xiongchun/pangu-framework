@@ -59,9 +59,9 @@ public class EnumsService {
 		if (MyUtil.isEmpty(myEnumMapper.selectByUkey1(myEnumEntity.getEnum_key(), myEnumEntity.getElement_key()))) {
 			myEnumMapper.insert(myEnumEntity);
 			cacheCfgService.cacheEnum(myEnumEntity);
-			outDto = Dtos.newPlainDto("code:1", "msg:枚举元素保存成功");
+			outDto = Dtos.newDto().put2("code", "1").put2("msg", "枚举元素保存成功");
 		} else {
-			outDto = Dtos.newPlainDto("code:-1", "msg:当前枚举元素已经存在，请重新输入...");
+			outDto = Dtos.newDto().put2("code", "-1").put2("msg", "当前枚举元素已经存在，请重新输入...");
 		}
 		return outDto;
 	}
@@ -75,7 +75,7 @@ public class EnumsService {
 	public Dto delete(Dto inDto) {
 		myEnumMapper.deleteByKey(inDto.getInteger("id"));
 		cacheCfgService.deleteEnumFromCache(inDto.getString("enum_key"), inDto.getString("element_key"));
-		Dto outDto = Dtos.newPlainDto("code:1", "msg:枚举元素删除成功");
+		Dto outDto = Dtos.newDto().put2("code", "1").put2("msg", "枚举元素删除成功");
 		return outDto;
 	}
 	

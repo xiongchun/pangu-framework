@@ -2,6 +2,7 @@ package com.gitee.myclouds.admin.modules.cache;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
 import com.gitee.myclouds.admin.domain.myparam.MyParamMapper;
 import com.gitee.myclouds.toolbox.util.MyCons;
 import com.gitee.myclouds.toolbox.util.MyUtil;
+import com.gitee.myclouds.toolbox.wrap.Dto;
+import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
  * 配置项缓存服务
@@ -34,11 +37,25 @@ public class CacheCfgService {
 	private StringRedisTemplate stringRedisTemplate;
 
 	/**
-	 * 初始化缓存参数
+	 * 同步配置类缓存
 	 */
-	public void initCacheCfg() {
-		initCacheParams();
-		initCacheEnums();
+	public Dto syncCfgCache(Dto inDto) {
+		String type = inDto.getString("type");
+		Dto outDto = Dtos.newDto("code", "1");
+		if (MyUtil.isEmpty(type)) {
+			initCacheParams();
+			initCacheEnums();
+			outDto.put("msg", "键值参数缓存同步成功。枚举类型参数缓存同步成功。");
+		}else {
+			if (StringUtils.equals(type, "enum")) {
+				initCacheEnums();
+				outDto.put("msg", "枚举类型参数缓存同步成功。");
+			}else if (StringUtils.equals(type, "kv")) {
+				initCacheParams();
+				outDto.put("msg", "键值参数缓存同步成功。");
+			}
+		}
+		return outDto;
 	}
 
 	/**
@@ -50,7 +67,7 @@ public class CacheCfgService {
 			String key = MyCons.CacheKeyPrefix.MyParam.getValue() + myParamEntity.getParam_key();
 			stringRedisTemplate.opsForValue().set(key, myParamEntity.toJson());
 		}
-		log.info("完成键值参数初始化缓存");
+		log.info("完成键值参数Redis缓存");
 	}
 
 	/**
@@ -62,7 +79,7 @@ public class CacheCfgService {
 			String key = MyCons.CacheKeyPrefix.myEnum.getValue() + myEnumEntity.getEnum_key();
 			stringRedisTemplate.opsForHash().put(key, myEnumEntity.getElement_key(), myEnumEntity.toJson());
 		}
-		log.info("完成枚举参数初始化缓存");
+		log.info("完成枚举参数Redis缓存");
 	}
 
 	/**

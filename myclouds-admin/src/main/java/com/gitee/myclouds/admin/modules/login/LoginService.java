@@ -1,8 +1,14 @@
 package com.gitee.myclouds.admin.modules.login;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
+import com.gitee.myclouds.admin.domain.myuser.MyUserEntity;
+import com.gitee.myclouds.admin.domain.myuser.MyUserMapper;
+import com.gitee.myclouds.toolbox.session.data.CurUser;
+import com.gitee.myclouds.toolbox.util.MyCons;
+import com.gitee.myclouds.toolbox.util.MyUtil;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
@@ -14,6 +20,9 @@ import com.gitee.myclouds.toolbox.wrap.Dtos;
  */
 @Service
 public class LoginService {
+
+	@Autowired
+	private MyUserMapper myUserMapper;
 	
 	/**
 	 * 用户登录验证
@@ -21,14 +30,24 @@ public class LoginService {
 	 * @param inDto
 	 * @return
 	 */
-	public Dto loginCheck(Dto inDto) {
-		Dto outDto = null;
-		MyParamEntity myParamEntity = new MyParamEntity().copyFrom(inDto);
-		if (true) {
-			outDto = Dtos.newPlainDto("code:1", "msg:键值参数保存成功");
-		} else {
-			outDto = Dtos.newPlainDto("code:-1", "msg:参数键已经存在，请重新输入...");
+	public Dto validate(Dto inDto) {
+		Dto outDto = Dtos.newDto().put2("code", "1").put2("msg", "用户登录验证通过");
+		MyUserEntity myUserEntity = myUserMapper.selectByUkey1(inDto.getString("account"));
+		if (MyUtil.isEmpty(myUserEntity)) {
+			outDto.put2("code", "-1").put2("msg", "登录账号输入错误，请重新输入");
+		}else {
+			if (!StringUtils.equals(MyUtil.password(MyCons.PWD_KEY, inDto.getString("password")), myUserEntity.getPassword())) {
+				outDto.put2("code", "-1").put2("msg", "密码输入错误，请重新输入");
+			}
 		}
-		return outDto;
+		if (MyCons.YesOrNo.YES.getValue() == outDto.getInteger("code").intValue()) {
+			CurUser curUser = new CurUser();
+			curUser.setId(myUserEntity.getId());
+			curUser.setAccount(myUserEntity.getAccount());
+			curUser.setName(myUserEntity.getName());
+			curUser.setOrgId(myUserEntity.getOrg_id());
+			outDto.put("curUser", curUser);
+		}
+		return  outDto;
 	}
 }

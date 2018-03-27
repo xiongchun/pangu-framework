@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 登录验证模块SQL映射 -->
+<mapper namespace="sql.module">
+
+	<!-- 删除my_role_module关联数据 -->
+	<select id="deleteMyRoleModule" parameterType="Integer">
+		DELETE
+		FROM my_role_module WHERE module_id = #{module_id}
+	</select>
+
+</mapper>
