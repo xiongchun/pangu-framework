@@ -7,6 +7,9 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 
+import com.alibaba.fastjson.JSON;
+import com.gitee.myclouds.toolbox.session.data.CurUser;
+import com.gitee.myclouds.toolbox.util.MyCons;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.util.TypeConvertUtil;
 
@@ -21,10 +24,8 @@ import com.gitee.myclouds.toolbox.wrap.util.TypeConvertUtil;
  * @date 2008-07-06
  */
 public class HashDto extends HashMap<String, Object> implements Dto {
-	
-	private static final long serialVersionUID = 1L;
 
-	public static final String ORDER_KEY = "_order"; 
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 缺省构造函数
@@ -48,19 +49,19 @@ public class HashDto extends HashMap<String, Object> implements Dto {
 		else
 			return null;
 	}
-	
+
 	/**
 	 * 以BigInteger类型返回属性
 	 * 
 	 * @param pKey
 	 * @return BigInteger 键值
 	 */
-	public BigInteger getBigInteger(String pKey){
+	public BigInteger getBigInteger(String pKey) {
 		BigInteger outValue = null;
 		Object obj = get(pKey);
 		if (obj instanceof BigInteger) {
 			outValue = (BigInteger) obj;
-		}else{
+		} else {
 			outValue = new BigInteger(getString(pKey));
 		}
 		return outValue;
@@ -184,8 +185,8 @@ public class HashDto extends HashMap<String, Object> implements Dto {
 	 * @return int
 	 */
 	@Override
-	public Integer getPageLimit() {
-		return getInteger("limit");
+	public Integer getPageLength() {
+		return getInteger("length");
 	}
 
 	/**
@@ -202,28 +203,33 @@ public class HashDto extends HashMap<String, Object> implements Dto {
 	 * 
 	 */
 	@Override
-	public void setPageLimit(int pLimit) {
-		put("limit", pLimit);
+	public void setPageLength(int pLength) {
+		put("length", pLength);
 	}
 
 	/**
-	 * 设置排序器
+	 * 支持链式put
 	 * 
-	 * @param order
+	 * @param key
+	 *            键
+	 * @param value
+	 *            值
+	 * @return 当前对象
 	 */
 	@Override
-	public void setOrder(String order) {
-		put(ORDER_KEY, order);
+	public Dto put2(String key, Object value) {
+		put(key, value);
+		return this;
 	}
 
 	/**
-	 * 获取排序器
+	 * 获取当前用户对象（管理后台的登录用户）
 	 * 
 	 * @return
 	 */
 	@Override
-	public String getOrder() {
-		return getString(ORDER_KEY);
+	public CurUser getCurUser() {
+		return get(MyCons.CUR_USER) == null ? null
+				: JSON.parseObject(String.valueOf(get(MyCons.CUR_USER)), CurUser.class);
 	}
-
 }

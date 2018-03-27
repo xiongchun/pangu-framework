@@ -11,6 +11,7 @@ import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.gitee.myclouds.toolbox.wrap.Dto;
+import com.xiaoleilu.hutool.crypto.SecureUtil;
 
 /**
  * <b>辅助工具类</b>
@@ -98,6 +99,25 @@ public class MyUtil {
 				throw new RuntimeException("将JavaBean属性值拷贝到Dto对象发生错误", e);
 			}
 		}
+	}
+	
+	/**
+	 * 账号密码加密算法(二次加密)
+	 * 
+	 * @param key 秘钥 (秘钥长度必须大于等于8个字符)
+	 * @param source 明文数据
+	 * @return 不可逆密文
+	 */
+	public static String password(String key, String source) {
+		//先使用DESC加密算法
+		String password = SecureUtil.des(key.getBytes()).encryptHex(source);
+		//再使用MD5摘要算法(密码不可逆)
+		password = SecureUtil.md5(password);
+		return password;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(password(MyCons.PWD_KEY, "111111"));
 	}
 
 }

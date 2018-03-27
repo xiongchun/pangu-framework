@@ -7,6 +7,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
+import com.gitee.myclouds.toolbox.session.data.CurUser;
+
 /**
  * <b>数据传输对象接口</b>
  * <p>
@@ -26,7 +28,7 @@ public interface Dto extends Map<String, Object> {
 	 * @return Integer 键值
 	 */
 	Integer getInteger(String pKey);
-	
+
 	/**
 	 * 以BigInteger类型返回属性
 	 * 
@@ -103,7 +105,7 @@ public interface Dto extends Map<String, Object> {
 	 * 
 	 * @return int
 	 */
-	Integer getPageLimit();
+	Integer getPageLength();
 
 	/**
 	 * 设置分页查询偏移起始位置
@@ -115,23 +117,23 @@ public interface Dto extends Map<String, Object> {
 	 * 设置分页查询偏移步长
 	 * 
 	 */
-	void setPageLimit(int pLimit);
+	void setPageLength(int pLength);
 
 	/**
-	 * 设置排序器
-	 * <p>
-	 * 用法：qDto.setOrder("sort_no DESC");
-	 * </p>
+	 * 支持链式put
 	 * 
-	 * @param order
+	 * @param key
+	 *            键
+	 * @param value
+	 *            值
+	 * @return 当前对象
 	 */
-	void setOrder(String order);
+	Dto put2(String key, Object value);
 
 	/**
-	 * 获取排序器
+	 * 获取当前用户对象（管理后台的登录用户）
 	 * 
 	 * @return
 	 */
-	String getOrder();
-
+	CurUser getCurUser();
 }

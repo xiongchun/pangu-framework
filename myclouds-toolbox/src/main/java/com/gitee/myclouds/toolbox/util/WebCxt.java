@@ -4,12 +4,14 @@ import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import com.gitee.myclouds.toolbox.session.data.CurUser;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.impl.HashDto;
 
 /**
- * <b>Web上下文</b>
+ * Web上下文
  * 
  * @author xiongchun
  */
@@ -32,6 +34,17 @@ public class WebCxt {
 			dto.put(key, value);
 		}
 		return dto;
+	}
+	
+	/**
+	 * 获取当前用户数据对象
+	 * 
+	 * @param httpSession 当前会话
+	 * @return 当前用户数据对象
+	 */
+	public static CurUser getCurUser(HttpSession httpSession) {
+		CurUser curUser = (CurUser)httpSession.getAttribute(MyCons.CUR_USER);
+		return curUser;
 	}
 	
 }

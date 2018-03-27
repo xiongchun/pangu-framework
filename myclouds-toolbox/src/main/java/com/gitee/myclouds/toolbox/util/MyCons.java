@@ -8,7 +8,7 @@ package com.gitee.myclouds.toolbox.util;
  *
  */
 public class MyCons {
-
+	
 	/**
 	 * 通用的是否布尔值
 	 */
@@ -56,6 +56,40 @@ public class MyCons {
 			return name;
 		}
 	}
+	
+	/**
+	 * 角色菜单授权类型
+	 */
+	public static enum GrantType {
+
+		BIZ("1", "经办权限"), ADMIN("2", "管理权限");
+
+		private GrantType(String value, String name) {
+			this.value = value;
+			this.name = name;
+		}
+
+		private final String value;
+		private final String name;
+
+		public String getValue() {
+			return value;
+		}
+
+		public String getName() {
+			return name;
+		}
+	}
+	
+	/**
+	 * 缺省的密码字段加解密钥
+	 */
+	public static final String PWD_KEY = "HY&XC&MW";
+	
+	/**
+	 * 缺省当前用户数据对象会话KEY
+	 */
+	public static final String CUR_USER = "_user";
 
 	public static void main(String[] args) {
 
