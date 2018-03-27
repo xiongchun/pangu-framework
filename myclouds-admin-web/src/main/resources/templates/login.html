@@ -47,7 +47,7 @@
 										<div class="section">
 											<label for="account" class="field-label text-muted mb10 fs15">登录账号</label>
 											<label for="account" class="field prepend-icon">
-												<input type="text" name="account" id="account" class="gui-input" placeholder="请输入登录账号" />
+												<input type="text" name="account" id="account" class="gui-input"  placeholder="请输入登录账号" />
 												<label for="account" class="field-icon">
 													<i class="fa fa-user"></i>
 												</label>
@@ -58,7 +58,7 @@
 										<div class="section">
 											<label for="account" class="field-label text-muted mb10 fs15">密码</label>
 											<label for="password" class="field prepend-icon">
-												<input type="password" name="password" id="password" class="gui-input" placeholder="请输入密码" />
+												<input type="password" name="password" id="password" class="gui-input"  placeholder="请输入密码" />
 												<label for="password" class="field-icon">
 													<i class="fa fa-lock"></i>
 												</label>
@@ -70,16 +70,16 @@
 									<div class="col-sm-5 br-l br-grey pl30">
 										<h3 class="mb25">产品介绍或Logo</h3>
 										<p class="mb15">
-											<span class="fa fa-check text-success pr5"></span> Unlimited Email Storage
+											<span class="fa fa-check text-success pr5"></span> 分享经验
 										</p>
 										<p class="mb15">
-											<span class="fa fa-check text-success pr5"></span> Unlimited Photo Sharing/Storage
+											<span class="fa fa-check text-success pr5"></span> 传递价值
 										</p>
 										<p class="mb15">
-											<span class="fa fa-check text-success pr5"></span> Unlimited Downloads
+											<span class="fa fa-check text-success pr5"></span> 成就你我
 										</p>
 										<p class="mb15">
-											<span class="fa fa-check text-success pr5"></span> Unlimited Service Tickets
+											<span class="fa fa-check text-success pr5"></span> 演示账号：root 密码：111111
 										</p>
 									</div>
 								</div>
@@ -149,6 +149,13 @@
 
 			//绑定新增参数表单校验和提交响应时间
 			My.validate('#fo_login', doLogin, validateOptions);
+			
+			//演示账号模拟登陆 请移除
+			setTimeout(function(){
+				$("#fo_login [name='account']").val('root');
+				$("#fo_login [name='password']").val('111111');
+				doLogin();
+			},3000);
 
 		});
 
