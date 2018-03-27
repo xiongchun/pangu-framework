@@ -1,0 +1,116 @@
+<!-- Theme Settings Panel -->
+<div id="skin-toolbox" th:fragment="themeSettings">
+	<div class="panel">
+		<div class="panel-heading">
+			<span class="panel-icon"> <i class="fa fa-gear text-primary"></i>
+			</span> <span class="panel-title"> 主题选项 </span>
+		</div>
+		<div class="panel-body pn">
+			<ul class="nav nav-list nav-list-sm pl15 pt10" role="tablist">
+				<li class="active">
+					<a href="#toolbox-header" role="tab" data-toggle="tab">顶部导航</a>
+				</li>
+				<li>
+					<a href="#toolbox-sidebar" role="tab" data-toggle="tab">侧边导航</a>
+				</li>
+				<li>
+					<a href="#toolbox-settings" role="tab" data-toggle="tab">其它</a>
+				</li>
+			</ul>
+			<div class="tab-content p20 ptn pb15">
+				<div role="tabpanel" class="tab-pane active" id="toolbox-header">
+					<form id="toolbox-header-skin">
+						<div class="skin-toolbox-swatches">
+							<div class="checkbox-custom fill checkbox-primary mb5">
+								<input type="radio" name="headerSkin" id="headerSkin1" value="bg-primary" />
+								<label for="headerSkin1">天之蓝</label>
+							</div>
+							<div class="checkbox-custom fill checkbox-info mb5">
+								<input type="radio" name="headerSkin" id="headerSkin3" value="bg-info" />
+								<label for="headerSkin3">海之蓝</label>
+							</div>
+							<div class="checkbox-custom fill checkbox-system mb5">
+								<input type="radio" name="headerSkin" id="headerSkin7" value="bg-system" />
+								<label for="headerSkin7">梦之蓝</label>
+							</div>
+							<div class="checkbox-custom fill checkbox-warning mb5">
+								<input type="radio" name="headerSkin" id="headerSkin4" value="bg-warning" />
+								<label for="headerSkin4">星耀黄</label>
+							</div>
+							<div class="checkbox-custom fill checkbox-danger mb5">
+								<input type="radio" name="headerSkin" id="headerSkin5" value="bg-danger" />
+								<label for="headerSkin5">枫叶红</label>
+							</div>
+							<div class="checkbox-custom fill checkbox-success mb5">
+								<input type="radio" name="headerSkin" id="headerSkin2" value="bg-success" />
+								<label for="headerSkin2">橄榄绿</label>
+							</div>
+							<div class="checkbox-custom fill checkbox-alert mb5">
+								<input type="radio" name="headerSkin" id="headerSkin6" value="bg-alert" />
+								<label for="headerSkin6">魅力紫</label>
+							</div>
+							<div class="checkbox-custom checkbox-disabled fill mb5">
+								<input type="radio" name="headerSkin" id="headerSkin8" value="" />
+								<label for="headerSkin8">雅士银</label>
+							</div>
+							<div class="checkbox-custom fill mb5">
+								<input type="radio" name="headerSkin" id="headerSkin9" value="bg-dark" />
+								<label for="headerSkin9">暗夜黑</label>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="toolbox-sidebar">
+					<form id="toolbox-sidebar-skin">
+						<div class="skin-toolbox-swatches">
+							<div class="checkbox-custom fill mb5">
+								<input type="radio" name="sidebarSkin" checked="checked" id="sidebarSkin3" value="" />
+								<label for="sidebarSkin3">暗夜黑</label>
+							</div>
+							<div class="checkbox-custom fill checkbox-disabled mb5">
+								<input type="radio" name="sidebarSkin" id="sidebarSkin1" value="sidebar-light" />
+								<label for="sidebarSkin1">古典灰</label>
+							</div>
+							<div class="checkbox-custom fill checkbox-light mb5">
+								<input type="radio" name="sidebarSkin" id="sidebarSkin2" value="sidebar-light light" />
+								<label for="sidebarSkin2">雅士银</label>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="toolbox-settings">
+					<form id="toolbox-settings-misc">
+						<div class="form-group">
+							<div class="checkbox-custom fill mb5">
+								<input type="checkbox" checked="" id="header-option" />
+								<label for="header-option">固定顶部导航</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="checkbox-custom fill mb5">
+								<input type="checkbox" checked="" id="sidebar-option" />
+								<label for="sidebar-option">固定左侧导航</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="checkbox-custom fill mb5">
+								<input type="checkbox" id="breadcrumb-option" />
+								<label for="breadcrumb-option">固定当前模块路径导航</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="checkbox-custom fill mb5">
+								<input type="checkbox" id="breadcrumb-hidden" />
+								<label for="breadcrumb-hidden">隐藏当前模块路径导航</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="form-group mn br-t p15">
+				<a href="#" id="clearLocalStorage" class="btn btn-primary btn-block pb10 pt10">重置缺省值</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End: Theme Settings Panel -->
