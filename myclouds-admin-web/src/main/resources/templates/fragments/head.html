@@ -37,6 +37,12 @@
 			$('#id-error-exception span').text(data.exception);
 			$('#id-error-message').text(data.message);
 		});
+		
+		//确保所有最后一个弹出窗口在最顶层显示
+        $(document).on('show.bs.modal', '.modal', function (event) {
+            var zIndex = 1040 + (10 * $('.modal:visible').length);
+            $(this).css('z-index', zIndex);
+        });
 	});
 </script>
 <!-- End: Head Script -->
