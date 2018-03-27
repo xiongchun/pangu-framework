@@ -11,7 +11,7 @@ import java.util.Date;
  * </p>
  * 
  * @author myclouds team
- * @date 2018-02-10 19:26:35
+ * @date 2018-03-09 18:25:06
  */
 public class MyEnumEntity extends Entity {
 
@@ -42,9 +42,9 @@ public class MyEnumEntity extends Entity {
 	 */
 	private String is_enable;	
 	/**
-	 * 所属系统识别码
+	 * 所属分类
 	 */
-	private String sys_key;	
+	private String type;	
 	/**
 	 * 排序号
 	 */
@@ -125,12 +125,12 @@ public class MyEnumEntity extends Entity {
 	}
 	
 	/**
-	 * 所属系统识别码
+	 * 所属分类
 	 * 
-	 * @return sys_key
+	 * @return type
 	 */
-	public String getSys_key() {
-		return sys_key;
+	public String getType() {
+		return type;
 	}
 	
 	/**
@@ -216,12 +216,12 @@ public class MyEnumEntity extends Entity {
 	}
 	
 	/**
-	 * 所属系统识别码
+	 * 所属分类
 	 * 
-	 * @param sys_key
+	 * @param type
 	 */
-	public void setSys_key(String sys_key) {
-		this.sys_key = sys_key;
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	/**

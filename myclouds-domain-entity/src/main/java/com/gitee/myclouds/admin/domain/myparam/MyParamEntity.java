@@ -11,7 +11,7 @@ import java.util.Date;
  * </p>
  * 
  * @author myclouds team
- * @date 2018-02-10 19:26:36
+ * @date 2018-03-09 18:25:07
  */
 public class MyParamEntity extends Entity {
 
@@ -34,9 +34,9 @@ public class MyParamEntity extends Entity {
 	 */
 	private String value;	
 	/**
-	 * 所属系统识别码
+	 * 所属分类
 	 */
-	private String sys_key;	
+	private String type;	
 	/**
 	 * 更新时间
 	 */
@@ -95,12 +95,12 @@ public class MyParamEntity extends Entity {
 	}
 	
 	/**
-	 * 所属系统识别码
+	 * 所属分类
 	 * 
-	 * @return sys_key
+	 * @return type
 	 */
-	public String getSys_key() {
-		return sys_key;
+	public String getType() {
+		return type;
 	}
 	
 	/**
@@ -159,12 +159,12 @@ public class MyParamEntity extends Entity {
 	}
 	
 	/**
-	 * 所属系统识别码
+	 * 所属分类
 	 * 
-	 * @param sys_key
+	 * @param type
 	 */
-	public void setSys_key(String sys_key) {
-		this.sys_key = sys_key;
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	/**
