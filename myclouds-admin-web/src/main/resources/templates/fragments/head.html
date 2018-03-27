@@ -35,6 +35,7 @@
 			$('#id-error-path span').text(data.path);
 			$('#id-error-status span').text(data.status);
 			$('#id-error-exception span').text(data.exception);
+			$('#id-error-message').css('overflow-x', 'hidden');
 			$('#id-error-message').text(data.message);
 		});
 		
