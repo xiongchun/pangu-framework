@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-<th:block th:replace="/fragments/head" />
+<th:block th:replace="fragments/head" />
 </head>
 
 <body class="external-page sb-l-c sb-r-c">
@@ -20,7 +20,7 @@
 			<!-- Begin: Content -->
 			<section id="content">
 
-				<div class="admin-form theme-info" id="login1">
+				<div class="admin-form theme-info animated fadeInDown">
 
 					<div class="row mb15 table-layout">
 
@@ -45,10 +45,10 @@
 									<div class="col-sm-7 pr30">
 
 										<div class="section">
-											<label for="username" class="field-label text-muted mb10 fs15">账号</label>
-											<label for="username" class="field prepend-icon">
-												<input type="text" name="username" id="username" class="gui-input" placeholder="请输入登录账号" />
-												<label for="username" class="field-icon">
+											<label for="account" class="field-label text-muted mb10 fs15">登录账号</label>
+											<label for="account" class="field prepend-icon">
+												<input type="text" name="account" id="account" class="gui-input" placeholder="请输入登录账号" />
+												<label for="account" class="field-icon">
 													<i class="fa fa-user"></i>
 												</label>
 											</label>
@@ -56,7 +56,7 @@
 										<!-- end section -->
 
 										<div class="section">
-											<label for="username" class="field-label text-muted mb10 fs15">密码</label>
+											<label for="account" class="field-label text-muted mb10 fs15">密码</label>
 											<label for="password" class="field prepend-icon">
 												<input type="password" name="password" id="password" class="gui-input" placeholder="请输入密码" />
 												<label for="password" class="field-icon">
@@ -86,7 +86,7 @@
 							</div>
 							<!-- end .form-body section -->
 							<div class="panel-footer clearfix p10 ph15">
-								<button type="submit" class="button btn-primary mr5 pull-right">登录</button>
+								<button type="submit" class="btn btn-primary pull-right ph15">登录</button>
 								<label class="switch ib switch-primary pull-left input-align mt10">
 									<input type="checkbox" name="remember" id="remember" checked="true" />
 									<label for="remember" data-on="是" data-off="否"></label>
@@ -108,13 +108,12 @@
 	<!-- End: Main -->
 
 	<!--/* 公共脚本文件 */-->
-	<th:block th:include="/fragments/scripts" />
+	<th:block th:include="fragments/scripts" />
 
 	<!-- CanvasBG Plugin(creates mousehover effect) -->
 	<script src="/theme/vendor/plugins/canvasbg/canvasbg.js"></script>
-
 	<script type="text/javascript">
-		jQuery(document).ready(function() {
+		$(function() {
 			"use strict";
 			Core.init();
 
@@ -130,7 +129,7 @@
 			var validateOptions = {
 				//校验规则
 				rules : {
-					username : {
+					account : {
 						required : true
 					},
 					password : {
@@ -139,7 +138,7 @@
 				},
 				//提示信息
 				messages : {
-					username : {
+					account : {
 						required : '登录账号不能为空'
 					},
 					password : {
@@ -155,13 +154,15 @@
 
 		//登录请求
 		function doLogin() {
+			var data = My.params('#fo_login');
+			data.password = hex_md5(data.password);
 			$.ajax({
 				type : 'post',
 				url : '/login/go',
-				data : My.params('#fo_login'),
+				data : data,
 				success : function(data) {
 					if (data.code == '1') {
-						My.notify(data.msg);
+						window.location.href = './';
 					} else {
 						My.notify(data.msg, 'danger');
 					}

@@ -8,6 +8,35 @@
 
 /* 常用工具类库 */
 var My = function() {
+	
+	/**
+	 * 初始化
+	 */
+	function init(options){
+		//当前页面所属功能模块的模块ID
+		var mid = $('#my-mid').val();
+		if(typeof(mid) !== "undefined" && mid !== ''){
+			//高亮导航栏中当前模块菜单
+			var mid = '#my-mitem-' + $('#my-mid').val();
+			if($(mid).data('level') == '1'){
+				$(mid).addClass('active');
+			}else{
+				var themeSettings = $.parseJSON(localStorage.getItem('myclouds-data-theme'));
+				//侧边栏样式
+				var sidebarSkin = themeSettings.sidebarSkin;
+				if(sidebarSkin == ''){
+					//缺省暗夜黑
+					$(mid).addClass('active');
+				}else{
+					//另外的皮肤，如果根据皮肤自定义则也可以在这里处理
+					$(mid).addClass('active menu-active');
+				}
+				
+			}
+		};
+		//TODO 其它初始化任务
+		
+	}
 
 	/**
 	 * 序列化表单元素
@@ -145,6 +174,7 @@ var My = function() {
 	}
 
 	return {
+		init : init,
 		params : params,
 		popup : popup,
 		close : close,

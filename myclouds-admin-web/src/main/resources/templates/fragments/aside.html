@@ -15,75 +15,32 @@
        Results: Fixed Left Sidebar with light/white background
     ++++++++++++++++++++++++++++++++++++++-->
 	<!-- Start: Sidebar Left Content -->
-	<div class="sidebar-left-content nano-content">
+	<div id="my-menu-nav-sidebar" class="sidebar-left-content nano-content">
 
 		<!-- Start: Sidebar Left Menu -->
 		<ul class="nav sidebar-menu">
 			<li class="sidebar-label pt20"></li>
-			<li>
-				<a href="/">
-					<span class="glyphicon glyphicon-home"></span> <span class="sidebar-title">首页</span>
-				</a>
-			</li>
+			<th:block th:each="menu : ${session.level1Menus}" th:with="level2Menus=${menu.subMenus}">
+				<li th:if="${#lists.isEmpty(level2Menus)}" th:id="my-mitem- + ${menu.id}" data-level="1" class="selector-flag">
+					<a th:href="@{${menu.url}(mid=${menu.id})}">
+						<span th:attr="class=${menu.icon}"></span> <span class="sidebar-title" th:text="${menu.name}"></span>
+					</a>
+				</li>
 
-			<li>
-				<a class="accordion-toggle" href="#">
-					<span class="glyphicon glyphicon-fire"></span> <span class="sidebar-title">系统管理</span> <span class="caret"></span>
-				</a>
-				<ul class="nav sub-nav">
-					<li>
-						<a href="/param/init">
-							<span class="glyphicon glyphicon-book"></span> 键值参数管理
-						</a>
-					</li>
-					<li>
-						<a href="/enums/init">
-							<span class="glyphicon glyphicon-modal-window"></span> 枚举类型管理
-						</a>
-					</li>
-					<li>
-						<a href="admin_plugins-dock.html">
-							<span class="glyphicon glyphicon-equalizer"></span> 资源模块管理
-						</a>
-					</li>
-					<li>
-						<a href="admin_plugins-dock.html">
-							<span class="glyphicon glyphicon-equalizer"></span> 用户与授权管理
-						</a>
-					</li>
-					<li>
-						<a href="admin_plugins-dock.html">
-							<span class="glyphicon glyphicon-equalizer"></span> 角色与授权管理
-						</a>
-					</li>
-				</ul>
-			</li>
+				<li th:if="${not #lists.isEmpty(level2Menus)}">
+					<a class="accordion-toggle" th:classappend="${menu.openClass}" href="#">
+						<span th:attr="class=${menu.icon}"></span> <span class="sidebar-title" th:text="${menu.name}"></span> <span class="caret"></span>
+					</a>
+					<ul class="nav sub-nav">
+						<li th:each="menu : ${level2Menus}" th:id="my-mitem- + ${menu.id}" class="selector-flag">
+							<a th:href="@{${menu.url}(mid=${menu.id})}">
+								<span th:attr="class=${menu.icon}"></span> <span th:text="${menu.name}"></span>
+							</a>
+						</li>
+					</ul>
+				</li>
 
-			<li>
-				<a class="accordion-toggle" href="#">
-					<span class="glyphicon glyphicon-check"></span> <span class="sidebar-title">服务治理</span> <span class="caret"></span>
-				</a>
-				<ul class="nav sub-nav">
-					<li>
-						<a href="admin_forms-elements.html">
-							<span class="glyphicon glyphicon-edit"></span> 服务治理
-						</a>
-					</li>
-				</ul>
-			</li>
-
-			<li>
-				<a class="accordion-toggle" href="#">
-					<span class="glyphicon glyphicon-check"></span> <span class="sidebar-title">应用性能监控</span> <span class="caret"></span>
-				</a>
-				<ul class="nav sub-nav">
-					<li>
-						<a href="admin_forms-elements.html">
-							<span class="glyphicon glyphicon-edit"></span> 应用性能监控
-						</a>
-					</li>
-				</ul>
-			</li>
+			</th:block>
 
 		</ul>
 		<!-- End: Sidebar Menu -->
@@ -100,6 +57,7 @@
 
 	</div>
 	<!-- End: Sidebar Left Content -->
-
+	<!-- 当前页面所属功能模块的模块ID -->
+     <input id="my-mid" type="hidden"  th:value="${#httpServletRequest.getParameter('mid')}" />
 </aside>
 <!-- End: Sidebar Left -->

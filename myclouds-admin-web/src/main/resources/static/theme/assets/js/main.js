@@ -1017,6 +1017,13 @@ var Core = function(options) {
 				// Save new Skin to Settings Key
 				settingsObj['sidebarSkin'] = Val;
 				localStorage.setItem(themeKey, JSON.stringify(settingsObj));
+				if(Val == ''){
+					//解决从其他样式切换到暗夜黑样式过程中的颜色匹配问题
+					$('#my-menu-nav-sidebar .selector-flag').each(function(index){
+						$(this).removeClass('menu-active');
+					});
+				}
+				
 			});
 
 			// Fixed Header Switcher

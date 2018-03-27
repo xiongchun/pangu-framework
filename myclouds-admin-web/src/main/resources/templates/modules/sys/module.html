@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<th:block th:replace="fragments/head" />
+</head>
+
+<body class="sb-l-o">
+	<!--/* 主题设置面板 */-->
+	<div th:replace="fragments/skin-toolbox"></div>
+
+	<!-- BEGIN: 主页面 -->
+	<div id="main">
+		<!--/* 顶部导航 */-->
+		<header th:replace="fragments/header-banner"></header>
+		<!--/* 左侧功能菜单导航 */-->
+		<aside th:replace="fragments/aside"></aside>
+		<!-- BEGIN: Content-Wrapper -->
+		<section id="content_wrapper">
+			<!--/* 模块路径导航条 */-->
+			<header th:replace="fragments/header-breadcrumb"></header>
+
+			<!-- Begin: 业务办理区 -->
+			<section id="content" class="table-layout animated fadeIn">
+
+				<div>
+					<span class="glyphicons glyphicons-bell"></span> 一期功能裁剪。请将菜单数据直接填入sys_module表。
+				</div>
+
+			</section>
+			<!-- End: 业务办理区 -->
+
+			<!--/* 页脚 */-->
+			<footer th:replace="fragments/footer"></footer>
+
+		</section>
+		<!-- End: Content-Wrapper -->
+
+	</div>
+	<!-- End: 主页面 -->
+
+	<!--/* 公共脚本文件 */-->
+	<th:block th:include="fragments/scripts" />
+
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		$(function() {
+			"use strict";
+			Core.init();
+			My.init();
+			/******* 事件监听.start ********/
+			$("#btn-query").on("click", fnQuery);
+			$('#dt-role').on('init.dt', fnQuery);
+			$("#btn-new").on("click", function(e) {
+				$('#w-new').modal();
+				$("#fo-new")[0].reset();
+			});
+			$("#btn-edit").on("click", function(e) {
+				My.notify('修改功能正在完善中...', 'info');
+			});
+			$("#btn-del").on("click", function(e) {
+				My.notify('批量删除功能正在完善中...', 'info');
+			});
+			/******* 事件监听.end ********/
+
+			//初始化下拉框
+			$(".basic-single").select2({
+				placeholder : "请选择...",
+				width : '100%',
+				minimumResultsForSearch : -1, //隐藏搜索框
+				allowClear : true
+			});
+
+			//初始化表格
+			$('#dt-role')
+					.dataTable(
+							{
+								dom : 'tr<"dt-panelfooter clearfix"lip>',
+								pageLength : 20,
+								lengthMenu : [ [ 10, 20, 50, 200, 500 ], [ 10, 20, 50, 200, 500 ] ],
+								ordering : false,
+								processing : true,
+								serverSide : false, //false：一次查询，客户端分页的模式；true：服务端分页模式
+								deferLoading : 0, //屏蔽初始化后自动加载数据
+								pagingType : "full_numbers",
+								columns : [ {
+									data : "id",
+									width : 60
+								}, {
+									data : "name"
+								}, {
+									data : "type",
+									width : 200
+								}, {
+									data : "is_enable",
+									width : 100
+								}, {
+									data : "create_by",
+									width : 100
+								}, {
+									data : "create_time",
+									width : 200
+								} ],
+								columnDefs : [ {
+									targets : [ 6 ],//动作列
+									width : 50,
+									data : {},
+									render : function(row, type, full) {
+										var html = "<div class='text-center'><button class='btn btn-danger btn-xs btn-gradient' onclick='fnDelete("
+												+ JSON.stringify(row) + ")'>删除</button></div>";
+										return html;
+									}
+								} ],
+							});
+
+			//表单校验规则
+			var validateOptions = {
+				//校验规则
+				rules : {
+					name : {
+						required : true
+					},
+					is_enable : {
+						required : true
+					},
+					type : {
+						required : true
+					}
+				},
+				//提示信息
+				messages : {
+					name : {
+						required : '请输入角色名称'
+					},
+					is_enable : {
+						required : '请选择是否启用'
+					},
+					type : {
+						required : '请选择角色类型'
+					}
+				}
+			}
+
+			//绑定新增表单校验和提交响应事件
+			My.validate('#fo-new', fnNew, validateOptions);
+
+		});
+
+		//查询列表
+		function fnQuery() {
+			var ajax = {
+				url : "list",
+				type : "POST",
+				data : My.params('#fo_query')
+			}
+			$('#dt-role').DataTable().settings()[0].ajax = ajax;
+			$('#dt-role').DataTable().ajax.reload();
+		}
+
+		//保存
+		function fnNew() {
+			$.ajax({
+				type : 'post',
+				url : 'save',
+				data : My.params('#fo-new'),
+				success : function(data) {
+					if (data.code == '1') {
+						My.notify(data.msg);
+						$('#w-new').modal('hide');
+						fnQuery();
+					} else {
+						My.notify(data.msg, 'danger');
+					}
+				}
+			});
+		}
+
+		//删除
+		function fnDelete(row) {
+			My.confirm('确认删除当前角色吗？', function(result) {
+				if (result) {
+					$.ajax({
+						type : 'post',
+						url : 'delete',
+						data : row,
+						success : function(data) {
+							My.notify(data.msg);
+							fnQuery();
+						}
+					});
+				}
+			});
+		}
+
+		/*]]>*/
+	</script>
+
+</body>
+
+</html>
