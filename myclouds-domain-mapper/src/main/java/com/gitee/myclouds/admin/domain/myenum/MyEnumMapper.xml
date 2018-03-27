@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 枚举类型参数表[my_enum]SQL自动映射 -->
-<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-02-27 16:57:12 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-03-09 18:24:27 -->
 <mapper namespace="com.gitee.myclouds.admin.domain.myenum.MyEnumMapper">
 	
 	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
@@ -24,8 +24,8 @@
 		<if test="is_enable != null and is_enable != ''">
 	         is_enable, <!-- 是否启用 -->
 		</if>
-		<if test="sys_key != null and sys_key != ''">
-	         sys_key, <!-- 所属系统识别码 -->
+		<if test="type != null and type != ''">
+	         type, <!-- 所属分类 -->
 		</if>
 		<if test="sort_no != null">
 	         sort_no, <!-- 排序号 -->
@@ -53,8 +53,8 @@
 		<if test="is_enable != null and is_enable != ''">
 	          #{is_enable, jdbcType=VARCHAR}, <!-- 是否启用 -->
 	    </if>
-		<if test="sys_key != null and sys_key != ''">
-	          #{sys_key, jdbcType=VARCHAR}, <!-- 所属系统识别码 -->
+		<if test="type != null and type != ''">
+	          #{type, jdbcType=VARCHAR}, <!-- 所属分类 -->
 	    </if>
 		<if test="sort_no != null">
 	          #{sort_no, jdbcType=INTEGER}, <!-- 排序号 -->
@@ -81,7 +81,7 @@
 		    #{element_key, jdbcType=VARCHAR},  <!-- 枚举元素KEY -->
 		    #{element_value, jdbcType=VARCHAR},  <!-- 枚举元素值 -->
 		    #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
-		    #{sys_key, jdbcType=VARCHAR},  <!-- 所属系统识别码 -->
+		    #{type, jdbcType=VARCHAR},  <!-- 所属分类 -->
 		    #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
 		    #{update_time, jdbcType=TIMESTAMP},  <!-- 更新时间 -->
 		    #{remark, jdbcType=VARCHAR}  <!-- 备注 -->
@@ -110,8 +110,8 @@
 			<if test="is_enable != null">
 		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
 			</if>
-			<if test="sys_key != null">
-		          sys_key = #{sys_key, jdbcType=VARCHAR},  <!-- 所属系统识别码 -->
+			<if test="type != null">
+		          type = #{type, jdbcType=VARCHAR},  <!-- 所属分类 -->
 			</if>
 			<if test="sort_no != null">
 		          sort_no = #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
@@ -228,8 +228,8 @@
 			<if test="is_enable != null">
 		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
 			</if>
-			<if test="sys_key != null">
-		          sys_key = #{sys_key, jdbcType=VARCHAR},  <!-- 所属系统识别码 -->
+			<if test="type != null">
+		          type = #{type, jdbcType=VARCHAR},  <!-- 所属分类 -->
 			</if>
 			<if test="sort_no != null">
 		          sort_no = #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
@@ -264,7 +264,7 @@
 		  element_key,  <!-- 枚举元素KEY -->
 		  element_value,  <!-- 枚举元素值 -->
 		  is_enable,  <!-- 是否启用 -->
-		  sys_key,  <!-- 所属系统识别码 -->
+		  type,  <!-- 所属分类 -->
 		  sort_no,  <!-- 排序号 -->
 		  update_time,  <!-- 更新时间 -->
 		  remark  <!-- 备注 -->
@@ -278,7 +278,7 @@
 		  my_enum.element_key,  <!-- 枚举元素KEY -->
 		  my_enum.element_value,  <!-- 枚举元素值 -->
 		  my_enum.is_enable,  <!-- 是否启用 -->
-		  my_enum.sys_key,  <!-- 所属系统识别码 -->
+		  my_enum.type,  <!-- 所属分类 -->
 		  my_enum.sort_no,  <!-- 排序号 -->
 		  my_enum.update_time,  <!-- 更新时间 -->
 		  my_enum.remark  <!-- 备注 -->
@@ -304,8 +304,8 @@
 	    <if test="is_enable != null and is_enable != ''">
 		      AND is_enable = #{is_enable}  <!-- 是否启用 -->
 		</if>
-	    <if test="sys_key != null and sys_key != ''">
-		      AND sys_key = #{sys_key}  <!-- 所属系统识别码 -->
+	    <if test="type != null and type != ''">
+		      AND type = #{type}  <!-- 所属分类 -->
 		</if>
 	   <if test="sort_no != null ">
 		      AND sort_no = #{sort_no}  <!-- 排序号 -->
@@ -335,8 +335,8 @@
 	    <if test="is_enable != null and is_enable != ''">
 		      AND is_enable like '${is_enable}%'  <!-- 是否启用 -->
 		</if>
-	    <if test="sys_key != null and sys_key != ''">
-		      AND sys_key like '${sys_key}%'  <!-- 所属系统识别码 -->
+	    <if test="type != null and type != ''">
+		      AND type like '${type}%'  <!-- 所属分类 -->
 		</if>
 	    <if test="remark != null and remark != ''">
 		      AND remark like '${remark}%'  <!-- 备注 -->

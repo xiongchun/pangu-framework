@@ -1,94 +1,94 @@
-package com.gitee.myclouds.admin.domain.myenum;
+package com.gitee.myclouds.admin.domain.myuserrole;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.admin.domain.myenum.MyEnumEntity;
+import com.gitee.myclouds.admin.domain.myuserrole.MyUserRoleEntity;
 
 /**
- * <b>枚举类型参数表[my_enum]数据访问接口</b>
+ * <b>用户-角色关联表[my_user_role]数据访问接口</b>
  * 
  * <p>
  * 注意:此文件由MyClouds平台自动生成-禁止手工修改
  * </p>
  * 
  * @author myclouds team
- * @date 2018-03-09 18:24:27
+ * @date 2018-03-09 18:24:29
  */
 @Mapper
-public interface MyEnumMapper {
+public interface MyUserRoleMapper {
 
 	/**
 	 * 插入一个数据实体对象(插入字段为传入Entity实体的非空属性)
 	 * <p> 防止DB字段缺省值需要程序中再次赋值
 	 *
-	 * @param my_enumEntity
+	 * @param my_user_roleEntity
 	 *            要插入的数据实体对象
 	 * @return 返回影响行数
 	 */
-	int insert(MyEnumEntity myEnumEntity);
+	int insert(MyUserRoleEntity myUserRoleEntity);
 	
 	/**
 	 * 插入一个数据实体对象(含所有字段)
 	 * 
-	 * @param my_enumEntity
+	 * @param my_user_roleEntity
 	 *            要插入的数据实体对象
 	 * @return 返回影响行数
 	 */
-	int insertAll(MyEnumEntity myEnumEntity);
+	int insertAll(MyUserRoleEntity myUserRoleEntity);
 
 	/**
 	 * 根据主键修改数据实体对象
 	 * 
-	 * @param myEnumEntity
+	 * @param myUserRoleEntity
 	 *            要修改的数据实体对象
 	 * @return int 返回影响行数
 	 */
-	int updateByKey(MyEnumEntity myEnumEntity);
+	int updateByKey(MyUserRoleEntity myUserRoleEntity);
 
 	/**
 	 * 根据主键查询并返回数据实体对象
 	 * 
-	 * @return MyEnumEntity
+	 * @return MyUserRoleEntity
 	 */
-	MyEnumEntity selectByKey(@Param(value = "id") Integer id);
+	MyUserRoleEntity selectByKey(@Param(value = "id") Integer id);
 
 	/**
 	 * 根据唯一组合条件查询并返回数据实体对象
 	 * 
-	 * @return MyEnumEntity
+	 * @return MyUserRoleEntity
 	 */
-	MyEnumEntity selectOne(Dto pDto);
+	MyUserRoleEntity selectOne(Dto pDto);
 
 	/**
 	 * 根据Dto查询并返回数据实体对象集合
 	 * 
-	 * @return List<MyEnumEntity>
+	 * @return List<MyUserRoleEntity>
 	 */
-	List<MyEnumEntity> list(Dto pDto);
+	List<MyUserRoleEntity> list(Dto pDto);
 
 	/**
 	 * 根据Dto查询并返回分页数据实体对象集合
 	 * 
-	 * @return List<MyEnumEntity>
+	 * @return List<MyUserRoleEntity>
 	 */
-	List<MyEnumEntity> listPage(Dto pDto);
+	List<MyUserRoleEntity> listPage(Dto pDto);
 		
 	/**
 	 * 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配)
 	 * 
-	 * @return List<MyEnumEntity>
+	 * @return List<MyUserRoleEntity>
 	 */
-	List<MyEnumEntity> like(Dto pDto);
+	List<MyUserRoleEntity> like(Dto pDto);
 
 	/**
 	 * 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配)
 	 * 
-	 * @return List<MyEnumEntity>
+	 * @return List<MyUserRoleEntity>
 	 */
-	List<MyEnumEntity> likePage(Dto pDto);
+	List<MyUserRoleEntity> likePage(Dto pDto);
 
 	/**
 	 * 根据主键删除数据实体对象
@@ -116,24 +116,24 @@ public interface MyEnumMapper {
 	/**
 	 * 根据唯一键[ukey1]修改数据实体对象
 	 * 
-	 * @param myEnumEntity
+	 * @param myUserRoleEntity
 	 *            要修改的数据实体对象
 	 * @return int 返回影响行数
 	 */
-	int updateByUkey1(MyEnumEntity myEnumEntity);
+	int updateByUkey1(MyUserRoleEntity myUserRoleEntity);
 
 	/**
 	 * 根据唯一键[ukey1]查询并返回数据实体对象
 	 * 
-	 * @return MyEnumEntity
+	 * @return MyUserRoleEntity
 	 */
-	MyEnumEntity selectByUkey1(@Param(value = "enum_key") String enum_key,@Param(value = "element_key") String element_key);
+	MyUserRoleEntity selectByUkey1(@Param(value = "user_id") Integer user_id,@Param(value = "role_id") Integer role_id);
 	
 	/**
 	 * 根据唯一键[ukey1]删除数据实体对象
 	 *
 	 * @return 影响行数
 	 */
-	int deleteByUkey1(@Param(value = "enum_key") String enum_key,@Param(value = "element_key") String element_key);
+	int deleteByUkey1(@Param(value = "user_id") Integer user_id,@Param(value = "role_id") Integer role_id);
 	
 }

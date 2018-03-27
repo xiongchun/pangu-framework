@@ -15,7 +15,7 @@ import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
  * </p>
  * 
  * @author myclouds team
- * @date 2018-02-27 16:44:07
+ * @date 2018-03-09 18:24:28
  */
 @Mapper
 public interface MyParamMapper {
