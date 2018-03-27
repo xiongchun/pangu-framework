@@ -25,7 +25,7 @@ public class CfgCacheApiTest {
 	private MyCxt myCxt;
 	
 	/**
-	 * 演示基础配置数据API
+	 * 演示基础配置数据 API
 	 */
 	public void testBasicCfgDataApi() {
 		//获取键值参数对象
