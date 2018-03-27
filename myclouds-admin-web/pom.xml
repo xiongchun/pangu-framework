@@ -67,6 +67,13 @@
 			<version>1.0</version>
 		</dependency>
 		
+		<!-- myclouds-common -->
+		<dependency>
+			<groupId>com.gitee.myclouds</groupId>
+			<artifactId>myclouds-common</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
 		<!-- consul服务发现 -->
  		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -83,13 +90,14 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<fork>true</fork>
 				</configuration>
 			</plugin>
 		</plugins>
+		
 	</build>
 
 	<repositories>
