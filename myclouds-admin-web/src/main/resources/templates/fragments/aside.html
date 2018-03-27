@@ -33,7 +33,10 @@
 					</a>
 					<ul class="nav sub-nav">
 						<li th:each="menu : ${level2Menus}" th:id="my-mitem- + ${menu.id}" class="selector-flag">
-							<a th:href="@{${menu.url}(mid=${menu.id})}">
+							<a th:if="${menu.url != null}"  th:href="@{${menu.url}(mid=${menu.id})}">
+								<span th:attr="class=${menu.icon}"></span> <span th:text="${menu.name}"></span>
+							</a>
+							<a th:if="${menu.url == null}" >
 								<span th:attr="class=${menu.icon}"></span> <span th:text="${menu.name}"></span>
 							</a>
 						</li>
