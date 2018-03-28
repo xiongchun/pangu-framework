@@ -22,8 +22,8 @@ MyClouds架构以互联网分布式应用开发优先并兼顾传统单体分层
 #### 愿景规划
 建一流微服务治理与快速开发平台，打造成熟稳定的技术组件生态和丰富的通用业务参考实现。
 
-### 发展轨迹
-- 2018-至今 MyClouds，十年磨一剑的感觉 : ) (https://gitee.com/osworks/MyClouds)
-- 2015-2017 AOSuite (https://gitee.com/osworks/AOS)
-- 2008-2014 G4Studio (https://gitee.com/osworks/G4Studio)
+#### 发展轨迹
+- 2018-至今 MyClouds（十年磨一剑的感觉）(https://gitee.com/osworks/MyClouds)
+- 2014-2017 AOSuite (https://gitee.com/osworks/AOS)
+- 2008-2013 G4Studio (https://gitee.com/osworks/G4Studio)
 
