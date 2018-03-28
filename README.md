@@ -4,5 +4,6 @@
 ###  :fa-cogs: 在线演示
 [http://121.41.231.94/aosuite](http://121.41.231.94/aosuite) (维护中，暂停访问)
 
-###  :fa-rocket: MyClouds微服务治理及快速开发平台
-[https://gitee.com/osworks/MyClouds](https://gitee.com/osworks/MyClouds) (最新力作已发布)
+###  :fa-rocket: 友情提醒
+AOSuite已于2017年停止维护。但，你可以了解一下TA的换代版
+[MyClouds微服务治理及快速开发平台](https://gitee.com/osworks/MyClouds)
