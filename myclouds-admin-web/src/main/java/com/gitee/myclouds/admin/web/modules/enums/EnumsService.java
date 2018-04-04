@@ -28,12 +28,29 @@ public interface EnumsService {
 	String list(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	/**
+	 * 查询实体
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	@RequestMapping(value = "/enums/get",method = RequestMethod.POST)
+	String get(@RequestParam("id") Integer id);
+	
+	/**
 	 * 新增
 	 * @param inDto
 	 * @return
 	 */
 	@RequestMapping(value = "/enums/save",method = RequestMethod.POST)
 	Map<String, Object> save(@RequestParam("inDto") Map<String,Object> inDto);
+	
+	/**
+	 * 修改
+	 * @param inDto
+	 * @return
+	 */
+	@RequestMapping(value = "/enums/update",method = RequestMethod.POST)
+	Map<String, Object> update(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	/**
 	 * 删除

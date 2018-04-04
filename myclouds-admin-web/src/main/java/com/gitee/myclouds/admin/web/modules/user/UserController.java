@@ -47,6 +47,19 @@ public class UserController {
 		Dto inDto = Dtos.newDto(request);
 		return userService.list(inDto);
 	}
+	
+	/**
+	 * 查询实体
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "get", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@ResponseBody
+	public String get(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return userService.get(inDto.getInteger("id"));
+	}
 
 	/**
 	 * 新增
@@ -59,6 +72,19 @@ public class UserController {
 	public Dto saveUser(HttpServletRequest request, HttpSession httpSession) {
 		Dto inDto = Dtos.newDto(request, httpSession);
 		return Dtos.newDto(userService.save(inDto));
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "update", method = { RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Dto update(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(userService.update(inDto));
 	}
 
 	/**
@@ -111,6 +137,19 @@ public class UserController {
 	public Dto updatePwd(HttpServletRequest request, HttpSession httpSession) {
 		Dto inDto = Dtos.newDto(request, httpSession);
 		return Dtos.newDto(userService.updatePwd(inDto));
+	}
+	
+	/**
+	 * 管理员重置用户密码
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "resetPwd", method = { RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Dto resetPwd(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(userService.resetPwd(inDto));
 	}
 	
 }

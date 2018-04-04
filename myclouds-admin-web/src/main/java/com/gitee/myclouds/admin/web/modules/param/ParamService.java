@@ -28,12 +28,29 @@ public interface ParamService {
 	String list(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	/**
+	 * 查询实体
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	@RequestMapping(value = "/param/get",method = RequestMethod.POST)
+	String get(@RequestParam("id") Integer id);
+	
+	/**
 	 * 新增
 	 * @param inDto
 	 * @return
 	 */
 	@RequestMapping(value = "/param/save",method = RequestMethod.POST)
 	Map<String, Object> save(@RequestParam("inDto") Map<String,Object> inDto);
+	
+	/**
+	 * 修改
+	 * @param inDto
+	 * @return
+	 */
+	@RequestMapping(value = "/param/update",method = RequestMethod.POST)
+	Map<String, Object> update(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	/**
 	 * 删除

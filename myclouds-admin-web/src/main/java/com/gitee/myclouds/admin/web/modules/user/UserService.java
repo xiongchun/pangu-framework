@@ -29,12 +29,29 @@ public interface UserService {
 	String list(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	/**
+	 * 查询实体
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	@RequestMapping(value = "/user/get",method = RequestMethod.POST)
+	String get(@RequestParam("id") Integer id);
+	
+	/**
 	 * 新增
 	 * @param inDto
 	 * @return
 	 */
 	@RequestMapping(value = "/user/save",method = RequestMethod.POST)
 	Map<String, Object> save(@RequestParam("inDto") Map<String,Object> inDto);
+	
+	/**
+	 * 修改
+	 * @param inDto
+	 * @return
+	 */
+	@RequestMapping(value = "/user/update",method = RequestMethod.POST)
+	Map<String, Object> update(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	/**
 	 * 删除
@@ -70,5 +87,14 @@ public interface UserService {
 	 */
 	@RequestMapping(value = "/user/updatePwd",method = RequestMethod.POST)
 	Map<String, Object> updatePwd(@RequestParam("inDto") Map<String,Object> inDto);
+	
+	/**
+	 * 管理员重置用户密码
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	@RequestMapping(value = "/user/resetPwd",method = RequestMethod.POST)
+	Map<String, Object> resetPwd(@RequestParam("inDto") Map<String,Object> inDto);
 	
 }

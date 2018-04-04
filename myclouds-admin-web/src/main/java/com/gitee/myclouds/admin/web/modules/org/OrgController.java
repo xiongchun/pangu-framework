@@ -44,6 +44,19 @@ public class OrgController {
 		Dto inDto = Dtos.newDto(request);
 		return orgService.list(inDto);
 	}
+	
+	/**
+	 * 查询实体
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "get", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@ResponseBody
+	public String get(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return orgService.get(inDto.getInteger("id"));
+	}
 
 	/**
 	 * 新增
@@ -56,6 +69,19 @@ public class OrgController {
 	public Dto saveOrg(HttpServletRequest request, HttpSession httpSession) {
 		Dto inDto = Dtos.newDto(request, httpSession);
 		return Dtos.newDto(orgService.save(inDto));
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "update", method = { RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Dto update(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(orgService.update(inDto));
 	}
 
 	/**

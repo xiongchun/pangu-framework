@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.gitee.myclouds.admin.common.model.vo.MenuVO;
+import com.gitee.myclouds.common.web.vo.MenuVO;
 
 /**
  * 首页 FeignClient客户端

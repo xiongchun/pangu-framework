@@ -46,6 +46,19 @@ public class EnumsController {
 	}
 	
 	/**
+	 * 查询实体
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "get", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@ResponseBody
+	public String get(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return enumsService.get(inDto.getInteger("id"));
+	}	
+	
+	/**
 	 * 新增
 	 * 
 	 * @param request
@@ -53,9 +66,22 @@ public class EnumsController {
 	 */
 	@RequestMapping(value = "save", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto saveParam(HttpServletRequest request) {
+	public Dto save(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto(enumsService.save(inDto));
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "update", method = { RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Dto update(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(enumsService.update(inDto));
 	}
 	
 	/**
@@ -66,7 +92,7 @@ public class EnumsController {
 	 */
 	@RequestMapping(value = "delete", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto deleteParam(HttpServletRequest request) {
+	public Dto delete(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto(enumsService.delete(inDto));
 	}

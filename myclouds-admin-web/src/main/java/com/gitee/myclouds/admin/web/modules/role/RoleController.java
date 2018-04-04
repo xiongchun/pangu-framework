@@ -44,6 +44,19 @@ public class RoleController {
 		Dto inDto = Dtos.newDto(request);
 		return roleService.list(inDto);
 	}
+	
+	/**
+	 * 查询实体
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "get", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@ResponseBody
+	public String get(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return roleService.get(inDto.getInteger("id"));
+	}
 
 	/**
 	 * 新增
@@ -56,6 +69,19 @@ public class RoleController {
 	public Dto saveRole(HttpServletRequest request, HttpSession httpSession) {
 		Dto inDto = Dtos.newDto(request, httpSession);
 		return Dtos.newDto(roleService.save(inDto));
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "update", method = { RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Dto update(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(roleService.update(inDto));
 	}
 
 	/**

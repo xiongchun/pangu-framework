@@ -39,9 +39,22 @@ public class ParamController {
 	 */
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	@ResponseBody
-	public String listParams(HttpServletRequest request) {
+	public String list(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return paramService.list(inDto);
+	}
+	
+	/**
+	 * 查询实体
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "get", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@ResponseBody
+	public String get(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return paramService.get(inDto.getInteger("id"));
 	}
 
 	/**
@@ -52,9 +65,22 @@ public class ParamController {
 	 */
 	@RequestMapping(value = "save", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto saveParam(HttpServletRequest request) {
+	public Dto save(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto(paramService.save(inDto));
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "update", method = { RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Dto update(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(paramService.update(inDto));
 	}
 
 	/**
@@ -65,7 +91,7 @@ public class ParamController {
 	 */
 	@RequestMapping(value = "delete", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto deleteParam(HttpServletRequest request) {
+	public Dto delete(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto(paramService.delete(inDto));
 	}
