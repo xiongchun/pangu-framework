@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.common;
+package com.gitee.myclouds.common;
 
 import java.util.List;
 

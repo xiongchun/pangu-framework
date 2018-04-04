@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.common.model.vo;
+package com.gitee.myclouds.common.web.vo;
 
 import com.gitee.myclouds.toolbox.wrap.VO;
 
