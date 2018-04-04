@@ -17,7 +17,7 @@
 <header class="navbar navbar-fixed-top" th:fragment="banner">
 	<div class="navbar-branding">
 		<a class="navbar-brand" href="/">
-			<span class="fs26"><strong>嘉 靖 银 行</strong></span>
+			<span class="navbar-logo fs26" th:text="${@thCxt.param('sys_logo_name')}"></span>
 		</a>
 		<span id="toggle_sidemenu_l" class="ad ad-lines"></span>
 	</div>

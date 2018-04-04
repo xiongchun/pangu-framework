@@ -17717,6 +17717,10 @@ body.sidebar-collapsed #sidebar:before {
   background-color: transparent;
   /* Logo */
 }
+.navbar-logo{
+	font-weight: bold;
+	letter-spacing:8px;
+}
 .navbar-branding .navbar-brand {
   color: #666;
   height: 60px;

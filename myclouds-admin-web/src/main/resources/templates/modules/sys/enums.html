@@ -99,9 +99,9 @@
 											<th>元素键</th>
 											<th>元素值</th>
 											<th>排序号</th>
-											<th>是否启用</th>
+											<th>启用</th>
 											<th>所属分类</th>
-											<th class="text-center">操作</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -133,15 +133,6 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-md-2 control-label required">是否启用：</label>
-										<div class="col-md-10 field">
-											<select name="type" class="basic-single form-control">
-												<option value="1">是</option>
-												<option value="0">否</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-group">
 										<label class="col-md-2 control-label required">枚举键：</label>
 										<div class="col-md-10 field">
 											<input class="form-control" type="text" name="enum_key" />
@@ -166,6 +157,15 @@
 										</div>
 									</div>
 									<div class="form-group">
+										<label class="col-md-2 control-label required">是否启用：</label>
+										<div class="col-md-10 field">
+											<select name="type" class="basic-single form-control">
+												<option value="1">是</option>
+												<option value="0">否</option>
+											</select>
+										</div>
+									</div>									
+									<div class="form-group">
 										<label class="col-md-2 control-label">排序号：</label>
 										<div class="col-md-10 field">
 											<input name="sort_no" class="form-control" type="text" value="1" />
@@ -181,6 +181,85 @@
 							</div>
 							<div class="modal-footer">
 								<button type="submit" form="fo-new" class="btn btn-sm btn-success btn-gradient">保存</button>
+								<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+				
+				<!-- 修改窗口 -->
+				<div class="modal fade" id="w-update" tabindex="-1" data-backdrop="static">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h3 class="modal-title">修改枚举元素</h3>
+							</div>
+							<div class="modal-body">
+								<form id="fo-update" class="form-horizontal">
+								   <input type="hidden" name="id" />
+									<div class="form-group">
+										<label class="col-md-2 control-label required">所属分类：</label>
+										<div class="col-md-10 field">
+											<select name="type" class="basic-single form-control">
+												<option value="0">缺省</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-2 control-label required">枚举键：</label>
+										<div class="col-md-10 field">
+											<input class="form-control" type="text" name="enum_key" readonly="readonly" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-2 control-label required">枚举名称：</label>
+										<div class="col-md-10 field">
+											<input type="text" name="enum_name" class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-2 control-label required">元素键：</label>
+										<div class="col-md-10 field">
+											<input name="element_key" class="form-control" type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-2 control-label required">元素值：</label>
+										<div class="col-md-10 field">
+											<input name="element_value" class="form-control" type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-2 control-label required">是否启用：</label>
+										<div class="col-md-10 field">
+											<select name="type" class="basic-single form-control">
+												<option value="1">是</option>
+												<option value="0">否</option>
+											</select>
+										</div>
+									</div>									
+									<div class="form-group">
+										<label class="col-md-2 control-label">排序号：</label>
+										<div class="col-md-10 field">
+											<input name="sort_no" class="form-control" type="text" value="1" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-2 control-label">备注：</label>
+										<div class="col-md-10 field">
+											<textarea name="remark" class="form-control textarea-grow" rows="4"></textarea>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" form="fo-update" class="btn btn-sm btn-success btn-gradient">保存</button>
 								<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
 							</div>
 						</div>
@@ -294,7 +373,7 @@
 											return row.type
 										}
 									},
-									width : 100
+									width : 60
 								}, {
 									data : "type",
 									render : function(data, type, row, meta) {
@@ -306,17 +385,18 @@
 										}
 									},
 									width : 100
+								},{
+									width : 80,
+									render : function(data, type, row, meta) {
+									   var html = "<div class='text-right text-nowrap'><button class='btn btn-success btn-xs btn-gradient mr5' onclick='fnShowUpdate("
+												+ JSON.stringify(row) + ")'>修改</button>";
+										html += "<button class='btn btn-danger btn-xs btn-gradient' onclick='fnDelete("
+												+ JSON.stringify(row) + ")'>删除</button></div>";
+										return html;
+									}
 								} ],
 								columnDefs : [
 										{
-											targets : 8,//动作列
-											width : 50,
-											render : function(data, type, row, meta) {
-												var html = "<div class='text-center'><button class='btn btn-danger btn-xs btn-gradient' onclick='fnDelete("
-														+ JSON.stringify(row) + ")'>删除</button></div>";
-												return html;
-											}
-										}, {
 											"defaultContent" : "",
 											"targets" : "_all"
 										} ],
@@ -368,8 +448,9 @@
 				}
 			}
 
-			//绑定新增表单校验和提交响应事件
+			//绑定表单校验和提交响应事件
 			My.validate('#fo-new', fnNew, validateOptions);
+			My.validate('#fo-update', fnUpdate, validateOptions);
 
 		});
 
@@ -402,6 +483,38 @@
 						$('#w-new').modal('hide');
 						$('#hi_enum_key').val(param.enum_key);
 						$('#hi_enum_name').val(param.enum_name);
+						fnQuery();
+					} else {
+						My.notify(data.msg, 'danger');
+					}
+				}
+			});
+		}
+		
+		//弹出修改窗口
+		function fnShowUpdate(row) {
+			$.ajax({
+				type : 'post',
+				url : 'get',
+				data : row,
+				success : function(data) {
+					$('#w-update').modal();
+					$("#fo-update")[0].reset();
+					$("#fo-update").setForm(data);
+				}
+			});
+		}
+		
+		//保存更新
+		function fnUpdate() {
+			$.ajax({
+				type : 'post',
+				url : 'update',
+				data : My.params('#fo-update'),
+				success : function(data) {
+					if (data.code == '1') {
+						My.notify(data.msg);
+						$('#w-update').modal('hide');
 						fnQuery();
 					} else {
 						My.notify(data.msg, 'danger');
