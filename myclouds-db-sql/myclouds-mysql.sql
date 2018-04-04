@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50628
 File Encoding         : 65001
 
-Date: 2018-03-27 23:27:14
+Date: 2018-04-04 21:44:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,7 +39,7 @@ CREATE TABLE `my_enum` (
 -- ----------------------------
 INSERT INTO `my_enum` VALUES ('1', 'sex', '性别', '1', '男', '1', '1', '1', '2018-02-05 11:35:51', null);
 INSERT INTO `my_enum` VALUES ('2', 'sex', '性别', '2', '女', '1', '1', '2', '2018-02-05 11:36:15', null);
-INSERT INTO `my_enum` VALUES ('3', 'sex', '性别', '3', '未知', '1', '1', '3', '2018-02-05 11:38:51', null);
+INSERT INTO `my_enum` VALUES ('3', 'sex', '性别', '3', '未知', '0', '1', '3', '2018-02-05 11:38:51', null);
 INSERT INTO `my_enum` VALUES ('4', 'is', '全局通用是否', '1', '是', '1', '1', '1', '2018-02-05 11:39:29', null);
 INSERT INTO `my_enum` VALUES ('5', 'is', '全局通用是否', '0', '否', '1', '1', '2', '2018-02-05 11:39:57', null);
 
@@ -106,7 +106,7 @@ INSERT INTO `my_org` VALUES ('1', '上海嘉靖银行', '0', null, null, null, '
 INSERT INTO `my_org` VALUES ('2', '信息技术部', '1', null, null, null, '1', null, '10', null, null, '2018-03-13 09:28:00', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('3', '小微信贷事业部', '1', null, null, null, '1', null, '40', null, null, '2018-03-13 09:28:32', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('4', '公司金融事业部', '1', null, null, null, '1', null, '50', null, null, '2018-03-13 23:24:53', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('5', '昆明盘龙区支行', '4', null, null, null, '1', null, '10', null, null, '2018-03-13 09:29:41', '1', '超级用户');
+INSERT INTO `my_org` VALUES ('5', '昆明盘龙区支行', '4', null, '1', null, '1', '', '10', '', '', '2018-03-13 09:29:41', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('6', '大理古城支行', '4', null, null, null, '1', null, '20', null, null, '2018-03-13 09:30:09', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('7', '全国信销网点', '3', null, null, '', '1', null, '30', null, null, '2018-03-23 10:52:53', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('8', '人力资源部', '1', null, null, '', '1', null, '20', null, null, '2018-03-27 13:36:58', '1', '超级用户');
@@ -129,14 +129,15 @@ CREATE TABLE `my_param` (
   `remark` varchar(1000) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`param_key`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='键值参数表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='键值参数表';
 
 -- ----------------------------
 -- Records of my_param
 -- ----------------------------
-INSERT INTO `my_param` VALUES ('1', '系统主题', 'default_theme', 'classic', '0', '2018-02-05 11:20:05', null);
-INSERT INTO `my_param` VALUES ('2', '系统皮肤', 'default_skin', 'blue', '0', '2018-02-05 11:20:34', null);
-INSERT INTO `my_param` VALUES ('3', '系统标题名称', 'sys_title', 'MyClouds：轻量级微服务治理及快速开发平台', '0', '2018-02-22 12:01:58', null);
+INSERT INTO `my_param` VALUES ('1', '系统名称', 'sys_logo_name', '嘉靖银行', '0', '2018-03-29 10:24:40', '左上角作为logo显示');
+INSERT INTO `my_param` VALUES ('2', '系统标题', 'sys_title', 'MyClouds：轻量级微服务治理及快速开发平台', '0', '2018-02-22 12:01:58', '浏览器标题栏');
+INSERT INTO `my_param` VALUES ('3', '系统主题', 'default_theme', 'classic', '0', '2018-02-05 11:20:05', '');
+INSERT INTO `my_param` VALUES ('4', '系统皮肤', 'default_skin', 'blue', '0', '2018-02-05 11:20:34', null);
 
 -- ----------------------------
 -- Table structure for my_role
@@ -158,8 +159,8 @@ CREATE TABLE `my_role` (
 -- ----------------------------
 -- Records of my_role
 -- ----------------------------
-INSERT INTO `my_role` VALUES ('1', '超级权限角色', '1', '1', null, '', '2018-03-07 13:09:05', '1', '超级用户');
-INSERT INTO `my_role` VALUES ('2', '财务角色', '1', '1', null, null, '2018-03-14 17:26:36', '1', '超级用户');
+INSERT INTO `my_role` VALUES ('1', '超级权限角色', '1', '1', '', '', '2018-03-07 13:09:05', '1', '超级用户');
+INSERT INTO `my_role` VALUES ('2', '财务角色', '1', '1', '', '', '2018-03-14 17:26:36', '1', '超级用户');
 
 -- ----------------------------
 -- Table structure for my_role_module
@@ -174,22 +175,22 @@ CREATE TABLE `my_role_module` (
   `create_by` int(10) NOT NULL COMMENT '创建人ID',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`role_id`,`module_id`,`grant_type`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=utf8mb4 COMMENT='功能模块-角色关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=178 DEFAULT CHARSET=utf8mb4 COMMENT='功能模块-角色关联表';
 
 -- ----------------------------
 -- Records of my_role_module
 -- ----------------------------
-INSERT INTO `my_role_module` VALUES ('147', '1', '1', '1', '2018-03-27 14:51:23', '1');
-INSERT INTO `my_role_module` VALUES ('148', '1', '2', '1', '2018-03-27 14:51:23', '1');
-INSERT INTO `my_role_module` VALUES ('149', '1', '3', '1', '2018-03-27 14:51:23', '1');
-INSERT INTO `my_role_module` VALUES ('150', '1', '4', '1', '2018-03-27 14:51:23', '1');
-INSERT INTO `my_role_module` VALUES ('151', '1', '5', '1', '2018-03-27 14:51:23', '1');
-INSERT INTO `my_role_module` VALUES ('152', '1', '6', '1', '2018-03-27 14:51:23', '1');
-INSERT INTO `my_role_module` VALUES ('153', '1', '7', '1', '2018-03-27 14:51:23', '1');
-INSERT INTO `my_role_module` VALUES ('154', '1', '8', '1', '2018-03-27 14:51:23', '1');
-INSERT INTO `my_role_module` VALUES ('155', '1', '9', '1', '2018-03-27 14:51:23', '1');
-INSERT INTO `my_role_module` VALUES ('156', '1', '50', '1', '2018-03-27 14:51:23', '1');
-INSERT INTO `my_role_module` VALUES ('157', '1', '51', '1', '2018-03-27 14:51:23', '1');
+INSERT INTO `my_role_module` VALUES ('167', '1', '1', '1', '2018-04-02 13:25:08', '1');
+INSERT INTO `my_role_module` VALUES ('168', '1', '2', '1', '2018-04-02 13:25:08', '1');
+INSERT INTO `my_role_module` VALUES ('169', '1', '3', '1', '2018-04-02 13:25:08', '1');
+INSERT INTO `my_role_module` VALUES ('170', '1', '4', '1', '2018-04-02 13:25:08', '1');
+INSERT INTO `my_role_module` VALUES ('171', '1', '5', '1', '2018-04-02 13:25:08', '1');
+INSERT INTO `my_role_module` VALUES ('172', '1', '6', '1', '2018-04-02 13:25:08', '1');
+INSERT INTO `my_role_module` VALUES ('173', '1', '7', '1', '2018-04-02 13:25:08', '1');
+INSERT INTO `my_role_module` VALUES ('174', '1', '8', '1', '2018-04-02 13:25:08', '1');
+INSERT INTO `my_role_module` VALUES ('175', '1', '9', '1', '2018-04-02 13:25:08', '1');
+INSERT INTO `my_role_module` VALUES ('176', '1', '50', '1', '2018-04-02 13:25:08', '1');
+INSERT INTO `my_role_module` VALUES ('177', '1', '51', '1', '2018-04-02 13:25:08', '1');
 
 -- ----------------------------
 -- Table structure for my_user
@@ -216,13 +217,13 @@ CREATE TABLE `my_user` (
   `remark` varchar(1000) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`account`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户基本信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户基本信息表';
 
 -- ----------------------------
 -- Records of my_user
 -- ----------------------------
-INSERT INTO `my_user` VALUES ('1', 'root', 'e191b3d853e8f7a9e638d6082915c1fd', '超级用户', '1', '1', '1', '1', null, null, null, null, null, null, '2018-03-02 17:02:05', '1', '超级用户', null);
-INSERT INTO `my_user` VALUES ('3', 'dev', '3c365520f48f3a3ee08ffdd7b6831ef6', '开发用户', '3', '1', '1', '2', null, null, null, null, null, null, '2018-03-14 13:43:24', '1', '超级用户', null);
+INSERT INTO `my_user` VALUES ('1', 'root', 'e191b3d853e8f7a9e638d6082915c1fd', '超级用户', '1', '1', '1', '1', '', '', null, null, '', '', '2018-03-02 17:02:05', '1', '超级用户', '');
+INSERT INTO `my_user` VALUES ('4', 'dev', 'e191b3d853e8f7a9e638d6082915c1fd', '开发者', '3', '1', '1', '2', null, null, null, null, null, null, '2018-04-03 14:18:04', '1', '超级用户', null);
 
 -- ----------------------------
 -- Table structure for my_user_role
