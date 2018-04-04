@@ -37,6 +37,17 @@ public class UserController {
 	}
 	
 	/**
+	 * 查询实体
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "get",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	public String get(@RequestParam Integer id){
+		return userService.get(id);
+	}
+	
+	/**
 	 * 新增
 	 * 
 	 * @param inMap
@@ -45,6 +56,17 @@ public class UserController {
 	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto save(@RequestParam Map<String,Object> inMap){
 		return userService.save(Dtos.newDto(inMap));
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "update",method = { RequestMethod.POST}, produces = "application/json")
+	public Dto update(@RequestParam Map<String,Object> inMap){
+		return userService.update(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -89,5 +111,16 @@ public class UserController {
 	@RequestMapping(value = "updatePwd",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto updatePwd(@RequestParam Map<String,Object> inMap){
 		return userService.updatePwd(Dtos.newDto(inMap));
+	}
+	
+	/**
+	 *  管理员重置用户密码
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "resetPwd",method = { RequestMethod.POST}, produces = "application/json")
+	public Dto resetPwd(@RequestParam Map<String,Object> inMap){
+		return userService.resetPwd(Dtos.newDto(inMap));
 	}
 }

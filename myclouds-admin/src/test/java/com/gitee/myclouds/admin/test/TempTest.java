@@ -2,8 +2,8 @@ package com.gitee.myclouds.admin.test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.gitee.myclouds.admin.common.MyCxt;
 import com.gitee.myclouds.admin.modules.cache.CacheCfgService;
+import com.gitee.myclouds.common.MyCxt;
 
 /*@RunWith(SpringRunner.class)
 @SpringBootTest(classes=TempTest.class)

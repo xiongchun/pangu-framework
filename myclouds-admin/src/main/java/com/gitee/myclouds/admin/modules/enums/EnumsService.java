@@ -2,6 +2,7 @@ package com.gitee.myclouds.admin.modules.enums;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,17 @@ public class EnumsService {
 	}
 	
 	/**
+	 * 查询实体
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public String get(Integer id) {
+		MyEnumEntity myEnumEntity = myEnumMapper.selectByKey(id);
+		return JSON.toJSONString(myEnumEntity);
+	}
+	
+	/**
 	 * 新增
 	 * 
 	 * @param inDto
@@ -63,6 +75,28 @@ public class EnumsService {
 		} else {
 			outDto = Dtos.newDto().put2("code", "-1").put2("msg", "当前枚举元素已经存在，请重新输入...");
 		}
+		return outDto;
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public Dto update(Dto inDto) {
+		Dto outDto = null;
+		MyEnumEntity myEnumEntity = new MyEnumEntity().copyFrom(inDto);
+		MyEnumEntity oldEntity = myEnumMapper.selectByKey(myEnumEntity.getId());
+		if (!StringUtils.equalsIgnoreCase(myEnumEntity.getElement_key(), oldEntity.getElement_key())) {
+			if (MyUtil.isNotEmpty(myEnumMapper.selectByUkey1(myEnumEntity.getEnum_key(), myEnumEntity.getElement_key()))) {
+				outDto = Dtos.newDto().put2("code", "-1").put2("msg", "当前枚举元素已经存在，请重新输入....");
+				return outDto;
+			}
+		}
+		myEnumMapper.updateByKey(myEnumEntity);
+		cacheCfgService.cacheEnum(myEnumEntity);
+		outDto = Dtos.newDto().put2("code", "1").put2("msg", "枚举元素修改成功");
 		return outDto;
 	}
 	

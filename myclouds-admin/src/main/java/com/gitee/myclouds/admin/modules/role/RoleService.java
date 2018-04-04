@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.common.model.vo.ZTreeNodeVO;
 import com.gitee.myclouds.admin.domain.myrole.MyRoleEntity;
 import com.gitee.myclouds.admin.domain.myrole.MyRoleMapper;
 import com.gitee.myclouds.admin.domain.myrolemodule.MyRoleModuleEntity;
 import com.gitee.myclouds.admin.domain.myrolemodule.MyRoleModuleMapper;
+import com.gitee.myclouds.common.web.vo.ZTreeNodeVO;
 import com.gitee.myclouds.toolbox.session.data.CurUser;
 import com.gitee.myclouds.toolbox.util.MyCons;
 import com.gitee.myclouds.toolbox.util.MyUtil;
@@ -48,6 +48,32 @@ public class RoleService {
 		outDto.put("recordsTotal", myRoleEntities.size());
 		outDto.put("recordsFiltered", myRoleEntities.size());
 		return JSON.toJSONString(outDto);
+	}
+	
+	/**
+	 * 查询实体
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public String get(Integer id) {
+		MyRoleEntity myRoleEntity = myRoleMapper.selectByKey(id);
+		return JSON.toJSONString(myRoleEntity);
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public Dto update(Dto inDto) {
+		Dto outDto = null;
+		//拷贝参数对象中的属性到实体对象中
+		MyRoleEntity myRoleEntity = new MyRoleEntity().copyFrom(inDto);
+		myRoleMapper.updateByKey(myRoleEntity);
+		outDto = Dtos.newDto().put2("code", "1").put2("msg", "角色修改成功");
+		return outDto;
 	}
 	
 	/**

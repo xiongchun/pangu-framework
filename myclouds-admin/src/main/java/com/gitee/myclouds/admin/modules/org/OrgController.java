@@ -37,6 +37,17 @@ public class OrgController {
 	}
 	
 	/**
+	 * 查询实体
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "get",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	public String get(@RequestParam Integer id){
+		return orgService.get(id);
+	}
+	
+	/**
 	 * 新增
 	 * 
 	 * @param inMap
@@ -45,6 +56,17 @@ public class OrgController {
 	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto save(@RequestParam Map<String,Object> inMap){
 		return orgService.save(Dtos.newDto(inMap));
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "update",method = { RequestMethod.POST}, produces = "application/json")
+	public Dto update(@RequestParam Map<String,Object> inMap){
+		return orgService.update(Dtos.newDto(inMap));
 	}
 	
 	/**

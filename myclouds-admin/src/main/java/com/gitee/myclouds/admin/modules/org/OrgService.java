@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.common.model.vo.ZTreeNodeVO;
 import com.gitee.myclouds.admin.domain.myorg.MyOrgEntity;
 import com.gitee.myclouds.admin.domain.myorg.MyOrgMapper;
+import com.gitee.myclouds.common.web.vo.ZTreeNodeVO;
 import com.gitee.myclouds.toolbox.session.data.CurUser;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
@@ -45,6 +45,17 @@ public class OrgService {
 	}
 	
 	/**
+	 * 查询实体
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public String get(Integer id) {
+		MyOrgEntity myOrgEntity = myOrgMapper.selectByKey(id);
+		return JSON.toJSONString(myOrgEntity);
+	}
+	
+	/**
 	 * 新增
 	 * 
 	 * @param inDto
@@ -59,6 +70,21 @@ public class OrgService {
 		myOrgEntity.setCreate_by_id(curUser.getId());
 		myOrgMapper.insert(myOrgEntity);
 		outDto = Dtos.newDto().put2("code", "1").put2("msg", "部门新增成功");
+		return outDto;
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public Dto update(Dto inDto) {
+		Dto outDto = null;
+		//拷贝参数对象中的属性到实体对象中
+		MyOrgEntity myOrgEntity = new MyOrgEntity().copyFrom(inDto);
+		myOrgMapper.updateByKey(myOrgEntity);
+		outDto = Dtos.newDto().put2("code", "1").put2("msg", "部门修改成功");
 		return outDto;
 	}
 

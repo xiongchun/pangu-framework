@@ -51,6 +51,38 @@ public class UserService {
 		outDto.put("recordsFiltered", total);
 		return JSON.toJSONString(outDto);
 	}
+	
+	/**
+	 * 查询实体
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public String get(Integer id) {
+		MyUserEntity myUserEntity = myUserMapper.selectByKey(id);
+		return JSON.toJSONString(myUserEntity);
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public Dto update(Dto inDto) {
+		Dto outDto = null;
+		MyUserEntity myUserEntity = new MyUserEntity().copyFrom(inDto);
+		MyUserEntity oldUser = myUserMapper.selectByKey(myUserEntity.getId());
+		if (!StringUtils.equals(oldUser.getAccount(), myUserEntity.getAccount()) ) {
+			if (MyUtil.isNotEmpty(myUserMapper.selectByUkey1(myUserEntity.getAccount()))) {
+				outDto = Dtos.newDto().put2("code", "-1").put2("msg", "此账号已经存在，请重新输入...");
+				return outDto;
+			}
+		}
+		myUserMapper.updateByKey(myUserEntity);
+		outDto = Dtos.newDto().put2("code", "1").put2("msg", "人员修改成功");
+		return outDto;
+	}
 
 	/**
 	 * 新增
@@ -60,7 +92,6 @@ public class UserService {
 	 */
 	public Dto save(Dto inDto) {
 		Dto outDto = Dtos.newDto();
-		// 拷贝参数对象中的属性到实体对象中
 		MyUserEntity myUserEntity = new MyUserEntity().copyFrom(inDto);
 		MyUserEntity existUser = myUserMapper.selectByUkey1(myUserEntity.getAccount());
 		if (existUser == null) {
@@ -159,6 +190,25 @@ public class UserService {
 				outDto.put2("code", "1").put2("msg", "密码修改成功");
 			}
 		}
+		return outDto;
+	}
+	
+	/**
+	 * 管理员重置用户密码
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public Dto resetPwd(Dto inDto) {
+		Dto outDto = Dtos.newDto();
+		String[] idsArr = StringUtils.split(inDto.getString("ids"), ",");
+		MyUserEntity myUserEntity = new MyUserEntity();
+		myUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, inDto.getString("password")));
+		for (String id : idsArr) {
+			myUserEntity.setId(Integer.valueOf(id));
+			myUserMapper.updateByKey(myUserEntity);
+		}
+		outDto.put2("code", "1").put2("msg", "重置密码成功");
 		return outDto;
 	}
 

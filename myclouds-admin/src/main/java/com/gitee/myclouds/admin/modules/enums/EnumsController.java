@@ -36,6 +36,17 @@ public class EnumsController {
 	}
 	
 	/**
+	 * 查询实体
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "get",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	public String get(@RequestParam Integer id){
+		return enumsService.get(id);
+	}
+	
+	/**
 	 * 新增
 	 * 
 	 * @param inMap
@@ -44,6 +55,17 @@ public class EnumsController {
 	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto save(@RequestParam Map<String,Object> inMap){
 		return enumsService.save(Dtos.newDto(inMap));
+	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "update",method = { RequestMethod.POST}, produces = "application/json")
+	public Dto update(@RequestParam Map<String,Object> inMap){
+		return enumsService.update(Dtos.newDto(inMap));
 	}
 	
 	/**

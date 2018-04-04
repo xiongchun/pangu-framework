@@ -8,9 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.common.MyCxt;
 import com.gitee.myclouds.admin.domain.myenum.MyEnumEntity;
 import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
+import com.gitee.myclouds.common.MyCxt;
 
 /**
  * 单元测试（综合、杂项）
