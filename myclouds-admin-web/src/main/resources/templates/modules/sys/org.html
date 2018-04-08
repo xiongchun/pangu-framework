@@ -7,6 +7,9 @@
 </head>
 
 <body class="sb-l-o">
+	<!--/* 公共代码 */-->
+	<div th:replace="fragments/common"></div>
+	
 	<!--/* 主题设置面板 */-->
 	<div th:replace="fragments/skin-toolbox"></div>
 
@@ -105,7 +108,7 @@
 
 					<!-- 新增窗口 -->
 					<div class="modal fade" id="w-new" tabindex="-1" data-backdrop="static">
-						<div class="modal-dialog">
+						<div class="modal-dialog w650">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -178,7 +181,7 @@
 
 					<!-- 修改窗口 -->
 					<div class="modal fade" id="w-update" tabindex="-1" data-backdrop="static">
-						<div class="modal-dialog">
+						<div class="modal-dialog w650">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">

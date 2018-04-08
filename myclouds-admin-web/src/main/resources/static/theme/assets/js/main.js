@@ -1177,6 +1177,7 @@ var Core = function(options) {
 
 				// check for Bootbox plugin - should be in core
 				if (bootbox.confirm) {
+					bootbox.setDefaults("locale","zh_CN");
 					bootbox.confirm("确认恢复主题选项到初始配置吗？", function(e) {
 
 						// e returns true if user clicks "accept"

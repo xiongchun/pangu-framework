@@ -8,7 +8,7 @@ website:	http://code.google.com/p/jquerytree/
 
 -------------------------------------*/
 
-.ztree * {padding:0; margin:0; font-size:13px; font-family: "Open Sans", Helvetica, Arial, sans-serif;}
+.ztree * {padding:0; margin:0; font-size:14px; font-family: "Open Sans", Helvetica, Arial, sans-serif;}
 .ztree {margin:0; padding:5px; color:#666666}
 .ztree li{padding:0; margin:0; list-style:none; line-height:25px; text-align:left; white-space:nowrap; outline:0}
 .ztree li ul{ margin:0; padding:0 0 0 18px}
@@ -24,7 +24,7 @@ website:	http://code.google.com/p/jquerytree/
 .ztree li a.tmpTargetNode_prev {}
 .ztree li a.tmpTargetNode_next {}
 .ztree li a input.rename {height:14px; width:80px; padding:0; margin:0;
-	font-size:13px; border:1px #7EC4CC solid; *border:0px}
+	font-size:14px; border:1px #7EC4CC solid; *border:0px}
 .ztree li span {line-height:16px; margin-right:2px}
 .ztree li span.button {line-height:0; margin:0; width:16px; height:16px; display: inline-block; vertical-align:middle;
 	border:0 none; cursor: pointer;outline:none;

@@ -3952,7 +3952,7 @@ tr.shown td.details-control {
 }
 .dropzone .dz-preview .dz-details .dz-size,
 .dropzone-previews .dz-preview .dz-details .dz-size {
-  font-size: 13px;
+  font-size: 14px;
 }
 .dropzone .dz-preview .dz-details,
 .dropzone-previews .dz-preview .dz-details,
@@ -4727,7 +4727,7 @@ previous button's border...
 /* Textarea */
 .markItUpEditor {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   padding: 10px;
   border: none;
   width: 100%;
@@ -5330,7 +5330,7 @@ input.ui-editRangeSlider-inputValue {
   margin-right: 8px;
   padding: 4px 8px;
   color: #FFF;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   border: 0;
   border-radius: 1px;
@@ -8138,7 +8138,7 @@ html {
 }
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.49;
   color: #666666;
@@ -11329,7 +11329,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-list li a {
   color: #AAA;
-  font-weight: 600;
+  /* font-weight: 600; */
   border-bottom: 3px solid transparent;
 }
 .nav-list li a:hover,
@@ -12644,7 +12644,7 @@ a.list-group-item:focus {
   line-height: 36px;
   background: #fafafa;
   color: #666666;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: normal;
   padding: 0 8px;
   border: 1px solid #e5e5e5;
@@ -18882,7 +18882,7 @@ body.tray-rescale .tray-right:hover {
 /* Sidebar Container */
 #sidebar_left {
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
   position: absolute;
   top: 0;
   left: 0;
@@ -18920,7 +18920,7 @@ body.tray-rescale .tray-right:hover {
   top: 0;
   line-height: 35px;
   width: 38px;
-  font-size: 13px;
+  font-size: 14px;
   text-align: center;
   padding-left: 13px;
 }
@@ -20191,7 +20191,7 @@ manipulation using an html class aswell */
   position: relative;
   padding: 1px 25px 0 0;
   margin-bottom: 0;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 0;
   background-color: transparent;
 }
@@ -20200,7 +20200,7 @@ manipulation using an html class aswell */
 }
 .breadcrumb > li.crumb-active > a {
   color: #555;
-  font-size: 18px;
+  font-size: 15px;
 }
 /*Toggle sidemenu button*/
 #toggle_sidemenu_r i.fa,
@@ -20858,7 +20858,7 @@ body.external-page.external-alt #content .panel .section-divider span {
 body.external-page.external-alt .login-links,
 body.external-page.external-alt .login-links a {
   color: #999;
-  font-size: 13px;
+  font-size: 14px;
   text-align: center;
 }
 body.external-page.external-alt .login-links a {
@@ -21326,7 +21326,7 @@ body.error-page .error-text {
   left: 0;
 }
 .search-results-page ul.result-meta > li > a {
-  font-size: 13px;
+  font-size: 14px;
   color: #999;
 }
 /*===============================================

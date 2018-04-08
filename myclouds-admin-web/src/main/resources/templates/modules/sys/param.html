@@ -6,6 +6,9 @@
 </head>
 
 <body class="sb-l-o">
+	<!--/* 公共代码 */-->
+	<div th:replace="fragments/common"></div>
+	
 	<!--/* 主题设置面板 */-->
 	<div th:replace="fragments/skin-toolbox"></div>
 
@@ -403,7 +406,7 @@
 				}
 			});
 		}
-		
+
 		//保存更新
 		function fnUpdate() {
 			$.ajax({
@@ -462,7 +465,7 @@
 									});
 								}
 							});
-		             }
+		}
 
 		/*]]>*/
 	</script>
