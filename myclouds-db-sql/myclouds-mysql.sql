@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50628
 File Encoding         : 65001
 
-Date: 2018-04-04 21:44:28
+Date: 2018-04-09 01:31:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `my_module` (
 -- Records of my_module
 -- ----------------------------
 INSERT INTO `my_module` VALUES ('1', '0', '功能模块', null, null, null, null, '1', '1');
-INSERT INTO `my_module` VALUES ('2', '1', '首页', '/', null, null, 'glyphicons glyphicons-home', '1', '1');
+INSERT INTO `my_module` VALUES ('2', '1', '首页', '/', null, null, 'glyphicon glyphicon-home', '1', '1');
 INSERT INTO `my_module` VALUES ('3', '1', '系统管理', null, null, null, 'glyphicons glyphicons-settings', '1', '2');
 INSERT INTO `my_module` VALUES ('4', '3', '键值参数管理', 'sys/param/init', null, null, 'glyphicons glyphicons-share_alt', '1', '1');
 INSERT INTO `my_module` VALUES ('5', '3', '枚举类型管理', 'sys/enums/init', null, null, 'glyphicons glyphicons-list', '1', '2');
