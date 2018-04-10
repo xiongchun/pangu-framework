@@ -2,10 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-<th:block th:replace="fragments/head" />
+<title th:text="${@thCxt.param('sys_title')}"></title>
+<meta charset="utf-8" />
+<meta name="keywords" content="MyClouds" />
+<meta name="author" content="xiongchun" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="/theme/assets/skin/default_skin/css/theme.css" />
+<link rel="stylesheet" type="text/css" href="/theme/assets/admin-tools/admin-forms/css/admin-forms.css" />
+
+<link rel="shortcut icon" href="/theme/assets/img/favicon.ico" />
+<script type="text/javascript" src="/theme/vendor/jquery/jquery-1.11.1.min.js"></script>
 </head>
 
 <body class="external-page sb-l-c sb-r-c">
+	<!--/* 公共代码 */-->
+	<div th:replace="fragments/common"></div>
 	<!-- Start: Main -->
 	<div id="main" class="animated fadeIn">
 
@@ -47,7 +58,7 @@
 										<div class="section">
 											<label for="account" class="field-label text-muted mb10 fs15">登录账号</label>
 											<label for="account" class="field prepend-icon">
-												<input type="text" name="account" id="account" class="gui-input"  placeholder="请输入登录账号" />
+												<input type="text" name="account" id="account" class="gui-input" placeholder="请输入登录账号" />
 												<label for="account" class="field-icon">
 													<i class="fa fa-user"></i>
 												</label>
@@ -58,7 +69,7 @@
 										<div class="section">
 											<label for="account" class="field-label text-muted mb10 fs15">密码</label>
 											<label for="password" class="field prepend-icon">
-												<input type="password" name="password" id="password" class="gui-input"  placeholder="请输入密码" />
+												<input type="password" name="password" id="password" class="gui-input" placeholder="请输入密码" />
 												<label for="password" class="field-icon">
 													<i class="fa fa-lock"></i>
 												</label>
@@ -149,13 +160,13 @@
 
 			//绑定新增参数表单校验和提交响应时间
 			My.validate('#fo_login', doLogin, validateOptions);
-			
+
 			//演示账号模拟登陆 请移除
- 			setTimeout(function(){
+			setTimeout(function() {
 				$("#fo_login [name='account']").val('root');
 				$("#fo_login [name='password']").val('111111');
 				//doLogin();
-			},1000);
+			}, 1000);
 
 		});
 

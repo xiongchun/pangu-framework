@@ -24,26 +24,3 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-
-<!-- Start: Head Script -->
-<script type="text/javascript">
-	$(function() {
-		//统一异常拦截器
-		$(document).ajaxError(function(e,data) {
-			data = data.responseJSON;
-			$('#w-global-error').modal();
-			$('#id-error-path span').text(data.path);
-			$('#id-error-status span').text(data.status);
-			$('#id-error-exception span').text(data.exception);
-			$('#id-error-message').css('overflow-x', 'hidden');
-			$('#id-error-message').text(data.message);
-		});
-		
-		//确保所有最后一个弹出窗口在最顶层显示
-        $(document).on('show.bs.modal', '.modal', function (event) {
-            var zIndex = 1040 + (10 * $('.modal:visible').length);
-            $(this).css('z-index', zIndex);
-        });
-	});
-</script>
-<!-- End: Head Script -->
