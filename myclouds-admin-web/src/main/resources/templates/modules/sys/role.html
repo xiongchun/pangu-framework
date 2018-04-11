@@ -287,6 +287,9 @@
 			$('#dt-role tbody').on('click', 'tr', function() {
 				$(this).toggleClass('selected');
 			});
+			$('#dt-role tbody').on('dblclick', 'tr', function() {
+				fnShowUpdate($('#dt-role').DataTable().row(this).data());
+			});
 			/******* 事件监听.end ********/
 
 			//初始化下拉框
@@ -466,7 +469,7 @@
 
 		//删除
 		function fnDelete(row) {
-			My.confirm('确认删除当前角色吗？', function(result) {
+			My.confirm('确认删除当前角色吗？', 'small', function(result) {
 				if (result) {
 					$.ajax({
 						type : 'post',
@@ -512,7 +515,7 @@
 
 		//授权
 		function fnGrant() {
-			My.confirm('确认对当前角色进行授权操作吗？', function(result) {
+			My.confirm('确认对当前角色进行授权操作吗？', 'small', function(result) {
 				if (result) {
 					var treeObj = $.fn.zTree.getZTreeObj("tree-grant");
 					var nodes = treeObj.getCheckedNodes();

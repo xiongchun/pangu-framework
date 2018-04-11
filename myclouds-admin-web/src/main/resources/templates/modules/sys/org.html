@@ -289,6 +289,9 @@
 			$('#dt-org tbody').on('click', 'tr', function() {
 				$(this).toggleClass('selected');
 			});
+			$('#dt-org tbody').on('dblclick', 'tr', function() {
+				fnShowUpdate($('#dt-org').DataTable().row(this).data());
+			});
 			/******* 事件监听.end ********/
 
 			//初始化部门树
@@ -542,7 +545,7 @@
 
 		//删除
 		function fnDelete(row) {
-			My.confirm('确认删除当前部门吗？', function(result) {
+			My.confirm('确认删除当前部门吗？', 'small', function(result) {
 				if (result) {
 					$.ajax({
 						type : 'post',

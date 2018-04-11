@@ -419,7 +419,9 @@
 			$('#dt-user tbody').on('click', 'tr', function() {
 				$(this).toggleClass('selected');
 			});
-			bootbox.setDefaults("locale", "zh_CN");
+			$('#dt-user tbody').on('dblclick', 'tr', function() {
+				fnShowUpdate($('#dt-user').DataTable().row(this).data());
+			});
 			/******* 事件监听.end ********/
 
 			//初始化部门树
@@ -778,7 +780,7 @@
 
 		//删除
 		function fnDelete(row) {
-			My.confirm('确认删除当前用户吗？', function(result) {
+			My.confirm('确认删除当前用户吗？', 'small', function(result) {
 				if (result) {
 					$.ajax({
 						type : 'post',
@@ -808,7 +810,7 @@
 					ids:ids.join(','),
 					password : hex_md5(My.params('#fo-reset').confirm_password)
 			};
- 			My.confirm('确认重置当前选中[' + rows.length + ']个用户的密码吗？', function(result) {
+ 			My.confirm('确认重置当前选中[' + rows.length + ']个用户的密码吗？', 'small', function(result) {
 				if (result) {
 					$.ajax({
 						type : 'post',

@@ -102,13 +102,14 @@ var My = function() {
 	 * alert常规提示框
 	 * 
 	 * @text 提示信息
-	 * @size 提示框大小 small large 缺省 null
+	 * @size 提示框大小 small large null
 	 * @title 标题
 	 * @callback 回调函数
 	 */
 	
 	var alert = function(text, size, title, callback) {
 		bootbox.setDefaults("locale","zh_CN");
+		size = typeof(size) == 'undefined' ? 'small' : size;
 		bootbox.alert({
 			message : text,
 			size : size,
@@ -121,12 +122,13 @@ var My = function() {
 	 * confirm确认提示框
 	 * 
 	 * @text 提示信息
-	 * @title 标题
+	 * @size 提示框大小 small large 缺省 null
 	 * @callback 回调函数
 	 */
-	var confirm = function(text,callback){
+	var confirm = function(text,size,callback){
 		bootbox.confirm({
 		    message: text,
+		    size : size,
 		    buttons: {
 		        confirm: {
 		            label: '确定',

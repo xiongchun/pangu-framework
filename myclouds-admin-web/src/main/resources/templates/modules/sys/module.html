@@ -180,7 +180,7 @@
 
 		//删除
 		function fnDelete(row) {
-			My.confirm('确认删除当前角色吗？', function(result) {
+			My.confirm('确认删除当前角色吗？', 'small', function(result) {
 				if (result) {
 					$.ajax({
 						type : 'post',

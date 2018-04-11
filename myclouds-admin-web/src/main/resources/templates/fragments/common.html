@@ -102,7 +102,7 @@
 <script type="text/javascript">
 	//注销
 	function fnLogout() {
-		My.confirm('确认安全退出系统吗？', function(result) {
+		My.confirm('确认安全退出系统吗？','small', function(result) {
 			if (result) {
 				$.ajax({
 					type : 'post',
@@ -128,7 +128,7 @@
 			success : function(data) {
 				if (data.code == '1') {
 					$('#w-pwd').modal('hide');
-					My.confirm('密码修改成功，需要退出并重新登录吗？', function(result) {
+					My.confirm('密码修改成功，需要退出并重新登录吗？', null, function(result) {
 						if (result) {
 							$.ajax({
 								type : 'post',
