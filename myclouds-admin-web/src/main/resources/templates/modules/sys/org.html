@@ -493,11 +493,11 @@
 				data : My.params('#fo-update'),
 				success : function(data) {
 					if (data.code == '1') {
-						My.notify(data.msg);
+						My.alert(data.msg);
 						$('#w-update').modal('hide');
 						fnQuery();
 					} else {
-						My.notify(data.msg, 'danger');
+						My.alert(data.msg);
 					}
 				}
 			});
@@ -532,12 +532,12 @@
 				data : My.params('#fo-new'),
 				success : function(data) {
 					if (data.code == '1') {
-						My.notify(data.msg);
+						My.alert(data.msg);
 						$('#w-new').modal('hide');
 						$('#dt-org').DataTable().ajax.reload();
 						loadTree();
 					} else {
-						My.notify(data.msg, 'danger');
+						My.alert(data.msg);
 					}
 				}
 			});
@@ -553,11 +553,11 @@
 						data : row,
 						success : function(data) {
 							if (data.code == '1') {
-								My.notify(data.msg);
+								My.alert(data.msg);
 								loadTree();
 								$('#dt-org').DataTable().ajax.reload();
 							} else {
-								My.notify(data.msg, 'danger');
+								My.alert(data.msg);
 							}
 						}
 					});
