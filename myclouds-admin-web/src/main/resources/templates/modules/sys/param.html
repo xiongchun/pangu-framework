@@ -383,11 +383,11 @@
 				data : My.params('#fo-new'),
 				success : function(data) {
 					if (data.code == '1') {
-						My.notify(data.msg);
+						My.alert(data.msg);
 						$('#w-new').modal('hide');
 						fnQuery();
 					} else {
-						My.notify(data.msg, 'danger');
+						My.alert(data.msg);
 					}
 				}
 			});
@@ -419,7 +419,7 @@
 						fnQuery();
 						My.alert(data.msg);
 					} else {
-						My.notify(data.msg, 'danger');
+						My.alert(data.msg);
 					}
 				}
 			});
@@ -434,7 +434,7 @@
 						url : 'delete',
 						data : row,
 						success : function(data) {
-							My.notify(data.msg);
+							My.alert(data.msg);
 							fnQuery();
 						}
 					});
@@ -458,9 +458,9 @@
 										url : '/sys/cache/syncCfgCache',
 										success : function(data) {
 											if (data.code == '1') {
-												My.notify(data.msg);
+												My.alert(data.msg);
 											} else {
-												My.notify(data.msg, 'danger');
+												My.alert(data.msg);
 											}
 										}
 									});
