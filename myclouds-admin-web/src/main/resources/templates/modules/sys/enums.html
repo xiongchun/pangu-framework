@@ -482,13 +482,13 @@
 				data : param,
 				success : function(data) {
 					if (data.code == '1') {
-						My.notify(data.msg);
+						My.alert(data.msg);
 						$('#w-new').modal('hide');
 						$('#hi_enum_key').val(param.enum_key);
 						$('#hi_enum_name').val(param.enum_name);
 						fnQuery();
 					} else {
-						My.notify(data.msg, 'danger');
+						My.alert(data.msg);
 					}
 				}
 			});
@@ -516,11 +516,11 @@
 				data : My.params('#fo-update'),
 				success : function(data) {
 					if (data.code == '1') {
-						My.notify(data.msg);
+						My.alert(data.msg);
 						$('#w-update').modal('hide');
 						fnQuery();
 					} else {
-						My.notify(data.msg, 'danger');
+						My.alert(data.msg);
 					}
 				}
 			});
@@ -535,7 +535,7 @@
 						url : 'delete',
 						data : row,
 						success : function(data) {
-							My.notify(data.msg);
+							My.alert(data.msg);
 							fnQuery();
 						}
 					});
@@ -559,9 +559,9 @@
 										url : '/sys/cache/syncCfgCache',
 										success : function(data) {
 											if (data.code == '1') {
-												My.notify(data.msg);
+												My.alert(data.msg);
 											} else {
-												My.notify(data.msg, 'danger');
+												My.alert(data.msg);
 											}
 										}
 									});
