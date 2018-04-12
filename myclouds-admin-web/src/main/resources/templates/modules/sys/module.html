@@ -59,10 +59,10 @@
 				$("#fo-new")[0].reset();
 			});
 			$("#btn-edit").on("click", function(e) {
-				My.notify('修改功能正在完善中...', 'info');
+				My.alert('修改功能正在完善中...');
 			});
 			$("#btn-del").on("click", function(e) {
-				My.notify('批量删除功能正在完善中...', 'info');
+				My.alert('批量删除功能正在完善中...');
 			});
 			/******* 事件监听.end ********/
 
@@ -168,11 +168,11 @@
 				data : My.params('#fo-new'),
 				success : function(data) {
 					if (data.code == '1') {
-						My.notify(data.msg);
+						My.alert(data.msg);
 						$('#w-new').modal('hide');
 						fnQuery();
 					} else {
-						My.notify(data.msg, 'danger');
+						My.alert(data.msg);
 					}
 				}
 			});
@@ -187,7 +187,7 @@
 						url : 'delete',
 						data : row,
 						success : function(data) {
-							My.notify(data.msg);
+							My.alert(data.msg);
 							fnQuery();
 						}
 					});
