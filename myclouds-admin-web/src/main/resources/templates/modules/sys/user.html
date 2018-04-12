@@ -672,11 +672,11 @@
 				data : My.params('#fo-update'),
 				success : function(data) {
 					if (data.code == '1') {
-						My.notify(data.msg);
+						My.alert(data.msg);
 						$('#w-update').modal('hide');
 						fnQuery();
 					} else {
-						My.notify(data.msg, 'danger');
+						My.alert(data.msg);
 					}
 				}
 			});
@@ -749,10 +749,10 @@
 				data : data,
 				success : function(data) {
 					if (data.code == '1') {
-						My.notify(data.msg);
+						My.alert(data.msg);
 						$('#w-grant').modal('hide');
 					} else {
-						My.notify(data.msg, 'danger');
+						My.alert(data.msg);
 					}
 				}
 			});
@@ -768,11 +768,11 @@
 				data : data,
 				success : function(data) {
 					if (data.code == '1') {
-						My.notify(data.msg);
+						My.alert(data.msg);
 						$('#w-new').modal('hide');
 						$('#dt-user').DataTable().ajax.reload();
 					} else {
-						My.notify(data.msg, 'danger');
+						My.alert(data.msg);
 					}
 				}
 			});
@@ -788,10 +788,10 @@
 						data : row,
 						success : function(data) {
 							if (data.code == '1') {
-								My.notify(data.msg);
+								My.alert(data.msg);
 								$('#dt-user').DataTable().ajax.reload();
 							} else {
-								My.notify(data.msg, 'danger');
+								My.alert(data.msg);
 							}
 						}
 					});
