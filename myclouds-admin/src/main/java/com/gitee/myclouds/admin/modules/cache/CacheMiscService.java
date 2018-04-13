@@ -43,7 +43,7 @@ public class CacheMiscService {
 		for (MyModuleEntity myModuleEntity : myModuleEntities) {
 			cacheMap.put(myModuleEntity.getId().toString(), JSON.toJSONString(myModuleEntity));
 		}
-		stringRedisTemplate.opsForHash().putAll(MyCons.CacheKeyPrefix.MyModule.getValue(), cacheMap);
+		stringRedisTemplate.opsForHash().putAll(MyCons.CacheKeyOrPrefix.MyModule.getValue(), cacheMap);
 		String msgString = "完成模块菜单数据的全量缓存或刷新";
 		log.info(msgString);
 		return Dtos.newDto().put2("code", "1").put2("msg", msgString);
