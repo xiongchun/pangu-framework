@@ -64,7 +64,7 @@ public class CacheCfgService {
 	public void initCacheParams() {
 		List<MyParamEntity> myParamEntities = myParamMapper.list(null);
 		for (MyParamEntity myParamEntity : myParamEntities) {
-			String key = MyCons.CacheKeyPrefix.MyParam.getValue() + myParamEntity.getParam_key();
+			String key = MyCons.CacheKeyOrPrefix.MyParam.getValue() + ":" + myParamEntity.getParam_key();
 			stringRedisTemplate.opsForValue().set(key, myParamEntity.toJson());
 		}
 		log.info("完成键值参数Redis缓存");
@@ -76,7 +76,7 @@ public class CacheCfgService {
 	public void initCacheEnums() {
 		List<MyEnumEntity> myEnumEntities = myEnumMapper.list(null);
 		for (MyEnumEntity myEnumEntity : myEnumEntities) {
-			String key = MyCons.CacheKeyPrefix.MyEnum.getValue() + myEnumEntity.getEnum_key();
+			String key = MyCons.CacheKeyOrPrefix.MyEnum.getValue() + ":" + myEnumEntity.getEnum_key();
 			stringRedisTemplate.opsForHash().put(key, myEnumEntity.getElement_key(), myEnumEntity.toJson());
 		}
 		log.info("完成枚举参数Redis缓存");
@@ -89,7 +89,7 @@ public class CacheCfgService {
 	 */
 	public void cacheParam(MyParamEntity myParamEntity) {
 		if (MyUtil.isNotEmpty(myParamEntity)) {
-			String key = MyCons.CacheKeyPrefix.MyParam.getValue() + myParamEntity.getParam_key();
+			String key = MyCons.CacheKeyOrPrefix.MyParam.getValue() + ":" + myParamEntity.getParam_key();
 			stringRedisTemplate.opsForValue().set(key, myParamEntity.toJson());
 			log.info("缓存或刷新指定键值参数成功");
 		}
@@ -102,7 +102,7 @@ public class CacheCfgService {
 	 */
 	public void cacheEnum(MyEnumEntity myEnumEntity) {
 		if (MyUtil.isNotEmpty(myEnumEntity)) {
-			String key = MyCons.CacheKeyPrefix.MyEnum.getValue() + myEnumEntity.getEnum_key();
+			String key = MyCons.CacheKeyOrPrefix.MyEnum.getValue() + ":" + myEnumEntity.getEnum_key();
 			stringRedisTemplate.opsForHash().put(key, myEnumEntity.getElement_key(), myEnumEntity.toJson());
 			log.info("缓存或刷新指定键值参数成功");
 		}
@@ -115,7 +115,7 @@ public class CacheCfgService {
 	 */
 	public void deleteParamFromCache(String paramKey) {
 		if (MyUtil.isNotEmpty(paramKey)) {
-			String key = MyCons.CacheKeyPrefix.MyParam.getValue() + paramKey;
+			String key = MyCons.CacheKeyOrPrefix.MyParam.getValue() + ":" + paramKey;
 			stringRedisTemplate.delete(key);
 			log.info("删除指定键值参数成功");
 		}
@@ -128,7 +128,7 @@ public class CacheCfgService {
 	 */
 	public void deleteEnumFromCache(String enumKey, String elementKey) {
 		if (MyUtil.isNotEmpty(enumKey) && MyUtil.isNotEmpty(elementKey)) {
-			String key = MyCons.CacheKeyPrefix.MyEnum.getValue() + enumKey;
+			String key = MyCons.CacheKeyOrPrefix.MyEnum.getValue() + ":" + enumKey;
 			stringRedisTemplate.opsForHash().delete(key, elementKey);
 			log.info("删除指定枚举元素成功");
 		}
