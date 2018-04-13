@@ -2,13 +2,20 @@
 <header id="topbar">
 	<div class="topbar-left">
 		<ol class="breadcrumb">
-			<li class="crumb-active">
-				<a href="/"><span class="glyphicon glyphicon-home mr5"></span>嘉靖银行</a>
+			<li th:each="menu : ${@thCxt.listPath(param.mid == null ? 1 : param.mid)}">
+				<th:block th:if="${menu.id == 1}">
+					<a href="/">
+						<span class="glyphicon glyphicon-home mr5"></span><span th:text="${menu.name}"></span>
+					</a>
+				</th:block>
+				<th:block th:if="${menu.id != 1}">
+					<span th:text="${menu.name}"></span>
+				</th:block>
 			</li>
- 			<li>这里将显示当前模块的路径</li>
- 			<!--
-			<li><a href="/">键值参数管理</a></li> -->
 		</ol>
+	</div>
+	<div class="topbar-right">
+		<div id="id-mytime"></div>
 	</div>
 </header>
 <!-- End: Topbar -->
