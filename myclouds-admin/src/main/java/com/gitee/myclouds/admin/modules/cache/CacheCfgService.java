@@ -27,7 +27,7 @@ import com.gitee.myclouds.toolbox.wrap.Dtos;
 @Service
 public class CacheCfgService {
 
-	private static Logger log = LoggerFactory.getLogger(CacheCfgService.class);
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private MyParamMapper myParamMapper;
@@ -76,7 +76,7 @@ public class CacheCfgService {
 	public void initCacheEnums() {
 		List<MyEnumEntity> myEnumEntities = myEnumMapper.list(null);
 		for (MyEnumEntity myEnumEntity : myEnumEntities) {
-			String key = MyCons.CacheKeyPrefix.myEnum.getValue() + myEnumEntity.getEnum_key();
+			String key = MyCons.CacheKeyPrefix.MyEnum.getValue() + myEnumEntity.getEnum_key();
 			stringRedisTemplate.opsForHash().put(key, myEnumEntity.getElement_key(), myEnumEntity.toJson());
 		}
 		log.info("完成枚举参数Redis缓存");
@@ -102,7 +102,7 @@ public class CacheCfgService {
 	 */
 	public void cacheEnum(MyEnumEntity myEnumEntity) {
 		if (MyUtil.isNotEmpty(myEnumEntity)) {
-			String key = MyCons.CacheKeyPrefix.myEnum.getValue() + myEnumEntity.getEnum_key();
+			String key = MyCons.CacheKeyPrefix.MyEnum.getValue() + myEnumEntity.getEnum_key();
 			stringRedisTemplate.opsForHash().put(key, myEnumEntity.getElement_key(), myEnumEntity.toJson());
 			log.info("缓存或刷新指定键值参数成功");
 		}
@@ -128,7 +128,7 @@ public class CacheCfgService {
 	 */
 	public void deleteEnumFromCache(String enumKey, String elementKey) {
 		if (MyUtil.isNotEmpty(enumKey) && MyUtil.isNotEmpty(elementKey)) {
-			String key = MyCons.CacheKeyPrefix.myEnum.getValue() + enumKey;
+			String key = MyCons.CacheKeyPrefix.MyEnum.getValue() + enumKey;
 			stringRedisTemplate.opsForHash().delete(key, elementKey);
 			log.info("删除指定枚举元素成功");
 		}
