@@ -34,15 +34,16 @@ public class MyCons {
 	}
 
 	/**
-	 * 平台缓存Key前缀
+	 * 平台缓存Key/前缀
 	 */
-	public static enum CacheKeyPrefix {
+	public static enum CacheKeyOrPrefix {
 
-		MyParam("myparam:", "键值参数缓存Key的前缀"), 
-		MyEnum("myenum:", "枚举参数缓存Key的前缀"),
-		MyModule("mymodule", "模块菜单缓存Key的前缀");
+		MyParam("myparam", "键值参数缓存Key的前缀"), 
+		MyEnum("myenum", "枚举参数缓存Key的前缀"),
+		MyModule("mymodule", "模块菜单缓存Key"),
+		LastCacheTime("lastcachetime", "最后一次缓存对象插入时间Key");
 
-		private CacheKeyPrefix(String value, String name) {
+		private CacheKeyOrPrefix(String value, String name) {
 			this.value = value;
 			this.name = name;
 		}
