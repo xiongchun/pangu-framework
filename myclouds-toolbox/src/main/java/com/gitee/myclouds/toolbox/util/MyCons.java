@@ -8,7 +8,7 @@ package com.gitee.myclouds.toolbox.util;
  *
  */
 public class MyCons {
-	
+
 	/**
 	 * 通用的是否布尔值
 	 */
@@ -38,7 +38,9 @@ public class MyCons {
 	 */
 	public static enum CacheKeyPrefix {
 
-		MyParam("myparam:", "键值参数缓存Key的前缀"), myEnum("myenum:", "枚举参数缓存Key的前缀");
+		MyParam("myparam:", "键值参数缓存Key的前缀"), 
+		MyEnum("myenum:", "枚举参数缓存Key的前缀"),
+		MyModule("mymodule", "模块菜单缓存Key的前缀");
 
 		private CacheKeyPrefix(String value, String name) {
 			this.value = value;
@@ -56,7 +58,7 @@ public class MyCons {
 			return name;
 		}
 	}
-	
+
 	/**
 	 * 角色菜单授权类型
 	 */
@@ -80,12 +82,12 @@ public class MyCons {
 			return name;
 		}
 	}
-	
+
 	/**
 	 * 缺省的密码字段加解密钥
 	 */
 	public static final String PWD_KEY = "HY&XC&MW";
-	
+
 	/**
 	 * 缺省当前用户数据对象会话KEY
 	 */
