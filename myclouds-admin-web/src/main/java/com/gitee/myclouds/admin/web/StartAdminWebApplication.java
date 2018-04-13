@@ -7,8 +7,8 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.gitee.myclouds.admin.web.filters.LoginFilter;
-import com.gitee.myclouds.admin.web.filters.RequestFilter;
+import com.gitee.myclouds.admin.web.common.filters.LoginFilter;
+import com.gitee.myclouds.admin.web.common.filters.RequestFilter;
 
 @SpringBootApplication
 @EnableFeignClients
