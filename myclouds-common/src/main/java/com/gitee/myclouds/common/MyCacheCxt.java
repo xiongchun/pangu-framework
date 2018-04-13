@@ -119,10 +119,10 @@ public class MyCacheCxt {
 	 * @return
 	 */
 	public MyModuleEntity getMyModuleEntityFromCacheById(String id) {
-		String json = stringRedisTemplate.opsForHash().get(MyCons.CacheKeyPrefix.MyModule.getValue(), id).toString();
-		if (MyUtil.isEmpty(json)) {
+		Object object = stringRedisTemplate.opsForHash().get(MyCons.CacheKeyPrefix.MyModule.getValue(), id);
+		if (MyUtil.isEmpty(object)) {
 			return null;
 		}
-		return JSON.parseObject(json, MyModuleEntity.class);
+		return JSON.parseObject(object.toString(), MyModuleEntity.class);
 	}
 }
