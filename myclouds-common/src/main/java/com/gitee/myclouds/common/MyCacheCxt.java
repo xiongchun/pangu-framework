@@ -42,7 +42,7 @@ public class MyCacheCxt {
 	 * @return
 	 */
 	public MyParamEntity getParam(String paramKey) {
-		String key = MyCons.CacheKeyPrefix.MyParam.getValue() + paramKey;
+		String key = MyCons.CacheKeyOrPrefix.MyParam.getValue() + ":" + paramKey;
 		MyParamEntity myParamEntity = null;
 		try {
 			String json = stringRedisTemplate.opsForValue().get(key);
@@ -72,7 +72,7 @@ public class MyCacheCxt {
 	 * @return
 	 */
 	public List<MyEnumEntity> getEnum(String enumKey){
-		String key = MyCons.CacheKeyPrefix.MyEnum.getValue() + enumKey;
+		String key = MyCons.CacheKeyOrPrefix.MyEnum.getValue() + ":" + enumKey;
 		List<MyEnumEntity> myEnumEntities = Lists.newArrayList();
 		try {
 			List<Object> enumObjs = stringRedisTemplate.opsForHash().values(key);
@@ -119,7 +119,7 @@ public class MyCacheCxt {
 	 * @return
 	 */
 	public MyModuleEntity getMyModuleEntityFromCacheById(String id) {
-		Object object = stringRedisTemplate.opsForHash().get(MyCons.CacheKeyPrefix.MyModule.getValue(), id);
+		Object object = stringRedisTemplate.opsForHash().get(MyCons.CacheKeyOrPrefix.MyModule.getValue(), id);
 		if (MyUtil.isEmpty(object)) {
 			return null;
 		}
