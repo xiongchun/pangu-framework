@@ -20177,7 +20177,7 @@ manipulation using an html class aswell */
   z-index: 2;
   position: relative;
   width: 100%;
-  min-height: 51px;
+  /* min-height: 51px; */
   padding: 10px 21px;
   background: #fafafa;
   border-bottom: 1px solid #e0e0e0;
