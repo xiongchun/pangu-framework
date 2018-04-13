@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.admin.domain.myenum.MyEnumEntity;
 import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
-import com.gitee.myclouds.common.MyCxt;
+import com.gitee.myclouds.common.MyCacheCxt;
 
 /**
  * 单元测试（综合、杂项）
@@ -22,26 +22,26 @@ public class CfgCacheApiTest {
 	
 	private static Logger log = LoggerFactory.getLogger(CfgCacheApiTest.class);
 	
-	private MyCxt myCxt;
+	private MyCacheCxt myCacheCxt;
 	
 	/**
 	 * 演示基础配置数据 API
 	 */
 	public void testBasicCfgDataApi() {
 		//获取键值参数对象
-		MyParamEntity myParamEntity = myCxt.getParam("default_theme");
+		MyParamEntity myParamEntity = myCacheCxt.getParam("default_theme");
 		log.info("键值参数对象JSON序列化值：{}", myParamEntity.toJson());
 		//直接获取键值参数值
-		String paramValue = myCxt.getParamValue("default_theme");
+		String paramValue = myCacheCxt.getParamValue("default_theme");
 		log.info("键值参数值：{}", paramValue);
 		//获取枚举元素对象列表
-		List<MyEnumEntity> myEnumEntities = myCxt.getEnum("sex");
+		List<MyEnumEntity> myEnumEntities = myCacheCxt.getEnum("sex");
 		log.info("枚举元素对象列表JSON序列化值：{}", JSON.toJSON(myEnumEntities));
 		//获取枚举元素对象
-		MyEnumEntity myEnumEntity = myCxt.getEnumElement("sex", "1");
+		MyEnumEntity myEnumEntity = myCacheCxt.getEnumElement("sex", "1");
 		log.info("枚举元素对象JSON序列化值：{}", myEnumEntity.toJson());
 		//直接获取枚举元素参数值
-		String enumElementValue = myCxt.getEnumElementValue("sex", "2");
+		String enumElementValue = myCacheCxt.getEnumElementValue("sex", "2");
 		log.info("枚举元素参数值：{}", enumElementValue);
 		assertNotNull(paramValue);
 		assertNotNull(enumElementValue);

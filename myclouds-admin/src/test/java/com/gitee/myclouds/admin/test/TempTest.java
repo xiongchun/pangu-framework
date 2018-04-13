@@ -3,7 +3,7 @@ package com.gitee.myclouds.admin.test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gitee.myclouds.admin.modules.cache.CacheCfgService;
-import com.gitee.myclouds.common.MyCxt;
+import com.gitee.myclouds.common.MyCacheCxt;
 
 /*@RunWith(SpringRunner.class)
 @SpringBootTest(classes=TempTest.class)
@@ -11,7 +11,7 @@ import com.gitee.myclouds.common.MyCxt;
 public class TempTest {
 
 	@Autowired
-	private MyCxt myCxt;
+	private MyCacheCxt myCacheCxt;
 	@Autowired
 	private CacheCfgService cacheCfgService;
 	
