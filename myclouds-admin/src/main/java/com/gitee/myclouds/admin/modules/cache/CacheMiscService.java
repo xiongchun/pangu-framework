@@ -16,6 +16,7 @@ import com.gitee.myclouds.toolbox.util.MyCons;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 import com.google.common.collect.Maps;
+import com.xiaoleilu.hutool.date.DateUtil;
 
 /**
  * 通用数据缓存服务
@@ -25,14 +26,14 @@ import com.google.common.collect.Maps;
  */
 @Service
 public class CacheMiscService {
-	
+
 	private Logger log = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Autowired
 	private MyModuleMapper myModuleMapper;
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
-	
+
 	/**
 	 * 缓存全量模块菜单表数据<br>
 	 * 用途 1：计算面包屑导航路径提示文本；
@@ -44,9 +45,11 @@ public class CacheMiscService {
 			cacheMap.put(myModuleEntity.getId().toString(), JSON.toJSONString(myModuleEntity));
 		}
 		stringRedisTemplate.opsForHash().putAll(MyCons.CacheKeyOrPrefix.MyModule.getValue(), cacheMap);
+		stringRedisTemplate.opsForHash().put(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(),
+				MyCons.CacheKeyOrPrefix.MyModule.getValue(), DateUtil.now());
 		String msgString = "完成模块菜单数据的全量缓存或刷新";
 		log.info(msgString);
 		return Dtos.newDto().put2("code", "1").put2("msg", msgString);
 	}
-	
+
 }
