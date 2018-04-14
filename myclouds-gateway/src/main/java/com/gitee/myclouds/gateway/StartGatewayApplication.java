@@ -17,8 +17,7 @@ import com.gitee.myclouds.gateway.filter.MyDemoFilter;
 @EnableZuulProxy
 public class StartGatewayApplication{
 	
-	public static void main(String[] args) throws Exception {
-		
+	public static void main(String[] args) throws Exception {		
 		SpringApplication.run(StartGatewayApplication.class, args);
 	}
 	
