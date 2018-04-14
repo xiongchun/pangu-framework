@@ -17,6 +17,7 @@ import com.gitee.myclouds.toolbox.util.MyCons;
 import com.gitee.myclouds.toolbox.util.MyUtil;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
+import com.xiaoleilu.hutool.date.DateUtil;
 
 /**
  * 配置项缓存服务
@@ -46,11 +47,11 @@ public class CacheCfgService {
 			initCacheParams();
 			initCacheEnums();
 			outDto.put("msg", "键值参数缓存同步成功。枚举类型参数缓存同步成功。");
-		}else {
+		} else {
 			if (StringUtils.equals(type, "enum")) {
 				initCacheEnums();
 				outDto.put("msg", "枚举类型参数缓存同步成功。");
-			}else if (StringUtils.equals(type, "kv")) {
+			} else if (StringUtils.equals(type, "kv")) {
 				initCacheParams();
 				outDto.put("msg", "键值参数缓存同步成功。");
 			}
@@ -67,6 +68,8 @@ public class CacheCfgService {
 			String key = MyCons.CacheKeyOrPrefix.MyParam.getValue() + ":" + myParamEntity.getParam_key();
 			stringRedisTemplate.opsForValue().set(key, myParamEntity.toJson());
 		}
+		stringRedisTemplate.opsForHash().put(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(),
+				MyCons.CacheKeyOrPrefix.MyParam.getValue(), DateUtil.now());
 		log.info("完成键值参数Redis缓存");
 	}
 
@@ -79,6 +82,8 @@ public class CacheCfgService {
 			String key = MyCons.CacheKeyOrPrefix.MyEnum.getValue() + ":" + myEnumEntity.getEnum_key();
 			stringRedisTemplate.opsForHash().put(key, myEnumEntity.getElement_key(), myEnumEntity.toJson());
 		}
+		stringRedisTemplate.opsForHash().put(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(),
+				MyCons.CacheKeyOrPrefix.MyEnum.getValue(), DateUtil.now());
 		log.info("完成枚举参数Redis缓存");
 	}
 
@@ -94,7 +99,7 @@ public class CacheCfgService {
 			log.info("缓存或刷新指定键值参数成功");
 		}
 	}
-	
+
 	/**
 	 * 缓存\刷新指定枚举元素
 	 * 
@@ -120,7 +125,7 @@ public class CacheCfgService {
 			log.info("删除指定键值参数成功");
 		}
 	}
-	
+
 	/**
 	 * 从缓存系统中删除指定枚举元素
 	 * 
