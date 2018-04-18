@@ -3,44 +3,44 @@ package com.gitee.myclouds.admin.domain.mymodule;
 import com.gitee.myclouds.toolbox.wrap.Entity;
 
 /**
- * <b>功能模块表[my_module]数据实体对象</b>
+ * <b>模块事件注册表[my_module]数据实体对象</b>
  * <p>
  * 注意:此文件由MyClouds平台自动生成-禁止手工修改。
  * </p>
  * 
  * @author myclouds team
- * @date 2018-03-13 10:49:47
+ * @date 2018-04-17 16:46:46
  */
 public class MyModuleEntity extends Entity {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 功能模块流水号
+	 * 流水号
 	 */
 	private Integer id;	
 	/**
-	 * 父节点流水号
+	 * 所属上级
 	 */
 	private Integer parent_id;	
 	/**
-	 * 功能模块名称
+	 * 名称
 	 */
 	private String name;	
 	/**
-	 * 主页面URL
+	 * URL
 	 */
 	private String url;	
 	/**
-	 * 是否为树枝节点
+	 * 类型
 	 */
-	private String is_folder;	
+	private String type;	
 	/**
-	 * 是否自动展开
+	 * DOM ID
 	 */
-	private String is_expanded;	
+	private String dom_id;	
 	/**
-	 * 节点图标
+	 * 图标
 	 */
 	private String icon;	
 	/**
@@ -51,6 +51,10 @@ public class MyModuleEntity extends Entity {
 	 * 排序号
 	 */
 	private Integer sort_no;	
+	/**
+	 * 备注
+	 */
+	private String remark;	
 
 	/**
 	 * 将参数对象中的属性复制到当前对象中
@@ -64,7 +68,7 @@ public class MyModuleEntity extends Entity {
 	}
 	
 	/**
-	 * 功能模块流水号
+	 * 流水号
 	 * 
 	 * @return id
 	 */
@@ -73,7 +77,7 @@ public class MyModuleEntity extends Entity {
 	}
 	
 	/**
-	 * 父节点流水号
+	 * 所属上级
 	 * 
 	 * @return parent_id
 	 */
@@ -82,7 +86,7 @@ public class MyModuleEntity extends Entity {
 	}
 	
 	/**
-	 * 功能模块名称
+	 * 名称
 	 * 
 	 * @return name
 	 */
@@ -91,7 +95,7 @@ public class MyModuleEntity extends Entity {
 	}
 	
 	/**
-	 * 主页面URL
+	 * URL
 	 * 
 	 * @return url
 	 */
@@ -100,25 +104,25 @@ public class MyModuleEntity extends Entity {
 	}
 	
 	/**
-	 * 是否为树枝节点
+	 * 类型
 	 * 
-	 * @return is_folder
+	 * @return type
 	 */
-	public String getIs_folder() {
-		return is_folder;
+	public String getType() {
+		return type;
 	}
 	
 	/**
-	 * 是否自动展开
+	 * DOM ID
 	 * 
-	 * @return is_expanded
+	 * @return dom_id
 	 */
-	public String getIs_expanded() {
-		return is_expanded;
+	public String getDom_id() {
+		return dom_id;
 	}
 	
 	/**
-	 * 节点图标
+	 * 图标
 	 * 
 	 * @return icon
 	 */
@@ -144,9 +148,18 @@ public class MyModuleEntity extends Entity {
 		return sort_no;
 	}
 	
+	/**
+	 * 备注
+	 * 
+	 * @return remark
+	 */
+	public String getRemark() {
+		return remark;
+	}
+	
 
 	/**
-	 * 功能模块流水号
+	 * 流水号
 	 * 
 	 * @param id
 	 */
@@ -155,7 +168,7 @@ public class MyModuleEntity extends Entity {
 	}
 	
 	/**
-	 * 父节点流水号
+	 * 所属上级
 	 * 
 	 * @param parent_id
 	 */
@@ -164,7 +177,7 @@ public class MyModuleEntity extends Entity {
 	}
 	
 	/**
-	 * 功能模块名称
+	 * 名称
 	 * 
 	 * @param name
 	 */
@@ -173,7 +186,7 @@ public class MyModuleEntity extends Entity {
 	}
 	
 	/**
-	 * 主页面URL
+	 * URL
 	 * 
 	 * @param url
 	 */
@@ -182,25 +195,25 @@ public class MyModuleEntity extends Entity {
 	}
 	
 	/**
-	 * 是否为树枝节点
+	 * 类型
 	 * 
-	 * @param is_folder
+	 * @param type
 	 */
-	public void setIs_folder(String is_folder) {
-		this.is_folder = is_folder;
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	/**
-	 * 是否自动展开
+	 * DOM ID
 	 * 
-	 * @param is_expanded
+	 * @param dom_id
 	 */
-	public void setIs_expanded(String is_expanded) {
-		this.is_expanded = is_expanded;
+	public void setDom_id(String dom_id) {
+		this.dom_id = dom_id;
 	}
 	
 	/**
-	 * 节点图标
+	 * 图标
 	 * 
 	 * @param icon
 	 */
@@ -224,6 +237,15 @@ public class MyModuleEntity extends Entity {
 	 */
 	public void setSort_no(Integer sort_no) {
 		this.sort_no = sort_no;
+	}
+	
+	/**
+	 * 备注
+	 * 
+	 * @param remark
+	 */
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	
 
