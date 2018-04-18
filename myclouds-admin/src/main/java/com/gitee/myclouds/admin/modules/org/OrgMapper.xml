@@ -14,7 +14,7 @@
 				  t1.type, 
 				  t1.biz_code,  
 				  t1.sort_no,
-		     (SELECT name from my_org where id = t1.parent_id) AS parent_name
+		          (SELECT name from my_org where id = t1.parent_id) AS parent_name
 		FROM my_org t1
 		<include refid="pageOrgWhere" />
 		ORDER BY t1.id DESC LIMIT ${start},${length}
