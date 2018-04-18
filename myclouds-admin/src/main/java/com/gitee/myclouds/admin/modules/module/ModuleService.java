@@ -1,5 +1,6 @@
 package com.gitee.myclouds.admin.modules.module;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.admin.domain.mymodule.MyModuleEntity;
 import com.gitee.myclouds.admin.domain.mymodule.MyModuleMapper;
+import com.gitee.myclouds.common.web.vo.ZTreeNodeVO;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
@@ -33,12 +35,24 @@ public class ModuleService {
 	 * @return
 	 */
 	public String list(Dto inDto) {
-		Dto outDto = Dtos.newDto();
-		List<MyModuleEntity> myModuleEntities = myModuleMapper.list(inDto);
+		Dto outDto = Dtos.newDto();		
+		List<Dto> myModuleEntities = sqlSession.selectList("sql.module.pageModule",inDto);
+		Integer total = sqlSession.selectOne("sql.module.pageModuleCount", inDto);
 		outDto.put("data", myModuleEntities);
-		outDto.put("recordsTotal", myModuleEntities.size());
-		outDto.put("recordsFiltered", myModuleEntities.size());
+		outDto.put("recordsTotal", total);
+		outDto.put("recordsFiltered", total);
 		return JSON.toJSONString(outDto);
+	}
+	
+	/**
+	 * 查询实体
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public String get(Integer id) {
+		MyModuleEntity myModuleEntity = myModuleMapper.selectByKey(id);
+		return JSON.toJSONString(myModuleEntity);
 	}
 	
 	/**
@@ -57,6 +71,20 @@ public class ModuleService {
 	}
 	
 	/**
+	 * 修改
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public Dto update(Dto inDto) {
+		Dto outDto = null;
+		MyModuleEntity myModuleEntity = new MyModuleEntity().copyFrom(inDto);
+		myModuleMapper.updateByKey(myModuleEntity);
+		outDto = Dtos.newDto().put2("code", "1").put2("msg", "资源模块信息修改成功");
+		return outDto;
+	}
+	
+	/**
 	 * 删除
 	 * 
 	 * @param inDto
@@ -68,6 +96,19 @@ public class ModuleService {
 		sqlSession.delete("sql.module.deleteMyRoleModule", moduleId);
 		Dto outDto = Dtos.newDto().put2("code", "1").put2("msg", "资源模块删除成功");
 		return outDto;
+	}
+	
+	/**
+	 * 查询资源树
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	public String listModuleTree(Dto inDto) {
+		String[] types = {"1","2"};
+		inDto.put("types", Arrays.asList(types));
+		List<ZTreeNodeVO> zTreeNodeVOs = sqlSession.selectList("sql.module.listModuleTree", inDto);
+		return JSON.toJSONString(zTreeNodeVOs);
 	}
 	
 }
