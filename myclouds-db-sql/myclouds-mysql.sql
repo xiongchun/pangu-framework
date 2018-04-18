@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50628
 File Encoding         : 65001
 
-Date: 2018-04-09 01:31:41
+Date: 2018-04-18 22:03:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,49 +32,54 @@ CREATE TABLE `my_enum` (
   `remark` varchar(1000) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`enum_key`,`element_key`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COMMENT='枚举类型参数表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COMMENT='枚举类型参数表';
 
 -- ----------------------------
 -- Records of my_enum
 -- ----------------------------
 INSERT INTO `my_enum` VALUES ('1', 'sex', '性别', '1', '男', '1', '1', '1', '2018-02-05 11:35:51', null);
 INSERT INTO `my_enum` VALUES ('2', 'sex', '性别', '2', '女', '1', '1', '2', '2018-02-05 11:36:15', null);
-INSERT INTO `my_enum` VALUES ('3', 'sex', '性别', '3', '未知', '0', '1', '3', '2018-02-05 11:38:51', null);
+INSERT INTO `my_enum` VALUES ('3', 'sex', '性别', '3', '未知', '1', '1', '3', '2018-02-05 11:38:51', '');
 INSERT INTO `my_enum` VALUES ('4', 'is', '全局通用是否', '1', '是', '1', '1', '1', '2018-02-05 11:39:29', null);
 INSERT INTO `my_enum` VALUES ('5', 'is', '全局通用是否', '0', '否', '1', '1', '2', '2018-02-05 11:39:57', null);
+INSERT INTO `my_enum` VALUES ('6', 'module_type', '资源模块类型', '1', '模块', '1', '1', '1', '2018-04-16 17:22:07', '模块默认主页初始化事件');
+INSERT INTO `my_enum` VALUES ('7', 'module_type', '资源模块类型', '2', '内联页', '1', '1', '2', '2018-04-16 17:22:35', '模块内联页初始化事件');
+INSERT INTO `my_enum` VALUES ('8', 'module_type', '资源模块类型', '3', '动作事件', '1', '1', '3', '2018-04-16 17:23:48', '模块行为事件');
+INSERT INTO `my_enum` VALUES ('9', 'module_type', '资源模块类型', '4', '托管行为', '1', '1', '4', '2018-04-16 17:24:15', '模块托管事件');
 
 -- ----------------------------
 -- Table structure for my_module
 -- ----------------------------
 DROP TABLE IF EXISTS `my_module`;
 CREATE TABLE `my_module` (
-  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '功能模块流水号',
-  `parent_id` int(10) NOT NULL COMMENT '父节点流水号',
-  `name` varchar(50) NOT NULL COMMENT '功能模块名称',
-  `url` varchar(100) DEFAULT NULL COMMENT '主页面URL',
-  `is_folder` varchar(2) DEFAULT NULL COMMENT '是否为树枝节点（停用，维护成本高）',
-  `is_expanded` varchar(2) DEFAULT NULL COMMENT '是否自动展开',
-  `icon` varchar(50) DEFAULT NULL COMMENT '节点图标',
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '流水号',
+  `parent_id` int(10) NOT NULL COMMENT '所属上级',
+  `name` varchar(50) NOT NULL COMMENT '名称',
+  `url` varchar(100) DEFAULT NULL COMMENT 'URL',
+  `type` varchar(2) NOT NULL COMMENT '类型',
+  `dom_id` varchar(50) DEFAULT NULL COMMENT 'DOM ID',
+  `icon` varchar(50) DEFAULT NULL COMMENT '图标',
   `is_enable` varchar(2) NOT NULL COMMENT '是否启用',
   `sort_no` int(10) DEFAULT NULL COMMENT '排序号',
+  `remark` varchar(1000) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   KEY `key1` (`parent_id`,`is_enable`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COMMENT='功能模块表';
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COMMENT='模块事件注册表';
 
 -- ----------------------------
 -- Records of my_module
 -- ----------------------------
-INSERT INTO `my_module` VALUES ('1', '0', '功能模块', null, null, null, null, '1', '1');
-INSERT INTO `my_module` VALUES ('2', '1', '首页', '/', null, null, 'glyphicon glyphicon-home', '1', '1');
-INSERT INTO `my_module` VALUES ('3', '1', '系统管理', null, null, null, 'glyphicons glyphicons-settings', '1', '2');
-INSERT INTO `my_module` VALUES ('4', '3', '键值参数管理', 'sys/param/init', null, null, 'glyphicons glyphicons-share_alt', '1', '1');
-INSERT INTO `my_module` VALUES ('5', '3', '枚举类型管理', 'sys/enums/init', null, null, 'glyphicons glyphicons-list', '1', '2');
-INSERT INTO `my_module` VALUES ('6', '3', '资源模块管理', 'sys/module/init', null, null, 'glyphicons glyphicons-snowflake', '1', '3');
-INSERT INTO `my_module` VALUES ('7', '3', '组织机构管理', 'sys/org/init', null, null, 'glyphicons glyphicons-building', '1', '4');
-INSERT INTO `my_module` VALUES ('8', '3', '用户与授权管理', 'sys/user/init', null, null, 'glyphicons glyphicons-user', '1', '5');
-INSERT INTO `my_module` VALUES ('9', '3', '角色与授权管理', 'sys/role/init', null, null, 'glyphicons glyphicons-direction', '1', '6');
-INSERT INTO `my_module` VALUES ('50', '1', '参考范例', null, null, null, 'glyphicons glyphicons-more_windows', '1', '20');
-INSERT INTO `my_module` VALUES ('51', '50', '表单输入', null, null, null, 'glyphicons glyphicons-chevron-right', '1', '1');
+INSERT INTO `my_module` VALUES ('1', '0', '上海嘉靖银行', '', '1', '', '', '1', '1', '');
+INSERT INTO `my_module` VALUES ('2', '1', '首页', '/', '1', null, 'glyphicon glyphicon-home', '1', '1', null);
+INSERT INTO `my_module` VALUES ('3', '1', '系统管理', null, '1', null, 'glyphicons glyphicons-settings', '1', '2', null);
+INSERT INTO `my_module` VALUES ('4', '3', '键值参数管理', 'sys/param/init', '1', null, 'glyphicons glyphicons-share_alt', '1', '1', null);
+INSERT INTO `my_module` VALUES ('5', '3', '枚举类型管理', 'sys/enums/init', '1', null, 'glyphicons glyphicons-list', '1', '2', null);
+INSERT INTO `my_module` VALUES ('6', '3', '资源模块管理', 'sys/module/init', '1', null, 'glyphicons glyphicons-snowflake', '1', '3', null);
+INSERT INTO `my_module` VALUES ('7', '3', '组织机构管理', 'sys/org/init', '1', null, 'glyphicons glyphicons-building', '1', '4', null);
+INSERT INTO `my_module` VALUES ('8', '3', '用户与授权管理', 'sys/user/init', '1', null, 'glyphicons glyphicons-user', '1', '5', null);
+INSERT INTO `my_module` VALUES ('9', '3', '角色与授权管理', 'sys/role/init', '1', null, 'glyphicons glyphicons-direction', '1', '6', null);
+INSERT INTO `my_module` VALUES ('50', '1', '参考范例', null, '1', null, 'glyphicons glyphicons-more_windows', '1', '20', null);
+INSERT INTO `my_module` VALUES ('51', '50', '表单输入', null, '1', null, 'glyphicons glyphicons-chevron-right', '1', '1', null);
 
 -- ----------------------------
 -- Table structure for my_org
@@ -86,7 +91,7 @@ CREATE TABLE `my_org` (
   `parent_id` int(10) NOT NULL COMMENT '父节点流水号',
   `is_folder` varchar(2) DEFAULT NULL COMMENT '是否为树枝节点（停用，维护成本高）',
   `is_expanded` varchar(2) DEFAULT NULL COMMENT '是否自动展开',
-  `icon` varchar(100) DEFAULT '' COMMENT '节点图标',
+  `icon` varchar(100) DEFAULT NULL COMMENT '节点图标',
   `type` varchar(2) NOT NULL COMMENT '组织类型',
   `biz_code` varchar(50) DEFAULT NULL COMMENT '扩展码',
   `sort_no` int(10) DEFAULT NULL COMMENT '排序号',
@@ -102,14 +107,14 @@ CREATE TABLE `my_org` (
 -- ----------------------------
 -- Records of my_org
 -- ----------------------------
-INSERT INTO `my_org` VALUES ('1', '上海嘉靖银行', '0', null, null, null, '1', null, '1', null, '', '2018-03-13 09:27:13', '1', '超级用户');
+INSERT INTO `my_org` VALUES ('1', '上海嘉靖银行', '0', null, '1', null, '1', '', '1', '', '', '2018-03-13 09:27:13', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('2', '信息技术部', '1', null, null, null, '1', null, '10', null, null, '2018-03-13 09:28:00', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('3', '小微信贷事业部', '1', null, null, null, '1', null, '40', null, null, '2018-03-13 09:28:32', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('4', '公司金融事业部', '1', null, null, null, '1', null, '50', null, null, '2018-03-13 23:24:53', '1', '超级用户');
+INSERT INTO `my_org` VALUES ('3', '小微信贷事业部', '1', null, '1', null, '1', '', '40', '', '', '2018-03-13 09:28:32', '1', '超级用户');
+INSERT INTO `my_org` VALUES ('4', '公司金融事业部', '1', null, '1', null, '1', '', '50', '', '', '2018-03-13 23:24:53', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('5', '昆明盘龙区支行', '4', null, '1', null, '1', '', '10', '', '', '2018-03-13 09:29:41', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('6', '大理古城支行', '4', null, null, null, '1', null, '20', null, null, '2018-03-13 09:30:09', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('7', '全国信销网点', '3', null, null, '', '1', null, '30', null, null, '2018-03-23 10:52:53', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('8', '人力资源部', '1', null, null, '', '1', null, '20', null, null, '2018-03-27 13:36:58', '1', '超级用户');
+INSERT INTO `my_org` VALUES ('8', '人力资源部', '1', null, '1', '', '1', '', '20', '', '', '2018-03-27 13:36:58', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('9', '财务结算部', '3', null, null, '', '1', null, '20', null, null, '2018-03-27 13:57:43', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('10', '风险管理部', '3', null, null, '', '1', null, '10', null, null, '2018-03-27 13:58:45', '1', '超级用户');
 INSERT INTO `my_org` VALUES ('11', '苏州营业部', '7', null, null, '', '1', null, '10', null, null, '2018-03-27 14:01:45', '1', '超级用户');
@@ -137,7 +142,7 @@ CREATE TABLE `my_param` (
 INSERT INTO `my_param` VALUES ('1', '系统名称', 'sys_logo_name', '嘉靖银行', '0', '2018-03-29 10:24:40', '左上角作为logo显示');
 INSERT INTO `my_param` VALUES ('2', '系统标题', 'sys_title', 'MyClouds：轻量级微服务治理及快速开发平台', '0', '2018-02-22 12:01:58', '浏览器标题栏');
 INSERT INTO `my_param` VALUES ('3', '系统主题', 'default_theme', 'classic', '0', '2018-02-05 11:20:05', '');
-INSERT INTO `my_param` VALUES ('4', '系统皮肤', 'default_skin', 'blue', '0', '2018-02-05 11:20:34', null);
+INSERT INTO `my_param` VALUES ('4', '系统皮肤', 'default_skin', 'blue', '0', '2018-02-05 11:20:34', '');
 
 -- ----------------------------
 -- Table structure for my_role
@@ -175,22 +180,22 @@ CREATE TABLE `my_role_module` (
   `create_by` int(10) NOT NULL COMMENT '创建人ID',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`role_id`,`module_id`,`grant_type`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=178 DEFAULT CHARSET=utf8mb4 COMMENT='功能模块-角色关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=189 DEFAULT CHARSET=utf8mb4 COMMENT='功能模块-角色关联表';
 
 -- ----------------------------
 -- Records of my_role_module
 -- ----------------------------
-INSERT INTO `my_role_module` VALUES ('167', '1', '1', '1', '2018-04-02 13:25:08', '1');
-INSERT INTO `my_role_module` VALUES ('168', '1', '2', '1', '2018-04-02 13:25:08', '1');
-INSERT INTO `my_role_module` VALUES ('169', '1', '3', '1', '2018-04-02 13:25:08', '1');
-INSERT INTO `my_role_module` VALUES ('170', '1', '4', '1', '2018-04-02 13:25:08', '1');
-INSERT INTO `my_role_module` VALUES ('171', '1', '5', '1', '2018-04-02 13:25:08', '1');
-INSERT INTO `my_role_module` VALUES ('172', '1', '6', '1', '2018-04-02 13:25:08', '1');
-INSERT INTO `my_role_module` VALUES ('173', '1', '7', '1', '2018-04-02 13:25:08', '1');
-INSERT INTO `my_role_module` VALUES ('174', '1', '8', '1', '2018-04-02 13:25:08', '1');
-INSERT INTO `my_role_module` VALUES ('175', '1', '9', '1', '2018-04-02 13:25:08', '1');
-INSERT INTO `my_role_module` VALUES ('176', '1', '50', '1', '2018-04-02 13:25:08', '1');
-INSERT INTO `my_role_module` VALUES ('177', '1', '51', '1', '2018-04-02 13:25:08', '1');
+INSERT INTO `my_role_module` VALUES ('178', '1', '1', '1', '2018-04-12 10:09:17', '1');
+INSERT INTO `my_role_module` VALUES ('179', '1', '2', '1', '2018-04-12 10:09:17', '1');
+INSERT INTO `my_role_module` VALUES ('180', '1', '3', '1', '2018-04-12 10:09:17', '1');
+INSERT INTO `my_role_module` VALUES ('181', '1', '4', '1', '2018-04-12 10:09:17', '1');
+INSERT INTO `my_role_module` VALUES ('182', '1', '5', '1', '2018-04-12 10:09:17', '1');
+INSERT INTO `my_role_module` VALUES ('183', '1', '6', '1', '2018-04-12 10:09:17', '1');
+INSERT INTO `my_role_module` VALUES ('184', '1', '7', '1', '2018-04-12 10:09:17', '1');
+INSERT INTO `my_role_module` VALUES ('185', '1', '8', '1', '2018-04-12 10:09:17', '1');
+INSERT INTO `my_role_module` VALUES ('186', '1', '9', '1', '2018-04-12 10:09:17', '1');
+INSERT INTO `my_role_module` VALUES ('187', '1', '50', '1', '2018-04-12 10:09:17', '1');
+INSERT INTO `my_role_module` VALUES ('188', '1', '51', '1', '2018-04-12 10:09:17', '1');
 
 -- ----------------------------
 -- Table structure for my_user
