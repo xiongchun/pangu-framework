@@ -44,6 +44,19 @@ public class ModuleController {
 		Dto inDto = Dtos.newDto(request);
 		return moduleService.list(inDto);
 	}
+	
+	/**
+	 * 查询实体
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "get", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@ResponseBody
+	public String get(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return moduleService.get(inDto.getInteger("id"));
+	}
 
 	/**
 	 * 新增
@@ -57,6 +70,19 @@ public class ModuleController {
 		Dto inDto = Dtos.newDto(request, httpSession);
 		return Dtos.newDto(moduleService.save(inDto));
 	}
+	
+	/**
+	 * 修改
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "update", method = { RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Dto update(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(moduleService.update(inDto));
+	}
 
 	/**
 	 * 删除
@@ -69,5 +95,18 @@ public class ModuleController {
 	public Dto deleteModule(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto(moduleService.delete(inDto));
+	}
+	
+	/**
+	 * 查询资源树
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "listModuleTree", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@ResponseBody
+	public String listModuleTree(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return moduleService.listModuleTree(inDto);
 	}
 }
