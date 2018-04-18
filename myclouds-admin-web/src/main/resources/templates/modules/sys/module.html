@@ -3,12 +3,13 @@
 
 <head>
 <th:block th:replace="fragments/head" />
+<link rel="stylesheet" type="text/css" href="/theme/vendor/plugins/ztree/css/zTreeStyle.css" />
 </head>
 
 <body class="sb-l-o">
 	<!--/* 公共代码 */-->
 	<div th:replace="fragments/common"></div>
-	
+
 	<!--/* 主题设置面板 */-->
 	<div th:replace="fragments/skin-toolbox"></div>
 
@@ -26,8 +27,265 @@
 			<!-- Begin: 业务办理区 -->
 			<section id="content" class="table-layout animated fadeIn">
 
-				<div>
-					<span class="glyphicons glyphicons-bell"></span> 请将菜单数据直接维护到sys_module表。
+				<!-- begin: .tray-left -->
+				<aside class="tray tray-left tray320 pt25">
+					<div class="panel">
+						<div class="panel-heading">
+							<span class="panel-title">资源模块导航</span>
+
+							<div class="widget-menu pull-right">
+								<div class="btn-group">
+									<button class="btn btn-xs btn-default btn-gradient" id="btn-t-expand" title="展开/收缩">
+										<i class="fa fa-expand p3"></i>
+									</button>
+									<button class="btn btn-xs btn-default btn-gradient" id="btn-t-refresh" title="刷新">
+										<i class="fa fa-refresh p3"></i>
+									</button>
+								</div>
+							</div>
+
+						</div>
+						<div class="panel-body p5">
+							<ul id="tree" class="ztree"></ul>
+						</div>
+					</div>
+
+				</aside>
+				<!-- end: .tray-left -->
+
+
+				<!-- begin: .tray-center -->
+				<div class="tray tray-center">
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-visible">
+								<div class="panel-heading">
+									<div class="input-group widget-menu pull-left w250">
+										<input type="text" id="in-name" class="form-control" placeholder="按资源名称搜索..." />
+										<span class="input-group-btn">
+											<button id="btn-query" class="btn btn-default btn-gradient btn-sm">
+												<span class="glyphicon glyphicon-search"></span>
+											</button>
+										</span>
+									</div>
+									<!-- /input-group -->
+									<div class="widget-menu pull-right mr5">
+										<div class="btn-group">
+											<button id="btn-new" class="btn btn-default btn-gradient btn-sm">
+												<span class="fa fa-plus mr3"></span>新增
+											</button>
+											<button id="btn-refresh" class="btn btn-default btn-gradient btn-sm">
+												<span class="fa fa-refresh mr3"></span>刷新
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="panel-body pn">
+									<table id="dt-module" class="table my table-hover ">
+										<thead>
+											<tr>
+												<th>编号</th>
+												<th>资源名称</th>
+												<th>上级资源</th>
+												<th>类型</th>
+												<th>启用</th>
+												<th>URL</th>
+												<th>DOM标识</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 修复左右两栏布局时的bug  breaks used to extend container to demonstrate fixed scrolling capability  -->
+					<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+					<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+					<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+
+					<!-- 新增窗口 -->
+					<div class="modal fade" id="w-new" tabindex="-1" data-backdrop="static">
+						<div class="modal-dialog w650">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h3 class="modal-title">新增资源模块</h3>
+								</div>
+								<div class="modal-body">
+									<form id="fo-new" class="form-horizontal">
+										<div class="form-group">
+											<label class="col-md-2 control-label required">上级资源：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="parent_name" readonly="readonly" />
+											</div>
+											<input type="hidden" name="parent_id" />
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">资源类型：</label>
+											<div class="col-md-10 field">
+												<select name="type" class="basic-single form-control">
+													<option value="1" selected="selected">模块</option>
+													<option value="2">内联页</option>
+													<option value="3">动作事件</option>
+													<option value="4">托管行为</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">资源名称：</label>
+											<div class="col-md-10 field">
+												<input type="text" name="name" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">是否启用：</label>
+											<div class="col-md-10 field">
+												<select name="is_enable" class="basic-single form-control">
+													<option value="1" selected="selected">是</option>
+													<option value="0">否</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">资源路径：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="url" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">图标：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="icon" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">DOM标识：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="dom_id" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">排序号：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="number" value="1" name="sort_no" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">备注：</label>
+											<div class="col-md-10 field">
+												<textarea name="remark" class="form-control textarea-grow" rows="4"></textarea>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" form="fo-new" class="btn btn-sm btn-success btn-gradient">保存</button>
+									<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+
+					<!-- 修改窗口 -->
+					<div class="modal fade" id="w-update" tabindex="-1" data-backdrop="static">
+						<div class="modal-dialog w650">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h3 class="modal-title">修改资源模块</h3>
+								</div>
+								<div class="modal-body">
+									<form id="fo-update" class="form-horizontal">
+									    <input type="hidden" name="id" />
+										<div class="form-group">
+											<label class="col-md-2 control-label required">上级资源：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="parent_name" readonly="readonly" />
+											</div>
+											<input type="hidden" name="parent_id" />
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">资源类型：</label>
+											<div class="col-md-10 field">
+												<select name="type" class="basic-single form-control">
+													<option value="1" >模块</option>
+													<option value="2">内联页</option>
+													<option value="3">动作事件</option>
+													<option value="4">托管行为</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">资源名称：</label>
+											<div class="col-md-10 field">
+												<input type="text" name="name" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">是否启用：</label>
+											<div class="col-md-10 field">
+												<select name="is_enable" class="basic-single form-control">
+													<option value="1">是</option>
+													<option value="0">否</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">资源路径：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="url" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">图标：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="icon" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">DOM标识：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="dom_id" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">排序号：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="number" value="1" name="sort_no" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">备注：</label>
+											<div class="col-md-10 field">
+												<textarea name="remark" class="form-control textarea-grow" rows="4"></textarea>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" form="fo-update" class="btn btn-sm btn-success btn-gradient">保存</button>
+									<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+
+
 				</div>
 
 			</section>
@@ -44,6 +302,7 @@
 
 	<!--/* 公共脚本文件 */-->
 	<th:block th:include="fragments/scripts" />
+	<script src="/theme/vendor/plugins/ztree/js/jquery.ztree.all.min.js"></script>
 
 	<script th:inline="javascript">
 		/*<![CDATA[*/
@@ -53,18 +312,21 @@
 			My.init();
 			/******* 事件监听.start ********/
 			$("#btn-query").on("click", fnQuery);
-			$('#dt-role').on('init.dt', fnQuery);
-			$("#btn-new").on("click", function(e) {
-				$('#w-new').modal();
-				$("#fo-new")[0].reset();
+			$("#btn-new").on("click", fnOpenNew);
+			$('#dt-module').on('init.dt', fnQuery);
+			$("#btn-refresh").on("click", fnRefresh);
+			$("#btn-t-refresh").on("click", fnRefresh);
+			$("#btn-t-expand").on("click", fnToggleTree);
+			$('#dt-module tbody').on('click', 'tr', function() {
+				$(this).toggleClass('selected');
 			});
-			$("#btn-edit").on("click", function(e) {
-				My.alert('修改功能正在完善中...');
-			});
-			$("#btn-del").on("click", function(e) {
-				My.alert('批量删除功能正在完善中...');
+			$('#dt-module tbody').on('dblclick', 'tr', function() {
+				fnShowUpdate($('#dt-module').DataTable().row(this).data());
 			});
 			/******* 事件监听.end ********/
+
+			//初始化部门树
+			loadTree();
 
 			//初始化下拉框
 			$(".basic-single").select2({
@@ -75,44 +337,84 @@
 			});
 
 			//初始化表格
-			$('#dt-role')
+			$('#dt-module')
 					.dataTable(
 							{
 								dom : 'tr<"dt-panelfooter clearfix"lip>',
 								pageLength : 20,
 								lengthMenu : [ [ 10, 20, 50, 200, 500 ], [ 10, 20, 50, 200, 500 ] ],
+								//autoWidth: false,
 								ordering : false,
 								processing : true,
-								serverSide : false, //false：一次查询，客户端分页的模式；true：服务端分页模式
+								serverSide : true, //false：一次查询，客户端分页的模式；true：服务端分页模式
 								deferLoading : 0, //屏蔽初始化后自动加载数据
 								pagingType : "full_numbers",
-								columns : [ {
-									data : "id",
-									width : 60
-								}, {
-									data : "name"
-								}, {
-									data : "type",
-									width : 200
-								}, {
-									data : "is_enable",
-									width : 100
-								}, {
-									data : "create_by",
-									width : 100
-								}, {
-									data : "create_time",
-									width : 200
-								} ],
+								columns : [
+										{
+											data : "id",
+											width : 60
+										},
+										{
+											data : "name",
+											width : 200
+										},
+										{
+											data : "parent_name",
+											width : 200
+										},
+										{
+											data : "type",
+											render : function(data, type, row, meta) {
+												switch (row.type) {
+												case '1':
+													return '模块';
+												case '2':
+													return '内联页';
+												case '3':
+													return '动作事件';
+												case '4':
+													return '托管行为';
+												default:
+													return row.type
+												}
+											},
+											width : 100
+										},
+										{
+											data : "is_enable",
+											render : function(data, type, row, meta) {
+												switch (row.is_enable) {
+												case '0':
+													return '否';
+												case '1':
+													return '是';
+												default:
+													return row.is_enable
+												}
+											},
+											width : 60
+										},
+										{
+											data : "url",
+											width : 300
+										},
+										{
+											data : "dom_id",
+											width : 100
+										},
+										{
+											width : 80,
+											render : function(data, type, row, meta) {
+												var html = "<div class='text-right text-nowrap'><button class='btn btn-success btn-xs btn-gradient mr5' onclick='fnShowUpdate("
+														+ JSON.stringify(row) + ")'>修改</button>";
+												html += "<button class='btn btn-danger btn-xs btn-gradient' onclick='fnDelete("
+														+ JSON.stringify(row) + ")'>删除</button></div>";
+												return html;
+											}
+										} ],
 								columnDefs : [ {
-									targets : [ 6 ],//动作列
-									width : 50,
-									data : {},
-									render : function(row, type, full) {
-										var html = "<div class='text-center'><button class='btn btn-danger btn-xs btn-gradient' onclick='fnDelete("
-												+ JSON.stringify(row) + ")'>删除</button></div>";
-										return html;
-									}
+									"defaultContent" : "",
+									"targets" : "_all"
 								} ],
 							});
 
@@ -120,44 +422,149 @@
 			var validateOptions = {
 				//校验规则
 				rules : {
+					parent_name : {
+						required : true
+					},
 					name : {
-						required : true
-					},
-					is_enable : {
-						required : true
-					},
-					type : {
 						required : true
 					}
 				},
 				//提示信息
 				messages : {
+					parent_name : {
+						required : '上级资源不能为空'
+					},
 					name : {
-						required : '请输入角色名称'
-					},
-					is_enable : {
-						required : '请选择是否启用'
-					},
-					type : {
-						required : '请选择角色类型'
+						required : '请输入资源名称'
 					}
 				}
 			}
 
-			//绑定新增表单校验和提交响应事件
+			//绑定表单校验和提交响应事件
 			My.validate('#fo-new', fnNew, validateOptions);
+			My.validate('#fo-update', fnUpdate, validateOptions);
 
-		});
+			//收缩或展开树
+			function fnToggleTree() {
+				var treeObj = $.fn.zTree.getZTreeObj("tree");
+				var nodes = treeObj.getNodes();
+				if (nodes.length > 0) {
+					if (nodes[0].open) {
+						treeObj.expandAll(false);
+					} else {
+						treeObj.expandAll(true);
+					}
+				}
+			}
+
+		}); /* end onReady */
+
+		//刷新
+		function fnRefresh() {
+			loadTree();
+			setTimeout(function() {
+				fnQuery();
+			}, 200);
+		}
+
+		//加载树
+		function loadTree() {
+			var setting = {
+				view : {
+					showLine : false,
+					selectedMulti : false
+				},
+				data : {
+					simpleData : {
+						enable : true
+					}
+				},
+				callback : {
+					onClick : fnQuery
+				}
+			};
+			$.ajax({
+				type : 'post',
+				url : 'listModuleTree',
+				success : function(data) {
+					var tree = $.fn.zTree.init($("#tree"), setting, data);
+					tree.expandAll(true);
+				}
+			});
+		}
 
 		//查询列表
 		function fnQuery() {
+			var data = {};
+			data.name = $("#in-name").val();
+			var treeObj = $.fn.zTree.getZTreeObj("tree");
+			if (treeObj) {
+				var nodes = treeObj.getSelectedNodes();
+				if (nodes.length > 0) {
+					data.parent_id = nodes[0].id;
+				}
+			}
 			var ajax = {
 				url : "list",
 				type : "POST",
-				data : My.params('#fo_query')
+				data : data
 			}
-			$('#dt-role').DataTable().settings()[0].ajax = ajax;
-			$('#dt-role').DataTable().ajax.reload();
+			$('#dt-module').DataTable().settings()[0].ajax = ajax;
+			$('#dt-module').DataTable().ajax.reload();
+		}
+
+		//弹出修改窗口
+		function fnShowUpdate(row) {
+			$.ajax({
+				type : 'post',
+				url : 'get',
+				data : row,
+				success : function(data) {
+					data.parent_name = row.parent_name == null ? "无" : row.parent_name;
+					$('#w-update').modal();
+					$("#fo-update")[0].reset();
+					$("#fo-update").setForm(data);
+				}
+			});
+		}
+
+		//保存更新
+		function fnUpdate() {
+			$.ajax({
+				type : 'post',
+				url : 'update',
+				data : My.params('#fo-update'),
+				success : function(data) {
+					if (data.code == '1') {
+						My.alert(data.msg);
+						$('#w-update').modal('hide');
+						fnQuery();
+					} else {
+						My.alert(data.msg);
+					}
+				}
+			});
+		}
+
+		//打开新增窗口
+		function fnOpenNew(e) {
+			$('#w-new').modal();
+			$("#fo-new")[0].reset();
+			var treeObj = $.fn.zTree.getZTreeObj("tree");
+			var nodes = treeObj.getSelectedNodes();
+			if (nodes.length == 0) {
+				var all = treeObj.getNodes();
+				if (all.length > 0) {
+					treeObj.selectNode(all[0]);
+					fnQuery();
+				}
+			}
+			nodes = treeObj.getSelectedNodes();
+			if (nodes.length > 0) {
+				$("#fo-new [name='parent_name']").val(nodes[0].name);
+				$("#fo-new [name='parent_id']").val(nodes[0].id);
+			}
+
 		}
 
 		//保存
@@ -170,7 +577,8 @@
 					if (data.code == '1') {
 						My.alert(data.msg);
 						$('#w-new').modal('hide');
-						fnQuery();
+						$('#dt-module').DataTable().ajax.reload();
+						loadTree();
 					} else {
 						My.alert(data.msg);
 					}
@@ -180,15 +588,20 @@
 
 		//删除
 		function fnDelete(row) {
-			My.confirm('确认删除当前角色吗？', 'small', function(result) {
+			My.confirm('确认删除当前资源吗？', 'small', function(result) {
 				if (result) {
 					$.ajax({
 						type : 'post',
 						url : 'delete',
 						data : row,
 						success : function(data) {
-							My.alert(data.msg);
-							fnQuery();
+							if (data.code == '1') {
+								My.alert(data.msg);
+								loadTree();
+								$('#dt-module').DataTable().ajax.reload();
+							} else {
+								My.alert(data.msg);
+							}
 						}
 					});
 				}
