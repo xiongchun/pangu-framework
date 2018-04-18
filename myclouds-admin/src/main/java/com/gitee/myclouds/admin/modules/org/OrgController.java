@@ -86,7 +86,7 @@ public class OrgController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "listOrgTree",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@RequestMapping(value = "listOrgTree",method = { RequestMethod.POST}, produces = "application/json")
 	public String listOrgTree(@RequestParam Map<String,Object> inMap){
 		return orgService.listOrgTree(Dtos.newDto(inMap));
 	}
