@@ -30,9 +30,20 @@ public class ModuleController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "list",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@RequestMapping(value = "list",method = { RequestMethod.POST}, produces = "application/json")
 	public String list(@RequestParam Map<String,Object> inMap){
 		return moduleService.list(Dtos.newDto(inMap));
+	}
+	
+	/**
+	 * 查询实体
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "get",method = { RequestMethod.POST }, produces = "application/json")
+	public String get(@RequestParam Integer id){
+		return moduleService.get(id);
 	}
 	
 	/**
@@ -47,6 +58,17 @@ public class ModuleController {
 	}
 	
 	/**
+	 * 修改
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "update",method = { RequestMethod.POST}, produces = "application/json")
+	public Dto update(@RequestParam Map<String,Object> inMap){
+		return moduleService.update(Dtos.newDto(inMap));
+	}
+	
+	/**
 	 * 删除
 	 * 
 	 * @param inMap
@@ -55,6 +77,17 @@ public class ModuleController {
 	@RequestMapping(value = "delete",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto delete(@RequestParam Map<String,Object> inMap){
 		return moduleService.delete(Dtos.newDto(inMap));
+	}
+	
+	/**
+	 *查询资源树
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "listModuleTree",method = { RequestMethod.POST}, produces = "application/json")
+	public String listOrgTree(@RequestParam Map<String,Object> inMap){
+		return moduleService.listModuleTree(Dtos.newDto(inMap));
 	}
 	
 }
