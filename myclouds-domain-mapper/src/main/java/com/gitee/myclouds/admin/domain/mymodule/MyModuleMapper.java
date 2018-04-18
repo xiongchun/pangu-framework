@@ -8,14 +8,14 @@ import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.admin.domain.mymodule.MyModuleEntity;
 
 /**
- * <b>功能模块表[my_module]数据访问接口</b>
+ * <b>模块事件注册表[my_module]数据访问接口</b>
  * 
  * <p>
  * 注意:此文件由MyClouds平台自动生成-禁止手工修改
  * </p>
  * 
  * @author myclouds team
- * @date 2018-03-13 10:49:15
+ * @date 2018-04-17 16:46:16
  */
 @Mapper
 public interface MyModuleMapper {
