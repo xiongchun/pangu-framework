@@ -75,6 +75,9 @@
 											<button id="btn-new" class="btn btn-default btn-gradient btn-sm">
 												<span class="fa fa-plus mr3"></span>新增
 											</button>
+											<button id="btn-sync" class="btn btn-default btn-gradient btn-sm">
+											    <span class="fa fa-exchange mr3"></span>同步缓存
+										    </button>
 											<button id="btn-refresh" class="btn btn-default btn-gradient btn-sm">
 												<span class="fa fa-refresh mr3"></span>刷新
 											</button>
@@ -315,6 +318,7 @@
 			$("#btn-new").on("click", fnOpenNew);
 			$('#dt-module').on('init.dt', fnQuery);
 			$("#btn-refresh").on("click", fnRefresh);
+			$("#btn-sync").on("click", syncCache);
 			$("#btn-t-refresh").on("click", fnRefresh);
 			$("#btn-t-expand").on("click", fnToggleTree);
 			$('#dt-module tbody').on('click', 'tr', function() {
@@ -536,9 +540,10 @@
 				data : My.params('#fo-update'),
 				success : function(data) {
 					if (data.code == '1') {
+						loadTree();
+						fnQuery();
 						My.alert(data.msg);
 						$('#w-update').modal('hide');
-						fnQuery();
 					} else {
 						My.alert(data.msg);
 					}
@@ -600,12 +605,37 @@
 								loadTree();
 								$('#dt-module').DataTable().ajax.reload();
 							} else {
-								My.alert(data.msg);
+								My.alert(data.msg, null);
 							}
 						}
 					});
 				}
 			});
+		}
+		
+		//缓存同步
+		function syncCache() {
+			My.confirm(
+							'<span class="text-danger">请知晓当前操作的必要性和重要性再继续。确认批量同步缓存吗？</span><hr class="mv10 br-lighter"><span class="label label-xs label-info p2"><i class="fa fa-meh-o"></i> 提示</span> 页面上的维护操作，数据已自动同步缓存。',
+							null,
+							function(result) {
+								if (result) {
+									$.ajax({
+										type : 'post',
+										data : {
+											type : 'enum'
+										},
+										url : '/sys/cache/cacheModules',
+										success : function(data) {
+											if (data.code == '1') {
+												My.alert(data.msg);
+											} else {
+												My.alert(data.msg);
+											}
+										}
+									});
+								}
+							});
 		}
 
 		/*]]>*/
