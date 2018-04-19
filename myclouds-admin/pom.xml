@@ -113,6 +113,7 @@
 			<artifactId>druid-spring-boot-starter</artifactId>
 			<version>1.1.9</version>
 		</dependency>
+		 
 
 	</dependencies>
 
@@ -127,14 +128,18 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<resources>
+ 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
 				<includes>
 					<include>**/*.xml</include>
+					<include>**/*.java</include>
 				</includes>
 			</resource>
-		</resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources> 
 	</build>
 
 	<repositories>
