@@ -37,4 +37,17 @@ public class CacheController {
 		return Dtos.newDto(cacheService.syncCfgCache(inDto));
 	}
 	
+	/**
+	 * 初始或刷新全局模块菜单缓存
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "cacheModules", method = { RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Dto cacheModules(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(cacheService.cacheModules(inDto));
+	}
+	
 }
