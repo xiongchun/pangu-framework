@@ -25,4 +25,12 @@ public interface CacheService {
 	 */
 	@RequestMapping(value = "/cache/syncCfgCache",method = RequestMethod.POST)
 	Map<String, Object> syncCfgCache(@RequestParam("inDto") Map<String,Object> inDto);
+	
+	/**
+	 * 初始或刷新全局模块菜单缓存
+	 * @param inDto
+	 * @return
+	 */
+	@RequestMapping(value = "/cache/cacheModules",method = RequestMethod.POST)
+	Map<String, Object> cacheModules(@RequestParam("inDto") Map<String,Object> inDto);
 }
