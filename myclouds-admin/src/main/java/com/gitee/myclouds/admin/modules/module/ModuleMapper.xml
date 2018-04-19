@@ -60,5 +60,12 @@
 			</where>
          ORDER BY parent_id, sort_no
 	</select>
+	
+	<!-- 统计直系子节点个数 -->
+	<select id="countSubModules" parameterType="Integer" resultType="Integer">
+		SELECT
+		count(1) AS cnt
+		FROM my_module WHERE parent_id = #{parent_id}
+	</select>
 
 </mapper>
