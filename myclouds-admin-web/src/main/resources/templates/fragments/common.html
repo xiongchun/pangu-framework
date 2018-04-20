@@ -105,6 +105,21 @@
 <!-- /.modal -->
 <!--End：ERROR Window -->
 
+<script type="text/javascript">
+//模块路径工具栏上的时钟显示
+var myTimeFlag = 0;
+setInterval(
+		function(){
+			var tip = new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());
+			if(myTimeFlag == 0){
+				tip = '<div class="animated fadeIn">' +tip + '</div>';
+			}else{
+				tip = '<div>' +tip + '</div>';
+			}
+			$('#id-mytime').html(tip);
+			myTimeFlag = 1;
+		},1000);
+</script>
 
 <!-- Start: Script -->
 <script type="text/javascript">
@@ -191,7 +206,6 @@
 
 		//绑定新增表单校验和提交响应事件
 		My.validate('#fo-pwd', fnUpdatePwd, validatePwd);
-
 	});
 </script>
 <!-- End: Script -->
@@ -215,18 +229,6 @@
 			var zIndex = 1040 + (10 * $('.modal:visible').length);
 			$(this).css('z-index', zIndex);
 		});
-
-		//显示系统时钟
-		var myTimeFlag = 0;
-		setInterval(
-				function(){
-					var tip = new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());
-					if(myTimeFlag == 0){
-						tip = '<div class="animated fadeIn">' +tip + '</div>';
-					}
-					$('#id-mytime').html(tip);
-					myTimeFlag = 1;
-				},1000);
 		
 	});
 </script>
