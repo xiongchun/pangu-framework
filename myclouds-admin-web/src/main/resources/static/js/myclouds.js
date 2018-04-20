@@ -13,6 +13,11 @@ var My = function() {
 	 * 初始化
 	 */
 	function init(options){
+		doLeftAsideTheme();
+	}
+	
+	//左侧导航栏的主题设定
+	function doLeftAsideTheme(){
 		//当前页面所属功能模块的模块ID
 		var mid = $('#my-mid').val();
 		if(typeof(mid) !== "undefined" && mid !== ''){
@@ -34,8 +39,6 @@ var My = function() {
 				
 			}
 		};
-		//TODO 其它初始化任务
-		
 	}
 
 	/**
