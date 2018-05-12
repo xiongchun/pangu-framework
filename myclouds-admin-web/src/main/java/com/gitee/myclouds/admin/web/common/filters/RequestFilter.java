@@ -57,6 +57,6 @@ public class RequestFilter implements Filter{
 		String sessionId = httpServletRequest.getRequestedSessionId();
 		sessionId = sessionId == null ? StringUtils.EMPTY : sessionId;
 		String clirntIp = WebCxt.getClientIpAddr(httpServletRequest);
-		logger.info("IP:{} | SESSION:{} | URI:{}", clirntIp, sessionId, uri);
+		logger.info("收到请求 > IP:{} | SESSION:{} | URI:{}", clirntIp, sessionId, uri);
 	}
 }
