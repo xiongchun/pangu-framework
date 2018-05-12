@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50628
 File Encoding         : 65001
 
-Date: 2018-04-18 22:03:14
+Date: 2018-05-02 22:11:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -73,12 +73,12 @@ INSERT INTO `my_module` VALUES ('1', '0', '上海嘉靖银行', '', '1', '', '',
 INSERT INTO `my_module` VALUES ('2', '1', '首页', '/', '1', null, 'glyphicon glyphicon-home', '1', '1', null);
 INSERT INTO `my_module` VALUES ('3', '1', '系统管理', null, '1', null, 'glyphicons glyphicons-settings', '1', '2', null);
 INSERT INTO `my_module` VALUES ('4', '3', '键值参数管理', 'sys/param/init', '1', null, 'glyphicons glyphicons-share_alt', '1', '1', null);
-INSERT INTO `my_module` VALUES ('5', '3', '枚举类型管理', 'sys/enums/init', '1', null, 'glyphicons glyphicons-list', '1', '2', null);
-INSERT INTO `my_module` VALUES ('6', '3', '资源模块管理', 'sys/module/init', '1', null, 'glyphicons glyphicons-snowflake', '1', '3', null);
-INSERT INTO `my_module` VALUES ('7', '3', '组织机构管理', 'sys/org/init', '1', null, 'glyphicons glyphicons-building', '1', '4', null);
+INSERT INTO `my_module` VALUES ('5', '3', '枚举类型管理', 'sys/enums/init', '1', '', 'glyphicons glyphicons-list', '1', '2', '');
+INSERT INTO `my_module` VALUES ('6', '3', '资源模块管理', 'sys/module/init', '1', '', 'glyphicons glyphicons-snowflake', '1', '3', '');
+INSERT INTO `my_module` VALUES ('7', '3', '组织机构管理', 'sys/org/init', '1', '', 'glyphicons glyphicons-building', '1', '4', '');
 INSERT INTO `my_module` VALUES ('8', '3', '用户与授权管理', 'sys/user/init', '1', null, 'glyphicons glyphicons-user', '1', '5', null);
-INSERT INTO `my_module` VALUES ('9', '3', '角色与授权管理', 'sys/role/init', '1', null, 'glyphicons glyphicons-direction', '1', '6', null);
-INSERT INTO `my_module` VALUES ('50', '1', '参考范例', null, '1', null, 'glyphicons glyphicons-more_windows', '1', '20', null);
+INSERT INTO `my_module` VALUES ('9', '3', '角色与授权管理', 'sys/role/init', '1', '', 'glyphicons glyphicons-direction', '1', '6', '');
+INSERT INTO `my_module` VALUES ('50', '1', '参考范例', '', '1', '', 'glyphicons glyphicons-more_windows', '1', '20', '');
 INSERT INTO `my_module` VALUES ('51', '50', '表单输入', null, '1', null, 'glyphicons glyphicons-chevron-right', '1', '1', null);
 
 -- ----------------------------

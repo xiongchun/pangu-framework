@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.gitee.myclouds.toolbox.session.data.CurUser;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.impl.HashDto;
@@ -45,6 +47,32 @@ public class WebCxt {
 	public static CurUser getCurUser(HttpSession httpSession) {
 		CurUser curUser = (CurUser)httpSession.getAttribute(MyCons.CUR_USER);
 		return curUser;
+	}
+	
+	/**
+	 * 获取登录用户IP地址
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static String getClientIpAddr(HttpServletRequest request) {
+		String ip = request.getHeader("X-real-ip");
+		if (MyUtil.isEmpty(ip)) {
+			ip = request.getHeader("X-Forward-For");
+		}
+		if (MyUtil.isEmpty(ip) || StringUtils.equalsIgnoreCase("unknown", ip)) {
+			ip = request.getHeader("Proxy-Client-IP");
+		}
+		if (MyUtil.isEmpty(ip) || StringUtils.equalsIgnoreCase("unknown", ip)) {
+			ip = request.getHeader("WL-Proxy-Client-IP");
+		}
+		if (MyUtil.isEmpty(ip)) {
+			ip = request.getRemoteAddr();
+		}
+		if (StringUtils.indexOf(ip, "0:0") != -1) {
+			ip = "127.0.0.1";
+		}
+		return ip;
 	}
 	
 }

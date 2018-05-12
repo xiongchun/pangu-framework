@@ -23,7 +23,7 @@ public class StartAdminWebApplication {
     public FilterRegistrationBean  regRequestFilter() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();  
         filterRegistrationBean.setFilter(new RequestFilter());
-        filterRegistrationBean.setOrder(1);
+        filterRegistrationBean.setOrder(1); //过滤链执行顺序
         return filterRegistrationBean;  
     } 
 	
@@ -31,7 +31,7 @@ public class StartAdminWebApplication {
     public FilterRegistrationBean  regAuthFilter() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();  
         filterRegistrationBean.setFilter(new LoginFilter());
-        filterRegistrationBean.setOrder(2);
+        filterRegistrationBean.setOrder(2); //过滤链执行顺序
         return filterRegistrationBean;  
     }  
 	
