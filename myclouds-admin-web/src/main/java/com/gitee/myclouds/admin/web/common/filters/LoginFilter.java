@@ -42,7 +42,6 @@ public class LoginFilter implements Filter {
 	/**
 	 * 过滤器处理流程
 	 * 
-	 * //TODO 考虑是否排除静态资源的请求拦截处理
 	 */
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
