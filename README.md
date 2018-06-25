@@ -4,6 +4,3 @@ MyClouds是一个基于成熟软件项目研发方法论和SpringCloud生态圈�
 #### [:fa-book: MyClouds开发文档](https://gitee.com/osworks/MyClouds/tree/master/docs)
 
 #### [:fa-rocket: MyClouds在线演示](http://118.126.108.44)
-
-####  :fa-wechat: 微信交流群
-![输入图片说明](https://gitee.com/uploads/images/2018/0625/204813_c411c983_431745.png "2018-06-25_204655.png")
