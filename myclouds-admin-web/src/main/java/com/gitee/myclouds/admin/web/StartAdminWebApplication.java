@@ -7,6 +7,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
+import com.gitee.myclouds.admin.web.common.filters.AuthFilter;
 import com.gitee.myclouds.admin.web.common.filters.LoginFilter;
 import com.gitee.myclouds.admin.web.common.filters.RequestFilter;
 
@@ -20,19 +21,27 @@ public class StartAdminWebApplication {
 	}
 	
 	@Bean  
-    public FilterRegistrationBean  regRequestFilter() {
+    public FilterRegistrationBean  requestFilter() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();  
         filterRegistrationBean.setFilter(new RequestFilter());
-        filterRegistrationBean.setOrder(1); //过滤链执行顺序
+        filterRegistrationBean.setOrder(1);
         return filterRegistrationBean;  
     } 
 	
 	@Bean  
-    public FilterRegistrationBean  regAuthFilter() {
+    public FilterRegistrationBean  loginFilter() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();  
         filterRegistrationBean.setFilter(new LoginFilter());
-        filterRegistrationBean.setOrder(2); //过滤链执行顺序
+        filterRegistrationBean.setOrder(2);
         return filterRegistrationBean;  
-    }  
+    } 
+	
+	@Bean  
+    public FilterRegistrationBean  AuthFilter() {
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();  
+        filterRegistrationBean.setFilter(new AuthFilter());
+        filterRegistrationBean.setOrder(3);
+        return filterRegistrationBean;  
+    }
 	
 }

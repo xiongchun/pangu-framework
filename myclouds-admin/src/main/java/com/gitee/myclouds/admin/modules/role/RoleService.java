@@ -12,6 +12,7 @@ import com.gitee.myclouds.admin.domain.myrole.MyRoleEntity;
 import com.gitee.myclouds.admin.domain.myrole.MyRoleMapper;
 import com.gitee.myclouds.admin.domain.myrolemodule.MyRoleModuleEntity;
 import com.gitee.myclouds.admin.domain.myrolemodule.MyRoleModuleMapper;
+import com.gitee.myclouds.admin.modules.cache.CacheAuthService;
 import com.gitee.myclouds.common.web.vo.ZTreeNodeVO;
 import com.gitee.myclouds.toolbox.session.data.CurUser;
 import com.gitee.myclouds.toolbox.util.MyCons;
@@ -34,6 +35,8 @@ public class RoleService {
 	private MyRoleModuleMapper myRoleModuleMapper;
 	@Autowired
 	private SqlSession sqlSession;
+	@Autowired
+	private CacheAuthService cacheAuthService;
 	
 	/**
 	 * 查询
@@ -150,6 +153,8 @@ public class RoleService {
 				myRoleModuleMapper.insert(myRoleModuleEntity);
 			}
 		}
+		//刷缓存
+		cacheAuthService.cacheOrRefreshRoleAuthToSet(roleId);
 		return Dtos.newDto().put2("code", "1").put2("msg", "角色授权成功");
 	}
 	

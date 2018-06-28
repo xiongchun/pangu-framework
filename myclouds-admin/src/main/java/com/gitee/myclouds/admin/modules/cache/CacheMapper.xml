@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 缓存模块SQL映射 -->
+<mapper namespace="sql.cache">
+	
+	<!-- 根据角色ID查询授权url集合 -->
+	<select id="listRoleAuthUrls" parameterType="Integer" resultType="String">
+		SELECT DISTINCT url FROM my_module WHERE url != '' AND id IN(
+	        SELECT module_id FROM my_role_module WHERE role_id = #{role_id} AND grant_type = 1)
+	</select>
+
+</mapper>

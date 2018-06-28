@@ -14,7 +14,6 @@
 				  t1.type,
 				  t1.url,
 				  t1.is_enable,
-				  t1.dom_id,
 				  t1.sort_no,
 		          (SELECT name from my_module where id = t1.parent_id) AS parent_name
 		FROM my_module t1

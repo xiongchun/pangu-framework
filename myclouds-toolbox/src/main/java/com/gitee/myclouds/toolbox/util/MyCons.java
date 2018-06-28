@@ -41,7 +41,8 @@ public class MyCons {
 		MyParam("myparam", "键值参数缓存Key的前缀"), 
 		MyEnum("myenum", "枚举参数缓存Key的前缀"),
 		MyModule("mymodule", "模块菜单缓存Key"),
-		LastCacheTime("lastcachetime", "最后一次缓存对象插入时间Key");
+		LastCacheTime("lastcachetime", "最后一次缓存对象插入时间Key"),
+		RoleAuth("roleauth", "角色授权对象前缀");
 
 		private CacheKeyOrPrefix(String value, String name) {
 			this.value = value;

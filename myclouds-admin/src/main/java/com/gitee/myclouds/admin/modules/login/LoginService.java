@@ -1,6 +1,9 @@
 package com.gitee.myclouds.admin.modules.login;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +26,8 @@ public class LoginService {
 
 	@Autowired
 	private MyUserMapper myUserMapper;
+	@Autowired
+	private SqlSession sqlSession;
 	
 	/**
 	 * 用户登录验证
@@ -47,6 +52,9 @@ public class LoginService {
 			curUser.setName(myUserEntity.getName());
 			curUser.setOrgId(myUserEntity.getOrg_id());
 			outDto.put("curUser", curUser);
+			//--------获取用户所属角色ID集合
+			List<String> roleIds = sqlSession.selectList("sql.login.selectRoleIdsByUserId", myUserEntity.getId());
+			outDto.put("roleIds", roleIds);
 		}
 		return  outDto;
 	}

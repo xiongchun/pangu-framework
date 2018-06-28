@@ -77,6 +77,9 @@
 										<button id="btn-new" class="btn btn-default btn-gradient btn-sm">
 											<span class="fa fa-plus mr3"></span>新增
 										</button>
+										<button id="btn-sync" class="btn btn-default btn-gradient btn-sm">
+											    <span class="fa fa-exchange mr3"></span>同步缓存
+										 </button>
 										<button id="btn-refresh" class="btn btn-default btn-gradient btn-sm">
 											<span class="fa fa-refresh mr3"></span>刷新
 										</button>
@@ -284,6 +287,7 @@
 			$("#btn-refresh").on("click", fnQuery);
 			$("#btn-grant").on("click", fnGrant);
 			$("#btn-select").on("click", fnSelect);
+			$("#btn-sync").on("click", syncCache);
 			$('#dt-role tbody').on('click', 'tr', function() {
 				$(this).toggleClass('selected');
 			});
@@ -555,6 +559,28 @@
 
 		}
 
+		//缓存同步
+		function syncCache() {
+			My.confirm(
+							'<span class="text-danger">请知晓当前操作的必要性和重要性再继续。确认批量同步缓存吗？</span><hr class="mv10 br-lighter"><span class="label label-xs label-info p2"><i class="fa fa-meh-o"></i> 提示</span> 页面上的授权操作，数据已自动同步缓存。',
+							null,
+							function(result) {
+								if (result) {
+									$.ajax({
+										type : 'post',
+										url : '/sys/cache/cacheRolesAuth',
+										success : function(data) {
+											if (data.code == '1') {
+												My.alert(data.msg);
+											} else {
+												My.alert(data.msg);
+											}
+										}
+									});
+								}
+							});
+		}
+		
 		/*]]>*/
 	</script>
 

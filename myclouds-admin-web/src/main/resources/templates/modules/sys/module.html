@@ -134,10 +134,8 @@
 											<label class="col-md-2 control-label required">资源类型：</label>
 											<div class="col-md-10 field">
 												<select name="type" class="basic-single form-control">
-													<option value="1" selected="selected">模块</option>
-													<option value="2">内联页</option>
-													<option value="3">动作事件</option>
-													<option value="4">托管行为</option>
+													<option value="1" selected="selected">模块菜单</option>
+													<option value="2">请求事件</option>
 												</select>
 											</div>
 										</div>
@@ -223,10 +221,8 @@
 											<label class="col-md-2 control-label required">资源类型：</label>
 											<div class="col-md-10 field">
 												<select name="type" class="basic-single form-control">
-													<option value="1" >模块</option>
-													<option value="2">内联页</option>
-													<option value="3">动作事件</option>
-													<option value="4">托管行为</option>
+													<option value="1" >模块菜单</option>
+													<option value="2">请求事件</option>
 												</select>
 											</div>
 										</div>
@@ -360,7 +356,7 @@
 										},
 										{
 											data : "name",
-											width : 200
+											width : 250
 										},
 										{
 											data : "parent_name",
@@ -371,13 +367,9 @@
 											render : function(data, type, row, meta) {
 												switch (row.type) {
 												case '1':
-													return '模块';
+													return '模块菜单';
 												case '2':
-													return '内联页';
-												case '3':
-													return '动作事件';
-												case '4':
-													return '托管行为';
+													return '请求事件';
 												default:
 													return row.type
 												}

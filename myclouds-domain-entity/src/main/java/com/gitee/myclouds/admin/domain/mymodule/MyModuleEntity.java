@@ -3,13 +3,13 @@ package com.gitee.myclouds.admin.domain.mymodule;
 import com.gitee.myclouds.toolbox.wrap.Entity;
 
 /**
- * <b>模块事件注册表[my_module]数据实体对象</b>
+ * <b>资源模块事件注册表[my_module]数据实体对象</b>
  * <p>
  * 注意:此文件由MyClouds平台自动生成-禁止手工修改。
  * </p>
  * 
  * @author myclouds team
- * @date 2018-04-17 16:46:46
+ * @date 2018-06-28 22:47:58
  */
 public class MyModuleEntity extends Entity {
 
@@ -35,10 +35,6 @@ public class MyModuleEntity extends Entity {
 	 * 类型
 	 */
 	private String type;	
-	/**
-	 * DOM ID
-	 */
-	private String dom_id;	
 	/**
 	 * 图标
 	 */
@@ -110,15 +106,6 @@ public class MyModuleEntity extends Entity {
 	 */
 	public String getType() {
 		return type;
-	}
-	
-	/**
-	 * DOM ID
-	 * 
-	 * @return dom_id
-	 */
-	public String getDom_id() {
-		return dom_id;
 	}
 	
 	/**
@@ -201,15 +188,6 @@ public class MyModuleEntity extends Entity {
 	 */
 	public void setType(String type) {
 		this.type = type;
-	}
-	
-	/**
-	 * DOM ID
-	 * 
-	 * @param dom_id
-	 */
-	public void setDom_id(String dom_id) {
-		this.dom_id = dom_id;
 	}
 	
 	/**

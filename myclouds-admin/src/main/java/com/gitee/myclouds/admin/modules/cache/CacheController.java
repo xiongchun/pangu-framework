@@ -25,9 +25,11 @@ public class CacheController {
 	private CacheCfgService cacheCfgService;
 	@Autowired
 	private CacheMiscService cacheMiscService;
+	@Autowired
+	private CacheAuthService cacheAuthService;
 	
 	/**
-	 * 同步配置类缓存
+	 * 同步配置类缓存(键值|枚举)
 	 * 
 	 * @param inMap
 	 * @return
@@ -38,7 +40,7 @@ public class CacheController {
 	}
 	
 	/**
-	 * 初始或刷新全局模块菜单缓存
+	 * 刷新全局模块菜单缓存
 	 * 
 	 * @param inMap
 	 * @return
@@ -46,6 +48,17 @@ public class CacheController {
 	@RequestMapping(value = "cacheModules",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto cacheModules(@RequestParam Map<String,Object> inMap){
 		return cacheMiscService.cacheModules();
+	}
+	
+	/**
+	 * 刷新所有角色授权数据缓存
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "cacheRolesAuth",method = { RequestMethod.POST}, produces = "application/json")
+	public Dto cacheRolesAuth(@RequestParam Map<String,Object> inMap){
+		return cacheAuthService.cacheOrRefreshAllRolesAuthToSet();
 	}
 	
 }

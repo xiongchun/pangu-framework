@@ -8,13 +8,13 @@ import com.gitee.myclouds.toolbox.util.MyCons;
 import com.gitee.myclouds.toolbox.util.MyUtil;
 
 /**
- * 缓存服务
+ * 系统启动时的缓存服务
  * 
  * @author xiongchun
  *
  */
 @Service
-public class CacheService {
+public class SysInitCacheService {
 
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
@@ -22,13 +22,15 @@ public class CacheService {
 	private CacheCfgService cacheCfgService;
 	@Autowired
 	private CacheMiscService cacheMiscService;
+	@Autowired
+	private CacheAuthService cacheAuthService;
 
 	/**
 	 * 系统启动时的缓存加载逻辑
 	 * 
 	 * <p>只会在缓存服务器中没有检测到已缓存标识Key的情况下才加载缓存。强制刷缓存请使用其他API。
 	 */
-	public void initCacheWhenSysBoot() {
+	public void init() {
 		if (MyUtil.isEmpty(stringRedisTemplate.opsForHash().get(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(),
 				MyCons.CacheKeyOrPrefix.MyParam.getValue()))) {
 			cacheCfgService.initCacheParams();
@@ -40,6 +42,10 @@ public class CacheService {
 		if (MyUtil.isEmpty(stringRedisTemplate.opsForHash().get(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(),
 				MyCons.CacheKeyOrPrefix.MyModule.getValue()))) {
 			cacheMiscService.cacheModules();
+		}
+		if (MyUtil.isEmpty(stringRedisTemplate.opsForHash().get(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(),
+				MyCons.CacheKeyOrPrefix.RoleAuth.getValue()))) {
+			cacheAuthService.cacheOrRefreshAllRolesAuthToSet();
 		}
 	}
 }

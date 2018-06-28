@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.gitee.myclouds.admin.modules.cache.CacheService;
+import com.gitee.myclouds.admin.modules.cache.SysInitCacheService;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -19,8 +19,8 @@ public class StartAdminApplication {
 	
 	public static void main(String[] args) throws Exception {
 		ConfigurableApplicationContext  context = SpringApplication.run(StartAdminApplication.class, args);
-		CacheService cacheService = context.getBean(CacheService.class);
-		cacheService.initCacheWhenSysBoot();
+		SysInitCacheService cacheService = context.getBean(SysInitCacheService.class);
+		cacheService.init();
 	}
 
 }

@@ -115,7 +115,7 @@ public class ModuleService {
 	 * @return
 	 */
 	public String listModuleTree(Dto inDto) {
-		String[] types = {"1","2"};
+		String[] types = {"1"};
 		inDto.put("types", Arrays.asList(types));
 		List<ZTreeNodeVO> zTreeNodeVOs = sqlSession.selectList("sql.module.listModuleTree", inDto);
 		return JSON.toJSONString(zTreeNodeVOs);

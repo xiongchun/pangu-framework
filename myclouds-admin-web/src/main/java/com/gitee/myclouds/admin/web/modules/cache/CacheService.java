@@ -27,10 +27,18 @@ public interface CacheService {
 	Map<String, Object> syncCfgCache(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	/**
-	 * 初始或刷新全局模块菜单缓存
+	 * 刷新全局模块菜单缓存
 	 * @param inDto
 	 * @return
 	 */
 	@RequestMapping(value = "/cache/cacheModules",method = RequestMethod.POST)
 	Map<String, Object> cacheModules(@RequestParam("inDto") Map<String,Object> inDto);
+	
+	/**
+	 * 刷新所有角色授权数据缓存
+	 * @param inDto
+	 * @return
+	 */
+	@RequestMapping(value = "/cache/cacheRolesAuth",method = RequestMethod.POST)
+	Map<String, Object> cacheRolesAuth(@RequestParam("inDto") Map<String,Object> inDto);
 }

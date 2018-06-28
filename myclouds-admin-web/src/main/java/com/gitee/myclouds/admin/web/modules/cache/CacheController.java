@@ -38,7 +38,7 @@ public class CacheController {
 	}
 	
 	/**
-	 * 初始或刷新全局模块菜单缓存
+	 * 刷新全局模块菜单缓存
 	 * 
 	 * @param request
 	 * @return
@@ -48,6 +48,19 @@ public class CacheController {
 	public Dto cacheModules(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
 		return Dtos.newDto(cacheService.cacheModules(inDto));
+	}
+	
+	/**
+	 * 刷新所有角色授权数据缓存
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "cacheRolesAuth", method = { RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Dto cacheRolesAuth(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(cacheService.cacheRolesAuth(inDto));
 	}
 	
 }

@@ -68,8 +68,7 @@ public class CacheCfgService {
 			String key = MyCons.CacheKeyOrPrefix.MyParam.getValue() + ":" + myParamEntity.getParam_key();
 			stringRedisTemplate.opsForValue().set(key, myParamEntity.toJson());
 		}
-		stringRedisTemplate.opsForHash().put(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(),
-				MyCons.CacheKeyOrPrefix.MyParam.getValue(), DateUtil.now());
+		stringRedisTemplate.opsForHash().put(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(), MyCons.CacheKeyOrPrefix.MyParam.getValue(), DateUtil.now());
 		log.info("完成键值参数Redis缓存");
 	}
 
@@ -82,8 +81,7 @@ public class CacheCfgService {
 			String key = MyCons.CacheKeyOrPrefix.MyEnum.getValue() + ":" + myEnumEntity.getEnum_key();
 			stringRedisTemplate.opsForHash().put(key, myEnumEntity.getElement_key(), myEnumEntity.toJson());
 		}
-		stringRedisTemplate.opsForHash().put(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(),
-				MyCons.CacheKeyOrPrefix.MyEnum.getValue(), DateUtil.now());
+		stringRedisTemplate.opsForHash().put(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(), MyCons.CacheKeyOrPrefix.MyEnum.getValue(), DateUtil.now());
 		log.info("完成枚举参数Redis缓存");
 	}
 

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 模块事件注册表[my_module]SQL自动映射 -->
-<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-04-17 16:46:16 -->
+<!-- 资源模块事件注册表[my_module]SQL自动映射 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-06-28 22:48:38 -->
 <mapper namespace="com.gitee.myclouds.admin.domain.mymodule.MyModuleMapper">
 	
 	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
@@ -20,9 +20,6 @@
 		</if>
 		<if test="type != null and type != ''">
 	         type, <!-- 类型 -->
-		</if>
-		<if test="dom_id != null and dom_id != ''">
-	         dom_id, <!-- DOM ID -->
 		</if>
 		<if test="icon != null and icon != ''">
 	         icon, <!-- 图标 -->
@@ -49,9 +46,6 @@
 	    </if>
 		<if test="type != null and type != ''">
 	          #{type, jdbcType=VARCHAR}, <!-- 类型 -->
-	    </if>
-		<if test="dom_id != null and dom_id != ''">
-	          #{dom_id, jdbcType=VARCHAR}, <!-- DOM ID -->
 	    </if>
 		<if test="icon != null and icon != ''">
 	          #{icon, jdbcType=VARCHAR}, <!-- 图标 -->
@@ -80,7 +74,6 @@
 		    #{name, jdbcType=VARCHAR},  <!-- 名称 -->
 		    #{url, jdbcType=VARCHAR},  <!-- URL -->
 		    #{type, jdbcType=VARCHAR},  <!-- 类型 -->
-		    #{dom_id, jdbcType=VARCHAR},  <!-- DOM ID -->
 		    #{icon, jdbcType=VARCHAR},  <!-- 图标 -->
 		    #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
 		    #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
@@ -106,9 +99,6 @@
 			</if>
 			<if test="type != null">
 		          type = #{type, jdbcType=VARCHAR},  <!-- 类型 -->
-			</if>
-			<if test="dom_id != null">
-		          dom_id = #{dom_id, jdbcType=VARCHAR},  <!-- DOM ID -->
 			</if>
 			<if test="icon != null">
 		          icon = #{icon, jdbcType=VARCHAR},  <!-- 图标 -->
@@ -214,7 +204,6 @@
 		  name,  <!-- 名称 -->
 		  url,  <!-- URL -->
 		  type,  <!-- 类型 -->
-		  dom_id,  <!-- DOM ID -->
 		  icon,  <!-- 图标 -->
 		  is_enable,  <!-- 是否启用 -->
 		  sort_no,  <!-- 排序号 -->
@@ -228,7 +217,6 @@
 		  my_module.name,  <!-- 名称 -->
 		  my_module.url,  <!-- URL -->
 		  my_module.type,  <!-- 类型 -->
-		  my_module.dom_id,  <!-- DOM ID -->
 		  my_module.icon,  <!-- 图标 -->
 		  my_module.is_enable,  <!-- 是否启用 -->
 		  my_module.sort_no,  <!-- 排序号 -->
@@ -251,9 +239,6 @@
 		</if>
 	    <if test="type != null and type != ''">
 		      AND type = #{type}  <!-- 类型 -->
-		</if>
-	    <if test="dom_id != null and dom_id != ''">
-		      AND dom_id = #{dom_id}  <!-- DOM ID -->
 		</if>
 	    <if test="icon != null and icon != ''">
 		      AND icon = #{icon}  <!-- 图标 -->
@@ -279,9 +264,6 @@
 		</if>
 	    <if test="type != null and type != ''">
 		      AND type like '${type}%'  <!-- 类型 -->
-		</if>
-	    <if test="dom_id != null and dom_id != ''">
-		      AND dom_id like '${dom_id}%'  <!-- DOM ID -->
 		</if>
 	    <if test="icon != null and icon != ''">
 		      AND icon like '${icon}%'  <!-- 图标 -->

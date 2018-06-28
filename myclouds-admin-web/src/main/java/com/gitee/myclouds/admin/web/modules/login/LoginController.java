@@ -1,5 +1,7 @@
 package com.gitee.myclouds.admin.web.modules.login;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -41,6 +43,7 @@ public class LoginController {
 	 * @param httpSession
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "login/go", method = { RequestMethod.POST}, produces = "application/json")
 	@ResponseBody
 	public Dto validate(HttpServletRequest request, HttpSession httpSession) {
@@ -50,6 +53,7 @@ public class LoginController {
 			CurUser curUser = new CurUser();
 			MyUtil.copyProperties(outDto.get("curUser"), curUser);
 			curUser.setSessionId(httpSession.getId());
+			curUser.setRoleIds((List<String>)outDto.get("roleIds"));
 			httpSession.setAttribute(MyCons.CUR_USER, curUser);
 		}
 		return outDto;
