@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2018-06-29 01:19:57
+Date: 2018-06-29 16:19:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,12 +24,12 @@ CREATE TABLE `my_enum` (
   `enum_key` varchar(50) NOT NULL COMMENT '枚举类型KEY',
   `enum_name` varchar(50) NOT NULL COMMENT '枚举类型名称',
   `element_key` varchar(50) NOT NULL COMMENT '枚举元素KEY',
-  `element_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '枚举元素值',
+  `element_value` varchar(100) NOT NULL COMMENT '枚举元素值',
   `is_enable` varchar(2) NOT NULL DEFAULT '1' COMMENT '是否启用',
   `type` varchar(2) NOT NULL COMMENT '所属分类',
   `sort_no` int(4) DEFAULT NULL COMMENT '排序号',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
-  `remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`enum_key`,`element_key`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='枚举类型参数表';
@@ -58,7 +58,7 @@ CREATE TABLE `my_module` (
   `icon` varchar(50) DEFAULT NULL COMMENT '图标',
   `is_enable` varchar(2) NOT NULL COMMENT '是否启用',
   `sort_no` int(10) DEFAULT NULL COMMENT '排序号',
-  `remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   KEY `key1` (`parent_id`,`is_enable`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='资源模块事件注册表';
@@ -130,17 +130,16 @@ CREATE TABLE `my_org` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '流水号',
   `name` varchar(50) NOT NULL COMMENT '组织名称',
   `parent_id` int(10) NOT NULL COMMENT '父节点流水号',
-  `is_folder` varchar(2) DEFAULT NULL COMMENT '是否为树枝节点（停用，维护成本高）',
   `is_expanded` varchar(2) DEFAULT NULL COMMENT '是否自动展开',
-  `icon` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '节点图标',
+  `icon` varchar(50) DEFAULT NULL COMMENT '节点图标',
   `type` varchar(2) NOT NULL COMMENT '组织类型',
   `biz_code` varchar(50) DEFAULT NULL COMMENT '扩展码',
   `sort_no` int(10) DEFAULT NULL COMMENT '排序号',
-  `remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  `ext` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '扩展JSON',
+  `ext` varchar(100) DEFAULT NULL COMMENT '扩展JSON',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_by_id` int(10) NOT NULL COMMENT '创建人ID',
   `create_by` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   KEY `key1` (`parent_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='组织机构表';
@@ -148,18 +147,18 @@ CREATE TABLE `my_org` (
 -- ----------------------------
 -- Records of my_org
 -- ----------------------------
-INSERT INTO `my_org` VALUES ('1', '上海嘉靖银行', '0', null, '1', null, '1', '', '1', '', '', '2018-03-13 09:27:13', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('2', '信息技术部', '1', null, null, null, '1', null, '10', null, null, '2018-03-13 09:28:00', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('3', '小微信贷事业部', '1', null, '1', null, '1', '', '40', '', '', '2018-03-13 09:28:32', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('4', '公司金融事业部', '1', null, '1', null, '1', '', '50', '', '', '2018-03-13 23:24:53', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('5', '昆明盘龙区支行', '4', null, '1', null, '1', '', '10', '', '', '2018-03-13 09:29:41', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('6', '大理古城支行', '4', null, null, null, '1', null, '20', null, null, '2018-03-13 09:30:09', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('7', '全国信销网点', '3', null, null, '', '1', null, '30', null, null, '2018-03-23 10:52:53', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('8', '人力资源部', '1', null, '1', '', '1', '', '20', '', '', '2018-03-27 13:36:58', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('9', '财务结算部', '3', null, null, '', '1', null, '20', null, null, '2018-03-27 13:57:43', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('10', '风险管理部', '3', null, null, '', '1', null, '10', null, null, '2018-03-27 13:58:45', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('11', '苏州营业部', '7', null, null, '', '1', null, '10', null, null, '2018-03-27 14:01:45', '1', '超级用户');
-INSERT INTO `my_org` VALUES ('12', '无锡营业部', '7', null, null, '', '1', null, '20', null, null, '2018-03-27 14:02:27', '1', '超级用户');
+INSERT INTO `my_org` VALUES ('1', '上海嘉靖银行', '0', '1', null, '1', '', '1', '', '2018-03-13 09:27:13', '1', '超级用户', '');
+INSERT INTO `my_org` VALUES ('2', '信息技术部', '1', null, null, '1', null, '10', null, '2018-03-13 09:28:00', '1', '超级用户', null);
+INSERT INTO `my_org` VALUES ('3', '小微信贷事业部', '1', '1', null, '1', '', '40', '', '2018-03-13 09:28:32', '1', '超级用户', '');
+INSERT INTO `my_org` VALUES ('4', '公司金融事业部', '1', '1', null, '1', '', '50', '', '2018-03-13 23:24:53', '1', '超级用户', '');
+INSERT INTO `my_org` VALUES ('5', '昆明盘龙区支行', '4', '1', null, '1', '', '10', '', '2018-03-13 09:29:41', '1', '超级用户', '');
+INSERT INTO `my_org` VALUES ('6', '大理古城支行', '4', null, null, '1', null, '20', null, '2018-03-13 09:30:09', '1', '超级用户', null);
+INSERT INTO `my_org` VALUES ('7', '全国信销网点', '3', null, '', '1', null, '30', null, '2018-03-23 10:52:53', '1', '超级用户', null);
+INSERT INTO `my_org` VALUES ('8', '人力资源部', '1', '1', '', '1', '', '20', '', '2018-03-27 13:36:58', '1', '超级用户', '');
+INSERT INTO `my_org` VALUES ('9', '财务结算部', '3', null, '', '1', null, '20', null, '2018-03-27 13:57:43', '1', '超级用户', null);
+INSERT INTO `my_org` VALUES ('10', '风险管理部', '3', null, '', '1', null, '10', null, '2018-03-27 13:58:45', '1', '超级用户', null);
+INSERT INTO `my_org` VALUES ('11', '苏州营业部', '7', null, '', '1', null, '10', null, '2018-03-27 14:01:45', '1', '超级用户', null);
+INSERT INTO `my_org` VALUES ('12', '无锡营业部', '7', null, '', '1', null, '20', null, '2018-03-27 14:02:27', '1', '超级用户', null);
 
 -- ----------------------------
 -- Table structure for my_param
@@ -169,13 +168,13 @@ CREATE TABLE `my_param` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '流水号',
   `name` varchar(50) NOT NULL COMMENT '参数名称',
   `param_key` varchar(50) NOT NULL COMMENT '参数键',
-  `value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '参数值',
+  `value` varchar(100) DEFAULT NULL COMMENT '参数值',
   `type` varchar(2) DEFAULT NULL COMMENT '所属分类',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
-  `remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`param_key`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='键值参数表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='键值参数表';
 
 -- ----------------------------
 -- Records of my_param
@@ -184,6 +183,8 @@ INSERT INTO `my_param` VALUES ('1', '系统名称', 'sys_logo_name', '嘉靖银�
 INSERT INTO `my_param` VALUES ('2', '系统标题', 'sys_title', 'MyClouds：轻量级微服务治理及快速开发平台', '0', '2018-02-22 12:01:58', '浏览器标题栏');
 INSERT INTO `my_param` VALUES ('3', '系统主题', 'default_theme', 'classic', '0', '2018-02-05 11:20:05', '');
 INSERT INTO `my_param` VALUES ('4', '系统皮肤', 'default_skin', 'blue', '0', '2018-02-05 11:20:34', '');
+INSERT INTO `my_param` VALUES ('5', '是否启用授权过滤器', 'authfilter_is_enable', '1', '0', '2018-06-29 13:55:16', '为保证最高性价比，此参数需要重启admin-server方能生效。可选值：1-启用；0-停用。');
+INSERT INTO `my_param` VALUES ('6', '授权过滤器排除项', 'authfilter_exclude_keys', '/theme/,/js/,/css/,/img/,/login', '0', '2018-06-29 13:56:30', '为保证最高性价比，此参数需要重启admin-server方能生效。');
 
 -- ----------------------------
 -- Table structure for my_role
@@ -194,8 +195,8 @@ CREATE TABLE `my_role` (
   `name` varchar(50) NOT NULL COMMENT '角色名称',
   `is_enable` varchar(2) NOT NULL COMMENT '是否启用',
   `type` varchar(2) NOT NULL COMMENT '角色类型',
-  `remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  `ext` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '扩展字段(JSON)',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
+  `ext` varchar(100) DEFAULT NULL COMMENT '扩展字段(JSON)',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_by_id` int(10) NOT NULL COMMENT '创建人ID',
   `create_by` varchar(50) DEFAULT NULL COMMENT '创建人',
@@ -289,7 +290,7 @@ DROP TABLE IF EXISTS `my_user`;
 CREATE TABLE `my_user` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '流水号',
   `account` varchar(50) NOT NULL COMMENT '用户登录帐号',
-  `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '密码',
+  `password` varchar(50) NOT NULL COMMENT '密码',
   `name` varchar(50) NOT NULL COMMENT '用户姓名',
   `sex` varchar(2) DEFAULT NULL COMMENT '性别',
   `status` varchar(2) NOT NULL COMMENT '用户状态',
@@ -298,13 +299,12 @@ CREATE TABLE `my_user` (
   `email` varchar(50) DEFAULT NULL COMMENT '电子邮件',
   `mobile` varchar(50) DEFAULT NULL COMMENT '联系电话',
   `idno` varchar(18) DEFAULT NULL COMMENT '身份证号',
-  `address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '联系地址(停用)',
   `biz_code` varchar(50) DEFAULT NULL COMMENT '扩展码',
-  `ext` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '扩展JSON',
+  `ext` varchar(100) DEFAULT NULL COMMENT '扩展JSON',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_by_id` int(10) NOT NULL COMMENT '创建人ID',
   `create_by` varchar(50) DEFAULT NULL COMMENT '创建人',
-  `remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`account`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='后台用户基本信息表';
@@ -312,8 +312,8 @@ CREATE TABLE `my_user` (
 -- ----------------------------
 -- Records of my_user
 -- ----------------------------
-INSERT INTO `my_user` VALUES ('1', 'root', 'e191b3d853e8f7a9e638d6082915c1fd', '超级用户', '1', '1', '1', '1', '', '', null, null, '', '', '2018-03-02 17:02:05', '1', '超级用户', '');
-INSERT INTO `my_user` VALUES ('4', 'dev', 'e191b3d853e8f7a9e638d6082915c1fd', '开发者', '3', '1', '1', '2', null, null, null, null, null, null, '2018-04-03 14:18:04', '1', '超级用户', null);
+INSERT INTO `my_user` VALUES ('1', 'root', 'e191b3d853e8f7a9e638d6082915c1fd', '超级用户', '1', '1', '1', '1', '', '', null, '', '', '2018-03-02 17:02:05', '1', '超级用户', '');
+INSERT INTO `my_user` VALUES ('4', 'dev', 'e191b3d853e8f7a9e638d6082915c1fd', '开发者', '3', '1', '1', '2', null, null, null, null, null, '2018-04-03 14:18:04', '1', '超级用户', null);
 
 -- ----------------------------
 -- Table structure for my_user_role

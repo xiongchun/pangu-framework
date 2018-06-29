@@ -1,6 +1,6 @@
 package com.gitee.myclouds.toolbox.util;
 
-import org.apache.commons.lang3.StringUtils;
+import com.xiaoleilu.hutool.util.StrUtil;
 
 /**
  * 过滤器工具类
@@ -12,19 +12,23 @@ public class FilterUtil {
 	/**
 	 * 检查排除列表
 	 * 
-	 * TODO 排除算法后期需要优，这里简单实现一个版本。
-	 * 
 	 * @return
 	 */
 	public static boolean checkExcludes(String uri, String[] excludeKeysArray) {
 		boolean isExclude = false;
 		for (String key : excludeKeysArray) {
-			if (StringUtils.indexOf(StringUtils.lowerCase(uri), StringUtils.lowerCase(key)) > -1) {
+			if (StrUtil.startWithIgnoreCase(uri, key)) {
 				isExclude = true;
-				continue;
+				break;
 			}
 		}
 		return isExclude;
+	}
+	
+	public static void main(String[] args) {
+		String[] excludeKeysArray = {"/login/","/theme"};
+		String uri = "/login";
+		System.out.println(checkExcludes(uri, excludeKeysArray));
 	}
 	
 }

@@ -27,7 +27,6 @@ public class ParamController {
 
 	@RequestMapping("init")
 	public String init(ModelMap map) {
-
 		return "modules/sys/param";
 	}
 

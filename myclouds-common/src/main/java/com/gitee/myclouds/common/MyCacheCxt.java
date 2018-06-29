@@ -66,6 +66,18 @@ public class MyCacheCxt {
 	}
 	
 	/**
+	 * 获取键值参数值
+	 * 
+	 * @param paramKey
+	 * @param defaultValue
+	 * @return
+	 */
+	public String getParamValue(String paramKey, String defaultValue) {
+		String value = getParamValue(paramKey);
+		return MyUtil.isEmpty(value) ? defaultValue : value;
+	}
+	
+	/**
 	 * 获取枚举元素列表
 	 * 
 	 * @param elementKey
@@ -110,6 +122,19 @@ public class MyCacheCxt {
 	public String getEnumElementValue(String enumKey, String elementKey) {
 		MyEnumEntity myEnumEntity = getEnumElement(enumKey, elementKey);
 		return MyUtil.isEmpty(myEnumEntity) ? StringUtils.EMPTY : myEnumEntity.getElement_value();
+	}
+	
+	/**
+	 * 获取枚举元素值
+	 * 
+	 * @param enumKey
+	 * @param elementKey
+	 * @param defaultValue
+	 * @return
+	 */
+	public String getEnumElementValue(String enumKey, String elementKey, String defaultValue) {
+		String value = getEnumElementValue(enumKey, elementKey);
+		return MyUtil.isEmpty(value) ? defaultValue : value;
 	}
 	
 	/**
