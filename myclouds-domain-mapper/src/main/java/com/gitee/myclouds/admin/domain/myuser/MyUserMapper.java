@@ -15,7 +15,7 @@ import com.gitee.myclouds.admin.domain.myuser.MyUserEntity;
  * </p>
  * 
  * @author myclouds team
- * @date 2018-03-13 17:29:12
+ * @date 2018-06-29 16:23:30
  */
 @Mapper
 public interface MyUserMapper {

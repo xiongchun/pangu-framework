@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 后台用户基本信息表[my_user]SQL自动映射 -->
-<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-03-13 17:29:13 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-06-29 16:23:30 -->
 <mapper namespace="com.gitee.myclouds.admin.domain.myuser.MyUserMapper">
 	
 	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
@@ -38,9 +38,6 @@
 		</if>
 		<if test="idno != null and idno != ''">
 	         idno, <!-- 身份证号 -->
-		</if>
-		<if test="address != null and address != ''">
-	         address, <!-- 联系地址 -->
 		</if>
 		<if test="biz_code != null and biz_code != ''">
 	         biz_code, <!-- 扩展码 -->
@@ -92,9 +89,6 @@
 		<if test="idno != null and idno != ''">
 	          #{idno, jdbcType=VARCHAR}, <!-- 身份证号 -->
 	    </if>
-		<if test="address != null and address != ''">
-	          #{address, jdbcType=VARCHAR}, <!-- 联系地址 -->
-	    </if>
 		<if test="biz_code != null and biz_code != ''">
 	          #{biz_code, jdbcType=VARCHAR}, <!-- 扩展码 -->
 	    </if>
@@ -134,7 +128,6 @@
 		    #{email, jdbcType=VARCHAR},  <!-- 电子邮件 -->
 		    #{mobile, jdbcType=VARCHAR},  <!-- 联系电话 -->
 		    #{idno, jdbcType=VARCHAR},  <!-- 身份证号 -->
-		    #{address, jdbcType=VARCHAR},  <!-- 联系地址 -->
 		    #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
 		    #{ext, jdbcType=VARCHAR},  <!-- 扩展JSON -->
 		    #{create_time, jdbcType=TIMESTAMP},  <!-- 创建时间 -->
@@ -180,9 +173,6 @@
 			</if>
 			<if test="idno != null">
 		          idno = #{idno, jdbcType=VARCHAR},  <!-- 身份证号 -->
-			</if>
-			<if test="address != null">
-		          address = #{address, jdbcType=VARCHAR},  <!-- 联系地址 -->
 			</if>
 			<if test="biz_code != null">
 		          biz_code = #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
@@ -323,9 +313,6 @@
 			<if test="idno != null">
 		          idno = #{idno, jdbcType=VARCHAR},  <!-- 身份证号 -->
 			</if>
-			<if test="address != null">
-		          address = #{address, jdbcType=VARCHAR},  <!-- 联系地址 -->
-			</if>
 			<if test="biz_code != null">
 		          biz_code = #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
 			</if>
@@ -373,7 +360,6 @@
 		  email,  <!-- 电子邮件 -->
 		  mobile,  <!-- 联系电话 -->
 		  idno,  <!-- 身份证号 -->
-		  address,  <!-- 联系地址 -->
 		  biz_code,  <!-- 扩展码 -->
 		  ext,  <!-- 扩展JSON -->
 		  create_time,  <!-- 创建时间 -->
@@ -395,7 +381,6 @@
 		  my_user.email,  <!-- 电子邮件 -->
 		  my_user.mobile,  <!-- 联系电话 -->
 		  my_user.idno,  <!-- 身份证号 -->
-		  my_user.address,  <!-- 联系地址 -->
 		  my_user.biz_code,  <!-- 扩展码 -->
 		  my_user.ext,  <!-- 扩展JSON -->
 		  my_user.create_time,  <!-- 创建时间 -->
@@ -438,9 +423,6 @@
 		</if>
 	    <if test="idno != null and idno != ''">
 		      AND idno = #{idno}  <!-- 身份证号 -->
-		</if>
-	    <if test="address != null and address != ''">
-		      AND address = #{address}  <!-- 联系地址 -->
 		</if>
 	    <if test="biz_code != null and biz_code != ''">
 		      AND biz_code = #{biz_code}  <!-- 扩展码 -->
@@ -490,9 +472,6 @@
 		</if>
 	    <if test="idno != null and idno != ''">
 		      AND idno like '${idno}%'  <!-- 身份证号 -->
-		</if>
-	    <if test="address != null and address != ''">
-		      AND address like '${address}%'  <!-- 联系地址 -->
 		</if>
 	    <if test="biz_code != null and biz_code != ''">
 		      AND biz_code like '${biz_code}%'  <!-- 扩展码 -->

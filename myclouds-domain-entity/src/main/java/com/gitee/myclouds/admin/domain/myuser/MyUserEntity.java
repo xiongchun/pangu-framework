@@ -11,7 +11,7 @@ import java.util.Date;
  * </p>
  * 
  * @author myclouds team
- * @date 2018-03-13 17:28:53
+ * @date 2018-06-29 16:23:53
  */
 public class MyUserEntity extends Entity {
 
@@ -61,10 +61,6 @@ public class MyUserEntity extends Entity {
 	 * 身份证号
 	 */
 	private String idno;	
-	/**
-	 * 联系地址
-	 */
-	private String address;	
 	/**
 	 * 扩展码
 	 */
@@ -199,15 +195,6 @@ public class MyUserEntity extends Entity {
 	 */
 	public String getIdno() {
 		return idno;
-	}
-	
-	/**
-	 * 联系地址
-	 * 
-	 * @return address
-	 */
-	public String getAddress() {
-		return address;
 	}
 	
 	/**
@@ -362,15 +349,6 @@ public class MyUserEntity extends Entity {
 	 */
 	public void setIdno(String idno) {
 		this.idno = idno;
-	}
-	
-	/**
-	 * 联系地址
-	 * 
-	 * @param address
-	 */
-	public void setAddress(String address) {
-		this.address = address;
 	}
 	
 	/**

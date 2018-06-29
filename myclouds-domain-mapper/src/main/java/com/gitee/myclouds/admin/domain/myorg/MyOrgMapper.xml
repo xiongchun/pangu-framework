@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 组织机构表[my_org]SQL自动映射 -->
-<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-03-13 17:29:12 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-06-29 16:23:30 -->
 <mapper namespace="com.gitee.myclouds.admin.domain.myorg.MyOrgMapper">
 	
 	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
@@ -14,9 +14,6 @@
 		</if>
 		<if test="parent_id != null">
 	         parent_id, <!-- 父节点流水号 -->
-		</if>
-		<if test="is_folder != null and is_folder != ''">
-	         is_folder, <!-- 是否为树枝节点 -->
 		</if>
 		<if test="is_expanded != null and is_expanded != ''">
 	         is_expanded, <!-- 是否自动展开 -->
@@ -33,9 +30,6 @@
 		<if test="sort_no != null">
 	         sort_no, <!-- 排序号 -->
 		</if>
-		<if test="remark != null and remark != ''">
-	         remark, <!-- 备注 -->
-		</if>
 		<if test="ext != null and ext != ''">
 	         ext, <!-- 扩展JSON -->
 		</if>
@@ -48,6 +42,9 @@
 		<if test="create_by != null and create_by != ''">
 	         create_by, <!-- 创建人 -->
 		</if>
+		<if test="remark != null and remark != ''">
+	         remark, <!-- 备注 -->
+		</if>
 	          id
 		)VALUES(
 		<if test="name != null and name != ''">
@@ -55,9 +52,6 @@
 	    </if>
 		<if test="parent_id != null">
 	          #{parent_id, jdbcType=INTEGER}, <!-- 父节点流水号 -->
-	    </if>
-		<if test="is_folder != null and is_folder != ''">
-	          #{is_folder, jdbcType=VARCHAR}, <!-- 是否为树枝节点 -->
 	    </if>
 		<if test="is_expanded != null and is_expanded != ''">
 	          #{is_expanded, jdbcType=VARCHAR}, <!-- 是否自动展开 -->
@@ -74,9 +68,6 @@
 		<if test="sort_no != null">
 	          #{sort_no, jdbcType=INTEGER}, <!-- 排序号 -->
 	    </if>
-		<if test="remark != null and remark != ''">
-	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
-	    </if>
 		<if test="ext != null and ext != ''">
 	          #{ext, jdbcType=VARCHAR}, <!-- 扩展JSON -->
 	    </if>
@@ -88,6 +79,9 @@
 	    </if>
 		<if test="create_by != null and create_by != ''">
 	          #{create_by, jdbcType=VARCHAR}, <!-- 创建人 -->
+	    </if>
+		<if test="remark != null and remark != ''">
+	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
 	    </if>
 	          null
 		)
@@ -102,17 +96,16 @@
 		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
 		    #{name, jdbcType=VARCHAR},  <!-- 组织名称 -->
 		    #{parent_id, jdbcType=INTEGER},  <!-- 父节点流水号 -->
-		    #{is_folder, jdbcType=VARCHAR},  <!-- 是否为树枝节点 -->
 		    #{is_expanded, jdbcType=VARCHAR},  <!-- 是否自动展开 -->
 		    #{icon, jdbcType=VARCHAR},  <!-- 节点图标 -->
 		    #{type, jdbcType=VARCHAR},  <!-- 组织类型 -->
 		    #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
 		    #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
-		    #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
 		    #{ext, jdbcType=VARCHAR},  <!-- 扩展JSON -->
 		    #{create_time, jdbcType=TIMESTAMP},  <!-- 创建时间 -->
 		    #{create_by_id, jdbcType=INTEGER},  <!-- 创建人ID -->
-		    #{create_by, jdbcType=VARCHAR}  <!-- 创建人 -->
+		    #{create_by, jdbcType=VARCHAR},  <!-- 创建人 -->
+		    #{remark, jdbcType=VARCHAR}  <!-- 备注 -->
 		)
 	</insert>
 
@@ -129,9 +122,6 @@
 			<if test="parent_id != null">
 		          parent_id = #{parent_id, jdbcType=INTEGER},  <!-- 父节点流水号 -->
 			</if>
-			<if test="is_folder != null">
-		          is_folder = #{is_folder, jdbcType=VARCHAR},  <!-- 是否为树枝节点 -->
-			</if>
 			<if test="is_expanded != null">
 		          is_expanded = #{is_expanded, jdbcType=VARCHAR},  <!-- 是否自动展开 -->
 			</if>
@@ -147,9 +137,6 @@
 			<if test="sort_no != null">
 		          sort_no = #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
 			</if>
-			<if test="remark != null">
-		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
-			</if>
 			<if test="ext != null">
 		          ext = #{ext, jdbcType=VARCHAR},  <!-- 扩展JSON -->
 			</if>
@@ -161,6 +148,9 @@
 			</if>
 			<if test="create_by != null">
 		          create_by = #{create_by, jdbcType=VARCHAR},  <!-- 创建人 -->
+			</if>
+			<if test="remark != null">
+		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
 			</if>
 		</set>
 		WHERE  id = #{id}
@@ -252,17 +242,16 @@
 		  id,  <!-- 流水号 -->
 		  name,  <!-- 组织名称 -->
 		  parent_id,  <!-- 父节点流水号 -->
-		  is_folder,  <!-- 是否为树枝节点 -->
 		  is_expanded,  <!-- 是否自动展开 -->
 		  icon,  <!-- 节点图标 -->
 		  type,  <!-- 组织类型 -->
 		  biz_code,  <!-- 扩展码 -->
 		  sort_no,  <!-- 排序号 -->
-		  remark,  <!-- 备注 -->
 		  ext,  <!-- 扩展JSON -->
 		  create_time,  <!-- 创建时间 -->
 		  create_by_id,  <!-- 创建人ID -->
-		  create_by  <!-- 创建人 -->
+		  create_by,  <!-- 创建人 -->
+		  remark  <!-- 备注 -->
 	</sql>
 	
 	<!-- 表字段(用于外表的关联时引用) -->
@@ -270,17 +259,16 @@
 		  my_org.id,  <!-- 流水号 -->
 		  my_org.name,  <!-- 组织名称 -->
 		  my_org.parent_id,  <!-- 父节点流水号 -->
-		  my_org.is_folder,  <!-- 是否为树枝节点 -->
 		  my_org.is_expanded,  <!-- 是否自动展开 -->
 		  my_org.icon,  <!-- 节点图标 -->
 		  my_org.type,  <!-- 组织类型 -->
 		  my_org.biz_code,  <!-- 扩展码 -->
 		  my_org.sort_no,  <!-- 排序号 -->
-		  my_org.remark,  <!-- 备注 -->
 		  my_org.ext,  <!-- 扩展JSON -->
 		  my_org.create_time,  <!-- 创建时间 -->
 		  my_org.create_by_id,  <!-- 创建人ID -->
-		  my_org.create_by  <!-- 创建人 -->
+		  my_org.create_by,  <!-- 创建人 -->
+		  my_org.remark  <!-- 备注 -->
 	</sql>
 
 	<!-- Where精确匹配字段 -->
@@ -293,9 +281,6 @@
 		</if>
 	   <if test="parent_id != null ">
 		      AND parent_id = #{parent_id}  <!-- 父节点流水号 -->
-		</if>
-	    <if test="is_folder != null and is_folder != ''">
-		      AND is_folder = #{is_folder}  <!-- 是否为树枝节点 -->
 		</if>
 	    <if test="is_expanded != null and is_expanded != ''">
 		      AND is_expanded = #{is_expanded}  <!-- 是否自动展开 -->
@@ -312,9 +297,6 @@
 	   <if test="sort_no != null ">
 		      AND sort_no = #{sort_no}  <!-- 排序号 -->
 		</if>
-	    <if test="remark != null and remark != ''">
-		      AND remark = #{remark}  <!-- 备注 -->
-		</if>
 	    <if test="ext != null and ext != ''">
 		      AND ext = #{ext}  <!-- 扩展JSON -->
 		</if>
@@ -327,15 +309,15 @@
 	    <if test="create_by != null and create_by != ''">
 		      AND create_by = #{create_by}  <!-- 创建人 -->
 		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark = #{remark}  <!-- 备注 -->
+		</if>
 	</sql>
 	
 	<!-- Where模糊匹配字段 -->
 	<sql id="like">
 	    <if test="name != null and name != ''">
 		      AND name like '${name}%'  <!-- 组织名称 -->
-		</if>
-	    <if test="is_folder != null and is_folder != ''">
-		      AND is_folder like '${is_folder}%'  <!-- 是否为树枝节点 -->
 		</if>
 	    <if test="is_expanded != null and is_expanded != ''">
 		      AND is_expanded like '${is_expanded}%'  <!-- 是否自动展开 -->
@@ -349,14 +331,14 @@
 	    <if test="biz_code != null and biz_code != ''">
 		      AND biz_code like '${biz_code}%'  <!-- 扩展码 -->
 		</if>
-	    <if test="remark != null and remark != ''">
-		      AND remark like '${remark}%'  <!-- 备注 -->
-		</if>
 	    <if test="ext != null and ext != ''">
 		      AND ext like '${ext}%'  <!-- 扩展JSON -->
 		</if>
 	    <if test="create_by != null and create_by != ''">
 		      AND create_by like '${create_by}%'  <!-- 创建人 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark like '${remark}%'  <!-- 备注 -->
 		</if>
 	</sql>
 	

@@ -11,7 +11,7 @@ import java.util.Date;
  * </p>
  * 
  * @author myclouds team
- * @date 2018-03-13 17:28:53
+ * @date 2018-06-29 16:23:52
  */
 public class MyOrgEntity extends Entity {
 
@@ -29,10 +29,6 @@ public class MyOrgEntity extends Entity {
 	 * 父节点流水号
 	 */
 	private Integer parent_id;	
-	/**
-	 * 是否为树枝节点
-	 */
-	private String is_folder;	
 	/**
 	 * 是否自动展开
 	 */
@@ -54,10 +50,6 @@ public class MyOrgEntity extends Entity {
 	 */
 	private Integer sort_no;	
 	/**
-	 * 备注
-	 */
-	private String remark;	
-	/**
 	 * 扩展JSON
 	 */
 	private String ext;	
@@ -74,6 +66,10 @@ public class MyOrgEntity extends Entity {
 	 * 创建人
 	 */
 	private String create_by;	
+	/**
+	 * 备注
+	 */
+	private String remark;	
 
 	/**
 	 * 将参数对象中的属性复制到当前对象中
@@ -111,15 +107,6 @@ public class MyOrgEntity extends Entity {
 	 */
 	public Integer getParent_id() {
 		return parent_id;
-	}
-	
-	/**
-	 * 是否为树枝节点
-	 * 
-	 * @return is_folder
-	 */
-	public String getIs_folder() {
-		return is_folder;
 	}
 	
 	/**
@@ -168,15 +155,6 @@ public class MyOrgEntity extends Entity {
 	}
 	
 	/**
-	 * 备注
-	 * 
-	 * @return remark
-	 */
-	public String getRemark() {
-		return remark;
-	}
-	
-	/**
 	 * 扩展JSON
 	 * 
 	 * @return ext
@@ -212,6 +190,15 @@ public class MyOrgEntity extends Entity {
 		return create_by;
 	}
 	
+	/**
+	 * 备注
+	 * 
+	 * @return remark
+	 */
+	public String getRemark() {
+		return remark;
+	}
+	
 
 	/**
 	 * 流水号
@@ -238,15 +225,6 @@ public class MyOrgEntity extends Entity {
 	 */
 	public void setParent_id(Integer parent_id) {
 		this.parent_id = parent_id;
-	}
-	
-	/**
-	 * 是否为树枝节点
-	 * 
-	 * @param is_folder
-	 */
-	public void setIs_folder(String is_folder) {
-		this.is_folder = is_folder;
 	}
 	
 	/**
@@ -295,15 +273,6 @@ public class MyOrgEntity extends Entity {
 	}
 	
 	/**
-	 * 备注
-	 * 
-	 * @param remark
-	 */
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-	
-	/**
 	 * 扩展JSON
 	 * 
 	 * @param ext
@@ -337,6 +306,15 @@ public class MyOrgEntity extends Entity {
 	 */
 	public void setCreate_by(String create_by) {
 		this.create_by = create_by;
+	}
+	
+	/**
+	 * 备注
+	 * 
+	 * @param remark
+	 */
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	
 
