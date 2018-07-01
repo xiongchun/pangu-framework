@@ -32,7 +32,7 @@ CREATE TABLE `my_enum` (
   `remark` varchar(200) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`enum_key`,`element_key`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='枚举类型参数表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4  COMMENT='枚举类型参数表';
 
 -- ----------------------------
 -- Records of my_enum
@@ -61,7 +61,7 @@ CREATE TABLE `my_module` (
   `remark` varchar(200) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   KEY `key1` (`parent_id`,`is_enable`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='资源模块事件注册表';
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4  COMMENT='资源模块事件注册表';
 
 -- ----------------------------
 -- Records of my_module
@@ -142,7 +142,7 @@ CREATE TABLE `my_org` (
   `remark` varchar(200) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   KEY `key1` (`parent_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='组织机构表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4  COMMENT='组织机构表';
 
 -- ----------------------------
 -- Records of my_org
@@ -174,7 +174,7 @@ CREATE TABLE `my_param` (
   `remark` varchar(200) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`param_key`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='键值参数表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4  COMMENT='键值参数表';
 
 -- ----------------------------
 -- Records of my_param
@@ -201,7 +201,7 @@ CREATE TABLE `my_role` (
   `create_by_id` int(10) NOT NULL COMMENT '创建人ID',
   `create_by` varchar(50) DEFAULT NULL COMMENT '创建人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4  COMMENT='角色表';
 
 -- ----------------------------
 -- Records of my_role
@@ -222,7 +222,7 @@ CREATE TABLE `my_role_module` (
   `create_by` int(10) NOT NULL COMMENT '创建人ID',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`role_id`,`module_id`,`grant_type`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=467 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='功能模块-角色关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=467 DEFAULT CHARSET=utf8mb4  COMMENT='功能模块-角色关联表';
 
 -- ----------------------------
 -- Records of my_role_module
@@ -307,7 +307,7 @@ CREATE TABLE `my_user` (
   `remark` varchar(200) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`account`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='后台用户基本信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4  COMMENT='后台用户基本信息表';
 
 -- ----------------------------
 -- Records of my_user
@@ -329,7 +329,7 @@ CREATE TABLE `my_user_role` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`user_id`,`role_id`) USING BTREE,
   KEY `key1` (`user_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户-角色关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4  COMMENT='用户-角色关联表';
 
 -- ----------------------------
 -- Records of my_user_role
