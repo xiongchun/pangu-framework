@@ -1,0 +1,138 @@
+
+.skin-form-variant(@dark; @light; @brand) {
+
+	// Dividers
+	.section-divider span { color:@brand; }
+
+	// Links
+	.tagline span{ color:@brand; }
+	.smart-link{ color:@brand; }
+
+	// Shared :hover
+	.gui-input:hover,
+	.gui-textarea:hover,
+	.select > select:hover,
+	.select-multiple select:hover, 
+	.gui-input:hover ~ .input-footer,
+	.file .gui-file:hover + .gui-input,
+	.gui-textarea:hover ~ .input-footer{ border-color: @light; }
+
+	// Shared :focus
+	.gui-input:focus,
+	.gui-textarea:focus,
+	.select > select:focus,
+	.select-multiple select:focus{ 
+		border-color: @light;
+		// -webkit-box-shadow:0px 0px 3px @brand inset;
+		// -moz-box-shadow:0px 0px 3px @brand inset; 
+		// -o-box-shadow:0px 0px 3px @brand inset; 
+		// box-shadow:0px 0px 3px @brand inset;   
+		color: #3C3C3C; 
+	}
+
+	// Focus
+	.gui-textarea:focus{  height: 120px; }
+	.select > select:focus { z-index:10; z-index:20\9; }
+	.gui-input:focus ~ .field-icon i,
+	.gui-textarea:focus ~ .field-icon i{ color:@brand; }
+	.select-multiple select:focus, 
+	.gui-input:focus ~ .input-footer,
+	.gui-textarea:focus ~ .input-footer, 
+	.file .gui-file:focus + .gui-input{ border-color: @light; }
+	.select > select:focus + .arrow{ color:@brand; }
+
+	// Rating Stars
+	.rating:hover .rating-star:hover,
+	.rating:hover .rating-star:hover ~ .rating-star,
+	.rating-input:checked ~ .rating-star { color: @brand;	}
+	.rating-star, 
+	.rating:hover .rating-star {	color: #A2A6A8;	 }
+
+	// Datepicker
+	.ui-datepicker .ui-datepicker-prev,
+	.ui-datepicker .ui-datepicker-next,
+	.ui-datepicker .ui-datepicker-title { color:@brand; }
+	.ui-datepicker-today a, 
+	.ui-datepicker-today a:hover, 
+	.ui-datepicker .ui-state-highlight { background: lighten(@brand, 20%) !important; }
+
+	.ui-datepicker .ui-state-active { background: @brand!important; }
+
+	// Timepicker sliders
+	.ui-datepicker .ui-timepicker-div .ui-slider .ui-slider-handle.ui-state-active { background: #FFF !important; }
+	.ui-datepicker .ui-timepicker-div .ui-slider .ui-slider-handle { border-color: @brand;}
+	.ui-datepicker .ui-timepicker-div .ui-slider .ui-slider-handle:before { background-color: @brand; }
+
+
+	// Banner Ribbon
+	.selected-box h4{ color:@brand; }
+	.ribbon-inner{ background:@brand; }
+	.ribbon-inner:before,
+	.ribbon-inner:after{ border-top-color:@dark; }
+
+	// Form Wizard
+	.wizard .steps li a,
+	.wizard .actions li a { background-color: @brand; } 
+	.wizard .steps li.current a { background-color: @dark; }
+}
+
+.skin-element-variant(@base; @light; @lighter; @dark; @darker; @brand) {
+
+	// Panel Contextuals
+	.admin-form .panel-@{brand} > .panel-heading { border-top-color: @light; }
+	.admin-form .panel-@{brand} > .panel-heading:before { background-color: @base; }
+
+	.admin-form .panel-@{brand}.heading-border:before,
+	.admin-form .panel-@{brand} .heading-border:before { background-color: @base; }
+
+	// BG's
+	.admin-form .bg-@{brand} { background-color: @base; }
+	.admin-form .bg-@{brand}.light { background-color: @light; }
+	.admin-form .bg-@{brand}.lighter { background-color: @lighter; }
+	.admin-form .bg-@{brand}.dark { background-color: @dark; }
+	.admin-form .bg-@{brand}.darker { background-color: @darker; }
+
+	// Checkbox/Radios
+	.admin-form .option-@{brand} input:hover + .checkbox,  
+	.admin-form .option-@{brand} input:hover + .radio{ border-color: @light; }
+	.admin-form .option-@{brand} input:checked + .checkbox, 
+	.admin-form .option-@{brand} input:focus + .checkbox, 
+	.admin-form .option-@{brand} input:checked + .radio, 
+	.admin-form .option-@{brand} input:focus + .radio{ border-color: @base; }
+	.admin-form .option-@{brand} input:checked + .radio:before, 
+	.admin-form .option-@{brand} input:focus + .radio:before{  background: @base; }
+	.admin-form .option-@{brand} input:checked + .checkbox:before, 
+	.admin-form .option-@{brand} input:focus + .checkbox:before{ border-color: @base; }
+
+	// Form Switch
+	.admin-form .switch-@{brand} > input:checked + label { background: @base; border-color: @base; }
+	.admin-form .switch-@{brand} > input:checked + label:after { color:@base; }
+	.admin-form .switch-@{brand} > input:checked:focus + label { background: @dark; border-color: @dark; }
+
+	// Buttons
+	.admin-form .btn-@{brand}{background-color: @base;}
+	.admin-form .btn-@{brand}:hover, 
+	.admin-form .btn-@{brand}:focus{ background-color: @light; }
+	.admin-form .btn-@{brand}:active{background-color: @dark;}
+	.admin-form .btn-@{brand},
+	.admin-form .btn-@{brand}:hover, 
+	.admin-form .btn-@{brand}:focus,
+	.admin-form .btn-@{brand}:active{ color: #fff; text-shadow: 0 1px rgba(0, 0, 0, 0.08);}   
+
+	// UI Sliders
+	.admin-form .slider-wrapper.slider-@{brand} { 
+		.ui-slider .ui-slider-range {
+			background-color: @base;
+		}
+		.ui-slider .ui-slider-handle {
+			border-color: @base;
+				&:before {
+					background-color: @base;
+				}
+		}		
+	}
+
+
+}
+
+

@@ -1,0 +1,318 @@
+/*==================================================
+  Buttons
+==================================================== */
+
+
+// Base styles
+// --------------------------------------------------
+.btn {
+    display: inline-block;
+    margin-bottom: 0; // For input.btn
+    font-weight: @btn-font-weight;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+    border: 1px solid transparent;
+    border-color: rgba(0, 0, 0, 0.0);
+    white-space: nowrap;
+    .button-size(@padding-base-vertical;
+    @padding-base-horizontal;
+    @font-size-base;
+    @line-height-base;
+    @border-radius-small);
+    .user-select(none);
+    &, &:active, &.active {
+        &:focus {
+            .tab-focus();
+        }
+    }
+    &:hover,
+    &:focus {
+        color: @btn-default-color;
+        text-decoration: none;
+    }
+    &:active,
+    &.active {
+        outline: 0;
+        background-image: none;
+        .box-shadow(inset 0 3px 5px rgba(0, 0, 0, .125));
+    }
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        cursor: not-allowed;
+        pointer-events: none; // Future-proof disabling of clicks
+        .opacity(.65);
+        .box-shadow(none);
+    }
+    &.btn-gradient {
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+        border-color: rgba(0, 0, 0, 0.07) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.18);
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        background-repeat: repeat-x;
+        background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3) 1%, rgba(255, 255, 255, 0.15) 100%);
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 1%, rgba(255, 255, 255, 0.15) 100%);
+      //  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#80ffffff', endColorstr='#00ffffff', GradientType=0);
+    }
+    &.btn-rounded {
+        border-radius: 20px;
+    }
+
+}
+// Contextual Skin Variations
+// --------------------------------------------------
+// Default appears as grey
+.btn-default {
+    // Special Settings for Light/White Buttons
+    .button-variant-light(@btn-default-color;
+    @btn-default-bg;
+    @btn-default-border);
+}
+// Primary appears as blue
+.btn-primary when (@skin-primary) {
+    .button-variant(@btn-primary-color;
+    @btn-primary-bg;
+    @btn-primary-border);
+}
+// Success appears as green
+.btn-success when (@skin-success) {
+    .button-variant(@btn-success-color;
+    @btn-success-bg;
+    @btn-success-border);
+}
+// Info appears as light blue
+.btn-info when (@skin-info) {
+    .button-variant(@btn-info-color;
+    @btn-info-bg;
+    @btn-info-border);
+}
+// Warning appears as orange
+.btn-warning when (@skin-warning) {
+    .button-variant(@btn-warning-color;
+    @btn-warning-bg;
+    @btn-warning-border);
+}
+// Danger and error appear as red
+.btn-danger when (@skin-danger) {
+    .button-variant(@btn-danger-color;
+    @btn-danger-bg;
+    @btn-danger-border);
+}
+// Alert and error appear as purple
+.btn-alert when (@skin-alert) {
+    .button-variant(@btn-alert-color;
+    @btn-alert-bg;
+    @btn-alert-border);
+}
+// System and error appear as teal
+.btn-system when (@skin-system) {
+    .button-variant(@btn-system-color;
+    @btn-system-bg;
+    @btn-system-border);
+}
+// Dark and error appear as dark/black
+.btn-dark when (@skin-dark) {
+    .button-variant(@btn-dark-color;
+    @btn-dark-bg;
+    @btn-dark-border);
+}
+// Link buttons
+// -------------------------
+// Make a button look and behave like a link
+.btn-link {
+    color: @link-color;
+    font-weight: normal;
+    cursor: pointer;
+    border-radius: 0;
+    &, &:active, &[disabled], fieldset[disabled] & {
+        background-color: transparent;
+        .box-shadow(none);
+    }
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: transparent;
+    }
+    &:hover,
+    &:focus {
+        color: @link-hover-color;
+        text-decoration: underline;
+        background-color: transparent;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+        &:hover, &:focus {
+            color: @btn-link-disabled-color;
+            text-decoration: none;
+        }
+    }
+}
+// Button Sizes
+// --------------------------------------------------
+.btn-lg {
+    // line-height: ensure even-numbered height of button next to large input
+    .button-size(@padding-large-vertical;
+    @padding-large-horizontal;
+    @font-size-large;
+    @line-height-large;
+    @border-radius-large);
+}
+.btn-sm {
+    // line-height: ensure proper height of button next to small input
+    .button-size(@padding-small-vertical;
+    @padding-small-horizontal;
+    @font-size-small;
+    @line-height-small;
+    @border-radius-small);
+}
+.btn-xs {
+    .button-size(@padding-xs-vertical;
+    @padding-xs-horizontal;
+    @font-size-small;
+    @line-height-small;
+    @border-radius-small);
+}
+// Block button
+// --------------------------------------------------
+.btn-block {
+    display: block;
+    width: 100%;
+}
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+    margin-top: 5px;
+}
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    &.btn-block {
+        width: 100%;
+    }
+}
+// Alt Btns - white buttons with thick left border
+// --------------------------------------------------
+// default alt btns
+.btn.btn-alt {
+    position: relative;
+    padding: 7px 11px;
+    margin: 5px 3px;
+    color: #999;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: #fbfbfb;
+    border-radius: 1px;
+    border: 1px solid #EEE;
+    border-left: 4px solid #EEE;
+    -webkit-transition: opacity 0.1s ease;
+    transition: opacity 0.1s ease;
+}
+.btn.btn-alt.item-active,
+.btn.btn-alt:hover,
+.btn.btn-alt:hover {
+    color: #666;
+    background-color: #fefefe;
+}
+// alt btns with gradient (set via .btn-gradient)
+.btn.btn-alt.btn-gradient {
+    background-color: #f0f0f0;
+    text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.3) 100%);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.3) 100%);
+    //filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#80ffffff', endColorstr='#00ffffff', GradientType=0);
+    border-color: rgba(0, 0, 0, 0.07) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.14);
+    border-left: 4px solid #DDD;
+}
+.btn.btn-alt.btn-gradient:hover,
+.btn.btn-alt.btn-gradient:hover {
+    background-color: #eee;
+}
+// alt button contextuals
+.btn.btn-alt.btn-default {
+    border-left-color: #AAA;
+}
+.btn.btn-alt.btn-primary {
+    border-left-color: @brand-primary;
+}
+.btn.btn-alt.btn-success {
+    border-left-color: @brand-success;
+}
+.btn.btn-alt.btn-info {
+    border-left-color: @brand-info;
+}
+.btn.btn-alt.btn-warning {
+    border-left-color: @brand-warning;
+}
+.btn.btn-alt.btn-danger {
+    border-left-color: @brand-danger;
+}
+.btn.btn-alt.btn-alert {
+    border-left-color: @brand-alert;
+}
+.btn.btn-alt.btn-system {
+    border-left-color: @brand-system;
+}
+.btn.btn-alt.btn-dark {
+    border-left-color: @brand-dark;
+}
+.btn.btn-alt.item-checked {
+    opacity: 1;
+    color: #666;
+    border-left-color: @brand-success !important;
+    transition: all 0.2s ease;
+}
+// alt btns hover option
+.alt-btns-hover .btn.btn-alt {
+    opacity: 0.5;
+}
+.alt-btns-hover .btn.btn-alt:hover,
+.alt-btns-hover .btn.btn-alt.item-active {
+    opacity: 1;
+}
+// Holder Style - applies a placeholder like style to the element
+// --------------------------------------------------
+.holder-style {
+    display: block;
+    padding: 9px 16px;
+    color: #AAA;
+    background-color: #f1f1f1;
+    outline: 2px dashed #d9d9d9;
+    border: 0;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
+// holder states
+.holder-style:hover,
+.holder-style:focus {
+    cursor: pointer;
+    color: #777;
+    background-color: #EEE;
+    outline: 2px dashed #aaa;
+    border: 0;
+    text-decoration: none;
+}
+// active holder item
+.holder-style.holder-active {
+    background-color: #FFF;
+    outline-color: @brand-success;
+}
+// holder icon
+.holder-style .holder-icon {
+    color: #AAA;
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+// holder icon states and active
+.holder-style:hover .holder-icon,
+.holder-style:focus .holder-icon,
+.holder-style.holder-active .holder-icon {
+    color: @brand-success;
+}

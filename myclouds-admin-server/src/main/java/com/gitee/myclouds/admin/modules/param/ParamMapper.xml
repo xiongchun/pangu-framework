@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 键值参数模块SQL映射 -->
+<mapper namespace="sql.param">
+
+	<!-- 根据Dto查询并返回KV参数实体对象集合 -->
+	<select id="pageParam" parameterType="Dto" resultType="MyParamEntity">
+		SELECT
+		<include
+			refid="com.gitee.myclouds.admin.domain.myparam.MyParamMapper.column" />
+		FROM my_param
+		<include refid="pageParamWhere" />
+		ORDER BY id DESC LIMIT ${start},${length}
+	</select>
+	<select id="pageParamCount" parameterType="Dto" resultType="Integer">
+		SELECT
+		count(1) AS total
+		FROM my_param
+		<include refid="pageParamWhere" />
+	</select>
+	<sql id="pageParamWhere">
+		<where>
+			<if test="name != null and name != ''">
+				AND name like '%${name}%'
+			</if>
+			<if test="param_key != null and param_key != ''">
+				AND param_key like '%${param_key}%'
+			</if>
+			<if test="value != null and value != ''">
+				AND value like '%${value}%'
+			</if>
+			<if test="type != null and type != ''">
+				AND type = #{type}
+			</if>
+		</where>
+	</sql>
+
+</mapper>

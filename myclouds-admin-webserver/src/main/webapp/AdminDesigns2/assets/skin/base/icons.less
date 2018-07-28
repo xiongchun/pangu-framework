@@ -1,0 +1,241 @@
+/*==================================================
+  Icons
+==================================================== */
+.wf-loading .glyphicons,
+.wf-loading .glyphicon,
+.wf-loading .imoon,
+.wf-loading .fa,
+.wf-loading .iconsweets { 
+  opacity: 0 !important;
+}
+/* Icon Transitions */ 
+.glyphicon, .glyphicons,
+.imoon, .fa, .iconsweets { 
+  opacity: 1;
+  transition: opacity 0.1s ease-in;
+   -moz-transition: opacity 0.1s ease-in;
+   -webkit-transition: opacity 0.1s ease-in;
+}
+/* Glyphicon Pro and Halfling */
+.glyphicons-2x, .glyphicon-2x { font-size: 2em }
+.glyphicons-3x, .glyphicon-3x { font-size: 3em }
+.glyphicons-4x, .glyphicon-4x { font-size: 4em }
+.glyphicons-5x, .glyphicon-5x { font-size: 5em }
+/* Icomoon Font Icons */
+.imoon-2x { font-size: 2em }
+.imoon-3x { font-size: 3em }
+.imoon-4x { font-size: 4em }
+.imoon-5x { font-size: 5em }
+/* IconSweets2 Font Icons */
+.iconsweets-2x { font-size: 2em }
+.iconsweets-3x { font-size: 3em }
+.iconsweets-4x { font-size: 4em }
+.iconsweets-5x { font-size: 5em }
+
+/* Buttons with Icons 
+* Cross browser problems were creating problems when
+* an icon was given a larger font size than its sibling
+* text. To fix Line height, vertical align, and top
+* positioning have been redefined */
+.btn .glyphicon, .btn .glyphicons { 
+  top: -1px;
+  vertical-align: middle;
+  line-height: 0;
+  font-size: 1.1em;
+}
+/* A Helper Class to Align Icons Right in Control-forms */
+span.field-icon-right,
+i.field-icon-right {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+
+/* Icon Background and Borders 
+* properly align icons that have been placed inside of titles
+* Useful for matching icon size to adjacent text 
+* Icon Background Shapes */
+.icon-circle {
+  top: 0;
+  padding: 9px;
+  position: relative;
+  overflow: visible;
+  border-radius: 64px; }
+
+.icon-square {
+  top: 0;
+  padding: 9px;
+  border-radius: 4px; }
+
+/* Icon Background Sizes */
+.icon-circle.glyphicon-2x,
+.icon-circle.glyphicons-2x {
+  padding: 12px; }
+
+.icon-circle.glyphicon-3x,
+.icon-circle.glyphicons-3x {
+  padding: 20px; }
+
+.icon-circle.glyphicon-4x,
+.icon-circle.glyphicons-4x {
+  padding: 35px; }
+
+.icon-square.glyphicon-2x,
+.icon-square.glyphicons-2x {
+  padding: 12px; }
+
+.icon-square.glyphicon-3x,
+.icon-square.glyphicons-3x {
+  padding: 20px; }
+
+.icon-square.glyphicon-4x,
+.icon-square.glyphicons-4x {
+  padding: 35px; }
+
+
+/* WIDGET SPECIFIC ICON STYLING
+* ALL elements which use icons have been
+* moved from their respective positions
+* and placed here for easy icon styling */
+
+/* Header Button Icons */
+.navbar-menus > div > button > span,
+.navbar-menus > div > button > i {
+    font-size: 15px;
+    vertical-align: middle;
+}
+/* Special on-hover styles for user dropdown menu */
+.user-menu ul.dropdown-items > li:hover .glyphicon { color: #d9534f; }
+.user-menu ul.dropdown-items > li:last-child:hover .glyphicon { color: #888; }
+.user-menu ul.dropdown-items > li:last-child > div:hover .glyphicon { color: #d9534f; }
+
+/* Breadcrumb "Home" Icon */
+.breadcrumb .glyphicon,
+.breadcrumb .glyphicons {
+  color: #777;
+    font-size: 11px;
+  margin-left: 1px;
+    top: 0;
+}
+/* Panel Sidemenu Icons */
+.panel-sidemenu ul.nav li.active .fa { color: @brand-primary; }
+.panel-sidemenu ul.nav li a:hover { background: none }
+.panel-sidemenu ul.nav li .fa {
+    width: 28px;
+    color: #BBB;
+    font-size: 18px;
+}
+
+/* Panel Tabs Icons */
+.panel-tabs li .glyphicon,
+.panel-tabs li .glyphicons,
+.panel-tabs li .fa { 
+  font-size: 14px 
+}
+.panel-tabs .imoon,
+.panel-tabs .iconsweets {
+    font-size: 14px;
+    vertical-align: middle;
+}
+/* Mildly styles a font awesome based icon group
+ * used in occasionaly in panel heading. Look at 
+ * message widget on index.html for example */
+.mini-action-icons .fa {
+    position: relative;
+    top: 2px;
+    padding-right: 10px;
+    color: #777;
+    font-size: 16px;
+    cursor: pointer;
+}
+/* Pricing Table Icons */
+.pricing-tables .pricing-icons li .fa-times { color: #e74a4a }
+.pricing-tables .pricing-icons li .fa-ellipsis-h { color: #555 }
+/* Tab Navigation Icons */
+.nav-tabs li .fa { font-size: 14px }
+.nav-tabs li .fa.fa-caret-down { font-size: 12px }
+
+/* Timeline Widget Icons */
+.timeline-widget span.glyphicons {
+    z-index: 11;
+    position: relative;
+  top: 2px;
+    width: auto;
+    padding: 6px;
+    font-size: 18px;
+    border-radius: 50%;
+    -webkit-box-shadow: 1px 1px 2px #AAA;
+    box-shadow: 1px 1px 2px #AAA;
+}
+
+//
+// Sprites
+// --------------------------------------------------
+
+/* Favicon sprite */
+.favicons {
+  background: url('@{img-path}/sprites/favicons.png') no-repeat;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.google { background-position: 0 0;}
+.yahoo { background-position: 0 -15px ;}
+.bing { background-position: 0 -30px ;}
+.chrome { background-position: 0 -45px;}
+.firefox { background-position: 0 -61px ;}
+.ie { background-position: 0 -78px ;}
+.safari { background-position: 0 -96px ;}
+
+/* News Sprite - Demo purposes */
+.news-sprite {
+  width: 25px;
+  height: 26px;
+  vertical-align: middle;
+  display: inline-block;
+  background: url("@{img-path}/sprites/news-logo_sprite.png") no-repeat;
+  background-position: 0 0;
+}
+.news-sprite.cnn {
+  background-position: 0 0;
+}
+.news-sprite.yahoo {
+  background-position: 0 -26px;
+}
+.news-sprite.google {
+  background-position: 0 -50px;
+}
+.news-sprite.fb {
+  background-position: 0 -75px;
+}
+
+/* Flag Icons */
+.flag-xs,
+.flag-sm,
+.flag,
+.flag-lg {
+  display: inline-block;
+  vertical-align: middle;
+}
+.flag-xs {
+  width: 16px;
+  height: 16px;
+  background: url('@{img-path}/sprites/flag-xs.png') no-repeat top left;
+}
+.flag-sm {
+  width: 32px;
+  height: 32px;
+  background: url('@{img-path}/sprites/flag-sm.png') no-repeat top left;
+}
+.flag-sm.flag-fr { background-position: 0 0; } 
+.flag-sm.flag-de { background-position: 0 -33px; } 
+.flag-sm.flag-in { background-position: 0 -66px; } 
+.flag-sm.flag-es { background-position: 0 -99px; } 
+.flag-sm.flag-tr { background-position: 0 -132px; } 
+.flag-sm.flag-us { background-position: 0 -165px; } 
+.flag-xs.flag-fr{ background-position: 0 0;  } 
+.flag-xs.flag-de{ background-position: 0 -17px;  } 
+.flag-xs.flag-es{ background-position: 0 -34px;  } 
+.flag-xs.flag-tr{ background-position: 0 -51px;  } 
+.flag-xs.flag-us{ background-position: 0 -68px;  } 

@@ -1,0 +1,26 @@
+2018-01-24 16:13:51 WARN [Class:o.m.s.m.ClassPathMapperScanner->Thread:main] No MyBatis mapper was found in '[com.gitee.myclouds.builder]' package. Please check your configuration. 
+2018-01-24 16:14:17 WARN [Class:o.m.s.m.ClassPathMapperScanner->Thread:main] No MyBatis mapper was found in '[com.gitee.myclouds.builder]' package. Please check your configuration. 
+2018-01-24 16:15:38 WARN [Class:o.m.s.m.ClassPathMapperScanner->Thread:main] No MyBatis mapper was found in '[com.gitee.myclouds.builder]' package. Please check your configuration. 
+2018-01-24 16:17:34 WARN [Class:o.m.s.m.ClassPathMapperScanner->Thread:main] No MyBatis mapper was found in '[com.gitee.myclouds.builder]' package. Please check your configuration. 
+2018-01-24 16:23:07 WARN [Class:o.m.s.m.ClassPathMapperScanner->Thread:main] No MyBatis mapper was found in '[com.gitee.myclouds.builder]' package. Please check your configuration. 
+2018-01-24 16:23:10 ERROR [Class:o.s.b.SpringApplication->Thread:main] Application startup failed 
+java.lang.NullPointerException: null
+	at com.gitee.myclouds.builder.vo.IndexVO.addColumnVO(IndexVO.java:34)
+	at com.gitee.myclouds.builder.util.DBMetaInfoUtil.listIndexVOs(DBMetaInfoUtil.java:272)
+	at com.gitee.myclouds.builder.service.BuildDomainService.buildDomain(BuildDomainService.java:88)
+	at com.gitee.myclouds.builder.listener.BuilderApplicationStartupListener.onApplicationEvent(BuilderApplicationStartupListener.java:24)
+	at com.gitee.myclouds.builder.listener.BuilderApplicationStartupListener.onApplicationEvent(BuilderApplicationStartupListener.java:1)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:393)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:347)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:883)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at com.gitee.myclouds.builder.StartBuilderApplication.main(StartBuilderApplication.java:16)
+2018-01-24 16:23:44 WARN [Class:o.m.s.m.ClassPathMapperScanner->Thread:main] No MyBatis mapper was found in '[com.gitee.myclouds.builder]' package. Please check your configuration. 
+2018-01-24 16:24:22 WARN [Class:o.m.s.m.ClassPathMapperScanner->Thread:main] No MyBatis mapper was found in '[com.gitee.myclouds.builder]' package. Please check your configuration. 
+2018-01-24 16:24:36 WARN [Class:o.m.s.m.ClassPathMapperScanner->Thread:main] No MyBatis mapper was found in '[com.gitee.myclouds.builder]' package. Please check your configuration. 

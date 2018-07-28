@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 组织机构模块SQL映射 -->
+<mapper namespace="sql.org">
+
+   	<!-- 根据Dto查询并返回组织机构数据实体对象集合 -->
+	<select id="pageOrg" parameterType="Dto" resultType="Dto">
+		SELECT
+				  t1.id,
+				  t1.name,  
+				  t1.parent_id,
+				  t1.type, 
+				  t1.biz_code,  
+				  t1.sort_no,
+		          (SELECT name from my_org where id = t1.parent_id) AS parent_name
+		FROM my_org t1
+		<include refid="pageOrgWhere" />
+		ORDER BY t1.id DESC LIMIT ${start},${length}
+	</select>
+	<select id="pageOrgCount" parameterType="Dto" resultType="Integer">
+		SELECT
+		count(1) AS total
+		FROM my_org t1
+		<include refid="pageOrgWhere" />
+	</select>
+	<sql id="pageOrgWhere">
+		<where>
+			<if test="name != null and name != ''">
+				AND t1.name like '%${name}%'
+			</if>
+			<if test="parent_id != null and parent_id != ''">
+				AND t1.parent_id = #{parent_id}
+			</if>
+		</where>
+	</sql>
+
+	<!-- 删除my_user关联数据 -->
+	<select id="deleteMyUser" parameterType="Integer">
+		DELETE
+		FROM my_user WHERE org_id = #{org_id}
+	</select>
+	
+	<!-- 统计子节点数 -->
+	<select id="countOrgs" parameterType="Integer" resultType="Integer">
+		SELECT
+		count(1) AS total
+		FROM my_org WHERE parent_id = #{parent_id}
+	</select>
+	
+	<!-- 查询部门树 -->
+	<select id="listOrgTree" resultType="ZTreeNodeVO">
+	    SELECT
+			id,
+			parent_id AS pId,
+			name
+		FROM
+			my_org
+         ORDER BY parent_id, sort_no
+	</select>
+
+</mapper>

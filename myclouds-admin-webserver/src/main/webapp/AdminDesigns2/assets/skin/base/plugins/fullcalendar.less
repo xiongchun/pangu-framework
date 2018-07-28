@@ -1,0 +1,202 @@
+/*==================================================
+  FullCalendar.JS -  Used on pages-calendar.html
+==================================================== */
+
+/* External Events
+------------------------------*/
+// event
+.fc-event {
+    position: relative;
+    cursor: pointer;
+    padding: 8px;
+    margin: 10px;
+    color: #777;
+    font-size: 12px;
+    background: #f9f9f9;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    border-left: 4px solid #ddd;
+}
+// event desc
+.fc-event-desc {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 5px;
+}
+// event icon
+.fc-event-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+// fc event hover state
+.fc-event:hover,
+.fc-event:focus {
+    color: #777;
+    background: #f4f4f4;
+}
+// event inside calendar
+.fc-view-container .fc-event {
+    padding: 6px;
+    background: #f4f4f4;
+}
+.fc-view-container .fc-event .fc-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+// event contextuals
+.fc-event-primary {
+    border-left-color: @brand-primary
+}
+.fc-event-primary .fc-event-icon {
+    color: @brand-primary
+}
+.fc-event-info {
+    border-left-color: @brand-info
+}
+.fc-event-info .fc-event-icon {
+    color: @brand-info
+}
+.fc-event-success {
+    border-left-color: @brand-success
+}
+.fc-event-success .fc-event-icon {
+    color: @brand-success
+}
+.fc-event-warning {
+    border-left-color: @brand-warning
+}
+.fc-event-warning .fc-event-icon {
+    color: @brand-warning
+}
+.fc-event-danger {
+    border-left-color: @brand-danger
+}
+.fc-event-danger .fc-event-icon {
+    color: @brand-danger
+}
+.fc-event-alert {
+    border-left-color: @brand-alert
+}
+.fc-event-alert .fc-event-icon {
+    color: @brand-alert
+}
+.fc-event-system {
+    border-left-color: @brand-system
+}
+.fc-event-system .fc-event-icon {
+    color: @brand-system
+}
+
+/* Buttons (styled <button> tags, normalized to work cross-browser)
+--------------------------------------------------------------------------------------------------*/
+.fc button {
+    
+    /* dimensions */
+    .btn;
+    .btn-default;
+    height: auto;
+    padding: 6px 12px;
+}
+.fc-state-default {
+    border: 1px solid;
+}
+.fc-state-default.fc-corner-left {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.fc-state-default.fc-corner-right {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+/* icons in buttons */
+.fc button .fc-icon {
+    position: relative;
+    margin: 0 .1em;
+}
+
+/*  button states
+*/
+.fc-state-default {
+    background-color: #f5f5f5;
+    background-image: none;
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #333;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.fc-state-hover,
+.fc-state-down,
+.fc-state-active,
+.fc-state-disabled {
+    color: #333333;
+    background-color: #e6e6e6;
+}
+.fc-state-hover {
+    color: #333333;
+    text-decoration: none;
+}
+.fc-state-down,
+.fc-state-active {
+    background-color: #cccccc;
+    background-image: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.fc-state-disabled {
+    cursor: default;
+    background-image: none;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    box-shadow: none;
+}
+
+/* Buttons Groups
+--------------------------------------------------------------------------------------------------*/
+.fc-button-group {
+    display: inline-block;
+}
+
+/*
+every button that is not first in a button group should scootch over one pixel and cover the
+previous button's border...
+*/
+.fc .fc-button-group > * {
+    
+    /* extra precedence b/c buttons have margin set to zero */
+    float: left;
+    margin: 0 0 0 -1px;
+}
+.fc .fc-button-group >:first-child {
+    
+    /* same */
+    margin-left: 0;
+}
+
+/* Background
+--------------------------------------------------------------------------------------------------*/
+.fc-bg {
+    background-color: #fefefe;
+}
+.fc-bg .fc-today {
+    background-color: #FFFEF8;
+}
+.fc-bg .fc-other-month {
+    background-color: #f8f8f8;
+}
+
+/* Text
+--------------------------------------------------------------------------------------------------*/
+.fc-basic-view td.fc-day-number {
+    color: #777;
+    padding-top: 3px;
+    padding-right: 7px;
+    font-size: 12px;
+}
+.fc-basic-view td.fc-today.fc-day-number {
+    color: #444;
+    font-weight: 600;
+}

@@ -1,0 +1,235 @@
+<!-- Start: Update PWD Window -->
+<!-- 修改密码窗口 -->
+<div class="modal fade" id="w-pwd" tabindex="-1" data-backdrop="static">
+	<div class="modal-dialog w450">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 class="modal-title">修改密码</h3>
+			</div>
+			<div class="modal-body">
+				<form id="fo-pwd" class="form-horizontal">
+					<input type="hidden" name="id" th:value="${session._user?.id}" />
+					<div class="form-group">
+						<label class="col-md-3 control-label">登录账号：</label>
+						<div class="col-md-9 field">
+							<input type="text" name="account" class="form-control" readonly="readonly" th:value="${session._user?.account}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label required">原密码：</label>
+						<div class="col-md-9 field">
+							<input type="password" name="password" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label required">新密码：</label>
+						<div class="col-md-9 field">
+							<input type="password" name="new_password" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label required">确认密码：</label>
+						<div class="col-md-9 field">
+							<input type="password" name="confirm_password" class="form-control" />
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" form="fo-pwd" class="btn btn-sm btn-success btn-gradient">保存</button>
+				<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- End: Update PWD Window -->
+
+<!--Start：ERROR Window -->
+<div class="modal fade" id="w-global-error" tabindex="-1" data-backdrop="static">
+	<div class="modal-dialog w700">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 class="modal-title">
+					系统错误 <small>请和管理员联系</small>
+				</h3>
+			</div>
+			<div class="modal-body">
+				<form id="fo-global-error" class="form-horizontal">
+					<div class="form-group">
+						<label class="col-md-2 control-label">请求路径：</label>
+						<div class="col-md-6 field">
+							<p class="form-control-static" id="id-error-path">
+								<span class="label label-rounded label-danger"></span>
+							</p>
+						</div>
+						<label class="col-md-2 control-label">HTTP响应码：</label>
+						<div class="col-md-2 field">
+							<p class="form-control-static" id="id-error-status">
+								<span class="label label-rounded label-danger"></span>
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">异常类：</label>
+						<div class="col-md-10 field">
+							<p class="form-control-static text-danger" id="id-error-exception">
+								<span class="label label-rounded label-danger"></span>
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">摘要信息：</label>
+						<div class="col-md-10 field">
+							<p class="form-control-static text-danger fs14" id="id-error-message"></p>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!--End：ERROR Window -->
+
+<script type="text/javascript">
+//模块路径工具栏上的时钟显示
+var myTimeFlag = 0;
+setInterval(
+		function(){
+			var tip = new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());
+			if(myTimeFlag == 0){
+				tip = '<div class="animated fadeIn">' +tip + '</div>';
+			}else{
+				tip = '<div>' +tip + '</div>';
+			}
+			$('#id-mytime').html(tip);
+			myTimeFlag = 1;
+		},1000);
+</script>
+
+<!-- Start: Script -->
+<script type="text/javascript">
+	//注销
+	function fnLogout() {
+		My.confirm('确认安全退出系统吗？', 'small', function(result) {
+			if (result) {
+				$.ajax({
+					type : 'post',
+					url : '/logout',
+					success : function(data) {
+						window.location.href = '/login';
+					}
+				});
+			}
+		});
+	}
+
+	//修改密码
+	function fnUpdatePwd() {
+		var data = My.params('#fo-pwd');
+		data.password = hex_md5(data.password);
+		data.new_password = hex_md5(data.new_password);
+		data.confirm_password = hex_md5(data.confirm_password);
+		$.ajax({
+			type : 'post',
+			url : '/sys/user/updatePwd',
+			data : data,
+			success : function(data) {
+				if (data.code == '1') {
+					$('#w-pwd').modal('hide');
+					My.confirm('密码修改成功，尝试重新登录吗？', 'small', function(result) {
+						if (result) {
+							$.ajax({
+								type : 'post',
+								url : '/logout',
+								success : function(data) {
+									window.location.href = '/login';
+								}
+							});
+						}
+					});
+				} else {
+					My.alert(data.msg, null);
+				}
+			}
+		});
+	}
+
+	//打开密码修改窗口
+	function fnOpenPwd() {
+		$('#w-pwd').modal();
+		$("#fo-pwd")[0].reset();
+	}
+
+	$(function() {
+		//表单校验规则
+		var validatePwd = {
+			//校验规则
+			rules : {
+				password : {
+					required : true
+				},
+				new_password : {
+					required : true
+				},
+				confirm_password : {
+					required : true
+				}
+			},
+			//提示信息
+			messages : {
+				password : {
+					required : '请输入原密码'
+				},
+				new_password : {
+					required : '请输入新密码'
+				},
+				confirm_password : {
+					required : '请输入确认密码'
+				}
+			}
+		}
+
+		//绑定新增表单校验和提交响应事件
+		My.validate('#fo-pwd', fnUpdatePwd, validatePwd);
+	});
+</script>
+<!-- End: Script -->
+
+<!-- Start: Script -->
+<script type="text/javascript">
+	$(function() {
+		//统一异常拦截器
+		$(document).ajaxError(function(e, data) {
+			data = data.responseJSON;
+			$('#w-global-error').modal();
+			$('#id-error-path span').text(data.path);
+			$('#id-error-status span').text(data.status);
+			$('#id-error-exception span').text(data.exception);
+			$('#id-error-message').css('overflow-x', 'hidden');
+			$('#id-error-message').text(data.message);
+		});
+
+		//确保所有最后一个弹出窗口在最顶层显示
+		$(document).on('show.bs.modal', '.modal', function(event) {
+			var zIndex = 1040 + (10 * $('.modal:visible').length);
+			$(this).css('z-index', zIndex);
+		});
+		
+	});
+</script>
+<!-- End: Script -->

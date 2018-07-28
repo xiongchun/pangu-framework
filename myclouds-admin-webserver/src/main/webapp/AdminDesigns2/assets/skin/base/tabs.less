@@ -1,0 +1,319 @@
+
+/*===============================================
+  Tabs
+================================================= */
+
+/* Tabs Wrapper */
+.tab-block { position: relative }
+
+/* Tabs Content Container */
+.tab-block .tab-content {
+    overflow: auto;
+    position: relative;
+    z-index: 10;
+    min-height: 125px;
+    padding: 16px 12px;
+    border: 1px solid @panel-border-color;
+    background-color: #FFF;
+}
+
+/* Tab Navigation */
+.tab-block .nav-tabs {
+    position: relative;
+    border: 0;
+}
+.tab-block .nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+}
+.tab-block .nav-tabs > li > a {
+    position: relative;
+    z-index: 9;
+    padding: 9px 16px;
+    margin-right: -1px;
+    font-weight: 600;
+    color: #777;
+    border-color: @panel-border-color;
+    border-radius: 0;
+    background: #fafafa;
+}
+.tab-block .nav-tabs > li:first-child > a { margin-left: 0 }
+
+/* tab states */
+.tab-block .nav-tabs > li > a:hover { background-color: #eeeeee; }
+
+/* active states */
+.tab-block .nav-tabs > li.active > a,
+.tab-block .nav-tabs > li.active > a:hover,
+.tab-block .nav-tabs > li.active > a:focus {
+    cursor: default;
+    position: relative;
+    z-index: 12;
+    color: #555555;
+    background: #FFF;
+    border-color: @panel-border-color;
+    border-bottom: 1px solid #FFF;
+}
+
+/* Tabs - Left */
+.tabs-left { float: left }
+.tabs-left > li {
+    float: none;
+    margin: 0 -1px -1px 0;
+}
+.tabs-left > li > a {
+    padding: 12px 16px;
+    color: #777;
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-color: #DDD;
+    background: #fafafa;
+}
+/* tab states */
+.tab-block .tabs-left > li > a:hover { }
+.tab-block .tabs-left > li.active > a,
+.tab-block .tabs-left > li.active > a:hover,
+.tab-block .tabs-left > li.active > a:focus {
+    color: #555;
+    border-color: #DDD #FFF #DDD #DDD;
+    cursor: default;
+    position: relative;
+    z-index: 12;
+    background: #FFF;
+}
+
+/* Tabs - Right */
+.tabs-right { float: right }
+.tabs-right > li {
+    float: none;
+    margin: 0 0 -1px -1px;
+}
+.tabs-right > li > a {
+    padding: 12px 16px;
+    color: #777;
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-color: #DDD;
+    background: #fafafa;
+}
+/* tab states */
+.tab-block .tabs-right > li > a:hover { }
+.tab-block .tabs-right > li.active > a,
+.tab-block .tabs-right > li.active > a:hover,
+.tab-block .tabs-right > li.active > a:focus {
+    color: #555;
+    border-color: #DDD #DDD #DDD #FFF;
+    cursor: default;
+    position: relative;
+    z-index: 12;
+    background: #FFF;
+}
+
+/* Tabs - Below */
+.tabs-below {
+    position: relative;
+}
+.tabs-below > li {
+    float: left;
+    margin-top: -1px;
+}
+.tabs-below > li > a {
+    position: relative;
+    z-index: 9;
+    margin-right: -1px;
+    padding: 11px 16px;
+    color: #777;
+    font-weight: 600;
+    border: 1px solid #DDD;
+      background: #fafafa;
+}
+/* tab states */
+.tab-block .tabs-below > li > a:hover { }
+.tab-block .tabs-below > li.active > a,
+.tab-block .tabs-below > li.active > a:hover,
+.tab-block .tabs-below > li.active > a:focus {
+    cursor: default;
+    position: relative;
+    z-index: 12;
+    color: #555555;
+    background: #FFF;
+    border-color: #DDD;
+    border-top: 1px solid #FFF;
+}
+
+/* TABS JUSTIFIED */
+.tab-block .nav-tabs.nav-justified {
+    top: 1px;
+    margin-top: -1px;
+}
+.tab-block .nav-tabs.nav-justified > li { float: none; }
+.tab-block .nav-tabs.nav-justified > li > a { padding: 11px; }
+
+/* tabs justified - bottom */
+.tab-block .tab-content + .nav-tabs.nav-justified {
+    top: -1px;
+    margin-top: 0;
+}
+.tab-block .tab-content + .nav-tabs.nav-justified > li.active > a {
+    border-top-color: #fff;
+    border-bottom-color: #DDD;
+}
+.tab-block .tab-content + .tabs-border.nav-justified > li.active > a {
+    border-bottom: 2px solid #666;
+}
+
+/* TAB ALTERNATE ALIGNMENT - RIGHT */
+.nav-tabs.nav-tabs-right > li { float: right; }
+.nav-tabs.nav-tabs-right > li:first-child > a { margin-right: 0; }
+
+
+/* 
+ * Alternate Tab Styles - Active Border
+*/
+/* tabs default */
+.tab-block .tabs-border.nav-tabs > li.active > a {
+    margin-top: -1px;
+    border-top: 2px solid #666;
+}
+/* tabs left */
+.tab-block .tabs-border.tabs-left > li.active > a {
+    margin-left: -1px;
+    border-left: 2px solid #666;
+}
+/* tabs right */
+.tab-block .tabs-border.tabs-right > li.active > a {
+    margin-right: -1px;
+    border-right: 2px solid #666;
+}
+/* tabs bottom */
+.tab-block .tabs-border.tabs-below > li.active > a {
+    margin-bottom: -1px;
+    border-bottom: 2px solid #666;
+}
+
+/* 
+ * Alternate Tab Styles - Active Inverse Border
+*/
+.tab-block .tabs-border-bottom.nav-tabs > li.active > a,
+.tab-block .tabs-border-bottom .nav-tabs > li.active > a {
+    color: #555;
+    font-weight: 600;
+    margin-bottom: -1px;
+    background: #f7f7f7;
+    border-color: #DDD;
+    border-bottom: 2px solid #666;
+}
+
+/* 
+ * Alternate Tab Styles - Nav BG
+*/
+
+/* tabs default */
+.tabs-bg.nav-tabs {
+    background: #f5f5f5;
+    border: 1px solid #DDD;
+    border-bottom: none;
+    padding: 10px 10px 0;
+}
+/* tabs bottom */
+.tabs-bg.tabs-below {
+    background: #f5f5f5;
+    border: 1px solid #DDD;
+    border-top: none;
+    padding: 0 10px 6px;
+}
+
+
+/*===============================================
+  E. Unstyled BLOCK TABS
+  -----------------------------------------------
+  Removes container and active borders
+  Used primarily in sidebars
+================================================= */
+.tab-block.sidebar-block .nav-tabs > li > a {
+   border: 0;
+   background: #ececec;
+   padding: 16px 11px;
+}
+.tab-block.sidebar-block .nav-tabs > li.active > a {
+   border: 0;
+   background: #f8f8f8;
+}
+.tab-block.sidebar-block .tab-content {
+   border: 0;
+   background: transparent;
+}
+
+
+/*===============================================
+  E. PANEL TABS
+  -----------------------------------------------
+  Panel Tab Navigation must be placed inside
+  ".panel-heading" see Docs for example 
+================================================= */
+.panel-tabs {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+/* tabs */
+.panel-tabs > li {
+    position: relative;
+    float: left;
+    margin-bottom: -1px;
+}
+.panel-tabs > li > a {
+    line-height: 18px;
+    border-radius: 0;
+      padding: 10px 18px;
+    border-left: 1px solid #DDD;
+    font-size: 12px;
+    color: #777;
+}
+
+/* hover and active states */
+.panel-tabs > li > a:hover {
+    background-color: transparent;
+}
+.panel-tabs > li.active > a,
+.panel-tabs > li.active > a:hover,
+.panel-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    background: #ffffff;
+}
+
+/* Panel Tab Alignments */
+.panel-tabs-left {
+    left: 0; 
+}
+.panel-tabs-left > li > a {
+    border-right: 1px solid #DDD;
+    border-left: 1px solid transparent;
+}
+
+
+// Contextual Skin Variations
+//
+.panel-tabs.panel-tabs-border > li.active:after {
+  background: @brand-primary;
+}
+
+/* TAB NAVIGATION - ALT STYLE: BORDER */
+.tabs-border.nav-tabs > li.active > a, .tabs-border-bottom .nav-tabs > li.active > a {
+    border-top-color: @brand-primary;
+}
+/* TAB NAVIGATION - ALT STYLE: BORDER */
+.tabs-border.tabs-left > li.active > a, .tabs-border .tabs-left > li.active > a {
+    border-left-color: @brand-primary;
+}
+/* TAB NAVIGATION - ALT STYLE: BORDER */
+.tabs-border.tabs-right > li.active > a, .tabs-border .tabs-right > li.active > a {
+    border-right-color: @brand-primary;
+}
+/* TAB NAVIGATION - ALT STYLE: BORDER */
+.tabs-border-bottom.nav-tabs > li.active > a, .tabs-border-bottom .nav-tabs > li.active > a {
+    border-bottom-color: @brand-primary;
+}
+

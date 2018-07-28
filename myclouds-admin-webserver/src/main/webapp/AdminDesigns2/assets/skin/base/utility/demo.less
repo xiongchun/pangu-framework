@@ -1,0 +1,314 @@
+/* ==============================================
+   III. DEMO PAGES
+      A. Customizer.html
+	  B. Upload-tools.html
+	  C. Timeline.html
+	  D. Sliders.html
+	  E. Portlets.html
+	  F. Maps.html
+	  G. Gallery.html
+	  H. Dynamic-gallery.html
+	  I. Forms.html
+	  J. Elements.html
+	  K. Charts.html
+	  L. Animations.html
+	  M. Buttons.html
+	  N. 404/500.html
+	  O. Icons.html
+	  P. Global Changes
+	  
+ * This file is reserved for changes required only
+ * for the themes demo. These styles may be vital
+ * to themes appearance but often times will not
+ * be useful in a true production environment.
+ 
+ * For example each slider in sliders.html has a
+ * margin of 65px, a large number only needed 
+ * because six sliders have been stacked on top 
+ * of each other. This would most likely not 
+ * happen in a real enviroment.
+================================================= 
+ A. Misc/Global
+================================================= */
+.ajax-loading {
+	overflow-y: scroll;
+}
+
+/*===============================================
+  B. Customizer.html
+================================================= */ 
+#skin-menu { display: block; }
+#skin-toolbox {
+    z-index: 999;
+    overflow: visible !important;
+    position: fixed;
+    top: 180px;
+    right: -230px;
+    width: 230px;
+
+  	-webkit-transition: right 0.1s ease-in-out;
+  	-moz-transition: right 0.1s ease-in-out;
+  	transition: right 0.1s ease-in-out;
+}
+#skin-toolbox.toolbox-open {right: 0;}
+#skin-toolbox .panel {
+}
+#skin-toolbox .panel-heading {
+  cursor: pointer;
+  margin-right: 30px;
+  border: 1px solid #DDD;
+  width: 274px;
+  height: 47px;
+  line-height: 42px;
+  right: 44px;
+  font-size: 14px;
+}
+#skin-toolbox .panel-heading .panel-title {
+  padding-left: 40px
+}
+#skin-toolbox .panel-body {
+  border: 1px solid #DDD;
+  border-top: 0;
+  padding: 23px;
+}
+#skin-toolbox .panel-icon {
+  font-size: 22px;
+  padding-right: 20px;
+  padding-left: 6px;
+}
+
+
+/*===============================================
+  B. Upload-tools.html
+================================================= */ 
+body.upload-tools-page .dropzone {
+	min-height: 405px;
+}
+body.upload-tools-page .panel-body {
+	min-height: 300px;
+}
+
+/*===============================================
+  C. Timeline.html
+================================================= */ 
+body.timeline-page .panel-clone {
+	display: none;
+}
+
+/*===============================================
+  D. Sliders.html
+================================================= */ 
+.slider-example .form-horizontal .col-md-9 {
+	margin-top: 65px;	
+}
+.slider-example .form-horizontal .col-md-2 {
+	margin-top: 62px;	
+	margin-right: 20px;
+}
+.slider-example .form-horizontal .form-group.first .col-md-9 {
+	margin-top: 45px;
+}
+.slider-example .form-horizontal .form-group.first .col-md-2 {
+	margin-top: 42px;
+}
+.slider-example .form-horizontal .form-group:last-child {
+	margin-bottom: 40px;
+}
+
+/*===============================================
+  E. Portlets.html
+================================================= */ 
+body.portlets-page .panel .tab-content {
+	padding: 0;
+	border: 0;
+	min-height: 95px;
+}
+body.portlets-page #accordion  {
+	margin-bottom: 35px;
+}
+
+/*===============================================
+  F. Maps.html
+================================================= */ 
+body.maps-page .map {
+	width: 100%;
+	height: 400px;	
+}
+body.maps-page .panel-menu button {
+	margin-right: 8px;
+	min-width: 65px;
+}
+
+/*===============================================
+  G. Gallery.html
+================================================= */ 
+body.gallery-page {
+	overflow: scroll;
+}
+
+
+/*===============================================
+  J. Elements.html
+================================================= */ 
+body.elements-page .panel button {
+	margin-right: 6px;
+	margin-bottom: 8px;
+}
+body.elements-page .panel .btn-group button {
+	margin-right: 0;
+	margin-bottom: 0;
+}
+body.elements-page .btn-block {
+	border-radius: 0;
+}
+
+/*===============================================
+  K. Charts.html
+================================================= */ 
+body.charts-page .panel-menu label {
+	font-size: 13px;
+	font-weight: 600;
+	color: #888;
+	margin-right: 5px;
+}
+body.charts-page .legend table tr td {
+	padding: 5px 10px 5px 5px;
+}
+
+/*===============================================
+  L. Animations.html
+================================================= */ 
+.animate-me-btns a {
+	margin: 5px 5px 7px;
+}
+.animate-me-btns .tab-content {
+	border: 0;
+	padding-bottom: 30px;
+}
+
+/*===============================================
+  M. Buttons.html
+================================================= */ 
+body.buttons-page .panel button {
+	margin-right: 6px;
+	margin-bottom: 8px;
+}
+body.buttons-page .panel .btn-group {
+	margin-right: 5px;
+}
+body.buttons-page .panel .btn-group button {
+	margin-right: 0;
+	margin-bottom: 8px;
+}
+body.buttons-page .panel .btn-group-vertical button {
+	margin-right: 0;
+	margin-bottom: 0;	
+}
+body.buttons-page .social-buttons-panel button {margin: 10px;}
+body.buttons-page .zocial, a.zocial {
+	min-height: 32px;
+	margin: 8px;
+}
+body.buttons-page .zocial.icon {min-height: 28px;}
+body.buttons-page .zocial.icon.facebook:before {padding-right: 5px;}
+
+/*===============================================
+  N. 404/500.html
+================================================= */ 
+.icon-option-menu li a {
+	cursor: pointer;
+}
+.icon-option-menu li a i {
+	padding-right: 6px;
+	color: #777;
+}
+
+/*===============================================
+  N. Editors
+================================================= */ 
+/* CKEDITOR BUTTON DISABLES - IMPORTANT */
+#cke_8 {
+	display: none;
+}
+.note-editor .note-toolbar > .btn-group.note-para {
+  border-right: none;
+}
+.editor-color-swapper {
+	z-index: 1024;
+	position: absolute;
+	top: 40px;
+	right: 22px;
+}
+/*===============================================
+  O. Icons.html
+================================================= */ 
+#icon-nav.affix {top: 80px;}
+#icon-nav ul {width: 220px;}
+#icon-nav li:hover span {color: #444;}
+#icon-nav li.active span {color: #428bca}
+.panel-body .page-header {color: #428bca;font-size: 18px;}
+#glyphicons-icon-list,
+#glyphicon-icon-list,
+#imoon-icon-list,
+.fa-icon-list {
+  font-size: 12px;
+  padding-left: 0;
+  padding-bottom: 1px;
+  margin-bottom: 20px;
+  list-style: none;
+  overflow: hidden;
+}
+#glyphicons-icon-list li,
+#glyphicon-icon-list li,
+#imoon-icon-list li,
+.fa-icon-list li {
+  float: left;
+  width: 20%;
+  height: 100px;
+  padding: 5px;
+  line-height: 1.4;
+  text-align: center;
+}
+#glyphicons-icon-list .glyphicons,
+#glyphicon-icon-list .glyphicon,
+#imoon-icon-list .imoon,
+.fa-icon-list .fa {
+  display: block;
+  margin: 5px auto 15px;
+  font-size: 24px;
+}
+#glyphicons-icon-list li:hover,
+#glyphicon-icon-list li:hover,
+#imoon-icon-list li:hover,
+.fa-icon-list li:hover {
+  color: #428bca;
+}
+/*===============================================
+  P. Global Changes
+================================================= */ 
+  
+/* Disables hover effect for multi-level menu */
+ul.sidebar-nav ul#sideEight.sub-nav > li > a:hover { background-color: transparent; }
+
+.panel-tabs > li > a:hover {background-color: #f2f2f2;} 
+#return-arrow {
+    color: #555;
+    padding-left: 15px;
+    padding-top: 15px;
+    position: fixed;
+    opacity: 0.7;
+    cursor: pointer;
+    display: block;
+    z-index: 1050;
+}
+#return-arrow i.fa {
+    float: left;
+    padding-top: 2px;
+}
+#return-arrow span {
+    float: left;
+    padding-left: 15px;
+    padding-top: 0px;
+    font-size: 16px;
+}
+#return-arrow:hover { opacity: 1 }

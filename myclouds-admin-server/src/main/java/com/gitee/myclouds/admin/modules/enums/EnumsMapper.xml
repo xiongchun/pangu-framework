@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 枚举类型模块SQL映射 -->
+<mapper namespace="sql.enums">
+
+	<!-- 根据Dto查询并返回枚举类型数据实体对象集合 -->
+	<select id="pageEnums" parameterType="Dto" resultType="MyEnumEntity">
+		SELECT
+		<include refid="com.gitee.myclouds.admin.domain.myenum.MyEnumMapper.column" />
+		FROM my_enum
+		<include refid="pageEnumsWhere" />
+		ORDER BY enum_key, sort_no LIMIT ${start},${length}
+	</select>
+	<select id="pageEnumsCount" parameterType="Dto" resultType="Integer">
+		SELECT
+		count(1) AS total
+		FROM my_enum
+		<include refid="pageEnumsWhere" />
+	</select>
+	<sql id="pageEnumsWhere">
+		<where>
+			<if test="enum_name != null and enum_name != ''">
+				AND enum_name like '%${enum_name}%'
+			</if>
+			<if test="enum_key != null and enum_key != ''">
+				AND enum_key like '%${enum_key}%'
+			</if>
+			<if test="is_enable != null and is_enable != ''">
+				AND is_enable = #{is_enable}
+			</if>
+			<if test="sys_key != null and sys_key != ''">
+				AND sys_key = #{sys_key}
+			</if>
+		</where>
+	</sql>
+
+</mapper>

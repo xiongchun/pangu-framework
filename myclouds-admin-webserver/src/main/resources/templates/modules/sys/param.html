@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<th:block th:replace="fragments/head" />
+</head>
+
+<body class="sb-l-o">
+	<!--/* 公共代码 */-->
+	<div th:replace="fragments/common"></div>
+	
+	<!--/* 主题设置面板 */-->
+	<div th:replace="fragments/skin-toolbox"></div>
+
+	<!-- BEGIN: 主页面 -->
+	<div id="main">
+		<!--/* 顶部导航 */-->
+		<header th:replace="fragments/header-banner"></header>
+		<!--/* 左侧功能菜单导航 */-->
+		<aside th:replace="fragments/aside"></aside>
+		<!-- BEGIN: Content-Wrapper -->
+		<section id="content_wrapper">
+			<!--/* 模块路径导航条 */-->
+			<header th:replace="fragments/header-breadcrumb"></header>
+
+			<!-- Begin: 业务办理区 -->
+			<section id="content" class="animated fadeIn">
+
+				<!-- Input Fields -->
+				<div class="panel">
+					<form id="fo_query" class="form-horizontal">
+						<div class="panel-heading">
+							<span class="panel-title">查询条件</span>
+						</div>
+						<div class="panel-body">
+							<div class="form-group">
+								<label class="col-md-1 control-label">参数名称：</label>
+								<div class="col-md-2">
+									<input name="name" class="form-control" />
+								</div>
+								<label class="col-md-1 control-label">参数键：</label>
+								<div class="col-md-2">
+									<input name="param_key" class="form-control" />
+								</div>
+								<label class="col-md-1 control-label">参数值</label>
+								<div class="col-md-2">
+									<input name="value" class="form-control" />
+								</div>
+								<label class="col-md-1 control-label">所属分类：</label>
+								<div class="col-md-2">
+									<select name="type" class="basic-single form-control">
+										<option></option>
+										<option value="0">缺省全局</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer text-center">
+							<button id="btn-query" class="btn btn-default btn-gradient btn-sm" type="button">
+								<span class="glyphicon glyphicon-search mr3"></span>查询
+							</button>
+							<button class="btn btn-default btn-gradient btn-sm" type="reset">
+								<span class="glyphicon glyphicon-repeat mr3"></span>重置
+							</button>
+						</div>
+					</form>
+
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-visible" id="spy1">
+							<div class="panel-heading">
+								<span class="panel-title">键值参数列表</span>
+								<div class="widget-menu pull-right mr5">
+									<div class="btn-group">
+										<button id="btn-new" class="btn btn-default btn-gradient btn-sm">
+											<span class="fa fa-plus mr3"></span>新增
+										</button>
+										<button id="btn-sync" class="btn btn-default btn-gradient btn-sm">
+											<span class="fa fa-exchange mr3"></span>同步缓存
+										</button>
+										<button id="btn-refresh" class="btn btn-default btn-gradient btn-sm">
+											<span class="fa fa-refresh mr3"></span>刷新
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="panel-body pn">
+								<table id="dt-param" class="table my table-hover ">
+									<thead>
+										<tr>
+											<th>编号</th>
+											<th>参数名称</th>
+											<th>参数键</th>
+											<th>参数值</th>
+											<th>所属分类</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 新增参数窗口 -->
+				<div class="modal fade" id="w-new" tabindex="-1" data-backdrop="static">
+					<div class="modal-dialog w450">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h3 class="modal-title">新增键值参数</h3>
+							</div>
+							<div class="modal-body">
+								<form id="fo-new" class="form-horizontal">
+									<div class="form-group">
+										<label class="col-md-3 control-label required">所属分类：</label>
+										<div class="col-md-9 field">
+											<select name="type" class="basic-single form-control">
+												<option value="0">缺省</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label required">参数名称：</label>
+										<div class="col-md-9 field">
+											<input type="text" name="name" class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label required">参数键：</label>
+										<div class="col-md-9 field">
+											<input class="form-control" type="text" name="param_key" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label required">参数值：</label>
+										<div class="col-md-9 field">
+											<input name="value" class="form-control" type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">备注</label>
+										<div class="col-md-9 field">
+											<textarea name="remark" class="form-control textarea-grow" rows="4"></textarea>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" form="fo-new" class="btn btn-sm btn-success btn-gradient">保存</button>
+								<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+
+				<!-- 修改参数窗口 -->
+				<div class="modal fade" id="w-update" tabindex="-1" data-backdrop="static">
+					<div class="modal-dialog w450">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h3 class="modal-title">修改键值参数</h3>
+							</div>
+							<div class="modal-body">
+								<form id="fo-update" class="form-horizontal">
+									<input type="hidden" name="id" />
+									<div class="form-group">
+										<label class="col-md-3 control-label required">所属分类：</label>
+										<div class="col-md-9 field">
+											<select name="type" class="basic-single form-control">
+												<option value="0">缺省</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label required">参数名称：</label>
+										<div class="col-md-9 field">
+											<input type="text" name="name" class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label required">参数键：</label>
+										<div class="col-md-9 field">
+											<input class="form-control" type="text" name="param_key" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label required">参数值：</label>
+										<div class="col-md-9 field">
+											<input name="value" class="form-control" type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">备注</label>
+										<div class="col-md-9 field">
+											<textarea name="remark" class="form-control textarea-grow" rows="4"></textarea>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" form="fo-update" class="btn btn-sm btn-success btn-gradient">保存</button>
+								<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
+
+
+			</section>
+			<!-- End: 业务办理区 -->
+
+			<!--/* 页脚 */-->
+			<footer th:replace="fragments/footer"></footer>
+
+		</section>
+		<!-- End: Content-Wrapper -->
+
+	</div>
+	<!-- End: 主页面 -->
+
+	<!--/* 公共脚本文件 */-->
+	<th:block th:include="fragments/scripts" />
+
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		$(function() {
+			"use strict";
+			Core.init();
+			My.init();
+			/******* 事件监听.start ********/
+			$("#btn-query").on("click", fnQuery);
+			$('#dt-param').on('init.dt', fnQuery);
+			$("#btn-sync").on("click", syncCache);
+			$("#btn-new").on("click", function(e) {
+				$('#w-new').modal();
+				$("#fo-new")[0].reset();
+			});
+			$("#btn-refresh").on("click", fnQuery);
+			$('#dt-param tbody').on('click', 'tr', function() {
+				$(this).toggleClass('selected');
+			});
+			$('#dt-param tbody').on('dblclick', 'tr', function() {
+				fnShowUpdate($('#dt-param').DataTable().row(this).data());
+			});
+
+			/******* 事件监听.end ********/
+
+			//初始化下拉框
+			$(".basic-single").select2({
+				placeholder : "请选择...",
+				width : '100%',
+				minimumResultsForSearch : -1, //隐藏搜索框
+				allowClear : true
+			});
+
+			//初始化表格
+			$('#dt-param')
+					.dataTable(
+							{
+								dom : 'tr<"dt-panelfooter clearfix"lip>',
+								pageLength : 20,
+								lengthMenu : [ [ 10, 20, 50, 200, 500 ], [ 10, 20, 50, 200, 500 ] ],
+								ordering : false,
+								processing : true,
+								serverSide : true, //false：一次查询，客户端分页的模式；true：服务端分页模式
+								deferLoading : 0, //屏蔽初始化后自动加载数据
+								pagingType : "full_numbers",
+								columns : [
+										{
+											data : "id",
+											width : 60
+										},
+										{
+											data : "name",
+											width : 200
+										},
+										{
+											data : "param_key",
+											width : 150
+										},
+										{
+											data : "value"
+										},
+										{
+											data : "type",
+											width : 200,
+											render : function(data, type, row, meta) {
+												switch (row.type) {
+												case '0':
+													return '缺省';
+												default:
+													return row.type
+												}
+											}
+										},
+										{
+											width : 80,
+											render : function(data, type, row, meta) {
+												var html = "<div class='text-right text-nowrap'><button class='btn btn-success btn-xs btn-gradient mr5' onclick='fnShowUpdate("
+														+ JSON.stringify(row) + ")'>修改</button>";
+												html += "<button class='btn btn-danger btn-xs btn-gradient' onclick='fnDelete("
+														+ JSON.stringify(row) + ")'>删除</button></div>";
+												return html;
+											}
+										} ],
+								columnDefs : [ {
+									"defaultContent" : "",
+									"targets" : "_all"
+								} ],
+							});
+
+			//表单校验规则
+			var validateOptions = {
+				//校验规则
+				rules : {
+					name : {
+						required : true
+					},
+					param_key : {
+						required : true
+					},
+					type : {
+						required : true
+					},
+					value : {
+						required : true
+					}
+				},
+				//提示信息
+				messages : {
+					name : {
+						required : '请输入参数名称'
+					},
+					param_key : {
+						required : '请输入参数键'
+					},
+					type : {
+						required : '请选择所属分类'
+					},
+					value : {
+						required : '请输入参数值'
+					}
+				}
+			}
+			//绑定表单校验和提交响应事件
+			My.validate('#fo-new', fnNew, validateOptions);
+			My.validate('#fo-update', fnUpdate, validateOptions);
+
+		});
+
+		//查询列表
+		function fnQuery() {
+			var ajax = {
+				url : "list",
+				type : "POST",
+				data : My.params('#fo_query')
+			}
+			$('#dt-param').DataTable().settings()[0].ajax = ajax;
+			$('#dt-param').DataTable().ajax.reload();
+		}
+
+		//保存
+		function fnNew() {
+			$.ajax({
+				type : 'post',
+				url : 'save',
+				data : My.params('#fo-new'),
+				success : function(data) {
+					if (data.code == '1') {
+						My.alert(data.msg);
+						$('#w-new').modal('hide');
+						fnQuery();
+					} else {
+						My.alert(data.msg);
+					}
+				}
+			});
+		}
+
+		//弹出修改窗口
+		function fnShowUpdate(row) {
+			$.ajax({
+				type : 'post',
+				url : 'get',
+				data : row,
+				success : function(data) {
+					$('#w-update').modal();
+					$("#fo-update")[0].reset();
+					$("#fo-update").setForm(data);
+				}
+			});
+		}
+
+		//保存更新
+		function fnUpdate() {
+			$.ajax({
+				type : 'post',
+				url : 'update',
+				data : My.params('#fo-update'),
+				success : function(data) {
+					if (data.code == '1') {
+						$('#w-update').modal('hide');
+						fnQuery();
+						My.alert(data.msg);
+					} else {
+						My.alert(data.msg);
+					}
+				}
+			});
+		}
+
+		//删除
+		function fnDelete(row) {
+			My.confirm('确认删除当前键值参数吗？', 'small', function(result) {
+				if (result) {
+					$.ajax({
+						type : 'post',
+						url : 'delete',
+						data : row,
+						success : function(data) {
+							My.alert(data.msg);
+							fnQuery();
+						}
+					});
+				}
+			});
+		}
+
+		//缓存同步
+		function syncCache() {
+			My
+					.confirm(
+							'<span class="text-danger">请知晓当前操作的必要性和重要性再继续。确认批量同步缓存吗？</span><hr class="mv10 br-lighter"><span class="label label-xs label-info p2"><i class="fa fa-meh-o"></i> 提示</span> 页面上的维护操作，数据已自动同步缓存。',
+							null,
+							function(result) {
+								if (result) {
+									$.ajax({
+										type : 'post',
+										data : {
+											type : 'kv'
+										},
+										url : '/sys/cache/syncCfgCache',
+										success : function(data) {
+											if (data.code == '1') {
+												My.alert(data.msg);
+											} else {
+												My.alert(data.msg);
+											}
+										}
+									});
+								}
+							});
+		}
+
+		/*]]>*/
+	</script>
+
+</body>
+
+</html>

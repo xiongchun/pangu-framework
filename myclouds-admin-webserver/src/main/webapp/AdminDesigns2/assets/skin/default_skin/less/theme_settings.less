@@ -1,0 +1,114 @@
+
+// Activated Skin Colors
+@skin-primary: true;
+@skin-success: true;
+@skin-info: true;
+@skin-warning: true;
+@skin-danger: true;
+@skin-alert: true;
+@skin-system: true;
+@skin-dark: true;
+
+// Nearly all elements have had skins for all of
+// the colors created. You can disable colors that
+// you do not need by setting the color false.
+// Note that this will disable the ability to use that
+// color for all elements. (checkboxes, bgs, labels etc).
+// This can help greatly reduce theme.css size
+
+
+// Sidebar Colors Settings
+// Only applies to default dark skin
+//////////////////////////////////////
+
+// Sidebar Label 
+@sb-label: #70829a;
+
+// Menu Item Links 
+@sb-links: #FFF;
+
+// Menu Item Caret
+@sb-caret: #FFF;
+// Open Menu Item Caret
+@sb-caret-open: @brand-primary;
+
+// 1st level menu items (top most level)
+@sb-menu-item-hover:        transparent;    // bg color on hover (unused)
+@sb-menu-border-hover:      transparent;    // border color on hover (unused)
+@sb-active-bg:              transparent;    // active item bg color (unused)
+@sb-active-border:          @transparent;   // active item border color (unused)
+@sb-active-icon:            @brand-primary; // active item icon color 
+
+// 2nd level menu items (submenus)
+@sub-menu-item-hover:       #22262c;         // bg color on hover
+@sub-menu-border-hover:     @brand-primary;  // border color on hover
+@sub-active-bg:             transparent;     // active item bg color (unused)
+@sub-active-icon:           @brand-primary;  // active item icon color 
+@sub-active-border:         @brand-primary;  // active item border color
+ 
+// 3rd level menu items (multi-level menus)
+@multi-menu-item-hover:     transparent;   // bg color on hover (unused)
+@multi-menu-border-hover:   @brand-alert;  // broder color on hover
+@multi-active-bg:           transparent;   // active item bg color (unused)
+@multi-active-icon:         #FFF;          // active item icon color 
+@multi-active-border:       @brand-alert;  // active item border color
+
+// User menu
+@sb-usermenu-bg:            #282d33; // usermenu bg color
+@sb-usermenu-bg-hover:      rgba(255, 255, 255, 0.1); // usermenu bg color:hover
+@sb-usermenu-icon:    	    #DDD; // item icon color - set "inherit" to use html color classes(".text-primary", etc)
+@sb-usermenu-icon-hover:    @brand-primary; // item icon color:hover - set "inherit" to use html color classes(".text-primary", etc)
+
+
+// Loaded Fonts
+@base-fonts-path:  "../../base/fonts";
+@import "@{base-fonts-path}/glyphicons.less";
+@import "@{base-fonts-path}/glyphicons-pro.less";
+@import "@{base-fonts-path}/font-awesome.less";
+@import "@{base-fonts-path}/octicons.less";
+@import "@{base-fonts-path}/open-sans.less";
+@import "@{base-fonts-path}/stateface.less";
+@import "@{base-fonts-path}/zocial.less";
+
+// All Font libraries have been listed above
+// so that you may uncomment/remove those
+// that you do not need. Will drastically 
+// reduce theme.css size
+
+
+// Loaded Plugin Styles
+@plugins-path:	 "../../base/plugins";
+@import "@{plugins-path}/circlegraphs.less";
+@import "@{plugins-path}/ckeditor.less";
+@import "@{plugins-path}/countdown.less";
+@import "@{plugins-path}/datatables.less";
+@import "@{plugins-path}/dropzone.less";
+@import "@{plugins-path}/expose.less";
+@import "@{plugins-path}/fileupload.less";
+@import "@{plugins-path}/flot.less";
+@import "@{plugins-path}/fullcalendar.less";
+@import "@{plugins-path}/gmap.less";
+@import "@{plugins-path}/highcharts.less"; // required for many demo widgets
+@import "@{plugins-path}/jqueryspinner.less";
+@import "@{plugins-path}/jvectormap.less";
+@import "@{plugins-path}/magnific.less"; // considered core plugin
+@import "@{plugins-path}/markitup.less";
+@import "@{plugins-path}/mapplic.less"; // new styles as of v1.1.2
+@import "@{plugins-path}/multiselect.less"; // considered core plugin
+@import "@{plugins-path}/nanoscroller.less"; // considered core plugin
+@import "@{plugins-path}/nestable.less";
+@import "@{plugins-path}/pickers.less"; 
+@import "@{plugins-path}/pnotify.less"; // considered core plugin
+@import "@{plugins-path}/rangeslider.less";
+@import "@{plugins-path}/summernote.less";
+@import "@{plugins-path}/tagmanager.less";
+@import "@{plugins-path}/treeview.less";
+
+// @import "@{base-path}/plugins/all_plugins.less"; 
+
+// The above import includes all theme plugin
+// stylesheets. However, they have been listed 
+// individually so that you may uncomment/remove
+// plugins that you do not need
+
+

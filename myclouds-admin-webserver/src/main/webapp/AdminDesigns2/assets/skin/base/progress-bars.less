@@ -1,0 +1,181 @@
+/*==================================================
+  Progress Bars
+==================================================== */
+
+
+// Bar animations
+// -------------------------
+
+// WebKit
+@-webkit-keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+// Spec and IE10+
+@keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+
+
+// Bar itself
+// -------------------------
+
+// Outer container
+.progress {
+  overflow: hidden;
+  height: @line-height-computed;
+  margin-bottom: @line-height-computed;
+  background-color: @progress-bg;
+  border-radius: @border-radius-base;
+  box-shadow: none;
+}
+
+// Bar of progress
+.progress-bar {
+  float: left;
+  width: 0%;
+  height: 100%;
+  font-size: @font-size-small;
+  font-weight: 600;
+  line-height: @line-height-computed;
+  color: @progress-bar-color;
+  text-align: center;
+  background-color: @progress-bar-bg;
+  .box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+  .transition(width .6s ease);
+}
+
+// Striped bars
+//
+// `.progress-striped .progress-bar` is deprecated as of v3.2.0 in favor of the
+// `.progress-bar-striped` class, which you just add to an existing
+// `.progress-bar`.
+.progress-striped .progress-bar,
+.progress-bar-striped {
+  #gradient > .striped();
+  background-size: 40px 40px;
+}
+
+// Call animation for the active one
+//
+// `.progress.active .progress-bar` is deprecated as of v3.2.0 in favor of the
+// `.progress-bar.active` approach.
+.progress.active .progress-bar,
+.progress-bar.active {
+  .animation(progress-bar-stripes 2s linear infinite);
+}
+
+// Account for lower percentages
+.progress-bar {
+  &[aria-valuenow="1"],
+  &[aria-valuenow="2"] {
+    min-width: 30px;
+  }
+
+  &[aria-valuenow="0"] {
+    color: @gray-light;
+    min-width: 30px;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+  }
+}
+
+// Size Variations - ".progress" always required
+// -------------------------
+
+// Default
+.progress { height: 18px; border-radius: 2px; }
+
+// Tiny
+.progress.progress-bar-xxs { height: 3px; border-radius: 2px; }
+.progress.progress-bar-xxs .progress-bar { line-height: 3px }
+
+// Extra Small
+.progress.progress-bar-xs { height: 6px; border-radius: 2px; }
+.progress.progress-bar-xs .progress-bar { line-height: 6px }
+
+// Small
+.progress.progress-bar-sm { height: 10px; border-radius: 2px; }
+.progress.progress-bar-sm .progress-bar { line-height: 10px }
+
+// Large
+.progress.progress-bar-lg { height: 20px }
+.progress.progress-bar-lg .progress-bar { line-height: 20px }
+
+// Extra Large
+.progress.progress-bar-xl { height: 24px }
+.progress.progress-bar-xl .progress-bar { line-height: 24px }
+
+
+// Alignments
+// -------------------------
+
+// Right
+.progress.right .progress-bar {
+	float: right;
+}
+
+// Vertical Bar Variation
+// -------------------------
+.progress.vertical {
+	height: 100%;
+	min-height: 200px;
+	width: 22px;
+	position: relative;
+}
+.progress.vertical .progress-bar {
+	width: 100%;
+	position: absolute;
+	font-size: 11px;
+  line-height: 20px;
+}
+// Bottom Aligned 
+.progress.vertical.bottom .progress-bar {
+	bottom: 0;
+}
+
+// Vertical Bar Sizes
+.progress { height: 18px; border-radius: 2px; }
+
+// Small
+.progress.vertical.progress-bar-sm { width: 16px; }
+// Large
+.progress.vertical.progress-bar-lg { width: 30px }
+// Extra Large
+.progress.vertical.progress-bar-xl { width: 40px }
+
+
+// Color Variations
+// -------------------------
+.progress-bar-default {
+  .progress-bar-variant(@progress-bar-default-bg);
+}
+.progress-bar-primary when (@skin-primary) {
+  .progress-bar-variant(@progress-bar-primary-bg);
+}
+.progress-bar-success when (@skin-success) {
+  .progress-bar-variant(@progress-bar-success-bg);
+}
+.progress-bar-info when (@skin-info) {
+  .progress-bar-variant(@progress-bar-info-bg);
+}
+.progress-bar-warning when (@skin-warning) {
+  .progress-bar-variant(@progress-bar-warning-bg);
+}
+.progress-bar-danger when (@skin-danger) {
+  .progress-bar-variant(@progress-bar-danger-bg);
+}
+.progress-bar-alert when (@skin-alert) {
+  .progress-bar-variant(@progress-bar-alert-bg);
+}
+.progress-bar-system when (@skin-system) {
+  .progress-bar-variant(@progress-bar-system-bg);
+}
+.progress-bar-dark when (@skin-dark) {
+  .progress-bar-variant(@progress-bar-dark-bg);
+}
+

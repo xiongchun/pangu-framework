@@ -1,0 +1,48 @@
+
+/* Simply Combines all skins into a single css file
+ * Useful for demonstrating all skins or providing 
+ * multi-skin support 
+ */
+
+@import "colors.less";
+@import "mixins/admin-skins.less";
+
+// Dark Skin
+// --------------------------------------------------
+.skin-element-variant(@brand-dark; @brand-dark-light; @brand-dark-lighter; @brand-dark-dark; @brand-dark-darker; dark);
+.admin-form.theme-dark {.skin-form-variant(@brand-dark-dark; @brand-dark-light; @brand-dark);}
+
+// Primary Skin
+// --------------------------------------------------
+.skin-element-variant(@brand-primary; @brand-primary-light; @brand-primary-lighter; @brand-primary-dark; @brand-primary-darker; primary);
+.admin-form.theme-primary { .skin-form-variant(@brand-primary-dark; @brand-primary-light; @brand-primary); }
+
+// Info Skin
+// --------------------------------------------------
+.skin-element-variant(@brand-info; @brand-info-light; @brand-info-lighter; @brand-info-dark; @brand-info-darker; info);
+.admin-form.theme-info { .skin-form-variant(@brand-info-dark; @brand-info-light; @brand-info); }
+
+// Success Skin
+// --------------------------------------------------
+.skin-element-variant(@brand-success; @brand-success-light; @brand-success-lighter; @brand-success-dark; @brand-success-darker; success);
+.admin-form.theme-success { .skin-form-variant(@brand-success-dark; @brand-success-light; @brand-success); }
+
+// Warning Skin
+// --------------------------------------------------
+.skin-element-variant(@brand-warning; @brand-warning-light; @brand-warning-lighter; @brand-warning-dark; @brand-warning-darker; warning);
+.admin-form.theme-warning { .skin-form-variant(@brand-warning-dark; @brand-warning-light; @brand-warning); }
+
+// Danger Skin
+// --------------------------------------------------
+.skin-element-variant(@brand-danger; @brand-danger-light; @brand-danger-lighter; @brand-danger-dark; @brand-danger-darker; danger);
+.admin-form.theme-danger { .skin-form-variant(@brand-danger-dark; @brand-danger-light; @brand-danger); }
+
+// Alert Skin
+// --------------------------------------------------
+.skin-element-variant(@brand-alert; @brand-alert-light; @brand-alert-lighter; @brand-alert-dark; @brand-alert-darker; alert);
+.admin-form.theme-alert { .skin-form-variant(@brand-alert-dark; @brand-alert-light; @brand-alert); }
+
+// System Skin
+// --------------------------------------------------
+.skin-element-variant(@brand-system; @brand-system-light; @brand-system-lighter; @brand-system-dark; @brand-system-darker; system);
+.admin-form.theme-system { .skin-form-variant(@brand-system-dark; @brand-system-light; @brand-system); }

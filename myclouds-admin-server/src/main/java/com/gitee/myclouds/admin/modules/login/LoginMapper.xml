@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 登录验证模块SQL映射 -->
+<mapper namespace="sql.login">
+
+     <!-- 查询用户对应的角色ID集合 -->
+	<select id="selectRoleIdsByUserId" parameterType="Integer" resultType="String">
+		SELECT role_id FROM my_user_role WHERE user_id = #{user_id}
+	</select>
+</mapper>

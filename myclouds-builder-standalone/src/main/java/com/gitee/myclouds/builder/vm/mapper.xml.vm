@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- $!{tableDto.comment}[${tableDto.name}]SQL自动映射 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 $!sysdate -->
+<mapper namespace="${package}.${tableDto.upname}Mapper">
+	
+	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
+	<insert id="insert" #if(${tableDto.autoincrementPkName})useGeneratedKeys="true" keyProperty="${tableDto.autoincrementPkName}"#end parameterType="${tableDto.upname}Entity">
+		INSERT INTO ${tableDto.name} (
+#foreach($columnDto in $columnDtos)
+#if(${columnDto.isPkey} == "false")
+#if(${columnDto.jdbctype} == 'VARCHAR')
+		<if test="${columnDto.name} != null and ${columnDto.name} != ''">
+#else
+		<if test="${columnDto.name} != null">
+#end
+	         ${columnDto.name}, <!-- ${columnDto.comment} -->
+		</if>
+#end
+#end
+## 以自增列做为主键
+#if(${tableDto.autoincrementPkName})
+	          ${tableDto.autoincrementPkName}
+#end
+##这个动态插入映射语句的主键字段只能放在最末尾
+## 如果不是以自增列做为主键
+#if(!${tableDto.autoincrementPkName})
+#foreach($columnDto in $pkeyColumnDtos)
+#if(${columnDto.jdbctype} == 'VARCHAR')
+		<if test="${columnDto.name} != null and ${columnDto.name} != ''">
+#else
+		<if test="${columnDto.name} != null">
+#end
+	          ${columnDto.name}#if($velocityCount != $pkeyColumnDtos.size()),#end  <!-- ${columnDto.comment} -->
+	   </if>
+#end
+#end
+		)VALUES(
+#foreach($columnDto in $columnDtos)
+#if(${columnDto.isPkey} == "false")
+#if(${columnDto.jdbctype} == 'VARCHAR')
+		<if test="${columnDto.name} != null and ${columnDto.name} != ''">
+#else
+		<if test="${columnDto.name} != null">
+#end
+	          #{${columnDto.name}, jdbcType=${columnDto.jdbctype}}, <!-- ${columnDto.comment} -->
+	    </if>
+#end
+#end
+## 以自增列做为主键
+#if(${tableDto.autoincrementPkName})
+	          null
+#end
+## 如果不是以自增列做为主键
+#if(!${tableDto.autoincrementPkName})
+#foreach($columnDto in $pkeyColumnDtos)
+#if(${columnDto.jdbctype} == 'VARCHAR')
+		<if test="${columnDto.name} != null and ${columnDto.name} != ''">
+#else
+		<if test="${columnDto.name} != null">
+#end
+		     #{${columnDto.name}, jdbcType=${columnDto.jdbctype}}#if($velocityCount != $pkeyColumnDtos.size()),#end  <!-- ${columnDto.comment} -->
+	    </if>
+#end
+#end
+		)
+	</insert>
+	
+	<!-- 插入一个数据实体对象(含所有字段) -->
+	<insert id="insertAll" #if(${tableDto.autoincrementPkName})useGeneratedKeys="true" keyProperty="${tableDto.autoincrementPkName}"#end parameterType="${tableDto.upname}Entity">
+		INSERT INTO ${tableDto.name} (
+		    <include refid="column" />
+		)
+		VALUES (
+#foreach($columnDto in $columnDtos)
+		    #{${columnDto.name}, jdbcType=${columnDto.jdbctype}}#if($velocityCount != $columnDtos.size()),#end  <!-- ${columnDto.comment} -->
+#end
+		)
+	</insert>
+
+	<!-- 根据主键修改数据实体对象 -->
+	<update id="updateByKey" parameterType="${tableDto.upname}Entity">
+		UPDATE ${tableDto.name}
+		<set>
+#foreach($columnDto in $columnDtos)
+			<if test="${columnDto.name} != null">
+		          ${columnDto.name} = #{${columnDto.name}, jdbcType=${columnDto.jdbctype}},  <!-- ${columnDto.comment} -->
+			</if>
+#end
+		</set>
+		WHERE ${bykeywhere}
+	</update>
+	
+	<!-- 根据主键删除数据实体对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM ${tableDto.name} WHERE ${bykeywhere}
+	</delete>
+
+	<!-- 根据主键查询并返回数据实体对象 -->
+	<select id="selectByKey" resultType="${tableDto.upname}Entity">
+		SELECT
+		<include refid="column" />
+		FROM ${tableDto.name} WHERE ${bykeywhere}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据实体对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="${tableDto.upname}Entity">
+		SELECT
+		    <include refid="column" />
+		FROM ${tableDto.name}
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据实体对象集合 -->
+	<select id="list" parameterType="Dto" resultType="${tableDto.upname}Entity">
+		SELECT
+			<include refid="column" />	
+		FROM ${tableDto.name}
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据实体对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="${tableDto.upname}Entity" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM ${tableDto.name}
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="${tableDto.upname}Entity">
+		SELECT
+			<include refid="column" />	
+		FROM ${tableDto.name}
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="${tableDto.upname}Entity" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM ${tableDto.name}
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM ${tableDto.name}
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM ${tableDto.name}
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+
+## 开始唯一索引代码生成
+#foreach($indexDto in $indexDtos)
+	<!-- 根据唯一键[${indexDto.name}]修改数据实体对象 -->
+	<update id="updateBy${indexDto.upname}" parameterType="${tableDto.upname}Entity">
+		UPDATE ${tableDto.name}
+		<set>
+#foreach($columnDto in $columnDtos)
+			<if test="${columnDto.name} != null">
+		          ${columnDto.name} = #{${columnDto.name}, jdbcType=${columnDto.jdbctype}},  <!-- ${columnDto.comment} -->
+			</if>
+#end
+		</set>
+		WHERE ${indexDto.bykeywhere}
+	</update>
+	
+	<!-- 根据唯一键[${indexDto.name}]删除数据实体对象 -->
+	<delete id="deleteBy${indexDto.upname}">
+		DELETE FROM ${tableDto.name} WHERE ${indexDto.bykeywhere}
+	</delete>
+
+	<!-- 根据唯一键[${indexDto.name}]查询并返回数据实体对象 -->
+	<select id="selectBy${indexDto.upname}" resultType="${tableDto.upname}Entity">
+		SELECT
+		<include refid="column" />
+		FROM ${tableDto.name} WHERE ${indexDto.bykeywhere}
+	</select>
+#end
+## 结束唯一索引代码生成
+	
+	<!-- 表字段 -->
+	<sql id="column">
+#foreach($columnDto in $columnDtos)
+		  ${columnDto.name}#if($velocityCount != $columnDtos.size()),#end  <!-- ${columnDto.comment} -->
+#end
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+#foreach($columnDto in $columnDtos)
+		  ${tableDto.name}.${columnDto.name}#if($velocityCount != $columnDtos.size()),#end  <!-- ${columnDto.comment} -->
+#end
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+#foreach($columnDto in $columnDtos)
+##只对VARCHAR类型使用非空字符串测试
+#if(${columnDto.jdbctype} == "VARCHAR")	
+	    <if test="${columnDto.name} != null and ${columnDto.name} != ''">
+#else
+	   <if test="${columnDto.name} != null ">
+#end
+		      AND ${columnDto.name} = #{${columnDto.name}}  <!-- ${columnDto.comment} -->
+		</if>
+#end
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+#foreach($columnDto in $columnDtos)
+##只对VARCHAR类型使用非空字符串测试
+#if(${columnDto.jdbctype} == "VARCHAR")	
+	    <if test="${columnDto.name} != null and ${columnDto.name} != ''">
+		      AND ${columnDto.name} like '${${columnDto.name}}%'  <!-- ${columnDto.comment} -->
+		</if>
+#end
+#end
+	</sql>
+	
+</mapper>

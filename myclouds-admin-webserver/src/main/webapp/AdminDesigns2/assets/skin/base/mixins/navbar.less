@@ -1,0 +1,87 @@
+// Contextual backgrounds
+
+.navbar-variant(@color) {
+  background-color: @color !important;
+  color: lighten(@color, 40%);
+
+  // Navbar active nav item background color
+  &.navbar .nav > li.open > a,
+  &.navbar .nav > li:hover > a,
+  &.navbar .nav > li:focus > a,
+  &.navbar .nav > li.active > a,
+  &.navbar .nav > li > a:hover,
+  &.navbar .nav > li > a:focus {
+      color: #FFF;
+      background-color: darken(@color, 6%);
+  }
+
+  // Top border color on dropdown menus
+  &.navbar .nav > li.dropdown.open .dropdown-menu {
+    border-top-color: @color; 
+    &:after {
+       border-bottom-color: @color;
+    }
+
+  }
+  &.navbar .nav > li.dropdown.open .dropdown-menu:after {
+    border-bottom-color: @color;
+  }
+
+}
+
+// Special settings for bg-light
+.navbar-light-variant(@color) {
+  color: #666;
+  background-color: #FFF !important;
+  border-bottom: 1px solid #E2E2E2;
+
+  // Navbar branding
+  .navbar-branding {
+    background-color: #FFF !important;
+    border-bottom: 1px solid #E6E6E6;
+  }
+  // Navbar search bar
+  .navbar-form.navbar-search input {
+    border-color: #EEE;
+    &:focus {
+      background-color: #fafafa;
+      border-color: #f0f0f0;
+    }
+  }
+  // Navbar link colors
+  .navbar-brand,
+  .nav > li > a,
+  .nav > li.open > a {
+      color: #666;
+  }
+  // Sidemenu toggle icon
+  #toggle_sidemenu_l,
+  #toggle_sidemenu_l:hover,
+  #toggle_sidemenu_l:focus {
+    color: #666;
+  }
+
+  // Navbar active nav item background color
+  &.navbar .nav > li.open > a,
+  &.navbar .nav > li:hover > a,
+  &.navbar .nav > li:focus > a,
+  &.navbar .nav > li.active > a,
+  &.navbar .nav > li > a:hover,
+  &.navbar .nav > li > a:focus {
+      color: #222;
+      background-color: darken(@color, 1%);
+  }
+
+  // Top border color on dropdown menus
+  &.navbar .nav > li.dropdown.open .dropdown-menu {
+    border-top-color: #999; 
+    &:after {
+       border-bottom-color: #999; 
+    }
+
+  }
+  &.navbar .nav > li.dropdown.open .dropdown-menu:after {
+    border-bottom-color: #999; 
+  }
+
+}

@@ -1,0 +1,66 @@
+<!-- Start: Sidebar Left -->
+<aside id="sidebar_left" class="nano nano-primary  affix sidebar-light">
+	<!--++++++++++++++++++++++++++++++++++++++ 
+       "#sidebar_left" Helper Classes: 
+    ++++++++++++++++++++++++++++++++++++++++ 
+       * Positioning Classes: 
+        '.affix' - Sets Sidebar Left to the fixed position 
+
+       * Available Skin Classes:
+         .sidebar-dark (default no class needed)
+         .sidebar-light  
+         .sidebar-light.light   
+    ++++++++++++++++++++++++++++++++++++++++
+       Example: <aside id="sidebar_left" class="affix sidebar-light">
+       Results: Fixed Left Sidebar with light/white background
+    ++++++++++++++++++++++++++++++++++++++-->
+	<!-- Start: Sidebar Left Content -->
+	<div id="my-menu-nav-sidebar" class="sidebar-left-content nano-content">
+
+		<!-- Start: Sidebar Left Menu -->
+		<ul class="nav sidebar-menu">
+			<li class="sidebar-label pt20"></li>
+			<th:block th:each="menu : ${session.level1Menus}" th:with="level2Menus=${menu.subMenus}">
+				<li th:if="${#lists.isEmpty(level2Menus)}" th:id="my-mitem- + ${menu.id}" data-level="1" class="selector-flag">
+					<a th:href="@{${menu.url}(mid=${menu.id})}">
+						<span th:attr="class=${menu.icon}"></span> <span class="sidebar-title" th:text="${menu.name}"></span>
+					</a>
+				</li>
+
+				<li th:if="${not #lists.isEmpty(level2Menus)}">
+					<a class="accordion-toggle" th:classappend="${menu.openClass}" href="#">
+						<span th:attr="class=${menu.icon}"></span> <span class="sidebar-title" th:text="${menu.name}"></span> <span class="caret"></span>
+					</a>
+					<ul class="nav sub-nav">
+						<li th:each="menu : ${level2Menus}" th:id="my-mitem- + ${menu.id}" class="selector-flag">
+							<a th:if="${menu.url != null}"  th:href="@{${menu.url}(mid=${menu.id})}">
+								<span th:attr="class=${menu.icon}"></span> <span th:text="${menu.name}"></span>
+							</a>
+							<a th:if="${menu.url == null}" >
+								<span th:attr="class=${menu.icon}"></span> <span th:text="${menu.name}"></span>
+							</a>
+						</li>
+					</ul>
+				</li>
+
+			</th:block>
+
+		</ul>
+		<!-- End: Sidebar Menu -->
+
+		<!-- Start: Sidebar Collapse Button -->
+		<!-- 有个bug，暂时关闭这个彻底收缩按钮。 
+		<div class="sidebar-toggle-mini">
+			<a href="#">
+				<span class="fa fa-sign-out"></span>
+			</a>
+		</div>
+		-->
+		<!-- End: Sidebar Collapse Button -->
+
+	</div>
+	<!-- End: Sidebar Left Content -->
+	<!-- 当前页面所属功能模块的模块ID -->
+     <input id="my-mid" type="hidden"  th:value="${#httpServletRequest.getParameter('mid')}" />
+</aside>
+<!-- End: Sidebar Left -->

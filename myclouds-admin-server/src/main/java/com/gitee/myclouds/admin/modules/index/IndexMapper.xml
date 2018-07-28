@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 首页模块SQL映射 -->
+<mapper namespace="sql.index">
+
+	<!-- 查询导航用的模块实体对象 -->
+	<select id="listMenus" parameterType="Dto" resultType="MenuVO">
+		SELECT id, parent_id, name, url, icon FROM my_module t1
+		WHERE t1.is_enable = '1' AND t1.type = '1'
+		   AND t1.id IN (
+			    SELECT DISTINCT module_id FROM my_role_module WHERE role_id IN (
+					   SELECT role_id FROM my_user_role WHERE user_id = #{user_id}
+				               ) )
+		ORDER BY t1.sort_no
+	</select>
+
+</mapper>

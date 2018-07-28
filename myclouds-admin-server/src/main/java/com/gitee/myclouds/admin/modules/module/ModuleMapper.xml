@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 登录验证模块SQL映射 -->
+<mapper namespace="sql.module">
+
+   	<!-- 根据Dto查询并返回资源模块实体对象集合 -->
+	<select id="pageModule" parameterType="Dto" resultType="Dto">
+		SELECT
+				  t1.id,
+				  t1.name,  
+				  t1.parent_id,
+				  t1.type,
+				  t1.url,
+				  t1.is_enable,
+				  t1.sort_no,
+		          (SELECT name from my_module where id = t1.parent_id) AS parent_name
+		FROM my_module t1
+		<include refid="pageModuleWhere" />
+		ORDER BY t1.id DESC LIMIT ${start},${length}
+	</select>
+	<select id="pageModuleCount" parameterType="Dto" resultType="Integer">
+		SELECT
+		count(1) AS total
+		FROM my_module t1
+		<include refid="pageModuleWhere" />
+	</select>
+	<sql id="pageModuleWhere">
+		<where>
+			<if test="name != null and name != ''">
+				AND t1.name like '%${name}%'
+			</if>
+			<if test="parent_id != null and parent_id != ''">
+				AND t1.parent_id = #{parent_id}
+			</if>
+		</where>
+	</sql>
+
+	<!-- 删除my_role_module关联数据 -->
+	<select id="deleteMyRoleModule" parameterType="Integer">
+		DELETE
+		FROM my_role_module WHERE module_id = #{module_id}
+	</select>
+	
+	<!-- 查询资源树 -->
+	<select id="listModuleTree" resultType="ZTreeNodeVO" parameterType="Dto">
+	    SELECT
+			id,
+			parent_id AS pId,
+			name
+		FROM
+			my_module
+			<where>
+			        type IN
+				    <foreach item="type" index="index" collection="types"  open="(" separator="," close=")">
+	                     #{type}
+	                </foreach>
+			</where>
+         ORDER BY parent_id, sort_no
+	</select>
+	
+	<!-- 统计直系子节点个数 -->
+	<select id="countSubModules" parameterType="Integer" resultType="Integer">
+		SELECT
+		count(1) AS cnt
+		FROM my_module WHERE parent_id = #{parent_id}
+	</select>
+
+</mapper>

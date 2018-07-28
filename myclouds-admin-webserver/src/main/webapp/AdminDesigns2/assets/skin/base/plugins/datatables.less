@@ -1,0 +1,200 @@
+/*===============================================
+  DataTables
+================================================= */
+
+/* DataTable */
+table.dataTable {
+    margin: 0 !important;
+}
+
+/* Table Row Changes */
+table.dataTable tr.odd {
+    background-color: #fff;
+}
+/* Table Header Changes */
+table.dataTable thead th {
+    background: #f9f9f9;
+    padding: 10px;
+}
+/* Table Footer Changes */
+table.dataTable tfoot th {
+    border-top: 1px solid #ddd;
+    padding: 4px 18px 4px 10px;
+    font-weight: 600;
+    background: #f2f2f2;
+}
+
+/* DataTable panel-menu, commonly holds filters */
+.dt-panelmenu {
+   padding: 12px 14px;
+   background: #f8f8f8;
+}
+
+/* DataTable panel-footer, commonly holds paginator */
+.dt-panelfooter {
+   padding: 6px 14px;
+   background: #f8f8f8;
+}
+
+/* DataTable Length */
+.dataTables_length {
+    float: left;
+}
+/* DataTable Filter */
+.dataTables_filter {
+    float: right;
+}
+.dataTables_length label,
+.dataTables_filter label {
+    margin: 0;
+}
+
+
+/* DataTable Search bar */
+table.dataTable .form-control {
+    width: 100%;
+}
+    
+/* DataTable Footer Elements */
+div.dataTables_info {
+    float: left;
+    padding-top: 12px;
+}
+div.dataTables_paginate {
+    margin-top: 5px;
+}
+
+/* Filter Returned No results Pane */
+table.dataTable td.dataTables_empty {
+    padding: 50px !important;
+    background: #f6f6f6 !important;
+}
+
+/* Datatables abc filter */
+.dt-abc-filter {
+    padding: 4px 0;
+}
+.dt-abc-filter span {
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #4a89dc;
+    cursor: pointer;
+}
+.dt-abc-filter .abc-label {
+    color: #999;
+    padding: 0 3px;
+}
+    
+
+/* TableTools Plugin Styling */
+div.DTTT_container {
+    position: absolute;
+    float: none;
+    right: 15px;
+    top: -29px;
+}
+div.DTTT_container .DTTT_button {
+    position: relative;
+    font-size: 1em;
+    color: #AAA !important;
+    padding: 2px 8px;
+    margin-right: 10px;
+    border-radius: 2px;
+    border: 1px solid #DDD;
+    box-shadow: none;
+}
+div.DTTT_container .DTTT_button:last-child {
+    margin-right: 0px;
+}
+div.DTTT_container .DTTT_button:hover {
+    color: #333;
+    border-color: #AAA;
+    box-shadow: none;
+}
+
+/* Contextual Row Filter Example */
+table.dataTable tr.row-label td {
+    background: #777;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+}
+table.dataTable tr.row-label.edinburgh td {
+    background: #d9edf7;
+    border-color: #d9edf7;
+}
+table.dataTable tr.row-label.newyork td {
+    background: #f2dede;
+    border-color: #f2dede;
+}
+table.dataTable tr.row-label.london td {
+    background: #fcf8e3;
+    border-color: #fcf8e3;
+}
+table.dataTable tr.row-label.london td {
+    background: #dff0d8;
+    border-color: #dff0d8;
+}
+
+
+/*
+ * PRINTING
+ * Print display styles
+ */
+.DTTT_print_info {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    width: 400px;
+    height: 150px;
+    margin-left: -200px;
+    margin-top: -75px;
+    text-align: center;
+    color: #333;
+    padding: 10px 30px;
+    background: #ffffff;
+    
+    /* Old browsers */
+    background: -webkit-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+    
+    /* Chrome10+,Safari5.1+ */
+    background: -moz-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+    
+    /* FF3.6+ */
+    background: -ms-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+    
+    /* IE10+ */
+    background: -o-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+    
+    /* Opera 11.10+ */
+    background: linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+    
+    /* W3C */
+    // filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f9f9f9', GradientType=0);
+    
+    /* IE6-9 */
+    opacity: 0.95;
+    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+    -ms-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+}
+.DTTT_print_info h6 {
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 28px;
+    margin: 1em;
+}
+.DTTT_print_info p {
+    font-size: 14px;
+    line-height: 20px;
+}

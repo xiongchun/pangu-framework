@@ -1,0 +1,230 @@
+
+/*==================================================================
+  B. Lists
+-===================================================================*/
+.admin-form .smart-list{ list-style:none; margin:0; padding:0; }
+.admin-form .smart-list li{ margin-bottom:20px; }
+
+/*==================================================================
+  B. Grid Misc
+===================================================================*/
+.admin-form .section { margin-bottom:22px; }
+
+/*==================================================================
+  B. Panel
+===================================================================*/
+.admin-form .panel {
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border: 1px solid #DDD;
+}
+
+/*==================================================================
+  B. Panel Header Section
+===================================================================*/
+.admin-form .panel-heading { 
+  overflow:hidden;
+  position:relative;
+  height: auto;
+  padding: 19px 22px 18px;  
+  color: #999;
+  border-radius: 0;
+  border-top: 1px solid transparent;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid #DDD;
+  background-color: #FAFAFA;
+}
+.admin-form .heading-border:before { 
+  content:"";
+  background-color:#9999A3;  
+  position:absolute;
+  height:10px;  
+  z-index:1; 
+  top: 0;
+  right: 0;  
+  left:0;
+}
+.admin-form .heading-border .panel-heading { 
+  padding: 30px 22px 17px;  
+}
+.admin-form .heading-border .panel-title { 
+  color: #999;
+}
+.admin-form .panel-title { 
+  font-family:"Roboto", Arial, Helvetica, sans-serif;
+  text-align:left;
+  font-weight:300; 
+  font-size:26px; 
+  padding:0;
+  margin:0; 
+  background: transparent; 
+}
+.admin-form .panel-title i { 
+  font-size:26px;
+  position:relative; 
+  margin-right:15px;
+  top: 0; 
+  border-width: 0;
+}
+
+/*==================================================================
+  B. Panel Body
+===================================================================*/
+.admin-form .panel-body {
+  padding: 25px;
+  border: 0;
+}
+
+
+/*==================================================================
+  B. Panel Footer
+===================================================================*/
+.admin-form .panel-footer { 
+    padding: 12px 13px; 
+    border-top: 1px solid #DDD;
+    background: #f2f2f2;
+}
+
+/*==================================================================
+  B. google map :: block elements 
+===================================================================*/
+.admin-form .map-container{ padding:7px; border: 1px solid #CFCFCF; }
+.admin-form #map_canvas{ width:100%; height:300px; overflow:hidden;  }
+.admin-form .block{ display:block; }
+
+/*==================================================================
+  B. simple price boxes :: depend on grid
+===================================================================*/
+.admin-form .price-box{ 
+  padding:30px; 
+  text-align:center;
+  position:relative; 
+  border:1px solid #CFCFCF;
+  font-family:Arial, Helvetica, sans-serif;
+  -webkit-box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.05);
+  -o-box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.05);
+  box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.05); 
+}
+
+.admin-form .price-box p{ line-height:1.5em; color:#526066; margin-bottom:0; }
+.admin-form .price-box h5{ text-transform:uppercase; font-weight:300; margin:0; font-size:15px; color:#B0B2B9; letter-spacing:2px  }
+.admin-form .price-box h4{ font-size:60px; font-weight:300; margin:0; color:#626262; }
+.admin-form .selected-box h4{ color:#999; }
+.admin-form .price-box h4 sup{ position:relative; font-size:30px; vertical-align:top; top:15px; }
+.admin-form .price-box h4 .per-month{font-size:14px; }
+.admin-form .expand{ height:50px; line-height:50px!important; border-radius:3px; }
+
+/*==================================================================
+  B. simple price boxes ribbon IE8+
+-===================================================================*/
+.admin-form .ribbon,
+.admin-form .ribbon-large{
+  width:75px;
+  height:78px;
+  overflow:hidden;
+  position:absolute;
+  right: -2px;
+  top: -2px;
+  z-index:1;
+}
+
+.admin-form .ribbon-inner{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;  
+  -webkit-box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.15);
+  -o-box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.15);
+  box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.15);
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform:rotate(45deg);
+  -moz-transform:rotate(45deg);
+  -ms-transform:rotate(45deg);
+  -o-transform:rotate(45deg);
+  transform:rotate(45deg);
+  background: #999;
+  letter-spacing:4px;
+  text-align:center;
+  position:relative;
+  font-weight:700;
+  font-size:14px;
+  padding:7px 0;
+  width:100px;
+  color:#fff;
+  z-index:1;
+  left:3px;
+  top:6px;
+}
+
+.admin-form .ribbon-inner:before,
+.admin-form .ribbon-inner:after{
+  content:"";
+  border-top:3px solid #3c9b39;
+  border-left:3px solid transparent;
+  border-right:3px solid transparent;
+  position:absolute;
+  bottom:-3px;
+}
+
+.admin-form .ribbon-inner:before{ left:0px; }
+.admin-form .ribbon-inner:after{ right:0px; }
+.admin-form .ribbon-large{ width:115px; height:118px; }
+.admin-form .ribbon-large .ribbon-inner{
+  width:160px;
+  left:-8px;
+  top:28px;
+}
+
+/*==================================================================
+  B. Notifications | info | error | warning | success
+-===================================================================*/
+.admin-form .form-msg { display:none; }
+
+/*==================================================================
+  B. progress bars 
+===================================================================*/
+.admin-form .progress-section{ display:none; } 
+
+.progress-striped .progress-bar, .progress-bar-striped {
+    background-size: 18px 18px;  
+    background-image: -webkit-linear-gradient(top left,  
+            transparent, transparent 25%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0.3) 50%, 
+            transparent 50%, transparent 75%, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.3));
+            
+    background-image: -moz-linear-gradient(top left,  
+            transparent, transparent 25%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0.3) 50%, 
+            transparent 50%, transparent 75%, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.3));
+            
+    background-image: -o-linear-gradient(top left,  
+            transparent, transparent 25%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0.3) 50%, 
+            transparent 50%, transparent 75%, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.3));
+            
+    background-image: linear-gradient(to bottom right,  
+            transparent, transparent 25%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0.3) 50%, 
+            transparent 50%, transparent 75%, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.3));
+}
+
+/*==================================================================
+  B. BOOTSTRAP COMPATABILITY FIXES
+===================================================================*/
+.admin-form .radio,
+.admin-form .checkbox {
+  margin-top:0;
+  margin-bottom:0;
+  padding-left:0;
+  top:1px;
+  vertical-align: bottom;
+}
+ 
+.admin-form .checkbox:after,
+.admin-form .checkbox:before{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -o-box-sizing: content-box;
+  box-sizing: content-box;
+}
+

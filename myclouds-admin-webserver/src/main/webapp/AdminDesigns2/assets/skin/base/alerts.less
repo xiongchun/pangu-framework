@@ -1,0 +1,155 @@
+/*==================================================
+  Alerts
+==================================================== */
+
+
+// Base styles
+// -------------------------
+
+.alert {
+  color: @white;
+  font-size: @alert-font-size;
+  padding: @alert-padding;
+  margin-bottom: @line-height-computed;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: @alert-border-radius;
+
+  // Adjust close link position
+  .close {
+    color: @text-color;
+      &:hover { 
+        color: @text-color;
+      }
+  }
+
+  // Divider
+  hr {
+    border-top-color: rgba(0,0,0,0.1);
+  }
+
+  // Headings for larger alerts
+  h4 {
+    margin-top: 0;
+    // Specified for the h4 to prevent conflicts of changing @headings-color
+    color: inherit;
+  }
+  // Provide class for links that match alerts
+  .alert-link {
+    color: @white;
+    font-weight: @alert-link-font-weight;
+  }
+
+  // Improve alignment and spacing of inner content
+  > p,
+  > ul {
+    margin-bottom: 0;
+  }
+  > p + p {
+    margin-top: 5px;
+  }
+
+  // Alert sizes
+  &.alert-micro,.alert-sm {
+  font-size: 13px;
+  padding: 9px 35px 9px 9px;
+  border-radius: 0;
+  }
+  &.alert-sm { padding: 12px 35px 12px 12px; }
+
+  // Border variations - options
+  &.alert-border { border: 1px solid transparent; }
+  &.alert-border-right { border-right-width: 6px; }
+  &.alert-border-top { border-top-width: 3px; }
+  &.alert-border-bottom { border-bottom-width: 3px; }
+  &.alert-border-left {
+    padding-left: 15px;
+    border-left-width: 6px;
+  }
+
+}
+
+// Dismissible alerts
+//
+// Expand the right padding and account for the close button's positioning.
+.alert-dismissable, // The misspelled .alert-dismissable was deprecated in 3.2.0.
+.alert-dismissible {
+  padding-right: (@alert-padding + 20);
+
+  // Adjust close link position
+  .close {
+    position: relative;
+    right: -21px;
+    color: #FFF;
+    opacity: 0.3;
+
+      &:hover { 
+        color: #FFF;
+        opacity: 1 
+      }
+  }
+}
+
+
+// Contextual Skin Styles
+// Generate contextual modifier classes for colorizing the alert.
+//
+.alert-primary when (@skin-primary) {
+  .alert-variant(@alert-primary-bg); 
+}
+.alert-success when (@skin-success) {
+  .alert-variant(@alert-success-bg);
+}
+.alert-info when (@skin-info) {
+  .alert-variant(@alert-info-bg);
+}
+.alert-warning when (@skin-warning) {
+  .alert-variant(@alert-warning-bg);
+}
+.alert-danger when (@skin-danger) {
+  .alert-variant(@alert-danger-bg);
+}
+.alert-alert when (@skin-alert) {
+  .alert-variant(@alert-alert-bg);
+}
+.alert-system when (@skin-system) {
+  .alert-variant(@alert-system-bg);
+}
+
+
+// Default & Dark colors are commonly styled manually as graytones and neutral 
+// can be incredibly difficult to automate via opacity/hue/saturation etc
+//
+// Default
+.alert-default { 
+  color: #888;
+  background-color: @alert-default-bg;
+
+  .alert-link { color: #777; }
+
+  &.alert-border-right { border-right-color: darken(@alert-default-bg, 13%); }
+  &.alert-border-top { border-top-color: darken(@alert-default-bg, 13%); }
+  &.alert-border-bottom { border-bottom-color: darken(@alert-default-bg, 13%); }
+  &.alert-border-left { border-left-color: darken(@alert-default-bg, 13%); }
+
+  // Color shade variants
+  &.pastel,
+  &.light { background-color: lighten(@alert-default-bg, 5%); border-color: rgba(0,0,0,0.15) }
+  &.dark { background-color: darken(@alert-default-bg, 4%); }
+}
+// Dark
+.alert-dark when (@skin-dark) {
+  background-color: lighten(@alert-dark-bg, 18%);
+
+  &.alert-border-right { border-right-color: darken(@alert-dark-bg, 13%); }
+  &.alert-border-top { border-top-color: darken(@alert-dark-bg, 13%); }
+  &.alert-border-bottom { border-bottom-color: darken(@alert-dark-bg, 13%); }
+  &.alert-border-left { border-left-color: darken(@alert-dark-bg, 13%); }
+
+  &.pastel,
+  &.light { 
+    color: lighten(@alert-dark-bg, 20%);
+    background-color: lighten(@alert-dark-bg, 57%);
+    .alert-link { color: lighten(@alert-dark-bg, 10%); }
+  } 
+  &.dark { background-color: lighten(@alert-dark-bg, 7%); }
+}

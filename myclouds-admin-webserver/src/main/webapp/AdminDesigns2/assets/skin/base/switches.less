@@ -1,0 +1,172 @@
+
+/*==================================================
+  Switches - Created with Pure CSS, no js required
+==================================================== */
+
+div.switch label {
+    display:block;
+    position:relative;
+    color:transparent;
+    background:#ddd;
+    text-indent:100%;
+    width:52px;
+    height:26px;
+    cursor:pointer;
+    transition:left .15s ease-out
+}
+
+div.switch input {
+    display:none
+}
+
+div.switch input + label {
+    margin-left:0;
+    margin-right:0
+}
+
+div.switch label:after {
+    content:"";
+    display:block;
+    background:#fff;
+    position:absolute;
+    top:3px;
+    left:3px;
+    width:19px;
+    height:19px;
+    -webkit-transition:left .15s ease-out;
+    -moz-transition:left .15s ease-out;
+    transition:left .15s ease-out
+}
+
+div.switch input:checked + label {
+    background:#2ba6cb
+}
+
+div.switch input:checked + label:after {
+    left:29px
+}
+
+div.switch label {
+    width:52px;
+    height:26px
+}
+
+div.switch label:after {
+    width:19px;
+    height:19px
+}
+
+div.switch input:checked + label:after {
+    left:29px
+}
+
+div.switch label {
+    color:transparent;
+    background:#ddd
+}
+
+div.switch label:after {
+    background:#fff
+}
+
+div.switch input:checked + label {
+    background:#2ba6cb
+}
+/* Switch Sizes */
+div.switch.switch-lg label {
+    width:65px;
+    height:32px
+}
+
+div.switch.switch-lg label:after {
+    width:26px;
+    height:26px
+}
+
+div.switch.switch-lg input:checked + label:after {
+    left:35px
+}
+
+div.switch.switch-sm label {
+    width:45px;
+    height:22px
+}
+
+div.switch.switch-sm label:after {
+    width:16px;
+    height:16px
+}
+
+div.switch.switch-sm input:checked + label:after {
+    left:26px
+}
+
+div.switch.switch-xs label {
+    width:39px;
+    height:19px
+}
+
+div.switch.switch-xs label:after {
+    width:13px;
+    height:13px
+}
+
+div.switch.switch-xs input:checked + label:after {
+    left:22px
+}
+
+div.switch.radius label {
+    border-radius:4px
+}
+
+div.switch.radius label:after {
+    border-radius:3px
+}
+/* Switch Option - Rounded */
+div.switch.round {
+    border-radius:1000px
+}
+
+div.switch.round label {
+    border-radius:26px
+}
+
+div.switch.round label:after {
+    border-radius:26px
+}
+/* Switch Option - Inline */
+.switch.switch-inline {
+    display:inline-block
+}
+
+.switch.switch-inline + .switch.switch-inline {
+    margin-left:15px
+}
+
+
+// Contextual Skin Variations
+//
+& when (@skin-primary) {
+    div.switch.switch-primary input:checked + label { background-color: @brand-primary; }
+}
+& when (@skin-success) {
+    div.switch.switch-success input:checked + label { background-color: @brand-success; }
+}
+& when (@skin-info) {
+    div.switch.switch-info input:checked + label { background-color: @brand-info; }
+}
+& when (@skin-warning) {
+    div.switch.switch-warning input:checked + label { background-color: @brand-warning; }
+}
+& when (@skin-danger) {
+    div.switch.switch-danger input:checked + label { background-color: @brand-danger; }
+}
+& when (@skin-alert) {
+    div.switch.switch-alert input:checked + label { background-color: @brand-alert; }
+}
+& when (@skin-system) {
+    div.switch.switch-system input:checked + label { background-color: @brand-system; }
+}
+& when (@skin-dark) {
+    div.switch.switch-dark input:checked + label { background-color: @brand-dark; }
+}

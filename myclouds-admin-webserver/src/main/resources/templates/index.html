@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<th:block th:replace="fragments/head" />
+</head>
+
+<body class="dashboard-page sb-l-o">
+	<!--/* 公共代码 */-->
+	<div th:replace="fragments/common"></div>
+	
+	<!--/* 主题设置面板 */-->
+	<div th:replace="fragments/skin-toolbox"></div>
+
+	<!-- BEGIN: 主页面 -->
+	<div id="main">
+		<!--/* 顶部导航 */-->
+		<header th:replace="fragments/header-banner"></header>
+		<!--/* 左侧功能菜单导航 */-->
+		<aside th:replace="fragments/aside"></aside>
+		<!-- BEGIN: Content-Wrapper -->
+		<section id="content_wrapper">
+			<!--/* 模块路径导航条 */-->
+			<header th:replace="fragments/header-breadcrumb"></header>
+
+			<!-- Begin: 业务办理区 -->
+			<section id="content" class="animated fadeIn">
+				<!-- <div class="row ml5">欢迎来到MyClouds...</div> -->
+				<blockquote class="blockquote-info blockquote-thin blockquote-rounded">
+					<p><span class="label label-xs label-danger">MyClouds</span> 是一个基于成熟软件项目研发方法论和SpringCloud生态圈的插拔式轻量级微服务治理及快速开发平台。以“标准功能可复用、通用模块可配置、业务需求快速开发、异构系统无缝集成、应用性能可监控扩展、系统日志可分析审计”为目标，
+						帮助企业落实IT策略、屏蔽技术壁垒，快速实现可水平扩展的高性能高可用业务愿景。 为软件研发团队提供高效可控、随需应变、快速实现业务需求的全栈式技术解决方案，以最低成本和最低风险获得更高质量、更快交付业务和运维支持的核心技术竞争力。</p>
+					<small><a href="https://gitee.com/osworks/MyClouds" target="_blank">了解更多|代码托管 <i class="fa fa-external-link"></i></a> <a class="ml15" target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=0fa9dcbd01339ac7e2e0ead0a84fcef45ac03b3e06d9290bc512886ab614d12d">加入QQ交流群</a></small>
+				</blockquote>
+			</section>
+			<!-- End: 业务办理区 -->
+
+			<!--/* 页脚 */-->
+			<footer th:replace="fragments/footer"></footer>
+
+		</section>
+		<!-- End: Content-Wrapper -->
+
+	</div>
+	<!-- End: 主页面 -->
+
+	<!--/* 公共脚本文件 */-->
+	<th:block th:include="fragments/scripts" />
+
+
+	<script type="text/javascript">
+		$(function() {
+			"use strict";
+			Core.init();
+			My.init();
+			//TODO
+
+		});
+	</script>
+
+</body>
+
+</html>

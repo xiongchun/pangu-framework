@@ -1,0 +1,417 @@
+/*==================================================
+  Typography
+==================================================== */
+
+// Links
+// -------------------------
+a.link-unstyled { color: #666; }
+a.link-unstyled:hover,
+a.link-unstyled:focus,
+a.link-unstyled:active {
+  color: #222;
+  text-decoration: none; 
+}
+
+// Headings
+// -------------------------
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+  line-height: @headings-line-height;
+  color: @headings-color;
+  text-rendering: optimizelegibility;
+
+  small,
+  .small {
+    font-weight: normal;
+    line-height: 1;
+    color: @headings-small-color;
+  }
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: @line-height-computed;
+  margin-bottom: (@line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 75%;
+  }
+}
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: (@line-height-computed / 2);
+  margin-bottom: (@line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 88%;
+  }
+}
+
+h1 small,
+.h1 .small { font-size: 70%; }
+
+h1, .h1 { font-size: @font-size-h1; }
+h2, .h2 { font-size: @font-size-h2; }
+h3, .h3 { font-size: @font-size-h3; }
+h4, .h4 { font-size: @font-size-h4; }
+h5, .h5 { font-size: @font-size-h5; }
+h6, .h6 { 
+  font-size: @font-size-h6;
+  color: @font-color-h6;
+}
+
+
+// Body text
+// -------------------------
+
+p {
+  margin: 0 0 (@line-height-computed / 2);
+}
+
+.lead {
+  margin-bottom: @line-height-computed;
+  font-size: floor((@font-size-base * 1.15));
+  font-weight: 300;
+  line-height: 1.4;
+
+  @media (min-width: @screen-sm-min) {
+    font-size: (@font-size-base * 1.5);
+  }
+}
+
+
+// Emphasis & misc
+// -------------------------
+
+// Ex: (12px small font / 14px base font) * 100% = about 85%
+small,
+.small {
+  font-size: floor((100% * @font-size-small / @font-size-base));
+}
+
+// Undo browser default styling
+cite {
+  font-style: normal;
+}
+
+mark,
+.mark {
+  background-color: @state-warning-bg;
+  padding: .2em;
+}
+
+// Alignment
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.text-nowrap         { white-space: nowrap; }
+
+// Transformation
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }
+
+// Contextual colors
+.text-white {
+  .text-emphasis-variant(@white);
+}
+.text-muted {
+  .text-emphasis-variant(@muted);
+}
+.text-primary when (@skin-primary) {
+  .text-emphasis-variant(@brand-primary);
+}
+.text-success when (@skin-success) {
+  .text-emphasis-variant(@brand-success);
+}
+.text-info when (@skin-info) {
+  .text-emphasis-variant(@brand-info);
+}
+.text-warning when (@skin-warning) {
+  .text-emphasis-variant(@brand-warning);
+}
+.text-danger when (@skin-danger) {
+  .text-emphasis-variant(@brand-danger);
+}
+.text-alert when (@skin-alert) {
+  .text-emphasis-variant(@brand-alert);
+}
+.text-system when (@skin-system) {
+  .text-emphasis-variant(@brand-system);
+}
+.text-dark when (@skin-dark) {
+  .text-emphasis-variant(@brand-dark);
+}
+
+// Transparent Text (not fully crossbrowser supported)
+.text-tp {
+  color: rgba(0,0,0,0.2);
+  a&:hover {
+     color: rgba(0,0,0,0.3);
+  }
+}
+
+// Page header
+// -------------------------
+
+.page-header {
+  padding-bottom: ((@line-height-computed / 2) + 7);
+  margin: (@line-height-computed * 2) 0 @line-height-computed;
+  border-bottom: 1px solid @page-header-border-color;
+}
+
+
+// Lists
+// -------------------------
+
+// Unordered and Ordered lists
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: (@line-height-computed / 2);
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
+
+// List options
+
+// Unstyled keeps list items block level, just removes default browser padding and list-style
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+  .list-unstyled();
+  margin-left: -5px;
+
+  > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+// Description Lists
+dl {
+  margin-top: 0; // Remove browser default
+  margin-bottom: @line-height-computed;
+}
+dt,
+dd {
+  line-height: @line-height-base;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-left: 0; // Undo browser default
+}
+
+// Horizontal description lists
+//
+// Defaults to being stacked without any of the below styles applied, until the
+// grid breakpoint is reached (default of ~768px).
+
+.dl-horizontal {
+  dd {
+    &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
+  }
+
+  @media (min-width: @grid-float-breakpoint) {
+    dt {
+      float: left;
+      width: (@dl-horizontal-offset - 20);
+      clear: left;
+      text-align: right;
+      .text-overflow();
+    }
+    dd {
+      margin-left: @dl-horizontal-offset;
+    }
+  }
+}
+
+
+// Misc
+// -------------------------
+
+// Abbreviations and acronyms
+abbr[title],
+// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted @abbr-border-color;
+}
+.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+// Blockquotes
+blockquote {
+  padding: (@line-height-computed / 2) @line-height-computed;
+  margin: 0 0 @line-height-computed;
+  font-size: @blockquote-font-size;
+  border-left: 5px solid @blockquote-border-color;
+  p,
+  ul,
+  ol {
+    &:last-child {
+      margin-bottom: 0;
+    } 
+  }
+
+  // blockquote colors
+  &.blockquote-primary { border-color: @brand-primary; }
+  &.blockquote-success { border-color: @brand-success; }
+  &.blockquote-info { border-color: @brand-info; }
+  &.blockquote-warning { border-color: @brand-warning; }
+  &.blockquote-danger { border-color: @brand-danger; }
+  &.blockquote-alert { border-color: @brand-alert; }
+  &.blockquote-system { border-color: @brand-system; }
+  &.blockquote-dark { border-color: @brand-dark; }
+
+  // blockquote options
+  &.blockquote-rounded { border-radius: 11px; }
+  &.blockquote-thin { border-width: 3px; }
+
+  // Note: Deprecated small and .small as of v3.1.0
+  // Context: https://github.com/twbs/bootstrap/issues/11660
+  footer,
+  small,
+  .small {
+    display: block;
+    font-size: 80%; // back to default font-size
+    line-height: @line-height-base;
+    color: @blockquote-small-color;
+
+    &:before {
+      content: '\2014 \00A0'; // em dash, nbsp
+    }
+  }
+}
+
+// Opposite alignment of blockquote
+//
+// Heads up: `blockquote.pull-right` has been deprecated as of v3.1.0.
+.blockquote-reverse,
+blockquote.pull-right {
+  padding-right: 15px;
+  padding-left: 0;
+  border-right: 5px solid @blockquote-border-color;
+  border-left: 0;
+  text-align: right;
+
+  // Account for citation
+  footer,
+  small,
+  .small {
+    &:before { content: ''; }
+    &:after {
+      content: '\00A0 \2014'; // nbsp, em dash
+    }
+  }
+}
+
+// Quotes
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+
+// Addresses
+address {
+  margin-bottom: @line-height-computed;
+  font-style: normal;
+  line-height: @line-height-base;
+}
+
+// Dropcaps
+.dropcap {
+  min-height: 75px;
+
+  &:first-letter {
+     font-family: 'Droid Serif', serif;
+     float: left;
+     color: #555;
+     font-size: 60px;
+     font-weight: 600;
+     line-height: 45px;
+     padding: 5px;
+     margin: 0px 5px 0 0;
+  }
+
+  &.lead:first-letter {
+     font-size: 90px;
+     line-height: 25px;
+  }
+
+  &.dropcap-fill:first-letter {
+     border-radius: 6px;
+     color: #FFF;
+     margin: 0px 10px 0 0;  
+  }
+
+  &.lead.dropcap-fill:first-letter {
+     border-radius: 6px;
+     color: #FFF;
+     margin: 0px 10px 0 0;
+     padding-bottom: 26px;
+  }
+
+  // dropcap colors
+  &.dropcap-default:first-letter { color: @brand-dark; }
+  &.dropcap-primary:first-letter { color: @brand-primary; }
+  &.dropcap-success:first-letter { color: @brand-success; }
+  &.dropcap-info:first-letter { color: @brand-info; }
+  &.dropcap-warning:first-letter { color: @brand-warning; }
+  &.dropcap-danger:first-letter { color: @brand-danger; }
+  &.dropcap-alert:first-letter { color: @brand-alert; }
+  &.dropcap-system:first-letter { color: @brand-system; }
+  &.dropcap-dark:first-letter { color: @brand-dark; }
+  &.dropcap-muted:first-letter { color: #AAA; }
+
+  &.dropcap-fill:first-letter { color: #FFF; }
+  &.dropcap-fill.dropcap-default:first-letter { background-color: @brand-dark; }
+  &.dropcap-fill.dropcap-primary:first-letter { background-color: @brand-primary; }
+  &.dropcap-fill.dropcap-success:first-letter { background-color: @brand-success; }
+  &.dropcap-fill.dropcap-info:first-letter { background-color: @brand-info; }
+  &.dropcap-fill.dropcap-warning:first-letter { background-color: @brand-warning; }
+  &.dropcap-fill.dropcap-danger:first-letter { background-color: @brand-danger; }
+  &.dropcap-fill.dropcap-alert:first-letter { background-color: @brand-alert; }
+  &.dropcap-fill.dropcap-system:first-letter { background-color: @brand-system; }
+  &.dropcap-fill.dropcap-dark:first-letter { background-color: @brand-dark; }
+  &.dropcap-fill.dropcap-muted:first-letter { color: #555; background-color: @brand-default; }
+
+}
+
+/*===============================================
+  D. Dividers
+================================================= */
+hr {
+    margin: 35px 0;
+    border-top: 1px solid #DDD;
+}
+hr.alt { border-top: 1px dashed #CCC }
+hr.short { margin: 20px 0 }
+hr.tall { margin: 55px 0 }
+
+hr.dotted { border-style: dotted }
+
+.divider {
+    height: 1px;
+    margin: 25px 0;
+    background: #e2e2e2;
+}

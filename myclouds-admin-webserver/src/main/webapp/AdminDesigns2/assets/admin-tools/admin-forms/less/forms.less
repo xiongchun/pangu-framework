@@ -1,0 +1,1218 @@
+
+/*===============================================
+  B. Dividers
+================================================= */
+.admin-form .spacer { 
+  border-top:1px solid #eee; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display:block;
+  height:0; 
+}
+
+/*==================================================================
+  B. Form Text Elements
+===================================================================*/
+/* Themed Link */
+.admin-form .theme-link{ color: #3bafda; text-decoration:none; }
+.admin-form .theme-link:hover{ text-decoration: underline; }
+
+/* Section Divider */
+.admin-form .section-divider { 
+	height:0; 
+	border-top:1px solid #DDD; 
+	text-align:center; 
+	margin-top: 20px; 
+	margin-bottom: 30px;  
+}
+.admin-form .section-divider span{ 
+	display: inline-block;
+	position: relative;
+	padding: 0 17px; 
+	background: #e9e9e9; // Should match the forms parents background 
+	color: #999;
+	top: -11px;  
+	font-size: 15px;
+}
+.admin-form.panel .section-divider span,
+.admin-form .panel .section-divider span { 
+	background: #fff; // mod to match white panel BG
+}
+.admin-form.bg-light .section-divider span,
+.admin-form .bg-light .section-divider span { 
+	background: #FAFAFA; // mod to match light BG
+}
+.admin-form.bg-light.light .section-divider span,
+.admin-form .bg-light.light .section-divider span { 
+	background: #FEFEFE; // mod to match light shade of light BG
+}
+.admin-form.bg-light.dark .section-divider span,
+.admin-form .bg-light.dark .section-divider span { 
+	background: #F2F2F2; // mod to match dark shade of light BG
+}
+.admin-form.well .section-divider span,
+.admin-form .well .section-divider span{ 
+	background: #f5f5f5; // mod to match white Well BG
+}
+
+/* Input Labels */
+.admin-form .switch, 
+.admin-form .option,
+.admin-form .field-label{ font-size:14px; }
+
+/* Column Labels - Can also use .field-align */
+.admin-form .field-label[class*='col-']  { 
+	line-height: 42px;
+}
+
+.admin-form .field-align { 
+	line-height: 42px;
+}
+
+
+/*==================================================================
+  B. Input General Styling 
+===================================================================*/
+.admin-form .radio,
+.admin-form .option,
+.admin-form .checkbox {
+  cursor: pointer;
+}
+
+.admin-form .field{ display:block; position:relative; }
+.admin-form .field-icon i { color:#BBB; position:relative; }
+.admin-form .field-label { display: block; margin-bottom: 7px; }
+.admin-form .field-label em{ 
+	color:#e74c3c;
+	font-size:14px;
+	font-style:normal;
+	display:inline-block;
+	margin-left:4px;
+	position:relative; 
+	top:3px;  
+}
+
+.admin-form .gui-input, 
+.admin-form .gui-textarea { padding:10px; }
+
+.admin-form .select,
+.admin-form .gui-input,
+.admin-form .gui-textarea,
+.admin-form .select > select,
+.admin-form .select-multiple select{
+	position: relative;
+	vertical-align: top;
+	border: 1px solid #DDD;
+	display: -moz-inline-stack;
+    display: inline-block;
+    *display: inline;
+	color: #626262;
+	outline:none;
+	height: 42px;
+	width: 100%;
+	*zoom: 1;
+}
+.admin-form .select option{	background: #fff;}
+
+.admin-form select[disabled],
+.admin-form .select > select[disabled]{color: #aaa !important;}
+
+
+/*==================================================================
+  B. Textarea
+===================================================================*/
+.admin-form .gui-textarea {    
+    resize: none;
+	line-height: 19px;
+	overflow: auto;
+	max-width:100%;
+    height: 96px;
+}
+
+/*==================================================================
+  B. Select
+===================================================================*/
+.admin-form .select { border:0; z-index:10; }
+.admin-form .select > select {
+	display: block;
+    padding:9px 10px; 
+    color: #626262;
+    background: #FFF;   	
+     border: 1px solid #DDD;	
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:normal;
+	outline:none;
+	text-indent: 0.01px;
+    text-overflow: ''; 
+	z-index:10;
+	margin: 0;	
+}
+
+.admin-form .select > select::-ms-expand { display: none; }
+.admin-form .select .arrow {
+	position: absolute;
+	top: 9px;
+	right: 4px;
+	width: 24px;
+	height: 24px;
+	color:#9F9F9F;
+	pointer-events:none;
+	z-index:16;
+}
+
+.admin-form .select .arrow:after,
+.admin-form .select .arrow:before {
+	content: '';
+	position: absolute;
+	font:12px "Consolas", monospace;
+	font-style:normal;
+	pointer-events:none;
+	display:none\9;
+	left:5px;
+	
+}
+
+.admin-form .select .arrow:before { content:'\25BC'; bottom:4px; }
+.admin-form .select .double:after { content:'\25B2'; top:-1px;  }
+.admin-form .select .double:before { content:'\25BC'; bottom:-1px; }
+.admin-form .select-multiple select { 
+	width:100%; 
+	height: 123px;
+	padding: 10px;
+}
+
+/*==================================================================
+  B. File Input
+===================================================================*/
+.admin-form .file { 
+	display:block;
+	 width:100%;
+}
+.admin-form .file .gui-file {
+	width:100%;
+	height:100%;
+	cursor:pointer;
+	padding:8px 10px;
+	position:absolute;
+	-moz-opacity:0;
+	opacity: 0;
+	z-index:11;
+	bottom:0;	
+	right:0;
+}
+/* Default state positions button right */
+.admin-form .file .button {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	float: none;
+	height: 34px;
+	line-height: 34px;
+	padding: 0 16px;
+	z-index:10;
+}
+
+/* File Button - Left Style */
+.admin-form .file.append-button .button {
+  left: 4px;
+  right: auto;
+}
+.admin-form .file.append-button > input.gui-input {
+  padding-right: 40px;
+  padding-left: 125px;
+  text-align: right;
+}
+.admin-form .file.append-button > label.field-icon {
+  right: 4px;
+  left: auto;
+}
+
+/*==================================================================
+  B. Inputs:hover state
+-===================================================================*/
+.admin-form .gui-input:hover,
+.admin-form .gui-textarea:hover,
+.admin-form .select > select:hover,
+.admin-form .select-multiple select:hover, 
+.admin-form .gui-input:hover ~ .input-footer,
+.admin-form .file .gui-file:hover + .gui-input,
+.admin-form .gui-textarea:hover ~ .input-footer{
+	border-color: #888;
+}
+
+/*==================================================================
+  B. Inputs:focus state
+===================================================================*/
+.admin-form .gui-input:focus,
+.admin-form .gui-textarea:focus,
+.admin-form .select > select:focus,
+.admin-form .select-multiple select:focus{ 
+    color: #3c3c3c;
+    background: #fff;
+	border:1px solid #999;
+	// -webkit-box-shadow:0px 0px 3px #999 inset; 
+	// -moz-box-shadow:0px 0px 3px #999 inset;  
+	// -o-box-shadow:0px 0px 3px #999 inset;	
+	// box-shadow:0px 0px 3px #999 inset;
+    outline: none; 
+
+}
+
+.admin-form .select > select:focus {	
+	z-index:10;
+	z-index:20\9;
+}
+
+.admin-form .gui-textarea:focus{  height: 120px; }
+.admin-form .select > select:focus { z-index:10; z-index:20\9; }
+.admin-form .gui-input:focus ~ .field-icon i,
+.admin-form .gui-textarea:focus ~ .field-icon i{ color:#999; }
+.admin-form .select-multiple select:focus, 
+.admin-form .gui-input:focus ~ .input-footer,
+.admin-form .gui-textarea:focus ~ .input-footer, 
+.admin-form .file .gui-file:focus + .gui-input{ border-color: #999; }
+.admin-form .select > select:focus + .arrow{ color:#999; }
+
+/*==================================================================
+  B. Radio/Checkboxes
+-===================================================================*/ 
+.admin-form .option {
+    position: relative;	
+	padding-right:15px;    
+	display: inline-block;
+    vertical-align: middle;
+}
+.admin-form .option > input {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    opacity: 0;
+	left: 0;
+}
+
+.admin-form .checkbox, 
+.admin-form .radio { 
+	cursor: pointer;
+	position:relative;
+	margin-right:5px;
+	background: #fff;
+	display: inline-block;
+    border: 3px solid #DDD;	
+	height: 21px;
+	width: 21px;
+	top:4px;	
+}
+
+.admin-form .checkbox:before, 
+.admin-form .radio:before {
+    content: '';
+    display: none;
+}
+
+.admin-form input:checked + .checkbox:before, 
+.admin-form input:checked + .radio:before {
+    display: block;
+}
+
+.admin-form .checkbox:before {
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    width: 6px;
+    height: 3px;
+    border: solid #888;
+    border-width: 0 0 3px 3px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.admin-form input:checked + .checkbox, 
+.admin-form input:checked + .radio{ border: 3px solid #888; }
+.admin-form .radio { 
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px; 
+	-o-border-radius: 20px; 
+	border-radius: 20px;
+ 
+}
+.admin-form .radio:before {
+    margin: 4px;
+    width: 7px;
+    height: 7px;
+    background: #888;
+  	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px; 
+	-o-border-radius: 10px; 
+	border-radius: 10px;
+}
+
+
+/*==================================================================
+  B. Radio/Checkboxes:hover state 
+===================================================================*/
+.admin-form input:not([disabled]):hover + .checkbox, 
+.admin-form input:not([disabled]):hover + .radio{
+     border-color:#666;	
+}
+
+/*==================================================================
+  B. Radio/Checkboxes:focus state 
+-===================================================================*/
+.admin-form input:focus + .checkbox, 
+.admin-form input:focus + .radio{ border-color: #666; }
+.admin-form input:focus + .radio:before{ background: #666; }
+.admin-form input:focus + .checkbox:before{ border-color: #666; }
+
+/*==================================================================
+  B. Switches
+===================================================================*/
+.admin-form .switch { 
+	cursor:pointer; 
+	position: relative; 
+	padding-right:10px;
+    display: inline-block;
+	margin-bottom:5px;
+	height: 26px;
+}
+.admin-form .switch > label {
+	cursor:pointer;
+    display: inline-block;
+    position: relative;
+    height: 25px;
+	width: 58px;
+	color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+	line-height: 20px;
+    text-align: center;
+    background: #D7D7D7;
+    border: 2px solid #D7D7D7;
+	text-transform: uppercase;
+	font-family:Helvetica, Arial, sans-serif;
+    -webkit-transition: 0.3s ease-out;
+    -moz-transition: 0.3s ease-out;
+    -o-transition: 0.3s ease-out;
+    transition: 0.3s ease-out;
+	
+}
+.admin-form .switch > label + span{ display:inline-block; padding-left:5px; position:relative; top:-7px; }
+.admin-form .switch > label:before {
+    content: attr(data-off);
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    width: 33px;
+}
+
+.admin-form .switch > label:after {
+	content:"";	
+    margin: 1px;
+    width: 19px;
+    height: 19px;
+	display: block;
+    background: #fff;
+}
+
+.admin-form .switch > input {
+	-webkit-appearance: none;
+	position: absolute;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+	left: 0;
+	top: 0;
+}
+
+
+
+/*==================================================================
+  B. Switch:focus state
+-===================================================================*/
+.admin-form .switch > input:focus { outline: none; }
+.admin-form .switch > input:focus + label { color: #fff; border-color: #C7C7C7; background:#C7C7C7; }
+.admin-form .switch > input:focus + label:after { background: #fff; }
+
+/*==================================================================
+  B. Switch - toggled
+===================================================================*/
+.admin-form .switch > input:checked + label {
+    border-color: #999;
+	background: #999; 
+	padding-left: 33px;
+	color: white;
+}
+
+.admin-form .switch > input:checked + label:before {
+    content: attr(data-on);
+    left: 1px;
+	top:1px;
+}
+
+.admin-form .switch > input:checked + label:after {
+    margin: 1px;
+    width: 19px;
+    height: 19px;
+    background: white;
+}
+
+/*==================================================================
+  B. Switch - toggled:focus state
+-===================================================================*/
+.admin-form .switch > input:checked:focus + label { background: #555; border-color: #555; }
+
+/* Round Style*/
+.admin-form .switch-round > label { 
+	-webkit-border-radius: 13px;
+	-moz-border-radius: 13px;
+	-o-border-radius: 13px;
+	border-radius: 13px; 
+}
+.admin-form .switch-round > label + span{ top:-2px; }
+.admin-form .switch-round > label:before { width: 33px; }
+.admin-form .switch-round > label:after {
+    width: 19px;
+	color:#D7D7D7;
+	content: "\2022";
+	font:20px/20px Times, Serif;
+	-webkit-border-radius: 13px;
+	-moz-border-radius: 13px;
+	-o-border-radius: 13px;
+	border-radius: 13px;
+}
+
+.admin-form .switch-round > input:checked + label { padding-left: 33px; }
+.admin-form .switch-round > input:checked + label:after{ color:#999; }
+
+
+/*==================================================================
+  B. Custom Toggle Switch
+-===================================================================*/
+.admin-form .switch-custom > label {
+    background: lighten(@brand-danger, 20%);
+    border-color: lighten(@brand-danger, 20%);
+}
+.admin-form .switch-custom > input:hover + label,
+.admin-form .switch-custom > input:focus + label {
+    background: darken(@brand-danger, 3%);
+    border-color: darken(@brand-danger, 3%);
+}
+
+/* Checked state */
+.admin-form .switch-custom > input:checked + label {
+	background: @brand-success;
+	border-color: @brand-success;
+}
+.admin-form .switch-custom > input:checked:hover + label,
+.admin-form .switch-custom > input:checked:focus + label {
+	background: darken(@brand-success, 15%);
+	border-color: darken(@brand-success, 15%);
+}
+
+/*==================================================================
+  B. Input:disabled state
+===================================================================*/
+.admin-form .button[disabled],
+.admin-form .state-disabled .button,
+.admin-form input[disabled] + .radio,
+.admin-form input[disabled] + .checkbox,
+.admin-form .switch > input[disabled] + label{
+	cursor: default;
+	opacity:0.5;
+}
+
+.admin-form .gui-input[disabled],
+.admin-form .gui-textarea[disabled], 
+.admin-form .select > select[disabled], 
+.admin-form .select-multiple select[disabled],
+.admin-form .gui-input[disabled] ~ .input-footer,
+.admin-form .file .gui-file[disabled] + .gui-input,
+.admin-form .file .gui-file[disabled]:hover + .gui-input, 
+.admin-form .gui-textarea[disabled] ~ .input-footer {    
+	background-color: #f4f6f6;
+	border-color: #d5dbdb!important;
+	cursor: default;
+	color: #d5dbdb;
+	opacity:0.7;
+}
+
+.admin-form input[disabled] ~ .field-icon i,
+.admin-form textarea[disabled] ~ .field-icon i,
+.admin-form .select > select[disabled] + .arrow{ 
+	opacity:0.4; 
+}
+
+
+/*==================================================================
+  B. FORM ADDONS
+===================================================================
+
+
+
+ FORM "ADDONS"
+
+
+
+==================================================================
+  B. Input Help Footer
+===================================================================*/
+.admin-form .input-footer {
+    padding: 10px;
+	display: block;
+	margin-top: -1px;
+	line-height: 16px;
+	position: relative; 
+    background: #F5F5F5;
+    border: 1px solid #DDD;	   
+	font-family:Arial, Helvetica, sans-serif;
+    -webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+    font-size: 11px;
+    color: #999;
+}
+
+/*==================================================================
+  B. Field Icons
+===================================================================*/
+.admin-form .append-icon, 
+.admin-form .prepend-icon{
+	top: 0;
+	left: 0;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+	width:100%;
+}
+
+.admin-form .append-icon .field-icon, 
+.admin-form .prepend-icon .field-icon{
+	top:0;
+	z-index:4;
+	width:42px;
+	height:42px;
+
+	color: inherit;
+	line-height:42px;
+	position:absolute;
+	text-align: center;
+
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    pointer-events: none;
+}
+
+.admin-form .append-icon .field-icon i, 
+.admin-form .prepend-icon .field-icon i{ 
+	position:relative;
+	font-size:14px;
+}
+
+.admin-form .prepend-icon .field-icon{ left:0;  }
+.admin-form .append-icon .field-icon{ right:0; }
+.admin-form .prepend-icon > input, 
+.admin-form .prepend-icon > textarea{ padding-left:36px; }
+.admin-form .append-icon > input, 
+.admin-form .append-icon > textarea{ padding-right:36px; padding-left:10px;  }
+.admin-form .append-icon > textarea{ padding-right:36px; }
+
+/*==================================================================
+  B. Input Tooltips
+===================================================================*/ 
+.admin-form .tooltip {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	color: #fff;	
+	width: 184px;
+	left: -9999px;
+	top:auto;
+	font-size: 11px;
+	font-weight:normal;
+	background: #333333;
+	-webkit-transition: margin 0.6s, opacity 0.6s;
+	-moz-transition: margin 0.6s, opacity 0.6s;
+	-ms-transition: margin 0.6s, opacity 0.6s;
+	-o-transition: margin 0.6s, opacity 0.6s;
+	transition: margin 0.6s, opacity 0.6s;
+}
+
+.admin-form .tooltip > em{ padding:12px; font-style:normal; display:block; position:static; }
+.admin-form .tooltip:after { content: ''; position: absolute; }
+.admin-form .gui-input:focus + .tooltip,
+.admin-form .gui-textarea:focus + .tooltip { opacity: 1; z-index: 999; }
+
+/*==================================================================
+  B. Tooltip - left
+===================================================================*/
+.admin-form .tip-left { top:1px; margin-right:-20px; }
+.admin-form .tip-left:after {
+	top:12px;
+	left: 100%;
+	border-left: 8px solid #333333;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+}
+
+.admin-form .gui-input:focus + .tip-left,
+.admin-form .gui-textarea:focus + .tip-left {
+	margin-right:5px;
+	right: 100%;
+	left: auto;
+}
+
+/*==================================================================
+  B. Tooltip - right
+===================================================================*/
+.admin-form .tip-right { top:1px; margin-left:-20px; }
+.admin-form .tip-right:after {
+	top:12px;
+	right: 100%;
+	border-right: 8px solid #333333;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;	
+}
+
+.admin-form .gui-input:focus + .tip-right,
+.admin-form .gui-textarea:focus + .tip-right { left: 100%; margin-left:5px; }
+
+/*==================================================================
+  B. Tooltip - right-top
+===================================================================*/
+.admin-form .tip-right-top { bottom: 100%; margin-bottom: -20px; }
+.admin-form .tip-right-top:after {
+	top: 100%;
+	right: 12px;
+	border-top: 8px solid #333333;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+
+.admin-form .gui-input:focus + .tip-right-top,
+.admin-form .gui-textarea:focus + .tip-right-top {
+	right: 0;
+	left: auto;
+	margin-bottom: 10px;
+}
+
+/*==================================================================
+  B. Tooltip - left-top
+===================================================================*/
+.admin-form .tip-left-top { bottom: 100%; margin-bottom: -20px; }
+.admin-form .tip-left-top:after {
+	top: 100%;
+	left: 12px;
+	border-top: 8px solid #333333;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+
+.admin-form .gui-input:focus + .tip-left-top,
+.admin-form .gui-textarea:focus + .tip-left-top {
+	left: 0;
+	right: auto;
+	margin-bottom: 10px;
+}
+
+/*==================================================================
+  B. Tooltip - right-bottom
+===================================================================*/
+.admin-form .tip-right-bottom { top: 100%; margin-top: -20px; }
+.admin-form .tip-right-bottom:after {
+	right: 12px;
+	bottom: 100%;
+	border-bottom: 8px solid #333333;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+
+.admin-form .gui-input:focus + .tip-right-bottom,
+.admin-form .gui-textarea:focus + .tip-right-bottom {
+	margin-top: 10px;
+	left: auto;
+	right: 0;
+}
+
+/*==================================================================
+  B. Tooltip - left-bottom
+===================================================================*/
+.admin-form .tip-left-bottom { top: 100%; margin-top: -20px; }
+.admin-form .tip-left-bottom:after {
+	left: 12px;
+	bottom: 100%;
+	border-bottom: 8px solid #333333;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+
+.admin-form .gui-input:focus + .tip-left-bottom,
+.admin-form .gui-textarea:focus + .tip-left-bottom {
+	margin-top:10px;
+	right: auto;
+	left: 0;
+}
+
+/*==================================================================
+  B. Validation - error state
+===================================================================*/
+.admin-form .state-error .gui-input,
+.admin-form .state-error .gui-textarea,
+.admin-form .state-error.select > select,
+.admin-form .state-error.select-multiple > select,
+.admin-form .state-error input:hover + .checkbox, 
+.admin-form .state-error input:hover + .radio,
+.admin-form .state-error input:focus + .checkbox, 
+.admin-form .state-error input:focus + .radio,
+.admin-form .state-error .checkbox, 
+.admin-form .state-error .radio{
+	background:#FEE9EA;
+	border-color:#DE888A;
+}
+
+.admin-form .state-error .gui-input:focus,
+.admin-form .state-error .gui-textarea:focus,
+.admin-form .state-error.select > select:focus,
+.admin-form .state-error.select-multiple > select:focus{
+	-webkit-box-shadow:0px 0px 3px #DE888A inset;
+	-moz-box-shadow:0px 0px 3px #DE888A inset;
+	-o-box-shadow:0px 0px 3px #DE888A inset;
+	box-shadow:0px 0px 3px #DE888A inset;
+}
+
+.admin-form .state-error .gui-input ~ .field-icon i,
+.admin-form .state-error .gui-textarea ~ .field-icon i{  color: #DE888A; }
+.admin-form .state-error.select .arrow { color: #DE888A; }
+.admin-form .state-error.select > select:focus + .arrow{ color:#DE888A; }
+.admin-form .state-error .gui-input ~ .input-footer,
+.admin-form .state-error.file .gui-file:hover + .gui-input, 
+.admin-form .state-error .gui-textarea ~ .input-footer { border-color:#DE888A; }
+.admin-form .state-error + em{ 
+	display: block!important;
+	margin-top: 6px;
+	padding: 0 3px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-style: normal;
+	line-height: normal;
+	font-size:0.85em;
+	color:#DE888A;
+}
+
+/*==================================================================
+  B. Validation - success state 
+===================================================================*/
+.admin-form .state-success .gui-input,
+.admin-form .state-success .gui-textarea,
+.admin-form .state-success.select > select,
+.admin-form .state-success.select-multiple > select,
+.admin-form .state-success input:hover + .checkbox, 
+.admin-form .state-success input:hover + .radio,
+.admin-form .state-success input:focus + .checkbox, 
+.admin-form .state-success input:focus + .radio, 
+.admin-form .state-success .checkbox, 
+.admin-form .state-success .radio{
+	background:#F0FEE9;
+	border-color:#A5D491;
+}
+
+.admin-form .state-success .gui-input:focus,
+.admin-form .state-success .gui-textarea:focus,
+.admin-form .state-success.select > select:focus,
+.admin-form .state-success.select-multiple > select:focus{ 
+	-webkit-box-shadow:0px 0px 3px #A5D491 inset; 
+	-moz-box-shadow:0px 0px 3px #A5D491 inset; 
+	-o-box-shadow:0px 0px 3px #A5D491 inset; 
+	box-shadow:0px 0px 3px #A5D491 inset; 
+}
+
+.admin-form .state-success .gui-input ~ .field-icon i,
+.admin-form .state-success .gui-textarea ~ .field-icon i{  color: #A5D491; }
+.admin-form .state-success.select .arrow { color: #A5D491; }
+.admin-form .state-success.select > select:focus + .arrow{ color:#A5D491; }
+.admin-form .state-success .gui-input ~ .input-footer,
+.admin-form .state-success.file .gui-file:hover + .gui-input, 
+.admin-form .state-success .gui-textarea ~ .input-footer { border-color:#A5D491; }
+
+
+
+/*==================================================================
+  B. captcha refresh button + icon 
+===================================================================*/
+.admin-form .sfcode{ padding-left:24px; }
+.admin-form .captcode{ padding:0; position:relative; }
+.admin-form .captcode img{ position:relative; top:1px;}
+.admin-form .refresh-captcha{ 
+	position:absolute;
+	background:#999;
+	border:3px solid #3C9B39;
+	-webkit-border-radius:30px;
+	-moz-border-radius:30px;
+	-o-border-radius:30px;
+	border-radius:30px;
+	right:-15px;
+	height:32px;
+	width:32px; 
+	top:4px; 
+}
+
+.admin-form .refresh-captcha i{ 
+	position:absolute; 
+	text-align:center; 
+	line-height:26px;
+	font-size:17px; 
+	color:#fff;
+	left:24%;
+}
+
+/*==================================================================
+  B. captcha refresh button themes
+===================================================================*/
+.admin-form .refresh-black    { background:#505558; border-color: #333333; }
+.admin-form .refresh-blue     { background:#00acee; border-color: #0087bb; }
+.admin-form .refresh-green    { background:#0E993C; border-color: #0B792F; }
+.admin-form .refresh-purple   { background:#9464e2; border-color: #7639da; }
+.admin-form .refresh-red      { background:#ee4f3d; border-color: #e42914; }
+.admin-form .refresh-yellow   { background:#faa226; border-color: #e88a05; }
+
+
+/*==================================================================
+  B. smart widget
+   @this widget helps us to position an element eg button or label or span
+   @the positions can either be left or right while the input stays 100%
+   @you ca use this to rapidly create search widgets, newsletter subscribe etc 
+===================================================================*/
+.admin-form .smart-widget, 
+.admin-form .append-picker-icon, 
+.admin-form .prepend-picker-icon { position: relative; display:block; }
+.admin-form .smart-widget .field input, 
+.admin-form .append-picker-icon input, 
+.admin-form .prepend-picker-icon input { width: 100%; }
+
+.admin-form .append-picker-icon button, 
+.admin-form .prepend-picker-icon button,
+.admin-form .smart-widget .button { 
+	border:1px solid #DDD;
+	background: #F5F5F5;
+    position: absolute;
+	cursor: pointer;
+	color: #626262;
+	height: 42px;
+	line-height: 39px;
+    top: 0;
+}
+
+/* Disabled Prepended Icon State */
+.admin-form .prepend-picker-icon button:disabled {
+  background-color: #f4f6f6 !important;
+  border-color: #d5dbdb!important;
+}
+
+.admin-form .sm-right .button, 
+.admin-form .append-picker-icon button{ border-left:0; }
+.admin-form .sm-left .button, 
+.admin-form .prepend-picker-icon button{ border-right:0; }
+
+.admin-form .sm-left .button, 
+.admin-form .prepend-picker-icon button { left:0; }
+.admin-form .sm-right .button, 
+.admin-form .append-picker-icon button {  right:0; }
+
+/*==================================================================
+  B. smart widget buttons - to left 
+===================================================================*/
+.admin-form .sml-50, 
+.admin-form .prepend-picker-icon { padding-left: 50px; } 
+.admin-form .sml-50 .button, 
+.admin-form .prepend-picker-icon button{ width: 50px; }
+.admin-form .sml-80{ padding-left: 80px; } 
+.admin-form .sml-80 .button { width: 80px; }
+.admin-form .sml-120{ padding-left: 120px; } 
+.admin-form .sml-120 .button { width: 120px; }
+.admin-form .sml-160{ padding-left: 160px; } 
+.admin-form .sml-160 .button { width: 160px; }
+
+/*==================================================================
+  B. smart widget buttons - to right 
+===================================================================*/
+.admin-form .smr-50, 
+.admin-form .append-picker-icon{ padding-right: 50px; } 
+.admin-form .smr-50 .button, 
+.admin-form .append-picker-icon button{ width: 50px; }
+.admin-form .smr-80{ padding-right: 80px; } 
+.admin-form .smr-80 .button { width: 80px; }
+.admin-form .smr-120{ padding-right: 120px; } 
+.admin-form .smr-120 .button { width: 120px; }
+.admin-form .smr-140{ padding-right: 140px; } 
+.admin-form .smr-140 .button { width: 140px; }
+.admin-form .smr-160{ padding-right: 160px; } 
+.admin-form .smr-160 .button { width: 160px; }
+
+/*==================================================================
+  B. rating and review star widget :: with hover back afetr selecting
+-===================================================================*/
+.admin-form .rating { overflow: hidden; }
+.admin-form .rating.block { display:block; margin:10px 0; }
+.admin-form .rating label{color: #CCC;} 
+.admin-form .rating label i{ font-size:17px; text-align:center; color:inherit;  }
+.admin-form .rating label span{ font:22px/22px Times, Serif; }
+.admin-form .rating-star{ margin-left:4px; }
+.admin-form .rating-input { position: absolute; left:-9999px; top: auto; }
+.admin-form .rating:hover .rating-star:hover,
+.admin-form .rating:hover .rating-star:hover ~ .rating-star,
+.admin-form .rating-input:checked ~ .rating-star { color: #666;	}
+.admin-form .rating-star, 
+.admin-form .rating:hover .rating-star {	
+	width: 18px;
+	float: right;
+	display: block;
+	cursor:pointer;
+	color: #CCC;	
+}
+
+
+/*==================================================================
+  B. Buttons
+-===================================================================*/
+.admin-form .button {
+    border: 0;
+	height: 42px;
+	color: #243140;
+	line-height: 1;
+	font-size:15px; 
+    cursor: pointer;
+	padding: 0 18px;
+	text-align: center;
+	vertical-align: top;
+    background: #DBDBDB;
+	display: inline-block;
+	-webkit-user-drag: none;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/*==================================================================
+  B. Button States
+===================================================================*/
+.admin-form .button:hover { color: #243140; background: #EEE; }
+.admin-form .button:active{ 
+	color: #1d2938; 
+	-moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.admin-form a.button, 
+.admin-form span.button, 
+.admin-form label.button { line-height: 38px; text-decoration: none; }
+.admin-form .button i{ font-size:14px; }
+.admin-form .button-list .button{ margin-bottom:5px; }
+
+/*==================================================================
+  B. Primary Button
+-===================================================================*/
+.admin-form .btn-primary {  background-color: #3bafda;  }
+.admin-form .btn-primary:hover,
+.admin-form .btn-primary:focus { background-color: #3bafda; }
+.admin-form .btn-primary:active{ background-color: #3bafda; }
+.admin-form .btn-primary, 
+.admin-form .btn-primary:hover,
+.admin-form .btn-primary:focus, 
+.admin-form .btn-primary:active{ color: #fff; text-shadow: 0 1px rgba(0, 0, 0, 0.08); }
+
+/*==================================================================
+  B. Rounded Buttons
+-===================================================================*/
+.admin-form .btn-rounded{ 
+	-webkit-border-radius:22px;
+	-moz-border-radius:22px;
+	-o-border-radius:22px;
+	border-radius:22px;  
+}
+
+/*==================================================================
+  B. Left + Right Shaped Buttons
+-===================================================================*/
+.admin-form .button-left, 
+.admin-form .button-right {
+    position: relative;
+	z-index:9;
+}
+
+.admin-form .button-left:before, 
+.admin-form .button-right:before {
+    content:'';
+    z-index:-1;
+    width: 32px;
+    height: 32px;
+	position: absolute;
+    background-color: inherit;
+	border-color: inherit;	
+    border: none;
+	top: 5px;
+}
+
+.admin-form .button-left {
+    border-left-width: 0; 
+	padding: 0 18px 0 7px;
+    -webkit-border-radius: 0 3px 3px 0;
+	-moz-border-radius: 0 3px 3px 0;
+	-o-border-radius: 0 3px 3px 0;
+	border-radius: 0 3px 3px 0;
+	margin-left:20px;
+}
+
+.admin-form .button-left:before {
+    left: -15px;
+    -webkit-border-radius: 2px 5px 0 5px;
+	-moz-border-radius: 2px 5px 0 5px;
+	-o-border-radius: 2px 5px 0 5px;
+	border-radius: 2px 5px 0 5px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.admin-form .button-right {
+    padding: 0 7px 0 18px;
+    border-right-width: 0;
+    -webkit-border-radius: 3px 0 0 3px;
+	-moz-border-radius: 3px 0 0 3px;
+	-o-border-radius: 3px 0 0 3px;
+	border-radius: 3px 0 0 3px;
+	margin-right:20px;
+}
+
+.admin-form .button-right:before {
+    right: -15px;
+    -webkit-border-radius: 5px 2px 5px 0;
+	-moz-border-radius: 5px 2px 5px 0;
+	-o-border-radius: 5px 2px 5px 0;
+	border-radius: 5px 2px 5px 0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*==================================================================
+  B. Pointed Buttons - Left + Right
+-===================================================================*/
+.admin-form .btn-pointed.button-left, 
+.admin-form .btn-pointed.button-right{ 
+	-webkit-border-radius:22px;
+	-moz-border-radius:22px;
+	-o-border-radius:22px; 
+	border-radius:22px;  
+}
+
+.admin-form .btn-rounded.button-left{ 
+	-webkit-border-radius: 0 22px 22px 0;
+	-moz-border-radius: 0 22px 22px 0;
+	-o-border-radius: 0 22px 22px 0; 
+	border-radius: 0 22px 22px 0;  
+}
+
+.admin-form .btn-rounded.button-right{
+	-webkit-border-radius: 22px 0 0 22px;
+	-moz-border-radius: 22px 0 0 22px;
+	-o-border-radius: 22px 0 0 22px;
+	border-radius: 22px 0 0 22px; 
+}
+
+/*==================================================================
+  B. Buttons - Push Effect
+-===================================================================*/
+.admin-form .pushed { 
+	-webkit-box-shadow:inset 0 -0.3em 0 rgba(0,0,0,0.2);
+	-moz-box-shadow:inset 0 -0.3em 0 rgba(0,0,0,0.2);
+	-o-box-shadow:inset 0 -0.3em 0 rgba(0,0,0,0.2);
+	box-shadow:inset 0 -0.3em 0 rgba(0,0,0,0.2);
+	position:relative;
+}
+
+.admin-form .pushed:active{
+	-webkit-box-shadow:inset 0 -0.15em 0 rgba(0,0,0,0.2);
+	-moz-box-shadow:inset 0 -0.15em  0 rgba(0,0,0,0.2);
+	-o-box-shadow:inset 0 -0.15em  0 rgba(0,0,0,0.2);
+	box-shadow:inset 0 -0.15em  0 rgba(0,0,0,0.2);
+	top:2px;
+}
+
+.admin-form .pushed.button-left:before {
+	-webkit-box-shadow:inset 0.35em 0  0 rgba(0,0,0,0.2);
+	-moz-box-shadow:inset 0.35em 0 0 rgba(0,0,0,0.2);
+	-o-box-shadow:inset 0.35em 0 0 rgba(0,0,0,0.2);
+	box-shadow:inset 0.35em 0 0 rgba(0,0,0,0.2);	
+}
+
+.admin-form .pushed:active.button-left:before{
+	-webkit-box-shadow:inset 0.2em 0  0 rgba(0,0,0,0.2);
+	-moz-box-shadow:inset 0.2em 0  0 rgba(0,0,0,0.2);
+	-o-box-shadow:inset 0.2em 0  0 rgba(0,0,0,0.2);
+	box-shadow:inset 0.2em 0  0 rgba(0,0,0,0.2);
+}
+
+.admin-form .pushed.button-right:before {
+	-webkit-box-shadow:inset  -0.35em 0  0 rgba(0,0,0,0.2);
+	-moz-box-shadow:inset -0.35em 0  0  rgba(0,0,0,0.2);
+	-o-box-shadow:inset -0.35em 0  0  rgba(0,0,0,0.2);
+	box-shadow:inset -0.35em 0  0  rgba(0,0,0,0.2);	
+}
+
+.admin-form .pushed:active.button-right:before{
+	-webkit-box-shadow:inset -0.2em 0  0 rgba(0,0,0,0.2);
+	-moz-box-shadow:inset -0.2em 0  0 rgba(0,0,0,0.2);
+	-o-box-shadow:inset -0.2em 0  0 rgba(0,0,0,0.2);
+	box-shadow:inset -0.2em 0  0 rgba(0,0,0,0.2);
+}
+
+/*==================================================================
+  B. Footer Button Adjustment
+-===================================================================*/
+.admin-form .form-footer .button{ margin-right:10px; margin-bottom:5px; }
+.admin-form .align-right .button{ margin-right:0; margin-left:10px; }
+
+/*==================================================================
+  B. Social Buttons
+===================================================================*/
+.admin-form .twitter, 
+.admin-form .twitter:hover, 
+.admin-form .twitter:focus,
+.admin-form .facebook, 
+.admin-form .facebook:hover, 
+.admin-form .facebook:focus,
+.admin-form .googleplus,
+.admin-form .googleplus:hover, 
+.admin-form .googleplus:focus { color:#fff; text-shadow: 0 1px rgba(0, 0, 0, 0.08); } 
+.admin-form .facebook { background-color:#3b5998; }
+.admin-form .twitter { background-color:#00acee;  }
+.admin-form .googleplus { background-color:#dd4b39; }
+.admin-form .facebook:hover, 
+.admin-form .facebook:focus { background-color:#25385F;  }
+.admin-form .twitter:hover, 
+.admin-form .twitter:focus { background-color:#00749F;  }
+.admin-form .googleplus:hover, 
+.admin-form .googleplus:focus { background-color:#8D2418;  }
+.admin-form .span-left{ padding-left:56px; text-align:left; }
+.admin-form .btn-social { position:relative; margin-bottom:5px; line-height: 42px !important;  }
+.admin-form .btn-social i{ font-size:22px; position:relative; top:2px;    }
+.admin-form .btn-social span{
+	-webkit-border-radius:3px 0 0 3px;
+	-moz-border-radius:3px 0 0 3px;
+	-o-border-radius:3px 0 0 3px;
+	border-radius:3px 0 0 3px;	
+	display:inline-block; 
+	text-align:center; 
+	position:absolute;
+	width:45px; 
+	left:0; 
+}
+.admin-form .twitter span{ background-color:#009AD5; }
+.admin-form .facebook span{ background-color:#31497D; }
+.admin-form .googleplus span{ background-color:#C03121; }

@@ -1,0 +1,100 @@
+<!-- Start: Header -->
+<!--++++++++++++++++++++++++++++++++++++++ 
+       ".navbar" Helper Classes: 
+    ++++++++++++++++++++++++++++++++++++++++ 
+       * Positioning Classes: 
+        '.navbar-static-top' - Static top positioned navbar
+        '.navbar-static-top' - Fixed top positioned navbar
+
+       * Available Skin Classes:
+         .bg-dark    .bg-primary   .bg-success   
+         .bg-info    .bg-warning   .bg-danger
+         .bg-alert   .bg-system 
+    ++++++++++++++++++++++++++++++++++++++++
+      Example: <header class="navbar navbar-fixed-top bg-primary">
+      Results : Fixed top navbar with blue background 
+    ++++++++++++++++++++++++++++++++++++++-->
+<header class="navbar navbar-fixed-top" th:fragment="banner">
+	<div class="navbar-branding">
+		<a class="navbar-brand" href="/">
+			<span class="navbar-logo fs26" th:text="${@thCxt.param('sys_logo_name')}"></span>
+		</a>
+		<span id="toggle_sidemenu_l" class="ad ad-lines"></span>
+	</div>
+	<ul class="nav navbar-nav navbar-left">
+		<li class="hidden-xs">
+			<a class="request-fullscreen toggle-active" href="#">
+				<span class="ad ad-screen-full fs18"></span>
+			</a>
+		</li>
+	</ul>
+	<form class="navbar-form navbar-left navbar-search" role="search">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="搜索..." />
+		</div>
+	</form>
+	<ul class="nav navbar-nav navbar-right">
+
+		<!--  
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<span class="ad ad-radio-tower fs18"></span>
+			</a>
+			<ul class="dropdown-menu media-list w350 animated animated-shorter fadeIn" role="menu">
+				<li class="dropdown-header">
+					<span class="dropdown-title"> 站内消息</span> <span class="label label-xs label-warning">12</span>
+				</li>
+				<li class="media">
+					<a class="media-left" href="#">
+						<img src="/theme/assets/img/avatars/2.jpg" class="mw40" />
+					</a>
+					<div class="media-body">
+						<h5 class="media-heading">
+							支付通道临时关闭 <span class="label label-xs label-warning">未读</span>
+						</h5>
+						2017/6/22 by 阿黑哥
+					</div>
+				</li>
+				<li class="media">
+					<a class="media-left" href="#">
+						<img src="/theme/assets/img/avatars/2.jpg" class="mw40" alt="用户头像" />
+					</a>
+					<div class="media-body">
+						<h5 class="media-heading mv5">国庆节放假银行系统维护值班通知</h5>
+						2017/10/22 by 阿黑哥
+					</div>
+				</li>
+				<li class="media">
+					<a class="media-left" href="#">
+						<img src="/theme/assets/img/avatars/3.jpg" class="mw40" alt="用户头像" />
+					</a>
+					<div class="media-body">
+						<h5 class="media-heading">系统升级维护</h5>
+						2017/12/22 by 阿黑哥
+					</div>
+				</li>
+			</ul>
+		</li>
+		-->
+
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle p10" data-toggle="dropdown">
+				<img src="/theme/assets/img/avatars/avatar.png" class="mw40 br24 mr5" />
+				<span th:text="${session._user?.name}"></span> <span class="caret caret-tp hidden-xs"></span>
+			</a>
+			<ul class="dropdown-menu list-group dropdown-persist w250 animated animated-short fadeIn" role="menu">
+				<li class="list-group-item">
+					<a href="#" onclick="fnOpenPwd();">
+						<span class="fa fa-key"></span> 修改密码
+					</a>
+				</li>
+				<li class="list-group-item">
+					<a href="#" onclick="fnLogout();">
+						<span class="fa fa-power-off pr5"></span> 安全退出
+					</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</header>
+<!-- End: Header -->

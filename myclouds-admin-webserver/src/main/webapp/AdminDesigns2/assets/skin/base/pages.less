@@ -1,0 +1,723 @@
+
+/* ================================================
+   PAGES - In Order
+      A. UI Animations Page
+	  B. FAQ Page
+	  C. Gallery.html
+	  D. Calendar.html
+	  E. Message Pages
+	  F. Editors.html
+	  G. External Pages
+	  H. Invoice.html
+	  I. Timeline.html
+	  J. Map Pages
+	  K. Profile.html
+	  L. Error Pages
+
+ * This file is reserved for changes done on
+ * a per-page basis. To create independent
+ * page layouts an additional class was added 
+ * to the pages body. For example ui-animations.html
+ * has an extra body class of ".ui-animations-page"
+ 
+ * Note: Pages not listed here were made using
+ * 100% reusable styles placed in theme.css
+=================================================
+  A. UI Animations Page
+================================================= */ 
+body.ui-animations-page {
+
+    // mac drawing
+    #mac_wire {
+        margin-top: 2.5%;
+        margin-left: 3.5%;
+        position: fixed;
+        max-width: 440px;
+    }
+    // color fills for mac drawing
+    &.svg-fill #mac_wire svg path:first-child {
+        fill-opacity: 1;
+        fill: #ccc;
+        stroke: #999;
+        stroke-width: 1px;
+        -webkit-transition: all ease 0.5s;
+        transition: all ease 0.5s;
+    }
+    &.svg-fill #mac_wire svg path:last-child {
+        fill-opacity: 1;
+        fill: #555;
+        stroke: #555;
+        stroke-width: 3px;
+        -webkit-transition: all ease 1s;
+        transition: all ease 1s;
+    }
+    
+    // animation play button
+    .tray-center:after {
+        opacity: 0;
+        position: fixed;
+        content: "\f04b";
+        font-family: "FontAwesome";
+        font-size: 46px;
+        color: #3bafda;
+        bottom: 10px;
+        padding-left: 20px;
+        -webkit-transition: opacity 0.5s ease-in-out;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    // animation running - display play button
+    &.animation-running .tray-center:after {
+        opacity: 0.75;
+    }
+    // animation running fade buttons till over
+    &.animation-running .btn.btn-alt {
+        opacity: 0.5;
+    }
+    // keep active button selected
+    &.animation-running .btn.btn-alt.item-checked {
+        opacity: 1;
+        -webkit-transition: opacity 0.2s ease;
+        transition: opacity 0.2s ease;
+    }
+
+}
+
+/*===============================================
+  B. FAQ Page
+================================================= */ 
+body.faq-page {
+
+	// input group merge addon
+	.input-group-merge {
+	    display: block;
+	}
+	.input-group-merge .input-group-addon {
+	    position: absolute;
+	    top: 10px;
+	    left: 13px;
+	    border: 0;
+	    background: transparent;
+	    z-index: 3;
+	    font-size: 18px;
+	}
+	.input-group-merge .input-group-addon + input.form-control {
+	    display: block;
+	    float: none;
+	    padding-left: 60px;
+	}
+	#icon-filter {
+	    border-left: 3px solid #4a89dc;
+	}
+
+}
+
+/*===============================================
+  C. Gallery Page
+================================================= */ 
+body.gallery-page {
+
+	 // container - justified grid 
+	#mix-container {
+		padding: 15px;
+		text-align: justify;
+		font-size: 0.1px;
+	}
+	 // add extra psuedo class for last line justified fix 
+	#mix-container:after {
+		content: "";
+		display: inline-block;
+		width: 100%;
+	}
+
+	 // items 
+	#mix-container .mix,
+	#mix-container .gap {
+		display: none;
+		vertical-align: top;
+		width: 23.5%;
+		margin-bottom: 20px;
+	}
+	#mix-container .gap {
+		display: inline-block;
+	}
+
+	 // mixitup content panels 
+	#mix-container .mix .panel {
+		margin: 0;
+		img { cursor: pointer;}
+	}
+
+	 // container fail message 
+	.fail-message {	
+		display: none; 
+		text-align: center;
+		font-size: 22px;
+		color: #999;
+		margin-top: 50px;
+	}
+	.fail .fail-message {	
+		display: block; 
+	}
+
+	// responsive styles
+	@media (max-width: 1350px) {
+		#mix-container .mix,
+		#mix-container .gap {
+			width: 31.5%;
+		}
+	}
+
+
+	// responsive styles
+	@media (max-width: 750px) {
+		#mix-container .mix,
+		#mix-container .gap {
+			width: 48%;
+		}
+	}
+
+
+}
+
+/*===============================================
+  D. Calendar Page
+================================================= */ 
+body.calendar-page {
+
+	 // left tray appended title 
+	.fc-title-clone {
+	    font-size: 20px;
+	    text-align: center;
+	    margin: 8px 0 10px;
+	    padding-bottom: 15px;
+	    border-bottom: 1px solid #E7E7E7;
+	}
+
+	 // left tray mini calendar modifications 
+	.tray-left .ui-datepicker {
+		background: none;
+		margin: 0;
+		border: 0;
+	}
+	.tray-left .ui-datepicker-header {
+		display: none;
+	}
+	.tray-left .ui-datepicker td {
+		padding: 8px 5px;
+	}
+	.tray-left .ui-datepicker td span,
+	.tray-left .ui-datepicker td a {
+	    background: #DDD;
+	    padding: .30em .20em;
+	}
+
+	.tray-left #compose-event-btn {
+		cursor: pointer;
+	    position: relative;
+	    top: 1px;
+	    padding-left: 8px;
+	    color: #888;
+	    font-size: 16px;
+	}
+
+	// Calendar title modification 
+	.tray-center .fc-toolbar .fc-center h2 {
+		font-size: 20px;
+		line-height: 26px;
+		font-weight: 400;
+	}
+
+	// responsive styles - title
+	@media (max-width: 900px) {
+		.fc-toolbar .fc-center {
+			margin-top: 20px;
+			margin-bottom: 10px;
+		}
+	}
+
+
+}
+
+/*===============================================
+  E. Messages Page
+================================================= */ 
+body.messages-page {
+	
+	.nav-messages {}
+	.nav-messages li a {
+	    color: #AAA;
+	}
+	.nav-messages li.active a,
+	.nav-messages li:hover a,
+	.nav-messages li:focus a {
+	    color: #666;
+	}
+
+	.compose-btn {
+		font-weight: 600;
+		margin-top: 2px;
+		margin-bottom: 12px;
+		padding: 11px 15px;
+	}
+
+}
+
+// responsive styles
+@media (max-width: 1020px) {
+	 body.messages-page.tray-rescale #content.table-layout .tray-center {
+		padding-right: 65px !important;
+	}
+
+	/* creates a mini message tray, expands it on user hover */
+	body.messages-page .message-tray {
+		height: 175px;
+		overflow: hidden;
+		-webkit-transition: height 0.5s ease;
+		transition: height 0.5s ease;
+	}
+
+	/* set to the height of your message menu */
+	body.messages-page .message-tray:hover {
+		height: 665px;
+	}
+}
+// responsive styles
+@media (max-width: 600px) {
+	body.messages-page.tray-rescale #content.table-layout .tray-center {
+		padding: 0px !important;
+	}
+}
+
+
+/*===============================================
+  F. Editors Page
+================================================= */ 
+body.editors-page .panel .panel-heading {
+	border-bottom-color: #CCC;
+}
+
+/*===============================================
+  G. External Pages - login, register,
+  screenlock, coming-soon, forgotpw
+================================================= */ 
+body.external-page {
+    min-height: 0;
+    overflow: auto;
+
+	// background
+	#main {
+		overflow: hidden;
+	    background: url("@{img-path}/patterns/backgrounds/1.jpg") repeat top center;
+	}
+	#main:before { display: none; }
+
+	 // canvas bg 
+	#canvas-wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+	}
+	 // content form 
+	#content .admin-form {
+	    position: relative;
+	    width: 100%;
+	    max-width: 800px;
+	    margin: 0 auto;
+	    margin-top: 8%;
+	}
+	#content .panel {
+	    box-shadow: 0 1px 40px 0 rgba(0, 0, 0, 0.3);
+	}
+	#content .panel-heading {
+	    padding: 32px 10px 15px
+	}
+
+	 // form logo and links 
+	.login-links {
+		font-size: 15px;
+		color: #DDD;
+	}
+	.login-links a {
+		color: #DDD;
+		font-weight: 300;
+	}
+	.login-links a.active {
+		color: #FFF;
+		font-weight: 600;
+	}
+	.login-links a:hover,
+	.login-links a:focus {
+		color: #FFF;
+		text-decoration: none;
+	}
+}
+
+/*===============================================
+  H. Invoice.html
+================================================= */ 
+body.invoice-page {
+	#invoice-info {
+		margin-bottom: 15px;
+	}
+	 // Invoice table 
+	.table-condensed tbody tr td:last-child {
+		text-align: right;
+		padding-right: 15px;
+	}
+	 // Summary table 
+	#invoice-summary {
+		margin: 0;	
+	}
+	 // Summary table header 
+	#invoice-summary thead th:first-child {
+		text-align: right;
+		width: 200px;
+		padding-right: 55px;	
+	}
+	#invoice-summary thead th:last-child {
+		width: 50px;	
+		font-weight: 400;
+	}
+	 // Summary table rows 
+	#invoice-summary tbody tr td {
+		border-top: 0;
+	}
+	#invoice-summary tbody tr td:first-child {
+		text-align: right;
+		width: 200px;
+		padding-right: 55px;	
+	}
+	 // Summary table last row 
+	#invoice-summary tbody tr:last-child td {
+		background: #f8f8f8;
+		border-top: 1px solid #DDD;
+		border-bottom: 1px solid #DDD;
+		height: 35px;
+		line-height: 35px;
+	}
+	 // Bottom of page invoice buttons 
+	.invoice-buttons {
+		position: absolute;
+		left: 15px;
+		bottom: 10px;
+	}
+}
+
+
+/*===============================================
+  I. Timeline.html
+================================================= */ 
+body.timeline-page #main {
+	min-height: 1400px;
+}
+body.timeline-page #content {
+	padding: 8px 35px 50px 35px;
+}
+#timeline { position: relative }
+/* Timeline Spine */
+#timeline:after {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+	margin-left: -2px;
+    height: 100%;
+    content: "";
+    background: #ddd;
+}
+/* Timeline Date Button/Label */
+.timeline-divider {
+    position: relative;
+    margin: 10px 0 45px;
+    z-index: 3;
+}
+.timeline-divider .divider-label {
+	position: relative;
+    width: 110px;
+    margin: 0 auto;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #DDD;
+    color: #777;
+    font-weight: 600;
+	background: #FFF;
+}
+.timeline-divider .divider-label:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    background: #4a89dc;
+}
+/* Timeline Content Panels */
+#timeline .panel {
+    position: relative;
+    z-index: 11;
+    overflow: visible;
+	margin-bottom: 30px;
+}
+
+/* Timeline Panel Arrows */
+#timeline .panel:before,
+#timeline .panel:after {
+  content: "";
+  z-index: 2;
+  position: absolute;
+  top: 10px;
+  left: 99.8%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 12px;
+  border-color: transparent transparent transparent #fafafa;
+}
+#timeline .panel:after {
+  z-index: 1;
+  border-left-color: #666;
+}
+#timeline .right-column .panel:before,
+#timeline .right-column .panel:after {
+  top: 10px;
+  right: 99.8%;
+  left: auto;
+  border-width: 8px 12px 8px 0;
+  border-color: transparent #fafafa transparent transparent;
+}
+#timeline .right-column .panel:after {
+  border-right-color: #666;
+}
+
+/* Timeline Panel Positioning */
+#timeline > .row > .left-column .timeline-item { padding-right: 30px; }
+#timeline > .row > .right-column .timeline-item { padding-left: 30px; }
+#timeline > .row > .right-column { margin-top: 80px }
+#timeline .ui-sortable-disabled .panel { cursor: auto }
+/* Timeline Responsive Styles */
+@media (max-width: 770px) { 
+    #timeline > .row > .left-column .panel { margin-right: 0 }
+    #timeline > .row > .right-column .panel { margin-left: 0 }
+    #timeline > .row .panel:before { display: none }
+    #timeline > .row .panel:after { display: none }
+}
+#timeline .tab-content {
+	min-height: 0;	
+}
+/* form creation styles */
+#timeline .map {
+	width: 100%;
+	height: 275px;	
+}
+#timeline-image-form .fileupload-preview { text-align: center }
+#timeline-image-form .fileupload-preview img { max-height: 200px }
+/* JQuery sortable placeholder */
+#timeline .ui-sortable {
+	min-height: 150px;
+	min-width: 300px;
+}
+
+.timeline-icon {
+	z-index: 1;
+	position: absolute;
+	right: -18px;
+	width: 38px;
+	height: 38px;
+	line-height: 38px;
+	font-size: 20px;
+	color: #FFF;
+	text-align: center;
+	border-radius: 50%;
+	background: @main-bg;
+	box-shadow: 0 0 0 5px @main-bg;
+}
+.right-column .timeline-icon {
+	right: auto;
+	left: -18px;
+}
+/* SINGLE TIMELINE */
+#timeline.timeline-single {
+	margin-left: 6%;
+	max-width: 750px;
+}
+#timeline.timeline-single:after {
+	left: 0;
+}
+#timeline.timeline-single > .row > .col-sm-6 {
+	width: 100%;
+	padding-left: 65px;
+}
+#timeline.timeline-single > .row > .right-column {
+	margin-top: 0;
+}
+#timeline.timeline-single > .row > .right-column .timeline-item,
+#timeline.timeline-single > .row > .left-column .timeline-item {
+	padding-left: 0;
+	padding-right: 0;	
+}
+
+#timeline.timeline-single .timeline-divider .divider-label {
+    margin-left: -55px;
+}
+#timeline.timeline-single .timeline-icon {
+	left: -8px;
+	right: auto;
+}
+
+/* Timeline Panel Arrows */
+#timeline.timeline-single .panel:before,
+#timeline.timeline-single .panel:after {
+  right: 99.8%;
+  left: auto;
+  border-width: 8px 12px 8px 0;
+  border-color: transparent #fafafa transparent transparent;
+}
+#timeline.timeline-single .panel:after {
+  border-right-color: #666;
+}
+
+/*===============================================
+  J. Map Pages - Full, Vector
+================================================= */ 
+.maps-vector-page #content_wrapper {
+	min-height: 0;
+}
+.expanding-header {
+	z-index: 999;
+	position: absolute;
+	top: 20px;
+	left: 30px;
+	width: 550px;
+	height: 43px;
+	background: rgba(0,0,0, 0.5);
+	border-radius: 2px;
+	
+	transition: all 0.2s ease-in-out;
+}
+.expanding-header.collapsed {
+	width: 48px
+}
+.expanding-header .map-header-icon {
+	cursor: pointer;
+	width: 47px;
+	padding: 10px 13px;
+	color: #FFF;
+	font-size: 22px;
+	float: left;
+	margin-right: 10px;
+}
+.expanding-header .flag-sm {
+	cursor: pointer;
+}
+
+.maps-page .expanding-header,
+.map-full-page .expanding-header {
+	top: 24px;
+	left: 90px;
+}
+.maps-page .expanding-header input.form-control {
+	min-width: 250px;
+}
+
+/*===============================================
+  K. Profile.html
+================================================= */ 
+body.profile-page {
+	.profile-settings-btn {
+	    position: absolute;
+	    right: 20px;
+	    top: 20px;
+	}
+	.profile-settings-icon {
+	    z-index: 1;
+	    position: absolute;
+	    right: 13px;
+	    top: 7px;
+	}
+	#content .tab-block .nav-tabs > li > a {
+	    padding: 9px 35px;
+	}
+}
+/*===============================================
+  L. Error Pages - 404, 500 (plus alt pages)
+================================================= */ 
+body.error-page {
+	min-height: 0;
+	overflow: hidden;
+
+	#main:before {
+		background: #F5F5F5;
+	}
+	#return-arrow {
+		top: 75px;
+		padding-top: 0;
+	}
+	.error-title {
+		font-size: 140px;
+		font-weight: 800;
+		color: @brand-primary;	
+		text-align: center;
+		padding-top: 60px;
+		margin-bottom: 20px;
+		line-height: 120px;
+	}
+	.error-subtitle {
+		font-weight: 400;
+		text-align: center;
+		font-size: 40px;
+		color: #AAA;
+		margin-bottom: 80px;
+	}
+	.mid-section {
+		position: relative;
+		width: 100%;
+		height: 215px;	
+		background: #FFF;
+		border-top: 1px solid #E6E6E6;
+		border-bottom: 1px solid #E6E6E6;
+	}
+	.mid-content {
+		position: relative;
+		max-width: 680px;
+		margin: 0 auto;
+		padding: 50px 20px 35px;
+	}
+	.mid-content input {
+		color: #AAA;
+		height: 55px;
+		border-radius: 1px;
+		padding: 10px 20px;
+		border: 0;
+		font-size: 16px;
+		border: 1px solid #EEE;
+		border-left: 5px solid @brand-primary;
+		background: #FBFBFB;
+	}
+	.error-page.alt .error-title {
+		padding-top: 110px;
+	}
+
+	 // Error search bar 
+	#search-widget {
+		background: #f1f1f1;
+	}
+	 // Error text 
+	.error-icon {
+		font-size: 80px;
+		position: relative;
+		top: -10px;
+	}
+	.error-text {
+		font-size: 120px;
+		text-align: center;
+		text-shadow: 0 2px #FFF;
+		color: #888;
+		width: 100%;
+	}
+
+}

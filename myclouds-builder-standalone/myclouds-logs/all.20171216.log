@@ -1,0 +1,16 @@
+2017-12-16 14:20:00 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting BuilderApplication on mababa with PID 81044 (G:\01.MyClouds\svn\myclouds-builder\target\classes started by lenovo in G:\01.MyClouds\svn\myclouds-builder) 
+2017-12-16 14:20:00 DEBUG [Class:o.s.b.StartupInfoLogger->Thread:main] Running with Spring Boot v1.5.8.RELEASE, Spring v4.3.12.RELEASE 
+2017-12-16 14:20:00 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2017-12-16 14:20:00 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4b013c76: startup date [Sat Dec 16 14:20:00 CST 2017]; root of context hierarchy 
+2017-12-16 14:20:01 WARN [Class:o.m.s.m.ClassPathMapperScanner->Thread:main] No MyBatis mapper was found in '[com.gitee.myclouds.builder]' package. Please check your configuration. 
+2017-12-16 14:20:03 INFO [Class:o.s.j.e.MBeanExporter->Thread:main] Registering beans for JMX exposure on startup 
+2017-12-16 14:20:04 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 【MyParamEntity.java】文件生成成功。[G:/01.MyClouds/svn/myclouds-builder/src/test/java/com/gitee/myclouds/builder/test/domain/myparam/MyParamEntity.java] 
+2017-12-16 14:20:05 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 【MyParamMapper.java】文件生成成功。[G:/01.MyClouds/svn/myclouds-builder/src/test/java/com/gitee/myclouds/builder/test/domain/myparam/MyParamMapper.java] 
+2017-12-16 14:20:06 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 【MyParamMapper.xml】文件生成成功。[G:/01.MyClouds/svn/myclouds-builder/src/test/java/com/gitee/myclouds/builder/test/domain/myparam/MyParamMapper.xml] 
+2017-12-16 14:20:06 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 【MyEnumEntity.java】文件生成成功。[G:/01.MyClouds/svn/myclouds-builder/src/test/java/com/gitee/myclouds/builder/test/domain/myenum/MyEnumEntity.java] 
+2017-12-16 14:20:06 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 【MyEnumMapper.java】文件生成成功。[G:/01.MyClouds/svn/myclouds-builder/src/test/java/com/gitee/myclouds/builder/test/domain/myenum/MyEnumMapper.java] 
+2017-12-16 14:20:06 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 【MyEnumMapper.xml】文件生成成功。[G:/01.MyClouds/svn/myclouds-builder/src/test/java/com/gitee/myclouds/builder/test/domain/myenum/MyEnumMapper.xml] 
+2017-12-16 14:20:06 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 文件生成完成，请刷新工程目录。 
+2017-12-16 14:20:06 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Started BuilderApplication in 6.657 seconds (JVM running for 8.696) 
+2017-12-16 14:20:06 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:Thread-3] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@4b013c76: startup date [Sat Dec 16 14:20:00 CST 2017]; root of context hierarchy 
+2017-12-16 14:20:06 INFO [Class:o.s.j.e.MBeanExporter->Thread:Thread-3] Unregistering JMX-exposed beans on shutdown 

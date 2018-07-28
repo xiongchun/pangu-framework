@@ -1,0 +1,401 @@
+/*==================================================
+  Panels
+==================================================== */
+
+// Base class
+.panel {
+  position: relative;
+  margin-bottom: 20px;
+  background-color: @panel-bg;
+  border-radius: @panel-border-radius;
+  //border: 1px solid @panel-border-color;
+  // .box-shadow(0 1px 1px rgba(0,0,0,.05));
+
+  &.panel-transparent {
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  // Top Border Panel Style
+  &.panel-border {
+      border-style: solid;
+      border-width: 0;
+      &.top    { border-top-width: 5px; }
+      &.right  { border-right-width: 5px; }
+      &.bottom { border-bottom-width: 5px; }
+      &.left   { border-left-width: 5px; }
+      & > .panel-heading {
+          background-color: @panel-heading-bg;
+          border-color: @panel-border-color;
+          border-top: 1px solid transparent;
+          & > .panel-title {
+            color: @panel-heading-font-color;
+          }
+      }
+  }
+
+
+}
+
+// Panel Menu
+.panel-menu {
+  background: #fafafa;
+  padding: 8px;
+  border: 1px solid @panel-border-color;
+}
+// remove left and right border if inside a panel-body (already has border)
+.panel-body .panel-menu {
+  border-left: 0;
+  border-right: 0;
+}
+// remove top border if a sibling element with a border exist
+.panel-heading + .panel-menu,
+.panel-menu + .panel-body,
+.panel-body + .panel-menu,
+.panel-body + .panel-body {
+  border-top: 0;
+}
+
+
+// Panel contents
+.panel-body {
+  position: relative;
+  padding: @panel-body-padding;
+  border: 1px solid @panel-border-color;
+  &:extend(.clearfix all);
+
+  & + .panel-footer {
+    border-top: 0;
+  }
+}
+
+
+// Optional heading
+.panel-heading {
+  position: relative;
+  height: 40px;
+  line-height: 36px;
+  background: @panel-heading-bg;
+  color: @panel-heading-font-color;
+  font-size: @panel-heading-font-size;
+  font-weight: @panel-heading-font-weight;
+  padding: @panel-heading-padding;
+  border: 1px solid @panel-border-color;
+  .border-top-radius((@panel-border-radius - 1));
+
+  + .panel-body {
+    border-top: 0;
+  }
+
+  > .dropdown .dropdown-toggle {
+    color: inherit;
+  }
+
+  .widget-menu {
+
+    // Button Groups 
+    .btn-group {
+      margin-top: -3px;
+    }
+
+    // Field inputs
+    .form-control {
+        margin-top: 6px;
+        font-size: 11px;
+        height: 27px;
+        padding: 2px 10px;
+        border-radius: 1px;
+        &.input-sm {
+          margin-top: 9px;
+          height: 22px;
+        }
+    }
+    // Progress Bars
+    .progress { margin-top: 11px; margin-bottom: 0; }
+    .progress-bar-lg { margin-top: 10px; }
+    .progress-bar-sm { margin-top: 15px; }
+    .progress-bar-xs { margin-top: 17px; }
+
+  }
+}
+
+// Panel heading Icon - Required for proper 
+// adminpanels.js functionality (title edit)
+.panel-icon {
+  padding-left: 5px;
+}
+
+// Within heading, strip any `h*` tag of its default margins for spacing.
+.panel-title {
+  padding-left: 6px;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  > .fa,
+  > .glyphicon,
+  > .glyphicons,
+  > .imoon {
+      top: 2px;
+      min-width: 22px;
+      color: inherit;
+      font-size: 14px;
+  }
+
+  > a {
+    color: inherit;
+  }
+}
+
+// Optional footer (stays gray in every modifier class)
+.panel-footer {
+  padding: @panel-footer-padding;
+  background-color: @panel-footer-bg;
+  border: 1px solid @panel-border-color;
+  .border-bottom-radius((@panel-border-radius - 1));
+}
+
+
+// List groups in panels
+//
+// By default, space out list group content from panel headings to account for
+// any kind of custom content between the two.
+
+.panel {
+  > .list-group {
+    margin-bottom: 0;
+
+    .list-group-item {
+      border-width: 1px 0;
+      border-radius: 0;
+    }
+
+    // Add border top radius for first one
+    &:first-child {
+      .list-group-item:first-child {
+        border-top: 0;
+        .border-top-radius((@panel-border-radius - 1));
+      }
+    }
+    // Add border bottom radius for last one
+    &:last-child {
+      .list-group-item:last-child {
+        border-bottom: 0;
+        .border-bottom-radius((@panel-border-radius - 1));
+      }
+    }
+  }
+}
+// Collapse space between when there's no additional content.
+.panel-heading + .list-group {
+  .list-group-item:first-child {
+    border-top-width: 0;
+  }
+}
+.list-group + .panel-footer {
+  border-top-width: 0;
+}
+
+// Tables in panels
+//
+// Place a non-bordered `.table` within a panel (not within a `.panel-body`) and
+// watch it go full width.
+
+.panel {
+  > .table,
+  > .table-responsive > .table,
+  > .panel-collapse > .table {
+    margin-bottom: 0;
+  }
+  // Add border top radius for first one
+  > .table:first-child,
+  > .table-responsive:first-child > .table:first-child {
+    .border-top-radius((@panel-border-radius - 1));
+
+    > thead:first-child,
+    > tbody:first-child {
+      > tr:first-child {
+        td:first-child,
+        th:first-child {
+          border-top-left-radius: (@panel-border-radius - 1);
+        }
+        td:last-child,
+        th:last-child {
+          border-top-right-radius: (@panel-border-radius - 1);
+        }
+      }
+    }
+  }
+  // Add border bottom radius for last one
+  > .table:last-child,
+  > .table-responsive:last-child > .table:last-child {
+    .border-bottom-radius((@panel-border-radius - 1));
+
+    > tbody:last-child,
+    > tfoot:last-child {
+      > tr:last-child {
+        td:first-child,
+        th:first-child {
+          border-bottom-left-radius: (@panel-border-radius - 1);
+        }
+        td:last-child,
+        th:last-child {
+          border-bottom-right-radius: (@panel-border-radius - 1);
+        }
+      }
+    }
+  }
+  > .panel-body + .table,
+  > .panel-body + .table-responsive {
+    border-top: 1px solid @table-border-color;
+  }
+  > .table > tbody:first-child > tr:first-child th,
+  > .table > tbody:first-child > tr:first-child td {
+    border-top: 0;
+  }
+  > .table-bordered,
+  > .table-responsive > .table-bordered {
+    border: 0;
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th:first-child,
+        > td:first-child {
+          border-left: 0;
+        }
+        > th:last-child,
+        > td:last-child {
+          border-right: 0;
+        }
+      }
+    }
+    > thead,
+    > tbody {
+      > tr:first-child {
+        > td,
+        > th {
+          border-bottom: 0;
+        }
+      }
+    }
+    > tbody,
+    > tfoot {
+      > tr:last-child {
+        > td,
+        > th {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+  > .table-responsive {
+    border: 0;
+    margin-bottom: 0;
+  }
+}
+
+// Collapsable panels (aka, accordion)
+//
+// Wrap a series of panels in `.panel-group` to turn them into an accordion with
+// the help of our collapse JavaScript plugin.
+
+.panel-group {
+  margin-bottom: @line-height-computed;
+
+
+  // Accordion title/toggle 
+  .accordion-toggle {
+    padding-left: 5px;
+  }
+
+  &.accordion-lg {
+    .panel + .panel {
+      margin-top: 12px;
+    }
+    .panel-heading {
+      font-size: 14px;
+      height: 54px;
+      line-height: 52px;
+    }
+  }
+
+  // Adds optional toggle icon to accordion title
+  .accordion-icon {
+    padding-left: 28px;
+
+    &:after {
+      position: absolute;
+      content: "\f068";
+      font-family: "FontAwesome";
+      font-size: 12px;
+      font-style: normal;
+      font-weight: normal;
+      -webkit-font-smoothing: antialiased;
+      color: #555;
+      left: 15px;
+      top: 1px;
+    }
+
+    &.collapsed:after {
+      content: "\f067";
+    }
+
+  }
+
+  // Tighten up margin so it's only between panels
+  .panel {
+    margin-bottom: 0;
+    border-radius: @panel-border-radius;
+    + .panel {
+      margin-top: 5px;
+    }
+  }
+
+  .panel-heading {
+    // border-bottom: 0;
+    + .panel-collapse > .panel-body {
+      border-top: 0;
+    //  border-top: 1px solid @panel-inner-border;
+    }
+  }
+  .panel-footer {
+    border-top: 0;
+    + .panel-collapse .panel-body {
+      border-bottom: 1px solid @panel-inner-border;
+    }
+  }
+
+}
+
+
+// Contextual Skin variations
+.panel-primary when (@skin-primary) {
+  .panel-variant(@panel-primary-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+}
+.panel-success when (@skin-success) {
+  .panel-variant(@panel-success-border; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
+}
+.panel-info when (@skin-info) {
+  .panel-variant(@panel-info-border; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
+}
+.panel-warning when (@skin-warning) {
+  .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
+}
+.panel-danger when (@skin-danger) {
+  .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+}
+.panel-alert when (@skin-alert) {
+  .panel-variant(@panel-alert-border; @panel-alert-text; @panel-alert-heading-bg; @panel-alert-border);
+}
+.panel-system when (@skin-system) {
+  .panel-variant(@panel-system-border; @panel-system-text; @panel-system-heading-bg; @panel-system-border);
+}
+.panel-dark when (@skin-dark) {
+  .panel-variant(@panel-dark-border; @panel-dark-text; @panel-dark-heading-bg; @panel-dark-border);
+}
+// disabled as this is a copy of the actual panel defaults
+// .panel-default {
+//   .panel-variant(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
+// }

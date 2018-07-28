@@ -1,0 +1,206 @@
+
+
+
+
+/*==================================================================
+  B. FORM WRAPPERS
+===================================================================*/
+.admin-form, 
+.admin-form *{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.admin-form {
+	font-family:  "Roboto", Arial, Helvetica, sans-serif;	
+	line-height: 1.231;
+	font-weight: 400;
+	font-size: 14px;
+	color: #626262;
+}
+
+/*==================================================================
+  B. Browser Styling Reset
+===================================================================*/
+.admin-form .gui-input,
+.admin-form .gui-textarea,
+.admin-form .select > select,
+.admin-form input[type="button"],
+.admin-form input[type="submit"],
+.admin-form input[type="search"],
+.admin-form .select-multiple select {
+	-webkit-tap-highlight-color:transparent;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	-webkit-border-radius:0px;
+	border-radius: 0px;
+}
+
+.admin-form input[type="search"]::-webkit-search-decoration,
+.admin-form input[type="search"]::-webkit-search-cancel-button,
+.admin-form input[type="search"]::-webkit-search-results-button,
+.admin-form input[type="search"]::-webkit-search-results-decoration {
+	display: none;
+}
+
+/*==================================================================
+  B. prevent user selection for usability purposes
+===================================================================*/
+.admin-form .radio,
+.admin-form .button,  
+.admin-form .checkbox,
+.admin-form .select .arrow,
+.admin-form .switch > label,
+.admin-form .ui-slider .ui-slider-handle{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/*==================================================================
+  B. Input General Styles
+===================================================================*/
+.admin-form label, 
+.admin-form input,
+.admin-form button,
+.admin-form select,  
+.admin-form textarea {
+	margin: 0;  
+	font-size: 14px;
+	font-family:  "Roboto", Arial, Helvetica, sans-serif;
+	font-weight:400;
+	color: #626262;
+	outline:none;
+}
+
+/*==================================================================
+  B. Input Animations
+===================================================================*/
+.admin-form .radio,
+.admin-form .button,
+.admin-form .tooltip,
+.admin-form .checkbox,  
+.admin-form .gui-input,
+.admin-form .input-footer,
+.admin-form .notification,
+.admin-form .gui-textarea,
+.admin-form .select > select,
+.admin-form .select-multiple select { 
+	-webkit-transition:all 0.5s ease-in-out;
+	-moz-transition:all 0.5s ease-in-out;
+	-ms-transition:all 0.5s ease-in-out;
+	-o-transition:all 0.5s ease-in-out;
+	transition:all 0.5s ease-in-out;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+	outline:none;
+}
+.admin-form .smart-link,
+.admin-form .panel-heading,
+.admin-form .section-divider span,
+.admin-form .select > select,
+.admin-form .select-multiple select{ 
+	-webkit-transition:all 0.2s ease-in-out;
+	-moz-transition:all 0.2s ease-in-out;
+	-ms-transition:all 0.2s ease-in-out;
+	-o-transition:all 0.2s ease-in-out;
+	transition:all 0.2s ease-in-out;
+}
+
+
+/*==================================================================
+  B. Firefox select fix - select arrow hack  disabled 
+     on FF 30+. Authored by Elfaire
+===================================================================*/
+@-moz-document url-prefix() {
+	.admin-form .select:before{ 
+		content: '';
+		pointer-events:none;		
+		-moz-transition:none;
+		transition:none;
+		position: absolute; 
+		background: #F5F5F5; 
+		width: 36px;
+		right:1px;
+		top:1px; 
+		bottom:1px;
+		z-index:99;  
+	}
+	
+	.admin-form .select > select:focus,
+	.admin-form .select > select:hover,
+	.admin-form .select:hover select,
+	.admin-form .select:hover:before{ 
+		background: #fff;
+		-moz-transition:none;
+		transition:none;		
+		-moz-box-shadow:none;  	
+		box-shadow:none;		
+	}
+	
+	.admin-form .select .arrow {  z-index:100;  }
+	.admin-form .state-error.select > select:focus,
+	.admin-form .state-error.select > select:hover,
+	.admin-form .state-error.select:hover select,
+	.admin-form .state-error.select:hover:before,	
+	.admin-form .state-error.select:before { background:#FEE9EA;  }
+	.admin-form .state-success.select > select:focus,
+	.admin-form .state-success.select > select:hover,
+	.admin-form .state-success.select:hover select,
+	.admin-form .state-success.select:hover:before,		
+	.admin-form .state-success.select:before { background:#F0FEE9;  }	
+			
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.admin-form .select .arrow:after,
+	.admin-form .select .arrow:before { display:block; }
+}
+
+/*==================================================================
+  B. ANDROID + IOS FIXES
+===================================================================*/
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+	.admin-form .option, 
+	.admin-form .rating, 
+	.admin-form .switch, 
+	.admin-form .captcode { -webkit-animation: bugfix infinite 1s; }
+	@-webkit-keyframes bugfix { 
+	    from { padding: 0;  } 
+	    to { padding: 0; } 
+	}
+	.admin-form .switch { margin-right:10px;  margin-bottom:5px; }
+	.admin-form .option { margin-right:15px; }					
+}
+
+/*==================================================================
+  v. HELPERS
+	 A. General
+     B. Font Size 
+	 C. Table Layout
+	 A. General
+     B. Font Size 
+	 C. Table Layout
+	 A. General
+     B. Font Size 
+	 C. Table Layout
+===================================================================
+  B. responsiveness for tablets + smart mobile 
+===================================================================*/
+@media (max-width: 600px) {
+	.admin-form .section row{ margin:0;  }
+	.admin-form .section row .colm{  width: 100%; float:none; padding:0; }
+	.admin-form .bdl { border-left:0;  }
+	.admin-form .border-right { border-right:0; }
+	.admin-form .align-right{ text-align: left; }
+}
+

@@ -1,0 +1,169 @@
+
+/*==================================================
+  Radios and Checkboxes
+==================================================== */
+
+
+// Shared Radio/Checkbox Styles
+// --------------------------------------------
+.radio-custom,
+.checkbox-custom {
+    background-color: transparent;
+    color: inherit;
+}
+/* hide default input */
+.radio-custom input,
+.checkbox-custom input {
+    display: none;
+}
+.checkbox-custom label:empty,
+.radio-custom label:empty {
+    padding-left: 10px;
+}
+
+// Radios
+// --------------------------------------------
+
+/* radio container */
+.radio-custom label {
+  cursor: pointer;
+  position: relative;
+  padding-left: 32px;
+  margin-right: 15px;
+  margin-bottom: 5px;
+}
+/* radio border */
+.radio-custom label:before  {
+  content: "";
+  position: absolute;
+  top: 0;
+    left: 0;
+    border-radius: 64px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #666;
+}
+/* check radio icon */
+.radio-custom input[type=radio]:checked + label:after,
+.radio-custom input[type=checkbox]:checked + label:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+    left: 5px;
+    border-radius: 64px;
+    width: 10px;
+    height: 10px;
+    color: #666;
+    background-color: #666;
+}
+/* alt style - square */
+.radio-custom.square label:before { border-radius: 2px; }
+.radio-custom.square input[type=radio]:checked + label:after,
+.radio-custom.square input[type=checkbox]:checked + label:after { border-radius: 2px; }
+
+
+// Checkboxes
+// --------------------------------------------
+
+/* checkbox container */
+.checkbox-custom label {
+  cursor: pointer;
+  position: relative;
+  padding-left: 32px;
+  margin-right: 15px;
+  margin-bottom: 5px;
+}
+/* checkbox border */
+.checkbox-custom label:before {
+  content: "";
+  position: absolute;
+  top: 0;
+    left: 0;
+  width: 22px;
+  height: 21px;
+    background-color: #FFF;
+    border: 1px solid #666;
+    border-width: 2px;
+    border-radius: 1px;    
+}
+/* checked state icon */
+.checkbox-custom input[type=checkbox]:checked + label:after,
+.checkbox-custom input[type=radio]:checked + label:after {
+  position: absolute;
+  font-family: "FontAwesome";
+  content: "\f00c";
+    font-size: 12px;
+    top: 3px;
+    left: 4px;
+    width: 0;
+    height: 0;
+    transform: rotate(-13deg);
+}
+
+/* alt style - filled bg ".fill" */
+.checkbox-custom.fill label {
+  cursor: pointer;
+  position: relative;
+  padding-left: 32px;
+  margin-right: 15px;
+  margin-bottom: 5px;
+}
+.checkbox-custom.fill label:before {
+  content: "";
+  position: absolute;
+  top: 0;
+    left: 0;
+    border-radius: 2px;
+    width: 22px;
+    height: 21px;
+    background-color: #666;
+}
+.checkbox-custom.fill input[type=checkbox]:checked + label:after,
+.checkbox-custom.fill input[type=radio]:checked + label:after {
+  position: absolute;
+  font-family: "FontAwesome";
+  content: "\f00c";
+    font-size: 12px;
+    top: 3px;
+    left: 3px;
+    width: 0;
+    height: 0;
+    color: #fff !important;
+    transform: rotate(-13deg);
+}
+
+// Checkbox/Radio Skin Contextuals 
+//
+& when (@skin-primary) {
+    .checkbox-variant(@brand: primary; @brand-primary);    
+}
+& when (@skin-success) {
+    .checkbox-variant(@brand: success; @brand-success);    
+}
+& when (@skin-info) {
+    .checkbox-variant(@brand: info; @brand-info);    
+}
+& when (@skin-warning) {
+    .checkbox-variant(@brand: warning; @brand-warning);    
+}
+& when (@skin-danger) {
+    .checkbox-variant(@brand: danger; @brand-danger);    
+}
+& when (@skin-alert) {
+    .checkbox-variant(@brand: alert; @brand-alert);    
+}
+& when (@skin-system) {
+    .checkbox-variant(@brand: system; @brand-system);    
+}
+& when (@skin-dark) {
+    .checkbox-variant(@brand: dark; @brand-dark);    
+}
+
+// Light Contextual
+.checkbox-light-variant(@brand: light; @brand-light);    
+
+// Disabled state
+& when (true) {
+    .checkbox-variant(@brand: disabled; #AAA);    
+}
+

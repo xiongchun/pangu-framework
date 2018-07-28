@@ -1,0 +1,23 @@
+2018-04-16 15:32:56 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting StartBuilderApplication on mababa with PID 36428 (G:\01.MyClouds\svn\myclouds-builder\target\classes started by lenovo in G:\01.MyClouds\svn\myclouds-builder) 
+2018-04-16 15:32:56 DEBUG [Class:o.s.b.StartupInfoLogger->Thread:main] Running with Spring Boot v1.5.8.RELEASE, Spring v4.3.12.RELEASE 
+2018-04-16 15:32:56 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2018-04-16 15:32:56 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@17c386de: startup date [Mon Apr 16 15:32:56 CST 2018]; root of context hierarchy 
+2018-04-16 15:32:58 WARN [Class:o.m.s.m.ClassPathMapperScanner->Thread:main] No MyBatis mapper was found in '[com.gitee.myclouds.builder]' package. Please check your configuration. 
+2018-04-16 15:32:59 INFO [Class:o.s.j.e.MBeanExporter->Thread:main] Registering beans for JMX exposure on startup 
+2018-04-16 15:33:00 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 【MyModuleEntity.java】文件生成成功。[G:/01.MyClouds/svn/myclouds-domain-entity/src/main/java/com/gitee/myclouds/admin/domain/mymodule/MyModuleEntity.java] 
+2018-04-16 15:33:00 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 文件生成完成，请刷新工程目录。 
+2018-04-16 15:33:00 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Started StartBuilderApplication in 4.239 seconds (JVM running for 5.386) 
+2018-04-16 15:33:00 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:Thread-3] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@17c386de: startup date [Mon Apr 16 15:32:56 CST 2018]; root of context hierarchy 
+2018-04-16 15:33:00 INFO [Class:o.s.j.e.MBeanExporter->Thread:Thread-3] Unregistering JMX-exposed beans on shutdown 
+2018-04-16 15:33:59 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Starting StartBuilderApplication on mababa with PID 40856 (G:\01.MyClouds\svn\myclouds-builder\target\classes started by lenovo in G:\01.MyClouds\svn\myclouds-builder) 
+2018-04-16 15:34:00 DEBUG [Class:o.s.b.StartupInfoLogger->Thread:main] Running with Spring Boot v1.5.8.RELEASE, Spring v4.3.12.RELEASE 
+2018-04-16 15:34:00 INFO [Class:o.s.b.SpringApplication->Thread:main] No active profile set, falling back to default profiles: default 
+2018-04-16 15:34:00 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@1e16c0aa: startup date [Mon Apr 16 15:34:00 CST 2018]; root of context hierarchy 
+2018-04-16 15:34:00 WARN [Class:o.m.s.m.ClassPathMapperScanner->Thread:main] No MyBatis mapper was found in '[com.gitee.myclouds.builder]' package. Please check your configuration. 
+2018-04-16 15:34:02 INFO [Class:o.s.j.e.MBeanExporter->Thread:main] Registering beans for JMX exposure on startup 
+2018-04-16 15:34:04 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 【MyModuleMapper.java】文件生成成功。[G:/01.MyClouds/svn/myclouds-domain-mapper/src/main/java/com/gitee/myclouds/admin/domain/mymodule/MyModuleMapper.java] 
+2018-04-16 15:34:04 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 【MyModuleMapper.xml】文件生成成功。[G:/01.MyClouds/svn/myclouds-domain-mapper/src/main/java/com/gitee/myclouds/admin/domain/mymodule/MyModuleMapper.xml] 
+2018-04-16 15:34:04 INFO [Class:c.g.m.b.s.BuildDomainService->Thread:main] 文件生成完成，请刷新工程目录。 
+2018-04-16 15:34:04 INFO [Class:o.s.b.StartupInfoLogger->Thread:main] Started StartBuilderApplication in 4.789 seconds (JVM running for 5.891) 
+2018-04-16 15:34:04 INFO [Class:o.s.c.s.AbstractApplicationContext->Thread:Thread-3] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@1e16c0aa: startup date [Mon Apr 16 15:34:00 CST 2018]; root of context hierarchy 
+2018-04-16 15:34:04 INFO [Class:o.s.j.e.MBeanExporter->Thread:Thread-3] Unregistering JMX-exposed beans on shutdown 

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<th:block th:replace="fragments/head" />
+<link rel="stylesheet" type="text/css" href="/theme/vendor/plugins/ztree/css/zTreeStyle.css" />
+</head>
+
+<body class="sb-l-o">
+	<!--/* 公共代码 */-->
+	<div th:replace="fragments/common"></div>
+	
+	<!--/* 主题设置面板 */-->
+	<div th:replace="fragments/skin-toolbox"></div>
+
+	<!-- BEGIN: 主页面 -->
+	<div id="main">
+		<!--/* 顶部导航 */-->
+		<header th:replace="fragments/header-banner"></header>
+		<!--/* 左侧功能菜单导航 */-->
+		<aside th:replace="fragments/aside"></aside>
+		<!-- BEGIN: Content-Wrapper -->
+		<section id="content_wrapper">
+			<!--/* 模块路径导航条 */-->
+			<header th:replace="fragments/header-breadcrumb"></header>
+
+			<!-- Begin: 业务办理区 -->
+			<section id="content" class="table-layout animated fadeIn">
+
+				<!-- begin: .tray-left -->
+				<aside class="tray tray-left tray320 pt25">
+					<div class="panel">
+						<div class="panel-heading">
+							<span class="panel-title">组织机构部门导航</span>
+
+							<div class="widget-menu pull-right">
+								<div class="btn-group">
+									<button class="btn btn-xs btn-default btn-gradient" id="btn-t-expand" title="展开/收缩">
+										<i class="fa fa-expand p3"></i>
+									</button>
+									<button class="btn btn-xs btn-default btn-gradient" id="btn-t-refresh" title="刷新">
+										<i class="fa fa-refresh p3"></i>
+									</button>
+								</div>
+							</div>
+
+						</div>
+						<div class="panel-body p5">
+							<ul id="tree" class="ztree"></ul>
+						</div>
+					</div>
+
+				</aside>
+				<!-- end: .tray-left -->
+
+
+				<!-- begin: .tray-center -->
+				<div class="tray tray-center">
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-visible">
+								<div class="panel-heading">
+									<div class="input-group widget-menu pull-left w250">
+										<input type="text" id="in-key" class="form-control" placeholder="按姓名或账号搜索..." />
+										<span class="input-group-btn">
+											<button id="btn-query" class="btn btn-default btn-gradient btn-sm">
+												<span class="glyphicon glyphicon-search"></span>
+											</button>
+										</span>
+									</div>
+									<!-- /input-group -->
+									<div class="widget-menu pull-right mr5">
+										<div class="btn-group">
+											<button id="btn-new" class="btn btn-default btn-gradient btn-sm">
+												<span class="fa fa-plus mr3"></span>新增
+											</button>
+											<button id="btn-reset" class="btn btn-default btn-gradient btn-sm">
+												<span class="fa fa-key mr3"></span>重置密码
+											</button>
+											<button id="btn-refresh" class="btn btn-default btn-gradient btn-sm">
+												<span class="fa fa-refresh mr3"></span>刷新
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="panel-body pn">
+									<table id="dt-user" class="table my table-hover">
+										<thead>
+											<tr>
+												<th>编号</th>
+												<th>账号</th>
+												<th>姓名</th>
+												<th>所属部门</th>
+												<th>状态</th>
+												<th>类型</th>
+												<th>扩展码</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!--  breaks used to extend container to demonstrate fixed scrolling capability  -->
+					<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+					<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+					<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+					<!-- /.table -->
+
+					<!-- 新增窗口 -->
+					<div class="modal fade" id="w-new" tabindex="-1" data-backdrop="static">
+						<div class="modal-dialog w700">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h3 class="modal-title">新增用户</h3>
+								</div>
+								<div class="modal-body">
+									<form id="fo-new" class="form-horizontal">
+										<div class="form-group">
+											<input type="hidden" name="org_id" />
+											<label class="col-md-2 control-label required">所属部门：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="org_name" readonly="readonly" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">姓名：</label>
+											<div class="col-md-4 field">
+												<input type="text" name="name" class="form-control" />
+											</div>
+											<label class="col-md-2 control-label">性别：</label>
+											<div class="col-md-4 field">
+												<select name="sex" class="basic-single form-control">
+													<option value="1">男</option>
+													<option value="2">女</option>
+													<option value="3" selected="selected">未知</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">账号：</label>
+											<div class="col-md-4 field">
+												<input type="text" name="account" class="form-control" />
+											</div>
+											<label class="col-md-2 control-label required">密码：</label>
+											<div class="col-md-4 field">
+												<input type="password" name="password" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">用户状态：</label>
+											<div class="col-md-4 field">
+												<select name="status" class="basic-single form-control">
+													<option value="1" selected="selected">正常</option>
+													<option value="2">锁定</option>
+												</select>
+											</div>
+											<label class="col-md-2 control-label required">用户类型：</label>
+											<div class="col-md-4 field">
+												<select name="type" class="basic-single form-control">
+													<option value="1">缺省</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">联系电话：</label>
+											<div class="col-md-4 field">
+												<input type="text" name="mobile" class="form-control" />
+											</div>
+											<label class="col-md-2 control-label">电子邮件：</label>
+											<div class="col-md-4 field">
+												<input type="text" name="email" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">身份证号：</label>
+											<div class="col-md-10 field">
+												<input type="text" name="mobile" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">扩展码：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="biz_code" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">扩展JSON：</label>
+											<div class="col-md-10 field">
+												<textarea name="ext" class="form-control textarea-grow" rows="4"></textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">备注：</label>
+											<div class="col-md-10 field">
+												<textarea name="remark" class="form-control textarea-grow" rows="4"></textarea>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" form="fo-new" class="btn btn-sm btn-success btn-gradient">保存</button>
+									<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+
+					<!-- 修改窗口 -->
+					<div class="modal fade" id="w-update" tabindex="-1" data-backdrop="static">
+						<div class="modal-dialog w700">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h3 class="modal-title">修改用户</h3>
+								</div>
+								<div class="modal-body">
+									<form id="fo-update" class="form-horizontal">
+										<input type="hidden" name="id" />
+										<input type="hidden" name="org_id" />
+										<div class="form-group">
+											<!-- //TODO 后续版本支持修改所属部门 -->
+											<label class="col-md-2 control-label required">所属部门：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="org_name" readonly="readonly" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">姓名：</label>
+											<div class="col-md-4 field">
+												<input type="text" name="name" class="form-control" />
+											</div>
+											<label class="col-md-2 control-label">性别：</label>
+											<div class="col-md-4 field">
+												<select name="sex" class="basic-single form-control">
+													<option value="1">男</option>
+													<option value="2">女</option>
+													<option value="3" selected="selected">未知</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">账号：</label>
+											<div class="col-md-4 field">
+												<input type="text" name="account" class="form-control" />
+											</div>
+											<label class="col-md-2 control-label required">用户状态：</label>
+											<div class="col-md-4 field">
+												<select name="status" class="basic-single form-control">
+													<option value="1" selected="selected">正常</option>
+													<option value="2">锁定</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label required">用户类型：</label>
+											<div class="col-md-4 field">
+												<select name="type" class="basic-single form-control">
+													<option value="1">缺省</option>
+												</select>
+											</div>
+											<label class="col-md-2 control-label">身份证号：</label>
+											<div class="col-md-4 field">
+												<input type="text" name="mobile" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">联系电话：</label>
+											<div class="col-md-4 field">
+												<input type="text" name="mobile" class="form-control" />
+											</div>
+											<label class="col-md-2 control-label">电子邮件：</label>
+											<div class="col-md-4 field">
+												<input type="text" name="email" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">扩展码：</label>
+											<div class="col-md-10 field">
+												<input class="form-control" type="text" name="biz_code" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">扩展JSON：</label>
+											<div class="col-md-10 field">
+												<textarea name="ext" class="form-control textarea-grow" rows="4"></textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label">备注：</label>
+											<div class="col-md-10 field">
+												<textarea name="remark" class="form-control textarea-grow" rows="4"></textarea>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" form="fo-update" class="btn btn-sm btn-success btn-gradient">保存</button>
+									<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+
+					<!-- 重置密码窗口 -->
+					<div class="modal fade" id="w-reset" tabindex="-1" data-backdrop="static">
+						<div class="modal-dialog w450">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h3 class="modal-title">重置密码</h3>
+								</div>
+								<div class="modal-body">
+									<form id="fo-reset" class="form-horizontal">
+										<div class="form-group">
+											<label class="col-md-3 control-label required">新密码：</label>
+											<div class="col-md-9 field">
+												<input type="password" name="new_password" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-3 control-label required">确认密码：</label>
+											<div class="col-md-9 field">
+												<input type="password" name="confirm_password" class="form-control" />
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" form="fo-reset" class="btn btn-sm btn-success btn-gradient">保存</button>
+									<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+
+					<!-- 授权窗口 -->
+					<div class="modal fade" id="w-grant" tabindex="-1" data-backdrop="static">
+						<div class="modal-dialog w700">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h3 class="modal-title">用户授权</h3>
+								</div>
+								<div class="modal-body">
+									<form id="fo-grant" class="mw700" action="#" method="post">
+										<input type="hidden" name="user_id" />
+										<select class="list-basic" multiple="multiple" size="10" name="list-grant">
+										</select>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" id="btn-grant" class="btn btn-sm btn-success btn-gradient">保存</button>
+									<button type="button" class="btn btn-sm btn-danger btn-gradient" data-dismiss="modal">关闭</button>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+
+				</div>
+
+			</section>
+			<!-- End: 业务办理区 -->
+
+			<!--/* 页脚 */-->
+			<footer th:replace="fragments/footer"></footer>
+
+		</section>
+		<!-- End: Content-Wrapper -->
+
+	</div>
+	<!-- End: 主页面 -->
+
+	<!--/* 公共脚本文件 */-->
+	<th:block th:include="fragments/scripts" />
+	<script src="/theme/vendor/plugins/ztree/js/jquery.ztree.all.min.js"></script>
+	<script src="/theme/vendor/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		$(function() {
+			"use strict";
+			Core.init();
+			My.init();
+			/******* 事件监听.start ********/
+			$("#btn-query").on("click", fnQuery);
+			$('#dt-user').on('init.dt', fnQuery);
+			$("#btn-new").on("click", fnOpenNew);
+			$("#btn-grant").on("click", fnGrant);
+			$("#btn-refresh").on("click", fnRefresh);
+			$("#btn-t-refresh").on("click", fnRefresh);
+			$("#btn-reset").on("click", fnOpenReset);
+			$("#btn-t-expand").on("click", fnToggleTree);
+			$('#dt-user tbody').on('click', 'tr', function() {
+				$(this).toggleClass('selected');
+			});
+			$('#dt-user tbody').on('dblclick', 'tr', function() {
+				fnShowUpdate($('#dt-user').DataTable().row(this).data());
+			});
+			/******* 事件监听.end ********/
+
+			//初始化部门树
+			loadTree();
+
+			//初始化下拉框
+			$(".basic-single").select2({
+				placeholder : "请选择...",
+				width : '100%',
+				minimumResultsForSearch : -1, //隐藏搜索框
+				allowClear : true
+			});
+
+			// Create Dual Select List
+			$('.list-basic')
+					.bootstrapDualListbox(
+							{
+								nonSelectedListLabel : '<span class="label label-info"><i class="fa fa-list-ul"></i> 待选角色</span>',
+								selectedListLabel : '<span class="label label-success"><i class="fa fa-check-square-o"></i> 已选角色</span>',
+								preserveSelectionOnMove : 'moved',
+								moveOnSelect : false,
+								filterTextClear : 'X', //过滤后的取消过滤按钮文本
+								filterPlaceHolder : '过滤...',
+								moveSelectedLabel : '移动选中项',
+								moveAllLabel : '移动全部',
+								removeSelectedLabel : '撤消选中项',
+								removeAllLabel : '撤消全部',
+								showFilterInputs : true,
+								infoText : '共 {0} 项',
+								infoTextFiltered : '<span class="badge badge-success">选出</span> {0} 项，共 {1} 项',
+								infoTextEmpty : '共 0 项',
+								selectorMinimalHeight : 300,
+							});
+
+			//初始化表格
+			$('#dt-user')
+					.dataTable(
+							{
+								dom : 'tr<"dt-panelfooter clearfix"lip>',
+								pageLength : 20,
+								lengthMenu : [ [ 10, 20, 50, 200, 500 ], [ 10, 20, 50, 200, 500 ] ],
+								ordering : false,
+								processing : true,
+								serverSide : true, //false：一次查询，客户端分页的模式；true：服务端分页模式
+								deferLoading : 0, //屏蔽初始化后自动加载数据
+								pagingType : "full_numbers",
+								columns : [
+										{
+											data : "id",
+											width : 60
+										},
+										{
+											data : "account",
+											width : 100
+										},
+										{
+											data : "name",
+											width : 100
+										},
+										{
+											data : "org_name",
+											width : 120
+										},
+										{
+											data : "status",
+											render : function(data, type, row, meta) {
+												switch (row.status) {
+												case '1':
+													return '正常';
+												case '2':
+													return '锁定';
+												default:
+													return row.status
+												}
+											},
+											width : 100
+										},
+										{
+											data : "type",
+											render : function(data, type, row, meta) {
+												switch (row.type) {
+												case '1':
+													return '缺省';
+												default:
+													return row.type
+												}
+											},
+											width : 100
+										},
+										{
+											data : "biz_code",
+											width : 100
+										},
+										{
+											width : 80,
+											render : function(data, type, row, meta) {
+												var html = "<div class='text-right text-nowrap'><button class='btn btn-info btn-xs btn-gradient mr5' onclick='fnShowGrant("
+														+ JSON.stringify(row) + ")'>授权</button>";
+												html += "<button class='btn btn-success btn-xs btn-gradient mr5' onclick='fnShowUpdate("
+														+ JSON.stringify(row) + ")'>修改</button>";
+												html += "<button class='btn btn-danger btn-xs btn-gradient' onclick='fnDelete("
+														+ JSON.stringify(row) + ")'>删除</button></div>";
+												return html;
+											}
+										} ],
+								columnDefs : [ {
+									"defaultContent" : "",
+									"targets" : "_all"
+								} ],
+							});
+
+			//表单校验规则
+			var validateOptions = {
+				//校验规则
+				rules : {
+					org_name : "required",
+					name : "required",
+					account : "required",
+					password : "required",
+					status : "required",
+					type : "required"
+				},
+				//提示信息
+				messages : {
+					org_name : "所属部门不能为空",
+					name : "请输入用户姓名",
+					account : "请输入用户账号",
+					password : "请输入用户密码",
+					status : "请输入用户状态",
+					type : "请输入用户类型"
+				}
+			}
+
+			//绑定表单校验和提交响应事件
+			My.validate('#fo-new', fnNew, validateOptions);
+			My.validate('#fo-update', fnUpdate, validateOptions);
+
+			//表单校验规则
+			var validateOptions2 = {
+				//校验规则
+				rules : {
+					new_password : "required",
+					confirm_password : {
+						required : true,
+						equalTo : "#fo-reset [name='new_password']"
+					}
+				},
+				//提示信息
+				messages : {
+					new_password : "新密码不能为空",
+					confirm_password : {
+						required : "确认密码不能为空",
+						equalTo : "确认密码和新密码不一致，请确认"
+					}
+				}
+			}
+			My.validate('#fo-reset', fnReset, validateOptions2);
+
+			//收缩或展开树
+			function fnToggleTree() {
+				var treeObj = $.fn.zTree.getZTreeObj("tree");
+				var nodes = treeObj.getNodes();
+				if (nodes.length > 0) {
+					if (nodes[0].open) {
+						treeObj.expandAll(false);
+					} else {
+						treeObj.expandAll(true);
+					}
+				}
+			}
+
+		}); /* end onReady */
+
+		//刷新
+		function fnRefresh() {
+			loadTree();
+			setTimeout(function() {
+				fnQuery();
+			}, 200);
+		}
+
+		//加载树
+		function loadTree() {
+			var setting = {
+				view : {
+					showLine : false,
+					selectedMulti : false
+				},
+				data : {
+					simpleData : {
+						enable : true
+					}
+				},
+				callback : {
+					onClick : fnQuery
+				}
+			};
+			$.ajax({
+				type : 'post',
+				url : '/sys/org/listOrgTree',
+				success : function(data) {
+					var tree = $.fn.zTree.init($("#tree"), setting, data);
+					tree.expandAll(true);
+				}
+			});
+		}
+
+		//查询列表
+		function fnQuery() {
+			var data = {};
+			data.key = $("#in-key").val();
+			var treeObj = $.fn.zTree.getZTreeObj("tree");
+			if (treeObj) {
+				var nodes = treeObj.getSelectedNodes();
+				if (nodes.length > 0) {
+					data.org_id = nodes[0].id;
+				}
+			}
+			var ajax = {
+				url : "list",
+				type : "POST",
+				data : data
+			}
+			$('#dt-user').DataTable().settings()[0].ajax = ajax;
+			$('#dt-user').DataTable().ajax.reload();
+		}
+
+		//弹出修改窗口
+		function fnShowUpdate(row) {
+			$.ajax({
+				type : 'post',
+				url : 'get',
+				data : row,
+				success : function(data) {
+					$("#fo-update")[0].reset();
+					$('#w-update').modal();
+					data.org_name = row.org_name;
+					$("#fo-update").setForm(data);
+				}
+			});
+		}
+
+		//保存更新
+		function fnUpdate() {
+			$.ajax({
+				type : 'post',
+				url : 'update',
+				data : My.params('#fo-update'),
+				success : function(data) {
+					if (data.code == '1') {
+						My.alert(data.msg);
+						$('#w-update').modal('hide');
+						fnQuery();
+					} else {
+						My.alert(data.msg);
+					}
+				}
+			});
+		}
+
+		//打开重置密码窗口
+		function fnOpenReset(e) {
+			var rows = $('#dt-user').DataTable().rows('.selected').data();
+			if (rows.length > 0) {
+				$('#w-reset').modal();
+				$("#fo-reset")[0].reset();
+			} else {
+				My.alert('请先在列表中选中需要重置密码的用户', 'small');
+			}
+		}
+
+		//打开新增窗口
+		function fnOpenNew(e) {
+			$('#w-new').modal();
+			$("#fo-new")[0].reset();
+			var treeObj = $.fn.zTree.getZTreeObj("tree");
+			var nodes = treeObj.getSelectedNodes();
+			if (nodes.length == 0) {
+				var all = treeObj.getNodes();
+				if (all.length > 0) {
+					treeObj.selectNode(all[0]);
+					fnQuery();
+				}
+			}
+			nodes = treeObj.getSelectedNodes();
+			if (nodes.length > 0) {
+				$("#fo-new [name='org_name']").val(nodes[0].name);
+				$("#fo-new [name='org_id']").val(nodes[0].id);
+			}
+		}
+
+		//打开授权窗口
+		function fnShowGrant(row) {
+			$('#w-grant').modal();
+			$("#fo-grant")[0].reset();
+			$("#fo-grant [name='user_id']").val(row.id);
+			var roleSelect = $("[name='list-grant']").bootstrapDualListbox();
+			roleSelect.empty();
+			$.ajax({
+				type : 'post',
+				url : 'listRoleGrantInfo',
+				data : row,
+				success : function(data) {
+					$.each(data, function(index, obj) {
+						roleSelect.append('<option value="' + obj.id + '"' + obj.selected + '>' + obj.name
+								+ '</option>');
+					});
+					roleSelect.bootstrapDualListbox('refresh');
+				}
+			});
+		}
+
+		//保存授权信息
+		function fnGrant() {
+			var data = {
+				user_id : $("#fo-grant [name='user_id']").val(),
+			}
+			var roleIds = $("#fo-grant [name='list-grant']").val();
+			if (!$.isEmptyObject(roleIds)) {
+				data.roleIds = roleIds.toString();
+			}
+			$.ajax({
+				type : 'post',
+				url : 'grant',
+				data : data,
+				success : function(data) {
+					if (data.code == '1') {
+						My.alert(data.msg);
+						$('#w-grant').modal('hide');
+					} else {
+						My.alert(data.msg);
+					}
+				}
+			});
+		}
+
+		//保存
+		function fnNew() {
+			var data = My.params('#fo-new');
+			data.password = hex_md5(data.password);
+			$.ajax({
+				type : 'post',
+				url : 'save',
+				data : data,
+				success : function(data) {
+					if (data.code == '1') {
+						My.alert(data.msg);
+						$('#w-new').modal('hide');
+						$('#dt-user').DataTable().ajax.reload();
+					} else {
+						My.alert(data.msg);
+					}
+				}
+			});
+		}
+
+		//删除
+		function fnDelete(row) {
+			My.confirm('确认删除当前用户吗？', 'small', function(result) {
+				if (result) {
+					$.ajax({
+						type : 'post',
+						url : 'delete',
+						data : row,
+						success : function(data) {
+							if (data.code == '1') {
+								My.alert(data.msg);
+								$('#dt-user').DataTable().ajax.reload();
+							} else {
+								My.alert(data.msg);
+							}
+						}
+					});
+				}
+			});
+		}
+
+		//重置密码
+		function fnReset() {
+			var rows = $('#dt-user').DataTable().rows('.selected').data();
+			var ids = [];
+			$.each(rows, function(index, row) {
+				ids.push(row.id);
+			});
+			var data = {
+					ids:ids.join(','),
+					password : hex_md5(My.params('#fo-reset').confirm_password)
+			};
+ 			My.confirm('确认重置当前选中[' + rows.length + ']个用户的密码吗？', 'small', function(result) {
+				if (result) {
+					$.ajax({
+						type : 'post',
+						url : 'resetPwd',
+						data : data,
+						success : function(data) {
+							$('#w-reset').modal('hide');
+							My.alert(data.msg, 'small');
+						}
+					});
+				}
+			});
+
+		}
+
+		/*]]>*/
+	</script>
+
+</body>
+
+</html>

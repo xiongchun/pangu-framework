@@ -1,0 +1,21 @@
+<!-- Start: Topbar -->
+<header id="topbar">
+	<div class="topbar-left">
+		<ol class="breadcrumb">
+			<li th:each="menu : ${@thCxt.listPath(param.mid == null ? 1 : param.mid)}">
+				<th:block th:if="${menu.id == 1}">
+					<a href="/">
+						<span class="glyphicon glyphicon-home mr5"></span><span th:text="${menu.name}"></span>
+					</a>
+				</th:block>
+				<th:block th:if="${menu.id != 1}">
+					<span th:text="${menu.name}"></span>
+				</th:block>
+			</li>
+		</ol>
+	</div>
+	<div class="topbar-right">
+		<div id="id-mytime"></div>
+	</div>
+</header>
+<!-- End: Topbar -->

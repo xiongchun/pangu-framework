@@ -1,0 +1,128 @@
+
+// light sidebar version
+.sidebar-light-variant() {
+  color: #666;
+  background-color: #fafafa;
+  border-right: 1px solid #DDD;
+  font-family: "Roboto";
+
+   // Top Level Menu Item - Label color 
+  .sidebar-menu .sidebar-label {
+    color: #AAA;
+    font-size: 11px;
+    font-weight: 500;
+  } 
+   // Top Level Menu Item - Caret color 
+  .sidebar-menu li > a > span.caret {
+    color: #BBB;
+  }
+  .sidebar-menu li > a.menu-open > span.caret {
+    color: #999;
+  }
+
+   // Menu Item Links - Color 
+  .sidebar-menu > li a  {
+    color: #888;
+  }
+
+   // Top Level Menu Item - BG Color:hover 
+  .sidebar-menu > li > a:hover,
+  .sidebar-menu > li > a:focus,
+  .sidebar-menu > li > a:active {
+      background-color: transparent;
+  }
+   // Top Level Menu Item - Icon 
+  .sidebar-menu > li > a > span:nth-child(1) {
+    color: #888;
+  }
+   // Top Level Menu Item - Title 
+  .sidebar-menu > li > a > span:nth-child(2) {
+    color: #555;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+  }
+   // Top Level Menu Active Item - Icon Color 
+  .sidebar-menu > li.active > a > span:nth-child(1) {
+      color: @brand-primary;
+  }
+
+   // Sub-Menu level BG 
+  .sidebar-menu > li > ul {
+    background-color: #f2f2f2;
+    box-shadow: 0 1px 0 #E5e5e5 inset,0 -1px 0 #E5e5e5 inset;
+  }
+   // Sub-Menu Level Item - BG Color:hover 
+  .sidebar-menu > li > ul > li > a:hover,
+  .sidebar-menu > li > ul > li > a:focus {
+      background-color: transparent;
+  }
+   // Sub-Menu Level Active Item - Icon Color 
+  .sidebar-menu > li > ul > li.active > a > span:nth-child(1),
+  .sidebar-menu > li > ul > li > a.menu-open > span:nth-child(1) {
+      color: @brand-primary;
+  }
+
+
+   // Multi-level menu - BG Color 
+  .sidebar-menu > li > ul > li ul {
+    background-color: #eaeaea;
+    box-shadow: 0 1px 0 #d9d9d9 inset,0 -1px 0 #d9d9d9 inset;
+  }
+   // Multi-level menu item - BG Color:hover 
+  .sidebar-menu > li > ul > li > ul > li > a:hover,
+  .sidebar-menu > li > ul > li > ul > li > a:focus {
+      background-color: transparent;
+  }
+
+
+   // Top Level item left border 
+  .sidebar-menu > li > a.menu-open:after,
+  .sidebar-menu > li > ul > li > a.menu-open:after {
+      background: transparent;
+  }
+   // Sub-Menu item left border 
+  .sidebar-menu > li > ul > li > a.menu-open:after,
+  .sidebar-menu > li > ul > li > ul > li > a.menu-open:after {
+      background: @brand-info;
+  }
+   // Multi level item left border 
+  .sidebar-menu > li > ul > li > ul > li.active > a:after,
+  .sidebar-menu > li > ul > li > ul > li:hover > a:after,
+  .sidebar-menu > li > ul > li > ul > li:focus > a:after {
+      background: @brand-warning;
+  }
+
+   // Active Menu item Caret 
+  .sidebar-menu > li > ul > li.active > a > span.caret {
+      color: #AAA;
+  }
+   // Progress bar background 
+  .sidebar-menu .sidebar-stat .progress {
+    background-color: #ddd;
+  }
+
+  // sidebar toggle close btn
+  .sidebar-toggle-mini a {
+    background-color: #f7f7f7;
+    border-color: #eaeaea;
+  }
+
+  // bg-light.light version (pure white)
+  &.light {
+    background-color: #fff;
+    .sidebar-menu > li > ul {
+      background-color: #fbfbfb;
+    }
+    .sidebar-menu > li > ul > li ul {
+      background-color: #f5f5f5;
+    }
+  }
+  .user-menu {
+    background-color: #f2f2f2;
+    box-shadow: 0 -1px 0 #e6e6e6 inset;
+    a span {
+      color: #777;
+    }
+  }
+
+}

@@ -1,0 +1,168 @@
+/* ================================================
+  A. Table Styling Helpers 
+=================================================== */
+
+/* messaging table styles */
+table tbody tr.message-read td {
+  color: #999;
+  background-color: #fbfbfb;
+}
+table tbody tr.message-unread td {
+  background-color: #fff;
+}
+
+/* table header/footer styles */
+table.tc-text-center-head thead th,
+table.tc-text-center-head tfoot th { text-align: center; }
+table.tc-fs11-head thead th,
+table.tc-fs11-head tfoot th { font-size: 12px; }
+table.tc-fs12-head thead th,
+table.tc-fs12-head tfoot th { font-size: 12px; }
+
+/* special styles */
+table.tc-checkbox-1 tbody td:first-child,
+table.tc-checkbox-2 tbody td:nth-child(2),
+table.tc-checkbox-3 tbody td:nth-child(3),
+table.tc-checkbox-last tbody td:last-child {
+    text-align: center;
+    padding: 11px;
+}
+
+/* special styles */
+table.tc-list-1 tbody td:first-child,
+table.tc-list-2 tbody td:nth-child(2),
+table.tc-list-3 tbody td:nth-child(3),
+table.tc-list-last tbody td:last-child {
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    min-width: 35px;
+    padding: 0 10px;
+    border-right: 1px solid #ddd;
+    background: #f9f9f9;
+}
+/* special styles */
+table.tc-bold-1 tbody td:first-child,
+table.tc-bold-2 tbody td:nth-child(2),
+table.tc-bold-3 tbody td:nth-child(3),
+table.tc-bold-last tbody td:last-child {
+    font-weight: 700;
+    text-align: right;
+    font-size: 14px;
+}
+/* special styles */
+table.tc-med-1 tbody td:first-child,
+table.tc-med-2 tbody td:nth-child(2),
+table.tc-med-3 tbody td:nth-child(3),
+table.tc-med-last tbody td:last-child {
+    font-weight: 600;
+    color: #999;
+}
+/* special styles */
+table.tc-icon-1 tbody td:first-child,
+table.tc-icon-2 tbody td:nth-child(2),
+table.tc-icon-3 tbody td:nth-child(3),
+table.tc-icon-last tbody td:last-child {
+    font-size: 18px;
+    text-align: center;
+    color: #999;
+}
+
+/* text colors */
+table.tc-text-muted-1 tbody td:first-child,
+table.tc-text-muted-2 tbody td:nth-child(2),
+table.tc-text-muted-3 tbody td:nth-child(3),
+table.tc-text-muted-last tbody td:last-child {
+    color: #999;
+}
+table.tc-text-primary-1 tbody td:first-child,
+table.tc-text-primary-2 tbody td:nth-child(2),
+table.tc-text-primary-3 tbody td:nth-child(3),
+table.tc-text-primary-last tbody td:last-child {
+    color: #4a89dc;
+}
+
+/* font weights */
+table.tc-fw600-1 tbody td:first-child,
+table.tc-fw600-2 tbody td:nth-child(2),
+table.tc-fw600-3 tbody td:nth-child(3),
+table.tc-fw600-last tbody td:last-child {
+    font-weight: 600;
+}
+table.tc-fw700-1 tbody td:first-child,
+table.tc-fw700-2 tbody td:nth-child(2),
+table.tc-fw700-3 tbody td:nth-child(3),
+table.tc-fw700-last tbody td:last-child {
+    font-weight: 700;
+}
+
+/* font sizes */
+table.tc-fs13-1 tbody td:first-child,
+table.tc-fs13-2 tbody td:nth-child(2),
+table.tc-fs13-3 tbody td:nth-child(3),
+table.tc-fs13-last tbody td:last-child {
+    font-size: 13px;
+}
+
+/* text aligns */
+table.tc-text-left-1 tbody td:first-child,
+table.tc-text-left-2 tbody td:nth-child(2),
+table.tc-text-left-3 tbody td:nth-child(3),
+table.tc-text-left-last tbody td:last-child {
+    text-align: right;
+}
+table.tc-text-center-1 tbody td:first-child,
+table.tc-text-center-2 tbody td:nth-child(2),
+table.tc-text-center-3 tbody td:nth-child(3),
+table.tc-text-center-last tbody td:last-child {
+    text-align: center;
+}
+table.tc-text-right-1 tbody td:first-child,
+table.tc-text-right-2 tbody td:nth-child(2),
+table.tc-text-right-3 tbody td:nth-child(3),
+table.tc-text-right-last tbody td:last-child {
+    text-align: right;
+}
+
+/* vertical aligns */
+table.tc-va-t-1 tbody td:first-child,
+table.tc-va-t-2 tbody td:nth-child(2),
+table.tc-va-t-3 tbody td:nth-child(3),
+table.tc-va-t-last tbody td:last-child {
+    vertical-align: top;
+}
+table.tc-va-m-1 tbody td:first-child,
+table.tc-va-m-2 tbody td:nth-child(2),
+table.tc-va-m-3 tbody td:nth-child(3),
+table.tc-va-m-last tbody td:last-child {
+    vertical-align: middle;
+}
+table.tc-va-b-1 tbody td:first-child,
+table.tc-va-b-2 tbody td:nth-child(2),
+table.tc-va-b-3 tbody td:nth-child(3),
+table.tc-va-b-last tbody td:last-child {
+    vertical-align: bottom;
+}
+
+/* table Checklist */
+.table-checklist td { cursor: pointer }
+.table-widget .tab-content {
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+}
+/* Table items (labels, badges, progress bars etc) */
+.table-widget .progress {
+    width: 80%;
+    height: 13px;
+    margin: 0;
+}
+.table-widget .label, .table-widget .badge { margin-right: 7px }
+/* Tables with the .table-checklist class become clickable
+ * if you want text to have a line-through effect on click
+ * add the .text-slash class to the element */
+.table-checklist tr.task-checked { color: #BBB }
+.table-checklist tr.task-checked .text-slash { text-decoration: line-through }
+/* Table item checked state - class added via JS */
+.table-checklist tr.task-checked .label, .table-checklist tr.task-checked .progress { opacity: 0.3 }
+

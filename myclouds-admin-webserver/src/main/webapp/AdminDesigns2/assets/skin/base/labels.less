@@ -1,0 +1,96 @@
+/*==================================================
+  Labels
+==================================================== */
+
+.label {
+  display: inline;
+  padding: .3em .7em .4em;
+  font-size: 84%;
+  font-weight: 600;
+  line-height: 24px;
+  color: @label-color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+
+  // Label sizes
+  &.label-xs {
+    padding: 0 .35em .1em;
+    font-size: 75%;
+  }
+
+  // Label sizes
+  &.label-sm {
+    padding: .1em .65em .2em;
+    font-size: 75%;
+  }
+  &.label-lg {
+    padding: .4em .9em .5em;
+    font-size: 95%;
+  }
+
+  // Rounded option
+  &.label-rounded {
+    padding: .2em 0.85em .3em;
+    border-radius: 1em;
+      &.label-xs { padding: 0 .35em .1em; }
+      &.label-sm { padding: .1em .65em .2em; }
+      &.label-lg { padding: .4em .9em .5em; }
+  }
+
+  // Add hover effects, but only for links
+  a& {
+    &:hover,
+    &:focus {
+      color: @label-link-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  // Empty labels collapse automatically (not available in IE8)
+  &:empty {
+    display: none;
+  }
+
+  // Quick fix for labels in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+}
+
+// Contextual Skin variations (linked labels get darker on :hover)
+//
+.label-muted {
+  .label-variant(@label-muted-bg);
+}
+.label-default {
+  .label-variant(@label-default-bg);
+}
+.label-primary when (@skin-primary) {
+  .label-variant(@label-primary-bg);
+}
+.label-success when (@skin-success) {
+  .label-variant(@label-success-bg);
+}
+.label-info when (@skin-info) {
+  .label-variant(@label-info-bg);
+}
+.label-warning when (@skin-warning) {
+  .label-variant(@label-warning-bg);
+}
+.label-danger when (@skin-danger) {
+  .label-variant(@label-danger-bg);
+}
+.label-alert when (@skin-alert) {
+  .label-variant(@label-alert-bg);
+}
+.label-system when (@skin-system) {
+  .label-variant(@label-system-bg);
+}
+.label-dark when (@skin-dark) {
+  .label-variant(@label-dark-bg);
+}
+

@@ -1,0 +1,63 @@
+@charset "UTF-8";
+/*===============================================
+  myclouds.css Helpers
+================================================= */
+/* 
+  * 表单必录项的高亮处理
+*/
+label.required {
+    
+}
+label.required:before {
+    color: #E63F24;
+    content: '* ';
+    display:inline;
+}
+
+/* begin:控制Modal和Bootbox组件居中 */
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 80%;  /* 可以调节窗口的垂直相对位置 */
+  vertical-align: middle;
+  margin-right: -4px;
+}
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+/* end:控制Modal和Bootbox组件居中 */
+
+/* 表单校验非法提示文本样式 */
+em.error{
+	color: #E63F24;
+	font-style:normal;
+}
+
+/* 控制表格在某些时候的尺寸自适应问题 */
+table.my{
+	width:100% !important;
+}
+
+.menu-active{
+	background-color: #eeeeee;
+	box-shadow: 0 1px 0 #e5e5e5 inset, 0 -1px 0 #e5e5e5 inset;
+}
+
+/* table row selected */
+.selected {
+  background-color: #FBFBFB !important;
+}
+table.my > tbody > tr.selected > td:first-child{
+	border-left: 2px solid #3bafda;
+}
+
+#w-global-error div.modal-body{
+	background-color: #ff00000f;
+}
+

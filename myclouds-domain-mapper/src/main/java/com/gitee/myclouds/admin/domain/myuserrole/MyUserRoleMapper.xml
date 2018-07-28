@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 用户-角色关联表[my_user_role]SQL自动映射 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-03-09 18:24:29 -->
+<mapper namespace="com.gitee.myclouds.admin.domain.myuserrole.MyUserRoleMapper">
+	
+	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="MyUserRoleEntity">
+		INSERT INTO my_user_role (
+		<if test="user_id != null">
+	         user_id, <!-- 用户流水号 -->
+		</if>
+		<if test="role_id != null">
+	         role_id, <!-- 角色流水号 -->
+		</if>
+		<if test="create_time != null">
+	         create_time, <!-- 创建时间 -->
+		</if>
+		<if test="create_by_id != null">
+	         create_by_id, <!-- 创建人ID -->
+		</if>
+		<if test="create_by != null and create_by != ''">
+	         create_by, <!-- 创建人 -->
+		</if>
+	          id
+		)VALUES(
+		<if test="user_id != null">
+	          #{user_id, jdbcType=INTEGER}, <!-- 用户流水号 -->
+	    </if>
+		<if test="role_id != null">
+	          #{role_id, jdbcType=INTEGER}, <!-- 角色流水号 -->
+	    </if>
+		<if test="create_time != null">
+	          #{create_time, jdbcType=TIMESTAMP}, <!-- 创建时间 -->
+	    </if>
+		<if test="create_by_id != null">
+	          #{create_by_id, jdbcType=INTEGER}, <!-- 创建人ID -->
+	    </if>
+		<if test="create_by != null and create_by != ''">
+	          #{create_by, jdbcType=VARCHAR}, <!-- 创建人 -->
+	    </if>
+	          null
+		)
+	</insert>
+	
+	<!-- 插入一个数据实体对象(含所有字段) -->
+	<insert id="insertAll" useGeneratedKeys="true" keyProperty="id" parameterType="MyUserRoleEntity">
+		INSERT INTO my_user_role (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{user_id, jdbcType=INTEGER},  <!-- 用户流水号 -->
+		    #{role_id, jdbcType=INTEGER},  <!-- 角色流水号 -->
+		    #{create_time, jdbcType=TIMESTAMP},  <!-- 创建时间 -->
+		    #{create_by_id, jdbcType=INTEGER},  <!-- 创建人ID -->
+		    #{create_by, jdbcType=VARCHAR}  <!-- 创建人 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据实体对象 -->
+	<update id="updateByKey" parameterType="MyUserRoleEntity">
+		UPDATE my_user_role
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="user_id != null">
+		          user_id = #{user_id, jdbcType=INTEGER},  <!-- 用户流水号 -->
+			</if>
+			<if test="role_id != null">
+		          role_id = #{role_id, jdbcType=INTEGER},  <!-- 角色流水号 -->
+			</if>
+			<if test="create_time != null">
+		          create_time = #{create_time, jdbcType=TIMESTAMP},  <!-- 创建时间 -->
+			</if>
+			<if test="create_by_id != null">
+		          create_by_id = #{create_by_id, jdbcType=INTEGER},  <!-- 创建人ID -->
+			</if>
+			<if test="create_by != null">
+		          create_by = #{create_by, jdbcType=VARCHAR},  <!-- 创建人 -->
+			</if>
+		</set>
+		WHERE  id = #{id}
+	</update>
+	
+	<!-- 根据主键删除数据实体对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM my_user_role WHERE  id = #{id}
+	</delete>
+
+	<!-- 根据主键查询并返回数据实体对象 -->
+	<select id="selectByKey" resultType="MyUserRoleEntity">
+		SELECT
+		<include refid="column" />
+		FROM my_user_role WHERE  id = #{id}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据实体对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="MyUserRoleEntity">
+		SELECT
+		    <include refid="column" />
+		FROM my_user_role
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据实体对象集合 -->
+	<select id="list" parameterType="Dto" resultType="MyUserRoleEntity">
+		SELECT
+			<include refid="column" />	
+		FROM my_user_role
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据实体对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="MyUserRoleEntity" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM my_user_role
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="MyUserRoleEntity">
+		SELECT
+			<include refid="column" />	
+		FROM my_user_role
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="MyUserRoleEntity" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM my_user_role
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM my_user_role
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM my_user_role
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+
+	<!-- 根据唯一键[ukey1]修改数据实体对象 -->
+	<update id="updateByUkey1" parameterType="MyUserRoleEntity">
+		UPDATE my_user_role
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="user_id != null">
+		          user_id = #{user_id, jdbcType=INTEGER},  <!-- 用户流水号 -->
+			</if>
+			<if test="role_id != null">
+		          role_id = #{role_id, jdbcType=INTEGER},  <!-- 角色流水号 -->
+			</if>
+			<if test="create_time != null">
+		          create_time = #{create_time, jdbcType=TIMESTAMP},  <!-- 创建时间 -->
+			</if>
+			<if test="create_by_id != null">
+		          create_by_id = #{create_by_id, jdbcType=INTEGER},  <!-- 创建人ID -->
+			</if>
+			<if test="create_by != null">
+		          create_by = #{create_by, jdbcType=VARCHAR},  <!-- 创建人 -->
+			</if>
+		</set>
+		WHERE  user_id = #{user_id} AND role_id = #{role_id}
+	</update>
+	
+	<!-- 根据唯一键[ukey1]删除数据实体对象 -->
+	<delete id="deleteByUkey1">
+		DELETE FROM my_user_role WHERE  user_id = #{user_id} AND role_id = #{role_id}
+	</delete>
+
+	<!-- 根据唯一键[ukey1]查询并返回数据实体对象 -->
+	<select id="selectByUkey1" resultType="MyUserRoleEntity">
+		SELECT
+		<include refid="column" />
+		FROM my_user_role WHERE  user_id = #{user_id} AND role_id = #{role_id}
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id,  <!-- 流水号 -->
+		  user_id,  <!-- 用户流水号 -->
+		  role_id,  <!-- 角色流水号 -->
+		  create_time,  <!-- 创建时间 -->
+		  create_by_id,  <!-- 创建人ID -->
+		  create_by  <!-- 创建人 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  my_user_role.id,  <!-- 流水号 -->
+		  my_user_role.user_id,  <!-- 用户流水号 -->
+		  my_user_role.role_id,  <!-- 角色流水号 -->
+		  my_user_role.create_time,  <!-- 创建时间 -->
+		  my_user_role.create_by_id,  <!-- 创建人ID -->
+		  my_user_role.create_by  <!-- 创建人 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
+		</if>
+	   <if test="user_id != null ">
+		      AND user_id = #{user_id}  <!-- 用户流水号 -->
+		</if>
+	   <if test="role_id != null ">
+		      AND role_id = #{role_id}  <!-- 角色流水号 -->
+		</if>
+	   <if test="create_time != null ">
+		      AND create_time = #{create_time}  <!-- 创建时间 -->
+		</if>
+	   <if test="create_by_id != null ">
+		      AND create_by_id = #{create_by_id}  <!-- 创建人ID -->
+		</if>
+	    <if test="create_by != null and create_by != ''">
+		      AND create_by = #{create_by}  <!-- 创建人 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="create_by != null and create_by != ''">
+		      AND create_by like '${create_by}%'  <!-- 创建人 -->
+		</if>
+	</sql>
+	
+</mapper>

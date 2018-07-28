@@ -1,0 +1,106 @@
+/* ==============================================
+    Sidebar Actions
+     A. Sidebar Left Toggle
+     B. Sidebar Right Toggle
+     C. Left Sidebar Minified Helper
+     D. Mobile Menu Modifications
+=================================================
+  A. Sidebar Left Toggle
+================================================= */
+
+/*left sidebar open*/
+.sb-l-o #sidebar_left {
+    left: 0;
+    overflow: hidden;
+}
+.sb-l-o #content_wrapper {
+    margin-left: 230px;
+}
+
+/*left sidebar closed*/
+.sb-l-c #sidebar_left {
+    left: -230px;
+    overflow: hidden;
+}
+.sb-l-c #content_wrapper {
+    margin-left: 0;
+}
+
+/*adjust navbar branding when closed*/
+.sb-l-c .navbar-branding {
+    width: 60px;
+}
+.sb-l-c .navbar-brand {
+    display: none;
+}
+
+/*====================================================
+  B. Sidebar Right Toggle
+====================================================== */
+
+/*Sidebar Right Open */
+.sb-r-o #sidebar_right {
+    right: 0;
+}
+.sb-r-o #content_wrapper {
+    margin-right: 300px;
+}
+
+/*Sidebar Right Closed*/
+.sb-r-c #sidebar_right {
+    right: -300px;
+}
+.sb-r-c #content_wrapper {
+    margin-right: 0;
+}
+
+/*====================================================
+  C. Left Sidebar Minified Helper
+====================================================== */
+.sb-l-c.sb-l-m #sidebar_left {
+    left: -60px;
+}
+
+/*hide sidebar user menu button when the sidebar is
+collapsed. As it's not accessible in this mode*/
+.sb-l-m .navbar .sidebar-menu-toggle,
+.sb-l-c .navbar .sidebar-menu-toggle {
+    margin-left: 10px;
+    display: none;
+}
+
+/*===============================================
+  D. Mobile Menu Modifications
+================================================= */
+
+/* At less than 1100px we collapse any open sidebars via 
+Media Queries. Theme Javscript will also add a a
+".mobile-view" class so that you can do any needed 
+manipulation using an html class aswell */
+@media (max-width: 1100px) {
+
+    /* Sidebar Left Open/Default */
+    #content_wrapper,
+    .sb-l-o #content_wrapper {
+        margin-left: 0;
+        left: 230px;
+    }
+    
+    /* Sidebar Left Minified */
+    .sb-l-m #content_wrapper {
+        // margin-left: 60px;
+        left: 0;
+    }
+    
+    /* Sidebar Left Closed */
+    .sb-l-c #content_wrapper {
+        margin-left: 0;
+        left: 0;
+    }
+    
+    /* Sidebar Right Open */
+    .sb-r-o #content_wrapper {
+        margin-right: 0;
+        left: -300px;
+    }
+}
