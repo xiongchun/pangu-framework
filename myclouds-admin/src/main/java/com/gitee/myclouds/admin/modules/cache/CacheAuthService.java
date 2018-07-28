@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.gitee.myclouds.admin.domain.myrole.MyRoleEntity;
 import com.gitee.myclouds.admin.domain.myrole.MyRoleMapper;
 import com.gitee.myclouds.toolbox.util.MyCons;
+import com.gitee.myclouds.toolbox.util.MyUtil;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 import com.xiaoleilu.hutool.date.DateUtil;
@@ -48,7 +49,9 @@ public class CacheAuthService {
 		for (String url : authList) {
 			stringRedisTemplate.opsForSet().add(key, url);
 		}
-		stringRedisTemplate.opsForHash().put(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(), MyCons.CacheKeyOrPrefix.RoleAuth.getValue(), DateUtil.now());
+		if (MyUtil.isNotEmpty(authList)) {
+			stringRedisTemplate.opsForHash().put(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(), MyCons.CacheKeyOrPrefix.RoleAuth.getValue(), DateUtil.now());
+		}
 		logger.info("缓存/刷新角色授权信息成功。roleId：{}。", roleId);
 	}
 	
