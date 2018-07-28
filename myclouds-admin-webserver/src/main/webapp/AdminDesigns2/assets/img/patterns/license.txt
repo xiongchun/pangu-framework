@@ -1,4 +1,0 @@
-http://subtlepatterns.com/
-author: Atle Mo
----------------------
-All patterns contained in this folder are free to use under Creative Commons
