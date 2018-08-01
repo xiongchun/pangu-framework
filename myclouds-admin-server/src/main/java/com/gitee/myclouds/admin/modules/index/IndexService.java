@@ -49,7 +49,8 @@ public class IndexService {
 			if (MyUtil.isNotEmpty(level2Menus)) {
 				menuVO.setSubMenus(level2Menus);
 				// 临时方案 控制登录后自动展开的一级菜单的数量，后续改为由用户自定义自动展开的一级菜单。
-				if (i <= 1) {
+				//只展开一个一级菜单
+				if (i < 1) {
 					menuVO.setOpenClass("menu-open");
 					i++;
 				}

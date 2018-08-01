@@ -2,7 +2,7 @@ package com.gitee.myclouds.admin.test;
 
 /*@RunWith(SpringRunner.class)
 @SpringBootTest(classes=TempTest.class)
-@ComponentScan(basePackages={"com.gitee.myclouds"})*/ 
+@ComponentScan(basePackages={"com.gitee.myclouds"})*/
 public class TempTest {
 	
 	/*@Test*/
