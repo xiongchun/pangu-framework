@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import com.gitee.myclouds.builder.util.BuilderUtil;
 import com.gitee.myclouds.builder.util.DBMetaInfoUtil;
-import com.gitee.myclouds.builder.vm.Resources;
 import com.gitee.myclouds.builder.vo.ColumnVO;
 import com.gitee.myclouds.builder.vo.IndexVO;
 import com.gitee.myclouds.builder.vo.TableVO;
@@ -26,7 +25,6 @@ import com.gitee.myclouds.toolbox.util.MyUtil;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 import com.xiaoleilu.hutool.date.DateUtil;
-import com.xiaoleilu.hutool.util.StrUtil;
 
 /**
  * Domain代码生成服务
@@ -61,7 +59,7 @@ public class BuildDomainService {
 		cfgDto.put("author", author);
 		cfgDto.put("outPath", outFilePath);
 		cfgDto.put("package", packagePath);
-		cfgDto.put("tables", tables);
+		cfgDto.put("tables", MyUtil.trimAll(tables));
 		cfgDto.put("target", target);
 		return cfgDto;
 	}
@@ -72,13 +70,18 @@ public class BuildDomainService {
 	 * @param inDto
 	 * @throws SQLException
 	 */
-	public void buildDomain() throws SQLException {
+	public void buildDomain() {
 		Dto inDto = initDaoConfiguration();
-		Connection connection = jdbcTemplate.getDataSource().getConnection();
-		DatabaseMetaData databaseMetaData = connection.getMetaData();
-		String tablesString = StrUtil.trim(inDto.getString("tables"));
+		Connection connection = null;
+		DatabaseMetaData databaseMetaData = null;
+		try {
+			connection = jdbcTemplate.getDataSource().getConnection();
+			databaseMetaData = connection.getMetaData();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		// ,号分隔的多张表
-		String[] tables = tablesString.split(",");
+		String[] tables = inDto.getString("tables").split(",");
 		for (String tableName : tables) {
 			TableVO tableVO = DBMetaInfoUtil.getTableVO(databaseMetaData, tableName);
 			if (MyUtil.isEmpty(tableVO)) {
@@ -114,7 +117,7 @@ public class BuildDomainService {
 	 * 
 	 * @param inDto
 	 */
-	public void buildEntity(Dto inDto) {
+	private void buildEntity(Dto inDto) {
 		TableVO tableVO = (TableVO) inDto.get("tableVO");
 		Dto tableDto = BuilderUtil.convertTableVO(tableVO);
 		@SuppressWarnings("unchecked")
@@ -130,7 +133,7 @@ public class BuildDomainService {
 		vmDto.put("author", inDto.getString("author"));
 		vmDto.put("sysdate", DateUtil.now());
 
-		String outString = BuilderUtil.mergeFileTemplate(Resources.Entity_JAVA_VM, vmDto);
+		String outString = BuilderUtil.mergeFileTemplate("template/entity.java.vm", vmDto);
 		String fileName = tableDto.getString("upname") + "Entity.java";
 		try {
 			String outPath = inDto.getString("outPath") + "/" + allLowName + "/";
@@ -149,7 +152,7 @@ public class BuildDomainService {
 	 * 
 	 * @param inDto
 	 */
-	public void buildJavaMapper(Dto inDto) {
+	private void buildJavaMapper(Dto inDto) {
 		TableVO tableVO = (TableVO) inDto.get("tableVO");
 		Dto tableDto = BuilderUtil.convertTableVO(tableVO);
 		@SuppressWarnings("unchecked")
@@ -166,11 +169,11 @@ public class BuildDomainService {
 		List<Dto> columnDtos = BuilderUtil.convertColumnVO(columnVOs);
 		vmDto.put("importDto", BuilderUtil.getImportDto4Dao(columnDtos));
 		@SuppressWarnings("unchecked")
-		List<IndexVO> indexVOs = (List<IndexVO>)inDto.get("indexVOs");
+		List<IndexVO> indexVOs = (List<IndexVO>) inDto.get("indexVOs");
 		vmDto.put("indexDtos", BuilderUtil.convertIndexVO(indexVOs));
 		vmDto.put("importInColDto", BuilderUtil.getImportDto4DaoBasedIndexColumns(indexVOs));
-		
-		String outString = BuilderUtil.mergeFileTemplate(Resources.MAPPER_JAVA_VM, vmDto);
+
+		String outString = BuilderUtil.mergeFileTemplate("template/mapper.java.vm", vmDto);
 		String fileName = tableDto.getString("upname") + "Mapper.java";
 		try {
 			String outPath = inDto.getString("outPath") + "/" + allLowName + "/";
@@ -190,7 +193,7 @@ public class BuildDomainService {
 	 * @param inDto
 	 */
 	@SuppressWarnings("unchecked")
-	public void buildXmlMapper(Dto inDto) {
+	private void buildXmlMapper(Dto inDto) {
 		TableVO tableVO = (TableVO) inDto.get("tableVO");
 		List<ColumnVO> columnVOs = (List<ColumnVO>) inDto.get("columnVOs");
 		tableVO = BuilderUtil.isAutoIncreamentColAsPK(columnVOs, tableVO);
@@ -208,10 +211,10 @@ public class BuildDomainService {
 		vmDto.put("package", StringUtils.lowerCase(packageString));
 		vmDto.put("author", inDto.getString("author"));
 		vmDto.put("sysdate", DateUtil.now());
-		List<IndexVO> indexVOs = (List<IndexVO>)inDto.get("indexVOs");
+		List<IndexVO> indexVOs = (List<IndexVO>) inDto.get("indexVOs");
 		vmDto.put("indexDtos", BuilderUtil.convertIndexVO(indexVOs));
-		
-		String outString = BuilderUtil.mergeFileTemplate(Resources.MAPPER_XML_VM, vmDto);
+
+		String outString = BuilderUtil.mergeFileTemplate("template/entity.xml.vm", vmDto);
 		try {
 			String outPath = inDto.getString("outPath") + "/" + allLowName + "/";
 			String fileName = tableDto.getString("upname") + "Mapper.xml";

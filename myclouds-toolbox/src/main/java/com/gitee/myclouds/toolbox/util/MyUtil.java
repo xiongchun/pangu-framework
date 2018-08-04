@@ -101,6 +101,8 @@ public class MyUtil {
 		}
 	}
 	
+	
+	
 	/**
 	 * 账号密码加密算法(二次加密)
 	 * 
@@ -114,6 +116,15 @@ public class MyUtil {
 		//再使用MD5摘要算法(密码不可逆)
 		password = SecureUtil.md5(password);
 		return password;
+	}
+	
+	/**
+	 * 取出字符串中的所有空格
+	 * 
+	 * @return
+	 */
+	public static String trimAll(String text) {
+		return StringUtils.replace(text, " ", "");
 	}
 	
 	public static void main(String[] args) {

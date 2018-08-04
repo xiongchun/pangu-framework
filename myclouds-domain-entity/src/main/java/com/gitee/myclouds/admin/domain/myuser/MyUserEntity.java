@@ -11,7 +11,7 @@ import java.util.Date;
  * </p>
  * 
  * @author myclouds team
- * @date 2018-06-29 16:23:53
+ * @date 2018-08-04 17:28:45
  */
 public class MyUserEntity extends Entity {
 
