@@ -40,11 +40,6 @@ public class MenuVO extends VO{
 	private String icon;
 	
 	/**
-	 * 展开菜单的CSS类名(menu-open)
-	 */
-	private String openClass;
-	
-	/**
 	 * 子菜单
 	 */
 	private List<MenuVO> subMenus;
@@ -95,14 +90,6 @@ public class MenuVO extends VO{
 
 	public void setSubMenus(List<MenuVO> subMenus) {
 		this.subMenus = subMenus;
-	}
-
-	public String getOpenClass() {
-		return openClass;
-	}
-
-	public void setOpenClass(String openClass) {
-		this.openClass = openClass;
 	}
 	
 }
