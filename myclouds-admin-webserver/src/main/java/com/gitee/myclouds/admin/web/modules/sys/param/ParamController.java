@@ -1,7 +1,6 @@
-package com.gitee.myclouds.admin.web.modules.module;
+package com.gitee.myclouds.admin.web.modules.sys.param;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,22 +13,21 @@ import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
- * 资源模块管理
+ * 键值参数管理
  * 
  * @author xiongchun
  *
  */
 @Controller
-@RequestMapping("sys/module")
-public class ModuleController {
+@RequestMapping("sys/param")
+public class ParamController {
 
 	@Autowired
-	private ModuleService moduleService;
-	
+	private ParamService paramService;
+
 	@RequestMapping("init")
 	public String init(ModelMap map) {
-
-		return "modules/sys/module";
+		return "modules/sys/param";
 	}
 
 	/**
@@ -40,9 +38,9 @@ public class ModuleController {
 	 */
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	@ResponseBody
-	public String listModules(HttpServletRequest request) {
+	public String list(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return moduleService.list(inDto);
+		return paramService.list(inDto);
 	}
 	
 	/**
@@ -55,7 +53,7 @@ public class ModuleController {
 	@ResponseBody
 	public String get(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return moduleService.get(inDto.getInteger("id"));
+		return paramService.get(inDto.getInteger("id"));
 	}
 
 	/**
@@ -66,9 +64,9 @@ public class ModuleController {
 	 */
 	@RequestMapping(value = "save", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto saveModule(HttpServletRequest request, HttpSession httpSession) {
-		Dto inDto = Dtos.newDto(request, httpSession);
-		return Dtos.newDto(moduleService.save(inDto));
+	public Dto save(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(paramService.save(inDto));
 	}
 	
 	/**
@@ -81,7 +79,7 @@ public class ModuleController {
 	@ResponseBody
 	public Dto update(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(moduleService.update(inDto));
+		return Dtos.newDto(paramService.update(inDto));
 	}
 
 	/**
@@ -92,21 +90,9 @@ public class ModuleController {
 	 */
 	@RequestMapping(value = "delete", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto deleteModule(HttpServletRequest request) {
+	public Dto delete(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(moduleService.delete(inDto));
+		return Dtos.newDto(paramService.delete(inDto));
 	}
-	
-	/**
-	 * 查询资源树
-	 * 
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value = "listModuleTree", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
-	@ResponseBody
-	public String listModuleTree(HttpServletRequest request) {
-		Dto inDto = Dtos.newDto(request);
-		return moduleService.listModuleTree(inDto);
-	}
+
 }

@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.web.modules.role;
+package com.gitee.myclouds.admin.web.modules.sys.role;
 
 import java.util.Map;
 

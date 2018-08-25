@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.web.modules.org;
+package com.gitee.myclouds.admin.web.modules.sys.module;
 
 import java.util.Map;
 
@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * 组织机构FeignClient客户端
+ * 资源模块服务 FeignClient客户端
  * 
  * @author xiongchun
  *
  */
 @Service
 @FeignClient(value = "myadmin-service")
-public interface OrgService {
-	
+public interface ModuleService {
+
 	/**
 	 * 查询列表
 	 * 
 	 * @param inDto
 	 * @return
 	 */
-	@RequestMapping(value = "/org/list",method = RequestMethod.POST)
+	@RequestMapping(value = "/module/list",method = RequestMethod.POST)
 	String list(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	/**
@@ -33,7 +33,7 @@ public interface OrgService {
 	 * @param inDto
 	 * @return
 	 */
-	@RequestMapping(value = "/org/get",method = RequestMethod.POST)
+	@RequestMapping(value = "/module/get",method = RequestMethod.POST)
 	String get(@RequestParam("id") Integer id);
 	
 	/**
@@ -41,7 +41,7 @@ public interface OrgService {
 	 * @param inDto
 	 * @return
 	 */
-	@RequestMapping(value = "/org/save",method = RequestMethod.POST)
+	@RequestMapping(value = "/module/save",method = RequestMethod.POST)
 	Map<String, Object> save(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	/**
@@ -49,7 +49,7 @@ public interface OrgService {
 	 * @param inDto
 	 * @return
 	 */
-	@RequestMapping(value = "/org/update",method = RequestMethod.POST)
+	@RequestMapping(value = "/module/update",method = RequestMethod.POST)
 	Map<String, Object> update(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	/**
@@ -57,15 +57,15 @@ public interface OrgService {
 	 * @param inDto
 	 * @return
 	 */
-	@RequestMapping(value = "/org/delete",method = RequestMethod.POST)
+	@RequestMapping(value = "/module/delete",method = RequestMethod.POST)
 	Map<String, Object> delete(@RequestParam("inDto") Map<String,Object> inDto);
 	
 	/**
-	 * 查询部门树
+	 * 查询资源树
 	 * @param inDto
 	 * @return
 	 */
-	@RequestMapping(value = "/org/listOrgTree",method = RequestMethod.POST)
-	String listOrgTree(@RequestParam("inDto") Map<String,Object> inDto);
+	@RequestMapping(value = "/module/listModuleTree",method = RequestMethod.POST)
+	String listModuleTree(@RequestParam("inDto") Map<String,Object> inDto);
 	
 }

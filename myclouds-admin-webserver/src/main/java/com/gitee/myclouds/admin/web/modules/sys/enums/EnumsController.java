@@ -1,7 +1,6 @@
-package com.gitee.myclouds.admin.web.modules.role;
+package com.gitee.myclouds.admin.web.modules.sys.enums;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,22 +13,22 @@ import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
- * 角色管理
+ * 枚举类型管理
  * 
  * @author xiongchun
  *
  */
 @Controller
-@RequestMapping("sys/role")
-public class RoleController {
-	
+@RequestMapping("sys/enums")
+public class EnumsController {
+
 	@Autowired
-	private RoleService roleService;
+	private EnumsService enumsService;
 
 	@RequestMapping("init")
 	public String init(ModelMap map) {
 
-		return "modules/sys/role";
+		return "modules/sys/enums";
 	}
 
 	/**
@@ -40,9 +39,10 @@ public class RoleController {
 	 */
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	@ResponseBody
-	public String listRoles(HttpServletRequest request) {
+	public String list(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return roleService.list(inDto);
+		String jsonString = enumsService.list(inDto);
+		return jsonString;
 	}
 	
 	/**
@@ -55,9 +55,9 @@ public class RoleController {
 	@ResponseBody
 	public String get(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return roleService.get(inDto.getInteger("id"));
-	}
-
+		return enumsService.get(inDto.getInteger("id"));
+	}	
+	
 	/**
 	 * 新增
 	 * 
@@ -66,9 +66,9 @@ public class RoleController {
 	 */
 	@RequestMapping(value = "save", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto saveRole(HttpServletRequest request, HttpSession httpSession) {
-		Dto inDto = Dtos.newDto(request, httpSession);
-		return Dtos.newDto(roleService.save(inDto));
+	public Dto save(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return Dtos.newDto(enumsService.save(inDto));
 	}
 	
 	/**
@@ -81,9 +81,9 @@ public class RoleController {
 	@ResponseBody
 	public Dto update(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(roleService.update(inDto));
+		return Dtos.newDto(enumsService.update(inDto));
 	}
-
+	
 	/**
 	 * 删除
 	 * 
@@ -92,35 +92,9 @@ public class RoleController {
 	 */
 	@RequestMapping(value = "delete", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto deleteRole(HttpServletRequest request) {
+	public Dto delete(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(roleService.delete(inDto));
-	}
-	
-	/**
-	 * 查询授权树列表
-	 * 
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value = "listGrantTree", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
-	@ResponseBody
-	public String listGrantTree(HttpServletRequest request, HttpSession httpSession) {
-		Dto inDto = Dtos.newDto(request);
-		return roleService.listGrantTree(inDto.getInteger("role_id"));
-	}
-	
-	/**
-	 * 授权
-	 * 
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value = "grant", method = { RequestMethod.POST }, produces = "application/json")
-	@ResponseBody
-	public Dto grant(HttpServletRequest request, HttpSession httpSession) {
-		Dto inDto = Dtos.newDto(request, httpSession);
-		return Dtos.newDto(roleService.grant(inDto));
+		return Dtos.newDto(enumsService.delete(inDto));
 	}
 	
 }

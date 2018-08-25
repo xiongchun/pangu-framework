@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.web.modules.cache;
+package com.gitee.myclouds.admin.web.modules.sys.cache;
 
 import java.util.Map;
 

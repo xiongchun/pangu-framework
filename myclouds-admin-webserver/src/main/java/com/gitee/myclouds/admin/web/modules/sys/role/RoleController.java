@@ -1,6 +1,7 @@
-package com.gitee.myclouds.admin.web.modules.param;
+package com.gitee.myclouds.admin.web.modules.sys.role;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,21 +14,22 @@ import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
- * 键值参数管理
+ * 角色管理
  * 
  * @author xiongchun
  *
  */
 @Controller
-@RequestMapping("sys/param")
-public class ParamController {
-
+@RequestMapping("sys/role")
+public class RoleController {
+	
 	@Autowired
-	private ParamService paramService;
+	private RoleService roleService;
 
 	@RequestMapping("init")
 	public String init(ModelMap map) {
-		return "modules/sys/param";
+
+		return "modules/sys/role";
 	}
 
 	/**
@@ -38,9 +40,9 @@ public class ParamController {
 	 */
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	@ResponseBody
-	public String list(HttpServletRequest request) {
+	public String listRoles(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return paramService.list(inDto);
+		return roleService.list(inDto);
 	}
 	
 	/**
@@ -53,7 +55,7 @@ public class ParamController {
 	@ResponseBody
 	public String get(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return paramService.get(inDto.getInteger("id"));
+		return roleService.get(inDto.getInteger("id"));
 	}
 
 	/**
@@ -64,9 +66,9 @@ public class ParamController {
 	 */
 	@RequestMapping(value = "save", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto save(HttpServletRequest request) {
-		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(paramService.save(inDto));
+	public Dto saveRole(HttpServletRequest request, HttpSession httpSession) {
+		Dto inDto = Dtos.newDto(request, httpSession);
+		return Dtos.newDto(roleService.save(inDto));
 	}
 	
 	/**
@@ -79,7 +81,7 @@ public class ParamController {
 	@ResponseBody
 	public Dto update(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(paramService.update(inDto));
+		return Dtos.newDto(roleService.update(inDto));
 	}
 
 	/**
@@ -90,9 +92,35 @@ public class ParamController {
 	 */
 	@RequestMapping(value = "delete", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto delete(HttpServletRequest request) {
+	public Dto deleteRole(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(paramService.delete(inDto));
+		return Dtos.newDto(roleService.delete(inDto));
 	}
-
+	
+	/**
+	 * 查询授权树列表
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "listGrantTree", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@ResponseBody
+	public String listGrantTree(HttpServletRequest request, HttpSession httpSession) {
+		Dto inDto = Dtos.newDto(request);
+		return roleService.listGrantTree(inDto.getInteger("role_id"));
+	}
+	
+	/**
+	 * 授权
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "grant", method = { RequestMethod.POST }, produces = "application/json")
+	@ResponseBody
+	public Dto grant(HttpServletRequest request, HttpSession httpSession) {
+		Dto inDto = Dtos.newDto(request, httpSession);
+		return Dtos.newDto(roleService.grant(inDto));
+	}
+	
 }

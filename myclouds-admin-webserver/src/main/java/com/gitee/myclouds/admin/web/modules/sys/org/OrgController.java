@@ -1,6 +1,7 @@
-package com.gitee.myclouds.admin.web.modules.enums;
+package com.gitee.myclouds.admin.web.modules.sys.org;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,22 +14,22 @@ import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
- * 枚举类型管理
+ * 组织机构管理
  * 
  * @author xiongchun
  *
  */
 @Controller
-@RequestMapping("sys/enums")
-public class EnumsController {
+@RequestMapping("sys/org")
+public class OrgController {
 
 	@Autowired
-	private EnumsService enumsService;
+	private OrgService orgService;
 
 	@RequestMapping("init")
 	public String init(ModelMap map) {
 
-		return "modules/sys/enums";
+		return "modules/sys/org";
 	}
 
 	/**
@@ -39,10 +40,9 @@ public class EnumsController {
 	 */
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	@ResponseBody
-	public String list(HttpServletRequest request) {
+	public String listOrgs(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		String jsonString = enumsService.list(inDto);
-		return jsonString;
+		return orgService.list(inDto);
 	}
 	
 	/**
@@ -55,9 +55,9 @@ public class EnumsController {
 	@ResponseBody
 	public String get(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return enumsService.get(inDto.getInteger("id"));
-	}	
-	
+		return orgService.get(inDto.getInteger("id"));
+	}
+
 	/**
 	 * 新增
 	 * 
@@ -66,9 +66,9 @@ public class EnumsController {
 	 */
 	@RequestMapping(value = "save", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto save(HttpServletRequest request) {
-		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(enumsService.save(inDto));
+	public Dto saveOrg(HttpServletRequest request, HttpSession httpSession) {
+		Dto inDto = Dtos.newDto(request, httpSession);
+		return Dtos.newDto(orgService.save(inDto));
 	}
 	
 	/**
@@ -81,9 +81,9 @@ public class EnumsController {
 	@ResponseBody
 	public Dto update(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(enumsService.update(inDto));
+		return Dtos.newDto(orgService.update(inDto));
 	}
-	
+
 	/**
 	 * 删除
 	 * 
@@ -92,9 +92,22 @@ public class EnumsController {
 	 */
 	@RequestMapping(value = "delete", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto delete(HttpServletRequest request) {
+	public Dto deleteOrg(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(enumsService.delete(inDto));
+		return Dtos.newDto(orgService.delete(inDto));
+	}
+	
+	/**
+	 * 查询部门树
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "listOrgTree", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@ResponseBody
+	public String listOrgTree(HttpServletRequest request) {
+		Dto inDto = Dtos.newDto(request);
+		return orgService.listOrgTree(inDto);
 	}
 	
 }

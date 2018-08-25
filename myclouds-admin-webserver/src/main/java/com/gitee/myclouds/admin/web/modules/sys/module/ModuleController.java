@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.web.modules.org;
+package com.gitee.myclouds.admin.web.modules.sys.module;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,22 +14,22 @@ import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
 /**
- * 组织机构管理
+ * 资源模块管理
  * 
  * @author xiongchun
  *
  */
 @Controller
-@RequestMapping("sys/org")
-public class OrgController {
+@RequestMapping("sys/module")
+public class ModuleController {
 
 	@Autowired
-	private OrgService orgService;
-
+	private ModuleService moduleService;
+	
 	@RequestMapping("init")
 	public String init(ModelMap map) {
 
-		return "modules/sys/org";
+		return "modules/sys/module";
 	}
 
 	/**
@@ -40,9 +40,9 @@ public class OrgController {
 	 */
 	@RequestMapping(value = "list", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	@ResponseBody
-	public String listOrgs(HttpServletRequest request) {
+	public String listModules(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return orgService.list(inDto);
+		return moduleService.list(inDto);
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class OrgController {
 	@ResponseBody
 	public String get(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return orgService.get(inDto.getInteger("id"));
+		return moduleService.get(inDto.getInteger("id"));
 	}
 
 	/**
@@ -66,9 +66,9 @@ public class OrgController {
 	 */
 	@RequestMapping(value = "save", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto saveOrg(HttpServletRequest request, HttpSession httpSession) {
+	public Dto saveModule(HttpServletRequest request, HttpSession httpSession) {
 		Dto inDto = Dtos.newDto(request, httpSession);
-		return Dtos.newDto(orgService.save(inDto));
+		return Dtos.newDto(moduleService.save(inDto));
 	}
 	
 	/**
@@ -81,7 +81,7 @@ public class OrgController {
 	@ResponseBody
 	public Dto update(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(orgService.update(inDto));
+		return Dtos.newDto(moduleService.update(inDto));
 	}
 
 	/**
@@ -92,22 +92,21 @@ public class OrgController {
 	 */
 	@RequestMapping(value = "delete", method = { RequestMethod.POST }, produces = "application/json")
 	@ResponseBody
-	public Dto deleteOrg(HttpServletRequest request) {
+	public Dto deleteModule(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return Dtos.newDto(orgService.delete(inDto));
+		return Dtos.newDto(moduleService.delete(inDto));
 	}
 	
 	/**
-	 * 查询部门树
+	 * 查询资源树
 	 * 
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "listOrgTree", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
+	@RequestMapping(value = "listModuleTree", method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	@ResponseBody
-	public String listOrgTree(HttpServletRequest request) {
+	public String listModuleTree(HttpServletRequest request) {
 		Dto inDto = Dtos.newDto(request);
-		return orgService.listOrgTree(inDto);
+		return moduleService.listModuleTree(inDto);
 	}
-	
 }

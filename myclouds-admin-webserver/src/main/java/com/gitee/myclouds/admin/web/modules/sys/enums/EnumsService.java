@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.web.modules.enums;
+package com.gitee.myclouds.admin.web.modules.sys.enums;
 
 import java.util.Map;
 
