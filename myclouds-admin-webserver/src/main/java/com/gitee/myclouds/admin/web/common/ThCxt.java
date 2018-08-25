@@ -59,4 +59,19 @@ public class ThCxt {
 		return myModuleEntities;
 	}
 	
+	/**
+	 * 获取当前模块的的父菜单模块
+	 * 
+	 * @return
+	 */
+	public Integer parentId(String moduleId){
+		moduleId = MyUtil.isEmpty(moduleId) ? "1" : moduleId;
+		Integer parentId = null;
+		MyModuleEntity myModuleEntity = myCacheCxt.getMyModuleEntityFromCacheById(moduleId);
+		if (myModuleEntity != null) {
+			parentId = myModuleEntity.getParent_id();
+		}
+		return parentId;
+	}
+	
 }

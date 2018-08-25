@@ -28,9 +28,14 @@
 				</li>
 
 				<li th:if="${not #lists.isEmpty(level2Menus)}">
-					<a class="accordion-toggle" th:classappend="${menu.openClass}" href="#">
+				
+					<a th:if="${menu.id == @thCxt.parentId(param.mid)}" class="accordion-toggle menu-open" href="#">
 						<span th:attr="class=${menu.icon}"></span> <span class="sidebar-title" th:text="${menu.name}"></span> <span class="caret"></span>
 					</a>
+					<a th:if="${menu.id != @thCxt.parentId(param.mid)}" class="accordion-toggle" href="#">
+						<span th:attr="class=${menu.icon}"></span> <span class="sidebar-title" th:text="${menu.name}"></span> <span class="caret"></span>
+					</a>
+					
 					<ul class="nav sub-nav">
 						<li th:each="menu : ${level2Menus}" th:id="my-mitem- + ${menu.id}" class="selector-flag">
 							<a th:if="${menu.url != null}"  th:href="@{${menu.url}(mid=${menu.id})}">

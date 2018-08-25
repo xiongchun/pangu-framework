@@ -43,17 +43,10 @@ public class IndexService {
 		}
 		String jql = "SELECT * FROM :MyList WHERE parent_id = :parent_id";
 		List<MenuVO> level1Menus = MyListUtil.list(menuVOs, MenuVO.class, jql, Dtos.newDto("parent_id", 1));
-		int i = 0;
 		for (MenuVO menuVO : level1Menus) {
 			List<MenuVO> level2Menus = MyListUtil.list(menuVOs, MenuVO.class, jql, Dtos.newDto("parent_id", menuVO.getId()));
 			if (MyUtil.isNotEmpty(level2Menus)) {
 				menuVO.setSubMenus(level2Menus);
-				// 临时方案 控制登录后自动展开的一级菜单的数量，后续改为由用户自定义自动展开的一级菜单。
-				//只展开一个一级菜单
-				if (i < 1) {
-					menuVO.setOpenClass("menu-open");
-					i++;
-				}
 			}
 		}
 		return level1Menus;
