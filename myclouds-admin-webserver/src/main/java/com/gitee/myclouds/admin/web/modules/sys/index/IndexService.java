@@ -18,7 +18,7 @@ import com.gitee.myclouds.common.web.vo.MenuVO;
  *
  */
 @Service
-@FeignClient(value = "myadmin-service")
+@FeignClient(value = "myclouds-admin-server")
 public interface IndexService {
 	
 	/**

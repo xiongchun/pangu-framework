@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  */
 @Service
-@FeignClient(value = "myadmin-service")
+@FeignClient(value = "myclouds-admin-server")
 public interface OrgService {
 	
 	/**
