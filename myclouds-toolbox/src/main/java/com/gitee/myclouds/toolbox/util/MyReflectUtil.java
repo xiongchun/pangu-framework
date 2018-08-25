@@ -19,8 +19,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
-import com.xiaoleilu.hutool.lang.Assert;
-import com.xiaoleilu.hutool.util.StrUtil;
+
+import cn.hutool.core.lang.Assert;
+import cn.hutool.core.util.StrUtil;
 
 /**
  * 反射器

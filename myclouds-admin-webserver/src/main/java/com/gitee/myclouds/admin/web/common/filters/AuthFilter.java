@@ -25,7 +25,8 @@ import com.gitee.myclouds.toolbox.session.data.CurUser;
 import com.gitee.myclouds.toolbox.util.FilterUtil;
 import com.gitee.myclouds.toolbox.util.MyCons;
 import com.gitee.myclouds.toolbox.util.WebCxt;
-import com.xiaoleilu.hutool.util.StrUtil;
+
+import cn.hutool.core.util.StrUtil;
 
 /**
  * Admin授权权限过滤器

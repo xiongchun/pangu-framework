@@ -11,7 +11,7 @@ import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.admin.domain.mymodule.MyModuleEntity;
 import com.gitee.myclouds.admin.domain.mymodule.MyModuleMapper;
 import com.gitee.myclouds.admin.modules.cache.CacheMiscService;
-import com.gitee.myclouds.common.web.vo.ZTreeNodeVO;
+import com.gitee.myclouds.common.vo.ZtreeNodeVO;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
 
@@ -117,7 +117,7 @@ public class ModuleService {
 	public String listModuleTree(Dto inDto) {
 		String[] types = {"1"};
 		inDto.put("types", Arrays.asList(types));
-		List<ZTreeNodeVO> zTreeNodeVOs = sqlSession.selectList("sql.module.listModuleTree", inDto);
+		List<ZtreeNodeVO> zTreeNodeVOs = sqlSession.selectList("sql.module.listModuleTree", inDto);
 		return JSON.toJSONString(zTreeNodeVOs);
 	}
 	

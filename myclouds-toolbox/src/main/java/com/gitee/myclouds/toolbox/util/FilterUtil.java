@@ -1,6 +1,6 @@
 package com.gitee.myclouds.toolbox.util;
 
-import com.xiaoleilu.hutool.util.StrUtil;
+import cn.hutool.core.util.StrUtil;
 
 /**
  * 过滤器工具类

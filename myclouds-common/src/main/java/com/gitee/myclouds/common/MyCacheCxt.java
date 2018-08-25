@@ -10,9 +10,9 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.domain.myenum.MyEnumEntity;
-import com.gitee.myclouds.admin.domain.mymodule.MyModuleEntity;
-import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
+import com.gitee.myclouds.common.vo.EnumVO;
+import com.gitee.myclouds.common.vo.ModuleVO;
+import com.gitee.myclouds.common.vo.ParamVO;
 import com.gitee.myclouds.toolbox.util.MyCons;
 import com.gitee.myclouds.toolbox.util.MyListUtil;
 import com.gitee.myclouds.toolbox.util.MyUtil;
@@ -41,17 +41,17 @@ public class MyCacheCxt {
 	 * @param paramKey
 	 * @return
 	 */
-	public MyParamEntity getParam(String paramKey) {
+	public ParamVO getParam(String paramKey) {
 		String key = MyCons.CacheKeyOrPrefix.MyParam.getValue() + ":" + paramKey;
-		MyParamEntity myParamEntity = null;
+		ParamVO paramVO = null;
 		try {
 			String json = stringRedisTemplate.opsForValue().get(key);
-			myParamEntity = JSON.parseObject(json, MyParamEntity.class);
+			paramVO = JSON.parseObject(json, ParamVO.class);
 		} catch (Exception e) {
 			log.error("获取键值参数：【{}】时反生错误", paramKey);
 			e.printStackTrace();
 		}
-		return myParamEntity;
+		return paramVO;
 	}
 	
 	/**
@@ -61,8 +61,8 @@ public class MyCacheCxt {
 	 * @return
 	 */
 	public String getParamValue(String paramKey) {
-		MyParamEntity myParamEntity = getParam(paramKey);
-		return MyUtil.isEmpty(myParamEntity) ? StringUtils.EMPTY : myParamEntity.getValue();
+		ParamVO paramVO = getParam(paramKey);
+		return MyUtil.isEmpty(paramVO) ? StringUtils.EMPTY : paramVO.getValue();
 	}
 	
 	/**
@@ -83,13 +83,13 @@ public class MyCacheCxt {
 	 * @param elementKey
 	 * @return
 	 */
-	public List<MyEnumEntity> getEnum(String enumKey){
+	public List<EnumVO> getEnum(String enumKey){
 		String key = MyCons.CacheKeyOrPrefix.MyEnum.getValue() + ":" + enumKey;
-		List<MyEnumEntity> myEnumEntities = Lists.newArrayList();
+		List<EnumVO> myEnumEntities = Lists.newArrayList();
 		try {
 			List<Object> enumObjs = stringRedisTemplate.opsForHash().values(key);
 			for (Object obj : enumObjs) {
-				myEnumEntities.add(JSON.parseObject(String.valueOf(obj), MyEnumEntity.class));
+				myEnumEntities.add(JSON.parseObject(String.valueOf(obj), EnumVO.class));
 			}
 		} catch (Exception e) {
 			log.error("获取枚举类型：【{}】时反生错误", enumKey);
@@ -105,11 +105,11 @@ public class MyCacheCxt {
 	 * @param elementKey
 	 * @return
 	 */
-	public MyEnumEntity getEnumElement(String enumKey, String elementKey) {
-		List<MyEnumEntity> myEnumEntities = getEnum(enumKey);
+	public EnumVO getEnumElement(String enumKey, String elementKey) {
+		List<EnumVO> myEnumEntities = getEnum(enumKey);
 		String jql = "SELECT * FROM :MyList WHERE element_key = :elementKey";
-		MyEnumEntity myEnumEntity = (MyEnumEntity)MyListUtil.selectOne(myEnumEntities, MyEnumEntity.class, jql, Dtos.newDto("elementKey", elementKey));
-		return myEnumEntity;
+		EnumVO enumVO = (EnumVO)MyListUtil.selectOne(myEnumEntities, EnumVO.class, jql, Dtos.newDto("elementKey", elementKey));
+		return enumVO;
 	}
 	
 	/**
@@ -120,8 +120,8 @@ public class MyCacheCxt {
 	 * @return
 	 */
 	public String getEnumElementValue(String enumKey, String elementKey) {
-		MyEnumEntity myEnumEntity = getEnumElement(enumKey, elementKey);
-		return MyUtil.isEmpty(myEnumEntity) ? StringUtils.EMPTY : myEnumEntity.getElement_value();
+		EnumVO enumVO = getEnumElement(enumKey, elementKey);
+		return MyUtil.isEmpty(enumVO) ? StringUtils.EMPTY : enumVO.getElement_value();
 	}
 	
 	/**
@@ -143,11 +143,11 @@ public class MyCacheCxt {
 	 * @param id
 	 * @return
 	 */
-	public MyModuleEntity getMyModuleEntityFromCacheById(String id) {
+	public ModuleVO getModuleVOFromCacheById(String id) {
 		Object object = stringRedisTemplate.opsForHash().get(MyCons.CacheKeyOrPrefix.MyModule.getValue(), id);
 		if (MyUtil.isEmpty(object)) {
 			return null;
 		}
-		return JSON.parseObject(object.toString(), MyModuleEntity.class);
+		return JSON.parseObject(object.toString(), ModuleVO.class);
 	}
 }

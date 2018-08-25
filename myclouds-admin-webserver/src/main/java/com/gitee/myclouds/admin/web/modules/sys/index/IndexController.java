@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.gitee.myclouds.common.web.vo.MenuVO;
+import com.gitee.myclouds.common.vo.MenuVO;
 import com.gitee.myclouds.toolbox.session.data.CurUser;
 import com.gitee.myclouds.toolbox.util.WebCxt;
 import com.gitee.myclouds.toolbox.wrap.Dto;

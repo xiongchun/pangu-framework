@@ -79,6 +79,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
 		</dependency>
+		
         <!-- Feign客户端 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

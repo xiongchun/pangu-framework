@@ -31,13 +31,6 @@
 			<version>1.0</version>
 		</dependency>
 
-		<!-- myclouds-domain-entity -->
-		<dependency>
-			<groupId>com.gitee.myclouds</groupId>
-			<artifactId>myclouds-domain-entity</artifactId>
-			<version>1.0</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
@@ -48,6 +41,13 @@
 		    <groupId>org.apache.tomcat.embed</groupId>
 		    <artifactId>tomcat-embed-core</artifactId>
 		    <scope>provided</scope>
+		</dependency>
+		
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>

@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gitee.myclouds.admin.domain.mymodule.MyModuleEntity;
 import com.gitee.myclouds.common.MyCacheCxt;
+import com.gitee.myclouds.common.vo.ModuleVO;
 import com.gitee.myclouds.toolbox.util.MyUtil;
 import com.google.common.collect.Lists;
 
@@ -40,18 +40,18 @@ public class ThCxt {
 	 * 
 	 * @return
 	 */
-	public List<MyModuleEntity> listPath(String moduleId){
+	public List<ModuleVO> listPath(String moduleId){
 		moduleId = MyUtil.isEmpty(moduleId) ? "1" : moduleId;
-		List<MyModuleEntity>myModuleEntities = Lists.newArrayList();
-		MyModuleEntity myModuleEntity = myCacheCxt.getMyModuleEntityFromCacheById(moduleId);
-		if (myModuleEntity == null) {
+		List<ModuleVO>myModuleEntities = Lists.newArrayList();
+		ModuleVO moduleVO = myCacheCxt.getModuleVOFromCacheById(moduleId);
+		if (moduleVO == null) {
 			//模块ID传入错误或者模块菜单数据没有加载到缓存
 			return myModuleEntities;
 		}
-		myModuleEntities.add(myModuleEntity);
-		int parentId = myModuleEntity.getParent_id();
+		myModuleEntities.add(moduleVO);
+		int parentId = moduleVO.getParent_id();
 		while(parentId != 0) {
-			MyModuleEntity parentEntity = myCacheCxt.getMyModuleEntityFromCacheById(String.valueOf(parentId));
+			ModuleVO parentEntity = myCacheCxt.getModuleVOFromCacheById(String.valueOf(parentId));
 			myModuleEntities.add(parentEntity);
 			parentId = parentEntity.getParent_id();
 		}
@@ -67,9 +67,9 @@ public class ThCxt {
 	public Integer parentId(String moduleId){
 		moduleId = MyUtil.isEmpty(moduleId) ? "1" : moduleId;
 		Integer parentId = null;
-		MyModuleEntity myModuleEntity = myCacheCxt.getMyModuleEntityFromCacheById(moduleId);
-		if (myModuleEntity != null) {
-			parentId = myModuleEntity.getParent_id();
+		ModuleVO moduleVO = myCacheCxt.getModuleVOFromCacheById(moduleId);
+		if (moduleVO != null) {
+			parentId = moduleVO.getParent_id();
 		}
 		return parentId;
 	}

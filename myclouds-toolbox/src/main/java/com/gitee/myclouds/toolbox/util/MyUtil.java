@@ -11,7 +11,8 @@ import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.xiaoleilu.hutool.crypto.SecureUtil;
+
+import cn.hutool.crypto.SecureUtil;
 
 /**
  * <b>辅助工具类</b>

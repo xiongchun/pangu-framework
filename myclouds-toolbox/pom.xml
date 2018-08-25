@@ -39,9 +39,17 @@
 
 		<!-- 工具类库：hutool类库 -->
 		<dependency>
-			<groupId>com.xiaoleilu</groupId>
+			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
-			<version>3.1.1</version>
+			<version>4.1.8</version>
+		</dependency>
+		
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.2</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- 常用类库：Google对JDK的增强和扩展类库 -->

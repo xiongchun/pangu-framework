@@ -13,8 +13,7 @@
 		<module>myclouds-admin-server</module>
 		<module>myclouds-admin-webserver</module>
 		<module>myclouds-common</module>
-		<module>myclouds-domain-entity</module>
-		<module>myclouds-domain-mapper</module>
+		<module>myclouds-domain</module>
 		<module>myclouds-gateway-server</module>
 		<module>myclouds-toolbox</module>
 		<module>myclouds-builder-standalone</module>

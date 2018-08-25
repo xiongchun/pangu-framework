@@ -24,7 +24,8 @@ import com.gitee.myclouds.builder.vo.TableVO;
 import com.gitee.myclouds.toolbox.util.MyUtil;
 import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.toolbox.wrap.Dtos;
-import com.xiaoleilu.hutool.date.DateUtil;
+
+import cn.hutool.core.date.DateUtil;
 
 /**
  * Domain代码生成服务

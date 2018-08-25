@@ -13,7 +13,7 @@ import com.gitee.myclouds.admin.domain.myrole.MyRoleMapper;
 import com.gitee.myclouds.admin.domain.myrolemodule.MyRoleModuleEntity;
 import com.gitee.myclouds.admin.domain.myrolemodule.MyRoleModuleMapper;
 import com.gitee.myclouds.admin.modules.cache.CacheAuthService;
-import com.gitee.myclouds.common.web.vo.ZTreeNodeVO;
+import com.gitee.myclouds.common.vo.ZtreeNodeVO;
 import com.gitee.myclouds.toolbox.session.data.CurUser;
 import com.gitee.myclouds.toolbox.util.MyCons;
 import com.gitee.myclouds.toolbox.util.MyUtil;
@@ -120,8 +120,8 @@ public class RoleService {
 	 */
 	//TODO 没有支持子部门管理员的授权操作，迭代版本支持
 	public String listGrantTree(Integer roleId) {
-		List<ZTreeNodeVO> zTreeNodeVOs = sqlSession.selectList("sql.role.listToGrantTree");
-		for (ZTreeNodeVO zTreeNodeVO : zTreeNodeVOs) {
+		List<ZtreeNodeVO> zTreeNodeVOs = sqlSession.selectList("sql.role.listToGrantTree");
+		for (ZtreeNodeVO zTreeNodeVO : zTreeNodeVOs) {
 			Dto qDto = Dtos.newDto().put2("role_id", roleId).put2("module_id", zTreeNodeVO.getId()).put2("grant_type", MyCons.GrantType.BIZ.getValue());
 			MyRoleModuleEntity myRoleModuleEntity = myRoleModuleMapper.selectOne(qDto);
 			if (myRoleModuleEntity != null) {
