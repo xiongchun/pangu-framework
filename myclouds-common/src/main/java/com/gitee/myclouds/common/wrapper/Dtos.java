@@ -74,7 +74,7 @@ public class Dtos {
 		if (httpSession != null) {
 			MyUserVO curUser = WebCxt.getMyUserVO(httpSession);
 			if (curUser != null) {
-				outDto.put(MyCons.CUR_USER, JSON.toJSONString(curUser));
+				outDto.put(MyCons.My_USER, JSON.toJSONString(curUser));
 			}
 		}
 		return outDto;

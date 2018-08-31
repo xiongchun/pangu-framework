@@ -50,11 +50,11 @@ public class LoginController {
 		Dto inDto = Dtos.newDto(request);
 		Dto outDto = Dtos.newDto(loginService.validate(inDto));
 		if (StringUtils.equals(MyCons.YesOrNo.YES.getValue().toString(), outDto.getString("code"))) {
-			MyUserVO curUser = new MyUserVO();
-			MyUtil.copyProperties(outDto.get("curUser"), curUser);
-			curUser.setSessionId(httpSession.getId());
-			curUser.setRoleIds((List<String>)outDto.get("roleIds"));
-			httpSession.setAttribute(MyCons.CUR_USER, curUser);
+			MyUserVO myUser = new MyUserVO();
+			MyUtil.copyProperties(outDto.get("myUser"), myUser);
+			myUser.setSessionId(httpSession.getId());
+			myUser.setRoleIds((List<String>)outDto.get("roleIds"));
+			httpSession.setAttribute(MyCons.My_USER, myUser);
 		}
 		return outDto;
 	}

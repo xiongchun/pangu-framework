@@ -23,7 +23,7 @@ import com.google.common.collect.Lists;
 public class ThCxt {
 	
 	@Autowired
-	private MyCxt myCacheCxt;
+	private MyCxt myCxt;
 	
 	/**
 	 * 获取键值参数值
@@ -32,7 +32,7 @@ public class ThCxt {
 	 * @return
 	 */
 	public String param(String paramKey) {
-		return myCacheCxt.getParamValue(paramKey);
+		return myCxt.getParamValue(paramKey);
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class ThCxt {
 	public List<ModuleVO> listPath(String moduleId){
 		moduleId = MyUtil.isEmpty(moduleId) ? "1" : moduleId;
 		List<ModuleVO>myModuleEntities = Lists.newArrayList();
-		ModuleVO moduleVO = myCacheCxt.getModuleVOFromCacheById(moduleId);
+		ModuleVO moduleVO = myCxt.getModuleVOFromCacheById(moduleId);
 		if (moduleVO == null) {
 			//模块ID传入错误或者模块菜单数据没有加载到缓存
 			return myModuleEntities;
@@ -51,7 +51,7 @@ public class ThCxt {
 		myModuleEntities.add(moduleVO);
 		int parentId = moduleVO.getParent_id();
 		while(parentId != 0) {
-			ModuleVO parentEntity = myCacheCxt.getModuleVOFromCacheById(String.valueOf(parentId));
+			ModuleVO parentEntity = myCxt.getModuleVOFromCacheById(String.valueOf(parentId));
 			myModuleEntities.add(parentEntity);
 			parentId = parentEntity.getParent_id();
 		}
@@ -67,7 +67,7 @@ public class ThCxt {
 	public Integer parentId(String moduleId){
 		moduleId = MyUtil.isEmpty(moduleId) ? "1" : moduleId;
 		Integer parentId = null;
-		ModuleVO moduleVO = myCacheCxt.getModuleVOFromCacheById(moduleId);
+		ModuleVO moduleVO = myCxt.getModuleVOFromCacheById(moduleId);
 		if (moduleVO != null) {
 			parentId = moduleVO.getParent_id();
 		}

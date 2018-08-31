@@ -96,7 +96,6 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>23.0</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.josql</groupId>
@@ -113,10 +112,14 @@
 			<artifactId>hutool-all</artifactId>
 			<version>4.1.8</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 	</dependencies>
 
 	<repositories>
-        <repository>
+		<repository>
 			<id>aliyun</id>
 			<name>aliyun repo</name>
 			<url>https://maven.aliyun.com/nexus/content/groups/public</url>

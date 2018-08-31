@@ -28,7 +28,7 @@
 	
 	<!-- 通用别名设置 -->
 	<typeAliases>
-		<typeAlias type="com.gitee.myclouds.toolbox.wrap.impl.HashDto" alias="Dto" />
+		<typeAlias type="com.gitee.myclouds.common.wrapper.impl.HashDto" alias="Dto" />
 	</typeAliases>
 
 	<!-- 插件 

@@ -93,7 +93,7 @@ public class MyCons {
 	/**
 	 * 缺省当前用户数据对象会话KEY
 	 */
-	public static final String CUR_USER = "_user";
+	public static final String My_USER = "_user";
 
 	public static void main(String[] args) {
 

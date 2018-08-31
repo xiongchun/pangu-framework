@@ -44,7 +44,7 @@ public class WebCxt {
 	 * @return 当前用户数据对象
 	 */
 	public static MyUserVO getMyUserVO(HttpSession httpSession) {
-		MyUserVO curUser = (MyUserVO)httpSession.getAttribute(MyCons.CUR_USER);
+		MyUserVO curUser = (MyUserVO)httpSession.getAttribute(MyCons.My_USER);
 		return curUser;
 	}
 	

@@ -46,12 +46,12 @@ public class LoginService {
 			}
 		}
 		if (MyCons.YesOrNo.YES.getValue() == outDto.getInteger("code").intValue()) {
-			MyUserVO curUser = new MyUserVO();
-			curUser.setId(myUserEntity.getId());
-			curUser.setAccount(myUserEntity.getAccount());
-			curUser.setName(myUserEntity.getName());
-			curUser.setOrgId(myUserEntity.getOrg_id());
-			outDto.put("curUser", curUser);
+			MyUserVO myUser = new MyUserVO();
+			myUser.setId(myUserEntity.getId());
+			myUser.setAccount(myUserEntity.getAccount());
+			myUser.setName(myUserEntity.getName());
+			myUser.setOrgId(myUserEntity.getOrg_id());
+			outDto.put("myUser", myUser);
 			//--------获取用户所属角色ID集合
 			List<String> roleIds = sqlSession.selectList("sql.login.selectRoleIdsByUserId", myUserEntity.getId());
 			outDto.put("roleIds", roleIds);

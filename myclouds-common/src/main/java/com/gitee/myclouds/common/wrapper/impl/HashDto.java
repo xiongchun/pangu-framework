@@ -229,7 +229,7 @@ public class HashDto extends HashMap<String, Object> implements Dto {
 	 */
 	@Override
 	public MyUserVO getCurUser() {
-		return get(MyCons.CUR_USER) == null ? null
-				: JSON.parseObject(String.valueOf(get(MyCons.CUR_USER)), MyUserVO.class);
+		return get(MyCons.My_USER) == null ? null
+				: JSON.parseObject(String.valueOf(get(MyCons.My_USER)), MyUserVO.class);
 	}
 }

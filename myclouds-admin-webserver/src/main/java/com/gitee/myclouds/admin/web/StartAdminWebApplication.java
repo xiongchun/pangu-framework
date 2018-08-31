@@ -6,14 +6,17 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 
 import com.gitee.myclouds.admin.web.common.filters.AuthFilter;
 import com.gitee.myclouds.admin.web.common.filters.LoginFilter;
 import com.gitee.myclouds.admin.web.common.filters.RequestFilter;
+import com.gitee.myclouds.common.MyCxt;
 
 @SpringBootApplication
 @EnableFeignClients
 @ComponentScan(basePackages={"com.gitee.myclouds"}) 
+@Import(MyCxt.class)
 public class StartAdminWebApplication {
 
 	public static void main(String[] args) throws Exception {

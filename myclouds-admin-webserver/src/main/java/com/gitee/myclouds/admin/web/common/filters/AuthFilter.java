@@ -45,7 +45,7 @@ public class AuthFilter implements Filter {
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
 	@Autowired
-	private MyCxt myCacheCxt;
+	private MyCxt myCxt;
 
 	// 排除列表
 	private String[] excludeKeysArray;
@@ -57,8 +57,8 @@ public class AuthFilter implements Filter {
 		//让SpringBean能注入到servlet上下文环境中
 		SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, filterConfig.getServletContext());
 		//提示：在这里初始化Filter的配置信息，性价比较高(避免每次过滤都加载配置)。但配置修改后，需要重启这个Server以创新加载配置。
-		isEnable = myCacheCxt.getParamValue("authfilter_is_enable", MyCons.YesOrNo.YES.getValue().toString());
-		excludeKeysArray = StrUtil.split(myCacheCxt.getParamValue("authfilter_exclude_keys"), ",");
+		isEnable = myCxt.getParamValue("authfilter_is_enable", MyCons.YesOrNo.YES.getValue().toString());
+		excludeKeysArray = StrUtil.split(myCxt.getParamValue("authfilter_exclude_keys"), ",");
 	}
 
 	@Override
