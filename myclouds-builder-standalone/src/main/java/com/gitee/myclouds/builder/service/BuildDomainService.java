@@ -21,9 +21,9 @@ import com.gitee.myclouds.builder.util.DBMetaInfoUtil;
 import com.gitee.myclouds.builder.vo.ColumnVO;
 import com.gitee.myclouds.builder.vo.IndexVO;
 import com.gitee.myclouds.builder.vo.TableVO;
-import com.gitee.myclouds.toolbox.util.MyUtil;
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.Dtos;
+import com.gitee.myclouds.common.util.MyUtil;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
 
 import cn.hutool.core.date.DateUtil;
 

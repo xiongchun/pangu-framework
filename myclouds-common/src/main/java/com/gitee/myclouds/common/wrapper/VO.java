@@ -1,12 +1,12 @@
-package com.gitee.myclouds.toolbox.wrap;
+package com.gitee.myclouds.common.wrapper;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.toolbox.util.MyUtil;
-import com.gitee.myclouds.toolbox.wrap.impl.HashDto;
+import com.gitee.myclouds.common.util.MyUtil;
+import com.gitee.myclouds.common.wrapper.impl.HashDto;
 
 /**
  * <b>值对象</b>

@@ -1,4 +1,4 @@
-package com.gitee.myclouds.toolbox.wrap.impl;
+package com.gitee.myclouds.common.wrapper.impl;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.toolbox.session.data.CurUser;
-import com.gitee.myclouds.toolbox.util.MyCons;
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.util.TypeConvertUtil;
+import com.gitee.myclouds.common.util.MyCons;
+import com.gitee.myclouds.common.vo.MyUserVO;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.util.TypeConvertUtil;
 
 /**
  * <b>数据传输对象实现</b>
@@ -228,8 +228,8 @@ public class HashDto extends HashMap<String, Object> implements Dto {
 	 * @return
 	 */
 	@Override
-	public CurUser getCurUser() {
+	public MyUserVO getCurUser() {
 		return get(MyCons.CUR_USER) == null ? null
-				: JSON.parseObject(String.valueOf(get(MyCons.CUR_USER)), CurUser.class);
+				: JSON.parseObject(String.valueOf(get(MyCons.CUR_USER)), MyUserVO.class);
 	}
 }

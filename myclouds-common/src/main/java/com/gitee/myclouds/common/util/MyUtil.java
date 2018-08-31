@@ -1,7 +1,9 @@
-package com.gitee.myclouds.toolbox.util;
+package com.gitee.myclouds.common.util;
 
 import java.util.Collection;
 import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.BeanUtilsBean;
@@ -10,7 +12,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import com.gitee.myclouds.toolbox.wrap.Dto;
+import com.gitee.myclouds.common.wrapper.Dto;
 
 import cn.hutool.crypto.SecureUtil;
 
@@ -126,6 +128,32 @@ public class MyUtil {
 	 */
 	public static String trimAll(String text) {
 		return StringUtils.replace(text, " ", "");
+	}
+	
+	/**
+	 * 获取登录用户IP地址
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static String getClientIpAddr(HttpServletRequest request) {
+		String ip = request.getHeader("X-real-ip");
+		if (MyUtil.isEmpty(ip)) {
+			ip = request.getHeader("X-Forward-For");
+		}
+		if (MyUtil.isEmpty(ip) || StringUtils.equalsIgnoreCase("unknown", ip)) {
+			ip = request.getHeader("Proxy-Client-IP");
+		}
+		if (MyUtil.isEmpty(ip) || StringUtils.equalsIgnoreCase("unknown", ip)) {
+			ip = request.getHeader("WL-Proxy-Client-IP");
+		}
+		if (MyUtil.isEmpty(ip)) {
+			ip = request.getRemoteAddr();
+		}
+		if (StringUtils.indexOf(ip, "0:0") != -1) {
+			ip = "127.0.0.1";
+		}
+		return ip;
 	}
 	
 	public static void main(String[] args) {

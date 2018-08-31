@@ -11,9 +11,9 @@ import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.admin.domain.myenum.MyEnumEntity;
 import com.gitee.myclouds.admin.domain.myenum.MyEnumMapper;
 import com.gitee.myclouds.admin.modules.cache.CacheCfgService;
-import com.gitee.myclouds.toolbox.util.MyUtil;
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.Dtos;
+import com.gitee.myclouds.common.util.MyUtil;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
 
 /**
  * 枚举类型参数服务

@@ -12,8 +12,8 @@ import com.gitee.myclouds.admin.domain.mymodule.MyModuleEntity;
 import com.gitee.myclouds.admin.domain.mymodule.MyModuleMapper;
 import com.gitee.myclouds.admin.modules.cache.CacheMiscService;
 import com.gitee.myclouds.common.vo.ZtreeNodeVO;
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.Dtos;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
 
 /**
  *  资源模块服务

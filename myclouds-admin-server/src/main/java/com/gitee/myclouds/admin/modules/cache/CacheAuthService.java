@@ -11,11 +11,12 @@ import org.springframework.stereotype.Service;
 
 import com.gitee.myclouds.admin.domain.myrole.MyRoleEntity;
 import com.gitee.myclouds.admin.domain.myrole.MyRoleMapper;
-import com.gitee.myclouds.toolbox.util.MyCons;
-import com.gitee.myclouds.toolbox.util.MyUtil;
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.Dtos;
-import com.xiaoleilu.hutool.date.DateUtil;
+import com.gitee.myclouds.common.util.MyCons;
+import com.gitee.myclouds.common.util.MyUtil;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
+
+import cn.hutool.core.date.DateUtil;
 
 /**
  * 授权信息缓存服务

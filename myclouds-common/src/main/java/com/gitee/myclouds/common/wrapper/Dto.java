@@ -1,4 +1,4 @@
-package com.gitee.myclouds.toolbox.wrap;
+package com.gitee.myclouds.common.wrapper;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-import com.gitee.myclouds.toolbox.session.data.CurUser;
+import com.gitee.myclouds.common.vo.MyUserVO;
 
 /**
  * <b>数据传输对象接口</b>
@@ -135,5 +135,5 @@ public interface Dto extends Map<String, Object> {
 	 * 
 	 * @return
 	 */
-	CurUser getCurUser();
+	MyUserVO getCurUser();
 }

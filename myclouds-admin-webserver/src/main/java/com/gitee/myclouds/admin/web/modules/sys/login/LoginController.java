@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.gitee.myclouds.toolbox.session.data.CurUser;
-import com.gitee.myclouds.toolbox.util.MyCons;
-import com.gitee.myclouds.toolbox.util.MyUtil;
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.Dtos;
+import com.gitee.myclouds.common.util.MyCons;
+import com.gitee.myclouds.common.util.MyUtil;
+import com.gitee.myclouds.common.vo.MyUserVO;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
 
 /**
  * 登录页
@@ -50,7 +50,7 @@ public class LoginController {
 		Dto inDto = Dtos.newDto(request);
 		Dto outDto = Dtos.newDto(loginService.validate(inDto));
 		if (StringUtils.equals(MyCons.YesOrNo.YES.getValue().toString(), outDto.getString("code"))) {
-			CurUser curUser = new CurUser();
+			MyUserVO curUser = new MyUserVO();
 			MyUtil.copyProperties(outDto.get("curUser"), curUser);
 			curUser.setSessionId(httpSession.getId());
 			curUser.setRoleIds((List<String>)outDto.get("roleIds"));

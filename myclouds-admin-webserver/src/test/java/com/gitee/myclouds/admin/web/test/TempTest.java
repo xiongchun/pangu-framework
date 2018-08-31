@@ -1,7 +1,7 @@
 package com.gitee.myclouds.admin.web.test;
 
-import com.gitee.myclouds.toolbox.util.MyCons;
-import com.gitee.myclouds.toolbox.util.MyUtil;
+import com.gitee.myclouds.common.util.MyCons;
+import com.gitee.myclouds.common.util.MyUtil;
 
 public class TempTest {
 

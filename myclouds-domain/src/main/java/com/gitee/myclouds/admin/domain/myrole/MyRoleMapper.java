@@ -1,11 +1,11 @@
 package com.gitee.myclouds.admin.domain.myrole;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Mapper;
 
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.admin.domain.myrole.MyRoleEntity;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import com.gitee.myclouds.common.wrapper.Dto;
 
 /**
  * <b>角色表[my_role]数据访问接口</b>

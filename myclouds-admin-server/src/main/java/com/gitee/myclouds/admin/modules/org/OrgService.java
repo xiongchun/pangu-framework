@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.admin.domain.myorg.MyOrgEntity;
 import com.gitee.myclouds.admin.domain.myorg.MyOrgMapper;
+import com.gitee.myclouds.common.vo.MyUserVO;
 import com.gitee.myclouds.common.vo.ZtreeNodeVO;
-import com.gitee.myclouds.toolbox.session.data.CurUser;
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.Dtos;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
 
 /**
  * 组织机构 服务
@@ -65,7 +65,7 @@ public class OrgService {
 		Dto outDto = null;
 		// 拷贝参数对象中的属性到实体对象中
 		MyOrgEntity myOrgEntity = new MyOrgEntity().copyFrom(inDto);
-		CurUser curUser = inDto.getCurUser();
+		MyUserVO curUser = inDto.getCurUser();
 		myOrgEntity.setCreate_by(curUser.getName());
 		myOrgEntity.setCreate_by_id(curUser.getId());
 		myOrgMapper.insert(myOrgEntity);

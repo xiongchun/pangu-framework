@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gitee.myclouds.common.MyCacheCxt;
+import com.gitee.myclouds.common.MyCxt;
+import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.vo.ModuleVO;
-import com.gitee.myclouds.toolbox.util.MyUtil;
 import com.google.common.collect.Lists;
 
 /**
@@ -23,7 +23,7 @@ import com.google.common.collect.Lists;
 public class ThCxt {
 	
 	@Autowired
-	private MyCacheCxt myCacheCxt;
+	private MyCxt myCacheCxt;
 	
 	/**
 	 * 获取键值参数值

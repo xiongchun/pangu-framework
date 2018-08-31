@@ -10,11 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gitee.myclouds.common.vo.MyUserVO;
+import com.gitee.myclouds.common.WebCxt;
 import com.gitee.myclouds.common.vo.MenuVO;
-import com.gitee.myclouds.toolbox.session.data.CurUser;
-import com.gitee.myclouds.toolbox.util.WebCxt;
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.Dtos;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
 
 /**
  * 首页
@@ -38,7 +38,7 @@ public class IndexController {
 	@RequestMapping("/")
     public String index(Model model, HttpSession httpSession, HttpServletRequest request) {
 		//model.addAttribute("", "");
-		CurUser curUser = WebCxt.getCurUser(httpSession);
+		MyUserVO curUser = WebCxt.getMyUserVO(httpSession);
 		Dto inDto = Dtos.newDto(request).put2("user_id", curUser.getId());
 		inDto.put("ctxPath", httpSession.getServletContext().getContextPath());
 		List<MenuVO> menuVOs = indexService.listMenus(inDto);

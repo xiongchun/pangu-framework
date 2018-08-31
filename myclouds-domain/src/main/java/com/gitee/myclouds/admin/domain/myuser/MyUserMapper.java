@@ -4,8 +4,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
 
-import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.admin.domain.myuser.MyUserEntity;
+import com.gitee.myclouds.common.wrapper.Dto;
 
 /**
  * <b>后台用户基本信息表[my_user]数据访问接口</b>

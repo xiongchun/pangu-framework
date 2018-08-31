@@ -1,4 +1,4 @@
-package com.gitee.myclouds.toolbox.util;
+package com.gitee.myclouds.common.util;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.josql.expressions.SelectItemExpression;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.Dtos;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 

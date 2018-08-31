@@ -1,4 +1,4 @@
-package com.gitee.myclouds.toolbox.wrap;
+package com.gitee.myclouds.common.wrapper;
 
 /**
  * <b>实体持久化对象:一种特殊的值对象</b>

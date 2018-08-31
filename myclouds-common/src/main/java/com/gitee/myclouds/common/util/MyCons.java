@@ -1,4 +1,4 @@
-package com.gitee.myclouds.toolbox.util;
+package com.gitee.myclouds.common.util;
 
 /**
  * 平台常量表 <br>

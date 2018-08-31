@@ -1,6 +1,6 @@
 package com.gitee.myclouds.admin.domain.mymodule;
 
-import com.gitee.myclouds.toolbox.wrap.Entity;
+import com.gitee.myclouds.common.wrapper.Entity;
 
 /**
  * <b>资源模块事件注册表[my_module]数据实体对象</b>

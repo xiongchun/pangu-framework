@@ -1,4 +1,4 @@
-package com.gitee.myclouds.toolbox.util;
+package com.gitee.myclouds.common.util;
 
 import cn.hutool.core.util.StrUtil;
 

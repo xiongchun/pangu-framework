@@ -1,6 +1,6 @@
 package com.gitee.myclouds.builder.vo;
 
-import com.gitee.myclouds.toolbox.wrap.VO;
+import com.gitee.myclouds.common.wrapper.VO;
 
 /**
  * <b>数据表字段值对象</b>

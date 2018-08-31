@@ -1,7 +1,8 @@
 package com.gitee.myclouds.admin.domain.myuser;
 
-import com.gitee.myclouds.toolbox.wrap.Entity;
 import com.alibaba.fastjson.annotation.JSONField;
+import com.gitee.myclouds.common.wrapper.Entity;
+
 import java.util.Date;
 
 /**

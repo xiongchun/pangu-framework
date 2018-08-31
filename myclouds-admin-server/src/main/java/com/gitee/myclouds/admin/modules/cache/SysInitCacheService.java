@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
-import com.gitee.myclouds.toolbox.util.MyCons;
-import com.gitee.myclouds.toolbox.util.MyUtil;
+import com.gitee.myclouds.common.util.MyCons;
+import com.gitee.myclouds.common.util.MyUtil;
 
 /**
  * 系统启动时的缓存服务

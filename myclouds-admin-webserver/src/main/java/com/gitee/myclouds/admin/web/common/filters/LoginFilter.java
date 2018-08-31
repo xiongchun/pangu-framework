@@ -16,9 +16,9 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.gitee.myclouds.toolbox.session.data.CurUser;
-import com.gitee.myclouds.toolbox.util.FilterUtil;
-import com.gitee.myclouds.toolbox.util.WebCxt;
+import com.gitee.myclouds.common.WebCxt;
+import com.gitee.myclouds.common.util.FilterUtil;
+import com.gitee.myclouds.common.vo.MyUserVO;
 
 /**
  * Admin登录权限过滤器
@@ -77,7 +77,7 @@ public class LoginFilter implements Filter {
 		boolean isPass = true;
 		String uri = httpServletRequest.getRequestURI();
 		HttpSession httpSession = httpServletRequest.getSession();
-		CurUser curUser = WebCxt.getCurUser(httpSession);
+		MyUserVO curUser = WebCxt.getMyUserVO(httpSession);
 		if (curUser == null) {
 			// 对于被拦截后不进行页面转换的时候，可以使用下面的设置。如：API接口的拦截器等。否则会导致页面跳转时候报如下错。
 			// cannot call sendredirect() after the response has been committed

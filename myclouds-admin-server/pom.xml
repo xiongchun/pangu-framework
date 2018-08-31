@@ -1,14 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.gitee.myclouds</groupId>
 	<artifactId>myclouds-admin-server</artifactId>
-	<version>1.0</version>
 	<packaging>jar</packaging>
-
 	<name>myclouds-admin-server</name>
-	<description>MyClouds管理系统后台服务</description>
+
+	<parent>
+		<groupId>com.gitee.myclouds</groupId>
+		<artifactId>myclouds</artifactId>
+		<version>1.0</version>
+	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,115 +17,52 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.8.RELEASE</version>
-		<relativePath />
-	</parent>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Dalston.SR4</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<dependencies>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-
-		<!-- MyClouds工具类库 -->
-		<dependency>
-			<groupId>com.gitee.myclouds</groupId>
-			<artifactId>myclouds-toolbox</artifactId>
-			<version>1.0</version>
-		</dependency>
-
-		<!-- myclouds-domain-mapper -->
-		<dependency>
-			<groupId>com.gitee.myclouds</groupId>
-			<artifactId>myclouds-domain</artifactId>
-			<version>1.0</version>
-		</dependency>
-
-		<!-- myclouds-common -->
-		<dependency>
-			<groupId>com.gitee.myclouds</groupId>
-			<artifactId>myclouds-common</artifactId>
-			<version>1.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
 		</dependency>
-
-		<!-- 监控 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-
-		<!-- Web应用依赖 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<!-- mybatis依赖 -->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.3.2</version>
 		</dependency>
-
-		<!-- mysql JDBC 驱动 -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-
-		<!-- druid 连接池 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
 			<version>1.1.9</version>
 		</dependency>
-		 
-
+		<dependency>
+			<groupId>com.gitee.myclouds</groupId>
+			<artifactId>myclouds-domain</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
-			   <groupId>org.springframework.boot</groupId>
-			   <artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-			   <groupId>org.apache.maven.plugins</groupId>
-			   <artifactId>maven-compiler-plugin</artifactId>
-			   <configuration>
-			      <source>1.8</source>
-			      <target>1.8</target>
-			   </configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
 			</plugin>
 		</plugins>
- 		<resources>
+		<resources>
 			<resource>
 				<directory>src/main/java</directory>
 				<includes>
@@ -135,15 +73,7 @@
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
-		</resources> 
+		</resources>
 	</build>
-
-	<repositories>
-		<repository>
-			<id>aliyun</id>
-			<name>aliyun repo</name>
-			<url>https://maven.aliyun.com/nexus/content/groups/public/</url>
-		</repository>
-	</repositories>
 
 </project>

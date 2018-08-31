@@ -13,11 +13,12 @@ import com.gitee.myclouds.admin.domain.myenum.MyEnumEntity;
 import com.gitee.myclouds.admin.domain.myenum.MyEnumMapper;
 import com.gitee.myclouds.admin.domain.myparam.MyParamEntity;
 import com.gitee.myclouds.admin.domain.myparam.MyParamMapper;
-import com.gitee.myclouds.toolbox.util.MyCons;
-import com.gitee.myclouds.toolbox.util.MyUtil;
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.Dtos;
-import com.xiaoleilu.hutool.date.DateUtil;
+import com.gitee.myclouds.common.util.MyCons;
+import com.gitee.myclouds.common.util.MyUtil;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
+
+import cn.hutool.core.date.DateUtil;
 
 /**
  * 配置项缓存服务

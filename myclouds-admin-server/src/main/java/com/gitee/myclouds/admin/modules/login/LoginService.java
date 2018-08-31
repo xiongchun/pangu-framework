@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.gitee.myclouds.admin.domain.myuser.MyUserEntity;
 import com.gitee.myclouds.admin.domain.myuser.MyUserMapper;
-import com.gitee.myclouds.toolbox.session.data.CurUser;
-import com.gitee.myclouds.toolbox.util.MyCons;
-import com.gitee.myclouds.toolbox.util.MyUtil;
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.Dtos;
+import com.gitee.myclouds.common.util.MyCons;
+import com.gitee.myclouds.common.util.MyUtil;
+import com.gitee.myclouds.common.vo.MyUserVO;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
 
 /**
  * 登录服务
@@ -46,7 +46,7 @@ public class LoginService {
 			}
 		}
 		if (MyCons.YesOrNo.YES.getValue() == outDto.getInteger("code").intValue()) {
-			CurUser curUser = new CurUser();
+			MyUserVO curUser = new MyUserVO();
 			curUser.setId(myUserEntity.getId());
 			curUser.setAccount(myUserEntity.getAccount());
 			curUser.setName(myUserEntity.getName());

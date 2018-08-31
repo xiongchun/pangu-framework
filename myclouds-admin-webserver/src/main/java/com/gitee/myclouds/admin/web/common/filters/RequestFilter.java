@@ -15,7 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.gitee.myclouds.toolbox.util.WebCxt;
+import com.gitee.myclouds.common.util.MyUtil;
 
 /**
  * 外层通用请求过滤器
@@ -56,7 +56,7 @@ public class RequestFilter implements Filter{
 		String uri = httpServletRequest.getRequestURI();
 		String sessionId = httpServletRequest.getRequestedSessionId();
 		sessionId = sessionId == null ? StringUtils.EMPTY : sessionId;
-		String clirntIp = WebCxt.getClientIpAddr(httpServletRequest);
+		String clirntIp = MyUtil.getClientIpAddr(httpServletRequest);
 		logger.info("收到请求 > IP:{} | SESSION:{} | URI:{}", clirntIp, sessionId, uri);
 	}
 }

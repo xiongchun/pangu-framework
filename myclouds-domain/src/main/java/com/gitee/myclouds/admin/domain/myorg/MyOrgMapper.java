@@ -4,8 +4,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
 
-import com.gitee.myclouds.toolbox.wrap.Dto;
 import com.gitee.myclouds.admin.domain.myorg.MyOrgEntity;
+import com.gitee.myclouds.common.wrapper.Dto;
 
 /**
  * <b>组织机构表[my_org]数据访问接口</b>

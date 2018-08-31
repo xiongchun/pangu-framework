@@ -13,11 +13,11 @@ import com.gitee.myclouds.admin.domain.myuser.MyUserEntity;
 import com.gitee.myclouds.admin.domain.myuser.MyUserMapper;
 import com.gitee.myclouds.admin.domain.myuserrole.MyUserRoleEntity;
 import com.gitee.myclouds.admin.domain.myuserrole.MyUserRoleMapper;
-import com.gitee.myclouds.toolbox.session.data.CurUser;
-import com.gitee.myclouds.toolbox.util.MyCons;
-import com.gitee.myclouds.toolbox.util.MyUtil;
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.toolbox.wrap.Dtos;
+import com.gitee.myclouds.common.util.MyCons;
+import com.gitee.myclouds.common.util.MyUtil;
+import com.gitee.myclouds.common.vo.MyUserVO;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
 import com.google.common.collect.Lists;
 
 /**
@@ -95,7 +95,7 @@ public class UserService {
 		MyUserEntity myUserEntity = new MyUserEntity().copyFrom(inDto);
 		MyUserEntity existUser = myUserMapper.selectByUkey1(myUserEntity.getAccount());
 		if (existUser == null) {
-			CurUser curUser = inDto.getCurUser();
+			MyUserVO curUser = inDto.getCurUser();
 			myUserEntity.setCreate_by(curUser.getName());
 			myUserEntity.setCreate_by_id(curUser.getId());
 			myUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, myUserEntity.getPassword()));
@@ -151,7 +151,7 @@ public class UserService {
 		sqlSession.delete("sql.user.deleteMyUserRole", userId);
 		String roleIds = inDto.getString("roleIds");
 		if (MyUtil.isNotEmpty(roleIds)) {
-			CurUser curUser = inDto.getCurUser();
+			MyUserVO curUser = inDto.getCurUser();
 			String[] arrRoleIds = StringUtils.split(roleIds, ",");
 			for (String roleId : arrRoleIds) {
 				MyUserRoleEntity myUserRoleEntity = new MyUserRoleEntity();

@@ -2,7 +2,7 @@ package com.gitee.myclouds.builder.vo;
 
 import java.util.ArrayList;
 
-import com.gitee.myclouds.toolbox.wrap.VO;
+import com.gitee.myclouds.common.wrapper.VO;
 import com.google.common.collect.Lists;
 
 /**

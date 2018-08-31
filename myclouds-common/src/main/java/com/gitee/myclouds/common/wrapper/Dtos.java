@@ -1,4 +1,4 @@
-package com.gitee.myclouds.toolbox.wrap;
+package com.gitee.myclouds.common.wrapper;
 
 import java.util.Map;
 
@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.toolbox.session.data.CurUser;
-import com.gitee.myclouds.toolbox.util.MyCons;
-import com.gitee.myclouds.toolbox.util.WebCxt;
-import com.gitee.myclouds.toolbox.wrap.impl.HashDto;
+import com.gitee.myclouds.common.WebCxt;
+import com.gitee.myclouds.common.util.MyCons;
+import com.gitee.myclouds.common.vo.MyUserVO;
+import com.gitee.myclouds.common.wrapper.impl.HashDto;
 
 
 /**
@@ -72,7 +72,7 @@ public class Dtos {
 	public static Dto newDto(HttpServletRequest request, HttpSession httpSession) {
 		Dto outDto = WebCxt.getParamAsDto(request);
 		if (httpSession != null) {
-			CurUser curUser = WebCxt.getCurUser(httpSession);
+			MyUserVO curUser = WebCxt.getMyUserVO(httpSession);
 			if (curUser != null) {
 				outDto.put(MyCons.CUR_USER, JSON.toJSONString(curUser));
 			}

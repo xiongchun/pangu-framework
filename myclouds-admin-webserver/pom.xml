@@ -1,91 +1,43 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.gitee.myclouds</groupId>
 	<artifactId>myclouds-admin-webserver</artifactId>
-	<version>1.0</version>
-
 	<name>myclouds-admin-webserver</name>
-	<description>MyClouds管理系统前端</description>
 
+	<parent>
+		<groupId>com.gitee.myclouds</groupId>
+		<artifactId>myclouds</artifactId>
+		<version>1.0</version>
+	</parent>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
-
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.8.RELEASE</version>
-		<relativePath />
-	</parent>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Dalston.SR4</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
+	
 	<dependencies>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-
-		<!-- 已经间接依赖了starter-web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		
-		<!-- spring-session-data-redis -->
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-data-redis</artifactId>
 		</dependency>
-
-		<!-- 一个转义库，解决thymeleaf依赖的版本过低导致报错。 -->
 		<dependency>
 			<groupId>org.unbescape</groupId>
 			<artifactId>unbescape</artifactId>
 			<version>1.1.5.RELEASE</version>
 		</dependency>
-
-		<!-- MyClouds工具类库 -->
-		<dependency>
-			<groupId>com.gitee.myclouds</groupId>
-			<artifactId>myclouds-toolbox</artifactId>
-			<version>1.0</version>
-		</dependency>
-		
-		<!-- myclouds-common -->
-		<dependency>
-			<groupId>com.gitee.myclouds</groupId>
-			<artifactId>myclouds-common</artifactId>
-			<version>1.0</version>
-		</dependency>
-		
-		<!-- consul服务发现 -->
  		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
 		</dependency>
-		
-        <!-- Feign客户端 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-feign</artifactId>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -98,18 +50,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		
 	</build>
-
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 </project>

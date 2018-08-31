@@ -1,11 +1,11 @@
 package com.gitee.myclouds.admin.domain.mymodule;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Mapper;
 
-import com.gitee.myclouds.toolbox.wrap.Dto;
-import com.gitee.myclouds.admin.domain.mymodule.MyModuleEntity;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import com.gitee.myclouds.common.wrapper.Dto;
 
 /**
  * <b>资源模块事件注册表[my_module]数据访问接口</b>

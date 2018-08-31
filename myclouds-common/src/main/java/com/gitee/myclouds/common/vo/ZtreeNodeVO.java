@@ -1,6 +1,6 @@
 package com.gitee.myclouds.common.vo;
 
-import com.gitee.myclouds.toolbox.wrap.VO;
+import com.gitee.myclouds.common.wrapper.VO;
 
 import lombok.Getter;
 import lombok.Setter;

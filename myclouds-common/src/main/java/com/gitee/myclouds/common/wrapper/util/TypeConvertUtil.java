@@ -1,4 +1,4 @@
-package com.gitee.myclouds.toolbox.wrap.util;
+package com.gitee.myclouds.common.wrapper.util;
 
 import java.math.BigDecimal;
 import java.sql.Date;
