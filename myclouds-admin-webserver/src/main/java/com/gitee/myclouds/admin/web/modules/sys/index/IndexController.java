@@ -7,12 +7,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.gitee.myclouds.common.vo.MyUserVO;
 import com.gitee.myclouds.common.WebCxt;
 import com.gitee.myclouds.common.vo.MenuVO;
+import com.gitee.myclouds.common.vo.MyUserVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
@@ -36,8 +35,7 @@ public class IndexController {
 	 * @return
 	 */
 	@RequestMapping("/")
-    public String index(Model model, HttpSession httpSession, HttpServletRequest request) {
-		//model.addAttribute("", "");
+    public String index(HttpSession httpSession, HttpServletRequest request) {
 		MyUserVO curUser = WebCxt.getMyUserVO(httpSession);
 		Dto inDto = Dtos.newDto(request).put2("user_id", curUser.getId());
 		inDto.put("ctxPath", httpSession.getServletContext().getContextPath());

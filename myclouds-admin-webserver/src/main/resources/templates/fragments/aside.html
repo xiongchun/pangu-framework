@@ -29,10 +29,10 @@
 
 				<li th:if="${not #lists.isEmpty(level2Menus)}">
 				
-					<a th:if="${menu.id == @thCxt.parentId(param.mid)}" class="accordion-toggle menu-open" href="#">
+					<a th:if="${menu.id == @thCxt.parentId(param.mid,session._user.id)}" class="accordion-toggle menu-open" href="#">
 						<span th:attr="class=${menu.icon}"></span> <span class="sidebar-title" th:text="${menu.name}"></span> <span class="caret"></span>
 					</a>
-					<a th:if="${menu.id != @thCxt.parentId(param.mid)}" class="accordion-toggle" href="#">
+					<a th:if="${menu.id != @thCxt.parentId(param.mid,session._user.id)}" class="accordion-toggle" href="#">
 						<span th:attr="class=${menu.icon}"></span> <span class="sidebar-title" th:text="${menu.name}"></span> <span class="caret"></span>
 					</a>
 					

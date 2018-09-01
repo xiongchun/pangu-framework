@@ -4,12 +4,16 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.gitee.myclouds.common.MyCxt;
+import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.vo.ModuleVO;
 import com.google.common.collect.Lists;
+
+import cn.hutool.core.util.StrUtil;
 
 /**
  * Thymeleaf模版引擎上下文
@@ -24,6 +28,8 @@ public class ThCxt {
 	
 	@Autowired
 	private MyCxt myCxt;
+	@Autowired
+	private StringRedisTemplate stringRedisTemplate;
 	
 	/**
 	 * 获取键值参数值
@@ -64,12 +70,17 @@ public class ThCxt {
 	 * 
 	 * @return
 	 */
-	public Integer parentId(String moduleId){
-		moduleId = MyUtil.isEmpty(moduleId) ? "1" : moduleId;
+	public Integer parentId(String moduleId, String userId){
+		//刚登陆进来，url上面没有mid参数
+		moduleId = MyUtil.isEmpty(moduleId) ? "-1" : moduleId;
 		Integer parentId = null;
 		ModuleVO moduleVO = myCxt.getModuleVOFromCacheById(moduleId);
 		if (moduleVO != null) {
 			parentId = moduleVO.getParent_id();
+		}
+		//如果没有找到parentID，则展开缺省一级菜单
+		if (parentId == null) {
+			parentId = Integer.valueOf(String.valueOf(stringRedisTemplate.opsForHash().get(MyCons.CacheKeyOrPrefix.DefaultOpenMenuId.getValue(), userId)));
 		}
 		return parentId;
 	}
