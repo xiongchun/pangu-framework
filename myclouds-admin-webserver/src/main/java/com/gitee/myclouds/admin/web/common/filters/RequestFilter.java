@@ -12,10 +12,10 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.gitee.myclouds.common.util.MyUtil;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 外层通用请求过滤器
@@ -24,10 +24,9 @@ import com.gitee.myclouds.common.util.MyUtil;
  *
  */
 @WebFilter(filterName = "RequestFilter", urlPatterns = { "/*" })
+@Slf4j
 public class RequestFilter implements Filter{
 	
-	private final Logger logger = LoggerFactory.getLogger(getClass());
-
 	@Override
 	public void destroy() {
 		
@@ -57,6 +56,6 @@ public class RequestFilter implements Filter{
 		String sessionId = httpServletRequest.getRequestedSessionId();
 		sessionId = sessionId == null ? StringUtils.EMPTY : sessionId;
 		String clirntIp = MyUtil.getClientIpAddr(httpServletRequest);
-		logger.info("收到请求 > IP:{} | SESSION:{} | URI:{}", clirntIp, sessionId, uri);
+		log.info("收到请求 > IP:{} | SESSION:{} | URI:{}", clirntIp, sessionId, uri);
 	}
 }

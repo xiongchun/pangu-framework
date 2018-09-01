@@ -3,15 +3,14 @@ package com.gitee.myclouds.gateway.filter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 演示Filter基本用法
@@ -23,10 +22,9 @@ import com.netflix.zuul.context.RequestContext;
  * @author xiongchun
  *
  */
+@Slf4j
 public class MyDemoFilter extends ZuulFilter{
 	
-	private static final Logger log = LoggerFactory.getLogger(MyDemoFilter.class);
-
 	/**
 	 * Filter需要执行的动作
 	 */

@@ -3,8 +3,6 @@ package com.gitee.myclouds.admin.modules.cache;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -19,6 +17,7 @@ import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
 import cn.hutool.core.date.DateUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 配置项缓存服务
@@ -27,9 +26,8 @@ import cn.hutool.core.date.DateUtil;
  *
  */
 @Service
+@Slf4j
 public class CacheCfgService {
-
-	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private MyParamMapper myParamMapper;

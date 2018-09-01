@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
@@ -27,6 +25,7 @@ import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.vo.MyUserVO;
 
 import cn.hutool.core.util.StrUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Admin授权权限过滤器
@@ -38,9 +37,8 @@ import cn.hutool.core.util.StrUtil;
  *
  */
 @WebFilter(filterName = "AuthFilter", urlPatterns = { "/*" })
+@Slf4j
 public class AuthFilter implements Filter {
-
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
@@ -98,7 +96,7 @@ public class AuthFilter implements Filter {
 			filterChain.doFilter(servletRequest, servletResponse);
 		} else {
 			String msg = StrUtil.format("安全组件鉴权失败：访问权限受限，资源[{}]未授权(或未找到)。", uri);
-			logger.error(msg);
+			log.error(msg);
 			httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, msg);
 		}
 

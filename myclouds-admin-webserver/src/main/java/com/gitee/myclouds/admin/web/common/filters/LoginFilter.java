@@ -13,12 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.gitee.myclouds.common.WebCxt;
 import com.gitee.myclouds.common.util.FilterUtil;
 import com.gitee.myclouds.common.vo.MyUserVO;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Admin登录权限过滤器
@@ -27,9 +26,8 @@ import com.gitee.myclouds.common.vo.MyUserVO;
  *
  */
 @WebFilter(filterName = "LoginFilter", urlPatterns = { "/*" })
+@Slf4j
 public class LoginFilter implements Filter {
-
-	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	// 排除列表
 	private final String[] excludeKeysArray = { "/login", "/css/", "/img/", "/js/", "/theme/" };
@@ -83,7 +81,7 @@ public class LoginFilter implements Filter {
 			// cannot call sendredirect() after the response has been committed
 			// httpServletResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "请求被安全审计组件拦截
 			// | 事件:未登录或登录已超时");
-			logger.info("拦截请求(未登录)-> 请求URI：{} 所属会话：{}", uri, httpServletRequest.getRequestedSessionId());
+			log.info("拦截请求(未登录)-> 请求URI：{} 所属会话：{}", uri, httpServletRequest.getRequestedSessionId());
 			isPass = false;
 		}
 		return isPass;

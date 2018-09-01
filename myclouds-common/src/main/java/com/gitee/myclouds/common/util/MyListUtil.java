@@ -8,13 +8,13 @@ import org.josql.QueryExecutionException;
 import org.josql.QueryParseException;
 import org.josql.QueryResults;
 import org.josql.expressions.SelectItemExpression;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * <b>集合工具类</b>
@@ -22,12 +22,11 @@ import com.google.common.collect.Lists;
  * @author xiongchun
  * @date 2010-10-06
  */
+@Slf4j
 public class MyListUtil {
 	
 	public static final String JOSQL_LIST_KEY = ":MyList";
 	
-	private static Logger logger = LoggerFactory.getLogger(MyListUtil.class);
-
 	/**
 	 * 集合查询 使用DISTINCT去除值相等的记录，则必须指明字段。DISTINCT * 只能去除对象相等的记录，不能去除对象里值相等的那种记录。
 	 * 
@@ -151,7 +150,7 @@ public class MyListUtil {
 		if (MyUtil.isNotEmpty(list)) {
 			outObj = list.get(0);
 			if (list.size() > 1) {
-				logger.warn("MyListUtil.selectOne查询返回多条，缺省取出了第一条返回。");
+				log.warn("MyListUtil.selectOne查询返回多条，缺省取出了第一条返回。");
 			}
 		}
 		return outObj;

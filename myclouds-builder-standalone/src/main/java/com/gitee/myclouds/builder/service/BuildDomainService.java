@@ -9,8 +9,6 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,6 +24,7 @@ import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
 import cn.hutool.core.date.DateUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Domain代码生成服务
@@ -34,9 +33,9 @@ import cn.hutool.core.date.DateUtil;
  * @date 2016-01-01
  */
 @Service
+@Slf4j
 public class BuildDomainService {
 
-	private static Logger log = LoggerFactory.getLogger(BuildDomainService.class);
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	@Value("${my.builder.author}")

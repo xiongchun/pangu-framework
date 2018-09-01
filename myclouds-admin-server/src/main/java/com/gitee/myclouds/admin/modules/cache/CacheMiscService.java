@@ -3,8 +3,6 @@ package com.gitee.myclouds.admin.modules.cache;
 import java.util.List;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -18,6 +16,7 @@ import com.gitee.myclouds.common.wrapper.Dtos;
 import com.google.common.collect.Maps;
 
 import cn.hutool.core.date.DateUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 通用数据缓存服务
@@ -26,9 +25,8 @@ import cn.hutool.core.date.DateUtil;
  *
  */
 @Service
+@Slf4j
 public class CacheMiscService {
-
-	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private MyModuleMapper myModuleMapper;

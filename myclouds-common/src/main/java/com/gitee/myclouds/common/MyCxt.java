@@ -3,8 +3,6 @@ package com.gitee.myclouds.common;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
@@ -18,6 +16,8 @@ import com.gitee.myclouds.common.vo.ParamVO;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.google.common.collect.Lists;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 平台上下文服务
  * 
@@ -27,10 +27,9 @@ import com.google.common.collect.Lists;
  * @author xiongchun
  *
  */
+@Slf4j
 public class MyCxt {
 	
-	private static Logger log = LoggerFactory.getLogger(MyCxt.class);
-
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
 	

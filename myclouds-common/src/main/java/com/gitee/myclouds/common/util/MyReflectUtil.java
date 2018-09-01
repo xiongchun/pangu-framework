@@ -15,13 +15,12 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 反射器
@@ -30,10 +29,9 @@ import cn.hutool.core.util.StrUtil;
  * @date 2009-10-06
  */
 @SuppressWarnings("rawtypes")
+@Slf4j
 public class MyReflectUtil {
-	
-	private static Logger logger = LoggerFactory.getLogger(MyReflectUtil.class);
-	
+		
 	/**
 	 * 通过类名反射得到类元. 使用的类名应该和<code>java.lang.Class#getName()</code>一致
 	 * 
@@ -142,7 +140,7 @@ public class MyReflectUtil {
 		try {
 			result = field.get(obj);
 		} catch (IllegalAccessException e) {
-			logger.error("不可能抛出的异常{}" +  e.getMessage());
+			log.error("不可能抛出的异常{}" +  e.getMessage());
 		}
 		return result;
 	}
@@ -158,7 +156,7 @@ public class MyReflectUtil {
 		try {
 			field.set(obj, value);
 		} catch (IllegalAccessException e) {
-			logger.error("不可能抛出的异常:{}" + e.getMessage());
+			log.error("不可能抛出的异常:{}" + e.getMessage());
 		}
 	}
 
@@ -246,17 +244,17 @@ public class MyReflectUtil {
 	public static Class getSuperClassGenricType(final Class clazz, final int index) {
 		Type genType = clazz.getGenericSuperclass();
 		if (!(genType instanceof ParameterizedType)) {
-			logger.warn(clazz.getSimpleName() + "'s superclass not ParameterizedType");
+			log.warn(clazz.getSimpleName() + "'s superclass not ParameterizedType");
 			return Object.class;
 		}
 		Type[] params = ((ParameterizedType) genType).getActualTypeArguments();
 		if (index >= params.length || index < 0) {
-			logger.warn("Index: " + index + ", Size of " + clazz.getSimpleName() + "'s Parameterized Type: "
+			log.warn("Index: " + index + ", Size of " + clazz.getSimpleName() + "'s Parameterized Type: "
 					+ params.length);
 			return Object.class;
 		}
 		if (!(params[index] instanceof Class)) {
-			logger.warn(clazz.getSimpleName() + " not set the actual class on superclass generic parameter");
+			log.warn(clazz.getSimpleName() + " not set the actual class on superclass generic parameter");
 			return Object.class;
 		}
 		return (Class) params[index];

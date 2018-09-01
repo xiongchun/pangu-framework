@@ -3,8 +3,6 @@ package com.gitee.myclouds.admin.modules.cache;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -17,6 +15,7 @@ import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
 import cn.hutool.core.date.DateUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 授权信息缓存服务
@@ -25,10 +24,9 @@ import cn.hutool.core.date.DateUtil;
  *
  */
 @Service
+@Slf4j
 public class CacheAuthService {
-
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
-
+	
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
 	@Autowired
@@ -53,7 +51,7 @@ public class CacheAuthService {
 		if (MyUtil.isNotEmpty(authList)) {
 			stringRedisTemplate.opsForHash().put(MyCons.CacheKeyOrPrefix.LastCacheTime.getValue(), MyCons.CacheKeyOrPrefix.RoleAuth.getValue(), DateUtil.now());
 		}
-		logger.info("缓存/刷新角色授权信息成功。roleId：{}。", roleId);
+		log.info("缓存/刷新角色授权信息成功。roleId：{}。", roleId);
 	}
 	
 	/**
