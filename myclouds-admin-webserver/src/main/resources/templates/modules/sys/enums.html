@@ -77,7 +77,7 @@
 					<div class="col-md-12">
 						<div class="panel panel-visible" id="spy1">
 							<div class="panel-heading">
-								<span class="panel-title pr5">枚举元素列表</span><span class="label label-xs label-info p2"><small>提示：行双击过滤</small></span>
+								<span class="panel-title pr5">枚举元素列表</span>
 								<div class="widget-menu pull-right mr5">
 									<div class="btn-group">
 										<button id="btn-new" class="btn btn-default btn-gradient btn-sm">
@@ -320,9 +320,15 @@
 				}
 				fnQuery();
 			});
-			$('#dt-enums tbody').on('click', 'tr', function() {
-				$(this).toggleClass('selected');
-			});
+            $('#dt-enums tbody').on('click', 'tr', function() {
+                if ($(this).hasClass('selected')) {
+                          $(this).removeClass('selected');
+                } else {
+                          var table = $('#dt-enums').DataTable();
+                          table.$('tr.selected').removeClass('selected');
+                          $(this).addClass('selected');
+                }
+             });
 
 			/******* 事件监听.end ********/
 

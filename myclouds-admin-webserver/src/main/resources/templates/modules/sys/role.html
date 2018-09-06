@@ -288,9 +288,15 @@
 			$("#btn-grant").on("click", fnGrant);
 			$("#btn-select").on("click", fnSelect);
 			$("#btn-sync").on("click", syncCache);
-			$('#dt-role tbody').on('click', 'tr', function() {
-				$(this).toggleClass('selected');
-			});
+            $('#dt-role tbody').on('click', 'tr', function() {
+                if ($(this).hasClass('selected')) {
+                          $(this).removeClass('selected');
+                } else {
+                          var table = $('#dt-role').DataTable();
+                          table.$('tr.selected').removeClass('selected');
+                          $(this).addClass('selected');
+                }
+             });
 			$('#dt-role tbody').on('dblclick', 'tr', function() {
 				fnShowUpdate($('#dt-role').DataTable().row(this).data());
 			});

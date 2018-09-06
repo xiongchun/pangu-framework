@@ -286,9 +286,15 @@
 			$("#btn-refresh").on("click", fnRefresh);
 			$("#btn-t-refresh").on("click", fnRefresh);
 			$("#btn-t-expand").on("click", fnToggleTree);
-			$('#dt-org tbody').on('click', 'tr', function() {
-				$(this).toggleClass('selected');
-			});
+            $('#dt-org tbody').on('click', 'tr', function() {
+                if ($(this).hasClass('selected')) {
+                          $(this).removeClass('selected');
+                } else {
+                          var table = $('#dt-org').DataTable();
+                          table.$('tr.selected').removeClass('selected');
+                          $(this).addClass('selected');
+                }
+             });
 			$('#dt-org tbody').on('dblclick', 'tr', function() {
 				fnShowUpdate($('#dt-org').DataTable().row(this).data());
 			});
