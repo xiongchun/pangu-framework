@@ -9,11 +9,48 @@
 /* 常用工具类库 */
 var My = function() {
 	
+	//定义主题色彩样式
+	var theme = {
+			color:{
+				normal:{
+					primary:'#4A89DC',
+					success:'#70CA63',
+					info:'#3BAFDA',
+					warning:'#F6BB42',
+					danger:'#E9573F',
+					alert:'#967ADC',
+					system:'#37BC9B',
+					dark:'#3B3F4F'
+				},
+				light:{
+					primary:'#649AE1',
+					success:'#85D27A',
+					info:'#55BADF',
+					warning:'#F7C65F',
+					danger:'#EC6F5A',
+					alert:'#A992E2',
+					system:'#48C9A9',
+					dark:'#484D61'
+				},
+				dark:{
+					primary:'#3078D7',
+					success:'#5BC24C',
+					info:'#27A2CF',
+					warning:'#F5B025',
+					danger:'#E63F24',
+					alert:'#8362D6',
+					system:'#30A487',
+					dark:'#2E313D'
+				}
+			}
+	}
+	
 	/**
 	 * 初始化
 	 */
-	function init(options){
+	var init = function (options){
 		doLeftAsideTheme();
+		niceScroll(	);
 	}
 	
 	//左侧导航栏的主题设定
@@ -39,6 +76,37 @@ var My = function() {
 				
 			}
 		};
+	}
+	
+	//根据主题选项渲染主窗口滚动条
+	function niceScroll(dom){
+		dom = dom==undefined ? $("body") : dom;
+		var themeSettings = $.parseJSON(localStorage.getItem('myclouds-data-theme'));
+		var headerSkin = themeSettings.headerSkin;
+		var color = '#FAFAFA';
+		if(headerSkin != ''){
+			headerSkin = headerSkin.substring(3,headerSkin.length);
+			color = theme.color.normal[headerSkin];
+			color = color == undefined ? theme.color.light['info'] : color;
+		}
+		dom.niceScroll({
+			cursorcolor: color,
+			cursorwidth: 	"8px",
+			cursorborder: "0px solid #000",
+			scrollspeed: 60,
+			autohidemode: true,
+			background: '#ddd',
+			hidecursordelay: 200,
+			cursorfixedheight: false,
+			cursorminheight: 20,
+			enablekeyboard: true,
+			horizrailenabled: true,
+			bouncescroll: false,
+			smoothscroll: true,
+			iframeautoresize: true,
+			touchbehavior: 	false,
+			zindex: 999
+			});
 	}
 
 	/**
@@ -188,7 +256,8 @@ var My = function() {
 		notify : notify,
 		alert : alert,
 		confirm : confirm,
-		validate : validate
+		validate : validate,
+		niceScroll:niceScroll
 	}
 
 }();

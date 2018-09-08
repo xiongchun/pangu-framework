@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/theme/vendor/plugins/ztree/css/zTreeStyle.css" />
 </head>
 
-<body class="sb-l-o">
+<body class="sb-l-o nano">
 	<!--/* 公共代码 */-->
 	<div th:replace="fragments/common"></div>
 	
@@ -230,7 +230,7 @@
 				
 				<!-- 授权窗口 -->
 				<div class="modal fade" id="w-grant" tabindex="-1" data-backdrop="static">
-					<div class="modal-dialog w500">
+					<div class="modal-dialog w500" >
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -496,6 +496,7 @@
 
 		//打开授权窗口
 		function fnShowGrant(row) {
+			My.niceScroll($("#w-grant"));
 			$("#fo-grant")[0].reset();
 			$("#fo-grant [name='role_id']").val(row.id);
 			var setting = {

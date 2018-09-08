@@ -1004,7 +1004,9 @@ var Core = function(options) {
 				// Save new Skin to Settings Key
 				settingsObj['headerSkin'] = Val;
 				localStorage.setItem(themeKey, JSON.stringify(settingsObj));
-
+				//配合主题选项窗口切换主题时滚动条样式实时切换
+				$("body").niceScroll().remove(); 
+				My.niceScroll();
 			});
 
 			// Sidebar Skin Switcher
@@ -1230,11 +1232,12 @@ var Core = function(options) {
 					$.fullscreen.exit();
 				} else {
 					selector.fullscreen({
-						overflow : 'auto'
+						//overflow : 'auto'
+						overflow : 'hide' // 结合nicescroll，修复fullscreen模式下的滚动条问题
 					});
 				}
 			} else {
-				alert('Your browser does not support fullscreen mode.')
+				alert('您的古董浏览器不支持全屏模式')
 			}
 		});
 	};
