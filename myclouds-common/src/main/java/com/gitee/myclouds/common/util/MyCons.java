@@ -42,7 +42,7 @@ public class MyCons {
 		MyEnum("myenum", "枚举参数缓存Key的前缀"),
 		MyModule("mymodule", "模块菜单缓存Key"),
 		LastCacheTime("lastcachetime", "最后一次缓存对象插入时间Key"),
-		DefaultOpenMenuId("myclouds:defaultexpandmenuid", "最后一次缓存对象插入时间Key"),
+		DefaultOpenMenuId("myclouds:defaultexpandmenuid", "登录后缺省展开的一级菜单节点ID"),
 		RoleAuth("roleauth", "角色授权对象前缀");
 
 		private CacheKeyOrPrefix(String value, String name) {

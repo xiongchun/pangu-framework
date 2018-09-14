@@ -79,8 +79,11 @@ var My = function() {
 	}
 	
 	//根据主题选项渲染主窗口滚动条
-	function niceScroll(dom){
+	function niceScroll(dom, reset){
 		dom = dom==undefined ? $("body") : dom;
+		if(reset == 'reset'){
+			dom.niceScroll().remove();
+		}
 		var themeSettings = $.parseJSON(localStorage.getItem('myclouds-data-theme'));
 		var headerSkin = themeSettings.headerSkin;
 		var color = '#FAFAFA';
