@@ -223,6 +223,11 @@ setInterval(
 			$('#id-error-message').css('overflow-x', 'hidden');
 			$('#id-error-message').text(data.message);
 		});
+		
+		//屏蔽DataTables错误提示信息
+		if($.fn.dataTable){
+			$.fn.dataTable.ext.errMode = 'none'; 
+		}
 
 		//确保所有最后一个弹出窗口在最顶层显示
 		$(document).on('show.bs.modal', '.modal', function(event) {

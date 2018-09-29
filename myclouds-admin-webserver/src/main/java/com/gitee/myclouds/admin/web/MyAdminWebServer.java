@@ -17,10 +17,10 @@ import com.gitee.myclouds.common.MyCxt;
 @EnableFeignClients
 @ComponentScan(basePackages={"com.gitee.myclouds"}) 
 @Import(MyCxt.class)
-public class StartAdminWebApplication {
+public class MyAdminWebServer {
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(StartAdminWebApplication.class, args);
+		SpringApplication.run(MyAdminWebServer.class, args);
 	}
 	
 	@Bean  

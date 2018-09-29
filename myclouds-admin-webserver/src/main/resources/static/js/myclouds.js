@@ -79,8 +79,9 @@ var My = function() {
 	}
 	
 	//根据主题选项渲染主窗口滚动条
-	function niceScroll(dom, reset){
+	function niceScroll(dom, reset,delay){
 		dom = dom==undefined ? $("body") : dom;
+		delay = delay==undefined ? 200 : delay;
 		if(reset == 'reset'){
 			dom.niceScroll().remove();
 		}
@@ -99,7 +100,7 @@ var My = function() {
 			scrollspeed: 60,
 			autohidemode: true,
 			background: '#ddd',
-			hidecursordelay: 200,
+			hidecursordelay: delay,
 			cursorfixedheight: false,
 			cursorminheight: 20,
 			enablekeyboard: true,
