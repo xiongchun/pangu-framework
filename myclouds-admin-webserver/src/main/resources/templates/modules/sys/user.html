@@ -417,14 +417,8 @@
 			$("#btn-reset").on("click", fnOpenReset);
 			$("#btn-t-expand").on("click", fnToggleTree);
             $('#dt-user tbody').on('click', 'tr', function() {
-                if ($(this).hasClass('selected')) {
-                          $(this).removeClass('selected');
-                } else {
-                          var table = $('#dt-user').DataTable();
-                          table.$('tr.selected').removeClass('selected');
-                          $(this).addClass('selected');
-                }
-             });
+				$(this).toggleClass('selected');
+			});
 			$('#dt-user tbody').on('dblclick', 'tr', function() {
 				fnShowUpdate($('#dt-user').DataTable().row(this).data());
 			});
