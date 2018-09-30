@@ -1005,8 +1005,9 @@ var Core = function(options) {
 				settingsObj['headerSkin'] = Val;
 				localStorage.setItem(themeKey, JSON.stringify(settingsObj));
 				//配合主题选项窗口切换主题时滚动条样式实时切换
-				$("body").niceScroll().remove(); 
-				My.niceScroll();
+				My.niceScroll($("body"),'reset');
+				//配合主题选项窗口切换主题时滚动条样式实时切换
+				My.niceScroll($(".dataTables_scrollBody"),'reset');
 			});
 
 			// Sidebar Skin Switcher
