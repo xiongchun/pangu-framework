@@ -1,5 +1,8 @@
 package com.gitee.myclouds.common.util;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -14,7 +17,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.gitee.myclouds.common.wrapper.Dto;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * <b>辅助工具类</b>
@@ -23,6 +28,7 @@ import cn.hutool.crypto.SecureUtil;
  * @since 1.0
  * @date 2009-1-22
  */
+@Slf4j
 public class MyUtil {
 
 	/**
@@ -156,8 +162,39 @@ public class MyUtil {
 		return ip;
 	}
 	
+	/**
+	 * 执行批处理脚本
+	 * 
+	 * @param command 执行脚本
+	 * @param isSync 是否同步执行
+	 */
+	public static void runCmd(String command, boolean isSync) {
+		try {
+			Runtime runtime = Runtime.getRuntime();
+			Process proc = runtime.exec(command);
+			InputStream is = proc.getErrorStream();
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String line = null;
+			System.out.println("<CMD-LOG>");
+			while ((line = br.readLine()) != null) {
+				System.out.println(line);
+			}
+			System.out.println("</CMD-LOG>");
+			if (isSync) {
+				// the calling thread will be blocked until the subprocess exits
+				int exitVal = proc.waitFor();
+				log.info("Process exitValue：{}。", exitVal);
+			}
+		} catch (Exception e) {
+			String msg = StrUtil.format("调用批处理程序失败。批处理脚本：{}。", command);
+			log.error(msg);
+			throw new RuntimeException(msg, e);
+		}
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(password(MyCons.PWD_KEY, "111111"));
+		runCmd("java -version", true);
 	}
 
 }
