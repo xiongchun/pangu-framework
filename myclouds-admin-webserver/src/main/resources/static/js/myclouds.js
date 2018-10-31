@@ -50,7 +50,7 @@ var My = function() {
 	 */
 	var init = function (options){
 		doLeftAsideTheme();
-		niceScroll(	);
+		//niceScroll(	);
 	}
 	
 	//左侧导航栏的主题设定

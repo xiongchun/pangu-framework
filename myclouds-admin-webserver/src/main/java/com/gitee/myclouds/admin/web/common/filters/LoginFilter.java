@@ -13,10 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.common.WebCxt;
 import com.gitee.myclouds.common.util.FilterUtil;
 import com.gitee.myclouds.common.vo.MyUserVO;
+import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
 
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.http.HttpStatus;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -29,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LoginFilter implements Filter {
 
-	// 排除列表
+	// 排除列表(startwith的匹配逻辑)
 	private final String[] excludeKeysArray = { "/login", "/css/", "/img/", "/js/", "/theme/" };
 
 	@Override
@@ -46,7 +51,7 @@ public class LoginFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
-
+		
 		// 排除列表
 		if (FilterUtil.checkExcludes(httpServletRequest.getRequestURI(), excludeKeysArray)) {
 			filterChain.doFilter(servletRequest, servletResponse);
@@ -59,7 +64,10 @@ public class LoginFilter implements Filter {
 		if (isPass) {
 			filterChain.doFilter(servletRequest, servletResponse);
 		} else {
-			httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login");
+			if(!StrUtil.equalsIgnoreCase("XMLHttpRequest", httpServletRequest.getHeader("X-Requested-With"))) {
+				//非ajax请求。ajax的跳转由前端处理
+				httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login");
+			}
 			return;
 		}
 
@@ -75,14 +83,18 @@ public class LoginFilter implements Filter {
 		boolean isPass = true;
 		String uri = httpServletRequest.getRequestURI();
 		HttpSession httpSession = httpServletRequest.getSession();
-		MyUserVO curUser = WebCxt.getMyUserVO(httpSession);
-		if (curUser == null) {
-			// 对于被拦截后不进行页面转换的时候，可以使用下面的设置。如：API接口的拦截器等。否则会导致页面跳转时候报如下错。
-			// cannot call sendredirect() after the response has been committed
-			// httpServletResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "请求被安全审计组件拦截
-			// | 事件:未登录或登录已超时");
-			log.info("拦截请求(未登录)-> 请求URI：{} 所属会话：{}", uri, httpServletRequest.getRequestedSessionId());
+		MyUserVO myUserVO = WebCxt.getMyUserVO(httpSession);
+		if (myUserVO == null) {
+			//未授权
 			isPass = false;
+			httpServletResponse.setStatus(HttpStatus.HTTP_UNAUTHORIZED);
+			if(StrUtil.equalsIgnoreCase("XMLHttpRequest", httpServletRequest.getHeader("X-Requested-With"))) {
+				//ajax请求
+				Dto dto = Dtos.newDto().put2("status", HttpStatus.HTTP_UNAUTHORIZED).put2("message", "身份认证未通过（未登录或会话已超时）");
+				httpServletResponse.getWriter().write(JSON.toJSONString(dto));
+			}
+			log.info("拦截请求(身份认证未通过)-> 请求URI：{}", uri);
+			
 		}
 		return isPass;
 	}

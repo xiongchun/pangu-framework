@@ -216,12 +216,17 @@ setInterval(
 		//统一异常拦截器
 		$(document).ajaxError(function(e, data) {
 			data = data.responseJSON;
-			$('#w-global-error').modal();
-			$('#id-error-path span').text(data.path);
-			$('#id-error-status span').text(data.status);
-			$('#id-error-exception span').text(data.exception);
-			$('#id-error-message').css('overflow-x', 'hidden');
-			$('#id-error-message').text(data.message);
+			if(data.status==401){
+			    //身份认证未通过（未登录或会话已超时）
+			    window.location.href='./';
+			}else{
+				$('#w-global-error').modal();
+				$('#id-error-path span').text(data.path);
+				$('#id-error-status span').text(data.status);
+				$('#id-error-exception span').text(data.exception);
+				$('#id-error-message').css('overflow-x', 'hidden');
+				$('#id-error-message').text(data.message);			
+			}
 		});
 		
 		//屏蔽DataTables错误提示信息

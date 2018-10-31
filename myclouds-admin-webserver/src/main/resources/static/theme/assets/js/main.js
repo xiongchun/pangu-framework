@@ -1005,9 +1005,9 @@ var Core = function(options) {
 				settingsObj['headerSkin'] = Val;
 				localStorage.setItem(themeKey, JSON.stringify(settingsObj));
 				//配合主题选项窗口切换主题时滚动条样式实时切换
-				My.niceScroll($("body"),'reset');
+				//My.niceScroll($("body"),'reset');
 				//配合主题选项窗口切换主题时滚动条样式实时切换
-				My.niceScroll($(".dataTables_scrollBody"),'reset');
+				//My.niceScroll($(".dataTables_scrollBody"),'reset');
 			});
 
 			// Sidebar Skin Switcher
@@ -1226,7 +1226,6 @@ var Core = function(options) {
 
 		// Attach handler to navbar fullscreen button
 		$('.request-fullscreen').on('click', function() {
-
 			// Check for fullscreen browser support
 			if (screenCheck) {
 				if ($.fullscreen.isFullScreen()) {

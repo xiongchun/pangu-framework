@@ -83,17 +83,20 @@ public class MyCxt {
 	 */
 	public List<EnumVO> getEnum(String enumKey){
 		String key = MyCons.CacheKeyOrPrefix.MyEnum.getValue() + ":" + enumKey;
-		List<EnumVO> myEnumEntities = Lists.newArrayList();
+		List<EnumVO> enumVOs = Lists.newArrayList();
 		try {
 			List<Object> enumObjs = stringRedisTemplate.opsForHash().values(key);
 			for (Object obj : enumObjs) {
-				myEnumEntities.add(JSON.parseObject(String.valueOf(obj), EnumVO.class));
+				enumVOs.add(JSON.parseObject(String.valueOf(obj), EnumVO.class));
 			}
+			//解决不同环境下下拉排序的bug。
+			String jql = "SELECT * FROM :MyList ORDER BY sort_no ASC";
+			enumVOs = MyListUtil.list(enumVOs, EnumVO.class, jql, Dtos.newDto());
 		} catch (Exception e) {
 			log.error("获取枚举类型：【{}】时反生错误", enumKey);
 			e.printStackTrace();
 		}
-		return myEnumEntities;
+		return enumVOs;
 	}
 	
 	/**

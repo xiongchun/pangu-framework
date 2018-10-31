@@ -14599,7 +14599,7 @@ ol.timeline-list li.timeline-item .timeline-date {
   Modals
 ==================================================== */
 .modal-open {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .modal {
   display: none;
