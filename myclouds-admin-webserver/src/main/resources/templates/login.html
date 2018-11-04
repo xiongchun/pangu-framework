@@ -33,19 +33,6 @@
 
 				<div class="admin-form theme-info animated fadeInDown">
 
-					<div class="row mb15 table-layout">
-
-						<div class="col-xs-6 text-right va-b pull-right">
-							<div class="login-links">
-								<a href="./login" class="active" title="登录">登录</a>
-								<span class="text-white"> | </span>
-								<a href="./login" class="" title="注册">注册</a>
-							</div>
-
-						</div>
-
-					</div>
-
 					<div class="panel panel-info mt10 br-n">
 
 
@@ -53,10 +40,10 @@
 						<form id="fo_login">
 							<div class="panel-body bg-light p30">
 								<div class="row">
-									<div class="col-sm-7 pr30">
+									<div class="col-sm-6 pr30">
 
 										<div class="section">
-											<label for="account" class="field-label text-muted mb10 fs15">登录账号</label>
+											<label for="account" class="field-label text-muted mb10 fs15">账号</label>
 											<label for="account" class="field prepend-icon">
 												<input type="text" name="account" id="account" class="gui-input" placeholder="请输入登录账号" />
 												<label for="account" class="field-icon">
@@ -76,22 +63,14 @@
 											</label>
 										</div>
 										<!-- end section -->
-
 									</div>
-									<div class="col-sm-5 br-l br-grey pl30">
-										<h3 class="mb25">产品介绍或Logo</h3>
-										<p class="mb15">
-											<span class="fa fa-check text-success pr5"></span> 分享经验
-										</p>
-										<p class="mb15">
-											<span class="fa fa-check text-success pr5"></span> 传递价值
-										</p>
-										<p class="mb15">
-											<span class="fa fa-check text-success pr5"></span> 成就你我
-										</p>
-										<p class="mb15">
-											<span class="fa fa-check text-success pr5"></span> 演示账号：root 密码：111111
-										</p>
+									
+									<div class="col-sm-6 br-l br-grey pl30">
+									    
+										<h2 class="mb20 text-center ls2"><span th:text="${#strings.abbreviate(@thCxt.param('sys_title_login'),15)}"></span></h2>
+										<div class="text-center">
+										       <img alt="" src="/img/logo.gif" width="120" height="120" />
+										</div>
 									</div>
 								</div>
 							</div>
@@ -143,32 +122,41 @@
 				},
 			});
 
-			//演示账号模拟登陆 请移除
+			//开发环境模拟登陆，生产环境请移除
 			setTimeout(function() {
 				$("#fo_login [name='account']").val('root');
 				$("#fo_login [name='password']").val('111111');
-				//fnLogin();
-			}, 1000);
+				fnLogin();
+			}, 2000);
+			
+			//响应回车键
+			$(document).keydown(function(event){
+			　　if(event.keyCode==13){
+			　　		fnLogin();
+			　　}
+			});
+			
+			//登录请求
+			function fnLogin() {
+				var data = My.params('#fo_login');
+				data.password = hex_md5(data.password);
+				$.ajax({
+					type : 'post',
+					url : '/login/go',
+					data : data,
+					success : function(data) {
+						if (data.code == '1') {
+							window.location.href = './';
+						} else {
+							My.alert(data.msg);
+						}
+					}
+				});
+			}
 
 		});
 
-		//登录请求
-		function fnLogin() {
-			var data = My.params('#fo_login');
-			data.password = hex_md5(data.password);
-			$.ajax({
-				type : 'post',
-				url : '/login/go',
-				data : data,
-				success : function(data) {
-					if (data.code == '1') {
-						window.location.href = './';
-					} else {
-						My.alert(data.msg);
-					}
-				}
-			});
-		}
+
 	</script>
 
 </body>

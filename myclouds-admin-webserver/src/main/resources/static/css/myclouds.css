@@ -61,3 +61,10 @@ table.my > tbody > tr.selected > td:first-child{
 	background-color: #ff00000f;
 }
 
+.ls3{
+	letter-spacing:3px;
+}
+.ls2{
+	letter-spacing:2px;
+}
+
