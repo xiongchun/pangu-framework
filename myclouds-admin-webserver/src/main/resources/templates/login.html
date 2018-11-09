@@ -121,13 +121,6 @@
 					y : window.innerHeight / 3.3
 				},
 			});
-
-			//开发环境模拟登陆，生产环境请移除
-			setTimeout(function() {
-				$("#fo_login [name='account']").val('root');
-				$("#fo_login [name='password']").val('111111');
-				fnLogin();
-			}, 2000);
 			
 			//响应回车键
 			$(document).keydown(function(event){
