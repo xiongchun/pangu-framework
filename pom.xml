@@ -20,7 +20,6 @@
 		<module>myclouds-domain</module>
 		<module>myclouds-admin-server</module>
 		<module>myclouds-admin-webserver</module>
-		<module>myclouds-gateway-server</module>
 		<module>myclouds-builder-standalone</module>
 	</modules>
 
