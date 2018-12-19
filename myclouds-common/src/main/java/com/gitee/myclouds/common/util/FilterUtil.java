@@ -26,8 +26,8 @@ public class FilterUtil {
 	}
 	
 	public static void main(String[] args) {
-		String[] excludeKeysArray = {"/login/","/theme"};
-		String uri = "/login";
+		String[] excludeKeysArray = {"/login","/theme"};
+		String uri = "//login";
 		System.out.println(checkExcludes(uri, excludeKeysArray));
 	}
 	

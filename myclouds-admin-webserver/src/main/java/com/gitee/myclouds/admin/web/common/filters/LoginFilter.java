@@ -35,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 public class LoginFilter implements Filter {
 
 	// 排除列表(startwith的匹配逻辑)
-	private final String[] excludeKeysArray = { "/login", "/css/", "/img/", "/js/", "/theme/" };
+	private final String[] excludeKeysArray = { "/act", "/login", "/css/", "/img/", "/js/", "/theme/","/favicon.ico"};
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {

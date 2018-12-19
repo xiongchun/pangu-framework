@@ -3,6 +3,7 @@ package com.gitee.myclouds.admin.web;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,6 +16,7 @@ import com.gitee.myclouds.common.MyCxt;
 
 @SpringBootApplication
 @EnableFeignClients
+@EnableDiscoveryClient
 @ComponentScan(basePackages={"com.gitee.myclouds"}) 
 @Import(MyCxt.class)
 public class MyAdminWebServer {
