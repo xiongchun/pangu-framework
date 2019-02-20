@@ -1,0 +1,9 @@
+redis-host: localhost
+redis-port: 6379
+redis-password:
+
+mysql-host: localhost
+mysql-port: 3306
+mysql-database: myclouds
+mysql-user: root
+mysql-password: root
