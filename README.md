@@ -5,4 +5,4 @@ MyClouds是一个基于成熟软件项目研发方法论和SpringCloud生态圈�
 
 #### [:fa-rocket: MyClouds在线演示](http://118.126.108.44)
 
-#### [:fa-rocket: MyClouds代码生成器](https://gitee.com/osworks/Myclouds-Builder)
+#### [ :fa-flask: MyClouds代码生成器](https://gitee.com/osworks/Myclouds-Builder)
