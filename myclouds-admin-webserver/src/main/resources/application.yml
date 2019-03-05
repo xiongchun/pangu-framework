@@ -17,6 +17,10 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
+  servlet:
+    multipart:
+      max-file-size: 20Mb
+      max-request-size: 20Mb
   thymeleaf:
     cache: true
     encoding: UTF-8
@@ -48,7 +52,17 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
     default-property-inclusion: NON_NULL
-
+  
+feign:
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:  # 服务名，default表示所有服务
+        connectTimeout: 10000
+        readTimeout: 60000
+        loggerLevel: full  # full | basic | none | headers
+      #requestInterceptors: 拦截器
 management:
   endpoint:
     health:
