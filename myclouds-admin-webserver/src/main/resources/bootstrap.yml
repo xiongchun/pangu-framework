@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: myclouds-admin-webserver
-  cloud:
-    config:
-      profile: ${config-profile:dev}
-      discovery:
-        service-id: myclouds-config-server
-        enabled: true
