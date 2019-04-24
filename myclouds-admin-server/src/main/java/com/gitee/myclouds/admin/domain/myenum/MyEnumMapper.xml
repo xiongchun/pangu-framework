@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 枚举类型参数表[my_enum]SQL自动映射 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-03-09 18:24:27 -->
+<mapper namespace="com.gitee.myclouds.admin.domain.myenum.MyEnumMapper">
+	
+	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="MyEnumEntity">
+		INSERT INTO my_enum (
+		<if test="enum_key != null and enum_key != ''">
+	         enum_key, <!-- 枚举类型KEY -->
+		</if>
+		<if test="enum_name != null and enum_name != ''">
+	         enum_name, <!-- 枚举类型名称 -->
+		</if>
+		<if test="element_key != null and element_key != ''">
+	         element_key, <!-- 枚举元素KEY -->
+		</if>
+		<if test="element_value != null and element_value != ''">
+	         element_value, <!-- 枚举元素值 -->
+		</if>
+		<if test="is_enable != null and is_enable != ''">
+	         is_enable, <!-- 是否启用 -->
+		</if>
+		<if test="type != null and type != ''">
+	         type, <!-- 所属分类 -->
+		</if>
+		<if test="sort_no != null">
+	         sort_no, <!-- 排序号 -->
+		</if>
+		<if test="update_time != null">
+	         update_time, <!-- 更新时间 -->
+		</if>
+		<if test="remark != null and remark != ''">
+	         remark, <!-- 备注 -->
+		</if>
+	          id
+		)VALUES(
+		<if test="enum_key != null and enum_key != ''">
+	          #{enum_key, jdbcType=VARCHAR}, <!-- 枚举类型KEY -->
+	    </if>
+		<if test="enum_name != null and enum_name != ''">
+	          #{enum_name, jdbcType=VARCHAR}, <!-- 枚举类型名称 -->
+	    </if>
+		<if test="element_key != null and element_key != ''">
+	          #{element_key, jdbcType=VARCHAR}, <!-- 枚举元素KEY -->
+	    </if>
+		<if test="element_value != null and element_value != ''">
+	          #{element_value, jdbcType=VARCHAR}, <!-- 枚举元素值 -->
+	    </if>
+		<if test="is_enable != null and is_enable != ''">
+	          #{is_enable, jdbcType=VARCHAR}, <!-- 是否启用 -->
+	    </if>
+		<if test="type != null and type != ''">
+	          #{type, jdbcType=VARCHAR}, <!-- 所属分类 -->
+	    </if>
+		<if test="sort_no != null">
+	          #{sort_no, jdbcType=INTEGER}, <!-- 排序号 -->
+	    </if>
+		<if test="update_time != null">
+	          #{update_time, jdbcType=TIMESTAMP}, <!-- 更新时间 -->
+	    </if>
+		<if test="remark != null and remark != ''">
+	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
+	    </if>
+	          null
+		)
+	</insert>
+	
+	<!-- 插入一个数据实体对象(含所有字段) -->
+	<insert id="insertAll" useGeneratedKeys="true" keyProperty="id" parameterType="MyEnumEntity">
+		INSERT INTO my_enum (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{enum_key, jdbcType=VARCHAR},  <!-- 枚举类型KEY -->
+		    #{enum_name, jdbcType=VARCHAR},  <!-- 枚举类型名称 -->
+		    #{element_key, jdbcType=VARCHAR},  <!-- 枚举元素KEY -->
+		    #{element_value, jdbcType=VARCHAR},  <!-- 枚举元素值 -->
+		    #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+		    #{type, jdbcType=VARCHAR},  <!-- 所属分类 -->
+		    #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+		    #{update_time, jdbcType=TIMESTAMP},  <!-- 更新时间 -->
+		    #{remark, jdbcType=VARCHAR}  <!-- 备注 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据实体对象 -->
+	<update id="updateByKey" parameterType="MyEnumEntity">
+		UPDATE my_enum
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="enum_key != null">
+		          enum_key = #{enum_key, jdbcType=VARCHAR},  <!-- 枚举类型KEY -->
+			</if>
+			<if test="enum_name != null">
+		          enum_name = #{enum_name, jdbcType=VARCHAR},  <!-- 枚举类型名称 -->
+			</if>
+			<if test="element_key != null">
+		          element_key = #{element_key, jdbcType=VARCHAR},  <!-- 枚举元素KEY -->
+			</if>
+			<if test="element_value != null">
+		          element_value = #{element_value, jdbcType=VARCHAR},  <!-- 枚举元素值 -->
+			</if>
+			<if test="is_enable != null">
+		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+			</if>
+			<if test="type != null">
+		          type = #{type, jdbcType=VARCHAR},  <!-- 所属分类 -->
+			</if>
+			<if test="sort_no != null">
+		          sort_no = #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+			</if>
+			<if test="update_time != null">
+		          update_time = #{update_time, jdbcType=TIMESTAMP},  <!-- 更新时间 -->
+			</if>
+			<if test="remark != null">
+		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
+			</if>
+		</set>
+		WHERE  id = #{id}
+	</update>
+	
+	<!-- 根据主键删除数据实体对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM my_enum WHERE  id = #{id}
+	</delete>
+
+	<!-- 根据主键查询并返回数据实体对象 -->
+	<select id="selectByKey" resultType="MyEnumEntity">
+		SELECT
+		<include refid="column" />
+		FROM my_enum WHERE  id = #{id}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据实体对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="MyEnumEntity">
+		SELECT
+		    <include refid="column" />
+		FROM my_enum
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据实体对象集合 -->
+	<select id="list" parameterType="Dto" resultType="MyEnumEntity">
+		SELECT
+			<include refid="column" />	
+		FROM my_enum
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据实体对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="MyEnumEntity" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM my_enum
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="MyEnumEntity">
+		SELECT
+			<include refid="column" />	
+		FROM my_enum
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="MyEnumEntity" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM my_enum
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM my_enum
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM my_enum
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+
+	<!-- 根据唯一键[ukey1]修改数据实体对象 -->
+	<update id="updateByUkey1" parameterType="MyEnumEntity">
+		UPDATE my_enum
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="enum_key != null">
+		          enum_key = #{enum_key, jdbcType=VARCHAR},  <!-- 枚举类型KEY -->
+			</if>
+			<if test="enum_name != null">
+		          enum_name = #{enum_name, jdbcType=VARCHAR},  <!-- 枚举类型名称 -->
+			</if>
+			<if test="element_key != null">
+		          element_key = #{element_key, jdbcType=VARCHAR},  <!-- 枚举元素KEY -->
+			</if>
+			<if test="element_value != null">
+		          element_value = #{element_value, jdbcType=VARCHAR},  <!-- 枚举元素值 -->
+			</if>
+			<if test="is_enable != null">
+		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+			</if>
+			<if test="type != null">
+		          type = #{type, jdbcType=VARCHAR},  <!-- 所属分类 -->
+			</if>
+			<if test="sort_no != null">
+		          sort_no = #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+			</if>
+			<if test="update_time != null">
+		          update_time = #{update_time, jdbcType=TIMESTAMP},  <!-- 更新时间 -->
+			</if>
+			<if test="remark != null">
+		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
+			</if>
+		</set>
+		WHERE  enum_key = #{enum_key} AND element_key = #{element_key}
+	</update>
+	
+	<!-- 根据唯一键[ukey1]删除数据实体对象 -->
+	<delete id="deleteByUkey1">
+		DELETE FROM my_enum WHERE  enum_key = #{enum_key} AND element_key = #{element_key}
+	</delete>
+
+	<!-- 根据唯一键[ukey1]查询并返回数据实体对象 -->
+	<select id="selectByUkey1" resultType="MyEnumEntity">
+		SELECT
+		<include refid="column" />
+		FROM my_enum WHERE  enum_key = #{enum_key} AND element_key = #{element_key}
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id,  <!-- 流水号 -->
+		  enum_key,  <!-- 枚举类型KEY -->
+		  enum_name,  <!-- 枚举类型名称 -->
+		  element_key,  <!-- 枚举元素KEY -->
+		  element_value,  <!-- 枚举元素值 -->
+		  is_enable,  <!-- 是否启用 -->
+		  type,  <!-- 所属分类 -->
+		  sort_no,  <!-- 排序号 -->
+		  update_time,  <!-- 更新时间 -->
+		  remark  <!-- 备注 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  my_enum.id,  <!-- 流水号 -->
+		  my_enum.enum_key,  <!-- 枚举类型KEY -->
+		  my_enum.enum_name,  <!-- 枚举类型名称 -->
+		  my_enum.element_key,  <!-- 枚举元素KEY -->
+		  my_enum.element_value,  <!-- 枚举元素值 -->
+		  my_enum.is_enable,  <!-- 是否启用 -->
+		  my_enum.type,  <!-- 所属分类 -->
+		  my_enum.sort_no,  <!-- 排序号 -->
+		  my_enum.update_time,  <!-- 更新时间 -->
+		  my_enum.remark  <!-- 备注 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
+		</if>
+	    <if test="enum_key != null and enum_key != ''">
+		      AND enum_key = #{enum_key}  <!-- 枚举类型KEY -->
+		</if>
+	    <if test="enum_name != null and enum_name != ''">
+		      AND enum_name = #{enum_name}  <!-- 枚举类型名称 -->
+		</if>
+	    <if test="element_key != null and element_key != ''">
+		      AND element_key = #{element_key}  <!-- 枚举元素KEY -->
+		</if>
+	    <if test="element_value != null and element_value != ''">
+		      AND element_value = #{element_value}  <!-- 枚举元素值 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable = #{is_enable}  <!-- 是否启用 -->
+		</if>
+	    <if test="type != null and type != ''">
+		      AND type = #{type}  <!-- 所属分类 -->
+		</if>
+	   <if test="sort_no != null ">
+		      AND sort_no = #{sort_no}  <!-- 排序号 -->
+		</if>
+	   <if test="update_time != null ">
+		      AND update_time = #{update_time}  <!-- 更新时间 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark = #{remark}  <!-- 备注 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="enum_key != null and enum_key != ''">
+		      AND enum_key like '${enum_key}%'  <!-- 枚举类型KEY -->
+		</if>
+	    <if test="enum_name != null and enum_name != ''">
+		      AND enum_name like '${enum_name}%'  <!-- 枚举类型名称 -->
+		</if>
+	    <if test="element_key != null and element_key != ''">
+		      AND element_key like '${element_key}%'  <!-- 枚举元素KEY -->
+		</if>
+	    <if test="element_value != null and element_value != ''">
+		      AND element_value like '${element_value}%'  <!-- 枚举元素值 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable like '${is_enable}%'  <!-- 是否启用 -->
+		</if>
+	    <if test="type != null and type != ''">
+		      AND type like '${type}%'  <!-- 所属分类 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark like '${remark}%'  <!-- 备注 -->
+		</if>
+	</sql>
+	
+</mapper>

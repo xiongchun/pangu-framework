@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 资源模块事件注册表[my_module]SQL自动映射 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2018-06-28 22:48:38 -->
+<mapper namespace="com.gitee.myclouds.admin.domain.mymodule.MyModuleMapper">
+	
+	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="MyModuleEntity">
+		INSERT INTO my_module (
+		<if test="parent_id != null">
+	         parent_id, <!-- 所属上级 -->
+		</if>
+		<if test="name != null and name != ''">
+	         name, <!-- 名称 -->
+		</if>
+		<if test="url != null and url != ''">
+	         url, <!-- URL -->
+		</if>
+		<if test="type != null and type != ''">
+	         type, <!-- 类型 -->
+		</if>
+		<if test="icon != null and icon != ''">
+	         icon, <!-- 图标 -->
+		</if>
+		<if test="is_enable != null and is_enable != ''">
+	         is_enable, <!-- 是否启用 -->
+		</if>
+		<if test="sort_no != null">
+	         sort_no, <!-- 排序号 -->
+		</if>
+		<if test="remark != null and remark != ''">
+	         remark, <!-- 备注 -->
+		</if>
+	          id
+		)VALUES(
+		<if test="parent_id != null">
+	          #{parent_id, jdbcType=INTEGER}, <!-- 所属上级 -->
+	    </if>
+		<if test="name != null and name != ''">
+	          #{name, jdbcType=VARCHAR}, <!-- 名称 -->
+	    </if>
+		<if test="url != null and url != ''">
+	          #{url, jdbcType=VARCHAR}, <!-- URL -->
+	    </if>
+		<if test="type != null and type != ''">
+	          #{type, jdbcType=VARCHAR}, <!-- 类型 -->
+	    </if>
+		<if test="icon != null and icon != ''">
+	          #{icon, jdbcType=VARCHAR}, <!-- 图标 -->
+	    </if>
+		<if test="is_enable != null and is_enable != ''">
+	          #{is_enable, jdbcType=VARCHAR}, <!-- 是否启用 -->
+	    </if>
+		<if test="sort_no != null">
+	          #{sort_no, jdbcType=INTEGER}, <!-- 排序号 -->
+	    </if>
+		<if test="remark != null and remark != ''">
+	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
+	    </if>
+	          null
+		)
+	</insert>
+	
+	<!-- 插入一个数据实体对象(含所有字段) -->
+	<insert id="insertAll" useGeneratedKeys="true" keyProperty="id" parameterType="MyModuleEntity">
+		INSERT INTO my_module (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{parent_id, jdbcType=INTEGER},  <!-- 所属上级 -->
+		    #{name, jdbcType=VARCHAR},  <!-- 名称 -->
+		    #{url, jdbcType=VARCHAR},  <!-- URL -->
+		    #{type, jdbcType=VARCHAR},  <!-- 类型 -->
+		    #{icon, jdbcType=VARCHAR},  <!-- 图标 -->
+		    #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+		    #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+		    #{remark, jdbcType=VARCHAR}  <!-- 备注 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据实体对象 -->
+	<update id="updateByKey" parameterType="MyModuleEntity">
+		UPDATE my_module
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="parent_id != null">
+		          parent_id = #{parent_id, jdbcType=INTEGER},  <!-- 所属上级 -->
+			</if>
+			<if test="name != null">
+		          name = #{name, jdbcType=VARCHAR},  <!-- 名称 -->
+			</if>
+			<if test="url != null">
+		          url = #{url, jdbcType=VARCHAR},  <!-- URL -->
+			</if>
+			<if test="type != null">
+		          type = #{type, jdbcType=VARCHAR},  <!-- 类型 -->
+			</if>
+			<if test="icon != null">
+		          icon = #{icon, jdbcType=VARCHAR},  <!-- 图标 -->
+			</if>
+			<if test="is_enable != null">
+		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+			</if>
+			<if test="sort_no != null">
+		          sort_no = #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+			</if>
+			<if test="remark != null">
+		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
+			</if>
+		</set>
+		WHERE  id = #{id}
+	</update>
+	
+	<!-- 根据主键删除数据实体对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM my_module WHERE  id = #{id}
+	</delete>
+
+	<!-- 根据主键查询并返回数据实体对象 -->
+	<select id="selectByKey" resultType="MyModuleEntity">
+		SELECT
+		<include refid="column" />
+		FROM my_module WHERE  id = #{id}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据实体对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="MyModuleEntity">
+		SELECT
+		    <include refid="column" />
+		FROM my_module
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据实体对象集合 -->
+	<select id="list" parameterType="Dto" resultType="MyModuleEntity">
+		SELECT
+			<include refid="column" />	
+		FROM my_module
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据实体对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="MyModuleEntity" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM my_module
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="MyModuleEntity">
+		SELECT
+			<include refid="column" />	
+		FROM my_module
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="MyModuleEntity" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM my_module
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM my_module
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM my_module
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id,  <!-- 流水号 -->
+		  parent_id,  <!-- 所属上级 -->
+		  name,  <!-- 名称 -->
+		  url,  <!-- URL -->
+		  type,  <!-- 类型 -->
+		  icon,  <!-- 图标 -->
+		  is_enable,  <!-- 是否启用 -->
+		  sort_no,  <!-- 排序号 -->
+		  remark  <!-- 备注 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  my_module.id,  <!-- 流水号 -->
+		  my_module.parent_id,  <!-- 所属上级 -->
+		  my_module.name,  <!-- 名称 -->
+		  my_module.url,  <!-- URL -->
+		  my_module.type,  <!-- 类型 -->
+		  my_module.icon,  <!-- 图标 -->
+		  my_module.is_enable,  <!-- 是否启用 -->
+		  my_module.sort_no,  <!-- 排序号 -->
+		  my_module.remark  <!-- 备注 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
+		</if>
+	   <if test="parent_id != null ">
+		      AND parent_id = #{parent_id}  <!-- 所属上级 -->
+		</if>
+	    <if test="name != null and name != ''">
+		      AND name = #{name}  <!-- 名称 -->
+		</if>
+	    <if test="url != null and url != ''">
+		      AND url = #{url}  <!-- URL -->
+		</if>
+	    <if test="type != null and type != ''">
+		      AND type = #{type}  <!-- 类型 -->
+		</if>
+	    <if test="icon != null and icon != ''">
+		      AND icon = #{icon}  <!-- 图标 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable = #{is_enable}  <!-- 是否启用 -->
+		</if>
+	   <if test="sort_no != null ">
+		      AND sort_no = #{sort_no}  <!-- 排序号 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark = #{remark}  <!-- 备注 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="name != null and name != ''">
+		      AND name like '${name}%'  <!-- 名称 -->
+		</if>
+	    <if test="url != null and url != ''">
+		      AND url like '${url}%'  <!-- URL -->
+		</if>
+	    <if test="type != null and type != ''">
+		      AND type like '${type}%'  <!-- 类型 -->
+		</if>
+	    <if test="icon != null and icon != ''">
+		      AND icon like '${icon}%'  <!-- 图标 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable like '${is_enable}%'  <!-- 是否启用 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark like '${remark}%'  <!-- 备注 -->
+		</if>
+	</sql>
+	
+</mapper>
