@@ -17,8 +17,8 @@
 
 	<modules>
 		<module>myclouds-common</module>
-		<module>myclouds-config-server</module>
-		<module>myclouds-admin-server</module>
+		<module>myclouds-config</module>
+		<module>myclouds-system-service</module>
 	</modules>
 	
 	<!--依赖管理，用于管理spring-cloud的依赖 -->
