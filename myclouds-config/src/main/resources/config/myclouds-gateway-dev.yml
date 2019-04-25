@@ -1,0 +1,5 @@
+# 通用网关服务-开发环境配置信息
+redis-host: localhost
+redis-port: 6379
+redis-password:
+
