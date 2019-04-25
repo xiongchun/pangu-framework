@@ -1,3 +1,4 @@
+# hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 8000
 server:
   port: 8080
   servlet:
@@ -9,6 +10,16 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
+  redis:
+    host: ${redis-host}
+    port: ${redis-port}
+    password: ${redis-password}
+    jedis:
+      pool:
+        min-idle: 10
+        max-idle: 50
+        max-wait: -1
+        max-active: 200
   cloud:
     consul:
       enabled: true
@@ -20,17 +31,18 @@ spring:
         #hostname: ${spring.cloud.client.ip_address}
         health-check-path: ${management.server.servlet.context-path}/health
         health-check-interval: 10s
-  redis:
-    host: ${redis-host}
-    port: ${redis-port}
-    password: ${redis-password}
-    jedis:
-      pool:
-        min-idle: 10
-        max-idle: 50
-        max-wait: -1
-        max-active: 200
-  
+    gateway:
+      routes:
+      - id: myclouds-system
+        uri: lb://myclouds-system-service  # 服务中心的实例名；lb(load balance)表示多服务实例启用客户端负载均衡
+        predicates:
+        - Path=/admin/system/**
+        filters:
+        - name: Hystrix  # 熔断Filter
+          args:
+            name: booksFallbackCommand
+            fallbackUri: forward:/fallback/books   # 降级处理
+      
 management:
   endpoint:
     health:
