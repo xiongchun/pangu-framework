@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.test;
+package com.gitee.myclouds.gateway.test;
 
 /*@RunWith(SpringRunner.class)
 @SpringBootTest(classes=TempTest.class)

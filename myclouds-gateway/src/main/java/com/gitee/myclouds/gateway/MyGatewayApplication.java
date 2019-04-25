@@ -1,4 +1,4 @@
-package com.gitee.myclouds.config;
+package com.gitee.myclouds.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableConfigServer
-public class MyConfigServer {
+public class MyGatewayApplication {
 	
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(MyConfigServer.class, args);
+		SpringApplication.run(MyGatewayApplication.class, args);
 	}
 
 }

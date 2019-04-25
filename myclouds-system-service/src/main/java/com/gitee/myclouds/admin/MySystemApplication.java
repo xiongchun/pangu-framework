@@ -15,10 +15,10 @@ import com.gitee.myclouds.admin.modules.cache.SysInitCacheService;
 @EnableTransactionManagement
 @MapperScan(basePackages = {"com.gitee.myclouds"}, sqlSessionFactoryRef = "sqlSessionFactory")
 @ComponentScan(basePackages={"com.gitee.myclouds"})
-public class MyAdminServer {
+public class MySystemApplication {
 	
 	public static void main(String[] args) throws Exception {
-		ConfigurableApplicationContext  context = SpringApplication.run(MyAdminServer.class, args);
+		ConfigurableApplicationContext  context = SpringApplication.run(MySystemApplication.class, args);
 		SysInitCacheService cacheService = context.getBean(SysInitCacheService.class);
 		cacheService.init();
 	}

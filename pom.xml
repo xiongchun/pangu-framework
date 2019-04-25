@@ -18,6 +18,7 @@
 	<modules>
 		<module>myclouds-common</module>
 		<module>myclouds-config</module>
+		<module>myclouds-gateway</module>
 		<module>myclouds-system-service</module>
 	</modules>
 	

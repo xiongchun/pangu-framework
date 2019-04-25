@@ -1,0 +1,32 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /
+
+spring:
+  profiles:
+      active: native
+  cloud:
+    config: #推荐大部分项目缺省使用local方式，也可以根据实际情况改为git方式或者jdbc的方式来管理维护配置文件
+      server:
+        native:
+          search-locations: classpath:/config
+    consul:
+      enabled: true
+      host: ${consul-host:localhost}
+      port: ${consul-port:8500}
+      discovery:
+        register: true
+        prefer-ip-address: true
+        health-check-path: ${management.server.servlet.context-path}/health
+        health-check-interval: 10s
+
+management:
+  endpoint:
+    health:
+      enabled: true
+    metrics:
+      enabled: true
+  server:
+    servlet:
+      context-path: /actuator
