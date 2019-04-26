@@ -34,7 +34,7 @@ spring:
     gateway:
       routes:
       - id: myclouds-system
-        uri: lb://myclouds-system-service  # 服务中心的实例名；lb(load balance)表示多服务实例启用客户端负载均衡
+        uri: lb://myclouds-system-service  # 服务中心的实例名；lb(load balance)启用客户端负载均衡
         predicates:
         - Path=/admin/system/**
         filters:
