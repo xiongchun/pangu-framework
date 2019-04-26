@@ -19,7 +19,7 @@ import com.gitee.myclouds.common.wrapper.Dtos;
  *
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("admin/system/user")
 public class UserController {
 	
 	@Autowired
