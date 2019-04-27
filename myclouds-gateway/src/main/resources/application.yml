@@ -1,5 +1,5 @@
 # 断路器超时时间，缺省是1000ms，太小了
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 30000
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 15000
 
 server:
   port: 8080
@@ -35,7 +35,7 @@ spring:
         health-check-interval: 10s
     gateway:
       routes:
-      - id: myclouds-system-service
+      - id: myclouds-system-service-route
         uri: lb://myclouds-system-service  # 服务中心的实例名；lb(load balance)启用客户端负载均衡
         predicates:
         - Path=/admin/system/**
