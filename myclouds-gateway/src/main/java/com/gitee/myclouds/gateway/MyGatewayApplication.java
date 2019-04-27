@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 
+/**
+ * 平台统一网关
+ * 
+ * @author xiongchun
+ *
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableHystrix
