@@ -18,7 +18,7 @@ import com.gitee.myclouds.common.wrapper.Dtos;
  *
  */
 @RestController
-@RequestMapping("org")
+@RequestMapping("admin/system/org")
 public class OrgController {
 
 	

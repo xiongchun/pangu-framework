@@ -18,7 +18,7 @@ import com.gitee.myclouds.common.wrapper.Dtos;
  *
  */
 @RestController
-@RequestMapping("enums")
+@RequestMapping("admin/system/enums")
 public class EnumsController {
 	
 	@Autowired

@@ -18,7 +18,7 @@ import com.gitee.myclouds.common.wrapper.Dtos;
  *
  */
 @RestController
-@RequestMapping("param")
+@RequestMapping("admin/system/param")
 public class ParamController {
 	
 	@Autowired

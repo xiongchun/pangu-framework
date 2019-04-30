@@ -19,7 +19,7 @@ import com.gitee.myclouds.common.wrapper.Dtos;
  * 
  */
 @RestController
-@RequestMapping("index")
+@RequestMapping("admin/system/index")
 public class IndexController {
 	
 	@Autowired

@@ -18,7 +18,7 @@ import com.gitee.myclouds.common.wrapper.Dtos;
  *
  */
 @RestController
-@RequestMapping("login")
+@RequestMapping("admin/system/login")
 public class LoginController {
 
 	@Autowired

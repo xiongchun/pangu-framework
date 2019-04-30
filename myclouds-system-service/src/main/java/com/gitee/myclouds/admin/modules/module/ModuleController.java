@@ -18,7 +18,7 @@ import com.gitee.myclouds.common.wrapper.Dtos;
  *
  */
 @RestController
-@RequestMapping("module")
+@RequestMapping("admin/system/module")
 public class ModuleController {
 
 	@Autowired

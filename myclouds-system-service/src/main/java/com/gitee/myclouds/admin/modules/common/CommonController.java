@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("common")
+@RequestMapping("admin/system/common")
 public class CommonController {
 	
 }

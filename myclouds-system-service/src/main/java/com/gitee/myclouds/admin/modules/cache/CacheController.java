@@ -18,7 +18,7 @@ import com.gitee.myclouds.common.wrapper.Dtos;
  *
  */
 @RestController
-@RequestMapping("cache")
+@RequestMapping("admin/system/cache")
 public class CacheController {
 
 	@Autowired

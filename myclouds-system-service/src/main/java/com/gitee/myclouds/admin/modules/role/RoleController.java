@@ -18,7 +18,7 @@ import com.gitee.myclouds.common.wrapper.Dtos;
  *
  */
 @RestController
-@RequestMapping("role")
+@RequestMapping("admin/system/role")
 public class RoleController {
 
 	@Autowired
