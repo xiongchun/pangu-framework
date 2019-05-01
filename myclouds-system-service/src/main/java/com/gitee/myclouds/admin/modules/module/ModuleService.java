@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.admin.domain.mymodule.MyModuleEntity;
 import com.gitee.myclouds.admin.domain.mymodule.MyModuleMapper;
-import com.gitee.myclouds.admin.modules.cache.CacheMiscService;
 import com.gitee.myclouds.common.vo.ZtreeNodeVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
@@ -28,8 +27,6 @@ public class ModuleService {
 	private MyModuleMapper myModuleMapper;
 	@Autowired
 	private SqlSession sqlSession;
-	@Autowired
-	private CacheMiscService cacheMiscService;
 	
 	/**
 	 * 查询
@@ -69,7 +66,6 @@ public class ModuleService {
 		//拷贝参数对象中的属性到实体对象中
 		MyModuleEntity myModuleEntity = new MyModuleEntity().copyFrom(inDto);
 		myModuleMapper.insert(myModuleEntity);
-		cacheMiscService.cacheModules();
 		outDto = Dtos.newDto().put2("code", "1").put2("msg", "资源模块信息保存成功");
 		return outDto;
 	}
@@ -84,7 +80,6 @@ public class ModuleService {
 		Dto outDto = null;
 		MyModuleEntity myModuleEntity = new MyModuleEntity().copyFrom(inDto);
 		myModuleMapper.updateByKey(myModuleEntity);
-		cacheMiscService.cacheModules();
 		outDto = Dtos.newDto().put2("code", "1").put2("msg", "资源模块信息修改成功");
 		return outDto;
 	}
@@ -103,7 +98,6 @@ public class ModuleService {
 		}
 		myModuleMapper.deleteByKey(moduleId);
 		sqlSession.delete("sql.module.deleteMyRoleModule", moduleId);
-		cacheMiscService.cacheModules();
 		Dto outDto = Dtos.newDto().put2("code", "1").put2("msg", "资源模块删除成功");
 		return outDto;
 	}

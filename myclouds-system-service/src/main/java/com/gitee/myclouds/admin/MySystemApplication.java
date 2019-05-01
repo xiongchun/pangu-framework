@@ -4,11 +4,8 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import com.gitee.myclouds.admin.modules.cache.SysInitCacheService;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -18,9 +15,8 @@ import com.gitee.myclouds.admin.modules.cache.SysInitCacheService;
 public class MySystemApplication {
 	
 	public static void main(String[] args) throws Exception {
-		ConfigurableApplicationContext  context = SpringApplication.run(MySystemApplication.class, args);
-		SysInitCacheService cacheService = context.getBean(SysInitCacheService.class);
-		cacheService.init();
+		SpringApplication.run(MySystemApplication.class, args);
+		//ConfigurableApplicationContext  context = SpringApplication.run(MySystemApplication.class, args);
 	}
 
 }
