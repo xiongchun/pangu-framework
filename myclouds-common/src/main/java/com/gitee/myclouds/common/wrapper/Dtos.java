@@ -2,13 +2,6 @@ package com.gitee.myclouds.common.wrapper;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.common.WebCxt;
-import com.gitee.myclouds.common.util.MyCons;
-import com.gitee.myclouds.common.vo.MyUserVO;
 import com.gitee.myclouds.common.wrapper.impl.HashDto;
 
 
@@ -51,33 +44,6 @@ public class Dtos {
 		Dto dto = new HashDto();
 		dto.put(keyString, valueObject);
 		return dto;
-	}
-	
-	/**
-	 * 创建一个常规携带Request参数的Dto对象
-	 * 
-	 * @param request
-	 * @return
-	 */
-	public static Dto newDto(HttpServletRequest request) {
-		return WebCxt.getParamAsDto(request);
-	}
-	
-	/**
-	 * 创建一个常规携带Request参数和当前后台登录用户对象的Dto对象
-	 * 
-	 * @param request
-	 * @return
-	 */
-	public static Dto newDto(HttpServletRequest request, HttpSession httpSession) {
-		Dto outDto = WebCxt.getParamAsDto(request);
-		if (httpSession != null) {
-			MyUserVO curUser = WebCxt.getMyUserVO(httpSession);
-			if (curUser != null) {
-				outDto.put(MyCons.My_USER, JSON.toJSONString(curUser));
-			}
-		}
-		return outDto;
 	}
 
 }

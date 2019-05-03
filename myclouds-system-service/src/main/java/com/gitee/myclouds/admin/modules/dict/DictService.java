@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.enums;
+package com.gitee.myclouds.admin.modules.dict;
 
 import java.util.List;
 
@@ -15,13 +15,13 @@ import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
 /**
- * 枚举类型参数服务
+ * 数据字典服务
  * 
  * @author xiongchun
  *
  */
 @Service
-public class EnumsService {
+public class DictService {
 	
 	@Autowired
 	private SqlSession sqlSession;

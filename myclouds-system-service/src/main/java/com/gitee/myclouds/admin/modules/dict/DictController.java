@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.enums;
+package com.gitee.myclouds.admin.modules.dict;
 
 import java.util.Map;
 
@@ -12,17 +12,17 @@ import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
 /**
- * 枚举参数 服务发布
+ * 数据字典 服务发布
  * 
  * @author xiongchun
  *
  */
 @RestController
 @RequestMapping("admin/system/enums")
-public class EnumsController {
+public class DictController {
 	
 	@Autowired
-	private EnumsService enumsService;
+	private DictService enumsService;
 	
 	/**
 	 * 查询列表

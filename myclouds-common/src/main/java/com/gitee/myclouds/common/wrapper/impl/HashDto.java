@@ -7,9 +7,6 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 
-import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.common.util.MyCons;
-import com.gitee.myclouds.common.vo.MyUserVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.util.TypeConvertUtil;
 
@@ -222,14 +219,4 @@ public class HashDto extends HashMap<String, Object> implements Dto {
 		return this;
 	}
 
-	/**
-	 * 获取当前用户对象（管理后台的登录用户）
-	 * 
-	 * @return
-	 */
-	@Override
-	public MyUserVO getCurUser() {
-		return get(MyCons.My_USER) == null ? null
-				: JSON.parseObject(String.valueOf(get(MyCons.My_USER)), MyUserVO.class);
-	}
 }

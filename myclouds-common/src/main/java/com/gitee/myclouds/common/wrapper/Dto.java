@@ -7,8 +7,6 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-import com.gitee.myclouds.common.vo.MyUserVO;
-
 /**
  * <b>数据传输对象接口</b>
  * <p>
@@ -130,10 +128,4 @@ public interface Dto extends Map<String, Object> {
 	 */
 	Dto put2(String key, Object value);
 
-	/**
-	 * 获取当前用户对象（管理后台的登录用户）
-	 * 
-	 * @return
-	 */
-	MyUserVO getCurUser();
 }

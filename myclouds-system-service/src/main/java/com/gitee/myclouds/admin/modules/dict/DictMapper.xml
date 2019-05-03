@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 枚举类型模块SQL映射 -->
-<mapper namespace="sql.enums">
+<!-- 数据字典模块SQL映射 -->
+<mapper namespace="sql.dict">
 
 	<!-- 根据Dto查询并返回枚举类型数据实体对象集合 -->
 	<select id="pageEnums" parameterType="Dto" resultType="MyEnumEntity">
