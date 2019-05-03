@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin;
+package com.gitee.myclouds.admin.system;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

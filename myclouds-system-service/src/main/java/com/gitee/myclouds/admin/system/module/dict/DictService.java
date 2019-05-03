@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.domain.myenum.MyEnumEntity;
-import com.gitee.myclouds.admin.domain.myenum.MyEnumMapper;
+import com.gitee.myclouds.admin.system.domain.domain.myenum.MyEnumEntity;
+import com.gitee.myclouds.admin.system.domain.domain.myenum.MyEnumMapper;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;

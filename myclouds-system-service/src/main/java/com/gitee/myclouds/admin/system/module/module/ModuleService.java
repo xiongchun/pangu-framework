@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.domain.mymodule.MyModuleEntity;
-import com.gitee.myclouds.admin.domain.mymodule.MyModuleMapper;
+import com.gitee.myclouds.admin.system.domain.domain.mymodule.MyModuleEntity;
+import com.gitee.myclouds.admin.system.domain.domain.mymodule.MyModuleMapper;
 import com.gitee.myclouds.common.vo.ZtreeNodeVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;

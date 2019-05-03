@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.domain.myrole.MyRoleEntity;
-import com.gitee.myclouds.admin.domain.myrole.MyRoleMapper;
-import com.gitee.myclouds.admin.domain.myrolemodule.MyRoleModuleEntity;
-import com.gitee.myclouds.admin.domain.myrolemodule.MyRoleModuleMapper;
+import com.gitee.myclouds.admin.system.domain.domain.myrole.MyRoleEntity;
+import com.gitee.myclouds.admin.system.domain.domain.myrole.MyRoleMapper;
+import com.gitee.myclouds.admin.system.domain.domain.myrolemodule.MyRoleModuleEntity;
+import com.gitee.myclouds.admin.system.domain.domain.myrolemodule.MyRoleModuleMapper;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.vo.MyUserVO;

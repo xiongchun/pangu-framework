@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.domain.myorg.MyOrgEntity;
-import com.gitee.myclouds.admin.domain.myorg.MyOrgMapper;
+import com.gitee.myclouds.admin.system.domain.domain.myorg.MyOrgEntity;
+import com.gitee.myclouds.admin.system.domain.domain.myorg.MyOrgMapper;
 import com.gitee.myclouds.common.vo.MyUserVO;
 import com.gitee.myclouds.common.vo.ZtreeNodeVO;
 import com.gitee.myclouds.common.wrapper.Dto;
