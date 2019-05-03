@@ -16,6 +16,7 @@
 	</parent>
 
 	<modules>
+	    <module>myclouds-builder</module>
 		<module>myclouds-common</module>
 		<module>myclouds-config</module>
 		<module>myclouds-gateway</module>
