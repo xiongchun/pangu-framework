@@ -1,0 +1,88 @@
+package ${package};
+
+import com.gitee.myclouds.toolbox.wrap.Entity;
+#foreach($columnDto in $columnDtos)
+#if(${columnDto.type} == "datetime" || ${columnDto.type} == "timestamp" || ${columnDto.type} == "date")
+import com.alibaba.fastjson.annotation.JSONField;
+#break ##bug fixed by heliu
+#end
+#end
+#if(${importDto.bigDecimal})
+import java.math.BigDecimal;
+#end
+#if(${importDto.bigInteger})
+import java.math.BigInteger;
+#end
+#if(${importDto.data})
+import java.util.Date;
+#end
+#if(${importDto.timestamp})
+import java.sql.Timestamp;
+#end
+##java.lang.*下的类型不需要导入
+
+/**
+ * <b>$!{tableDto.comment}[${tableDto.name}]数据实体对象</b>
+ * <p>
+ * 注意:此文件由MyClouds平台自动生成-禁止手工修改。
+ * </p>
+ * 
+ * @author $!author
+ * @date $!sysdate
+ */
+public class ${tableDto.upname}Entity extends Entity {
+
+	private static final long serialVersionUID = 1L;
+
+##变量声明
+#foreach($columnDto in $columnDtos)
+	/**
+	 * ${columnDto.comment}
+	 */
+#if(${columnDto.type} == "datetime" || ${columnDto.type} == "timestamp")
+    @JSONField (format="yyyy-MM-dd HH:mm:ss")
+#end
+#if(${columnDto.type} == "date")
+    @JSONField (format="yyyy-MM-dd")
+#end
+	private ${columnDto.javatype} ${columnDto.name};	
+#end
+
+	/**
+	 * 将参数对象中的属性复制到当前对象中
+	 * 
+	 * @param inObj 参数对象
+	 * @return
+	 */
+	public ${tableDto.upname}Entity copyFrom(Object inObj) {
+		super.copyProperties(inObj);
+		return this;
+	}
+	
+##get方法
+#foreach($columnDto in $columnDtos)
+	/**
+	 * ${columnDto.comment}
+	 * 
+	 * @return ${columnDto.name}
+	 */
+	public ${columnDto.javatype} get${columnDto.upname}() {
+		return ${columnDto.name};
+	}
+	
+#end
+
+##set方法
+#foreach($columnDto in $columnDtos)
+	/**
+	 * ${columnDto.comment}
+	 * 
+	 * @param ${columnDto.name}
+	 */
+	public void set${columnDto.upname}(${columnDto.javatype} ${columnDto.name}) {
+		this.${columnDto.name} = ${columnDto.name};
+	}
+	
+#end
+
+}
