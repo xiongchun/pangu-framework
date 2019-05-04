@@ -36,8 +36,8 @@ public class DictService {
 	 */
 	public String list(Dto inDto) {
 		Dto outDto = Dtos.newDto();
-		List<MyDictEntity> myEnumEntities = sqlSession.selectList("sql.enums.pageEnums",inDto);
-		Integer total = sqlSession.selectOne("sql.enums.pageEnumsCount", inDto);
+		List<MyDictEntity> myEnumEntities = sqlSession.selectList("sql.dict.pageDict",inDto);
+		Integer total = sqlSession.selectOne("sql.dict.pageDictCount", inDto);
 		outDto.put("data", myEnumEntities);
 		outDto.put("recordsTotal", total);
 		outDto.put("recordsFiltered", total);
@@ -65,7 +65,7 @@ public class DictService {
 		Dto outDto = null;
 		//拷贝参数对象中的属性到实体对象中
 		MyDictEntity myDictEntity = new MyDictEntity().copyFrom(inDto);
-		if (MyUtil.isEmpty(myDictMapper.selectByUkey1(myDictEntity.getDic_type(), myDictEntity.getDic_key()))) {
+		if (MyUtil.isEmpty(myDictMapper.selectByUkey1(myDictEntity.getDict_type(), myDictEntity.getDict_key()))) {
 			myDictMapper.insert(myDictEntity);
 			outDto = Dtos.newDto().put2("code", "1").put2("msg", "字典保存成功");
 		} else {
@@ -84,8 +84,8 @@ public class DictService {
 		Dto outDto = null;
 		MyDictEntity myDictEntity = new MyDictEntity().copyFrom(inDto);
 		MyDictEntity oldEntity = myDictMapper.selectByKey(myDictEntity.getId());
-		if (!StringUtils.equalsIgnoreCase(myDictEntity.getDic_key(), oldEntity.getDic_key())) {
-			if (MyUtil.isNotEmpty(myDictMapper.selectByUkey1(myDictEntity.getDic_type(), myDictEntity.getDic_key()))) {
+		if (!StringUtils.equalsIgnoreCase(myDictEntity.getDict_key(), oldEntity.getDict_key())) {
+			if (MyUtil.isNotEmpty(myDictMapper.selectByUkey1(myDictEntity.getDict_type(), myDictEntity.getDict_key()))) {
 				outDto = Dtos.newDto().put2("code", "-1").put2("msg", "当前字典已经存在，请重新输入....");
 				return outDto;
 			}

@@ -9,7 +9,7 @@ import com.gitee.myclouds.common.wrapper.Entity;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-04 11:10:54
+ * @date 2019-05-04 16:01:24
  */
 public class MyModuleEntity extends Entity {
 

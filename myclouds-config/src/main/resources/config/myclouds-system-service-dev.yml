@@ -5,6 +5,6 @@ redis-password:
 
 mysql-host: localhost
 mysql-port: 3306
-mysql-database: myclouds
+mysql-database: myclouds-system
 mysql-user: root
 mysql-password: root

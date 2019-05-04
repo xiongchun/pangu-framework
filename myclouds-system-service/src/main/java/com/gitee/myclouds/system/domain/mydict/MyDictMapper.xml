@@ -3,23 +3,23 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 数据字典表[my_dict]SQL自动映射 -->
-<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-05-04 11:10:54 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-05-04 16:01:24 -->
 <mapper namespace="com.gitee.myclouds.system.domain.mydict.MyDictMapper">
 	
 	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="MyDictEntity">
 		INSERT INTO my_dict (
-		<if test="dic_type != null and dic_type != ''">
-	         dic_type, <!-- 类型 -->
+		<if test="dict_type != null and dict_type != ''">
+	         dict_type, <!-- 类型 -->
 		</if>
-		<if test="dic_name != null and dic_name != ''">
-	         dic_name, <!-- 名称 -->
+		<if test="dict_name != null and dict_name != ''">
+	         dict_name, <!-- 名称 -->
 		</if>
-		<if test="dic_key != null and dic_key != ''">
-	         dic_key, <!-- 数据字典KEY -->
+		<if test="dict_key != null and dict_key != ''">
+	         dict_key, <!-- 数据字典KEY -->
 		</if>
-		<if test="dic_value != null and dic_value != ''">
-	         dic_value, <!-- 字典对照值 -->
+		<if test="dict_value != null and dict_value != ''">
+	         dict_value, <!-- 字典对照值 -->
 		</if>
 		<if test="is_enable != null and is_enable != ''">
 	         is_enable, <!-- 是否启用 -->
@@ -35,17 +35,17 @@
 		</if>
 	          id
 		)VALUES(
-		<if test="dic_type != null and dic_type != ''">
-	          #{dic_type, jdbcType=VARCHAR}, <!-- 类型 -->
+		<if test="dict_type != null and dict_type != ''">
+	          #{dict_type, jdbcType=VARCHAR}, <!-- 类型 -->
 	    </if>
-		<if test="dic_name != null and dic_name != ''">
-	          #{dic_name, jdbcType=VARCHAR}, <!-- 名称 -->
+		<if test="dict_name != null and dict_name != ''">
+	          #{dict_name, jdbcType=VARCHAR}, <!-- 名称 -->
 	    </if>
-		<if test="dic_key != null and dic_key != ''">
-	          #{dic_key, jdbcType=VARCHAR}, <!-- 数据字典KEY -->
+		<if test="dict_key != null and dict_key != ''">
+	          #{dict_key, jdbcType=VARCHAR}, <!-- 数据字典KEY -->
 	    </if>
-		<if test="dic_value != null and dic_value != ''">
-	          #{dic_value, jdbcType=VARCHAR}, <!-- 字典对照值 -->
+		<if test="dict_value != null and dict_value != ''">
+	          #{dict_value, jdbcType=VARCHAR}, <!-- 字典对照值 -->
 	    </if>
 		<if test="is_enable != null and is_enable != ''">
 	          #{is_enable, jdbcType=VARCHAR}, <!-- 是否启用 -->
@@ -70,10 +70,10 @@
 		)
 		VALUES (
 		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
-		    #{dic_type, jdbcType=VARCHAR},  <!-- 类型 -->
-		    #{dic_name, jdbcType=VARCHAR},  <!-- 名称 -->
-		    #{dic_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
-		    #{dic_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
+		    #{dict_type, jdbcType=VARCHAR},  <!-- 类型 -->
+		    #{dict_name, jdbcType=VARCHAR},  <!-- 名称 -->
+		    #{dict_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
+		    #{dict_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
 		    #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
 		    #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
 		    #{update_time, jdbcType=TIMESTAMP},  <!-- 更新时间 -->
@@ -88,17 +88,17 @@
 			<if test="id != null">
 		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
 			</if>
-			<if test="dic_type != null">
-		          dic_type = #{dic_type, jdbcType=VARCHAR},  <!-- 类型 -->
+			<if test="dict_type != null">
+		          dict_type = #{dict_type, jdbcType=VARCHAR},  <!-- 类型 -->
 			</if>
-			<if test="dic_name != null">
-		          dic_name = #{dic_name, jdbcType=VARCHAR},  <!-- 名称 -->
+			<if test="dict_name != null">
+		          dict_name = #{dict_name, jdbcType=VARCHAR},  <!-- 名称 -->
 			</if>
-			<if test="dic_key != null">
-		          dic_key = #{dic_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
+			<if test="dict_key != null">
+		          dict_key = #{dict_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
 			</if>
-			<if test="dic_value != null">
-		          dic_value = #{dic_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
+			<if test="dict_value != null">
+		          dict_value = #{dict_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
 			</if>
 			<if test="is_enable != null">
 		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
@@ -203,17 +203,17 @@
 			<if test="id != null">
 		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
 			</if>
-			<if test="dic_type != null">
-		          dic_type = #{dic_type, jdbcType=VARCHAR},  <!-- 类型 -->
+			<if test="dict_type != null">
+		          dict_type = #{dict_type, jdbcType=VARCHAR},  <!-- 类型 -->
 			</if>
-			<if test="dic_name != null">
-		          dic_name = #{dic_name, jdbcType=VARCHAR},  <!-- 名称 -->
+			<if test="dict_name != null">
+		          dict_name = #{dict_name, jdbcType=VARCHAR},  <!-- 名称 -->
 			</if>
-			<if test="dic_key != null">
-		          dic_key = #{dic_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
+			<if test="dict_key != null">
+		          dict_key = #{dict_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
 			</if>
-			<if test="dic_value != null">
-		          dic_value = #{dic_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
+			<if test="dict_value != null">
+		          dict_value = #{dict_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
 			</if>
 			<if test="is_enable != null">
 		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
@@ -228,28 +228,28 @@
 		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
 			</if>
 		</set>
-		WHERE  dic_type = #{dic_type} AND dic_key = #{dic_key}
+		WHERE  dict_type = #{dict_type} AND dict_key = #{dict_key}
 	</update>
 	
 	<!-- 根据唯一键[ukey1]删除数据实体对象 -->
 	<delete id="deleteByUkey1">
-		DELETE FROM my_dict WHERE  dic_type = #{dic_type} AND dic_key = #{dic_key}
+		DELETE FROM my_dict WHERE  dict_type = #{dict_type} AND dict_key = #{dict_key}
 	</delete>
 
 	<!-- 根据唯一键[ukey1]查询并返回数据实体对象 -->
 	<select id="selectByUkey1" resultType="MyDictEntity">
 		SELECT
 		<include refid="column" />
-		FROM my_dict WHERE  dic_type = #{dic_type} AND dic_key = #{dic_key}
+		FROM my_dict WHERE  dict_type = #{dict_type} AND dict_key = #{dict_key}
 	</select>
 	
 	<!-- 表字段 -->
 	<sql id="column">
 		  id,  <!-- 流水号 -->
-		  dic_type,  <!-- 类型 -->
-		  dic_name,  <!-- 名称 -->
-		  dic_key,  <!-- 数据字典KEY -->
-		  dic_value,  <!-- 字典对照值 -->
+		  dict_type,  <!-- 类型 -->
+		  dict_name,  <!-- 名称 -->
+		  dict_key,  <!-- 数据字典KEY -->
+		  dict_value,  <!-- 字典对照值 -->
 		  is_enable,  <!-- 是否启用 -->
 		  sort_no,  <!-- 排序号 -->
 		  update_time,  <!-- 更新时间 -->
@@ -259,10 +259,10 @@
 	<!-- 表字段(用于外表的关联时引用) -->
 	<sql id="column2">
 		  my_dict.id,  <!-- 流水号 -->
-		  my_dict.dic_type,  <!-- 类型 -->
-		  my_dict.dic_name,  <!-- 名称 -->
-		  my_dict.dic_key,  <!-- 数据字典KEY -->
-		  my_dict.dic_value,  <!-- 字典对照值 -->
+		  my_dict.dict_type,  <!-- 类型 -->
+		  my_dict.dict_name,  <!-- 名称 -->
+		  my_dict.dict_key,  <!-- 数据字典KEY -->
+		  my_dict.dict_value,  <!-- 字典对照值 -->
 		  my_dict.is_enable,  <!-- 是否启用 -->
 		  my_dict.sort_no,  <!-- 排序号 -->
 		  my_dict.update_time,  <!-- 更新时间 -->
@@ -274,17 +274,17 @@
 	   <if test="id != null ">
 		      AND id = #{id}  <!-- 流水号 -->
 		</if>
-	    <if test="dic_type != null and dic_type != ''">
-		      AND dic_type = #{dic_type}  <!-- 类型 -->
+	    <if test="dict_type != null and dict_type != ''">
+		      AND dict_type = #{dict_type}  <!-- 类型 -->
 		</if>
-	    <if test="dic_name != null and dic_name != ''">
-		      AND dic_name = #{dic_name}  <!-- 名称 -->
+	    <if test="dict_name != null and dict_name != ''">
+		      AND dict_name = #{dict_name}  <!-- 名称 -->
 		</if>
-	    <if test="dic_key != null and dic_key != ''">
-		      AND dic_key = #{dic_key}  <!-- 数据字典KEY -->
+	    <if test="dict_key != null and dict_key != ''">
+		      AND dict_key = #{dict_key}  <!-- 数据字典KEY -->
 		</if>
-	    <if test="dic_value != null and dic_value != ''">
-		      AND dic_value = #{dic_value}  <!-- 字典对照值 -->
+	    <if test="dict_value != null and dict_value != ''">
+		      AND dict_value = #{dict_value}  <!-- 字典对照值 -->
 		</if>
 	    <if test="is_enable != null and is_enable != ''">
 		      AND is_enable = #{is_enable}  <!-- 是否启用 -->
@@ -302,17 +302,17 @@
 	
 	<!-- Where模糊匹配字段 -->
 	<sql id="like">
-	    <if test="dic_type != null and dic_type != ''">
-		      AND dic_type like '${dic_type}%'  <!-- 类型 -->
+	    <if test="dict_type != null and dict_type != ''">
+		      AND dict_type like '${dict_type}%'  <!-- 类型 -->
 		</if>
-	    <if test="dic_name != null and dic_name != ''">
-		      AND dic_name like '${dic_name}%'  <!-- 名称 -->
+	    <if test="dict_name != null and dict_name != ''">
+		      AND dict_name like '${dict_name}%'  <!-- 名称 -->
 		</if>
-	    <if test="dic_key != null and dic_key != ''">
-		      AND dic_key like '${dic_key}%'  <!-- 数据字典KEY -->
+	    <if test="dict_key != null and dict_key != ''">
+		      AND dict_key like '${dict_key}%'  <!-- 数据字典KEY -->
 		</if>
-	    <if test="dic_value != null and dic_value != ''">
-		      AND dic_value like '${dic_value}%'  <!-- 字典对照值 -->
+	    <if test="dict_value != null and dict_value != ''">
+		      AND dict_value like '${dict_value}%'  <!-- 字典对照值 -->
 		</if>
 	    <if test="is_enable != null and is_enable != ''">
 		      AND is_enable like '${is_enable}%'  <!-- 是否启用 -->

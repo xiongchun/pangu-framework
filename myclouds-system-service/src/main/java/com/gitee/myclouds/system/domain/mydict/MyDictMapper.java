@@ -15,7 +15,7 @@ import com.gitee.myclouds.system.domain.mydict.MyDictEntity;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-04 11:10:54
+ * @date 2019-05-04 16:01:23
  */
 @Mapper
 public interface MyDictMapper {
@@ -127,13 +127,13 @@ public interface MyDictMapper {
 	 * 
 	 * @return MyDictEntity
 	 */
-	MyDictEntity selectByUkey1(@Param(value = "dic_type") String dic_type,@Param(value = "dic_key") String dic_key);
+	MyDictEntity selectByUkey1(@Param(value = "dict_type") String dict_type,@Param(value = "dict_key") String dict_key);
 	
 	/**
 	 * 根据唯一键[ukey1]删除数据实体对象
 	 *
 	 * @return 影响行数
 	 */
-	int deleteByUkey1(@Param(value = "dic_type") String dic_type,@Param(value = "dic_key") String dic_key);
+	int deleteByUkey1(@Param(value = "dict_type") String dict_type,@Param(value = "dict_key") String dict_key);
 	
 }

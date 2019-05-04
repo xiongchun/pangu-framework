@@ -11,7 +11,7 @@ import java.util.Date;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-04 11:10:53
+ * @date 2019-05-04 16:01:23
  */
 public class MyDictEntity extends Entity {
 
@@ -24,19 +24,19 @@ public class MyDictEntity extends Entity {
 	/**
 	 * 类型
 	 */
-	private String dic_type;	
+	private String dict_type;	
 	/**
 	 * 名称
 	 */
-	private String dic_name;	
+	private String dict_name;	
 	/**
 	 * 数据字典KEY
 	 */
-	private String dic_key;	
+	private String dict_key;	
 	/**
 	 * 字典对照值
 	 */
-	private String dic_value;	
+	private String dict_value;	
 	/**
 	 * 是否启用
 	 */
@@ -78,37 +78,37 @@ public class MyDictEntity extends Entity {
 	/**
 	 * 类型
 	 * 
-	 * @return dic_type
+	 * @return dict_type
 	 */
-	public String getDic_type() {
-		return dic_type;
+	public String getDict_type() {
+		return dict_type;
 	}
 	
 	/**
 	 * 名称
 	 * 
-	 * @return dic_name
+	 * @return dict_name
 	 */
-	public String getDic_name() {
-		return dic_name;
+	public String getDict_name() {
+		return dict_name;
 	}
 	
 	/**
 	 * 数据字典KEY
 	 * 
-	 * @return dic_key
+	 * @return dict_key
 	 */
-	public String getDic_key() {
-		return dic_key;
+	public String getDict_key() {
+		return dict_key;
 	}
 	
 	/**
 	 * 字典对照值
 	 * 
-	 * @return dic_value
+	 * @return dict_value
 	 */
-	public String getDic_value() {
-		return dic_value;
+	public String getDict_value() {
+		return dict_value;
 	}
 	
 	/**
@@ -160,37 +160,37 @@ public class MyDictEntity extends Entity {
 	/**
 	 * 类型
 	 * 
-	 * @param dic_type
+	 * @param dict_type
 	 */
-	public void setDic_type(String dic_type) {
-		this.dic_type = dic_type;
+	public void setDict_type(String dict_type) {
+		this.dict_type = dict_type;
 	}
 	
 	/**
 	 * 名称
 	 * 
-	 * @param dic_name
+	 * @param dict_name
 	 */
-	public void setDic_name(String dic_name) {
-		this.dic_name = dic_name;
+	public void setDict_name(String dict_name) {
+		this.dict_name = dict_name;
 	}
 	
 	/**
 	 * 数据字典KEY
 	 * 
-	 * @param dic_key
+	 * @param dict_key
 	 */
-	public void setDic_key(String dic_key) {
-		this.dic_key = dic_key;
+	public void setDict_key(String dict_key) {
+		this.dict_key = dict_key;
 	}
 	
 	/**
 	 * 字典对照值
 	 * 
-	 * @param dic_value
+	 * @param dict_value
 	 */
-	public void setDic_value(String dic_value) {
-		this.dic_value = dic_value;
+	public void setDict_value(String dict_value) {
+		this.dict_value = dict_value;
 	}
 	
 	/**

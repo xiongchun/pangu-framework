@@ -15,7 +15,7 @@ import com.gitee.myclouds.system.domain.myrole.MyRoleEntity;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-04 11:10:55
+ * @date 2019-05-04 16:01:24
  */
 @Mapper
 public interface MyRoleMapper {
