@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.index;
+package com.gitee.myclouds.system.module.index;
 
 import java.util.List;
 

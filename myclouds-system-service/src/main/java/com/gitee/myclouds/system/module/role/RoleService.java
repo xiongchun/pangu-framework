@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.role;
+package com.gitee.myclouds.system.module.role;
 
 import java.util.List;
 
@@ -8,16 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.system.domain.domain.myrole.MyRoleEntity;
-import com.gitee.myclouds.admin.system.domain.domain.myrole.MyRoleMapper;
-import com.gitee.myclouds.admin.system.domain.domain.myrolemodule.MyRoleModuleEntity;
-import com.gitee.myclouds.admin.system.domain.domain.myrolemodule.MyRoleModuleMapper;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.vo.MyUserVO;
 import com.gitee.myclouds.common.vo.ZtreeNodeVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
+import com.gitee.myclouds.system.domain.myrole.MyRoleEntity;
+import com.gitee.myclouds.system.domain.myrole.MyRoleMapper;
+import com.gitee.myclouds.system.domain.myrolemodule.MyRoleModuleEntity;
+import com.gitee.myclouds.system.domain.myrolemodule.MyRoleModuleMapper;
 
 /**
  *  角色与授权服务
@@ -86,7 +86,8 @@ public class RoleService {
 		Dto outDto = null;
 		//拷贝参数对象中的属性到实体对象中
 		MyRoleEntity myRoleEntity = new MyRoleEntity().copyFrom(inDto);
-		MyUserVO curUser = inDto.getCurUser();
+		//TODO
+		MyUserVO curUser = null;
 		myRoleEntity.setCreate_by(curUser.getName());
 		myRoleEntity.setCreate_by_id(curUser.getId());
 		myRoleMapper.insert(myRoleEntity);
@@ -139,7 +140,8 @@ public class RoleService {
 		sqlSession.delete("sql.role.deleteMyRoleModule", roleId);
 		String moduleIds = inDto.getString("moduleIds");
 		if (MyUtil.isNotEmpty(moduleIds)) {
-			MyUserVO curUser = inDto.getCurUser();
+			//TODO
+			MyUserVO curUser = null;
 			String[] arrModuleIds = StringUtils.split(moduleIds, ",");
 			for (String moduleId : arrModuleIds) {
 				MyRoleModuleEntity myRoleModuleEntity = new MyRoleModuleEntity();

@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.dict;
+package com.gitee.myclouds.system.module.dict;
 
 import java.util.Map;
 
@@ -18,11 +18,11 @@ import com.gitee.myclouds.common.wrapper.Dtos;
  *
  */
 @RestController
-@RequestMapping("admin/system/enums")
+@RequestMapping("admin/system/dict")
 public class DictController {
 	
 	@Autowired
-	private DictService enumsService;
+	private DictService dictService;
 	
 	/**
 	 * 查询列表
@@ -32,7 +32,7 @@ public class DictController {
 	 */
 	@RequestMapping(value = "list",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	public String list(@RequestParam Map<String,Object> inMap){
-		return enumsService.list(Dtos.newDto(inMap));
+		return dictService.list(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class DictController {
 	 */
 	@RequestMapping(value = "get",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	public String get(@RequestParam Integer id){
-		return enumsService.get(id);
+		return dictService.get(id);
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class DictController {
 	 */
 	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto save(@RequestParam Map<String,Object> inMap){
-		return enumsService.save(Dtos.newDto(inMap));
+		return dictService.save(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -65,7 +65,7 @@ public class DictController {
 	 */
 	@RequestMapping(value = "update",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto update(@RequestParam Map<String,Object> inMap){
-		return enumsService.update(Dtos.newDto(inMap));
+		return dictService.update(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public class DictController {
 	 */
 	@RequestMapping(value = "delete",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto delete(@RequestParam Map<String,Object> inMap){
-		return enumsService.delete(Dtos.newDto(inMap));
+		return dictService.delete(Dtos.newDto(inMap));
 	}
 	
 }

@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.module;
+package com.gitee.myclouds.system.module.module;
 
 import java.util.Map;
 

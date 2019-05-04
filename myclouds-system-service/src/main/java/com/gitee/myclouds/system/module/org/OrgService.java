@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.org;
+package com.gitee.myclouds.system.module.org;
 
 import java.util.List;
 
@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.system.domain.domain.myorg.MyOrgEntity;
-import com.gitee.myclouds.admin.system.domain.domain.myorg.MyOrgMapper;
 import com.gitee.myclouds.common.vo.MyUserVO;
 import com.gitee.myclouds.common.vo.ZtreeNodeVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
+import com.gitee.myclouds.system.domain.myorg.MyOrgEntity;
+import com.gitee.myclouds.system.domain.myorg.MyOrgMapper;
 
 /**
  * 组织机构 服务
@@ -65,7 +65,8 @@ public class OrgService {
 		Dto outDto = null;
 		// 拷贝参数对象中的属性到实体对象中
 		MyOrgEntity myOrgEntity = new MyOrgEntity().copyFrom(inDto);
-		MyUserVO curUser = inDto.getCurUser();
+		//TODO
+		MyUserVO curUser = null;
 		myOrgEntity.setCreate_by(curUser.getName());
 		myOrgEntity.setCreate_by_id(curUser.getId());
 		myOrgMapper.insert(myOrgEntity);

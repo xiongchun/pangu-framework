@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.dict;
+package com.gitee.myclouds.system.module.dict;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.system.domain.domain.myenum.MyEnumEntity;
-import com.gitee.myclouds.admin.system.domain.domain.myenum.MyEnumMapper;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
+import com.gitee.myclouds.system.domain.mydict.MyDictEntity;
+import com.gitee.myclouds.system.domain.mydict.MyDictMapper;
 
 /**
  * 数据字典服务
@@ -26,7 +26,7 @@ public class DictService {
 	@Autowired
 	private SqlSession sqlSession;
 	@Autowired
-	private MyEnumMapper myEnumMapper;
+	private MyDictMapper myDictMapper;
 	
 	/**
 	 * 查询列表
@@ -36,7 +36,7 @@ public class DictService {
 	 */
 	public String list(Dto inDto) {
 		Dto outDto = Dtos.newDto();
-		List<MyEnumEntity> myEnumEntities = sqlSession.selectList("sql.enums.pageEnums",inDto);
+		List<MyDictEntity> myEnumEntities = sqlSession.selectList("sql.enums.pageEnums",inDto);
 		Integer total = sqlSession.selectOne("sql.enums.pageEnumsCount", inDto);
 		outDto.put("data", myEnumEntities);
 		outDto.put("recordsTotal", total);
@@ -51,8 +51,8 @@ public class DictService {
 	 * @return
 	 */
 	public String get(Integer id) {
-		MyEnumEntity myEnumEntity = myEnumMapper.selectByKey(id);
-		return JSON.toJSONString(myEnumEntity);
+		MyDictEntity myDictEntity = myDictMapper.selectByKey(id);
+		return JSON.toJSONString(myDictEntity);
 	}
 	
 	/**
@@ -64,12 +64,12 @@ public class DictService {
 	public Dto save(Dto inDto) {
 		Dto outDto = null;
 		//拷贝参数对象中的属性到实体对象中
-		MyEnumEntity myEnumEntity = new MyEnumEntity().copyFrom(inDto);
-		if (MyUtil.isEmpty(myEnumMapper.selectByUkey1(myEnumEntity.getEnum_key(), myEnumEntity.getElement_key()))) {
-			myEnumMapper.insert(myEnumEntity);
-			outDto = Dtos.newDto().put2("code", "1").put2("msg", "枚举元素保存成功");
+		MyDictEntity myDictEntity = new MyDictEntity().copyFrom(inDto);
+		if (MyUtil.isEmpty(myDictMapper.selectByUkey1(myDictEntity.getDic_type(), myDictEntity.getDic_key()))) {
+			myDictMapper.insert(myDictEntity);
+			outDto = Dtos.newDto().put2("code", "1").put2("msg", "字典保存成功");
 		} else {
-			outDto = Dtos.newDto().put2("code", "-1").put2("msg", "当前枚举元素已经存在，请重新输入...");
+			outDto = Dtos.newDto().put2("code", "-1").put2("msg", "当前字典已经存在，请重新输入...");
 		}
 		return outDto;
 	}
@@ -82,16 +82,16 @@ public class DictService {
 	 */
 	public Dto update(Dto inDto) {
 		Dto outDto = null;
-		MyEnumEntity myEnumEntity = new MyEnumEntity().copyFrom(inDto);
-		MyEnumEntity oldEntity = myEnumMapper.selectByKey(myEnumEntity.getId());
-		if (!StringUtils.equalsIgnoreCase(myEnumEntity.getElement_key(), oldEntity.getElement_key())) {
-			if (MyUtil.isNotEmpty(myEnumMapper.selectByUkey1(myEnumEntity.getEnum_key(), myEnumEntity.getElement_key()))) {
-				outDto = Dtos.newDto().put2("code", "-1").put2("msg", "当前枚举元素已经存在，请重新输入....");
+		MyDictEntity myDictEntity = new MyDictEntity().copyFrom(inDto);
+		MyDictEntity oldEntity = myDictMapper.selectByKey(myDictEntity.getId());
+		if (!StringUtils.equalsIgnoreCase(myDictEntity.getDic_key(), oldEntity.getDic_key())) {
+			if (MyUtil.isNotEmpty(myDictMapper.selectByUkey1(myDictEntity.getDic_type(), myDictEntity.getDic_key()))) {
+				outDto = Dtos.newDto().put2("code", "-1").put2("msg", "当前字典已经存在，请重新输入....");
 				return outDto;
 			}
 		}
-		myEnumMapper.updateByKey(myEnumEntity);
-		outDto = Dtos.newDto().put2("code", "1").put2("msg", "枚举元素修改成功");
+		myDictMapper.updateByKey(myDictEntity);
+		outDto = Dtos.newDto().put2("code", "1").put2("msg", "字典修改成功");
 		return outDto;
 	}
 	
@@ -102,8 +102,8 @@ public class DictService {
 	 * @return
 	 */
 	public Dto delete(Dto inDto) {
-		myEnumMapper.deleteByKey(inDto.getInteger("id"));
-		Dto outDto = Dtos.newDto().put2("code", "1").put2("msg", "枚举元素删除成功");
+		myDictMapper.deleteByKey(inDto.getInteger("id"));
+		Dto outDto = Dtos.newDto().put2("code", "1").put2("msg", "字典删除成功");
 		return outDto;
 	}
 	

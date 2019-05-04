@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.module;
+package com.gitee.myclouds.system.module.module;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.system.domain.domain.mymodule.MyModuleEntity;
-import com.gitee.myclouds.admin.system.domain.domain.mymodule.MyModuleMapper;
 import com.gitee.myclouds.common.vo.ZtreeNodeVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
+import com.gitee.myclouds.system.domain.mymodule.MyModuleEntity;
+import com.gitee.myclouds.system.domain.mymodule.MyModuleMapper;
 
 /**
  *  资源模块服务

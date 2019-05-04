@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.login;
+package com.gitee.myclouds.system.module.login;
 
 import java.util.List;
 
@@ -7,13 +7,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gitee.myclouds.admin.system.domain.domain.myuser.MyUserEntity;
-import com.gitee.myclouds.admin.system.domain.domain.myuser.MyUserMapper;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.vo.MyUserVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
+import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
+import com.gitee.myclouds.system.domain.myuser.MyUserMapper;
 
 /**
  * 登录服务

@@ -1,4 +1,4 @@
-package com.gitee.myclouds.admin.modules.user;
+package com.gitee.myclouds.system.module.user;
 
 import java.util.List;
 import java.util.Map;
@@ -9,15 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.admin.system.domain.domain.myuser.MyUserEntity;
-import com.gitee.myclouds.admin.system.domain.domain.myuser.MyUserMapper;
-import com.gitee.myclouds.admin.system.domain.domain.myuserrole.MyUserRoleEntity;
-import com.gitee.myclouds.admin.system.domain.domain.myuserrole.MyUserRoleMapper;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.vo.MyUserVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
+import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
+import com.gitee.myclouds.system.domain.myuser.MyUserMapper;
+import com.gitee.myclouds.system.domain.myuserrole.MyUserRoleEntity;
+import com.gitee.myclouds.system.domain.myuserrole.MyUserRoleMapper;
 import com.google.common.collect.Lists;
 
 /**
@@ -95,7 +95,8 @@ public class UserService {
 		MyUserEntity myUserEntity = new MyUserEntity().copyFrom(inDto);
 		MyUserEntity existUser = myUserMapper.selectByUkey1(myUserEntity.getAccount());
 		if (existUser == null) {
-			MyUserVO curUser = inDto.getCurUser();
+			//TODO
+			MyUserVO curUser = null;
 			myUserEntity.setCreate_by(curUser.getName());
 			myUserEntity.setCreate_by_id(curUser.getId());
 			myUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, myUserEntity.getPassword()));
@@ -151,7 +152,8 @@ public class UserService {
 		sqlSession.delete("sql.user.deleteMyUserRole", userId);
 		String roleIds = inDto.getString("roleIds");
 		if (MyUtil.isNotEmpty(roleIds)) {
-			MyUserVO curUser = inDto.getCurUser();
+			//TODO
+			MyUserVO curUser = null;
 			String[] arrRoleIds = StringUtils.split(roleIds, ",");
 			for (String roleId : arrRoleIds) {
 				MyUserRoleEntity myUserRoleEntity = new MyUserRoleEntity();
