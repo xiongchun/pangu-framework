@@ -1,110 +1,101 @@
-package ${package};
+package com.gitee.myclouds.system.domain.myuser;
 
 import java.util.List;
-#if(${importInColDto.date})
-import java.util.Date;
-#end
-#if(${importDto.bigDecimal})
-import java.math.BigDecimal;
-#end
-#if(${importDto.bigInteger})
-import java.math.BigInteger;
-#end
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.gitee.myclouds.common.wrapper.Dto;
-import ${package}.${tableDto.upname}Entity;
+import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
 
 /**
- * <b>$!{tableDto.comment}[${tableDto.name}]数据访问接口</b>
+ * <b>后台用户基本信息表[my_user]数据访问接口</b>
  * 
  * <p>
  * 注意:此文件由MyClouds平台自动生成-禁止手工修改
  * </p>
  * 
- * @author $!author
- * @date $!sysdate
+ * @author myclouds team
+ * @date 2019-05-04 11:10:57
  */
 @Mapper
-public interface ${tableDto.upname}Mapper {
+public interface MyUserMapper {
 
 	/**
 	 * 插入一个数据实体对象(插入字段为传入Entity实体的非空属性)
 	 * <p> 防止DB字段缺省值需要程序中再次赋值
 	 *
-	 * @param ${tableDto.name}Entity
+	 * @param my_userEntity
 	 *            要插入的数据实体对象
 	 * @return 返回影响行数
 	 */
-	int insert(${tableDto.upname}Entity ${tableDto.lowname}Entity);
+	int insert(MyUserEntity myUserEntity);
 	
 	/**
 	 * 插入一个数据实体对象(含所有字段)
 	 * 
-	 * @param ${tableDto.name}Entity
+	 * @param my_userEntity
 	 *            要插入的数据实体对象
 	 * @return 返回影响行数
 	 */
-	int insertAll(${tableDto.upname}Entity ${tableDto.lowname}Entity);
+	int insertAll(MyUserEntity myUserEntity);
 
 	/**
 	 * 根据主键修改数据实体对象
 	 * 
-	 * @param ${tableDto.lowname}Entity
+	 * @param myUserEntity
 	 *            要修改的数据实体对象
 	 * @return int 返回影响行数
 	 */
-	int updateByKey(${tableDto.upname}Entity ${tableDto.lowname}Entity);
+	int updateByKey(MyUserEntity myUserEntity);
 
 	/**
 	 * 根据主键查询并返回数据实体对象
 	 * 
-	 * @return ${tableDto.upname}Entity
+	 * @return MyUserEntity
 	 */
-	${tableDto.upname}Entity selectByKey(${bykey});
+	MyUserEntity selectByKey(@Param(value = "id") Integer id);
 
 	/**
 	 * 根据唯一组合条件查询并返回数据实体对象
 	 * 
-	 * @return ${tableDto.upname}Entity
+	 * @return MyUserEntity
 	 */
-	${tableDto.upname}Entity selectOne(Dto pDto);
+	MyUserEntity selectOne(Dto pDto);
 
 	/**
 	 * 根据Dto查询并返回数据实体对象集合
 	 * 
-	 * @return List<${tableDto.upname}Entity>
+	 * @return List<MyUserEntity>
 	 */
-	List<${tableDto.upname}Entity> list(Dto pDto);
+	List<MyUserEntity> list(Dto pDto);
 
 	/**
 	 * 根据Dto查询并返回分页数据实体对象集合
 	 * 
-	 * @return List<${tableDto.upname}Entity>
+	 * @return List<MyUserEntity>
 	 */
-	List<${tableDto.upname}Entity> listPage(Dto pDto);
+	List<MyUserEntity> listPage(Dto pDto);
 		
 	/**
 	 * 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配)
 	 * 
-	 * @return List<${tableDto.upname}Entity>
+	 * @return List<MyUserEntity>
 	 */
-	List<${tableDto.upname}Entity> like(Dto pDto);
+	List<MyUserEntity> like(Dto pDto);
 
 	/**
 	 * 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配)
 	 * 
-	 * @return List<${tableDto.upname}Entity>
+	 * @return List<MyUserEntity>
 	 */
-	List<${tableDto.upname}Entity> likePage(Dto pDto);
+	List<MyUserEntity> likePage(Dto pDto);
 
 	/**
 	 * 根据主键删除数据实体对象
 	 *
 	 * @return 影响行数
 	 */
-	int deleteByKey(${bykey});
+	int deleteByKey(@Param(value = "id") Integer id);
 	
 	/**
 	 * 根据Dto统计行数
@@ -122,29 +113,27 @@ public interface ${tableDto.upname}Mapper {
 	 */
 	String calc(Dto pDto);
 
-#foreach($indexDto in $indexDtos)
 	/**
-	 * 根据唯一键[${indexDto.name}]修改数据实体对象
+	 * 根据唯一键[ukey1]修改数据实体对象
 	 * 
-	 * @param ${tableDto.lowname}Entity
+	 * @param myUserEntity
 	 *            要修改的数据实体对象
 	 * @return int 返回影响行数
 	 */
-	int updateBy${indexDto.upname}(${tableDto.upname}Entity ${tableDto.lowname}Entity);
+	int updateByUkey1(MyUserEntity myUserEntity);
 
 	/**
-	 * 根据唯一键[${indexDto.name}]查询并返回数据实体对象
+	 * 根据唯一键[ukey1]查询并返回数据实体对象
 	 * 
-	 * @return ${tableDto.upname}Entity
+	 * @return MyUserEntity
 	 */
-	${tableDto.upname}Entity selectBy${indexDto.upname}(${indexDto.bykey});
+	MyUserEntity selectByUkey1(@Param(value = "account") String account);
 	
 	/**
-	 * 根据唯一键[${indexDto.name}]删除数据实体对象
+	 * 根据唯一键[ukey1]删除数据实体对象
 	 *
 	 * @return 影响行数
 	 */
-	int deleteBy${indexDto.upname}(${indexDto.bykey});
-#end
+	int deleteByUkey1(@Param(value = "account") String account);
 	
 }

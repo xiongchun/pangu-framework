@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 数据字典表[my_dict]SQL自动映射 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-05-04 11:10:54 -->
+<mapper namespace="com.gitee.myclouds.system.domain.mydict.MyDictMapper">
+	
+	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="MyDictEntity">
+		INSERT INTO my_dict (
+		<if test="dic_type != null and dic_type != ''">
+	         dic_type, <!-- 类型 -->
+		</if>
+		<if test="dic_name != null and dic_name != ''">
+	         dic_name, <!-- 名称 -->
+		</if>
+		<if test="dic_key != null and dic_key != ''">
+	         dic_key, <!-- 数据字典KEY -->
+		</if>
+		<if test="dic_value != null and dic_value != ''">
+	         dic_value, <!-- 字典对照值 -->
+		</if>
+		<if test="is_enable != null and is_enable != ''">
+	         is_enable, <!-- 是否启用 -->
+		</if>
+		<if test="sort_no != null">
+	         sort_no, <!-- 排序号 -->
+		</if>
+		<if test="update_time != null">
+	         update_time, <!-- 更新时间 -->
+		</if>
+		<if test="remark != null and remark != ''">
+	         remark, <!-- 备注 -->
+		</if>
+	          id
+		)VALUES(
+		<if test="dic_type != null and dic_type != ''">
+	          #{dic_type, jdbcType=VARCHAR}, <!-- 类型 -->
+	    </if>
+		<if test="dic_name != null and dic_name != ''">
+	          #{dic_name, jdbcType=VARCHAR}, <!-- 名称 -->
+	    </if>
+		<if test="dic_key != null and dic_key != ''">
+	          #{dic_key, jdbcType=VARCHAR}, <!-- 数据字典KEY -->
+	    </if>
+		<if test="dic_value != null and dic_value != ''">
+	          #{dic_value, jdbcType=VARCHAR}, <!-- 字典对照值 -->
+	    </if>
+		<if test="is_enable != null and is_enable != ''">
+	          #{is_enable, jdbcType=VARCHAR}, <!-- 是否启用 -->
+	    </if>
+		<if test="sort_no != null">
+	          #{sort_no, jdbcType=INTEGER}, <!-- 排序号 -->
+	    </if>
+		<if test="update_time != null">
+	          #{update_time, jdbcType=TIMESTAMP}, <!-- 更新时间 -->
+	    </if>
+		<if test="remark != null and remark != ''">
+	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
+	    </if>
+	          null
+		)
+	</insert>
+	
+	<!-- 插入一个数据实体对象(含所有字段) -->
+	<insert id="insertAll" useGeneratedKeys="true" keyProperty="id" parameterType="MyDictEntity">
+		INSERT INTO my_dict (
+		    <include refid="column" />
+		)
+		VALUES (
+		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+		    #{dic_type, jdbcType=VARCHAR},  <!-- 类型 -->
+		    #{dic_name, jdbcType=VARCHAR},  <!-- 名称 -->
+		    #{dic_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
+		    #{dic_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
+		    #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+		    #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+		    #{update_time, jdbcType=TIMESTAMP},  <!-- 更新时间 -->
+		    #{remark, jdbcType=VARCHAR}  <!-- 备注 -->
+		)
+	</insert>
+
+	<!-- 根据主键修改数据实体对象 -->
+	<update id="updateByKey" parameterType="MyDictEntity">
+		UPDATE my_dict
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="dic_type != null">
+		          dic_type = #{dic_type, jdbcType=VARCHAR},  <!-- 类型 -->
+			</if>
+			<if test="dic_name != null">
+		          dic_name = #{dic_name, jdbcType=VARCHAR},  <!-- 名称 -->
+			</if>
+			<if test="dic_key != null">
+		          dic_key = #{dic_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
+			</if>
+			<if test="dic_value != null">
+		          dic_value = #{dic_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
+			</if>
+			<if test="is_enable != null">
+		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+			</if>
+			<if test="sort_no != null">
+		          sort_no = #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+			</if>
+			<if test="update_time != null">
+		          update_time = #{update_time, jdbcType=TIMESTAMP},  <!-- 更新时间 -->
+			</if>
+			<if test="remark != null">
+		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
+			</if>
+		</set>
+		WHERE  id = #{id}
+	</update>
+	
+	<!-- 根据主键删除数据实体对象 -->
+	<delete id="deleteByKey">
+		DELETE FROM my_dict WHERE  id = #{id}
+	</delete>
+
+	<!-- 根据主键查询并返回数据实体对象 -->
+	<select id="selectByKey" resultType="MyDictEntity">
+		SELECT
+		<include refid="column" />
+		FROM my_dict WHERE  id = #{id}
+	</select>
+
+	<!-- 根据唯一组合条件查询并返回数据实体对象 -->
+	<select id="selectOne" parameterType="Dto" resultType="MyDictEntity">
+		SELECT
+		    <include refid="column" />
+		FROM my_dict
+		<where>
+		    <include refid="equal" />
+		</where>		
+	</select>
+
+	<!-- 根据Dto查询并返回数据实体对象集合 -->
+	<select id="list" parameterType="Dto" resultType="MyDictEntity">
+		SELECT
+			<include refid="column" />	
+		FROM my_dict
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto查询并返回分页数据实体对象集合 -->
+	<select id="listPage" parameterType="Dto" resultType="MyDictEntity" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM my_dict
+		<where>
+		    <include refid="equal" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="like" parameterType="Dto" resultType="MyDictEntity">
+		SELECT
+			<include refid="column" />	
+		FROM my_dict
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+
+	<!-- 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
+	<select id="likePage" parameterType="Dto" resultType="MyDictEntity" useCache="false">
+	    SELECT
+			<include refid="column" />	
+		FRoM my_dict
+		<where>
+		    <include refid="like" />
+		</where>	
+	</select>
+	
+	<!-- 根据Dto统计行数 -->
+	<select id="rows" resultType="Integer" parameterType="Dto">
+		SELECT COUNT(1) AS aos_rows_ FROM my_dict
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+	
+	<!-- 根据数学表达式进行数学运算 -->
+	<select id="calc" parameterType="Dto" resultType="String">
+		SELECT
+			${_expr}
+		FROM my_dict
+		<where>
+		    <include refid="equal" />
+		</where>
+	</select>
+
+	<!-- 根据唯一键[ukey1]修改数据实体对象 -->
+	<update id="updateByUkey1" parameterType="MyDictEntity">
+		UPDATE my_dict
+		<set>
+			<if test="id != null">
+		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
+			</if>
+			<if test="dic_type != null">
+		          dic_type = #{dic_type, jdbcType=VARCHAR},  <!-- 类型 -->
+			</if>
+			<if test="dic_name != null">
+		          dic_name = #{dic_name, jdbcType=VARCHAR},  <!-- 名称 -->
+			</if>
+			<if test="dic_key != null">
+		          dic_key = #{dic_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
+			</if>
+			<if test="dic_value != null">
+		          dic_value = #{dic_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
+			</if>
+			<if test="is_enable != null">
+		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
+			</if>
+			<if test="sort_no != null">
+		          sort_no = #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
+			</if>
+			<if test="update_time != null">
+		          update_time = #{update_time, jdbcType=TIMESTAMP},  <!-- 更新时间 -->
+			</if>
+			<if test="remark != null">
+		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
+			</if>
+		</set>
+		WHERE  dic_type = #{dic_type} AND dic_key = #{dic_key}
+	</update>
+	
+	<!-- 根据唯一键[ukey1]删除数据实体对象 -->
+	<delete id="deleteByUkey1">
+		DELETE FROM my_dict WHERE  dic_type = #{dic_type} AND dic_key = #{dic_key}
+	</delete>
+
+	<!-- 根据唯一键[ukey1]查询并返回数据实体对象 -->
+	<select id="selectByUkey1" resultType="MyDictEntity">
+		SELECT
+		<include refid="column" />
+		FROM my_dict WHERE  dic_type = #{dic_type} AND dic_key = #{dic_key}
+	</select>
+	
+	<!-- 表字段 -->
+	<sql id="column">
+		  id,  <!-- 流水号 -->
+		  dic_type,  <!-- 类型 -->
+		  dic_name,  <!-- 名称 -->
+		  dic_key,  <!-- 数据字典KEY -->
+		  dic_value,  <!-- 字典对照值 -->
+		  is_enable,  <!-- 是否启用 -->
+		  sort_no,  <!-- 排序号 -->
+		  update_time,  <!-- 更新时间 -->
+		  remark  <!-- 备注 -->
+	</sql>
+	
+	<!-- 表字段(用于外表的关联时引用) -->
+	<sql id="column2">
+		  my_dict.id,  <!-- 流水号 -->
+		  my_dict.dic_type,  <!-- 类型 -->
+		  my_dict.dic_name,  <!-- 名称 -->
+		  my_dict.dic_key,  <!-- 数据字典KEY -->
+		  my_dict.dic_value,  <!-- 字典对照值 -->
+		  my_dict.is_enable,  <!-- 是否启用 -->
+		  my_dict.sort_no,  <!-- 排序号 -->
+		  my_dict.update_time,  <!-- 更新时间 -->
+		  my_dict.remark  <!-- 备注 -->
+	</sql>
+
+	<!-- Where精确匹配字段 -->
+	<sql id="equal">
+	   <if test="id != null ">
+		      AND id = #{id}  <!-- 流水号 -->
+		</if>
+	    <if test="dic_type != null and dic_type != ''">
+		      AND dic_type = #{dic_type}  <!-- 类型 -->
+		</if>
+	    <if test="dic_name != null and dic_name != ''">
+		      AND dic_name = #{dic_name}  <!-- 名称 -->
+		</if>
+	    <if test="dic_key != null and dic_key != ''">
+		      AND dic_key = #{dic_key}  <!-- 数据字典KEY -->
+		</if>
+	    <if test="dic_value != null and dic_value != ''">
+		      AND dic_value = #{dic_value}  <!-- 字典对照值 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable = #{is_enable}  <!-- 是否启用 -->
+		</if>
+	   <if test="sort_no != null ">
+		      AND sort_no = #{sort_no}  <!-- 排序号 -->
+		</if>
+	   <if test="update_time != null ">
+		      AND update_time = #{update_time}  <!-- 更新时间 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark = #{remark}  <!-- 备注 -->
+		</if>
+	</sql>
+	
+	<!-- Where模糊匹配字段 -->
+	<sql id="like">
+	    <if test="dic_type != null and dic_type != ''">
+		      AND dic_type like '${dic_type}%'  <!-- 类型 -->
+		</if>
+	    <if test="dic_name != null and dic_name != ''">
+		      AND dic_name like '${dic_name}%'  <!-- 名称 -->
+		</if>
+	    <if test="dic_key != null and dic_key != ''">
+		      AND dic_key like '${dic_key}%'  <!-- 数据字典KEY -->
+		</if>
+	    <if test="dic_value != null and dic_value != ''">
+		      AND dic_value like '${dic_value}%'  <!-- 字典对照值 -->
+		</if>
+	    <if test="is_enable != null and is_enable != ''">
+		      AND is_enable like '${is_enable}%'  <!-- 是否启用 -->
+		</if>
+	    <if test="remark != null and remark != ''">
+		      AND remark like '${remark}%'  <!-- 备注 -->
+		</if>
+	</sql>
+	
+</mapper>

@@ -1,6 +1,6 @@
 package ${package};
 
-import com.gitee.myclouds.toolbox.wrap.Entity;
+import com.gitee.myclouds.common.wrapper.Entity;
 #foreach($columnDto in $columnDtos)
 #if(${columnDto.type} == "datetime" || ${columnDto.type} == "timestamp" || ${columnDto.type} == "date")
 import com.alibaba.fastjson.annotation.JSONField;

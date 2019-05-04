@@ -46,8 +46,6 @@ public class BuildDomainService {
 	private String packagePath;
 	@Value("${my.builder.domain.tables}")
 	private String tables;
-	@Value("${my.builder.domain.target}")
-	private String target;
 
 	/**
 	 * 初始化Dao配置
@@ -60,7 +58,6 @@ public class BuildDomainService {
 		cfgDto.put("outPath", outFilePath);
 		cfgDto.put("package", packagePath);
 		cfgDto.put("tables", MyUtil.trimAll(tables));
-		cfgDto.put("target", target);
 		return cfgDto;
 	}
 
@@ -95,18 +92,9 @@ public class BuildDomainService {
 			inDto.put("columnVOs", columnVOs);
 			inDto.put("pkeyColumnVOs", pkeyColumnVOs);
 			inDto.put("indexVOs", indexVOs);
-			String[] arrTarget = StringUtils.split(inDto.getString("target"), ",");
-			for (String target : arrTarget) {
-				if (StringUtils.equalsIgnoreCase(target, "entity")) {
-					buildEntity(inDto);
-					continue;
-				}
-				if (StringUtils.equalsIgnoreCase(target, "mapper")) {
-					buildJavaMapper(inDto);
-					buildXmlMapper(inDto);
-					continue;
-				}
-			}
+			buildEntity(inDto);
+			buildJavaMapper(inDto);
+			buildXmlMapper(inDto);
 		}
 		log.info("文件生成完成，请刷新工程目录。");
 
@@ -214,7 +202,7 @@ public class BuildDomainService {
 		List<IndexVO> indexVOs = (List<IndexVO>) inDto.get("indexVOs");
 		vmDto.put("indexDtos", BuilderUtil.convertIndexVO(indexVOs));
 
-		String outString = BuilderUtil.mergeFileTemplate("template/entity.xml.vm", vmDto);
+		String outString = BuilderUtil.mergeFileTemplate("template/mapper.xml.vm", vmDto);
 		try {
 			String outPath = inDto.getString("outPath") + "/" + allLowName + "/";
 			String fileName = tableDto.getString("upname") + "Mapper.xml";
