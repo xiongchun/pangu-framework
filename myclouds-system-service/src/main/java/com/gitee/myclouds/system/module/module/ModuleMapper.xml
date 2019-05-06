@@ -44,7 +44,7 @@
 	</select>
 	
 	<!-- 查询资源树 -->
-	<select id="listModuleTree" resultType="ZTreeNodeVO" parameterType="Dto">
+	<select id="listModuleTree" resultType="Dto" parameterType="Dto">
 	    SELECT
 			id,
 			parent_id AS pId,

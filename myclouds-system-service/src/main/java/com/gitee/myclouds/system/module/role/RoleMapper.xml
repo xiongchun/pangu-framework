@@ -18,7 +18,7 @@
 	</delete>
 
     <!-- 查询待授权菜单树 -->
-	<select id="listToGrantTree" resultType="ZTreeNodeVO">
+	<select id="listToGrantTree" resultType="Dto">
 	    SELECT
 			id,
 			parent_id AS pId,

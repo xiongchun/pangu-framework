@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.common.vo.MyUserVO;
-import com.gitee.myclouds.common.vo.ZtreeNodeVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.myorg.MyOrgEntity;
@@ -117,8 +116,8 @@ public class OrgService {
 	 */
 	//TODO 没有支持子部门操作，迭代版本支持
 	public String listOrgTree(Dto inDto) {
-		List<ZtreeNodeVO> zTreeNodeVOs = sqlSession.selectList("sql.org.listOrgTree");
-		return JSON.toJSONString(zTreeNodeVOs);
+
+		return null;
 	}
 	
 }

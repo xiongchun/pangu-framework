@@ -11,7 +11,6 @@ import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.vo.MyUserVO;
-import com.gitee.myclouds.common.vo.ZtreeNodeVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.myrole.MyRoleEntity;
@@ -118,15 +117,15 @@ public class RoleService {
 	 */
 	//TODO 没有支持子部门管理员的授权操作，迭代版本支持
 	public String listGrantTree(Integer roleId) {
-		List<ZtreeNodeVO> zTreeNodeVOs = sqlSession.selectList("sql.role.listToGrantTree");
-		for (ZtreeNodeVO zTreeNodeVO : zTreeNodeVOs) {
+/*		List<TreeNodeVO> zTreeNodeVOs = sqlSession.selectList("sql.role.listToGrantTree");
+		for (TreeNodeVO zTreeNodeVO : zTreeNodeVOs) {
 			Dto qDto = Dtos.newDto().put2("role_id", roleId).put2("module_id", zTreeNodeVO.getId()).put2("grant_type", MyCons.GrantType.BIZ.getValue());
 			MyRoleModuleEntity myRoleModuleEntity = myRoleModuleMapper.selectOne(qDto);
 			if (myRoleModuleEntity != null) {
 				zTreeNodeVO.setChecked(true);
 			}
-		}
-		return JSON.toJSONString(zTreeNodeVOs);
+		}*/
+		return null;
 	}
 	
 	/**

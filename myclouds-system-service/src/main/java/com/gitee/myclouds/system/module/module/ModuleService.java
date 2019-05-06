@@ -1,6 +1,5 @@
 package com.gitee.myclouds.system.module.module;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.common.vo.ZtreeNodeVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.mymodule.MyModuleEntity;
@@ -109,10 +107,7 @@ public class ModuleService {
 	 * @return
 	 */
 	public String listModuleTree(Dto inDto) {
-		String[] types = {"1"};
-		inDto.put("types", Arrays.asList(types));
-		List<ZtreeNodeVO> zTreeNodeVOs = sqlSession.selectList("sql.module.listModuleTree", inDto);
-		return JSON.toJSONString(zTreeNodeVOs);
+		return null;
 	}
 	
 }

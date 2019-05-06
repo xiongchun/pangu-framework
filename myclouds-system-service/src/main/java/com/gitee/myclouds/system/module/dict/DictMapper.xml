@@ -30,9 +30,6 @@
 			<if test="is_enable != null and is_enable != ''">
 				AND is_enable = #{is_enable}
 			</if>
-			<if test="sys_key != null and sys_key != ''">
-				AND sys_key = #{sys_key}
-			</if>
 		</where>
 	</sql>
 

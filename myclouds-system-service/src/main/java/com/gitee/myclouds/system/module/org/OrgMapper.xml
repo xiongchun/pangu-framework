@@ -50,7 +50,7 @@
 	</select>
 	
 	<!-- 查询部门树 -->
-	<select id="listOrgTree" resultType="ZTreeNodeVO">
+	<select id="listOrgTree" resultType="Dto">
 	    SELECT
 			id,
 			parent_id AS pId,
