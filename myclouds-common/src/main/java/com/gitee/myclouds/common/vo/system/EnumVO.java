@@ -1,9 +1,9 @@
-package com.gitee.myclouds.common.vo;
+package com.gitee.myclouds.common.vo.system;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.gitee.myclouds.common.wrapper.VO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,9 +16,10 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class EnumVO extends VO{
-
+public class EnumVO implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * 流水号
 	 */

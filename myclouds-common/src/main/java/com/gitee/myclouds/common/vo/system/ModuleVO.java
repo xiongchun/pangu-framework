@@ -1,6 +1,6 @@
-package com.gitee.myclouds.common.vo;
+package com.gitee.myclouds.common.vo.system;
 
-import com.gitee.myclouds.common.wrapper.VO;
+import java.io.Serializable;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +13,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ModuleVO extends VO{
+public class ModuleVO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
