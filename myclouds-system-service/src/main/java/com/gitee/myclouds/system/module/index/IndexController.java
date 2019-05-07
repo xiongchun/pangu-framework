@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gitee.myclouds.common.vo.system.MenuVO;
 import com.gitee.myclouds.common.wrapper.Dtos;
+import com.gitee.myclouds.system.vo.MenuVO;
 
 /**
  * 首页 服务发布

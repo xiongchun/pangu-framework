@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +18,7 @@ import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.impl.HashDto;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
@@ -191,6 +194,25 @@ public class MyUtil {
 			log.error(msg);
 			throw new RuntimeException(msg, e);
 		}
+	}
+	
+	/**
+	 * 将Request请求参数封装为Dto对象
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static Dto getParamAsDto(HttpServletRequest request) {
+		Dto dto = new HashDto();
+		Map<String, String[]> map = request.getParameterMap();
+		@SuppressWarnings({ "rawtypes", "unchecked" })
+		Iterator<String> keyIterator = (Iterator) map.keySet().iterator();
+		while (keyIterator.hasNext()) {
+			String key = (String) keyIterator.next();
+			String value = map.get(key)[0];
+			dto.put(key, value);
+		}
+		return dto;
 	}
 	
 	public static void main(String[] args) {

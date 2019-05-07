@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
-import com.gitee.myclouds.common.vo.system.MyUserVO;
+import com.gitee.myclouds.common.vo.UserVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
@@ -46,7 +46,7 @@ public class LoginService {
 			}
 		}
 		if (MyCons.YesOrNo.YES.getValue() == outDto.getInteger("code").intValue()) {
-			MyUserVO myUser = new MyUserVO();
+			UserVO myUser = new UserVO();
 			myUser.setId(myUserEntity.getId());
 			myUser.setAccount(myUserEntity.getAccount());
 			myUser.setName(myUserEntity.getName());

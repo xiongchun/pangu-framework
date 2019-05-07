@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
-import com.gitee.myclouds.common.vo.system.MyUserVO;
+import com.gitee.myclouds.common.vo.UserVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.myrole.MyRoleEntity;
@@ -88,7 +88,7 @@ public class RoleService {
 		MyRoleEntity myRoleEntity = new MyRoleEntity();
 		MyUtil.copyProperties(inDto, myRoleEntity);
 		//TODO
-		MyUserVO curUser = null;
+		UserVO curUser = null;
 		myRoleEntity.setCreate_by(curUser.getName());
 		myRoleEntity.setCreate_by_id(curUser.getId());
 		myRoleMapper.insert(myRoleEntity);
@@ -142,7 +142,7 @@ public class RoleService {
 		String moduleIds = inDto.getString("moduleIds");
 		if (MyUtil.isNotEmpty(moduleIds)) {
 			//TODO
-			MyUserVO curUser = null;
+			UserVO curUser = null;
 			String[] arrModuleIds = StringUtils.split(moduleIds, ",");
 			for (String moduleId : arrModuleIds) {
 				MyRoleModuleEntity myRoleModuleEntity = new MyRoleModuleEntity();

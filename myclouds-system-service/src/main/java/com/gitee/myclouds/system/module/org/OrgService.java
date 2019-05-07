@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.common.util.MyUtil;
-import com.gitee.myclouds.common.vo.system.MyUserVO;
+import com.gitee.myclouds.common.vo.UserVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.myorg.MyOrgEntity;
@@ -67,7 +67,7 @@ public class OrgService {
 		MyOrgEntity myOrgEntity = new MyOrgEntity();
 		MyUtil.copyProperties(inDto, myOrgEntity);
 		//TODO
-		MyUserVO curUser = null;
+		UserVO curUser = null;
 		myOrgEntity.setCreate_by(curUser.getName());
 		myOrgEntity.setCreate_by_id(curUser.getId());
 		myOrgMapper.insert(myOrgEntity);
