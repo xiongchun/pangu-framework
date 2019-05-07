@@ -1,4 +1,4 @@
-package com.gitee.myclouds.common;
+package com.gitee.myclouds.common.service;
 
 import java.util.List;
 
@@ -10,24 +10,23 @@ import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyListUtil;
 import com.gitee.myclouds.common.util.MyUtil;
+import com.gitee.myclouds.common.vo.ModuleVO;
 import com.gitee.myclouds.common.vo.system.EnumVO;
-import com.gitee.myclouds.common.vo.system.ModuleVO;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.google.common.collect.Lists;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 平台上下文服务
+ * 数据字典公用服务类	
  * 
  * <p>为了不污染依赖工程，此处不使用@Service注解。由依赖工程的启动类决定是否去@import这个资源。
- * <br>比如，有的工程并不需要连接redis连接，如果这里直接@Service的话会使依赖myclouds-common的工程强制依赖redis。
  * 
  * @author xiongchun
  *
  */
 @Slf4j
-public class MyCxt {
+public class DictService {
 	
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
@@ -108,4 +107,5 @@ public class MyCxt {
 		}
 		return JSON.parseObject(object.toString(), ModuleVO.class);
 	}
+	
 }

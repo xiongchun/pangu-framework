@@ -1,10 +1,9 @@
-package com.gitee.myclouds.common.vo.system;
+package com.gitee.myclouds.common.vo;
 
 import java.io.Serializable;
 import java.util.List;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * 当前会话用户数据对象
@@ -12,10 +11,8 @@ import lombok.Setter;
  * @author xiongchun
  *
  */
-// TODO 需要增加更多配置信息和权限信息
-@Getter
-@Setter
-public class MyUserVO implements Serializable {
+@Data
+public class UserVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
