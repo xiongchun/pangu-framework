@@ -19,6 +19,8 @@ import java.util.Date;
 import java.sql.Timestamp;
 #end
 import java.io.Serializable;
+
+import lombok.Data;
 ##java.lang.*下的类型不需要导入
 
 /**
@@ -30,15 +32,14 @@ import java.io.Serializable;
  * @author $!author
  * @date $!sysdate
  */
+@Data
 public class ${tableDto.upname}Entity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 ##变量声明
 #foreach($columnDto in $columnDtos)
-	/**
-	 * ${columnDto.comment}
-	 */
+
+	//${columnDto.comment}
 #if(${columnDto.type} == "datetime" || ${columnDto.type} == "timestamp")
     @JSONField (format="yyyy-MM-dd HH:mm:ss")
 #end
@@ -46,32 +47,6 @@ public class ${tableDto.upname}Entity implements Serializable {
     @JSONField (format="yyyy-MM-dd")
 #end
 	private ${columnDto.javatype} ${columnDto.name};	
-#end
-	
-##get方法
-#foreach($columnDto in $columnDtos)
-	/**
-	 * ${columnDto.comment}
-	 * 
-	 * @return ${columnDto.name}
-	 */
-	public ${columnDto.javatype} get${columnDto.upname}() {
-		return ${columnDto.name};
-	}
-	
-#end
-
-##set方法
-#foreach($columnDto in $columnDtos)
-	/**
-	 * ${columnDto.comment}
-	 * 
-	 * @param ${columnDto.name}
-	 */
-	public void set${columnDto.upname}(${columnDto.javatype} ${columnDto.name}) {
-		this.${columnDto.name} = ${columnDto.name};
-	}
-	
 #end
 
 }
