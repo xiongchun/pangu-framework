@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
-import com.gitee.myclouds.common.vo.MyUserVO;
+import com.gitee.myclouds.common.vo.system.MyUserVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.myrole.MyRoleEntity;
@@ -69,7 +69,8 @@ public class RoleService {
 	public Dto update(Dto inDto) {
 		Dto outDto = null;
 		//拷贝参数对象中的属性到实体对象中
-		MyRoleEntity myRoleEntity = new MyRoleEntity().copyFrom(inDto);
+		MyRoleEntity myRoleEntity = new MyRoleEntity();
+		MyUtil.copyProperties(inDto, myRoleEntity);
 		myRoleMapper.updateByKey(myRoleEntity);
 		outDto = Dtos.newDto().put2("code", "1").put2("msg", "角色修改成功");
 		return outDto;
@@ -84,7 +85,8 @@ public class RoleService {
 	public Dto save(Dto inDto) {
 		Dto outDto = null;
 		//拷贝参数对象中的属性到实体对象中
-		MyRoleEntity myRoleEntity = new MyRoleEntity().copyFrom(inDto);
+		MyRoleEntity myRoleEntity = new MyRoleEntity();
+		MyUtil.copyProperties(inDto, myRoleEntity);
 		//TODO
 		MyUserVO curUser = null;
 		myRoleEntity.setCreate_by(curUser.getName());

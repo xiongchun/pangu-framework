@@ -9,10 +9,10 @@ import com.gitee.myclouds.builder.service.BuildDomainService;
 
 @SpringBootApplication
 @ComponentScan(basePackages={"com.gitee"})
-public class StartBuilderApplication {
+public class MyBuilderApplication {
 	
 	public static void main(String[] args){
-		ConfigurableApplicationContext  context = SpringApplication.run(StartBuilderApplication.class, args);
+		ConfigurableApplicationContext  context = SpringApplication.run(MyBuilderApplication.class, args);
 		BuildDomainService buildDomainService = context.getBean(BuildDomainService.class);
 		buildDomainService.buildDomain();
 	}

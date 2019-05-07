@@ -1,6 +1,5 @@
 package ${package};
 
-import com.gitee.myclouds.common.wrapper.Entity;
 #foreach($columnDto in $columnDtos)
 #if(${columnDto.type} == "datetime" || ${columnDto.type} == "timestamp" || ${columnDto.type} == "date")
 import com.alibaba.fastjson.annotation.JSONField;
@@ -19,6 +18,7 @@ import java.util.Date;
 #if(${importDto.timestamp})
 import java.sql.Timestamp;
 #end
+import java.io.Serializable;
 ##java.lang.*下的类型不需要导入
 
 /**
@@ -30,7 +30,7 @@ import java.sql.Timestamp;
  * @author $!author
  * @date $!sysdate
  */
-public class ${tableDto.upname}Entity extends Entity {
+public class ${tableDto.upname}Entity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,17 +47,6 @@ public class ${tableDto.upname}Entity extends Entity {
 #end
 	private ${columnDto.javatype} ${columnDto.name};	
 #end
-
-	/**
-	 * 将参数对象中的属性复制到当前对象中
-	 * 
-	 * @param inObj 参数对象
-	 * @return
-	 */
-	public ${tableDto.upname}Entity copyFrom(Object inObj) {
-		super.copyProperties(inObj);
-		return this;
-	}
 	
 ##get方法
 #foreach($columnDto in $columnDtos)

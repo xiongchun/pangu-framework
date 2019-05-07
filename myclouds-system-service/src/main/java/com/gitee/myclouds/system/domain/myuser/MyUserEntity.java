@@ -1,8 +1,8 @@
 package com.gitee.myclouds.system.domain.myuser;
 
-import com.gitee.myclouds.common.wrapper.Entity;
 import com.alibaba.fastjson.annotation.JSONField;
 import java.util.Date;
+import java.io.Serializable;
 
 /**
  * <b>后台用户基本信息表[my_user]数据实体对象</b>
@@ -11,9 +11,9 @@ import java.util.Date;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-04 16:01:25
+ * @date 2019-05-07 14:26:38
  */
-public class MyUserEntity extends Entity {
+public class MyUserEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -86,17 +86,6 @@ public class MyUserEntity extends Entity {
 	 * 备注
 	 */
 	private String remark;	
-
-	/**
-	 * 将参数对象中的属性复制到当前对象中
-	 * 
-	 * @param inObj 参数对象
-	 * @return
-	 */
-	public MyUserEntity copyFrom(Object inObj) {
-		super.copyProperties(inObj);
-		return this;
-	}
 	
 	/**
 	 * 流水号

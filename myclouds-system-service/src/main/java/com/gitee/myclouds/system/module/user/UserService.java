@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
-import com.gitee.myclouds.common.vo.MyUserVO;
+import com.gitee.myclouds.common.vo.system.MyUserVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
@@ -71,7 +71,8 @@ public class UserService {
 	 */
 	public Dto update(Dto inDto) {
 		Dto outDto = null;
-		MyUserEntity myUserEntity = new MyUserEntity().copyFrom(inDto);
+		MyUserEntity myUserEntity = new MyUserEntity();
+		MyUtil.copyProperties(inDto, myUserEntity);
 		MyUserEntity oldUser = myUserMapper.selectByKey(myUserEntity.getId());
 		if (!StringUtils.equals(oldUser.getAccount(), myUserEntity.getAccount()) ) {
 			if (MyUtil.isNotEmpty(myUserMapper.selectByUkey1(myUserEntity.getAccount()))) {
@@ -92,7 +93,7 @@ public class UserService {
 	 */
 	public Dto save(Dto inDto) {
 		Dto outDto = Dtos.newDto();
-		MyUserEntity myUserEntity = new MyUserEntity().copyFrom(inDto);
+		MyUserEntity myUserEntity = new MyUserEntity();
 		MyUserEntity existUser = myUserMapper.selectByUkey1(myUserEntity.getAccount());
 		if (existUser == null) {
 			//TODO

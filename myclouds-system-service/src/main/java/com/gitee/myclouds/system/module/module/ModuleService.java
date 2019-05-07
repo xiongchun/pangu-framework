@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
+import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.mymodule.MyModuleEntity;
@@ -62,7 +63,8 @@ public class ModuleService {
 	public Dto save(Dto inDto) {
 		Dto outDto = null;
 		//拷贝参数对象中的属性到实体对象中
-		MyModuleEntity myModuleEntity = new MyModuleEntity().copyFrom(inDto);
+		MyModuleEntity myModuleEntity = new MyModuleEntity();
+		MyUtil.copyProperties(inDto, myModuleEntity);
 		myModuleMapper.insert(myModuleEntity);
 		outDto = Dtos.newDto().put2("code", "1").put2("msg", "资源模块信息保存成功");
 		return outDto;
@@ -76,7 +78,8 @@ public class ModuleService {
 	 */
 	public Dto update(Dto inDto) {
 		Dto outDto = null;
-		MyModuleEntity myModuleEntity = new MyModuleEntity().copyFrom(inDto);
+		MyModuleEntity myModuleEntity = new MyModuleEntity();
+		MyUtil.copyProperties(inDto, myModuleEntity);
 		myModuleMapper.updateByKey(myModuleEntity);
 		outDto = Dtos.newDto().put2("code", "1").put2("msg", "资源模块信息修改成功");
 		return outDto;

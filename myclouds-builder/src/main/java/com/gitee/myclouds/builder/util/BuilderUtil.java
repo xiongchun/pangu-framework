@@ -32,7 +32,8 @@ public class BuilderUtil {
 	 * @return Dto
 	 */
 	public static Dto convertTableVO(TableVO tableVO) {
-		Dto tableDto = tableVO.toDto();
+		Dto tableDto = Dtos.newDto();
+		MyUtil.copyProperties(tableVO, tableDto);
 		// 先全部转为小写，再首字母大写。变态的Oracle、H2表名全部返回大写字母。
 		String name = StringUtils.lowerCase(tableVO.getName());
 		tableDto.put("name", name);
@@ -60,7 +61,8 @@ public class BuilderUtil {
 			if (MyUtil.isEmpty(columnVO.getComment())) {
 				columnVO.setComment(columnVO.getName());
 			}
-			Dto columnDto = columnVO.toDto();
+			Dto columnDto = Dtos.newDto();
+			MyUtil.copyProperties(columnVO, columnDto);
 			// 先全部转为小写，再首字母大写。变态的Oracle、H2表名全部返回大写字母。
 			String name = StringUtils.lowerCase(columnVO.getName());
 			columnDto.put("upname", StringUtils.capitalize(name));

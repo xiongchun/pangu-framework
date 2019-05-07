@@ -1,6 +1,6 @@
 package com.gitee.myclouds.builder.vo;
 
-import com.gitee.myclouds.common.wrapper.VO;
+import java.io.Serializable;
 
 /**
  * <b>数据表字段值对象</b>
@@ -8,7 +8,7 @@ import com.gitee.myclouds.common.wrapper.VO;
  * @author xiongchun
  * @date 2013-06-06
  */
-public class ColumnVO extends VO{
+public class ColumnVO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 

@@ -1,6 +1,6 @@
 package com.gitee.myclouds.system.domain.mymodule;
 
-import com.gitee.myclouds.common.wrapper.Entity;
+import java.io.Serializable;
 
 /**
  * <b>资源模块事件注册表[my_module]数据实体对象</b>
@@ -9,9 +9,9 @@ import com.gitee.myclouds.common.wrapper.Entity;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-04 16:01:24
+ * @date 2019-05-07 14:26:36
  */
-public class MyModuleEntity extends Entity {
+public class MyModuleEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -51,17 +51,6 @@ public class MyModuleEntity extends Entity {
 	 * 备注
 	 */
 	private String remark;	
-
-	/**
-	 * 将参数对象中的属性复制到当前对象中
-	 * 
-	 * @param inObj 参数对象
-	 * @return
-	 */
-	public MyModuleEntity copyFrom(Object inObj) {
-		super.copyProperties(inObj);
-		return this;
-	}
 	
 	/**
 	 * 流水号

@@ -1,13 +1,17 @@
 package com.gitee.myclouds.builder.vo;
 
+import java.io.Serializable;
+
 /**
  * <b>JDBC驱动配置对象</b>
  * 
  * @author xiongchun
  * @date 2013-06-06
  */
-public class DriverManagerOptVO {
+public class DriverManagerOptVO implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	//数据库类型
 	private String dataBaseType;
 	// 数据库主机IP

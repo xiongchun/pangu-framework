@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.gitee.myclouds.common.util.MyCons;
-import com.gitee.myclouds.common.vo.MyUserVO;
+import com.gitee.myclouds.common.vo.system.MyUserVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.impl.HashDto;
 

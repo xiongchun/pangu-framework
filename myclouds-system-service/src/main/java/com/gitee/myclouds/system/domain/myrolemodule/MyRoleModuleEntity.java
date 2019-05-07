@@ -1,8 +1,8 @@
 package com.gitee.myclouds.system.domain.myrolemodule;
 
-import com.gitee.myclouds.common.wrapper.Entity;
 import com.alibaba.fastjson.annotation.JSONField;
 import java.util.Date;
+import java.io.Serializable;
 
 /**
  * <b>功能模块-角色关联表[my_role_module]数据实体对象</b>
@@ -11,9 +11,9 @@ import java.util.Date;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-04 16:01:25
+ * @date 2019-05-07 14:26:37
  */
-public class MyRoleModuleEntity extends Entity {
+public class MyRoleModuleEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -42,17 +42,6 @@ public class MyRoleModuleEntity extends Entity {
 	 * 创建人ID
 	 */
 	private Integer create_by;	
-
-	/**
-	 * 将参数对象中的属性复制到当前对象中
-	 * 
-	 * @param inObj 参数对象
-	 * @return
-	 */
-	public MyRoleModuleEntity copyFrom(Object inObj) {
-		super.copyProperties(inObj);
-		return this;
-	}
 	
 	/**
 	 * 流水号

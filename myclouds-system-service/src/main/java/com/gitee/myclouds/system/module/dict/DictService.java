@@ -64,7 +64,8 @@ public class DictService {
 	public Dto save(Dto inDto) {
 		Dto outDto = null;
 		//拷贝参数对象中的属性到实体对象中
-		MyDictEntity myDictEntity = new MyDictEntity().copyFrom(inDto);
+		MyDictEntity myDictEntity = new MyDictEntity();
+		MyUtil.copyProperties(inDto, myDictEntity);
 		if (MyUtil.isEmpty(myDictMapper.selectByUkey1(myDictEntity.getDict_type(), myDictEntity.getDict_key()))) {
 			myDictMapper.insert(myDictEntity);
 			outDto = Dtos.newDto().put2("code", "1").put2("msg", "字典保存成功");
@@ -82,7 +83,8 @@ public class DictService {
 	 */
 	public Dto update(Dto inDto) {
 		Dto outDto = null;
-		MyDictEntity myDictEntity = new MyDictEntity().copyFrom(inDto);
+		MyDictEntity myDictEntity = new MyDictEntity();
+		MyUtil.copyProperties(inDto, myDictEntity);
 		MyDictEntity oldEntity = myDictMapper.selectByKey(myDictEntity.getId());
 		if (!StringUtils.equalsIgnoreCase(myDictEntity.getDict_key(), oldEntity.getDict_key())) {
 			if (MyUtil.isNotEmpty(myDictMapper.selectByUkey1(myDictEntity.getDict_type(), myDictEntity.getDict_key()))) {

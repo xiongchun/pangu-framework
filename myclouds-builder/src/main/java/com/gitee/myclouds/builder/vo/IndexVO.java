@@ -1,8 +1,8 @@
 package com.gitee.myclouds.builder.vo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import com.gitee.myclouds.common.wrapper.VO;
 import com.google.common.collect.Lists;
 
 /**
@@ -11,7 +11,7 @@ import com.google.common.collect.Lists;
  * @author xiongchun
  * @date 2013-06-06
  */
-public class IndexVO extends VO{
+public class IndexVO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 

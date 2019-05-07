@@ -10,9 +10,8 @@ import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyListUtil;
 import com.gitee.myclouds.common.util.MyUtil;
-import com.gitee.myclouds.common.vo.EnumVO;
-import com.gitee.myclouds.common.vo.ModuleVO;
-import com.gitee.myclouds.common.vo.ParamVO;
+import com.gitee.myclouds.common.vo.system.EnumVO;
+import com.gitee.myclouds.common.vo.system.ModuleVO;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.google.common.collect.Lists;
 
@@ -32,48 +31,6 @@ public class MyCxt {
 	
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
-	
-	/**
-	 * 获取键值参数对象
-	 * 
-	 * @param paramKey
-	 * @return
-	 */
-	public ParamVO getParamVO(String paramKey) {
-		String key = MyCons.CacheKeyOrPrefix.MyParam.getValue() + ":" + paramKey;
-		ParamVO paramVO = null;
-		try {
-			String json = stringRedisTemplate.opsForValue().get(key);
-			paramVO = JSON.parseObject(json, ParamVO.class);
-		} catch (Exception e) {
-			log.error("获取键值参数：【{}】时反生错误", paramKey);
-			e.printStackTrace();
-		}
-		return paramVO;
-	}
-	
-	/**
-	 * 获取键值参数值
-	 * 
-	 * @param paramKey
-	 * @return
-	 */
-	public String getParamValue(String paramKey) {
-		ParamVO paramVO = getParamVO(paramKey);
-		return MyUtil.isEmpty(paramVO) ? StringUtils.EMPTY : paramVO.getValue();
-	}
-	
-	/**
-	 * 获取键值参数值
-	 * 
-	 * @param paramKey
-	 * @param defaultValue
-	 * @return
-	 */
-	public String getParamValue(String paramKey, String defaultValue) {
-		String value = getParamValue(paramKey);
-		return MyUtil.isEmpty(value) ? defaultValue : value;
-	}
 	
 	/**
 	 * 获取枚举元素列表

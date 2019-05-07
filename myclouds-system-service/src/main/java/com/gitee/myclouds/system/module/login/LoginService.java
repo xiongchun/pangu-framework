@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
-import com.gitee.myclouds.common.vo.MyUserVO;
+import com.gitee.myclouds.common.vo.system.MyUserVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
