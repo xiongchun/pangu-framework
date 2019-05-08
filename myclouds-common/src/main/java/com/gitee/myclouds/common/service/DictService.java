@@ -31,13 +31,13 @@ public class DictService {
 	private StringRedisTemplate stringRedisTemplate;
 	
 	/**
-	 * 获取枚举元素列表
+	 * 获取数据字典列表
 	 * 
 	 * @param elementKey
 	 * @return
 	 */
-	public List<DictVO> getEnum(String enumKey){
-		String key = MyCons.CacheKeyOrPrefix.MyEnum.getValue() + ":" + enumKey;
+	public List<DictVO> getDict(String dictType){
+		String key = MyCons.CacheKeyOrPrefix.MyDict.getValue() + ":" + dictType;
 		List<DictVO> dictVOs = Lists.newArrayList();
 		try {
 			List<Object> enumObjs = stringRedisTemplate.opsForHash().values(key);
@@ -48,48 +48,48 @@ public class DictService {
 			String jql = "SELECT * FROM :MyList ORDER BY sort_no ASC";
 			dictVOs = MyListUtil.list(dictVOs, DictVO.class, jql, Dtos.newDto());
 		} catch (Exception e) {
-			log.error("获取枚举类型：【{}】时反生错误", enumKey);
+			log.error("获取数据字典：【{}】时反生错误", dictType);
 			e.printStackTrace();
 		}
 		return dictVOs;
 	}
 	
 	/**
-	 * 获取枚举元素对象
+	 * 获取数据字典对象
 	 * 
-	 * @param enumKey
-	 * @param elementKey
+	 * @param dictType
+	 * @param dictKey
 	 * @return
 	 */
-	public DictVO getDictVO(String enumKey, String elementKey) {
-		List<DictVO> myEnumEntities = getEnum(enumKey);
-		String jql = "SELECT * FROM :MyList WHERE element_key = :elementKey";
-		DictVO dictVO = (DictVO)MyListUtil.selectOne(myEnumEntities, DictVO.class, jql, Dtos.newDto("elementKey", elementKey));
+	public DictVO getDictVO(String dictType, String dictKey) {
+		List<DictVO> myDictVOs = getDict(dictType);
+		String jql = "SELECT * FROM :MyList WHERE dict_key = :dictKey";
+		DictVO dictVO = (DictVO)MyListUtil.selectOne(myDictVOs, DictVO.class, jql, Dtos.newDto("dict_key", dictKey));
 		return dictVO;
 	}
 	
 	/**
-	 * 获取枚举元素值
+	 * 获取数据字典值
 	 * 
 	 * @param enumKey
 	 * @param elementKey
 	 * @return
 	 */
-	public String getEnumElementValue(String enumKey, String elementKey) {
+	public String getDictElementValue(String enumKey, String elementKey) {
 		DictVO dictVO = getDictVO(enumKey, elementKey);
 		return MyUtil.isEmpty(dictVO) ? StringUtils.EMPTY : dictVO.getDict_value();
 	}
 	
 	/**
-	 * 获取枚举元素值
+	 * 获取数据字典值
 	 * 
 	 * @param enumKey
 	 * @param elementKey
 	 * @param defaultValue
 	 * @return
 	 */
-	public String getEnumElementValue(String enumKey, String elementKey, String defaultValue) {
-		String value = getEnumElementValue(enumKey, elementKey);
+	public String getDictElementValue(String enumKey, String elementKey, String defaultValue) {
+		String value = getDictElementValue(enumKey, elementKey);
 		return MyUtil.isEmpty(value) ? defaultValue : value;
 	}
 	
