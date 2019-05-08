@@ -1,13 +1,13 @@
-package com.gitee.myclouds.common.exception;
-
-import java.sql.SQLException;
+package com.gitee.myclouds.base.exception;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.gitee.myclouds.common.vo.OutVO;
 
+import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.StrUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Controller全局异常处理器
@@ -16,6 +16,7 @@ import cn.hutool.core.util.StrUtil;
  *
  */
 @RestControllerAdvice
+@Slf4j
 public class ExceptionControllerAdvice {
 
 	/**
@@ -39,18 +40,13 @@ public class ExceptionControllerAdvice {
      */
     @ExceptionHandler(value = Exception.class)
     public OutVO exceptionHandler(Exception exception) {
-    	//这里也可以将异常主动打到异步队列去供分析使用
-        OutVO outVO = new OutVO(-1);
-        String msg = "系统发生错误{}，请联系管理员。";
-        if (exception instanceof NullPointerException) {
-			outVO.setMsg(StrUtil.format(msg, "：空指针"));
-		}else if (exception instanceof IllegalArgumentException) {
-			outVO.setMsg(StrUtil.format(msg, "：请求参数类型不匹配"));
-		}else if (exception instanceof SQLException) {
-			outVO.setMsg(StrUtil.format(msg, "：数据库访问异常"));
-		}else {
-			outVO.setMsg(StrUtil.format(msg, ""));
-		}
+        OutVO outVO = new OutVO(-1).setMsg("系统发生异常，请联系管理员。");
+        //生成一个异常溯源ID，进行跟踪
+        String traceId = UUID.fastUUID().toString();
+        outVO.setTrace(traceId); //exception.getMessage();
+         //这里也可以将异常主动打到异步队列去供分析使用
+        String msg =StrUtil.format( "Exception Occurred. traceId：{}" , traceId);
+        log.error(msg, exception);
         return outVO;
     }
     

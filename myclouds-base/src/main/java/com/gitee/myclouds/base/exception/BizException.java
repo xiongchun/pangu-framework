@@ -1,4 +1,4 @@
-package com.gitee.myclouds.common.exception;
+package com.gitee.myclouds.base.exception;
 
 import lombok.Getter;
 import lombok.Setter;

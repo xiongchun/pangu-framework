@@ -1,4 +1,4 @@
-package com.gitee.myclouds.common.service;
+package com.gitee.myclouds.base;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 数据字典公用服务类	
+ * 应用上下文服务	
  * 
  * <p>为了不污染依赖工程，此处不使用@Service注解。由依赖工程的启动类决定是否去@import这个资源。
  * 
@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-public class DictService {
+public class MyContext {
 	
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;

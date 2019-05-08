@@ -20,7 +20,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.gitee.myclouds</groupId>
-			<artifactId>myclouds-common</artifactId>
+			<artifactId>myclouds-base</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
