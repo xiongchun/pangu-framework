@@ -16,7 +16,6 @@ import com.gitee.myclouds.builder.vo.ColumnVO;
 import com.gitee.myclouds.builder.vo.DriverManagerOptVO;
 import com.gitee.myclouds.builder.vo.IndexVO;
 import com.gitee.myclouds.builder.vo.TableVO;
-import com.gitee.myclouds.common.util.DBTypeUtil;
 import com.gitee.myclouds.common.util.MyListUtil;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;

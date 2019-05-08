@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gitee.myclouds.common.wrapper.Dtos;
-import com.gitee.myclouds.system.vo.MenuVO;
+import com.gitee.myclouds.system.common.vo.MenuVO;
 
 /**
  * 首页 服务发布

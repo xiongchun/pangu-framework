@@ -1,4 +1,4 @@
-package com.gitee.myclouds.common.util;
+package com.gitee.myclouds.builder.util;
 
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;

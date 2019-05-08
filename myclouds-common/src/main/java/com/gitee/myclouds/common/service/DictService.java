@@ -71,25 +71,25 @@ public class DictService {
 	/**
 	 * 获取数据字典值
 	 * 
-	 * @param enumKey
-	 * @param elementKey
+	 * @param dictType
+	 * @param dictKey
 	 * @return
 	 */
-	public String getDictElementValue(String enumKey, String elementKey) {
-		DictVO dictVO = getDictVO(enumKey, elementKey);
+	public String getDictValue(String dictType, String dictKey) {
+		DictVO dictVO = getDictVO(dictType, dictKey);
 		return MyUtil.isEmpty(dictVO) ? StringUtils.EMPTY : dictVO.getDict_value();
 	}
 	
 	/**
 	 * 获取数据字典值
 	 * 
-	 * @param enumKey
-	 * @param elementKey
+	 * @param dictType
+	 * @param dictKey
 	 * @param defaultValue
 	 * @return
 	 */
-	public String getDictElementValue(String enumKey, String elementKey, String defaultValue) {
-		String value = getDictElementValue(enumKey, elementKey);
+	public String getDictElementValue(String dictType, String dictKey, String defaultValue) {
+		String value = getDictValue(dictType, dictKey);
 		return MyUtil.isEmpty(value) ? defaultValue : value;
 	}
 	

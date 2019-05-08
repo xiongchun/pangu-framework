@@ -1,4 +1,4 @@
-package com.gitee.myclouds.system.vo;
+package com.gitee.myclouds.system.common.vo;
 
 import java.io.Serializable;
 import java.util.List;
