@@ -10,8 +10,7 @@ import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyListUtil;
 import com.gitee.myclouds.common.util.MyUtil;
-import com.gitee.myclouds.common.vo.ModuleVO;
-import com.gitee.myclouds.common.vo.system.EnumVO;
+import com.gitee.myclouds.common.vo.DictVO;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.google.common.collect.Lists;
 
@@ -37,22 +36,22 @@ public class DictService {
 	 * @param elementKey
 	 * @return
 	 */
-	public List<EnumVO> getEnum(String enumKey){
+	public List<DictVO> getEnum(String enumKey){
 		String key = MyCons.CacheKeyOrPrefix.MyEnum.getValue() + ":" + enumKey;
-		List<EnumVO> enumVOs = Lists.newArrayList();
+		List<DictVO> dictVOs = Lists.newArrayList();
 		try {
 			List<Object> enumObjs = stringRedisTemplate.opsForHash().values(key);
 			for (Object obj : enumObjs) {
-				enumVOs.add(JSON.parseObject(String.valueOf(obj), EnumVO.class));
+				dictVOs.add(JSON.parseObject(String.valueOf(obj), DictVO.class));
 			}
 			//解决不同环境下下拉排序的bug。
 			String jql = "SELECT * FROM :MyList ORDER BY sort_no ASC";
-			enumVOs = MyListUtil.list(enumVOs, EnumVO.class, jql, Dtos.newDto());
+			dictVOs = MyListUtil.list(dictVOs, DictVO.class, jql, Dtos.newDto());
 		} catch (Exception e) {
 			log.error("获取枚举类型：【{}】时反生错误", enumKey);
 			e.printStackTrace();
 		}
-		return enumVOs;
+		return dictVOs;
 	}
 	
 	/**
@@ -62,11 +61,11 @@ public class DictService {
 	 * @param elementKey
 	 * @return
 	 */
-	public EnumVO getEnumVO(String enumKey, String elementKey) {
-		List<EnumVO> myEnumEntities = getEnum(enumKey);
+	public DictVO getDictVO(String enumKey, String elementKey) {
+		List<DictVO> myEnumEntities = getEnum(enumKey);
 		String jql = "SELECT * FROM :MyList WHERE element_key = :elementKey";
-		EnumVO enumVO = (EnumVO)MyListUtil.selectOne(myEnumEntities, EnumVO.class, jql, Dtos.newDto("elementKey", elementKey));
-		return enumVO;
+		DictVO dictVO = (DictVO)MyListUtil.selectOne(myEnumEntities, DictVO.class, jql, Dtos.newDto("elementKey", elementKey));
+		return dictVO;
 	}
 	
 	/**
@@ -77,8 +76,8 @@ public class DictService {
 	 * @return
 	 */
 	public String getEnumElementValue(String enumKey, String elementKey) {
-		EnumVO enumVO = getEnumVO(enumKey, elementKey);
-		return MyUtil.isEmpty(enumVO) ? StringUtils.EMPTY : enumVO.getElement_value();
+		DictVO dictVO = getDictVO(enumKey, elementKey);
+		return MyUtil.isEmpty(dictVO) ? StringUtils.EMPTY : dictVO.getDict_value();
 	}
 	
 	/**
@@ -92,20 +91,6 @@ public class DictService {
 	public String getEnumElementValue(String enumKey, String elementKey, String defaultValue) {
 		String value = getEnumElementValue(enumKey, elementKey);
 		return MyUtil.isEmpty(value) ? defaultValue : value;
-	}
-	
-	/**
-	 * 根据ID从缓存中获取模块菜单实体
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public ModuleVO getModuleVOFromCacheById(String id) {
-		Object object = stringRedisTemplate.opsForHash().get(MyCons.CacheKeyOrPrefix.MyModule.getValue(), id);
-		if (MyUtil.isEmpty(object)) {
-			return null;
-		}
-		return JSON.parseObject(object.toString(), ModuleVO.class);
 	}
 	
 }
