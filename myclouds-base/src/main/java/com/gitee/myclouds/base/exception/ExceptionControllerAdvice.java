@@ -31,6 +31,7 @@ public class ExceptionControllerAdvice {
         OutVO outVO = new OutVO(bizException.getCode()).setMsg(bizException.getMsg());
         //生成一个异常溯源ID，进行跟踪
         String traceId = UUID.fastUUID().toString();
+        outVO.setTrace(traceId); 
         String msg =StrUtil.format( "BizException Occurred. traceId：{}" , traceId);
         log.error(msg, bizException);
         return outVO;

@@ -35,9 +35,6 @@ public class DictService {
 	 * @return
 	 */
 	public OutVO list(Dto inDto) {
-		if (true) {
-			throw new BizException(1, "业务异常");
-		}
 		OutVO outVO  = new OutVO(0);
 		List<MyDictEntity> myDictEntities = sqlSession.selectList("sql.dict.pageDict",inDto);
 		Integer count = sqlSession.selectOne("sql.dict.pageDictCount", inDto);
