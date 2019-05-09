@@ -20,20 +20,25 @@ import lombok.extern.slf4j.Slf4j;
 public class ExceptionControllerAdvice {
 
 	/**
-	 * 拦截业务异常
+	 * 拦截业务异常 
+	 * <p>这里也可以将异常主动打到异步队列去供分析使用
 	 * 
 	 * @param bizException
 	 * @return
 	 */
     @ExceptionHandler(value = BizException.class)
     public OutVO bizExceptionHandler(BizException bizException) {
-    	//这里也可以将异常主动打到异步队列去供分析使用
-        OutVO outVO = new OutVO(bizException.getCode()).setMsg(bizException.getMessage());
+        OutVO outVO = new OutVO(bizException.getCode()).setMsg(bizException.getMsg());
+        //生成一个异常溯源ID，进行跟踪
+        String traceId = UUID.fastUUID().toString();
+        String msg =StrUtil.format( "BizException Occurred. traceId：{}" , traceId);
+        log.error(msg, bizException);
         return outVO;
     }
     
     /**
      * 拦截系统异常
+     * <p>这里也可以将异常主动打到异步队列去供分析使用
      * 
      * @param exception
      * @return
@@ -44,7 +49,6 @@ public class ExceptionControllerAdvice {
         //生成一个异常溯源ID，进行跟踪
         String traceId = UUID.fastUUID().toString();
         outVO.setTrace(traceId); //exception.getMessage();
-         //这里也可以将异常主动打到异步队列去供分析使用
         String msg =StrUtil.format( "Exception Occurred. traceId：{}" , traceId);
         log.error(msg, exception);
         return outVO;

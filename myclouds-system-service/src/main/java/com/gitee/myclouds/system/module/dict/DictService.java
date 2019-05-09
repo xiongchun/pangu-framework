@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.vo.OutVO;
 import com.gitee.myclouds.common.wrapper.Dto;
@@ -34,6 +35,9 @@ public class DictService {
 	 * @return
 	 */
 	public OutVO list(Dto inDto) {
+		if (true) {
+			throw new BizException(1, "业务异常");
+		}
 		OutVO outVO  = new OutVO(0);
 		List<MyDictEntity> myDictEntities = sqlSession.selectList("sql.dict.pageDict",inDto);
 		Integer count = sqlSession.selectOne("sql.dict.pageDictCount", inDto);

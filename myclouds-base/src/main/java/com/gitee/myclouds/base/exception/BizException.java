@@ -1,8 +1,10 @@
 package com.gitee.myclouds.base.exception;
 
+import com.alibaba.fastjson.JSON;
+import com.gitee.myclouds.common.wrapper.Dtos;
+
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 业务异常类
@@ -12,7 +14,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Getter
 @Setter
-@Slf4j
 public class BizException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
@@ -22,9 +23,9 @@ public class BizException extends RuntimeException{
 	private String msg;
 	
 	public BizException(int code, String msg) {
+		super("BizException Occourred. " + JSON.toJSONString(Dtos.newDto().put2("code", code).put2("msg", msg)));
         this.code = code;
         this.msg = msg;
-        log.error("BizException业务异常，code：{}，msg：{}。", code, msg);
     }
 
 }
