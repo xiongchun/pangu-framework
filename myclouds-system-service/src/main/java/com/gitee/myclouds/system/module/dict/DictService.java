@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gitee.myclouds.base.exception.BizException;
+import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.util.MyUtil;
-import com.gitee.myclouds.common.vo.OutVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.system.domain.mydict.MyDictEntity;
 import com.gitee.myclouds.system.domain.mydict.MyDictMapper;

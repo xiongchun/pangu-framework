@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 import com.alibaba.fastjson.JSON;
+import com.gitee.myclouds.base.vo.DictVO;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyListUtil;
 import com.gitee.myclouds.common.util.MyUtil;
-import com.gitee.myclouds.common.vo.DictVO;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.google.common.collect.Lists;
 

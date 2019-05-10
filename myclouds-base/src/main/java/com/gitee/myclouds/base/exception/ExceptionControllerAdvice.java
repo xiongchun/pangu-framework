@@ -3,7 +3,7 @@ package com.gitee.myclouds.base.exception;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.gitee.myclouds.common.vo.OutVO;
+import com.gitee.myclouds.base.vo.OutVO;
 
 import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.StrUtil;
