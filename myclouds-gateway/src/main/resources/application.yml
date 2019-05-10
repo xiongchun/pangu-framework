@@ -46,6 +46,14 @@ spring:
 #          args:
 #            name: systemFallbackCommand
 #            fallbackUri: forward:/fallback/default   # 降级处理
+      globalcors: 
+        corsConfigurations: 
+          '[/**]':
+            #allowedOrigins: "http://127.0.0.1:8848"
+            allowedOrigins: "*"
+            allowedMethods:
+            - GET
+            - POST
       
 management:
   endpoint:
