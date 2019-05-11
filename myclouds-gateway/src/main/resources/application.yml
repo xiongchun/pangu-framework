@@ -51,6 +51,7 @@ spring:
           '[/**]':
             #allowedOrigins: "http://127.0.0.1:8848"
             allowedOrigins: "*"
+            maxAge: 86400
             allowedMethods:
             - GET
             - POST

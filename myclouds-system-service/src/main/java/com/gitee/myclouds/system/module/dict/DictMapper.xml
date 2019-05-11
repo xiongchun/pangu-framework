@@ -11,7 +11,7 @@
 		<include refid="com.gitee.myclouds.system.domain.mydict.MyDictMapper.column" />
 		FROM my_dict
 		<include refid="pageDictWhere" />
-		ORDER BY dict_key, sort_no LIMIT ${start},${length}
+		ORDER BY dict_key, sort_no LIMIT ${page},${limit}
 	</select>
 	<select id="pageDictCount" parameterType="Dto" resultType="Integer">
 		SELECT

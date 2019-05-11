@@ -28,7 +28,9 @@ public class Dtos {
 	 */
 	public static Dto newDto(Map<String, ?> map) {
 		Dto newDto = new HashDto();
-		newDto.putAll(map);
+		if (map != null) {
+			newDto.putAll(map);
+		}
 		return newDto;
 	}
 	
