@@ -38,8 +38,7 @@ public class DictService {
 		OutVO outVO  = new OutVO(0);
 		List<MyDictEntity> myDictEntities = sqlSession.selectList("sql.dict.pageDict",inDto);
 		Integer count = sqlSession.selectOne("sql.dict.pageDictCount", inDto);
-		outVO.setData(myDictEntities);
-		outVO.setCount(count);
+		outVO.setData(myDictEntities).setCount(count);
 		return outVO;
 	}
 	

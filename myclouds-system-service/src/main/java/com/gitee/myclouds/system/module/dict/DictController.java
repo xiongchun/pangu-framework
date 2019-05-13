@@ -33,7 +33,7 @@ public class DictController {
 	 */
 	@RequestMapping(value = "list", produces = "application/json")
 	public OutVO list(@RequestParam Map<String, Object> inMap){
-		return dictService.list(Dtos.newDto(inMap));
+		return dictService.list(Dtos.newPageDto(inMap));
 	}
 	
 	/**

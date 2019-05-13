@@ -3,6 +3,7 @@ package com.gitee.myclouds.base.exception;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.base.vo.OutVO;
 
 import cn.hutool.core.lang.UUID;
@@ -32,7 +33,7 @@ public class ExceptionControllerAdvice {
         //生成一个异常溯源ID，进行跟踪
         String traceId = UUID.fastUUID().toString();
         outVO.setTrace(traceId); 
-        String msg =StrUtil.format( "BizException Occurred. traceId：{}" , traceId);
+        String msg =StrUtil.format( "BizException Occurred. ", JSON.toJSONString(outVO));
         log.error(msg, bizException);
         return outVO;
     }
@@ -50,7 +51,7 @@ public class ExceptionControllerAdvice {
         //生成一个异常溯源ID，进行跟踪
         String traceId = UUID.fastUUID().toString();
         outVO.setTrace(traceId); //exception.getMessage();
-        String msg =StrUtil.format( "Exception Occurred. traceId：{}" , traceId);
+        String msg =StrUtil.format( "Exception Occurred. {}" , JSON.toJSONString(outVO));
         log.error(msg, exception);
         return outVO;
     }

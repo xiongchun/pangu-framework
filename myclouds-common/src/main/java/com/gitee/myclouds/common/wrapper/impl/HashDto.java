@@ -16,6 +16,7 @@ import com.gitee.myclouds.common.wrapper.util.TypeConvertUtil;
  * 对原生Java Map类型的二次包装，提供<b><i>更加方便的存取API、更强的容错和类型转换机制。</i></b>
  * 在平台二次开发过程中具有很强的实用价值。 开发人员需熟练掌握其提供的相关API。
  * </p>
+ * - 基于MapUtil重新实现  update by xc 2019-05-13
  * 
  * @author xiongchun
  * @date 2008-07-06

@@ -11,7 +11,7 @@
 		<include refid="com.gitee.myclouds.system.domain.mydict.MyDictMapper.column" />
 		FROM my_dict
 		<include refid="pageDictWhere" />
-		ORDER BY dict_key, sort_no LIMIT ${page},${limit}
+		ORDER BY dict_type, sort_no LIMIT ${start},${length}
 	</select>
 	<select id="pageDictCount" parameterType="Dto" resultType="Integer">
 		SELECT
@@ -22,17 +22,11 @@
 	<sql id="pageDictWhere">
 		<where>
 		    <!-- 提示：业务代码如果需要模糊查询，只能后匹配不能前后匹配，否则会全表扫描。 -->
-		    <if test="dict_type != null and dict_type != ''">
-				AND dict_type like '%${dict_type}%'
+		    <if test="dict_type_name != null and dict_type_name != ''">
+				AND (dict_type LIKE '%${dict_type_name}%' OR dict_name LIKE '%${dict_type_name}%')
 			</if>
-			<if test="dict_name != null and dict_name != ''">
-				AND dict_name like '%${dict_name}%'
-			</if>
-			<if test="dict_key != null and dict_key != ''">
-				AND dict_key like '%${dict_key}%'
-			</if>
-			<if test="dict_value != null and dict_value != ''">
-				AND dict_value like '%${dict_value}%'
+			<if test="dict_key_value != null and dict_key_value != ''">
+				AND (dict_key LIKE '%${dict_key_value}%' OR dict_value LIKE '%${dict_key_value}%')
 			</if>
 			<if test="is_enable != null and is_enable != ''">
 				AND is_enable = #{is_enable}
