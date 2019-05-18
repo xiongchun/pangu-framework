@@ -61,7 +61,7 @@ public class DictService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO save(Dto inDto) {
+	public OutVO add(Dto inDto) {
 		OutVO outVO  = new OutVO(0);
 		MyDictEntity myDictEntity = new MyDictEntity();
 		MyUtil.copyProperties(inDto, myDictEntity);

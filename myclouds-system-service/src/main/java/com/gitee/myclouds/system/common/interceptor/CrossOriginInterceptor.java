@@ -25,7 +25,8 @@ public class CrossOriginInterceptor extends HandlerInterceptorAdapter {
         if (request.getHeader(HttpHeaders.ORIGIN) != null) {
             response.addHeader("Access-Control-Allow-Origin", "*");
             response.addHeader("Access-Control-Allow-Credentials", "true");
-            response.addHeader("Access-Control-Allow-Methods", "POST, GET");
+            response.addHeader("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type");
             response.addHeader("Access-Control-Max-Age", "86400");
         }
         return true;
