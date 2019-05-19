@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.vo.OutVO;
@@ -13,6 +14,8 @@ import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.system.domain.mydict.MyDictEntity;
 import com.gitee.myclouds.system.domain.mydict.MyDictMapper;
+
+import cn.hutool.core.util.StrUtil;
 
 /**
  * 数据字典服务
@@ -104,6 +107,27 @@ public class DictService {
 		OutVO outVO  = new OutVO(0);
 		myDictMapper.deleteByKey(inDto.getInteger("id"));
 		outVO.setMsg("数据字典删除成功");
+		return outVO;
+	}
+	
+	/**
+	 * 批量删除
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	@Transactional
+	public OutVO batchDelete(Dto inDto) {
+		OutVO outVO  = new OutVO(0);
+		String[] ids = StrUtil.split(inDto.getString("ids"), ",");
+		if (ids.length == 0) {
+			outVO.setMsg("请先选中数据字典后再提交");
+		}else {
+			for (String id : ids) {
+				myDictMapper.deleteByKey(Integer.valueOf(id));
+			}
+			outVO.setMsg("数据字典删除成功");
+		}
 		return outVO;
 	}
 	

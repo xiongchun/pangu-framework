@@ -89,8 +89,7 @@ public class DictController {
 	 */
 	@PostMapping(value = "batchDelete", produces = "application/json")
 	public OutVO batchDelete(@RequestBody Map<String,Object> inMap){
-		System.out.println(inMap);
-		return new OutVO(0).setMsg("OK");
+		return dictService.batchDelete(Dtos.newDto(inMap));
 	}
 	
 }
