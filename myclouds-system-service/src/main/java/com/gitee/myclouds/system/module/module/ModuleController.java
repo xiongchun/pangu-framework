@@ -3,11 +3,13 @@ package com.gitee.myclouds.system.module.module;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
@@ -30,9 +32,9 @@ public class ModuleController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "list",method = { RequestMethod.POST}, produces = "application/json")
-	public String list(@RequestParam Map<String,Object> inMap){
-		return moduleService.list(Dtos.newDto(inMap));
+	@RequestMapping(value = "list", produces = "application/json")
+	public OutVO list(@RequestBody Map<String, Object> inMap){
+		return moduleService.list(Dtos.newPageDto(inMap));
 	}
 	
 	/**

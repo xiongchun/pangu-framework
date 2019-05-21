@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
+import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
@@ -33,14 +34,11 @@ public class ModuleService {
 	 * @param inDto
 	 * @return
 	 */
-	public String list(Dto inDto) {
-		Dto outDto = Dtos.newDto();		
-		List<Dto> myModuleEntities = sqlSession.selectList("sql.module.pageModule",inDto);
-		Integer total = sqlSession.selectOne("sql.module.pageModuleCount", inDto);
-		outDto.put("data", myModuleEntities);
-		outDto.put("recordsTotal", total);
-		outDto.put("recordsFiltered", total);
-		return JSON.toJSONString(outDto);
+	public OutVO list(Dto inDto) {
+		OutVO outVO  = new OutVO(0);
+		List<MyModuleEntity> myModuleEntitys = sqlSession.selectList("sql.module.pageModule",inDto);
+		outVO.setData(myModuleEntitys).setCount(myModuleEntitys.size());
+		return outVO;
 	}
 	
 	/**

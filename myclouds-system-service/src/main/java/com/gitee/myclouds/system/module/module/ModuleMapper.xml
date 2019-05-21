@@ -6,33 +6,23 @@
 <mapper namespace="sql.module">
 
    	<!-- 根据Dto查询并返回资源模块实体对象集合 -->
-	<select id="pageModule" parameterType="Dto" resultType="Dto">
+	<select id="pageModule" parameterType="Dto" resultType="MyModuleEntity">
 		SELECT
-				  t1.id,
-				  t1.name,  
-				  t1.parent_id,
-				  t1.type,
-				  t1.url,
-				  t1.is_enable,
-				  t1.sort_no,
-		          (SELECT name from my_module where id = t1.parent_id) AS parent_name
-		FROM my_module t1
+			<include refid="com.gitee.myclouds.system.domain.mymodule.MyModuleMapper.column" />
+		FROM my_module
 		<include refid="pageModuleWhere" />
-		ORDER BY t1.id DESC LIMIT ${start},${length}
-	</select>
-	<select id="pageModuleCount" parameterType="Dto" resultType="Integer">
-		SELECT
-		count(1) AS total
-		FROM my_module t1
-		<include refid="pageModuleWhere" />
+		ORDER BY sort_no, id
 	</select>
 	<sql id="pageModuleWhere">
 		<where>
 			<if test="name != null and name != ''">
-				AND t1.name like '%${name}%'
+				AND name like '%${name}%'
 			</if>
-			<if test="parent_id != null and parent_id != ''">
-				AND t1.parent_id = #{parent_id}
+			<if test="is_enable != null and is_enable != ''">
+				AND is_enable = #{is_enable}
+			</if>
+			<if test="type != null and type != ''">
+				AND type = #{type}
 			</if>
 		</where>
 	</sql>
