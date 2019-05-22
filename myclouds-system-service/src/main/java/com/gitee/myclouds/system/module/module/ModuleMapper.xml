@@ -33,21 +33,15 @@
 		FROM my_role_module WHERE module_id = #{module_id}
 	</select>
 	
-	<!-- 查询资源树 -->
-	<select id="listModuleTree" resultType="Dto" parameterType="Dto">
+	<!-- 查询资源树集合 -->
+	<select id="listModuleTree" resultType="TreeNodeVO" parameterType="Dto">
 	    SELECT
 			id,
 			parent_id AS pId,
-			name
+			name AS label
 		FROM
 			my_module
-			<where>
-			        type IN
-				    <foreach item="type" index="index" collection="types"  open="(" separator="," close=")">
-	                     #{type}
-	                </foreach>
-			</where>
-         ORDER BY parent_id, sort_no
+         ORDER BY sort_no
 	</select>
 	
 	<!-- 统计直系子节点个数 -->

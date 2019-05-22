@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import lombok.Data;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * 当前会话用户数据对象
@@ -12,6 +14,8 @@ import lombok.Data;
  *
  */
 @Data
+@ToString
+@Accessors(chain = true)
 public class UserVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import lombok.Data;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * 功能菜单简单值对象(配合前端使用的数据结构)
@@ -12,6 +14,8 @@ import lombok.Data;
  *
  */
 @Data
+@ToString
+@Accessors(chain = true)
 public class MenuVO implements Serializable{
 
 	private static final long serialVersionUID = 1L;

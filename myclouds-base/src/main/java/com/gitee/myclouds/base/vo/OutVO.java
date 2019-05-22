@@ -2,8 +2,9 @@ package com.gitee.myclouds.base.vo;
 
 import java.io.Serializable;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * 接口返回通用值对象
@@ -11,8 +12,9 @@ import lombok.ToString;
  * @author xiongchun
  *
  */
-@Getter
+@Data
 @ToString
+@Accessors(chain = true)
 public class OutVO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -41,35 +43,4 @@ public class OutVO implements Serializable{
 	public OutVO(int code) {
 		setCode(code);
 	}
-
-	public OutVO setCode(int code) {
-		this.code = code;
-		return this;
-	}
-
-	public OutVO setMsg(String msg) {
-		this.msg = msg;
-		return this;
-	}
-
-	public OutVO setCount(int count) {
-		this.count = count;
-		return this;
-	}
-
-	public OutVO setData(Object data) {
-		this.data = data;
-		return this;
-	}
-
-	public OutVO setTrace(String trace) {
-		this.trace = trace;
-		return this;
-	}
-
-	public OutVO setAdvice(String advice) {
-		this.advice = advice;
-		return this;
-	}
-	
 }

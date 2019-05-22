@@ -3,6 +3,8 @@ package com.gitee.myclouds.base.vo;
 import java.io.Serializable;
 
 import lombok.Data;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * 数据字典通用值对象
@@ -11,6 +13,8 @@ import lombok.Data;
  *
  */
 @Data
+@ToString
+@Accessors(chain = true)
 public class DictVO implements Serializable{
 
 	private static final long serialVersionUID = 1L;

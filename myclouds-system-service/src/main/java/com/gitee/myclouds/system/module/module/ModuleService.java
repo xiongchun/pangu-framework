@@ -5,8 +5,11 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.alibaba.fastjson.JSON;
+import com.gitee.myclouds.base.exception.BizException;
+import com.gitee.myclouds.base.helper.treebuiler.TreeBuilder;
+import com.gitee.myclouds.base.helper.treebuiler.TreeNodeVO;
 import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
@@ -47,9 +50,19 @@ public class ModuleService {
 	 * @param id
 	 * @return
 	 */
-	public String get(Integer id) {
+	public OutVO get(Integer id) {
+		OutVO outVO  = new OutVO(0);
 		MyModuleEntity myModuleEntity = myModuleMapper.selectByKey(id);
-		return JSON.toJSONString(myModuleEntity);
+		MyModuleEntity parentEntity = myModuleMapper.selectByKey(myModuleEntity.getParent_id());
+		Dto dto = Dtos.newDto();
+		MyUtil.copyProperties(myModuleEntity, dto);
+		if (MyUtil.isNotEmpty(parentEntity)) {
+			dto.put("parent_name", parentEntity.getName());
+		}else {
+			dto.put("parent_name", "无");
+		}
+		outVO.setData(dto);
+		return outVO;
 	}
 	
 	/**
@@ -58,14 +71,16 @@ public class ModuleService {
 	 * @param inDto
 	 * @return
 	 */
-	public Dto save(Dto inDto) {
-		Dto outDto = null;
-		//拷贝参数对象中的属性到实体对象中
+	public OutVO add(Dto inDto) {
+		OutVO outVO  = new OutVO(0);
 		MyModuleEntity myModuleEntity = new MyModuleEntity();
 		MyUtil.copyProperties(inDto, myModuleEntity);
+		if (MyUtil.isEmpty(myModuleEntity.getParent_id())) {
+			myModuleEntity.setParent_id(0);
+		}
 		myModuleMapper.insert(myModuleEntity);
-		outDto = Dtos.newDto().put2("code", "1").put2("msg", "资源模块信息保存成功");
-		return outDto;
+		outVO.setMsg("资源模块新增成功");
+		return outVO;
 	}
 	
 	/**
@@ -74,13 +89,13 @@ public class ModuleService {
 	 * @param inDto
 	 * @return
 	 */
-	public Dto update(Dto inDto) {
-		Dto outDto = null;
+	public OutVO update(Dto inDto) {
+		OutVO outVO  = new OutVO(0);
 		MyModuleEntity myModuleEntity = new MyModuleEntity();
 		MyUtil.copyProperties(inDto, myModuleEntity);
 		myModuleMapper.updateByKey(myModuleEntity);
-		outDto = Dtos.newDto().put2("code", "1").put2("msg", "资源模块信息修改成功");
-		return outDto;
+		outVO.setMsg("资源模块修改成功");
+		return outVO;
 	}
 	
 	/**
@@ -89,26 +104,31 @@ public class ModuleService {
 	 * @param inDto
 	 * @return
 	 */
-	public Dto delete(Dto inDto) {
+	@Transactional
+	public OutVO delete(Dto inDto) {
+		OutVO outVO  = new OutVO(0);
 		Integer moduleId = inDto.getInteger("id");
 		Integer cnt = sqlSession.selectOne("sql.module.countSubModules", moduleId);
 		if (cnt > 0) {
-			return Dtos.newDto().put2("code", "-1").put2("msg", "该节点包含子节点，不能删除。请先删除子节点。");
+			throw new BizException(1, "操作取消。请先删除子节点。");
 		}
 		myModuleMapper.deleteByKey(moduleId);
 		sqlSession.delete("sql.module.deleteMyRoleModule", moduleId);
-		Dto outDto = Dtos.newDto().put2("code", "1").put2("msg", "资源模块删除成功");
-		return outDto;
+		outVO.setMsg("资源模块修改成功");
+		return outVO;
 	}
 	
 	/**
-	 * 查询资源树
+	 * 查询资源树（返回树状数据模型）
 	 * 
 	 * @param inDto
 	 * @return
 	 */
-	public String listModuleTree(Dto inDto) {
-		return null;
+	public OutVO listModuleTree(Dto inDto) {
+		OutVO outVO  = new OutVO(0);
+		List<TreeNodeVO> treeNodeVOs = sqlSession.selectList("sql.module.listModuleTree", inDto);
+		outVO.setData(new TreeBuilder(treeNodeVOs).buildTree());
+		return outVO;
 	}
 	
 }
