@@ -92,4 +92,16 @@ public class DictController {
 		return dictService.batchDelete(Dtos.newDto(inMap));
 	}
 	
+	/**
+	 * 测试
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "test", produces = "application/json")
+	public OutVO test(@RequestBody Map<String,Object> inMap){
+		System.out.println(inMap);
+		return new OutVO(-2).setMsg("这是错误提示信息");
+	}
+	
 }

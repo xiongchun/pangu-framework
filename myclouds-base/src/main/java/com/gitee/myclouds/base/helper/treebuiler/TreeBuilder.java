@@ -18,14 +18,14 @@ public class TreeBuilder {
 
 	@Getter
 	@Setter
-	List<TreeNodeVO> nodes = Lists.newArrayList();
+	List<TreeNodeVO> nodeVOs = Lists.newArrayList();
 
 	public TreeBuilder() {
 	}
 
-	public TreeBuilder(List<TreeNodeVO> nodes) {
+	public TreeBuilder(List<TreeNodeVO> nodeVOs) {
 		super();
-		this.nodes = nodes;
+		this.nodeVOs = nodeVOs;
 	}
 
 	public String buildJSONTree() {
@@ -34,13 +34,13 @@ public class TreeBuilder {
 	}
 
 	public List<TreeNodeVO> buildTree() {
-		List<TreeNodeVO> treeTreeNodeVOs = Lists.newArrayList();
+		List<TreeNodeVO> treeNodeVOs = Lists.newArrayList();
 		List<TreeNodeVO> rootTreeNodeVOs = getParentTreeNodes();
 		for (TreeNodeVO rootTreeNodeVO : rootTreeNodeVOs) {
 			buildChildTreeNodes(rootTreeNodeVO);
-			treeTreeNodeVOs.add(rootTreeNodeVO);
+			treeNodeVOs.add(rootTreeNodeVO);
 		}
-		return treeTreeNodeVOs;
+		return treeNodeVOs;
 	}
 
 	private void buildChildTreeNodes(TreeNodeVO node) {
@@ -55,9 +55,9 @@ public class TreeBuilder {
 
 	public List<TreeNodeVO> getChildTreeNodes(TreeNodeVO pnode) {
 		List<TreeNodeVO> childTreeNodeVOs = Lists.newArrayList();
-		for (TreeNodeVO n : nodes) {
-			if (pnode.getId().equals(n.getPId())) {
-				childTreeNodeVOs.add(n);
+		for (TreeNodeVO nodeVO : nodeVOs) {
+			if (pnode.getId().equals(nodeVO.getPId())) {
+				childTreeNodeVOs.add(nodeVO);
 			}
 		}
 		return childTreeNodeVOs;
@@ -65,8 +65,8 @@ public class TreeBuilder {
 
 	private boolean isParentNode(TreeNodeVO node) {
 		boolean isParentNode = true;
-		for (TreeNodeVO n : nodes) {
-			if (node.getPId().equals(n.getId())) {
+		for (TreeNodeVO nodeVO : nodeVOs) {
+			if (node.getPId().equals(nodeVO.getId())) {
 				isParentNode = false;
 				break;
 			}
@@ -76,9 +76,9 @@ public class TreeBuilder {
 
 	public List<TreeNodeVO> getParentTreeNodes() {
 		List<TreeNodeVO> rootTreeNodeVOs = Lists.newArrayList();
-		for (TreeNodeVO n : nodes) {
-			if (isParentNode(n)) {
-				rootTreeNodeVOs.add(n);
+		for (TreeNodeVO nodeVO : nodeVOs) {
+			if (isParentNode(nodeVO)) {
+				rootTreeNodeVOs.add(nodeVO);
 			}
 		}
 		return rootTreeNodeVOs;
