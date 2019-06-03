@@ -77,13 +77,6 @@ public interface ${tableDto.upname}Mapper {
 	 * @return List<${tableDto.upname}Entity>
 	 */
 	List<${tableDto.upname}Entity> list(Dto pDto);
-
-	/**
-	 * 根据Dto查询并返回分页数据实体对象集合
-	 * 
-	 * @return List<${tableDto.upname}Entity>
-	 */
-	List<${tableDto.upname}Entity> listPage(Dto pDto);
 		
 	/**
 	 * 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配)
@@ -91,13 +84,6 @@ public interface ${tableDto.upname}Mapper {
 	 * @return List<${tableDto.upname}Entity>
 	 */
 	List<${tableDto.upname}Entity> like(Dto pDto);
-
-	/**
-	 * 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配)
-	 * 
-	 * @return List<${tableDto.upname}Entity>
-	 */
-	List<${tableDto.upname}Entity> likePage(Dto pDto);
 
 	/**
 	 * 根据主键删除数据实体对象

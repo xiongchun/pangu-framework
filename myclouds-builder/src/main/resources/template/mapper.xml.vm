@@ -124,32 +124,12 @@
 		    <include refid="equal" />
 		</where>	
 	</select>
-
-	<!-- 根据Dto查询并返回分页数据实体对象集合 -->
-	<select id="listPage" parameterType="Dto" resultType="${tableDto.upname}Entity" useCache="false">
-	    SELECT
-			<include refid="column" />	
-		FRoM ${tableDto.name}
-		<where>
-		    <include refid="equal" />
-		</where>	
-	</select>
 	
 	<!-- 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
 	<select id="like" parameterType="Dto" resultType="${tableDto.upname}Entity">
 		SELECT
 			<include refid="column" />	
 		FROM ${tableDto.name}
-		<where>
-		    <include refid="like" />
-		</where>	
-	</select>
-
-	<!-- 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
-	<select id="likePage" parameterType="Dto" resultType="${tableDto.upname}Entity" useCache="false">
-	    SELECT
-			<include refid="column" />	
-		FRoM ${tableDto.name}
 		<where>
 		    <include refid="like" />
 		</where>	
