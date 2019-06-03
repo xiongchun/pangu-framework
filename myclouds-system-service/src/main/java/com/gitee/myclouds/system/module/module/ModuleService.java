@@ -110,7 +110,7 @@ public class ModuleService {
 		Integer moduleId = inDto.getInteger("id");
 		Integer cnt = sqlSession.selectOne("sql.module.countSubModules", moduleId);
 		if (cnt > 0) {
-			throw new BizException(1, "操作取消。请先删除子节点。");
+			throw new BizException(-12, "操作取消。请先删除子节点。");
 		}
 		myModuleMapper.deleteByKey(moduleId);
 		sqlSession.delete("sql.module.deleteMyRoleModule", moduleId);

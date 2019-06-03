@@ -69,7 +69,7 @@ public class DictService {
 		MyDictEntity myDictEntity = new MyDictEntity();
 		MyUtil.copyProperties(inDto, myDictEntity);
 		if (MyUtil.isNotEmpty(myDictMapper.selectByUkey1(myDictEntity.getDict_type(), myDictEntity.getDict_key()))) {
-			throw new BizException(1, "当前字典已经存在，请重新输入...");
+			throw new BizException(-10, "当前字典已经存在，请重新输入...");
 		}
 		myDictMapper.insert(myDictEntity);
 		outVO.setMsg("数据字典新增成功");
@@ -89,7 +89,7 @@ public class DictService {
 		MyDictEntity oldEntity = myDictMapper.selectByKey(myDictEntity.getId());
 		if (!StringUtils.equalsIgnoreCase(myDictEntity.getDict_key(), oldEntity.getDict_key())) {
 			if (MyUtil.isNotEmpty(myDictMapper.selectByUkey1(myDictEntity.getDict_type(), myDictEntity.getDict_key()))) {
-				throw new BizException(1, "当前字典已经存在，请重新输入...");
+				throw new BizException(-11, "当前字典已经存在，请重新输入...");
 			}
 		}
 		myDictMapper.updateByKey(myDictEntity);
