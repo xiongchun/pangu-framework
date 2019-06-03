@@ -15,7 +15,7 @@ import com.gitee.myclouds.system.domain.mydict.MyDictEntity;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-07 20:42:50
+ * @date 2019-06-03 12:29:28
  */
 @Mapper
 public interface MyDictMapper {
@@ -68,13 +68,6 @@ public interface MyDictMapper {
 	 * @return List<MyDictEntity>
 	 */
 	List<MyDictEntity> list(Dto pDto);
-
-	/**
-	 * 根据Dto查询并返回分页数据实体对象集合
-	 * 
-	 * @return List<MyDictEntity>
-	 */
-	List<MyDictEntity> listPage(Dto pDto);
 		
 	/**
 	 * 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配)
@@ -82,13 +75,6 @@ public interface MyDictMapper {
 	 * @return List<MyDictEntity>
 	 */
 	List<MyDictEntity> like(Dto pDto);
-
-	/**
-	 * 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配)
-	 * 
-	 * @return List<MyDictEntity>
-	 */
-	List<MyDictEntity> likePage(Dto pDto);
 
 	/**
 	 * 根据主键删除数据实体对象

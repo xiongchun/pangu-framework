@@ -5,6 +5,8 @@ import java.util.Date;
 import java.io.Serializable;
 
 import lombok.Data;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * <b>组织机构表[my_org]数据实体对象</b>
@@ -13,9 +15,11 @@ import lombok.Data;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-07 20:42:51
+ * @date 2019-06-03 12:29:29
  */
 @Data
+@ToString
+@Accessors(chain = true)
 public class MyOrgEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;

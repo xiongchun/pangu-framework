@@ -5,6 +5,8 @@ import java.util.Date;
 import java.io.Serializable;
 
 import lombok.Data;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * <b>角色表[my_role]数据实体对象</b>
@@ -13,9 +15,11 @@ import lombok.Data;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-07 20:42:51
+ * @date 2019-06-03 12:29:30
  */
 @Data
+@ToString
+@Accessors(chain = true)
 public class MyRoleEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,9 +35,6 @@ public class MyRoleEntity implements Serializable {
 
 	//角色类型
 	private String type;	
-
-	//备注
-	private String remark;	
 
 	//扩展字段(JSON)
 	private String ext;	

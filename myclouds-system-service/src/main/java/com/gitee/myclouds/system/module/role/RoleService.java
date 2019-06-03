@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
+import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.base.vo.UserVO;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
@@ -40,13 +41,11 @@ public class RoleService {
 	 * @param inDto
 	 * @return
 	 */
-	public String list(Dto inDto) {
-		Dto outDto = Dtos.newDto();
+	public OutVO list(Dto inDto) {
+		OutVO outVO  = new OutVO(0);
 		List<MyRoleEntity> myRoleEntities = myRoleMapper.list(inDto);
-		outDto.put("data", myRoleEntities);
-		outDto.put("recordsTotal", myRoleEntities.size());
-		outDto.put("recordsFiltered", myRoleEntities.size());
-		return JSON.toJSONString(outDto);
+		outVO.setData(myRoleEntities).setCount(myRoleEntities.size());
+		return outVO;
 	}
 	
 	/**

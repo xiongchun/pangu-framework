@@ -3,23 +3,23 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 数据字典表[my_dict]SQL自动映射 -->
-<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-05-07 20:42:50 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-06-03 12:29:28 -->
 <mapper namespace="com.gitee.myclouds.system.domain.mydict.MyDictMapper">
 	
 	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="MyDictEntity">
 		INSERT INTO my_dict (
 		<if test="dict_type != null and dict_type != ''">
-	         dict_type, <!-- 类型 -->
+	         dict_type, <!-- 分组标识 -->
 		</if>
 		<if test="dict_name != null and dict_name != ''">
-	         dict_name, <!-- 名称 -->
+	         dict_name, <!-- 分组名称 -->
 		</if>
 		<if test="dict_key != null and dict_key != ''">
-	         dict_key, <!-- 数据字典KEY -->
+	         dict_key, <!-- 字典KEY -->
 		</if>
 		<if test="dict_value != null and dict_value != ''">
-	         dict_value, <!-- 字典对照值 -->
+	         dict_value, <!-- 字典值 -->
 		</if>
 		<if test="is_enable != null and is_enable != ''">
 	         is_enable, <!-- 是否启用 -->
@@ -36,16 +36,16 @@
 	          id
 		)VALUES(
 		<if test="dict_type != null and dict_type != ''">
-	          #{dict_type, jdbcType=VARCHAR}, <!-- 类型 -->
+	          #{dict_type, jdbcType=VARCHAR}, <!-- 分组标识 -->
 	    </if>
 		<if test="dict_name != null and dict_name != ''">
-	          #{dict_name, jdbcType=VARCHAR}, <!-- 名称 -->
+	          #{dict_name, jdbcType=VARCHAR}, <!-- 分组名称 -->
 	    </if>
 		<if test="dict_key != null and dict_key != ''">
-	          #{dict_key, jdbcType=VARCHAR}, <!-- 数据字典KEY -->
+	          #{dict_key, jdbcType=VARCHAR}, <!-- 字典KEY -->
 	    </if>
 		<if test="dict_value != null and dict_value != ''">
-	          #{dict_value, jdbcType=VARCHAR}, <!-- 字典对照值 -->
+	          #{dict_value, jdbcType=VARCHAR}, <!-- 字典值 -->
 	    </if>
 		<if test="is_enable != null and is_enable != ''">
 	          #{is_enable, jdbcType=VARCHAR}, <!-- 是否启用 -->
@@ -70,10 +70,10 @@
 		)
 		VALUES (
 		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
-		    #{dict_type, jdbcType=VARCHAR},  <!-- 类型 -->
-		    #{dict_name, jdbcType=VARCHAR},  <!-- 名称 -->
-		    #{dict_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
-		    #{dict_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
+		    #{dict_type, jdbcType=VARCHAR},  <!-- 分组标识 -->
+		    #{dict_name, jdbcType=VARCHAR},  <!-- 分组名称 -->
+		    #{dict_key, jdbcType=VARCHAR},  <!-- 字典KEY -->
+		    #{dict_value, jdbcType=VARCHAR},  <!-- 字典值 -->
 		    #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
 		    #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
 		    #{update_time, jdbcType=TIMESTAMP},  <!-- 更新时间 -->
@@ -89,16 +89,16 @@
 		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
 			</if>
 			<if test="dict_type != null">
-		          dict_type = #{dict_type, jdbcType=VARCHAR},  <!-- 类型 -->
+		          dict_type = #{dict_type, jdbcType=VARCHAR},  <!-- 分组标识 -->
 			</if>
 			<if test="dict_name != null">
-		          dict_name = #{dict_name, jdbcType=VARCHAR},  <!-- 名称 -->
+		          dict_name = #{dict_name, jdbcType=VARCHAR},  <!-- 分组名称 -->
 			</if>
 			<if test="dict_key != null">
-		          dict_key = #{dict_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
+		          dict_key = #{dict_key, jdbcType=VARCHAR},  <!-- 字典KEY -->
 			</if>
 			<if test="dict_value != null">
-		          dict_value = #{dict_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
+		          dict_value = #{dict_value, jdbcType=VARCHAR},  <!-- 字典值 -->
 			</if>
 			<if test="is_enable != null">
 		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
@@ -147,32 +147,12 @@
 		    <include refid="equal" />
 		</where>	
 	</select>
-
-	<!-- 根据Dto查询并返回分页数据实体对象集合 -->
-	<select id="listPage" parameterType="Dto" resultType="MyDictEntity" useCache="false">
-	    SELECT
-			<include refid="column" />	
-		FRoM my_dict
-		<where>
-		    <include refid="equal" />
-		</where>	
-	</select>
 	
 	<!-- 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
 	<select id="like" parameterType="Dto" resultType="MyDictEntity">
 		SELECT
 			<include refid="column" />	
 		FROM my_dict
-		<where>
-		    <include refid="like" />
-		</where>	
-	</select>
-
-	<!-- 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
-	<select id="likePage" parameterType="Dto" resultType="MyDictEntity" useCache="false">
-	    SELECT
-			<include refid="column" />	
-		FRoM my_dict
 		<where>
 		    <include refid="like" />
 		</where>	
@@ -204,16 +184,16 @@
 		          id = #{id, jdbcType=INTEGER},  <!-- 流水号 -->
 			</if>
 			<if test="dict_type != null">
-		          dict_type = #{dict_type, jdbcType=VARCHAR},  <!-- 类型 -->
+		          dict_type = #{dict_type, jdbcType=VARCHAR},  <!-- 分组标识 -->
 			</if>
 			<if test="dict_name != null">
-		          dict_name = #{dict_name, jdbcType=VARCHAR},  <!-- 名称 -->
+		          dict_name = #{dict_name, jdbcType=VARCHAR},  <!-- 分组名称 -->
 			</if>
 			<if test="dict_key != null">
-		          dict_key = #{dict_key, jdbcType=VARCHAR},  <!-- 数据字典KEY -->
+		          dict_key = #{dict_key, jdbcType=VARCHAR},  <!-- 字典KEY -->
 			</if>
 			<if test="dict_value != null">
-		          dict_value = #{dict_value, jdbcType=VARCHAR},  <!-- 字典对照值 -->
+		          dict_value = #{dict_value, jdbcType=VARCHAR},  <!-- 字典值 -->
 			</if>
 			<if test="is_enable != null">
 		          is_enable = #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
@@ -246,10 +226,10 @@
 	<!-- 表字段 -->
 	<sql id="column">
 		  id,  <!-- 流水号 -->
-		  dict_type,  <!-- 类型 -->
-		  dict_name,  <!-- 名称 -->
-		  dict_key,  <!-- 数据字典KEY -->
-		  dict_value,  <!-- 字典对照值 -->
+		  dict_type,  <!-- 分组标识 -->
+		  dict_name,  <!-- 分组名称 -->
+		  dict_key,  <!-- 字典KEY -->
+		  dict_value,  <!-- 字典值 -->
 		  is_enable,  <!-- 是否启用 -->
 		  sort_no,  <!-- 排序号 -->
 		  update_time,  <!-- 更新时间 -->
@@ -259,10 +239,10 @@
 	<!-- 表字段(用于外表的关联时引用) -->
 	<sql id="column2">
 		  my_dict.id,  <!-- 流水号 -->
-		  my_dict.dict_type,  <!-- 类型 -->
-		  my_dict.dict_name,  <!-- 名称 -->
-		  my_dict.dict_key,  <!-- 数据字典KEY -->
-		  my_dict.dict_value,  <!-- 字典对照值 -->
+		  my_dict.dict_type,  <!-- 分组标识 -->
+		  my_dict.dict_name,  <!-- 分组名称 -->
+		  my_dict.dict_key,  <!-- 字典KEY -->
+		  my_dict.dict_value,  <!-- 字典值 -->
 		  my_dict.is_enable,  <!-- 是否启用 -->
 		  my_dict.sort_no,  <!-- 排序号 -->
 		  my_dict.update_time,  <!-- 更新时间 -->
@@ -275,16 +255,16 @@
 		      AND id = #{id}  <!-- 流水号 -->
 		</if>
 	    <if test="dict_type != null and dict_type != ''">
-		      AND dict_type = #{dict_type}  <!-- 类型 -->
+		      AND dict_type = #{dict_type}  <!-- 分组标识 -->
 		</if>
 	    <if test="dict_name != null and dict_name != ''">
-		      AND dict_name = #{dict_name}  <!-- 名称 -->
+		      AND dict_name = #{dict_name}  <!-- 分组名称 -->
 		</if>
 	    <if test="dict_key != null and dict_key != ''">
-		      AND dict_key = #{dict_key}  <!-- 数据字典KEY -->
+		      AND dict_key = #{dict_key}  <!-- 字典KEY -->
 		</if>
 	    <if test="dict_value != null and dict_value != ''">
-		      AND dict_value = #{dict_value}  <!-- 字典对照值 -->
+		      AND dict_value = #{dict_value}  <!-- 字典值 -->
 		</if>
 	    <if test="is_enable != null and is_enable != ''">
 		      AND is_enable = #{is_enable}  <!-- 是否启用 -->
@@ -303,16 +283,16 @@
 	<!-- Where模糊匹配字段 -->
 	<sql id="like">
 	    <if test="dict_type != null and dict_type != ''">
-		      AND dict_type like '${dict_type}%'  <!-- 类型 -->
+		      AND dict_type like '${dict_type}%'  <!-- 分组标识 -->
 		</if>
 	    <if test="dict_name != null and dict_name != ''">
-		      AND dict_name like '${dict_name}%'  <!-- 名称 -->
+		      AND dict_name like '${dict_name}%'  <!-- 分组名称 -->
 		</if>
 	    <if test="dict_key != null and dict_key != ''">
-		      AND dict_key like '${dict_key}%'  <!-- 数据字典KEY -->
+		      AND dict_key like '${dict_key}%'  <!-- 字典KEY -->
 		</if>
 	    <if test="dict_value != null and dict_value != ''">
-		      AND dict_value like '${dict_value}%'  <!-- 字典对照值 -->
+		      AND dict_value like '${dict_value}%'  <!-- 字典值 -->
 		</if>
 	    <if test="is_enable != null and is_enable != ''">
 		      AND is_enable like '${is_enable}%'  <!-- 是否启用 -->

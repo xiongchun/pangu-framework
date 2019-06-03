@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 后台用户基本信息表[my_user]SQL自动映射 -->
-<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-05-07 20:42:52 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-06-03 12:29:33 -->
 <mapper namespace="com.gitee.myclouds.system.domain.myuser.MyUserMapper">
 	
 	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
@@ -54,9 +54,6 @@
 		<if test="create_by != null and create_by != ''">
 	         create_by, <!-- 创建人 -->
 		</if>
-		<if test="remark != null and remark != ''">
-	         remark, <!-- 备注 -->
-		</if>
 	          id
 		)VALUES(
 		<if test="account != null and account != ''">
@@ -104,9 +101,6 @@
 		<if test="create_by != null and create_by != ''">
 	          #{create_by, jdbcType=VARCHAR}, <!-- 创建人 -->
 	    </if>
-		<if test="remark != null and remark != ''">
-	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
-	    </if>
 	          null
 		)
 	</insert>
@@ -132,8 +126,7 @@
 		    #{ext, jdbcType=VARCHAR},  <!-- 扩展JSON -->
 		    #{create_time, jdbcType=TIMESTAMP},  <!-- 创建时间 -->
 		    #{create_by_id, jdbcType=INTEGER},  <!-- 创建人ID -->
-		    #{create_by, jdbcType=VARCHAR},  <!-- 创建人 -->
-		    #{remark, jdbcType=VARCHAR}  <!-- 备注 -->
+		    #{create_by, jdbcType=VARCHAR}  <!-- 创建人 -->
 		)
 	</insert>
 
@@ -189,9 +182,6 @@
 			<if test="create_by != null">
 		          create_by = #{create_by, jdbcType=VARCHAR},  <!-- 创建人 -->
 			</if>
-			<if test="remark != null">
-		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
-			</if>
 		</set>
 		WHERE  id = #{id}
 	</update>
@@ -227,32 +217,12 @@
 		    <include refid="equal" />
 		</where>	
 	</select>
-
-	<!-- 根据Dto查询并返回分页数据实体对象集合 -->
-	<select id="listPage" parameterType="Dto" resultType="MyUserEntity" useCache="false">
-	    SELECT
-			<include refid="column" />	
-		FRoM my_user
-		<where>
-		    <include refid="equal" />
-		</where>	
-	</select>
 	
 	<!-- 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
 	<select id="like" parameterType="Dto" resultType="MyUserEntity">
 		SELECT
 			<include refid="column" />	
 		FROM my_user
-		<where>
-		    <include refid="like" />
-		</where>	
-	</select>
-
-	<!-- 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
-	<select id="likePage" parameterType="Dto" resultType="MyUserEntity" useCache="false">
-	    SELECT
-			<include refid="column" />	
-		FRoM my_user
 		<where>
 		    <include refid="like" />
 		</where>	
@@ -328,9 +298,6 @@
 			<if test="create_by != null">
 		          create_by = #{create_by, jdbcType=VARCHAR},  <!-- 创建人 -->
 			</if>
-			<if test="remark != null">
-		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
-			</if>
 		</set>
 		WHERE  account = #{account}
 	</update>
@@ -364,8 +331,7 @@
 		  ext,  <!-- 扩展JSON -->
 		  create_time,  <!-- 创建时间 -->
 		  create_by_id,  <!-- 创建人ID -->
-		  create_by,  <!-- 创建人 -->
-		  remark  <!-- 备注 -->
+		  create_by  <!-- 创建人 -->
 	</sql>
 	
 	<!-- 表字段(用于外表的关联时引用) -->
@@ -385,8 +351,7 @@
 		  my_user.ext,  <!-- 扩展JSON -->
 		  my_user.create_time,  <!-- 创建时间 -->
 		  my_user.create_by_id,  <!-- 创建人ID -->
-		  my_user.create_by,  <!-- 创建人 -->
-		  my_user.remark  <!-- 备注 -->
+		  my_user.create_by  <!-- 创建人 -->
 	</sql>
 
 	<!-- Where精确匹配字段 -->
@@ -439,9 +404,6 @@
 	    <if test="create_by != null and create_by != ''">
 		      AND create_by = #{create_by}  <!-- 创建人 -->
 		</if>
-	    <if test="remark != null and remark != ''">
-		      AND remark = #{remark}  <!-- 备注 -->
-		</if>
 	</sql>
 	
 	<!-- Where模糊匹配字段 -->
@@ -481,9 +443,6 @@
 		</if>
 	    <if test="create_by != null and create_by != ''">
 		      AND create_by like '${create_by}%'  <!-- 创建人 -->
-		</if>
-	    <if test="remark != null and remark != ''">
-		      AND remark like '${remark}%'  <!-- 备注 -->
 		</if>
 	</sql>
 	

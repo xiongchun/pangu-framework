@@ -15,7 +15,7 @@ import com.gitee.myclouds.system.domain.myuserrole.MyUserRoleEntity;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-07 20:42:52
+ * @date 2019-06-03 12:29:34
  */
 @Mapper
 public interface MyUserRoleMapper {
@@ -68,13 +68,6 @@ public interface MyUserRoleMapper {
 	 * @return List<MyUserRoleEntity>
 	 */
 	List<MyUserRoleEntity> list(Dto pDto);
-
-	/**
-	 * 根据Dto查询并返回分页数据实体对象集合
-	 * 
-	 * @return List<MyUserRoleEntity>
-	 */
-	List<MyUserRoleEntity> listPage(Dto pDto);
 		
 	/**
 	 * 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配)
@@ -82,13 +75,6 @@ public interface MyUserRoleMapper {
 	 * @return List<MyUserRoleEntity>
 	 */
 	List<MyUserRoleEntity> like(Dto pDto);
-
-	/**
-	 * 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配)
-	 * 
-	 * @return List<MyUserRoleEntity>
-	 */
-	List<MyUserRoleEntity> likePage(Dto pDto);
 
 	/**
 	 * 根据主键删除数据实体对象

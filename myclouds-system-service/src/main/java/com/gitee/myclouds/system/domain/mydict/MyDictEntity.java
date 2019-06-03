@@ -5,6 +5,8 @@ import java.util.Date;
 import java.io.Serializable;
 
 import lombok.Data;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * <b>数据字典表[my_dict]数据实体对象</b>
@@ -13,9 +15,11 @@ import lombok.Data;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-07 20:42:50
+ * @date 2019-06-03 12:29:28
  */
 @Data
+@ToString
+@Accessors(chain = true)
 public class MyDictEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -23,16 +27,16 @@ public class MyDictEntity implements Serializable {
 	//流水号
 	private Integer id;	
 
-	//类型
+	//分组标识
 	private String dict_type;	
 
-	//名称
+	//分组名称
 	private String dict_name;	
 
-	//数据字典KEY
+	//字典KEY
 	private String dict_key;	
 
-	//字典对照值
+	//字典值
 	private String dict_value;	
 
 	//是否启用

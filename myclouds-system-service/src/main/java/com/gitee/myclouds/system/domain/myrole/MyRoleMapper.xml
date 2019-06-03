@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 角色表[my_role]SQL自动映射 -->
-<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-05-07 20:42:51 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-06-03 12:29:30 -->
 <mapper namespace="com.gitee.myclouds.system.domain.myrole.MyRoleMapper">
 	
 	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
@@ -17,9 +17,6 @@
 		</if>
 		<if test="type != null and type != ''">
 	         type, <!-- 角色类型 -->
-		</if>
-		<if test="remark != null and remark != ''">
-	         remark, <!-- 备注 -->
 		</if>
 		<if test="ext != null and ext != ''">
 	         ext, <!-- 扩展字段(JSON) -->
@@ -43,9 +40,6 @@
 	    </if>
 		<if test="type != null and type != ''">
 	          #{type, jdbcType=VARCHAR}, <!-- 角色类型 -->
-	    </if>
-		<if test="remark != null and remark != ''">
-	          #{remark, jdbcType=VARCHAR}, <!-- 备注 -->
 	    </if>
 		<if test="ext != null and ext != ''">
 	          #{ext, jdbcType=VARCHAR}, <!-- 扩展字段(JSON) -->
@@ -73,7 +67,6 @@
 		    #{name, jdbcType=VARCHAR},  <!-- 角色名称 -->
 		    #{is_enable, jdbcType=VARCHAR},  <!-- 是否启用 -->
 		    #{type, jdbcType=VARCHAR},  <!-- 角色类型 -->
-		    #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
 		    #{ext, jdbcType=VARCHAR},  <!-- 扩展字段(JSON) -->
 		    #{create_time, jdbcType=TIMESTAMP},  <!-- 创建时间 -->
 		    #{create_by_id, jdbcType=INTEGER},  <!-- 创建人ID -->
@@ -96,9 +89,6 @@
 			</if>
 			<if test="type != null">
 		          type = #{type, jdbcType=VARCHAR},  <!-- 角色类型 -->
-			</if>
-			<if test="remark != null">
-		          remark = #{remark, jdbcType=VARCHAR},  <!-- 备注 -->
 			</if>
 			<if test="ext != null">
 		          ext = #{ext, jdbcType=VARCHAR},  <!-- 扩展字段(JSON) -->
@@ -147,32 +137,12 @@
 		    <include refid="equal" />
 		</where>	
 	</select>
-
-	<!-- 根据Dto查询并返回分页数据实体对象集合 -->
-	<select id="listPage" parameterType="Dto" resultType="MyRoleEntity" useCache="false">
-	    SELECT
-			<include refid="column" />	
-		FRoM my_role
-		<where>
-		    <include refid="equal" />
-		</where>	
-	</select>
 	
 	<!-- 根据Dto模糊查询并返回数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
 	<select id="like" parameterType="Dto" resultType="MyRoleEntity">
 		SELECT
 			<include refid="column" />	
 		FROM my_role
-		<where>
-		    <include refid="like" />
-		</where>	
-	</select>
-
-	<!-- 根据Dto模糊查询并返回分页数据实体对象集合(字符型字段模糊匹配，其余字段精确匹配) -->
-	<select id="likePage" parameterType="Dto" resultType="MyRoleEntity" useCache="false">
-	    SELECT
-			<include refid="column" />	
-		FRoM my_role
 		<where>
 		    <include refid="like" />
 		</where>	
@@ -203,7 +173,6 @@
 		  name,  <!-- 角色名称 -->
 		  is_enable,  <!-- 是否启用 -->
 		  type,  <!-- 角色类型 -->
-		  remark,  <!-- 备注 -->
 		  ext,  <!-- 扩展字段(JSON) -->
 		  create_time,  <!-- 创建时间 -->
 		  create_by_id,  <!-- 创建人ID -->
@@ -216,7 +185,6 @@
 		  my_role.name,  <!-- 角色名称 -->
 		  my_role.is_enable,  <!-- 是否启用 -->
 		  my_role.type,  <!-- 角色类型 -->
-		  my_role.remark,  <!-- 备注 -->
 		  my_role.ext,  <!-- 扩展字段(JSON) -->
 		  my_role.create_time,  <!-- 创建时间 -->
 		  my_role.create_by_id,  <!-- 创建人ID -->
@@ -236,9 +204,6 @@
 		</if>
 	    <if test="type != null and type != ''">
 		      AND type = #{type}  <!-- 角色类型 -->
-		</if>
-	    <if test="remark != null and remark != ''">
-		      AND remark = #{remark}  <!-- 备注 -->
 		</if>
 	    <if test="ext != null and ext != ''">
 		      AND ext = #{ext}  <!-- 扩展字段(JSON) -->
@@ -264,9 +229,6 @@
 		</if>
 	    <if test="type != null and type != ''">
 		      AND type like '${type}%'  <!-- 角色类型 -->
-		</if>
-	    <if test="remark != null and remark != ''">
-		      AND remark like '${remark}%'  <!-- 备注 -->
 		</if>
 	    <if test="ext != null and ext != ''">
 		      AND ext like '${ext}%'  <!-- 扩展字段(JSON) -->

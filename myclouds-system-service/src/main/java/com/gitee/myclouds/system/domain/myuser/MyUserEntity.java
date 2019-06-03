@@ -5,6 +5,8 @@ import java.util.Date;
 import java.io.Serializable;
 
 import lombok.Data;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * <b>后台用户基本信息表[my_user]数据实体对象</b>
@@ -13,9 +15,11 @@ import lombok.Data;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-05-07 20:42:52
+ * @date 2019-06-03 12:29:33
  */
 @Data
+@ToString
+@Accessors(chain = true)
 public class MyUserEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -68,8 +72,5 @@ public class MyUserEntity implements Serializable {
 
 	//创建人
 	private String create_by;	
-
-	//备注
-	private String remark;	
 
 }

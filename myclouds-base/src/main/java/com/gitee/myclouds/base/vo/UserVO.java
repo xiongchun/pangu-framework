@@ -8,7 +8,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
- * 当前会话用户数据对象
+ * 当前会话用户数据对象（用于后端操作用户，非C端客户）
  * 
  * @author xiongchun
  *
