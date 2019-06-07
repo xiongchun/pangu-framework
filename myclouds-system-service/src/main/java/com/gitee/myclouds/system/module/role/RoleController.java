@@ -3,15 +3,16 @@ package com.gitee.myclouds.system.module.role;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
+
+import cn.hutool.core.map.MapUtil;
 
 /**
  * 角色 服务发布
@@ -34,7 +35,7 @@ public class RoleController {
 	 */
 	@RequestMapping(value = "list", produces = "application/json")
 	public OutVO list(@RequestBody Map<String,Object> inMap){
-		return roleService.list(Dtos.newDto(inMap));
+		return roleService.list(Dtos.newPageDto(inMap));
 	}
 	
 	/**
@@ -43,9 +44,9 @@ public class RoleController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "get",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
-	public String get(@RequestParam Integer id){
-		return roleService.get(id);
+	@RequestMapping(value = "get", produces = "application/json")
+	public OutVO get(@RequestBody Map<String,Object> inMap){
+		return roleService.get(MapUtil.getInt(inMap, "id"));
 	}
 	
 	/**
@@ -54,9 +55,9 @@ public class RoleController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto save(@RequestParam Map<String,Object> inMap){
-		return roleService.save(Dtos.newDto(inMap));
+	@PostMapping(value = "add", produces = "application/json")
+	public OutVO add(@RequestBody Map<String,Object> inMap){
+		return roleService.add(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -65,8 +66,8 @@ public class RoleController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "update",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto update(@RequestParam Map<String,Object> inMap){
+	@PostMapping(value = "update", produces = "application/json")
+	public OutVO update(@RequestBody Map<String,Object> inMap){
 		return roleService.update(Dtos.newDto(inMap));
 	}
 	
@@ -76,9 +77,20 @@ public class RoleController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "delete",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto delete(@RequestParam Map<String,Object> inMap){
-		return roleService.delete(Dtos.newDto(inMap));
+	@PostMapping(value = "delete", produces = "application/json")
+	public OutVO delete(@RequestBody Map<String,Object> inMap){
+		return roleService.delete(MapUtil.getInt(inMap, "id"));
+	}
+	
+	/**
+	 * 批量删除
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@PostMapping(value = "batchDelete", produces = "application/json")
+	public OutVO batchDelete(@RequestBody Map<String,Object> inMap){
+		return roleService.batchDelete(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -87,9 +99,9 @@ public class RoleController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "listGrantTree",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
-	public String listGrantTree(@RequestParam Integer roleId){
-		return roleService.listGrantTree(roleId);
+	@RequestMapping(value = "listTree", produces = "application/json")
+	public OutVO listTree(@RequestBody Map<String,Object> inMap){
+		return roleService.listGrantTree(MapUtil.getInt(inMap, "id"));
 	}
 	
 	/**
@@ -98,8 +110,8 @@ public class RoleController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "grant",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto grant(@RequestParam Map<String,Object> inMap){
+	@PostMapping(value = "grant", produces = "application/json")
+	public OutVO grant(@RequestBody Map<String,Object> inMap){
 		return roleService.grant(Dtos.newDto(inMap));
 	}
 	

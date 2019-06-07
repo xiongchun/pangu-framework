@@ -76,12 +76,12 @@ public class UserService {
 		MyUserEntity oldUser = myUserMapper.selectByKey(myUserEntity.getId());
 		if (!StringUtils.equals(oldUser.getAccount(), myUserEntity.getAccount()) ) {
 			if (MyUtil.isNotEmpty(myUserMapper.selectByUkey1(myUserEntity.getAccount()))) {
-				outDto = Dtos.newDto().put2("code", "-1").put2("msg", "此账号已经存在，请重新输入...");
+				outDto = Dtos.newDto().set("code", "-1").set("msg", "此账号已经存在，请重新输入...");
 				return outDto;
 			}
 		}
 		myUserMapper.updateByKey(myUserEntity);
-		outDto = Dtos.newDto().put2("code", "1").put2("msg", "人员修改成功");
+		outDto = Dtos.newDto().set("code", "1").set("msg", "人员修改成功");
 		return outDto;
 	}
 
@@ -102,9 +102,9 @@ public class UserService {
 			myUserEntity.setCreate_by_id(curUser.getId());
 			myUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, myUserEntity.getPassword()));
 			myUserMapper.insert(myUserEntity);
-			outDto = Dtos.newDto().put2("code", "1").put2("msg", "用户信息新增成功");
+			outDto = Dtos.newDto().set("code", "1").set("msg", "用户信息新增成功");
 		}else {
-			outDto = Dtos.newDto().put2("code", "-1").put2("msg", "账号已被占用，请重新输入");
+			outDto = Dtos.newDto().set("code", "-1").set("msg", "账号已被占用，请重新输入");
 		}
 		return outDto;
 	}
@@ -119,7 +119,7 @@ public class UserService {
 		Integer userId = inDto.getInteger("id");
 		myUserMapper.deleteByKey(userId);
 		sqlSession.delete("sql.user.deleteMyUserRole", userId);
-		Dto outDto = Dtos.newDto().put2("code", "1").put2("msg", "用户删除成功");
+		Dto outDto = Dtos.newDto().set("code", "1").set("msg", "用户删除成功");
 		return outDto;
 	}
 	
@@ -165,7 +165,7 @@ public class UserService {
 				myUserRoleMapper.insert(myUserRoleEntity);
 			}
 		}
-		return Dtos.newDto().put2("code", "1").put2("msg", "用户授权成功");
+		return Dtos.newDto().set("code", "1").set("msg", "用户授权成功");
 	}
 	
 	/**
@@ -178,19 +178,19 @@ public class UserService {
 		Dto outDto = Dtos.newDto();
 		String newPassword = inDto.getString("new_password");
 		if (!StringUtils.equals(newPassword, inDto.getString("confirm_password"))) {
-			outDto.put2("code", "-1").put2("msg", "新密码和确认密码不一致，请确认");
+			outDto.set("code", "-1").set("msg", "新密码和确认密码不一致，请确认");
 		}else {
 			Integer userId = inDto.getInteger("id");
 			String password = MyUtil.password(MyCons.PWD_KEY, inDto.getString("password"));
 			MyUserEntity myUserEntity = myUserMapper.selectByKey(userId);
 			if (!StringUtils.equals(password, myUserEntity.getPassword())) {
-				outDto.put2("code", "-2").put2("msg", "原密码输入错误，请确认");
+				outDto.set("code", "-2").set("msg", "原密码输入错误，请确认");
 			}else {
 				MyUserEntity updateMyUserEntity = new MyUserEntity();
 				updateMyUserEntity.setId(userId);
 				updateMyUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, newPassword));
 				myUserMapper.updateByKey(updateMyUserEntity);
-				outDto.put2("code", "1").put2("msg", "密码修改成功");
+				outDto.set("code", "1").set("msg", "密码修改成功");
 			}
 		}
 		return outDto;
@@ -211,7 +211,7 @@ public class UserService {
 			myUserEntity.setId(Integer.valueOf(id));
 			myUserMapper.updateByKey(myUserEntity);
 		}
-		outDto.put2("code", "1").put2("msg", "重置密码成功");
+		outDto.set("code", "1").set("msg", "重置密码成功");
 		return outDto;
 	}
 

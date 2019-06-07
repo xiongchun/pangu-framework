@@ -215,7 +215,7 @@ public class HashDto extends HashMap<String, Object> implements Dto {
 	 * @return 当前对象
 	 */
 	@Override
-	public Dto put2(String key, Object value) {
+	public Dto set(String key, Object value) {
 		put(key, value);
 		return this;
 	}

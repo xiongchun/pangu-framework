@@ -15,7 +15,7 @@ import com.gitee.myclouds.system.domain.myorg.MyOrgEntity;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-06-03 12:29:29
+ * @date 2019-06-05 15:40:04
  */
 @Mapper
 public interface MyOrgMapper {

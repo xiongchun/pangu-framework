@@ -78,7 +78,7 @@ public class DictController {
 	 */
 	@PostMapping(value = "delete", produces = "application/json")
 	public OutVO delete(@RequestBody Map<String,Object> inMap){
-		return dictService.delete(Dtos.newDto(inMap));
+		return dictService.delete(MapUtil.getInt(inMap, "id"));
 	}
 	
 	/**

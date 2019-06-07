@@ -126,6 +126,6 @@ public interface Dto extends Map<String, Object> {
 	 *            值
 	 * @return 当前对象
 	 */
-	Dto put2(String key, Object value);
+	Dto set(String key, Object value);
 
 }

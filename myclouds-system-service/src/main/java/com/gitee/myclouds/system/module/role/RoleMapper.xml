@@ -5,28 +5,62 @@
 <!-- 角色模块SQL映射 -->
 <mapper namespace="sql.role">
 
+	<!-- 根据Dto查询数据字典 -->
+	<select id="pageRole" parameterType="Dto" resultType="MyRoleEntity">
+		SELECT
+		<include refid="com.gitee.myclouds.system.domain.myrole.MyRoleMapper.column" />
+		FROM my_role
+		<include refid="pageRoleWhere" />
+		ORDER BY id DESC LIMIT ${start},${length}
+	</select>
+	<select id="pageRoleCount" parameterType="Dto" resultType="Integer">
+		SELECT
+		count(1) AS total
+		FROM my_role
+		<include refid="pageRoleWhere" />
+	</select>
+	<sql id="pageRoleWhere">
+		<where>
+		    <!-- 提示：业务代码如果需要模糊查询，只能后匹配不能前后匹配，否则会全表扫描。 -->
+		    <if test="name != null and name != ''">
+				AND name LIKE '%${name}%'
+			</if>
+			<if test="type != null and type != ''">
+				AND type = #{type}
+			</if>
+			<if test="is_enable != null and is_enable != ''">
+				AND is_enable = #{is_enable}
+			</if>
+			<!-- 授权列表能看到的角色列表为和当前登录用户同级的的用户所创建的角色 -->
+			<if test="activeUserId != null and activeUserId != ''">
+				AND create_by_id IN (SELECT id FROM my_user WHERE org_id = (SELECT org_id from my_user where id=${activeUserId}))
+			</if>
+		</where>
+	</sql>
+	
 	<!-- 删除my_user_role关联数据 -->
 	<delete id="deleteMyUserRole" parameterType="Integer">
 		DELETE
-		FROM my_user_role WHERE role_id = #{role_id}
+		FROM my_user_role WHERE role_id = #{roleId}
 	</delete>
 	
 	<!-- 删除my_role_module关联数据 -->
 	<delete id="deleteMyRoleModule" parameterType="Integer">
 		DELETE
-		FROM my_role_module WHERE role_id = #{role_id}
+		FROM my_role_module WHERE role_id = #{roleId}
 	</delete>
 
     <!-- 查询待授权菜单树 -->
-	<select id="listToGrantTree" resultType="Dto">
+	<select id="listModuleTree"  resultType="TreeNodeVO" parameterType="Dto">
 	    SELECT
 			id,
 			parent_id AS pId,
-			name
+			name AS label,
+		   (SELECT COUNT(id) FROM my_role_module WHERE role_id = ${roleId} AND grant_type = 1 AND module_id = my_module.id) AS checked
 		FROM
 			my_module 
-		WHERE is_enable = '1'
-         ORDER BY id, sort_no
+		WHERE is_enable = 1
+         ORDER BY sort_no
 	</select>
 
 </mapper>

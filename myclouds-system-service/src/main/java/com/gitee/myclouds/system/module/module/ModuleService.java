@@ -105,9 +105,8 @@ public class ModuleService {
 	 * @return
 	 */
 	@Transactional
-	public OutVO delete(Dto inDto) {
+	public OutVO delete(Integer moduleId) {
 		OutVO outVO  = new OutVO(0);
-		Integer moduleId = inDto.getInteger("id");
 		Integer cnt = sqlSession.selectOne("sql.module.countSubModules", moduleId);
 		if (cnt > 0) {
 			throw new BizException(-12, "操作取消。请先删除子节点。");

@@ -26,7 +26,10 @@ public class TreeNodeVO implements Serializable {
 
 	// 节点名称
 	private String label;
-
+	
+	// 节点复选框选中状态
+	private Boolean checked;
+	
 	// 子孙节点集合
 	private List<TreeNodeVO> children;
 

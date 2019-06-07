@@ -15,7 +15,7 @@ import com.gitee.myclouds.system.domain.mydict.MyDictEntity;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-06-03 12:29:28
+ * @date 2019-06-05 15:40:03
  */
 @Mapper
 public interface MyDictMapper {

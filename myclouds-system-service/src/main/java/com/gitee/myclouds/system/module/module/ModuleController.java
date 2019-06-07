@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
+import cn.hutool.core.map.MapUtil;
+
 /**
  * 资源模块 服务发布
  * 
@@ -76,7 +78,7 @@ public class ModuleController {
 	 */
 	@PostMapping(value = "delete", produces = "application/json")
 	public OutVO delete(@RequestBody Map<String,Object> inMap){
-		return moduleService.delete(Dtos.newDto(inMap));
+		return moduleService.delete(MapUtil.getInt(inMap, "id"));
 	}
 	
 	/**

@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 import lombok.Data;
 import lombok.ToString;
-import lombok.experimental.Accessors;
 
 /**
  * <b>数据字典表[my_dict]数据实体对象</b>
@@ -15,11 +14,11 @@ import lombok.experimental.Accessors;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-06-03 12:29:28
+ * @date 2019-06-05 15:40:03
  */
 @Data
 @ToString
-@Accessors(chain = true)
+// @Accessors(chain = true) 此注解和BeanUtils的属性复制冲突，暂时不适用链式编程注解
 public class MyDictEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -23,7 +23,7 @@ public class BizException extends RuntimeException{
 	private String msg;
 	
 	public BizException(int code, String msg) {
-		super("BizException Occourred. " + JSON.toJSONString(Dtos.newDto().put2("code", code).put2("msg", msg)));
+		super("BizException Occourred. " + JSON.toJSONString(Dtos.newDto().set("code", code).set("msg", msg)));
         this.code = code;
         this.msg = msg;
     }

@@ -71,7 +71,7 @@ public class OrgService {
 		myOrgEntity.setCreate_by(curUser.getName());
 		myOrgEntity.setCreate_by_id(curUser.getId());
 		myOrgMapper.insert(myOrgEntity);
-		outDto = Dtos.newDto().put2("code", "1").put2("msg", "部门新增成功");
+		outDto = Dtos.newDto().set("code", "1").set("msg", "部门新增成功");
 		return outDto;
 	}
 	
@@ -87,7 +87,7 @@ public class OrgService {
 		MyOrgEntity myOrgEntity = new MyOrgEntity();
 		MyUtil.copyProperties(inDto, myOrgEntity);
 		myOrgMapper.updateByKey(myOrgEntity);
-		outDto = Dtos.newDto().put2("code", "1").put2("msg", "部门修改成功");
+		outDto = Dtos.newDto().set("code", "1").set("msg", "部门修改成功");
 		return outDto;
 	}
 
@@ -102,11 +102,11 @@ public class OrgService {
 		Integer orgId = inDto.getInteger("id");
 		Integer total = sqlSession.selectOne("sql.org.countOrgs", orgId);
 		if (total > 0) {
-			outDto.put2("code", "-1").put2("msg", "部门删除失败。请先删除下级部门。");
+			outDto.set("code", "-1").set("msg", "部门删除失败。请先删除下级部门。");
 		}else {
 			myOrgMapper.deleteByKey(orgId);
 			sqlSession.delete("sql.org.deleteMyUser", orgId);
-			outDto.put2("code", "1").put2("msg", "部门删除成功");
+			outDto.set("code", "1").set("msg", "部门删除成功");
 		}
 		return outDto;
 	}

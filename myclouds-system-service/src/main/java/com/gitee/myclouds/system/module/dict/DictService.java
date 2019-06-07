@@ -103,9 +103,9 @@ public class DictService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO delete(Dto inDto) {
+	public OutVO delete(Integer id) {
 		OutVO outVO  = new OutVO(0);
-		myDictMapper.deleteByKey(inDto.getInteger("id"));
+		myDictMapper.deleteByKey(id);
 		outVO.setMsg("数据字典删除成功");
 		return outVO;
 	}

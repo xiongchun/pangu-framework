@@ -36,13 +36,13 @@ public class LoginService {
 	 * @return
 	 */
 	public Dto validate(Dto inDto) {
-		Dto outDto = Dtos.newDto().put2("code", "1").put2("msg", "用户登录验证通过");
+		Dto outDto = Dtos.newDto().set("code", "1").set("msg", "用户登录验证通过");
 		MyUserEntity myUserEntity = myUserMapper.selectByUkey1(inDto.getString("account"));
 		if (MyUtil.isEmpty(myUserEntity)) {
-			outDto.put2("code", "-1").put2("msg", "登录账号输入错误，请重新输入");
+			outDto.set("code", "-1").set("msg", "登录账号输入错误，请重新输入");
 		}else {
 			if (!StringUtils.equals(MyUtil.password(MyCons.PWD_KEY, inDto.getString("password")), myUserEntity.getPassword())) {
-				outDto.put2("code", "-1").put2("msg", "密码输入错误，请重新输入");
+				outDto.set("code", "-1").set("msg", "密码输入错误，请重新输入");
 			}
 		}
 		if (MyCons.YesOrNo.YES.getValue() == outDto.getInteger("code").intValue()) {
