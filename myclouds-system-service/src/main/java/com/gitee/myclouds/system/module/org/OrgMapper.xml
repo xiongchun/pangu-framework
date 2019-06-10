@@ -6,35 +6,20 @@
 <mapper namespace="sql.org">
 
    	<!-- 根据Dto查询并返回组织机构数据实体对象集合 -->
-	<select id="pageOrg" parameterType="Dto" resultType="Dto">
+	<select id="listOrg" parameterType="Dto" resultType="MyOrgEntity">
 		SELECT
-				  t1.id,
-				  t1.name,  
-				  t1.parent_id,
-				  t1.type, 
-				  t1.biz_code,  
-				  t1.sort_no,
-		          (SELECT name from my_org where id = t1.parent_id) AS parent_name
-		FROM my_org t1
-		<include refid="pageOrgWhere" />
-		ORDER BY t1.id DESC LIMIT ${start},${length}
-	</select>
-	<select id="pageOrgCount" parameterType="Dto" resultType="Integer">
-		SELECT
-		count(1) AS total
-		FROM my_org t1
-		<include refid="pageOrgWhere" />
-	</select>
-	<sql id="pageOrgWhere">
+			<include refid="com.gitee.myclouds.system.domain.myorg.MyOrgMapper.column" />
+		FROM my_org
 		<where>
 			<if test="name != null and name != ''">
-				AND t1.name like '%${name}%'
+				AND name like '%${name}%'
 			</if>
-			<if test="parent_id != null and parent_id != ''">
-				AND t1.parent_id = #{parent_id}
+			<if test="type != null and type != ''">
+				AND type = #{type}
 			</if>
 		</where>
-	</sql>
+		ORDER BY sort_no ASC, id DESC
+	</select>
 
 	<!-- 删除my_user关联数据 -->
 	<select id="deleteMyUser" parameterType="Integer">
@@ -49,15 +34,15 @@
 		FROM my_org WHERE parent_id = #{parent_id}
 	</select>
 	
-	<!-- 查询部门树 -->
-	<select id="listOrgTree" resultType="Dto">
+	<!-- 查询组织树集合 -->
+	<select id="listOrgTree" resultType="TreeNodeVO" parameterType="Dto">
 	    SELECT
 			id,
 			parent_id AS pId,
-			name
+			name AS label
 		FROM
 			my_org
-         ORDER BY parent_id, sort_no
+         ORDER BY sort_no ASC, id DESC
 	</select>
 
 </mapper>

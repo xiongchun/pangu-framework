@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 组织机构表[my_org]SQL自动映射 -->
-<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-06-05 15:40:04 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-06-09 16:04:16 -->
 <mapper namespace="com.gitee.myclouds.system.domain.myorg.MyOrgMapper">
 	
 	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
@@ -14,12 +14,6 @@
 		</if>
 		<if test="parent_id != null">
 	         parent_id, <!-- 父节点流水号 -->
-		</if>
-		<if test="is_expanded != null and is_expanded != ''">
-	         is_expanded, <!-- 是否自动展开 -->
-		</if>
-		<if test="icon != null and icon != ''">
-	         icon, <!-- 节点图标 -->
 		</if>
 		<if test="type != null and type != ''">
 	         type, <!-- 组织类型 -->
@@ -52,12 +46,6 @@
 	    </if>
 		<if test="parent_id != null">
 	          #{parent_id, jdbcType=INTEGER}, <!-- 父节点流水号 -->
-	    </if>
-		<if test="is_expanded != null and is_expanded != ''">
-	          #{is_expanded, jdbcType=VARCHAR}, <!-- 是否自动展开 -->
-	    </if>
-		<if test="icon != null and icon != ''">
-	          #{icon, jdbcType=VARCHAR}, <!-- 节点图标 -->
 	    </if>
 		<if test="type != null and type != ''">
 	          #{type, jdbcType=VARCHAR}, <!-- 组织类型 -->
@@ -96,8 +84,6 @@
 		    #{id, jdbcType=INTEGER},  <!-- 流水号 -->
 		    #{name, jdbcType=VARCHAR},  <!-- 组织名称 -->
 		    #{parent_id, jdbcType=INTEGER},  <!-- 父节点流水号 -->
-		    #{is_expanded, jdbcType=VARCHAR},  <!-- 是否自动展开 -->
-		    #{icon, jdbcType=VARCHAR},  <!-- 节点图标 -->
 		    #{type, jdbcType=VARCHAR},  <!-- 组织类型 -->
 		    #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
 		    #{sort_no, jdbcType=INTEGER},  <!-- 排序号 -->
@@ -121,12 +107,6 @@
 			</if>
 			<if test="parent_id != null">
 		          parent_id = #{parent_id, jdbcType=INTEGER},  <!-- 父节点流水号 -->
-			</if>
-			<if test="is_expanded != null">
-		          is_expanded = #{is_expanded, jdbcType=VARCHAR},  <!-- 是否自动展开 -->
-			</if>
-			<if test="icon != null">
-		          icon = #{icon, jdbcType=VARCHAR},  <!-- 节点图标 -->
 			</if>
 			<if test="type != null">
 		          type = #{type, jdbcType=VARCHAR},  <!-- 组织类型 -->
@@ -222,8 +202,6 @@
 		  id,  <!-- 流水号 -->
 		  name,  <!-- 组织名称 -->
 		  parent_id,  <!-- 父节点流水号 -->
-		  is_expanded,  <!-- 是否自动展开 -->
-		  icon,  <!-- 节点图标 -->
 		  type,  <!-- 组织类型 -->
 		  biz_code,  <!-- 扩展码 -->
 		  sort_no,  <!-- 排序号 -->
@@ -239,8 +217,6 @@
 		  my_org.id,  <!-- 流水号 -->
 		  my_org.name,  <!-- 组织名称 -->
 		  my_org.parent_id,  <!-- 父节点流水号 -->
-		  my_org.is_expanded,  <!-- 是否自动展开 -->
-		  my_org.icon,  <!-- 节点图标 -->
 		  my_org.type,  <!-- 组织类型 -->
 		  my_org.biz_code,  <!-- 扩展码 -->
 		  my_org.sort_no,  <!-- 排序号 -->
@@ -261,12 +237,6 @@
 		</if>
 	   <if test="parent_id != null ">
 		      AND parent_id = #{parent_id}  <!-- 父节点流水号 -->
-		</if>
-	    <if test="is_expanded != null and is_expanded != ''">
-		      AND is_expanded = #{is_expanded}  <!-- 是否自动展开 -->
-		</if>
-	    <if test="icon != null and icon != ''">
-		      AND icon = #{icon}  <!-- 节点图标 -->
 		</if>
 	    <if test="type != null and type != ''">
 		      AND type = #{type}  <!-- 组织类型 -->
@@ -298,12 +268,6 @@
 	<sql id="like">
 	    <if test="name != null and name != ''">
 		      AND name like '${name}%'  <!-- 组织名称 -->
-		</if>
-	    <if test="is_expanded != null and is_expanded != ''">
-		      AND is_expanded like '${is_expanded}%'  <!-- 是否自动展开 -->
-		</if>
-	    <if test="icon != null and icon != ''">
-		      AND icon like '${icon}%'  <!-- 节点图标 -->
 		</if>
 	    <if test="type != null and type != ''">
 		      AND type like '${type}%'  <!-- 组织类型 -->

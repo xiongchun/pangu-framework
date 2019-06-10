@@ -4,13 +4,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
+import com.gitee.myclouds.system.module.org.OrgService;
 
 /**
  * 用户管理 服务发布
@@ -24,6 +27,8 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private OrgService orgService;
 	
 	/**
 	 * 查询列表
@@ -122,5 +127,16 @@ public class UserController {
 	@RequestMapping(value = "resetPwd",method = { RequestMethod.POST}, produces = "application/json")
 	public Dto resetPwd(@RequestParam Map<String,Object> inMap){
 		return userService.resetPwd(Dtos.newDto(inMap));
+	}
+	
+	/**
+	 *查询组织树（返回树数据模型）
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@RequestMapping(value = "listTree", produces = "application/json")
+	public OutVO listTree(@RequestBody Map<String, Object> inMap){
+		return orgService.listOrgTree(Dtos.newDto(inMap));
 	}
 }

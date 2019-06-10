@@ -14,7 +14,7 @@ import lombok.ToString;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-06-05 15:40:04
+ * @date 2019-06-09 16:04:16
  */
 @Data
 @ToString
@@ -31,12 +31,6 @@ public class MyOrgEntity implements Serializable {
 
 	//父节点流水号
 	private Integer parent_id;	
-
-	//是否自动展开
-	private String is_expanded;	
-
-	//节点图标
-	private String icon;	
 
 	//组织类型
 	private String type;	

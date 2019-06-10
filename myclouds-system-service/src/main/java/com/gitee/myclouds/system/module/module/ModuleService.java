@@ -39,7 +39,7 @@ public class ModuleService {
 	 */
 	public OutVO list(Dto inDto) {
 		OutVO outVO  = new OutVO(0);
-		List<MyModuleEntity> myModuleEntitys = sqlSession.selectList("sql.module.pageModule",inDto);
+		List<MyModuleEntity> myModuleEntitys = sqlSession.selectList("sql.module.listModule",inDto);
 		outVO.setData(myModuleEntitys).setCount(myModuleEntitys.size());
 		return outVO;
 	}
@@ -66,7 +66,7 @@ public class ModuleService {
 	}
 	
 	/**
-	 * 保存
+	 * 新增
 	 * 
 	 * @param inDto
 	 * @return

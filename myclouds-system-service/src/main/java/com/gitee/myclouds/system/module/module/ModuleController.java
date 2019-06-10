@@ -82,7 +82,7 @@ public class ModuleController {
 	}
 	
 	/**
-	 *查询资源树（返回树桩数据模型）
+	 *查询资源树（返回树数据模型）
 	 * 
 	 * @param inMap
 	 * @return

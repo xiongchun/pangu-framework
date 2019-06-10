@@ -6,14 +6,10 @@
 <mapper namespace="sql.module">
 
    	<!-- 根据Dto查询并返回资源模块实体对象集合 -->
-	<select id="pageModule" parameterType="Dto" resultType="MyModuleEntity">
+	<select id="listModule" parameterType="Dto" resultType="MyModuleEntity">
 		SELECT
 			<include refid="com.gitee.myclouds.system.domain.mymodule.MyModuleMapper.column" />
 		FROM my_module
-		<include refid="pageModuleWhere" />
-		ORDER BY sort_no, id
-	</select>
-	<sql id="pageModuleWhere">
 		<where>
 			<if test="name != null and name != ''">
 				AND name like '%${name}%'
@@ -25,7 +21,8 @@
 				AND type = #{type}
 			</if>
 		</where>
-	</sql>
+		ORDER BY sort_no ASC, id DESC
+	</select>
 
 	<!-- 删除my_role_module关联数据 -->
 	<select id="deleteMyRoleModule" parameterType="Integer">
@@ -41,7 +38,7 @@
 			name AS label
 		FROM
 			my_module
-         ORDER BY sort_no
+         ORDER BY sort_no ASC, id DESC
 	</select>
 	
 	<!-- 统计直系子节点个数 -->
