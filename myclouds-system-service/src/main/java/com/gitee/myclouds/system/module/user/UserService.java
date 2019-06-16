@@ -1,24 +1,30 @@
 package com.gitee.myclouds.system.module.user;
 
 import java.util.List;
-import java.util.Map;
+
+import javax.validation.constraints.Null;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.base.vo.UserVO;
+import com.alibaba.druid.sql.visitor.functions.If;
+import com.gitee.myclouds.base.exception.BizException;
+import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
+import com.gitee.myclouds.system.domain.myorg.MyOrgEntity;
+import com.gitee.myclouds.system.domain.myorg.MyOrgMapper;
 import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
 import com.gitee.myclouds.system.domain.myuser.MyUserMapper;
 import com.gitee.myclouds.system.domain.myuserrole.MyUserRoleEntity;
 import com.gitee.myclouds.system.domain.myuserrole.MyUserRoleMapper;
-import com.google.common.collect.Lists;
+
+import cn.hutool.core.util.StrUtil;
 
 /**
  * 用户 服务
@@ -34,6 +40,8 @@ public class UserService {
 	@Autowired
 	private MyUserRoleMapper myUserRoleMapper;
 	@Autowired
+	private MyOrgMapper myOrgMapper;
+	@Autowired
 	private SqlSession sqlSession;
 
 	/**
@@ -42,47 +50,55 @@ public class UserService {
 	 * @param inDto
 	 * @return
 	 */
-	public String list(Dto inDto) {
-		Dto outDto = Dtos.newDto();
-		List<MyUserEntity> myUserEntities = sqlSession.selectList("sql.user.pageUser", inDto);
-		Integer total = sqlSession.selectOne("sql.user.pageUserCount", inDto);
-		outDto.put("data", myUserEntities);
-		outDto.put("recordsTotal", total);
-		outDto.put("recordsFiltered", total);
-		return JSON.toJSONString(outDto);
+	public OutVO list(Dto inDto) {
+		OutVO outVO = new OutVO(0);
+		if (StrUtil.equals(inDto.getString("org_id"), "1")) {
+			inDto.put("org_id", null);
+		}
+		List<Dto> myUserDtos = sqlSession.selectList("sql.user.pageUser", inDto);
+		Integer count = sqlSession.selectOne("sql.user.pageUserCount", inDto);
+		outVO.setData(myUserDtos).setCount(count);
+		return outVO;
 	}
-	
+
 	/**
 	 * 查询实体
 	 * 
 	 * @param id
 	 * @return
 	 */
-	public String get(Integer id) {
+	public OutVO get(Integer id) {
+		OutVO outVO = new OutVO(0);
 		MyUserEntity myUserEntity = myUserMapper.selectByKey(id);
-		return JSON.toJSONString(myUserEntity);
+		MyOrgEntity orgEntity = myOrgMapper.selectByKey(myUserEntity.getOrg_id());
+		Dto dto = Dtos.newDto();
+		MyUtil.copyProperties(myUserEntity, dto);
+		if (MyUtil.isNotEmpty(orgEntity)) {
+			dto.put("org_name", orgEntity.getName());
+		}
+		outVO.setData(dto);
+		return outVO;
 	}
-	
+
 	/**
 	 * 修改
 	 * 
 	 * @param inDto
 	 * @return
 	 */
-	public Dto update(Dto inDto) {
-		Dto outDto = null;
+	public OutVO update(Dto inDto) {
+		OutVO outVO = new OutVO(0);
 		MyUserEntity myUserEntity = new MyUserEntity();
 		MyUtil.copyProperties(inDto, myUserEntity);
 		MyUserEntity oldUser = myUserMapper.selectByKey(myUserEntity.getId());
-		if (!StringUtils.equals(oldUser.getAccount(), myUserEntity.getAccount()) ) {
+		if (!StringUtils.equals(oldUser.getAccount(), myUserEntity.getAccount())) {
 			if (MyUtil.isNotEmpty(myUserMapper.selectByUkey1(myUserEntity.getAccount()))) {
-				outDto = Dtos.newDto().set("code", "-1").set("msg", "此账号已经存在，请重新输入...");
-				return outDto;
+				throw new BizException(-16, StrUtil.format("账号 {} 已经存在，请重新输入...", myUserEntity.getAccount()));
 			}
 		}
 		myUserMapper.updateByKey(myUserEntity);
-		outDto = Dtos.newDto().set("code", "1").set("msg", "人员修改成功");
-		return outDto;
+		outVO.setMsg("人员修改成功");
+		return outVO;
 	}
 
 	/**
@@ -91,22 +107,21 @@ public class UserService {
 	 * @param inDto
 	 * @return
 	 */
-	public Dto save(Dto inDto) {
-		Dto outDto = Dtos.newDto();
+	public OutVO add(Dto inDto) {
+		OutVO outVO = new OutVO(0);
 		MyUserEntity myUserEntity = new MyUserEntity();
+		MyUtil.copyProperties(inDto, myUserEntity);
 		MyUserEntity existUser = myUserMapper.selectByUkey1(myUserEntity.getAccount());
-		if (existUser == null) {
-			//TODO
-			UserVO curUser = null;
-			myUserEntity.setCreate_by(curUser.getName());
-			myUserEntity.setCreate_by_id(curUser.getId());
-			myUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, myUserEntity.getPassword()));
-			myUserMapper.insert(myUserEntity);
-			outDto = Dtos.newDto().set("code", "1").set("msg", "用户信息新增成功");
-		}else {
-			outDto = Dtos.newDto().set("code", "-1").set("msg", "账号已被占用，请重新输入");
+		if (existUser != null) {
+			throw new BizException(-15, "登陆账号已被占用，请重新输入");
 		}
-		return outDto;
+		// TODO curUser
+		myUserEntity.setCreate_by("超级用户");
+		myUserEntity.setCreate_by_id(1);
+		myUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, myUserEntity.getPassword()));
+		myUserMapper.insert(myUserEntity);
+		outVO.setMsg("用户新增成功");
+		return outVO;
 	}
 
 	/**
@@ -115,59 +130,38 @@ public class UserService {
 	 * @param inDto
 	 * @return
 	 */
-	public Dto delete(Dto inDto) {
-		Integer userId = inDto.getInteger("id");
+	@Transactional
+	public OutVO delete(Integer userId) {
+		OutVO outVO = new OutVO(0);
 		myUserMapper.deleteByKey(userId);
 		sqlSession.delete("sql.user.deleteMyUserRole", userId);
-		Dto outDto = Dtos.newDto().set("code", "1").set("msg", "用户删除成功");
-		return outDto;
+		outVO.setMsg("用户删除成功");
+		return outVO;
 	}
-	
+
 	/**
-	 * 根据用户查询待授权角色列表和已授权角色列表
-	 * 
-	 * @param userId
-	 * @return
-	 */
-	public List<Map<String, Object>> listRoleGrantInfo(Integer userId) {
-		List<Map<String, Object>> outList = Lists.newArrayList();
-		List<Map<String, Object>> grantedList = sqlSession.selectList("sql.user.listGrantedRoles", userId);
-		if (grantedList != null) {
-			outList.addAll(grantedList);
-		}
-		List<Map<String, Object>> toGrantList = sqlSession.selectList("sql.user.listToGrantRoles", userId);
-		if (toGrantList != null) {
-			outList.addAll(toGrantList);
-		}
-		return outList;
-	}
-	
-	/**
-	 * 授权
+	 * 批量删除
 	 * 
 	 * @param inDto
 	 * @return
 	 */
-	public Dto grant(Dto inDto) {
-		Integer userId = inDto.getInteger("user_id");
-		sqlSession.delete("sql.user.deleteMyUserRole", userId);
-		String roleIds = inDto.getString("roleIds");
-		if (MyUtil.isNotEmpty(roleIds)) {
-			//TODO
-			UserVO curUser = null;
-			String[] arrRoleIds = StringUtils.split(roleIds, ",");
-			for (String roleId : arrRoleIds) {
-				MyUserRoleEntity myUserRoleEntity = new MyUserRoleEntity();
-				myUserRoleEntity.setRole_id(Integer.valueOf(roleId));
-				myUserRoleEntity.setUser_id(userId);
-				myUserRoleEntity.setCreate_by(curUser.getName());
-				myUserRoleEntity.setCreate_by_id(curUser.getId());
-				myUserRoleMapper.insert(myUserRoleEntity);
-			}
+	@Transactional
+	public OutVO batchDelete(Dto inDto) {
+		OutVO outVO = new OutVO(0);
+		String[] ids = StrUtil.split(inDto.getString("ids"), ",");
+		if (ids.length == 0) {
+			throw new BizException(-17, "请先选中用户后再提交");
 		}
-		return Dtos.newDto().set("code", "1").set("msg", "用户授权成功");
+		for (String id : ids) {
+			Integer userId = Integer.valueOf(id);
+			myUserMapper.deleteByKey(userId);
+			sqlSession.delete("sql.user.deleteMyUserRole", userId);
+		}
+		outVO.setMsg("用户删除成功");
+
+		return outVO;
 	}
-	
+
 	/**
 	 * 修改当前登录用户密码
 	 * 
@@ -179,13 +173,13 @@ public class UserService {
 		String newPassword = inDto.getString("new_password");
 		if (!StringUtils.equals(newPassword, inDto.getString("confirm_password"))) {
 			outDto.set("code", "-1").set("msg", "新密码和确认密码不一致，请确认");
-		}else {
+		} else {
 			Integer userId = inDto.getInteger("id");
 			String password = MyUtil.password(MyCons.PWD_KEY, inDto.getString("password"));
 			MyUserEntity myUserEntity = myUserMapper.selectByKey(userId);
 			if (!StringUtils.equals(password, myUserEntity.getPassword())) {
 				outDto.set("code", "-2").set("msg", "原密码输入错误，请确认");
-			}else {
+			} else {
 				MyUserEntity updateMyUserEntity = new MyUserEntity();
 				updateMyUserEntity.setId(userId);
 				updateMyUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, newPassword));
@@ -195,15 +189,18 @@ public class UserService {
 		}
 		return outDto;
 	}
-	
+
 	/**
 	 * 管理员重置用户密码
 	 * 
 	 * @param inDto
 	 * @return
 	 */
-	public Dto resetPwd(Dto inDto) {
-		Dto outDto = Dtos.newDto();
+	public OutVO resetPwd(Dto inDto) {
+		OutVO outVO = new OutVO(0);
+		if (!StrUtil.equals(inDto.getString("password"), inDto.getString("password2"))) {
+			throw new BizException(-20, "新密码和确认密码不一致");
+		}
 		String[] idsArr = StringUtils.split(inDto.getString("ids"), ",");
 		MyUserEntity myUserEntity = new MyUserEntity();
 		myUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, inDto.getString("password")));
@@ -211,8 +208,86 @@ public class UserService {
 			myUserEntity.setId(Integer.valueOf(id));
 			myUserMapper.updateByKey(myUserEntity);
 		}
-		outDto.set("code", "1").set("msg", "重置密码成功");
-		return outDto;
+		outVO.setMsg("重置密码成功");
+		return outVO;
+	}
+
+	/**
+	 * 根据用户查询待授权角色列表
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public OutVO listToGrantRoles(Integer userId) {
+		OutVO outVO = new OutVO(0);
+		List<Dto> toGrantList = sqlSession.selectList("sql.user.listToGrantRoles", userId);
+		outVO.setData(toGrantList);
+		return outVO;
+	}
+
+	/**
+	 * 根据用户查询已授权角色列表
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public OutVO listGrantedRoles(Integer userId) {
+		OutVO outVO = new OutVO(0);
+		List<Dto> toGrantList = sqlSession.selectList("sql.user.listGrantedRoles", userId);
+		outVO.setData(toGrantList);
+		return outVO;
+	}
+
+	/**
+	 * 授权
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	@Transactional
+	public OutVO grant(Dto inDto) {
+		OutVO outVO = new OutVO(0);
+		Integer userId = inDto.getInteger("userId");
+		String roleIds = inDto.getString("roleIds");
+		String[] arrRoleIds = StringUtils.split(roleIds, ",");
+		if (arrRoleIds == null || arrRoleIds.length == 0) {
+			throw new BizException(-20, "请先在待选角色列表选中要授予的角色");
+		}
+		for (String roleId : arrRoleIds) {
+			MyUserRoleEntity myUserRoleEntity = new MyUserRoleEntity();
+			myUserRoleEntity.setRole_id(Integer.valueOf(roleId));
+			myUserRoleEntity.setUser_id(userId);
+			// TODO currUser
+			myUserRoleEntity.setCreate_by("超级用户");
+			myUserRoleEntity.setCreate_by_id(1);
+			myUserRoleMapper.insert(myUserRoleEntity);
+		}
+		outVO.setMsg("用户授权成功");
+		return outVO;
+	}
+	
+	/**
+	 * 撤销
+	 * 
+	 * @param inDto
+	 * @return
+	 */
+	@Transactional
+	public OutVO cancel(Dto inDto) {
+		OutVO outVO = new OutVO(0);
+		Integer userId = inDto.getInteger("userId");
+		String roleIds = inDto.getString("roleIds");
+		String[] arrRoleIds = StringUtils.split(roleIds, ",");
+		if (arrRoleIds == null || arrRoleIds.length == 0) {
+			throw new BizException(-21, "请先在已选角色列表选中要撤销的角色");
+		}
+		Dto pDto = Dtos.newDto("user_id", userId);
+		for (String roleId : arrRoleIds) {
+			pDto.put("role_id", roleId);
+			sqlSession.delete("sql.user.deleteMyUserRole", pDto);
+		}
+		outVO.setMsg("用户撤销授权成功");
+		return outVO;
 	}
 
 }

@@ -8,46 +8,42 @@
     <!-- 分页查询用户信息 -->
 	<select id="pageUser" parameterType="Dto" resultType="Dto">
 		SELECT
-				  t1.id,
-				  t1.name,  
-				  t1.account,
-				  t1.type, 
-				  t1.biz_code,  
-				  t1.org_id,
-		          t1.status,
-		          t1.sex,
-		         (SELECT name from my_org where id = t1.org_id) AS org_name
-		FROM my_user t1
+				  <include refid="com.gitee.myclouds.system.domain.myuser.MyUserMapper.column" />
+		         ,(SELECT name from my_org where id = my_user.org_id) AS org_name
+		FROM my_user
 		<include refid="pageUserWhere" />
-		ORDER BY t1.id DESC LIMIT ${start},${length}
+		ORDER BY id DESC LIMIT ${start},${length}
 	</select>
 	<select id="pageUserCount" parameterType="Dto" resultType="Integer">
 		SELECT
 		count(1) AS total
-		FROM my_user t1
+		FROM my_user
 		<include refid="pageUserWhere" />
 	</select>
 	<sql id="pageUserWhere">
 		<where>
-			<if test="key != null and key != ''">
-				AND (t1.name like '%${key}%' OR t1.account like '%${key}%' )
+			<if test="name_account != null and name_account != ''">
+				AND (name like '%${name_account}%' OR account like '%${name_account}%' )
 			</if>
 			<if test="org_id != null and org_id != ''">
-				AND t1.org_id = #{org_id}
+				AND org_id = #{org_id}
+			</if>
+			<if test="status != null and status != ''">
+				AND status = #{status}
 			</if>
 		</where>
 	</sql>
 	
 	<!-- 删除my_user_role关联数据 -->
-	<delete id="deleteMyUserRole" parameterType="Integer">
+	<delete id="deleteMyUserRole" parameterType="Dto">
 		DELETE
-		FROM my_user_role WHERE user_id = #{user_id}
+		FROM my_user_role WHERE user_id = #{user_id} AND role_id = #{role_id}
 	</delete>
 	
 	<!-- 根据用户ID查询已授权角色列表 -->
-	<select id="listGrantedRoles" parameterType="Integer" resultType="HashMap">
+	<select id="listGrantedRoles" parameterType="Integer" resultType="Dto">
 		SELECT
-			 t1.role_id AS id, t2.name,'selected' AS selected
+			 t1.role_id AS id, t2.name
 		FROM
 			my_user_role t1 LEFT JOIN my_role t2 ON t1.role_id = t2.id
 		WHERE
@@ -55,7 +51,7 @@
 	</select>
 	
 	<!-- 根据用户ID查询待授权角色列表 -->
-	<select id="listToGrantRoles" parameterType="Integer" resultType="HashMap">
+	<select id="listToGrantRoles" parameterType="Integer" resultType="Dto">
 		SELECT
 			id, name
 		FROM

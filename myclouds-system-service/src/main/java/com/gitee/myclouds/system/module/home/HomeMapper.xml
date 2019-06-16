@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 首页模块SQL映射 -->
-<mapper namespace="sql.index">
+<mapper namespace="sql.home">
 
 	<!-- 查询导航用的模块实体对象 -->
 	<select id="listMenus" parameterType="Dto" resultType="MenuVO">

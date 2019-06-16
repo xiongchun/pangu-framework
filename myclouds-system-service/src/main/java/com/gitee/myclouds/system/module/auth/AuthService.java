@@ -1,4 +1,4 @@
-package com.gitee.myclouds.system.module.login;
+package com.gitee.myclouds.system.module.auth;
 
 import java.util.List;
 
@@ -16,13 +16,13 @@ import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
 import com.gitee.myclouds.system.domain.myuser.MyUserMapper;
 
 /**
- * 登录服务
+ * 身份认证
  * 
  * @author xiongchun
  *
  */
 @Service
-public class LoginService {
+public class AuthService {
 
 	@Autowired
 	private MyUserMapper myUserMapper;
@@ -35,7 +35,7 @@ public class LoginService {
 	 * @param inDto
 	 * @return
 	 */
-	public Dto validate(Dto inDto) {
+	public Dto login(Dto inDto) {
 		Dto outDto = Dtos.newDto().set("code", "1").set("msg", "用户登录验证通过");
 		MyUserEntity myUserEntity = myUserMapper.selectByUkey1(inDto.getString("account"));
 		if (MyUtil.isEmpty(myUserEntity)) {

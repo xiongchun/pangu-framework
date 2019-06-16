@@ -14,7 +14,7 @@ import lombok.ToString;
  * </p>
  * 
  * @author myclouds team
- * @date 2019-06-09 16:04:17
+ * @date 2019-06-10 22:02:04
  */
 @Data
 @ToString
@@ -35,9 +35,6 @@ public class MyUserEntity implements Serializable {
 	//用户姓名
 	private String name;	
 
-	//性别
-	private String sex;	
-
 	//用户状态
 	private String status;	
 
@@ -46,15 +43,6 @@ public class MyUserEntity implements Serializable {
 
 	//所属部门流水号
 	private Integer org_id;	
-
-	//电子邮件
-	private String email;	
-
-	//联系电话
-	private String mobile;	
-
-	//身份证号
-	private String idno;	
 
 	//扩展码
 	private String biz_code;	

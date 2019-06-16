@@ -1,9 +1,9 @@
 package com.gitee.myclouds.system.module.user;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +14,8 @@ import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.module.org.OrgService;
+
+import cn.hutool.core.map.MapUtil;
 
 /**
  * 用户管理 服务发布
@@ -36,9 +38,9 @@ public class UserController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "list",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
-	public String list(@RequestParam Map<String,Object> inMap){
-		return userService.list(Dtos.newDto(inMap));
+	@RequestMapping(value = "list", produces = "application/json")
+	public OutVO list(@RequestBody Map<String, Object> inMap){
+		return userService.list(Dtos.newPageDto(inMap));
 	}
 	
 	/**
@@ -47,9 +49,9 @@ public class UserController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "get",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
-	public String get(@RequestParam Integer id){
-		return userService.get(id);
+	@RequestMapping(value = "get", produces = "application/json")
+	public OutVO get(@RequestBody Map<String,Object> inMap){
+		return userService.get(Dtos.newDto(inMap).getInteger("id"));
 	}
 	
 	/**
@@ -58,9 +60,9 @@ public class UserController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "save",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto save(@RequestParam Map<String,Object> inMap){
-		return userService.save(Dtos.newDto(inMap));
+	@PostMapping(value = "add", produces = "application/json")
+	public OutVO add(@RequestBody Map<String,Object> inMap){
+		return userService.add(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -69,8 +71,8 @@ public class UserController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "update",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto update(@RequestParam Map<String,Object> inMap){
+	@PostMapping(value = "update", produces = "application/json")
+	public OutVO update(@RequestBody Map<String,Object> inMap){
 		return userService.update(Dtos.newDto(inMap));
 	}
 	
@@ -80,20 +82,42 @@ public class UserController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "delete",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto delete(@RequestParam Map<String,Object> inMap){
-		return userService.delete(Dtos.newDto(inMap));
+	@PostMapping(value = "delete", produces = "application/json")
+	public OutVO delete(@RequestBody Map<String,Object> inMap){
+		return userService.delete(MapUtil.getInt(inMap, "id"));
 	}
 	
 	/**
-	 * 根据用户查询待授权角色列表和已授权角色列表
+	 * 批量删除
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@PostMapping(value = "batchDelete", produces = "application/json")
+	public OutVO batchDelete(@RequestBody Map<String,Object> inMap){
+		return userService.batchDelete(Dtos.newDto(inMap));
+	}
+	
+	/**
+	 * 根据用户查询待授权角色列表
 	 * 
 	 * @param userId
 	 * @return
 	 */
-	@RequestMapping(value = "listRoleGrantInfo",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
-	public List<Map<String, Object>> listRoleGrantInfo(@RequestParam Integer userId){
-		return userService.listRoleGrantInfo(userId);
+	@RequestMapping(value = "listToGrantRoles", produces = "application/json")
+	public OutVO listToGrantRoles(@RequestBody Map<String,Object> inMap){
+		return userService.listToGrantRoles(MapUtil.getInt(inMap, "userId"));
+	}
+	
+	/**
+	 * 根据用户查询已授权角色列表
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	@RequestMapping(value = "listGrantedRoles", produces = "application/json")
+	public OutVO listGrantedRoles(@RequestBody Map<String,Object> inMap){
+		return userService.listGrantedRoles(MapUtil.getInt(inMap, "userId"));
 	}
 	
 	/**
@@ -102,9 +126,20 @@ public class UserController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "grant",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto grant(@RequestParam Map<String,Object> inMap){
+	@PostMapping(value = "grant", produces = "application/json")
+	public OutVO grant(@RequestBody Map<String,Object> inMap){
 		return userService.grant(Dtos.newDto(inMap));
+	}
+	
+	/**
+	 * 撤销
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@PostMapping(value = "cancel", produces = "application/json")
+	public OutVO cancel(@RequestBody Map<String,Object> inMap){
+		return userService.cancel(Dtos.newDto(inMap));
 	}
 	
 	/**
@@ -124,8 +159,8 @@ public class UserController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "resetPwd",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto resetPwd(@RequestParam Map<String,Object> inMap){
+	@PostMapping(value = "resetPwd", produces = "application/json")
+	public OutVO resetPwd(@RequestBody Map<String,Object> inMap){
 		return userService.resetPwd(Dtos.newDto(inMap));
 	}
 	

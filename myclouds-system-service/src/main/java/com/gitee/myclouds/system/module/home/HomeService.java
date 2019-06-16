@@ -1,4 +1,4 @@
-package com.gitee.myclouds.system.module.index;
+package com.gitee.myclouds.system.module.home;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import com.gitee.myclouds.system.common.vo.MenuVO;
  * 
  */
 @Service
-public class IndexService {
+public class HomeService {
 	
 	@Autowired
 	private SqlSession sqlSession;
@@ -32,7 +32,7 @@ public class IndexService {
 	 * @return
 	 */
 	public List<MenuVO> listMenus(Dto inDto) {
-		List<MenuVO> menuVOs = sqlSession.selectList("sql.index.listMenus", inDto);
+		List<MenuVO> menuVOs = sqlSession.selectList("sql.home.listMenus", inDto);
 		String ctxPath = inDto.getString("ctxPath");
 		for (MenuVO menuVO : menuVOs) {
 			String url = menuVO.getUrl();

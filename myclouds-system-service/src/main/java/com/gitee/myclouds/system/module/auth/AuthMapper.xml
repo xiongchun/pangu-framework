@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 登录验证模块SQL映射 -->
-<mapper namespace="sql.login">
+<!-- 身份认证模块SQL映射 -->
+<mapper namespace="sql.auth">
 
      <!-- 查询用户对应的角色ID集合 -->
 	<select id="selectRoleIdsByUserId" parameterType="Integer" resultType="String">

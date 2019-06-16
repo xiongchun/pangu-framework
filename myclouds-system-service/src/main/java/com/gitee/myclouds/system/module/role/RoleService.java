@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.helper.treebuiler.TreeBuilder;
 import com.gitee.myclouds.base.helper.treebuiler.TreeNodeVO;
 import com.gitee.myclouds.base.vo.OutVO;
@@ -23,21 +24,21 @@ import com.gitee.myclouds.system.domain.myrolemodule.MyRoleModuleMapper;
 import cn.hutool.core.util.StrUtil;
 
 /**
- *  角色与授权服务
+ * 角色与授权服务
  * 
  * @author xiongchun
  *
  */
 @Service
 public class RoleService {
-	
+
 	@Autowired
 	private MyRoleMapper myRoleMapper;
 	@Autowired
 	private MyRoleModuleMapper myRoleModuleMapper;
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	/**
 	 * 查询
 	 * 
@@ -45,15 +46,15 @@ public class RoleService {
 	 * @return
 	 */
 	public OutVO list(Dto inDto) {
-		OutVO outVO  = new OutVO(0);
-		//TODO 获取当前用户的ID
+		OutVO outVO = new OutVO(0);
+		// TODO 获取当前用户的ID
 		inDto.put("activeUserId", 1);
-		List<MyRoleEntity> myRoleEntities = sqlSession.selectList("sql.role.pageRole",inDto);
+		List<MyRoleEntity> myRoleEntities = sqlSession.selectList("sql.role.pageRole", inDto);
 		Integer count = sqlSession.selectOne("sql.role.pageRoleCount", inDto);
 		outVO.setData(myRoleEntities).setCount(count);
 		return outVO;
 	}
-	
+
 	/**
 	 * 查询实体
 	 * 
@@ -61,12 +62,12 @@ public class RoleService {
 	 * @return
 	 */
 	public OutVO get(Integer id) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		MyRoleEntity myRoleEntity = myRoleMapper.selectByKey(id);
 		outVO.setData(myRoleEntity);
 		return outVO;
 	}
-	
+
 	/**
 	 * 修改
 	 * 
@@ -74,14 +75,14 @@ public class RoleService {
 	 * @return
 	 */
 	public OutVO update(Dto inDto) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		MyRoleEntity myRoleEntity = new MyRoleEntity();
 		MyUtil.copyProperties(inDto, myRoleEntity);
 		myRoleMapper.updateByKey(myRoleEntity);
 		outVO.setMsg("角色修改成功");
 		return outVO;
 	}
-	
+
 	/**
 	 * 新增角色
 	 * 
@@ -89,17 +90,17 @@ public class RoleService {
 	 * @return
 	 */
 	public OutVO add(Dto inDto) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		MyRoleEntity myRoleEntity = new MyRoleEntity();
 		MyUtil.copyProperties(inDto, myRoleEntity);
-		//TODO UserInfo
+		// TODO UserInfo
 		myRoleEntity.setCreate_by("超级用户");
 		myRoleEntity.setCreate_by_id(1);
 		myRoleMapper.insert(myRoleEntity);
 		outVO.setMsg("角色新增成功");
 		return outVO;
 	}
-	
+
 	/**
 	 * 删除
 	 * 
@@ -108,14 +109,14 @@ public class RoleService {
 	 */
 	@Transactional
 	public OutVO delete(Integer roleId) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		myRoleMapper.deleteByKey(roleId);
 		sqlSession.delete("sql.role.deleteMyUserRole", roleId);
 		sqlSession.delete("sql.role.deleteMyRoleModule", roleId);
 		outVO.setMsg("角色删除成功");
 		return outVO;
 	}
-	
+
 	/**
 	 * 批量删除
 	 * 
@@ -124,44 +125,43 @@ public class RoleService {
 	 */
 	@Transactional
 	public OutVO batchDelete(Dto inDto) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		String[] ids = StrUtil.split(inDto.getString("ids"), ",");
 		if (ids.length == 0) {
-			outVO.setMsg("请先选中角色后再提交");
-		}else {
-			for (String id : ids) {
-				Integer roleId = Integer.valueOf(id);
-				myRoleMapper.deleteByKey(roleId);
-				sqlSession.delete("sql.role.deleteMyUserRole", roleId);
-				sqlSession.delete("sql.role.deleteMyRoleModule", roleId);
-			}
-			outVO.setMsg("角色删除成功");
+			throw new BizException(-18, "请先选中角色后再提交");
 		}
+		for (String id : ids) {
+			Integer roleId = Integer.valueOf(id);
+			myRoleMapper.deleteByKey(roleId);
+			sqlSession.delete("sql.role.deleteMyUserRole", roleId);
+			sqlSession.delete("sql.role.deleteMyRoleModule", roleId);
+		}
+		outVO.setMsg("角色删除成功");
 		return outVO;
 	}
-	
+
 	/**
 	 * 查询授权树（返回树状数据模型）
 	 * 
 	 * @param roleId
 	 * @return
 	 */
-	//TODO 没有支持子部门管理员的授权操作，迭代版本支持
+	// TODO 没有支持子部门管理员的授权操作，迭代版本支持
 	public OutVO listGrantTree(Integer roleId) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		Dto inDto = Dtos.newDto().set("roleId", roleId);
 		List<TreeNodeVO> treeNodeVOs = sqlSession.selectList("sql.role.listModuleTree", inDto);
 		treeNodeVOs = new TreeBuilder(treeNodeVOs).buildTree();
 		for (TreeNodeVO treeNodeVO : treeNodeVOs) {
 			if (MyUtil.isNotEmpty(treeNodeVO.getChildren())) {
-				//配合eletree数据模型，取消树枝节点的复选状态
+				// 配合eletree数据模型，取消树枝节点的复选状态
 				treeNodeVO.setChecked(null);
 			}
 		}
 		outVO.setData(treeNodeVOs);
 		return outVO;
 	}
-	
+
 	/**
 	 * 授权
 	 * 
@@ -170,7 +170,7 @@ public class RoleService {
 	 */
 	@Transactional
 	public OutVO grant(Dto inDto) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		Integer roleId = inDto.getInteger("roleId");
 		sqlSession.delete("sql.role.deleteMyRoleModule", roleId);
 		String moduleIds = inDto.getString("moduleIds");
@@ -179,11 +179,11 @@ public class RoleService {
 			myRoleModuleEntity.setRole_id(roleId);
 			myRoleModuleEntity.setModule_id(Integer.valueOf(moduleId));
 			myRoleModuleEntity.setGrant_type(MyCons.GrantType.BIZ.getValue());
-			myRoleModuleEntity.setCreate_by(1); //TODO curUser
+			myRoleModuleEntity.setCreate_by(1); // TODO curUser
 			myRoleModuleMapper.insert(myRoleModuleEntity);
 		}
 		outVO.setMsg("角色授权成功");
 		return outVO;
 	}
-	
+
 }

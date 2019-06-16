@@ -1,4 +1,4 @@
-package com.gitee.myclouds.system.module.index;
+package com.gitee.myclouds.system.module.home;
 
 import java.util.List;
 import java.util.Map;
@@ -19,11 +19,11 @@ import com.gitee.myclouds.system.common.vo.MenuVO;
  * 
  */
 @RestController
-@RequestMapping("admin/system/index")
-public class IndexController {
+@RequestMapping("admin/system/home")
+public class HomeController {
 	
 	@Autowired
-	private IndexService indexService;
+	private HomeService homeService;
 	
 	/**
 	 * 查询用户功能菜单列表
@@ -33,6 +33,6 @@ public class IndexController {
 	 */
 	@RequestMapping(value = "listMenus",method = { RequestMethod.POST, RequestMethod.GET }, produces = "application/json")
 	public List<MenuVO> listMenus(@RequestParam Map<String,Object> inMap){
-		return indexService.listMenus(Dtos.newDto(inMap));
+		return homeService.listMenus(Dtos.newDto(inMap));
 	}
 }

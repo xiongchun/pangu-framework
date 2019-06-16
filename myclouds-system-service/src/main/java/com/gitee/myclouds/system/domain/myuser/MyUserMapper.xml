@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 后台用户基本信息表[my_user]SQL自动映射 -->
-<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-06-09 16:04:18 -->
+<!--  注意:此文件由MyClouds平台自动生成-禁止手工修改 2019-06-10 22:02:04 -->
 <mapper namespace="com.gitee.myclouds.system.domain.myuser.MyUserMapper">
 	
 	<!-- 插入一个数据实体对象(插入字段为传入Entity实体的非空属性) -->
@@ -18,9 +18,6 @@
 		<if test="name != null and name != ''">
 	         name, <!-- 用户姓名 -->
 		</if>
-		<if test="sex != null and sex != ''">
-	         sex, <!-- 性别 -->
-		</if>
 		<if test="status != null and status != ''">
 	         status, <!-- 用户状态 -->
 		</if>
@@ -29,15 +26,6 @@
 		</if>
 		<if test="org_id != null">
 	         org_id, <!-- 所属部门流水号 -->
-		</if>
-		<if test="email != null and email != ''">
-	         email, <!-- 电子邮件 -->
-		</if>
-		<if test="mobile != null and mobile != ''">
-	         mobile, <!-- 联系电话 -->
-		</if>
-		<if test="idno != null and idno != ''">
-	         idno, <!-- 身份证号 -->
 		</if>
 		<if test="biz_code != null and biz_code != ''">
 	         biz_code, <!-- 扩展码 -->
@@ -65,9 +53,6 @@
 		<if test="name != null and name != ''">
 	          #{name, jdbcType=VARCHAR}, <!-- 用户姓名 -->
 	    </if>
-		<if test="sex != null and sex != ''">
-	          #{sex, jdbcType=VARCHAR}, <!-- 性别 -->
-	    </if>
 		<if test="status != null and status != ''">
 	          #{status, jdbcType=VARCHAR}, <!-- 用户状态 -->
 	    </if>
@@ -76,15 +61,6 @@
 	    </if>
 		<if test="org_id != null">
 	          #{org_id, jdbcType=INTEGER}, <!-- 所属部门流水号 -->
-	    </if>
-		<if test="email != null and email != ''">
-	          #{email, jdbcType=VARCHAR}, <!-- 电子邮件 -->
-	    </if>
-		<if test="mobile != null and mobile != ''">
-	          #{mobile, jdbcType=VARCHAR}, <!-- 联系电话 -->
-	    </if>
-		<if test="idno != null and idno != ''">
-	          #{idno, jdbcType=VARCHAR}, <!-- 身份证号 -->
 	    </if>
 		<if test="biz_code != null and biz_code != ''">
 	          #{biz_code, jdbcType=VARCHAR}, <!-- 扩展码 -->
@@ -115,13 +91,9 @@
 		    #{account, jdbcType=VARCHAR},  <!-- 用户登录帐号 -->
 		    #{password, jdbcType=VARCHAR},  <!-- 密码 -->
 		    #{name, jdbcType=VARCHAR},  <!-- 用户姓名 -->
-		    #{sex, jdbcType=VARCHAR},  <!-- 性别 -->
 		    #{status, jdbcType=VARCHAR},  <!-- 用户状态 -->
 		    #{type, jdbcType=VARCHAR},  <!-- 用户类型 -->
 		    #{org_id, jdbcType=INTEGER},  <!-- 所属部门流水号 -->
-		    #{email, jdbcType=VARCHAR},  <!-- 电子邮件 -->
-		    #{mobile, jdbcType=VARCHAR},  <!-- 联系电话 -->
-		    #{idno, jdbcType=VARCHAR},  <!-- 身份证号 -->
 		    #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
 		    #{ext, jdbcType=VARCHAR},  <!-- 扩展JSON -->
 		    #{create_time, jdbcType=TIMESTAMP},  <!-- 创建时间 -->
@@ -146,9 +118,6 @@
 			<if test="name != null">
 		          name = #{name, jdbcType=VARCHAR},  <!-- 用户姓名 -->
 			</if>
-			<if test="sex != null">
-		          sex = #{sex, jdbcType=VARCHAR},  <!-- 性别 -->
-			</if>
 			<if test="status != null">
 		          status = #{status, jdbcType=VARCHAR},  <!-- 用户状态 -->
 			</if>
@@ -157,15 +126,6 @@
 			</if>
 			<if test="org_id != null">
 		          org_id = #{org_id, jdbcType=INTEGER},  <!-- 所属部门流水号 -->
-			</if>
-			<if test="email != null">
-		          email = #{email, jdbcType=VARCHAR},  <!-- 电子邮件 -->
-			</if>
-			<if test="mobile != null">
-		          mobile = #{mobile, jdbcType=VARCHAR},  <!-- 联系电话 -->
-			</if>
-			<if test="idno != null">
-		          idno = #{idno, jdbcType=VARCHAR},  <!-- 身份证号 -->
 			</if>
 			<if test="biz_code != null">
 		          biz_code = #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
@@ -262,9 +222,6 @@
 			<if test="name != null">
 		          name = #{name, jdbcType=VARCHAR},  <!-- 用户姓名 -->
 			</if>
-			<if test="sex != null">
-		          sex = #{sex, jdbcType=VARCHAR},  <!-- 性别 -->
-			</if>
 			<if test="status != null">
 		          status = #{status, jdbcType=VARCHAR},  <!-- 用户状态 -->
 			</if>
@@ -273,15 +230,6 @@
 			</if>
 			<if test="org_id != null">
 		          org_id = #{org_id, jdbcType=INTEGER},  <!-- 所属部门流水号 -->
-			</if>
-			<if test="email != null">
-		          email = #{email, jdbcType=VARCHAR},  <!-- 电子邮件 -->
-			</if>
-			<if test="mobile != null">
-		          mobile = #{mobile, jdbcType=VARCHAR},  <!-- 联系电话 -->
-			</if>
-			<if test="idno != null">
-		          idno = #{idno, jdbcType=VARCHAR},  <!-- 身份证号 -->
 			</if>
 			<if test="biz_code != null">
 		          biz_code = #{biz_code, jdbcType=VARCHAR},  <!-- 扩展码 -->
@@ -320,13 +268,9 @@
 		  account,  <!-- 用户登录帐号 -->
 		  password,  <!-- 密码 -->
 		  name,  <!-- 用户姓名 -->
-		  sex,  <!-- 性别 -->
 		  status,  <!-- 用户状态 -->
 		  type,  <!-- 用户类型 -->
 		  org_id,  <!-- 所属部门流水号 -->
-		  email,  <!-- 电子邮件 -->
-		  mobile,  <!-- 联系电话 -->
-		  idno,  <!-- 身份证号 -->
 		  biz_code,  <!-- 扩展码 -->
 		  ext,  <!-- 扩展JSON -->
 		  create_time,  <!-- 创建时间 -->
@@ -340,13 +284,9 @@
 		  my_user.account,  <!-- 用户登录帐号 -->
 		  my_user.password,  <!-- 密码 -->
 		  my_user.name,  <!-- 用户姓名 -->
-		  my_user.sex,  <!-- 性别 -->
 		  my_user.status,  <!-- 用户状态 -->
 		  my_user.type,  <!-- 用户类型 -->
 		  my_user.org_id,  <!-- 所属部门流水号 -->
-		  my_user.email,  <!-- 电子邮件 -->
-		  my_user.mobile,  <!-- 联系电话 -->
-		  my_user.idno,  <!-- 身份证号 -->
 		  my_user.biz_code,  <!-- 扩展码 -->
 		  my_user.ext,  <!-- 扩展JSON -->
 		  my_user.create_time,  <!-- 创建时间 -->
@@ -368,9 +308,6 @@
 	    <if test="name != null and name != ''">
 		      AND name = #{name}  <!-- 用户姓名 -->
 		</if>
-	    <if test="sex != null and sex != ''">
-		      AND sex = #{sex}  <!-- 性别 -->
-		</if>
 	    <if test="status != null and status != ''">
 		      AND status = #{status}  <!-- 用户状态 -->
 		</if>
@@ -379,15 +316,6 @@
 		</if>
 	   <if test="org_id != null ">
 		      AND org_id = #{org_id}  <!-- 所属部门流水号 -->
-		</if>
-	    <if test="email != null and email != ''">
-		      AND email = #{email}  <!-- 电子邮件 -->
-		</if>
-	    <if test="mobile != null and mobile != ''">
-		      AND mobile = #{mobile}  <!-- 联系电话 -->
-		</if>
-	    <if test="idno != null and idno != ''">
-		      AND idno = #{idno}  <!-- 身份证号 -->
 		</if>
 	    <if test="biz_code != null and biz_code != ''">
 		      AND biz_code = #{biz_code}  <!-- 扩展码 -->
@@ -417,23 +345,11 @@
 	    <if test="name != null and name != ''">
 		      AND name like '${name}%'  <!-- 用户姓名 -->
 		</if>
-	    <if test="sex != null and sex != ''">
-		      AND sex like '${sex}%'  <!-- 性别 -->
-		</if>
 	    <if test="status != null and status != ''">
 		      AND status like '${status}%'  <!-- 用户状态 -->
 		</if>
 	    <if test="type != null and type != ''">
 		      AND type like '${type}%'  <!-- 用户类型 -->
-		</if>
-	    <if test="email != null and email != ''">
-		      AND email like '${email}%'  <!-- 电子邮件 -->
-		</if>
-	    <if test="mobile != null and mobile != ''">
-		      AND mobile like '${mobile}%'  <!-- 联系电话 -->
-		</if>
-	    <if test="idno != null and idno != ''">
-		      AND idno like '${idno}%'  <!-- 身份证号 -->
 		</if>
 	    <if test="biz_code != null and biz_code != ''">
 		      AND biz_code like '${biz_code}%'  <!-- 扩展码 -->

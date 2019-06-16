@@ -25,12 +25,12 @@ import cn.hutool.core.util.StrUtil;
  */
 @Service
 public class DictService {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
 	@Autowired
 	private MyDictMapper myDictMapper;
-	
+
 	/**
 	 * 查询列表
 	 * 
@@ -38,13 +38,13 @@ public class DictService {
 	 * @return
 	 */
 	public OutVO list(Dto inDto) {
-		OutVO outVO  = new OutVO(0);
-		List<MyDictEntity> myDictEntities = sqlSession.selectList("sql.dict.pageDict",inDto);
+		OutVO outVO = new OutVO(0);
+		List<MyDictEntity> myDictEntities = sqlSession.selectList("sql.dict.pageDict", inDto);
 		Integer count = sqlSession.selectOne("sql.dict.pageDictCount", inDto);
 		outVO.setData(myDictEntities).setCount(count);
 		return outVO;
 	}
-	
+
 	/**
 	 * 查询实体
 	 * 
@@ -52,12 +52,12 @@ public class DictService {
 	 * @return
 	 */
 	public OutVO get(Integer id) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		MyDictEntity myDictEntity = myDictMapper.selectByKey(id);
 		outVO.setData(myDictEntity);
 		return outVO;
 	}
-	
+
 	/**
 	 * 新增
 	 * 
@@ -65,7 +65,7 @@ public class DictService {
 	 * @return
 	 */
 	public OutVO add(Dto inDto) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		MyDictEntity myDictEntity = new MyDictEntity();
 		MyUtil.copyProperties(inDto, myDictEntity);
 		if (MyUtil.isNotEmpty(myDictMapper.selectByUkey1(myDictEntity.getDict_type(), myDictEntity.getDict_key()))) {
@@ -75,7 +75,7 @@ public class DictService {
 		outVO.setMsg("数据字典新增成功");
 		return outVO;
 	}
-	
+
 	/**
 	 * 修改
 	 * 
@@ -83,12 +83,13 @@ public class DictService {
 	 * @return
 	 */
 	public OutVO update(Dto inDto) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		MyDictEntity myDictEntity = new MyDictEntity();
 		MyUtil.copyProperties(inDto, myDictEntity);
 		MyDictEntity oldEntity = myDictMapper.selectByKey(myDictEntity.getId());
 		if (!StringUtils.equalsIgnoreCase(myDictEntity.getDict_key(), oldEntity.getDict_key())) {
-			if (MyUtil.isNotEmpty(myDictMapper.selectByUkey1(myDictEntity.getDict_type(), myDictEntity.getDict_key()))) {
+			if (MyUtil
+					.isNotEmpty(myDictMapper.selectByUkey1(myDictEntity.getDict_type(), myDictEntity.getDict_key()))) {
 				throw new BizException(-11, "当前字典已经存在，请重新输入...");
 			}
 		}
@@ -96,7 +97,7 @@ public class DictService {
 		outVO.setMsg("数据字典修改成功");
 		return outVO;
 	}
-	
+
 	/**
 	 * 删除
 	 * 
@@ -104,12 +105,12 @@ public class DictService {
 	 * @return
 	 */
 	public OutVO delete(Integer id) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		myDictMapper.deleteByKey(id);
 		outVO.setMsg("数据字典删除成功");
 		return outVO;
 	}
-	
+
 	/**
 	 * 批量删除
 	 * 
@@ -118,17 +119,16 @@ public class DictService {
 	 */
 	@Transactional
 	public OutVO batchDelete(Dto inDto) {
-		OutVO outVO  = new OutVO(0);
+		OutVO outVO = new OutVO(0);
 		String[] ids = StrUtil.split(inDto.getString("ids"), ",");
 		if (ids.length == 0) {
-			outVO.setMsg("请先选中数据字典后再提交");
-		}else {
-			for (String id : ids) {
-				myDictMapper.deleteByKey(Integer.valueOf(id));
-			}
-			outVO.setMsg("数据字典删除成功");
+			throw new BizException(-19, "请先选中数据字典后再提交");
 		}
+		for (String id : ids) {
+			myDictMapper.deleteByKey(Integer.valueOf(id));
+		}
+		outVO.setMsg("数据字典删除成功");
 		return outVO;
 	}
-	
+
 }
