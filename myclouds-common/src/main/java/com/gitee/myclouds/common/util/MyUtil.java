@@ -9,6 +9,7 @@ import java.util.HashMap;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.converters.DateConverter;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -100,6 +101,9 @@ public class MyUtil {
 	public static void copyProperties(Object pFromObj, Dto pToDto) {
 		if (pToDto != null) {
 			try {
+		        DateConverter dateConverter = new DateConverter();
+		        dateConverter.setPattern("yyyy-MM-dd HH:mm:ss");
+		        ConvertUtils.register(dateConverter, String.class);
 				pToDto.putAll(BeanUtils.describe(pFromObj));
 				pToDto.remove("class");
 			} catch (Exception e) {

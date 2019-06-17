@@ -6,12 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gitee.myclouds.base.vo.OutVO;
-import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.module.org.OrgService;
 
@@ -140,17 +137,6 @@ public class UserController {
 	@PostMapping(value = "cancel", produces = "application/json")
 	public OutVO cancel(@RequestBody Map<String,Object> inMap){
 		return userService.cancel(Dtos.newDto(inMap));
-	}
-	
-	/**
-	 *  修改当前登录用户密码
-	 * 
-	 * @param inMap
-	 * @return
-	 */
-	@RequestMapping(value = "updatePwd",method = { RequestMethod.POST}, produces = "application/json")
-	public Dto updatePwd(@RequestParam Map<String,Object> inMap){
-		return userService.updatePwd(Dtos.newDto(inMap));
 	}
 	
 	/**

@@ -2,15 +2,12 @@ package com.gitee.myclouds.system.module.user;
 
 import java.util.List;
 
-import javax.validation.constraints.Null;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.alibaba.druid.sql.visitor.functions.If;
 import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.util.MyCons;
@@ -160,34 +157,6 @@ public class UserService {
 		outVO.setMsg("用户删除成功");
 
 		return outVO;
-	}
-
-	/**
-	 * 修改当前登录用户密码
-	 * 
-	 * @param inDto
-	 * @return
-	 */
-	public Dto updatePwd(Dto inDto) {
-		Dto outDto = Dtos.newDto();
-		String newPassword = inDto.getString("new_password");
-		if (!StringUtils.equals(newPassword, inDto.getString("confirm_password"))) {
-			outDto.set("code", "-1").set("msg", "新密码和确认密码不一致，请确认");
-		} else {
-			Integer userId = inDto.getInteger("id");
-			String password = MyUtil.password(MyCons.PWD_KEY, inDto.getString("password"));
-			MyUserEntity myUserEntity = myUserMapper.selectByKey(userId);
-			if (!StringUtils.equals(password, myUserEntity.getPassword())) {
-				outDto.set("code", "-2").set("msg", "原密码输入错误，请确认");
-			} else {
-				MyUserEntity updateMyUserEntity = new MyUserEntity();
-				updateMyUserEntity.setId(userId);
-				updateMyUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, newPassword));
-				myUserMapper.updateByKey(updateMyUserEntity);
-				outDto.set("code", "1").set("msg", "密码修改成功");
-			}
-		}
-		return outDto;
 	}
 
 	/**

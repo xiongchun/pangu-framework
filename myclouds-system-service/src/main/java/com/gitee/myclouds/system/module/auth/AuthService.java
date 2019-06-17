@@ -8,8 +8,13 @@ import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
+import com.gitee.myclouds.system.domain.myorg.MyOrgEntity;
+import com.gitee.myclouds.system.domain.myorg.MyOrgMapper;
 import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
 import com.gitee.myclouds.system.domain.myuser.MyUserMapper;
+
+import cn.hutool.core.date.DateUtil;
 
 /**
  * 身份认证
@@ -22,6 +27,8 @@ public class AuthService {
 
 	@Autowired
 	private MyUserMapper myUserMapper;
+	@Autowired
+	private MyOrgMapper myOrgMapper;
 
 	/**
 	 * 用户登录验证
@@ -42,6 +49,14 @@ public class AuthService {
 			return outVO;
 		}
 		//TODO 验证码校验
+
+		//返回当前用户相关信息
+		Dto userInfoDto = Dtos.newDto();
+		MyUtil.copyProperties(myUserEntity, userInfoDto);
+		userInfoDto.set("login_time", DateUtil.now());
+		MyOrgEntity myOrgEntity = myOrgMapper.selectByKey(myUserEntity.getOrg_id());
+		userInfoDto.set("org", myOrgEntity);
+		outVO.setData(userInfoDto);
 		outVO.setMsg("身份认证通过");
 		return outVO;
 	}
