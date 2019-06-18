@@ -35,7 +35,7 @@ public class UserController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "list", produces = "application/json")
+	@PostMapping(value = "list", produces = "application/json")
 	public OutVO list(@RequestBody Map<String, Object> inMap){
 		return userService.list(Dtos.newPageDto(inMap));
 	}
@@ -46,7 +46,7 @@ public class UserController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "get", produces = "application/json")
+	@PostMapping(value = "get", produces = "application/json")
 	public OutVO get(@RequestBody Map<String,Object> inMap){
 		return userService.get(Dtos.newDto(inMap).getInteger("id"));
 	}
@@ -101,7 +101,7 @@ public class UserController {
 	 * @param userId
 	 * @return
 	 */
-	@RequestMapping(value = "listToGrantRoles", produces = "application/json")
+	@PostMapping(value = "listToGrantRoles", produces = "application/json")
 	public OutVO listToGrantRoles(@RequestBody Map<String,Object> inMap){
 		return userService.listToGrantRoles(MapUtil.getInt(inMap, "userId"));
 	}
@@ -112,7 +112,7 @@ public class UserController {
 	 * @param userId
 	 * @return
 	 */
-	@RequestMapping(value = "listGrantedRoles", produces = "application/json")
+	@PostMapping(value = "listGrantedRoles", produces = "application/json")
 	public OutVO listGrantedRoles(@RequestBody Map<String,Object> inMap){
 		return userService.listGrantedRoles(MapUtil.getInt(inMap, "userId"));
 	}
@@ -156,7 +156,7 @@ public class UserController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "listTree", produces = "application/json")
+	@PostMapping(value = "listTree", produces = "application/json")
 	public OutVO listTree(@RequestBody Map<String, Object> inMap){
 		return orgService.listOrgTree(Dtos.newDto(inMap));
 	}

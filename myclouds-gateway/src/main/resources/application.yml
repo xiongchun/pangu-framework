@@ -49,12 +49,11 @@ spring:
       globalcors: 
         corsConfigurations: 
           '[/**]':
-            #allowedOrigins: "http://127.0.0.1:8848"
+            # allowedOrigins: "http://127.0.0.1:8848"
             allowedOrigins: "*"
             maxAge: 86400
-            allowedMethods:
-            - GET
-            - POST
+            allowedHeaders: "Content-Type"
+            allowedMethods: "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE"
       
 management:
   endpoint:

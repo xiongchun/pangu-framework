@@ -33,7 +33,7 @@ public class OrgController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "list", produces = "application/json")
+	@PostMapping(value = "list", produces = "application/json")
 	public OutVO list(@RequestBody Map<String, Object> inMap){
 		return orgService.list(Dtos.newDto(inMap));
 	}
@@ -44,7 +44,7 @@ public class OrgController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "get", produces = "application/json")
+	@PostMapping(value = "get", produces = "application/json")
 	public OutVO get(@RequestBody Map<String,Object> inMap){
 		return orgService.get(Dtos.newDto(inMap).getInteger("id"));
 	}
@@ -88,7 +88,7 @@ public class OrgController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "listTree", produces = "application/json")
+	@PostMapping(value = "listTree", produces = "application/json")
 	public OutVO listTree(@RequestBody Map<String, Object> inMap){
 		return orgService.listOrgTree(Dtos.newDto(inMap));
 	}

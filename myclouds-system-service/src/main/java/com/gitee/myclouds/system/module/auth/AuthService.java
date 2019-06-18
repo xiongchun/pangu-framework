@@ -1,6 +1,7 @@
 package com.gitee.myclouds.system.module.auth;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,8 @@ public class AuthService {
 	private MyUserMapper myUserMapper;
 	@Autowired
 	private MyOrgMapper myOrgMapper;
+	@Autowired
+	private SqlSession sqlSession;
 
 	/**
 	 * 用户登录验证
@@ -49,6 +52,9 @@ public class AuthService {
 			return outVO;
 		}
 		//TODO 验证码校验
+		
+		//TEMP CODE 数据收集
+		sqlSession.insert("sql.auth.insertTemp", inDto.getString("device"));
 
 		//返回当前用户相关信息
 		Dto userInfoDto = Dtos.newDto();

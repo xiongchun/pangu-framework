@@ -32,7 +32,7 @@ public class DictController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "list", produces = "application/json")
+	@PostMapping(value = "list", produces = "application/json")
 	public OutVO list(@RequestBody Map<String, Object> inMap){
 		return dictService.list(Dtos.newPageDto(inMap));
 	}
@@ -43,7 +43,7 @@ public class DictController {
 	 * @param inMap
 	 * @return
 	 */
-	@RequestMapping(value = "get", produces = "application/json")
+	@PostMapping(value = "get", produces = "application/json")
 	public OutVO get(@RequestBody Map<String,Object> inMap){
 		return dictService.get(MapUtil.getInt(inMap, "id"));
 	}

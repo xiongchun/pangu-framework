@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>myclouds-common</artifactId>
@@ -7,7 +8,7 @@
 	<parent>
 		<groupId>com.gitee.myclouds</groupId>
 		<artifactId>myclouds</artifactId>
-		<version>1.0</version>
+		<version>2.0</version>
 	</parent>
 
 	<properties>
@@ -31,5 +32,19 @@
 			</plugin>
 		</plugins>
 	</build>
+
+   <!-- 指定依赖的个别特殊jar的仓库地址 -->
+	<repositories>
+		<repository>
+			<id>nuxeo</id>
+			<name>nuxeo releases</name>
+			<url>https://maven-eu.nuxeo.org/nexus/content/repositories/public-releases</url>
+		</repository>
+		<repository>
+			<id>redhat</id>
+			<name>redhat ga</name>
+			<url>https://maven.repository.redhat.com/ga</url>
+		</repository>
+	</repositories>
 
 </project>
