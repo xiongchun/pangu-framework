@@ -30,6 +30,12 @@ public class TreeNodeVO implements Serializable {
 	// 节点复选框选中状态
 	private Boolean checked;
 	
+	//节点图标样式类
+	private String icon;
+	
+	//URL链接
+	private String url;
+	
 	// 子孙节点集合
 	private List<TreeNodeVO> children;
 

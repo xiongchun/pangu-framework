@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 
 /**
  * 限流KEY字段生成
- * <p> 返回的字符串将作为限流器在Redis中键名称的一部分
+ * <p> 返回的字符串将作为限流器在Redis中键名的一部分
  * 
  * @author xiongchun
  *

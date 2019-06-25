@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gitee.myclouds.base.exception.BizException;
+import com.gitee.myclouds.base.helper.treebuiler.TreeBuilder;
+import com.gitee.myclouds.base.helper.treebuiler.TreeNodeVO;
 import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.util.MyCons;
-import com.gitee.myclouds.common.util.MyListUtil;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
-import com.gitee.myclouds.system.common.vo.MenuVO;
 import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
 import com.gitee.myclouds.system.domain.myuser.MyUserMapper;
 
@@ -31,32 +31,22 @@ public class HomeService {
 	private SqlSession sqlSession;
 	@Autowired
 	private MyUserMapper myUserMapper;
-
+	
 	/**
-	 * 查询用户功能菜单列表
+	 * 首页框架初始化数据
 	 * 
 	 * @param inDto
 	 * @return
 	 */
-	public List<MenuVO> listMenus(Dto inDto) {
-		List<MenuVO> menuVOs = sqlSession.selectList("sql.home.listMenus", inDto);
-		String ctxPath = inDto.getString("ctxPath");
-		for (MenuVO menuVO : menuVOs) {
-			String url = menuVO.getUrl();
-			if (MyUtil.isNotEmpty(url)) {
-				menuVO.setUrl(ctxPath + (StringUtils.startsWith(url, "/") ? url : "/" + url));
-			}
-		}
-		String jql = "SELECT * FROM :MyList WHERE parent_id = :parent_id";
-		List<MenuVO> level1Menus = MyListUtil.list(menuVOs, MenuVO.class, jql, Dtos.newDto("parent_id", 1));
-		for (MenuVO menuVO : level1Menus) {
-			List<MenuVO> level2Menus = MyListUtil.list(menuVOs, MenuVO.class, jql,
-					Dtos.newDto("parent_id", menuVO.getId()));
-			if (MyUtil.isNotEmpty(level2Menus)) {
-				menuVO.setSubMenus(level2Menus);
-			}
-		}
-		return level1Menus;
+	public OutVO init(Integer userId) {
+		OutVO outVO = new OutVO(0);
+		Dto dataDto = Dtos.newDto();
+		List<TreeNodeVO> leftNavMenus = sqlSession.selectList("sql.home.listMenus", userId);
+		leftNavMenus = new TreeBuilder(leftNavMenus).buildTree();
+		dataDto.put("leftNavMenus", leftNavMenus);
+		//dataDto.put(); maybe other data else
+		outVO.setData(dataDto);
+		return outVO;
 	}
 
 	/**
