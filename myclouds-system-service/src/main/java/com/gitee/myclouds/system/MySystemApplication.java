@@ -7,15 +7,20 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import lombok.extern.slf4j.Slf4j;
+
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableTransactionManagement
 @MapperScan(basePackages = {"com.gitee.myclouds"}, sqlSessionFactoryRef = "sqlSessionFactory")
 @ComponentScan(basePackages={"com.gitee.myclouds"})
+@Slf4j
 public class MySystemApplication {
 	
 	public static void main(String[] args) throws Exception {
+		log.info("Starting MySystemApplication...");
 		SpringApplication.run(MySystemApplication.class, args);
+		log.info("MySystemApplication started successed - - - -");
 		//ConfigurableApplicationContext  context = SpringApplication.run(MySystemApplication.class, args);
 	}
 

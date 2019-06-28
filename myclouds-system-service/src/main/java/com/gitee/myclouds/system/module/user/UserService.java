@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gitee.myclouds.base.exception.BizException;
+import com.gitee.myclouds.base.util.BaseCons;
 import com.gitee.myclouds.base.vo.OutVO;
-import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
@@ -115,7 +115,7 @@ public class UserService {
 		// TODO curUser
 		myUserEntity.setCreate_by("超级用户");
 		myUserEntity.setCreate_by_id(1);
-		myUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, myUserEntity.getPassword()));
+		myUserEntity.setPassword(MyUtil.password(BaseCons.PWD_KEY, myUserEntity.getPassword()));
 		myUserMapper.insert(myUserEntity);
 		outVO.setMsg("用户新增成功");
 		return outVO;
@@ -172,7 +172,7 @@ public class UserService {
 		}
 		String[] idsArr = StringUtils.split(inDto.getString("ids"), ",");
 		MyUserEntity myUserEntity = new MyUserEntity();
-		myUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, inDto.getString("password")));
+		myUserEntity.setPassword(MyUtil.password(BaseCons.PWD_KEY, inDto.getString("password")));
 		for (String id : idsArr) {
 			myUserEntity.setId(Integer.valueOf(id));
 			myUserMapper.updateByKey(myUserEntity);

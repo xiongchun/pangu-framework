@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import lombok.Data;
 import lombok.ToString;
-import lombok.experimental.Accessors;
 
 /**
  * 数据字典通用值对象
@@ -14,7 +13,6 @@ import lombok.experimental.Accessors;
  */
 @Data
 @ToString
-@Accessors(chain = true)
 public class DictVO implements Serializable{
 
 	private static final long serialVersionUID = 1L;

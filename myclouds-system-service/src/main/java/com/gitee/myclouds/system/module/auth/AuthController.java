@@ -44,9 +44,7 @@ public class AuthController {
 	 */
 	@PostMapping(value = "logout", produces = "application/json")
 	public OutVO logout(@RequestBody Map<String,Object> inMap){
-		OutVO outVO = new OutVO(0);
-		//TODO 
-		outVO.setMsg("注销成功");
+		OutVO outVO = authService.logout(Dtos.newDto(inMap));
 		return outVO;
 	}
 }

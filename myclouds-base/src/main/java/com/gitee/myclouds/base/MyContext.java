@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 import com.alibaba.fastjson.JSON;
+import com.gitee.myclouds.base.util.BaseCons;
 import com.gitee.myclouds.base.vo.DictVO;
-import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyListUtil;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dtos;
@@ -37,7 +37,7 @@ public class MyContext {
 	 * @return
 	 */
 	public List<DictVO> getDict(String dictType){
-		String key = MyCons.CacheKeyOrPrefix.MyDict.getValue() + ":" + dictType;
+		String key = BaseCons.CacheKeyOrPrefix.MyDict.getValue() + ":" + dictType;
 		List<DictVO> dictVOs = Lists.newArrayList();
 		try {
 			List<Object> enumObjs = stringRedisTemplate.opsForHash().values(key);

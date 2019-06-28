@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.helper.treebuiler.TreeBuilder;
 import com.gitee.myclouds.base.helper.treebuiler.TreeNodeVO;
+import com.gitee.myclouds.base.util.BaseCons;
 import com.gitee.myclouds.base.vo.OutVO;
-import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
@@ -62,14 +62,14 @@ public class HomeService {
 			throw new BizException(-22, "新密码和确认密码不一致，请重新输入");
 		}
 		Integer userId = inDto.getInteger("id");
-		String password = MyUtil.password(MyCons.PWD_KEY, inDto.getString("password"));
+		String password = MyUtil.password(BaseCons.PWD_KEY, inDto.getString("password"));
 		MyUserEntity myUserEntity = myUserMapper.selectByKey(userId);
 		if (!StringUtils.equals(password, myUserEntity.getPassword())) {
 			throw new BizException(-23, "原密码输入错误，请重新输入");
 		}
 		MyUserEntity updateMyUserEntity = new MyUserEntity();
 		updateMyUserEntity.setId(userId);
-		updateMyUserEntity.setPassword(MyUtil.password(MyCons.PWD_KEY, newPassword));
+		updateMyUserEntity.setPassword(MyUtil.password(BaseCons.PWD_KEY, newPassword));
 		myUserMapper.updateByKey(updateMyUserEntity);
 		outVO.setMsg("密码修改成功");
 		return outVO;

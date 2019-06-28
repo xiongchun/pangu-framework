@@ -8,7 +8,7 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * 全局限流Key解析生成
+ * 服务实例全局限流Key解析生成
  * 
  * @author xiongchun
  *

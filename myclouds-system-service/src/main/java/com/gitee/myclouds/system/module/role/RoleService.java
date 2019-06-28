@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.helper.treebuiler.TreeBuilder;
 import com.gitee.myclouds.base.helper.treebuiler.TreeNodeVO;
+import com.gitee.myclouds.base.util.BaseCons;
 import com.gitee.myclouds.base.vo.OutVO;
-import com.gitee.myclouds.common.util.MyCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
@@ -178,7 +178,7 @@ public class RoleService {
 			MyRoleModuleEntity myRoleModuleEntity = new MyRoleModuleEntity();
 			myRoleModuleEntity.setRole_id(roleId);
 			myRoleModuleEntity.setModule_id(Integer.valueOf(moduleId));
-			myRoleModuleEntity.setGrant_type(MyCons.GrantType.BIZ.getValue());
+			myRoleModuleEntity.setGrant_type(BaseCons.GrantType.BIZ.getValue());
 			myRoleModuleEntity.setCreate_by(1); // TODO curUser
 			myRoleModuleMapper.insert(myRoleModuleEntity);
 		}

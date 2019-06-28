@@ -1,14 +1,36 @@
-package com.gitee.myclouds.common.util;
+package com.gitee.myclouds.base.util;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
- * 平台常量表 <br>
+ * 常量表 <br>
  * 提示：业务常量请别混在这里
  * 
  * @author xiongchun
  *
  */
-public class MyCons {
+public class BaseCons {
+	
+	/**
+	 * Redis键前缀常量
+	 */
+	@AllArgsConstructor
+	public static enum RedisKey {
+		Token("My:Token:", "Token缓存前缀");
+        @Getter
+		private final String value;
+        @Getter
+		private final String name;
+	}
 
+	
+	
+	
+	
+   //=============== to delete follows================	
+	
+	
 	/**
 	 * 通用的是否布尔值
 	 */
@@ -89,7 +111,7 @@ public class MyCons {
 	/**
 	 * 缺省当前用户数据对象会话KEY
 	 */
-	public static final String My_USER = "_user";
+	public static final String My_USER = "userVO";
 
 	public static void main(String[] args) {
 

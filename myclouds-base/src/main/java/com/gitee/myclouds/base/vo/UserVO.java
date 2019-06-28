@@ -1,21 +1,18 @@
 package com.gitee.myclouds.base.vo;
 
 import java.io.Serializable;
-import java.util.List;
 
 import lombok.Data;
 import lombok.ToString;
-import lombok.experimental.Accessors;
 
 /**
- * 当前会话用户数据对象（用于后端操作用户，非C端客户）
+ * 当前会话用户值对象
  * 
  * @author xiongchun
  *
  */
 @Data
 @ToString
-@Accessors(chain = true)
 public class UserVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -46,8 +43,28 @@ public class UserVO implements Serializable {
 	private String name;
 	
 	/**
-	 * 角色ID集合
+	 * 扩展码
 	 */
-	private List<String> roleIds;
+	private String biz_code;	
 
+    /**
+     * 扩展JSON
+     */
+	private String ext;	
+	
+	/**
+	 * 用户类型
+	 */
+	private String type;	
+	
+	/**
+	 * Token
+	 */
+	private String token;
+
+	/**
+	 * 组织值对象
+	 */
+	private OrgVO orgVO;
+	
 }
