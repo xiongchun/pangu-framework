@@ -24,8 +24,8 @@ public class MyConfiguration implements WebMvcConfigurer{
 		//这里打开微服务的跨域功能，目的是为了开发或测试时候前端可以直连到这个微服务进行联调。
 		registry.addInterceptor(new GeneralCrossOriginInterceptor());
 		
-		//可以参考 GeneralCrossOriginInterceptor 实现各种功能的拦截器。不过不建议在微服务内部做这样的处理，一般拦截动作可以去myclouds-gateway处理。
-		//这里提供一份模版代码，供大家酌情使用。
+		//注册更多拦截器
+		
 	}
 	
 }

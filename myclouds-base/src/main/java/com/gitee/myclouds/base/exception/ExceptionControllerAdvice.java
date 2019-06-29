@@ -2,6 +2,7 @@ package com.gitee.myclouds.base.exception;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -49,7 +50,8 @@ public class ExceptionControllerAdvice {
      */
     @ExceptionHandler(value = Exception.class)
     public OutVO exceptionHandler(Exception exception ,HttpServletResponse response) {
-        OutVO outVO = new OutVO(-1).setMsg("系统发生异常，请联系管理员。");
+        OutVO outVO = new OutVO(-900).setMsg("服务器内部错误。");
+        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         //生成一个异常溯源ID，进行跟踪
         String traceId = UUID.fastUUID().toString();
         outVO.setTrace(traceId); //exception.getMessage();

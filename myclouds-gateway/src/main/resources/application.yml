@@ -37,6 +37,7 @@ spring:
         predicates:
         - Path=/admin/system/**
         filters:
+        - name : TokenAuth
         - name: RequestRateLimiter
           args:
             key-resolver: '#{@globalKeyResolver}'  # 动态获取服务实例进行以服务为单位的全局限流配置，@see GlobalKeyResolver.solve()
@@ -52,7 +53,7 @@ spring:
             # allowedOrigins: "http://127.0.0.1:8848"
             allowedOrigins: "*"
             maxAge: 86400
-            allowedHeaders: "Content-Type"
+            allowedHeaders: "Content-Type, X-Auth-Token"
             allowedMethods: "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE"
       
 management:
