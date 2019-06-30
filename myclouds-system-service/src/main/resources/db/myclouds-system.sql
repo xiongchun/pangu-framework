@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2019-06-18 15:40:43
+Date: 2019-06-30 23:39:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -69,18 +69,15 @@ CREATE TABLE `my_module` (
 -- ----------------------------
 -- Records of my_module
 -- ----------------------------
-INSERT INTO `my_module` VALUES ('1', '0', '我的', '', '1', 'layui-icon-home', '1', '10', null);
-INSERT INTO `my_module` VALUES ('2', '0', '系统管理', '', '1', 'layui-icon-component', '1', '20', null);
-INSERT INTO `my_module` VALUES ('3', '0', '虚拟业务', '', '1', 'layui-icon-app', '1', '30', null);
-INSERT INTO `my_module` VALUES ('4', '2', '数据字典', 'system/dict.html', '1', null, '1', '3', null);
-INSERT INTO `my_module` VALUES ('5', '2', '资源模块', 'system/module.html', '1', '', '1', '4', null);
-INSERT INTO `my_module` VALUES ('6', '2', '组织机构', null, '1', null, '1', '5', null);
-INSERT INTO `my_module` VALUES ('7', '2', '角色与授权', null, '1', null, '1', '6', null);
-INSERT INTO `my_module` VALUES ('8', '2', '用户与授权', null, '1', null, '1', '20', null);
-INSERT INTO `my_module` VALUES ('9', '1', '工作台', 'home/console.html', '1', '', '1', '1', null);
-INSERT INTO `my_module` VALUES ('10', '1', '我的设置', 'home/setting.html', '1', '', '1', '20', null);
-INSERT INTO `my_module` VALUES ('11', '1', '安全退出', 'home/my.html', '1', '', '1', '21', null);
-INSERT INTO `my_module` VALUES ('12', '3', '业务菜单1', null, '1', null, '1', '10', null);
+INSERT INTO `my_module` VALUES ('1', '0', '欢迎页', 'views/home/welcome.html', '1', 'layui-icon layui-icon-home', '1', '10', null);
+INSERT INTO `my_module` VALUES ('2', '0', '系统管理', '', '1', 'layui-icon layui-icon-component', '1', '20', null);
+INSERT INTO `my_module` VALUES ('3', '0', '虚拟业务', '', '1', 'layui-icon layui-icon-app', '1', '30', null);
+INSERT INTO `my_module` VALUES ('4', '2', '数据字典', 'views/system/dict.html', '1', '', '1', '3', null);
+INSERT INTO `my_module` VALUES ('5', '2', '资源模块', 'views/system/module.html', '1', '', '1', '4', null);
+INSERT INTO `my_module` VALUES ('6', '2', '组织机构', 'views/system/org.html', '1', '', '1', '5', null);
+INSERT INTO `my_module` VALUES ('7', '2', '角色与授权', 'views/system/role.html', '1', '', '1', '6', null);
+INSERT INTO `my_module` VALUES ('8', '2', '用户与授权', 'views/system/user.html', '1', '', '1', '20', null);
+INSERT INTO `my_module` VALUES ('12', '3', '业务菜单1', 'views/home/404.html', '1', '', '1', '10', null);
 
 -- ----------------------------
 -- Table structure for my_org
@@ -152,25 +149,22 @@ CREATE TABLE `my_role_module` (
   `create_by` int(10) NOT NULL COMMENT '创建人ID',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`role_id`,`module_id`,`grant_type`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1105 DEFAULT CHARSET=utf8mb4   COMMENT='功能模块-角色关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=1121 DEFAULT CHARSET=utf8mb4   COMMENT='功能模块-角色关联表';
 
 -- ----------------------------
 -- Records of my_role_module
 -- ----------------------------
 INSERT INTO `my_role_module` VALUES ('1088', '2', '3', '1', '2019-06-07 15:18:47', '1');
 INSERT INTO `my_role_module` VALUES ('1089', '2', '12', '1', '2019-06-07 15:18:47', '1');
-INSERT INTO `my_role_module` VALUES ('1092', '1', '1', '1', '2019-06-07 15:19:04', '1');
-INSERT INTO `my_role_module` VALUES ('1093', '1', '9', '1', '2019-06-07 15:19:04', '1');
-INSERT INTO `my_role_module` VALUES ('1094', '1', '10', '1', '2019-06-07 15:19:04', '1');
-INSERT INTO `my_role_module` VALUES ('1095', '1', '11', '1', '2019-06-07 15:19:04', '1');
-INSERT INTO `my_role_module` VALUES ('1096', '1', '2', '1', '2019-06-07 15:19:04', '1');
-INSERT INTO `my_role_module` VALUES ('1097', '1', '4', '1', '2019-06-07 15:19:04', '1');
-INSERT INTO `my_role_module` VALUES ('1098', '1', '5', '1', '2019-06-07 15:19:04', '1');
-INSERT INTO `my_role_module` VALUES ('1099', '1', '6', '1', '2019-06-07 15:19:04', '1');
-INSERT INTO `my_role_module` VALUES ('1100', '1', '7', '1', '2019-06-07 15:19:04', '1');
-INSERT INTO `my_role_module` VALUES ('1101', '1', '8', '1', '2019-06-07 15:19:04', '1');
-INSERT INTO `my_role_module` VALUES ('1102', '1', '3', '1', '2019-06-07 15:19:04', '1');
-INSERT INTO `my_role_module` VALUES ('1103', '1', '12', '1', '2019-06-07 15:19:04', '1');
+INSERT INTO `my_role_module` VALUES ('1112', '1', '1', '1', '2019-06-23 01:08:31', '1');
+INSERT INTO `my_role_module` VALUES ('1113', '1', '2', '1', '2019-06-23 01:08:31', '1');
+INSERT INTO `my_role_module` VALUES ('1114', '1', '4', '1', '2019-06-23 01:08:31', '1');
+INSERT INTO `my_role_module` VALUES ('1115', '1', '5', '1', '2019-06-23 01:08:31', '1');
+INSERT INTO `my_role_module` VALUES ('1116', '1', '6', '1', '2019-06-23 01:08:31', '1');
+INSERT INTO `my_role_module` VALUES ('1117', '1', '7', '1', '2019-06-23 01:08:31', '1');
+INSERT INTO `my_role_module` VALUES ('1118', '1', '8', '1', '2019-06-23 01:08:31', '1');
+INSERT INTO `my_role_module` VALUES ('1119', '1', '3', '1', '2019-06-23 01:08:31', '1');
+INSERT INTO `my_role_module` VALUES ('1120', '1', '12', '1', '2019-06-23 01:08:31', '1');
 
 -- ----------------------------
 -- Table structure for my_temp
@@ -181,13 +175,7 @@ CREATE TABLE `my_temp` (
   `device` varchar(255) DEFAULT NULL COMMENT '设备',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4   COMMENT='临时过度表：登陆信息';
-
--- ----------------------------
--- Records of my_temp
--- ----------------------------
-INSERT INTO `my_temp` VALUES ('1', '{\"os\":\"windows\",\"ie\":false,\"weixin\":false,\"android\":false,\"ios\":false}', '2019-06-18 12:06:42');
-INSERT INTO `my_temp` VALUES ('2', '{\"os\":\"windows\",\"ie\":false,\"weixin\":false,\"android\":false,\"ios\":false}', '2019-06-18 12:08:04');
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb4   COMMENT='临时过度表：登陆信息';
 
 -- ----------------------------
 -- Table structure for my_user
@@ -230,10 +218,11 @@ CREATE TABLE `my_user_role` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `ukey1` (`user_id`,`role_id`) USING BTREE,
   KEY `key1` (`user_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4   COMMENT='用户-角色关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4   COMMENT='用户-角色关联表';
 
 -- ----------------------------
 -- Records of my_user_role
 -- ----------------------------
 INSERT INTO `my_user_role` VALUES ('1', '1', '1', '2018-03-07 13:16:37', '1', null);
-INSERT INTO `my_user_role` VALUES ('7', '4', '1', '2019-06-14 20:46:08', '1', '超级用户');
+INSERT INTO `my_user_role` VALUES ('9', '4', '1', '2019-06-30 21:25:34', '1', '超级用户');
+INSERT INTO `my_user_role` VALUES ('10', '4', '2', '2019-06-30 21:25:38', '1', '超级用户');
