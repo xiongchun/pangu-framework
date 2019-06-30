@@ -2,13 +2,17 @@ package com.gitee.myclouds.system.module.role;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gitee.myclouds.base.WebContext;
 import com.gitee.myclouds.base.vo.OutVO;
+import com.gitee.myclouds.base.vo.UserVO;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
 import cn.hutool.core.map.MapUtil;
@@ -25,7 +29,9 @@ public class RoleController {
 
 	@Autowired
 	private RoleService roleService;
-	
+	@Autowired
+	private WebContext webContext;
+
 	/**
 	 * 查询列表
 	 * 
@@ -33,10 +39,11 @@ public class RoleController {
 	 * @return
 	 */
 	@PostMapping(value = "list", produces = "application/json")
-	public OutVO list(@RequestBody Map<String,Object> inMap){
-		return roleService.list(Dtos.newPageDto(inMap));
+	public OutVO list(@RequestBody Map<String, Object> inMap, HttpServletRequest request) {
+		UserVO userVO = webContext.getUserVO(request);
+		return roleService.list(Dtos.newPageDto(inMap), userVO);
 	}
-	
+
 	/**
 	 * 查询实体
 	 * 
@@ -44,10 +51,10 @@ public class RoleController {
 	 * @return
 	 */
 	@PostMapping(value = "get", produces = "application/json")
-	public OutVO get(@RequestBody Map<String,Object> inMap){
+	public OutVO get(@RequestBody Map<String, Object> inMap) {
 		return roleService.get(MapUtil.getInt(inMap, "id"));
 	}
-	
+
 	/**
 	 * 新增
 	 * 
@@ -55,10 +62,11 @@ public class RoleController {
 	 * @return
 	 */
 	@PostMapping(value = "add", produces = "application/json")
-	public OutVO add(@RequestBody Map<String,Object> inMap){
-		return roleService.add(Dtos.newDto(inMap));
+	public OutVO add(@RequestBody Map<String, Object> inMap, HttpServletRequest request) {
+		UserVO userVO = webContext.getUserVO(request);
+		return roleService.add(Dtos.newDto(inMap), userVO);
 	}
-	
+
 	/**
 	 * 修改
 	 * 
@@ -66,10 +74,10 @@ public class RoleController {
 	 * @return
 	 */
 	@PostMapping(value = "update", produces = "application/json")
-	public OutVO update(@RequestBody Map<String,Object> inMap){
+	public OutVO update(@RequestBody Map<String, Object> inMap) {
 		return roleService.update(Dtos.newDto(inMap));
 	}
-	
+
 	/**
 	 * 删除
 	 * 
@@ -77,10 +85,10 @@ public class RoleController {
 	 * @return
 	 */
 	@PostMapping(value = "delete", produces = "application/json")
-	public OutVO delete(@RequestBody Map<String,Object> inMap){
+	public OutVO delete(@RequestBody Map<String, Object> inMap) {
 		return roleService.delete(MapUtil.getInt(inMap, "id"));
 	}
-	
+
 	/**
 	 * 批量删除
 	 * 
@@ -88,10 +96,10 @@ public class RoleController {
 	 * @return
 	 */
 	@PostMapping(value = "batchDelete", produces = "application/json")
-	public OutVO batchDelete(@RequestBody Map<String,Object> inMap){
+	public OutVO batchDelete(@RequestBody Map<String, Object> inMap) {
 		return roleService.batchDelete(Dtos.newDto(inMap));
 	}
-	
+
 	/**
 	 * 查询授权树
 	 * 
@@ -99,10 +107,10 @@ public class RoleController {
 	 * @return
 	 */
 	@PostMapping(value = "listTree", produces = "application/json")
-	public OutVO listTree(@RequestBody Map<String,Object> inMap){
+	public OutVO listTree(@RequestBody Map<String, Object> inMap) {
 		return roleService.listGrantTree(MapUtil.getInt(inMap, "id"));
 	}
-	
+
 	/**
 	 * 授权
 	 * 
@@ -110,8 +118,9 @@ public class RoleController {
 	 * @return
 	 */
 	@PostMapping(value = "grant", produces = "application/json")
-	public OutVO grant(@RequestBody Map<String,Object> inMap){
-		return roleService.grant(Dtos.newDto(inMap));
+	public OutVO grant(@RequestBody Map<String, Object> inMap, HttpServletRequest request) {
+		UserVO userVO = webContext.getUserVO(request);
+		return roleService.grant(Dtos.newDto(inMap), userVO);
 	}
-	
+
 }

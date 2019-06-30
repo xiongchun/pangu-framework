@@ -23,8 +23,18 @@ public class BaseCons {
         @Getter
 		private final String name;
 	}
-
 	
+	/**
+	 * 通用
+	 */
+	@AllArgsConstructor
+	public static enum Common {
+		Token("X-Auth-Token", "Token参数名");
+        @Getter
+		private final String value;
+        @Getter
+		private final String name;
+	}
 	
 	
 	

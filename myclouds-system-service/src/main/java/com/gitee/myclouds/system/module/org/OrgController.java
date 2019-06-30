@@ -2,13 +2,17 @@ package com.gitee.myclouds.system.module.org;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gitee.myclouds.base.WebContext;
 import com.gitee.myclouds.base.vo.OutVO;
+import com.gitee.myclouds.base.vo.UserVO;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
 import cn.hutool.core.map.MapUtil;
@@ -23,9 +27,10 @@ import cn.hutool.core.map.MapUtil;
 @RequestMapping("admin/system/org")
 public class OrgController {
 
-	
 	@Autowired
 	private OrgService orgService;
+	@Autowired
+	private WebContext webContext;
 
 	/**
 	 * 查询列表
@@ -56,8 +61,9 @@ public class OrgController {
 	 * @return
 	 */
 	@PostMapping(value = "add", produces = "application/json")
-	public OutVO add(@RequestBody Map<String,Object> inMap){
-		return orgService.add(Dtos.newDto(inMap));
+	public OutVO add(@RequestBody Map<String,Object> inMap, HttpServletRequest request){
+		UserVO userVO = webContext.getUserVO(request);
+		return orgService.add(Dtos.newDto(inMap), userVO);
 	}
 	
 	/**

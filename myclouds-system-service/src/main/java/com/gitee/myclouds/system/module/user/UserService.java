@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.util.BaseCons;
 import com.gitee.myclouds.base.vo.OutVO;
+import com.gitee.myclouds.base.vo.UserVO;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
@@ -104,7 +105,7 @@ public class UserService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO add(Dto inDto) {
+	public OutVO add(Dto inDto, UserVO userVO) {
 		OutVO outVO = new OutVO(0);
 		MyUserEntity myUserEntity = new MyUserEntity();
 		MyUtil.copyProperties(inDto, myUserEntity);
@@ -112,9 +113,8 @@ public class UserService {
 		if (existUser != null) {
 			throw new BizException(-15, "登陆账号已被占用，请重新输入");
 		}
-		// TODO curUser
-		myUserEntity.setCreate_by("超级用户");
-		myUserEntity.setCreate_by_id(1);
+		myUserEntity.setCreate_by(userVO.getName());
+		myUserEntity.setCreate_by_id(userVO.getId());
 		myUserEntity.setPassword(MyUtil.password(BaseCons.PWD_KEY, myUserEntity.getPassword()));
 		myUserMapper.insert(myUserEntity);
 		outVO.setMsg("用户新增成功");
@@ -214,7 +214,7 @@ public class UserService {
 	 * @return
 	 */
 	@Transactional
-	public OutVO grant(Dto inDto) {
+	public OutVO grant(Dto inDto, UserVO userVO) {
 		OutVO outVO = new OutVO(0);
 		Integer userId = inDto.getInteger("userId");
 		String roleIds = inDto.getString("roleIds");
@@ -226,9 +226,8 @@ public class UserService {
 			MyUserRoleEntity myUserRoleEntity = new MyUserRoleEntity();
 			myUserRoleEntity.setRole_id(Integer.valueOf(roleId));
 			myUserRoleEntity.setUser_id(userId);
-			// TODO currUser
-			myUserRoleEntity.setCreate_by("超级用户");
-			myUserRoleEntity.setCreate_by_id(1);
+			myUserRoleEntity.setCreate_by(userVO.getName());
+			myUserRoleEntity.setCreate_by_id(userVO.getId());
 			myUserRoleMapper.insert(myUserRoleEntity);
 		}
 		outVO.setMsg("用户授权成功");

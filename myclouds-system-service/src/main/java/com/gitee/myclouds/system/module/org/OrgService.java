@@ -10,6 +10,7 @@ import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.helper.treebuiler.TreeBuilder;
 import com.gitee.myclouds.base.helper.treebuiler.TreeNodeVO;
 import com.gitee.myclouds.base.vo.OutVO;
+import com.gitee.myclouds.base.vo.UserVO;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
@@ -71,13 +72,12 @@ public class OrgService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO add(Dto inDto) {
+	public OutVO add(Dto inDto, UserVO userVO) {
 		OutVO outVO = new OutVO(0);
 		MyOrgEntity myOrgEntity = new MyOrgEntity();
 		MyUtil.copyProperties(inDto, myOrgEntity);
-		//TODO curUser
-		myOrgEntity.setCreate_by("超级用户");
-		myOrgEntity.setCreate_by_id(1);
+		myOrgEntity.setCreate_by(userVO.getName());
+		myOrgEntity.setCreate_by_id(userVO.getId());
 		myOrgMapper.insert(myOrgEntity);
 		outVO.setMsg("组织新增成功");
 		return outVO;
