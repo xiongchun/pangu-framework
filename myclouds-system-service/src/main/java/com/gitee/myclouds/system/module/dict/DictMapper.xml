@@ -41,5 +41,14 @@
 		FROM my_dict WHERE dict_type = #{dict_type} AND is_enable = '1'
 		ORDER BY sort_no
 	</select>
+	
+	<!-- 根据条件查询实体 -->
+	<select id="getByTypeAndKey" parameterType="Dto" resultType="MyDictEntity">
+		SELECT
+		<include refid="com.gitee.myclouds.system.domain.mydict.MyDictMapper.column" />
+		FROM my_dict WHERE dict_type = #{type} AND dict_key = #{key} AND is_enable = '1'
+	</select>
+	
+	
 
 </mapper>
