@@ -31,7 +31,10 @@ public class OutVO implements Serializable{
 	//业务数据主体
 	private Object data;
 	
-	//堆栈溯源信息（异常摘要信息）
+	//堆栈溯源日志ID
+	private String logId;
+	
+	//异常摘要信息
 	private String trace;
 	
 	//发生异常时的处理建议（不常用，针对一些外部API的辅助调试）

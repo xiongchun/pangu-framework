@@ -13,6 +13,7 @@ import com.gitee.myclouds.base.util.BaseCons;
 import com.gitee.myclouds.base.vo.OrgVO;
 import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.base.vo.UserVO;
+import com.gitee.myclouds.common.util.CommonCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.system.domain.myorg.MyOrgEntity;
@@ -88,7 +89,7 @@ public class AuthService {
 	private UserVO createToken(UserVO userVO) {
 		String token = IdUtil.simpleUUID().toUpperCase();
 		userVO.setToken(token);
-		String key = BaseCons.RedisKey.Token.getValue() + token;
+		String key = CommonCons.RedisKey.Token.getValue() + token;
 		stringRedisTemplate.opsForHash().put(key, "id", token);
 		stringRedisTemplate.opsForHash().put(key, "createTime", DateUtil.now());
 		stringRedisTemplate.opsForHash().put(key, "userVO", JSON.toJSONString(userVO));
@@ -106,7 +107,7 @@ public class AuthService {
 		OutVO outVO = new OutVO(0);
 		String token = inDto.getString("token");
 		if (MyUtil.isNotEmpty(token)) {
-			String key = BaseCons.RedisKey.Token.getValue() + token;
+			String key = CommonCons.RedisKey.Token.getValue() + token;
 			stringRedisTemplate.delete(key);
 		}
 		outVO.setMsg("用户注销成功");

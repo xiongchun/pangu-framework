@@ -33,5 +33,13 @@
 			</if>
 		</where>
 	</sql>
+	
+	<!-- 根据类型查询字典分组 -->
+	<select id="listByType" parameterType="String" resultType="MyDictEntity">
+		SELECT
+		<include refid="com.gitee.myclouds.system.domain.mydict.MyDictMapper.column" />
+		FROM my_dict WHERE dict_type = #{dict_type} AND is_enable = '1'
+		ORDER BY sort_no
+	</select>
 
 </mapper>

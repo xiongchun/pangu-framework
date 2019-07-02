@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.alibaba.fastjson.JSON;
 import com.gitee.myclouds.base.vo.OutVO;
 
-import cn.hutool.core.lang.UUID;
+import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,9 +33,7 @@ public class ExceptionControllerAdvice {
     @ExceptionHandler(value = BizException.class)
     public OutVO bizExceptionHandler(BizException bizException) {
         OutVO outVO = new OutVO(bizException.getCode()).setMsg(bizException.getMsg());
-        //生成一个异常溯源ID，进行跟踪
-        String traceId = UUID.fastUUID().toString();
-        outVO.setTrace(traceId); 
+        outVO.setLogId(IdUtil.fastSimpleUUID());
         String msg =StrUtil.format( "BizException Occurred. ", JSON.toJSONString(outVO));
         log.error(msg, bizException);
         return outVO;
@@ -52,9 +50,8 @@ public class ExceptionControllerAdvice {
     public OutVO exceptionHandler(Exception exception ,HttpServletResponse response) {
         OutVO outVO = new OutVO(-900).setMsg("服务器内部错误。");
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        //生成一个异常溯源ID，进行跟踪
-        String traceId = UUID.fastUUID().toString();
-        outVO.setTrace(traceId); //exception.getMessage();
+        outVO.setLogId(IdUtil.fastSimpleUUID());
+        outVO.setTrace(exception.getMessage());
         String msg =StrUtil.format( "Exception Occurred. {}" , JSON.toJSONString(outVO));
         log.error(msg, exception);
         return outVO;

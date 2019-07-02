@@ -7,8 +7,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
-import com.gitee.myclouds.base.util.BaseCons;
 import com.gitee.myclouds.base.vo.UserVO;
+import com.gitee.myclouds.common.util.CommonCons;
 import com.gitee.myclouds.common.util.MyUtil;
 
 /**
@@ -29,7 +29,7 @@ public class WebContext {
 	 * @param request
 	 */
 	public UserVO getUserVO(HttpServletRequest request) {
-		String token = request.getHeader(BaseCons.Common.Token.getValue());
+		String token = request.getHeader(CommonCons.Common.Token.getValue());
 		UserVO userVO = getUserVO(token);
 		return userVO;
 	}
@@ -42,7 +42,7 @@ public class WebContext {
 	 */
 	public UserVO getUserVO(String token) {
 		UserVO userVO = null;
-		String key = BaseCons.RedisKey.Token.getValue() + token;
+		String key = CommonCons.RedisKey.Token.getValue() + token;
 		String userVOJson = (String)stringRedisTemplate.opsForHash().get(key, "userVO");
 		if (MyUtil.isNotEmpty(userVOJson)) {
 			userVO = JSON.parseObject(userVOJson, UserVO.class);
