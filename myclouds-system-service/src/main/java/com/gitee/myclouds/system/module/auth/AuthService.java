@@ -16,11 +16,10 @@ import com.gitee.myclouds.base.vo.UserVO;
 import com.gitee.myclouds.common.util.CommonCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
-import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.myorg.MyOrgEntity;
-import com.gitee.myclouds.system.domain.myorg.MyOrgMapper;
 import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
-import com.gitee.myclouds.system.domain.myuser.MyUserMapper;
+import com.gitee.myclouds.system.module.org.OrgService;
+import com.gitee.myclouds.system.module.user.UserService;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.IdUtil;
@@ -35,13 +34,13 @@ import cn.hutool.core.util.IdUtil;
 public class AuthService {
 
 	@Autowired
-	private MyUserMapper myUserMapper;
-	@Autowired
-	private MyOrgMapper myOrgMapper;
+	private OrgService orgService;
 	@Autowired
 	private SqlSession sqlSession;
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
+	@Autowired
+	private UserService userService;
 
 	/**
 	 * 用户登录验证
@@ -49,32 +48,33 @@ public class AuthService {
 	 * @param inDto
 	 * @return
 	 */
-	public Dto login(Dto inDto) {
-		Dto outDto = Dtos.newDto();
-		MyUserEntity myUserEntity = myUserMapper.selectByUkey1(inDto.getString("account"));
+	public OutVO login(Dto inDto) {
+		OutVO outVO = new OutVO(0);
+		MyUserEntity myUserEntity = userService.getUserEntityByAccount(inDto.getString("account"));
 		if (MyUtil.isEmpty(myUserEntity)) {
-			outDto.set("code", 1).set("msg", "用户名错误，请重新输入");
-			return outDto;
+			outVO.setCode(1).setMsg("用户名错误，请重新输入");
+			return outVO;
 		}
 		if (!StringUtils.equals(MyUtil.password(BaseCons.PWD_KEY, inDto.getString("password")),
 				myUserEntity.getPassword())) {
-			outDto.set("code", 2).set("msg", "密码错误，请重新输入");
-			return outDto;
+			outVO.setCode(2).setMsg("密码错误，请重新输入");
+			return outVO;
 		}
 		// TODO 验证码校验
 
-		// TEMP CODE 数据收集  //TODO 改为异步
+		// TEMP CODE 数据收集
 		sqlSession.insert("sql.auth.insertTemp", inDto.getString("device"));
 
 		// 返回当前用户相关信息
 		UserVO userVO = new UserVO();
 		MyUtil.copyProperties(myUserEntity, userVO);
-		MyOrgEntity myOrgEntity = myOrgMapper.selectByKey(myUserEntity.getOrg_id());
+		MyOrgEntity myOrgEntity = orgService.getOrgEntityByKey(myUserEntity.getOrg_id());
 		OrgVO orgVO = new OrgVO();
 		MyUtil.copyProperties(myOrgEntity, orgVO);
 		userVO.setOrgVO(orgVO);
-		outDto.setMyCat(createToken(userVO));
-		return outDto;
+		outVO.setData(createToken(userVO));
+		outVO.setMsg("身份认证通过");
+		return outVO;
 	}
 
 	/**

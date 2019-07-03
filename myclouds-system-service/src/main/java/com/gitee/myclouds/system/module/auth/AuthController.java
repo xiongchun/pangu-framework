@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gitee.myclouds.base.vo.OutVO;
-import com.gitee.myclouds.common.util.MyUtil;
-import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
 /**
@@ -34,17 +32,7 @@ public class AuthController {
 	 */
 	@PostMapping(value = "login", produces = "application/json")
 	public OutVO login(@RequestBody Map<String,Object> inMap){
-		OutVO outVO = new OutVO(0);
-		Dto outDto = authService.login(Dtos.newDto(inMap));
-		outVO.setData(outDto.getMyCat());
-		outVO.setCode(outDto.getInteger("code") == null ? 0 : outDto.getInteger("code"));
-		outVO.setCode(outDto.getInteger("code") == null ? 0 : outDto.getInteger("code"));
-		if (MyUtil.isNotEmpty(outDto.getInteger("code"))) {
-			outVO.setCode(outDto.getInteger("code"));
-			outVO.setMsg(outDto.getString("msg"));
-		}else {
-			outVO.setMsg(outDto.getString("用户认证通过"));
-		}
+		OutVO outVO = authService.login(Dtos.newDto(inMap));
 		return outVO;
 	}
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,6 +42,17 @@ public class UserService {
 	private MyOrgMapper myOrgMapper;
 	@Autowired
 	private SqlSession sqlSession;
+	
+	/**
+	 * 根据账号查询用户实体
+	 * 
+	 * @param account
+	 * @return
+	 */
+	public MyUserEntity getUserEntityByAccount(String account) {
+		MyUserEntity myUserEntity = myUserMapper.selectByUkey1(account);
+		return myUserEntity;
+	}
 
 	/**
 	 * 查询列表
@@ -128,6 +140,7 @@ public class UserService {
 	 * @return
 	 */
 	@Transactional
+	@CacheEvict(value = "myhome:init", allEntries=true, beforeInvocation=true)
 	public OutVO delete(Integer userId) {
 		OutVO outVO = new OutVO(0);
 		myUserMapper.deleteByKey(userId);
@@ -143,6 +156,7 @@ public class UserService {
 	 * @return
 	 */
 	@Transactional
+	@CacheEvict(value = "myhome:init", allEntries=true, beforeInvocation=true)
 	public OutVO batchDelete(Dto inDto) {
 		OutVO outVO = new OutVO(0);
 		String[] ids = StrUtil.split(inDto.getString("ids"), ",");
@@ -214,6 +228,7 @@ public class UserService {
 	 * @return
 	 */
 	@Transactional
+	@CacheEvict(value = "myhome:init", allEntries=true, beforeInvocation=true)
 	public OutVO grant(Dto inDto, UserVO userVO) {
 		OutVO outVO = new OutVO(0);
 		Integer userId = inDto.getInteger("userId");
@@ -241,6 +256,7 @@ public class UserService {
 	 * @return
 	 */
 	@Transactional
+	@CacheEvict(value = "myhome:init", allEntries=true, beforeInvocation=true)
 	public OutVO cancel(Dto inDto) {
 		OutVO outVO = new OutVO(0);
 		Integer userId = inDto.getInteger("userId");

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -107,6 +108,7 @@ public class RoleService {
 	 * @return
 	 */
 	@Transactional
+	@CacheEvict(value = "myhome:init", allEntries=true, beforeInvocation=true)
 	public OutVO delete(Integer roleId) {
 		OutVO outVO = new OutVO(0);
 		myRoleMapper.deleteByKey(roleId);
@@ -123,6 +125,7 @@ public class RoleService {
 	 * @return
 	 */
 	@Transactional
+	@CacheEvict(value = "myhome:init", allEntries=true, beforeInvocation=true)
 	public OutVO batchDelete(Dto inDto) {
 		OutVO outVO = new OutVO(0);
 		String[] ids = StrUtil.split(inDto.getString("ids"), ",");
@@ -168,6 +171,7 @@ public class RoleService {
 	 * @return
 	 */
 	@Transactional
+	@CacheEvict(value = "myhome:init", allEntries=true, beforeInvocation=true)
 	public OutVO grant(Dto inDto, UserVO userVO) {
 		OutVO outVO = new OutVO(0);
 		Integer roleId = inDto.getInteger("roleId");

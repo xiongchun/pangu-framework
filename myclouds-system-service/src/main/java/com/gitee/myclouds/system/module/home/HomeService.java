@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.gitee.myclouds.base.exception.BizException;
@@ -38,6 +39,7 @@ public class HomeService {
 	 * @param inDto
 	 * @return
 	 */
+	@Cacheable("myhome:init")
 	public OutVO init(Integer userId) {
 		OutVO outVO = new OutVO(0);
 		Dto dataDto = Dtos.newDto();

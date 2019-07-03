@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.gitee.myclouds.base.exception.BizException;
@@ -31,6 +33,17 @@ public class OrgService {
 	private SqlSession sqlSession;
 	@Autowired
 	private MyOrgMapper myOrgMapper;
+	
+	/**
+	 * 根据主键查询实体
+	 * @param orgId
+	 * @return
+	 */
+	@Cacheable("myorg:entity")
+	public MyOrgEntity getOrgEntityByKey(Integer orgId) {
+		MyOrgEntity myOrgEntity = myOrgMapper.selectByKey(orgId);
+		return myOrgEntity;
+	}
 
 	/**
 	 * 查询列表
@@ -89,6 +102,7 @@ public class OrgService {
 	 * @param inDto
 	 * @return
 	 */
+	@CacheEvict(value = "myorg:entity", allEntries=true, beforeInvocation=true)
 	public OutVO update(Dto inDto) {
 		OutVO outVO  = new OutVO(0);
 		MyOrgEntity myOrgEntity = new MyOrgEntity();
@@ -104,6 +118,7 @@ public class OrgService {
 	 * @param inDto
 	 * @return
 	 */
+	@CacheEvict(value = "myorg:entity", allEntries=true, beforeInvocation=true)
 	public OutVO delete(Integer orgId) {
 		OutVO outVO = new OutVO(0);
 		if (orgId == 1) {
