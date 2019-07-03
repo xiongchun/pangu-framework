@@ -83,7 +83,7 @@ public class DictService {
 	 * @param id
 	 * @return
 	 */
-	@Cacheable("mydict:listbytype")
+	@Cacheable("mydict:group")
 	public OutVO listByType(String type) {
 		OutVO outVO = new OutVO(0);
 		List<MyDictEntity> dictEntities = sqlSession.selectList("sql.dict.listByType", type);
@@ -97,7 +97,7 @@ public class DictService {
 	 * @param inDto
 	 * @return
 	 */
-	@CacheEvict(value = {"mydict:listbytype","mydict:entity"}, allEntries=true, beforeInvocation=true)
+	@CacheEvict(value = {"mydict:group","mydict:entity"}, allEntries=true, beforeInvocation=true)
 	public OutVO add(Dto inDto) {
 		OutVO outVO = new OutVO(0);
 		MyDictEntity myDictEntity = new MyDictEntity();
@@ -116,7 +116,7 @@ public class DictService {
 	 * @param inDto
 	 * @return
 	 */
-	@CacheEvict(value = {"mydict:listbytype","mydict:entity"}, allEntries=true, beforeInvocation=true)
+	@CacheEvict(value = {"mydict:group","mydict:entity"}, allEntries=true, beforeInvocation=true)
 	public OutVO update(Dto inDto) {
 		OutVO outVO = new OutVO(0);
 		MyDictEntity myDictEntity = new MyDictEntity();
@@ -139,7 +139,7 @@ public class DictService {
 	 * @param inDto
 	 * @return
 	 */
-	@CacheEvict(value = {"mydict:listbytype","mydict:entity"}, allEntries=true, beforeInvocation=true)
+	@CacheEvict(value = {"mydict:group","mydict:entity"}, allEntries=true, beforeInvocation=true)
 	public OutVO delete(Integer id) {
 		OutVO outVO = new OutVO(0);
 		myDictMapper.deleteByKey(id);
@@ -154,7 +154,7 @@ public class DictService {
 	 * @return
 	 */
 	@Transactional
-	@CacheEvict(value = {"mydict:listbytype","mydict:entity"}, allEntries=true, beforeInvocation=true)
+	@CacheEvict(value = {"mydict:group","mydict:entity"}, allEntries=true, beforeInvocation=true)
 	public OutVO batchDelete(Dto inDto) {
 		OutVO outVO = new OutVO(0);
 		String[] ids = StrUtil.split(inDto.getString("ids"), ",");

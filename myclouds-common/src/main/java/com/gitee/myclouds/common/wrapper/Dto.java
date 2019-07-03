@@ -18,6 +18,9 @@ import java.util.Map;
  * @date 2008-07-06
  */
 public interface Dto extends Map<String, Object> {
+	
+	// Dto里的一个缺省叫mycat的键
+	public static final String KEY_MYCAT = "myCat";
 
 	/**
 	 * 以Integer类型返回属性
@@ -92,31 +95,19 @@ public interface Dto extends Map<String, Object> {
 	List<? extends Object> getList(String pKey);
 
 	/**
-	 * 返回分页查询偏移起始位置
+	 * 获取缺省对象：myCat
 	 * 
-	 * @return int
+	 * @return
 	 */
-	Integer getPageStart();
-
+	Object getMyCat();
+	
 	/**
-	 * 返回分页查询步长
+	 * 设置缺省对象：myCat
 	 * 
-	 * @return int
+	 * @param myCat
 	 */
-	Integer getPageLength();
-
-	/**
-	 * 设置分页查询偏移起始位置
-	 * 
-	 */
-	void setPageStart(int pStart);
-
-	/**
-	 * 设置分页查询偏移步长
-	 * 
-	 */
-	void setPageLength(int pLength);
-
+	void setMyCat(Object myCat);
+	
 	/**
 	 * 支持链式put
 	 * 

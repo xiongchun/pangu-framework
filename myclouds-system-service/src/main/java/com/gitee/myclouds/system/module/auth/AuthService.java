@@ -16,6 +16,7 @@ import com.gitee.myclouds.base.vo.UserVO;
 import com.gitee.myclouds.common.util.CommonCons;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
+import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.myorg.MyOrgEntity;
 import com.gitee.myclouds.system.domain.myorg.MyOrgMapper;
 import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
@@ -48,21 +49,21 @@ public class AuthService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO login(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	public Dto login(Dto inDto) {
+		Dto outDto = Dtos.newDto();
 		MyUserEntity myUserEntity = myUserMapper.selectByUkey1(inDto.getString("account"));
 		if (MyUtil.isEmpty(myUserEntity)) {
-			outVO.setCode(1).setMsg("用户名错误，请重新输入");
-			return outVO;
+			outDto.set("code", 1).set("msg", "用户名错误，请重新输入");
+			return outDto;
 		}
 		if (!StringUtils.equals(MyUtil.password(BaseCons.PWD_KEY, inDto.getString("password")),
 				myUserEntity.getPassword())) {
-			outVO.setCode(2).setMsg("密码错误，请重新输入");
-			return outVO;
+			outDto.set("code", 2).set("msg", "密码错误，请重新输入");
+			return outDto;
 		}
 		// TODO 验证码校验
 
-		// TEMP CODE 数据收集
+		// TEMP CODE 数据收集  //TODO 改为异步
 		sqlSession.insert("sql.auth.insertTemp", inDto.getString("device"));
 
 		// 返回当前用户相关信息
@@ -72,9 +73,8 @@ public class AuthService {
 		OrgVO orgVO = new OrgVO();
 		MyUtil.copyProperties(myOrgEntity, orgVO);
 		userVO.setOrgVO(orgVO);
-		outVO.setData(createToken(userVO));
-		outVO.setMsg("身份认证通过");
-		return outVO;
+		outDto.setMyCat(createToken(userVO));
+		return outDto;
 	}
 
 	/**

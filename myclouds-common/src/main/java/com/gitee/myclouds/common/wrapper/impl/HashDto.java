@@ -168,41 +168,21 @@ public class HashDto extends HashMap<String, Object> implements Dto {
 	}
 
 	/**
-	 * 返回分页查询偏移起始位置
+	 * 获取缺省对象：myCat
 	 * 
-	 * @return int
+	 * @return Object
 	 */
-	@Override
-	public Integer getPageStart() {
-		return getInteger("start");
+	public Object getMyCat() {
+		return get(KEY_MYCAT);
 	}
-
+	
 	/**
-	 * 返回分页查询偏移步长
+	 * 设置缺省对象：myCat
 	 * 
-	 * @return int
+	 * @param myCat
 	 */
-	@Override
-	public Integer getPageLength() {
-		return getInteger("length");
-	}
-
-	/**
-	 * 设置分页查询偏移起始位置
-	 * 
-	 */
-	@Override
-	public void setPageStart(int pStart) {
-		put("start", pStart);
-	}
-
-	/**
-	 * 设置分页查询偏移步长
-	 * 
-	 */
-	@Override
-	public void setPageLength(int pLength) {
-		put("length", pLength);
+	public void setMyCat(Object myCat) {
+		set(KEY_MYCAT, myCat);
 	}
 
 	/**
