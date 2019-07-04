@@ -38,17 +38,6 @@ public class DictController {
 	}
 	
 	/**
-	 * 根据类型查询字典分组
-	 * 
-	 * @param inMap
-	 * @return
-	 */
-	@PostMapping(value = "listByType", produces = "application/json")
-	public OutVO listByType(@RequestBody Map<String,Object> inMap){
-		return dictService.listByType(MapUtil.getStr(inMap, "type"));
-	}
-	
-	/**
 	 * 查询实体
 	 * 
 	 * @param inMap

@@ -1,6 +1,7 @@
 package com.gitee.myclouds.system.module.home;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -12,12 +13,17 @@ import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.helper.treebuiler.TreeBuilder;
 import com.gitee.myclouds.base.helper.treebuiler.TreeNodeVO;
 import com.gitee.myclouds.base.util.BaseCons;
+import com.gitee.myclouds.base.vo.OptionVO;
 import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
 import com.gitee.myclouds.system.domain.myuser.MyUserMapper;
+import com.gitee.myclouds.system.module.dict.DictService;
+import com.google.common.collect.Maps;
+
+import cn.hutool.core.util.StrUtil;
 
 /**
  * 首页服务
@@ -32,6 +38,8 @@ public class HomeService {
 	private SqlSession sqlSession;
 	@Autowired
 	private MyUserMapper myUserMapper;
+	@Autowired
+	private DictService dictService;
 	
 	/**
 	 * 首页框架初始化数据
@@ -75,6 +83,22 @@ public class HomeService {
 		myUserMapper.updateByKey(updateMyUserEntity);
 		outVO.setMsg("密码修改成功");
 		return outVO;
+	}
+	
+	/**
+	 * 	根据类型查询字典分组
+	 * 
+	 * @param types
+	 * @return
+	 */
+	public Map<String, List<OptionVO>> listDictByType(String types) {
+		String[] typeArr = StrUtil.split(MyUtil.trimAll(types), ",");
+		Map<String, List<OptionVO>> outMap = Maps.newHashMap();
+		for (String type : typeArr) {
+			List<OptionVO> optionVOs = dictService.listByType(type);
+			outMap.put(type, optionVOs);
+		}
+		return outMap;
 	}
 
 }

@@ -2,14 +2,10 @@ package com.gitee.myclouds.system.module.home;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gitee.myclouds.base.vo.OutVO;
@@ -52,23 +48,17 @@ public class HomeController {
 		return homeService.updatePwd(Dtos.newDto(inMap));
 	}
 	
-	@RequestMapping(value = "test")
-	public OutVO test(@RequestParam Map<String,Object> inMap, HttpServletRequest request, HttpSession session){
-		System.out.println(session);
-		System.out.println(session.getId());
-		session.setAttribute("aaa", "AAA");
-		return new OutVO(0);
-	}
-	@RequestMapping(value = "test2")
-	public OutVO test2(@RequestParam Map<String,Object> inMap, HttpServletRequest request, HttpSession session){
-		System.out.println(session);
-		System.out.println(session.getId());
-		System.out.println(session.getAttribute("aaa"));
-		return new OutVO(0);
-	}
-	@RequestMapping(value = "test3")
-	public OutVO test3(@RequestParam Map<String,Object> inMap, HttpServletRequest request, HttpSession session){
-		session.invalidate();
-		return new OutVO(0);
+	/**
+	 * 根据类型查询字典分组
+	 * <p>页面下拉选择框使用
+	 * 
+	 * @param inMap
+	 * @return
+	 */
+	@PostMapping(value = "listDict", produces = "application/json")
+	public OutVO listDict(@RequestBody Map<String,Object> inMap){
+		OutVO outVO = new OutVO(0);
+		outVO.setData(homeService.listDictByType(MapUtil.getStr(inMap, "type")));
+		return outVO;
 	}
 }

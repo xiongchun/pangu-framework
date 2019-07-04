@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gitee.myclouds.base.exception.BizException;
+import com.gitee.myclouds.base.vo.OptionVO;
 import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
@@ -78,17 +79,15 @@ public class DictService {
 	}
 	
 	/**
-	 * 根据类型查询字典分组
+	 * 根据类型查询字典分组:构造下拉项使用
 	 * 
 	 * @param id
 	 * @return
 	 */
 	@Cacheable("mydict:group")
-	public OutVO listByType(String type) {
-		OutVO outVO = new OutVO(0);
-		List<MyDictEntity> dictEntities = sqlSession.selectList("sql.dict.listByType", type);
-		outVO.setData(dictEntities);
-		return outVO;
+	public List<OptionVO> listByType(String type) {
+		List<OptionVO> optionVOs = sqlSession.selectList("sql.dict.listByType", type);
+		return optionVOs;
 	}
 
 	/**

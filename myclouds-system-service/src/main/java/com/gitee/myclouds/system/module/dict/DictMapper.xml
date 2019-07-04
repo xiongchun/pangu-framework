@@ -34,10 +34,10 @@
 		</where>
 	</sql>
 	
-	<!-- 根据类型查询字典分组 -->
-	<select id="listByType" parameterType="String" resultType="MyDictEntity">
+	<!-- 根据类型查询字典分组：构造下拉选项使用 -->
+	<select id="listByType" parameterType="String" resultType="OptionVO">
 		SELECT
-		<include refid="com.gitee.myclouds.system.domain.mydict.MyDictMapper.column" />
+		dict_key AS value, dict_value AS text
 		FROM my_dict WHERE dict_type = #{dict_type} AND is_enable = '1'
 		ORDER BY sort_no
 	</select>
