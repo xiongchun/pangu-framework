@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gitee.myclouds.base.vo.OutVO;
+import com.gitee.myclouds.base.vo.PageVO;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
 import cn.hutool.core.map.MapUtil;
@@ -34,7 +35,9 @@ public class DictController {
 	 */
 	@PostMapping(value = "list", produces = "application/json")
 	public OutVO list(@RequestBody Map<String, Object> inMap){
-		return dictService.list(Dtos.newPageDto(inMap));
+		OutVO outVO = new OutVO(0);
+		PageVO pageVO = dictService.list(Dtos.newPageDto(inMap));
+		return outVO.setData(pageVO.getList()).setCount(pageVO.getCount());
 	}
 	
 	/**
@@ -45,7 +48,8 @@ public class DictController {
 	 */
 	@PostMapping(value = "get", produces = "application/json")
 	public OutVO get(@RequestBody Map<String,Object> inMap){
-		return dictService.get(MapUtil.getInt(inMap, "id"));
+		OutVO outVO = new OutVO(0);
+		return outVO.setData(dictService.get(MapUtil.getInt(inMap, "id")));
 	}
 	
 	/**
@@ -56,7 +60,9 @@ public class DictController {
 	 */
 	@PostMapping(value = "add", produces = "application/json")
 	public OutVO add(@RequestBody Map<String,Object> inMap){
-		return dictService.add(Dtos.newDto(inMap));
+		OutVO outVO = new OutVO(0);
+		dictService.add(Dtos.newDto(inMap));
+		return outVO.setMsg("数据字典新增成功");
 	}
 	
 	/**
@@ -67,7 +73,9 @@ public class DictController {
 	 */
 	@PostMapping(value = "update", produces = "application/json")
 	public OutVO update(@RequestBody Map<String,Object> inMap){
-		return dictService.update(Dtos.newDto(inMap));
+		OutVO outVO = new OutVO(0);
+		dictService.update(Dtos.newDto(inMap));
+		return outVO.setMsg("数据字典修改成功");
 	}
 	
 	/**
@@ -78,7 +86,9 @@ public class DictController {
 	 */
 	@PostMapping(value = "delete", produces = "application/json")
 	public OutVO delete(@RequestBody Map<String,Object> inMap){
-		return dictService.delete(MapUtil.getInt(inMap, "id"));
+		OutVO outVO = new OutVO(0);
+		dictService.delete(MapUtil.getInt(inMap, "id"));
+		return outVO.setMsg("数据字典删除成功");
 	}
 	
 	/**
@@ -89,19 +99,9 @@ public class DictController {
 	 */
 	@PostMapping(value = "batchDelete", produces = "application/json")
 	public OutVO batchDelete(@RequestBody Map<String,Object> inMap){
-		return dictService.batchDelete(Dtos.newDto(inMap));
-	}
-	
-	/**
-	 * 测试
-	 * 
-	 * @param inMap
-	 * @return
-	 */
-	@RequestMapping(value = "test", produces = "application/json")
-	public OutVO test(@RequestBody Map<String,Object> inMap){
-		System.out.println(inMap);
-		return new OutVO(-2).setMsg("这是错误提示信息");
+		OutVO outVO = new OutVO(0);
+		dictService.batchDelete(MapUtil.getStr(inMap, "ids"));
+		return outVO.setMsg("数据字典删除成功");
 	}
 	
 }

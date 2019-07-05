@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.vo.OptionVO;
-import com.gitee.myclouds.base.vo.OutVO;
+import com.gitee.myclouds.base.vo.PageVO;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
@@ -41,12 +41,10 @@ public class DictService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO list(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	public PageVO list(Dto inDto) {
 		List<MyDictEntity> myDictEntities = sqlSession.selectList("sql.dict.pageDict", inDto);
 		Integer count = sqlSession.selectOne("sql.dict.pageDictCount", inDto);
-		outVO.setData(myDictEntities).setCount(count);
-		return outVO;
+		return new PageVO().setList(myDictEntities).setCount(count);
 	}
 
 	/**
@@ -55,13 +53,11 @@ public class DictService {
 	 * @param id
 	 * @return
 	 */
-	public OutVO get(Integer id) {
-		OutVO outVO = new OutVO(0);
+	public MyDictEntity get(Integer id) {
 		MyDictEntity myDictEntity = myDictMapper.selectByKey(id);
-		outVO.setData(myDictEntity);
-		return outVO;
+		return myDictEntity;
 	}
-	
+
 	/**
 	 * 根据条件查询实体
 	 * 
@@ -70,14 +66,12 @@ public class DictService {
 	 * @return
 	 */
 	@Cacheable("mydict:entity")
-	public OutVO getByTypeAndKey(String type, String key) {
-		OutVO outVO = new OutVO(0);
+	public MyDictEntity getByTypeAndKey(String type, String key) {
 		Dto inDto = Dtos.newDto().set("type", type).set(key, key);
-		MyDictEntity myDictEntity = (MyDictEntity)sqlSession.selectList("sql.dict.getByTypeAndKey", inDto);
-		outVO.setData(myDictEntity);
-		return outVO;
+		MyDictEntity myDictEntity = (MyDictEntity) sqlSession.selectList("sql.dict.getByTypeAndKey", inDto);
+		return myDictEntity;
 	}
-	
+
 	/**
 	 * 根据类型查询字典分组:构造下拉项使用
 	 * 
@@ -96,17 +90,14 @@ public class DictService {
 	 * @param inDto
 	 * @return
 	 */
-	@CacheEvict(value = {"mydict:group","mydict:entity"}, allEntries=true, beforeInvocation=true)
-	public OutVO add(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	@CacheEvict(value = { "mydict:group", "mydict:entity" }, allEntries = true, beforeInvocation = true)
+	public void add(Dto inDto) {
 		MyDictEntity myDictEntity = new MyDictEntity();
 		MyUtil.copyProperties(inDto, myDictEntity);
 		if (MyUtil.isNotEmpty(myDictMapper.selectByUkey1(myDictEntity.getDict_type(), myDictEntity.getDict_key()))) {
 			throw new BizException(-10, "当前字典已经存在，请重新输入...");
 		}
 		myDictMapper.insert(myDictEntity);
-		outVO.setMsg("数据字典新增成功");
-		return outVO;
 	}
 
 	/**
@@ -115,9 +106,8 @@ public class DictService {
 	 * @param inDto
 	 * @return
 	 */
-	@CacheEvict(value = {"mydict:group","mydict:entity"}, allEntries=true, beforeInvocation=true)
-	public OutVO update(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	@CacheEvict(value = { "mydict:group", "mydict:entity" }, allEntries = true, beforeInvocation = true)
+	public int update(Dto inDto) {
 		MyDictEntity myDictEntity = new MyDictEntity();
 		MyUtil.copyProperties(inDto, myDictEntity);
 		MyDictEntity oldEntity = myDictMapper.selectByKey(myDictEntity.getId());
@@ -127,9 +117,8 @@ public class DictService {
 				throw new BizException(-11, "当前字典已经存在，请重新输入...");
 			}
 		}
-		myDictMapper.updateByKey(myDictEntity);
-		outVO.setMsg("数据字典修改成功");
-		return outVO;
+		int rows = myDictMapper.updateByKey(myDictEntity);
+		return rows;
 	}
 
 	/**
@@ -138,12 +127,9 @@ public class DictService {
 	 * @param inDto
 	 * @return
 	 */
-	@CacheEvict(value = {"mydict:group","mydict:entity"}, allEntries=true, beforeInvocation=true)
-	public OutVO delete(Integer id) {
-		OutVO outVO = new OutVO(0);
-		myDictMapper.deleteByKey(id);
-		outVO.setMsg("数据字典删除成功");
-		return outVO;
+	@CacheEvict(value = { "mydict:group", "mydict:entity" }, allEntries = true, beforeInvocation = true)
+	public int delete(Integer id) {
+		return myDictMapper.deleteByKey(id);
 	}
 
 	/**
@@ -153,18 +139,16 @@ public class DictService {
 	 * @return
 	 */
 	@Transactional
-	@CacheEvict(value = {"mydict:group","mydict:entity"}, allEntries=true, beforeInvocation=true)
-	public OutVO batchDelete(Dto inDto) {
-		OutVO outVO = new OutVO(0);
-		String[] ids = StrUtil.split(inDto.getString("ids"), ",");
-		if (ids.length == 0) {
+	@CacheEvict(value = { "mydict:group", "mydict:entity" }, allEntries = true, beforeInvocation = true)
+	public int batchDelete(String ids) {
+		String[] idsArr = StrUtil.split(ids, ",");
+		if (idsArr.length == 0) {
 			throw new BizException(-19, "请先选中数据字典后再提交");
 		}
-		for (String id : ids) {
+		for (String id : idsArr) {
 			myDictMapper.deleteByKey(Integer.valueOf(id));
 		}
-		outVO.setMsg("数据字典删除成功");
-		return outVO;
+		return idsArr.length;
 	}
 
 }

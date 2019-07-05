@@ -9,9 +9,9 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
+import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.util.BaseCons;
 import com.gitee.myclouds.base.vo.OrgVO;
-import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.base.vo.UserVO;
 import com.gitee.myclouds.common.util.CommonCons;
 import com.gitee.myclouds.common.util.MyUtil;
@@ -48,17 +48,14 @@ public class AuthService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO login(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	public UserVO login(Dto inDto) {
 		MyUserEntity myUserEntity = userService.getUserEntityByAccount(inDto.getString("account"));
 		if (MyUtil.isEmpty(myUserEntity)) {
-			outVO.setCode(1).setMsg("用户名错误，请重新输入");
-			return outVO;
+			throw new BizException(1, "用户名错误，请重新输入");
 		}
 		if (!StringUtils.equals(MyUtil.password(BaseCons.PWD_KEY, inDto.getString("password")),
 				myUserEntity.getPassword())) {
-			outVO.setCode(2).setMsg("密码错误，请重新输入");
-			return outVO;
+			throw new BizException(2, "密码错误，请重新输入");
 		}
 		// TODO 验证码校验
 
@@ -72,9 +69,7 @@ public class AuthService {
 		OrgVO orgVO = new OrgVO();
 		MyUtil.copyProperties(myOrgEntity, orgVO);
 		userVO.setOrgVO(orgVO);
-		outVO.setData(createToken(userVO));
-		outVO.setMsg("身份认证通过");
-		return outVO;
+		return createToken(userVO);
 	}
 
 	/**
@@ -103,14 +98,10 @@ public class AuthService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO logout(Dto inDto) {
-		OutVO outVO = new OutVO(0);
-		String token = inDto.getString("token");
+	public void logout(String token) {
 		if (MyUtil.isNotEmpty(token)) {
 			String key = CommonCons.RedisKey.Token.getValue() + token;
 			stringRedisTemplate.delete(key);
 		}
-		outVO.setMsg("用户注销成功");
-		return outVO;
 	}
 }

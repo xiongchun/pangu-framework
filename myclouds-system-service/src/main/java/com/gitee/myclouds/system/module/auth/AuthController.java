@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.wrapper.Dtos;
 
+import cn.hutool.core.map.MapUtil;
+
 /**
  * 身份认证 服务发布
  * 
@@ -32,7 +34,9 @@ public class AuthController {
 	 */
 	@PostMapping(value = "login", produces = "application/json")
 	public OutVO login(@RequestBody Map<String,Object> inMap){
-		OutVO outVO = authService.login(Dtos.newDto(inMap));
+		OutVO outVO = new OutVO(0);
+		outVO.setData(authService.login(Dtos.newDto(inMap)));
+		outVO.setMsg("身份认证通过");
 		return outVO;
 	}
 	
@@ -44,7 +48,9 @@ public class AuthController {
 	 */
 	@PostMapping(value = "logout", produces = "application/json")
 	public OutVO logout(@RequestBody Map<String,Object> inMap){
-		OutVO outVO = authService.logout(Dtos.newDto(inMap));
+		OutVO outVO = new OutVO(0);
+		authService.logout(MapUtil.getStr(inMap, "token"));
+		outVO.setMsg("用户注销成功");
 		return outVO;
 	}
 }
