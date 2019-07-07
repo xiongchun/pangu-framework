@@ -11,13 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.util.BaseCons;
-import com.gitee.myclouds.base.vo.OutVO;
+import com.gitee.myclouds.base.vo.PageVO;
 import com.gitee.myclouds.base.vo.UserVO;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
-import com.gitee.myclouds.system.domain.myorg.MyOrgEntity;
-import com.gitee.myclouds.system.domain.myorg.MyOrgMapper;
 import com.gitee.myclouds.system.domain.myuser.MyUserEntity;
 import com.gitee.myclouds.system.domain.myuser.MyUserMapper;
 import com.gitee.myclouds.system.domain.myuserrole.MyUserRoleEntity;
@@ -39,20 +37,7 @@ public class UserService {
 	@Autowired
 	private MyUserRoleMapper myUserRoleMapper;
 	@Autowired
-	private MyOrgMapper myOrgMapper;
-	@Autowired
 	private SqlSession sqlSession;
-	
-	/**
-	 * 根据账号查询用户实体
-	 * 
-	 * @param account
-	 * @return
-	 */
-	public MyUserEntity getUserEntityByAccount(String account) {
-		MyUserEntity myUserEntity = myUserMapper.selectByUkey1(account);
-		return myUserEntity;
-	}
 
 	/**
 	 * 查询列表
@@ -60,15 +45,26 @@ public class UserService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO list(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	public PageVO list(Dto inDto) {
+		PageVO pageVO = new PageVO();
 		if (StrUtil.equals(inDto.getString("org_id"), "1")) {
 			inDto.put("org_id", null);
 		}
 		List<Dto> myUserDtos = sqlSession.selectList("sql.user.pageUser", inDto);
 		Integer count = sqlSession.selectOne("sql.user.pageUserCount", inDto);
-		outVO.setData(myUserDtos).setCount(count);
-		return outVO;
+		pageVO.setList(myUserDtos).setCount(count);
+		return pageVO;
+	}
+
+	/**
+	 * 根据账号查询实体
+	 * 
+	 * @param account
+	 * @return
+	 */
+	public MyUserEntity getByAccount(String account) {
+		MyUserEntity myUserEntity = myUserMapper.selectByUkey1(account);
+		return myUserEntity;
 	}
 
 	/**
@@ -77,17 +73,9 @@ public class UserService {
 	 * @param id
 	 * @return
 	 */
-	public OutVO get(Integer id) {
-		OutVO outVO = new OutVO(0);
+	public MyUserEntity get(Integer id) {
 		MyUserEntity myUserEntity = myUserMapper.selectByKey(id);
-		MyOrgEntity orgEntity = myOrgMapper.selectByKey(myUserEntity.getOrg_id());
-		Dto dto = Dtos.newDto();
-		MyUtil.copyProperties(myUserEntity, dto);
-		if (MyUtil.isNotEmpty(orgEntity)) {
-			dto.put("org_name", orgEntity.getName());
-		}
-		outVO.setData(dto);
-		return outVO;
+		return myUserEntity;
 	}
 
 	/**
@@ -96,8 +84,7 @@ public class UserService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO update(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	public int update(Dto inDto) {
 		MyUserEntity myUserEntity = new MyUserEntity();
 		MyUtil.copyProperties(inDto, myUserEntity);
 		MyUserEntity oldUser = myUserMapper.selectByKey(myUserEntity.getId());
@@ -106,9 +93,8 @@ public class UserService {
 				throw new BizException(-16, StrUtil.format("账号 {} 已经存在，请重新输入...", myUserEntity.getAccount()));
 			}
 		}
-		myUserMapper.updateByKey(myUserEntity);
-		outVO.setMsg("人员修改成功");
-		return outVO;
+		int rows = myUserMapper.updateByKey(myUserEntity);
+		return rows;
 	}
 
 	/**
@@ -117,8 +103,7 @@ public class UserService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO add(Dto inDto, UserVO userVO) {
-		OutVO outVO = new OutVO(0);
+	public void add(Dto inDto, UserVO userVO) {
 		MyUserEntity myUserEntity = new MyUserEntity();
 		MyUtil.copyProperties(inDto, myUserEntity);
 		MyUserEntity existUser = myUserMapper.selectByUkey1(myUserEntity.getAccount());
@@ -129,8 +114,6 @@ public class UserService {
 		myUserEntity.setCreate_by_id(userVO.getId());
 		myUserEntity.setPassword(MyUtil.password(BaseCons.PWD_KEY, myUserEntity.getPassword()));
 		myUserMapper.insert(myUserEntity);
-		outVO.setMsg("用户新增成功");
-		return outVO;
 	}
 
 	/**
@@ -140,13 +123,11 @@ public class UserService {
 	 * @return
 	 */
 	@Transactional
-	@CacheEvict(value = "myhome:init", allEntries=true, beforeInvocation=true)
-	public OutVO delete(Integer userId) {
-		OutVO outVO = new OutVO(0);
-		myUserMapper.deleteByKey(userId);
+	@CacheEvict(value = "myhome:init", allEntries = true, beforeInvocation = true)
+	public int delete(Integer userId) {
+		int rows = myUserMapper.deleteByKey(userId);
 		sqlSession.delete("sql.user.deleteMyUserRole", userId);
-		outVO.setMsg("用户删除成功");
-		return outVO;
+		return rows;
 	}
 
 	/**
@@ -156,9 +137,8 @@ public class UserService {
 	 * @return
 	 */
 	@Transactional
-	@CacheEvict(value = "myhome:init", allEntries=true, beforeInvocation=true)
-	public OutVO batchDelete(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	@CacheEvict(value = "myhome:init", allEntries = true, beforeInvocation = true)
+	public int batchDelete(Dto inDto) {
 		String[] ids = StrUtil.split(inDto.getString("ids"), ",");
 		if (ids.length == 0) {
 			throw new BizException(-17, "请先选中用户后再提交");
@@ -168,9 +148,7 @@ public class UserService {
 			myUserMapper.deleteByKey(userId);
 			sqlSession.delete("sql.user.deleteMyUserRole", userId);
 		}
-		outVO.setMsg("用户删除成功");
-
-		return outVO;
+		return ids.length;
 	}
 
 	/**
@@ -179,8 +157,7 @@ public class UserService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO resetPwd(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	public int resetPwd(Dto inDto) {
 		if (!StrUtil.equals(inDto.getString("password"), inDto.getString("password2"))) {
 			throw new BizException(-20, "新密码和确认密码不一致");
 		}
@@ -191,8 +168,7 @@ public class UserService {
 			myUserEntity.setId(Integer.valueOf(id));
 			myUserMapper.updateByKey(myUserEntity);
 		}
-		outVO.setMsg("重置密码成功");
-		return outVO;
+		return idsArr.length;
 	}
 
 	/**
@@ -201,11 +177,9 @@ public class UserService {
 	 * @param userId
 	 * @return
 	 */
-	public OutVO listToGrantRoles(Integer userId) {
-		OutVO outVO = new OutVO(0);
+	public List<Dto> listToGrantRoles(Integer userId) {
 		List<Dto> toGrantList = sqlSession.selectList("sql.user.listToGrantRoles", userId);
-		outVO.setData(toGrantList);
-		return outVO;
+		return toGrantList;
 	}
 
 	/**
@@ -214,11 +188,9 @@ public class UserService {
 	 * @param userId
 	 * @return
 	 */
-	public OutVO listGrantedRoles(Integer userId) {
-		OutVO outVO = new OutVO(0);
-		List<Dto> toGrantList = sqlSession.selectList("sql.user.listGrantedRoles", userId);
-		outVO.setData(toGrantList);
-		return outVO;
+	public List<Dto> listGrantedRoles(Integer userId) {
+		List<Dto> grantedList = sqlSession.selectList("sql.user.listGrantedRoles", userId);
+		return grantedList;
 	}
 
 	/**
@@ -228,9 +200,8 @@ public class UserService {
 	 * @return
 	 */
 	@Transactional
-	@CacheEvict(value = "myhome:init", allEntries=true, beforeInvocation=true)
-	public OutVO grant(Dto inDto, UserVO userVO) {
-		OutVO outVO = new OutVO(0);
+	@CacheEvict(value = "myhome:init", allEntries = true, beforeInvocation = true)
+	public void grant(Dto inDto, UserVO userVO) {
 		Integer userId = inDto.getInteger("userId");
 		String roleIds = inDto.getString("roleIds");
 		String[] arrRoleIds = StringUtils.split(roleIds, ",");
@@ -245,10 +216,8 @@ public class UserService {
 			myUserRoleEntity.setCreate_by_id(userVO.getId());
 			myUserRoleMapper.insert(myUserRoleEntity);
 		}
-		outVO.setMsg("用户授权成功");
-		return outVO;
 	}
-	
+
 	/**
 	 * 撤销
 	 * 
@@ -256,9 +225,8 @@ public class UserService {
 	 * @return
 	 */
 	@Transactional
-	@CacheEvict(value = "myhome:init", allEntries=true, beforeInvocation=true)
-	public OutVO cancel(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	@CacheEvict(value = "myhome:init", allEntries = true, beforeInvocation = true)
+	public void cancel(Dto inDto) {
 		Integer userId = inDto.getInteger("userId");
 		String roleIds = inDto.getString("roleIds");
 		String[] arrRoleIds = StringUtils.split(roleIds, ",");
@@ -270,8 +238,6 @@ public class UserService {
 			pDto.put("role_id", roleId);
 			sqlSession.delete("sql.user.deleteMyUserRole", pDto);
 		}
-		outVO.setMsg("用户撤销授权成功");
-		return outVO;
 	}
 
 }

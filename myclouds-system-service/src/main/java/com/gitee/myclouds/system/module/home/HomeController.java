@@ -34,7 +34,10 @@ public class HomeController {
 	 */
 	@PostMapping(value = "init", produces = "application/json")
 	public OutVO init(@RequestBody Map<String,Object> inMap){
-		return homeService.init(MapUtil.getInt(inMap, "userId"));
+		OutVO outVO = new OutVO(0);
+		outVO.setData(homeService.init(MapUtil.getInt(inMap, "userId")));
+		return outVO;
+		
 	}
 	
 	/**
@@ -45,7 +48,10 @@ public class HomeController {
 	 */
 	@PostMapping(value = "updatePwd", produces = "application/json")
 	public OutVO updatePwd(@RequestBody Map<String,Object> inMap){
-		return homeService.updatePwd(Dtos.newDto(inMap));
+		OutVO outVO = new OutVO(0);
+		homeService.updatePwd(Dtos.newDto(inMap));
+		outVO.setMsg("密码修改成功");
+		return outVO; 
 	}
 	
 	/**

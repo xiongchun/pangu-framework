@@ -49,7 +49,7 @@ public class AuthService {
 	 * @return
 	 */
 	public UserVO login(Dto inDto) {
-		MyUserEntity myUserEntity = userService.getUserEntityByAccount(inDto.getString("account"));
+		MyUserEntity myUserEntity = userService.getByAccount(inDto.getString("account"));
 		if (MyUtil.isEmpty(myUserEntity)) {
 			throw new BizException(1, "用户名错误，请重新输入");
 		}
@@ -65,7 +65,7 @@ public class AuthService {
 		// 返回当前用户相关信息
 		UserVO userVO = new UserVO();
 		MyUtil.copyProperties(myUserEntity, userVO);
-		MyOrgEntity myOrgEntity = orgService.getOrgEntityByKey(myUserEntity.getOrg_id());
+		MyOrgEntity myOrgEntity = orgService.get(myUserEntity.getOrg_id());
 		OrgVO orgVO = new OrgVO();
 		MyUtil.copyProperties(myOrgEntity, orgVO);
 		userVO.setOrgVO(orgVO);

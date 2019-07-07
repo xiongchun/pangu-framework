@@ -14,7 +14,6 @@ import com.gitee.myclouds.base.helper.treebuiler.TreeBuilder;
 import com.gitee.myclouds.base.helper.treebuiler.TreeNodeVO;
 import com.gitee.myclouds.base.util.BaseCons;
 import com.gitee.myclouds.base.vo.OptionVO;
-import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
 import com.gitee.myclouds.common.wrapper.Dtos;
@@ -48,15 +47,13 @@ public class HomeService {
 	 * @return
 	 */
 	@Cacheable("myhome:init")
-	public OutVO init(Integer userId) {
-		OutVO outVO = new OutVO(0);
-		Dto dataDto = Dtos.newDto();
+	public Dto init(Integer userId) {
+		Dto outDto = Dtos.newDto();
 		List<TreeNodeVO> leftNavMenus = sqlSession.selectList("sql.home.listMenus", userId);
 		leftNavMenus = new TreeBuilder(leftNavMenus).buildTree();
-		dataDto.put("leftNavMenus", leftNavMenus);
-		//dataDto.put(); maybe other data else
-		outVO.setData(dataDto);
-		return outVO;
+		outDto.put("leftNavMenus", leftNavMenus);
+		//outDto.put(); maybe other data else
+		return outDto;
 	}
 
 	/**
@@ -65,8 +62,7 @@ public class HomeService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO updatePwd(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	public int updatePwd(Dto inDto) {
 		String newPassword = inDto.getString("new_password");
 		if (!StringUtils.equals(newPassword, inDto.getString("confirm_password"))) {
 			throw new BizException(-22, "新密码和确认密码不一致，请重新输入");
@@ -80,9 +76,8 @@ public class HomeService {
 		MyUserEntity updateMyUserEntity = new MyUserEntity();
 		updateMyUserEntity.setId(userId);
 		updateMyUserEntity.setPassword(MyUtil.password(BaseCons.PWD_KEY, newPassword));
-		myUserMapper.updateByKey(updateMyUserEntity);
-		outVO.setMsg("密码修改成功");
-		return outVO;
+		int rows = myUserMapper.updateByKey(updateMyUserEntity);
+		return rows;
 	}
 	
 	/**

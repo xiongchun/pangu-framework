@@ -7,15 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gitee.myclouds.base.exception.BizException;
 import com.gitee.myclouds.base.helper.treebuiler.TreeBuilder;
 import com.gitee.myclouds.base.helper.treebuiler.TreeNodeVO;
-import com.gitee.myclouds.base.vo.OutVO;
 import com.gitee.myclouds.base.vo.UserVO;
 import com.gitee.myclouds.common.util.MyUtil;
 import com.gitee.myclouds.common.wrapper.Dto;
-import com.gitee.myclouds.common.wrapper.Dtos;
 import com.gitee.myclouds.system.domain.mymodule.MyModuleEntity;
 import com.gitee.myclouds.system.domain.myorg.MyOrgEntity;
 import com.gitee.myclouds.system.domain.myorg.MyOrgMapper;
@@ -35,48 +34,25 @@ public class OrgService {
 	private MyOrgMapper myOrgMapper;
 	
 	/**
-	 * 根据主键查询实体
-	 * @param orgId
-	 * @return
-	 */
-	@Cacheable("myorg:entity")
-	public MyOrgEntity getOrgEntityByKey(Integer orgId) {
-		MyOrgEntity myOrgEntity = myOrgMapper.selectByKey(orgId);
-		return myOrgEntity;
-	}
-
-	/**
 	 * 查询列表
 	 * 
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO list(Dto inDto) {
-		OutVO outVO = new OutVO(0);
+	public List<MyModuleEntity> list(Dto inDto) {
 		List<MyModuleEntity> myModuleEntitys = sqlSession.selectList("sql.org.listOrg", inDto);
-		outVO.setData(myModuleEntitys).setCount(myModuleEntitys.size());
-		return outVO;
+		return myModuleEntitys;
 	}
-
+	
 	/**
 	 * 查询实体
-	 * 
-	 * @param id
+	 * @param orgId
 	 * @return
 	 */
-	public OutVO get(Integer id) {
-		OutVO outVO  = new OutVO(0);
-		MyOrgEntity myOrgEntity = myOrgMapper.selectByKey(id);
-		MyOrgEntity parentEntity = myOrgMapper.selectByKey(myOrgEntity.getParent_id());
-		Dto dto = Dtos.newDto();
-		MyUtil.copyProperties(myOrgEntity, dto);
-		if (MyUtil.isNotEmpty(parentEntity)) {
-			dto.put("parent_name", parentEntity.getName());
-		}else {
-			dto.put("parent_name", "无");
-		}
-		outVO.setData(dto);
-		return outVO;
+	@Cacheable("myorg:entity")
+	public MyOrgEntity get(Integer orgId) {
+		MyOrgEntity myOrgEntity = myOrgMapper.selectByKey(orgId);
+		return myOrgEntity;
 	}
 
 	/**
@@ -85,15 +61,12 @@ public class OrgService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO add(Dto inDto, UserVO userVO) {
-		OutVO outVO = new OutVO(0);
+	public void add(Dto inDto, UserVO userVO) {
 		MyOrgEntity myOrgEntity = new MyOrgEntity();
 		MyUtil.copyProperties(inDto, myOrgEntity);
 		myOrgEntity.setCreate_by(userVO.getName());
 		myOrgEntity.setCreate_by_id(userVO.getId());
 		myOrgMapper.insert(myOrgEntity);
-		outVO.setMsg("组织新增成功");
-		return outVO;
 	}
 
 	/**
@@ -103,13 +76,11 @@ public class OrgService {
 	 * @return
 	 */
 	@CacheEvict(value = "myorg:entity", allEntries=true, beforeInvocation=true)
-	public OutVO update(Dto inDto) {
-		OutVO outVO  = new OutVO(0);
+	public int update(Dto inDto) {
 		MyOrgEntity myOrgEntity = new MyOrgEntity();
 		MyUtil.copyProperties(inDto, myOrgEntity);
-		myOrgMapper.updateByKey(myOrgEntity);
-		outVO.setMsg("组织修改成功");
-		return outVO;
+		int rows = myOrgMapper.updateByKey(myOrgEntity);
+		return rows;
 	}
 
 	/**
@@ -118,9 +89,9 @@ public class OrgService {
 	 * @param inDto
 	 * @return
 	 */
+	@Transactional
 	@CacheEvict(value = "myorg:entity", allEntries=true, beforeInvocation=true)
-	public OutVO delete(Integer orgId) {
-		OutVO outVO = new OutVO(0);
+	public int delete(Integer orgId) {
 		if (orgId == 1) {
 			throw new BizException(-13, "操作取消，根组织不能删除");
 		}
@@ -128,10 +99,9 @@ public class OrgService {
 		if (total > 0) {
 			throw new BizException(-14, "操作取消，请先删除子部门");
 		}
-		myOrgMapper.deleteByKey(orgId);
+		int rows = myOrgMapper.deleteByKey(orgId);
 		sqlSession.delete("sql.org.deleteMyUser", orgId);
-		outVO.setMsg("组织删除成功");
-		return outVO;
+		return rows;
 	}
 	
 	/**
@@ -140,11 +110,10 @@ public class OrgService {
 	 * @param inDto
 	 * @return
 	 */
-	public OutVO listOrgTree(Dto inDto) {
-		OutVO outVO  = new OutVO(0);
+	public List<TreeNodeVO> listOrgTree(Dto inDto) {
 		List<TreeNodeVO> treeNodeVOs = sqlSession.selectList("sql.org.listOrgTree", inDto);
-		outVO.setData(new TreeBuilder(treeNodeVOs).buildTree());
-		return outVO;
+		treeNodeVOs = new TreeBuilder(treeNodeVOs).buildTree();
+		return treeNodeVOs;
 	}
 
 }
