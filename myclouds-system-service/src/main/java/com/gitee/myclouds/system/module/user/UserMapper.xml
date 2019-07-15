@@ -62,6 +62,11 @@
 			)
 	</select>
 	
+	<!-- 根据用户查询已授权角色ID列表（供登录缓存Token对象使用） -->
+	<select id="listGrantedRoleIds" parameterType="Integer" resultType="Integer">
+		SELECT role_id FROM my_user_role WHERE user_id = #{user_id}    
+	</select>
+	
 	
 
 </mapper>

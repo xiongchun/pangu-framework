@@ -1,6 +1,7 @@
 package com.gitee.myclouds.base.vo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import lombok.Data;
 import lombok.ToString;
@@ -66,5 +67,10 @@ public class UserVO implements Serializable {
 	 * 组织值对象
 	 */
 	private OrgVO orgVO;
+	
+	/**
+	 * 用户授权角色ID集合
+	 */
+	private List<Integer> roleIds;
 	
 }

@@ -1,5 +1,6 @@
 package com.gitee.myclouds.system.module.auth;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.StringUtils;
@@ -23,6 +24,7 @@ import com.gitee.myclouds.system.module.user.UserService;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.StrUtil;
 
 /**
  * 身份认证
@@ -69,6 +71,8 @@ public class AuthService {
 		OrgVO orgVO = new OrgVO();
 		MyUtil.copyProperties(myOrgEntity, orgVO);
 		userVO.setOrgVO(orgVO);
+		List<Integer> roleIds = userService.listGrantedRoleIds(myUserEntity.getId());
+		userVO.setRoleIds(roleIds);
 		return createToken(userVO);
 	}
 
@@ -88,6 +92,7 @@ public class AuthService {
 		stringRedisTemplate.opsForHash().put(key, "id", token);
 		stringRedisTemplate.opsForHash().put(key, "createTime", DateUtil.now());
 		stringRedisTemplate.opsForHash().put(key, "userVO", JSON.toJSONString(userVO));
+		stringRedisTemplate.opsForHash().put(key, "roleIds", StrUtil.join(",", userVO.getRoleIds())); //单独拿出来，便于在网关层进行操作权限授权。
 		stringRedisTemplate.expire(key, 60*8, TimeUnit.MINUTES);
 		return userVO;
 	}

@@ -1,4 +1,4 @@
-package com.gitee.myclouds.gateway.filter;
+package com.gitee.myclouds.gateway.auth;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
@@ -24,23 +24,23 @@ import com.google.common.collect.Maps;
 import reactor.core.publisher.Flux;
 
 /**
- * 网关权限过滤器
+ * 网关权限过滤器：身份认证鉴权
  * 
  * @author xiongchun
  *
  */
 @Component
-public class TokenAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<HystrixGatewayFilterFactory.Config> {
+public class GrantAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<HystrixGatewayFilterFactory.Config> {
 
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
 
-	public TokenAuthGatewayFilterFactory() {
+	public GrantAuthGatewayFilterFactory() {
 		super(Config.class);
 	}
 
 	// 忽略列表
-	private String[] ignorePaths = { "/admin/system/auth/login" };
+	private String[] ignorePaths = {};
 
 	@Override
 	public GatewayFilter apply(Config config) {

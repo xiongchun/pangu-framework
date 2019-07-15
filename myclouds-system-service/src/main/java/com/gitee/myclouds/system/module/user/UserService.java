@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -192,6 +193,18 @@ public class UserService {
 		List<Dto> grantedList = sqlSession.selectList("sql.user.listGrantedRoles", userId);
 		return grantedList;
 	}
+	
+	/**
+	 * 根据用户查询已授权角色ID列表（供登录缓存Token对象使用）
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	@Cacheable("myuser:roleids")
+	public List<Integer> listGrantedRoleIds(Integer userId) {
+		List<Integer> grantedList = sqlSession.selectList("sql.user.listGrantedRoleIds", userId);
+		return grantedList;
+	}
 
 	/**
 	 * 授权
@@ -200,7 +213,7 @@ public class UserService {
 	 * @return
 	 */
 	@Transactional
-	@CacheEvict(value = "myhome:init", allEntries = true, beforeInvocation = true)
+	@CacheEvict(value = {"myhome:init", "myuser:roleids"}, allEntries = true, beforeInvocation = true)
 	public void grant(Dto inDto, UserVO userVO) {
 		Integer userId = inDto.getInteger("userId");
 		String roleIds = inDto.getString("roleIds");
