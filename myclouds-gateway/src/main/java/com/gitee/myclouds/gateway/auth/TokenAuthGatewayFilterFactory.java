@@ -24,7 +24,7 @@ import com.google.common.collect.Maps;
 import reactor.core.publisher.Flux;
 
 /**
- * 网关权限过滤器：操作权限鉴权
+ * 网关权限过滤器：身份认证鉴权
  * 
  * @author xiongchun
  *

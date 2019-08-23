@@ -20,9 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 public class MySystemApplication {
 	
 	public static void main(String[] args) throws Exception {
-		log.info("Starting MySystemApplication...");
+		log.info("正在启动 MySystemApplication...");
 		SpringApplication.run(MySystemApplication.class, args);
-		log.info("MySystemApplication started successed - - - -");
+		log.info("MySystemApplication 启动成功");
 	}
 
 }
