@@ -3,4 +3,4 @@
 
 ### 友情提醒
 MyClouds已于2019年5月停止维护。但你可以了解一下它的升级版
-[PanGu微服务开发&治理框架](https://gitee.com/osworks/pangu)
+[盘古微服务开发&治理框架](https://gitee.com/osworks/pangu)
