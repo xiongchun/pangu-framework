@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MyClouds：用户与授权：新增</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+	</head>
+	<body>
+
+		<form class="layui-form" style="padding: 20px 30px 0 0;" lay-filter="user-form">
+			<input type="hidden" name="org_id" />
+			<div class="layui-form-item">
+				<label class="layui-form-label">所属组织</label>
+				<div class="layui-input-block">
+					<input type="text" name="org_name" lay-verify="required" disabled class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">登录帐号</label>
+				<div class="layui-input-block">
+					<input type="text" name="account" lay-verify="required" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">初始密码</label>
+				<div class="layui-input-block">
+					<input type="password" name="password" lay-verify="required" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">用户姓名</label>
+				<div class="layui-input-block">
+					<input type="text" name="name" lay-verify="required" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">状态</label>
+				<div class="layui-input-block">
+					<select name="status" lay-verify="required">
+						<option value="1">激活</option>
+						<option value="2">停用</option>
+						<option value="3">注销</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">业务扩展码</label>
+				<div class="layui-input-block">
+					<input type="text" name="biz_code" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">扩展属性</label>
+				<div class="layui-input-block">
+					<textarea name="ext" placeholder="JSON字符串" autocomplete="off" class="layui-textarea"></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item layui-hide">
+				<input type="button" lay-submit lay-filter="btn-add-submit" id="btn-add-submit" value="新增提交">
+			</div>
+		</form>
+	</body>
+	<script src="../../layuiadmin/layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.config({
+			base: '../../layuiadmin/'
+		}).extend({
+			index: 'lib/index'
+		}).use(['index', 'form', 'myutil'], function() {
+			var $ = layui.$,
+				myutil = layui.myutil,
+				form = layui.form;
+			myutil.init();
+			// 新增
+			form.on('submit(btn-add-submit)', function(data) {
+				var win = parent.layer.getFrameIndex(window.name);
+				myutil.ajax({
+					url: layui.setter.my.surl + 'admin/system/user/add',
+					data: data.field,
+					ok: function(res) {
+						layer.confirm(res.msg + '，继续新增下一个吗？', {
+							icon: 1,
+							yes: function(index) {
+								layer.close(index);
+								$("form [name='name']").val('');
+								$("form [name='password']").val('');
+								$("form [name='biz_code']").val('');
+								$("form [name='ext']").val('');
+								$("form [name='account']").val('');
+								$("form [name='account']").focus();
+							},
+							btn2: function() {
+								parent.layer.close(win);
+							}
+						});
+						parent.layui.table.reload('t-user');
+					}
+				});
+			});
+
+		});
+	</script>
+
+</html>

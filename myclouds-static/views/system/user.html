@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MyClouds：用户与授权</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+		<link rel="stylesheet" href="../../layuiadmin/lib/extend/eletree/eleTree.css" media="all">
+	</head>
+	<body>
+
+		<div class="layui-fluid">
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-md2">
+					<div class="layui-card">
+						<div class="layui-card-header">组织机构导航</div>
+						<div class="layui-card-body">
+							<div id="org-tree" class="eleTree" lay-filter="org-tree"></div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md10">
+					<div class="layui-card">
+						<form id="q-form" class="layui-form layui-card-header layuiadmin-card-header-auto">
+							<input type="hidden" name="org_id" />
+							<div class="layui-form-item">
+								<div class="layui-inline">
+									<label class="layui-form-label">姓名 / 账号</label>
+									<div class="layui-input-inline">
+										<input type="text" name="name_account" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-inline">
+									<label class="layui-form-label">用户状态</label>
+									<div class="layui-input-inline">
+										<select name="status">
+											<option value="">请选择</option>
+											<option value="1">激活</option>
+											<option value="2">停用</option>
+											<option value="3">注销</option>
+										</select>
+									</div>
+								</div>
+								<div class="layui-inline">
+									<div class="layui-input-inline">
+										<button class="layui-btn layui-btn-primary layui-btn-sm" lay-submit lay-filter="lf-btn-query" type="button">
+											<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i> 查询
+										</button>
+										<button class="layui-btn layui-btn-primary layui-btn-sm" type="reset">
+											<i class="layui-icon layui-icon-refresh layuiadmin-button-btn"></i> 重置
+										</button>
+									</div>
+								</div>
+
+							</div>
+						</form>
+						<div class="layui-card-body">
+							<div style="padding-bottom: 10px;">
+
+								<button id="btn-add" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon layui-icon-add-1 "></i>
+									新增</button>
+								<button id="btn-batch-del" class="layui-btn layui-btn-primary layui-btn-sm layui-btn-disabled"><i class="layui-icon layui-icon-delete"></i>
+									删除</button>
+								<button id="btn-reset" class="layui-btn layui-btn-primary layui-btn-sm layui-btn-disabled"><i class="layui-icon layui-icon-password"></i>
+									重置密码</button>
+							</div>
+							<table id="t-user" lay-filter="t-user"></table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../layuiadmin/layui/layui.js"></script>
+	<script>
+		var base = '../../layuiadmin/';
+		layui.config({
+			base: base
+		}).extend({
+			index: 'lib/index',
+			eleTree: base + 'lib/extend/eletree/eleTree'
+		}).use(['index', 'table', 'form', 'eleTree', 'myutil'], function() {
+			var $ = layui.$,
+				form = layui.form,
+				myutil = layui.myutil,
+				eleTree = layui.eleTree,
+				table = layui.table;
+			myutil.init();
+			table.render({
+				id: 't-user',
+				elem: '#t-user',
+				url: layui.setter.my.surl + 'admin/system/user/list',
+				contentType: 'application/json',
+				method: 'post',
+				cols: [
+						[{
+						type: 'checkbox'
+						}, {
+						field: 'id',
+						width: 80,
+						title: '用户ID'
+						}, {
+						field: 'account',
+						title: '帐号',
+						minWidth: 100
+						}, {
+						field: 'name',
+						title: '姓名',
+						minWidth: 100
+						}, {
+						field: 'org_name',
+						title: '所属组织',
+						minWidth: 200
+						}, {
+						field: 'status',
+						title: '状态',
+						align: 'center',
+						templet: function(row) {
+							var html = row.status;
+							if (row.status == 1) {
+								html = '<span class="layui-badge layui-bg-green">激活</span>';
+							} else if (row.status == 2) {
+								html = '<span class="layui-badge layui-bg-orange">停用</span>';
+							} else if (row.status == 3) {
+								html = '<span class="layui-badge layui-bg-danger">注销</span>';
+							}
+							return html;
+						},
+						width: 80
+						}, {
+						field: 'create_by',
+						title: '创建人',
+						width: 100
+						}, {
+						field: 'create_time',
+						title: '创建时间',
+						width: 160
+						}, {
+						title: '操作',
+						align: 'center',
+						fixed: 'right',
+						templet: function(row) {
+							var grantBtn = '<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="grant">授权</a>';
+							var editBtn = '<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">编辑</a>';
+							var delBtn = '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>';
+							return grantBtn + editBtn + delBtn;
+						},
+						width: 165
+						}]
+					],
+				page: true,
+				limit: 15,
+				height: 'full-170',
+				limits: [10, 15, 20, 50, 100, 200],
+				loading: true,
+				text: {
+					none: '没有符合条件的数据'
+				}
+			});
+
+			//监听表格操作集
+			table.on('tool(t-user)', function(obj) {
+				var row = obj.data;
+				if (obj.event === 'del') {
+					layer.confirm('确定删除当前用户吗？', {
+						icon: 3
+					}, function(index) {
+						myutil.ajax({
+							url: layui.setter.my.surl + 'admin/system/user/delete',
+							data: {
+								id: row.id
+							},
+							ok: function(res) {
+								layer.alert(res.msg, {
+									icon: 1
+								});
+								fnListTable(myutil.json('#q-form'));
+							}
+						});
+					});
+				} else if (obj.event === 'edit') {
+					layer.open({
+						type: 2,
+						anim: 0,
+						isOutAnim: false,
+						title: '编辑用户',
+						content: 'user-form-edit.html?id=' + row.id,
+						area: ['550px', '500px'],
+						btn: ['确定', '取消'],
+						yes: function(index, layero) {
+							var submit = layero.find('iframe').contents().find("#btn-edit-submit");
+							submit.click();
+						}
+					});
+				} else if (obj.event === 'grant') {
+					layer.open({
+						type: 2,
+						anim: 0,
+						isOutAnim: false,
+						title: '用户授权 <span class="layui-badge-rim">' + row.name + '</span>',
+						content: 'user-form-grant.html?id=' + row.id,
+						area: ['900px', $(document).height() + 'px'],
+						btn: ['关闭']
+					});
+				}
+			});
+
+			//监听表格复选框
+			table.on('checkbox(t-user)', function(obj) {
+				var checkStatus = table.checkStatus('t-user');
+				if (checkStatus.data.length == 0) {
+					$('#btn-batch-del').addClass('layui-btn-disabled').attr('disabled', "disabled");
+					$('#btn-reset').addClass('layui-btn-disabled').attr('disabled', "disabled");
+				} else {
+					$('#btn-batch-del').removeClass('layui-btn-disabled').removeAttr('disabled');
+					$('#btn-reset').removeClass('layui-btn-disabled').removeAttr('disabled');
+				}
+			});
+
+			function fnListTable(where) {
+				table.reload('t-user', {
+					where: where
+				});
+				$('#btn-batch-del').addClass('layui-btn-disabled').attr('disabled', "disabled");
+				$('#btn-reset').addClass('layui-btn-disabled').attr('disabled', "disabled");
+			}
+
+			//查询按钮
+			form.on('submit(lf-btn-query)', function(data) {
+				console.log(myutil.json('#q-form'));
+				console.log(data.field);
+				fnListTable(data.field);
+			});
+
+			var orgTree = eleTree.render({
+				elem: '#org-tree',
+				contentType: 'application/json',
+				method: 'post',
+				url: layui.setter.my.surl + "admin/system/user/listTree",
+				defaultExpandAll: true,
+				//highlightCurrent:true, //和expandOnClickNode=false冲突,无效.
+				expandOnClickNode: false,
+				done: function() {
+					// el2.remove(24);
+				}
+			});
+			var currTreeNodeData = {};
+			//响应组织节点单击事件
+			eleTree.on("nodeClick(org-tree)", function(node) {
+				currTreeNodeData = node.data.currentData;
+				$('form [name="org_id"]').val(currTreeNodeData.id);
+				console.log(myutil.json('#q-form'));
+				fnListTable(myutil.json('#q-form'));
+				$('.eleTree-node-content-active').removeClass('eleTree-node-content-active');
+				//获取当前元素的第一个div子元素
+				$(node.node).find("div").eq(0).addClass('eleTree-node-content-active');
+			});
+
+			//新增窗口
+			$('#btn-add').on('click', function() {
+				if (!currTreeNodeData.id) {
+					currTreeNodeData.label = $("#org-tree div:first div:first span:last").text();
+					currTreeNodeData.id = $("#org-tree div:first").attr('data-id');
+				}
+				layer.open({
+					type: 2,
+					anim: 0,
+					isOutAnim: false,
+					title: '新增用户',
+					content: 'user-form-add.html',
+					area: ['550px', '560px'],
+					btn: ['确定', '取消'],
+					yes: function(index, layero) {
+						var submit = layero.find('iframe').contents().find("#btn-add-submit");
+						submit.click();
+					},
+					success: function(layero, index) {
+						var body = layer.getChildFrame('body', index);
+						body.find('form [name="org_id"]').val(currTreeNodeData.id);
+						body.find('form [name="org_name"]').val(currTreeNodeData.label);
+					}
+				});
+			});
+
+			//重置窗口
+			$('#btn-reset').on('click', function() {
+				var checkStatus = table.checkStatus('t-user');
+				var total = checkStatus.data.length;
+				if (total == 0) {
+					layer.msg('请先选择用户', {
+						icon: 5
+					});
+					return;
+				}
+				layer.open({
+					type: 2,
+					anim: 0,
+					isOutAnim: false,
+					title: '重置用户密码',
+					content: 'user-form-reset.html',
+					area: ['500px', '230px'],
+					btn: ['确定', '取消'],
+					yes: function(index, layero) {
+						var submit = layero.find('iframe').contents().find("#btn-reset-submit");
+						submit.click();
+					},
+					success: function(layero, index) {
+						var body = layer.getChildFrame('body', index);
+						body.find('form [name="ids"]').val(myutil.contactBy(checkStatus.data, 'id', ','));
+					}
+				});
+			});
+
+			//批量删除
+			$('#btn-batch-del').on('click', function() {
+				var checkStatus = table.checkStatus('t-user');
+				var total = checkStatus.data.length;
+				layer.confirm('确定删除选中的 ' + total + ' 条用户记录吗？', {
+					icon: 3
+				}, function(index) {
+					myutil.ajax({
+						url: layui.setter.my.surl + 'admin/system/user/batchDelete',
+						data: {
+							ids: myutil.contactBy(checkStatus.data, 'id', ',')
+						},
+						ok: function(res) {
+							layer.alert(res.msg, {
+								icon: 1
+							});
+							fnListTable(myutil.json('#q-form'));
+						}
+					});
+				});
+			});
+
+		});
+	</script>
+
+</html>

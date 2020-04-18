@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MyClouds：角色授权表单</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../layuiadmin/lib/extend/eletree/eleTree.css" media="all">
+	</head>
+	<body>
+
+		<form class="layui-form" style="padding: 10px 20px 0 20px;" lay-filter="role-form">
+			<div id="id-tree" class="eleTree"></div>
+			<div class="layui-form-item layui-hide">
+				<input type="button" lay-submit lay-filter="btn-grant-submit" id="btn-grant-submit" value="授权提交">
+			</div>
+		</form>
+	</body>
+	<script src="../../layuiadmin/layui/layui.js"></script>
+	<script>
+		var base = '../../layuiadmin/';
+		layui.config({
+			base: base
+		}).extend({
+			index: 'lib/index',
+			eleTree: base + 'lib/extend/eletree/eleTree'
+		}).use(['index', 'form', 'eleTree', 'myutil'], function() {
+			var $ = layui.$,
+				myutil = layui.myutil,
+				eleTree = layui.eleTree,
+				form = layui.form;
+			myutil.init();
+			var roleId = myutil.pathVar('id');
+
+			//授权树
+			var tree = eleTree.render({
+				elem: '#id-tree',
+				contentType: 'application/json',
+				method: 'post',
+				url: layui.setter.my.surl + "admin/system/role/listTree",
+				where: {
+					id: roleId
+				},
+				showCheckbox: true,
+				defaultExpandAll: true
+			});
+
+
+			// 授权
+			form.on('submit(btn-grant-submit)', function(data) {
+				var win = parent.layer.getFrameIndex(window.name);
+				var param = {
+					roleId: roleId,
+					moduleIds: myutil.contactBy(tree.getChecked(false, true), 'id', ',')
+				}
+				myutil.ajax({
+					url: layui.setter.my.surl + 'admin/system/role/grant',
+					data: param,
+					ok: function(res) {
+						layer.alert(res.msg, {
+							icon: 1
+						}, function() {
+							parent.layer.close(win);
+						});
+					}
+				});
+			});
+
+		});
+	</script>
+
+</html>

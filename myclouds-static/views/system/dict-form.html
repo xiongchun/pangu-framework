@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MyClouds：数据字典表单</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+	</head>
+	<body>
+
+		<form class="layui-form" style="padding: 20px 30px 0 0;" lay-filter="dict-form">
+			<input type="hidden" name="id" />
+			<div class="layui-form-item">
+				<label class="layui-form-label">分组标识</label>
+				<div class="layui-input-block">
+					<input type="text" name="dict_type" lay-verify="required" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">分组名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="dict_name" lay-verify="required" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">字典键</label>
+				<div class="layui-input-block">
+					<input type="text" name="dict_key" lay-verify="required" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">字典值</label>
+				<div class="layui-input-block">
+					<textarea name="dict_value" lay-verify="required" autocomplete="off" class="layui-textarea"></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">数据状态</label>
+				<div class="layui-input-block">
+					<select name="is_enable" lay-verify="required">
+						<option value="1" selected>启用</option>
+						<option value="0">停用</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">排序号</label>
+				<div class="layui-input-block">
+					<input type="number" name="sort_no" lay-verify="required" value="1" class="layui-input">
+				</div>
+			</div>
+
+			<div class="layui-form-item layui-hide">
+				<input type="button" lay-submit lay-filter="btn-add-submit" id="btn-add-submit" value="新增提交">
+				<input type="button" lay-submit lay-filter="btn-edit-submit" id="btn-edit-submit" value="修改提交">
+			</div>
+		</form>
+	</body>
+	<script src="../../layuiadmin/layui/layui.js"></script>
+	<script>
+		layui.config({
+			base: '../../layuiadmin/'
+		}).extend({
+			index: 'lib/index'
+		}).use(['index', 'form', 'myutil'], function() {
+			var $ = layui.$,
+				myutil = layui.myutil,
+				form = layui.form;
+			myutil.init();
+			var id = myutil.pathVar('id');
+			if (id) {
+				//修改分支:数据查询
+				myutil.ajax({
+					url: layui.setter.my.surl + 'admin/system/dict/get',
+					data: {
+						id: id
+					},
+					ok: function(res) {
+						form.val("dict-form", res.data);
+					}
+				});
+			}
+
+			// 新增
+			form.on('submit(btn-add-submit)', function(data) {
+				var win = parent.layer.getFrameIndex(window.name);
+				myutil.ajax({
+					url: layui.setter.my.surl + 'admin/system/dict/add',
+					data: data.field,
+					ok: function(res) {
+						layer.confirm(res.msg + '，继续新增下一个吗？', {
+							icon: 1,
+							yes: function(index) {
+								layer.close(index);
+								$("form [name='dict_key']").val('');
+								$("form [name='dict_value']").val('');
+								$("form [name='dict_key']").focus();
+							},
+							btn2: function() {
+								parent.layer.close(win);
+							}
+						});
+						parent.layui.table.reload('t-dict');
+					}
+				});
+			});
+
+			// 修改
+			form.on('submit(btn-edit-submit)', function(data) {
+				var win = parent.layer.getFrameIndex(window.name);
+				myutil.ajax({
+					url: layui.setter.my.surl + 'admin/system/dict/update',
+					data: data.field,
+					ok: function(res) {
+						layer.alert(res.msg, {
+							icon: 1
+						}, function() {
+							parent.layer.close(win);
+						});
+						parent.layui.table.reload('t-dict');
+					}
+				});
+			});
+
+		});
+	</script>
+
+</html>

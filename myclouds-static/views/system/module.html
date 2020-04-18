@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MyClouds：资源模块</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+	</head>
+	<body>
+
+		<div class="layui-fluid">
+			<div class="layui-card">
+				<form id="q-form" class="layui-form layui-card-header layuiadmin-card-header-auto">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<label class="layui-form-label">资源名称</label>
+							<div class="layui-input-inline">
+								<input type="text" name="name" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<label class="layui-form-label">资源类型</label>
+							<div class="layui-input-inline">
+								<select name="type">
+									<option value="">请选择</option>
+									<option value="1">菜单</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-inline">
+							<label class="layui-form-label">数据状态</label>
+							<div class="layui-input-inline">
+								<select name="is_enable">
+									<option value="">请选择</option>
+									<option value="1">启用</option>
+									<option value="0">停用</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-input-inline">
+								<button class="layui-btn layui-btn-primary layui-btn-sm" lay-submit lay-filter="lf-btn-query" type="button">
+									<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i> 查询
+								</button>
+								<button class="layui-btn layui-btn-primary layui-btn-sm" type="reset">
+									<i class="layui-icon layui-icon-refresh layuiadmin-button-btn"></i> 重置
+								</button>
+							</div>
+						</div>
+
+					</div>
+				</form>
+				<div class="layui-card-body">
+					<div style="padding-bottom: 10px;">
+
+						<button id="btn-add" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon layui-icon-add-1 "></i>
+							新增</button>
+						<button class="layui-btn layui-btn-primary layui-btn-sm" id="btn-toggle"><i class="layui-icon layui-icon-triangle-r"></i>
+							展开</button>
+
+					</div>
+					<table id="t-module" lay-filter="t-module"></table>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../layuiadmin/layui/layui.js"></script>
+	<script>
+		var base = '../../layuiadmin/';
+		var tableId = 't-module';
+		layui.config({
+			base: base
+		}).extend({
+			index: 'lib/index',
+			treeGrid: base + 'lib/extend/treeGrid'
+		}).use(['index', 'form', 'treeGrid', 'myutil'], function() {
+			var $ = layui.$,
+				form = layui.form,
+				myutil = layui.myutil,
+				treeGrid = layui.treeGrid;
+			myutil.init();
+			treeGrid.render({
+				id: tableId,
+				elem: '#' + tableId,
+				url: layui.setter.my.surl + 'admin/system/module/list',
+				contentType: 'application/json',
+				method: 'post',
+				idField: 'id',
+				treeId: 'id',
+				treeUpId: 'parent_id',
+				treeShowName: 'name',
+				heightRemove: [".dHead", 170],
+				iconOpen: false,
+				isOpenDefault: false,
+				loading: true,
+				text: {
+					none: '没有符合条件的数据'
+				},
+				cols: [[{
+						type: 'numbers'
+						}, {
+						field: 'name',
+						title: '资源名称',
+						minWidth: 200
+						}, {
+						field: 'url',
+						title: '资源URL',
+						templet: function(row) {
+							return row.url ? row.url : '-';
+						},
+						minWidth: 200
+						}, {
+						field: 'sort_no',
+						title: '排序号',
+						width: 100
+						}, {
+						field: 'type',
+						title: '资源类型',
+						templet: function(row) {
+							return row.type == 1 ? '菜单' : row.type;
+						},
+						width: 100
+						}, {
+						field: 'id',
+						width: 100,
+						title: '资源ID'
+						}, {
+						field: 'is_enable',
+						title: '数据状态',
+						align: 'center',
+						templet: function(row) {
+							var html = row.is_enable;
+							if (row.is_enable == 1) {
+								html = '<span class="layui-badge layui-bg-green">启用</span>';
+							} else if (row.is_enable == 0) {
+								html = '<span class="layui-badge layui-bg-orange">停用</span>';
+							}
+							return html;
+						},
+						width: 100
+						}, {
+						field: 'icon',
+						title: '图标',
+						align: 'center',
+						templet: function(row) {
+							if (row.icon) {
+								var html1 = '<i class="layui-icon ';
+								var html2 = '"></i>';
+								return html1 + row.icon + html2;
+							} else return '';
+						},
+						width: 60
+						}, {
+						width: 120,
+						title: '操作',
+						align: 'center',
+						fixed: 'right',
+						templet: function(row) {
+							var editBtn = '<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">编辑</a>';
+							var delBtn = '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>';
+							return editBtn + delBtn;
+						}
+                          }
+                     ]]
+			});
+
+			//请求表格数据
+			function fnListTable(where) {
+				treeGrid.query('t-module', {
+					where: where
+				});
+			}
+
+			//监听表格操作集
+			treeGrid.on('tool(t-module)', function(obj) {
+				var row = obj.data;
+				if (obj.event === 'del') {
+					if (row.children.length > 0) {
+						layer.alert('操作取消，请先删除子节点', {
+							icon: 0
+						});
+						return;
+					}
+					layer.confirm('确定删除当前资源模块吗？', {
+						icon: 3
+					}, function(index) {
+						myutil.ajax({
+							url: layui.setter.my.surl + 'admin/system/module/delete',
+							data: {
+								id: row.id
+							},
+							ok: function(res) {
+								layer.alert(res.msg, {
+									icon: 1
+								});
+								fnListTable(myutil.json('#q-form'));
+							}
+						});
+					});
+				} else if (obj.event === 'edit') {
+					layer.open({
+						type: 2,
+						anim: 0,
+						isOutAnim: false,
+						title: '编辑资源模块',
+						content: 'module-form-edit.html?id=' + row.id,
+						area: ['550px', '560px'],
+						btn: ['确定', '取消'],
+						yes: function(index, layero) {
+							var submit = layero.find('iframe').contents().find("#btn-edit-submit");
+							submit.click();
+						}
+					});
+				}
+			});
+
+			//查询按钮
+			form.on('submit(lf-btn-query)', function(data) {
+				fnListTable(data.field);
+			});
+
+			//新增窗口
+			$('#btn-add').on('click', function() {
+				layer.open({
+					type: 2,
+					anim: 0,
+					isOutAnim: false,
+					title: '新增资源模块',
+					content: 'module-form-add.html',
+					area: ['550px', '560px'],
+					btn: ['确定', '取消'],
+					yes: function(index, layero) {
+						var submit = layero.find('iframe').contents().find("#btn-add-submit");
+						submit.click();
+					}
+				});
+			});
+
+			//展开 | 折叠
+			$('#btn-toggle').on('click', function() {
+				var treedata = treeGrid.getDataTreeList(tableId);
+				var isOpened = treedata[0][treeGrid.config.cols.isOpen];
+				initToggleBtn(!isOpened);
+				treeGrid.treeOpenAll(tableId, !isOpened);
+			});
+
+			// 初始化展开/折叠按钮
+			function initToggleBtn(isOpened) {
+				if (isOpened) {
+					$('#btn-toggle').html('<i class="layui-icon layui-icon-triangle-d"></i>折叠');
+				} else {
+					$('#btn-toggle').html('<i class="layui-icon layui-icon-triangle-r"></i>展开');
+				}
+			}
+
+
+		});
+	</script>
+
+</html>

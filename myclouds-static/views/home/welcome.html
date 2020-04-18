@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>工作台</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+		<style type="text/css">
+			html {
+				background-image: url("../../myadmin/img/bg_login.svg");
+				background-position: center 110px;
+				background-repeat: no-repeat;
+				background-size: 100%;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="layui-fluid">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md6">
+					<div class="layui-card" style="height: 200px;">
+						<div class="layui-card-header">MyClouds简介</div>
+						<div class="layui-card-body layui-text layadmin-text">
+							<p><a href="https://gitee.com/osworks/MyClouds" target="_blank">MyClouds</a>是一个基于SpringBoot/Cloud生态和JavaEE技术栈的企业级微服务平台（微服务快速开发框架
+								& 微服务治理工具集）。支持研发团队快速交付高质量、可扩展的企业分布式微服务应用。
+							</p>
+							<p>
+								<div class="layui-btn-container">
+									<a href="https://gitee.com/osworks/MyClouds/tree/master/myclouds-docs" target="_blank" class="layui-btn layui-btn-primary">开发文档</a>
+									<a href="https://gitee.com/osworks/MyClouds" target="_blank" class="layui-btn layui-btn-primary">项目主页</a>
+								</div>
+							</p>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="layui-col-md6">
+					<div class="layui-card" style="height: 200px;">
+						<div class="layui-card-header">特别声明</div>
+						<div class="layui-card-body layui-text  layadmin-text">
+							<p>MyClouds采用前后端完全分离的开发模式。同一套后台接口可以适配多套前端UI，我们缺省适配了<a href="https://www.layui.com/admin" target="_blank">layui
+									admin</a>和<a href="https://pro.ant.design/index-cn" target="_blank">ant design pro</a>（开发中）。你可以根据实际情况，酌情选择。
+							</p>
+							<p><a href="https://www.layui.com" target="_blank">layui</a> 是基于MIT开源协议的UI库，而layui
+								admin则是其官方基于layui开发的一套用于实现中后台管理的<b>商业授权</b>的前端模版系统。因此，如果你选择基于layui admin开发，请您到其<a href="https://www.layui.com/admin"
+								 target="_blank">官网获取商业授权</a>。我们不会以任何形式提供layui admin的任何资源文件，也不接受任何关于其授权问题的咨询。
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-col-md6">
+					<script src='https://gitee.com/osworks/MyClouds/widget_preview' async defer></script>
+					<div id='osc-gitee-widget-tag'></div>
+					<style>
+						.pro_name a {
+							color: #01AAED;
+						}
+
+						.osc_git_title {
+							background-color: #fff;
+						}
+
+						.osc_git_box {
+							background-color: #fff;
+							border-color: #ffffff;
+						}
+
+						.osc_git_info {
+							color: #666;
+						}
+
+						.osc_git_main a {
+							color: #999;
+						}
+					</style>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../layuiadmin/layui/layui.js?t=1"></script>
+	<script>
+		layui.config({
+			base: '../../layuiadmin/' //静态资源所在路径
+		}).extend({
+			index: 'lib/index' //主入口模块
+		}).use(['index', 'myutil'], function() {
+			var $ = layui.$,
+				myutil = layui.myutil;
+			myutil.init();
+
+		});
+	</script>
+
+</html>
