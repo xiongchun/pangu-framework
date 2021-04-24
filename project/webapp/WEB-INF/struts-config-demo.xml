@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<!-- 配置ActionFormBean -->
+	<form-beans>
+		<!-- 公共Form -->
+		<form-bean name="baseActionForm" type="org.g4studio.common.web.BaseActionForm" />
+	</form-beans>
+
+	<!-- Action映射 -->
+	<action-mappings type="org.g4studio.core.mvc.xstruts.action.ActionMapping">
+		<!-- Flashreport报表示例 -->
+		<action name="baseActionForm" path="/flashReportDemo" scope="request"
+			parameter="reqCode"
+			type="org.g4studio.demo.online.web.FlashReportAction">
+			<forward name="2dColumnView" path="/flashReport/2dColumn.jsp" />
+			<forward name="3dColumnView" path="/flashReport/3dColumn.jsp" />
+			<forward name="lineView" path="/flashReport/line.jsp" />
+			<forward name="2dPieView" path="/flashReport/2dPie.jsp" />
+			<forward name="3dPieView" path="/flashReport/3dPie.jsp" />
+			<forward name="areaView" path="/flashReport/area.jsp" />
+			<forward name="circularityView" path="/flashReport/circularity.jsp" />
+			<forward name="2dColumnMsView" path="/flashReport/2dColumnMs.jsp" />
+			<forward name="3dColumnMsView" path="/flashReport/3dColumnMs.jsp" />
+			<forward name="areaMsView" path="/flashReport/areaMs.jsp" />
+			<forward name="lineMsView" path="/flashReport/lineMs.jsp" />
+			<forward name="lineMs2YView" path="/flashReport/lineMs2Y.jsp" />
+			<forward name="3dLineColumnView" path="/flashReport/3dLineColumn.jsp" />
+			<forward name="2dBarView" path="/flashReport/2dBar.jsp" />
+			<forward name="2dBarMsView" path="/flashReport/2dBarMs.jsp" />
+			<forward name="integrateFlashReport1View" path="/flashReport/integrateFlashReport1.jsp" />
+			<forward name="integrateFlashReport2View" path="/flashReport/integrateFlashReport2.jsp" />
+			<forward name="integrateFlashReport3View" path="/flashReport/integrateFlashReport3.jsp" />
+		</action>
+
+		<!-- JasperReport报表示例 -->
+		<action name="baseActionForm" path="/jasperReportDemo" scope="request"
+			parameter="reqCode"
+			type="org.g4studio.demo.online.web.JasperReportAction">
+			<forward name="appletReportView" path="/jasperReport/appletReport.jsp" />
+			<forward name="pdfReportView" path="/jasperReport/pdfReport.jsp" />
+		</action>
+
+		<!-- Excel导出导入示例 -->
+		<action name="baseActionForm" path="/excelReportDemo" scope="request"
+			parameter="reqCode"
+			type="org.g4studio.demo.online.web.ExcelReportAction">
+			<forward name="exportExcelView" path="/excelReport/exportExcel.jsp" />
+			<forward name="importExcelView" path="/excelReport/importExcel.jsp" />
+		</action>
+
+		<!-- 表单及表单元素示例 -->
+		<action name="baseActionForm" path="/formDemo" scope="request"
+			parameter="reqCode" type="org.g4studio.demo.online.web.FormAction">
+			<forward name="basicInput4PropertyView" path="/form/basicInput4Property.jsp" />
+			<forward name="basicInput4MethodView" path="/form/basicInput4Method.jsp" />
+			<forward name="dataTimeInputView" path="/form/dataTimeInput.jsp" />
+			<forward name="selectInputBasedLocalDataSourceView" path="/form/selectInputBasedLocalDataSource.jsp" />
+			<forward name="selectInputBasedCodeTableDataSourceView" path="/form/selectInputBasedCodeTableDataSource.jsp" />
+			<forward name="selectInputBasedRemoteDataSourceView" path="/form/selectInputBasedRemoteDataSource.jsp" />
+			<forward name="selectInputBasedMultilevelView" path="/form/selectInputBasedmultilevel.jsp" />
+			<forward name="radioCheckBoxView" path="/form/radioCheckBox.jsp" />
+			<forward name="formSubmitView" path="/form/formSubmit.jsp" />
+			<forward name="formSynSubmitView" path="/form/formSynSubmit.jsp" />
+			<forward name="formSynForwardPageView" path="/form/formSynForwardPage.jsp" />
+			<forward name="toolbarDemo1View" path="/form/toolbar1.jsp" />
+			<forward name="msgDemo1View" path="/form/msgdemo1.jsp" />
+			<forward name="formLayoutView" path="/form/formLayout.jsp" />
+			<forward name="columnLayoutView" path="/form/columnLayout.jsp" />
+			<forward name="complexLayoutView" path="/form/complexLayout.jsp" />
+			<forward name="complexLayout2View" path="/form/complexLayout2.jsp" />
+			<forward name="htmlEditorInitView" path="/form/htmlEditor.jsp" />
+			<forward name="htmlEditor2InitView" path="/form/htmlEditor2.jsp" />
+		</action>
+		
+		<!-- 表格示例 -->
+		<action name="baseActionForm" path="/gridDemo" scope="request"
+			parameter="reqCode" type="org.g4studio.demo.online.web.GridAction">
+			<forward name="gridDemo1View" path="/grid/gridDemo1.jsp" />
+			<forward name="gridDemo2View" path="/grid/gridDemo2.jsp" />
+			<forward name="gridDemo3View" path="/grid/gridDemo3.jsp" />
+			<forward name="gridDemo4View" path="/grid/gridDemo4.jsp" />
+			<forward name="gridDemo5View" path="/grid/gridDemo5.jsp" />
+			<forward name="gridDemo6View" path="/grid/gridDemo6.jsp" />
+			<forward name="gridDemo7View" path="/grid/gridDemo7.jsp" />
+		</action>
+		
+		<!-- 树示例 -->
+		<action name="baseActionForm" path="/treeDemo" scope="request"
+			parameter="reqCode" type="org.g4studio.demo.online.web.TreeAction">
+			<forward name="treeDemo1View" path="/tree/treeDemo1.jsp" />
+			<forward name="treeDemo2View" path="/tree/treeDemo2.jsp" />
+			<forward name="treeDemo3View" path="/tree/treeDemo3.jsp" />
+			<forward name="treeDemo4View" path="/tree/treeDemo4.jsp" />
+			<forward name="treeDemo5View" path="/tree/treeDemo5.jsp" />
+			<forward name="treeDemo6View" path="/tree/treeDemo6.jsp" />
+			<forward name="treeDemo7View" path="/tree/treeDemo7.jsp" />
+			<forward name="treeDemo8View" path="/tree/treeDemo8.jsp" />
+		</action>
+		
+		<!-- 常用UI组件示例 -->
+		<action name="baseActionForm" path="/commonUiDemo" scope="request"
+			parameter="reqCode" type="org.g4studio.demo.online.web.CommonUiAction">
+			<forward name="panelDemo1View" path="/commonui/panelDemo1.jsp" />
+			<forward name="windowDemo1View" path="/commonui/windowDemo1.jsp" />
+			<forward name="tabPanelDemo1View" path="/commonui/tabPanelDemo1.jsp" />
+			<forward name="viewportLayoutView" path="/commonui/viewportLayout.jsp" />
+			<forward name="viewportComplexLayoutView" path="/commonui/viewportComplexLayout.jsp" />
+		</action>
+		
+		<!-- 综合实例 -->
+		<action name="baseActionForm" path="/integrateDemo" scope="request"
+			parameter="reqCode" type="org.g4studio.demo.online.web.IntegrateAction">
+			<forward name="queryDemo1View" path="/integrate/queryDemo1.jsp" />
+			<forward name="queryDemo2View" path="/integrate/queryDemo2.jsp" />
+			<forward name="collectDataView" path="/integrate/collectData.jsp" />
+			<forward name="collectDataByWindowView" path="/integrate/collectDataByWindow.jsp" />
+			<forward name="manageDataView" path="/integrate/manageData.jsp" />
+			<forward name="manageData4In1View" path="/integrate/manageData4In1.jsp" />
+			<forward name="callPrcView" path="/other/callPrc.jsp" />	
+		</action>
+		
+		<!-- 其他实例 -->
+		<action name="baseActionForm" path="/otherDemo" scope="request"
+			parameter="reqCode" type="org.g4studio.demo.online.web.OtherAction">
+			<forward name="fileUploadView" path="/other/fileUpload.jsp" />	
+			<forward name="exceptionView" path="/other/exception.jsp" />	
+		</action>
+
+		<!-- 开发过程调试 -->
+		<action name="baseActionForm" path="/test" scope="request"
+			parameter="reqCode" type="org.g4studio.demo.online.web.TestAction">
+			<forward name="test1View" path="/test/test1.jsp" />
+			<forward name="test2View" path="/test/test2.jsp" />
+			<forward name="test3View" path="/test/test3.jsp" />
+			<forward name="test4View" path="/test/test4.jsp" />
+			<forward name="test5View" path="/test/test5.jsp" />
+			<forward name="formSynForwardPageView" path="/test/test1ForwardPage.jsp" />
+		</action>
+	</action-mappings>
+
+</struts-config>

@@ -1,0 +1,8 @@
+﻿1、keytool -genkey -keystore g4studio.store -alias g4studio
+这个命令用来产生一个密匙库，执行完毕后应该产生一个g4studio.store的文件，这里的g4studio是我自己的名字，你可以对它进行修改。另外在执行命令的时候还有提示你输入密匙库的密码，这里你一定要记住，否则后面要用的时候无法输入。
+
+2、keytool -export -keystore g4studio.store -alias g4studio -file g4studio.cert
+这个命令用来产生签名时所要用的证书，同样这里的g4studio也可以换成你自己需要的名字。这个命令执行完后产生一个g4studio.cert的文件。
+
+3、 jarsigner -keystore g4studio.store g4studio-report-applet.jar g4studio
+这个命令用上面产生的证书将我们的jar文件进行了签名。

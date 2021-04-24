@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<!-- 配置ActionFormBean -->
+	<form-beans> 
+		<!-- 公共Form -->  
+		<form-bean name="baseActionForm" type="org.g4studio.common.web.BaseActionForm" />  
+	</form-beans>
+
+	<!-- Action映射 -->
+	<action-mappings type="org.g4studio.core.mvc.xstruts.action.ActionMapping"> 
+	
+		<!-- 登录页面 -->
+		<action name="baseActionForm" path="/login" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.LoginAction">
+			<forward name="loginView" path="/login.jsp" /> 
+		</action>  
+		 
+		<!-- 首页 -->
+		<action name="baseActionForm" path="/index" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.IndexAction">
+			<forward name="indexView" path="/index.jsp" /> 
+			<forward name="desktopView" path="/desktop.jsp" />
+			<forward name="welcomeView" path="/system/admin/welcome.jsp" /> 
+		</action> 
+		
+		<!-- 资源管理 -->
+		<action name="baseActionForm" path="/resource" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.ResourceAction">
+			<forward name="manageMenuResourceView" path="/system/admin/manageMenuResource.jsp" />
+			<forward name="codeTableView" path="/system/admin/manageCodeTable.jsp" /> 
+			<forward name="manageIconView" path="/system/admin/manageIcon.jsp" />
+		</action> 
+		
+		<!-- 组织机构管理 -->
+		<action name="baseActionForm" path="/organization" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.OrganizationAction">
+			<forward name="manageDepartmentView" path="/system/admin/manageDepartment.jsp" />
+		</action>  
+		  
+		<!-- 角色管理与授权 -->
+		<action name="baseActionForm" path="/role" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.RoleAction">
+			<forward name="manageRoleView" path="/system/admin/manageRole.jsp" />
+			<forward name="operatorTabView" path="/system/admin/operatorTab.jsp" />
+			<forward name="selectUserTabView" path="/system/admin/selectUserTab.jsp" />
+			<forward name="managerTabView" path="/system/admin/managerTab.jsp" />
+		</action> 
+		
+		<!-- 人员管理与授权 -->
+		<action name="baseActionForm" path="/user" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.UserAction">
+			<forward name="manageUserView" path="/system/admin/manageUser.jsp" />
+			<forward name="selectRoleTreeView" path="/system/admin/selectRoleTree.jsp" />
+			<forward name="selectMenuTreeView" path="/system/admin/selectMenuTree.jsp" />
+		</action>  
+		
+		<!-- 全局参数表管理 -->
+		<action name="baseActionForm" path="/param" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.ParamAction">
+			<forward name="manageParamView" path="/system/admin/manageParam.jsp" />
+		</action> 
+		
+		<!-- 会话监控 -->
+		<action name="baseActionForm" path="/sessionMonitor" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.HttpSessionMonitorAction">
+			<forward name="sessionMonitorView" path="/system/admin/sessionMonitor.jsp" />
+		</action> 
+		
+		<!-- JDBC监控 -->
+		<action name="baseActionForm" path="/jdbcMonitor" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.JdbcMonitorAction">
+			<forward name="jdbcInitView" path="/system/admin/jdbcMonitor.jsp" />
+		</action>  
+		
+		<!-- 事件跟踪 -->
+		<action name="baseActionForm" path="/eventTrack" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.EventTrackAction">
+			<forward name="eventTrackView" path="/system/admin/eventTrack.jsp" />
+		</action> 
+		
+		<!-- 获取服务器信息及内存CPU实时监控 -->
+		<action name="baseActionForm" path="/serverInfo" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.ServerInfoAction">
+			<forward name="serverInfoView" path="/system/admin/serverInfo.jsp" />
+		</action> 
+		
+		<!-- SpringBean切面监控 -->
+		<action name="baseActionForm" path="/beanMonitor" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.BeanMonitorAction">
+			<forward name="beanMonitorView" path="/system/admin/beanMonitor.jsp" />
+		</action>
+		
+		<!-- UI组件托管 -->
+		<action name="baseActionForm" path="/part" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.PartAction">
+			<forward name="initView" path="/system/admin/managePart.jsp" />
+		</action>
+		
+		<!-- UI组件人员授权 -->
+		<action name="baseActionForm" path="/userPart" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.UserPartAction">
+			<forward name="initView" path="/system/admin/userPart.jsp" />
+		</action>  
+		 
+		<!-- UI组件角色授权 -->
+		<action name="baseActionForm" path="/rolePart" scope="request"  parameter="reqCode"
+			type="org.g4studio.system.admin.web.RolePartAction">
+			<forward name="initView" path="/system/admin/rolePart.jsp" />
+		</action>  
+		
+		<!-- Web报表引擎 -->
+		<action name="baseActionForm" path="/report" scope="request"  parameter="reqCode"
+			type="org.g4studio.core.web.report.jasper.ReportAcion">
+			<forward name="printInitView" path="/resource/jasper/printInit.jsp" />
+			<forward name="pdfInitView" path="/resource/jasper/pdfInit.jsp" />
+			<forward name="excelInitView" path="/resource/jasper/excelInit.jsp" />
+		</action>  
+		
+	</action-mappings>
+
+</struts-config>

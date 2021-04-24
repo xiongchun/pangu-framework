@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- 角色管理与授权手工映射SQL语句 -->
+<sqlMap namespace="Role">
+	<typeAlias alias="dto" type="org.g4studio.core.metatype.impl.BaseDto"/>
+	
+	<!-- 角色管理与授权-角色列表 -->
+	<select id="queryRolesForManage" parameterClass="map" resultClass="dto">
+		SELECT roleid, rolename, deptid, roletype, LOCKED,
+		       (SELECT deptname
+		          FROM eadept
+		         WHERE deptid = a.deptid) AS deptname, remark
+		  FROM earole a
+		 WHERE a.roletype != '3'
+		<dynamic>
+			<isNotEmpty prepend="AND" property="roletype"> 
+									a.roletype != #roletype#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="roleid"> 
+									a.roleid like '$roleid$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="deptid"> 
+									a.deptid like '$deptid$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="rolename"> 
+									a.rolename like '%$rolename$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="queryParam"> 
+				                    a.rolename like '%$queryParam$%' 
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- 角色管理与授权-角色列表 -->
+	<select id="queryRolesForManageForPageCount" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT count(*) as count
+		  FROM earole a WHERE a.roletype != '3'
+		<dynamic>
+			<isNotEmpty prepend="AND" property="roleid"> 
+				a.roleid like '$roleid$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="deptid"> 
+				a.deptid like '$deptid$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="rolename"> 
+				a.rolename like '%$rolename$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="queryParam"> 
+				a.rolename like '%$queryParam$%'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- 查询该角色已授权的菜单 -->
+	<select id="queryMenusInRoleManage" parameterClass="map" resultClass="dto">
+		SELECT a.menuid, a.authorizelevel,b.menuname
+		  FROM earoleauthorize a, eamenu b
+		 WHERE roleid = #roleid# and a.menuid = b.menuid and b.leaf = '1'
+	</select>
+	
+	<!-- 插入一条角色表记录 -->
+	<insert id="saveRoleItem" parameterClass="dto">
+		INSERT INTO EAROLE (
+		   roleid, rolename, deptid, 
+		   roletype, remark,locked) 
+		VALUES (#roleid#, #rolename#, #deptid#,
+		    #roletype#, #remark#,#locked#)
+	</insert>
+    
+	<!-- 删除角色授权表  -->
+	<delete id="deleteEaroleAuthorizeInRoleManage" parameterClass="map" >
+		DELETE FROM earoleauthorize
+		      WHERE roleid = #roleid#
+	</delete>
+	
+	<!-- 删除角色表  -->
+	<delete id="deleteEaroleInRoleManage" parameterClass="map" >
+		DELETE FROM earole
+		      WHERE roleid = #roleid#
+	</delete>
+	
+	<!-- 删除人员授权表  -->
+	<delete id="deleteEauserauthorizeInRoleManage" parameterClass="map" >
+		DELETE FROM eauserauthorize
+		      WHERE roleid = #roleid#
+	</delete>
+	
+	<!-- 删除UI元素角色授权表  -->
+	<delete id="deleteEarolemenupartInRoleManage" parameterClass="map" >
+		DELETE FROM earolemenupart
+		      WHERE roleid = #roleid#
+	</delete>
+	
+	<!-- 根据主键更新角色 -->
+	<update id="updateRoleItem" parameterClass="dto">
+         UPDATE earole
+		<dynamic prepend="SET"> 
+			<isNotNull prepend="," property="roleid">
+	         roleid = #roleid#
+			</isNotNull>
+			<isNotNull prepend="," property="deptid">
+	         deptid = #deptid#
+			</isNotNull>
+			<isNotNull prepend="," property="rolename">
+	         rolename = #rolename#
+			</isNotNull>
+			<isNotNull prepend="," property="locked">
+	         locked = #locked#
+			</isNotNull>
+			<isNotNull prepend="," property="roletype">
+	         roletype = #roletype#
+			</isNotNull>
+			<isNotNull prepend="," property="remark">
+	         remark = #remark#
+			</isNotNull>										
+		</dynamic> 
+	        WHERE roleid = #roleid#    
+	</update>
+	
+	<!-- 插入一条角色授权记录 -->
+	<insert id="saveRoleGrantItem" parameterClass="dto">
+		INSERT INTO earoleauthorize (
+		   roleid, menuid, authorizelevel, 
+		   authorizeid) 
+		VALUES (#roleid#, #menuid#, #authorizelevel#, #authorizeid#)
+	</insert>
+	
+	<!-- 删除角色授权  -->
+	<delete id="deleteERoleGrants" parameterClass="map" >
+		DELETE FROM earoleauthorize
+		      WHERE roleid = #roleid# and authorizelevel = #authorizelevel#
+	</delete>
+	
+	<!-- 根据角色删除角色用户关联信息  -->
+	<delete id="deleteEaUserAuthorizeByRoleId" parameterClass="map" >
+		DELETE FROM eauserauthorize
+		      WHERE roleid = #roleid#
+	</delete>
+	
+	<!-- 插入一条角色用户关联记录 -->
+	<insert id="saveSelectUser" parameterClass="dto">
+		INSERT INTO EAUSERAUTHORIZE (
+		   userid, roleid, authorizeid) 
+		VALUES ( #userid#, #roleid#, #authorizeid#)
+	</insert>
+	
+</sqlMap>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- 参数管理手工映射SQL语句 -->
+<sqlMap namespace="Param">
+	<typeAlias alias="dto" type="org.g4studio.core.metatype.impl.BaseDto"/>
+	
+	<!-- 参数管理-查询参数列表 -->
+	<select id="queryParamsForManage" parameterClass="map" resultClass="dto">
+		SELECT   paramid, paramkey, paramvalue, remark
+		    FROM eaparam a
+		   WHERE 1 = 1
+		<dynamic>
+			<isNotEmpty prepend="AND" property="paramid"> 
+									a.paramid = #paramid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="paramkey"> 
+									a.paramkey = #paramkey#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="queryParam"> 
+				                    a.paramkey like '%$queryParam$%' or a.paramvalue like '%$queryParam$%'
+			</isNotEmpty>
+		</dynamic>
+		ORDER BY paramid DESC
+	</select>
+	
+	<select id="queryParamsForManageForPageCount" parameterClass="map" resultClass="java.lang.Integer">
+		SELECT count(*) as count
+		  FROM eaparam a WHERE 1 = 1
+		<dynamic>
+			<isNotEmpty prepend="AND" property="paramid"> 
+									a.paramid = #paramid#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="exceptioncode"> 
+									a.paramkey = #paramkey#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="queryParam"> 
+				                     a.paramkey like '%$queryParam$%' or a.paramvalue like '%$queryParam$%'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- 插入一条参数表记录 -->
+	<insert id="saveParamItem" parameterClass="dto">
+		INSERT INTO eaparam (
+		   paramid, paramkey, paramvalue, 
+		   remark) 
+		VALUES (#paramid#, #paramkey#, #paramvalue#, #remark#)
+	</insert>
+	
+	<!-- 删除参数表  -->
+	<delete id="deletParamItem" parameterClass="map" >
+		DELETE FROM eaparam
+		      WHERE paramid = #paramid#
+	</delete>
+	
+	<!-- 根据主键更新参数表 -->
+	<update id="updateParamItem" parameterClass="dto">
+         UPDATE eaparam
+		<dynamic prepend="SET"> 
+			<isNotNull prepend="," property="paramkey">
+	         paramkey = #paramkey#
+			</isNotNull>
+			<isNotNull prepend="," property="paramvalue">
+	         paramvalue = #paramvalue#
+			</isNotNull>
+			<isNotNull prepend="," property="remark">
+	         remark = #remark#
+			</isNotNull>						
+		</dynamic> 
+	        WHERE paramid = #paramid#    
+	</update>
+	<!-- 根据Key查询参数值 -->
+	<select id="queryParamvalueByParamkey" parameterClass="java.lang.String" resultClass="java.lang.String">
+		SELECT paramvalue from eaparam where paramkey = #paramkey#
+	</select>
+</sqlMap>

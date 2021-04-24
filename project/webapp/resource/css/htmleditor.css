@@ -1,0 +1,20 @@
+p {
+	margin-bottom: 15px;
+}
+.x-html-editor-tb .x-edit-image .x-btn-text {
+  background: transparent url(../image/picture.png) no-repeat;
+}
+.x-form-check-wrap {
+  margin-top: 3px;
+}
+.x-tbar-loading {
+  width: 16px;
+  height: 16px;
+}
+.ux-form-statictextfield {
+	background: transparent;
+	border: none;
+	padding-top: 3px !important;
+	padding-bottom: 1px !important;
+	color: #333;
+}
