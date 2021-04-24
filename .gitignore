@@ -1,5 +1,5 @@
 **/target/
-**/aoslogs/
+**/logs/
 
 # IntelliJ project files
 .idea
@@ -18,4 +18,3 @@
 
 # MacOS
 .DS_Store
-
