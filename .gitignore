@@ -1,6 +1,5 @@
 **/target/
-**/mylogs/
-**/myclouds-web/
+**/logs/
 
 # IntelliJ project files
 .idea
