@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: myclouds-gateway
-  cloud:
-    config:
-      profile: ${config-profile:dev}
-      discovery:
-        service-id: myclouds-config
-        enabled: true

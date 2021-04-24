@@ -1,4 +1,0 @@
-# 演示案例：嘉靖银行信用卡申请服务-开发环境配置信息
-redis-host: localhost
-redis-port: 6379
-redis-password:
