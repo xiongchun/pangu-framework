@@ -20,7 +20,7 @@
 
 	<groupId>com.gitee.pulanit</groupId>
 	<artifactId>pangu-parent</artifactId>
-	<version>5.0.0</version>
+	<version>${pangu.version}</version>
 	<packaging>pom</packaging>
 	<name>parent of pangu rapid development framework</name>
 	<description>the parent of pangu rapid development framework</description>
@@ -51,7 +51,7 @@
 		<dependency>
 			<groupId>com.gitee.pulanit</groupId>
 			<artifactId>pangu-basic</artifactId>
-			<version>5.0.0</version>
+			<version>${pangu.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
