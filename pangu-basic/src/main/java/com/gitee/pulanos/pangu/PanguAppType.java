@@ -1,4 +1,4 @@
-package com.gitee.pulanit.pangu;
+package com.gitee.pulanos.pangu;
 
 import org.springframework.boot.WebApplicationType;
 

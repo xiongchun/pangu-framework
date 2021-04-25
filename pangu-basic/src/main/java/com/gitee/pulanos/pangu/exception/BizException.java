@@ -1,4 +1,4 @@
-package com.gitee.pulanit.pangu.exception;
+package com.gitee.pulanos.pangu.exception;
 
 import lombok.Getter;
 

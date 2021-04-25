@@ -1,4 +1,4 @@
-package com.gitee.pulanit.pangu.constants;
+package com.gitee.pulanos.pangu.constants;
 
 /**
  * 平台及通用常量表

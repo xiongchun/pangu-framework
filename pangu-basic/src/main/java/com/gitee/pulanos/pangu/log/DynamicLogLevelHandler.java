@@ -1,4 +1,4 @@
-package com.gitee.pulanit.pangu.log;
+package com.gitee.pulanos.pangu.log;
 
 import java.util.Properties;
 

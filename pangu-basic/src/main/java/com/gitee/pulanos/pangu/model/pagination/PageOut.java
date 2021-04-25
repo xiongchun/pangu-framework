@@ -1,4 +1,4 @@
-package com.gitee.pulanit.pangu.model.pagination;
+package com.gitee.pulanos.pangu.model.pagination;
 
 import java.io.Serializable;
 import java.util.Collections;

@@ -4,13 +4,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.gitee.pulanit</groupId>
+	<groupId>com.gitee.pulanos</groupId>
 	<artifactId>pangu-dependencies</artifactId>
 	<version>5.0.0</version>
 	<packaging>pom</packaging>
 	<name>dependencies of pangu rapid development framework</name>
 	<description>the dependencies of pangu rapid development framework</description>
-	<url>https://gitee.com/pulanit/pangu</url>
+	<url>https://gitee.com/pulanos/pangu</url>
 
 	<licenses>
 		<license>
@@ -21,9 +21,9 @@
 	</licenses>
 
 	<scm>
-		<url>https://gitee.com/pulanit/pangu.git</url>
-		<connection>scm:https://gitee.com/pulanit/pangu.git</connection>
-		<developerConnection>scm:https://gitee.com/pulanit/pangu.git</developerConnection>
+		<url>https://gitee.com/pulanos/pangu.git</url>
+		<connection>scm:https://gitee.com/pulanos/pangu.git</connection>
+		<developerConnection>scm:https://gitee.com/pulanos/pangu.git</developerConnection>
 	</scm>
 
 	<developers>

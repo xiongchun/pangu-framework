@@ -1,8 +1,8 @@
-package com.gitee.pulanit.pangu.model;
+package com.gitee.pulanos.pangu.model;
 
 import java.io.Serializable;
 
-import com.gitee.pulanit.pangu.constants.Constants;
+import com.gitee.pulanos.pangu.constants.Constants;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

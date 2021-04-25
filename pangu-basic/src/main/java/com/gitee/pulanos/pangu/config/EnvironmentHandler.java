@@ -1,4 +1,4 @@
-package com.gitee.pulanit.pangu.config;
+package com.gitee.pulanos.pangu.config;
 
 import java.util.Properties;
 import org.springframework.beans.factory.annotation.Autowired;
