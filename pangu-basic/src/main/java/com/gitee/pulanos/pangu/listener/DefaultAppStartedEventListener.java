@@ -29,7 +29,7 @@ public class DefaultAppStartedEventListener implements ApplicationListener<Appli
     public void onApplicationEvent(ApplicationStartedEvent event) {
     	dynamicLogLevelHandler.initLogLevelWhenSartup();
         environmentHandler.setDefaultConfigurations();
-        log.info(":: AOSuite PanGu Development Framework Started");
+        log.info(":: PanGu Rapid Development Framework Started");
     }
 
 }
