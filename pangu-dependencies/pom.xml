@@ -8,8 +8,8 @@
 	<artifactId>pangu-dependencies</artifactId>
 	<version>5.0.0</version>
 	<packaging>pom</packaging>
-	<name>parent of pangu rapid development framework</name>
-	<description>the parent of pangu rapid development framework</description>
+	<name>dependencies of pangu rapid development framework</name>
+	<description>the dependencies of pangu rapid development framework</description>
 	<url>https://gitee.com/pulanit/pangu</url>
 
 	<licenses>
