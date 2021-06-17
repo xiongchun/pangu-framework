@@ -11,7 +11,12 @@ import org.springframework.boot.WebApplicationType;
  */
 public enum PanguAppType {
 
-    WEBNONE, WEBSERVLET, WEBFLUX;
+    //开发非容器依赖型应用(纯Dubbo后端服务等)
+    WEBNONE,
+    //传统Servlet容器应用
+    WEBSERVLET,
+    //WEBFLUX异步非阻塞函数式编程应用
+    WEBFLUX;
 
     static WebApplicationType toWebApplicationType(PanguAppType panguApplicationType) {
         switch (panguApplicationType) {
