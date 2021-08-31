@@ -11,8 +11,7 @@
 	<name>pangu dev framework</name>
 	
 	<modules>
-	    <module>pangu-parent</module>
-		<module>pangu-basic</module>
+		<module>pangu-parent</module>
 	</modules>
 
 

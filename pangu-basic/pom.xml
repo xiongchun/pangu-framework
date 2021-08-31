@@ -20,7 +20,7 @@
 	<groupId>com.gitee.pulanos.pangu</groupId>
 	<artifactId>pangu-parent</artifactId>
 	<version>5.0.0</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<name>pangu-parent</name>
 	<description>parent of pangu development framework</description>
 	<url>https://gitee.com/pulanos/pangu</url>
