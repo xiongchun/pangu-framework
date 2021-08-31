@@ -13,7 +13,6 @@
 	<modules>
 	    <module>pangu-parent</module>
 		<module>pangu-basic</module>
-		<module>pangu-dependencies</module>
 	</modules>
 
 
