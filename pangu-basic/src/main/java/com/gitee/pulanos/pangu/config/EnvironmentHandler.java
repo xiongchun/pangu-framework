@@ -19,9 +19,6 @@ public class EnvironmentHandler {
     @Autowired
     private ConfigurableEnvironment configurableEnvironment;
     
-    //"defaultProperties" is the default name
-    public static final String DEFAULT_NAME = "defaultProperties";
-    
     public void setDefaultConfigurations() {
         MutablePropertySources mps = configurableEnvironment.getPropertySources();
         Properties p = new Properties();

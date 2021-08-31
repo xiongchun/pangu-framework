@@ -18,7 +18,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
-	<groupId>com.gitee.pulanos</groupId>
+	<groupId>com.gitee.pulanos.pangu</groupId>
 	<artifactId>pangu-parent</artifactId>
 	<version>${pangu.version}</version>
 	<packaging>pom</packaging>
