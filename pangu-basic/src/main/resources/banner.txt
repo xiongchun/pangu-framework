@@ -4,4 +4,4 @@
 |   ___/    /  /_\  \   |  . `  | |  | |_ | |  |  |  | 
 |  |       /  _____  \  |  |\   | |  |__| | |  `--'  | 
 | _|      /__/     \__\ |__| \__|  \______|  \______/                                                         
-PanGu Rapid Development Framework (V5.x)  Powered By XC
+PanGu Rapid Development Framework (V5.x)  Powered By 普蓝开源社区 (https://gitee.com/pulanos)
