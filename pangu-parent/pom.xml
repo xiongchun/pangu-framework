@@ -12,7 +12,6 @@
 	</parent>
 
 	<properties>
-	    <pangu.version>5.0.0</pangu.version>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -20,10 +19,10 @@
 
 	<groupId>com.gitee.pulanos.pangu</groupId>
 	<artifactId>pangu-parent</artifactId>
-	<version>${pangu.version}</version>
+	<version>5.0.0</version>
 	<packaging>pom</packaging>
-	<name>parent of pangu rapid development framework</name>
-	<description>the parent of pangu rapid development framework</description>
+	<name>pangu-parent</name>
+	<description>parent of pangu development framework</description>
 	<url>https://gitee.com/pulanos/pangu</url>
 
 	<licenses>
@@ -48,11 +47,6 @@
 	</developers>
 
 	<dependencies>
-<!--		<dependency>-->
-<!--			<groupId>com.gitee.pulanos</groupId>-->
-<!--			<artifactId>pangu-basic</artifactId>-->
-<!--			<version>${pangu.version}</version>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -66,6 +60,11 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>com.gitee.pulanos.pangu</groupId>
+				<artifactId>pangu-basic</artifactId>
+				<version>5.0.0</version>
+			</dependency>
 			<dependency>
 				<groupId>com.baomidou</groupId>
 				<artifactId>mybatis-plus-boot-starter</artifactId>
@@ -154,20 +153,20 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.6</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-gpg-plugin</artifactId>-->
+<!--				<version>1.6</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>sign-artifacts</id>-->
+<!--						<phase>verify</phase>-->
+<!--						<goals>-->
+<!--							<goal>sign</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
