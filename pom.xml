@@ -5,6 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<properties>
+		<spring.boot.version>2.2.5.RELEASE</spring.boot.version>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -22,7 +23,7 @@
 	<version>5.0.0</version>
 	<packaging>jar</packaging>
 	<name>pangu-parent</name>
-	<description>parent of pangu development framework</description>
+	<description>pangu development framework</description>
 	<url>https://gitee.com/pulanos/pangu</url>
 
 	<licenses>
@@ -59,6 +60,10 @@
 		<dependency>
 			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.baomidou</groupId>
