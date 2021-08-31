@@ -1,20 +1,38 @@
-**/target/
-**/logs/
+# maven ignore
+target/
+*.jar
+!.mvn/wrapper/*
+*.war
+*.zip
+*.tar
+*.tar.gz
+.flattened-pom.xml
 
-# IntelliJ project files
-.idea
+# eclipse ignore
+.settings/
+.project
+.classpath
+bin/
+
+# idea ignore
+.idea/
+*.ipr
 *.iml
-**/out
+*.iws
 
-# Eclipse project files
-**/.classpath
-**/.project
-**/.settings/
-**/bin/
+# visual-studio-code ignore
+.vscode/
 
-# gradle
-.gradle
-**/build
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
 
-# MacOS
+# system ignore
 .DS_Store
+*/.DS_Store
+Thumbs.db
+*.orig
+
