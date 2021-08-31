@@ -48,11 +48,11 @@
 	</developers>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.gitee.pulanos</groupId>
-			<artifactId>pangu-basic</artifactId>
-			<version>${pangu.version}</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.gitee.pulanos</groupId>-->
+<!--			<artifactId>pangu-basic</artifactId>-->
+<!--			<version>${pangu.version}</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -65,29 +65,32 @@
 	</dependencies>
 
 	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.gitee.pulanos</groupId>
-				<artifactId>pangu-dependencies</artifactId>
-				<version>5.0.0</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
+<!--		<dependencies>-->
+<!--			<dependency>-->
+<!--				<groupId>com.gitee.pulanos</groupId>-->
+<!--				<artifactId>pangu-dependencies</artifactId>-->
+<!--				<version>5.0.0</version>-->
+<!--				<type>pom</type>-->
+<!--				<scope>import</scope>-->
+<!--			</dependency>-->
+<!--		</dependencies>-->
 	</dependencyManagement>
 
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
 				<configuration>
 					<attach>true</attach>
 				</configuration>
@@ -103,6 +106,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
