@@ -1,5 +1,6 @@
 package com.gitee.pulanos.pangu;
 
+import com.gitee.pulanos.pangu.exception.BizException;
 import org.springframework.boot.WebApplicationType;
 
 /**
@@ -11,23 +12,34 @@ import org.springframework.boot.WebApplicationType;
  */
 public enum PanguAppType {
 
-    //开发非容器依赖型应用(纯Dubbo后端服务等)
-    WEBNONE,
-    //传统Servlet容器应用
+    /**
+     * The application should not run as a web application and should not start an
+     * embedded web server.
+     */
+    NONSERVLET,
+
+    /**
+     * The application should run as a servlet-based web application and should start an
+     * embedded servlet web server.
+     */
     WEBSERVLET,
-    //WEBFLUX异步非阻塞函数式编程应用
-    WEBFLUX;
+
+    /**
+     * The application should run as a reactive web application and should start an
+     * embedded reactive web server.
+     */
+    REACTIVE;
 
     static WebApplicationType toWebApplicationType(PanguAppType panguApplicationType) {
         switch (panguApplicationType) {
-            case WEBNONE:
+            case NONSERVLET:
                 return WebApplicationType.NONE;
             case WEBSERVLET:
                 return WebApplicationType.SERVLET;
-            case WEBFLUX:
+            case REACTIVE:
                 return WebApplicationType.REACTIVE;
             default:
-                return WebApplicationType.SERVLET;
+                throw new IllegalArgumentException("不被支持的应用类型标识");
         }
     }
     

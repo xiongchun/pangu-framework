@@ -22,7 +22,7 @@ public class EnvironmentHandler {
     public void setDefaultConfigurations() {
         MutablePropertySources mps = configurableEnvironment.getPropertySources();
         Properties p = new Properties();
-        p.put("powered-by", "AOSuite PanGu Development Framework");
+        p.put("powered-by", "PULANOS");
         mps.addFirst(new PropertiesPropertySource("defaultProperties", p));
     }
 }

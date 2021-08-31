@@ -5,6 +5,8 @@ import lombok.Getter;
 /**
  * Business Exception
  *
+ * <p>业务模块抛出的通用异常</p>
+ *
  * @author xiongchun
  * @since 1.0.0
  */

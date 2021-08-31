@@ -1,24 +1,12 @@
 package com.gitee.pulanos.pangu.constants;
 
 /**
- * 平台及通用常量表
+ * 平台通用常量表
  * 
  * @author xiongchun
  * @since 1.0.0
  */
 public class Constants {
-
-    /**
-     * IS常量
-     */
-    public static class Is {
-        //是
-        public static final Integer YES = 1;
-        //否
-        public static final Integer NO = 0;
-        //全部
-        public static final Integer All = -1;
-    }
     
     /**
      * Result状态码
