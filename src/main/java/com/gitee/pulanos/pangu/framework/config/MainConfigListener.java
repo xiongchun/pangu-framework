@@ -1,9 +1,9 @@
-package com.gitee.pulanos.pangu.config;
+package com.gitee.pulanos.pangu.framework.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.alibaba.nacos.api.config.annotation.NacosConfigListener;
-import com.gitee.pulanos.pangu.log.DynamicLogLevelHandler;
+import com.gitee.pulanos.pangu.framework.log.DynamicLogLevelHandler;
 
 /**
  * nacos main configuration listener

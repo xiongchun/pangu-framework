@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.model.pagination;
+package com.gitee.pulanos.pangu.framework.model.pagination;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

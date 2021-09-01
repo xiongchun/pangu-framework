@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu;
+package com.gitee.pulanos.pangu.framework;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;

@@ -1,8 +1,8 @@
-package com.gitee.pulanos.pangu.model;
+package com.gitee.pulanos.pangu.framework.model;
 
 import java.io.Serializable;
 
-import com.gitee.pulanos.pangu.constants.Constants;
+import com.gitee.pulanos.pangu.framework.constants.Constants;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -51,7 +51,7 @@ public class Result<T> implements Serializable{
 	 * @return
 	 */
 	public static <T> Result<T> success(T data){
-		return new Result<T>(true,Constants.Result.SUCCESS, "请求成功").setResult(data);
+		return new Result<T>(true, Constants.Result.SUCCESS, "请求成功").setResult(data);
 	}
 	
 	/**

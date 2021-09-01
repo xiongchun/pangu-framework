@@ -1,6 +1,5 @@
-package com.gitee.pulanos.pangu;
+package com.gitee.pulanos.pangu.framework;
 
-import com.gitee.pulanos.pangu.exception.BizException;
 import org.springframework.boot.WebApplicationType;
 
 /**

@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.model.pagination;
+package com.gitee.pulanos.pangu.framework.model.pagination;
 
 /**
  * 分页模型包装

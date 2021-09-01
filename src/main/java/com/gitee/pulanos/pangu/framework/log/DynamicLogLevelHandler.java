@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.log;
+package com.gitee.pulanos.pangu.framework.log;
 
 import java.util.Properties;
 

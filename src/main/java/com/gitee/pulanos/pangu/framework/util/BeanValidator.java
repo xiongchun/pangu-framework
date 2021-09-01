@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.util;
+package com.gitee.pulanos.pangu.framework.util;
 
 import java.util.List;
 import java.util.stream.Collectors;
