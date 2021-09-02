@@ -5,4 +5,4 @@
 |  |       /  _____  \  |  |\   | |  |__| | |  `--'  | 
 | _|      /__/     \__\ |__| \__|  \______|  \______/                                                         
 PanGu Dev Framework                            (V5.x)
-Powered By 普蓝开源社区 (https://gitee.com/pulanos)
+Powered By 普蓝开源社区     (https://gitee.com/pulanos)
