@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import com.gitee.pulanos.pangu.framework.constants.Constants;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -17,27 +15,33 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-@ApiModel(value = "Result", description = "响应结果封装对象")
 public class Result<T> implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
-	@ApiModelProperty(value = "状态标识")
+
+	/**
+	 * 状态标识
+	 */
 	private boolean status = true;
-	
-	@ApiModelProperty(value = "自定义状态码")
+
+	/**
+	 * 自定义状态码
+	 */
 	private String statusCode;
-	
-	@ApiModelProperty(value = "提示信息")
+
+	/**
+	 * 提示信息
+	 */
 	private String message;
 	
 	/**
 	 * 调试信息，当请求头中包含x-debug=true时，拦截器将获取堆栈信息返回前端
 	 */
-	@ApiModelProperty(value = "调试信息")
 	private String debugMsg;
-	
-	@ApiModelProperty(value = "返回业务消息体")
+
+	/**
+	 * 返回业务消息体
+	 */
 	private T result;
 	
 	public Result(Boolean status, String statusCode, String message){

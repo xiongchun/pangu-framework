@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -16,21 +14,28 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-@ApiModel(value = "PageOut", description = "分页出参")
 public class PageOut<T> implements Serializable{
 
     private static final long serialVersionUID = 8345971141073914966L;
 
-    @ApiModelProperty(value = "数据列表")
+    /**
+     * 数据列表
+     */
     private List<T> records = Collections.emptyList();
 
-    @ApiModelProperty(value = "总数")
+    /**
+     * 总数
+     */
     private long total = 0;
-    
-    @ApiModelProperty(value = "每页显示条数，默认 10")
+
+    /**
+     * 每页显示条数，默认 10
+     */
     private long pageSize = 10;
 
-    @ApiModelProperty(value = "当前页")
+    /**
+     * 当前页
+     */
     private long currentPage = 1;
 
 }
