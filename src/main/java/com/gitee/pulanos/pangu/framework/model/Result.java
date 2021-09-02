@@ -2,109 +2,74 @@ package com.gitee.pulanos.pangu.framework.model;
 
 import java.io.Serializable;
 
-import com.gitee.pulanos.pangu.framework.constants.Constants;
-
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
- * 响应结果封装对象
+ * 请求响应结果对象
  * 
  * @author xiongchun
- * @since 1.0.0
+ * @since 4.0.0
  */
 @Data
+@ToString
 @Accessors(chain = true)
 public class Result<T> implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 状态标识
-	 */
-	private boolean status = true;
 
 	/**
-	 * 自定义状态码
+	 * 返回码（必填项）
+	 * <p>示例值：10000</p>
 	 */
-	private String statusCode;
+	private String code;
 
 	/**
-	 * 提示信息
+	 * 返回码描述（选填项）
+	 * <p>示例值：接口调用成功</p>
 	 */
-	private String message;
-	
-	/**
-	 * 调试信息，当请求头中包含x-debug=true时，拦截器将获取堆栈信息返回前端
-	 */
-	private String debugMsg;
+	private String msg;
 
 	/**
-	 * 返回业务消息体
+	 * 返回对象（选填项）
 	 */
-	private T result;
-	
-	public Result(Boolean status, String statusCode, String message){
-		setStatus(status).setStatusCode(statusCode).setMessage(message);
-	}
-	
+	private T data;
+
 	/**
-	 * 请求成功
-	 * @param <T>
+	 * 日志信息（选填项）
+	 * <p>当请求头中包含x-debug=true时，拦截器将获取错误日志信息返回
+	 */
+	private String log;
+
+	/**
+	 * 接口调用成功（快捷模式）
 	 * @param data
+	 * @param <T>
 	 * @return
 	 */
 	public static <T> Result<T> success(T data){
-		return new Result<T>(true, Constants.Result.SUCCESS, "请求成功").setResult(data);
+		return new Result<T>().setCode("10000").setData(data);
 	}
-	
+
 	/**
-	 * 请求成功
-	 * @param <T>
-	 * @param data
-	 * @param message
-	 * @return
-	 */
-	public static <T> Result<T> success(T data, String message){
-		return new Result<T>(true, Constants.Result.SUCCESS, message).setResult(data);
-	}
-	
-	/**
-	 * 请求成功
+	 * 接口调用失败（快捷模式）
+	 * @param code
 	 * @param <T>
 	 * @return
 	 */
-	public static <T> Result<T> success(){
-		return new Result<T>(true, Constants.Result.SUCCESS, "请求成功");
+	public static <T> Result<T> fail(String code, String msg){
+		return new Result<T>().setCode(code).setMsg(msg);
 	}
-	
+
 	/**
-	 * 请求成功
-	 * @param <T>
-	 * @param message
-	 * @return
-	 */
-	public static <T> Result<T> success(String message){
-		return new Result<T>(true, Constants.Result.SUCCESS, message);
-	}
-	
-	/**
-	 * 请求失败
+	 * 创建返回对象
 	 * @param <T>
 	 * @return
 	 */
-	public static <T> Result<T> fail(){
-		return new Result<T>(false, Constants.Result.FAIL, "请求失败");
-	}
-	
-	/**
-	 * 请求失败
-	 * @param <T>
-	 * @param message
-	 * @return
-	 */
-	public static <T> Result<T> fail(String message){
-		return new Result<T>(false, Constants.Result.FAIL, message);
+	public static <T> Result<T> create(){
+		return new Result<T>();
 	}
 	
 }
