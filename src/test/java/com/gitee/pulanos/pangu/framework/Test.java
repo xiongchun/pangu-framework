@@ -1,6 +1,5 @@
 package com.gitee.pulanos.pangu.framework;
 
-import com.gitee.pulanos.pangu.framework.constants.Constants;
 import com.gitee.pulanos.pangu.framework.model.Result;
 
 public class Test {

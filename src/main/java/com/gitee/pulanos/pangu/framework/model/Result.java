@@ -1,6 +1,6 @@
 package com.gitee.pulanos.pangu.framework.model;
 
-import com.gitee.pulanos.pangu.framework.constants.Constants;
+import com.gitee.pulanos.pangu.framework.Constants;
 import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
