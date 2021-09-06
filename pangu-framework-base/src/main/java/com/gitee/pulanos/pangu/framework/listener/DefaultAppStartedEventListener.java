@@ -27,9 +27,9 @@ public class DefaultAppStartedEventListener implements ApplicationListener<Appli
     
     @Override
     public void onApplicationEvent(ApplicationStartedEvent event) {
-    	dynamicLogLevelHandler.initLogLevelWhenSartup();
+        dynamicLogLevelHandler.initLogLevelWhenSartup();
         environmentHandler.setDefaultConfigurations();
-        log.info(":: PanGu Rapid Development Framework Started");
+        log.info("(ô‿ô) PanGu Dev Framework Started ㊥ 盘古开发框架启动成功");
     }
 
 }

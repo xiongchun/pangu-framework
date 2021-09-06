@@ -22,7 +22,7 @@ public class EnvironmentHandler {
     public void setDefaultConfigurations() {
         MutablePropertySources mps = configurableEnvironment.getPropertySources();
         Properties p = new Properties();
-        p.put("powered-by", "PULANOS");
+        p.put("pangu-powered-by", "PULANOS");
         mps.addFirst(new PropertiesPropertySource("defaultProperties", p));
     }
 }

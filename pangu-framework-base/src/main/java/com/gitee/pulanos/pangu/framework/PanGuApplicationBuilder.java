@@ -26,6 +26,14 @@ public class PanGuApplicationBuilder{
     }
 
     /**
+     * 初始化应用构造器
+     * @param sources
+     * @return
+     */
+    public static PanGuApplicationBuilder init(Class<?>... sources){
+        return new PanGuApplicationBuilder(sources);
+    }
+    /**
      * 创建一个新的 {@link SpringApplication} 实例
      * @param sources the sources
      * @return {@link SpringApplication} 实例
