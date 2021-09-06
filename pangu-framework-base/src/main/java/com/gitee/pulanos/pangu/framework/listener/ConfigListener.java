@@ -1,21 +1,21 @@
-package com.gitee.pulanos.pangu.framework.config;
+package com.gitee.pulanos.pangu.framework.listener;
 
+import com.alibaba.nacos.api.config.annotation.NacosConfigListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.alibaba.nacos.api.config.annotation.NacosConfigListener;
-import com.gitee.pulanos.pangu.framework.log.DynamicLogLevelHandler;
+import com.gitee.pulanos.pangu.framework.handler.LogLevelHandler;
 
 /**
- * nacos main configuration listener
+ * NacosConfigListener Nacos配置中心监听器
  * 
  * @author xiongchun
  * @since 4.0.0
  */
 @Component
-public class MainConfigListener {
+public class ConfigListener {
 
     @Autowired
-    private DynamicLogLevelHandler dynamicLogLevelHandler;
+    private LogLevelHandler dynamicLogLevelHandler;
 
     @NacosConfigListener(dataId = "${nacos.config.data-id}", timeout = 5000)
     public void onChange(String newCfgText) throws Exception {

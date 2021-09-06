@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.framework.log;
+package com.gitee.pulanos.pangu.framework.handler;
 
 import java.util.Properties;
 
@@ -16,13 +16,13 @@ import com.alibaba.nacos.spring.util.ConfigParseUtils;
 import cn.hutool.core.util.StrUtil;
 
 /**
- * DynamicLogLevelHandler
+ * 日志级别动态刷新
  * 
  * @author xiongchun
  * @since 4.0.0
  */
 @Component
-public class DynamicLogLevelHandler {
+public class LogLevelHandler {
 
     @Autowired
     private LoggingSystem loggingSystem;

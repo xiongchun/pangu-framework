@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.framework.config;
+package com.gitee.pulanos.pangu.framework.handler;
 
 import java.util.Properties;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.stereotype.Component;
 
 /**
- * pangu app environment handler
+ * 环境变量处理
  * 
  * @author xiongchun
  * @since 4.0.0
