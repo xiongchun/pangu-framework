@@ -49,6 +49,9 @@ public class DynamicLogLevelHandler {
         }
     }
 
+    /**
+     * 启动时候不刷新一下，配置在nacos中的日志级别不生效
+     */
     public void initLogLevelWhenSartup() {
         String newCfgText = null;
         try {

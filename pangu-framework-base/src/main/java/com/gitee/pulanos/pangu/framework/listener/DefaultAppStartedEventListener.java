@@ -29,7 +29,13 @@ public class DefaultAppStartedEventListener implements ApplicationListener<Appli
     public void onApplicationEvent(ApplicationStartedEvent event) {
         dynamicLogLevelHandler.initLogLevelWhenSartup();
         environmentHandler.setDefaultConfigurations();
-        log.info("(ô‿ô) PanGu Dev Framework Started ㊥ 盘古开发框架启动成功");
+        String info = "(ô‿ô) PanGu Dev Framework Started ㊥ 盘古开发框架启动成功";
+        if (log.isInfoEnabled()){
+            log.info(info);
+        }else {
+            System.out.println(info);
+        }
+
     }
 
 }
