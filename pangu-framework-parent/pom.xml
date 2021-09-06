@@ -13,7 +13,7 @@
 
     <groupId>com.gitee.pulanos.pangu</groupId>
     <artifactId>pangu-framework-parent</artifactId>
-    <version>5.0.0</version>
+    <version>5.0.1</version>
     <packaging>pom</packaging>
     <name>pangu-framework-parent</name>
     <description>pangu development framework</description>
@@ -52,6 +52,7 @@
         <mybatis-plus-boot-starter.version>3.4.3.2</mybatis-plus-boot-starter.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <hutool-all.version>5.7.11</hutool-all.version>
+        <lombok.version>1.18.20</lombok.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.3.0</maven-javadoc-plugin.version>
@@ -66,6 +67,11 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.gitee.pulanos.pangu</groupId>
+                <artifactId>pangu-framework-base</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
@@ -102,23 +108,32 @@
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool-all.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>com.gitee.pulanos.pangu</groupId>
+            <artifactId>pangu-framework-base</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>cn.hutool</groupId>-->
-<!--            <artifactId>hutool-all</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
@@ -132,19 +147,14 @@
             <artifactId>nacos-config-spring-boot-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>nacos-config-spring-boot-starter</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
