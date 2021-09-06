@@ -15,11 +15,11 @@ import com.gitee.pulanos.pangu.framework.handler.LogLevelHandler;
 public class ConfigListener {
 
     @Autowired
-    private LogLevelHandler dynamicLogLevelHandler;
+    private LogLevelHandler logLevelHandler;
 
     @NacosConfigListener(dataId = "${nacos.config.data-id}", timeout = 5000)
     public void onChange(String newCfgText) throws Exception {
-    	dynamicLogLevelHandler.refreshLogLevel(newCfgText);
+        logLevelHandler.refreshLogLevel(newCfgText);
     }
 
     //TODO 测试一下看看

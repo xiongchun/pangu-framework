@@ -6,8 +6,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 /**
- * 应用启动失败监听器 (bug:无法触发此监听)
- * 
+ * 应用启动失败监听器
+ * <p>部分出错场景无法触发此监听</p>
  * @author xiongchun
  * @since 4.0.0
  */
