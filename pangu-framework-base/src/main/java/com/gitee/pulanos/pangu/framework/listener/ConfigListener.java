@@ -21,11 +21,5 @@ public class ConfigListener {
     public void onChange(String newCfgText) throws Exception {
         logLevelHandler.refreshLogLevel(newCfgText);
     }
-
-    //TODO 测试一下看看
-//    @NacosConfigListener(dataId = "${nacos.config.data-id}", timeout = 5000)
-//    public void onMessage(String newCfgText) throws Exception {
-//        dynamicLogLevelHandler.refreshLogLevel(newCfgText);
-//    }
     
 }

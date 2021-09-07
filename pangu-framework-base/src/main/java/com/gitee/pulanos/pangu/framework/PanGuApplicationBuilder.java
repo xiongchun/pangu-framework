@@ -1,5 +1,6 @@
 package com.gitee.pulanos.pangu.framework;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,6 +16,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @see SpringApplication
  * @see ConfigurableApplicationContext
  */
+@Slf4j
 public class PanGuApplicationBuilder{
 
     private final SpringApplication application;
@@ -75,6 +77,12 @@ public class PanGuApplicationBuilder{
      * @return an application context created from the current state
      */
     public ConfigurableApplicationContext run(String... args) {
+        String info = "(ô‿ô) PanGu Dev Framework is Starting.... ㊥ 盘古开发框架开始启动...";
+        if (log.isInfoEnabled()){
+            log.info(info);
+        }else {
+            System.out.println(info);
+        }
         this.context = this.application.run(args);
         return this.context;
     }

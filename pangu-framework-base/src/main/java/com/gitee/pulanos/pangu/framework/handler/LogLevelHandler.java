@@ -1,19 +1,18 @@
 package com.gitee.pulanos.pangu.framework.handler;
 
-import java.util.Properties;
-
+import cn.hutool.core.util.StrUtil;
+import com.alibaba.nacos.api.annotation.NacosInjected;
+import com.alibaba.nacos.api.config.ConfigService;
+import com.alibaba.nacos.api.exception.NacosException;
+import com.alibaba.nacos.spring.util.ConfigParseUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.logging.LogLevel;
 import org.springframework.boot.logging.LoggingSystem;
 import org.springframework.stereotype.Component;
 
-import com.alibaba.nacos.api.annotation.NacosInjected;
-import com.alibaba.nacos.api.config.ConfigService;
-import com.alibaba.nacos.api.exception.NacosException;
-import com.alibaba.nacos.spring.util.ConfigParseUtils;
-
-import cn.hutool.core.util.StrUtil;
+import java.util.Properties;
 
 /**
  * 日志级别动态刷新
@@ -21,6 +20,7 @@ import cn.hutool.core.util.StrUtil;
  * @author xiongchun
  * @since 4.0.0
  */
+@Slf4j
 @Component
 public class LogLevelHandler {
 
@@ -43,8 +43,12 @@ public class LogLevelHandler {
                 String strLevel = properties.getProperty(key, "info");
                 LogLevel level = LogLevel.valueOf(strLevel.toUpperCase());
                 loggingSystem.setLogLevel(key.replace(LOGGER_TAG, ""), level);
-                // log.info("reset log level --> {}:{}", key, strLevel);
-                System.out.println(StrUtil.format(":: refresh log level >> {}:{}", key, strLevel));
+                String info = StrUtil.format(":: refresh log level >> {}:{}", key, strLevel);
+                if (log.isInfoEnabled()){
+                    log.info(info);
+                }else {
+                    System.out.println(info);
+                }
             }
         }
     }
@@ -56,11 +60,13 @@ public class LogLevelHandler {
         String newCfgText = null;
         try {
             newCfgText = configService.getConfig(dataId, "DEFAULT_GROUP", 5000);
+            if (StrUtil.isNotEmpty(newCfgText)){
+                refreshLogLevel(newCfgText);
+            }else {
+                log.warn("尝试设置日志级别时没有获取到配置信息");
+            }
         } catch (NacosException e) {
             e.printStackTrace();
-        }
-        if (StrUtil.isNotEmpty(newCfgText)) {
-            refreshLogLevel(newCfgText);
         }
     }
 }
