@@ -5,6 +5,7 @@ import com.alibaba.nacos.api.annotation.NacosInjected;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.spring.util.ConfigParseUtils;
+import com.gitee.pulanos.pangu.framework.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -59,7 +60,7 @@ public class LogLevelHandler {
     public void initLogLevelWhenSartup() {
         String newCfgText = null;
         try {
-            newCfgText = configService.getConfig(dataId, "DEFAULT_GROUP", 5000);
+            newCfgText = configService.getConfig(dataId, Constants.Nacos.DEFAULT_GROUP, 5000);
             if (StrUtil.isNotEmpty(newCfgText)){
                 refreshLogLevel(newCfgText);
             }else {

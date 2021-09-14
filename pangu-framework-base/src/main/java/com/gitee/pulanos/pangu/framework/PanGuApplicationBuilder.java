@@ -115,7 +115,7 @@ public class PanGuApplicationBuilder{
         String nacosUrl = System.getProperty("nacos.url");
         if (StrUtil.isEmpty(active) || StrUtil.isEmpty(nacosUrl)){
             String cfgMsg = "-Dactive=dev -Dnacos.url=127.0.0.1:8848 -Dnacos.username=xxxx -Dnacos.password=****";
-            String errMsg = StrUtil.format("未配置启动参数。配置参考：[{}]", cfgMsg);
+            String errMsg = StrUtil.format("未配置启动参数。配置示例：[{}]", cfgMsg);
             throw new IllegalArgumentException(errMsg);
         }else {
             String paramsMsg = StrUtil.format("启动参数：-Dactive={} -Dnacos.url={} -D...", active, nacosUrl);

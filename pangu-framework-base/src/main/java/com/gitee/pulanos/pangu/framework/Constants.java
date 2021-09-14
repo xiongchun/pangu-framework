@@ -61,4 +61,15 @@ public final class Constants {
         public final static String START_SUCCESS = "(ô‿ô) PanGu Dev Framework Started successfully ㊥ 盘古开发框架启动成功";
     }
 
+    /**
+     * Nacos配置
+     */
+    public final static class Nacos {
+        /**
+         * 缺省组
+         */
+        public final static String DEFAULT_GROUP = "DEFAULT_GROUP";
+
+    }
+
 }

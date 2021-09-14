@@ -1,8 +1,10 @@
 package com.gitee.pulanos.pangu.framework.listener;
 
+import com.alibaba.nacos.api.exception.NacosException;
 import com.gitee.pulanos.pangu.framework.Constants;
 import com.gitee.pulanos.pangu.framework.handler.EnvironmentHandler;
 import com.gitee.pulanos.pangu.framework.handler.LogLevelHandler;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
@@ -30,8 +32,10 @@ public class ApplicationStartedEventListener implements ApplicationListener<Appl
      *
      * @param event the event to respond to
      */
+    @SneakyThrows
     @Override
-    public void onApplicationEvent(ApplicationStartedEvent event) {
+    public void onApplicationEvent(ApplicationStartedEvent event){
+        environmentHandler.confirmChecks();
         environmentHandler.setDefaultConfigurations();
         logLevelHandler.initLogLevelWhenSartup();
     }
