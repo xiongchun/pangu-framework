@@ -1,5 +1,6 @@
 package com.gitee.pulanos.pangu.framework.listener;
 
+import com.gitee.pulanos.pangu.framework.Constants;
 import com.gitee.pulanos.pangu.framework.handler.EnvironmentHandler;
 import com.gitee.pulanos.pangu.framework.handler.LogLevelHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -33,11 +34,5 @@ public class ApplicationStartedEventListener implements ApplicationListener<Appl
     public void onApplicationEvent(ApplicationStartedEvent event) {
         environmentHandler.setDefaultConfigurations();
         logLevelHandler.initLogLevelWhenSartup();
-        String info = "(ô‿ô) PanGu Dev Framework Started successfully ㊥ 盘古开发框架启动成功";
-        if (log.isInfoEnabled()){
-            log.info(info);
-        }else {
-            System.out.println(info);
-        }
     }
 }

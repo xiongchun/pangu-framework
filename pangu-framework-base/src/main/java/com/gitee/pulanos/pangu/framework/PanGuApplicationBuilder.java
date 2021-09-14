@@ -1,9 +1,20 @@
 package com.gitee.pulanos.pangu.framework;
 
+import cn.hutool.core.map.MapUtil;
+import cn.hutool.core.util.StrUtil;
+import com.gitee.pulanos.pangu.framework.handler.EnvironmentHandler;
+import com.gitee.pulanos.pangu.framework.handler.LogLevelHandler;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.stereotype.Component;
+
+import java.net.UnknownHostException;
+import java.sql.Struct;
+import java.util.Map;
 
 /**
  * 创建 {@link SpringApplication} 和 {@link ConfigurableApplicationContext} 实例。
@@ -41,7 +52,8 @@ public class PanGuApplicationBuilder{
      * @return {@link SpringApplication} 实例
      */
     protected SpringApplication createSpringApplication(Class<?>... sources) {
-        return new SpringApplication(sources);
+        SpringApplication springApplication = new SpringApplication(sources);;
+        return springApplication;
     }
 
     /**
@@ -77,14 +89,54 @@ public class PanGuApplicationBuilder{
      * @return an application context created from the current state
      */
     public ConfigurableApplicationContext run(String... args) {
-        String info = "(ô‿ô) PanGu Dev Framework is Starting.... ㊥ 盘古开发框架开始启动...";
+        String info = Constants.Msg.START;
         if (log.isInfoEnabled()){
             log.info(info);
         }else {
             System.out.println(info);
         }
-        this.context = this.application.run(args);
+        try{
+            this.preCheckpoint();
+            this.context = this.application.run(args);
+            this.startedEvent();
+        }catch (Exception e) {
+            log.error("{} 异常摘要：{}", Constants.Msg.START_ERROR, e.getMessage());
+            e.printStackTrace();
+            System.exit(1);
+        }
         return this.context;
+    }
+
+    /**
+     * 启动参数必要检查点
+     */
+    private void preCheckpoint(){
+        String active = System.getProperty("active");
+        String nacosUrl = System.getProperty("nacos.url");
+        if (StrUtil.isEmpty(active) || StrUtil.isEmpty(nacosUrl)){
+            String cfgMsg = "-Dactive=dev -Dnacos.url=127.0.0.1:8848 -Dnacos.username=xxxx -Dnacos.password=****";
+            String errMsg = StrUtil.format("未配置启动参数。配置参考：[{}]", cfgMsg);
+            throw new IllegalArgumentException(errMsg);
+        }else {
+            String paramsMsg = StrUtil.format("启动参数：-Dactive={} -Dnacos.url={} -D...", active, nacosUrl);
+            if (log.isInfoEnabled()){
+                log.info(paramsMsg);
+            }else {
+                System.out.println(paramsMsg);
+            }
+        }
+    }
+
+    /**
+     * 启动成功事件
+     */
+    private void startedEvent(){
+        String info = Constants.Msg.START_SUCCESS;
+        if (log.isInfoEnabled()){
+            log.info(info);
+        }else {
+            System.out.println(info);
+        }
     }
 
 }

@@ -43,4 +43,22 @@ public final class Constants {
 
     }
 
+    /**
+     * 框架提示信息
+     */
+    public final static class Msg {
+        /**
+         * 应用开始启动
+         */
+        public final static String START = "(ô‿ô) PanGu Dev Framework is Starting.... ㊥ 盘古开发框架开始启动...";
+        /**
+         * 应用启动失败
+         */
+        public final static String START_ERROR = "(ô‿ô) PanGu Dev Framework Failed to Start ㊥ 盘古开发框架启动失败";
+        /**
+         * 应用启动成功
+         */
+        public final static String START_SUCCESS = "(ô‿ô) PanGu Dev Framework Started successfully ㊥ 盘古开发框架启动成功";
+    }
+
 }
