@@ -60,7 +60,7 @@ public class LogLevelHandler {
     public void initLogLevelWhenSartup() {
         String newCfgText = null;
         try {
-            newCfgText = configService.getConfig(dataId, Constants.Nacos.DEFAULT_GROUP, 5000);
+            newCfgText = configService.getConfig(dataId, Constants.Nacos.DEFAULT_GROUP, 10000);
             if (StrUtil.isNotEmpty(newCfgText)){
                 refreshLogLevel(newCfgText);
             }else {

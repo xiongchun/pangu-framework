@@ -21,6 +21,12 @@ public class Result<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * 返回状态（必填项）
+     * <p>当code=10000时候为true，其余为false</p>
+     */
+    private Boolean status;
+
+    /**
      * 返回码（必填项）
      * <p>示例值：10000</p>
      */
@@ -51,7 +57,18 @@ public class Result<T> implements Serializable {
      * @return
      */
     public static <T> Result<T> success(T data) {
-        return new Result<T>().setCode(Constants.Code.SUCCESS).setData(data);
+        return new Result<T>().setStatus(true).setCode(Constants.Code.SUCCESS).setMsg("SUCCESS").setData(data);
+    }
+
+    /**
+     * 接口调用失败（快捷模式,带消息）
+     *
+     * @param code
+     * @param <T>
+     * @return
+     */
+    public static <T> Result<T> fail(String code, String msg) {
+        return new Result<T>().setStatus(false).setCode(code).setMsg(msg);
     }
 
     /**
@@ -61,8 +78,8 @@ public class Result<T> implements Serializable {
      * @param <T>
      * @return
      */
-    public static <T> Result<T> fail(String code, String msg) {
-        return new Result<T>().setCode(code).setMsg(msg);
+    public static <T> Result<T> fail(String code) {
+        return new Result<T>().setStatus(true).setCode(code).setMsg("FAILED");
     }
 
     /**
