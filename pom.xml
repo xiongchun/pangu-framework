@@ -12,6 +12,7 @@
 	<modules>
 		<module>pangu-framework-parent</module>
 		<module>pangu-framework-base</module>
+		<module>pangu-framework-builder-maven-plugin</module>
 	</modules>
 
 </project>
