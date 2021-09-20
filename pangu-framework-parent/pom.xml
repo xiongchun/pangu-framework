@@ -200,6 +200,19 @@
 
     <profiles>
         <profile>
+            <id>default</id>
+            <repositories>
+                <repository>
+                    <id>aliyun</id>
+                    <url>https://maven.aliyun.com/repository/public</url>
+                </repository>
+            </repositories>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
             <id>release</id>
             <build>
                 <plugins>
