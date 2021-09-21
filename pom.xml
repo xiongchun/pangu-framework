@@ -7,12 +7,12 @@
 	<groupId>com.gitee.pulanos.pangu</groupId>
 	<artifactId>pangu-framework</artifactId>
 	<packaging>pom</packaging>
-	<version>5.0.1</version>
+	<version>5.0.2</version>
 
 	<modules>
 		<module>pangu-framework-parent</module>
 		<module>pangu-framework-base</module>
-		<module>pangu-framework-builder-maven-plugin</module>
+		<module>pangu-framework-generator-maven-plugin</module>
 	</modules>
 
 </project>

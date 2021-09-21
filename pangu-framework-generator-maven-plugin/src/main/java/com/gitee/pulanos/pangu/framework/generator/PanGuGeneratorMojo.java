@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.framework.builder;
+package com.gitee.pulanos.pangu.framework.generator;
 
 import cn.hutool.json.JSONUtil;
 import lombok.SneakyThrows;
@@ -19,8 +19,8 @@ import java.util.Map;
  *
  * @author xiongchun
  */
-@Mojo(name = "builder")
-public class PanGuBuilderMojo extends AbstractMojo {
+@Mojo(name = "generate")
+public class PanGuGeneratorMojo extends AbstractMojo {
 
     @Parameter(property = "url")
     private String url;
@@ -35,7 +35,7 @@ public class PanGuBuilderMojo extends AbstractMojo {
         Connection conn = DriverManager.getConnection(url, user, password);
         QueryRunner run = new QueryRunner();
         List<Map<String, Object>> result = run.query(conn,
-                "SELECT * FROM user WHERE name = ?", new MapListHandler(), "XC");
+                "SELECT * FROM user WHERE name = ?", new MapListHandler(), "熊春");
         System.out.println(JSONUtil.toJsonStr(result));
         DbUtils.closeQuietly(conn);
     }
