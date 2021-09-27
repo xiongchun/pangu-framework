@@ -29,15 +29,31 @@ public class PanGuGeneratorMojo extends AbstractMojo {
     @Parameter(property = "password")
     private String password;
 
+    @Parameter(property = "entityPath")
+    private String entityPath;
+    @Parameter(property = "mapperPath")
+    private String mapperPath;
+    @Parameter(property = "tables")
+    private String tables;
+
+    @SneakyThrows
+    private Connection createConnect(){
+        return DriverManager.getConnection(url, user, password);
+    }
+
     @SneakyThrows
     @Override
     public void execute() {
-        Connection conn = DriverManager.getConnection(url, user, password);
+        System.out.println(entityPath);
+        System.out.println(mapperPath);
+        Connection conn = createConnect();
         QueryRunner run = new QueryRunner();
         List<Map<String, Object>> result = run.query(conn,
                 "SELECT * FROM user WHERE name = ?", new MapListHandler(), "熊春");
         System.out.println(JSONUtil.toJsonStr(result));
         DbUtils.closeQuietly(conn);
     }
+
+
 
 }
