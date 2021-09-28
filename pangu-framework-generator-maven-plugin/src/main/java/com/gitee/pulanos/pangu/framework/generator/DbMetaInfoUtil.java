@@ -2,6 +2,7 @@ package com.gitee.pulanos.pangu.framework.generator;
 
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.db.meta.TableType;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
 import lombok.SneakyThrows;
 
@@ -37,7 +38,7 @@ public class DbMetaInfoUtil {
         properties.setProperty("user", user);
         properties.setProperty("password", password);
         if (StrUtil.containsIgnoreCase(url, DbType.MYSQL)){
-            // 获取元数据注释
+            // 获取元数据注释（老版本的mysql驱动需要）
             properties.setProperty("remarks", "true");
             properties.setProperty("useInformationSchema", "true");
         }else if (StrUtil.containsIgnoreCase(url, DbType.ORACLE)){
@@ -62,9 +63,9 @@ public class DbMetaInfoUtil {
             rs = databaseMetaData.getTables(null, databaseMetaData.getUserName().toUpperCase(), null,
                     new String[] { "TABLE" });
         } else {
-            databaseMetaData.getURL();
-            System.out.println(databaseMetaData.getURL());
-            rs = databaseMetaData.getTables("pangu-showcases", null, null, new String[] { "TABLE" });
+            String url = databaseMetaData.getURL();
+            String catalog = StrUtil.subAfter(url, "/", true);
+            rs = databaseMetaData.getTables(catalog, null, null, new String[] {"TABLE"});
         }
         while (rs.next()) {
             Table table = new Table();
@@ -75,7 +76,7 @@ public class DbMetaInfoUtil {
             }
             table.setName(rs.getString("TABLE_NAME"));
             String comment = rs.getString("REMARKS");
-            // mysql的表注释会跟上一些其他信息。用户基本信息表; InnoDB free: 9216 kB
+            // 老版本的mysql驱动在mysql的表注释会跟上一些其他信息。用户基本信息表; InnoDB free: 9216 kB
             if (StrUtil.equalsIgnoreCase(dataBaseID, DbType.MYSQL)) {
                 if (StrUtil.contains(comment, ";")) {
                     comment = StrUtil.subBefore(comment, ";", false);
