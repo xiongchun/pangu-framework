@@ -97,13 +97,11 @@ public class DbMetaInfoUtil {
 
     /**
      * 获取指定表信息
-     * @param connection
+     * @param tables
      * @param tableName
      * @return
      */
-    @SneakyThrows
-    public static Table findTableInfo(Connection connection, String tableName) {
-        DatabaseMetaData databaseMetaData = connection.getMetaData();
+    public static Table findTableInfo(List<Table> tables, String tableName) {
         return null;
     }
 
