@@ -40,6 +40,8 @@
         <hutool-all.version>5.7.13</hutool-all.version>
         <lombok.version>1.18.20</lombok.version>
         <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
+        <logback-classic.version>1.2.5</logback-classic.version>
+        <commons-dbutils.version>1.7</commons-dbutils.version>
         <maven-plugin-api.version>3.8.2</maven-plugin-api.version>
         <maven-plugin-annotations.version>3.6.1</maven-plugin-annotations.version>
         <maven-plugin-plugin.versionm>3.5.2</maven-plugin-plugin.versionm>
@@ -80,7 +82,12 @@
         <dependency>
             <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
-            <version>1.7</version>
+            <version>${commons-dbutils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
