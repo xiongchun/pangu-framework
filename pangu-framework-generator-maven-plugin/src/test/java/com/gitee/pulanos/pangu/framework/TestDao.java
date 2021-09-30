@@ -1,6 +1,9 @@
 package com.gitee.pulanos.pangu.framework;
 
 import cn.hutool.json.JSONUtil;
+import com.gitee.pulanos.pangu.framework.generator.DbMetaInfoUtil;
+import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
+import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
@@ -15,7 +18,7 @@ public class TestDao {
 
     private static String url = "jdbc:mysql://127.0.0.1:3306/pangu-showcases";
     private static String user = "root";
-    private static String password = "root007";
+    private static String password = "xc123456";
 
     @SneakyThrows
     private static Connection createConnect() {
@@ -25,13 +28,12 @@ public class TestDao {
 
     @SneakyThrows
     public static void main(String[] args) {
-        Connection conn = createConnect();
-        QueryRunner run = new QueryRunner();
-        List<Map<String, Object>> result = run.query(conn,
-                "SELECT * FROM user WHERE name = ?", new MapListHandler(), "熊春");
-        System.out.println(JSONUtil.toJsonStr(result));
-
-        DbUtils.closeQuietly(conn);
+//        Connection conn = createConnect();
+//        QueryRunner run = new QueryRunner();
+//        List<Map<String, Object>> result = run.query(conn,
+//                "SELECT * FROM user WHERE name = ?", new MapListHandler(), "熊春");
+//        System.out.println(JSONUtil.toJsonStr(result));
+//        DbUtils.closeQuietly(conn);
 //        FileWriter writer = new FileWriter("test.properties");
 //        writer.write("test");
 //        FileAppender appender = new FileAppender(new File("test.java"), 16, true);
@@ -42,6 +44,13 @@ public class TestDao {
 //        appender.flush();
 //        appender.toString();
 
+        Connection connection = DbMetaInfoUtil.createConnect(url, user, password);
+        List<Table> tables = DbMetaInfoUtil.listTables(connection);
+        System.out.println(tables);
+        Table table = DbMetaInfoUtil.findTableInfo(tables, "pangu_user");
+        System.out.println(table);
+        List<Column> columns = DbMetaInfoUtil.listTableColumns(connection, "pangu_user");
+        columns.stream().forEach(System.out::println);
     }
 
 
