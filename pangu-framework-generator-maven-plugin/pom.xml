@@ -6,7 +6,7 @@
 
     <groupId>com.gitee.pulanos.pangu</groupId>
     <artifactId>pangu-framework-generator-maven-plugin</artifactId>
-    <version>5.0.5</version>
+    <version>5.0.5.1</version>
     <packaging>maven-plugin</packaging>
     <name>pangu-framework-generator-maven-plugin</name>
     <description>pangu framework code generator maven-plugin</description>

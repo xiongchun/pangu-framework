@@ -1,7 +1,14 @@
 package com.gitee.pulanos.pangu.framework.generator;
 
+import cn.hutool.cache.CacheUtil;
+import cn.hutool.core.thread.ThreadUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
+import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
+import com.gitee.pulanos.pangu.framework.generator.pojo.PluginConfig;
+import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;
@@ -19,6 +26,7 @@ import java.util.Map;
  *
  * @author xiongchun
  */
+@Slf4j
 @Mojo(name = "generate")
 public class PanGuGeneratorMojo extends AbstractMojo {
 
@@ -29,31 +37,43 @@ public class PanGuGeneratorMojo extends AbstractMojo {
     @Parameter(property = "password")
     private String password;
 
-    @Parameter(property = "entityPath")
-    private String entityPath;
-    @Parameter(property = "mapperPath")
-    private String mapperPath;
+    @Parameter(property = "entityFilePath")
+    private String entityFilePath;
+    @Parameter(property = "entityPackageName")
+    private String entityPackageName;
+    @Parameter(property = "mapperFilePath")
+    private String mapperFilePath;
+    @Parameter(property = "mapperPackageName")
+    private String mapperPackageName;
     @Parameter(property = "tables")
     private String tables;
 
     @SneakyThrows
-    private Connection createConnect(){
-        return DriverManager.getConnection(url, user, password);
-    }
-
-    @SneakyThrows
     @Override
     public void execute() {
-        System.out.println(entityPath);
-        System.out.println(mapperPath);
-        Connection conn = createConnect();
-        QueryRunner run = new QueryRunner();
-        List<Map<String, Object>> result = run.query(conn,
-                "SELECT * FROM user WHERE name = ?", new MapListHandler(), "熊春");
-        System.out.println(JSONUtil.toJsonStr(result));
-        DbUtils.closeQuietly(conn);
+        PluginConfig pluginConfig = initConfigContext();
+        Connection connection = DbMetaInfoUtil.createConnect(url, user, password);
+        List<Table> allTables = DbMetaInfoUtil.listTables(connection);
+        List<String> tableNames = StrUtil.split(tables, ",");
+        tableNames.forEach(tableName -> {
+            Table table = DbMetaInfoUtil.findTableInfo(allTables, tableName);
+            List<Column> columns = DbMetaInfoUtil.listTableColumns(connection, tableName);
+            DaoGenerator.generateEntity(table, columns, pluginConfig);
+        });
+
     }
 
-
+    private PluginConfig initConfigContext(){
+        PluginConfig pluginConfig = new PluginConfig();
+        pluginConfig.setEntityPackageName(entityPackageName);
+        pluginConfig.setEntityFilePath(entityFilePath);
+        pluginConfig.setMapperFilePath(mapperFilePath);
+        pluginConfig.setPassword(password);
+        pluginConfig.setTables(tables);
+        pluginConfig.setUrl(url);
+        pluginConfig.setUser(user);
+        pluginConfig.setMapperPackageName(mapperPackageName);
+        return pluginConfig;
+    }
 
 }

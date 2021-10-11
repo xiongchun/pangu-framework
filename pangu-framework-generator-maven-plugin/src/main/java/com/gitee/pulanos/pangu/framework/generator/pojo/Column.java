@@ -2,6 +2,8 @@ package com.gitee.pulanos.pangu.framework.generator.pojo;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * <b>数据表字段对象</b>
  * 
@@ -9,7 +11,7 @@ import lombok.Data;
  * @date 2013-06-06
  */
 @Data
-public class Column {
+public class Column implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
