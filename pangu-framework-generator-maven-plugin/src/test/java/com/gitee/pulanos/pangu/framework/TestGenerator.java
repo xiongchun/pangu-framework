@@ -1,72 +1,50 @@
-package com.gitee.pulanos.pangu.framework.generator;
+package com.gitee.pulanos.pangu.framework;
 
-import cn.hutool.cache.CacheUtil;
-import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
+import com.gitee.pulanos.pangu.framework.generator.DaoGenerator;
+import com.gitee.pulanos.pangu.framework.generator.DbMetaInfoUtil;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
 import com.gitee.pulanos.pangu.framework.generator.pojo.PluginConfig;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.dbutils.DbUtils;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.MapListHandler;
-import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.List;
-import java.util.Map;
 
-/**
- * 插件入口
- *
- * @author xiongchun
- */
-@Slf4j
-@Mojo(name = "generate")
-public class PanGuGeneratorMojo extends AbstractMojo {
+public class TestGenerator {
 
     @Parameter(property = "url")
-    private String url;
+    private static String url = "jdbc:mysql://127.0.0.1:3306/pangu-showcases";
     @Parameter(property = "user")
-    private String user;
+    private static String user = "root";
     @Parameter(property = "password")
-    private String password;
+    private static String password = "root123456";
 
     @Parameter(property = "entityFilePath")
-    private String entityFilePath;
+    private static String entityFilePath="/Users/xc/git2/pangu-framework/pangu-framework-generator-maven-plugin/src/test/java/com/gitee/pulanos/pangu/framework/entity";
     @Parameter(property = "entityPackageName")
-    private String entityPackageName;
+    private static String entityPackageName = "com.gitee.pulanos.pangu.framework.entity";
     @Parameter(property = "mapperFilePath")
-    private String mapperFilePath;
+    private static String mapperFilePath = "/Users/xc/git2/pangu-framework/pangu-framework-generator-maven-plugin/src/test/java/com/gitee/pulanos/pangu/framework/mapper";
     @Parameter(property = "mapperPackageName")
-    private String mapperPackageName;
+    private static String mapperPackageName = "com.gitee.pulanos.pangu.framework";
     @Parameter(property = "tables")
-    private String tables;
+    private static String tables = "pangu_user,user";
+    private static String author = "";
 
-    @Parameter(property = "author")
-    private String author;
-
-    @SneakyThrows
-    @Override
-    public void execute() {
+    public static void main(String[] args) {
         PluginConfig pluginConfig = initConfigContext();
         Connection connection = DbMetaInfoUtil.createConnect(url, user, password);
         List<Table> allTables = DbMetaInfoUtil.listTables(connection);
         List<String> tableNames = StrUtil.split(tables, ",");
-        tableNames.forEach(tableName -> {
+        for (String tableName : tableNames) {
             Table table = DbMetaInfoUtil.findTableInfo(allTables, tableName);
             List<Column> columns = DbMetaInfoUtil.listTableColumns(connection, tableName);
             DaoGenerator.generateEntity(table, columns, pluginConfig);
-        });
-
+        }
     }
 
-    private PluginConfig initConfigContext(){
+    private static PluginConfig initConfigContext(){
         PluginConfig pluginConfig = new PluginConfig();
         pluginConfig.setEntityPackageName(entityPackageName);
         pluginConfig.setEntityFilePath(entityFilePath);

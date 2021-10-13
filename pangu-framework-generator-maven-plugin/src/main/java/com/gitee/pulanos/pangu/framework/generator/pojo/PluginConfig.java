@@ -26,4 +26,6 @@ public class PluginConfig implements Serializable {
     private String mapperFilePath;
     private String mapperPackageName;
     private String tables;
+
+    private String author;
 }

@@ -1,8 +1,13 @@
 package com.gitee.pulanos.pangu.framework;
 
+import cn.hutool.core.io.file.FileAppender;
 import cn.hutool.core.util.StrUtil;
+import com.jfinal.kit.Kv;
+import com.jfinal.template.Engine;
+import com.jfinal.template.Template;
 import lombok.SneakyThrows;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -29,7 +34,8 @@ public class TestDao {
 //        DbUtils.closeQuietly(conn);
 //        FileWriter writer = new FileWriter("test.properties");
 //        writer.write("test");
-//        FileAppender appender = new FileAppender(new File("test.java"), 16, true);
+//        String path = "/Users/xc/git2/pangu-framework/pangu-framework-generator-maven-plugin/src/test/java/com/gitee/pulanos/pangu/framework/test.java";
+//        FileAppender appender = new FileAppender(new File(path), 16, true);
 //        appender.append("123");
 //        appender.append("public void main(){}");
 //        appender.append("\r\n");
@@ -44,6 +50,14 @@ public class TestDao {
 //        System.out.println(table);
 //        List<Column> columns = DbMetaInfoUtil.listTableColumns(connection, "pangu_user");
 //        columns.stream().forEach(System.out::println);
+
+        Engine engine = Engine.use();
+        engine.setToClassPathSourceFactory();
+        Template template = engine.getTemplate("entity.vm");
+        Kv kv = Kv.by("a", 123);
+        String out = template.renderToString(kv);
+        System.out.println(out);
+
 
     }
 
