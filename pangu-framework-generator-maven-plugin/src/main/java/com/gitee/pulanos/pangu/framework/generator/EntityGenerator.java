@@ -23,7 +23,7 @@ import static cn.hutool.core.text.StrFormatter.format;
 public class EntityGenerator {
 
     public static void generate(Table table, List<Column> columns, PluginConfig pluginConfig) {
-        log.info("开始生成数据表[{}]对应的实体文件...", table.getName());
+        log.info("开始生成数据表[{}]对应的实体对象...", table.getName());
         String tableName = StrUtil.upperFirst(StrUtil.toCamelCase(table.getName()));
         String filePath = format("{}/{}Entity.java", pluginConfig.getEntityFilePath(), tableName);
         File file = new File(filePath);
@@ -48,6 +48,7 @@ public class EntityGenerator {
 
         appender.append("/**");
         appender.append(format(" * {}", table.getComment()));
+        appender.append(" * <p>此文件由代码生成器自动生成</p>");
         appender.append(" *");
         appender.append(format(" * @author {}", pluginConfig.getAuthor()));
         appender.append(format(" * @date {}", DateUtil.now()));
@@ -57,7 +58,6 @@ public class EntityGenerator {
         //ORACLE appender.append("@KeySequence({})", seqName);
         appender.append(format("@TableName(\"{}\")", table.getName()));
         appender.append(format("public class {}Entity implements Serializable {", tableName));
-
         appender.append("");
 
         appender.append("   private static final long serialVersionUID=1L;");

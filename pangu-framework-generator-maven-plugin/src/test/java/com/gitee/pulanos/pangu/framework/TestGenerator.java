@@ -2,6 +2,7 @@ package com.gitee.pulanos.pangu.framework;
 
 import cn.hutool.core.util.StrUtil;
 import com.gitee.pulanos.pangu.framework.generator.EntityGenerator;
+import com.gitee.pulanos.pangu.framework.generator.MapperGenerator;
 import com.gitee.pulanos.pangu.framework.generator.utils.DbMetaInfoUtil;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
 import com.gitee.pulanos.pangu.framework.generator.pojo.PluginConfig;
@@ -27,7 +28,7 @@ public class TestGenerator {
     @Parameter(property = "mapperFilePath")
     private static String mapperFilePath = "/Users/xc/git2/pangu-framework/pangu-framework-generator-maven-plugin/src/test/java/com/gitee/pulanos/pangu/framework/mapper";
     @Parameter(property = "mapperPackageName")
-    private static String mapperPackageName = "com.gitee.pulanos.pangu.framework";
+    private static String mapperPackageName = "com.gitee.pulanos.pangu.framework.mapper";
     @Parameter(property = "tables")
     private static String tables = "pangu_user,user";
     private static String author = "";
@@ -41,6 +42,7 @@ public class TestGenerator {
             Table table = DbMetaInfoUtil.findTableInfo(allTables, tableName);
             List<Column> columns = DbMetaInfoUtil.listTableColumns(connection, tableName);
             EntityGenerator.generate(table, columns, pluginConfig);
+            MapperGenerator.generate(table, pluginConfig);
         }
     }
 

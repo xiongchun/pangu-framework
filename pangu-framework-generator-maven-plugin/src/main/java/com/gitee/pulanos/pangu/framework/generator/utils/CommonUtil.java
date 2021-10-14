@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 
 /**
  * 工具类
+ * @author xiongchun
  */
 public class CommonUtil {
 

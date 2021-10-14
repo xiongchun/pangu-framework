@@ -1,13 +1,7 @@
 package com.gitee.pulanos.pangu.framework;
 
-import cn.hutool.core.io.file.FileAppender;
-import cn.hutool.core.util.StrUtil;
-import com.jfinal.kit.Kv;
-import com.jfinal.template.Engine;
-import com.jfinal.template.Template;
 import lombok.SneakyThrows;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -50,13 +44,6 @@ public class TestDao {
 //        System.out.println(table);
 //        List<Column> columns = DbMetaInfoUtil.listTableColumns(connection, "pangu_user");
 //        columns.stream().forEach(System.out::println);
-
-        Engine engine = Engine.use();
-        engine.setToClassPathSourceFactory();
-        Template template = engine.getTemplate("entity.vm");
-        Kv kv = Kv.by("a", 123);
-        String out = template.renderToString(kv);
-        System.out.println(out);
 
 
     }
