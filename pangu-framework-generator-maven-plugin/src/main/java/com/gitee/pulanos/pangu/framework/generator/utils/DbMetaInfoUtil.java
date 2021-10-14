@@ -1,10 +1,11 @@
-package com.gitee.pulanos.pangu.framework.generator;
+package com.gitee.pulanos.pangu.framework.generator.utils;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.StrUtil;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
+import com.gitee.pulanos.pangu.framework.generator.utils.CommonUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -199,6 +200,10 @@ public class DbMetaInfoUtil {
             }
         }
 
+        // 标识表字段的Java类型
+        for (Column column : columns) {
+            column.setJavaType(CommonUtil.toJavaType(column.getType()));
+        }
         return columns;
     }
 

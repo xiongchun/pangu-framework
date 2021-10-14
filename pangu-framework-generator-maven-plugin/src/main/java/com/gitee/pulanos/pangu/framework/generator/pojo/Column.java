@@ -70,4 +70,9 @@ public class Column implements Serializable {
 	 */
 	private Integer number;
 
+	/**
+	 * 对应Java类型
+	 */
+	private String javaType;
+
 }

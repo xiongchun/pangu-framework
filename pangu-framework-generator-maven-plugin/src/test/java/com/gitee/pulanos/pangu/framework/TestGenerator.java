@@ -1,8 +1,8 @@
 package com.gitee.pulanos.pangu.framework;
 
 import cn.hutool.core.util.StrUtil;
-import com.gitee.pulanos.pangu.framework.generator.DaoGenerator;
-import com.gitee.pulanos.pangu.framework.generator.DbMetaInfoUtil;
+import com.gitee.pulanos.pangu.framework.generator.EntityGenerator;
+import com.gitee.pulanos.pangu.framework.generator.utils.DbMetaInfoUtil;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
 import com.gitee.pulanos.pangu.framework.generator.pojo.PluginConfig;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
@@ -40,7 +40,7 @@ public class TestGenerator {
         for (String tableName : tableNames) {
             Table table = DbMetaInfoUtil.findTableInfo(allTables, tableName);
             List<Column> columns = DbMetaInfoUtil.listTableColumns(connection, tableName);
-            DaoGenerator.generateEntity(table, columns, pluginConfig);
+            EntityGenerator.generate(table, columns, pluginConfig);
         }
     }
 

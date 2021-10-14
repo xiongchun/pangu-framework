@@ -1,25 +1,18 @@
 package com.gitee.pulanos.pangu.framework.generator;
 
-import cn.hutool.cache.CacheUtil;
-import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
 import com.gitee.pulanos.pangu.framework.generator.pojo.PluginConfig;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
+import com.gitee.pulanos.pangu.framework.generator.utils.DbMetaInfoUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.dbutils.DbUtils;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 插件入口
@@ -61,7 +54,7 @@ public class PanGuGeneratorMojo extends AbstractMojo {
         tableNames.forEach(tableName -> {
             Table table = DbMetaInfoUtil.findTableInfo(allTables, tableName);
             List<Column> columns = DbMetaInfoUtil.listTableColumns(connection, tableName);
-            DaoGenerator.generateEntity(table, columns, pluginConfig);
+            EntityGenerator.generate(table, columns, pluginConfig);
         });
 
     }
