@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.file.FileAppender;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
 import com.gitee.pulanos.pangu.framework.generator.pojo.PluginConfig;
@@ -37,12 +38,20 @@ public class EntityGenerator {
         appender.append("import lombok.Data;");
         appender.append("import lombok.experimental.Accessors;");
         appender.append("import java.io.Serializable;");
-        if (CollUtil.findOneByField(columns, "javaType", Constants.JavaType.DATE) != null) {
+        Boolean flag1 = CollUtil.findOneByField(columns, "javaType", Constants.JavaType.DATE) != null;
+        System.out.println(flag1);
+        Boolean flag2 = CollUtil.findOneByField(columns, "javaType", Constants.JavaType.BIGDECIMAL) != null;
+        System.out.println(flag2);
+        Boolean flag3 = CollUtil.findOneByField(columns, "javaType", Constants.JavaType.BIGINTEGER) != null;
+        System.out.println(flag3);
+        if (ObjectUtil.isNotEmpty(CollUtil.findOneByField(columns, "javaType", Constants.JavaType.DATE))) {
             appender.append("import java.util.Date;");
-        } else if (CollUtil.findOneByField(columns, "javaType", Constants.JavaType.BIGDECIMAL) != null) {
-            appender.append("java.math.BigDecimal;");
-        } else if (CollUtil.findOneByField(columns, "javaType", Constants.JavaType.BIGINTEGER) != null) {
-            appender.append("java.math.BigInteger;");
+        }
+        if (ObjectUtil.isNotEmpty(CollUtil.findOneByField(columns, "javaType", Constants.JavaType.BIGDECIMAL))) {
+            appender.append("import java.math.BigDecimal;");
+        }
+        if (ObjectUtil.isNotEmpty(CollUtil.findOneByField(columns, "javaType", Constants.JavaType.BIGINTEGER))) {
+            appender.append("import java.math.BigInteger;");
         }
         appender.append("");
 

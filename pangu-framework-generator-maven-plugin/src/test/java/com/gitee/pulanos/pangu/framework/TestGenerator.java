@@ -30,7 +30,7 @@ public class TestGenerator {
     @Parameter(property = "mapperPackageName")
     private static String mapperPackageName = "com.gitee.pulanos.pangu.framework.mapper";
     @Parameter(property = "tables")
-    private static String tables = "pangu_user,user";
+    private static String tables = "user";
     private static String author = "";
 
     public static void main(String[] args) {
@@ -42,7 +42,7 @@ public class TestGenerator {
             Table table = DbMetaInfoUtil.findTableInfo(allTables, tableName);
             List<Column> columns = DbMetaInfoUtil.listTableColumns(connection, tableName);
             EntityGenerator.generate(table, columns, pluginConfig);
-            MapperGenerator.generate(table, pluginConfig);
+            //MapperGenerator.generate(table, pluginConfig);
         }
     }
 
