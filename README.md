@@ -4,8 +4,6 @@
 
 ### :sunflower: 框架安装
 
-- 引入盘古框架依赖
-
 ```
 <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
