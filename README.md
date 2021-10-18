@@ -8,7 +8,7 @@
 <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
         <artifactId>pangu-framework-parent</artifactId>
-        <version>5.0.2</version>
+        <version>5.0.6</version>
         <relativePath/>
 </parent>
 ```
