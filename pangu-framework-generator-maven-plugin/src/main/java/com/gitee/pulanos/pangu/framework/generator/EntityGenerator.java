@@ -38,12 +38,6 @@ public class EntityGenerator {
         appender.append("import lombok.Data;");
         appender.append("import lombok.experimental.Accessors;");
         appender.append("import java.io.Serializable;");
-        Boolean flag1 = CollUtil.findOneByField(columns, "javaType", Constants.JavaType.DATE) != null;
-        System.out.println(flag1);
-        Boolean flag2 = CollUtil.findOneByField(columns, "javaType", Constants.JavaType.BIGDECIMAL) != null;
-        System.out.println(flag2);
-        Boolean flag3 = CollUtil.findOneByField(columns, "javaType", Constants.JavaType.BIGINTEGER) != null;
-        System.out.println(flag3);
         if (ObjectUtil.isNotEmpty(CollUtil.findOneByField(columns, "javaType", Constants.JavaType.DATE))) {
             appender.append("import java.util.Date;");
         }
