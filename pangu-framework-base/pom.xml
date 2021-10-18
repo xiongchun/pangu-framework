@@ -6,7 +6,7 @@
 
     <groupId>com.gitee.pulanos.pangu</groupId>
     <artifactId>pangu-framework-base</artifactId>
-    <version>5.0.2</version>
+    <version>5.0.6</version>
     <packaging>jar</packaging>
     <name>pangu-framework-base</name>
     <description>pangu development framework</description>
@@ -138,6 +138,11 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <version>${maven-javadoc-plugin.version}</version>
+                        <configuration>
+                            <additionalJOptions>
+                                <additionalJOption>-Xdoclint:none</additionalJOption>
+                            </additionalJOptions>
+                        </configuration>
                         <executions>
                             <execution>
                                 <phase>package</phase>

@@ -55,6 +55,7 @@ public class PanGuGeneratorMojo extends AbstractMojo {
             Table table = DbMetaInfoUtil.findTableInfo(allTables, tableName);
             List<Column> columns = DbMetaInfoUtil.listTableColumns(connection, tableName);
             EntityGenerator.generate(table, columns, pluginConfig);
+            MapperGenerator.generate(table, pluginConfig);
         });
 
     }

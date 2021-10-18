@@ -11,8 +11,8 @@ public class CommonUtil {
 
     /**
      * 数据库字段类型和Java类型的映射关系
-     * @param colDbType
-     * @return
+     * @param colDbType 数据库字段类型
+     * @return Java类型
      */
     public static String toJavaType(String colDbType) {
         String javaType = "String";

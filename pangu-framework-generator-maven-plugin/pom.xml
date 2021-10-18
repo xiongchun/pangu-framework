@@ -6,7 +6,7 @@
 
     <groupId>com.gitee.pulanos.pangu</groupId>
     <artifactId>pangu-framework-generator-maven-plugin</artifactId>
-    <version>5.0.5.1</version>
+    <version>5.0.6</version>
     <packaging>maven-plugin</packaging>
     <name>pangu-framework-generator-maven-plugin</name>
     <description>pangu framework code generator maven-plugin</description>
@@ -158,6 +158,11 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <version>${maven-javadoc-plugin.version}</version>
+                        <configuration>
+                            <additionalJOptions>
+                                <additionalJOption>-Xdoclint:none</additionalJOption>
+                            </additionalJOptions>
+                        </configuration>
                         <executions>
                             <execution>
                                 <phase>package</phase>
@@ -194,6 +199,7 @@
                 </repository>
             </distributionManagement>
         </profile>
+
     </profiles>
 
 </project>
