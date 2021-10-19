@@ -36,7 +36,7 @@ public class CommonUtil {
             javaType = Constants.JavaType.INTEGER;
         }
         if (StringUtils.indexOfIgnoreCase(colDbType, "bigint") != -1) {
-            javaType = Constants.JavaType.BIGINTEGER;
+            javaType = Constants.JavaType.LONG;
         }
         if (StringUtils.indexOfIgnoreCase(colDbType, "byte") != -1) {
             javaType = Constants.JavaType.BYTE;

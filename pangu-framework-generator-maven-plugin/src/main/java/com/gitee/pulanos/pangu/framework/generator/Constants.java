@@ -13,7 +13,7 @@ public class Constants {
 
         public final static String DATE = "Date";
         public final static String BIGDECIMAL = "BigDecimal";
-        public final static String BIGINTEGER = "BigInteger";
+        public final static String LONG = "Long";
         public final static String INTEGER = "Integer";
         public final static String BYTE = "byte[]";
     }

@@ -44,9 +44,6 @@ public class EntityGenerator {
         if (ObjectUtil.isNotEmpty(CollUtil.findOneByField(columns, "javaType", Constants.JavaType.BIGDECIMAL))) {
             appender.append("import java.math.BigDecimal;");
         }
-        if (ObjectUtil.isNotEmpty(CollUtil.findOneByField(columns, "javaType", Constants.JavaType.BIGINTEGER))) {
-            appender.append("import java.math.BigInteger;");
-        }
         appender.append("");
 
         appender.append("/**");

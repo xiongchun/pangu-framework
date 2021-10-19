@@ -1,17 +1,14 @@
 package com.gitee.pulanos.pangu.framework.generator;
 
-import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.file.FileAppender;
 import cn.hutool.core.util.StrUtil;
-import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
 import com.gitee.pulanos.pangu.framework.generator.pojo.PluginConfig;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
-import java.util.List;
 
 import static cn.hutool.core.text.StrFormatter.format;
 
