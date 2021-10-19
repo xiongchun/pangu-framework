@@ -33,6 +33,7 @@ public class MapperGenerator {
         appender.append(format("package {};", pluginConfig.getMapperPackageName()));
         appender.append("");
 
+        appender.append("import org.apache.ibatis.annotations.Mapper;");
         appender.append("import com.baomidou.mybatisplus.core.mapper.BaseMapper;");
         appender.append(format("import {}.{}Entity;", pluginConfig.getEntityPackageName(), tableName));
         appender.append("");
@@ -44,6 +45,7 @@ public class MapperGenerator {
         appender.append(format(" * @author {}", pluginConfig.getAuthor()));
         appender.append(format(" * @date {}", DateUtil.now()));
         appender.append(" */");
+        appender.append("@Mapper");
         appender.append(format("public interface {}Mapper extends BaseMapper<{}Entity> {", tableName, tableName));
         appender.append("");
 
