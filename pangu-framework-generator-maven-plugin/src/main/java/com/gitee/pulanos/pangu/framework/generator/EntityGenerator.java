@@ -70,7 +70,11 @@ public class EntityGenerator {
             appender.append(format("     * {}", column.getComment()));
             appender.append("    */");
             if (column.getIsPkey()) {
-                appender.append(format("   @TableId(value = \"{}\")", column.getName()));
+                String idType = "NONE";
+                if (column.getIsAutoincrement()){
+                    idType = "AUTO";
+                }
+                appender.append(format("   @TableId(value = \"{}\", type = IdType.{})", column.getName(), idType));
             } else {
                 appender.append(format("   @TableField(value = \"{}\")", column.getName()));
             }
