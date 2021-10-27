@@ -51,8 +51,8 @@
         <!--TODO 0.2.10会出现获取不到配置和监听不到配置变更的问题，等待确认 -->
         <nacos-config-spring-boot-starter.version>0.2.7</nacos-config-spring-boot-starter.version>
         <nacos-config-spring-boot-actuator.version>0.2.7</nacos-config-spring-boot-actuator.version>
-        <mybatis-plus-boot-starter.version>3.4.3.2</mybatis-plus-boot-starter.version>
-        <mysql-connector-java.version>8.0.27</mysql-connector-java.version>
+        <mybatis-plus.version>3.4.3.2</mybatis-plus.version>
+        <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <hutool-all.version>5.7.11</hutool-all.version>
         <lombok.version>1.18.20</lombok.version>
@@ -100,7 +100,7 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus-boot-starter.version}</version>
+                <version>${mybatis-plus.version}</version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>
