@@ -28,14 +28,4 @@ public class PageOut<T> implements Serializable{
      */
     private long total = 0;
 
-    /**
-     * 每页显示条数，默认 10
-     */
-    private long pageSize = 10;
-
-    /**
-     * 当前页
-     */
-    private long currentPage = 1;
-
 }
