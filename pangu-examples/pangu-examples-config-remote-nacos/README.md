@@ -5,7 +5,24 @@
 > :fa-thumbs-o-up: 使用Nacos配置中心对参数进行统一配置和管理是盘古应用的标准开发模式。当然，盘古开发框架也可以支持本地配置的开发模式，具体请参阅本地配置模式开发的相关范例。
 
 #### :four_leaf_clover: 如何获取配置中心的配置参数
--  **第一步：模块的本地配置文件模版** 
+-  **第一步：安装pom依赖**
+
+    ```xml
+    <parent>
+        <groupId>com.gitee.pulanos.pangu</groupId>
+        <artifactId>pangu-framework-parent</artifactId>
+        <version>latest.version.xxx</version>
+        <relativePath/>
+    </parent>
+    ```
+    ```xml
+    <dependency>
+        <groupId>com.gitee.pulanos.pangu</groupId>
+        <artifactId>pangu-framework-spring-boot-starter</artifactId>
+    </dependency>
+    ```
+
+-  **第二步：模块的本地配置文件模版** 
 
     ```
     spring.application.name=pangu-showcases-config
@@ -22,7 +39,7 @@
     nacos.config.data-id=${spring.application.name}.properties
     ```
 
--  **第二步：在Nacos配置中心新建配置** 
+-  **第三步：在Nacos配置中心新建配置** 
     1. 在配置中心新建命名空间，命名空间ID与本地配置文件`application.properties`中的参数`nacos.config.namespace`值一致。（pangu-dev）
     2. 在`pangu-dev`命名空间下，新建配置。DataId与本地配置文件`application.properties`中的参数`nacos.config.data-id`值一致。（pangu-showcases-config）配置如下参数信息。
         ```
@@ -36,7 +53,7 @@
         logging.level.com.alibaba.nacos.client.config.impl.ClientWorker=WARN
         ```
 
-- **第三步：使用@NacosValue注解获取参数值** 
+- **第四步：使用@NacosValue注解获取参数值** 
     ``` java
     /**
      * 开启 autoRefreshed配置项, 可以实现参数的动态刷新
