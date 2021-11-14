@@ -39,7 +39,7 @@ public class EmptySpringBootApplication {
 	public class EmptyService{
 		@PostConstruct
 		public void print(){
-			log.info("这是一个完全基于SpringBoot原生框架的空项目...");
+			log.info("这是一个完全基于SpringBoot原生框架的空应用...");
 		}
 	}
 
