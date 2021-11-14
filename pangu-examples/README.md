@@ -1,10 +1,8 @@
 :mushroom: 本项目收录了和盘古开发相关的各种范例，是盘古开发新手的百宝箱。范例代码和相关开发文档保持同步。
 
 :cherries: **范例目录&简介**
-- **[pangu-showcases-empty](https://gitee.com/pulanos/pangu-showcases/tree/master/pangu-showcases-empty)** 
-  1. 如何初始化创建一个基本的盘古空应用
-  2. 应用日志输出级别的动态热切换演示
-  3. 如何启动盘古应用（启动参数配置）
+- **[pangu-showcases-empty-springboot-based](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples/pangu-examples-empty-springboot-based)** 
+  1. 创建一个基于原生SpringBoot框架的空应用
 
 - **[pangu-showcases-config-remote-nacos](https://gitee.com/pulanos/pangu-showcases/tree/master/pangu-showcases-config-remote-nacos)** 
   1. 如何获取Nacos配置中心的远程配置参数
