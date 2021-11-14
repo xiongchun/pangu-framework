@@ -4,5 +4,6 @@
 |   ___/    /  /_\  \   |  . `  | |  | |_ | |  |  |  | 
 |  |       /  _____  \  |  |\   | |  |__| | |  `--'  | 
 | _|      /__/     \__\ |__| \__|  \______|  \______/                                                         
-PanGu Dev Framework                            (V5.x)
-Powered By 普蓝开源社区     (https://gitee.com/pulanos)
+:: PanGu Dev Framework ::                       (v5.x)
+:: Spring Boot ::                     (v2.2.5.RELEASE)
+Powered By 普蓝开源社区      (https://gitee.com/pulanos)

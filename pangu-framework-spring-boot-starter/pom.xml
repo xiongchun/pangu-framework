@@ -4,12 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.gitee.pulanos.pangu</groupId>
+        <artifactId>pangu-framework-parent</artifactId>
+        <version>5.0.7</version>
+        <relativePath/>
+    </parent>
+
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-framework-base</artifactId>
-    <version>5.0.6</version>
+    <artifactId>pangu-framework-spring-boot-starter</artifactId>
+    <version>5.0.7</version>
     <packaging>jar</packaging>
-    <name>pangu-framework-base</name>
-    <description>pangu development framework</description>
+    <name>pangu-framework-spring-boot-starter</name>
+    <description>pangu-framework-spring-boot-starter</description>
     <url>https://gitee.com/pulanos/pangu-framework</url>
 
     <licenses>
@@ -34,49 +41,18 @@
     </developers>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
-        <nacos-config-spring-boot-starter.version>0.2.7</nacos-config-spring-boot-starter.version>
-        <hutool-all.version>5.7.11</hutool-all.version>
-        <lombok.version>1.18.20</lombok.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <maven-javadoc-plugin.version>3.3.0</maven-javadoc-plugin.version>
-        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>${spring-boot.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-            <version>${spring-boot.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool-all.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>nacos-config-spring-boot-starter</artifactId>
-            <version>${nacos-config-spring-boot-starter.version}</version>
-            <scope>provided</scope>
+        </dependency>
+        <!--将被@ConfigurationProperties注解的类的属性注入到元数据-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
