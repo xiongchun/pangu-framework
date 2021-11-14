@@ -5,7 +5,7 @@
 > :fa-hand-o-right: 这是在需要开发标准原生SpringBoot应用的特殊场景下的开发模式，依赖的`pangu-framework-parent`只提供了一点必要的非侵入依赖管理。
 
 #### :four_leaf_clover: 如何创建&启动一个原生SpringBoot应用
--  **第一步：pom.xml** 
+-  **第一步：安装pom依赖** 
     ``` xml
     <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
