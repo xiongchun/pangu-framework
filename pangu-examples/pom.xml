@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.gitee.pulanos.pangu</groupId>
+	<artifactId>pangu-examples</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0.0</version>
+	<name>pangu-examples</name>
+
+	<modules>
+		<module>pangu-examples-empty-springboot-based</module>
+		<module>pangu-examples-config-remote-nacos</module>
+		<module>pangu-examples-webapi</module>
+		<module>pangu-examples-crud</module>
+		<module>pangu-examples-dubbo-api</module>
+		<module>pangu-examples-dubbo-service</module>
+		<module>pangu-examples-dubbo-consumer</module>
+		<module>pangu-examples-gateway</module>
+		<module>pangu-examples-dubbo-gateway-service</module>
+	</modules>
+
+</project>

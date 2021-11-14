@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.gitee.pulanos.pangu</groupId>
+        <artifactId>pangu-framework-parent</artifactId>
+        <version>5.0.6</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.gitee.pulanos.pangu</groupId>
+    <artifactId>pangu-examples-crud</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.0</version>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.gitee.pulanos.pangu</groupId>
+                <artifactId>pangu-framework-generator-maven-plugin</artifactId>
+                <version>5.0.6</version>
+                <configuration>
+                    <url>jdbc:mysql://127.0.0.1:3306/pangu-showcases</url>
+                    <user>root</user>
+                    <password>root123456</password>
+                    <tables>user</tables>
+                    <author>普蓝开源社区</author>
+                    <!-- 可以使用绝对路径 -->
+                    <entityFilePath>${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/crud/dao/entity</entityFilePath>
+                    <entityPackageName>com.gitee.pulanos.pangu.showcases.crud.dao.entity</entityPackageName>
+                    <mapperFilePath>${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/crud/dao/mapper</mapperFilePath>
+                    <mapperPackageName>com.gitee.pulanos.pangu.showcases.crud.dao.mapper</mapperPackageName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
