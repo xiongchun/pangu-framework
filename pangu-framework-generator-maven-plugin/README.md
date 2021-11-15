@@ -22,8 +22,9 @@
     </configuration>
 </plugin>
 ```
-#### :four_leaf_clover: 执行插件
+#### :tw-2708: 执行插件
 执行maven脚本：`mvn pangu:generate`。输出如下图所示信息。
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1115/222136_3f101763_431745.png "盘古开发框架代码生成器插件执行结果输出信息.png")
 
 
 
