@@ -13,7 +13,6 @@
     <relativePath/>
 </parent>
 ```
-> Gradle: `implementation 'com.gitee.pulanos.pangu:pangu-framework-generator-maven-plugin:latest.version.xxx'`
 
 ```xml
 <dependency>
