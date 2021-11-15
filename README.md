@@ -29,7 +29,7 @@
     <artifactId>pangu-framework-generator-maven-plugin</artifactId>
     <version>5.0.6</version>
     <configuration>
-        <url>jdbc:mysql://127.0.0.1:3306/pangu-showcases</url>
+        <url>jdbc:mysql://127.0.0.1:3306/pangu-examples</url>
         <user>root</user>
         <password>root123456</password>
         <tables>user</tables>
