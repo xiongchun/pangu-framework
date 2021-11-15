@@ -75,7 +75,7 @@ public final class Constants {
         /**
          * 应用启动成功
          */
-        public final static String APP_START_SUCCESS = "(ô‿ô) PanGu Dev Framework Started successfully ㊥ 盘古开发框架启动成功\\0";
+        public final static String APP_START_SUCCESS = "(ô‿ô) PanGu Dev Framework Started successfully ㊥ 盘古开发框架启动成功";
         /**
          * 应用退出
          */
