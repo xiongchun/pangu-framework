@@ -23,7 +23,7 @@
 
 ### :leaves: 代码生成插件安装
 
-```
+```xml
 <plugin>
     <groupId>com.gitee.pulanos.pangu</groupId>
     <artifactId>pangu-framework-generator-maven-plugin</artifactId>
