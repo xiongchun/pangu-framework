@@ -3,7 +3,7 @@
 
 > :fa-thumbs-o-up: 为了满足一些特殊的场景，我们可以使用这种基于本地配置文件的开发模式。但使用Nacos配置中心对参数进行统一配置和管理才是盘古应用的标准开发模式，详情请参阅范例`pangu-examples-config-remote-nacos`。
 
-#### :four_leaf_clover: 如何获取配置中心的配置参数
+#### :four_leaf_clover: 基于本地配置文件的开发模式
 -  **第一步：安装pom依赖**
 
     ```xml
