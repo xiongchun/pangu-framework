@@ -5,7 +5,7 @@
   1. 创建一个基于原生SpringBoot框架的空应用
 
 - **[pangu-examples-config-remote-nacos](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples)**
-  1. 基于本地配置文件进行配置管理的盘古应用开发模式  
+  1. 基于Nacos配置中心进行配置管理的盘古应用开发模式  
       - 如何获取Nacos配置中心的远程配置参数
       - 参数值修改后动态刷新Nacos配置数据
 
