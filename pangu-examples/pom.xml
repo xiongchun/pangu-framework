@@ -14,6 +14,7 @@
 		<module>pangu-examples-empty-springboot-based</module>
 		<module>pangu-examples-empty</module>
 		<module>pangu-examples-config-remote-nacos</module>
+		<module>pangu-examples-config-local</module>
 		<module>pangu-examples-webapi</module>
 		<module>pangu-examples-crud</module>
 		<module>pangu-examples-dubbo-api</module>
