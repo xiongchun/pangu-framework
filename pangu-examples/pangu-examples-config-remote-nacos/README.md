@@ -24,14 +24,12 @@
 
 -  **第二步：模块的本地配置文件模版** 
 
-    ```
+    ```properties
     spring.application.name=pangu-showcases-config
     spring.profiles.active=${spring.profiles.active:dev}
     nacos.config.bootstrap.enable=true
     nacos.config.bootstrap.log-enable=true
     nacos.config.auto-refresh=true
-    #同名的远程配置将覆盖本地配置
-    nacos.config.remote-first=true
     #对应Nacos配置中心的命名空间ID
     nacos.config.namespace=${nacos.namespace:pangu-dev}
     nacos.config.server-addr=${nacos.server-addr:127.0.0.1:8848}

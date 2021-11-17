@@ -1,10 +1,9 @@
 #### :mushroom: 范例演示功能
-1. 如何获取Nacos配置中心的远程配置参数。
-2. 参数值修改后动态刷新Nacos配置数据。
+1. 如何在线热切换日志输出级别。
 
-> :fa-thumbs-o-up: 使用Nacos配置中心对参数进行统一配置和管理是盘古应用的标准开发模式。当然，盘古开发框架也可以支持本地配置的开发模式，具体请参阅本地配置模式开发的相关范例。
+> :fa-thumbs-o-up: 通过在Nacos配置中心修改日志级别配置参数，应用监听日志级别参数变更并动态刷新日志级别。
 
-#### :four_leaf_clover: 如何获取配置中心的配置参数
+#### :four_leaf_clover: 如何在线热切换日志级别
 -  **第一步：安装pom依赖**
 
     ```xml
@@ -24,14 +23,12 @@
 
 -  **第二步：模块的本地配置文件模版** 
 
-    ```
-    spring.application.name=pangu-showcases-config
+    ```properties
+    spring.application.name=pangu-examples-log-dynamic
     spring.profiles.active=${spring.profiles.active:dev}
     nacos.config.bootstrap.enable=true
     nacos.config.bootstrap.log-enable=true
     nacos.config.auto-refresh=true
-    #同名的远程配置将覆盖本地配置
-    nacos.config.remote-first=true
     #对应Nacos配置中心的命名空间ID
     nacos.config.namespace=${nacos.namespace:pangu-dev}
     nacos.config.server-addr=${nacos.server-addr:127.0.0.1:8848}
@@ -40,37 +37,48 @@
     ```
 
 -  **第三步：在Nacos配置中心新建配置** 
-    1. 在配置中心新建命名空间，命名空间ID与本地配置文件`application.properties`中的参数`nacos.config.namespace`值一致。（pangu-dev）
-    2. 在`pangu-dev`命名空间下，新建配置。DataId与本地配置文件`application.properties`中的参数`nacos.config.data-id`值一致。（pangu-showcases-config）配置如下参数信息。
-        ```
-        # 演示参数配置
-        demo.app.id=XC001001
-        demo.app.name=盘古开发框架
-        demo.app.author=普蓝开源社区
-        
-        logging.level.root=INFO
-        logging.level.com.gitee.pulanos.pangu=INFO
-        logging.level.com.alibaba.nacos.client.config.impl.ClientWorker=WARN
-        ```
-
-- **第四步：使用@NacosValue注解获取参数值** 
-    ``` java
-    /**
-     * 开启 autoRefreshed配置项, 可以实现参数的动态刷新
-     */
-    @NacosValue(value = "${demo.app.id}")
-    private String appId;
-    @NacosValue(value = "${demo.app.name}", autoRefreshed = true)
-    private String appName;
-    @NacosValue(value = "${demo.app.author}", autoRefreshed = true)
-    private String appAuthor;
+    
+    在配置中心新建命名空间（`nacos.config.namespace`值）下，新建DataId为`pangu-examples-log-dynamic.properties`的配置文件。
+    ```
+    # 演示如何在线热切换日志级别
+    logging.level.root=INFO
+    logging.level.com.gitee.pulanos.pangu=INFO
+    logging.level.com.alibaba.nacos.client.config.impl.ClientWorker=WARN
     ```
 
-#### :blossom: 动态刷新配置数据
+- **第四步：启动&验证效果** 
+  
+    > 请在Nacos控制台修改日志级别后查看输出效果。
 
-登录Nacos配置中心，修改对应参数值，查看控制台正在循环输出日志的变化情况。以验证动态刷新配置数据功能。
-```
-2021-09-15 12:28:30.005  INFO : 参数appId：XC001001
-2021-09-15 12:28:30.005  INFO : 参数appName：盘古开发框架
-2021-09-15 12:28:30.005  INFO : 参数appAuthor：普蓝开源社区
-```
+    ``` java
+    @SpringBootApplication
+    public class DynamicLogApplication {
+    
+        public static void main(String[] args) {
+            PanGuApplicationBuilder.init(DynamicLogApplication.class).run(args);
+        }
+    
+        @Component
+        public class DynamicLogExample {
+    
+            @PostConstruct
+            public void execute() {
+                CronUtil.schedule("*/10 * * * * *", new Task() {
+                    @Override
+                    public void execute() {
+                        Console.log("演示日志级别热切换功能，请在Nacos控制台修改日志级别后查看输出效果");
+                        log.trace("这是trace信息");
+                        log.debug("这是debug信息");
+                        log.info("这是info信息");
+                        log.warn("这是warn信息");
+                        log.error("这是error信息");
+                    }
+                });
+                CronUtil.setMatchSecond(true);
+                CronUtil.start();
+            }
+    
+        }
+    
+    }
+    ```

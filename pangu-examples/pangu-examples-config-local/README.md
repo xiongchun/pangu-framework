@@ -23,7 +23,7 @@
 
 -  **第二步：本地配置文件** 
 
-    ```
+    ```properties
     spring.application.name=pangu-examples-config-local
     demo.app.id=1000001
     ```

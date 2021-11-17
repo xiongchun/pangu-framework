@@ -4,6 +4,9 @@
 - **[pangu-examples-empty-springboot-based](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples)** 
   1. 创建一个基于原生SpringBoot框架的空应用
 
+- **[pangu-examples-empty](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples)**
+  1. 创建一个基于盘古框架的空应用
+
 - **[pangu-examples-config-remote-nacos](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples)**
   1. 基于Nacos配置中心进行配置管理的盘古应用开发模式  
       - 如何获取Nacos配置中心的远程配置参数
@@ -11,6 +14,9 @@
 
 - **[pangu-examples-config-local](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples)**
   1. 基于本地配置文件进行配置管理的盘古应用开发模式
+
+- **[pangu-examples-log-dynamic](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples)**
+  1. 如何在线热切换日志输出级别
 
 - **[pangu-examples-webapi](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples)** 
   1. 如何编写WebAPI接口以及基本的参数传递和参数校验
