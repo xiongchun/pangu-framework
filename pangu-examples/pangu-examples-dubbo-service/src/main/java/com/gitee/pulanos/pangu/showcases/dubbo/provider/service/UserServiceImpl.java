@@ -8,7 +8,6 @@ import com.gitee.pulanos.pangu.showcases.dubbo.api.service.UserService;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
-import org.apache.shenyu.client.dubbo.common.annotation.ShenyuDubboClient;
 
 import java.util.List;
 
@@ -21,7 +20,6 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Override
-    @ShenyuDubboClient(path = "/findUserEntity")
     public UserEntity findUserEntity(Long id) {
         log.info("参数ID：{}", id);
         UserEntity userEntity = new UserEntity();
@@ -31,7 +29,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @ShenyuDubboClient(path = "/listUserOuts")
     public List<UserOut> listUserOuts(UserIn userIn) {
         log.info("参数userIn：{}", userIn);
         BeanValidator.validate(userIn);

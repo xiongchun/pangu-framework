@@ -44,7 +44,7 @@ public class DynamicLogSwitcher {
     private static final String LOGGER_PREFIX = "logging.level.";
 
     @NacosConfigListener(dataId = "${nacos.config.data-id}", timeout = 5000)
-    public void onChange(String newCfgText) throws Exception{
+    public void onChange(String newCfgText){
         Properties properties = ConfigParseUtils.toProperties(newCfgText, ConfigType.PROPERTIES.getType());
         for (Object key : properties.keySet()) {
             String logKey = String.valueOf(key);

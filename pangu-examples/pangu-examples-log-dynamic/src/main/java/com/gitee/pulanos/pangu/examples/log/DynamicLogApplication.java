@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.showcases.config.remote.nacos;
+package com.gitee.pulanos.pangu.examples.log;
 
+import cn.hutool.core.lang.Console;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
-import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.gitee.pulanos.pangu.framework.PanGuApplicationBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,38 +32,32 @@ import javax.annotation.PostConstruct;
  */
 @Slf4j
 @SpringBootApplication
-public class NacosConfigurationApplication {
+public class DynamicLogApplication {
 
 	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(NacosConfigurationApplication.class).run(args);
+		PanGuApplicationBuilder.init(DynamicLogApplication.class).run(args);
 	}
 
 	@Component
-	public class RemoteConfiguration {
-		/**
-		 * 开启 autoRefreshed配置项, 可以实现参数的动态刷新
-		 */
-		@NacosValue(value = "${demo.app.id}")
-		private String appId;
-		@NacosValue(value = "${demo.app.name}", autoRefreshed = true)
-		private String appName;
-		@NacosValue(value = "${demo.app.author}", autoRefreshed = true)
-		private String appAuthor;
+	public class DynamicLogExample {
 
 		@PostConstruct
 		public void execute() {
 			CronUtil.schedule("*/10 * * * * *", new Task() {
 				@Override
 				public void execute() {
-					log.info("演示获取配置数据，可以在配置中心修改参数值后查看动态刷新效果");
-					log.info("参数appId：{}", appId);
-					log.info("参数appName：{}", appName);
-					log.info("参数appAuthor：{}", appAuthor);
+					Console.log("演示日志级别热切换功能，请在Nacos控制台修改日志级别后查看输出效果");
+					log.trace("这是trace信息");
+					log.debug("这是debug信息");
+					log.info("这是info信息");
+					log.warn("这是warn信息");
+					log.error("这是error信息");
 				}
 			});
 			CronUtil.setMatchSecond(true);
 			CronUtil.start();
 		}
+
 	}
 
 }
