@@ -80,6 +80,10 @@ public final class Constants {
          * 应用退出
          */
         public final static String APP_EXIT = "(ô‿ô) PanGu Dev Framework Stopped ㊥ 盘古开发框架已停止";
+        /**
+         * OK消息
+         */
+        public final static String OK = "[OK] ";
     }
 
     /**

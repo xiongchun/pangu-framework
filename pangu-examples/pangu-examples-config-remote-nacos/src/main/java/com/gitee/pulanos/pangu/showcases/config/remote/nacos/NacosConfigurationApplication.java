@@ -34,7 +34,6 @@ import javax.annotation.PostConstruct;
  */
 @Slf4j
 @SpringBootApplication
-@ComponentScan({"com.gitee.pulanos.pangu"})
 public class NacosConfigurationApplication {
 
 	public static void main(String[] args) {

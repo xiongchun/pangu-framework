@@ -17,22 +17,40 @@
 
 package com.gitee.pulanos.pangu.framework.autoconfigure;
 
+import cn.hutool.core.util.StrUtil;
+import com.alibaba.nacos.api.config.ConfigService;
+import com.gitee.pulanos.pangu.framework.Constants;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * ApplicationExitHookConfiguration
+ * PanguBaseAutoConfiguration
  *
  * @author xiongchun
  */
+@Slf4j
 @Configuration
-@ConditionalOnMissingBean(ApplicationExitHook.class)
-public class ApplicationExitHookConfiguration {
+public class PanguBaseAutoConfiguration {
 
     @Bean
+    @ConditionalOnMissingBean(ApplicationExitHook.class)
     public ApplicationExitHook createApplicationExitHook(){
-        return new ApplicationExitHook();
+        ApplicationExitHook applicationExitHook = new ApplicationExitHook();
+        log.info("{}{}{}", Constants.Msg.OK, "实例化并自动装配了Bean组件：", StrUtil.lowerFirst(ApplicationExitHook.class.getSimpleName()));
+        return applicationExitHook;
+    }
+
+    @Bean
+    @ConditionalOnProperty(prefix = "nacos", name = "config.data-id")
+    @ConditionalOnClass(ConfigService.class)
+    public DynamicLogSwitcher createDynamicLogSwitcher() {
+        DynamicLogSwitcher dynamicLogSwitcher = new DynamicLogSwitcher();
+        log.info("{}{}{}", Constants.Msg.OK, "实例化并自动装配了Bean组件：", StrUtil.lowerFirst(DynamicLogSwitcher.class.getSimpleName()));
+        return dynamicLogSwitcher;
     }
 
 }

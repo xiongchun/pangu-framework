@@ -21,9 +21,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PreDestroy;
 
 /**
  * 创建 {@link SpringApplication} 和 {@link ConfigurableApplicationContext} 实例。
