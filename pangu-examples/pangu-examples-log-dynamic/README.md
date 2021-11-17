@@ -38,8 +38,8 @@
 
 -  **第三步：在Nacos配置中心新建配置** 
     
-    在配置中心新建命名空间（`nacos.config.namespace`值）下，新建DataId为`pangu-examples-log-dynamic.properties`的配置文件。
-    ```
+    在配置中心命名空间（`nacos.config.namespace`值）下，新建DataId为`pangu-examples-log-dynamic.properties`的配置文件。
+    ```properties
     # 演示如何在线热切换日志级别
     logging.level.root=INFO
     logging.level.com.gitee.pulanos.pangu=INFO
