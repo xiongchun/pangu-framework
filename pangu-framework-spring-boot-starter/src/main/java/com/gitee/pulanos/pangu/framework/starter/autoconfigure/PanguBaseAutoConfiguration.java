@@ -21,9 +21,11 @@ import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.gitee.pulanos.pangu.framework.Constants;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -34,7 +36,11 @@ import org.springframework.context.annotation.Configuration;
  */
 @Slf4j
 @Configuration
+@EnableConfigurationProperties(PanguAppProperties.class)
 public class PanguBaseAutoConfiguration {
+
+    @Autowired
+    private PanguAppProperties panguAppProperties;
 
     @Bean
     @ConditionalOnMissingBean(ApplicationExitHook.class)
