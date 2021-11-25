@@ -79,6 +79,11 @@
                 <version>${pangu.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.gitee.pulanos.pangu</groupId>
+                <artifactId>pangu-framework-data-jdbc-spring-boot-starter</artifactId>
+                <version>${pangu.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
                 <version>${dubbo-spring-boot-starter.version}</version>

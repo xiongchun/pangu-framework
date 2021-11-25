@@ -14,22 +14,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
 
-package com.gitee.pulanos.pangu.showcases.crud;
-
-import com.gitee.pulanos.pangu.framework.PanGuApplicationBuilder;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
+ * JdbcProperties
+ *
  * @author xiongchun
  */
-@EnableTransactionManagement
-@SpringBootApplication
-@ComponentScan({"com.gitee.pulanos.pangu"})
-public class CrudApplication {
-	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(CrudApplication.class).run(args);
-	}
+@Data
+@ConfigurationProperties(prefix = "pangu.jdbc")
+public class JdbcProperties {
+
+    /**
+     * 分页SQL方言数据库类型标识（缺省：自动识别）
+     */
+    private String dbType;
+
 }

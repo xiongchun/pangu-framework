@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.autoconfigure;
+package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
 
 import com.gitee.pulanos.pangu.framework.Constants;
 import lombok.extern.slf4j.Slf4j;

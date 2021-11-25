@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.autoconfigure;
+package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
 
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.api.config.ConfigType;
