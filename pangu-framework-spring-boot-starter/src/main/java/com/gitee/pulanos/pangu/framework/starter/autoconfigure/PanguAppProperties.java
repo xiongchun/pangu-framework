@@ -1,7 +1,5 @@
 package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
 
-import cn.hutool.core.lang.UUID;
-import cn.hutool.core.util.IdUtil;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
