@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.model;
+package com.gitee.pulanos.pangu.framework.common.model;
 
-import com.gitee.pulanos.pangu.framework.Constants;
+import com.gitee.pulanos.pangu.framework.common.Constants;
 import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;

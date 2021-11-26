@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.utils;
+package com.gitee.pulanos.pangu.framework.common.utils;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.exceptions.ValidateException;

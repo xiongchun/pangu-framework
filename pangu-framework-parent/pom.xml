@@ -75,6 +75,11 @@
             </dependency>
             <dependency>
                 <groupId>com.gitee.pulanos.pangu</groupId>
+                <artifactId>pangu-framework-common</artifactId>
+                <version>${pangu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gitee.pulanos.pangu</groupId>
                 <artifactId>pangu-framework-spring-boot-starter</artifactId>
                 <version>${pangu.version}</version>
             </dependency>
@@ -145,6 +150,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gitee.pulanos.pangu</groupId>
+            <artifactId>pangu-framework-common</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>

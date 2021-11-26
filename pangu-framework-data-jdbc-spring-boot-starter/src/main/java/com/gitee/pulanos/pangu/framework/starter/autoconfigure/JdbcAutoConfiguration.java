@@ -21,6 +21,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import com.gitee.pulanos.pangu.framework.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -41,8 +42,6 @@ public class JdbcAutoConfiguration {
     @Autowired
     private JdbcProperties jdbcProperties;
 
-    public final static String OK = "[OK] ";
-
     @Bean
     @ConditionalOnMissingBean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
@@ -57,7 +56,7 @@ public class JdbcAutoConfiguration {
             msg = dbTypeEnum.getDb();
         }
         interceptor.addInnerInterceptor(paginationInnerInterceptor);
-        log.info("{}分页插件 {} 自动装配成功，分页SQL方言被显式设置为:{}", OK, PaginationInnerInterceptor.class.getSimpleName(), msg);
+        log.info("{}分页插件 {} 自动装配成功，分页SQL方言被显式设置为:{}", Constants.Msg.OK, PaginationInnerInterceptor.class.getSimpleName(), msg);
         return interceptor;
     }
 }

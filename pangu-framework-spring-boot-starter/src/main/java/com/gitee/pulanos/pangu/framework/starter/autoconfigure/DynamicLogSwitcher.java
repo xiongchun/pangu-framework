@@ -21,7 +21,7 @@ import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.api.config.ConfigType;
 import com.alibaba.nacos.api.config.annotation.NacosConfigListener;
 import com.alibaba.nacos.spring.util.ConfigParseUtils;
-import com.gitee.pulanos.pangu.framework.Constants;
+import com.gitee.pulanos.pangu.framework.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.logging.LogLevel;

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.exception;
+package com.gitee.pulanos.pangu.framework.common.exception;
 
 import lombok.Getter;
 

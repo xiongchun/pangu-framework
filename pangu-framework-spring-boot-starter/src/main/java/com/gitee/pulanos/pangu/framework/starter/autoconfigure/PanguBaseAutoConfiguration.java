@@ -19,7 +19,7 @@ package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
 
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.api.config.ConfigService;
-import com.gitee.pulanos.pangu.framework.Constants;
+import com.gitee.pulanos.pangu.framework.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

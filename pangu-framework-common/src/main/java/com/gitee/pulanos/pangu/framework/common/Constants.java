@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework;
+package com.gitee.pulanos.pangu.framework.common;
 
 /**
  * 通用常量表
