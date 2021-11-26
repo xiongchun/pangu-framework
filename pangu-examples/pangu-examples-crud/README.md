@@ -8,6 +8,38 @@
 
 > :tw-1f4a3: 特别提示：经过我们对MybatisPlus框架的长期使用和总结，特给出如下2个“最佳实践”：（1）、使用盘古自带的代码成插件生成相关代码。（2）、只使用MyabtisPlus的Mapper CRUD接口，不建议使用Service CRUD接口。
 
+#### :four_leaf_clover: 安装依赖和参数配置
+
+- 安装依赖
+```xml
+<parent>
+  <groupId>com.gitee.pulanos.pangu</groupId>
+  <artifactId>pangu-framework-parent</artifactId>
+  <version>latest.version.xxx</version>
+  <relativePath/>
+</parent>
+```
+```xml
+<dependency>
+  <groupId>com.gitee.pulanos.pangu</groupId>
+  <artifactId>pangu-framework-data-jdbc-spring-boot-starter</artifactId>
+</dependency>
+```
+- 配置参数
+```properties
+spring.application.name=pangu-examples-crud
+
+spring.datasource.type=com.zaxxer.hikari.HikariDataSource
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/pangu-examples?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true&useSSL=false
+spring.datasource.username=root
+spring.datasource.password=root123456
+mybatis-plus.mapperLocations=classpath*:/mapper/**/*.xml
+mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
+# 分页SQL方言数据库类型标识（缺省：自动识别）
+pangu.jdbc.db-type=mysql
+```
+
 #### :four_leaf_clover: 如何使用盘古代码生成Maven插件生成DAO相关Mapper接口和Entity实体类
 
 - 安装Maven插件
@@ -119,25 +151,6 @@ public int aInsert() {
 #### :cactus: 分页查询和手工映复杂SQL的方法
 
 - 分页查询
-
-  分页查询需要首先配置分页拦截器，如下。
-
-```
-@Configuration
-public class MybatisPlusConfig {
-
-    @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
-        //显式指定，免得每次都去自动获取类型
-        paginationInnerInterceptor.setDbType(DbType.MYSQL);
-        interceptor.addInnerInterceptor(paginationInnerInterceptor);
-        return interceptor;
-    }
-
-}
-```
 
 ```
     public void aPageQuery(){
