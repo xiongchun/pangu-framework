@@ -10,6 +10,7 @@
 	<version>5.0.7</version>
 
 	<modules>
+		<module>pangu-framework-common</module>
 		<module>pangu-framework-parent</module>
 		<module>pangu-framework-spring-boot-starter</module>
 		<module>pangu-framework-generator-maven-plugin</module>
