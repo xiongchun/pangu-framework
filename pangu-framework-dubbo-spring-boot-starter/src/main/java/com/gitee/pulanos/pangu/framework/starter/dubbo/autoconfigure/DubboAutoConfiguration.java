@@ -17,16 +17,13 @@
 
 package com.gitee.pulanos.pangu.framework.starter.dubbo.autoconfigure;
 
-import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * JdbcAutoConfiguration
+ * DubboAutoConfiguration
  *
  * @author xiongchun
  */
@@ -38,9 +35,4 @@ public class DubboAutoConfiguration {
     @Autowired
     private DubboProperties dubboProperties;
 
-    @Bean
-    @ConditionalOnMissingBean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        return null;
-    }
 }
