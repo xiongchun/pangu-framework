@@ -15,4 +15,23 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter;
+package com.gitee.pulanos.pangu.framework.starter.jdbc.autoconfigure;
+
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+/**
+ * JdbcProperties
+ *
+ * @author xiongchun
+ */
+@Data
+@ConfigurationProperties(prefix = "pangu.jdbc")
+public class JdbcProperties {
+
+    /**
+     * 分页SQL方言数据库类型标识（缺省：自动识别）
+     */
+    private String dbType;
+
+}

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework;
+package com.gitee.pulanos.pangu.framework.starter;
 
 import com.gitee.pulanos.pangu.framework.common.Constants;
 import lombok.extern.slf4j.Slf4j;

@@ -12,11 +12,11 @@
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-framework-data-jdbc-spring-boot-starter</artifactId>
+    <artifactId>pangu-framework-jdbc-spring-boot-starter</artifactId>
     <version>5.0.7</version>
     <packaging>jar</packaging>
-    <name>pangu-framework-data-jdbc-spring-boot-starter</name>
-    <description>pangu-framework-data-jdbc-spring-boot-starter</description>
+    <name>pangu-framework-jdbc-spring-boot-starter</name>
+    <description>pangu-framework-jdbc-spring-boot-starter</description>
     <url>https://gitee.com/pulanos/pangu-framework</url>
 
     <licenses>

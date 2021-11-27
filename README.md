@@ -24,7 +24,7 @@
 ```xml
 <dependency>
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-framework-data-jdbc-spring-boot-starter</artifactId>
+    <artifactId>pangu-framework-jdbc-spring-boot-starter</artifactId>
 </dependency>
 ```
 

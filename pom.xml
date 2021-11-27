@@ -14,7 +14,7 @@
 		<module>pangu-framework-parent</module>
 		<module>pangu-framework-spring-boot-starter</module>
 		<module>pangu-framework-generator-maven-plugin</module>
-		<module>pangu-framework-data-jdbc-spring-boot-starter</module>
+		<module>pangu-framework-jdbc-spring-boot-starter</module>
 	</modules>
 
 </project>

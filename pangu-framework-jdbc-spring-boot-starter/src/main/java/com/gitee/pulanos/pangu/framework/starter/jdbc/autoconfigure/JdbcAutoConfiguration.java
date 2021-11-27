@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
+package com.gitee.pulanos.pangu.framework.starter.jdbc.autoconfigure;
 
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.annotation.DbType;
