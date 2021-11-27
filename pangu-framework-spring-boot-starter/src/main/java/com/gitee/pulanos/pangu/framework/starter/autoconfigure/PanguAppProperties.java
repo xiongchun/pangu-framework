@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author xiongchun
  */
 @Data
-@ConfigurationProperties(prefix = "pangu.app")
+@ConfigurationProperties(prefix = "pangu")
 public class PanguAppProperties {
 
     /**

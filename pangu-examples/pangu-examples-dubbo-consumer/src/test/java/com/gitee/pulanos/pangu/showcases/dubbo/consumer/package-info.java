@@ -15,21 +15,4 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.showcases;
-
-import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
-import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-/**
- * @author xiongchun
- */
-@EnableDubbo
-@SpringBootApplication
-public class DubboConsumerApplication {
-
-	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(DubboConsumerApplication.class).run(args);
-	}
-
-}
+package com.gitee.pulanos.pangu.showcases.dubbo.consumer;

@@ -20,7 +20,7 @@ package com.gitee.pulanos.pangu.examples.log;
 import cn.hutool.core.lang.Console;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
-import com.gitee.pulanos.pangu.framework.PanGuApplicationBuilder;
+import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
