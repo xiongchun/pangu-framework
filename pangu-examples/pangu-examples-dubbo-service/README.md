@@ -3,53 +3,49 @@
 1. 如何开发一个Dubbo远程服务并将其注册到Nacos服务中心
 
 #### :four_leaf_clover: 如何开发一个Dubbo远程服务并将其注册到Nacos服务中心
--  **第一步：[pom.xml](https://gitee.com/pulanos/pangu-showcases/blob/master/pangu-showcases-dubbo-provider/pom.xml)** 增加依赖
-    ``` xml
+- **第一步： 增加依赖**
+    ```xml
         <dependency>
             <groupId>com.gitee.pulanos.pangu</groupId>
-            <artifactId>pangu-showcases-dubbo-api</artifactId>
+            <artifactId>pangu-framework-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gitee.pulanos.pangu</groupId>
+            <artifactId>pangu-framework-dubbo-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gitee.pulanos.pangu</groupId>
+            <artifactId>pangu-examples-dubbo-api</artifactId>
             <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-registry-nacos</artifactId>
         </dependency>
     ```
 - **第二步：参数配置** 
-  - 本地参数配置（[application.properties](https://gitee.com/pulanos/pangu-showcases/blob/master/pangu-showcases-dubbo-provider/src/main/resources/application.properties))
-    ```
-    spring.application.name=pangu-showcases-dubbo-provider
-    spring.profiles.active=${active}
+  - 本地参数配置
+    ```properties
+    spring.application.name=pangu-examples-dubbo-service
+    spring.profiles.active=${spring.profiles.active:dev}
     nacos.config.bootstrap.enable=true
     nacos.config.bootstrap.log-enable=true
     nacos.config.auto-refresh=true
-    #同名的远程配置将覆盖本地配置
-    nacos.config.remote-first=true
     #对应Nacos配置中心的命名空间ID
-    nacos.config.namespace=pangu-${active}
-    nacos.config.server-addr=${nacos.url}
+    nacos.config.namespace=${nacos.namespace:pangu-dev}
+    nacos.config.server-addr=${nacos.server-addr:127.0.0.1:8848}
     nacos.config.type=properties
     nacos.config.data-id=${spring.application.name}.properties
     ```
   - 远程参数配置（Nacos配置中心)
     ```
-    server.port=8080
-    
     dubbo.protocol.name=dubbo
-    dubbo.protocol.port=-1
+    dubbo.protocol.port=20880
     dubbo.consumer.timeout=5000
-    dubbo.registry.address=nacos://${nacos.url}/?username=${nacos.username}&password=${nacos.password}&namespace=pangu-${active}
+    dubbo.registry.address=nacos://${nacos.config.server-addr}?namespace=${nacos.config.namespace}
     dubbo.consumer.check=false
     
     logging.level.root=INFO
     logging.level.com.gitee.pulanos.pangu=INFO
     logging.level.com.alibaba.nacos.client.config.impl.ClientWorker=WARN
     ```
- - **第三步：[实现远程服务接口 `UserServiceImpl`](https://gitee.com/pulanos/pangu-showcases/blob/master/pangu-showcases-dubbo-provider/src/main/java/com/gitee/pulanos/pangu/showcases/dubbo/provider/service/UserServiceImpl.java)** 
+ - **第三步：实现远程服务接口 `UserServiceImpl`** 
 
 ```
     @Service(version = "1.0.0", group = "pangu-showcases-dubbo-service")
@@ -65,20 +61,19 @@
     }
 ```
 
- - **第四步：[启动类](https://gitee.com/pulanos/pangu-showcases/blob/master/pangu-showcases-dubbo-provider/src/main/java/com/gitee/pulanos/pangu/showcases/DubboProviderApplication.java)**
+ - **第四步：启动类**
 
-    ``` java
+    ```java
     @EnableDubbo
     @SpringBootApplication
-    @ComponentScan({"com.gitee.pulanos.pangu.showcases.dubbo"})
     public class DubboProviderApplication {
     	public static void main(String[] args) {
     		PanGuApplicationBuilder.init(DubboProviderApplication.class).run(args);
     	}
     }
     ```
-    > :fa-bullhorn: 启动参数设置 ：`-Dactive=dev -Dnacos.url=127.0.0.1:8848 -Dnacos.username=xxxx -Dnacos.password=****`  
-      (根据实际情况设置启动参数中Nacos配置中心的连接和认证信息）
+    > :fa-bullhorn: 启动参数设置 ：`-Dnacos.server-addr=ip:port`
+      (根据实际情况设置启动参数）
 
  - **第五步：查看服务注册中心已注册的Dubbo服务**
 

@@ -25,7 +25,7 @@
 -  **第二步：模块的本地配置文件模版** 
 
     ```properties
-    spring.application.name=pangu-showcases-config
+    spring.application.name=pangu-examples-dubbo-service
     spring.profiles.active=${spring.profiles.active:dev}
     nacos.config.bootstrap.enable=true
     nacos.config.bootstrap.log-enable=true
@@ -40,7 +40,7 @@
 -  **第三步：在Nacos配置中心新建配置** 
     1. 在配置中心新建命名空间，命名空间ID与本地配置文件`application.properties`中的参数`nacos.config.namespace`值一致。（pangu-dev）
     2. 在`pangu-dev`命名空间下，新建配置。DataId与本地配置文件`application.properties`中的参数`nacos.config.data-id`值一致。（pangu-showcases-config）配置如下参数信息。
-        ```
+        ```properties
         # 演示参数配置
         demo.app.id=XC001001
         demo.app.name=盘古开发框架
@@ -52,7 +52,7 @@
         ```
 
 - **第四步：使用@NacosValue注解获取参数值** 
-    ``` java
+    ```java
     /**
      * 开启 autoRefreshed配置项, 可以实现参数的动态刷新
      */
