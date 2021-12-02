@@ -1,6 +1,6 @@
 package com.gitee.pulanos.pangu.showcases.dubbo.gateway.provider.service;
 
-import com.gitee.pulanos.pangu.framework.common.BeanValidator;
+import com.gitee.pulanos.pangu.framework.common.utils.BeanValidator;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.entity.UserEntity;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.in.UserIn;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.out.UserOut;
@@ -17,7 +17,7 @@ import java.util.List;
  * @author xiongchun
  */
 @Slf4j
-@Service(version = "1.0.0", group = "pangu-showcases-dubbo-gateway-service")
+@Service(version = "1.0.0", group = "pangu-examples-dubbo-gateway-service")
 public class UserServiceImpl implements UserService {
 
     @Override

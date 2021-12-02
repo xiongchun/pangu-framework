@@ -52,6 +52,7 @@
         <nacos-config-spring-boot-starter.version>0.2.7</nacos-config-spring-boot-starter.version>
         <nacos-config-spring-boot-actuator.version>0.2.7</nacos-config-spring-boot-actuator.version>
         <mybatis-plus.version>3.4.3.2</mybatis-plus.version>
+        <shenyu.version>2.4.1</shenyu.version>
         <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
@@ -94,6 +95,10 @@
                 <version>${pangu.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.gitee.pulanos.pangu</groupId>
+                <artifactId>pangu-framework-gateway-spring-boot-starter</artifactId>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
                 <version>${dubbo-spring-boot-starter.version}</version>
@@ -117,6 +122,26 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shenyu</groupId>
+                <artifactId>shenyu-spring-boot-starter-client-apache-dubbo</artifactId>
+                <version>${shenyu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shenyu</groupId>
+                <artifactId>shenyu-spring-boot-starter-gateway</artifactId>
+                <version>${shenyu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shenyu</groupId>
+                <artifactId>shenyu-spring-boot-starter-sync-data-websocket</artifactId>
+                <version>${shenyu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shenyu</groupId>
+                <artifactId>shenyu-spring-boot-starter-plugin-apache-dubbo</artifactId>
+                <version>${shenyu.version}</version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>

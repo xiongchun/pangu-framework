@@ -12,11 +12,11 @@
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-framework-dubbo-spring-boot-starter</artifactId>
+    <artifactId>pangu-framework-gateway-spring-boot-starter</artifactId>
     <version>5.0.7</version>
     <packaging>jar</packaging>
-    <name>pangu-framework-dubbo-spring-boot-starter</name>
-    <description>pangu-framework-dubbo-spring-boot-starter</description>
+    <name>pangu-framework-gateway-spring-boot-starter</name>
+    <description>pangu-framework-gateway-spring-boot-starter</description>
     <url>https://gitee.com/pulanos/pangu-framework</url>
 
     <licenses>
@@ -45,16 +45,20 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-registry-nacos</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.shenyu</groupId>
-            <artifactId>shenyu-spring-boot-starter-client-apache-dubbo</artifactId>
+            <artifactId>shenyu-spring-boot-starter-gateway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-spring-boot-starter-sync-data-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-spring-boot-starter-plugin-apache-dubbo</artifactId>
         </dependency>
         <!--将被@ConfigurationProperties注解的类的属性注入到元数据-->
         <dependency>

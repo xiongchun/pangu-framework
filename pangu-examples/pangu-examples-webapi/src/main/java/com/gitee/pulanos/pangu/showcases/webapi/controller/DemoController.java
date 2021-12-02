@@ -25,7 +25,7 @@ public class DemoController {
      */
     @GetMapping("/case1")
     public Result<String> case1() {
-        return Result.success("UP");
+        return Result.success("OK");
     }
 
     /**

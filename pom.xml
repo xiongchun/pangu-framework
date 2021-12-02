@@ -15,6 +15,7 @@
 		<module>pangu-framework-spring-boot-starter</module>
 		<module>pangu-framework-jdbc-spring-boot-starter</module>
 		<module>pangu-framework-dubbo-spring-boot-starter</module>
+		<module>pangu-framework-gateway-spring-boot-starter</module>
 		<module>pangu-framework-generator-maven-plugin</module>
 	</modules>
 

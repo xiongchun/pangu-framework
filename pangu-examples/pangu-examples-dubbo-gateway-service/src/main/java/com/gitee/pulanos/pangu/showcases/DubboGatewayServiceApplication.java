@@ -10,7 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @EnableDubbo
 @SpringBootApplication
-@ComponentScan({"com.gitee.pulanos.pangu.showcases.dubbo"})
 public class DubboGatewayServiceApplication {
 	public static void main(String[] args) {
 		PanGuApplicationBuilder.init(DubboGatewayServiceApplication.class).run(args);

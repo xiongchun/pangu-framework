@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.showcases;
+package com.gitee.pulanos.pangu.showcases.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

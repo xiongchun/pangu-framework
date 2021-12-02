@@ -1,2 +1,2 @@
-pangu-framework-data-jdbc-spring-boot-starter
+pangu-framework-dubbo-spring-boot-starter
 
