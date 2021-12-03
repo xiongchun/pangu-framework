@@ -20,7 +20,7 @@ package com.gitee.pulanos.pangu.showcases.config.remote.nacos;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
-import com.gitee.pulanos.pangu.framework.PanGuApplicationBuilder;
+import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;

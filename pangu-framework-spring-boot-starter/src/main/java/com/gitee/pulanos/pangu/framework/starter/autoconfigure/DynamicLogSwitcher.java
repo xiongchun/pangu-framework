@@ -18,12 +18,13 @@
 package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
 
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.nacos.api.config.ConfigType;
 import com.alibaba.nacos.api.config.annotation.NacosConfigListener;
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.alibaba.nacos.spring.util.ConfigParseUtils;
 import com.gitee.pulanos.pangu.framework.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.logging.LogLevel;
 import org.springframework.boot.logging.LoggingSystem;
 
@@ -41,11 +42,14 @@ public class DynamicLogSwitcher {
     @Autowired
     private LoggingSystem loggingSystem;
 
+    @Value("${nacos.config.type}")
+    private String configType;
+
     private static final String LOGGER_PREFIX = "logging.level.";
 
     @NacosConfigListener(dataId = "${nacos.config.data-id}", timeout = 5000)
-    public void onChange(String newCfgText){
-        Properties properties = ConfigParseUtils.toProperties(newCfgText, ConfigType.PROPERTIES.getType());
+    public void onChange(String newCfgText) {
+        Properties properties = ConfigParseUtils.toProperties(newCfgText, configType);
         for (Object key : properties.keySet()) {
             String logKey = String.valueOf(key);
             if (logKey.startsWith(LOGGER_PREFIX)) {

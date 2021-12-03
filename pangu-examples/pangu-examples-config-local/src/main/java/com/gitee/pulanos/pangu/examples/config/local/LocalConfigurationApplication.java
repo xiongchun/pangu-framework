@@ -18,7 +18,7 @@
 package com.gitee.pulanos.pangu.examples.config.local;
 
 import com.alibaba.nacos.api.config.annotation.NacosValue;
-import com.gitee.pulanos.pangu.framework.PanGuApplicationBuilder;
+import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.Scheduled;

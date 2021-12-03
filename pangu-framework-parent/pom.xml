@@ -97,6 +97,7 @@
             <dependency>
                 <groupId>com.gitee.pulanos.pangu</groupId>
                 <artifactId>pangu-framework-gateway-spring-boot-starter</artifactId>
+                <version>${pangu.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
