@@ -29,7 +29,7 @@
 - **pangu-examples-dubbo-api** 
   1. 开发Dubbo服务时接口文件和POJO相关类的打包模块
 
-- **pangu-examples-dubbo-provider** 
+- **pangu-examples-dubbo-service** 
   1. 如何开发一个Dubbo远程服务并将其注册到Nacos服务中心
 
 - **pangu-examples-dubbo-consumer** 
