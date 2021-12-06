@@ -19,7 +19,6 @@ package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
 
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.api.config.annotation.NacosConfigListener;
-import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.alibaba.nacos.spring.util.ConfigParseUtils;
 import com.gitee.pulanos.pangu.framework.common.Constants;
 import lombok.extern.slf4j.Slf4j;
