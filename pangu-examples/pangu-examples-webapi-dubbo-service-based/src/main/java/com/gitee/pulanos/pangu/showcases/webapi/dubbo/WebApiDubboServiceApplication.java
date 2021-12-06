@@ -8,9 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
  * @author xiongchun
  */
 @SpringBootApplication
-@ComponentScan({"com.gitee.pulanos.pangu"})
-public class WebApiApplication {
+public class WebApiDubboServiceApplication {
 	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(WebApiApplication.class).run(args);
+		PanGuApplicationBuilder.init(WebApiDubboServiceApplication.class).run(args);
 	}
 }

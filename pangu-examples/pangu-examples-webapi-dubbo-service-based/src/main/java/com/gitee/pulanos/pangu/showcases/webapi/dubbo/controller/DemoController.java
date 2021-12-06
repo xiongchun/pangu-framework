@@ -1,8 +1,8 @@
 package com.gitee.pulanos.pangu.showcases.webapi.controller;
 
-import com.gitee.pulanos.pangu.framework.Constants;
-import com.gitee.pulanos.pangu.framework.common.BeanValidator;
-import com.gitee.pulanos.pangu.framework.model.Result;
+import com.gitee.pulanos.pangu.framework.common.Constants;
+import com.gitee.pulanos.pangu.framework.common.model.Result;
+import com.gitee.pulanos.pangu.framework.common.utils.BeanValidator;
 import com.gitee.pulanos.pangu.showcases.webapi.param.CaseIn;
 import com.gitee.pulanos.pangu.showcases.webapi.param.CaseOut;
 import lombok.extern.slf4j.Slf4j;

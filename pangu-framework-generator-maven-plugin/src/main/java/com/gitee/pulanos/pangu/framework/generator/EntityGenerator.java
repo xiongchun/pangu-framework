@@ -64,7 +64,7 @@ public class EntityGenerator {
         for (Column column : columns) {
             appender.append("");
             appender.append("   /**");
-            appender.append(format("     * {}", column.getComment()));
+            appender.append(format("    * {}", column.getComment()));
             appender.append("    */");
             if (column.getIsPkey()) {
                 String idType = "NONE";

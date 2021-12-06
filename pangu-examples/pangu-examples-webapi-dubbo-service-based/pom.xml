@@ -7,17 +7,24 @@
     <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
         <artifactId>pangu-framework-parent</artifactId>
-        <version>5.0.2</version>
+        <version>5.0.7</version>
         <relativePath/>
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-examples-webapi</artifactId>
+    <artifactId>pangu-examples-webapi-dubbo-service-based</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.gitee.pulanos.pangu</groupId>
+            <artifactId>pangu-framework-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
