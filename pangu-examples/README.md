@@ -37,3 +37,6 @@
 
 - **pangu-examples-gateway**
   1. 如何开发一个网关模块，实现泛华调用后端Dubbo应用。
+
+- **pangu-examples-dubbo-gateway-service**
+  1. 如何开发一个能和盘古网关系统集成的后端Dubbo应用。
