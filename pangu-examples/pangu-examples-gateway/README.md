@@ -52,7 +52,68 @@
 
 -  **第三步：在Nacos配置中心新建配置**
     1. 在配置中心新建命名空间，命名空间ID与本地配置文件`application.properties`中的参数`nacos.config.namespace`值一致。（pangu-dev）
-    2. 在`pangu-dev`命名空间下，新建配置。DataId与本地配置文件`application.properties`中的参数`nacos.config.data-id`值一致。（pangu-examples-config-remote-nacos）配置如下参数信息。
-        ```yaml       
-        
-        ```   
+    2. 在`pangu-dev`命名空间下，新建配置。DataId与本地配置文件`application.properties`中的参数`nacos.config.data-id`值一致。（pangu-examples-gateway）配置如下参数信息。
+```yaml       
+server:
+  port: 9090
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+management:
+  health:
+    defaults:
+      enabled: false
+
+shenyu:
+  cross:
+    enabled: true
+    allowedHeaders:
+    allowedMethods: "*"
+    allowedOrigin: "*"
+    allowedExpose: "*"
+    maxAge: "18000"
+    allowCredentials: true
+  switchConfig:
+    local: true
+  file:
+    enabled: true
+    maxSize : 10
+  sync:
+    websocket:
+      urls: ws://139.155.46.145:9999/websocket
+  dubbo:
+      parameter: multi
+  exclude:
+    enabled: false
+    paths:
+      - /favicon.ico
+  extPlugin:
+    path:
+    enabled: true
+    threads: 1
+    scheduleTime: 300
+    scheduleDelay: 30
+  scheduler:
+    enabled: false
+    type: fixed
+    threads: 16
+  upstreamCheck:
+    enabled: false
+    timeout: 3000
+    healthyThreshold: 1
+    unhealthyThreshold: 1
+    interval: 5000
+    printEnabled: true
+    printInterval: 60000
+
+logging:
+  level:
+    root: info
+    org.springframework.boot: info
+    org.apache.ibatis: info
+    org.apache.shenyu.bonuspoint: info
+    org.apache.shenyu.lottery: info
+    org.apache.shenyu: info    
+```   
