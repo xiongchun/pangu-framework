@@ -53,6 +53,6 @@
 ### :maple_leaf: 获取更多资源
 
 - :fa-book: 盘古框架开发指南
-- :fa-flask: [盘古框架开发范例集合](https://gitee.com/pulanos/pangu-showcases)
+- :fa-flask: [盘古框架开发范例集合](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples)
 - :fa-linux: [普蓝开源社区](https://gitee.com/pulanos)
     
