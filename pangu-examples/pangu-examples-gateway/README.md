@@ -82,7 +82,7 @@ shenyu:
     maxSize : 10
   sync:
     websocket:
-      urls: ws://139.155.46.145:9999/websocket
+      urls: ws://127.0.0.1:9095/websocket
   dubbo:
       parameter: multi
   exclude:
