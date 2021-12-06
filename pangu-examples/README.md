@@ -18,9 +18,6 @@
 - **pangu-examples-log-dynamic**
   1. 如何在线热切换日志输出级别
 
-- **pangu-examples-webapi** 
-  1. 如何编写WebAPI接口以及基本的参数传递和参数校验
-
 - **pangu-examples-crud** 
   1. 使用盘古代码生成Maven插件生成DAO相关Mapper接口和Entity实体类
   2. 使用MybatisPlus的API接口操作数据库的常用方法
@@ -40,3 +37,6 @@
 
 - **pangu-examples-dubbo-gateway-service**
   1. 如何开发一个能和盘古网关系统集成的后端Dubbo应用。
+
+- **pangu-examples-webapi-local-service-based**
+  1. 如何编写WebAPI接口，基于本地服务调用的传统单体开发模式。
