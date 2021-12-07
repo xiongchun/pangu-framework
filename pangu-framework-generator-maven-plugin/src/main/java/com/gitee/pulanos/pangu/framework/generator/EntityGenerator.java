@@ -1,3 +1,20 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.gitee.pulanos.pangu.framework.generator;
 
 import cn.hutool.core.collection.CollUtil;
@@ -40,6 +57,7 @@ public class EntityGenerator {
         appender.append("import java.io.Serializable;");
         if (ObjectUtil.isNotEmpty(CollUtil.findOneByField(columns, "javaType", Constants.JavaType.DATE))) {
             appender.append("import java.util.Date;");
+            appender.append("import com.fasterxml.jackson.annotation.JsonFormat;");
         }
         if (ObjectUtil.isNotEmpty(CollUtil.findOneByField(columns, "javaType", Constants.JavaType.BIGDECIMAL))) {
             appender.append("import java.math.BigDecimal;");
@@ -74,6 +92,12 @@ public class EntityGenerator {
                 appender.append(format("   @TableId(value = \"{}\", type = IdType.{})", column.getName(), idType));
             } else {
                 appender.append(format("   @TableField(value = \"{}\")", column.getName()));
+            }
+
+            if (StrUtil.equalsIgnoreCase(column.getType(), Constants.DbColType.DATETIME) || StrUtil.equalsIgnoreCase(column.getType(), Constants.DbColType.TIMESTAMP)){
+                appender.append("   @JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\")");
+            }else if (StrUtil.equalsIgnoreCase(column.getType(), Constants.DbColType.DATE)){
+                appender.append("   @JsonFormat(pattern=\"yyyy-MM-dd\")");
             }
             appender.append(format("   private {} {};", column.getJavaType(), StrUtil.toCamelCase(column.getName())));
 

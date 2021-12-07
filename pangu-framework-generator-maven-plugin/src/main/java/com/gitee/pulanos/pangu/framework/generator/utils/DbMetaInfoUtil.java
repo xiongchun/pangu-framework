@@ -1,11 +1,28 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.gitee.pulanos.pangu.framework.generator.utils;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.StrUtil;
+import com.gitee.pulanos.pangu.framework.generator.Constants;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
-import com.gitee.pulanos.pangu.framework.generator.utils.CommonUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -25,42 +42,6 @@ import java.util.stream.Collectors;
 @Slf4j
 public class DbMetaInfoUtil {
 
-    /**
-     * 数据库类型标识
-     */
-    public final static class DbType {
-        public final static String MYSQL = "MYSQL";
-        public final static String POSTGRESQL = "POSTGRESQL";
-        public final static String ORACLE = "ORACLE";
-        public final static String H2 = "H2";
-        public static final String SQLSERVER = "MICROSOFT SQL SERVER";
-
-        @SneakyThrows
-        public static boolean isMySql(DatabaseMetaData databaseMetaData) {
-            return StrUtil.containsIgnoreCase(databaseMetaData.getDatabaseProductName(), MYSQL);
-        }
-
-        @SneakyThrows
-        public static boolean isOracle(DatabaseMetaData databaseMetaData) {
-            return StrUtil.containsIgnoreCase(databaseMetaData.getDatabaseProductName(), ORACLE);
-        }
-
-        @SneakyThrows
-        public static boolean isPostgreSql(DatabaseMetaData databaseMetaData) {
-            return StrUtil.containsIgnoreCase(databaseMetaData.getDatabaseProductName(), POSTGRESQL);
-        }
-
-        @SneakyThrows
-        public static boolean isH2(DatabaseMetaData databaseMetaData) {
-            return StrUtil.containsIgnoreCase(databaseMetaData.getDatabaseProductName(), H2);
-        }
-
-        @SneakyThrows
-        public static boolean isSqlServer(DatabaseMetaData databaseMetaData) {
-            return StrUtil.containsIgnoreCase(databaseMetaData.getDatabaseProductName(), SQLSERVER);
-        }
-    }
-
     @SneakyThrows
     public static Connection createConnect(String url, String user, String password){
         Validator.validateNotEmpty(url, "url参数不能为空");
@@ -69,11 +50,11 @@ public class DbMetaInfoUtil {
         Properties properties = new Properties();
         properties.setProperty("user", user);
         properties.setProperty("password", password);
-        if (StrUtil.containsIgnoreCase(url, DbType.MYSQL)){
+        if (StrUtil.containsIgnoreCase(url, Constants.DbType.MYSQL)) {
             // 获取元数据注释（老版本的mysql驱动需要）
             properties.setProperty("remarks", "true");
             properties.setProperty("useInformationSchema", "true");
-        }else if (StrUtil.containsIgnoreCase(url, DbType.ORACLE)){
+        } else if (StrUtil.containsIgnoreCase(url, Constants.DbType.ORACLE)) {
             // 获取元数据注释
             properties.setProperty("remarksReporting", "true");
         }
@@ -90,7 +71,7 @@ public class DbMetaInfoUtil {
         List<Table> tables = new ArrayList<>();
         DatabaseMetaData databaseMetaData = connection.getMetaData();
         ResultSet rs = null;
-        if (DbType.isOracle(databaseMetaData)) {
+        if (CommonUtil.isOracle(databaseMetaData)) {
             rs = databaseMetaData.getTables(connection.getCatalog(), StringUtils.upperCase(databaseMetaData.getUserName()), null,
                     new String[]{"TABLE"});
         } else {
@@ -100,7 +81,7 @@ public class DbMetaInfoUtil {
         }
         while (rs.next()) {
             Table table = new Table();
-            if (DbType.isOracle(databaseMetaData)) {
+            if (CommonUtil.isOracle(databaseMetaData)) {
                 table.setOwner(rs.getString("TABLE_SCHEM"));
             } else {
                 table.setOwner(rs.getString("TABLE_CAT"));
@@ -108,7 +89,7 @@ public class DbMetaInfoUtil {
             table.setName(rs.getString("TABLE_NAME"));
             String comment = rs.getString("REMARKS");
             // 老版本的mysql驱动在mysql的表注释会跟上一些其他信息。用户基本信息表; InnoDB free: 9216 kB
-            if (DbType.isMySql(databaseMetaData)) {
+            if (CommonUtil.isMySql(databaseMetaData)) {
                 if (StrUtil.contains(comment, ";")) {
                     comment = StrUtil.subBefore(comment, ";", false);
                 }
@@ -176,7 +157,7 @@ public class DbMetaInfoUtil {
             column.setScale(rs.getInt("DECIMAL_DIGITS"));
             column.setTablename(rs.getString("TABLE_NAME"));
             // oracle 没有 IS_AUTOINCREMENT 列
-            if (DbType.isOracle(databaseMetaData)) {
+            if (CommonUtil.isOracle(databaseMetaData)) {
                 column.setIsAutoincrement(false);
             } else {
                 String isAutoincrement = rs.getString("IS_AUTOINCREMENT");

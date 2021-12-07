@@ -1,18 +1,18 @@
 package com.gitee.pulanos.pangu.showcases.webapi.local.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * 用户信息表
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2021-12-06 23:21:27
+ * @date 2021-12-07 17:04:40
  */
 @Data
 @Accessors(chain = true)
@@ -36,8 +36,8 @@ public class UserEntity implements Serializable {
    /**
     * 生日
     */
-   @JsonFormat(pattern="yyyy-MM-dd")
    @TableField(value = "birthday")
+   @JsonFormat(pattern="yyyy-MM-dd")
    private Date birthday;
 
    /**
@@ -55,15 +55,15 @@ public class UserEntity implements Serializable {
    /**
     * 创建时间
     */
-   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
    @TableField(value = "gmt_create")
+   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
    private Date gmtCreate;
 
    /**
     * 更新时间
     */
-   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
    @TableField(value = "gmt_update")
+   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
    private Date gmtUpdate;
 
 }
