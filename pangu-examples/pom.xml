@@ -23,7 +23,7 @@
 		<module>pangu-examples-dubbo-gateway-service</module>
 		<module>pangu-examples-webapi-local-service-based</module>
 		<module>pangu-examples-webapi-dubbo-service-based</module>
-		<module>pangu-examples-gateway</module>
+		<module>pangu-examples-webapi-gateway-based</module>
 	</modules>
 
 </project>

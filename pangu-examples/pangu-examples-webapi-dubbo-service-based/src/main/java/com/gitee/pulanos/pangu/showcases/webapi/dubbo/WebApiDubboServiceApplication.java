@@ -1,12 +1,13 @@
-package com.gitee.pulanos.pangu.showcases;
+package com.gitee.pulanos.pangu.showcases.webapi.dubbo;
 
-import com.gitee.pulanos.pangu.framework.PanGuApplicationBuilder;
+import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author xiongchun
  */
+@EnableDubbo
 @SpringBootApplication
 public class WebApiDubboServiceApplication {
 	public static void main(String[] args) {

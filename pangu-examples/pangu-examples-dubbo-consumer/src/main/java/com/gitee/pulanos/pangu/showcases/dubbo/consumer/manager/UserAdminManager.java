@@ -48,7 +48,6 @@ public class UserAdminManager {
         log.info("开始Dubbo远程调用...");
         List<UserOut> userOuts = userService.listUserOuts(userIn);
         log.info("[OK] 调用成功 {}", userOuts);
-
     }
 
     @PostConstruct

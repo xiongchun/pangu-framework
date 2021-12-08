@@ -21,7 +21,7 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-annotation</artifactId>
             <version>${mybatis-plus.version}</version>
-            <scope>private</scope>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -39,7 +39,7 @@
             <plugin>
                 <groupId>com.gitee.pulanos.pangu</groupId>
                 <artifactId>pangu-framework-generator-maven-plugin</artifactId>
-                <version>5.0.6</version>
+                <version>5.0.7</version>
                 <configuration>
                     <url>jdbc:mysql://127.0.0.1:3306/pangu-examples</url>
                     <user>root</user>

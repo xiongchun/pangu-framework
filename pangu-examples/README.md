@@ -32,11 +32,11 @@
 - **pangu-examples-dubbo-consumer** 
   1. 如何调用一个已注册到Nacos服务中心的Dubbo远程服务
 
-- **pangu-examples-gateway**
-  1. 如何开发一个网关模块，实现泛华调用后端Dubbo应用。
-
 - **pangu-examples-dubbo-gateway-service**
-  1. 如何开发一个能和盘古网关系统集成的后端Dubbo应用。
+  1. 如何编写WebAPI接口，基于远程Dubbo服务调用的微服务开发模式。
 
 - **pangu-examples-webapi-local-service-based**
   1. 如何编写WebAPI接口，基于本地服务调用的传统单体开发模式。
+
+- **pangu-examples-webapi-gateway-based**
+  1. 如何开发一个网关模块，基于ShenYu网关实现泛华调用后端Dubbo服务。

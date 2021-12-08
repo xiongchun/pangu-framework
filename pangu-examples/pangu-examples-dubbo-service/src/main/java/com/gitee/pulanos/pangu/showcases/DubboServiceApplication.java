@@ -26,8 +26,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @EnableDubbo
 @SpringBootApplication
-public class DubboProviderApplication {
+public class DubboServiceApplication {
 	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(DubboProviderApplication.class).run(args);
+		PanGuApplicationBuilder.init(DubboServiceApplication.class).run(args);
 	}
 }
