@@ -39,4 +39,4 @@
   1. 如何编写WebAPI接口，基于本地服务调用的传统单体开发模式。
 
 - **pangu-examples-webapi-gateway-based**
-  1. 如何开发一个网关模块，基于ShenYu网关实现泛华调用后端Dubbo服务。
+  1. 如何编写WebAPI接口，基于ShenYu网关实现泛华调用后端Dubbo服务。

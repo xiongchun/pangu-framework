@@ -1,6 +1,6 @@
 #### :mushroom: 本范例演示功能
 
-1. 如何开发一个网关模块，实现泛华调用后端Dubbo应用。
+1. 如何编写WebAPI接口，基于ShenYu网关实现泛华调用后端Dubbo服务。
 
 > 盘古网关基于Apache Shenyu 网关系统开发。
 >  - 支持各种语言(http 协议)，支持 Dubbo、 Spring Cloud、 gRPC、 Motan、 Sofa、 Tars 等协议。
