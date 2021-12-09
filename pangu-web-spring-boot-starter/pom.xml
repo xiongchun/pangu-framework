@@ -6,17 +6,17 @@
 
     <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
-        <artifactId>pangu-framework-parent</artifactId>
+        <artifactId>pangu-parent</artifactId>
         <version>5.0.7</version>
         <relativePath/>
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-framework-jdbc-spring-boot-starter</artifactId>
+    <artifactId>pangu-web-spring-boot-starter</artifactId>
     <version>5.0.7</version>
     <packaging>jar</packaging>
-    <name>pangu-framework-jdbc-spring-boot-starter</name>
-    <description>pangu-framework-jdbc-spring-boot-starter</description>
+    <name>pangu-web-spring-boot-starter</name>
+    <description>pangu-web-spring-boot-starter</description>
     <url>https://gitee.com/pulanos/pangu-framework</url>
 
     <licenses>
@@ -45,8 +45,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!--将被@ConfigurationProperties注解的类的属性注入到元数据-->
         <dependency>

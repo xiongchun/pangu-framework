@@ -10,14 +10,14 @@
 	<version>5.0.7</version>
 
 	<modules>
-		<module>pangu-framework-common</module>
-		<module>pangu-framework-parent</module>
-		<module>pangu-framework-spring-boot-starter</module>
-		<module>pangu-framework-jdbc-spring-boot-starter</module>
-		<module>pangu-framework-dubbo-spring-boot-starter</module>
-		<module>pangu-framework-gateway-spring-boot-starter</module>
-		<module>pangu-framework-web-spring-boot-starter</module>
-		<module>pangu-framework-generator-maven-plugin</module>
+		<module>pangu-common</module>
+		<module>pangu-parent</module>
+		<module>pangu-spring-boot-starter</module>
+		<module>pangu-jdbc-spring-boot-starter</module>
+		<module>pangu-dubbo-spring-boot-starter</module>
+		<module>pangu-gateway-spring-boot-starter</module>
+		<module>pangu-web-spring-boot-starter</module>
+		<module>pangu-generator-maven-plugin</module>
 	</modules>
 
 </project>

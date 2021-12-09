@@ -4,12 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.gitee.pulanos.pangu</groupId>
+        <artifactId>pangu-parent</artifactId>
+        <version>5.0.7</version>
+        <relativePath/>
+    </parent>
+
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-framework-generator-maven-plugin</artifactId>
+    <artifactId>pangu-gateway-spring-boot-starter</artifactId>
     <version>5.0.7</version>
-    <packaging>maven-plugin</packaging>
-    <name>pangu-framework-generator-maven-plugin</name>
-    <description>pangu framework code generator maven-plugin</description>
+    <packaging>jar</packaging>
+    <name>pangu-gateway-spring-boot-starter</name>
+    <description>pangu-gateway-spring-boot-starter</description>
     <url>https://gitee.com/pulanos/pangu-framework</url>
 
     <licenses>
@@ -34,67 +41,30 @@
     </developers>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <hutool-all.version>5.7.13</hutool-all.version>
-        <lombok.version>1.18.20</lombok.version>
-        <enjoy.version>4.9.16</enjoy.version>
-        <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
-        <logback-classic.version>1.2.5</logback-classic.version>
-        <commons-dbutils.version>1.7</commons-dbutils.version>
-        <maven-plugin-api.version>3.8.2</maven-plugin-api.version>
-        <maven-plugin-annotations.version>3.6.1</maven-plugin-annotations.version>
-        <maven-plugin-plugin.versionm>3.5.2</maven-plugin-plugin.versionm>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <maven-javadoc-plugin.version>3.3.0</maven-javadoc-plugin.version>
-        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-plugin-api</artifactId>
-            <version>${maven-plugin-api.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.maven.plugin-tools</groupId>
-            <artifactId>maven-plugin-annotations</artifactId>
-            <version>${maven-plugin-annotations.version}</version>
-            <scope>provided</scope>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-spring-boot-starter-gateway</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool-all.version}</version>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-spring-boot-starter-sync-data-websocket</artifactId>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>protobuf-java</artifactId>
-                    <groupId>com.google.protobuf</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-spring-boot-starter-plugin-apache-dubbo</artifactId>
         </dependency>
+        <!--将被@ConfigurationProperties注解的类的属性注入到元数据-->
         <dependency>
-            <groupId>commons-dbutils</groupId>
-            <artifactId>commons-dbutils</artifactId>
-            <version>${commons-dbutils.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback-classic.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -124,15 +94,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-plugin-plugin</artifactId>
-                <version>${maven-plugin-plugin.versionm}</version>
-                <configuration>
-                    <goalPrefix>pangu</goalPrefix>
-                    <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -199,7 +160,6 @@
                 </repository>
             </distributionManagement>
         </profile>
-
     </profiles>
 
 </project>

@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-framework-common</artifactId>
+    <artifactId>pangu-common</artifactId>
     <version>5.0.7</version>
     <packaging>jar</packaging>
-    <name>pangu-framework-common</name>
-    <description>pangu-framework-common</description>
+    <name>pangu-common</name>
+    <description>pangu-common</description>
     <url>https://gitee.com/pulanos/pangu-framework</url>
 
     <licenses>

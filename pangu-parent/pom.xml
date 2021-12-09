@@ -12,10 +12,10 @@
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-framework-parent</artifactId>
+    <artifactId>pangu-parent</artifactId>
     <version>5.0.7</version>
     <packaging>pom</packaging>
-    <name>pangu-framework-parent</name>
+    <name>pangu-parent</name>
     <description>pangu development framework</description>
     <url>https://gitee.com/pulanos/pangu-framework</url>
 
@@ -76,32 +76,32 @@
             </dependency>
             <dependency>
                 <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-framework-common</artifactId>
+                <artifactId>pangu-common</artifactId>
                 <version>${pangu.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-framework-spring-boot-starter</artifactId>
+                <artifactId>pangu-spring-boot-starter</artifactId>
                 <version>${pangu.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-framework-web-spring-boot-starter</artifactId>
+                <artifactId>pangu-web-spring-boot-starter</artifactId>
                 <version>${pangu.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-framework-jdbc-spring-boot-starter</artifactId>
+                <artifactId>pangu-jdbc-spring-boot-starter</artifactId>
                 <version>${pangu.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-framework-dubbo-spring-boot-starter</artifactId>
+                <artifactId>pangu-dubbo-spring-boot-starter</artifactId>
                 <version>${pangu.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-framework-gateway-spring-boot-starter</artifactId>
+                <artifactId>pangu-gateway-spring-boot-starter</artifactId>
                 <version>${pangu.version}</version>
             </dependency>
             <dependency>
@@ -189,7 +189,7 @@
         </dependency>
         <dependency>
             <groupId>com.gitee.pulanos.pangu</groupId>
-            <artifactId>pangu-framework-common</artifactId>
+            <artifactId>pangu-common</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>

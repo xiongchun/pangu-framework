@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
-        <artifactId>pangu-framework-parent</artifactId>
+        <artifactId>pangu-parent</artifactId>
         <version>5.0.7</version>
         <relativePath/>
     </parent>
@@ -38,7 +38,7 @@
             </plugin>
             <plugin>
                 <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-framework-generator-maven-plugin</artifactId>
+                <artifactId>pangu-generator-maven-plugin</artifactId>
                 <version>5.0.7</version>
                 <configuration>
                     <url>jdbc:mysql://127.0.0.1:3306/pangu-examples</url>

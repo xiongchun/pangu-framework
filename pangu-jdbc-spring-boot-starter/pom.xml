@@ -6,17 +6,17 @@
 
     <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
-        <artifactId>pangu-framework-parent</artifactId>
+        <artifactId>pangu-parent</artifactId>
         <version>5.0.7</version>
         <relativePath/>
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-framework-dubbo-spring-boot-starter</artifactId>
+    <artifactId>pangu-jdbc-spring-boot-starter</artifactId>
     <version>5.0.7</version>
     <packaging>jar</packaging>
-    <name>pangu-framework-dubbo-spring-boot-starter</name>
-    <description>pangu-framework-dubbo-spring-boot-starter</description>
+    <name>pangu-jdbc-spring-boot-starter</name>
+    <description>pangu-jdbc-spring-boot-starter</description>
     <url>https://gitee.com/pulanos/pangu-framework</url>
 
     <licenses>
@@ -45,12 +45,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-registry-nacos</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
         <!--将被@ConfigurationProperties注解的类的属性注入到元数据-->
         <dependency>
