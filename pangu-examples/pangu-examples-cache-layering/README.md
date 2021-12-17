@@ -1,39 +1,9 @@
 #### :mushroom: 本范例演示功能
 
-1. 创建一个基于盘古框架的空应用
+1. 如何使用两级缓存。
 
-#### :four_leaf_clover: 如何创建&启动一个盘古应用
--  **第一步：安装pom依赖** 
-    ``` xml
-    <parent>
-        <groupId>com.gitee.pulanos.pangu</groupId>
-        <artifactId>pangu-framework-parent</artifactId>
-        <version>latest.version.xxx</version>
-        <relativePath/>
-    </parent>
-    ```
-   ```xml
-   <dependency>
-      <groupId>com.gitee.pulanos.pangu</groupId>
-      <artifactId>pangu-framework-spring-boot-starter</artifactId>
-   </dependency>
-   ```
--  **第二步：启动类** 
-   
-   采用SpringBoot标准启动方式启动。
-   
-   ``` java
-   @SpringBootApplication
-   public class EmptyPanguApplication {
-       public static void main(String[] args) {
-           PanGuApplicationBuilder.init(EmptyPanguApplication.class).run(args);
-       }
-       @Component
-       public class EmptyService{
-           @PostConstruct
-           public void print(){
-               log.info("这是一个基于盘古开发框架的空应用...");
-           }
-       }
-   }
-   ```
+> 盘古缓存基于layering cache开发。
+> 
+>     layering-cache是一个支持分布式环境的多级缓存框架，使用方式和spring-cache类似。它使用Caffeine作为一级本地缓存，redis作为二级集中式缓存。一级缓存和二级缓存的数据一致性是通过推和拉两种模式相结合的方式来保证。
+
+**更多开发指南请参考盘古平台相关文档说明。**
