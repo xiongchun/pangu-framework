@@ -23,6 +23,9 @@
   2. 使用MybatisPlus的API接口操作数据库的常用方法
   3. 分页查询和手工映复杂SQL的方法
 
+- **pangu-examples-cache-layering**
+  1. 如何使用两级缓存（本地缓存+Redis集中缓存）。
+
 - **pangu-examples-dubbo-api** 
   1. 开发Dubbo服务时接口文件和POJO相关类的打包模块
 

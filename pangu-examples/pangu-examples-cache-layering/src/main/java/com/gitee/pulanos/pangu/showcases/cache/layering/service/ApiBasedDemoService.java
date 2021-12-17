@@ -1,5 +1,6 @@
 package com.gitee.pulanos.pangu.showcases.cache.layering.service;
 
+import cn.hutool.core.thread.ThreadUtil;
 import com.github.xiaolyuh.cache.LayeringCache;
 import com.github.xiaolyuh.manager.CacheManager;
 import com.github.xiaolyuh.setting.FirstCacheSetting;
@@ -35,7 +36,7 @@ public class ApiBasedDemoService {
         String cacheKey = "10";
         LayeringCache cache = (LayeringCache) cacheManager.getCache(cacheName, layeringCacheSetting);
         cache.put(cacheKey, "test");
-        cache.get(cacheKey, String.class);
+        log.info(cache.get(cacheKey, String.class));
         //cache.evict(cacheKey);
         //cache.clear();
     }
