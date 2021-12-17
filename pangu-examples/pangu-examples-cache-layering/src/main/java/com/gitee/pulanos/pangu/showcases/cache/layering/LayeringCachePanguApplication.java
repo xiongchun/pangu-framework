@@ -28,10 +28,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 @EnableLayeringCache
 @SpringBootApplication
-public class CachePanguApplication {
+public class LayeringCachePanguApplication {
 
 	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(CachePanguApplication.class).run(args);
+		PanGuApplicationBuilder.init(LayeringCachePanguApplication.class).run(args);
 	}
 
 }

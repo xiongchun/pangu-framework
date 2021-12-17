@@ -24,7 +24,10 @@
   3. 分页查询和手工映复杂SQL的方法
 
 - **pangu-examples-cache-layering**
-  1. 如何使用两级缓存（本地缓存+Redis集中缓存）。
+  1. 如何使用两级缓存（本地缓存+Redis集中缓存）
+  
+- **pangu-examples-cache-layering**
+  1. 如何使用原生的一级缓存RedisTemplate API
 
 - **pangu-examples-dubbo-api** 
   1. 开发Dubbo服务时接口文件和POJO相关类的打包模块
