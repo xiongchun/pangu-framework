@@ -17,6 +17,7 @@
 		<module>pangu-examples-config-local</module>
 		<module>pangu-examples-log-dynamic</module>
 		<module>pangu-examples-crud</module>
+		<module>pangu-examples-cache-layering</module>
 		<module>pangu-examples-dubbo-api</module>
 		<module>pangu-examples-dubbo-service</module>
 		<module>pangu-examples-dubbo-consumer</module>

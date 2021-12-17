@@ -42,7 +42,7 @@ shenyu:
     maxSize : 10
   sync:
     websocket:
-      urls: ${shenyu.websocket.urls:ws://localhost9095/websocket}
+      urls: ${shenyu.websocket.urls:ws://localhost:9095/websocket}
   dubbo:
     parameter: multi
   exclude:

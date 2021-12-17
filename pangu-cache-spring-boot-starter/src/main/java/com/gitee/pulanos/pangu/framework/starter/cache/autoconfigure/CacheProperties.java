@@ -15,4 +15,18 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.gateway;
+package com.gitee.pulanos.pangu.framework.starter.cache.autoconfigure;
+
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+/**
+ * CacheProperties
+ *
+ * @author xiongchun
+ */
+@Data
+@ConfigurationProperties(prefix = "pangu.cache")
+public class CacheProperties {
+
+}

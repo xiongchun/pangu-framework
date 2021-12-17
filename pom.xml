@@ -14,6 +14,7 @@
 		<module>pangu-parent</module>
 		<module>pangu-spring-boot-starter</module>
 		<module>pangu-jdbc-spring-boot-starter</module>
+		<module>pangu-cache-spring-boot-starter</module>
 		<module>pangu-dubbo-spring-boot-starter</module>
 		<module>pangu-gateway-spring-boot-starter</module>
 		<module>pangu-web-spring-boot-starter</module>

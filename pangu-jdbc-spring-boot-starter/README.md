@@ -1,2 +1,2 @@
-pangu-data-jdbc-spring-boot-starter
+pangu-jdbc-spring-boot-starter
 

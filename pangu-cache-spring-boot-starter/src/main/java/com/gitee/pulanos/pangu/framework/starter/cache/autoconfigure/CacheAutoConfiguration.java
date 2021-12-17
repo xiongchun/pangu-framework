@@ -15,32 +15,24 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.showcases.empty;
+package com.gitee.pulanos.pangu.framework.starter.cache.autoconfigure;
 
-import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 /**
+ * CacheAutoConfiguration
+ *
  * @author xiongchun
  */
 @Slf4j
-@SpringBootApplication
-public class EmptyPanguApplication {
+@Configuration
+@EnableConfigurationProperties(CacheProperties.class)
+public class CacheAutoConfiguration {
 
-	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(EmptyPanguApplication.class).run(args);
-	}
-
-	@Component
-	public class EmptyService{
-		@PostConstruct
-		public void print(){
-			log.info("这是一个基于盘古开发框架的空应用...");
-		}
-	}
+    @Autowired
+    private CacheProperties cacheProperties;
 
 }

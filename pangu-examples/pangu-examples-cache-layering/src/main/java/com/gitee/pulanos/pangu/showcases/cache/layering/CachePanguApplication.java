@@ -15,18 +15,23 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.showcases.gateway;
+package com.gitee.pulanos.pangu.showcases.cache.layering;
 
 import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
+import com.github.xiaolyuh.cache.config.EnableLayeringCache;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author xiongchun
  */
+@Slf4j
+@EnableLayeringCache
 @SpringBootApplication
-public class GatewayApplication {
+public class CachePanguApplication {
 
 	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(GatewayApplication.class).run(args);
+		PanGuApplicationBuilder.init(CachePanguApplication.class).run(args);
 	}
+
 }
