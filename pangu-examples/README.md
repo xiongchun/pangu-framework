@@ -26,7 +26,7 @@
 - **pangu-examples-cache-layering**
   1. 如何使用两级缓存（本地缓存+Redis集中缓存）
   
-- **pangu-examples-cache-layering**
+- **pangu-examples-cache-single**
   1. 如何使用原生的一级缓存RedisTemplate API
 
 - **pangu-examples-dubbo-api** 
