@@ -29,6 +29,9 @@
 - **pangu-examples-cache-single**
   1. 如何使用原生的一级缓存RedisTemplate API
 
+- **pangu-examples-lock-redis-based**
+  1. 如何使用基于Redis的分布式锁（注解式、API式）
+
 - **pangu-examples-dubbo-api** 
   1. 开发Dubbo服务时接口文件和POJO相关类的打包模块
 

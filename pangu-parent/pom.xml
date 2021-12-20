@@ -52,6 +52,7 @@
         <nacos-config-spring-boot-starter.version>0.2.7</nacos-config-spring-boot-starter.version>
         <nacos-config-spring-boot-actuator.version>0.2.7</nacos-config-spring-boot-actuator.version>
         <mybatis-plus.version>3.4.3.2</mybatis-plus.version>
+        <lock4j.version>2.2.1</lock4j.version>
         <shenyu.version>2.4.1</shenyu.version>
         <layering-cache.version>3.3.4</layering-cache.version>
         <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
@@ -134,6 +135,11 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>lock4j-redis-template-spring-boot-starter</artifactId>
+                <version>${lock4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.xiaolyuh</groupId>

@@ -19,6 +19,7 @@
 		<module>pangu-examples-crud</module>
 		<module>pangu-examples-cache-single</module>
 		<module>pangu-examples-cache-layering</module>
+		<module>pangu-examples-lock-redis-based</module>
 		<module>pangu-examples-dubbo-api</module>
 		<module>pangu-examples-dubbo-service</module>
 		<module>pangu-examples-dubbo-consumer</module>
