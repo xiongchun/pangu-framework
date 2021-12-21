@@ -7,15 +7,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: '盘古开发框架',
-	tagline: '一套轻量灵活的Java企业级单体 • 微服务分布式开发治理框架',
+	tagline: '一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架 (遵循Apache-2.0协议开源)',
 	url: 'https://your-docusaurus-test-site.com',
 	//baseUrl: '/',
 	baseUrl:'/pangu-framework/',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon.ico',
-	organizationName: 'facebook', // Usually your GitHub org/user name.
-	projectName: 'docusaurus', // Usually your repo name.
+	organizationName: '普蓝开源社区', // Usually your GitHub org/user name.
+	projectName: 'pangu-framework', // Usually your repo name.
 
 	presets: [
 		[
@@ -59,13 +59,11 @@ const config = {
 						label: '视频教程',
 						position: 'left',
 					},
-					/*
 					{
 						to: '/blog',
 						label: '博客专栏',
 						position: 'left'
 					},
-					*/
 					{
 						href: 'https://gitee.com/pulanos/pangu-framework',
 						label: 'Gitee',
@@ -83,40 +81,45 @@ const config = {
 				links: [{
 						title: 'Docs',
 						items: [{
-							label: 'Tutorial',
+							label: '十分钟快速入门',
 							to: '/docs/intro',
-						}, ],
+						}, {
+							label: '开发指南',
+							to: '/docs/intro',
+						},{
+							label: '视频教程',
+							href: 'https://gitee.com/pulanos/pangu-framework',
+						}],
 					},
 					{
 						title: 'Community',
 						items: [{
-								label: 'Stack Overflow',
-								href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-							},
-							{
-								label: 'Discord',
-								href: 'https://discordapp.com/invite/docusaurus',
-							},
-							{
-								label: 'Twitter',
-								href: 'https://twitter.com/docusaurus',
-							},
+								label: 'Gitee Issues',
+								href: 'https://gitee.com/pulanos/pangu-framework/issues?state=all',
+							},{
+								label: '普蓝开源社区',
+								href: 'https://gitee.com/pulanos',
+							}
 						],
 					},
 					{
 						title: 'More',
 						items: [{
-								label: 'Blog',
+								label: '博客专栏',
 								to: '/blog',
 							},
 							{
+								label: 'Gitee',
+								href: 'https://gitee.com/pulanos/pangu-framework',
+							},
+							{
 								label: 'GitHub',
-								href: 'https://github.com/facebook/docusaurus',
+								href: 'https://gitee.com/pulanos/pangu-framework',
 							},
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+				copyright: `Copyright © ${new Date().getFullYear()} 盘古开发框架® Powered By 普蓝开源社区`,
 			},
 			prism: {
 				theme: lightCodeTheme,
