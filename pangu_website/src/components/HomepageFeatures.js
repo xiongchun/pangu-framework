@@ -4,12 +4,11 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: '简单易用',
+    title: '开箱即用、轻量灵活',
     Svg: require('../../static/img/undraw_product_teardown.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        基于SpringBoot Starter机制，封装的成熟技术组件。以及轻巧的代码生成器Maven插件。任意插拔、随意组合，可进行传统单体应用开发，也可以进行微服务分布式开发和服务治理。大量的范例工程、文档、视频教程，一直伴你“从入门到大神”。
       </>
     ),
   },

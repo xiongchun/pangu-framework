@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: '盘古开发框架',
-	tagline: '一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架 (遵循Apache-2.0协议开源)',
+	tagline: '一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架',
 	url: 'https://your-docusaurus-test-site.com',
 	//baseUrl: '/',
 	baseUrl:'/pangu-framework/',
@@ -99,6 +99,10 @@ const config = {
 							},{
 								label: '普蓝开源社区',
 								href: 'https://gitee.com/pulanos',
+							},
+							{
+								label: 'Apache Software Foundation',
+								href: 'https://www.apache.org/',
 							}
 						],
 					},
