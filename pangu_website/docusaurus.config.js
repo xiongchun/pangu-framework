@@ -97,8 +97,23 @@ const config = {
 								label: 'Gitee Issues',
 								href: 'https://gitee.com/pulanos/pangu-framework/issues?state=all',
 							},{
-								label: '普蓝开源社区',
-								href: 'https://gitee.com/pulanos',
+								label: 'Gitee PanGu Framework',
+								href: 'https://gitee.com/pulanos/pangu-framework',
+							},
+							{
+								label: 'GitHub PanGu Framework',
+								href: 'https://gitee.com/pulanos/pangu-framework',
+							}
+						],
+					},
+					{
+						title: 'More',
+						items: [{
+								label: '致敬 & 鸣谢',
+								to: '/blog',
+							},{
+								label: '开源中国',
+								to: 'https://www.oschina.net/',
 							},
 							{
 								label: 'Apache Software Foundation',
@@ -106,24 +121,8 @@ const config = {
 							}
 						],
 					},
-					{
-						title: 'More',
-						items: [{
-								label: '博客专栏',
-								to: '/blog',
-							},
-							{
-								label: 'Gitee',
-								href: 'https://gitee.com/pulanos/pangu-framework',
-							},
-							{
-								label: 'GitHub',
-								href: 'https://gitee.com/pulanos/pangu-framework',
-							},
-						],
-					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} 盘古开发框架® Powered By 普蓝开源社区`,
+				copyright: `Copyright © ${new Date().getFullYear()} 盘古开发框架`,
 			},
 			prism: {
 				theme: lightCodeTheme,
