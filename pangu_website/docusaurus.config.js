@@ -55,14 +55,14 @@ const config = {
 						label: '开发指南',
 					},
 					{
-						href: 'https://gitee.com/pulanos/pangu-framework',
-						label: '视频教程',
-						position: 'left',
-					},
-					{
 						to: '/blog',
 						label: '博客专栏',
 						position: 'left'
+					},
+					{
+						href: 'https://gitee.com/pulanos/pangu-framework',
+						label: '视频教程',
+						position: 'left',
 					},
 					{
 						href: 'https://gitee.com/pulanos/pangu-framework',
@@ -81,11 +81,11 @@ const config = {
 				links: [{
 						title: 'Docs',
 						items: [{
-							label: '十分钟快速入门',
-							to: '/docs/intro',
-						}, {
 							label: '开发指南',
 							to: '/docs/intro',
+						}, {
+							label: '博客专栏',
+							to: '/blog',
 						},{
 							label: '视频教程',
 							href: 'https://gitee.com/pulanos/pangu-framework',
@@ -110,7 +110,7 @@ const config = {
 						title: 'More',
 						items: [{
 								label: '致敬 & 鸣谢',
-								to: '/blog',
+								to: '/docs/thanksto',
 							},{
 								label: '开源中国',
 								to: 'https://www.oschina.net/',
@@ -122,8 +122,9 @@ const config = {
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} 盘古开发框架`,
+				copyright: `Copyright © ${new Date().getFullYear()} <a class="ghostwhite" target="_blank" href="https://gitee.com/pulanos">普蓝开源社区</a>`,
 			},
+			hideableSidebar: true,
 			prism: {
 				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,

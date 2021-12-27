@@ -30,3 +30,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 .navbar__title{
 	font-size: 20px !important;
 }
+
+.ghostwhite{
+	color: #ebedf0;
+}

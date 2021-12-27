@@ -12,7 +12,7 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <h1 class="hero__title"><span className={styles.hero__title2}>{siteConfig.title}</span></h1>
-        <p className="hero__subtitle">{siteConfig.tagline} (遵循<a className={styles.license} target="_blank" href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0协议</a>开源)</p>
+        <p className="hero__subtitle">{siteConfig.tagline}(遵循<a className={styles.license} target="_blank" href="https://www.apache.org/licenses/LICENSE-2.0">Apache-2.0 LICENSE</a>)</p>
 		<div class="btn-group">
         <div className={styles.buttons}>
           <Link

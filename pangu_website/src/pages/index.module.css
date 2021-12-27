@@ -28,12 +28,12 @@
 }
 
 .license {
-	color: ghostwhite;
+	color: #ebedf0;
 	text-decoration: none;
 }
 
 .license:hover {
-	color: ghostwhite;
+	color: #ebedf0;
 }
 
 .xcbutton {
@@ -55,7 +55,7 @@
 }
 
 .xcbutton:hover {
-    background-color: white;
+    background-color: #ebedf0;;
 	background:linear-gradient(to bottom, #ffffff 5%, #e9f9f4 100%);
     color: #25c2a0;
 	border: 2px solid white;
