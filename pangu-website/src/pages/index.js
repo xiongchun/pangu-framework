@@ -18,7 +18,7 @@ function HomepageHeader() {
           <Link
             className={styles.xcbutton}
             to="/docs/intro">
-            Quick Start Guide
+            快速开始
           </Link>
         </div>
 		</div>

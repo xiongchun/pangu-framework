@@ -1,2 +1,2 @@
-pangu-redis-spring-boot-starter
+pangu-cache-spring-boot-starter
 

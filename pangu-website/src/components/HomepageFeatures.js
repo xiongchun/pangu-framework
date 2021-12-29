@@ -5,7 +5,7 @@ import styles from './HomepageFeatures.module.css';
 const FeatureList = [
   {
     title: '开箱即用、轻量灵活',
-    Svg: require('../../static/img/undraw_product_teardown.svg').default,
+    Svg: require('../../static/img/plugins.svg').default,
     description: (
       <>
         开箱即用的技术组件库、搭配自定义SpringBoot启动器和轻巧的代码生成Maven插件，可随意组合、自动装配、灵活插拔。

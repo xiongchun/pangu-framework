@@ -14,7 +14,7 @@ const config = {
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon.ico',
-	organizationName: '普蓝开源社区', // Usually your GitHub org/user name.
+	organizationName: '盘古开发框架,普蓝开源社区', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
 
 	presets: [
@@ -30,7 +30,7 @@ const config = {
 				blog: {
 					showReadingTime: true,
 					// Please change this to your repo.
-					editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/blog/',
+					editUrl: 'https://gitee.com/pulanos/pangu-framework/tree/master/pangu-website/',
 				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
