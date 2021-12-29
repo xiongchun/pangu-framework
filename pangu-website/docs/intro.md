@@ -75,3 +75,5 @@ slug: /intro
 ↑  
 **[G4Studio](https://gitee.com/xiong-chun/G4Studio)**   `2006年-2010年`
 
+## 下一步
+继续阅读 `快速开始` 以快速上手盘古开发框架。
