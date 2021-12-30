@@ -1,6 +1,4 @@
-## 盘古开发框架项目官网
-
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+## 盘古开发框架项目官网&文档
 
 ### Local Development
 
