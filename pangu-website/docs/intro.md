@@ -65,9 +65,9 @@ pangu-examples | 盘古框架模版化参考范例集
 发布时间 | 框架代号 | 主要特点 | 支持
 --- | --- | --- | ---
 2021年-至今 | [盘古](/) | 微服务开发、分布式架构&单体架构、云原生 | 长期维护中
-2017年-2020年 | [MyClouds](https://gitee.com/pulanos/myclouds/blob/master/myclouds-docs/1.1%20%E5%85%A5%E9%97%A8%20-%20%E7%AE%80%E4%BB%8B.md) | LayUI、微服务开发、分布式架构、通用权限系统| 停止维护
+2017年-2020年 | [MyClouds](https://gitee.com/pulanos/myclouds/blob/master/myclouds-docs/1.1%20%E5%85%A5%E9%97%A8%20-%20%E7%AE%80%E4%BB%8B.md) | LayUI、微服务开发(SpringCloud生态)、分布式架构、通用权限系统| 停止维护
 2011年-2016年 | [AOSuite](https://gitee.com/pulanos/aosuite/blob/master/doc/a.%E7%AC%AC%E4%B8%80%E7%AB%A0%20AOSuite%E7%AE%80%E4%BB%8B.md) | 自定义JSP UI标签库、单体架构、通用权限系统 | 停止维护
-2006年-2010年 | [G4Studio](https://gitee.com/xiong-chun/G4Studio) | 原生ExtJS UI、单体架构、通用权限系统 | 寿终正寝
+2006年-2010年 | [G4Studio](https://gitee.com/xiong-chun/G4Studio) | 原生ExtJS UI、单体架构、通用权限系统 | 项目终止
 
 ## 常见问答QA
 :::tip 
@@ -84,4 +84,4 @@ A：可以。从纯技术角度看，盘古开发的最佳姿势是分布式微�
 A：都没啥直接关系。盘古开发框架是完全独立于Spring Cloud (*)生态之外的一套轻量灵活、成熟可靠的分布式微服务开发和治理框架。可参考上述[主要功能特性](#主要功能特性)和[盘古框架模块列表](#盘古框架模块列表)。
 
 ## 下一步
-继续阅读 `快速开始` 以快速上手盘古开发框架。
+继续阅读其它章节获取您想要的答案或通过我们的[开发者社区](./community)寻求更多帮助。
