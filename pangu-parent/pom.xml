@@ -16,7 +16,7 @@
     <version>5.0.7</version>
     <packaging>pom</packaging>
     <name>pangu-parent</name>
-    <description>pangu development framework</description>
+    <description>pangu-parent</description>
     <url>https://gitee.com/pulanos/pangu-framework</url>
 
     <licenses>

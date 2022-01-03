@@ -110,7 +110,7 @@ const config = {
 						title: 'More',
 						items: [{
 								label: '致敬 & 鸣谢',
-								to: '/docs/thanksto',
+								to: '/docs/thanks',
 							},{
 								label: '开源中国',
 								to: 'https://www.oschina.net/',
