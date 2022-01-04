@@ -1,6 +1,6 @@
 ---
 title: 简介
-tags: [盘古简介]
+tags: [盘古简介,盘古架构]
 sidebar_position: 1
 slug: /intro
 ---
