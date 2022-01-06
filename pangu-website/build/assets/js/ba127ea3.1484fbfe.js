@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[8849],{4930:function(a){a.exports=JSON.parse('{"allTagsPath":"/pangu-framework/blog/tags","slug":"/pangu-framework/blog/tags/hello","name":"hello","count":2,"permalink":"/pangu-framework/blog/tags/hello"}')}}]);
