@@ -6,6 +6,9 @@
 
 - **pangu-examples-empty**
   1. 创建一个基于盘古框架的空应用
+  
+- **pangu-examples-empty-web**
+  1. 创建一个基于盘古框架的Web空应用
 
 - **pangu-examples-config-remote-nacos**
   1. 基于Nacos配置中心进行配置管理的盘古应用开发模式  

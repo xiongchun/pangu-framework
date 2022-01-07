@@ -13,6 +13,7 @@
 	<modules>
 		<module>pangu-examples-empty-springboot-based</module>
 		<module>pangu-examples-empty</module>
+		<module>pangu-examples-empty-web</module>
 		<module>pangu-examples-config-remote-nacos</module>
 		<module>pangu-examples-config-local</module>
 		<module>pangu-examples-log-dynamic</module>
