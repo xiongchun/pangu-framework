@@ -28,7 +28,10 @@ const config = {
 					editUrl: 'https://gitee.com/pulanos/pangu-framework/tree/master/pangu-website/',
 				},
 				blog: {
+					blogSidebarTitle: '最新发布博客',
 					showReadingTime: true,
+					blogSidebarCount: 5,
+					postsPerPage: 10,
 					// Please change this to your repo.
 					editUrl: 'https://gitee.com/pulanos/pangu-framework/tree/master/pangu-website/',
 				},
