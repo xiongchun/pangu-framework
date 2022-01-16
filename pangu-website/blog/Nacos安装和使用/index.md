@@ -11,7 +11,7 @@ hide_table_of_contents: false
 
 ## Coming soon...
 
-Welcome to this blog. This blog is created with [**Docusaurus 2**](https://docusaurus.io/).
+Welcome to this blog. 
 
 <!--truncate-->
 
