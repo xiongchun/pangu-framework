@@ -16,7 +16,7 @@ const config = {
 	favicon: 'img/favicon.ico',
 	organizationName: '盘古开发框架,普蓝开源社区', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
-
+    plugins: [require.resolve("docusaurus-plugin-image-zoom")],
 	presets: [
 		[
 			'classic',
@@ -128,6 +128,16 @@ const config = {
 				copyright: `Copyright © ${new Date().getFullYear()} <a class="ghostwhite" target="_blank" href="https://gitee.com/pulanos">普蓝开源社区</a>  Released under <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache V2 license</a>`,
 			},
 			hideableSidebar: true,
+			zoom: {
+			      selector: '.markdown :not(em) > img',
+			      config: {
+			        // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+			        background: {
+			          light: 'rgb(255, 255, 255)',
+			          dark: 'rgb(50, 50, 50)'
+			        }
+			      }
+			    },
 			prism: {
 				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,
