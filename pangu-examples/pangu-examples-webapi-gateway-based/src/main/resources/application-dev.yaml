@@ -21,11 +21,6 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-management:
-  health:
-    defaults:
-      enabled: false
-
 shenyu:
   cross:
     enabled: true
@@ -73,8 +68,6 @@ logging:
     root: info
     org.springframework.boot: info
     org.apache.ibatis: info
-    org.apache.shenyu.bonuspoint: info
-    org.apache.shenyu.lottery: info
     org.apache.shenyu: info
 
 

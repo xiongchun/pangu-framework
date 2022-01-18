@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @ShenyuDubboClient(path = "/listUserOuts")
+    @ShenyuDubboClient(path = "/listUserOuts", desc = "查询用户信息列表")
     public List<UserOut> listUserOuts(UserIn userIn) {
         log.info("参数userIn：{}", userIn);
         BeanValidator.validate(userIn);
