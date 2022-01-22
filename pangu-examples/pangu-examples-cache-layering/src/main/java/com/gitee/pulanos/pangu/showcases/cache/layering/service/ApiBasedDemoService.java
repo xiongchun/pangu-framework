@@ -1,6 +1,5 @@
 package com.gitee.pulanos.pangu.showcases.cache.layering.service;
 
-import cn.hutool.core.thread.ThreadUtil;
 import com.github.xiaolyuh.cache.LayeringCache;
 import com.github.xiaolyuh.manager.CacheManager;
 import com.github.xiaolyuh.setting.FirstCacheSetting;

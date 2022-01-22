@@ -15,6 +15,4 @@ Welcome to this blog.
 
 <!--truncate-->
 
-This is my first post on Docusaurus 2.
 
-A whole bunch of exploration to follow.

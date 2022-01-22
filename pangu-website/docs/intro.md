@@ -27,7 +27,7 @@ slug: /intro
 - **服务优先原则**（service first principle）  
   服务是盘古框架的一等公民。我们旨在微服务范式和云原生范式基础上构建以"服务"为中心的现代应用架构。
 - **简约而不简单**（less is more）  
-  坚持选型自信和道路自信，不做杂而全的一锅乱炖，专做小而精的一碗番茄鸡蛋面。
+  坚持选型自信和道路自信，不求大而全专注小而精。
 
 ## 主要功能特性
 
@@ -37,7 +37,7 @@ slug: /intro
 - 基于[Apache Dubbo](https://dubbo.apache.org/en/)框架，提供面向接口代理的高性能RPC调用、智能容错和负载均衡、运行期流量调度、可视化的服务治理与运维。
 - 基于[Nacos](https://nacos.io/en-us/index.html),提供动态配置服务，以中心化、外部化和动态化的方式管理所有环境的应用配置参数；提供了对Dubbo服务的服务发现和服务监控监测等服务元数据可视化管理。
 - 基于[Mybatis-Plus](https://gitee.com/baomidou/mybatis-plus)，在[MyBatis](https://mybatis.org/mybatis-3/index.html)的基础上提供了强大的内置通用Mapper CRUD操作、支持Lambda表达式、内置屏蔽不通数据库方言差异的分页插件、自动填充字段值、多种主键自动生成策略、逻辑输出、乐观锁插件等。
-- 基于[layering-cache](https://github.com/xiaolyuh/layering-cache)，提供支持分布式环境的多级缓存功能。使用[Caffeine](https://github.com/ben-manes/caffeine)作为一级本地缓存，[Redis](https://redis.io/)作为二级集中式缓存。支持缓存信息监控统计、支持缓存过期时间在注解上直接配置、支持缓存的自动刷新、缓存Key支持SpEL表达式、支持无感禁用一级缓存或二级缓存。通过缓存空值来解决缓存穿透问题、通过异步加载缓存的方式来解决缓存击穿和雪崩问题。
+- 基于[layering-cache](https://github.com/xiaolyuh/layering-cache)，提供支持分布式环境的多级缓存功能。使用[Caffeine](https://github.com/ben-manes/caffeine)作为一级本地缓存，[Redis](https://redis.io/)作为二级集中式缓存。
 - 基于[lock4j](https://gitee.com/baomidou/lock4j)，提供分布式锁。支持注解声明式和API编程式对业务代码在分布式环境下加并发锁。
 - 应用日志输出级别动态切换、分布式日志跟踪等...
 
@@ -75,7 +75,7 @@ pangu-examples | 盘古框架模版化参考范例集
 :::
 
 1. **Q：盘古开发框架会收费吗?**  
-A：不会。盘古开发框架在商用友好的[Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)开源协议下发布，且不会以任何开发文档、技术支持、有偿组件等形式进行收费。盘古项目的创始初衷就是"分享经验-传递价值-回馈社区"。
+A：不会。盘古开发框架在商用友好的[Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)开源协议下发布。其创始初衷就是"分享经验-传递价值-回馈社区"，不会以文档、支持、有偿组件等各种骚操作进行收费。如果盘古框架对你有用，尽可放心使用。
 2. **Q：盘古开发框架可以做单体开发吗?**  
 A：可以。从纯技术角度看，盘古开发的最佳姿势是分布式微服务开发。但也完美支持搭建传统单体分层架构的开发模式。具体请参考相关文档和范例。
 3. **Q：盘古开发框架和[Spring Cloud](https://spring.io/projects/spring-cloud)或[Spring Cloud Alibaba](https://spring.io/projects/spring-cloud-alibaba)是什么关系？**  

@@ -19,13 +19,11 @@ package com.gitee.pulanos.pangu.showcases.cache.layering;
 
 import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
 import com.github.xiaolyuh.cache.config.EnableLayeringCache;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author xiongchun
  */
-@Slf4j
 @EnableLayeringCache
 @SpringBootApplication
 public class LayeringCachePanguApplication {

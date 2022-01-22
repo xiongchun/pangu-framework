@@ -15,10 +15,27 @@ import java.util.Map;
 @Mapper
 public interface CrudMapper {
 
-    List<UserEntity> listUsersByMap(Map<String, Object> param);
-
+    /**
+     * 分页查询
+     * @param page 分页查询对象
+     * @param param
+     * @return
+     */
     List<UserEntity> listUsersByPage(Page<UserEntity> page, Map<String, Object> param);
 
+    /**
+     * 分页查询
+     * @param page 分页查询对象
+     * @param userType
+     * @return
+     */
     List<Map<String, Object>> listUserMapsByPage(Page<Map<String, Object>> page, String userType);
+
+    /**
+     * 普通集合查询
+     * @param param
+     * @return
+     */
+    List<UserEntity> listUsersByMap(Map<String, Object> param);
 
 }
