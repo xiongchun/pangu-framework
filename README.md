@@ -1,6 +1,6 @@
 ### :mushroom: 介绍
 
-盘古开发框架是一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架。
+[盘古开发框架](https://pulanos.gitee.io/pangu-framework/)是一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架。
 
 ### :sunflower: 获取更多资源
 
