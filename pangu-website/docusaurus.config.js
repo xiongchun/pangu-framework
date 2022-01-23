@@ -62,11 +62,11 @@ const config = {
 						label: '博客专栏',
 						position: 'left'
 					},
-					{
-						href: 'https://gitee.com/pulanos/pangu-framework',
-						label: '视频教程',
-						position: 'left',
-					},
+					// {
+					// 	href: 'https://gitee.com/pulanos/pangu-framework',
+					// 	label: '视频教程',
+					// 	position: 'left',
+					// },
 					{
 						href: 'https://gitee.com/pulanos/pangu-framework',
 						label: 'Gitee',
@@ -89,10 +89,12 @@ const config = {
 						}, {
 							label: '博客专栏',
 							to: '/blog',
-						},{
-							label: '视频教程',
-							href: 'https://gitee.com/pulanos/pangu-framework',
-						}],
+						}
+						// ,{
+						// 	label: '视频教程',
+						// 	href: 'https://gitee.com/pulanos/pangu-framework',
+						// }
+						],
 					},
 					{
 						title: 'Community',
@@ -125,7 +127,7 @@ const config = {
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} <a class="ghostwhite" target="_blank" href="https://gitee.com/pulanos">普蓝开源社区</a>  Released under <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache V2 license</a>`,
+				copyright: `Copyright © ${new Date().getFullYear()} <a class="ghostwhite" target="_blank" href="./docs/community">普蓝开源社区</a>  Released under <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache V2 license</a>`,
 			},
 			hideableSidebar: true,
 			zoom: {
