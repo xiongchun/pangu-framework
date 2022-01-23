@@ -2,37 +2,12 @@
 
 1.创建一个基于原生SpringBoot框架的空应用
 
-> :fa-hand-o-right: 这是在需要开发标准原生SpringBoot应用的特殊场景下的开发模式，依赖的`pangu-framework-parent`只提供了一点必要的非侵入依赖管理。
+### 介绍
 
-#### :four_leaf_clover: 如何创建&启动一个原生SpringBoot应用
--  **第一步：安装pom依赖** 
-    ``` xml
-    <parent>
-        <groupId>com.gitee.pulanos.pangu</groupId>
-        <artifactId>pangu-framework-parent</artifactId>
-        <version>latest.version.xxx</version>
-        <relativePath/>
-    </parent>
-    ```
--  **第二步：启动类** 
+[盘古开发框架](https://pulanos.gitee.io/pangu-framework/)是一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架。
 
-    采用SpringBoot标准启动方式启动。
+### 更多资源
 
-    ``` java
-    @SpringBootApplication
-    public class EmptySpringBootApplication {
-    
-    	public static void main(String[] args) {
-    		SpringApplication.run(EmptySpringBootApplication.class, args);
-    	}
-    
-    	@Component
-    	public class EmptyService{
-    		@PostConstruct
-    		public void print(){
-    			log.info("这是一个完全基于SpringBoot原生框架的空项目...");
-    		}
-    	}
-    
-    }
-    ```
+- :fa-book: [项目主页&开发指南](https://pulanos.gitee.io/pangu-framework/)
+- :fa-flask: [开发范例集合](https://pulanos.gitee.io/pangu-framework/docs/examples-list)
+- :fa-linux: [普蓝开源社区](https://pulanos.gitee.io/pangu-framework/docs/community/)

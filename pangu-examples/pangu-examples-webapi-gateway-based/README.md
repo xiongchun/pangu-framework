@@ -2,10 +2,12 @@
 
 1. 如何编写WebAPI接口，基于ShenYu网关实现泛华调用后端Dubbo服务。
 
-> 盘古网关基于Apache Shenyu 网关系统开发。
->  - 支持各种语言(http 协议)，支持 Dubbo、 Spring Cloud、 gRPC、 Motan、 Sofa、 Tars 等协议。
->  - 灵活的流量筛选，能满足各种流量控制。流量配置动态化，性能极高。
->  - 内置丰富的插件支持，鉴权，限流，熔断，防火墙等等。
->  - 支持集群部署，支持 A/B Test，蓝绿发布。
+### 介绍
 
-**更多开发指南请参考盘古平台相关文档说明。**
+[盘古开发框架](https://pulanos.gitee.io/pangu-framework/)是一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架。
+
+### 更多资源
+
+- :fa-book: [项目主页&开发指南](https://pulanos.gitee.io/pangu-framework/)
+- :fa-flask: [开发范例集合](https://pulanos.gitee.io/pangu-framework/docs/examples-list)
+- :fa-linux: [普蓝开源社区](https://pulanos.gitee.io/pangu-framework/docs/community/)
