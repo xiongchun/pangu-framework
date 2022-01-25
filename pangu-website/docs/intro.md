@@ -31,7 +31,7 @@ slug: /intro
 
 ## 主要功能特性
 
-- 自定义的[pangu-*-spring-boot-starter](https://gitee.com/pulanos/pangu-framework/tree/master)启动器，覆盖开发过程常见需求，完成各个盘古模块的自动装备。
+- 自定义的[pangu-*-spring-boot-starter](https://gitee.com/pulanos/pangu-framework/tree/master)启动器，覆盖开发过程常见需求，完成各个盘古模块的自动装配。
 - 自定义的代码生成器Maven插件[pangu-generator-maven-plugin](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-generator-maven-plugin)，生成开发所需的模版代码。
 - 基于[Apache ShenYu](https://shenyu.apache.org)网关框架，实现对后端[Dubbo](https://dubbo.apache.org/en/)服务的泛化调用；同时网关支持鉴权、动态限流、熔断、防火墙；支持 A/B Test，蓝绿发布等。
 - 基于[Apache Dubbo](https://dubbo.apache.org/en/)框架，提供面向接口代理的高性能RPC调用、智能容错和负载均衡、运行期流量调度、可视化的服务治理与运维。
@@ -73,10 +73,10 @@ pangu-examples | 盘古框架模版化参考范例集
 > 在这里我将以最简单直接的方式回答一些用户可能最想了解的常见问题。  
 
 #### 1. 盘古开发框架会收费吗?  
-不会。盘古开发框架在商用友好的[Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)开源协议下发布。其创始初衷就是"分享经验-传递价值-回馈社区"，不会以文档、支持、有偿组件等各种骚操作进行收费。如果盘古框架对你有用，尽可放心使用。
+不会以任何形式进行收费。盘古开发框架在商用友好的[Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)开源协议下发布。其创始初衷就是"分享经验-传递价值-共建共享开源生态"。
 
 #### 2. 盘古开发框架可以做单体开发吗?
-可以。从纯技术角度看，盘古开发的最佳姿势是分布式微服务开发。但也完美支持搭建传统单体分层架构的开发模式。具体请参考相关文档和范例。
+可以。从纯技术角度看，盘古开发的最佳姿势是分布式微服务开发。但也完美支持搭建传统单体分层架构的开发模式。具体请参阅相关文档和范例。
 
 #### 3. 盘古开发框架和[Spring Cloud](https://spring.io/projects/spring-cloud)或[Spring Cloud Alibaba](https://spring.io/projects/spring-cloud-alibaba)是什么关系？  
 都没啥直接关系。盘古开发框架是完全独立于Spring Cloud (*)生态之外的一套轻量灵活、成熟可靠的分布式微服务开发和治理框架。可参考上述[主要功能特性](#主要功能特性)和[盘古框架模块列表](#盘古框架模块列表)。
