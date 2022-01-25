@@ -32,7 +32,7 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title}:一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架 普蓝开源社区出品`}
+      title={`${siteConfig.title}:一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架 powered by 普蓝开源社区`}
       description="一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架">
       <HomepageHeader />
       <main>

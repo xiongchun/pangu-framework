@@ -62,11 +62,11 @@ const config = {
 						label: '博客专栏',
 						position: 'left'
 					},
-					// {
-					// 	href: 'https://gitee.com/pulanos/pangu-framework',
-					// 	label: '视频教程',
-					// 	position: 'left',
-					// },
+					{
+						href: '/docs/community',
+						label: '开发者社区',
+						position: 'left',
+					},
 					{
 						href: 'https://gitee.com/pulanos/pangu-framework',
 						label: 'Gitee',
@@ -90,10 +90,10 @@ const config = {
 							label: '博客专栏',
 							to: '/blog',
 						}
-						// ,{
-						// 	label: '视频教程',
-						// 	href: 'https://gitee.com/pulanos/pangu-framework',
-						// }
+						,{
+							label: '常见问答FAQ',
+							href: '/docs/faq',
+						}
 						],
 					},
 					{
