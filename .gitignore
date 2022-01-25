@@ -20,9 +20,6 @@ bin/
 *.iml
 *.iws
 
-# gradle
-.gradle/
-
 # visual-studio-code ignore
 .vscode/
 
@@ -39,3 +36,4 @@ bin/
 Thumbs.db
 *.orig
 
+/.gradle/
