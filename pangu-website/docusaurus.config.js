@@ -92,7 +92,7 @@ const config = {
 						}
 						,{
 							label: '常见问答FAQ',
-							href: '/docs/faq',
+							to: '/docs/faq',
 						}
 						],
 					},
@@ -118,7 +118,7 @@ const config = {
 								to: '/docs/thanks',
 							},{
 								label: '开源中国',
-								to: 'https://www.oschina.net/',
+								href: 'https://www.oschina.net/',
 							},
 							{
 								label: 'Apache Software Foundation',
