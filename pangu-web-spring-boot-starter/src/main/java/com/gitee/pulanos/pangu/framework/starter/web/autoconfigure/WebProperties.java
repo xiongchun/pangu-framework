@@ -21,12 +21,12 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * JdbcProperties
+ * WebProperties
  *
  * @author xiongchun
  */
 @Data
-@ConfigurationProperties(prefix = "pangu.gateway")
+@ConfigurationProperties(prefix = "pangu.web")
 public class WebProperties {
 
 }
