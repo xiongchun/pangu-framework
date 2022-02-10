@@ -31,14 +31,16 @@ public class SenderTest {
     @Autowired
     private SendService sendService;
 
+    /**
+     * 发送消息交换机
+     */
     @Test
-    public void sendMsg1FanoutBased() {
+    public void sendMsg() {
+        //发送消息到Fanout交换机
         sendService.sendMsg1FanoutBased();
-    }
-
-    @Test
-    public void sendMsg1DirectBased() {
+        //发送消息到Direct交换机
         sendService.sendMsg1DirectBased("key-1");
+        //发送消息到Direct交换机
         sendService.sendMsg1DirectBased("key-2");
     }
 

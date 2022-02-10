@@ -36,24 +36,25 @@ public class SendService {
     private RabbitTemplate rabbitTemplate;
 
     /**
-     * 基于Fanout交换机的消息发送
+     * 发送消息到Fanout交换机
      * @return
      */
     public void sendMsg1FanoutBased(){
         String msg = "我是云南大熊(Fanout), " + DateUtil.now();
         // 参数说明：参数1：交换机名称。  参数2：routing key  参数3：消息内容
         rabbitTemplate.convertAndSend("exchange-fanout", "", msg);
-        log.info("消息发送成功");
+        log.info("消息发送成功。{}", msg);
     }
 
     /**
-     * 基于Direct交换机的消息发送
+     * 发送消息到Direct交换机
      * @return
      */
     public void sendMsg1DirectBased(String routingKey){
         String msg = "我是云南大熊(Direct), " + DateUtil.now();
         // 参数说明：参数1：交换机名称。  参数2：routing key  参数3：消息内容
         rabbitTemplate.convertAndSend("exchange-direct", routingKey, msg);
-        log.info("消息发送成功");
+        log.info("消息发送成功。{}", msg);
     }
+
 }
