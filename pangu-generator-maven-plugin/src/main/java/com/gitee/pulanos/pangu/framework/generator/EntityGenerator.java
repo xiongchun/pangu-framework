@@ -65,7 +65,7 @@ public class EntityGenerator {
         appender.append("");
 
         appender.append("/**");
-        appender.append(format(" * {}", table.getComment()));
+        appender.append(format(" * {}", StrUtil.isEmpty(table.getComment()) ? tableName : table.getComment()));
         appender.append(" * <p>此文件由代码生成器自动生成</p>");
         appender.append(" *");
         appender.append(format(" * @author {}", pluginConfig.getAuthor()));
@@ -80,18 +80,19 @@ public class EntityGenerator {
 
         appender.append("   private static final long serialVersionUID=1L;");
         for (Column column : columns) {
+            String columnName = column.getName();
             appender.append("");
             appender.append("   /**");
-            appender.append(format("    * {}", column.getComment()));
+            appender.append(format("    * {}", StrUtil.isEmpty(column.getComment()) ? columnName : column.getComment()));
             appender.append("    */");
             if (column.getIsPkey()) {
                 String idType = "NONE";
                 if (column.getIsAutoincrement()){
                     idType = "AUTO";
                 }
-                appender.append(format("   @TableId(value = \"{}\", type = IdType.{})", column.getName(), idType));
+                appender.append(format("   @TableId(value = \"{}\", type = IdType.{})", columnName, idType));
             } else {
-                appender.append(format("   @TableField(value = \"{}\")", column.getName()));
+                appender.append(format("   @TableField(value = \"{}\")", columnName));
             }
 
             if (StrUtil.equalsIgnoreCase(column.getType(), Constants.DbColType.DATETIME) || StrUtil.equalsIgnoreCase(column.getType(), Constants.DbColType.TIMESTAMP)){
@@ -99,7 +100,7 @@ public class EntityGenerator {
             }else if (StrUtil.equalsIgnoreCase(column.getType(), Constants.DbColType.DATE)){
                 appender.append("   @JsonFormat(pattern=\"yyyy-MM-dd\")");
             }
-            appender.append(format("   private {} {};", column.getJavaType(), StrUtil.toCamelCase(column.getName())));
+            appender.append(format("   private {} {};", column.getJavaType(), StrUtil.toCamelCase(columnName)));
 
         }
         appender.append("");

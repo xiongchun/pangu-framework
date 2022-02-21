@@ -30,6 +30,7 @@
 		<module>pangu-examples-webapi-gateway-based</module>
 		<module>pangu-examples-mq-rabbitmq-sender</module>
 		<module>pangu-examples-mq-rabbitmq-receiver</module>
+		<module>pangu-examples-seata-at</module>
 	</modules>
 
 </project>

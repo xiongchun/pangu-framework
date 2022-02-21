@@ -54,6 +54,7 @@
         <mybatis-plus.version>3.4.3.2</mybatis-plus.version>
         <lock4j.version>2.2.1</lock4j.version>
         <shenyu.version>2.4.1</shenyu.version>
+        <seata.version>1.4.2</seata.version>
         <layering-cache.version>3.3.4</layering-cache.version>
         <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
         <commons-collections4.version>4.4</commons-collections4.version>
@@ -117,6 +118,11 @@
                 <version>${pangu.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.gitee.pulanos.pangu</groupId>
+                <artifactId>pangu-seata-spring-boot-starter</artifactId>
+                <version>${pangu.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
                 <version>${dubbo-spring-boot-starter.version}</version>
@@ -170,6 +176,11 @@
                 <groupId>org.apache.shenyu</groupId>
                 <artifactId>shenyu-spring-boot-starter-plugin-apache-dubbo</artifactId>
                 <version>${shenyu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata.version}</version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>

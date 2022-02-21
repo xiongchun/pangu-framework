@@ -1,6 +1,5 @@
-package com.gitee.pulanos.pangu.showcases.dubbo.api.out;
+package com.gitee.pulanos.pangu.showcases.dubbo.api.dto;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -12,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
-public class UserOut implements Serializable {
+public class UserOutDto implements Serializable {
 
    private static final long serialVersionUID = 1L;
 

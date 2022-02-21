@@ -53,7 +53,7 @@ public class MapperGenerator {
         appender.append("");
 
         appender.append("/**");
-        appender.append(format(" * {}", table.getComment()));
+        appender.append(format(" * {}", StrUtil.isEmpty(table.getComment()) ? tableName : table.getComment()));
         appender.append(" * <p>此文件由代码生成器自动生成</p>");
         appender.append(" *");
         appender.append(format(" * @author {}", pluginConfig.getAuthor()));

@@ -19,8 +19,8 @@ package com.gitee.pulanos.pangu.showcases.dubbo.provider.service;
 
 import com.gitee.pulanos.pangu.framework.common.utils.BeanValidator;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.entity.UserEntity;
-import com.gitee.pulanos.pangu.showcases.dubbo.api.in.UserIn;
-import com.gitee.pulanos.pangu.showcases.dubbo.api.out.UserOut;
+import com.gitee.pulanos.pangu.showcases.dubbo.api.dto.UserInDto;
+import com.gitee.pulanos.pangu.showcases.dubbo.api.dto.UserOutDto;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.service.UserService;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -46,12 +46,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserOut> listUserOuts(UserIn userIn) {
-        log.info("参数userIn：{}", userIn);
-        BeanValidator.validate(userIn);
-        List<UserOut> userOuts = Lists.newArrayList();
-        UserOut userOut = new UserOut().setName("云南码农大熊").setUserType("1").setAge(18).setOrgId(1L);
-        userOuts.add(userOut);
-        return userOuts;
+    public List<UserOutDto> listUserOuts(UserInDto userInDto) {
+        log.info("参数userIn：{}", userInDto);
+        BeanValidator.validate(userInDto);
+        List<UserOutDto> userOutDtos = Lists.newArrayList();
+        UserOutDto userOutDto = new UserOutDto().setName("云南码农大熊").setUserType("1").setAge(18).setOrgId(1L);
+        userOutDtos.add(userOutDto);
+        return userOutDtos;
     }
 }

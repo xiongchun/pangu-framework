@@ -1,8 +1,8 @@
 package com.gitee.pulanos.pangu.showcases.dubbo.api.service;
 
 import com.gitee.pulanos.pangu.showcases.dubbo.api.entity.UserEntity;
-import com.gitee.pulanos.pangu.showcases.dubbo.api.in.UserIn;
-import com.gitee.pulanos.pangu.showcases.dubbo.api.out.UserOut;
+import com.gitee.pulanos.pangu.showcases.dubbo.api.dto.UserInDto;
+import com.gitee.pulanos.pangu.showcases.dubbo.api.dto.UserOutDto;
 
 import java.util.List;
 
@@ -13,6 +13,6 @@ public interface UserService {
 
     UserEntity findUserEntity(Long id);
 
-    List<UserOut> listUserOuts(UserIn userIn);
+    List<UserOutDto> listUserOuts(UserInDto userInDto);
 
 }

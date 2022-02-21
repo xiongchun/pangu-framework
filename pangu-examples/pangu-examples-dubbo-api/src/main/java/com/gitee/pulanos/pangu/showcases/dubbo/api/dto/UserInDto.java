@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.showcases.dubbo.api.in;
+package com.gitee.pulanos.pangu.showcases.dubbo.api.dto;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
-public class UserIn implements Serializable {
+public class UserInDto implements Serializable {
 
    private static final long serialVersionUID = 1L;
 

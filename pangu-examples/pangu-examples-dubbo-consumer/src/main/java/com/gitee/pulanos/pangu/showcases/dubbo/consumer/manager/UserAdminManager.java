@@ -18,8 +18,8 @@
 package com.gitee.pulanos.pangu.showcases.dubbo.consumer.manager;
 
 import com.gitee.pulanos.pangu.showcases.dubbo.api.entity.UserEntity;
-import com.gitee.pulanos.pangu.showcases.dubbo.api.in.UserIn;
-import com.gitee.pulanos.pangu.showcases.dubbo.api.out.UserOut;
+import com.gitee.pulanos.pangu.showcases.dubbo.api.dto.UserInDto;
+import com.gitee.pulanos.pangu.showcases.dubbo.api.dto.UserOutDto;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
@@ -44,18 +44,18 @@ public class UserAdminManager {
         log.info("[OK] 调用成功 {}", userEntity);
     }
 
-    public void listUserOuts(UserIn userIn){
+    public void listUserOuts(UserInDto userInDto){
         log.info("开始Dubbo远程调用...");
-        List<UserOut> userOuts = userService.listUserOuts(userIn);
-        log.info("[OK] 调用成功 {}", userOuts);
+        List<UserOutDto> userOutDtos = userService.listUserOuts(userInDto);
+        log.info("[OK] 调用成功 {}", userOutDtos);
     }
 
     @PostConstruct
     public void doTest(){
         findUserEntityById(1L);
-        UserIn userIn = new UserIn();
-        userIn.setUserType("1");
-        listUserOuts(userIn);
+        UserInDto userInDto = new UserInDto();
+        userInDto.setUserType("1");
+        listUserOuts(userInDto);
     }
 
 }
