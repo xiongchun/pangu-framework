@@ -26,6 +26,7 @@ public interface OrderService {
 
     /**
      * 创建订单
+     * @param buyDto
      */
     void createOrder(BuyDto buyDto);
 }

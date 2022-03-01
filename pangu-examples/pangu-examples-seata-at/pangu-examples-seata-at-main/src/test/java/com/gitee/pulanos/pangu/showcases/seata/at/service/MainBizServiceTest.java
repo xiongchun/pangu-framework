@@ -19,7 +19,7 @@ public class MainBizServiceTest {
     @Test
     public void buyItems() {
         BuyDto buyDto = new BuyDto();
-        buyDto.setCount(1);
+        buyDto.setCount(101);
         buyDto.setMoney(10);
         buyDto.setCommodityCode("C001");
         buyDto.setUserId("U001");

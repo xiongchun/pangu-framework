@@ -50,7 +50,6 @@ public class AccountServiceImpl implements AccountService {
     @Transactional(rollbackFor = RuntimeException.class)
     public void decreaseAccount(BuyDto buyDto) {
         AccountEntity accountEntity = accountMapper.selectOne(Wrappers.<AccountEntity>lambdaQuery().eq(AccountEntity::getUserId, buyDto.getUserId()));
-
         LambdaUpdateWrapper<AccountEntity> updateWrapper = Wrappers.lambdaUpdate();
         updateWrapper.set(AccountEntity::getMoney, accountEntity.getMoney() - buyDto.getCount() * buyDto.getMoney());
         updateWrapper.eq(AccountEntity::getUserId, buyDto.getUserId());
