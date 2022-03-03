@@ -54,7 +54,7 @@ pangu-examples | 盘古框架模版化参考范例集
 - 基于 [Apache ShenYu](https://shenyu.apache.org) 网关框架，实现对后端 [Dubbo](https://dubbo.apache.org/en/) 服务的泛化调用；同时网关支持鉴权、动态限流、熔断、防火墙；支持 A/B Test，蓝绿发布等。
 - 基于 [Apache Dubbo](https://dubbo.apache.org/en/) 框架提供面向接口代理的高性能RPC调用、智能容错和负载均衡、运行期流量调度、可视化的服务治理与运维。
 - 基于 [Nacos](https://nacos.io/en-us/index.html) 提供动态配置服务，以中心化、外部化和动态化的方式管理所有环境的应用配置参数；提供了对Dubbo服务的服务发现和服务监控监测等服务元数据可视化管理。
-- 基于 [Mybatis-Plus](https://gitee.com/baomidou/mybatis-plus) 提供了强大的内置通用 Mapper CRUD 操作、支持 Lambda 表达式、内置屏蔽不同数据库方言差异的分页插件、自动填充字段值、多种主键自动生成策略、逻辑输出、乐观锁插件等。
+- 基于 [Mybatis-Plus](https://gitee.com/baomidou/mybatis-plus) 提供了强大的内置通用 Mapper CRUD 操作、支持 Lambda 表达式、内置屏蔽不通数据库方言差异的分页插件、自动填充字段值、多种主键自动生成策略、逻辑删除、乐观锁插件等功能。
 - 基于 [layering-cache](https://github.com/xiaolyuh/layering-cache) 提供支持分布式环境的多级缓存功能。使用 [Caffeine](https://github.com/ben-manes/caffeine) 作为一级本地缓存， [Redis](https://redis.io/) 作为二级集中式缓存。
 - 基于 [lock4j](https://gitee.com/baomidou/lock4j) 提供分布式锁。支持注解声明式和 API 编程式对业务代码在分布式环境下加并发锁。
 - 基于 [Seata](https://seata.io/en-us/index.html) 提供分布式事务的落地方案。
