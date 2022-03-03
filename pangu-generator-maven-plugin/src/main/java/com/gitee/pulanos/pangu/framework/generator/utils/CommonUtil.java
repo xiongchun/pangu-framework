@@ -23,12 +23,20 @@ import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 
 import java.sql.DatabaseMetaData;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 工具类
  * @author xiongchun
  */
 public class CommonUtil {
+
+    /**
+     * 其它关键字可以继续补充
+     */
+    public static final List TABLE_KEYWORDS = Arrays.asList("order");
 
     /**
      * 数据库字段类型和Java类型的映射关系
@@ -96,5 +104,16 @@ public class CommonUtil {
     @SneakyThrows
     public static boolean isSqlServer(DatabaseMetaData databaseMetaData) {
         return StrUtil.containsIgnoreCase(databaseMetaData.getDatabaseProductName(), Constants.DbType.SQLSERVER);
+    }
+
+    /**
+     * 检查业务表名是否含有数据库关键字
+     * @param name
+     * @return
+     */
+    public static void checkTableKeywords(String name) {
+        if (TABLE_KEYWORDS.contains(name.toLowerCase())){
+            throw new IllegalArgumentException(StrUtil.format("表名: {} 是数据库关键字，为避免后续不必要的麻烦请修改表名。", name));
+        }
     }
 }

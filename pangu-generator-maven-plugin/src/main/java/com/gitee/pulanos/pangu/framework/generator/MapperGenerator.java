@@ -23,6 +23,7 @@ import cn.hutool.core.io.file.FileAppender;
 import cn.hutool.core.util.StrUtil;
 import com.gitee.pulanos.pangu.framework.generator.pojo.PluginConfig;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
+import com.gitee.pulanos.pangu.framework.generator.utils.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
@@ -38,6 +39,7 @@ public class MapperGenerator {
 
     public static void generate(Table table, PluginConfig pluginConfig) {
         log.info("开始生成数据表[{}]对应的数据访问接口...", table.getName());
+        CommonUtil.checkTableKeywords(table.getName());
         String tableName = StrUtil.upperFirst(StrUtil.toCamelCase(table.getName()));
         String filePath = format("{}/{}Mapper.java", pluginConfig.getMapperFilePath(), tableName);
         File file = new File(filePath);

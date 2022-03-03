@@ -26,6 +26,7 @@ import cn.hutool.core.util.StrUtil;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
 import com.gitee.pulanos.pangu.framework.generator.pojo.PluginConfig;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
+import com.gitee.pulanos.pangu.framework.generator.utils.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
@@ -42,6 +43,7 @@ public class EntityGenerator {
 
     public static void generate(Table table, List<Column> columns, PluginConfig pluginConfig) {
         log.info("开始生成数据表[{}]对应的实体对象...", table.getName());
+        CommonUtil.checkTableKeywords(table.getName());
         String tableName = StrUtil.upperFirst(StrUtil.toCamelCase(table.getName()));
         String filePath = format("{}/{}Entity.java", pluginConfig.getEntityFilePath(), tableName);
         File file = new File(filePath);
