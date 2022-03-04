@@ -69,8 +69,7 @@ pangu-examples | 盘古框架模版化参考范例集
 --- | --- | --- | ---
 2021年-至今 | [盘古](/) | 微服务开发、分布式架构&单体架构、云原生 |  :kiss: 长期支持
 2017年-2020年 | [MyClouds](https://gitee.com/pulanos/myclouds/blob/master/myclouds-docs/1.1%20%E5%85%A5%E9%97%A8%20-%20%E7%AE%80%E4%BB%8B.md) | LayUI、微服务开发(SpringCloud生态)、分布式架构、通用权限系统| 项目终止
-2011年-2016年 | [AOSuite](https://gitee.com/pulanos/aosuite/blob/master/doc/a.%E7%AC%AC%E4%B8%80%E7%AB%A0%20AOSuite%E7%AE%80%E4%BB%8B.md) | 自定义JSP UI标签库、单体架构、通用权限系统 | 项目终止
-2006年-2010年 | [G4Studio](https://gitee.com/xiong-chun/G4Studio) | 原生ExtJS UI、单体架构、通用权限系统 | 项目终止
+2007年-2016年 | [AOSuite](https://gitee.com/pulanos/aosuite/blob/master/doc/a.%E7%AC%AC%E4%B8%80%E7%AB%A0%20AOSuite%E7%AE%80%E4%BB%8B.md) | 自定义JSP UI标签库、单体架构、通用权限系统 | 项目终止
 
 ## FAQ 
 > 在这里我将以最简单直接的方式回答一些用户可能最想了解的常见问题。  
