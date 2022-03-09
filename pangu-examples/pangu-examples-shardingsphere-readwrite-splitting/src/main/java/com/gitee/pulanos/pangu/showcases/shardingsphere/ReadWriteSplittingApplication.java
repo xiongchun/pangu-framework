@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.showcases.crud;
+package com.gitee.pulanos.pangu.showcases.shardingsphere;
 
 import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,8 +26,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @SpringBootApplication
-public class CrudApplication {
+public class ReadWriteSplittingApplication {
 	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(CrudApplication.class).run(args);
+		PanGuApplicationBuilder.init(ReadWriteSplittingApplication.class).run(args);
 	}
 }

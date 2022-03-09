@@ -1,8 +1,8 @@
-package com.gitee.pulanos.pangu.showcases.crud.dao.mapper;
+package com.gitee.pulanos.pangu.showcases.shardingsphere.dao.mapper;
 
+import com.gitee.pulanos.pangu.showcases.shardingsphere.dao.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gitee.pulanos.pangu.showcases.crud.dao.entity.UserEntity;
 
 /**
  * 用户信息表

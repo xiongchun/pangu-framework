@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.showcases.crud.dao.entity;
+package com.gitee.pulanos.pangu.showcases.shardingsphere.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

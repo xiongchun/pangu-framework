@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.showcases.crud;
+package com.gitee.pulanos.pangu.showcases.shardingsphere;
 
-import com.gitee.pulanos.pangu.showcases.crud.service.CrudService;
+import com.gitee.pulanos.pangu.showcases.shardingsphere.service.ReadWriteSplittingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,30 +26,30 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CrudTest {
+public class ReadWriteSplittingTest {
 
     @Autowired
-    private CrudService crudService;
+    private ReadWriteSplittingService readWriteSplittingService;
 
     @Test
     public void readRoute() {
-        crudService.readRoute();
-        crudService.readRoute();
+        readWriteSplittingService.readRoute();
+        readWriteSplittingService.readRoute();
     }
 
     @Test
     public void readByWriteRoute() {
-        crudService.readByWriteRoute();
+        readWriteSplittingService.readByWriteRoute();
     }
 
     @Test
     public void writeRoute() {
-        crudService.writeRoute();
+        readWriteSplittingService.writeRoute();
     }
 
     @Test
     public void doWithTransaction() {
-        crudService.doWithTransaction();
+        readWriteSplittingService.doWithTransaction();
     }
 
 }

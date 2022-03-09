@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.showcases.crud.service;
+package com.gitee.pulanos.pangu.showcases.shardingsphere.service;
 
-import com.gitee.pulanos.pangu.showcases.crud.dao.entity.UserEntity;
-import com.gitee.pulanos.pangu.showcases.crud.dao.mapper.UserMapper;
+import com.gitee.pulanos.pangu.showcases.shardingsphere.dao.entity.UserEntity;
+import com.gitee.pulanos.pangu.showcases.shardingsphere.dao.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shardingsphere.infra.hint.HintManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Slf4j
 @Component
-public class CrudService {
+public class ReadWriteSplittingService {
 
     @Autowired
     private UserMapper userMapper;
