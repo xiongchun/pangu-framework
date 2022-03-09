@@ -76,7 +76,7 @@ public class ReadWriteSplittingService {
     }
 
     /**
-     * 事务内的读写请求都自动路由到主库
+     * 事务内的所有读写请求都自动路由到主库
      *
      * @return
      */
