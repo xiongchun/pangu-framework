@@ -31,22 +31,34 @@ public class ReadWriteSplittingTest {
     @Autowired
     private ReadWriteSplittingService readWriteSplittingService;
 
+    /**
+     * 测试读操作自动走从库负载均衡
+     */
     @Test
     public void readRoute() {
         readWriteSplittingService.readRoute();
         readWriteSplittingService.readRoute();
     }
 
+    /**
+     * 测试读操作强制走主库
+     */
     @Test
     public void readByWriteRoute() {
         readWriteSplittingService.readByWriteRoute();
     }
 
+    /**
+     * 测试写操作自动走主库
+     */
     @Test
     public void writeRoute() {
         readWriteSplittingService.writeRoute();
     }
 
+    /**
+     * 测试事务方法里的所有读写操作都自动走主库
+     */
     @Test
     public void doWithTransaction() {
         readWriteSplittingService.doWithTransaction();

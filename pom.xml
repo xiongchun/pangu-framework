@@ -20,6 +20,7 @@
 		<module>pangu-web-spring-boot-starter</module>
 		<module>pangu-rabbitmq-spring-boot-starter</module>
 		<module>pangu-seata-spring-boot-starter</module>
+		<module>pangu-shardingsphere-spring-boot-starter</module>
 		<module>pangu-generator-maven-plugin</module>
 	</modules>
 

@@ -26,7 +26,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 /***
- *
+ * 演示读写分离
  * @author xiongchun
  */
 @Slf4j

@@ -55,6 +55,7 @@
         <lock4j.version>2.2.1</lock4j.version>
         <shenyu.version>2.4.1</shenyu.version>
         <seata.version>1.4.2</seata.version>
+        <shardingsphere.version>5.1.0</shardingsphere.version>
         <layering-cache.version>3.3.4</layering-cache.version>
         <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
         <commons-collections4.version>4.4</commons-collections4.version>
@@ -123,6 +124,11 @@
                 <version>${pangu.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.gitee.pulanos.pangu</groupId>
+                <artifactId>pangu-shardingsphere-spring-boot-starter</artifactId>
+                <version>${pangu.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
                 <version>${dubbo-spring-boot-starter.version}</version>
@@ -181,6 +187,11 @@
                 <groupId>io.seata</groupId>
                 <artifactId>seata-spring-boot-starter</artifactId>
                 <version>${seata.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+                <version>${shardingsphere.version}</version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>

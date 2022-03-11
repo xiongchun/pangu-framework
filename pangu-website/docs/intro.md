@@ -9,7 +9,7 @@ slug: /intro
   <title>盘古开发框架简介 | 架构设计 | 主要功能特性</title>
 </head>
 
-这是一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架(遵循 [Apache-2.0 LICENSE](https://www.apache.org/licenses/LICENSE-2.0) 发布)。
+这是一套轻量灵活的 Java 开源企业级单体开发 & 微服务分布式开发治理框架(遵循 [Apache-2.0 LICENSE](https://www.apache.org/licenses/LICENSE-2.0) 发布)。
 
 ## 架构设计范式和指导原则
 
@@ -40,9 +40,10 @@ pangu-dubbo-spring-boot-starter | 盘古微服务开发自动装配模块
 pangu-jdbc-spring-boot-starter | 盘古数据库持久化操作自动装配模块
 pangu-cache-spring-boot-starter | 盘古缓存开发自动装配模块
 pangu-gateway-spring-boot-starter | 盘古网关开发自动装配模块
-pangu-web-spring-boot-starter | 盘古Web应用自动装配模块
-pangu-rabbitmq-spring-boot-starter | RabbitMQ消息队列自动装配模块
-pangu-seata-spring-boot-starter | Seata分布式事务自动装配模块
+pangu-web-spring-boot-starter | 盘古 Web 应用自动装配模块
+pangu-rabbitmq-spring-boot-starter | RabbitMQ 消息队列自动装配模块
+pangu-seata-spring-boot-starter | Seata 分布式事务自动装配模块
+pangu-shardingsphere-spring-boot-starter | ShardingSphere 数据治理（读写分离、数据分片、数据加密等）自动装配模块
 pangu-generator-maven-plugin | 盘古代码生成器Maven插件
 pangu-website | 盘古项目官网和文档
 pangu-examples | 盘古框架模版化参考范例集
@@ -58,6 +59,7 @@ pangu-examples | 盘古框架模版化参考范例集
 - 基于 [layering-cache](https://github.com/xiaolyuh/layering-cache) 提供支持分布式环境的多级缓存功能。使用 [Caffeine](https://github.com/ben-manes/caffeine) 作为一级本地缓存， [Redis](https://redis.io/) 作为二级集中式缓存。
 - 基于 [lock4j](https://gitee.com/baomidou/lock4j) 提供分布式锁。支持注解声明式和 API 编程式对业务代码在分布式环境下加并发锁。
 - 基于 [Seata](https://seata.io/en-us/index.html) 提供分布式事务的落地方案。
+- 基于 [ShardingSphere](https://shardingsphere.apache.org/index.html) 来提供数据治理相关功能，如：读写分离、数据分片、数据加密等。
 - 应用日志输出级别动态切换、分布式日志跟踪等...
 
 ## 盘古框架的进化史
@@ -68,8 +70,8 @@ pangu-examples | 盘古框架模版化参考范例集
 |<div style={{width:'120px'}}>发布时间</div> | 框架代号 | 主要特点 | <div style={{width:'80px'}}>状态</div>
 --- | --- | --- | ---
 2021年-至今 | [盘古](/) | 微服务开发、分布式架构&单体架构、云原生 |  :kiss: 长期支持
-2017年-2020年 | [MyClouds](https://gitee.com/pulanos/myclouds/blob/master/myclouds-docs/1.1%20%E5%85%A5%E9%97%A8%20-%20%E7%AE%80%E4%BB%8B.md) | LayUI、微服务开发(SpringCloud生态)、分布式架构、通用权限系统| 项目终止
-2007年-2016年 | [AOSuite](https://gitee.com/pulanos/aosuite/blob/master/doc/a.%E7%AC%AC%E4%B8%80%E7%AB%A0%20AOSuite%E7%AE%80%E4%BB%8B.md) | 自定义JSP UI标签库、单体架构、通用权限系统 | 项目终止
+2017年-2020年 | [MyClouds](https://gitee.com/pulanos/myclouds/blob/master/myclouds-docs/1.1%20%E5%85%A5%E9%97%A8%20-%20%E7%AE%80%E4%BB%8B.md) | LayUI、微服务开发( SpringCloud 生态)、分布式架构、通用权限系统| 项目终止
+2007年-2016年 | [AOSuite](https://gitee.com/pulanos/aosuite/blob/master/doc/a.%E7%AC%AC%E4%B8%80%E7%AB%A0%20AOSuite%E7%AE%80%E4%BB%8B.md) | 自定义 JSP UI 标签库、单体架构、通用权限系统 | 项目终止
 
 ## FAQ 
 > 在这里我将以最简单直接的方式回答一些用户可能最想了解的常见问题。  

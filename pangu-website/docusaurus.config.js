@@ -57,9 +57,19 @@ const config = {
 						position: 'left',
 						label: '开发指南',
 					},
+					// {
+					// 	to: '/blog',
+					// 	label: '博客专栏',
+					// 	position: 'left'
+					// },
 					{
-						to: '/blog',
-						label: '博客专栏',
+						to: '/docs/faq',
+						label: '常见问答',
+						position: 'left'
+					},
+					{
+						to: '/docs/thanks',
+						label: '致敬 & 鸣谢',
 						position: 'left'
 					},
 					{
