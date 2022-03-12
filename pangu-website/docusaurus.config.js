@@ -17,6 +17,10 @@ const config = {
 	organizationName: '盘古开发框架,普蓝开源社区', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
     plugins: [require.resolve("docusaurus-plugin-image-zoom")],
+	// 百度统计
+	scripts: [
+	    {src: 'https://hm.baidu.com/hm.js?8a2c2aae78c4983e3cf661fea34e6353',  async: true}
+	],
 	presets: [
 		[
 			'classic',
