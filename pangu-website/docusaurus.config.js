@@ -7,8 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: '盘古开发框架',
-	tagline: '一套轻量灵活的Java开源企业级单体开发 & 微服务分布式开发治理框架',
-	url: 'https://your-docusaurus-test-site.com',
+	tagline: '一套轻量灵活的 Java 开源企业级单体开发 & 微服务分布式开发治理框架',
+	url: 'https://pulanos.gitee.io',
 	//baseUrl: '/',
 	baseUrl:'/pangu-framework/',
 	onBrokenLinks: 'throw',
@@ -105,7 +105,7 @@ const config = {
 							to: '/blog',
 						}
 						,{
-							label: '常见问答FAQ',
+							label: '常见问答',
 							to: '/docs/faq',
 						}
 						],
@@ -158,6 +158,10 @@ const config = {
 				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,
 			},
+			metadata: [
+			      {name: 'author', content: '普蓝开源社区'},
+				  {name: 'keywords', content: '盘古开发框架 分布式微服务架构 垂直单体分层架构 普蓝开源社区'}
+			    ]
 		}),
 };
 

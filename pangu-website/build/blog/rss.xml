@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>盘古开发框架 Blog</title>
-        <link>https://your-docusaurus-test-site.com/pangu-framework/blog</link>
+        <link>https://pulanos.gitee.io/pangu-framework/blog</link>
         <description>盘古开发框架 Blog</description>
         <lastBuildDate>Sat, 29 Jan 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
             <title><![CDATA[Aliware Nacos的安装和使用]]></title>
-            <link>https://your-docusaurus-test-site.com/pangu-framework/blog/nacos-install-user-guides</link>
+            <link>https://pulanos.gitee.io/pangu-framework/blog/nacos-install-user-guides</link>
             <guid>nacos-install-user-guides</guid>
             <pubDate>Sat, 29 Jan 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[盘古开发框架Aliware Nacos的安装和使用]]></description>

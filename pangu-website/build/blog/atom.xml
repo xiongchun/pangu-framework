@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://your-docusaurus-test-site.com/pangu-framework/blog</id>
+    <id>https://pulanos.gitee.io/pangu-framework/blog</id>
     <title>盘古开发框架 Blog</title>
     <updated>2022-01-29T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://your-docusaurus-test-site.com/pangu-framework/blog"/>
+    <link rel="alternate" href="https://pulanos.gitee.io/pangu-framework/blog"/>
     <subtitle>盘古开发框架 Blog</subtitle>
-    <icon>https://your-docusaurus-test-site.com/pangu-framework/img/favicon.ico</icon>
+    <icon>https://pulanos.gitee.io/pangu-framework/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Aliware Nacos的安装和使用]]></title>
         <id>nacos-install-user-guides</id>
-        <link href="https://your-docusaurus-test-site.com/pangu-framework/blog/nacos-install-user-guides"/>
+        <link href="https://pulanos.gitee.io/pangu-framework/blog/nacos-install-user-guides"/>
         <updated>2022-01-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[盘古开发框架Aliware Nacos的安装和使用]]></summary>
         <content type="html"><![CDATA[<h2>Coming soon...</h2><p>Welcome to this blog. </p>]]></content>
