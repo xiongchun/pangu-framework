@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[2886],{3022:function(a){a.exports=JSON.parse('{"allTagsPath":"/pangu-framework/blog/tags","slug":"/pangu-framework/blog/tags/nacos","name":"Nacos","count":1,"permalink":"/pangu-framework/blog/tags/nacos"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[2535],{5641:function(e){e.exports=JSON.parse('{"title":"\u6700\u65b0\u53d1\u5e03\u535a\u5ba2","items":[{"title":"\u76d8\u53e4\u6846\u67b6\u6587\u6863\uff08\u4e2d\u6587\uff09\u6392\u7248\u6307\u5357","permalink":"/pangu-framework/blog/chinese-copywriting-guidelines"}]}')}}]);
