@@ -1,5 +1,13 @@
 ## 盘古开发框架项目官网&文档
 
+### Install 
+
+```
+$ npm install
+```
+
+This command will install node_modules to the project.
+
 ### Local Development
 
 ```

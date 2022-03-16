@@ -7,7 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: '盘古开发框架',
-	tagline: '一套轻量灵活的 Java 开源企业级单体开发 & 微服务分布式开发治理框架',
+	//tagline: '一套轻量灵活的 Java 开源企业级单体开发 & 微服务分布式开发治理框架',
+	tagline: '一套轻量灵活-成熟可靠的工业级分布式微服务开发和治理框架（兼容单体分层架构）',
 	url: 'https://pulanos.gitee.io',
 	//baseUrl: '/',
 	baseUrl:'/pangu-framework/',
@@ -61,25 +62,25 @@ const config = {
 						position: 'left',
 						label: '开发指南',
 					},
-					// {
-					// 	to: '/blog',
-					// 	label: '博客专栏',
-					// 	position: 'left'
-					// },
+					{
+						to: '/blog',
+						label: '博客专栏',
+						position: 'left'
+					},
 					{
 						to: '/docs/faq',
 						label: '常见问答',
 						position: 'left'
 					},
 					{
-						to: '/docs/thanks',
-						label: '致敬 & 鸣谢',
-						position: 'left'
+						href: '/docs/community',
+						label: '社区',
+						position: 'left',
 					},
 					{
-						href: '/docs/community',
-						label: '开发者社区',
-						position: 'left',
+						to: '/docs/thanks',
+						label: '致敬',
+						position: 'left'
 					},
 					{
 						href: 'https://gitee.com/pulanos/pangu-framework',
