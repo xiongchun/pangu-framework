@@ -13,7 +13,7 @@ slug: /quick-start/how-to-make-gateway-app/shenyu-based
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-网关开发模式选型参考建议请看上文[《网关开发模式简介》](/docs/quick-start/how-to-make-gateway-app)。本文介绍基于 ShenYu 的专业网关开发模式。
+本文介绍基于 ShenYu 的专业网关开发模式。网关开发模式选型参考建议请看上文[《网关开发模式简介》](/docs/quick-start/how-to-make-gateway-app)。
 
 ## 网关模块开发
 
