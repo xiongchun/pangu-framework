@@ -8,7 +8,7 @@
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
-            <title><![CDATA[盘古框架文档排版指南]]></title>
+            <title><![CDATA[盘古开发框架文档排版指南]]></title>
             <link>https://pulanos.gitee.io/pangu-framework/blog/chinese-copywriting-guidelines</link>
             <guid>chinese-copywriting-guidelines</guid>
             <pubDate>Sat, 29 Jan 2022 00:00:00 GMT</pubDate>
