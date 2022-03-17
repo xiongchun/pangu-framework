@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 ### 安装相关盘古模块
 
 <Tabs>
-<TabItem value="parent" label="盘古Parent">
+<TabItem value="parent" label="盘古 Parent">
 
 ```jsx
 <parent>
