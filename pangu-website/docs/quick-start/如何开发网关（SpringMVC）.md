@@ -70,12 +70,12 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 
 :::tip
-基于SpringMVC的网关开发模式需要引入服务接口依赖包。
+基于 SpringMVC 的网关开发模式需要引入服务接口依赖包。
 :::
 
 ## 本地配置
 
-> 为便于理解，本文基于本地配置的方式编写。若改为标准的Nacos配置中心模式，请参阅:[配置中心](/docs/advanced-guide/nacos-config-center)章节。
+> 为便于理解，本文基于本地配置的方式编写。若改为标准的 Nacos 配置中心模式，请参阅：[配置中心](/docs/advanced-guide/nacos-config-center) 章节。
 
 <Tabs>
 <TabItem value="application" label="application.properties">
@@ -103,8 +103,8 @@ logging.level.com.gitee.pulanos.pangu=INFO
 </Tabs>
 
 ## 调用微服务接口
-可以在任何一个SpringBean组件中（针对网关模块而言一般是Controller中），引入服务接口后就像本地接口调用一样调用远程服务。Dubbo将提供高性能的基于代理的远程调用能力，服务以接口为粒度，为开发者屏蔽远程调用底层细节。
-如下所示，通过Cotroller调用远程服务接口，实现将微服务接口发布为WebAPI。
+可以在任何一个 SpringBean 组件中（针对网关模块而言一般是 Controller 中），引入服务接口后就像本地接口调用一样调用远程服务。Dubbo 将提供高性能的基于代理的远程调用能力，服务以接口为粒度，为开发者屏蔽远程调用底层细节。
+如下所示，通过 Cotroller 调用远程服务接口，实现将微服务接口发布为 WebAPI。
 
 ```jsx {2,13} title="DemoController.java"
 // 注入服务接口
@@ -124,7 +124,7 @@ public Result<List<UserOut>> case1() {
 }
 ```
 :::caution
-这种通过SpringMVC发布API的模式并非盘古开发的标准姿势，只是提供这么一种开发模式选项。
+这种通过 SpringMVC 发布 API 的模式并非盘古开发的标准姿势，只是提供这么一种开发模式选项。
 :::
 
 ## 启动入口
@@ -139,13 +139,13 @@ public class DubboProviderApplication {
 }
 ```
 
-## 完整请求URL及参数说明
-至此，就可以通过http的方式来请求我们的的dubbo服务了。此种开发模式完全基于SpringMVC，其请求地址和参数说明等信息本教程不再展开叙述。如有需要，请自行查阅SpringMVC请求和响应的相关教程即可。
+## 完整请求 URL 及参数说明
+至此，就可以通过 http 的方式来请求我们的的 dubbo 服务了。此种开发模式完全基于 SpringMVC，其请求地址和参数说明等信息本教程不再展开叙述。如有需要，请自行查阅 SpringMVC 请求和响应的相关教程即可。
 
 ## 本文相关范例源码
 - [pangu-examples-dubbo-api](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples/pangu-examples-dubbo-api)：服务接口包
 - [pangu-examples-dubbo-service](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples/pangu-examples-dubbo-service)：服务提供者
-- [pangu-examples-dubbo-gateway-service](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples/pangu-examples-dubbo-gateway-service)：基于SpringMVC的网关模块（服务消费者）
+- [pangu-examples-dubbo-gateway-service](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples/pangu-examples-dubbo-gateway-service)：基于 SpringMVC 的网关模块（服务消费者）
 
 ## 下一步
 继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/docs/community) 寻求更多帮助。
