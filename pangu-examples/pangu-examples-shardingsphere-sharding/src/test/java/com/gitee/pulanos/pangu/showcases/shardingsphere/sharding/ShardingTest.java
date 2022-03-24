@@ -1,7 +1,6 @@
 package com.gitee.pulanos.pangu.showcases.shardingsphere.sharding;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.gitee.pulanos.pangu.showcases.shardingsphere.sharding.dao.entity.TOrderEntity;
 import com.gitee.pulanos.pangu.showcases.shardingsphere.sharding.dao.mapper.TOrderMapper;
@@ -11,7 +10,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.util.List;
 
