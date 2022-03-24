@@ -32,6 +32,7 @@
 		<module>pangu-examples-mq-rabbitmq-receiver</module>
 		<module>pangu-examples-seata-at</module>
 		<module>pangu-examples-shardingsphere-readwrite-splitting</module>
+		<module>pangu-examples-shardingsphere-sharding</module>
 	</modules>
 
 </project>

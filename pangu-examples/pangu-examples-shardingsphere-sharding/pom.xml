@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-examples-shardingsphere-readwrite-splitting</artifactId>
+    <artifactId>pangu-examples-shardingsphere-sharding</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
@@ -55,17 +55,21 @@
             <plugin>
                 <groupId>com.gitee.pulanos.pangu</groupId>
                 <artifactId>pangu-generator-maven-plugin</artifactId>
-                <version>5.0.7</version>
+                <version>5.0.8</version>
                 <configuration>
                     <url>jdbc:mysql://127.0.0.1:3306/pangu-examples</url>
                     <user>root</user>
                     <password>root123456</password>
-                    <tables>user</tables>
+                    <tables>t_order</tables>
                     <author>普蓝开源社区</author>
                     <!-- 可以使用绝对路径 -->
-                    <entityFilePath>${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/dao/entity</entityFilePath>
+                    <entityFilePath>
+                        ${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/dao/entity
+                    </entityFilePath>
                     <entityPackageName>com.gitee.pulanos.pangu.showcases.shardingsphere.dao.entity</entityPackageName>
-                    <mapperFilePath>${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/dao/mapper</mapperFilePath>
+                    <mapperFilePath>
+                        ${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/dao/mapper
+                    </mapperFilePath>
                     <mapperPackageName>com.gitee.pulanos.pangu.showcases.shardingsphere.dao.mapper</mapperPackageName>
                 </configuration>
             </plugin>
