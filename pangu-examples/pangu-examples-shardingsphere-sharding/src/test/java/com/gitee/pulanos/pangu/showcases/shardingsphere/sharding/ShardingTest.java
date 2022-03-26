@@ -3,7 +3,9 @@ package com.gitee.pulanos.pangu.showcases.shardingsphere.sharding;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.gitee.pulanos.pangu.showcases.shardingsphere.sharding.dao.entity.TOrderEntity;
+import com.gitee.pulanos.pangu.showcases.shardingsphere.sharding.dao.entity.UserEntity;
 import com.gitee.pulanos.pangu.showcases.shardingsphere.sharding.dao.mapper.TOrderMapper;
+import com.gitee.pulanos.pangu.showcases.shardingsphere.sharding.dao.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +22,8 @@ public class ShardingTest {
 
     @Autowired
     private TOrderMapper tOrderMapper;
+    @Autowired
+    private UserMapper userMapper;
 
     /**
      * 测试写入数据分片
@@ -33,7 +37,22 @@ public class ShardingTest {
     }
 
     /**
+     * 测试对不分片的单表的操作
+     *
+     * @return
+     */
+    @Test
+    public void createUserNoSharding() {
+        log.info("插入数据...");
+        UserEntity userEntity = new UserEntity();
+        userEntity.setName("XC").setAge(18).setUserType("1");
+        int row = userMapper.insert(userEntity);
+        log.info("成功插入{}条数据。{}", row, userEntity);
+    }
+
+    /**
      * 测试查询SQL路由
+     * <p>包含分片键，将根据分片键路由到相关表执行查询</p>
      */
     @Test
     public void routingQuery() {
