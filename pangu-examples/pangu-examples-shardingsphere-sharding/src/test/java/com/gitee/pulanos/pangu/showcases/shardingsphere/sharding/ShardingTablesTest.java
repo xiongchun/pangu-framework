@@ -15,10 +15,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+/**
+ * 只分表测试用例 对应配置：#spring.profiles.active=sharding-tables
+ */
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ShardingTest {
+public class ShardingTablesTest {
 
     @Autowired
     private TOrderMapper tOrderMapper;
@@ -38,7 +41,7 @@ public class ShardingTest {
 
     /**
      * 测试对不分片的单表的操作
-     *
+     * <p>对不参与分片的表，直接命中</p>
      * @return
      */
     @Test
@@ -64,24 +67,24 @@ public class ShardingTest {
 
     /**
      * 测试查询结果集聚合
-     * <p>不包含分片键，将扫描所有表后聚合结果集</p>
-     */
-    @Test
-    public void mergeQuery() {
-        LambdaQueryWrapper<TOrderEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
-        lambdaQueryWrapper.eq(TOrderEntity::getStatus, "0");
-        List<TOrderEntity> tOrderEntities = tOrderMapper.selectList(lambdaQueryWrapper);
-        log.info("结果集：{}", tOrderEntities);
-    }
-
-    /**
-     * 测试查询结果集聚合
      * <p>包含分片键，将根据分片键路由到相关表执行查询后聚合结果集</p>
      */
     @Test
     public void mergeQueryWithShardingColumn() {
         LambdaQueryWrapper<TOrderEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
         lambdaQueryWrapper.in(TOrderEntity::getOrderId, 1506815955370549250L,1506815707743023105L);
+        List<TOrderEntity> tOrderEntities = tOrderMapper.selectList(lambdaQueryWrapper);
+        log.info("结果集：{}", tOrderEntities);
+    }
+
+    /**
+     * 测试查询结果集聚合
+     * <p>不包含分片键，将扫描所有表后聚合结果集。不建议使用。</p>
+     */
+    @Test
+    public void mergeQuery() {
+        LambdaQueryWrapper<TOrderEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
+        lambdaQueryWrapper.eq(TOrderEntity::getStatus, "0");
         List<TOrderEntity> tOrderEntities = tOrderMapper.selectList(lambdaQueryWrapper);
         log.info("结果集：{}", tOrderEntities);
     }

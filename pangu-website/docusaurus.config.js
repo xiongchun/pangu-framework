@@ -140,7 +140,7 @@ const config = {
 								href: 'https://www.apache.org/',
 							}
 						],
-					},
+					}
 				],
 				copyright: `Copyright © ${new Date().getFullYear()} 普蓝开源社区  Released under <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache V2 license</a>`,
 			},
