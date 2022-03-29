@@ -50,8 +50,8 @@ public class ReadWriteSplittingTest {
      */
     @Test
     public void readRoute() {
-        tOrderMapper.selectById(1L);
-        tOrderMapper.selectById(2L);
+        tOrderMapper.selectById(1508317805991194627L);
+        tOrderMapper.selectById(1508317805991194628L);
     }
 
     /**
