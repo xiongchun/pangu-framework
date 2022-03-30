@@ -30,7 +30,10 @@ slug: /intro
 - **服务优先**  
 「服务」是盘古框架的一等公民。我们旨在微服务和云原生范式基础上构建「以服务为中心」的现代应用架构。
 
-## 主要组件依赖图
+## 技术组件依赖图
+<img width="780"
+  src={require('/resources/doc/34-pangu-framework.png').default}
+  alt="数据分片实现-只分表" />
 
 ## 主要功能特性
 
@@ -44,11 +47,12 @@ slug: /intro
 - 基于 [lock4j](https://gitee.com/baomidou/lock4j) 提供分布式锁。支持注解声明式和 API 编程式对业务代码在分布式环境下加并发锁。
 - 基于 [Seata](https://seata.io/en-us/index.html) 提供分布式事务的落地方案。
 - 基于 [ShardingSphere](https://shardingsphere.apache.org/index.html) 来提供数据治理相关功能，如：读写分离、数据分片、数据加密等。
+- 基于[Sentinel](https://sentinelguard.io/en-us/) 提供面向云原生微服务架构的高可用流量控制组件。
 - 应用日志输出级别动态切换、分布式日志跟踪等...
 
 ## 盘古框架模块列表
 
-模块名称 | 模块说明  
+|<div style={{width:'300px'}}>模块名称</div> | <div style={{width:'450px'}}>模块说明</div>  
 --- | ---
 pangu-parent | 盘古资源依赖声明管理模块 
 pangu-common | 盘古公共基础类库
@@ -70,23 +74,14 @@ pangu-examples | 盘古框架模版化参考范例集
 科技的发展进步，如同历史潮流浩浩荡荡，势不可挡。在此期间，作者发布了多个版本的开发框架平台。当前，随着云原生范式不断深入人心，DevOPS、容器、微服务等技术趋于成熟，技术革新的同时也在刷新着我们的技术栈、系统架构、开发方法、部署运维方式。鉴于此，我们承前启后，发布了适应云原生时代，能构建「以服务为中心」现代应用架构的「盘古开发框架」。
 :::
 
-|<div style={{width:'120px'}}>发布时间</div> | 框架代号 | 主要特点 | <div style={{width:'80px'}}>状态</div>
+|<div style={{width:'120px'}}>发布时间</div> | 框架代号 | <div style={{width:'450px'}}>主要特点</div> | <div style={{width:'90px'}}>状态</div>
 --- | --- | --- | ---
-2021年-至今 | [盘古](/) | 微服务开发、分布式架构&单体架构、云原生 |  :kiss: 长期支持
+2021年-至今 | [盘古](/) | 微服务开发、分布式架构&单体架构、云原生 | :kiss: 长期支持
 2017年-2020年 | [MyClouds](https://gitee.com/pulanos/myclouds/blob/master/myclouds-docs/1.1%20%E5%85%A5%E9%97%A8%20-%20%E7%AE%80%E4%BB%8B.md) | LayUI、微服务开发( SpringCloud 生态)、分布式架构、通用权限系统| 项目终止
 2007年-2016年 | [AOSuite](https://gitee.com/pulanos/aosuite/blob/master/doc/a.%E7%AC%AC%E4%B8%80%E7%AB%A0%20AOSuite%E7%AE%80%E4%BB%8B.md) | 自定义 JSP UI 标签库、单体架构、通用权限系统 | 项目终止
 
-## FAQ 
-> 在这里我将以最简单直接的方式回答一些用户可能最想了解的常见问题。  
-
-#### 1. 盘古开发框架的开源协议是啥？创始初衷和目标愿景是什么？  
-「盘古开发框架」基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议**开源**发布，且是**免费**的，创始初衷是「分享经验-传递价值-成就你我」。目标愿景是「共建共享开源生态」，不仅做开源生态的受益者也希望成为开源生态的贡献者。
-
-#### 2. 盘古开发框架可以做单体开发吗?
-可以。从纯技术角度看，盘古开发的最佳姿势是 [分布式微服务开发](/docs/quick-start/how-to-make-microservice-architecture-app)。但也支持搭建垂直 [单体分层架构的开发模式](/docs/quick-start/how-to-make-monomer-architecture-app)。
-
-#### 3. 盘古开发框架和 [Spring Cloud](https://spring.io/projects/spring-cloud) 或 [Spring Cloud Alibaba](https://spring.io/projects/spring-cloud-alibaba) 是什么关系？  
-都没啥直接关系。「盘古开发框架」是完全独立于 Spring Cloud (*) 生态的一套轻量灵活、成熟可靠的工业级分布式微服务开发和治理框架（兼容垂直单体分层架构)。
+## 常见问答 FAQ 
+[常见问答 FAQ](/docs/faq) （你最想了解的常见问题可能都在这里。）  
 
 ## 下一步
 继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/docs/community) 寻求更多帮助。
