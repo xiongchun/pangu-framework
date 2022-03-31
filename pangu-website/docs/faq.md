@@ -17,7 +17,7 @@ slug: /faq
 可以。从纯技术角度看，盘古开发的最佳姿势是 [分布式微服务开发](/docs/quick-start/how-to-make-microservice-architecture-app)。但也支持搭建 [垂直单体分层架构的开发模式](/docs/quick-start/how-to-make-monomer-architecture-app)。
 
 #### 3. 盘古开发框架和 [Spring Cloud](https://spring.io/projects/spring-cloud) 或 [Spring Cloud Alibaba](https://spring.io/projects/spring-cloud-alibaba) 是什么关系？ 
-「盘古开发框架」基于阿里的 Nacos、Seata、Sentinel 和 Apache 的 ShenYu、Dubbo、ShardingSphere 等分布式中间件输出分布式微服务架构的能力。是一套完全独立于 Spring Cloud 生态的轻量灵活、成熟可靠的工业级分布式微服务开发和治理框架（兼容垂直单体分层架构)。因此，如果你对 Spring Cloud 系列没兴趣的话可以试试 PanGu Dev Framework。
+没有直接关系。「盘古开发框架」基于阿里的 Nacos、Seata、Sentinel 和 Apache 的 ShenYu、Dubbo、ShardingSphere 等分布式中间件输出分布式微服务架构的能力。是一套完全独立于 Spring Cloud 生态的轻量灵活、成熟可靠的工业级分布式微服务开发和治理框架（兼容垂直单体分层架构)。
 
 #### 4. 盘古开发框架可以开发前端吗？有没有现成的『通用权限管理系统』？
 不可以。盘古是纯后端的底层技术架构框架，可开发 Web API 接口、 Dubbo 接口或执行纯后台任务。目前不涉及前端UI层开发，更无所谓的『通用权限管理系统』。
