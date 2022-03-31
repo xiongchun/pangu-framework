@@ -17,11 +17,11 @@ slug: /faq
 可以。从纯技术角度看，盘古开发的最佳姿势是 [分布式微服务开发](/docs/quick-start/how-to-make-microservice-architecture-app)。但也支持搭建 [垂直单体分层架构的开发模式](/docs/quick-start/how-to-make-monomer-architecture-app)。
 
 #### 3. 盘古开发框架和 [Spring Cloud](https://spring.io/projects/spring-cloud) 或 [Spring Cloud Alibaba](https://spring.io/projects/spring-cloud-alibaba) 是什么关系？ 为什么不直接使用而是另起炉灶？
-Spring Cloud 是目前最流行的用于构建分布式微服务架构的框架集合，其核心能力包括但不限于网关、服务注册&发现、配置中心、熔断限流、服务调用等。但最流行的未必是最好的。的确如此，从可用性、成熟度、产品完整性等方面看，SC 的任何官方能力组件的表现都很一般甚至很糟糕。（此处不接受反驳，也不想列表比较了。） 
+Spring Cloud 是目前最流行的用于构建分布式微服务架构的框架集合，其核心能力包括但不限于网关、服务注册&发现、配置中心、熔断限流、服务调用等。但最流行的未必是最好的。的确如此，从可用性、成熟度、产品完整性等方面看，SC 的任何官方能力组件的表现都很一般甚至很糟糕。（此处不接受反驳 :u7981:） 
 
-既然 Spring Cloud 那么弱鸡，阿里为什么还要去将自己开源组件或商业服务组件去适配它，发布 Spring Cloud Alibaba 出来呢？我想这如果你从阿里开源项目和商业服务推广的视角来看，那自然就没什么疑惑和矛盾的了。毕竟之前也说了，SC 是当下最流行的。
+既然 Spring Cloud 那么弱鸡，阿里为什么还要发布 Spring Cloud Alibaba 将将自己开源组件或商业组件去适配它呢？我想这如果从宣传、推广自家组件和商业服务的视角来看，那自然就没什么疑惑和矛盾的了。类似产品还有微软的 [Spring Cloud Azure](https://github.com/Azure/azure-sdk-for-java)、亚马逊的 [Spring Cloud Aws](https://github.com/awspring/spring-cloud-aws)，或许将来还会有Spring Cloud Baidu、Spring Cloud Tencent 等等。（其中滋味大家细品）
 
-「盘古开发框架」基于阿里中间件Nacos、Seata、Sentinel 和 Apache 项目 ShenYu、Dubbo、ShardingSphere 等来提供全套轻量出色的分布式微服务架构的能力。它是完全独立于 Spring Cloud 生态的一套轻量灵活、成熟可靠的工业级分布式微服务开发和治理框架（兼容垂直单体分层架构)。
+「盘古开发框架」基于阿里中间件Nacos、Seata、Sentinel 和 Apache 项目 ShenYu、Dubbo、ShardingSphere 提供全套轻量出色的分布式微服务架构的能力。它是完全独立于 Spring Cloud 生态的一套轻量灵活、成熟可靠的工业级分布式微服务开发和治理框架（兼容垂直单体分层架构)。
 
 #### 4. 盘古开发框架可以开发前端吗？有没有现成的『通用权限管理系统』？
 不可以。盘古是纯后端的底层技术架构框架，可开发 Web API 接口、 Dubbo 接口或执行纯后台任务。目前不涉及前端UI层开发，更无所谓的『通用权限管理系统』。

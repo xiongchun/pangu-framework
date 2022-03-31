@@ -80,8 +80,8 @@ pangu-examples | 盘古框架模版化参考范例集
 2017年-2020年 | [MyClouds](https://gitee.com/pulanos/myclouds/blob/master/myclouds-docs/1.1%20%E5%85%A5%E9%97%A8%20-%20%E7%AE%80%E4%BB%8B.md) | LayUI、微服务开发( SpringCloud 生态)、分布式架构、通用权限系统| 项目终止
 2007年-2016年 | [AOSuite](https://gitee.com/pulanos/aosuite/blob/master/doc/a.%E7%AC%AC%E4%B8%80%E7%AB%A0%20AOSuite%E7%AE%80%E4%BB%8B.md) | 自定义 JSP UI 标签库、单体架构、通用权限系统 | 项目终止
 
-## 常见问答 FAQ 
-[常见问答 FAQ](/docs/faq) （你最想了解的常见问题可能都在这里。）  
+## FAQ 
+你最想了解的常见问答可能都在这里：[:soon: 常见问答 FAQ](/docs/faq)。
 
 ## 下一步
 继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/docs/community) 寻求更多帮助。
