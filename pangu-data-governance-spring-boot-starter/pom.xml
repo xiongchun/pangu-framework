@@ -7,16 +7,16 @@
     <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
         <artifactId>pangu-parent</artifactId>
-        <version>5.0.8</version>
+        <version>5.1.0</version>
         <relativePath/>
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-shardingsphere-spring-boot-starter</artifactId>
-    <version>5.0.8</version>
+    <artifactId>pangu-data-governance-spring-boot-starter</artifactId>
+    <version>5.1.0</version>
     <packaging>jar</packaging>
-    <name>pangu-shardingsphere-spring-boot-starter</name>
-    <description>pangu-shardingsphere-spring-boot-starter</description>
+    <name>pangu-data-governance-spring-boot-starter</name>
+    <description>pangu-data-governance-spring-boot-starter</description>
     <url>https://gitee.com/pulanos/pangu-framework</url>
 
     <licenses>

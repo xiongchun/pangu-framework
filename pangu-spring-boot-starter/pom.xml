@@ -7,13 +7,13 @@
     <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
         <artifactId>pangu-parent</artifactId>
-        <version>5.0.8</version>
+        <version>5.1.0</version>
         <relativePath/>
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
     <artifactId>pangu-spring-boot-starter</artifactId>
-    <version>5.0.8</version>
+    <version>5.1.0</version>
     <packaging>jar</packaging>
     <name>pangu-spring-boot-starter</name>
     <description>pangu-spring-boot-starter</description>

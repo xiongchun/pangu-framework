@@ -7,7 +7,7 @@
 	<groupId>com.gitee.pulanos.pangu</groupId>
 	<artifactId>pangu-framework</artifactId>
 	<packaging>pom</packaging>
-	<version>5.0.8</version>
+	<version>5.1.0</version>
 
 	<modules>
 		<module>pangu-common</module>
@@ -20,7 +20,7 @@
 		<module>pangu-web-spring-boot-starter</module>
 		<module>pangu-rabbitmq-spring-boot-starter</module>
 		<module>pangu-seata-spring-boot-starter</module>
-		<module>pangu-shardingsphere-spring-boot-starter</module>
+		<module>pangu-data-governance-spring-boot-starter</module>
 		<module>pangu-generator-maven-plugin</module>
 	</modules>
 
