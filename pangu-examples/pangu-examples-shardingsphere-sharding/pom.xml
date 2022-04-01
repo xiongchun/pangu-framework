@@ -57,20 +57,20 @@
                 <artifactId>pangu-generator-maven-plugin</artifactId>
                 <version>5.0.8</version>
                 <configuration>
-                    <url>jdbc:mysql://127.0.0.1:3306/pangu-examples</url>
+                    <url>jdbc:mysql://127.0.0.1:3306/pangu-examples-1</url>
                     <user>root</user>
                     <password>root123456</password>
                     <tables>t_order</tables>
                     <author>普蓝开源社区</author>
                     <!-- 可以使用绝对路径 -->
                     <entityFilePath>
-                        ${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/dao/entity
+                        ${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/sharding/dao/entity
                     </entityFilePath>
-                    <entityPackageName>com.gitee.pulanos.pangu.showcases.shardingsphere.dao.entity</entityPackageName>
+                    <entityPackageName>com.gitee.pulanos.pangu.showcases.shardingsphere.sharding.dao.entity</entityPackageName>
                     <mapperFilePath>
-                        ${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/dao/mapper
+                        ${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/sharding/dao/mapper
                     </mapperFilePath>
-                    <mapperPackageName>com.gitee.pulanos.pangu.showcases.shardingsphere.dao.mapper</mapperPackageName>
+                    <mapperPackageName>com.gitee.pulanos.pangu.showcases.shardingsphere.sharding.dao.mapper</mapperPackageName>
                 </configuration>
             </plugin>
         </plugins>

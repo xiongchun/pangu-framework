@@ -91,6 +91,12 @@ public class EntityGenerator {
                 String idType = "NONE";
                 if (column.getIsAutoincrement()){
                     idType = "AUTO";
+                }else {
+                    if (StrUtil.equals(Constants.JavaType.STRING, column.getJavaType())){
+                        idType = "ASSIGN_UUID";
+                    }else {
+                        idType = "ASSIGN_ID";
+                    }
                 }
                 appender.append(format("   @TableId(value = \"{}\", type = IdType.{})", columnName, idType));
             } else {

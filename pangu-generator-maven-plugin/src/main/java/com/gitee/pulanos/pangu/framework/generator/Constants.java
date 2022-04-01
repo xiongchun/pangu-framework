@@ -27,7 +27,7 @@ public class Constants {
      * Java数据类型
      */
     public final static class JavaType {
-
+        public final static String STRING = "String";
         public final static String DATE = "Date";
         public final static String BIGDECIMAL = "BigDecimal";
         public final static String LONG = "Long";

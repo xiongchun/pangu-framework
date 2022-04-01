@@ -23,7 +23,6 @@ import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 
 import java.sql.DatabaseMetaData;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class CommonUtil {
      * @return Java类型
      */
     public static String toJavaType(String colDbType) {
-        String javaType = "String";
+        String javaType = Constants.JavaType.STRING;
         if (Constants.DbColType.DATE.equalsIgnoreCase(colDbType)) {
             javaType = Constants.JavaType.DATE;
         }
