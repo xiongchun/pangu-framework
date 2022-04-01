@@ -142,7 +142,7 @@ const config = {
 						],
 					}
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} 普蓝开源社区  Released under <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache V2 license</a>`,
+				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache V2 License.</a> <br>Copyright © ${new Date().getFullYear()} 普蓝开源社区.CN`,
 			},
 			hideableSidebar: true,
 			zoom: {
