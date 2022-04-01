@@ -6,7 +6,7 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pulanos.gitee.io/pangu-framework/blog"/>
     <subtitle>盘古开发框架 Blog</subtitle>
-    <icon>https://pulanos.gitee.io/pangu-framework/img/favicon.ico</icon>
+    <icon>https://pulanos.gitee.io/pangu-framework/img/favicon.png</icon>
     <entry>
         <title type="html"><![CDATA[盘古开发框架文档排版指南]]></title>
         <id>chinese-copywriting-guidelines</id>
