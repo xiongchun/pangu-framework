@@ -14,7 +14,7 @@ const config = {
 	baseUrl:'/pangu-framework/',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
-	favicon: 'img/favicon.png',
+	favicon: 'img/favicon2.png',
 	organizationName: '盘古开发框架,普蓝开源社区', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
     plugins: [require.resolve("docusaurus-plugin-image-zoom")],
