@@ -20,6 +20,11 @@ function HomepageHeader() {
             to="/docs/intro">
             快速开始
           </Link>
+		  <Link
+		    className={styles.xcbutton2}
+		    to="https://gitee.com/pulanos/pangu-framework">
+		    下载代码
+		  </Link>
         </div>
 		</div>
 

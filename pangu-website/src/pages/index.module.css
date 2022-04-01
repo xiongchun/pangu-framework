@@ -17,7 +17,7 @@
 
 @media screen and (max-width: 966px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 2rem 0 2rem 0;
   }
 }
 
@@ -38,15 +38,15 @@
 
 .xcbutton {
     background-color: #25c2a0; /* Green */
-    border: 2px dotted white;
+    border: 0px solid white;
     color: #f4f4f5;
-    padding: 8px 25px;
+    padding: 6px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 20px;
-	font-weight: 500;
-    margin: 4px 2px;
+    font-size: 22px;
+	font-weight: 600;
+    margin: 4px 12px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
@@ -58,6 +58,32 @@
     background-color: #ebedf0;;
 	background:linear-gradient(to bottom, #ffffff 5%, #e9f9f4 100%);
     color: #25c2a0;
-	border: 2px solid white;
+	border: 0px solid white;
+	text-decoration: none;
+}
+
+.xcbutton2 {
+    background-color: #25c2a0; /* Green */
+    border: 0px solid white;
+    color: #f4f4f5;
+    padding: 6px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+	font-weight: 600;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+	border-radius: 5px;
+	font-family: Caslon,Helvetica;
+}
+
+.xcbutton2:hover {
+    background-color: #ebedf0;;
+	background:linear-gradient(to bottom, #ffffff 5%, #e9f9f4 100%);
+    color: #25c2a0;
+	border: 0px solid white;
 	text-decoration: none;
 }
