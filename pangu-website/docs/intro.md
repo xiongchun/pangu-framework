@@ -74,7 +74,7 @@ pangu-examples | 盘古框架模版化参考范例集
 科技的发展进步，如同历史潮流浩浩荡荡，势不可挡。在此期间，作者发布了多个版本的开发框架平台。当前，随着云原生范式不断深入人心，DevOPS、容器、微服务等技术趋于成熟，技术革新的同时也在刷新着我们的技术栈、系统架构、开发方法、部署运维方式。鉴于此，我们承前启后，发布了适应云原生时代，能构建「以服务为中心」现代应用架构的「盘古开发框架」。
 :::
 
-|<div style={{width:'120px'}}>发布时间</div> | 框架代号 | <div style={{width:'450px'}}>主要特点</div> | <div style={{width:'90px'}}>状态</div>
+|<div style={{width:'120px'}}>发布时间</div> | 框架代号 | <div style={{width:'420px'}}>主要特点</div> | <div style={{width:'90px'}}>状态</div>
 --- | --- | --- | ---
 2021年-至今 | [盘古](/) | 微服务开发、分布式架构&单体架构、云原生 | :kiss: 长期支持
 2017年-2020年 | [MyClouds](https://gitee.com/pulanos/myclouds/blob/master/myclouds-docs/1.1%20%E5%85%A5%E9%97%A8%20-%20%E7%AE%80%E4%BB%8B.md) | LayUI、微服务开发( SpringCloud 生态)、分布式架构、通用权限系统| 项目终止
