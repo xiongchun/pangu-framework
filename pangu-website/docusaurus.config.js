@@ -7,8 +7,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: '盘古开发框架',
-	//tagline: '一套轻量灵活的 Java 开源企业级单体开发 & 微服务分布式开发治理框架',
-	tagline: '一套轻量灵活-成熟可靠的工业级分布式微服务开发和治理框架（兼容单体分层架构）',
+	customFields:{
+		subTitle: '一套轻量灵活-成熟可靠的工业级分布式微服务开发和治理框架（兼容单体分层架构）',
+	},
+	tagline: '工业级分布式微服务开发和治理框架',
 	url: 'https://pulanos.gitee.io',
 	//baseUrl: '/',
 	baseUrl:'/pangu-framework/',
@@ -143,7 +145,7 @@ const config = {
 					}
 				],
 				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache V2 License.</a> 
-<br>Copyright © ${new Date().getFullYear()} 普蓝开源社区.CN<br><img src="https://oscimg.oschina.net/oscnet/up-ba8a16960e88b912e4499d7dc0dd494d57e.gif" />`,
+<br>Copyright © ${new Date().getFullYear()} PuLan Open Source Community<br><img src="https://oscimg.oschina.net/oscnet/up-ba8a16960e88b912e4499d7dc0dd494d57e.gif" />`,
 			},
 			hideableSidebar: true,
 			zoom: {

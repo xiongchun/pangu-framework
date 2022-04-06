@@ -12,7 +12,7 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <h1 class="hero__title"><span className={styles.hero__title2}>{siteConfig.title}</span></h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">{siteConfig.customFields.subTitle}</p>
 		<div class="btn-group">
         <div className={styles.buttons}>
           <Link
