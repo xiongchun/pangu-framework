@@ -7,6 +7,4 @@
 :fa-book: [项目主页&开发指南](https://pulanos.gitee.io/pangu-framework/)
 :fa-flask: [开发范例集合](https://pulanos.gitee.io/pangu-framework/docs/examples-list)
 :fa-linux: [普蓝开源社区](https://pulanos.gitee.io/pangu-framework/docs/community/)
-
-测试同时提交多个代码仓库
     
