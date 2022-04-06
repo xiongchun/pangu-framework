@@ -62,8 +62,8 @@ pangu-jdbc-spring-boot-starter | 盘古数据库持久化操作自动装配模�
 pangu-cache-spring-boot-starter | 盘古缓存开发自动装配模块
 pangu-gateway-spring-boot-starter | 盘古网关开发自动装配模块
 pangu-web-spring-boot-starter | 盘古 Web 应用自动装配模块
-pangu-rabbitmq-spring-boot-starter | RabbitMQ 消息队列自动装配模块
-pangu-seata-spring-boot-starter | Seata 分布式事务自动装配模块
+pangu-rabbitmq-spring-boot-starter | 盘古消息队列自动装配模块
+pangu-seata-spring-boot-starter | 盘古分布式事务自动装配模块
 pangu-data-governance-spring-boot-starter | 数据治理（读写分离、数据分片、数据加密等）自动装配模块
 pangu-generator-maven-plugin | 盘古代码生成器Maven插件
 pangu-website | 盘古项目官网和文档
