@@ -8,9 +8,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
 	title: '盘古开发框架',
 	customFields:{
-		subTitle: '一套轻量灵活-成熟可靠的工业级分布式微服务开发和治理框架（兼容单体分层架构）',
+		subTitle: '一套轻量稳健的工业级分布式微服务开发和治理框架（兼容单体分层架构）',
 	},
-	tagline: '工业级分布式微服务开发和治理框架',
+	tagline: '工业级微服务开发和治理框架',
 	url: 'https://pulanos.gitee.io',
 	//baseUrl: '/',
 	baseUrl:'/pangu-framework/',
