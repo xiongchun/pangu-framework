@@ -90,7 +90,7 @@ const config = {
 						position: 'right',
 					},
 					{
-						href: 'https://gitee.com/pulanos/pangu-framework',
+						href: 'https://github.com/xiongchun/pangu-framework',
 						label: 'GitHub',
 						position: 'right',
 					},
@@ -101,14 +101,14 @@ const config = {
 				links: [{
 						title: 'Docs',
 						items: [{
-							label: '开发指南',
+							label: 'User Guide',
 							to: '/docs/intro',
 						}, {
-							label: '博客专栏',
+							label: 'Blog post',
 							to: '/blog',
 						}
 						,{
-							label: '常见问答',
+							label: 'Frequently Asked Questions',
 							to: '/docs/faq',
 						}
 						],
@@ -116,25 +116,25 @@ const config = {
 					{
 						title: 'Community',
 						items: [{
-								label: 'Gitee Issues',
-								href: 'https://gitee.com/pulanos/pangu-framework/issues?state=all',
-							},{
-								label: 'Gitee PanGu Framework',
+								label: 'GitEE PanGu Framework',
 								href: 'https://gitee.com/pulanos/pangu-framework',
 							},
 							{
 								label: 'GitHub PanGu Framework',
 								href: 'https://gitee.com/pulanos/pangu-framework',
+							},{
+								label: 'GitCode PanGu Framework',
+								href: 'https://gitcode.net/pulanos/pangu-framework',
 							}
 						],
 					},
 					{
 						title: 'More',
 						items: [{
-								label: '致敬 & 鸣谢',
+								label: 'Thanks to',
 								to: '/docs/thanks',
 							},{
-								label: '开源中国',
+								label: 'OSChina',
 								href: 'https://www.oschina.net/',
 							},
 							{
