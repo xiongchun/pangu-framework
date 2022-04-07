@@ -144,7 +144,7 @@ const config = {
 						],
 					}
 				],
-				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache V2 License.</a> 
+				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
 <br>Copyright © ${new Date().getFullYear()} PuLan Open Source Community<br><img src="https://oscimg.oschina.net/oscnet/up-ba8a16960e88b912e4499d7dc0dd494d57e.gif" />`,
 			},
 			hideableSidebar: true,
