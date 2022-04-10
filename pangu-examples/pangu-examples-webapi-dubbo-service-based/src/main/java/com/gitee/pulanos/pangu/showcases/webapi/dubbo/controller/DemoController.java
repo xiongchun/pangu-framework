@@ -25,8 +25,7 @@ public class DemoController {
     private UserService userService;
 
     /**
-     * case1
-     *
+     * 通过 Spring MVC 将 Duboo 微服务接口发布为 HTTP API
      * @return
      */
     @RequestMapping("/case1")

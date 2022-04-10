@@ -104,7 +104,7 @@ const config = {
 							label: 'User Guide',
 							to: '/docs/intro',
 						}, {
-							label: 'Blog post',
+							label: 'Blog Post',
 							to: '/blog',
 						}
 						,{
@@ -116,7 +116,7 @@ const config = {
 					{
 						title: 'Community',
 						items: [{
-								label: 'GitEE PanGu Framework',
+								label: 'Gitee PanGu Framework',
 								href: 'https://gitee.com/pulanos/pangu-framework',
 							},
 							{
@@ -131,7 +131,7 @@ const config = {
 					{
 						title: 'More',
 						items: [{
-								label: 'Thanks to',
+								label: 'Thanks To',
 								to: '/docs/thanks',
 							},{
 								label: 'OSChina',
