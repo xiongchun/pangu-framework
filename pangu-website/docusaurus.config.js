@@ -62,7 +62,7 @@ const config = {
 						type: 'doc',
 						docId: 'intro',
 						position: 'left',
-						label: '开发指南',
+						label: '开源文档',
 					},
 					{
 						to: '/blog',
