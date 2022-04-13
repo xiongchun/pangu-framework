@@ -47,10 +47,19 @@ slug: /intro
 
 ## 组件依赖
 ### 基础核心组件
-Spring ※ Spring Boot &nbsp;𓃰&nbsp; MyBatis (MyBatis Plus) &nbsp;𓃰&nbsp; Apache Dubbo &nbsp;𓃰&nbsp; Nacos
+- Spring ※ Spring Boot
+- MyBatis (MyBatis Plus)
+- Apache Dubbo 
+- Aliware Nacos
 
 ### 扩展增强型组件
-Apache ShenYu &nbsp;𓃚&nbsp; Apache ShardingSphere &nbsp;𓃚&nbsp; Seata &nbsp;𓃚&nbsp; Sentinel &nbsp;𓃚&nbsp; Layering Cache &nbsp;𓃚&nbsp; Lock4J &nbsp;𓃚&nbsp; XXL Job
+- Apache ShenYu 
+- Apache ShardingSphere
+- Aliware Seata 
+- Aliware Sentinel
+- Layering Cache 
+- Lock4J 
+- XXL Job
 
 ### 辅助工具类组件
 LombokApache Commons &nbsp;𓃸&nbsp; Google Guava &nbsp;𓃸&nbsp; Hutool
