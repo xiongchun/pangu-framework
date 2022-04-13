@@ -121,7 +121,7 @@ const config = {
 							},
 							{
 								label: 'GitHub PanGu Framework',
-								href: 'https://gitee.com/pulanos/pangu-framework',
+								href: 'https://github.com/xiongchun/pangu-framework',
 							},{
 								label: 'GitCode PanGu Framework',
 								href: 'https://gitcode.net/pulanos/pangu-framework',
