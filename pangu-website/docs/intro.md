@@ -41,29 +41,19 @@ slug: /intro
 8. 提供靠谱的最终一致性分布式事务落地方案。
 9. 提供数据治理相关功能，如：读写分离、数据分片、数据加密等。
 10. 提供分布式环境下的多级缓存功能(注解式和编程式)。Caffeine 作为一级本地缓存，Redis 作为二级集中式缓存。
-11. 支持注解声明式和编程式对业务代码在分布式环境下加并发互斥锁。
-12. 应用日志输出级别动态切换、分布式日志跟踪等...
+11. 支持可配置、可监控的分布式任务调度。
+12. 支持注解声明式和编程式对业务代码在分布式环境下加并发互斥锁。
+13. 应用日志输出级别动态切换、分布式日志跟踪等...
 
 ## 组件依赖
 ### 基础核心组件
-- Spring ※ Spring Boot
-- MyBatis (MyBatis Plus)
-- Apache Dubbo
-- Aliware Nacos
+Spring ※ Spring Boot &nbsp;𓃰&nbsp; MyBatis (MyBatis Plus) &nbsp;𓃰&nbsp; Apache Dubbo &nbsp;𓃰&nbsp; Nacos
 
 ### 扩展增强型组件
-- Apache ShenYu
-- Apache ShardingSphere
-- Aliware Seata
-- Aliware Sentinel
-- Layering Cache
-- Lock4J
+Apache ShenYu &nbsp;𓃚&nbsp; Apache ShardingSphere &nbsp;𓃚&nbsp; Seata &nbsp;𓃚&nbsp; Sentinel &nbsp;𓃚&nbsp; Layering Cache &nbsp;𓃚&nbsp; Lock4J &nbsp;𓃚&nbsp; XXL Job
 
 ### 辅助工具类组件
-- Lombok
-- Apache Commons
-- Google Guava
-- Hutool
+LombokApache Commons &nbsp;𓃸&nbsp; Google Guava &nbsp;𓃸&nbsp; Hutool
 
 ## 模块列表
 - 盘古资源依赖声明管理模块：pangu-parent
