@@ -4,6 +4,7 @@ import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.dto.UserInDto;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.dto.UserOutDto;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.service.UserService;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;
