@@ -62,7 +62,9 @@ slug: /intro
 - XXL Job
 
 ### 辅助工具类组件
-LombokApache Commons &nbsp;𓃸&nbsp; Google Guava &nbsp;𓃸&nbsp; Hutool
+- LombokApache Commons
+- Google Guava
+- Hutool
 
 ## 模块列表
 - 盘古资源依赖声明管理模块：pangu-parent
