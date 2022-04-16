@@ -99,22 +99,22 @@ const config = {
 			footer: {
 				style: 'dark',
 				links: [{
-						title: 'Docs',
+						title: '文档',
 						items: [{
-							label: 'User Guide',
+							label: '用户指南',
 							to: '/docs/intro',
 						}, {
-							label: 'Blog Post',
+							label: '博客专栏',
 							to: '/blog',
 						}
 						,{
-							label: 'Frequently Asked Questions',
+							label: '常见问答',
 							to: '/docs/faq',
 						}
 						],
 					},
 					{
-						title: 'Community',
+						title: '源码',
 						items: [{
 								label: 'Gitee PanGu Framework',
 								href: 'https://gitee.com/pulanos/pangu-framework',
@@ -129,12 +129,12 @@ const config = {
 						],
 					},
 					{
-						title: 'More',
+						title: '更多',
 						items: [{
-								label: 'Thanks To',
+								label: '致敬',
 								to: '/docs/thanks',
 							},{
-								label: 'OSChina',
+								label: '开源中国',
 								href: 'https://www.oschina.net/',
 							},
 							{
