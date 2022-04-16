@@ -4,9 +4,9 @@
 
 ### 更多资源
 
- :maple_leaf: [项目主页&开发指南（主）](https://pulanos.gitee.io/pangu-framework/)  
- :leaves: [项目主页&开发指南（备）](https://xiongchun.github.io/pangu-framework/)  
- :sunflower: [开发范例集合](https://pulanos.gitee.io/pangu-framework/docs/examples-list)   
+:maple_leaf: [项目主页&开发指南（主）](https://pulanos.gitee.io/pangu-framework/)  
+:leaves: [项目主页&开发指南（备）](https://xiongchun.github.io/pangu-framework/)  
+:sunflower: [开发范例集合](https://pulanos.gitee.io/pangu-framework/docs/examples-list)
 
 ### 生态架构图
 ![盘古开发框架生态架构图-码农大熊](/docs/resources/doc/34-pangu-framework.png)
