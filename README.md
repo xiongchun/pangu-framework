@@ -9,4 +9,4 @@
  :sunflower: [开发范例集合](https://pulanos.gitee.io/pangu-framework/docs/examples-list)   
 
 ### 生态架构图
-![盘古开发框架生态架构图](/docs/resources/doc/34-pangu-framework.png)
+![盘古开发框架生态架构图-码农大熊](/docs/resources/doc/34-pangu-framework.png)
