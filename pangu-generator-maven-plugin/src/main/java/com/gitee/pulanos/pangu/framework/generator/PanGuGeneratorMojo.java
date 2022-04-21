@@ -21,6 +21,7 @@ import cn.hutool.core.util.StrUtil;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Column;
 import com.gitee.pulanos.pangu.framework.generator.pojo.PluginConfig;
 import com.gitee.pulanos.pangu.framework.generator.pojo.Table;
+import com.gitee.pulanos.pangu.framework.generator.utils.CommonUtil;
 import com.gitee.pulanos.pangu.framework.generator.utils.DbMetaInfoUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -49,12 +50,8 @@ public class PanGuGeneratorMojo extends AbstractMojo {
 
     @Parameter(property = "entityFilePath")
     private String entityFilePath;
-    @Parameter(property = "entityPackageName")
-    private String entityPackageName;
     @Parameter(property = "mapperFilePath")
     private String mapperFilePath;
-    @Parameter(property = "mapperPackageName")
-    private String mapperPackageName;
     @Parameter(property = "tables")
     private String tables;
 
@@ -83,15 +80,15 @@ public class PanGuGeneratorMojo extends AbstractMojo {
 
     private PluginConfig initConfigContext(){
         PluginConfig pluginConfig = new PluginConfig();
-        pluginConfig.setEntityPackageName(entityPackageName);
         pluginConfig.setEntityFilePath(entityFilePath);
+        pluginConfig.setEntityPackageName(CommonUtil.filePathToPkgName(entityFilePath));
         pluginConfig.setMapperFilePath(mapperFilePath);
+        pluginConfig.setMapperPackageName(CommonUtil.filePathToPkgName(mapperFilePath));
         pluginConfig.setPassword(password);
         pluginConfig.setTables(tables);
         pluginConfig.setUrl(url);
         pluginConfig.setUser(user);
-        pluginConfig.setMapperPackageName(mapperPackageName);
-        pluginConfig.setAuthor(StrUtil.isEmpty(author) ? "普蓝开源社区" : author);
+        pluginConfig.setAuthor(StrUtil.isEmpty(author) ? "PanGu Dev Framework" : author);
         return pluginConfig;
     }
 

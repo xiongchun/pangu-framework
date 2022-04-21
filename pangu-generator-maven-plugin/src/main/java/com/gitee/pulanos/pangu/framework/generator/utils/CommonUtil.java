@@ -23,8 +23,10 @@ import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 
 import java.sql.DatabaseMetaData;
+import java.sql.Struct;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * 工具类
@@ -115,4 +117,23 @@ public class CommonUtil {
             throw new IllegalArgumentException(StrUtil.format("表名: {} 是数据库关键字，为避免后续不必要的麻烦请修改表名。", name));
         }
     }
+
+    /**
+     * 将文件路径配置转换为合法包路径
+     */
+    public static String filePathToPkgName(String filePath){
+        filePath = StringUtils.lowerCase(filePath);
+        String splitFlag = StrUtil.indexOf(filePath, '\\') < 0 ? "/" : "\\";
+        List<String> filePathNodes = StrUtil.split(filePath, splitFlag);
+        boolean flag = false;
+        StringBuffer sb = new StringBuffer();
+        for (String node : filePathNodes) {
+            if (flag) sb.append(node).append(".");
+            if (StrUtil.equalsIgnoreCase(node, "java")) {
+                flag = true;
+            }
+        }
+        return StrUtil.subBefore(sb.toString(), ".", true);
+    }
+
 }

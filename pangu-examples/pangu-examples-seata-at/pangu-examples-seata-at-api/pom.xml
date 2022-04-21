@@ -39,7 +39,7 @@
             <plugin>
                 <groupId>com.gitee.pulanos.pangu</groupId>
                 <artifactId>pangu-generator-maven-plugin</artifactId>
-                <version>5.0.7</version>
+                <version>5.2.0</version>
                 <configuration>
                     <url>jdbc:mysql://127.0.0.1:3306/pangu-examples</url>
                     <user>root</user>
@@ -48,7 +48,6 @@
                     <author>普蓝开源社区</author>
                     <!-- 可以使用绝对路径 -->
                     <entityFilePath>${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/dubbo/api/entity</entityFilePath>
-                    <entityPackageName>com.gitee.pulanos.pangu.showcases.dubbo.api.entity</entityPackageName>
                 </configuration>
             </plugin>
         </plugins>

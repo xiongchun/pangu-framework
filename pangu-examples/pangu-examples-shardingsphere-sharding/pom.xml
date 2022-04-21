@@ -55,7 +55,7 @@
             <plugin>
                 <groupId>com.gitee.pulanos.pangu</groupId>
                 <artifactId>pangu-generator-maven-plugin</artifactId>
-                <version>5.0.8</version>
+                <version>5.2.0</version>
                 <configuration>
                     <url>jdbc:mysql://127.0.0.1:3306/pangu-examples-1</url>
                     <user>root</user>
@@ -63,14 +63,8 @@
                     <tables>t_order</tables>
                     <author>普蓝开源社区</author>
                     <!-- 可以使用绝对路径 -->
-                    <entityFilePath>
-                        ${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/sharding/dao/entity
-                    </entityFilePath>
-                    <entityPackageName>com.gitee.pulanos.pangu.showcases.shardingsphere.sharding.dao.entity</entityPackageName>
-                    <mapperFilePath>
-                        ${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/sharding/dao/mapper
-                    </mapperFilePath>
-                    <mapperPackageName>com.gitee.pulanos.pangu.showcases.shardingsphere.sharding.dao.mapper</mapperPackageName>
+                    <entityFilePath>${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/sharding/dao/entity</entityFilePath>
+                    <mapperFilePath>${project.basedir}/src/main/java/com/gitee/pulanos/pangu/showcases/shardingsphere/sharding/dao/mapper</mapperFilePath>
                 </configuration>
             </plugin>
         </plugins>
