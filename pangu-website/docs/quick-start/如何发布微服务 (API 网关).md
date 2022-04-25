@@ -1,5 +1,5 @@
 ---
-title: 如何发布微服务 (HTTP API)
+title: 如何发布微服务 (API 网关)
 tags: [快速开始,网关, API]
 sidebar_position: 25
 slug: /quick-start/how-to-create-http-api
