@@ -1,5 +1,5 @@
 ---
-title: 如何开发 HTTP 接口
+title: 如何发布微服务 (HTTP API)
 tags: [快速开始,网关, API]
 sidebar_position: 25
 slug: /quick-start/how-to-create-http-api
@@ -255,7 +255,7 @@ shenyu:
 shenyu.sync.websocket.urls | 表示网关和 ShenYu Admin 之间使用 Websocket 的方式进行数据同步，这里是配置 ShenYu Admin 提供的 Websocket 数据同步服务的地址（支持集群，逗号分割）。
 
 :::info
-上表中提到到 ShenYu Admin 是 ShenYu 网关框架的配置 & 元数据管理后台。这里包含了网关模块自己的配置信息也包含了后台服务接口y元数据信息，这理的配置信息和元数据信息需要和网关模块同步。ShenYu 支持多种数据同步方案，Websocket 只是盘古开发选用的一种缺省方案。关于网关的更多信息，请参阅：[使用指南->网关系统](/docs/advanced-guide/gateway) 章节。
+上表中提到到 ShenYu Admin 是 ShenYu 网关框架的配置 & 元数据管理后台。这里包含了网关模块自己的配置信息也包含了后台服务接口元数据信息，这理的配置信息和元数据信息需要和网关模块同步。ShenYu 支持多种数据同步方案，Websocket 只是盘古开发选用的一种缺省方案。关于网关的更多信息，请参阅：[使用指南->网关系统](/docs/advanced-guide/gateway) 章节。
 :::
 
 ### 调用微服务接口
