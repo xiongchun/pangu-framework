@@ -17,12 +17,10 @@
 
 package com.gitee.pulanos.pangu.showcases.webapi.local.service;
 
-import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.gitee.pulanos.pangu.showcases.webapi.local.dao.entity.UserEntity;
 import com.gitee.pulanos.pangu.showcases.webapi.local.dao.mapper.UserMapper;
-import com.gitee.pulanos.pangu.showcases.webapi.local.param.CaseIn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
