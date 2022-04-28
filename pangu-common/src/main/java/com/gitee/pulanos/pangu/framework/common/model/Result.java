@@ -64,7 +64,13 @@ public class Result<T> implements Serializable {
      * 日志信息（选填项）
      * <p>当请求头中包含x-debug=true时，拦截器将获取错误日志信息返回
      */
-    private String log;
+    private String debugMsg;
+
+    /**
+     * 请求唯一标识（选填项）
+     * <p>请求唯一标识，用于日志溯源
+     */
+    private String traceId;
 
     /**
      * 接口调用成功（快捷模式）
