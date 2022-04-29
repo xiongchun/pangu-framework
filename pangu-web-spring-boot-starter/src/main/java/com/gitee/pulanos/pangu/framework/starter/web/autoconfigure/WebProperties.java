@@ -29,4 +29,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "pangu.web")
 public class WebProperties {
 
+    /**
+     * 是否启用跨域访问(缺省 FALSE)
+     */
+    private Boolean crossOrigin = false;
+
 }

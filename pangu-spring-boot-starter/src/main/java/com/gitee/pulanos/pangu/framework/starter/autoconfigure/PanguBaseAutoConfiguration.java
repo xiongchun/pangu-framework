@@ -51,7 +51,7 @@ public class PanguBaseAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnProperty(prefix = "nacos", name = "config.data-id")
+    @ConditionalOnProperty(prefix = "pangu", name = "config.data-id")
     @ConditionalOnClass(ConfigService.class)
     public DynamicLogSwitcher createDynamicLogSwitcher() {
         DynamicLogSwitcher dynamicLogSwitcher = new DynamicLogSwitcher();

@@ -17,11 +17,18 @@
 
 package com.gitee.pulanos.pangu.framework.starter.web.autoconfigure;
 
+import com.gitee.pulanos.pangu.framework.common.Constants;
+import com.gitee.pulanos.pangu.framework.starter.web.interceptor.CrossOriginInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.Objects;
 
 /**
  * WebAutoConfiguration
@@ -31,9 +38,21 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(WebProperties.class)
-public class WebAutoConfiguration {
+public class WebAutoConfiguration implements WebMvcConfigurer {
 
     @Autowired
     private WebProperties webProperties;
+
+    /**
+     * 拦截器注册
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        if (webProperties.getCrossOrigin()){
+            registry.addInterceptor(new CrossOriginInterceptor());
+            log.info("{} 注册跨域拦截器成功", Constants.Msg.OK);
+        }
+    }
+
 
 }
