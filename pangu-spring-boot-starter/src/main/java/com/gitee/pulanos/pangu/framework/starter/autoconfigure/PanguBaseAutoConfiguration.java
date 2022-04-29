@@ -40,9 +40,7 @@ import org.springframework.context.annotation.Configuration;
 public class PanguBaseAutoConfiguration {
 
     @Autowired
-    private PanguAppProperties pan
-
-        guAppProperties;
+    private PanguAppProperties panguAppProperties;
 
     @Bean
     @ConditionalOnMissingBean(ApplicationExitHook.class)
