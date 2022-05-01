@@ -59,18 +59,22 @@ slug: /intro
 - Aliware Nacos
 
 ### 扩展增强型组件
-- Apache ShenYu 
 - Apache ShardingSphere
 - Aliware Seata 
 - Aliware Sentinel
 - Layering Cache 
 - Lock4J 
-- XXL Job
 
 ### 辅助工具类组件
 - LombokApache Commons
 - Google Guava
 - Hutool
+
+### 可选组件
+- Apache ShenYu 
+- XXL Job
+
+> **可选组件**指：由我们优选的做过适配或提供集成方案但不作为盘古框架缺省或标配的组件。
 
 ## 模块列表
 - 盘古资源依赖声明管理模块：pangu-parent
@@ -79,7 +83,6 @@ slug: /intro
 - 盘古 Dubbo 服务开发自动装配模块：pangu-dubbo-spring-boot-starter
 - 盘古数据库持久化操作自动装配模块：pangu-jdbc-spring-boot-starter
 - 盘古缓存开发自动装配模块：pangu-cache-spring-boot-starter
-- 盘古网关开发自动装配模块：pangu-gateway-spring-boot-starter
 - 盘古 Web 应用自动装配模块：pangu-web-spring-boot-starter
 - 盘古消息队列自动装配模块：pangu-rabbitmq-spring-boot-starter
 - 盘古分布式事务自动装配模块：pangu-seata-spring-boot-starter
