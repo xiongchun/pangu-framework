@@ -1,10 +1,10 @@
 ---
 slug: pangu-dev-framework-apache-shenyu
-title: 盘古开发框架集成 Apache ShenYu 网关
+title: 盘古开发框架集成 ShenYu 网关
 authors: [xiongchun]
 tags: [网关,ShenYu,Dubbo,泛化调用]
 date: 2022-01-29
-description: 盘古开发框架集成 Apache ShenYu 网关
+description: 盘古开发框架集成 ShenYu 网关
 hide_table_of_contents: false
 ---
 
