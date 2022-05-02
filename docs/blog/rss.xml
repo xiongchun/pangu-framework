@@ -8,11 +8,11 @@
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
-            <title><![CDATA[盘古开发框架集成 Apache ShenYu 网关]]></title>
+            <title><![CDATA[盘古开发框架集成 ShenYu 网关]]></title>
             <link>https://pulanos.gitee.io/pangu-framework/blog/pangu-dev-framework-apache-shenyu</link>
             <guid>pangu-dev-framework-apache-shenyu</guid>
             <pubDate>Sat, 29 Jan 2022 00:00:00 GMT</pubDate>
-            <description><![CDATA[盘古开发框架集成 Apache ShenYu 网关]]></description>
+            <description><![CDATA[盘古开发框架集成 ShenYu 网关]]></description>
             <content:encoded><![CDATA[<p>盘古开发框架下实现微服务网关接口的缺省姿势为基于 pangu-web 模块的传统接口调用模式，具体请参考文档：<a href="/docs/quick-start/how-to-create-http-api">如何发布微服务 (API 网关)</a>。本文提供另外一种通过集成Apache ShenYu 网关实现泛化调用 Dubbo 服务将其发布为 HTTP 接口的可选方法。</p><h2>ShenYu 网关介绍</h2><p>ShenYu 网关基于 Webflex 非阻塞模型通过泛化调用后端 Dubbo 服务。依赖 Netty 不需要 Servlet 容器，不需要引入服务接口包即可通过 Dubbo 泛化调用服务接口的方式就可以将后端 Dubbo 服务转换为 HTTP API。同时网关支持鉴权、动态限流、熔断、防火墙、灰度发布等。</p><h3>相关名词解释</h3><ul><li><strong>shenyu-admin</strong><br/>网关插件和元数据信息配置管理后台。独立 JAR，需要单独部署。</li><li><strong>shenyu-gateway</strong><br/>网关模块，代理 Http 请求，泛化调用后端 Dubbo 服务。此模块负责接收 Http 请求。</li><li><strong>数据同步</strong><br/>数据同步是指在 ShenYu-Admin 后台操作数据以后，使用何种策略将数据同步到 ShenYu Gateway 网关模块。ShenYu 当前支持 ZooKeeper、WebSocket、Http 长轮询、Nacos 、Etcd 和 Consul 进行数据同步。盘古开发使用的是 WebSocket 方式进行数据同步。</li><li><strong>插件</strong><br/>ShenYu 使用插件化设计思想，实现插件的热插拔。内置丰富的插件，包括 RPC 代理、熔断和限流、权限认证、监控等等。</li><li><strong>选择器</strong><br/>每个插件可设置多个选择器，对流量进行初步筛选。</li><li><strong>规则</strong><br/>每个选择器可设置多个规则，对流量进行更细粒度的控制。</li></ul><h3>网关调用结构图</h3><p><img src="/resources/doc/9-pangu-framework-shenyu.png" alt="盘古网关系统"/></p><h2>ShenYu 网关实战</h2><p>ShenYu 网关提供的功能非常多，这里我们只关注 HTTP 请求代理功能。即代理前端 HTTP 请求，通过 Dubbo 泛化调用后端 Dubbo 服务。</p><h3>安装相关模块</h3><div><div value="parent" label="盘古 Parent"><pre><code class="language-jsx">&lt;parent&gt;
     &lt;groupId&gt;com.gitee.pulanos.pangu&lt;/groupId&gt;
     &lt;artifactId&gt;pangu-parent&lt;/artifactId&gt;
@@ -45,7 +45,7 @@
 &lt;/dependency&gt;
 </code></pre></div></div><p>:::tip
 基于 ShenYu 网关开发模式不需要引入 Dubbo 服务接口 Jar，网关会根据服务接口的元数据信息，泛化调用 Dubbo 服务接口。服务接口的元数据信息则根据 Dubbo 服务应用中的配置自动上传到 ShenYu 网关管理系统。此内容在下文会继续讲解。
-:::</p><h3>本地配置</h3><blockquote><p>为便于理解，本文基于本地配置的方式编写。若改为标准的 Nacos 配置中心模式，请参阅：<a href="/docs/advanced-guide/nacos-config-center">配置中心</a> 章节。</p></blockquote><pre><code class="language-jsx" metastring="{24} title=&quot;application-dev.yaml&quot;" title="&quot;application-dev.yaml&quot;">server:
+:::</p><h3>本地配置</h3><blockquote><p>为便于理解，本文基于本地配置的方式编写。若改为标准的 Nacos 配置中心模式，请参阅：<a href="/docs/advanced-guide/nacos-config-center">配置中心</a> 章节。</p></blockquote><pre><code class="language-jsx">server:
   port: 9090
 
 spring:
@@ -105,7 +105,7 @@ shenyu:
 shenyu.client.server-lists=${shenyu.server-lists:http://localhost:9095}
 shenyu.client.props.contextPath=/dubbo
 </code></pre><ul><li><strong>shenyu.client.register-type</strong><br/>服务接口元数据采集方式，可选 http 直连模式或配置中心 zookeeper、etcd、consul 和 nacos。盘古开发采集接口元数据缺省选择 http 直接 ShenYu Admin 的方式。</li><li><strong>shenyu.client.server-lists</strong><br/>ShenYu Admin 地址或配置中心地址。集群时多个地址用逗号分开。</li><li><strong>shenyu.client.props.contextPath</strong><br/>本服务在网关中的路由前缀,可自定义按需配置。</li></ul><p><strong>自动上报服务接口元数据</strong><br/>
-<!-- -->在 Dubbo 服务实现类的方法上使用注解 <code>@ShenyuDubboClient</code> 标记，表示该接口方法元数据自动上传到 ShenYu Admin。如下代码所示。</p><pre><code class="language-jsx" metastring="{5}">@Service(version = &quot;1.0.0&quot;, group = &quot;pangu-examples-dubbo-gateway-service&quot;)
+<!-- -->在 Dubbo 服务实现类的方法上使用注解 <code>@ShenyuDubboClient</code> 标记，表示该接口方法元数据自动上传到 ShenYu Admin。如下代码所示。</p><pre><code class="language-jsx">@Service(version = &quot;1.0.0&quot;, group = &quot;pangu-examples-dubbo-gateway-service&quot;)
 public class UserServiceImpl implements UserService {
 
     @Override

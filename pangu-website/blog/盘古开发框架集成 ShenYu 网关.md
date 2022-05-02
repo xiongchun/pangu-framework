@@ -97,11 +97,11 @@ ShenYu 网关提供的功能非常多，这里我们只关注 HTTP 请求代理�
 基于 ShenYu 网关开发模式不需要引入 Dubbo 服务接口 Jar，网关会根据服务接口的元数据信息，泛化调用 Dubbo 服务接口。服务接口的元数据信息则根据 Dubbo 服务应用中的配置自动上传到 ShenYu 网关管理系统。此内容在下文会继续讲解。
 :::
 
-### 本地配置
+### 本地配置  
 
 > 为便于理解，本文基于本地配置的方式编写。若改为标准的 Nacos 配置中心模式，请参阅：[配置中心](/docs/advanced-guide/nacos-config-center) 章节。
 
-```jsx {24} title="application-dev.yaml"
+```jsx
 server:
   port: 9090
 
@@ -151,7 +151,6 @@ shenyu:
     printEnabled: true
     printInterval: 60000
 ```
-
 #### 关键配置项说明
 - **shenyu.sync.websocket.urls**  
 表示网关和 ShenYu Admin 之间使用 Websocket 的方式进行数据同步，这里是配置 ShenYu Admin 提供的 Websocket 数据同步服务的地址（支持集群，逗号分割）。
@@ -168,7 +167,6 @@ shenyu:
 - 通过 ShenYu Admin 后台系统，『基础配置->元数据管理』菜单，手工新增每一个接口的元数据，然后将数据自动同步到网关模块。（不建议，量大的话太繁琐）
 - 对Dubbo服务提供者增加 ShenYu Client 支持，通过在接口方法上使用注解 `@ShenyuDubboClient` 来自动采集上传接口元数据到 ShenYu Admin，然后将数据自动同步到网关模块。（具体实现见下文所述）
 :::
-
 #### 改造 Dubbo 服务端，自动上传接口元数据
 对原 Dubbo 服务端做一些配置变更，使其能自动将接口元数据上传到 ShenYu Admin 后台系统。
 **安装 ShenYu Client 依赖包**
@@ -196,7 +194,7 @@ ShenYu Admin 地址或配置中心地址。集群时多个地址用逗号分开�
 **自动上报服务接口元数据**  
 在 Dubbo 服务实现类的方法上使用注解 `@ShenyuDubboClient` 标记，表示该接口方法元数据自动上传到 ShenYu Admin。如下代码所示。
 
-```jsx {5}
+```jsx
 @Service(version = "1.0.0", group = "pangu-examples-dubbo-gateway-service")
 public class UserServiceImpl implements UserService {
 
@@ -208,7 +206,6 @@ public class UserServiceImpl implements UserService {
     }
 }
 ```
-
 **配置网关泛化调用 Dubbo 服务所需的注册中心地址**  
 通过 ShenYu Admin 后台系统『基础配置->插件管理』菜单，启用 `dubbo插件` 并填入注册中心地址。比如，我测试用的注册中心地址：`nacos://169.188.88.140:1688?namespace=pangu-dev`。如下图所示。
 
