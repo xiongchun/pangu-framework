@@ -16,22 +16,32 @@ import TabItem from '@theme/TabItem';
 在上文[《如何开发微服务应用》](/docs/quick-start/how-to-make-microservice-architecture-app)中，已经介绍了如何开发一个微服务应用以及微服务模块之间的互相调用。本文介绍如何将微服务发布为 HTTP 接口供前端调用。
 
 ## 技术实现方案
-在盘古开发框架下实现将微服务发布为 HTTP 接口有两种方式：一种是基于 Spring MVC 的直接接口调用模式；一种是基于 ShenYu 网关的泛化调用模式。
+在盘古开发框架下实现将微服务发布为 HTTP 接口有两种方式。一种是基于 pangu-web 模块的接口调用模式；一种是基于 ShenYu 网关的泛化调用模式。
 
-|<div style={{width:'100px'}}>-</div>| 基于 Spring MVC | 基于 Apache ShenYu 网关
---- | --- | ---
-底层技术 | 基于 Spring MVC，依赖 Servlet 容器 | 基于 Webflex，依赖 Netty
-Dubbo 集成 | 依赖接口 JAR ，接口调用 Dubbo 服务 | 不依赖接口 JAR，泛化调用 Dubbo 服务
-性能 | 高 | 网关自身性能较高，但泛化调用性能有损耗
-复杂度 | 开发简单，部署运维简单 | 开发部署运维较复杂，带来的成本不可小觑
-其它特性 | 需自研 | 支持流量控制、鉴权、熔断、防火墙（其实配置也挺麻烦的）
+> 盘古开发框架基于 `pangu-web` 模块来实现微服务网关代理。
+
+### pangu-web 模块的接口调用模式
+- **实现原理**  
+基于 Spring MVC，依赖 Servlet 容器。
+- **Dubbo集成**  
+依赖接口 JAR ，接口调用 Dubbo 服务。
+- **性能 & 复杂度**  
+性能高，开发简单，部署运维简单。
+- **其它特性**  
+支持跨域配置、流量控制、鉴权、熔断、白名单等（配置简单且与盘古开发框架浑然一体）。
+
+### ShenYu 网关的泛化调用模式
+- **实现原理**  
+基于 Webflex，依赖 Netty框架。
+- **Dubbo集成**  
+不依赖接口 JAR，泛化调用 Dubbo 服务。
+- **性能 & 复杂度**  
+网关自身性能较高（Webflex非阻塞模型），但泛化调用性能有损耗（10%~20%）。开发部署运维极其复杂，带来的成本不可小觑。
+- **其它特性**  
+支持流量控制、鉴权、熔断等（配置复杂）。
 
 :::caution
-上表是从不同维度简单粗暴的以定性的角度给出了一些比较，结论是孤立且脱离项目背景和业务场景的，仅供参考。采用什么样的开发模式不能一概而论，需要综合实际情况酌情选择。
-:::
-
-:::tip
-盘古开发框架基于 `pangu-web-spring-boot-starter` 采用方案一来实现微服务网关代理。
+上述是从不同维度简单粗暴的以定性的角度给出了一些比较，结论是孤立且脱离项目背景和业务场景的，仅供参考。采用什么样的开发模式不能一概而论，需要综合实际情况酌情选择。但对于大部分盘古开发项目而言，我们推荐整体性价比较高的方案一。当然，如果您的项目背景适合使用 ShenYu网关，我们也给出了详细的集成方案。详见：[盘古开发框架集成 Apache ShenYu 网关](/blog/pangu-dev-framework-apache-shenyu)。
 :::
 
 ## 编程实战一：基于 Spring MVC 开发
@@ -150,7 +160,7 @@ public class DubboProviderApplication {
 - [pangu-examples-webapi-dubbo-service-based](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples/pangu-examples-webapi-dubbo-service-based)：基于 SpringMVC 将 Dubbo 服务发布为 HTTP 接口
 
 ## 编程实战二：基于 ShenYu 网关开发
-盘古开发框架下发布 Dubbo 服务为 HTTP 接口的缺省标准姿势已调整为基于 pangu-web-spring-boot-starter 的传统接口调用模式（见上文）。基于 ShenYu 网关的开发模式已降级为一种可选方案，其文档已迁移到了博客专栏。详见：[盘古开发框架集成 Apache ShenYu 网关](/blog/pangu-dev-framework-apache-shenyu)。
+盘古开发框架下发布 Dubbo 服务为 HTTP 接口的缺省标准姿势已调整为基于 pangu-web 模块的传统接口调用模式（见上文）。基于 ShenYu 网关的开发模式已降级为一种可选方案，其文档已迁移到了博客专栏。详见：[盘古开发框架集成 Apache ShenYu 网关](/blog/pangu-dev-framework-apache-shenyu)。
 
 ## 下一步
 继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/docs/community) 寻求更多帮助。

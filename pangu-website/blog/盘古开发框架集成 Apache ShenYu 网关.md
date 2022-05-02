@@ -11,7 +11,7 @@ hide_table_of_contents: false
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-盘古开发框架下发布 Dubbo 服务为 HTTP 接口的缺省标准姿势为基于 `pangu-web-spring-boot-starter` 的传统接口调用模式，具体请参考文档：[如何发布微服务 (API 网关)](/docs/quick-start/how-to-create-http-api)。本文提供另外一种集成Apache ShenYu 网关将通过泛化调用 Dubbo 服务将其发布为 HTTP 接口的可选方法。
+盘古开发框架下实现微服务网关接口的缺省姿势为基于 pangu-web 模块的传统接口调用模式，具体请参考文档：[如何发布微服务 (API 网关)](/docs/quick-start/how-to-create-http-api)。本文提供另外一种通过集成Apache ShenYu 网关实现泛化调用 Dubbo 服务将其发布为 HTTP 接口的可选方法。
 
 <!--truncate-->
 
@@ -19,14 +19,18 @@ import TabItem from '@theme/TabItem';
 ShenYu 网关基于 Webflex 非阻塞模型通过泛化调用后端 Dubbo 服务。依赖 Netty 不需要 Servlet 容器，不需要引入服务接口包即可通过 Dubbo 泛化调用服务接口的方式就可以将后端 Dubbo 服务转换为 HTTP API。同时网关支持鉴权、动态限流、熔断、防火墙、灰度发布等。
 
 ### 相关名词解释
-|<div style={{width:'120px'}}>名词</div> | 解释  
---- | ---
-shenyu-admin | 网关插件和元数据信息配置管理后台。独立 JAR，需要单独部署。 
-shenyu-gateway | 网关模块，代理 Http 请求，泛化调用后端 Dubbo 服务。此模块负责接收 Http 请求。
-数据同步 | 数据同步是指在 ShenYu-Admin 后台操作数据以后，使用何种策略将数据同步到 ShenYu Gateway 网关模块。ShenYu 当前支持 ZooKeeper、WebSocket、Http 长轮询、Nacos 、Etcd 和 Consul 进行数据同步。盘古开发使用的是 WebSocket 方式进行数据同步。
-插件 | ShenYu 使用插件化设计思想，实现插件的热插拔。内置丰富的插件，包括 RPC 代理、熔断和限流、权限认证、监控等等。
-选择器 | 每个插件可设置多个选择器，对流量进行初步筛选。
-规则 | 每个选择器可设置多个规则，对流量进行更细粒度的控制。
+- **shenyu-admin**  
+网关插件和元数据信息配置管理后台。独立 JAR，需要单独部署。
+- **shenyu-gateway**  
+网关模块，代理 Http 请求，泛化调用后端 Dubbo 服务。此模块负责接收 Http 请求。
+- **数据同步**  
+数据同步是指在 ShenYu-Admin 后台操作数据以后，使用何种策略将数据同步到 ShenYu Gateway 网关模块。ShenYu 当前支持 ZooKeeper、WebSocket、Http 长轮询、Nacos 、Etcd 和 Consul 进行数据同步。盘古开发使用的是 WebSocket 方式进行数据同步。
+- **插件**  
+ShenYu 使用插件化设计思想，实现插件的热插拔。内置丰富的插件，包括 RPC 代理、熔断和限流、权限认证、监控等等。
+- **选择器**  
+每个插件可设置多个选择器，对流量进行初步筛选。
+- **规则**  
+每个选择器可设置多个规则，对流量进行更细粒度的控制。
 
 ### 网关调用结构图
 ![盘古网关系统](/resources/doc/9-pangu-framework-shenyu.png)
@@ -35,7 +39,7 @@ shenyu-gateway | 网关模块，代理 Http 请求，泛化调用后端 Dubbo �
 ShenYu 网关提供的功能非常多，这里我们只关注 HTTP 请求代理功能。即代理前端 HTTP 请求，通过 Dubbo 泛化调用后端 Dubbo 服务。
 ### 安装相关模块
 
-<Tabs defaultValue="dependency3">
+<Tabs defaultValue="parent">
 <TabItem value="parent" label="盘古 Parent">
 
 ```jsx
@@ -148,10 +152,9 @@ shenyu:
     printInterval: 60000
 ```
 
-##### 关键配置项说明
-配置项 | 配置说明  
---- | ---
-shenyu.sync.websocket.urls | 表示网关和 ShenYu Admin 之间使用 Websocket 的方式进行数据同步，这里是配置 ShenYu Admin 提供的 Websocket 数据同步服务的地址（支持集群，逗号分割）。
+#### 关键配置项说明
+- **shenyu.sync.websocket.urls**  
+表示网关和 ShenYu Admin 之间使用 Websocket 的方式进行数据同步，这里是配置 ShenYu Admin 提供的 Websocket 数据同步服务的地址（支持集群，逗号分割）。
 
 :::info
 上表中提到到 ShenYu Admin 是 ShenYu 网关框架的配置 & 元数据管理后台。这里包含了网关模块自己的配置信息也包含了后台服务接口元数据信息，这理的配置信息和元数据信息需要和网关模块同步。ShenYu 支持多种数据同步方案，Websocket 只是盘古开发选用的一种缺省方案。
@@ -183,11 +186,12 @@ shenyu.client.server-lists=${shenyu.server-lists:http://localhost:9095}
 shenyu.client.props.contextPath=/dubbo
 ```
 
-配置项 | 配置说明  
---- | ---
-shenyu.client.register-type | 服务接口元数据采集方式，可选 http 直连模式或配置中心 zookeeper、etcd、consul 和 nacos。盘古开发采集接口元数据缺省选择 http 直接 ShenYu Admin 的方式。
-shenyu.client.server-lists | ShenYu Admin 地址或配置中心地址。集群时多个地址用逗号分开。
-shenyu.client.props.contextPath | 本服务在网关中的路由前缀,可自定义按需配置
+- **shenyu.client.register-type**  
+服务接口元数据采集方式，可选 http 直连模式或配置中心 zookeeper、etcd、consul 和 nacos。盘古开发采集接口元数据缺省选择 http 直接 ShenYu Admin 的方式。
+- **shenyu.client.server-lists**  
+ShenYu Admin 地址或配置中心地址。集群时多个地址用逗号分开。
+- **shenyu.client.props.contextPath**  
+本服务在网关中的路由前缀,可自定义按需配置。
 
 **自动上报服务接口元数据**  
 在 Dubbo 服务实现类的方法上使用注解 `@ShenyuDubboClient` 标记，表示该接口方法元数据自动上传到 ShenYu Admin。如下代码所示。
