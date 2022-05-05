@@ -18,8 +18,6 @@ import TabItem from '@theme/TabItem';
 ## 技术实现方案
 在盘古开发框架下实现将微服务发布为 HTTP 接口有两种方式。一种是基于 pangu-web 模块的接口调用模式；一种是基于 ShenYu 网关的泛化调用模式。
 
-> 盘古开发框架基于 `pangu-web` 模块来实现微服务网关代理。
-
 ### pangu-web 模块的接口调用模式
 - **实现原理**  
 基于 Spring MVC，依赖 Servlet 容器。
