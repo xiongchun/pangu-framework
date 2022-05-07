@@ -12,17 +12,20 @@ const config = {
 	},
 	tagline: '工业级微服务开发治理框架',
 	url: 'https://pulanos.gitee.io',
-	//baseUrl: '/',
-	baseUrl:'/pangu-framework/',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon2.png',
 	organizationName: '盘古开发框架,普蓝开源社区', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
     plugins: [require.resolve("docusaurus-plugin-image-zoom")],
+	//baseUrl: '/',
+	baseUrl:'/pangu-framework/',
 	// 百度统计
 	scripts: [
-	    {src: 'https://hm.baidu.com/hm.js?8a2c2aae78c4983e3cf661fea34e6353',  async: true}
+		//https://pulanos.gitee.io/pangu-framework/
+	    {src: 'https://hm.baidu.com/hm.js?8a2c2aae78c4983e3cf661fea34e6353',  async: true},
+		//https://pangu.pulanit.com/
+		//{src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b',  async: true},
 	],
 	presets: [
 		[
