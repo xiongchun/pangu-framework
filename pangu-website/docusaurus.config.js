@@ -164,7 +164,8 @@ const config = {
 			},
 			metadata: [
 			      {name: 'author', content: '普蓝开源社区'},
-				  {name: 'keywords', content: '盘古开发框架 分布式微服务架构 垂直单体分层架构 普蓝开源社区'}
+				  {name: 'keywords', content: '盘古开发框架 分布式微服务架构 垂直单体分层架构 普蓝开源社区'},
+				  {name: 'baidu-site-verification', content: 'code-FsdXztrzOo'}
 			    ]
 		}),
 };
