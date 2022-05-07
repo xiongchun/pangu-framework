@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[812],{64:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/dubbo","name":"Dubbo","count":1,"permalink":"/blog/tags/dubbo"}')}}]);

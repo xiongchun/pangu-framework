@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>盘古开发框架 Blog</title>
-        <link>https://pulanos.gitee.io/pangu-framework/blog</link>
+        <link>https://pulanos.gitee.io/blog</link>
         <description>盘古开发框架 Blog</description>
         <lastBuildDate>Sat, 29 Jan 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
             <title><![CDATA[盘古开发框架集成 ShenYu 网关]]></title>
-            <link>https://pulanos.gitee.io/pangu-framework/blog/pangu-dev-framework-apache-shenyu</link>
+            <link>https://pulanos.gitee.io/blog/pangu-dev-framework-apache-shenyu</link>
             <guid>pangu-dev-framework-apache-shenyu</guid>
             <pubDate>Sat, 29 Jan 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[盘古开发框架集成 ShenYu 网关]]></description>
@@ -138,7 +138,7 @@ public class WebApiGatewayApplication {
         </item>
         <item>
             <title><![CDATA[盘古开发框架文档排版指南]]></title>
-            <link>https://pulanos.gitee.io/pangu-framework/blog/chinese-copywriting-guidelines</link>
+            <link>https://pulanos.gitee.io/blog/chinese-copywriting-guidelines</link>
             <guid>chinese-copywriting-guidelines</guid>
             <pubDate>Tue, 18 Jan 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[盘古开发框架文档排版指南]]></description>
