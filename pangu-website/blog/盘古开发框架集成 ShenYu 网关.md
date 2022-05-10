@@ -16,7 +16,15 @@ import TabItem from '@theme/TabItem';
 <!--truncate-->
 
 ## ShenYu 网关介绍
-ShenYu 网关基于 Webflex 非阻塞模型通过泛化调用后端 Dubbo 服务。依赖 Netty 不需要 Servlet 容器，不需要引入服务接口包即可通过 Dubbo 泛化调用服务接口的方式就可以将后端 Dubbo 服务转换为 HTTP API。同时网关支持鉴权、动态限流、熔断、防火墙、灰度发布等。
+ShenYu 网关基于 Webflex 非阻塞模型通过泛化调用后端 Dubbo 服务。依赖 Netty 不需要 Servlet 容器，不需要引入服务接口包即可通过 Dubbo 泛化调用服务接口的方式将后端 Dubbo 服务转换为 HTTP API。同时网关支持鉴权、动态限流、熔断、防火墙、灰度发布等。
+- **实现原理**  
+基于 Webflex，依赖 Netty 框架。
+- **Dubbo 集成**  
+不依赖接口 JAR，泛化调用 Dubbo 服务。
+- **性能 & 复杂度**  
+网关自身性能较高（Webflex非阻塞模型），但泛化调用性能有损耗（10%~20%）。开发部署运维极其复杂，带来的成本不可小觑。
+- **其它特性**  
+支持流量控制、鉴权、熔断等（配置复杂）。
 
 ### 相关名词解释
 - **shenyu-admin**  

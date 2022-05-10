@@ -1,5 +1,5 @@
 ---
-title: 如何发布微服务 (API 网关)
+title: 如何发布微服务 (Web API)
 tags: [快速开始,网关, API]
 sidebar_position: 25
 slug: /quick-start/how-to-create-http-api
@@ -18,20 +18,21 @@ import TabItem from '@theme/TabItem';
 ## 技术实现方案
 在盘古开发框架下实现将微服务发布为 HTTP 接口有两种方式。一种是基于 pangu-web 模块的接口调用模式；一种是基于 ShenYu 网关的泛化调用模式。
 
-### pangu-web 模块的接口调用模式
+### Pangu-Web 模块的接口调用模式
 - **实现原理**  
 基于 Spring MVC，依赖 Servlet 容器。
-- **Dubbo集成**  
+- **Dubbo 集成**  
 依赖接口 JAR ，接口调用 Dubbo 服务。
 - **性能 & 复杂度**  
 性能高，开发简单，部署运维简单。
 - **其它特性**  
-支持跨域配置、流量控制、鉴权、熔断、白名单等（配置简单且与盘古开发框架浑然一体）。
+  - 支持跨域配置、流量控制、鉴权、熔断、白名单等（配置简单且与盘古开发框架浑然一体）。
+  - 提供了Controller聚合层，可一定程度上减少了微服务之间的循环依赖和调用。
 
 ### ShenYu 网关的泛化调用模式
 - **实现原理**  
-基于 Webflex，依赖 Netty框架。
-- **Dubbo集成**  
+基于 Webflex，依赖 Netty 框架。
+- **Dubbo 集成**  
 不依赖接口 JAR，泛化调用 Dubbo 服务。
 - **性能 & 复杂度**  
 网关自身性能较高（Webflex非阻塞模型），但泛化调用性能有损耗（10%~20%）。开发部署运维极其复杂，带来的成本不可小觑。
@@ -43,7 +44,7 @@ import TabItem from '@theme/TabItem';
 :::
 
 ## 编程实战一：基于 Spring MVC 开发
-此种模式基于 SpringMVC 通过 Controller 调用后端 Dubbo 服务。依赖 Servlet 容器，需要引入服务接口包。对于 HTTP 接口层面的鉴权、流控等需求都需要自己用Web拦截器来实现。高可用和性能提升可通过Nginx反向代理后端多个 Web 节点实现。
+此种模式基于 SpringMVC 通过 Controller 调用后端 Dubbo 服务。依赖 Servlet 容器，需要引入服务接口包。对于 HTTP 接口层面的鉴权、流控等需求都需要基于Web拦截器来实现（盘古已经在Starter中实现，只需配置即可使用）。高可用和性能提升可通过Caddy/Nginx 充当 API 网关 反向代理后端多个 Web 节点实现。
 
 ### 安装相关盘古模块
 
