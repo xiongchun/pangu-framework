@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[7364],{8436:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/\u7f51\u5173","name":"\u7f51\u5173","count":2,"permalink":"/blog/tags/\u7f51\u5173"}')}}]);
