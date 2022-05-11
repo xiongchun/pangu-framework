@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 ### ShenYu 网关的泛化调用模式
 - **实现原理**  
-基于 Spring Webflex，依赖 Netty 框架 或 Servlet 3.1+ 容器。
+基于 Spring Webflex，依赖 Netty 框架或 Servlet 3.1+ 容器。
 - **Dubbo 集成**  
 不依赖接口 JAR，泛化调用 Dubbo 服务。（需要维护接口元数据，且性能有损耗 10%~20%）
 - **性能 & 复杂度**  
