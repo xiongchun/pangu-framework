@@ -7,12 +7,12 @@
     <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
         <artifactId>pangu-parent</artifactId>
-        <version>5.0.7</version>
+        <version>5.0.8</version>
         <relativePath/>
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-examples-dubbo-gateway-service</artifactId>
+    <artifactId>pangu-examples-dubbo-gateway-shenyu-service</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
