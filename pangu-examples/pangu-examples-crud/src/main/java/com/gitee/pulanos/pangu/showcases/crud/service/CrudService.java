@@ -20,10 +20,15 @@ package com.gitee.pulanos.pangu.showcases.crud.service;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Console;
 import cn.hutool.core.util.ObjectUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import com.gitee.pulanos.pangu.showcases.crud.dao.entity.UserEntity;
+import com.gitee.pulanos.pangu.showcases.crud.dao.mapper.CrudMapper;
+import com.gitee.pulanos.pangu.showcases.crud.dao.mapper.UserMapper;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

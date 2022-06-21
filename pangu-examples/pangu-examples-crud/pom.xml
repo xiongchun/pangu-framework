@@ -24,6 +24,10 @@
         </dependency>
         <dependency>
             <groupId>com.gitee.pulanos.pangu</groupId>
+            <artifactId>pangu-web-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gitee.pulanos.pangu</groupId>
             <artifactId>pangu-jdbc-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
