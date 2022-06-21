@@ -19,7 +19,6 @@ package com.gitee.pulanos.pangu.showcases;
 
 import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**

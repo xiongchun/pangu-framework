@@ -26,7 +26,6 @@ import com.gitee.pulanos.pangu.showcases.seata.at.dao.mapper.AccountMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

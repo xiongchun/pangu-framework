@@ -1,10 +1,8 @@
 package com.gitee.pulanos.pangu.showcases.seata.api.dto;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 /**
