@@ -61,6 +61,7 @@
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <hutool-all.version>5.7.11</hutool-all.version>
+        <tlog-all-spring-boot-starter.version>1.4.3</tlog-all-spring-boot-starter.version>
         <lombok.version>1.18.20</lombok.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
@@ -211,6 +212,21 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool-all.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yomahub</groupId>
+                <artifactId>tlog-all-spring-boot-starter</artifactId>
+                <version>${tlog-all-spring-boot-starter.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.yomahub</groupId>
+                        <artifactId>tlog-dubbox</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>

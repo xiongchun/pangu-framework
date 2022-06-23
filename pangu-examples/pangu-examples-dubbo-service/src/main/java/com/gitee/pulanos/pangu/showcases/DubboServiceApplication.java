@@ -18,6 +18,7 @@
 package com.gitee.pulanos.pangu.showcases;
 
 import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
+import com.yomahub.tlog.core.enhance.bytes.AspectLogEnhance;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -27,7 +28,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableDubbo
 @SpringBootApplication
 public class DubboServiceApplication {
-	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(DubboServiceApplication.class).run(args);
+
+	static {
+		AspectLogEnhance.enhance();
 	}
+    public static void main(String[] args) {
+        PanGuApplicationBuilder.init(DubboServiceApplication.class).run(args);
+    }
 }

@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
         <artifactId>pangu-parent</artifactId>
-        <version>5.0.7</version>
+        <version>5.1.0</version>
         <relativePath/>
     </parent>
 
@@ -29,10 +29,6 @@
             <groupId>com.gitee.pulanos.pangu</groupId>
             <artifactId>pangu-examples-dubbo-api</artifactId>
             <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 

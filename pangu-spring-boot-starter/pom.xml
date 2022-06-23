@@ -48,6 +48,10 @@
             <groupId>com.alibaba.boot</groupId>
             <artifactId>nacos-config-spring-boot-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>tlog-all-spring-boot-starter</artifactId>
+        </dependency>
         <!--将被@ConfigurationProperties注解的类的属性注入到元数据-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
