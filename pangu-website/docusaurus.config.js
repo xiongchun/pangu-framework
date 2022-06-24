@@ -78,14 +78,14 @@ const config = {
 						position: 'left'
 					},
 					{
-						href: '/docs/community',
-						label: '社区',
-						position: 'left',
-					},
-					{
 						to: '/docs/thanks',
 						label: '致敬',
 						position: 'left'
+					},
+					{
+						href: '/docs/community',
+						label: '社区',
+						position: 'left',
 					},
 					{
 						href: 'https://gitee.com/pulanos/pangu-framework',
