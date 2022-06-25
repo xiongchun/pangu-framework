@@ -41,14 +41,10 @@ static {
 
 ## 查看日志输出效果
 我们在一个 Dubbo 服务消费者和一个 Dubbo 服务生产者应用中分别做如上配置后，就可以在每个调用链的日志里看到 TLog 自定嵌入的 TraceId 标签值 `10812814178142336`。如下所示。
-```
+
+```jsx
 消费端：
 2022-06-23 14:40:50 INFO 47050 - [nio-8080-exec-1] c.x.DemoController : < 0 >< 10812814178142336 > call case1...
 生产端：
 2022-06-23 14:40:50 INFO 46395 - [:20881-thread-4] c.x.UserServiceImpl : < 0.1 >< 10812814178142336 > 参数userIn：UserInDto(name=null, userType=1)
-
-
-
-
-
-
+```
