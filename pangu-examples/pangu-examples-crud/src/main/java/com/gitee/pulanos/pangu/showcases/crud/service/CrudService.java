@@ -59,6 +59,7 @@ public class CrudService {
         userEntity.setName("XC").setAge(18).setUserType("1");
         int row = userMapper.insert(userEntity);
         log.info("成功插入{}条数据。{}", row, userEntity);
+
         return row;
     }
 

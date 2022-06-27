@@ -21,8 +21,11 @@ import com.gitee.pulanos.pangu.framework.common.Constants;
 import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import sun.lwawt.macosx.CSystemTray;
 
 import java.io.Serializable;
+
+import static java.awt.SystemColor.info;
 
 /**
  * 请求响应结果对象
