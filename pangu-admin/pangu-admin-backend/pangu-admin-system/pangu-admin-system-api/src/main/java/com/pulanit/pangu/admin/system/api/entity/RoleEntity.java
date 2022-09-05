@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-09-02 11:50:39
+ * @date 2022-09-05 22:37:03
  */
 @Data
 @Accessors(chain = true)
@@ -25,7 +25,7 @@ public class RoleEntity implements Serializable {
     *  流水号
     */
    @TableId(value = "id", type = IdType.AUTO)
-   private Integer id;
+   private Long id;
 
    /**
     * 角色名称
@@ -34,10 +34,16 @@ public class RoleEntity implements Serializable {
    private String name;
 
    /**
-    * 是否启用
+    * 角色标识
     */
-   @TableField(value = "enabled")
-   private String enabled;
+   @TableField(value = "key")
+   private String key;
+
+   /**
+    * 状态
+    */
+   @TableField(value = "status")
+   private String status;
 
    /**
     * 角色类型
@@ -46,10 +52,10 @@ public class RoleEntity implements Serializable {
    private String type;
 
    /**
-    * 扩展字段(JSON)
+    * 业务扩展码
     */
-   @TableField(value = "ext")
-   private String ext;
+   @TableField(value = "biz_code")
+   private String bizCode;
 
    /**
     * 创建时间
@@ -76,5 +82,17 @@ public class RoleEntity implements Serializable {
     */
    @TableField(value = "modified_by")
    private String modifiedBy;
+
+   /**
+    * remark
+    */
+   @TableField(value = "remark")
+   private String remark;
+
+   /**
+    * 逻辑删除标志
+    */
+   @TableField(value = "deleted")
+   private Integer deleted;
 
 }

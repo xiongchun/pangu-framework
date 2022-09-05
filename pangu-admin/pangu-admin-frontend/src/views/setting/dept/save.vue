@@ -23,7 +23,7 @@
 				</el-input-number>
 			</el-form-item>
 			<el-form-item label="扩展码" prop="bizCode">
-				<el-input v-model="form.bizCode" placeholder="请输入扩展码" clearable></el-input>
+				<el-input v-model="form.bizCode" placeholder="请输入业务扩展码" clearable></el-input>
 			</el-form-item>
 			<el-form-item label="备注" prop="remark">
 				<el-input v-model="form.remark" placeholder="请输入备注" clearable type="textarea"></el-input>

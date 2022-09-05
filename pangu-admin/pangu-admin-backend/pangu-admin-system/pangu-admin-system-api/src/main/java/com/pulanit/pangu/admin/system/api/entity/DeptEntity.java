@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-09-02 11:50:39
+ * @date 2022-09-05 22:37:03
  */
 @Data
 @Accessors(chain = true)
@@ -52,7 +52,7 @@ public class DeptEntity implements Serializable {
    private String type;
 
    /**
-    * 扩展码
+    * 业务扩展码
     */
    @TableField(value = "biz_code")
    private String bizCode;
