@@ -51,7 +51,7 @@
         <!--TODO 0.2.10会出现获取不到配置和监听不到配置变更的问题，等待确认 -->
         <nacos-config-spring-boot-starter.version>0.2.7</nacos-config-spring-boot-starter.version>
         <nacos-config-spring-boot-actuator.version>0.2.7</nacos-config-spring-boot-actuator.version>
-        <mybatis-plus.version>3.4.3.2</mybatis-plus.version>
+        <mybatis-plus.version>3.5.2</mybatis-plus.version>
         <lock4j.version>2.2.1</lock4j.version>
         <shenyu.version>2.4.1</shenyu.version>
         <seata.version>1.4.2</seata.version>

@@ -4,23 +4,45 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.gitee.pulanos.pangu</groupId>
-        <artifactId>pangu-parent</artifactId>
-        <version>5.2.0</version>
-        <relativePath/>
-    </parent>
-
     <groupId>com.gitee.pulanos.pangu</groupId>
     <artifactId>pangu-examples-dubbo-api</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <lombok.version>1.18.20</lombok.version>
+        <mybatis-plus.version>3.5.2</mybatis-plus.version>
+        <jackson-annotations.version>2.10.2</jackson-annotations.version>
+        <jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <pangu-generator-maven-plugin>5.2.0</pangu-generator-maven-plugin>
+    </properties>
+
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-annotation</artifactId>
             <version>${mybatis-plus.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-annotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation-api.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -39,7 +61,7 @@
             <plugin>
                 <groupId>com.gitee.pulanos.pangu</groupId>
                 <artifactId>pangu-generator-maven-plugin</artifactId>
-                <version>5.2.0</version>
+                <version>${pangu-generator-maven-plugin}</version>
                 <configuration>
                     <url>jdbc:mysql://127.0.0.1:3306/pangu-examples</url>
                     <user>root</user>

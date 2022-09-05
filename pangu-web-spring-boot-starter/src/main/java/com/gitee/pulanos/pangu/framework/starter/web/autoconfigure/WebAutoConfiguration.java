@@ -21,14 +21,10 @@ import com.gitee.pulanos.pangu.framework.common.Constants;
 import com.gitee.pulanos.pangu.framework.starter.web.interceptor.CrossOriginInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.WebApplicationType;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import java.util.Objects;
 
 /**
  * WebAutoConfiguration

@@ -40,6 +40,7 @@
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <hutool-all.version>5.7.11</hutool-all.version>
         <lombok.version>1.18.20</lombok.version>
+        <mybatis-plus.version>3.5.2</mybatis-plus.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.3.0</maven-javadoc-plugin.version>
@@ -69,6 +70,12 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool-all.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>${mybatis-plus.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

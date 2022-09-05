@@ -1,0 +1,90 @@
+{
+  "menu": [
+    {
+      "name": "home",
+      "path": "/home",
+      "meta": {
+        "title": "首页",
+        "icon": "el-icon-House",
+        "type": "menu"
+      },
+      "children": [
+        {
+          "name": "dashboard",
+          "path": "/dashboard",
+          "meta": {
+            "title": "控制台",
+            "icon": "el-icon-menu",
+            "affix": true
+          },
+          "component": "home"
+        },
+        {
+          "name": "userCenter",
+          "path": "/usercenter",
+          "meta": {
+            "title": "个人信息",
+            "icon": "el-icon-user-filled"
+          },
+          "component": "userCenter"
+        }
+      ]
+    },
+    {
+      "name": "setting",
+      "path": "/system",
+      "meta": {
+        "title": "系统",
+        "icon": "el-icon-Setting",
+        "type": "menu"
+      },
+      "children": [
+        {
+          "path": "/system/dept",
+          "name": "dept",
+          "meta": {
+            "title": "部门管理",
+            "icon": "sc-icon-organization",
+            "type": "menu"
+          },
+          "component": "setting/dept"
+        },
+        {
+          "path": "/system/role",
+          "name": "role",
+          "meta": {
+            "title": "角色管理",
+            "icon": "el-icon-position",
+            "type": "menu"
+          },
+          "component": "setting/role"
+        },
+        {
+          "path": "/system/user",
+          "name": "user",
+          "meta": {
+            "title": "用户管理",
+            "icon": "el-icon-user",
+            "type": "menu"
+          },
+          "component": "setting/user"
+        },
+        {
+          "path": "/system/menu",
+          "name": "menu",
+          "meta": {
+            "title": "菜单管理",
+            "icon": "el-icon-copyDocument",
+            "type": "menu"
+          },
+          "component": "setting/menu"
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "list.add",
+    "list.edit",
+    "list.delete"
+  ]
+}

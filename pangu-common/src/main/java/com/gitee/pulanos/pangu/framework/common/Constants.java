@@ -32,31 +32,19 @@ public final class Constants {
         /**
          * 接口调用成功，调用结果请参考具体API对应的业务返回参数。
          */
-        public final static String SUCCESS = "10000";
-        /**
-         * 服务暂不可用（网关异常错误）
-         */
-        public final static String ERROR_GATEWAY = "40000";
+        public final static Integer SUCCESS = 200;
         /**
          * 服务暂不可用（业务服务异常错误）
          */
-        public final static String ERROR_SERVICE = "40001";
+        public final static Integer ERROR_SERVICE = 5001;
         /**
-         * 授权错误或权限不足
+         * 未授权
          */
-        public final static String FAIL_AUTH = "40002";
-        /**
-         * 缺少必选参数
-         */
-        public final static String FAIL_MISSING_ARG = "40002";
-        /**
-         * 非法的参数
-         */
-        public final static String FAIL_INVALID_ARG = "40003";
+        public final static Integer FAIL_AUTH = 5002;
         /**
          * 接口限流（调用次数或调用频率超限）
          */
-        public final static String FAIL_CALL_LIMITED = "40003";
+        public final static Integer FAIL_CALL_LIMITED = 5003;
 
     }
 
