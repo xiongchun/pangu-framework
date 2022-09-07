@@ -5,6 +5,7 @@ import cn.hutool.core.util.CharsetUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

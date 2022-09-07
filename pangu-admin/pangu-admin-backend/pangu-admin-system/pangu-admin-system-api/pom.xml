@@ -17,6 +17,7 @@
         <jackson-annotations.version>2.10.2</jackson-annotations.version>
         <jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
         <hutool-core.version>5.8.3</hutool-core.version>
+        <pangu.version>5.2.0</pangu.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     </properties>
 
@@ -49,6 +50,12 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
             <version>${hutool-core.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gitee.pulanos.pangu</groupId>
+            <artifactId>pangu-common</artifactId>
+            <version>${pangu.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
