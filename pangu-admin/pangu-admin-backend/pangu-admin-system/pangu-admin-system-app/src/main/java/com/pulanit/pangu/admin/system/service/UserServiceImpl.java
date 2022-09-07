@@ -18,12 +18,17 @@
 package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.lang.UUID;
+import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
+import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.LoginIn;
 import com.pulanit.pangu.admin.system.api.param.LoginOut;
+import com.pulanit.pangu.admin.system.api.param.UserIn;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service(version = "1.0.0", group = "pangu-admin-system-app")
@@ -38,5 +43,30 @@ public class UserServiceImpl implements UserService {
         userDto.setDashboard("1");
         loginOut.setUserInfo(userDto);
         return loginOut;
+    }
+
+    @Override
+    public PageResult<UserEntity> list(UserIn userIn) {
+        return null;
+    }
+
+    @Override
+    public void add(UserEntity userEntity) {
+
+    }
+
+    @Override
+    public void update(UserEntity userEntity) {
+
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
+
+    @Override
+    public void batchDelete(List<Long> ids) {
+
     }
 }

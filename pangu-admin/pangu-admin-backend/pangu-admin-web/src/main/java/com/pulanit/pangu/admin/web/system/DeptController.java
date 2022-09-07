@@ -1,20 +1,15 @@
 package com.pulanit.pangu.admin.web.system;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.core.lang.Console;
-import cn.hutool.core.lang.Validator;
 import cn.hutool.core.lang.tree.Tree;
-import cn.hutool.core.util.ObjectUtil;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
-import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
-import com.pulanit.pangu.admin.system.api.param.ListDeptIn;
+import com.pulanit.pangu.admin.system.api.param.DeptIn;
 import com.pulanit.pangu.admin.system.api.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -37,9 +32,9 @@ public class DeptController {
      */
     @GetMapping("/list")
     public Result<List<Tree<Integer>>> list(@RequestParam(required = false) String name) {
-        ListDeptIn listDeptIn = new ListDeptIn();
-        listDeptIn.setName(name);
-        List<Tree<Integer>> treeNodes = deptService.list(listDeptIn);
+        DeptIn deptIn = new DeptIn();
+        deptIn.setName(name);
+        List<Tree<Integer>> treeNodes = deptService.list(deptIn);
         return Result.success(treeNodes);
     }
 

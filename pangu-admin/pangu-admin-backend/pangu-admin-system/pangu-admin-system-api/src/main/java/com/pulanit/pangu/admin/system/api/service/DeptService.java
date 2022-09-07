@@ -2,7 +2,7 @@ package com.pulanit.pangu.admin.system.api.service;
 
 import cn.hutool.core.lang.tree.Tree;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
-import com.pulanit.pangu.admin.system.api.param.ListDeptIn;
+import com.pulanit.pangu.admin.system.api.param.DeptIn;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ public interface DeptService {
 
     /**
      * 查询列表信息
-     * @param listDeptIn
+     * @param deptIn
      * @return
      */
-    List<Tree<Integer>> list(ListDeptIn listDeptIn);
+    List<Tree<Integer>> list(DeptIn deptIn);
 
     /**
      * 新增
@@ -34,14 +34,14 @@ public interface DeptService {
 
     /**
      * 删除
-     * @param deptId
+     * @param id
      */
-    void delete(Long deptId);
+    void delete(Long id);
 
     /**
      * 批量删除
-     * @param deptIds
+     * @param ids
      */
-    void batchDelete(List<Long> deptIds);
+    void batchDelete(List<Long> ids);
 
 }

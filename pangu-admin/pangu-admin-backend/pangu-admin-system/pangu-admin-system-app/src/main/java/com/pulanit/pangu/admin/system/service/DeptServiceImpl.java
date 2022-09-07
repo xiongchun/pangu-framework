@@ -1,25 +1,17 @@
 package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.lang.Assert;
-import cn.hutool.core.lang.Console;
-import cn.hutool.core.lang.Validator;
-import cn.hutool.core.lang.tree.*;
-import cn.hutool.core.thread.ThreadUtil;
+import cn.hutool.core.lang.tree.Tree;
+import cn.hutool.core.lang.tree.TreeNodeConfig;
+import cn.hutool.core.lang.tree.TreeUtil;
 import cn.hutool.core.util.ObjectUtil;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.nacos.client.utils.JSONUtils;
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.google.common.collect.Lists;
-import com.pulanit.pangu.admin.system.api.Constants;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
-import com.pulanit.pangu.admin.system.api.param.ListDeptIn;
-import com.pulanit.pangu.admin.system.api.param.ListDeptOut;
+import com.pulanit.pangu.admin.system.api.param.DeptIn;
 import com.pulanit.pangu.admin.system.api.service.DeptService;
 import com.pulanit.pangu.admin.system.dao.mapper.DeptMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +19,9 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -40,12 +34,12 @@ public class DeptServiceImpl implements DeptService {
     private static final Long ROOT_ID = 0l;
 
     @Override
-    public List<Tree<Integer>> list(ListDeptIn listDeptIn) {
+    public List<Tree<Integer>> list(DeptIn deptIn) {
         List<Tree<Integer>> treeNodes = null;
-        if (ObjectUtil.isEmpty(listDeptIn.getName())){
+        if (ObjectUtil.isEmpty(deptIn.getName())){
             treeNodes = listAll();
         }else {
-            treeNodes = listByName(listDeptIn.getName());
+            treeNodes = listByName(deptIn.getName());
         }
         return treeNodes == null ? Collections.emptyList() : treeNodes;
     }
@@ -105,21 +99,21 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public void delete(Long deptId) {
-        deptMapper.deleteById(deptId);
+    public void delete(Long id) {
+        deptMapper.deleteById(id);
     }
 
 
     @Transactional
     @Override
-    public void batchDelete(List<Long> deptIds) {
+    public void batchDelete(List<Long> ids) {
         List<Long> deleteIds = Lists.newArrayList();
-        deleteIds.addAll(deptIds);
-        while (CollUtil.isNotEmpty(deptIds)){
+        deleteIds.addAll(ids);
+        while (CollUtil.isNotEmpty(ids)){
             QueryWrapper queryWrapper = Wrappers.query();
-            queryWrapper.select("id").in("parent_id", deptIds);
-            deptIds = (List<Long>) deptMapper.selectObjs(queryWrapper);
-            deleteIds.addAll(deptIds);
+            queryWrapper.select("id").in("parent_id", ids);
+            ids = (List<Long>) deptMapper.selectObjs(queryWrapper);
+            deleteIds.addAll(ids);
         }
         deleteIds.stream().distinct().collect(Collectors.toList());
         deptMapper.deleteBatchIds(deleteIds);
