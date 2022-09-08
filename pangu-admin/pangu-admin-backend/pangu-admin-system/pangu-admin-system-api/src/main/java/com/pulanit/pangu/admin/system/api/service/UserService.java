@@ -1,6 +1,6 @@
 package com.pulanit.pangu.admin.system.api.service;
 
-import com.gitee.pulanos.pangu.framework.common.model.PageResult;
+import com.gitee.pulanos.pangu.framework.common.model.MyPage;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.LoginIn;
 import com.pulanit.pangu.admin.system.api.param.LoginOut;
@@ -21,7 +21,7 @@ public interface UserService {
      * @param userIn
      * @return
      */
-    PageResult<UserEntity> list(UserIn userIn);
+    MyPage<UserEntity> list(UserIn userIn);
 
     /**
      * 新增
