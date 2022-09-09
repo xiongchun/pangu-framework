@@ -1,10 +1,8 @@
 package com.pulanit.pangu.admin.system.api.param;
 
-import com.gitee.pulanos.pangu.framework.common.model.MyPage;
+import com.gitee.pulanos.pangu.framework.common.model.Page;
 import lombok.Data;
 import lombok.experimental.Accessors;
-
-import java.io.Serializable;
 
 /**
  * 角色查询入参
@@ -12,9 +10,7 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
-public class RoleIn extends MyPage implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class RoleIn extends Page {
 
     /**
      * 角色名称

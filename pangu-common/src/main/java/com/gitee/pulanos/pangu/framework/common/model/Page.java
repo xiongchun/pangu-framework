@@ -22,5 +22,4 @@ public class Page implements Serializable {
 
     private long pageSize;
 
-
 }

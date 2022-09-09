@@ -8,7 +8,7 @@
 			</div>
 			<div class="right-panel">
 				<div class="right-panel-search">
-					<el-input v-model="search.keyword" placeholder="角色名称" clearable></el-input>
+					<el-input v-model="search.name" placeholder="角色名称" clearable></el-input>
 					<el-button type="primary" icon="el-icon-search" @click="upsearch"></el-button>
 				</div>
 			</div>
@@ -17,20 +17,26 @@
 			<scTable ref="table" :apiObj="apiObj" row-key="id" @selection-change="selectionChange" stripe>
 				<el-table-column type="selection" width="50"></el-table-column>
 				<el-table-column label="#" type="index" width="50"></el-table-column>
-				<el-table-column label="角色名称" prop="label" width="150"></el-table-column>
-				<el-table-column label="别名" prop="alias" width="200"></el-table-column>
-				<el-table-column label="排序" prop="sort" width="80"></el-table-column>
-				<el-table-column label="状态" prop="status" width="80">
+				<el-table-column label="角色名称" prop="name" width="150"></el-table-column>
+				<el-table-column label="角色标识" prop="key" width="200"></el-table-column>
+				<el-table-column label="角色状态" prop="status" width="150">
 					<template #default="scope">
-						<el-switch v-model="scope.row.status" @change="changeSwitch($event, scope.row)" :loading="scope.row.$switch_status" active-value="1" inactive-value="0"></el-switch>
+						<el-tag v-if="scope.row.status==1" type="success">启用</el-tag>
+						<el-tag v-if="scope.row.status==9" type="danger">停用</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column label="创建时间" prop="date" width="180"></el-table-column>
-				<el-table-column label="备注" prop="remark" min-width="150"></el-table-column>
+				<el-table-column label="角色类型" prop="type" width="150">
+					<template #default="scope">
+						<el-tag v-if="scope.row.type==1" type="info">缺省</el-tag>
+					</template>
+				</el-table-column>
+				<el-table-column label="扩展码" prop="bizCode" width="150"></el-table-column>
+				<el-table-column label="创建时间" prop="gmtCreated" width="180"></el-table-column>
+				<el-table-column label="备注" prop="remark" width="200"></el-table-column>
 				<el-table-column label="操作" fixed="right" align="right" width="170">
 					<template #default="scope">
 						<el-button-group>
-							<el-button text type="primary" size="small" @click="table_show(scope.row, scope.$index)">查看</el-button>
+							<!-- <el-button text type="primary" size="small" @click="table_show(scope.row, scope.$index)">查看</el-button> -->
 							<el-button text type="primary" size="small" @click="table_edit(scope.row, scope.$index)">编辑</el-button>
 							<el-popconfirm title="确定删除吗？" @confirm="table_del(scope.row, scope.$index)">
 								<template #reference>
@@ -70,7 +76,7 @@
 				apiObj: this.$API.system.role.list,
 				selection: [],
 				search: {
-					keyword: null
+					name: null
 				}
 			}
 		},

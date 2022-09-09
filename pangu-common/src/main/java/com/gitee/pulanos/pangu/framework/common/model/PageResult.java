@@ -33,8 +33,4 @@ public class PageResult<T> implements Serializable {
 
     private Map<String, String> summary = Collections.EMPTY_MAP;
 
-    public static <T> PageResult<T> of(Page<T> page) {
-        return new PageResult<T>().setPage(page.getCurrent()).setPageSize(page.getSize()).setTotal(page.getTotal()).setRows(page.getRecords());
-    }
-
 }

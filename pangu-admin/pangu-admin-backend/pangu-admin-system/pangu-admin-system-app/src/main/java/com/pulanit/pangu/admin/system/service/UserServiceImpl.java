@@ -18,7 +18,7 @@
 package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.lang.UUID;
-import com.gitee.pulanos.pangu.framework.common.model.MyPage;
+import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.LoginIn;
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public MyPage<UserEntity> list(UserIn userIn) {
+    public PageResult<UserEntity> list(UserIn userIn) {
         return null;
     }
 
