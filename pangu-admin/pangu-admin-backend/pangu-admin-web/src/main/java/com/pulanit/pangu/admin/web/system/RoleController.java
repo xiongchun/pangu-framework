@@ -1,6 +1,7 @@
 package com.pulanit.pangu.admin.web.system;
 
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.lang.Console;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
@@ -31,6 +32,7 @@ public class RoleController {
      */
     @GetMapping("/list")
     public Result<PageResult<RoleEntity>> list(RoleIn roleIn) {
+        Console.log(roleIn);
         PageResult<RoleEntity> pageResult = roleService.list(roleIn);
         return Result.success(pageResult);
     }
@@ -56,7 +58,7 @@ public class RoleController {
      */
     @PostMapping("/update")
     public Result<Void> update(@RequestBody RoleEntity roleEntity) {
-        Assert.notNull(roleEntity.getId(), "部门 ID 不能为空");
+        Assert.notNull(roleEntity.getId(), "角色 ID 不能为空");
         roleService.update(roleEntity);
         return Result.success();
     }
@@ -86,6 +88,17 @@ public class RoleController {
         Assert.notEmpty(ids, "角色 ID 不能为空");
         roleService.batchDelete(ids);
         return Result.success();
+    }
+
+    /**
+     * 校验角色标识字段
+     *
+     * @return
+     */
+    @GetMapping("/validateRoleKey")
+    public Result<Long> validateRoleKey(@RequestParam  String roleKey, @RequestParam  Long id) {
+        long cnt = roleService.validateRoleKey(roleKey, id);
+        return Result.success(cnt);
     }
 
 }

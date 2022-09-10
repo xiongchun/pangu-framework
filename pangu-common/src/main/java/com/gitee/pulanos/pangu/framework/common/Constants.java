@@ -32,19 +32,24 @@ public final class Constants {
         /**
          * 接口调用成功，调用结果请参考具体API对应的业务返回参数。
          */
-        public final static Integer SUCCESS = 200;
+        public final static int SUCCESS = 200;
         /**
          * 服务暂不可用（业务服务异常错误）
          */
-        public final static Integer ERROR_SERVICE = 5001;
+        public final static int ERROR_SERVICE = 5000;
         /**
          * 未授权
          */
-        public final static Integer FAIL_AUTH = 5002;
+        public final static int FAIL_AUTH = 5001;
         /**
          * 接口限流（调用次数或调用频率超限）
          */
-        public final static Integer FAIL_CALL_LIMITED = 5003;
+        public final static int FAIL_CALL_LIMITED = 5002;
+
+        /**
+         * 业务失败
+         */
+        public final static int BIZ_FAILED = 4000;
 
     }
 

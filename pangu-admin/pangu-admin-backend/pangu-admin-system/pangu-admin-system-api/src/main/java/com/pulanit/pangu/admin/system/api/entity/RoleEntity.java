@@ -36,8 +36,8 @@ public class RoleEntity implements Serializable {
    /**
     * 角色标识
     */
-   @TableField(value = "key")
-   private String key;
+   @TableField(value = "role_key")
+   private String roleKey;
 
    /**
     * 状态

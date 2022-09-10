@@ -47,7 +47,7 @@ public class Result<T> implements Serializable {
      * 返回码描述（选填项）
      * <p>示例值：接口调用成功</p>
      */
-    private String msg;
+    private String message;
 
     /**
      * 返回对象（选填项）
@@ -61,7 +61,7 @@ public class Result<T> implements Serializable {
      * @return
      */
     public static <T> Result<T> success() {
-        return new Result<T>().setCode(Constants.Code.SUCCESS).setMsg("SUCCESS");
+        return new Result<T>().setCode(Constants.Code.SUCCESS).setMessage("SUCCESS");
     }
 
     /**
@@ -72,7 +72,7 @@ public class Result<T> implements Serializable {
      * @return
      */
     public static <T> Result<T> success(T data) {
-        return new Result<T>().setCode(Constants.Code.SUCCESS).setMsg("SUCCESS").setData(data);
+        return new Result<T>().setCode(Constants.Code.SUCCESS).setMessage("SUCCESS").setData(data);
     }
 
     /**
@@ -82,8 +82,8 @@ public class Result<T> implements Serializable {
      * @param <T>
      * @return
      */
-    public static <T> Result<T> fail(Integer code, String msg) {
-        return new Result<T>().setCode(code).setMsg(msg);
+    public static <T> Result<T> fail(Integer code, String message) {
+        return new Result<T>().setCode(code).setMessage(message);
     }
 
     /**
@@ -94,7 +94,18 @@ public class Result<T> implements Serializable {
      * @return
      */
     public static <T> Result<T> fail(Integer code) {
-        return new Result<T>().setCode(code).setMsg("FAILED");
+        return new Result<T>().setCode(code).setMessage("FAILED");
+    }
+
+    /**
+     * 接口调用失败（快捷模式）
+     *
+     * @param message
+     * @param <T>
+     * @return
+     */
+    public static <T> Result<T> fail(String message) {
+        return new Result<T>().setCode(Constants.Code.BIZ_FAILED).setMessage(message);
     }
 
     /**

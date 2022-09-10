@@ -1,12 +1,11 @@
 <template>
 	<el-dialog :title="titleMap[mode]" v-model="visible" :width="500" destroy-on-close @closed="$emit('closed')">
-		<el-form :model="form" :rules="rules" :disabled="mode == 'show'" ref="dialogForm" label-width="100px"
-			label-position="left">
+		<el-form :model="form" :rules="rules" :disabled="mode == 'show'" ref="dialogForm" label-width="80px">
 			<el-form-item label="角色名称" prop="name">
 				<el-input v-model="form.name" clearable></el-input>
 			</el-form-item>
-			<el-form-item label="角色标识" prop="key">
-				<el-input v-model="form.key" clearable></el-input>
+			<el-form-item label="角色标识" prop="roleKey">
+				<el-input v-model="form.roleKey" clearable></el-input>
 			</el-form-item>
 			<el-form-item label="角色类型" prop="type">
 				<el-select v-model="form.type" class="m-2" placeholder="Select" style="width: 100%;">
@@ -33,6 +32,7 @@
 </template>
 
 <script>
+
 export default {
 	emits: ['success', 'closed'],
 	data() {
@@ -49,7 +49,7 @@ export default {
 			form: {
 				id: "",
 				name: "",
-				key: "",
+				roleKey: "",
 				status: '1',
 				type: '1',
 				bizCode: "",
@@ -66,8 +66,21 @@ export default {
 				name: [
 					{ required: true, message: '角色名称不能为空' }
 				],
-				key: [
-					{ required: true, message: '角色标识不能为空' }
+				roleKey: [
+					{ required: true, message: '角色标识不能为空' },
+					{
+						required: true,
+						validator: (rule, value, callback) => {
+							var params = { roleKey: value, id: this.form.id }
+							this.$API.system.role.validateRoleKey.get(params).then(res => {
+								if (res.data >= 1 ) {
+								   return callback(new Error('角色标识 ' + value + ' 已存在, 请修改'))
+								}
+								callback()
+							})
+						},
+						trigger: 'blur'
+					}
 				]
 			},
 			typeItems: [{
@@ -77,7 +90,7 @@ export default {
 			statusItems: [{
 				value: '1',
 				label: '启用',
-			},{
+			}, {
 				value: '9',
 				label: '停用',
 			}],
@@ -98,11 +111,16 @@ export default {
 			this.$refs.dialogForm.validate(async (valid) => {
 				if (valid) {
 					this.isSaveing = true;
-					var res = await this.$API.demo.post.post(this.form);
+					var res;
+					if (this.mode == 'add') {
+						res = await this.$API.system.role.add.post(this.form);
+					} else if (this.mode == 'edit') {
+						res = await this.$API.system.role.update.post(this.form);
+					}
 					this.isSaveing = false;
 					if (res.code == 200) {
-						this.$emit('success', this.form, this.mode)
 						this.visible = false;
+						this.$emit('success', this.form, this.mode)
 						this.$message.success("操作成功")
 					} else {
 						this.$alert(res.message, "提示", { type: 'error' })
@@ -111,16 +129,8 @@ export default {
 			})
 		},
 		//表单注入数据
-		setData(data) {
-			this.form.id = data.id
-			this.form.label = data.label
-			this.form.alias = data.alias
-			this.form.sort = data.sort
-			this.form.status = data.status
-			this.form.remark = data.remark
-
-			//可以和上面一样单个注入，也可以像下面一样直接合并进去
-			//Object.assign(this.form, data)
+		setData(row) {
+			Object.assign(this.form, row)
 		}
 	}
 }

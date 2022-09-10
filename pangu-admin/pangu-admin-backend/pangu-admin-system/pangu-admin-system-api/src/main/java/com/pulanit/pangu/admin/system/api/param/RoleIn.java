@@ -2,6 +2,8 @@ package com.pulanit.pangu.admin.system.api.param;
 
 import com.gitee.pulanos.pangu.framework.common.model.Page;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -10,6 +12,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class RoleIn extends Page {
 
     /**

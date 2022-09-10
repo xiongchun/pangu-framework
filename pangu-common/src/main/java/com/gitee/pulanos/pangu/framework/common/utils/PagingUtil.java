@@ -1,6 +1,5 @@
 package com.gitee.pulanos.pangu.framework.common.utils;
 
-import cn.hutool.core.util.ReflectUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 
@@ -16,10 +15,8 @@ public class PagingUtil {
         return new Page(page, pageSize);
     }
 
-    public static Page createPage(Object obj){
-        long page = Long.valueOf(ReflectUtil.getFieldValue(obj, "page").toString());
-        long pageSize = Long.valueOf(ReflectUtil.getFieldValue(obj, "pageSize").toString());
-        return createPage(page, pageSize);
+    public static Page createPage(com.gitee.pulanos.pangu.framework.common.model.Page page){
+        return createPage(page.getPage(), page.getPageSize());
     }
 
     public static PageResult getPageResult(Page page) {

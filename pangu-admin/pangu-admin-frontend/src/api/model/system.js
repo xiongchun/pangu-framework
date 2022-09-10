@@ -55,6 +55,40 @@ export default {
 			get: async function (params) {
 				return await http.get(this.url, params);
 			}
+		},
+		add: {
+			url: `${config.API_URL}/system/role/add`,
+			name: "新增角色",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
+		},
+		update: {
+			url: `${config.API_URL}/system/role/update`,
+			name: "修改角色",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
+		},
+		delete: {
+			url: `${config.API_URL}/system/role/delete`,
+			name: "删除角色",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
+		},
+		batchDelete: {
+			url: `${config.API_URL}/system/role/batchDelete`,
+			name: "批量删除角色",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
+		},
+		validateRoleKey: {
+			url: `${config.API_URL}/system/role/validateRoleKey`,
+			get: async function (params) {
+				return await http.get(this.url, params);
+			}
 		}
 	},
 	dept: {

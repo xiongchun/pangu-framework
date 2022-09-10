@@ -44,4 +44,13 @@ public interface RoleService {
      */
     void batchDelete(List<Long> ids);
 
+    /**
+     * 校验角色标识字段
+     *
+     * @param roleKey
+     * @param id
+     * @return
+     */
+    long validateRoleKey(String roleKey, Long id);
+
 }
