@@ -24,6 +24,7 @@ bin/
 .vscode/
 
 # temp ignore
+logs/
 *.log
 *.cache
 *.diff
