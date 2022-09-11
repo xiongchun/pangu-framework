@@ -32,7 +32,6 @@ public class RoleController {
      */
     @GetMapping("/list")
     public Result<PageResult<RoleEntity>> list(RoleIn roleIn) {
-        Console.log(roleIn);
         PageResult<RoleEntity> pageResult = roleService.list(roleIn);
         return Result.success(pageResult);
     }
