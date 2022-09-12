@@ -27,7 +27,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
-import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.LoginIn;
 import com.pulanit.pangu.admin.system.api.param.LoginOut;

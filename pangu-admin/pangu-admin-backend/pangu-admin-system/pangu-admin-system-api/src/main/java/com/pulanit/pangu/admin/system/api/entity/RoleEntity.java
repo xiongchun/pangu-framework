@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Data
 @Accessors(chain = true)
 @TableName("role")
-public class RoleEntity implements Serializable {
+public class UserEntity implements Serializable {
 
    private static final long serialVersionUID=1L;
 

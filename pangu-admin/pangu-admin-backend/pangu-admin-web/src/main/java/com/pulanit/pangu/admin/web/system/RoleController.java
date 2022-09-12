@@ -1,7 +1,6 @@
 package com.pulanit.pangu.admin.web.system;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.core.lang.Console;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
