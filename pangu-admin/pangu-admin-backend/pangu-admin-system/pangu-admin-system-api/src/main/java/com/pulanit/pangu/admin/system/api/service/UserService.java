@@ -47,4 +47,11 @@ public interface UserService {
      */
     void batchDelete(List<Long> ids);
 
+    /**
+     * 校验登录账号
+     * @param account
+     * @return
+     */
+    long validateAccount(String account, Long id);
+
 }

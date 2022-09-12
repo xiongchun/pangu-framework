@@ -20,6 +20,7 @@ package com.pulanit.pangu.admin.system.service;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -87,5 +88,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public void batchDelete(List<Long> ids) {
         userMapper.deleteBatchIds(ids);
+    }
+
+    @Override
+    public long validateAccount(String account, Long id) {
+        long result = userMapper.selectCount(Wrappers.lambdaQuery(UserEntity.class).eq(UserEntity::getAccount, account));
+        if (ObjectUtil.isNotNull(id)){
+            UserEntity userEntity = userMapper.selectById(id);
+            if (StrUtil.equalsIgnoreCase(account, userEntity.getAccount())){
+                return 0;
+            }
+        }
+        return result;
     }
 }
