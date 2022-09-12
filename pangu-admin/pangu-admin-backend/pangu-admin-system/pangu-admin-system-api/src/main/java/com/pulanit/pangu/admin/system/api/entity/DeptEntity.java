@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-09-05 22:37:03
+ * @date 2022-09-12 14:34:31
  */
 @Data
 @Accessors(chain = true)
@@ -99,6 +99,6 @@ public class DeptEntity implements Serializable {
     * 逻辑删除标识
     */
    @TableField(value = "deleted")
-   private Integer deleted;
+   private Long deleted;
 
 }

@@ -9,7 +9,7 @@ import com.pulanit.pangu.admin.system.api.entity.MenuEntity;
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-09-05 22:37:03
+ * @date 2022-09-12 14:34:31
  */
 @Mapper
 public interface MenuMapper extends BaseMapper<MenuEntity> {

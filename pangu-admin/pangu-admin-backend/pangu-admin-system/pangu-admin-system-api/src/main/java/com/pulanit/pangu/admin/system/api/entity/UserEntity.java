@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-09-05 22:37:03
+ * @date 2022-09-12 14:34:31
  */
 @Data
 @Accessors(chain = true)
@@ -25,7 +25,7 @@ public class UserEntity implements Serializable {
     * 流水号
     */
    @TableId(value = "id", type = IdType.AUTO)
-   private Integer id;
+   private Long id;
 
    /**
     * 登录帐号
@@ -40,16 +40,16 @@ public class UserEntity implements Serializable {
    private String password;
 
    /**
-    * 登录手机号
-    */
-   @TableField(value = "mobile")
-   private String mobile;
-
-   /**
-    * 用户姓名
+    * 姓名
     */
    @TableField(value = "name")
    private String name;
+
+   /**
+    * 性别
+    */
+   @TableField(value = "sex")
+   private String sex;
 
    /**
     * 用户状态
@@ -66,20 +66,20 @@ public class UserEntity implements Serializable {
    /**
     * 所属部门
     */
-   @TableField(value = "org_id")
-   private Integer orgId;
+   @TableField(value = "dept_id")
+   private Long deptId;
 
    /**
-    * 扩展码
+    * 业务扩展码
     */
    @TableField(value = "biz_code")
    private String bizCode;
 
    /**
-    * 扩展JSON
+    * 头像URL
     */
-   @TableField(value = "ext")
-   private String ext;
+   @TableField(value = "avatar")
+   private String avatar;
 
    /**
     * 创建时间
@@ -106,5 +106,11 @@ public class UserEntity implements Serializable {
     */
    @TableField(value = "modified_by")
    private String modifiedBy;
+
+   /**
+    * 逻辑删除标识
+    */
+   @TableField(value = "deleted")
+   private Long deleted;
 
 }
