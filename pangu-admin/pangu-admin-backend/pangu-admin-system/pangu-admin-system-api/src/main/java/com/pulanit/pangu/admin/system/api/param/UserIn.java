@@ -1,6 +1,9 @@
 package com.pulanit.pangu.admin.system.api.param;
 
+import com.gitee.pulanos.pangu.framework.common.model.Page;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -11,7 +14,9 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
-public class UserIn implements Serializable {
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class UserIn extends Page {
 
     private static final long serialVersionUID = 1L;
 
