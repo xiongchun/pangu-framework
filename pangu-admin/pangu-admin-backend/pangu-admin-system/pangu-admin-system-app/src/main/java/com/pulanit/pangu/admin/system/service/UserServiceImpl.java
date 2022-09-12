@@ -75,16 +75,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(UserEntity userEntity) {
-
+        userEntity.setGmtModified(DateUtil.date());
+        userMapper.updateById(userEntity);
     }
 
     @Override
     public void delete(Long id) {
-
+        userMapper.deleteById(id);
     }
 
     @Override
     public void batchDelete(List<Long> ids) {
-
+        userMapper.deleteBatchIds(ids);
     }
 }
