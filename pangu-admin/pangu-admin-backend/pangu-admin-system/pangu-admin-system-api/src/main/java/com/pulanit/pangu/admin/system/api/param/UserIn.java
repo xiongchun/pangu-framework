@@ -21,7 +21,7 @@ public class UserIn extends Page {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 角色名称
+     * 用户名称
      */
     private String name;
 

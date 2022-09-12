@@ -17,22 +17,34 @@
 
 package com.pulanit.pangu.admin.system.service;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
+import cn.hutool.core.util.ObjectUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
+import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
+import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.LoginIn;
 import com.pulanit.pangu.admin.system.api.param.LoginOut;
 import com.pulanit.pangu.admin.system.api.param.UserIn;
 import com.pulanit.pangu.admin.system.api.service.UserService;
+import com.pulanit.pangu.admin.system.dao.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 @Slf4j
 @Service(version = "1.0.0", group = "pangu-admin-system-app")
 public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public LoginOut login(LoginIn inDto) {
@@ -47,12 +59,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageResult<UserEntity> list(UserIn userIn) {
-        return null;
+        Page<UserEntity> page = PagingUtil.createPage(userIn);
+        LambdaQueryWrapper<UserEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
+        lambdaQueryWrapper.like(ObjectUtil.isNotEmpty(userIn.getName()), UserEntity::getName, userIn.getName());
+        lambdaQueryWrapper.orderByDesc(UserEntity::getId);
+        userMapper.selectPage(page, lambdaQueryWrapper);
+        return PagingUtil.getPageResult(page);
     }
 
     @Override
     public void add(UserEntity userEntity) {
-
+        userEntity.setGmtCreated(DateUtil.date());
+        userMapper.insert(userEntity);
     }
 
     @Override
