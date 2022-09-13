@@ -30,17 +30,6 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 获取菜单资源
-     * @return
-     */
-    @GetMapping("/list")
-    public Result<JSONObject> list() {
-        String roles = ResourceUtil.readStr("json/user.json", CharsetUtil.CHARSET_UTF_8);
-        JSONObject jsonObject = JSON.parseObject(roles);
-        return Result.success(jsonObject);
-    }
-
-    /**
      * 获取用户
      * @return
      */
