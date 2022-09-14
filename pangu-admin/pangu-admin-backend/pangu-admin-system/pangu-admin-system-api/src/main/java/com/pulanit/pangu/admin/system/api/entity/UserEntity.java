@@ -46,6 +46,12 @@ public class UserEntity implements Serializable {
    private String name;
 
    /**
+    * 电子邮件
+    */
+   @TableField(value = "mail")
+   private String mail;
+
+   /**
     * 性别
     */
    @TableField(value = "sex")
@@ -106,6 +112,12 @@ public class UserEntity implements Serializable {
     */
    @TableField(value = "modified_by")
    private String modifiedBy;
+
+   /**
+    * remark
+    */
+   @TableField(value = "remark")
+   private String remark;
 
    /**
     * 逻辑删除标识

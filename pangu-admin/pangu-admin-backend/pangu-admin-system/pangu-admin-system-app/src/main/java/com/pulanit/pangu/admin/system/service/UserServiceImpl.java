@@ -91,10 +91,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public long validateAccount(String account, Long id) {
-        long result = userMapper.selectCount(Wrappers.lambdaQuery(UserEntity.class).eq(UserEntity::getAccount, account));
+        long result = userMapper.selectCount(Wrappers.lambdaQuery(UserEntity.class).eq(UserEntity::getUserName, account));
         if (ObjectUtil.isNotNull(id)){
             UserEntity userEntity = userMapper.selectById(id);
-            if (StrUtil.equalsIgnoreCase(account, userEntity.getAccount())){
+            if (StrUtil.equalsIgnoreCase(account, userEntity.getUserName())){
                 return 0;
             }
         }

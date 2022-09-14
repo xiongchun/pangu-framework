@@ -8,12 +8,12 @@
 				<el-input v-model="form.roleKey" clearable></el-input>
 			</el-form-item>
 			<el-form-item label="角色类型" prop="type">
-				<el-select v-model="form.type" class="m-2" placeholder="Select" style="width: 100%;">
+				<el-select v-model="form.type" class="m-2" placeholder="请选择角色类型" style="width: 100%;">
 					<el-option v-for="item in typeItems" :key="item.value" :label="item.label" :value="item.value" />
 				</el-select>
 			</el-form-item>
 			<el-form-item label="角色状态" prop="status">
-				<el-select v-model="form.status" class="m-2" placeholder="Select" style="width: 100%;">
+				<el-select v-model="form.status" class="m-2" placeholder="请选择角色状态" style="width: 100%;">
 					<el-option v-for="item in statusItems" :key="item.value" :label="item.label" :value="item.value" />
 				</el-select>
 			</el-form-item>

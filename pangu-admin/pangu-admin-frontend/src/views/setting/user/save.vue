@@ -1,13 +1,11 @@
 <template>
 	<el-dialog :title="titleMap[mode]" v-model="visible" :width="500" destroy-on-close @closed="$emit('closed')">
-		<el-form :model="form" :rules="rules" :disabled="mode=='show'" ref="dialogForm" label-width="80px" label-position="right">
+		<el-form :model="form" :rules="rules" :disabled="mode == 'show'" ref="dialogForm" label-width="80px"
+			label-position="right">
 			<el-form-item label="登录账号" prop="userName">
 				<el-input v-model="form.userName" placeholder="用于登录系统" clearable></el-input>
 			</el-form-item>
-			<el-form-item label="姓名" prop="name">
-				<el-input v-model="form.name" placeholder="请输入完整的真实姓名" clearable></el-input>
-			</el-form-item>
-			<template v-if="mode=='add'">
+			<template v-if="mode == 'add'">
 				<el-form-item label="登录密码" prop="password">
 					<el-input type="password" v-model="form.password" clearable show-password></el-input>
 				</el-form-item>
@@ -15,146 +13,162 @@
 					<el-input type="password" v-model="form.password2" clearable show-password></el-input>
 				</el-form-item>
 			</template>
-			<el-form-item label="所属部门" prop="dept">
-				<el-cascader v-model="form.dept" :options="depts" :props="deptsProps" clearable style="width: 100%;"></el-cascader>
+			<el-form-item label="姓名" prop="name">
+				<el-input v-model="form.name" placeholder="请输入真实姓名" clearable></el-input>
 			</el-form-item>
-			<el-form-item label="所属角色" prop="group">
-				<el-select v-model="form.group" multiple filterable style="width: 100%">
-					<el-option v-for="item in groups" :key="item.id" :label="item.label" :value="item.id"/>
+			<el-form-item label="所属部门" prop="deptIds">
+				<el-cascader v-model="form.deptIds" :options="depts" :props="deptsProps" placeholder="请选择所属部门" clearable style="width: 100%;">
+				</el-cascader>
+			</el-form-item>
+			<el-form-item label="所属角色" prop="roleIds">
+				<el-select v-model="form.roleIds" placeholder="请选择所属角色" multiple filterable style="width: 100%">
+					<el-option v-for="item in roles" :key="item.id" :label="item.name" :value="item.id" />
 				</el-select>
+			</el-form-item>
+			<el-form-item label="扩展码" prop="bizCode">
+				<el-input v-model="form.bizCode" placeholder="请输入业务扩展码" clearable></el-input>
+			</el-form-item>
+			<el-form-item label="备注" prop="remark">
+				<el-input v-model="form.remark" clearable type="textarea"></el-input>
 			</el-form-item>
 		</el-form>
 		<template #footer>
-			<el-button @click="visible=false" >取 消</el-button>
-			<el-button v-if="mode!='show'" type="primary" :loading="isSaveing" @click="submit()">保 存</el-button>
+			<el-button @click="visible = false">取 消</el-button>
+			<el-button v-if="mode != 'show'" type="primary" :loading="isSaveing" @click="submit()">保 存</el-button>
 		</template>
 	</el-dialog>
 </template>
 
 <script>
-	export default {
-		emits: ['success', 'closed'],
-		data() {
-			return {
-				mode: "add",
-				titleMap: {
-					add: '新增用户',
-					edit: '编辑用户',
-					show: '查看'
-				},
-				visible: false,
-				isSaveing: false,
-				//表单数据
-				form: {
-					id:"",
-					userName: "",
-					avatar: "",
-					name: "",
-					dept: "",
-					group: []
-				},
-				//验证规则
-				rules: {
-					userName: [
-						{required: true, message: '登录账号不能为空'}
-					],
-					name: [
-						{required: true, message: '真实姓名不能为空'}
-					],
-					password: [
-						{required: true, message: '登录密不能为空码'},
-						{validator: (rule, value, callback) => {
+export default {
+	emits: ['success', 'closed'],
+	data() {
+		return {
+			mode: "add",
+			titleMap: {
+				add: '新增用户',
+				edit: '编辑用户',
+				show: '查看'
+			},
+			visible: false,
+			isSaveing: false,
+			//表单数据
+			form: {
+				id: "",
+				userName: "",
+				avatar: "",
+				name: "",
+				deptIds: [],
+				roleIds: [],
+				bizCode: "",
+				remark: ""
+			},
+			//验证规则
+			rules: {
+				userName: [
+					{ required: true, message: '登录账号不能为空' }
+				],
+				name: [
+					{ required: true, message: '真实姓名不能为空' }
+				],
+				password: [
+					{ required: true, message: '登录密不能为空码' },
+					{
+						validator: (rule, value, callback) => {
 							if (this.form.password2 !== '') {
 								this.$refs.dialogForm.validateField('password2');
 							}
 							callback();
-						}}
-					],
-					password2: [
-						{required: true, message: '请再次输入密码'},
-						{validator: (rule, value, callback) => {
+						}
+					}
+				],
+				password2: [
+					{ required: true, message: '请再次输入密码' },
+					{
+						validator: (rule, value, callback) => {
 							if (value !== this.form.password) {
 								callback(new Error('两次输入密码不一致'));
-							}else{
+							} else {
 								callback();
 							}
-						}}
-					],
-					dept: [
-						{required: true, message: '所属部门不能为空'}
-					],
-					group: [
-						{required: true, message: '所属角色不能为空', trigger: 'change'}
-					]
-				},
-				//所需数据选项
-				groups: [],
-				groupsProps: {
-					value: "id",
-					multiple: true,
-					checkStrictly: true
-				},
-				depts: [],
-				deptsProps: {
-					value: "id",
-					label:"name",
-					checkStrictly: true
-				}
-			}
-		},
-		mounted() {
-			this.getGroup()
-			this.getDept()
-		},
-		methods: {
-			//显示
-			open(mode='add'){
-				this.mode = mode;
-				this.visible = true;
-				return this
-			},
-			//加载树数据
-			async getGroup(){
-				var res = await this.$API.system.role.list.get();
-				this.groups = res.data.rows;
-			},
-			async getDept(){
-				var res = await this.$API.system.dept.list.get();
-				this.depts = res.data;
-			},
-			//表单提交方法
-			submit(){
-				this.$refs.dialogForm.validate(async (valid) => {
-					if (valid) {
-						this.isSaveing = true;
-						var res = await this.$API.demo.post.post(this.form);
-						this.isSaveing = false;
-						if(res.code == 200){
-							this.$emit('success', this.form, this.mode)
-							this.visible = false;
-							this.$message.success("操作成功")
-						}else{
-							this.$alert(res.message, "提示", {type: 'error'})
 						}
-					}else{
-						return false;
 					}
-				})
+				],
+				deptIds: [
+					{ required: true, message: '所属部门不能为空' }
+				],
+				roleIds: [
+					{ required: true, message: '所属角色不能为空', trigger: 'change' }
+				]
 			},
-			//表单注入数据
-			setData(data){
-				this.form.id = data.id
-				this.form.userName = data.userName
-				this.form.avatar = data.avatar
-				this.form.name = data.name
-				this.form.group = data.group
-				this.form.dept = data.dept
-
-				//可以和上面一样单个注入，也可以像下面一样直接合并进去
-				//Object.assign(this.form, data)
+			//所需数据选项
+			roles: [],
+			rolesProps: {
+				value: "id",
+				multiple: true
+			},
+			depts: [],
+			deptsProps: {
+				value: "id",
+				label: "name",
+				checkStrictly: true
 			}
 		}
+	},
+	mounted() {
+		this.getRoles()
+		this.getDepts()
+	},
+	methods: {
+		//显示
+		open(mode = 'add') {
+			this.mode = mode;
+			this.visible = true;
+			return this
+		},
+		//加载角色数据
+		async getRoles() {
+			var reqData = { page: 1, pageSize: 9999 }
+			var res = await this.$API.system.role.list.get(reqData);
+			this.roles = res.data.rows;
+		},
+		async getDepts() {
+			var res = await this.$API.system.dept.list.get();
+			this.depts = res.data;
+		},
+		//表单提交方法
+		submit() {
+			this.$refs.dialogForm.validate(async (valid) => {
+				if (valid) {
+					this.isSaveing = true;
+					var res = await this.$API.demo.post.post(this.form);
+					this.isSaveing = false;
+					if (res.code == 200) {
+						this.$emit('success', this.form, this.mode)
+						this.visible = false;
+						this.$message.success("操作成功")
+					} else {
+						this.$alert(res.message, "提示", { type: 'error' })
+					}
+				} else {
+					return false;
+				}
+			})
+		},
+		//表单注入数据
+		setData(data) {
+			this.form.id = data.id
+			this.form.userName = data.userName
+			this.form.avatar = data.avatar
+			this.form.name = data.name
+			this.form.group = data.group
+			this.form.dept = data.dept
+
+			//可以和上面一样单个注入，也可以像下面一样直接合并进去
+			//Object.assign(this.form, data)
+		}
 	}
+}
 </script>
 
 <style>
