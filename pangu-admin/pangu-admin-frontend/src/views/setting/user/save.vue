@@ -25,6 +25,16 @@
 					<el-option v-for="item in roles" :key="item.id" :label="item.name" :value="item.id" />
 				</el-select>
 			</el-form-item>
+			<el-form-item label="用户类型" prop="type">
+				<el-select v-model="form.type" class="m-2" placeholder="请选择用户类型" style="width: 100%;">
+					<el-option v-for="item in typeItems" :key="item.value" :label="item.label" :value="item.value" />
+				</el-select>
+			</el-form-item>
+			<el-form-item label="用户状态" prop="status">
+				<el-select v-model="form.status" class="m-2" placeholder="请选择用户状态" style="width: 100%;">
+					<el-option v-for="item in statusItems" :key="item.value" :label="item.label" :value="item.value" />
+				</el-select>
+			</el-form-item>
 			<el-form-item label="扩展码" prop="bizCode">
 				<el-input v-model="form.bizCode" placeholder="请输入业务扩展码" clearable></el-input>
 			</el-form-item>
@@ -61,10 +71,18 @@ export default {
 				deptIds: [],
 				roleIds: [],
 				bizCode: "",
+				status: '1',
+				type: '1',
 				remark: ""
 			},
 			//验证规则
 			rules: {
+				status: [
+					{ required: true, message: '用户状态不能为空' }
+				],
+				type: [
+					{ required: true, message: '用户类型不能为空' }
+				],
 				userName: [
 					{ required: true, message: '登录账号不能为空' }
 				],
@@ -112,7 +130,18 @@ export default {
 				value: "id",
 				label: "name",
 				checkStrictly: true
-			}
+			},
+			typeItems: [{
+				value: '1',
+				label: '缺省',
+			}],
+			statusItems: [{
+				value: '1',
+				label: '启用',
+			}, {
+				value: '9',
+				label: '停用',
+			}],
 		}
 	},
 	mounted() {
@@ -141,11 +170,16 @@ export default {
 			this.$refs.dialogForm.validate(async (valid) => {
 				if (valid) {
 					this.isSaveing = true;
-					var res = await this.$API.demo.post.post(this.form);
+					var res;
+					if (this.mode == 'add') {
+						res = await this.$API.system.user.add.post(this.form);
+					} else if (this.mode == 'edit') {
+						res = await this.$API.system.user.update.post(this.form);
+					}
 					this.isSaveing = false;
 					if (res.code == 200) {
-						this.$emit('success', this.form, this.mode)
 						this.visible = false;
+						this.$emit('success', this.form, this.mode)
 						this.$message.success("操作成功")
 					} else {
 						this.$alert(res.message, "提示", { type: 'error' })
