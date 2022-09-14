@@ -30,8 +30,8 @@ public class UserEntity implements Serializable {
    /**
     * 登录帐号
     */
-   @TableField(value = "account")
-   private String account;
+   @TableField(value = "user_name")
+   private String userName;
 
    /**
     * 帐号密码

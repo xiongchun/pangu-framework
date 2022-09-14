@@ -1,9 +1,6 @@
 <template>
 	<el-dialog :title="titleMap[mode]" v-model="visible" :width="500" destroy-on-close @closed="$emit('closed')">
-		<el-form :model="form" :rules="rules" :disabled="mode=='show'" ref="dialogForm" label-width="100px" label-position="left">
-			<el-form-item label="头像" prop="avatar">
-				<sc-upload v-model="form.avatar" title="上传头像"></sc-upload>
-			</el-form-item>
+		<el-form :model="form" :rules="rules" :disabled="mode=='show'" ref="dialogForm" label-width="80px" label-position="right">
 			<el-form-item label="登录账号" prop="userName">
 				<el-input v-model="form.userName" placeholder="用于登录系统" clearable></el-input>
 			</el-form-item>
@@ -58,17 +55,14 @@
 				},
 				//验证规则
 				rules: {
-					avatar:[
-						{required: true, message: '请上传头像'}
-					],
 					userName: [
-						{required: true, message: '请输入登录账号'}
+						{required: true, message: '登录账号不能为空'}
 					],
 					name: [
-						{required: true, message: '请输入真实姓名'}
+						{required: true, message: '真实姓名不能为空'}
 					],
 					password: [
-						{required: true, message: '请输入登录密码'},
+						{required: true, message: '登录密不能为空码'},
 						{validator: (rule, value, callback) => {
 							if (this.form.password2 !== '') {
 								this.$refs.dialogForm.validateField('password2');
@@ -80,17 +74,17 @@
 						{required: true, message: '请再次输入密码'},
 						{validator: (rule, value, callback) => {
 							if (value !== this.form.password) {
-								callback(new Error('两次输入密码不一致!'));
+								callback(new Error('两次输入密码不一致'));
 							}else{
 								callback();
 							}
 						}}
 					],
 					dept: [
-						{required: true, message: '请选择所属部门'}
+						{required: true, message: '所属部门不能为空'}
 					],
 					group: [
-						{required: true, message: '请选择所属角色', trigger: 'change'}
+						{required: true, message: '所属角色不能为空', trigger: 'change'}
 					]
 				},
 				//所需数据选项
@@ -103,6 +97,7 @@
 				depts: [],
 				deptsProps: {
 					value: "id",
+					label:"name",
 					checkStrictly: true
 				}
 			}
