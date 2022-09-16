@@ -135,6 +135,34 @@ export default {
 			get: async function (params) {
 				return await http.get(this.url, params);
 			}
+		},
+		add: {
+			url: `${config.API_URL}/system/user/add`,
+			name: "新增用户",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
+		},
+		update: {
+			url: `${config.API_URL}/system/user/update`,
+			name: "修改用户",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
+		},
+		delete: {
+			url: `${config.API_URL}/system/user/delete`,
+			name: "删除用户",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
+		},
+		batchDelete: {
+			url: `${config.API_URL}/system/user/batchDelete`,
+			name: "批量删除用户",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
 		}
 	},
 	app: {

@@ -4,6 +4,7 @@ import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.LoginIn;
 import com.pulanit.pangu.admin.system.api.param.LoginOut;
+import com.pulanit.pangu.admin.system.api.param.UserAddIn;
 import com.pulanit.pangu.admin.system.api.param.UserIn;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public interface UserService {
      * 新增
      * @param userEntity
      */
-    void add(UserEntity userEntity);
+    void add(UserAddIn userAddIn);
 
     /**
      * 修改

@@ -17,19 +17,24 @@
 
 package com.pulanit.pangu.admin.system.service;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.alibaba.spring.util.BeanUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
+import com.pulanit.pangu.admin.system.api.Constants;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.LoginIn;
 import com.pulanit.pangu.admin.system.api.param.LoginOut;
+import com.pulanit.pangu.admin.system.api.param.UserAddIn;
 import com.pulanit.pangu.admin.system.api.param.UserIn;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import com.pulanit.pangu.admin.system.dao.mapper.UserMapper;
@@ -68,7 +73,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void add(UserEntity userEntity) {
+    public void add(UserAddIn userAddIn) {
+        UserEntity userEntity = new UserEntity();
+        BeanUtil.copyProperties(userAddIn, userEntity);
+        if (StrUtil.isEmpty(userEntity.getSex())){
+            userEntity.setSex(Constants.Sex.UNKNOWN);
+        }
         userEntity.setGmtCreated(DateUtil.date());
         userMapper.insert(userEntity);
     }

@@ -32,19 +32,32 @@
 				<scTable ref="table" :apiObj="apiObj" @selection-change="selectionChange" stripe remoteSort
 					remoteFilter>
 					<el-table-column type="selection" width="50"></el-table-column>
-					<el-table-column label="ID" prop="id" width="80" sortable='custom'></el-table-column>
+					<!-- <el-table-column label="ID" prop="id" width="80" sortable></el-table-column> -->
 					<el-table-column label="头像" width="80" column-key="filterAvatar">
 						<template #default="scope">
 							<el-avatar :src="scope.row.avatar" size="small"></el-avatar>
 						</template>
 					</el-table-column>
-					<el-table-column label="登录账号" prop="userName" width="150" sortable='custom'
-						column-key="filterUserName"
-						:filters="[{ text: '系统账号', value: '1' }, { text: '普通账号', value: '0' }]">
+					<el-table-column label="登录账号" prop="userName" width="150"></el-table-column>
+					<el-table-column label="姓名" prop="name" width="100"></el-table-column>
+					<el-table-column label="用户状态" prop="status" width="120">
+						<template #default="scope">
+							<el-tag v-if="scope.row.status == 1" type="success">启用</el-tag>
+							<el-tag v-if="scope.row.status == 9" type="danger">停用</el-tag>
+						</template>
 					</el-table-column>
-					<el-table-column label="姓名" prop="name" width="150" sortable='custom'></el-table-column>
-					<el-table-column label="所属角色" prop="groupName" width="200" sortable='custom'></el-table-column>
-					<el-table-column label="加入时间" prop="date" width="170" sortable='custom'></el-table-column>
+					<el-table-column label="所属部门" prop="groupName" width="150" show-overflow-tooltip="true"></el-table-column>
+					<el-table-column label="所属角色" prop="groupName" width="150" show-overflow-tooltip="true"></el-table-column>
+					<el-table-column label="用户类型" prop="type" width="120">
+						<template #default="scope">
+							<el-tag v-if="scope.row.type == 1" type="info">缺省</el-tag>
+						</template>
+					</el-table-column>
+					<el-table-column label="绑定邮箱" prop="mail" width="120"></el-table-column>
+					<el-table-column label="扩展码" prop="bizCode" width="120"></el-table-column>
+					<el-table-column label="备注" prop="remark" width="200" show-overflow-tooltip="true">
+					</el-table-column>
+					<el-table-column label="创建时间" prop="gmtCreated" width="180"></el-table-column>
 					<el-table-column label="操作" fixed="right" align="right" width="120">
 						<template #default="scope">
 							<el-button-group>

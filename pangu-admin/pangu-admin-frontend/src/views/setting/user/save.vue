@@ -1,5 +1,5 @@
 <template>
-	<el-dialog :title="titleMap[mode]" v-model="visible" :width="500" destroy-on-close @closed="$emit('closed')">
+	<el-dialog :title="titleMap[mode]" v-model="visible" :width="500" top="30px"  destroy-on-close @closed="$emit('closed')">
 		<el-form :model="form" :rules="rules" :disabled="mode == 'show'" ref="dialogForm" label-width="80px"
 			label-position="right">
 			<el-form-item label="登录账号" prop="userName">
@@ -169,12 +169,13 @@ export default {
 		submit() {
 			this.$refs.dialogForm.validate(async (valid) => {
 				if (valid) {
-					this.isSaveing = true;
+					//this.isSaveing = true;
 					var res;
 					if (this.mode == 'add') {
-						res = await this.$API.system.user.add.post(this.form);
+						this.form.deptId = this.form.deptIds[this.form.deptIds.length - 1]
+						res = await this.$API.system.user.add.post(this.form)
 					} else if (this.mode == 'edit') {
-						res = await this.$API.system.user.update.post(this.form);
+						res = await this.$API.system.user.update.post(this.form)
 					}
 					this.isSaveing = false;
 					if (res.code == 200) {
@@ -191,15 +192,7 @@ export default {
 		},
 		//表单注入数据
 		setData(data) {
-			this.form.id = data.id
-			this.form.userName = data.userName
-			this.form.avatar = data.avatar
-			this.form.name = data.name
-			this.form.group = data.group
-			this.form.dept = data.dept
-
-			//可以和上面一样单个注入，也可以像下面一样直接合并进去
-			//Object.assign(this.form, data)
+			Object.assign(this.form, data)
 		}
 	}
 }

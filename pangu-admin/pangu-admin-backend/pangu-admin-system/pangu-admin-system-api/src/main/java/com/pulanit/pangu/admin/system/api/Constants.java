@@ -12,4 +12,14 @@ public class Constants {
         public final static String N = "0";
 
     }
+
+    public final static class Sex {
+
+        public final static String MALE = "1";
+
+        public final static String FEMALE = "2";
+
+        public final static String UNKNOWN = "9";
+
+    }
 }

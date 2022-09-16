@@ -8,6 +8,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
+import com.pulanit.pangu.admin.system.api.param.UserAddIn;
 import com.pulanit.pangu.admin.system.api.param.UserIn;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -42,12 +43,12 @@ public class UserController {
     /**
      * 新增
      *
-     * @param userEntity
+     * @param userAddIn
      * @return
      */
     @PostMapping("/add")
-    public Result<Void> add(@RequestBody UserEntity userEntity) {
-        userService.add(userEntity);
+    public Result<Void> add(@RequestBody UserAddIn userAddIn) {
+        userService.add(userAddIn);
         return Result.success();
     }
 
