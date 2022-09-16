@@ -9,7 +9,7 @@ import com.pulanit.pangu.admin.system.api.entity.UserEntity;
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-09-12 14:34:31
+ * @date 2022-09-16 21:43:14
  */
 @Mapper
 public interface UserMapper extends BaseMapper<UserEntity> {

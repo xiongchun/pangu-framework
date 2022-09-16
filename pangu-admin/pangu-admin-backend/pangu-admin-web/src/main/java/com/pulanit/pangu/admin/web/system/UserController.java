@@ -1,10 +1,6 @@
 package com.pulanit.pangu.admin.web.system;
 
-import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.core.lang.Assert;
-import cn.hutool.core.util.CharsetUtil;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
@@ -98,9 +94,9 @@ public class UserController {
      *
      * @return
      */
-    @GetMapping("/validateRoleKey")
-    public Result<Long> validateRoleKey(@RequestParam  String account, @RequestParam  Long id) {
-        long cnt = userService.validateAccount(account, id);
+    @GetMapping("/validateUserName")
+    public Result<Long> validateUserName(@RequestParam  String userName, @RequestParam  Long id) {
+        long cnt = userService.validateUserName(userName, id);
         return Result.success(cnt);
     }
 

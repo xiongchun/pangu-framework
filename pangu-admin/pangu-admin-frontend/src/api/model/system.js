@@ -163,6 +163,12 @@ export default {
 			post: async function (params) {
 				return await http.post(this.url, params);
 			}
+		},
+		validateUserName: {
+			url: `${config.API_URL}/system/user/validateUserName`,
+			get: async function (params) {
+				return await http.get(this.url, params);
+			}
 		}
 	},
 	app: {

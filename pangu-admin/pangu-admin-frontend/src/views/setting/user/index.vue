@@ -29,8 +29,7 @@
 				</div>
 			</el-header>
 			<el-main class="nopadding">
-				<scTable ref="table" :apiObj="apiObj" @selection-change="selectionChange" stripe remoteSort
-					remoteFilter>
+				<scTable ref="table" :apiObj="apiObj" @selection-change="selectionChange" stripe>
 					<el-table-column type="selection" width="50"></el-table-column>
 					<!-- <el-table-column label="ID" prop="id" width="80" sortable></el-table-column> -->
 					<el-table-column label="头像" width="80">
@@ -53,28 +52,27 @@
 							<el-tag v-if="scope.row.status == 9" type="danger">停用</el-tag>
 						</template>
 					</el-table-column>
-					<el-table-column label="所属部门" prop="deptId" width="120" show-overflow-tooltip></el-table-column>
-					<el-table-column label="所属角色" prop="groupName" width="120" show-overflow-tooltip></el-table-column>
 					<el-table-column label="用户类型" prop="type" width="120">
 						<template #default="scope">
 							<el-tag v-if="scope.row.type == 1" type="info">缺省</el-tag>
 						</template>
 					</el-table-column>
+					<el-table-column label="绑定手机" prop="mobileNumber" width="120"></el-table-column>
 					<el-table-column label="绑定邮箱" prop="mail" width="120"></el-table-column>
 					<el-table-column label="扩展码" prop="bizCode" width="120"></el-table-column>
 					<el-table-column label="备注" prop="remark" width="200" show-overflow-tooltip>
 					</el-table-column>
 					<el-table-column label="创建时间" prop="gmtCreated" width="180"></el-table-column>
-					<el-table-column label="操作" fixed="right" align="right" width="120">
+					<el-table-column label="操作" fixed="right" align="right" width="160">
 						<template #default="scope">
 							<el-button-group>
-								<!-- <el-button text type="primary" size="small"
-									@click="table_show(scope.row, scope.$index)">查看</el-button> -->
+								<el-button text type="info" size="small"
+									@click="table_show(scope.row, scope.$index)">查看</el-button>
 								<el-button text type="primary" size="small"
 									@click="table_edit(scope.row, scope.$index)">编辑</el-button>
-								<el-popconfirm title="确定删除吗？" @confirm="table_del(scope.row, scope.$index)">
+								<el-popconfirm title="确定删除当前用户吗？" confirm-button-type="danger" confirm-button-text="删除" @confirm="table_del(scope.row, scope.$index)">
 									<template #reference>
-										<el-button text type="primary" size="small">删除</el-button>
+										<el-button text type="danger" size="small">删除</el-button>
 									</template>
 								</el-popconfirm>
 							</el-button-group>

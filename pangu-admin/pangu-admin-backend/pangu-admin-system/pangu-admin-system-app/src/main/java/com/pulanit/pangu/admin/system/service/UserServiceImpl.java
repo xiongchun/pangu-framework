@@ -20,15 +20,14 @@ package com.pulanit.pangu.admin.system.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
-import cn.hutool.core.util.ObjectUtil;
-import cn.hutool.core.util.ReflectUtil;
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.util.*;
 import com.alibaba.spring.util.BeanUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
+import com.google.common.base.Strings;
 import com.pulanit.pangu.admin.system.api.Constants;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
@@ -43,6 +42,7 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Service(version = "1.0.0", group = "pangu-admin-system-app")
@@ -66,6 +66,7 @@ public class UserServiceImpl implements UserService {
     public PageResult<UserEntity> list(UserIn userIn) {
         Page<UserEntity> page = PagingUtil.createPage(userIn);
         LambdaQueryWrapper<UserEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
+        lambdaQueryWrapper.eq(ObjectUtil.isNotEmpty(userIn.getDeptId()), UserEntity::getDeptId, userIn.getDeptId());
         lambdaQueryWrapper.like(ObjectUtil.isNotEmpty(userIn.getName()), UserEntity::getName, userIn.getName());
         lambdaQueryWrapper.orderByDesc(UserEntity::getId);
         userMapper.selectPage(page, lambdaQueryWrapper);
@@ -79,6 +80,7 @@ public class UserServiceImpl implements UserService {
         if (StrUtil.isEmpty(userEntity.getSex())){
             userEntity.setSex(Constants.Sex.UNKNOWN);
         }
+        userEntity.setAvatar(this.randomAvatar());
         userEntity.setGmtCreated(DateUtil.date());
         userMapper.insert(userEntity);
     }
@@ -100,14 +102,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public long validateAccount(String account, Long id) {
-        long result = userMapper.selectCount(Wrappers.lambdaQuery(UserEntity.class).eq(UserEntity::getUserName, account));
+    public long validateUserName(String userName, Long id) {
+        long result = userMapper.selectCount(Wrappers.lambdaQuery(UserEntity.class).eq(UserEntity::getUserName, userName));
         if (ObjectUtil.isNotNull(id)){
             UserEntity userEntity = userMapper.selectById(id);
-            if (StrUtil.equalsIgnoreCase(account, userEntity.getUserName())){
+            if (StrUtil.equalsIgnoreCase(userName, userEntity.getUserName())){
                 return 0;
             }
         }
         return result;
+    }
+
+    private String randomAvatar(){
+        String avatar = "avatar/avatar";
+        int index = RandomUtil.randomInt(1,9);
+        avatar = avatar + index;
+        return index == 1 ? avatar + ".gif" : avatar + ".jpg";
     }
 }

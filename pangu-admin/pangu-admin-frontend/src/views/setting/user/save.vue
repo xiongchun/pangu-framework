@@ -1,23 +1,25 @@
 <template>
-	<el-dialog :title="titleMap[mode]" v-model="visible" :width="500" top="30px"  destroy-on-close @closed="$emit('closed')">
+	<el-dialog :title="titleMap[mode]" v-model="visible" :width="500" top="30px" destroy-on-close
+		@closed="$emit('closed')">
 		<el-form :model="form" :rules="rules" :disabled="mode == 'show'" ref="dialogForm" label-width="80px"
 			label-position="right">
 			<el-form-item label="登录账号" prop="userName">
-				<el-input v-model="form.userName" placeholder="用于登录系统" clearable></el-input>
+				<el-input v-model="form.userName" placeholder="请输入登录账号" maxlength="20" show-word-limit clearable></el-input>
 			</el-form-item>
 			<template v-if="mode == 'add'">
 				<el-form-item label="登录密码" prop="password">
-					<el-input type="password" v-model="form.password" clearable show-password></el-input>
+					<el-input type="password" v-model="form.password" placeholder="请输入密码" maxlength="20" minlength="8" clearable show-password></el-input>
 				</el-form-item>
 				<el-form-item label="确认密码" prop="password2">
-					<el-input type="password" v-model="form.password2" clearable show-password></el-input>
+					<el-input type="password" v-model="form.password2" placeholder="请再次输入密码"  maxlength="20" minlength="8" clearable show-password></el-input>
 				</el-form-item>
 			</template>
 			<el-form-item label="姓名" prop="name">
-				<el-input v-model="form.name" placeholder="请输入真实姓名" clearable></el-input>
+				<el-input v-model="form.name" placeholder="请输入真实姓名" maxlength="10" show-word-limit clearable></el-input>
 			</el-form-item>
 			<el-form-item label="所属部门" prop="deptIds">
-				<el-cascader v-model="form.deptIds" :options="depts" :props="deptsProps" placeholder="请选择所属部门" clearable style="width: 100%;">
+				<el-cascader v-model="form.deptIds" :options="depts" :props="deptsProps" placeholder="请选择所属部门" clearable
+					style="width: 100%;">
 				</el-cascader>
 			</el-form-item>
 			<el-form-item label="所属角色" prop="roleIds">
@@ -36,10 +38,10 @@
 				</el-select>
 			</el-form-item>
 			<el-form-item label="扩展码" prop="bizCode">
-				<el-input v-model="form.bizCode" placeholder="请输入业务扩展码" clearable></el-input>
+				<el-input v-model="form.bizCode" placeholder="请输入业务扩展码" maxlength="50" show-word-limit clearable></el-input>
 			</el-form-item>
 			<el-form-item label="备注" prop="remark">
-				<el-input v-model="form.remark" clearable type="textarea"></el-input>
+				<el-input v-model="form.remark" maxlength="250" show-word-limit clearable type="textarea"></el-input>
 			</el-form-item>
 		</el-form>
 		<template #footer>
@@ -84,17 +86,30 @@ export default {
 					{ required: true, message: '用户类型不能为空' }
 				],
 				userName: [
-					{ required: true, message: '登录账号不能为空' }
+					{ required: true, message: '登录账号不能为空' },
+					{
+						required: true,
+						validator: (rule, value, callback) => {
+							var params = { userName: value, id: this.form.id }
+							this.$API.system.user.validateUserName.get(params).then(res => {
+								if (res.data >= 1 ) {
+								   return callback(new Error('此账号 ' + value + ' 已存在, 请修改'))
+								}
+								callback()
+							})
+						},
+						trigger: 'blur'
+					}
 				],
 				name: [
 					{ required: true, message: '真实姓名不能为空' }
 				],
 				password: [
-					{ required: true, message: '登录密不能为空码' },
+					{ required: true, message: '登录密码不能为空' },
 					{
 						validator: (rule, value, callback) => {
-							if (this.form.password2 !== '') {
-								this.$refs.dialogForm.validateField('password2');
+							if (value.length < 8) {
+								return callback(new Error('密码长度不能小于8位'))
 							}
 							callback();
 						}
@@ -109,6 +124,14 @@ export default {
 							} else {
 								callback();
 							}
+						}
+					},
+					{
+						validator: (rule, value, callback) => {
+							if (value.length < 8) {
+								return callback(new Error('密码长度不能小于8位'))
+							}
+							callback();
 						}
 					}
 				],
@@ -193,6 +216,7 @@ export default {
 		//表单注入数据
 		setData(data) {
 			Object.assign(this.form, data)
+			this.form.deptIds = data.deptId
 		}
 	}
 }

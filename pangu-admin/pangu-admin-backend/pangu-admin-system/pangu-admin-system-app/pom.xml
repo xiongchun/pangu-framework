@@ -63,7 +63,7 @@
                     <url>jdbc:mysql://127.0.0.1:3306/pangu-admin</url>
                     <user>root</user>
                     <password>root123456</password>
-                    <tables>role,user,menu,dept</tables>
+                    <tables>role,user,menu,dept,user_role</tables>
                     <author>普蓝开源社区</author>
                     <entityFilePath>/Users/xc/git2/pangu-framework/pangu-admin/pangu-admin-backend/pangu-admin-system/pangu-admin-system-api/src/main/java/com/pulanit/pangu/admin/system/api/entity</entityFilePath>
                     <mapperFilePath>${project.basedir}/src/main/java/com/pulanit/pangu/admin/system/dao/mapper</mapperFilePath>

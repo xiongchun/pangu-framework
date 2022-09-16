@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-09-12 14:34:31
+ * @date 2022-09-16 21:43:14
  */
 @Data
 @Accessors(chain = true)
@@ -46,7 +46,7 @@ public class UserEntity implements Serializable {
    private String name;
 
    /**
-    * 电子邮件
+    * 绑定邮箱
     */
    @TableField(value = "mail")
    private String mail;
@@ -114,7 +114,7 @@ public class UserEntity implements Serializable {
    private String modifiedBy;
 
    /**
-    * remark
+    * 备注
     */
    @TableField(value = "remark")
    private String remark;
@@ -124,5 +124,11 @@ public class UserEntity implements Serializable {
     */
    @TableField(value = "deleted")
    private Long deleted;
+
+   /**
+    * 绑定手机
+    */
+   @TableField(value = "mobile_number")
+   private String mobileNumber;
 
 }

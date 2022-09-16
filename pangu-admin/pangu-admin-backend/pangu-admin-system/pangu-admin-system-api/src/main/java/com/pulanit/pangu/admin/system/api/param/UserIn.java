@@ -25,4 +25,9 @@ public class UserIn extends Page {
      */
     private String name;
 
+    /**
+     * 所属部门ID
+     */
+    private Long deptId;
+
 }

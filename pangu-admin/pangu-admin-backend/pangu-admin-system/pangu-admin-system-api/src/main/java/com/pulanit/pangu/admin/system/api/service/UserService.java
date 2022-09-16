@@ -26,7 +26,7 @@ public interface UserService {
 
     /**
      * 新增
-     * @param userEntity
+     * @param userAddIn
      */
     void add(UserAddIn userAddIn);
 
@@ -50,9 +50,9 @@ public interface UserService {
 
     /**
      * 校验登录账号
-     * @param account
+     * @param userName
      * @return
      */
-    long validateAccount(String account, Long id);
+    long validateUserName(String userName, Long id);
 
 }
