@@ -22,11 +22,6 @@
 					style="width: 100%;">
 				</el-cascader>
 			</el-form-item>
-			<el-form-item label="所属角色" prop="roleIds">
-				<el-select v-model="form.roleIds" placeholder="请选择所属角色" multiple filterable style="width: 100%">
-					<el-option v-for="item in roles" :key="item.id" :label="item.name" :value="item.id" />
-				</el-select>
-			</el-form-item>
 			<el-form-item label="用户类型" prop="type">
 				<el-select v-model="form.type" class="m-2" placeholder="请选择用户类型" style="width: 100%;">
 					<el-option v-for="item in typeItems" :key="item.value" :label="item.label" :value="item.value" />
@@ -35,6 +30,11 @@
 			<el-form-item label="用户状态" prop="status">
 				<el-select v-model="form.status" class="m-2" placeholder="请选择用户状态" style="width: 100%;">
 					<el-option v-for="item in statusItems" :key="item.value" :label="item.label" :value="item.value" />
+				</el-select>
+			</el-form-item>
+			<el-form-item label="所属角色" prop="roleIds">
+				<el-select v-model="form.roleIds" placeholder="请选择所属角色" multiple filterable style="width: 100%">
+					<el-option v-for="item in roles" :key="item.id" :label="item.name" :value="item.id" />
 				</el-select>
 			</el-form-item>
 			<el-form-item label="扩展码" prop="bizCode">
@@ -137,9 +137,6 @@ export default {
 				],
 				deptIds: [
 					{ required: true, message: '所属部门不能为空' }
-				],
-				roleIds: [
-					{ required: true, message: '所属角色不能为空', trigger: 'change' }
 				]
 			},
 			//所需数据选项

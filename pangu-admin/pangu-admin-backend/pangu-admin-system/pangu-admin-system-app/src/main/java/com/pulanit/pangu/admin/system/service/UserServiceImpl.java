@@ -18,31 +18,34 @@
 package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
-import cn.hutool.core.util.*;
-import com.alibaba.spring.util.BeanUtils;
+import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.RandomUtil;
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
-import com.google.common.base.Strings;
 import com.pulanit.pangu.admin.system.api.Constants;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
+import com.pulanit.pangu.admin.system.api.entity.UserRoleEntity;
 import com.pulanit.pangu.admin.system.api.param.LoginIn;
 import com.pulanit.pangu.admin.system.api.param.LoginOut;
 import com.pulanit.pangu.admin.system.api.param.UserAddIn;
 import com.pulanit.pangu.admin.system.api.param.UserIn;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import com.pulanit.pangu.admin.system.dao.mapper.UserMapper;
+import com.pulanit.pangu.admin.system.dao.mapper.UserRoleMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Objects;
 
 @Slf4j
 @Service(version = "1.0.0", group = "pangu-admin-system-app")
@@ -50,6 +53,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private UserRoleMapper userRoleMapper;
 
     @Override
     public LoginOut login(LoginIn inDto) {
@@ -74,6 +79,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void add(UserAddIn userAddIn) {
         UserEntity userEntity = new UserEntity();
         BeanUtil.copyProperties(userAddIn, userEntity);
@@ -81,8 +87,18 @@ public class UserServiceImpl implements UserService {
             userEntity.setSex(Constants.Sex.UNKNOWN);
         }
         userEntity.setAvatar(this.randomAvatar());
-        userEntity.setGmtCreated(DateUtil.date());
+        DateTime now = DateUtil.date();
+        userEntity.setGmtCreated(now);
         userMapper.insert(userEntity);
+        if (ObjectUtil.isNotEmpty(userAddIn.getRoleIds())){
+            for (long roleId : userAddIn.getRoleIds()){
+                UserRoleEntity userRoleEntity = new UserRoleEntity();
+                userRoleEntity.setUserId(userEntity.getId());
+                userRoleEntity.setRoleId(roleId);
+                userRoleEntity.setGmtCreated(now);
+                userRoleMapper.insert(userRoleEntity);
+            }
+        }
     }
 
     @Override
