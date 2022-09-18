@@ -1,24 +1,31 @@
 package com.pulanit.pangu.admin.system.api.param;
 
-import com.pulanit.pangu.admin.system.api.entity.UserEntity;
+import com.gitee.pulanos.pangu.framework.common.model.Page;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
- * 用户入参
+ * 用户查询入参
  * @author xiongchun
  */
 @Data
 @Accessors(chain = true)
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class UserIn extends UserEntity {
+public class UserPageIn extends Page {
+
+    private static final long serialVersionUID = 1L;
 
     /**
-     * 所属角色集合
+     * 用户名称
      */
-    private long[] roleIds;
+    private String name;
+
+    /**
+     * 所属部门ID
+     */
+    private Long deptId;
 
 }
