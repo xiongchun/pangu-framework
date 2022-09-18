@@ -4,7 +4,7 @@
 		<el-form :model="form" :rules="rules" :disabled="mode == 'show'" ref="dialogForm" label-width="80px"
 			label-position="right">
 			<el-form-item label="登录账号" prop="userName">
-				<el-input v-model="form.userName" placeholder="请输入登录账号" maxlength="20" show-word-limit clearable>
+				<el-input v-model="form.userName" placeholder="请输入登录账号" maxlength="20" onkeyup="value=value.replace(/[^\x00-\xff]/g, '')" show-word-limit clearable>
 				</el-input>
 			</el-form-item>
 			<template v-if="mode == 'add'">
