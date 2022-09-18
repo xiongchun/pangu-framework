@@ -18,7 +18,6 @@
 package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.ObjectUtil;
@@ -32,14 +31,11 @@ import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
 import com.pulanit.pangu.admin.system.api.Constants;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
-import com.pulanit.pangu.admin.system.api.entity.UserRoleEntity;
-import com.pulanit.pangu.admin.system.api.param.LoginIn;
-import com.pulanit.pangu.admin.system.api.param.LoginOut;
-import com.pulanit.pangu.admin.system.api.param.UserAddIn;
-import com.pulanit.pangu.admin.system.api.param.UserIn;
+import com.pulanit.pangu.admin.system.api.param.*;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import com.pulanit.pangu.admin.system.dao.mapper.UserMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserRoleMapper;
+import com.pulanit.pangu.admin.system.manager.UserManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +51,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Autowired
     private UserRoleMapper userRoleMapper;
+    @Autowired
+    private UserManager userManager;
 
     @Override
     public LoginOut login(LoginIn inDto) {
@@ -68,11 +66,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageResult<UserEntity> list(UserIn userIn) {
-        Page<UserEntity> page = PagingUtil.createPage(userIn);
+    public PageResult<UserEntity> list(UserPageIn userPageIn) {
+        Page<UserEntity> page = PagingUtil.createPage(userPageIn);
         LambdaQueryWrapper<UserEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
-        lambdaQueryWrapper.eq(ObjectUtil.isNotEmpty(userIn.getDeptId()), UserEntity::getDeptId, userIn.getDeptId());
-        lambdaQueryWrapper.like(ObjectUtil.isNotEmpty(userIn.getName()), UserEntity::getName, userIn.getName());
+        lambdaQueryWrapper.eq(ObjectUtil.isNotEmpty(userPageIn.getDeptId()), UserEntity::getDeptId, userPageIn.getDeptId());
+        lambdaQueryWrapper.like(ObjectUtil.isNotEmpty(userPageIn.getName()), UserEntity::getName, userPageIn.getName());
         lambdaQueryWrapper.orderByDesc(UserEntity::getId);
         userMapper.selectPage(page, lambdaQueryWrapper);
         return PagingUtil.getPageResult(page);
@@ -80,31 +78,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void add(UserAddIn userAddIn) {
-        UserEntity userEntity = new UserEntity();
-        BeanUtil.copyProperties(userAddIn, userEntity);
-        if (StrUtil.isEmpty(userEntity.getSex())){
-            userEntity.setSex(Constants.Sex.UNKNOWN);
+    public void add(UserIn userIn) {
+        if (StrUtil.isEmpty(userIn.getSex())){
+            userIn.setSex(Constants.Sex.UNKNOWN);
         }
-        userEntity.setAvatar(this.randomAvatar());
-        DateTime now = DateUtil.date();
-        userEntity.setGmtCreated(now);
-        userMapper.insert(userEntity);
-        if (ObjectUtil.isNotEmpty(userAddIn.getRoleIds())){
-            for (long roleId : userAddIn.getRoleIds()){
-                UserRoleEntity userRoleEntity = new UserRoleEntity();
-                userRoleEntity.setUserId(userEntity.getId());
-                userRoleEntity.setRoleId(roleId);
-                userRoleEntity.setGmtCreated(now);
-                userRoleMapper.insert(userRoleEntity);
-            }
-        }
+        userIn.setAvatar(this.randomAvatar());
+        userIn.setGmtCreated(DateUtil.date());
+        userMapper.insert(userIn);
+        userManager.creatUserRole(userIn.getId(), userIn.getRoleIds());
     }
 
     @Override
-    public void update(UserEntity userEntity) {
-        userEntity.setGmtModified(DateUtil.date());
-        userMapper.updateById(userEntity);
+    @Transactional
+    public void update(UserIn userIn) {
+        userIn.setGmtModified(DateUtil.date());
+        userMapper.updateById(userIn);
+        userManager.deleteUserRoleByUserId(userIn.getId());
+        userManager.creatUserRole(userIn.getId(), userIn.getRoleIds());
     }
 
     @Override
@@ -127,6 +117,16 @@ public class UserServiceImpl implements UserService {
             }
         }
         return result;
+    }
+
+    @Override
+    public UserOut queryUserInfoById(Long userId) {
+        UserOut userOut = new UserOut();
+        UserEntity userEntity = userMapper.selectById(userId);
+        BeanUtil.copyProperties(userEntity, userOut);
+        List<Long> userIds = userManager.queryRolesByUserId(userId);
+        userOut.setRoleIds(userIds);
+        return userOut;
     }
 
     private String randomAvatar(){

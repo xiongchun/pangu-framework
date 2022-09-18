@@ -2,10 +2,7 @@ package com.pulanit.pangu.admin.system.api.service;
 
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
-import com.pulanit.pangu.admin.system.api.param.LoginIn;
-import com.pulanit.pangu.admin.system.api.param.LoginOut;
-import com.pulanit.pangu.admin.system.api.param.UserAddIn;
-import com.pulanit.pangu.admin.system.api.param.UserIn;
+import com.pulanit.pangu.admin.system.api.param.*;
 
 import java.util.List;
 
@@ -19,22 +16,22 @@ public interface UserService {
 
     /**
      * 查询列表信息
-     * @param userIn
+     * @param userPageIn
      * @return
      */
-    PageResult<UserEntity> list(UserIn userIn);
+    PageResult<UserEntity> list(UserPageIn userPageIn);
 
     /**
      * 新增
-     * @param userAddIn
+     * @param userIn
      */
-    void add(UserAddIn userAddIn);
+    void add(UserIn userIn);
 
     /**
      * 修改
-     * @param userEntity
+     * @param userIn
      */
-    void update(UserEntity userEntity);
+    void update(UserIn userIn);
 
     /**
      * 删除
@@ -54,5 +51,12 @@ public interface UserService {
      * @return
      */
     long validateUserName(String userName, Long id);
+
+    /**
+     * 查询用户信息和用户角色信息
+     * @param userId
+     * @return
+     */
+    UserOut queryUserInfoById(Long userId);
 
 }

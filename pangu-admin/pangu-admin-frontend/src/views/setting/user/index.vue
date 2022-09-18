@@ -208,12 +208,9 @@ export default {
 		//本地更新数据
 		handleSuccess(data, mode) {
 			if (mode == 'add') {
-				data.id = new Date().getTime()
-				this.$refs.table.tableData.unshift(data)
+				this.$refs.table.refresh()
 			} else if (mode == 'edit') {
-				this.$refs.table.tableData.filter(item => item.id === data.id).forEach(item => {
-					Object.assign(item, data)
-				})
+				this.$refs.table.refresh()
 			}
 		}
 	}

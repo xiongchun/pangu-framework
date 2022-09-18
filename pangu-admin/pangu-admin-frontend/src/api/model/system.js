@@ -166,6 +166,14 @@ export default {
 		},
 		validateUserName: {
 			url: `${config.API_URL}/system/user/validateUserName`,
+			name: "校验登录账号",
+			get: async function (params) {
+				return await http.get(this.url, params);
+			}
+		},
+		queryUserInfoById: {
+			url: `${config.API_URL}/system/user/queryUserInfoById`,
+			name: "查询用户详细信息",
 			get: async function (params) {
 				return await http.get(this.url, params);
 			}
