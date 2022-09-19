@@ -32,8 +32,8 @@ public class UserController {
      * @return
      */
     @GetMapping("/list")
-    public Result<PageResult<UserEntity>> list(UserPageIn userPageIn) {
-        PageResult<UserEntity> pageResult = userService.list(userPageIn);
+    public Result<PageResult<UserOut>> list(UserPageIn userPageIn) {
+        PageResult<UserOut> pageResult = userService.list(userPageIn);
         return Result.success(pageResult);
     }
 

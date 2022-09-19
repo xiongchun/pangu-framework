@@ -20,6 +20,7 @@ package com.pulanit.pangu.admin.system.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
+import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
@@ -66,13 +67,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageResult<UserEntity> list(UserPageIn userPageIn) {
+    public PageResult<UserOut> list(UserPageIn userPageIn) {
         Page<UserEntity> page = PagingUtil.createPage(userPageIn);
         LambdaQueryWrapper<UserEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
         lambdaQueryWrapper.eq(ObjectUtil.isNotEmpty(userPageIn.getDeptId()), UserEntity::getDeptId, userPageIn.getDeptId());
         lambdaQueryWrapper.like(ObjectUtil.isNotEmpty(userPageIn.getName()), UserEntity::getName, userPageIn.getName());
         lambdaQueryWrapper.orderByDesc(UserEntity::getId);
         userMapper.selectPage(page, lambdaQueryWrapper);
+        Page<UserOut> page2 = PagingUtil.createPage(userPageIn);
         return PagingUtil.getPageResult(page);
     }
 
@@ -98,13 +100,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         userMapper.deleteById(id);
+        userManager.deleteUserRoleByUserId(id);
     }
 
     @Override
+    @Transactional
     public void batchDelete(List<Long> ids) {
         userMapper.deleteBatchIds(ids);
+        userManager.deleteUserRoleByBatchUserIds(ids);
     }
 
     @Override

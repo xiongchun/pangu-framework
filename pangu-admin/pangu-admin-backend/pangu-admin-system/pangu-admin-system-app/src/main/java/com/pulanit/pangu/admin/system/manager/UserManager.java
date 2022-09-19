@@ -25,6 +25,12 @@ public class UserManager {
         userRoleMapper.delete(Wrappers.lambdaQuery(UserRoleEntity.class).eq(UserRoleEntity::getUserId, userId));
     }
 
+    public void deleteUserRoleByBatchUserIds(List<Long> userIds){
+        LambdaQueryWrapper<UserRoleEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
+        lambdaQueryWrapper.in(UserRoleEntity::getUserId, userIds);
+        userRoleMapper.delete(lambdaQueryWrapper);
+    }
+
     public void creatUserRole(Long userId, long[] roleIds){
         Assert.notNull(userId, "userId 不能为空");
         if (ObjectUtil.isEmpty(roleIds)) return;

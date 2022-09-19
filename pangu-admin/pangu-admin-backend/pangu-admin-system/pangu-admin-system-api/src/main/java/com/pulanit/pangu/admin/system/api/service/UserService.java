@@ -19,7 +19,7 @@ public interface UserService {
      * @param userPageIn
      * @return
      */
-    PageResult<UserEntity> list(UserPageIn userPageIn);
+    PageResult<UserOut> list(UserPageIn userPageIn);
 
     /**
      * 新增

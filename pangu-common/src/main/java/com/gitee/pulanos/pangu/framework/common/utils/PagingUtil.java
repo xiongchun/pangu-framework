@@ -3,6 +3,8 @@ package com.gitee.pulanos.pangu.framework.common.utils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 
+import java.util.List;
+
 /**
  * Paging Utils
  *
@@ -19,8 +21,12 @@ public class PagingUtil {
         return createPage(page.getPage(), page.getPageSize());
     }
 
-    public static PageResult getPageResult(Page page) {
+    public static PageResult transformPageResult(Page page) {
         return new PageResult().setPage(page.getCurrent()).setPageSize(page.getSize()).setTotal(page.getTotal()).setRows(page.getRecords());
+    }
+
+    public static PageResult transformPageResult(Page page, List records) {
+        return new PageResult().setPage(page.getCurrent()).setPageSize(page.getSize()).setTotal(page.getTotal()).setRows(records);
     }
 
 }

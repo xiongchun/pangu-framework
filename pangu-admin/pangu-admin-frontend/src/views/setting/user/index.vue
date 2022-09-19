@@ -146,12 +146,13 @@ export default {
 			})
 		},
 		//删除
-		async table_del(row, index) {
-			var reqData = { id: row.id }
-			var res = await this.$API.demo.post.post(reqData);
+		async table_del(row) {
+			var reqData = new FormData()
+			reqData.append('id', row.id)
+			var res = await this.$API.system.user.delete.post(reqData);
 			if (res.code == 200) {
-				//这里选择刷新整个表格 OR 插入/编辑现有表格数据
-				this.$refs.table.tableData.splice(index, 1);
+				//this.$refs.table.tableData.splice(index, 1);
+				this.$refs.table.refresh()
 				this.$message.success("删除成功")
 			} else {
 				this.$alert(res.message, "提示", { type: 'error' })
@@ -159,19 +160,27 @@ export default {
 		},
 		//批量删除
 		async batch_del() {
-			this.$confirm(`确定删除选中的 ${this.selection.length} 项吗？`, '提示', {
-				type: 'warning'
-			}).then(() => {
-				const loading = this.$loading();
-				this.selection.forEach(item => {
-					this.$refs.table.tableData.forEach((itemI, indexI) => {
-						if (item.id === itemI.id) {
-							this.$refs.table.tableData.splice(indexI, 1)
-						}
-					})
+			this.$confirm(`确定删除选中的 ${this.selection.length} 个用户吗？`, '提示', {
+				type: 'warning',
+				confirmButtonText: '删除',
+				confirmButtonClass: 'el-button--danger'
+			}).then(async() => {
+				const loading = this.$loading()
+				this.showTableLoading = true
+				var ids = []
+				this.selection.forEach(function (item) {
+					ids.push(item.id)
 				})
-				loading.close();
-				this.$message.success("操作成功")
+				var reqData = new FormData()
+				reqData.append('ids', ids)
+				var res = await this.$API.system.user.batchDelete.post(reqData)
+				if (res.code == 200) {
+					this.$refs.table.refresh()
+					this.$message.success("删除成功")
+				} else {
+					this.$alert(res.message, "提示", { type: 'error' })
+				}
+				loading.close()
 			}).catch(() => {
 
 			})

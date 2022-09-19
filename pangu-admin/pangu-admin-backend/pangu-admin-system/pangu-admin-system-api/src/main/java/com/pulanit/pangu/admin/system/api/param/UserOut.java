@@ -17,6 +17,14 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class UserOut extends UserEntity {
 
+    /**
+     * 所属角色集合
+     */
     private List<Long> roleIds;
+
+    /**
+     * 所属部门名称
+     */
+    private String deptName;
 
 }
