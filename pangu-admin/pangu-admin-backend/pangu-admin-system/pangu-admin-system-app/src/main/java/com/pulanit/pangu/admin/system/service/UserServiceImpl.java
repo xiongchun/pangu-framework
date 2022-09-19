@@ -47,6 +47,7 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -88,6 +89,7 @@ public class UserServiceImpl implements UserService {
         List<UserEntity> userEntities = page.getRecords();
         List<UserOut> userOuts = Lists.newArrayList();
         List<Long> deptIds = userEntities.stream().map(UserEntity::getDeptId).collect(Collectors.toList());
+        deptIds = ObjectUtil.isEmpty(deptIds) ? Arrays.asList(-1L) : deptIds;
         List<DeptEntity> deptEntities = deptMapper.selectBatchIds(deptIds);
         Map<Long, DeptEntity> deptEntityMap = deptEntities.stream().collect(Collectors.toMap(DeptEntity::getId, Function.identity()));
         userEntities.forEach(e -> {
@@ -100,10 +102,6 @@ public class UserServiceImpl implements UserService {
             userOuts.add(userOut);
         });
         return PagingUtil.transformPageResult(page, userOuts);
-    }
-
-    private void test1(){
-
     }
 
     @Override
