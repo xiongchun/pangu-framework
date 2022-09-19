@@ -30,6 +30,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
+import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.system.api.Constants;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
@@ -85,7 +86,7 @@ public class UserServiceImpl implements UserService {
         lambdaQueryWrapper.orderByDesc(UserEntity::getId);
         userMapper.selectPage(page, lambdaQueryWrapper);
         List<UserEntity> userEntities = page.getRecords();
-        List<UserOut> userOuts = Collections.emptyList();
+        List<UserOut> userOuts = Lists.newArrayList();
         List<Long> deptIds = userEntities.stream().map(UserEntity::getDeptId).collect(Collectors.toList());
         List<DeptEntity> deptEntities = deptMapper.selectBatchIds(deptIds);
         Map<Long, DeptEntity> deptEntityMap = deptEntities.stream().collect(Collectors.toMap(DeptEntity::getId, Function.identity()));

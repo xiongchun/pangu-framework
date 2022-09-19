@@ -37,7 +37,7 @@
 							<el-avatar :src="scope.row.avatar" size="small"></el-avatar>
 						</template>
 					</el-table-column>
-					<el-table-column label="登录账号" prop="userName" width="150"></el-table-column>
+					<el-table-column label="登录账号" prop="userName" width="120"></el-table-column>
 					<el-table-column label="姓名" prop="name" width="100"></el-table-column>
 					<el-table-column label="性别" prop="sex" width="80">
 						<template #default="scope">
@@ -46,6 +46,7 @@
 							<span v-else>未知</span>
 						</template>
 					</el-table-column>
+					<el-table-column label="所属部门" prop="deptName" width="150" show-overflow-tooltip></el-table-column>
 					<el-table-column label="用户状态" prop="status" width="100">
 						<template #default="scope">
 							<el-tag v-if="scope.row.status == 1" type="success">启用</el-tag>

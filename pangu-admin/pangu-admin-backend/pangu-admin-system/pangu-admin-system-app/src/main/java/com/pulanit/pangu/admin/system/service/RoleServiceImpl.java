@@ -32,7 +32,7 @@ public class RoleServiceImpl implements RoleService {
         lambdaQueryWrapper.like(ObjectUtil.isNotEmpty(roleIn.getName()), RoleEntity::getName, roleIn.getName());
         lambdaQueryWrapper.orderByDesc(RoleEntity::getId);
         roleMapper.selectPage(page, lambdaQueryWrapper);
-        return PagingUtil.getPageResult(page);
+        return PagingUtil.transformPageResult(page);
     }
 
     @Override
