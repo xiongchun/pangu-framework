@@ -20,6 +20,7 @@ package com.pulanit.pangu.admin.system.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
+import cn.hutool.core.lang.func.Func;
 import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
@@ -31,9 +32,12 @@ import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
 import com.pulanit.pangu.admin.system.api.Constants;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
+import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
+import com.pulanit.pangu.admin.system.api.entity.UserRoleEntity;
 import com.pulanit.pangu.admin.system.api.param.*;
 import com.pulanit.pangu.admin.system.api.service.UserService;
+import com.pulanit.pangu.admin.system.dao.mapper.DeptMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserRoleMapper;
 import com.pulanit.pangu.admin.system.manager.UserManager;
@@ -42,7 +46,11 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service(version = "1.0.0", group = "pangu-admin-system-app")
@@ -52,6 +60,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Autowired
     private UserRoleMapper userRoleMapper;
+    @Autowired
+    private DeptMapper deptMapper;
     @Autowired
     private UserManager userManager;
 
@@ -74,8 +84,25 @@ public class UserServiceImpl implements UserService {
         lambdaQueryWrapper.like(ObjectUtil.isNotEmpty(userPageIn.getName()), UserEntity::getName, userPageIn.getName());
         lambdaQueryWrapper.orderByDesc(UserEntity::getId);
         userMapper.selectPage(page, lambdaQueryWrapper);
-        Page<UserOut> page2 = PagingUtil.createPage(userPageIn);
-        return PagingUtil.getPageResult(page);
+        List<UserEntity> userEntities = page.getRecords();
+        List<UserOut> userOuts = Collections.emptyList();
+        List<Long> deptIds = userEntities.stream().map(UserEntity::getDeptId).collect(Collectors.toList());
+        List<DeptEntity> deptEntities = deptMapper.selectBatchIds(deptIds);
+        Map<Long, DeptEntity> deptEntityMap = deptEntities.stream().collect(Collectors.toMap(DeptEntity::getId, Function.identity()));
+        userEntities.forEach(e -> {
+            UserOut userOut = new UserOut();
+            BeanUtil.copyProperties(e, userOut);
+            DeptEntity deptEntity = deptEntityMap.get(e.getDeptId());
+            if (deptEntity != null){
+                userOut.setDeptName(deptEntity.getName());
+            }
+            userOuts.add(userOut);
+        });
+        return PagingUtil.transformPageResult(page, userOuts);
+    }
+
+    private void test1(){
+
     }
 
     @Override
