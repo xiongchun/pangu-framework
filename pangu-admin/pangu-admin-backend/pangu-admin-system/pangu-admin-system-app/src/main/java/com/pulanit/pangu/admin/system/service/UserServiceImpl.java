@@ -20,8 +20,6 @@ package com.pulanit.pangu.admin.system.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
-import cn.hutool.core.lang.func.Func;
-import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
@@ -35,7 +33,6 @@ import com.pulanit.pangu.admin.system.api.Constants;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
-import com.pulanit.pangu.admin.system.api.entity.UserRoleEntity;
 import com.pulanit.pangu.admin.system.api.param.*;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import com.pulanit.pangu.admin.system.dao.mapper.DeptMapper;
@@ -48,7 +45,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -158,6 +154,31 @@ public class UserServiceImpl implements UserService {
         BeanUtil.copyProperties(userEntity, userOut);
         List<Long> userIds = userManager.queryRolesByUserId(userId);
         userOut.setRoleIds(userIds);
+        return userOut;
+    }
+
+    @Override
+    public UserOut queryUserDetailInfoById(Long userId) {
+        UserOut userOut = new UserOut();
+        UserEntity userEntity = userMapper.selectById(userId);
+
+        BeanUtil.copyProperties(userEntity, userOut);
+        //字典转换待优化
+        if (Constants.Sex.MALE.equals(userOut.getSex())){
+            userOut.setSexDesc("男");
+        }else if (Constants.Sex.MALE.equals(userOut.getSex())){
+            userOut.setSexDesc("女");
+        }else {
+            userOut.setSexDesc("未知");
+        }
+        if (Constants.UserStatus.ENABLED.equals(userOut.getStatus())){
+            userOut.setStatusDesc("启用");
+        }else if (Constants.UserStatus.DISABLED.equals(userOut.getStatus())){
+            userOut.setStatusDesc("停用");
+        }
+        if (Constants.UserType.DEFAULT.equals(userOut.getStatus())){
+            userOut.setStatusDesc("缺省");
+        }
         return userOut;
     }
 

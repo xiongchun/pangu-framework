@@ -27,4 +27,10 @@ public class UserOut extends UserEntity {
      */
     private String deptName;
 
+    private String sexDesc;
+
+    private String statusDesc;
+
+    private String typeDesc;
+
 }

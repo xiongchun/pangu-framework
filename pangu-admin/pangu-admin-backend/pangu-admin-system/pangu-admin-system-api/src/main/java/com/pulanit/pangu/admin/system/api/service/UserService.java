@@ -59,4 +59,11 @@ public interface UserService {
      */
     UserOut queryUserInfoById(Long userId);
 
+    /**
+     * 查询用户详细信息
+     * @param userId
+     * @return
+     */
+    UserOut queryUserDetailInfoById(Long userId);
+
 }

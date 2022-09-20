@@ -50,4 +50,5 @@ public class UserManager {
         roleIds = (List) userRoleMapper.selectObjs(lambdaQueryWrapper);
         return  roleIds;
     }
+
 }

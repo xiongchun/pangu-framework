@@ -194,7 +194,7 @@ export default {
 		submit() {
 			this.$refs.dialogForm.validate(async (valid) => {
 				if (valid) {
-					//this.isSaveing = true;
+					this.isSaveing = true;
 					var res;
 					if (this.mode == 'add') {
 						this.form.deptId = this.form.deptIds[this.form.deptIds.length - 1]

@@ -67,11 +67,12 @@
 					<el-table-column label="操作" fixed="right" align="right" width="160">
 						<template #default="scope">
 							<el-button-group>
-								<el-button text type="info" size="small"
-									@click="table_show(scope.row, scope.$index)">查看</el-button>
+								<el-button text type="info" size="small" @click="table_show(scope.row, scope.$index)">查看
+								</el-button>
 								<el-button text type="primary" size="small"
 									@click="table_edit(scope.row, scope.$index)">编辑</el-button>
-								<el-popconfirm title="确定删除当前用户吗？" confirm-button-type="danger" confirm-button-text="删除" @confirm="table_del(scope.row, scope.$index)">
+								<el-popconfirm title="确定删除当前用户吗？" confirm-button-type="danger" confirm-button-text="删除"
+									@confirm="table_del(scope.row, scope.$index)">
 									<template #reference>
 										<el-button text type="danger" size="small">删除</el-button>
 									</template>
@@ -88,20 +89,27 @@
 	<save-dialog v-if="dialog.save" ref="saveDialog" @success="handleSuccess" @closed="dialog.save = false">
 	</save-dialog>
 
+	<el-drawer v-model="dialog.info" :size="550" title="查看详情" custom-class="drawerBG" direction="rtl" destroy-on-close>
+		<info-dialog ref="infoDialog"></info-dialog>
+	</el-drawer>
+
 </template>
 
 <script>
 import saveDialog from './save'
+import infoDialog from './info'
 
 export default {
 	name: 'user',
 	components: {
-		saveDialog
+		saveDialog,
+		infoDialog
 	},
 	data() {
 		return {
 			dialog: {
-				save: false
+				save: false,
+				info: false
 			},
 			showGrouploading: false,
 			groupFilterText: '',
@@ -141,9 +149,9 @@ export default {
 		},
 		//查看
 		table_show(row) {
-			this.dialog.save = true
+			this.dialog.info = true
 			this.$nextTick(() => {
-				this.$refs.saveDialog.open('show').setData(row)
+				this.$refs.infoDialog.setData(row)
 			})
 		},
 		//删除
@@ -165,7 +173,7 @@ export default {
 				type: 'warning',
 				confirmButtonText: '删除',
 				confirmButtonClass: 'el-button--danger'
-			}).then(async() => {
+			}).then(async () => {
 				const loading = this.$loading()
 				this.showTableLoading = true
 				var ids = []
