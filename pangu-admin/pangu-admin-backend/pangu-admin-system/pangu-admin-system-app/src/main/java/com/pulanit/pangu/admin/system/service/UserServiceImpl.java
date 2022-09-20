@@ -18,6 +18,7 @@
 package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.ObjectUtil;
@@ -32,12 +33,15 @@ import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.system.api.Constants;
 import com.pulanit.pangu.admin.system.api.dto.UserDto;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
+import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.*;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import com.pulanit.pangu.admin.system.dao.mapper.DeptMapper;
+import com.pulanit.pangu.admin.system.dao.mapper.RoleMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserRoleMapper;
+import com.pulanit.pangu.admin.system.manager.DeptManager;
 import com.pulanit.pangu.admin.system.manager.UserManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
@@ -62,6 +66,10 @@ public class UserServiceImpl implements UserService {
     private DeptMapper deptMapper;
     @Autowired
     private UserManager userManager;
+    @Autowired
+    private DeptManager deptManager;
+    @Autowired
+    private RoleMapper roleMapper;
 
     @Override
     public LoginOut login(LoginIn inDto) {
@@ -79,7 +87,10 @@ public class UserServiceImpl implements UserService {
         Page<UserEntity> page = PagingUtil.createPage(userPageIn);
         LambdaQueryWrapper<UserEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
         lambdaQueryWrapper.eq(ObjectUtil.isNotEmpty(userPageIn.getDeptId()), UserEntity::getDeptId, userPageIn.getDeptId());
-        lambdaQueryWrapper.like(ObjectUtil.isNotEmpty(userPageIn.getName()), UserEntity::getName, userPageIn.getName());
+        String keyword = userPageIn.getName();
+        if (ObjectUtil.isNotEmpty(keyword)){
+            lambdaQueryWrapper.and(w -> w.like( UserEntity::getName, keyword).or().like(UserEntity::getUserName, keyword));
+        }
         lambdaQueryWrapper.orderByDesc(UserEntity::getId);
         userMapper.selectPage(page, lambdaQueryWrapper);
         List<UserEntity> userEntities = page.getRecords();
@@ -148,21 +159,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserOut queryUserInfoById(Long userId) {
-        UserOut userOut = new UserOut();
-        UserEntity userEntity = userMapper.selectById(userId);
-        BeanUtil.copyProperties(userEntity, userOut);
-        List<Long> userIds = userManager.queryRolesByUserId(userId);
-        userOut.setRoleIds(userIds);
-        return userOut;
+    public List<RoleEntity> queryRolesByUserId(Long userId) {
+        List<RoleEntity> roleEntities = Lists.newArrayList();
+        List<Long> roleIds = userManager.queryRoleIdsByUserId(userId);
+        if (CollUtil.isNotEmpty(roleIds)){
+            roleEntities = roleMapper.selectBatchIds(roleIds);
+        }
+        return roleEntities;
     }
 
     @Override
     public UserOut queryUserDetailInfoById(Long userId) {
         UserOut userOut = new UserOut();
         UserEntity userEntity = userMapper.selectById(userId);
-
         BeanUtil.copyProperties(userEntity, userOut);
+        userOut.setDeptName(deptManager.queryCascadeDeptName(userEntity.getDeptId()));
         //字典转换待优化
         if (Constants.Sex.MALE.equals(userOut.getSex())){
             userOut.setSexDesc("男");
@@ -176,8 +187,8 @@ public class UserServiceImpl implements UserService {
         }else if (Constants.UserStatus.DISABLED.equals(userOut.getStatus())){
             userOut.setStatusDesc("停用");
         }
-        if (Constants.UserType.DEFAULT.equals(userOut.getStatus())){
-            userOut.setStatusDesc("缺省");
+        if (Constants.UserType.DEFAULT.equals(userOut.getType())){
+            userOut.setTypeDesc("缺省");
         }
         return userOut;
     }

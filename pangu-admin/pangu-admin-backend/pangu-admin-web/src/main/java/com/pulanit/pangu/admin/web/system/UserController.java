@@ -1,8 +1,10 @@
 package com.pulanit.pangu.admin.web.system;
 
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.thread.ThreadUtil;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
+import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.UserIn;
 import com.pulanit.pangu.admin.system.api.param.UserOut;
@@ -13,6 +15,7 @@ import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 用户
@@ -102,13 +105,23 @@ public class UserController {
     }
 
     /**
+     * 查询用户分配角色
+     *
+     * @return
+     */
+    @GetMapping("/queryRolesByUserId")
+    public Result<List<RoleEntity>> queryRolesByUserId(@RequestParam Long userId) {
+        return Result.success(userService.queryRolesByUserId(userId));
+    }
+
+    /**
      * 查询用户详细信息
      *
      * @return
      */
-    @GetMapping("/queryUserInfoById")
-    public Result<UserOut> queryUserInfoById(@RequestParam Long userId) {
-        UserOut userOut = userService.queryUserInfoById(userId);
+    @GetMapping("/queryUserDetailInfoById")
+    public Result<UserOut> queryUserDetailInfoById(@RequestParam Long userId) {
+        UserOut userOut = userService.queryUserDetailInfoById(userId);
         return Result.success(userOut);
     }
 

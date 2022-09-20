@@ -5,7 +5,11 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.google.common.collect.Lists;
+import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
+import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserRoleEntity;
+import com.pulanit.pangu.admin.system.dao.mapper.RoleMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserRoleMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @Slf4j
@@ -20,6 +25,7 @@ public class UserManager {
 
     @Autowired
     private UserRoleMapper userRoleMapper;
+
 
     public void deleteUserRoleByUserId(Long userId){
         userRoleMapper.delete(Wrappers.lambdaQuery(UserRoleEntity.class).eq(UserRoleEntity::getUserId, userId));
@@ -43,12 +49,14 @@ public class UserManager {
         }
     }
 
-    public List<Long> queryRolesByUserId(Long userId){
-        List<Long> roleIds = Collections.EMPTY_LIST;
+    public List<Long> queryRoleIdsByUserId(Long userId){
         LambdaQueryWrapper<UserRoleEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
-        lambdaQueryWrapper.select(UserRoleEntity::getRoleId).eq(UserRoleEntity::getUserId, userId);
-        roleIds = (List) userRoleMapper.selectObjs(lambdaQueryWrapper);
+        lambdaQueryWrapper.eq(UserRoleEntity::getUserId, userId).orderByDesc(UserRoleEntity::getRoleId);
+        List<UserRoleEntity> userRoleEntities = userRoleMapper.selectList(lambdaQueryWrapper);
+        List<Long> roleIds = userRoleEntities.stream().map(UserRoleEntity::getRoleId).collect(Collectors.toList());
         return  roleIds;
     }
+
+
 
 }

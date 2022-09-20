@@ -1,6 +1,7 @@
 package com.pulanit.pangu.admin.system.api.service;
 
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
+import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.*;
 
@@ -53,11 +54,11 @@ public interface UserService {
     long validateUserName(String userName, Long id);
 
     /**
-     * 查询用户信息和用户角色信息
+     * 查询用户分配角色
      * @param userId
      * @return
      */
-    UserOut queryUserInfoById(Long userId);
+    List<RoleEntity> queryRolesByUserId(Long userId);
 
     /**
      * 查询用户详细信息

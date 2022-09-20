@@ -171,8 +171,15 @@ export default {
 				return await http.get(this.url, params);
 			}
 		},
-		queryUserInfoById: {
-			url: `${config.API_URL}/system/user/queryUserInfoById`,
+		queryRolesByUserId: {
+			url: `${config.API_URL}/system/user/queryRolesByUserId`,
+			name: "查询用户已分配角色",
+			get: async function (params) {
+				return await http.get(this.url, params);
+			}
+		},
+		queryUserDetailInfoById: {
+			url: `${config.API_URL}/system/user/queryUserDetailInfoById`,
 			name: "查询用户详细信息",
 			get: async function (params) {
 				return await http.get(this.url, params);

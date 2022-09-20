@@ -4,7 +4,8 @@
 		<el-form :model="form" :rules="rules" :disabled="mode == 'show'" ref="dialogForm" label-width="80px"
 			label-position="right">
 			<el-form-item label="登录账号" prop="userName">
-				<el-input v-model="form.userName" placeholder="请输入登录账号" maxlength="20" onkeyup="value=value.replace(/[^\x00-\xff]/g, '')" show-word-limit clearable>
+				<el-input v-model="form.userName" placeholder="请输入登录账号" maxlength="20"
+					onkeyup="value=value.replace(/[^\x00-\xff]/g, '')" show-word-limit clearable>
 				</el-input>
 			</el-form-item>
 			<template v-if="mode == 'add'">
@@ -216,12 +217,17 @@ export default {
 			})
 		},
 		//表单注入数据
-		setData(data) {
-			var params = { userId: data.id}
-			this.$API.system.user.queryUserInfoById.get(params).then(res => {
+		setData(row) {
+			Object.assign(this.form, row)
+			this.form.deptIds = row.deptId
+			var params = { userId: row.id }
+			this.$API.system.user.queryRolesByUserId.get(params).then(res => {
 				if (res.code == 200) {
-					Object.assign(this.form, res.data)
-					this.form.deptIds = res.data.deptId
+					var roleIds = new Array();
+					for (const role of res.data) {
+						roleIds.push(role.id)
+					}
+					this.form.roleIds = roleIds
 				}
 			})
 		}
