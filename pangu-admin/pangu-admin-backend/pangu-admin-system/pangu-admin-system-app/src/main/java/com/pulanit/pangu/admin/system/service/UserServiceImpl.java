@@ -24,6 +24,7 @@ import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -86,6 +87,7 @@ public class UserServiceImpl implements UserService {
     public PageResult<UserOut> list(UserPageIn userPageIn) {
         Page<UserEntity> page = PagingUtil.createPage(userPageIn);
         LambdaQueryWrapper<UserEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
+        lambdaQueryWrapper.select(UserEntity.class, info -> !info.getColumn().equals("password"));
         lambdaQueryWrapper.eq(ObjectUtil.isNotEmpty(userPageIn.getDeptId()), UserEntity::getDeptId, userPageIn.getDeptId());
         String keyword = userPageIn.getName();
         if (ObjectUtil.isNotEmpty(keyword)){
@@ -119,6 +121,7 @@ public class UserServiceImpl implements UserService {
         }
         userIn.setAvatar(this.randomAvatar());
         userIn.setGmtCreated(DateUtil.date());
+        userIn.setPassword(SecureUtil.sha256(userIn.getPassword()));
         userMapper.insert(userIn);
         userManager.creatUserRole(userIn.getId(), userIn.getRoleIds());
     }
