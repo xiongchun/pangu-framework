@@ -125,6 +125,14 @@ public class UserController {
         return Result.success(userOut);
     }
 
+    @PostMapping("/resetPassword")
+    public Result<Void> resetPassword(@RequestParam List<Long> userIds, @RequestParam String password) {
+        Assert.notEmpty(userIds, "请先选中用户");
+        Assert.notEmpty(password, "密码字段不能为空");
+        userService.resetPassword(userIds, password);
+        return Result.success();
+    }
+
 
 
 }

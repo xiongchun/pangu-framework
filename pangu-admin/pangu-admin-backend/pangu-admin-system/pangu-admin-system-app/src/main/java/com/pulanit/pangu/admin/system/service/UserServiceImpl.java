@@ -26,6 +26,7 @@ import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
@@ -145,8 +146,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void batchDelete(List<Long> ids) {
-        userMapper.deleteBatchIds(ids);
-        userManager.deleteUserRoleByBatchUserIds(ids);
+        if (CollUtil.isNotEmpty(ids)){
+            userMapper.deleteBatchIds(ids);
+            userManager.deleteUserRoleByBatchUserIds(ids);
+        }
     }
 
     @Override
@@ -194,6 +197,16 @@ public class UserServiceImpl implements UserService {
             userOut.setTypeDesc("缺省");
         }
         return userOut;
+    }
+
+    @Override
+    public void resetPassword(List<Long> userIds, String password) {
+        if (CollUtil.isNotEmpty(userIds)){
+            LambdaUpdateWrapper<UserEntity> updateWrapper = Wrappers.lambdaUpdate();
+            updateWrapper.set(UserEntity::getPassword, SecureUtil.sha256(password));
+            updateWrapper.in(UserEntity::getId, userIds);
+            userMapper.update(null, updateWrapper);
+        }
     }
 
     private String randomAvatar(){

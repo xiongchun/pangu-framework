@@ -67,4 +67,11 @@ public interface UserService {
      */
     UserOut queryUserDetailInfoById(Long userId);
 
+    /**
+     * 重置密码
+     * @param userIds
+     * @param password
+     */
+    void resetPassword(List<Long> userIds, String password);
+
 }

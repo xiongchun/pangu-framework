@@ -18,12 +18,12 @@
 					<el-button type="primary" icon="el-icon-plus" @click="add"></el-button>
 					<el-button type="danger" plain icon="el-icon-delete" :disabled="selection.length == 0"
 						@click="batch_del"></el-button>
-					<el-button type="primary" plain :disabled="selection.length == 0">分配角色</el-button>
-					<el-button type="primary" plain :disabled="selection.length == 0">重置密码</el-button>
+					<el-button type="primary" @click="reset" plain :disabled="selection.length == 0">重置密码</el-button>
 				</div>
 				<div class="right-panel">
 					<div class="right-panel-search">
-						<el-input v-model="search.name" style="width: 170px;" placeholder="登录账号 / 姓名" clearable></el-input>
+						<el-input v-model="search.name" style="width: 170px;" placeholder="登录账号 / 姓名" clearable>
+						</el-input>
 						<el-button type="primary" icon="el-icon-search" @click="upsearch"></el-button>
 					</div>
 				</div>
@@ -93,23 +93,29 @@
 		<info-dialog ref="infoDialog"></info-dialog>
 	</el-drawer>
 
+	<reset-dialog v-if="dialog.reset" ref="resetDialog" @closed="dialog.reset = false">
+	</reset-dialog>
+
 </template>
 
 <script>
 import saveDialog from './save'
 import infoDialog from './info'
+import resetDialog from './reset'
 
 export default {
 	name: 'user',
 	components: {
 		saveDialog,
-		infoDialog
+		infoDialog,
+		resetDialog
 	},
 	data() {
 		return {
 			dialog: {
 				save: false,
-				info: false
+				info: false,
+				reset: false
 			},
 			showGrouploading: false,
 			groupFilterText: '',
@@ -152,6 +158,17 @@ export default {
 			this.dialog.info = true
 			this.$nextTick(() => {
 				this.$refs.infoDialog.setData(row)
+			})
+		},
+		//重置密码
+		reset() {
+			this.dialog.reset = true
+			this.$nextTick(() => {
+				var userIds = []
+				this.selection.forEach(function (item) {
+					userIds.push(item.id)
+				})
+				this.$refs.resetDialog.open('reset').setData(userIds)
 			})
 		},
 		//删除

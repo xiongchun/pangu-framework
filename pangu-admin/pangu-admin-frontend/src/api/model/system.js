@@ -184,6 +184,13 @@ export default {
 			get: async function (params) {
 				return await http.get(this.url, params);
 			}
+		},
+		resetPassword: {
+			url: `${config.API_URL}/system/user/resetPassword`,
+			name: "重置用户密码",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
 		}
 	},
 	app: {
