@@ -8,16 +8,16 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
- * 菜单资源表
+ * 资源表
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-09-16 21:43:14
+ * @date 2022-10-03 21:36:19
  */
 @Data
 @Accessors(chain = true)
-@TableName("menu")
-public class MenuEntity implements Serializable {
+@TableName("resource")
+public class ResourceEntity implements Serializable {
 
    private static final long serialVersionUID=1L;
 
@@ -25,31 +25,43 @@ public class MenuEntity implements Serializable {
     * 流水号
     */
    @TableId(value = "id", type = IdType.AUTO)
-   private Integer id;
+   private Long id;
 
    /**
     * 所属上级
     */
    @TableField(value = "parent_id")
-   private Integer parentId;
+   private Long parentId;
 
    /**
-    * 名称
+    * 资源名称
     */
-   @TableField(value = "name")
-   private String name;
+   @TableField(value = "title")
+   private String title;
 
    /**
-    * 路由地址
+    * 资源标识
     */
-   @TableField(value = "route_path")
-   private String routePath;
+   @TableField(value = "resource_key")
+   private String resourceKey;
 
    /**
     * 类型
     */
    @TableField(value = "type")
    private String type;
+
+   /**
+    * 路由地址
+    */
+   @TableField(value = "path")
+   private String path;
+
+   /**
+    * 视图组件位置
+    */
+   @TableField(value = "component")
+   private String component;
 
    /**
     * 图标
@@ -64,19 +76,7 @@ public class MenuEntity implements Serializable {
    private String enabled;
 
    /**
-    * 排序号
-    */
-   @TableField(value = "sort_no")
-   private Integer sortNo;
-
-   /**
-    * 接口权限列表（JSON格式）
-    */
-   @TableField(value = "apis")
-   private String apis;
-
-   /**
-    * 隐藏菜单
+    * 是否隐藏菜单(详情页等)
     */
    @TableField(value = "hidden")
    private String hidden;
@@ -84,8 +84,26 @@ public class MenuEntity implements Serializable {
    /**
     * 隐藏面包屑
     */
-   @TableField(value = "crumbs_hidden")
-   private String crumbsHidden;
+   @TableField(value = "hidden_breadcrumb")
+   private String hiddenBreadcrumb;
+
+   /**
+    * 是否整页打开路由
+    */
+   @TableField(value = "fullpage")
+   private String fullpage;
+
+   /**
+    * 是否固定(标签卡片没有关闭按钮)
+    */
+   @TableField(value = "affix")
+   private String affix;
+
+   /**
+    * 排序号
+    */
+   @TableField(value = "sort_no")
+   private Integer sortNo;
 
    /**
     * 创建时间
@@ -112,5 +130,11 @@ public class MenuEntity implements Serializable {
     */
    @TableField(value = "modified_by")
    private String modifiedBy;
+
+   /**
+    * 逻辑删除标志
+    */
+   @TableField(value = "deleted")
+   private Long deleted;
 
 }

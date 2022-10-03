@@ -9,7 +9,7 @@ import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-09-16 21:43:14
+ * @date 2022-10-03 21:36:19
  */
 @Mapper
 public interface DeptMapper extends BaseMapper<DeptEntity> {

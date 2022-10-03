@@ -1,35 +1,35 @@
 package com.pulanit.pangu.admin.system.api.service;
 
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
-import com.pulanit.pangu.admin.system.api.entity.MenuEntity;
+import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
 
 import java.util.List;
 
 /**
- * 菜单
+ * 资源
  *
  * @author xiongchun
  */
-public interface MenuService {
+public interface ResourceService {
 
     /**
      * 查询列表信息
-     * @param menuName
+     * @param name
      * @return
      */
-    PageResult<MenuEntity> list(String menuName);
+    PageResult<ResourceEntity> list(String name);
 
     /**
      * 新增
-     * @param menuEntity
+     * @param resourceEntity
      */
-    void add(MenuEntity menuEntity);
+    void add(ResourceEntity resourceEntity);
 
     /**
      * 修改
-     * @param menuEntity
+     * @param resourceEntity
      */
-    void update(MenuEntity menuEntity);
+    void update(ResourceEntity resourceEntity);
 
     /**
      * 删除

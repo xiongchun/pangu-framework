@@ -32,25 +32,26 @@
     },
     {
       "name": "setting",
-      "path": "/system",
+      "path": "/setting",
       "meta": {
-        "title": "系统",
+        "title": "设置",
         "icon": "el-icon-Setting",
         "type": "menu"
       },
       "children": [
         {
-          "path": "/system/dept",
+          "path": "/setting/dept",
           "name": "dept",
           "meta": {
             "title": "部门管理",
             "icon": "sc-icon-organization",
-            "type": "menu"
+            "type": "menu",
+            "hiddenBreadcrumb": false
           },
           "component": "setting/dept"
         },
         {
-          "path": "/system/role",
+          "path": "/setting/role",
           "name": "role",
           "meta": {
             "title": "角色管理",
@@ -60,7 +61,7 @@
           "component": "setting/role"
         },
         {
-          "path": "/system/user",
+          "path": "/setting/user",
           "name": "user",
           "meta": {
             "title": "用户管理",
@@ -70,10 +71,10 @@
           "component": "setting/user"
         },
         {
-          "path": "/system/menu",
+          "path": "/setting/menu",
           "name": "menu",
           "meta": {
-            "title": "菜单管理",
+            "title": "资源管理",
             "icon": "el-icon-copyDocument",
             "type": "menu"
           },

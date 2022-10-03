@@ -2,16 +2,16 @@ package com.pulanit.pangu.admin.system.dao.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.pulanit.pangu.admin.system.api.entity.MenuEntity;
+import com.pulanit.pangu.admin.system.api.entity.ResourceApiEntity;
 
 /**
- * 菜单资源表
+ * 资源-API接口表
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-09-16 21:43:14
+ * @date 2022-10-03 21:36:19
  */
 @Mapper
-public interface MenuMapper extends BaseMapper<MenuEntity> {
+public interface ResourceApiMapper extends BaseMapper<ResourceApiEntity> {
 
 }

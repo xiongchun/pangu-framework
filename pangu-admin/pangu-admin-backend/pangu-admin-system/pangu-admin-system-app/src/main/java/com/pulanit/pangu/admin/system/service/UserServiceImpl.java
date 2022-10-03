@@ -80,6 +80,7 @@ public class UserServiceImpl implements UserService {
         UserDto userDto = new UserDto();
         userDto.setName("熊春");
         userDto.setDashboard("1");
+        userDto.setRole(Arrays.asList("admin"));
         loginOut.setUserInfo(userDto);
         return loginOut;
     }

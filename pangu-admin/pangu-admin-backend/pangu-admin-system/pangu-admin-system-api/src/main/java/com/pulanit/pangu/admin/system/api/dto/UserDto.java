@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 登录用户对象
@@ -65,5 +66,10 @@ public class UserDto implements Serializable {
      * 首页控制台类型(0/1)
      */
     private String dashboard;
+
+    /**
+     * 用户所属角色列表
+     */
+    private List<String> role;
 
 }
