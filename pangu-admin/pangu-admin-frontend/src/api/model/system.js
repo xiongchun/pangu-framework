@@ -9,16 +9,16 @@ export default {
 			return await http.post(this.url, data);
 		}
 	},
-	menu: {
+	resource: {
 		list: {
-			url: `${config.API_URL}/system/menu/list`,
-			name: "登录用户获取菜单",
+			url: `${config.API_URL}/system/resource/list`,
+			name: "登录用户获取菜单和权限列表",
 			get: async function () {
 				return await http.get(this.url);
 			}
 		},
 		list2: {
-			url: `${config.API_URL}/system/menu/list2`,
+			url: `${config.API_URL}/system/resource/list2`,
 			name: "获取菜单",
 			get: async function () {
 				return await http.get(this.url);

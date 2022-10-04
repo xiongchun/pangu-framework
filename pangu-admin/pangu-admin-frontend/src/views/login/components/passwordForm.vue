@@ -91,10 +91,10 @@
 				//获取菜单
 				var menu = null
 				if(this.form.user == 'admin'){
-					menu = await this.$API.system.menu.list.get()
+					menu = await this.$API.system.resource.list.get()
 				}else{
 					//menu = await this.$API.demo.menu.get()
-					menu = await this.$API.system.menu.list.get()
+					menu = await this.$API.system.resource.list.get()
 				}
 				if(menu.code == 200){
 					if(menu.data.menu.length==0){

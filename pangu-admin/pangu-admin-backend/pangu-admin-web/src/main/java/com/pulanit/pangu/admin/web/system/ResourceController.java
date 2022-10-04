@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/system/menu")
-public class MenuController {
+@RequestMapping("/api/system/resource")
+public class ResourceController {
 
     /**
      * 用户登录获取菜单资源

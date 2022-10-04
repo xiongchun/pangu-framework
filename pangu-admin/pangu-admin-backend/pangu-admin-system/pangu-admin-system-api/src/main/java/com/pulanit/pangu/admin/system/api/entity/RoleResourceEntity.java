@@ -8,7 +8,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
- * 角色表
+ * 角色-资源表
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
@@ -16,46 +16,28 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  */
 @Data
 @Accessors(chain = true)
-@TableName("role")
-public class RoleEntity implements Serializable {
+@TableName("role_resource")
+public class RoleResourceEntity implements Serializable {
 
    private static final long serialVersionUID=1L;
 
    /**
-    *  流水号
+    * 流水号
     */
    @TableId(value = "id", type = IdType.AUTO)
    private Long id;
 
    /**
-    * 角色名称
+    * 角色ID
     */
-   @TableField(value = "name")
-   private String name;
+   @TableField(value = "role_id")
+   private Long roleId;
 
    /**
-    * 角色标识
+    * 资源ID
     */
-   @TableField(value = "role_key")
-   private String roleKey;
-
-   /**
-    * 状态
-    */
-   @TableField(value = "status")
-   private String status;
-
-   /**
-    * 角色类型
-    */
-   @TableField(value = "type")
-   private String type;
-
-   /**
-    * 业务扩展码
-    */
-   @TableField(value = "biz_code")
-   private String bizCode;
+   @TableField(value = "resource_id")
+   private Long resourceId;
 
    /**
     * 创建时间
@@ -69,25 +51,6 @@ public class RoleEntity implements Serializable {
     */
    @TableField(value = "created_by")
    private String createdBy;
-
-   /**
-    * 修改时间
-    */
-   @TableField(value = "gmt_modified")
-   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-   private Date gmtModified;
-
-   /**
-    * 修改人
-    */
-   @TableField(value = "modified_by")
-   private String modifiedBy;
-
-   /**
-    * 备注
-    */
-   @TableField(value = "remark")
-   private String remark;
 
    /**
     * 逻辑删除标志

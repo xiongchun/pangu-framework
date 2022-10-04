@@ -68,7 +68,7 @@
 			//加载树数据
 			async getMenu(){
 				this.menuloading = true
-				var res = await this.$API.system.menu.list2.get();
+				var res = await this.$API.system.resource.list2.get();
 				this.menuloading = false
 				this.menuList = res.data;
 			},

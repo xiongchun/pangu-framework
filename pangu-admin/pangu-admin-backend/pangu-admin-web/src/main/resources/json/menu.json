@@ -71,14 +71,14 @@
           "component": "setting/user"
         },
         {
-          "path": "/setting/menu",
-          "name": "menu",
+          "path": "/setting/resource",
+          "name": "resource",
           "meta": {
             "title": "资源管理",
             "icon": "el-icon-copyDocument",
             "type": "menu"
           },
-          "component": "setting/menu"
+          "component": "setting/resource"
         }
       ]
     }

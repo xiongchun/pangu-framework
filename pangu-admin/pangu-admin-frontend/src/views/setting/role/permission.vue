@@ -114,7 +114,7 @@
 				},1000)
 			},
 			async getMenu(){
-				var res = await this.$API.system.menu.list.get()
+				var res = await this.$API.system.resource.list.get()
 				this.menu.list = res.data
 
 				//获取接口返回的之前选中的和半选的合并，处理过滤掉有叶子节点的key
