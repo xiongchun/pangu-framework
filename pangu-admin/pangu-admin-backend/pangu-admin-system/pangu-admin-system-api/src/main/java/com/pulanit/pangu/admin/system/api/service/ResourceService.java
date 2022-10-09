@@ -1,6 +1,6 @@
 package com.pulanit.pangu.admin.system.api.service;
 
-import com.gitee.pulanos.pangu.framework.common.model.PageResult;
+import cn.hutool.core.lang.tree.Tree;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
 
 import java.util.List;
@@ -13,11 +13,10 @@ import java.util.List;
 public interface ResourceService {
 
     /**
-     * 查询列表信息
-     * @param name
+     * 查询资源树结构信息
      * @return
      */
-    PageResult<ResourceEntity> list(String name);
+    List<Tree<Integer>> listForManage();
 
     /**
      * 新增

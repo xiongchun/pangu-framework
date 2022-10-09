@@ -22,7 +22,6 @@ import com.yomahub.tlog.core.enhance.bytes.AspectLogEnhance;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author xiongchun

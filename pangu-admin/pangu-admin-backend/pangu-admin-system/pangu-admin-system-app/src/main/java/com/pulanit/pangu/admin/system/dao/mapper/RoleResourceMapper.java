@@ -1,8 +1,8 @@
 package com.pulanit.pangu.admin.system.dao.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pulanit.pangu.admin.system.api.entity.RoleResourceEntity;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 角色-资源表

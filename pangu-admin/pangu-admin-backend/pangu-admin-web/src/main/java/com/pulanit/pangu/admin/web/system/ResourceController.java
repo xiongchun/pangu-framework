@@ -33,11 +33,11 @@ public class ResourceController {
     }
 
     /**
-     * 获取菜单
+     * 获取菜单(管理模块)
      * @return
      */
-    @GetMapping("/list2")
-    public Result<JSONArray> list2() {
+    @GetMapping("/listForManage")
+    public Result<JSONArray> listForManage() {
         String menu = ResourceUtil.readStr("json/menu2.json", CharsetUtil.CHARSET_UTF_8);
         JSONArray jsonArray = JSON.parseArray(menu);
         return Result.success(jsonArray);

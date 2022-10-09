@@ -17,9 +17,9 @@ export default {
 				return await http.get(this.url);
 			}
 		},
-		list2: {
-			url: `${config.API_URL}/system/resource/list2`,
-			name: "获取菜单",
+		listForManage: {
+			url: `${config.API_URL}/system/resource/listForManage`,
+			name: "获取菜单(管理模块)",
 			get: async function () {
 				return await http.get(this.url);
 			}

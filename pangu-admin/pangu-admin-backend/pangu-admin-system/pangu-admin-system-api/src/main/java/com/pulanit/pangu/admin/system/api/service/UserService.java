@@ -2,7 +2,6 @@ package com.pulanit.pangu.admin.system.api.service;
 
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
-import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.*;
 
 import java.util.List;

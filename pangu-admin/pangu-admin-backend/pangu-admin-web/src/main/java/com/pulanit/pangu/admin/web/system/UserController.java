@@ -1,11 +1,9 @@
 package com.pulanit.pangu.admin.web.system;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.core.thread.ThreadUtil;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
-import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.UserIn;
 import com.pulanit.pangu.admin.system.api.param.UserOut;
 import com.pulanit.pangu.admin.system.api.param.UserPageIn;
@@ -15,7 +13,6 @@ import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 用户

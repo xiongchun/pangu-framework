@@ -5,17 +5,12 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.google.common.collect.Lists;
-import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
-import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserRoleEntity;
-import com.pulanit.pangu.admin.system.dao.mapper.RoleMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserRoleMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
