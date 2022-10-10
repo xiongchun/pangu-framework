@@ -74,22 +74,10 @@ public class ResourceEntity implements Serializable {
    private String icon;
 
    /**
-    * 是否启用
-    */
-   @TableField(value = "enabled")
-   private String enabled;
-
-   /**
     * 是否隐藏菜单(详情页等)
     */
    @TableField(value = "hidden")
    private String hidden;
-
-   /**
-    * 隐藏面包屑
-    */
-   @TableField(value = "hidden_breadcrumb")
-   private String hiddenBreadcrumb;
 
    /**
     * 是否整页打开路由

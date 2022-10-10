@@ -54,10 +54,19 @@ public class ResourceServiceImpl implements ResourceService {
 
     private void fillTreeNode(Tree<Integer> treeNode, ResourceEntity resourceEntity){
         treeNode.setId(resourceEntity.getId().intValue());
-        treeNode.setName(resourceEntity.getTitle());
         treeNode.setParentId(resourceEntity.getParentId().intValue());
         //树形结构构造器的排序字段
         treeNode.setWeight(resourceEntity.getSortNo());
         treeNode.putExtra("type", resourceEntity.getType());
+        treeNode.putExtra("title", resourceEntity.getTitle());
+        treeNode.putExtra("resourceKey", resourceEntity.getResourceKey());
+        treeNode.putExtra("path", resourceEntity.getPath());
+        treeNode.putExtra("component", resourceEntity.getComponent());
+        treeNode.putExtra("icon", resourceEntity.getIcon());
+        treeNode.putExtra("hidden", resourceEntity.getHidden());
+        treeNode.putExtra("fullpage", resourceEntity.getFullpage());
+        treeNode.putExtra("affix", resourceEntity.getAffix());
+        treeNode.putExtra("treeNode", resourceEntity.getSortNo());
+
     }
 }
