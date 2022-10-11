@@ -89,7 +89,8 @@ export default {
 		scIconSelect
 	},
 	props: {
-		menu: { type: Object, default: () => { } },
+		//由index组件传值过来
+		menuOptions: { type: Object, default: () => { } },
 	},
 	data() {
 		return {
@@ -107,7 +108,6 @@ export default {
 				icon: "",
 				apiList: []
 			},
-			menuOptions: [],
 			menuProps: {
 				value: 'id',
 				label: 'title',
@@ -121,32 +121,10 @@ export default {
 			loading: false
 		}
 	},
-	watch: {
-		menu: {
-			handler() {
-				this.menuOptions = this.treeToMap(this.menu)
-			},
-			deep: true
-		}
-	},
 	mounted() {
 
 	},
 	methods: {
-		//简单化菜单
-		treeToMap(tree) {
-			const map = []
-			tree.forEach(item => {
-				var obj = {
-					id: item.id,
-					parentId: item.parentId,
-					title: item.title,
-					children: item.children && item.children.length > 0 ? this.treeToMap(item.children) : null
-				}
-				map.push(obj)
-			})
-			return map
-		},
 		//保存
 		async save() {
 			this.loading = true
