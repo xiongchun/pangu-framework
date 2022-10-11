@@ -18,9 +18,10 @@
 						<el-radio-group v-model="form.type">
 							<el-radio-button label="menu">菜单</el-radio-button>
 							<el-radio-button label="button">按钮</el-radio-button>
-							<el-radio-button label="iframe">Iframe</el-radio-button>
+							<el-radio-button label="iframe">内链</el-radio-button>
 							<el-radio-button label="link">外链</el-radio-button>
 						</el-radio-group>
+						<div class="el-form-item-msg">内链：在标签页内打开；外链：跳转到新页面打开</div>
 					</el-form-item>
 					<el-form-item label="资源别名" prop="resourceKey">
 						<el-input v-model="form.resourceKey" clearable placeholder="请输入资源别名"></el-input>
