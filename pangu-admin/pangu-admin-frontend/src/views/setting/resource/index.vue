@@ -95,22 +95,14 @@ export default {
 		async add(node, data) {
 			var newMenuName = "未命名" + newMenuIndex++;
 			var newMenuData = {
+				id: -newMenuIndex,
 				parentId: data ? data.id : "",
-				name: newMenuName,
-				path: "",
-				component: "",
 				title: newMenuName,
 				type: "menu"
 			}
-			this.menuloading = true
-			var res = await this.$API.demo.post.post(newMenuData)
-			this.menuloading = false
-			newMenuData.id = res.data
-
 			this.$refs.menu.append(newMenuData, node)
 			this.$refs.menu.setCurrentKey(newMenuData.id)
-			var pid = node ? node.data.id : ""
-			this.$refs.save.setData(newMenuData, pid)
+			this.$refs.save.setData(newMenuData)
 		},
 		//删除菜单
 		async delMenu() {

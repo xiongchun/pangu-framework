@@ -25,7 +25,7 @@
 					</el-form-item>
 					<el-form-item label="资源别名" prop="resourceKey">
 						<el-input v-model="form.resourceKey" clearable placeholder="请输入资源别名"></el-input>
-						<div class="el-form-item-msg">系统唯一且与视图组件名一致，否则会导致页面缓存失效</div>
+						<div class="el-form-item-msg">当资源类型为菜单时别名应和视图组件名一致（页面缓存）</div>
 					</el-form-item>
 					<el-form-item label="路由地址" prop="path">
 						<el-input v-model="form.path" clearable placeholder="请输入路由地址"></el-input>
@@ -33,6 +33,7 @@
 					<el-form-item label="视图组件" prop="component">
 						<el-input v-model="form.component" clearable placeholder="请输入视图组件">
 							<template #prepend>views/</template>
+							<template #append>.vue</template>
 						</el-input>
 						<div class="el-form-item-msg">如没有对应的视图组件不需要填写</div>
 					</el-form-item>
@@ -113,7 +114,14 @@ export default {
 				label: 'title',
 				checkStrictly: true
 			},
-			rules: [],
+			rules: {
+				title: [
+					{ required: true, message: '资源名称不能为空' }
+				],
+				resourceKey: [
+					{ required: true, message: '资源别名不能为空' }
+				]
+			},
 			apiListAddTemplate: {
 				key: "",
 				url: ""
@@ -127,21 +135,30 @@ export default {
 	methods: {
 		//保存
 		async save() {
-			this.loading = true
-			var res = await this.$API.demo.post.post(this.form)
-			this.loading = false
-			if (res.code == 200) {
-				this.$message.success("保存成功")
-			} else {
-				this.$message.warning(res.message)
-			}
+			this.$refs.dialogForm.validate(async (valid) => {
+				if (!valid) {
+					return false
+				}
+				this.loading = true
+				var res;
+				if (this.form.id > 0) {
+					res = await this.$API.system.resource.add.post(this.form)
+				} else{
+					res = await this.$API.system.resource.update.post(this.form)
+				}
+				this.loading = false;
+				if (res.code == 200) {
+					this.$emit('success', this.form, this.mode)
+					this.$message.success("操作成功")
+				} else {
+					this.$alert(res.message, "提示", { type: 'error' })
+				}
+			})
 		},
 		//表单注入数据
-		setData(data, pid) {
+		setData(data) {
 			this.form = data
 			this.form.apiList = data.apiList || []
-			this.form.parentId = pid
-			console.log(pid)
 		}
 	}
 }

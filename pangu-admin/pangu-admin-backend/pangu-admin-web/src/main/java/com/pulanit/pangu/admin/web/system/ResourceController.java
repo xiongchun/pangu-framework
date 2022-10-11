@@ -1,21 +1,22 @@
 package com.pulanit.pangu.admin.web.system;
 
 import cn.hutool.core.io.resource.ResourceUtil;
+import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.util.CharsetUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
+import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
+import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
 import com.pulanit.pangu.admin.system.api.param.DeptIn;
+import com.pulanit.pangu.admin.system.api.param.ResourceIn;
 import com.pulanit.pangu.admin.system.api.service.ResourceService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -51,6 +52,31 @@ public class ResourceController {
     public Result<List<Tree<Integer>>> listForManage() {
         List<Tree<Integer>> treeNodes = resourceService.listForManage();
         return Result.success(treeNodes);
+    }
+
+    /**
+     * 新增
+     *
+     * @param resourceIn
+     * @return
+     */
+    @PostMapping("/add")
+    public Result<Void> add(@RequestBody ResourceIn resourceIn) {
+        return Result.success();
+    }
+
+
+    /**
+     * 修改
+     *
+     * @param resourceIn
+     * @return
+     */
+    @PostMapping("/update")
+    public Result<Void> update(@RequestBody ResourceIn resourceIn) {
+        Assert.notNull(resourceIn.getId(), "资源 ID 不能为空");
+
+        return Result.success();
     }
 
 }
