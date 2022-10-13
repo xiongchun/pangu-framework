@@ -61,10 +61,10 @@ public class ResourceController {
      * @return
      */
     @PostMapping("/add")
-    public Result<Void> add(@RequestBody ResourceIn resourceIn) {
-        return Result.success();
+    public Result<Long> add(@RequestBody ResourceIn resourceIn) {
+        Long id = resourceService.add(resourceIn);
+        return Result.success(id);
     }
-
 
     /**
      * 修改
@@ -75,7 +75,7 @@ public class ResourceController {
     @PostMapping("/update")
     public Result<Void> update(@RequestBody ResourceIn resourceIn) {
         Assert.notNull(resourceIn.getId(), "资源 ID 不能为空");
-
+        resourceService.update(resourceIn);
         return Result.success();
     }
 

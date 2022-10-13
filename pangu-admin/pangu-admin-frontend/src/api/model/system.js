@@ -12,16 +12,37 @@ export default {
 	resource: {
 		list: {
 			url: `${config.API_URL}/system/resource/list`,
-			name: "登录用户获取菜单和权限列表",
+			name: "登录用户获取资源菜单和权限列表",
 			get: async function () {
 				return await http.get(this.url);
 			}
 		},
 		listForManage: {
 			url: `${config.API_URL}/system/resource/listForManage`,
-			name: "获取菜单(管理模块)",
+			name: "获取资源菜单(管理模块)",
 			get: async function () {
 				return await http.get(this.url);
+			}
+		},
+		add: {
+			url: `${config.API_URL}/system/resource/add`,
+			name: "新增资源",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
+		},
+		update: {
+			url: `${config.API_URL}/system/resource/update`,
+			name: "修改资源",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
+		},
+		validateResourceKey: {
+			name: "校验资源别名唯一性",
+			url: `${config.API_URL}/system/resource/validateResourceKey`,
+			get: async function (params) {
+				return await http.get(this.url, params);
 			}
 		}
 	},
@@ -85,6 +106,7 @@ export default {
 			}
 		},
 		validateRoleKey: {
+			name: "校验角色标识唯一性",
 			url: `${config.API_URL}/system/role/validateRoleKey`,
 			get: async function (params) {
 				return await http.get(this.url, params);

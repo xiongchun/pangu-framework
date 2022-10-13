@@ -1,12 +1,16 @@
 package com.pulanit.pangu.admin.system.service;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
+import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
+import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
+import com.pulanit.pangu.admin.system.api.param.ResourceIn;
 import com.pulanit.pangu.admin.system.api.service.ResourceService;
 import com.pulanit.pangu.admin.system.dao.mapper.ResourceMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +18,7 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Service(version = "1.0.0", group = "pangu-admin-system-app")
@@ -21,6 +26,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Autowired
     private ResourceMapper resourceMapper;
+    private static final Long ROOT_ID = 0l;
 
     @Override
     public List<Tree<Integer>> listForManage() {
@@ -33,13 +39,26 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public void add(ResourceEntity resourceEntity) {
-
+    public Long add(ResourceIn resourceIn) {
+        ResourceEntity resourceEntity = new ResourceEntity();
+        BeanUtil.copyProperties(resourceIn, resourceEntity);
+        if (Objects.isNull(resourceEntity.getParentId())) {
+            resourceEntity.setParentId(ROOT_ID);
+        }
+        resourceEntity.setGmtCreated(DateUtil.date());
+        resourceMapper.insert(resourceEntity);
+        return resourceEntity.getId();
     }
 
     @Override
-    public void update(ResourceEntity resourceEntity) {
-
+    public void update(ResourceIn resourceIn) {
+        ResourceEntity resourceEntity = new ResourceEntity();
+        BeanUtil.copyProperties(resourceIn, resourceEntity);
+        if (Objects.isNull(resourceEntity.getParentId())) {
+            resourceEntity.setParentId(ROOT_ID);
+        }
+        resourceEntity.setGmtModified(DateUtil.date());
+        resourceMapper.updateById(resourceEntity);
     }
 
     @Override
@@ -52,7 +71,19 @@ public class ResourceServiceImpl implements ResourceService {
 
     }
 
-    private void fillTreeNode(Tree<Integer> treeNode, ResourceEntity resourceEntity){
+    @Override
+    public long validateResourceKey(String resourceKey, Long id) {
+        long result = resourceMapper.selectCount(Wrappers.lambdaQuery(ResourceEntity.class).eq(ResourceEntity::getResourceKey, resourceKey));
+        if (ObjectUtil.isNotNull(id)){
+            ResourceEntity entity = resourceMapper.selectById(id);
+            if (StrUtil.equalsIgnoreCase(resourceKey, entity.getResourceKey())){
+                return 0;
+            }
+        }
+        return result;
+    }
+
+    private void fillTreeNode(Tree<Integer> treeNode, ResourceEntity resourceEntity) {
         treeNode.setId(resourceEntity.getId().intValue());
         treeNode.setParentId(resourceEntity.getParentId().intValue());
         //树形结构构造器的排序字段
@@ -66,7 +97,7 @@ public class ResourceServiceImpl implements ResourceService {
         treeNode.putExtra("hidden", resourceEntity.getHidden());
         treeNode.putExtra("fullpage", resourceEntity.getFullpage());
         treeNode.putExtra("affix", resourceEntity.getAffix());
-        treeNode.putExtra("treeNode", resourceEntity.getSortNo());
+        treeNode.putExtra("sortNo", resourceEntity.getSortNo());
 
     }
 }

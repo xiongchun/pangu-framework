@@ -2,19 +2,19 @@
 	<el-dialog :title="titleMap[mode]" v-model="visible" :width="500" destroy-on-close @closed="$emit('closed')">
 		<el-form :model="form" :rules="rules" :disabled="mode == 'show'" ref="dialogForm" label-width="80px">
 			<el-form-item label="上级部门" prop="parentId">
-				<el-cascader v-model="form.parentId" :options="deptGroups" :props="deptGroupsProps" :show-all-levels="false"
-					clearable placeholder="请选择上级部门" style="width: 100%;"></el-cascader>
+				<el-cascader v-model="form.parentId" :options="deptGroups" :props="deptGroupsProps" :show-all-levels="true"
+					placeholder="顶级部门" clearable filterable style="width: 100%;"></el-cascader>
 			</el-form-item>
 			<el-form-item label="部门名称" prop="name">
 				<el-input v-model="form.name" placeholder="请输入部门名称" clearable></el-input>
 			</el-form-item>
 			<el-form-item label="部门类型" prop="type">
-				<el-select v-model="form.type" class="m-2" placeholder="Select" style="width: 100%;">
+				<el-select v-model="form.type" class="m-2" placeholder="请选择部门类型" style="width: 100%;">
 					<el-option v-for="item in typeItems" :key="item.value" :label="item.label" :value="item.value" />
 				</el-select>
 			</el-form-item>
 			<el-form-item label="部门状态" prop="status">
-				<el-select v-model="form.status" class="m-2" placeholder="Select" style="width: 100%;">
+				<el-select v-model="form.status" class="m-2" placeholder="请选择部门状态" style="width: 100%;">
 					<el-option v-for="item in statusItems" :key="item.value" :label="item.label" :value="item.value" />
 				</el-select>
 			</el-form-item>

@@ -2,6 +2,7 @@ package com.pulanit.pangu.admin.system.api.service;
 
 import cn.hutool.core.lang.tree.Tree;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
+import com.pulanit.pangu.admin.system.api.param.ResourceIn;
 
 import java.util.List;
 
@@ -20,15 +21,15 @@ public interface ResourceService {
 
     /**
      * 新增
-     * @param resourceEntity
+     * @param resourceIn
      */
-    void add(ResourceEntity resourceEntity);
+    Long add(ResourceIn resourceIn);
 
     /**
      * 修改
-     * @param resourceEntity
+     * @param resourceIn
      */
-    void update(ResourceEntity resourceEntity);
+    void update(ResourceIn resourceIn);
 
     /**
      * 删除
@@ -41,5 +42,13 @@ public interface ResourceService {
      * @param ids
      */
     void batchDelete(List<Long> ids);
+
+    /**
+     * 校验资源别名唯一性
+     * @param resourceKey
+     * @param id
+     * @return
+     */
+    long validateResourceKey(String resourceKey, Long id);
 
 }

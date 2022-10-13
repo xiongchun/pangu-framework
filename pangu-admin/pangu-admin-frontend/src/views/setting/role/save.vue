@@ -69,7 +69,6 @@ export default {
 				roleKey: [
 					{ required: true, message: '角色标识不能为空' },
 					{
-						required: true,
 						validator: (rule, value, callback) => {
 							var params = { roleKey: value, id: this.form.id }
 							this.$API.system.role.validateRoleKey.get(params).then(res => {

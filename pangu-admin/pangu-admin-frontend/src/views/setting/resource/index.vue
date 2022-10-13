@@ -1,6 +1,6 @@
 <template>
 	<el-container>
-		<el-aside width="250px" v-loading="menuloading">
+		<el-aside width="260px" v-loading="menuloading">
 			<el-container>
 				<el-header>
 					<el-input placeholder="输入关键字进行过滤" v-model="menuFilterText" clearable></el-input>
@@ -16,9 +16,11 @@
 									{{ node.label }}
 								</span>
 								<span class="do">
+									<el-tooltip content="创建下级资源节点" placement="top">
 									<el-icon @click.stop="add(node, data)">
 										<el-icon-plus />
 									</el-icon>
+									</el-tooltip>
 								</span>
 							</span>
 						</template>
@@ -26,7 +28,9 @@
 					</el-tree>
 				</el-main>
 				<el-footer style="height:51px;">
-					<el-button type="primary" icon="el-icon-plus" @click="add()"></el-button>
+					<el-tooltip content="创建一级资源节点" placement="top">
+						<el-button type="primary" icon="el-icon-plus" @click="add()"></el-button>
+					</el-tooltip>
 					<el-button type="danger" plain icon="el-icon-delete" @click="delMenu"></el-button>
 				</el-footer>
 			</el-container>
@@ -40,7 +44,6 @@
 </template>
 
 <script>
-let newMenuIndex = 1;
 import save from './save'
 
 export default {
@@ -75,9 +78,9 @@ export default {
 			this.menuList = res.data;
 		},
 		//树点击
-		menuClick(data, node) {
-			var pid = node.level == 1 ? undefined : node.parent.data.id;
-			this.$refs.save.setData(data, pid)
+		menuClick(data) {
+			//var pid = node.level == 1 ? undefined : node.parent.data.id;
+			this.$refs.save.setData(data)
 			this.$refs.main.$el.scrollTop = 0
 		},
 		//树过滤
@@ -93,12 +96,23 @@ export default {
 		},
 		//增加
 		async add(node, data) {
-			var newMenuName = "未命名" + newMenuIndex++;
+			var time = this.$TOOL.dateFormat(new Date(), 'ssS')
+			var tempName = "未命名_" + time;
 			var newMenuData = {
-				id: -newMenuIndex,
 				parentId: data ? data.id : "",
-				title: newMenuName,
-				type: "menu"
+				title: tempName,
+				resourceKey: tempName,
+				type: "menu",
+				sortNo: 99
+			}
+
+			this.menuloading = true
+			var res = await this.$API.system.resource.add.post(newMenuData)
+			this.menuloading = false
+			if (res.code == 200) {
+				newMenuData.id = res.data
+			} else {
+				this.$alert(res.message, "提示", { type: 'error' })
 			}
 			this.$refs.menu.append(newMenuData, node)
 			this.$refs.menu.setCurrentKey(newMenuData.id)
@@ -106,39 +120,40 @@ export default {
 		},
 		//删除菜单
 		async delMenu() {
-			var CheckedNodes = this.$refs.menu.getCheckedNodes()
-			if (CheckedNodes.length == 0) {
-				this.$message.warning("请选择需要删除的项")
-				return false;
-			}
+			this.getMenu()
+			// var CheckedNodes = this.$refs.menu.getCheckedNodes()
+			// if (CheckedNodes.length == 0) {
+			// 	this.$message.warning("请选择需要删除的项")
+			// 	return false;
+			// }
 
-			var confirm = await this.$confirm('确认删除已选择的菜单吗？', '提示', {
-				type: 'warning',
-				confirmButtonText: '删除',
-				confirmButtonClass: 'el-button--danger'
-			}).catch(() => { })
-			if (confirm != 'confirm') {
-				return false
-			}
+			// var confirm = await this.$confirm('确认删除已选择的菜单吗？', '提示', {
+			// 	type: 'warning',
+			// 	confirmButtonText: '删除',
+			// 	confirmButtonClass: 'el-button--danger'
+			// }).catch(() => { })
+			// if (confirm != 'confirm') {
+			// 	return false
+			// }
 
-			this.menuloading = true
-			var reqData = {
-				ids: CheckedNodes.map(item => item.id)
-			}
-			var res = await this.$API.demo.post.post(reqData)
-			this.menuloading = false
+			// this.menuloading = true
+			// var reqData = {
+			// 	ids: CheckedNodes.map(item => item.id)
+			// }
+			// var res = await this.$API.demo.post.post(reqData)
+			// this.menuloading = false
 
-			if (res.code == 200) {
-				CheckedNodes.forEach(item => {
-					var node = this.$refs.menu.getNode(item)
-					if (node.isCurrent) {
-						this.$refs.save.setData({})
-					}
-					this.$refs.menu.remove(item)
-				})
-			} else {
-				this.$message.warning(res.message)
-			}
+			// if (res.code == 200) {
+			// 	CheckedNodes.forEach(item => {
+			// 		var node = this.$refs.menu.getNode(item)
+			// 		if (node.isCurrent) {
+			// 			this.$refs.save.setData({})
+			// 		}
+			// 		this.$refs.menu.remove(item)
+			// 	})
+			// } else {
+			// 	this.$message.warning(res.message)
+			// }
 		}
 	}
 }

@@ -21,8 +21,8 @@
 			<el-form-item label="姓名" prop="name">
 				<el-input v-model="form.name" placeholder="请输入真实姓名" maxlength="10" show-word-limit clearable></el-input>
 			</el-form-item>
-			<el-form-item label="所属部门" prop="deptIds">
-				<el-cascader v-model="form.deptIds" :options="depts" :props="deptsProps" placeholder="请选择所属部门" clearable
+			<el-form-item label="所属部门" prop="deptId">
+				<el-cascader v-model="form.deptId" :options="depts" :props="deptsProps" placeholder="请选择所属部门" filterable clearable
 					style="width: 100%;">
 				</el-cascader>
 			</el-form-item>
@@ -76,7 +76,7 @@ export default {
 				userName: "",
 				avatar: "",
 				name: "",
-				deptIds: [],
+				deptId: null,
 				roleIds: [],
 				bizCode: "",
 				status: '1',
@@ -141,7 +141,7 @@ export default {
 						}
 					}
 				],
-				deptIds: [
+				deptId: [
 					{ required: true, message: '所属部门不能为空' }
 				]
 			},
@@ -155,6 +155,7 @@ export default {
 			deptsProps: {
 				value: "id",
 				label: "name",
+				emitPath: false,
 				checkStrictly: true
 			},
 			typeItems: [{
@@ -198,7 +199,6 @@ export default {
 					this.isSaveing = true;
 					var res;
 					if (this.mode == 'add') {
-						this.form.deptId = this.form.deptIds[this.form.deptIds.length - 1]
 						res = await this.$API.system.user.add.post(this.form)
 					} else if (this.mode == 'edit') {
 						res = await this.$API.system.user.update.post(this.form)
@@ -219,7 +219,6 @@ export default {
 		//表单注入数据
 		setData(row) {
 			Object.assign(this.form, row)
-			this.form.deptIds = row.deptId
 			var params = { userId: row.id }
 			this.$API.system.user.queryRolesByUserId.get(params).then(res => {
 				if (res.code == 200) {
