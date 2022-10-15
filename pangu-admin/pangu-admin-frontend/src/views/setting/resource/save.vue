@@ -168,7 +168,6 @@ export default {
 				var res = await this.$API.system.resource.update.post(this.form)
 				this.loading = false;
 				if (res.code == 200) {
-					this.$emit('success', this.form, this.mode)
 					this.$message.success("操作成功")
 				} else {
 					this.$alert(res.message, "提示", { type: 'error' })

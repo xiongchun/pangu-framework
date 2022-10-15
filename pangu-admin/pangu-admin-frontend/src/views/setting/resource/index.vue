@@ -97,20 +97,27 @@ export default {
 		//树拖拽
 		async nodeDrop(draggingNode, dropNode, dropType) {
 			this.$refs.save.setData({})
-			this.$message(`拖拽对象：${draggingNode.data.title}, 释放对象：${dropNode.data.title}, 释放对象的位置：${dropType}`)
+			//this.$message(`拖拽对象：${draggingNode.data.title}, 释放对象：${dropNode.data.title}, 释放对象的位置：${dropType}`)
 			var reqData = {
 				id: draggingNode.data.id
 			}
 			if (dropType == 'inner') {
 				reqData.parentId = dropNode.data.id
-				reqData.sortNo = 99
 			} else if (dropType == 'before') {
 				reqData.parentId = dropNode.data.parentId
-				
+				reqData.sortNo = dropNode.data.sortNo - 1
 			} else if (dropType == 'after') {
 				reqData.parentId = dropNode.data.parentId
+				reqData.sortNo = dropNode.data.sortNo + 1
 			}
-			//var res = await this.$API.system.resource.update.post(reqData)
+			this.menuloading = true
+			var res = await this.$API.system.resource.update.post(reqData)
+			this.menuloading = false
+			if (res.code == 200) {
+				this.$message.success("节点拖拽成功")
+			} else {
+				this.$alert(res.message, "提示", { type: 'error' })
+			}
 		},
 		//树选择
 		menuCheck(node, checked) {
