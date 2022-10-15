@@ -44,7 +44,14 @@ export default {
 			get: async function (params) {
 				return await http.get(this.url, params);
 			}
-		}
+		},
+		batchDelete: {
+			url: `${config.API_URL}/system/resource/batchDelete`,
+			name: "批量删除资源",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
+		},
 	},
 	dic: {
 		tree: {

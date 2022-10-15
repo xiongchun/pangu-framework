@@ -79,4 +79,24 @@ public class ResourceController {
         return Result.success();
     }
 
+    @GetMapping("/validateResourceKey")
+    public Result<Long> validateRoleKey(@RequestParam  String resourceKey, @RequestParam  Long id) {
+        long cnt = resourceService.validateResourceKey(resourceKey, id);
+        return Result.success(cnt);
+    }
+
+    /**
+     * 批量删除
+     *
+     * @param ids
+     * @return
+     */
+    @PostMapping("/batchDelete")
+    public Result<Void> batchDelete(@RequestParam List<Long> ids) {
+        Assert.notEmpty(ids, "资源 ID 不能为空");
+        resourceService.batchDelete(ids);
+        return Result.success();
+    }
+
+
 }

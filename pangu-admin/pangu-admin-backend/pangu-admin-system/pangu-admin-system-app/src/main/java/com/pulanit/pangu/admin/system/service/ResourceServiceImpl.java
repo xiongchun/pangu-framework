@@ -1,13 +1,16 @@
 package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.param.ResourceIn;
@@ -19,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service(version = "1.0.0", group = "pangu-admin-system-app")
@@ -63,12 +67,21 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public void delete(Long id) {
-
+        resourceMapper.deleteById(id);
     }
 
     @Override
     public void batchDelete(List<Long> ids) {
-
+        List<Long> deleteIds = Lists.newArrayList();
+        deleteIds.addAll(ids);
+        while (CollUtil.isNotEmpty(ids)){
+            QueryWrapper queryWrapper = Wrappers.query();
+            queryWrapper.select("id").in("parent_id", ids);
+            ids = (List<Long>) resourceMapper.selectObjs(queryWrapper);
+            deleteIds.addAll(ids);
+        }
+        deleteIds.stream().distinct().collect(Collectors.toList());
+        resourceMapper.deleteBatchIds(deleteIds);
     }
 
     @Override

@@ -6,10 +6,10 @@
 					<el-input placeholder="输入关键字进行过滤" v-model="menuFilterText" clearable></el-input>
 				</el-header>
 				<el-main class="nopadding">
-					<el-tree ref="menu" class="menu" node-key="id" :data="menuList" :props="menuProps" draggable
-						highlight-current :expand-on-click-node="false" check-strictly show-checkbox
-						:filter-node-method="menuFilterNode" @node-click="menuClick" @node-drop="nodeDrop">
-
+					<el-tree ref="menu" class="menu" node-key="id" :data="menuList" :props="menuProps"
+						@check="menuCheck" :filter-node-method="menuFilterNode" @node-click="menuClick"
+						@node-drop="nodeDrop" :expand-on-click-node="false" draggable highlight-current check-strictly
+						show-checkbox>
 						<template #default="{ node, data }">
 							<span class="custom-tree-node el-tree-node__label">
 								<span class="label">
@@ -17,9 +17,9 @@
 								</span>
 								<span class="do">
 									<el-tooltip content="创建下级资源节点" placement="top">
-									<el-icon @click.stop="add(node, data)">
-										<el-icon-plus />
-									</el-icon>
+										<el-icon @click.stop="add(node, data)">
+											<el-icon-plus />
+										</el-icon>
 									</el-tooltip>
 								</span>
 							</span>
@@ -27,11 +27,15 @@
 
 					</el-tree>
 				</el-main>
-				<el-footer style="height:51px;">
+				<el-footer>
 					<el-tooltip content="创建一级资源节点" placement="top">
 						<el-button type="primary" icon="el-icon-plus" @click="add()"></el-button>
 					</el-tooltip>
-					<el-button type="danger" plain icon="el-icon-delete" @click="delMenu"></el-button>
+					<el-button type="primary" icon="el-icon-refresh" @click="this.getMenu" plain>
+					</el-button>
+					<el-button type="danger" icon="el-icon-delete" @click="delMenu" :disabled="checkedKeys.length == 0"
+						plain>
+					</el-button>
 				</el-footer>
 			</el-container>
 		</el-aside>
@@ -58,7 +62,8 @@ export default {
 			menuProps: {
 				label: 'title'
 			},
-			menuFilterText: ""
+			menuFilterText: "",
+			checkedKeys: []
 		}
 	},
 	watch: {
@@ -90,10 +95,28 @@ export default {
 			return targetText.indexOf(value) !== -1;
 		},
 		//树拖拽
-		nodeDrop(draggingNode, dropNode, dropType) {
+		async nodeDrop(draggingNode, dropNode, dropType) {
 			this.$refs.save.setData({})
 			this.$message(`拖拽对象：${draggingNode.data.title}, 释放对象：${dropNode.data.title}, 释放对象的位置：${dropType}`)
+			var reqData = {
+				id: draggingNode.data.id
+			}
+			if (dropType == 'inner') {
+				reqData.parentId = dropNode.data.id
+				reqData.sortNo = 99
+			} else if (dropType == 'before') {
+				reqData.parentId = dropNode.data.parentId
+				
+			} else if (dropType == 'after') {
+				reqData.parentId = dropNode.data.parentId
+			}
+			//var res = await this.$API.system.resource.update.post(reqData)
 		},
+		//树选择
+		menuCheck(node, checked) {
+			this.checkedKeys = checked.checkedKeys
+		},
+
 		//增加
 		async add(node, data) {
 			var time = this.$TOOL.dateFormat(new Date(), 'ssS')
@@ -120,40 +143,27 @@ export default {
 		},
 		//删除菜单
 		async delMenu() {
-			this.getMenu()
-			// var CheckedNodes = this.$refs.menu.getCheckedNodes()
-			// if (CheckedNodes.length == 0) {
-			// 	this.$message.warning("请选择需要删除的项")
-			// 	return false;
-			// }
-
-			// var confirm = await this.$confirm('确认删除已选择的菜单吗？', '提示', {
-			// 	type: 'warning',
-			// 	confirmButtonText: '删除',
-			// 	confirmButtonClass: 'el-button--danger'
-			// }).catch(() => { })
-			// if (confirm != 'confirm') {
-			// 	return false
-			// }
-
-			// this.menuloading = true
-			// var reqData = {
-			// 	ids: CheckedNodes.map(item => item.id)
-			// }
-			// var res = await this.$API.demo.post.post(reqData)
-			// this.menuloading = false
-
-			// if (res.code == 200) {
-			// 	CheckedNodes.forEach(item => {
-			// 		var node = this.$refs.menu.getNode(item)
-			// 		if (node.isCurrent) {
-			// 			this.$refs.save.setData({})
-			// 		}
-			// 		this.$refs.menu.remove(item)
-			// 	})
-			// } else {
-			// 	this.$message.warning(res.message)
-			// }
+			var confirm = await this.$confirm(`确定删除选中的 ${this.checkedKeys.length} 项资源及其子节点吗？`, '提示', {
+				type: 'warning',
+				confirmButtonText: '删除',
+				confirmButtonClass: 'el-button--danger'
+			}).catch(() => { })
+			if (confirm != 'confirm') {
+				return false
+			}
+			this.menuloading = true
+			var reqData = new FormData()
+			reqData.append('ids', this.checkedKeys)
+			var res = await this.$API.system.resource.batchDelete.post(reqData)
+			this.menuloading = false
+			if (res.code == 200) {
+				this.checkedKeys.forEach(item => {
+					this.$refs.menu.remove(item)
+				})
+				this.$refs.save.setData({})
+			} else {
+				this.$alert(res.message, "提示", { type: 'error' })
+			}
 		}
 	}
 }

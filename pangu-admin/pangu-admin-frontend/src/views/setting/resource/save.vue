@@ -1,7 +1,7 @@
 <template>
 	<el-row :gutter="40">
 		<el-col v-if="!form.id">
-			<el-empty description="请选择左侧资源后操作" :image-size="100"></el-empty>
+			<el-empty description="请先选择左侧资源树节点..." :image-size="100"></el-empty>
 		</el-col>
 		<template v-else>
 			<el-col :lg="12">
@@ -35,9 +35,9 @@
 						</el-input>
 					</el-form-item>
 					<el-form-item label="视图组件" prop="component">
-						<el-input v-model="form.component" placeholder="请输入视图组件" maxlength="20" clearable>
+						<el-input v-model="form.component" placeholder="请输入视图组件" maxlength="50" show-word-limit clearable>
 							<template #prepend>views/</template>
-							<template #append>.vue</template>
+							<!-- <template #append>.vue</template> -->
 						</el-input>
 						<div class="el-form-item-msg">如没有对应的视图组件不需要填写</div>
 					</el-form-item>
