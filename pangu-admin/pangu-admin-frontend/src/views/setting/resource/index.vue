@@ -106,9 +106,11 @@ export default {
 			} else if (dropType == 'before') {
 				reqData.parentId = dropNode.data.parentId
 				reqData.sortNo = dropNode.data.sortNo - 1
+				draggingNode.data.sortNo = reqData.sortNo
 			} else if (dropType == 'after') {
 				reqData.parentId = dropNode.data.parentId
 				reqData.sortNo = dropNode.data.sortNo + 1
+				draggingNode.data.sortNo = reqData.sortNo
 			}
 			this.menuloading = true
 			var res = await this.$API.system.resource.update.post(reqData)
