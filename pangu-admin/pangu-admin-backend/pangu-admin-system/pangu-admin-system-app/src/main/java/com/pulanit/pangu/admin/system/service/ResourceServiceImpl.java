@@ -1,6 +1,5 @@
 package com.pulanit.pangu.admin.system.service;
 
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.tree.Tree;
@@ -12,8 +11,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
-import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
-import com.pulanit.pangu.admin.system.api.param.ResourceIn;
+import com.pulanit.pangu.admin.system.api.param.ResourceOut;
 import com.pulanit.pangu.admin.system.api.service.ResourceService;
 import com.pulanit.pangu.admin.system.dao.mapper.ResourceMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -36,16 +34,27 @@ public class ResourceServiceImpl implements ResourceService {
     public List<Tree<Integer>> listForManage() {
         List<ResourceEntity> resourceEntities = resourceMapper.selectList(Wrappers.emptyWrapper());
         TreeNodeConfig config = new TreeNodeConfig();
-        List<Tree<Integer>> treeNodes = TreeUtil.build(resourceEntities, 0, config, (resourceEntity, treeNode) -> {
+        List<Tree<Integer>> treeNodes = TreeUtil.build(resourceEntities, ROOT_ID.intValue(), config, (resourceEntity, treeNode) -> {
             fillTreeNode(treeNode, resourceEntity);
         });
         return treeNodes;
     }
 
     @Override
-    public Long add(ResourceIn resourceIn) {
-        ResourceEntity resourceEntity = new ResourceEntity();
-        BeanUtil.copyProperties(resourceIn, resourceEntity);
+    public ResourceOut listForGrant(Long roleId) {
+        ResourceOut resourceOut = new ResourceOut();
+        List<ResourceEntity> resourceEntities = resourceMapper.selectList(Wrappers.emptyWrapper());
+        TreeNodeConfig config = new TreeNodeConfig();
+        List<Tree<Integer>> treeNodes = TreeUtil.build(resourceEntities, ROOT_ID.intValue(), config, (resourceEntity, treeNode) -> {
+            fillSimpleTreeNode(treeNode, resourceEntity);
+        });
+        resourceOut.setMenuList(treeNodes);
+
+        return resourceOut;
+    }
+
+    @Override
+    public Long add(ResourceEntity resourceEntity) {
         if (Objects.isNull(resourceEntity.getParentId())) {
             resourceEntity.setParentId(ROOT_ID);
         }
@@ -55,9 +64,7 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public void update(ResourceIn resourceIn) {
-        ResourceEntity resourceEntity = new ResourceEntity();
-        BeanUtil.copyProperties(resourceIn, resourceEntity);
+    public void update(ResourceEntity resourceEntity) {
         if (Objects.isNull(resourceEntity.getParentId())) {
             resourceEntity.setParentId(ROOT_ID);
         }
@@ -111,6 +118,15 @@ public class ResourceServiceImpl implements ResourceService {
         treeNode.putExtra("fullpage", resourceEntity.getFullpage());
         treeNode.putExtra("affix", resourceEntity.getAffix());
         treeNode.putExtra("sortNo", resourceEntity.getSortNo());
+        treeNode.putExtra("color", resourceEntity.getColor());
+    }
 
+    private void fillSimpleTreeNode(Tree<Integer> treeNode, ResourceEntity resourceEntity) {
+        treeNode.setId(resourceEntity.getId().intValue());
+        treeNode.setParentId(resourceEntity.getParentId().intValue());
+        //树形结构构造器的排序字段
+        treeNode.setWeight(resourceEntity.getSortNo());
+        treeNode.putExtra("type", resourceEntity.getType());
+        treeNode.putExtra("title", resourceEntity.getTitle());
     }
 }

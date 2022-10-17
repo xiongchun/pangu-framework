@@ -6,7 +6,7 @@
 					placeholder="顶级部门" clearable filterable style="width: 100%;"></el-cascader>
 			</el-form-item>
 			<el-form-item label="部门名称" prop="name">
-				<el-input v-model="form.name" placeholder="请输入部门名称" clearable></el-input>
+				<el-input v-model="form.name" placeholder="请输入部门名称" maxlength="20" show-word-limit clearable></el-input>
 			</el-form-item>
 			<el-form-item label="部门类型" prop="type">
 				<el-select v-model="form.type" class="m-2" placeholder="请选择部门类型" style="width: 100%;">
@@ -23,10 +23,10 @@
 				</el-input-number>
 			</el-form-item>
 			<el-form-item label="扩展码" prop="bizCode">
-				<el-input v-model="form.bizCode" placeholder="请输入业务扩展码" clearable></el-input>
+				<el-input v-model="form.bizCode" placeholder="请输入业务扩展码" maxlength="50" show-word-limit clearable></el-input>
 			</el-form-item>
 			<el-form-item label="备注" prop="remark">
-				<el-input v-model="form.remark" placeholder="请输入备注" clearable type="textarea"></el-input>
+				<el-input type="textarea" v-model="form.remark" placeholder="请输入备注" maxlength="200" show-word-limit clearable ></el-input>
 			</el-form-item>
 		</el-form>
 		<template #footer>

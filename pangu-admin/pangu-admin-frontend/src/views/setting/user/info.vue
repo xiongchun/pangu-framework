@@ -49,7 +49,6 @@
 			</template>
 			<span class="card_body">TODO</span>
 		</el-card>
-
 	</el-main>
 </template>
 

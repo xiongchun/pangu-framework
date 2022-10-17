@@ -46,7 +46,7 @@
             "title": "部门管理",
             "icon": "sc-icon-organization",
             "type": "menu",
-            "hiddenBreadcrumb": false
+            "color": "#409EFF"
           },
           "component": "setting/dept"
         },
@@ -56,7 +56,8 @@
           "meta": {
             "title": "角色管理",
             "icon": "el-icon-position",
-            "type": "menu"
+            "type": "menu",
+            "color": "#67C23A"
           },
           "component": "setting/role"
         },
@@ -66,7 +67,8 @@
           "meta": {
             "title": "用户管理",
             "icon": "el-icon-user",
-            "type": "menu"
+            "type": "menu",
+            "color": "#F56C6C"
           },
           "component": "setting/user"
         },
@@ -76,7 +78,8 @@
           "meta": {
             "title": "资源管理",
             "icon": "el-icon-copyDocument",
-            "type": "menu"
+            "type": "menu",
+            "color": "#E6A23C"
           },
           "component": "setting/resource"
         }

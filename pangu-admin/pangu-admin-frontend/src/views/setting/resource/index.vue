@@ -1,6 +1,6 @@
 <template>
 	<el-container>
-		<el-aside width="260px" v-loading="menuloading">
+		<el-aside width="300px" v-loading="menuloading">
 			<el-container>
 				<el-header>
 					<el-input placeholder="输入关键字进行过滤" v-model="menuFilterText" clearable></el-input>

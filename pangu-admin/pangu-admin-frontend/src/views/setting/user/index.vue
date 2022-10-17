@@ -7,8 +7,8 @@
 				</el-header>
 				<el-main class="nopadding">
 					<el-tree :props="defaultTreeProps" ref="group" class="menu" node-key="id" :data="group"
-						:current-node-key="''" :highlight-current="true" :expand-on-click-node="false"
-						:filter-node-method="groupFilterNode" @node-click="groupClick"></el-tree>
+						:highlight-current="true" :expand-on-click-node="false" :filter-node-method="groupFilterNode"
+						@node-click="groupClick"></el-tree>
 				</el-main>
 			</el-container>
 		</el-aside>
@@ -61,13 +61,13 @@
 					<el-table-column label="绑定手机" prop="mobileNumber" width="120"></el-table-column>
 					<el-table-column label="绑定邮箱" prop="mail" width="120"></el-table-column>
 					<el-table-column label="扩展码" prop="bizCode" width="120"></el-table-column>
-					<el-table-column label="备注" prop="remark" width="200" show-overflow-tooltip>
-					</el-table-column>
 					<el-table-column label="创建时间" prop="gmtCreated" width="180"></el-table-column>
+					<el-table-column label="备注" prop="remark" width="200" show-overflow-tooltip />
 					<el-table-column label="操作" fixed="right" align="right" width="160">
 						<template #default="scope">
 							<el-button-group>
-								<el-button text type="info" size="small" @click="table_show(scope.row, scope.$index)">查看
+								<el-button text type="warning" size="small"
+									@click="table_show(scope.row, scope.$index)">查看
 								</el-button>
 								<el-button text type="primary" size="small"
 									@click="table_edit(scope.row, scope.$index)">编辑</el-button>

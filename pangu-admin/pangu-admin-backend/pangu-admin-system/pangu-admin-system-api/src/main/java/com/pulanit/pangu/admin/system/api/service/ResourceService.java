@@ -2,9 +2,10 @@ package com.pulanit.pangu.admin.system.api.service;
 
 import cn.hutool.core.lang.tree.Tree;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
-import com.pulanit.pangu.admin.system.api.param.ResourceIn;
+import com.pulanit.pangu.admin.system.api.param.ResourceOut;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 资源
@@ -19,17 +20,20 @@ public interface ResourceService {
      */
     List<Tree<Integer>> listForManage();
 
+
+    ResourceOut listForGrant(Long roleId);
+
     /**
      * 新增
-     * @param resourceIn
+     * @param resourceEntity
      */
-    Long add(ResourceIn resourceIn);
+    Long add(ResourceEntity resourceEntity);
 
     /**
      * 修改
-     * @param resourceIn
+     * @param resourceEntity
      */
-    void update(ResourceIn resourceIn);
+    void update(ResourceEntity resourceEntity);
 
     /**
      * 删除

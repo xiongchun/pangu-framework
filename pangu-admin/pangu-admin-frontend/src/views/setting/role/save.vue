@@ -2,10 +2,10 @@
 	<el-dialog :title="titleMap[mode]" v-model="visible" :width="500" destroy-on-close @closed="$emit('closed')">
 		<el-form :model="form" :rules="rules" :disabled="mode == 'show'" ref="dialogForm" label-width="80px">
 			<el-form-item label="角色名称" prop="name">
-				<el-input v-model="form.name" clearable></el-input>
+				<el-input v-model="form.name" maxlength="20" show-word-limit clearable></el-input>
 			</el-form-item>
 			<el-form-item label="角色标识" prop="roleKey">
-				<el-input v-model="form.roleKey" clearable></el-input>
+				<el-input v-model="form.roleKey" maxlength="50" show-word-limit clearable></el-input>
 			</el-form-item>
 			<el-form-item label="角色类型" prop="type">
 				<el-select v-model="form.type" class="m-2" placeholder="请选择角色类型" style="width: 100%;">
@@ -18,10 +18,10 @@
 				</el-select>
 			</el-form-item>
 			<el-form-item label="扩展码" prop="bizCode">
-				<el-input v-model="form.bizCode" placeholder="请输入业务扩展码" clearable></el-input>
+				<el-input v-model="form.bizCode" placeholder="请输入业务扩展码" maxlength="50" show-word-limit clearable></el-input>
 			</el-form-item>
 			<el-form-item label="备注" prop="remark">
-				<el-input v-model="form.remark" clearable type="textarea"></el-input>
+				<el-input v-model="form.remark" type="textarea" maxlength="250" show-word-limit clearable></el-input>
 			</el-form-item>
 		</el-form>
 		<template #footer>

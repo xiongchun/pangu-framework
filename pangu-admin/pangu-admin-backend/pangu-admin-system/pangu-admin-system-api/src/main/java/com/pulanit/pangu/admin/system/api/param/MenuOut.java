@@ -13,7 +13,5 @@ import java.io.Serializable;
 @Accessors(chain = true)
 public class MenuOut implements Serializable {
 
-   private static final long serialVersionUID = 1L;
-
-
+   private static final long serialVersionUID = 8318997637673649514L;
 }

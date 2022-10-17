@@ -5,7 +5,7 @@
 				<el-button type="primary" icon="el-icon-plus" @click="add"></el-button>
 				<el-button type="danger" plain icon="el-icon-delete" :disabled="selection.length == 0" @click="batch_del">
 				</el-button>
-				<el-button type="primary" plain :disabled="selection.length != 1" @click="permission">权限设置</el-button>
+				<!-- <el-button type="primary" plain :disabled="selection.length != 1" @click="permission">权限设置</el-button> -->
 			</div>
 			<div class="right-panel">
 				<div class="right-panel-search">
@@ -32,12 +32,13 @@
 					</template>
 				</el-table-column>
 				<el-table-column label="扩展码" prop="bizCode" width="120"></el-table-column>
-				<el-table-column label="备注" prop="remark" width="200"></el-table-column>
 				<el-table-column label="创建时间" prop="gmtCreated" width="180"></el-table-column>
-				<el-table-column label="操作" fixed="right" align="right" width="120">
+				<el-table-column label="备注" prop="remark" width="200"></el-table-column>
+				<el-table-column label="操作" fixed="right" align="right" width="160">
 					<template #default="scope">
 						<el-button-group>
-							<!-- <el-button text type="primary" size="small" @click="table_show(scope.row, scope.$index)">查看</el-button> -->
+							<el-button text type="warning" size="small" @click="permission(scope.row, scope.$index)">授权
+							</el-button>
 							<el-button text type="primary" size="small" @click="table_edit(scope.row, scope.$index)">编辑
 							</el-button>
 							<el-popconfirm title="确定删除当前记录吗？" confirm-button-type="danger" confirm-button-text="删除"
@@ -57,8 +58,9 @@
 	<save-dialog v-if="dialog.save" ref="saveDialog" @success="handleSaveSuccess" @closed="dialog.save = false">
 	</save-dialog>
 
-	<permission-dialog v-if="dialog.permission" ref="permissionDialog" @closed="dialog.permission = false">
-	</permission-dialog>
+	<el-drawer v-model="dialog.permission" :size="450" title="角色权限设置" direction="rtl" destroy-on-close>
+		<permission-dialog ref="permissionDialog" @closeDrawer="dialog.permission = false"></permission-dialog>
+	</el-drawer>
 
 </template>
 
@@ -100,18 +102,11 @@ export default {
 				this.$refs.saveDialog.open('edit').setData(row)
 			})
 		},
-		//查看
-		table_show(row) {
-			this.dialog.save = true
-			this.$nextTick(() => {
-				this.$refs.saveDialog.open('show').setData(row)
-			})
-		},
 		//权限设置
-		permission() {
+		permission(row) {
 			this.dialog.permission = true
 			this.$nextTick(() => {
-				this.$refs.permissionDialog.open()
+				this.$refs.permissionDialog.open(row)
 			})
 		},
 		//删除

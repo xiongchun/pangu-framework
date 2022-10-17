@@ -129,4 +129,10 @@ public class ResourceEntity implements Serializable {
    @TableField(value = "deleted")
    private Long deleted;
 
+   /**
+    * 控制台快捷菜单的背景色
+    */
+   @TableField(value = "color")
+   private String color;
+
 }
