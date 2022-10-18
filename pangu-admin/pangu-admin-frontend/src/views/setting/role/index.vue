@@ -58,7 +58,7 @@
 	<save-dialog v-if="dialog.save" ref="saveDialog" @success="handleSaveSuccess" @closed="dialog.save = false">
 	</save-dialog>
 
-	<el-drawer v-model="dialog.permission" :size="450" title="角色权限设置" direction="rtl" destroy-on-close>
+	<el-drawer v-model="dialog.permission" :size="450" title="角色资源权限设置" direction="rtl" destroy-on-close>
 		<permission-dialog ref="permissionDialog" @closeDrawer="dialog.permission = false"></permission-dialog>
 	</el-drawer>
 

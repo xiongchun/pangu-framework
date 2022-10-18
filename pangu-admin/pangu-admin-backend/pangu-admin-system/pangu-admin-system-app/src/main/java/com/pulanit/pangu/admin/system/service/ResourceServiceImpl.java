@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -49,7 +50,7 @@ public class ResourceServiceImpl implements ResourceService {
             fillSimpleTreeNode(treeNode, resourceEntity);
         });
         resourceOut.setMenuList(treeNodes);
-
+        resourceOut.setCheckedList(Arrays.asList(2l,51l));
         return resourceOut;
     }
 
