@@ -53,4 +53,9 @@ public interface RoleService {
      */
     long validateRoleKey(String roleKey, Long id);
 
+    /**
+     * 授权
+     */
+    void grant(Long roleId, List<Long> ids);
+
 }

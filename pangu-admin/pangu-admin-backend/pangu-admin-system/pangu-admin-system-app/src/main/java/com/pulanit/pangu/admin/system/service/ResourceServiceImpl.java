@@ -14,11 +14,11 @@ import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
 import com.pulanit.pangu.admin.system.api.param.ResourceOut;
 import com.pulanit.pangu.admin.system.api.service.ResourceService;
 import com.pulanit.pangu.admin.system.dao.mapper.ResourceMapper;
+import com.pulanit.pangu.admin.system.manager.ResourceManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -29,6 +29,8 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Autowired
     private ResourceMapper resourceMapper;
+    @Autowired
+    private ResourceManager resourceManager;
     private static final Long ROOT_ID = 0l;
 
     @Override
@@ -50,7 +52,9 @@ public class ResourceServiceImpl implements ResourceService {
             fillSimpleTreeNode(treeNode, resourceEntity);
         });
         resourceOut.setMenuList(treeNodes);
-        resourceOut.setCheckedList(Arrays.asList(2l,51l));
+        List<ResourceEntity> checkedResources = resourceManager.listResourceEntitiesByRoleId(roleId);
+        List<Long> checkedIds = checkedResources.stream().map(ResourceEntity::getId).collect(Collectors.toList());
+        resourceOut.setCheckedList(checkedIds);
         return resourceOut;
     }
 

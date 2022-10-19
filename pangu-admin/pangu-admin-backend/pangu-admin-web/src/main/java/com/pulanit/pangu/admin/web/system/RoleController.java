@@ -94,9 +94,22 @@ public class RoleController {
      * @return
      */
     @GetMapping("/validateRoleKey")
-    public Result<Long> validateRoleKey(@RequestParam  String roleKey, @RequestParam  Long id) {
+    public Result<Long> validateRoleKey(@RequestParam String roleKey, @RequestParam  Long id) {
         long cnt = roleService.validateRoleKey(roleKey, id);
         return Result.success(cnt);
     }
 
+    /**
+     * 授权
+     * @param roleId
+     * @param ids
+     * @return
+     */
+    @PostMapping("/grant")
+    public Result<Void> grant(@RequestParam Long roleId, @RequestParam List<Long> ids) {
+        Assert.notNull(roleId, "角色 ID 不能为空");
+        Assert.notEmpty(ids, "资源 ID 不能为空");
+        roleService.grant(roleId, ids);
+        return Result.success();
+    }
 }

@@ -24,6 +24,13 @@ export default {
 				return await http.get(this.url);
 			}
 		},
+		listForGrant: {
+			url: `${config.API_URL}/system/resource/listForGrant`,
+			name: "获取资源菜单(角色授权模块)",
+			get: async function (params) {
+				return await http.get(this.url, params);
+			}
+		},
 		add: {
 			url: `${config.API_URL}/system/resource/add`,
 			name: "新增资源",
@@ -117,6 +124,13 @@ export default {
 			url: `${config.API_URL}/system/role/validateRoleKey`,
 			get: async function (params) {
 				return await http.get(this.url, params);
+			}
+		},
+		grant: {
+			url: `${config.API_URL}/system/role/grant`,
+			name: "角色授权",
+			post: async function (params) {
+				return await http.post(this.url, params);
 			}
 		}
 	},

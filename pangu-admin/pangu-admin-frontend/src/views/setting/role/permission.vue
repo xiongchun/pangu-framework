@@ -1,7 +1,7 @@
 <template>
 
 	<el-container>
-		<el-main>
+		<el-main class="fixMain">
 			<div class="treeMain" v-loading="menuloading">
 				<el-tree ref="menu" node-key="id" :data="menu.list" :props="menu.props" default-expand-all
 					show-checkbox></el-tree>
@@ -9,7 +9,13 @@
 		</el-main>
 		<el-footer>
 			<el-button @click="$emit('closeDrawer')">取消</el-button>
-			<el-button type="primary" @click="submit">保存</el-button>
+
+			<el-popconfirm title="确定保存勾选的授权信息吗？" confirm-button-type="danger" confirm-button-text="确定"
+				@confirm="submit">
+				<template #reference>
+					<el-button type="primary">保存</el-button>
+				</template>
+			</el-popconfirm>
 		</el-footer>
 	</el-container>
 
@@ -48,6 +54,7 @@ export default {
 			var res = await this.$API.system.role.grant.post(reqData);
 			this.isSaveing = false;
 			if (res.code == 200) {
+				this.$emit('closeDrawer')
 				this.$message.success("角色资源授权成功")
 			} else {
 				this.$alert(res.message, "提示", { type: 'error' })
@@ -79,5 +86,8 @@ export default {
 	overflow: hidden;
 	border: 1px solid #dcdfe6;
 	margin-bottom: 12px;
+}
+.fixMain{
+	padding-top: 0px;
 }
 </style>

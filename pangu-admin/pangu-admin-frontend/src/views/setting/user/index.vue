@@ -71,7 +71,7 @@
 								</el-button>
 								<el-button text type="primary" size="small"
 									@click="table_edit(scope.row, scope.$index)">编辑</el-button>
-								<el-popconfirm title="确定删除当前用户吗？" confirm-button-type="danger" confirm-button-text="删除"
+								<el-popconfirm title="确定删除当前用户吗？" confirm-button-type="danger" confirm-button-text="确定"
 									@confirm="table_del(scope.row, scope.$index)">
 									<template #reference>
 										<el-button text type="danger" size="small">删除</el-button>
@@ -188,7 +188,7 @@ export default {
 		async batch_del() {
 			this.$confirm(`确定删除选中的 ${this.selection.length} 个用户吗？`, '提示', {
 				type: 'warning',
-				confirmButtonText: '删除',
+				confirmButtonText: '确定',
 				confirmButtonClass: 'el-button--danger'
 			}).then(async () => {
 				const loading = this.$loading()

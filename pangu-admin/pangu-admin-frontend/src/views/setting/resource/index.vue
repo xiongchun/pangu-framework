@@ -154,7 +154,7 @@ export default {
 		async delMenu() {
 			var confirm = await this.$confirm(`确定删除选中的 ${this.checkedKeys.length} 项资源及其子节点吗？`, '提示', {
 				type: 'warning',
-				confirmButtonText: '删除',
+				confirmButtonText: '确定',
 				confirmButtonClass: 'el-button--danger'
 			}).catch(() => { })
 			if (confirm != 'confirm') {

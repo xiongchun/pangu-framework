@@ -20,7 +20,11 @@ public interface ResourceService {
      */
     List<Tree<Integer>> listForManage();
 
-
+    /**
+     * 查询资源树结构信息(角色授权使用)
+     * @param roleId
+     * @return
+     */
     ResourceOut listForGrant(Long roleId);
 
     /**
