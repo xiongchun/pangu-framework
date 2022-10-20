@@ -51,7 +51,7 @@
 import save from './save'
 
 export default {
-	name: "settingMenu",
+	name: "resource",
 	components: {
 		save
 	},

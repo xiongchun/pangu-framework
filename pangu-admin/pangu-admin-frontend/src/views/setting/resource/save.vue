@@ -33,9 +33,9 @@
 			<el-form-item label="视图组件" prop="component" v-if="this.form.type == 'menu'">
 				<el-input v-model="form.component" placeholder="请输入视图组件" maxlength="50" show-word-limit clearable>
 					<template #prepend>views/</template>
-					<template #append>.vue</template>
+					<!-- <template #append>.vue</template> -->
 				</el-input>
-				<div class="el-form-item-msg">如没有对应的视图组件不需要填写</div>
+				<div class="el-form-item-msg">如没有对应的视图组件则不需要填写</div>
 			</el-form-item>
 			<el-form-item label="排序号" prop="sortNo" v-if="this.form.type !== 'button'">
 				<el-input-number v-model="form.sortNo" :min="1" :max="9999" style="width: 100%;">
