@@ -1,6 +1,6 @@
 package com.pulanit.pangu.admin.system.api.param;
 
-import com.pulanit.pangu.admin.system.api.dto.UserDto;
+import com.pulanit.pangu.admin.system.api.domain.UserInfo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -24,6 +24,6 @@ public class LoginOut implements Serializable {
    /**
     * 用户信息
     */
-   private UserDto userInfo;
+   private UserInfo userInfo;
 
 }

@@ -33,7 +33,7 @@ import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
 import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.system.api.Constants;
-import com.pulanit.pangu.admin.system.api.dto.UserDto;
+import com.pulanit.pangu.admin.system.api.domain.UserInfo;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
@@ -77,11 +77,11 @@ public class UserServiceImpl implements UserService {
     public LoginOut login(LoginIn inDto) {
         LoginOut loginOut = new LoginOut();
         loginOut.setToken(UUID.fastUUID().toString());
-        UserDto userDto = new UserDto();
-        userDto.setName("熊春");
-        userDto.setDashboard("1");
-        userDto.setRole(Arrays.asList("admin"));
-        loginOut.setUserInfo(userDto);
+        UserInfo userInfo = new UserInfo();
+        userInfo.setName("熊春");
+        userInfo.setDashboard("1");
+        userInfo.setRole(Arrays.asList("admin"));
+        loginOut.setUserInfo(userInfo);
         return loginOut;
     }
 

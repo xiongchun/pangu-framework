@@ -1,4 +1,4 @@
-package com.pulanit.pangu.admin.system.api.dto;
+package com.pulanit.pangu.admin.system.api.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
@@ -8,13 +8,13 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 登录用户对象
+ * 用户对象
  */
 @Data
 @Accessors(chain = true)
-public class UserDto implements Serializable {
+public class UserInfo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 8318897826240866795L;
 
     /**
      * 流水号
