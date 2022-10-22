@@ -5,16 +5,16 @@ export default {
 	token: {
 		url: `${config.API_URL}/system/auth/login`,
 		name: "登录获取TOKEN",
-		post: async function (data = {}) {
-			return await http.post(this.url, data);
+		post: async function (params) {
+			return await http.post(this.url, params);
 		}
 	},
 	resource: {
 		list: {
 			url: `${config.API_URL}/system/resource/list`,
 			name: "登录用户获取资源菜单和权限列表",
-			get: async function () {
-				return await http.get(this.url);
+			get: async function (params) {
+				return await http.get(this.url, params);
 			}
 		},
 		listForManage: {

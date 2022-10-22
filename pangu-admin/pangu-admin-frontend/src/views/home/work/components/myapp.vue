@@ -74,7 +74,7 @@
 			},
 			getMods(){
 				//这里可用改为读取远程数据
-				this.myModsName = this.$TOOL.data.get("my-mods") || []
+				this.myModsName = this.$TOOL.data.get("MY_QUICK_MENU") || []
 				var menuTree = this.$TOOL.data.get("MENU")
 				this.filterMenu(menuTree)
 				this.myMods = this.mods.filter(item => {
@@ -101,7 +101,7 @@
 			},
 			saveMods(){
 				const myModsName = this.myMods.map(v => v.name)
-				this.$TOOL.data.set("my-mods", myModsName)
+				this.$TOOL.data.set("MY_QUICK_MENU", myModsName)
 				this.$message.success("设置常用成功")
 				this.modsDrawer = false
 			}

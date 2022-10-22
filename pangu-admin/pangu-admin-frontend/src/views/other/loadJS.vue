@@ -86,7 +86,7 @@
 				map.addOverlay(pl);
 				var lushu = new BMapGLLib.LuShu(map, pl.getPath(), {
 					autoCenter: true,
-					icon  : new BMapGL.Icon('img/logo.png', new BMapGL.Size(30,30)),
+					icon  : new BMapGL.Icon('img/logo.svg', new BMapGL.Size(30,30)),
 					speed: 30,
 					enableRotation: true
 				});

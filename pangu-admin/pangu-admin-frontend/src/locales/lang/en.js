@@ -1,7 +1,11 @@
 export default {
+	global: {
+		appName: 'PanGu Admin',
+		appName2: 'PanGu Management System'
+	},
 	login: {
-		slogan: 'High performance / delicate / grace',
-		describe: 'Vue3 + element plus based front-end solutions in the background.',
+		slogan: 'high performance / delicate / grace',
+		describe: 'SCUI（Vue3, Element-Plus）+  PanGu Dev Framework based universal solutions in the middleground & background.',
 		signInTitle: 'Sign in',
 		accountLogin: 'Account sign in',
 		mobileLogin: 'Mobile sign in',

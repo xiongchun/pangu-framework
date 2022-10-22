@@ -8,7 +8,7 @@
 			</el-col>
 			<el-col :lg="8">
 				<el-card shadow="never" header="带Logo">
-					<sc-qr-code text="scui" logo="img/logo.png"></sc-qr-code>
+					<sc-qr-code text="scui" logo="img/logo.svg"></sc-qr-code>
 				</el-card>
 			</el-col>
 			<el-col :lg="8">

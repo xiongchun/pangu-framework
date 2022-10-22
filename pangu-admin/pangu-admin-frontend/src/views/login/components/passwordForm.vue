@@ -77,24 +77,27 @@
 					password: this.$TOOL.crypto.MD5(this.form.password)
 				}
 				//获取token
-				var user = await this.$API.system.token.post(data)
-				if(user.code == 200){
-					this.$TOOL.cookie.set("TOKEN", user.data.token, {
+				var res = await this.$API.system.token.post(data)
+				if(res.code == 200){
+					this.$TOOL.cookie.set("TOKEN", res.data.token, {
 						expires: this.form.autologin? 24*60*60 : 0
 					})
-					this.$TOOL.data.set("USER_INFO", user.data.userInfo)
+					this.$TOOL.data.set("USER_INFO", res.data.userInfo)
 				}else{
 					this.islogin = false
-					this.$message.warning(user.message)
+					this.$message.warning(res.message)
 					return false
 				}
 				//获取菜单
+				var reqData = {
+					userId: res.data.userInfo.id
+				}
 				var menu = null
 				if(this.form.user == 'admin'){
-					menu = await this.$API.system.resource.list.get()
+					menu = await this.$API.system.resource.list.get(reqData)
 				}else{
 					//menu = await this.$API.demo.menu.get()
-					menu = await this.$API.system.resource.list.get()
+					menu = await this.$API.system.resource.list.get(reqData)
 				}
 				if(menu.code == 200){
 					if(menu.data.menu.length==0){

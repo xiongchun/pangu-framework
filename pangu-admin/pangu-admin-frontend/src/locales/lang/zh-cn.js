@@ -1,7 +1,11 @@
 export default {
+	global: {
+		appName: '盘古 Admin',
+		appName2: '盘古中后台管理系统'
+	},
 	login: {
 		slogan: '高性能 / 精致 / 优雅',
-		describe: '基于Vue3 + Element-Plus 的中后台前端解决方案。',
+		describe: '基于SCUI(Vue3、Element-Plus) + 盘古开发框架 的中后台统一解决方案。',
 		signInTitle: '用户登录',
 		accountLogin: '账号登录',
 		mobileLogin: '手机号登录',

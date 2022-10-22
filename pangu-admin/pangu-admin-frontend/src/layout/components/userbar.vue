@@ -109,7 +109,7 @@
 					{
 						id: 3,
 						type: 'system',
-						avatar: "img/logo.png",
+						avatar: "img/logo.svg",
 						title: "感谢登录SCUI Admin",
 						describe: "Vue 3.0 + Vue-Router 4.0 + ElementPlus + Axios 后台管理系统。",
 						link: "https://gitee.com/lolicode/scui",

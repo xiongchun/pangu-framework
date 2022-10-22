@@ -6,7 +6,7 @@ const DEFAULT_CONFIG = {
 	DASHBOARD_URL: "/dashboard",
 
 	//版本号
-	APP_VER: "1.6.4",
+	APP_VER: "5.3.0",
 
 	//内核版本号
 	CORE_VER: "1.6.4",
