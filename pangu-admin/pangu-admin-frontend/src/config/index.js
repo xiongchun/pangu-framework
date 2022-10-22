@@ -39,7 +39,7 @@ const DEFAULT_CONFIG = {
 	MENU_UNIQUE_OPENED: false,
 
 	//是否开启多标签
-	LAYOUT_TAGS: true,
+	LAYOUT_TAGS: false,
 
 	//语言
 	LANG: 'zh-cn',
