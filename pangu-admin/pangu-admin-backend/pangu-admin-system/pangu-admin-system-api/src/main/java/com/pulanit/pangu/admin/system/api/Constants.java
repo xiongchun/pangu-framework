@@ -39,4 +39,14 @@ public class Constants {
     public final static class UserType {
         public final static String DEFAULT = "1";
     }
+
+    /**
+     * 资源类型
+     */
+    public final static class ResourceType {
+        public final static String MENU = "menu";
+        public final static String BUTTON = "button";
+        public final static String IFRAME = "iframe";
+        public final static String LINK = "link";
+    }
 }

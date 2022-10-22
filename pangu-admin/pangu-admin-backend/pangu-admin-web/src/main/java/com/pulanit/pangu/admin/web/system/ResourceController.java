@@ -8,6 +8,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
+import com.pulanit.pangu.admin.system.api.param.ResourceForLoginOut;
 import com.pulanit.pangu.admin.system.api.param.ResourceOut;
 import com.pulanit.pangu.admin.system.api.service.ResourceService;
 import lombok.extern.slf4j.Slf4j;
@@ -34,10 +35,10 @@ public class ResourceController {
      * @return
      */
     @GetMapping("/list")
-    public Result<JSONObject> list() {
-        String menu = ResourceUtil.readStr("json/menu.json", CharsetUtil.CHARSET_UTF_8);
-        JSONObject jsonObject = JSON.parseObject(menu);
-        return Result.success(jsonObject);
+    public Result<ResourceForLoginOut> list(@RequestParam Long userId) {
+        Assert.notNull(userId, "用户 ID 不能为空");
+        ResourceForLoginOut out = resourceService.listForLogin(userId);
+        return Result.success(out);
     }
 
     /**

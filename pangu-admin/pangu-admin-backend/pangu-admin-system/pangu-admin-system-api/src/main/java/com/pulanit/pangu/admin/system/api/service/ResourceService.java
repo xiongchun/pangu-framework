@@ -2,10 +2,12 @@ package com.pulanit.pangu.admin.system.api.service;
 
 import cn.hutool.core.lang.tree.Tree;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
+import com.pulanit.pangu.admin.system.api.param.ResourceForLoginOut;
 import com.pulanit.pangu.admin.system.api.param.ResourceOut;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 资源
@@ -13,6 +15,13 @@ import java.util.Map;
  * @author xiongchun
  */
 public interface ResourceService {
+
+    /**
+     * 登录获取资源权限信息
+     * @param userId
+     * @return
+     */
+    ResourceForLoginOut listForLogin(Long userId);
 
     /**
      * 查询资源树结构信息

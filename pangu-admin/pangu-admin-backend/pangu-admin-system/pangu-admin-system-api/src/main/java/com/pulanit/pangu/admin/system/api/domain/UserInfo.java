@@ -19,7 +19,7 @@ public class UserInfo implements Serializable {
     /**
      * 流水号
      */
-    private Integer id;
+    private Long id;
 
     /**
      * 用户姓名

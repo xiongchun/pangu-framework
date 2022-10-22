@@ -1,16 +1,22 @@
 package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
+import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
+import com.pulanit.pangu.admin.system.api.Constants;
+import com.pulanit.pangu.admin.system.api.domain.MenuMetaInfo;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
+import com.pulanit.pangu.admin.system.api.param.ResourceForLoginOut;
 import com.pulanit.pangu.admin.system.api.param.ResourceOut;
 import com.pulanit.pangu.admin.system.api.service.ResourceService;
 import com.pulanit.pangu.admin.system.dao.mapper.ResourceMapper;
@@ -19,8 +25,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -32,6 +40,24 @@ public class ResourceServiceImpl implements ResourceService {
     @Autowired
     private ResourceManager resourceManager;
     private static final Long ROOT_ID = 0l;
+
+    @Override
+    public ResourceForLoginOut listForLogin(Long userId) {
+        ResourceForLoginOut out = new ResourceForLoginOut();
+        List<ResourceEntity> resourceEntities = resourceManager.listResourceEntitiesByUserId(userId);
+        List<ResourceEntity> menuEntities = Lists.newArrayList();
+        menuEntities.addAll(resourceEntities);
+        CollectionUtil.filter(menuEntities, e -> !Constants.ResourceType.BUTTON.equals(e.getType()));
+        TreeNodeConfig config = new TreeNodeConfig();
+        List<Tree<Integer>> treeNodes = TreeUtil.build(menuEntities, ROOT_ID.intValue(), config, (resourceEntity, treeNode) -> {
+            fillHomeMenuTreeNode(treeNode, resourceEntity);
+        });
+        out.setMenu(treeNodes);
+        CollectionUtil.filter(resourceEntities, e -> Constants.ResourceType.BUTTON.equals(e.getType()));
+        List<String> permissions = resourceEntities.stream().map(ResourceEntity::getResourceKey).collect(Collectors.toList());
+        out.setPermissions(permissions);
+        return out;
+    }
 
     @Override
     public List<Tree<Integer>> listForManage() {
@@ -133,5 +159,24 @@ public class ResourceServiceImpl implements ResourceService {
         treeNode.setWeight(resourceEntity.getSortNo());
         treeNode.putExtra("type", resourceEntity.getType());
         treeNode.putExtra("title", resourceEntity.getTitle());
+    }
+
+    private void fillHomeMenuTreeNode(Tree<Integer> treeNode, ResourceEntity resourceEntity) {
+        treeNode.setId(resourceEntity.getId().intValue());
+        treeNode.setParentId(resourceEntity.getParentId().intValue());
+        //树形结构构造器的排序字段
+        treeNode.setWeight(resourceEntity.getSortNo());
+        treeNode.putExtra("name", resourceEntity.getResourceKey());
+        treeNode.putExtra("path", resourceEntity.getPath());
+        treeNode.putExtra("component", resourceEntity.getComponent());
+        MenuMetaInfo meta = new MenuMetaInfo();
+        meta.setIcon(resourceEntity.getIcon());
+        meta.setColor(resourceEntity.getColor());
+        meta.setType(resourceEntity.getType());
+        meta.setTitle(resourceEntity.getTitle());
+        meta.setAffix(BooleanUtil.toBoolean(resourceEntity.getAffix()));
+        meta.setFullpage(BooleanUtil.toBoolean(resourceEntity.getFullpage()));
+        meta.setHidden(BooleanUtil.toBoolean(resourceEntity.getHidden()));
+        treeNode.putExtra("meta", meta);
     }
 }

@@ -78,9 +78,10 @@ public class UserServiceImpl implements UserService {
         LoginOut loginOut = new LoginOut();
         loginOut.setToken(UUID.fastUUID().toString());
         UserInfo userInfo = new UserInfo();
-        userInfo.setName("熊春");
+        userInfo.setId(1l);
+        userInfo.setName("超级管理员");
         userInfo.setDashboard("1");
-        userInfo.setRole(Arrays.asList("admin"));
+        userInfo.setRole(Arrays.asList("super"));
         loginOut.setUserInfo(userInfo);
         return loginOut;
     }
