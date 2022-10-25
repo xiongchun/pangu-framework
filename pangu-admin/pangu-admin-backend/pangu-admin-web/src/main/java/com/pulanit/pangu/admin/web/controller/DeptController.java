@@ -1,4 +1,4 @@
-package com.pulanit.pangu.admin.web.system;
+package com.pulanit.pangu.admin.web.controller;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.tree.Tree;

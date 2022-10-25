@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface UserService {
 
-    LoginOut login(LoginIn inDto);
+    LoginOut login(LoginIn loginIn);
 
     /**
      * 查询列表信息

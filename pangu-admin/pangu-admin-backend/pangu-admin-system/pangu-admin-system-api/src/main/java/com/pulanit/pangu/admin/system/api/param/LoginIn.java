@@ -7,24 +7,20 @@ import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 /**
- * 用户查询入参
+ * 用户登录入参
  * @author xiongchun
  */
 @Data
 @Accessors(chain = true)
 public class LoginIn implements Serializable {
 
-   private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = -2176980417334973101L;
 
-   /**
-    * 姓名
-    */
-   private String name;
+   @NotEmpty(message = "用户名不能为空")
+   private String userName;
 
-   /**
-    * 用户类型
-    */
-   @NotEmpty(message = "用户类型不能为空")
-   private String userType;
+   @NotEmpty(message = "密码不能为空")
+   private String password;
+
 
 }

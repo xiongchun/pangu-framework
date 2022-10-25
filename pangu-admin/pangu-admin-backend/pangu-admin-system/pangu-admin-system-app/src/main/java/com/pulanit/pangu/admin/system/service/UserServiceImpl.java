@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
     private RoleMapper roleMapper;
 
     @Override
-    public LoginOut login(LoginIn inDto) {
+    public LoginOut login(LoginIn loginIn) {
         LoginOut loginOut = new LoginOut();
         loginOut.setToken(UUID.fastUUID().toString());
         UserInfo userInfo = new UserInfo();
@@ -83,6 +83,7 @@ public class UserServiceImpl implements UserService {
         userInfo.setDashboard("1");
         userInfo.setRole(Arrays.asList("super"));
         loginOut.setUserInfo(userInfo);
+
         return loginOut;
     }
 

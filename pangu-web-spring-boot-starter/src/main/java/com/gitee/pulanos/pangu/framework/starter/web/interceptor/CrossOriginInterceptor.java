@@ -37,6 +37,7 @@ public class CrossOriginInterceptor extends HandlerInterceptorAdapter {
             response.addHeader("Access-Control-Allow-Credentials", "true");
             response.addHeader("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE");
             response.setHeader("Access-Control-Allow-Headers", "Content-Type, PG-X-Token");
+            //指定本次预检请求的有效期，单位为秒，在此期间不用发出另一条预检请求
             response.addHeader("Access-Control-Max-Age", "86400");
         }
         return true;

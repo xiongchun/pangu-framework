@@ -1,4 +1,4 @@
-package com.pulanit.pangu.admin.web;
+package com.pulanit.pangu.admin;
 
 import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
 import com.yomahub.tlog.core.enhance.bytes.AspectLogEnhance;
