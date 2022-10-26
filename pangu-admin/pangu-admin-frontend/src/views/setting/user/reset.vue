@@ -91,7 +91,7 @@ export default {
 						this.isSaveing = true
 						var reqData = new FormData()
 						reqData.append('userIds', this.userIds)
-						reqData.append('password', this.form.password)
+						reqData.append('password', this.$TOOL.crypto.MD5(this.form.password))
 						var res = await this.$API.system.user.resetPassword.post(reqData)
 						if (res.code == 200) {
 							this.$message.success("操作成功")

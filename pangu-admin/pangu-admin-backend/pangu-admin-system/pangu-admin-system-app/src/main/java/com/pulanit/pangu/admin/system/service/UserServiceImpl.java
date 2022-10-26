@@ -58,6 +58,8 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static com.pulanit.pangu.admin.system.api.SystemConstants.DEFAULT_DASHBOARD;
+
 @Slf4j
 @Service(version = "1.0.0", group = "pangu-admin-system-app")
 public class UserServiceImpl implements UserService {
@@ -79,20 +81,19 @@ public class UserServiceImpl implements UserService {
     public Result<LoginOut> login(LoginIn loginIn) {
         UserEntity userEntity = userManager.findUserByAccountKey(loginIn.getUserName());
         if (userEntity == null){
-            return Result.fail("用户名错误");
+            return Result.fail("用户名错误，请重新输入");
         }
         if (!StrUtil.equals(userManager.encodeUserPwd(loginIn.getPassword()), userEntity.getPassword())){
-            return Result.fail("密码错误");
+            return Result.fail("密码错误，请查询输入");
         }
         Result<LoginOut> result = Result.success();
-        LoginOut loginOut = new LoginOut();
         UserInfo userInfo = new UserInfo();
         BeanUtil.copyProperties(userEntity, userInfo);
-        userInfo.setDashboard("1");
+        userInfo.setDashboard(DEFAULT_DASHBOARD);
         List<RoleEntity> roleEntities = userManager.listRolesByUserId(userEntity.getId());
         List<String> roleKeys = roleEntities.stream().map(RoleEntity::getRoleKey).collect(Collectors.toList());
         userInfo.setRole(roleKeys);
-        loginOut.setUserInfo(userInfo);
+        LoginOut loginOut = new LoginOut().setUserInfo(userInfo);
         result.setData(loginOut);
         return result;
     }

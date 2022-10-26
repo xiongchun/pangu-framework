@@ -1,6 +1,5 @@
 package com.pulanit.pangu.admin.system.api.domain;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -22,24 +21,28 @@ public class UserInfo implements Serializable {
     private Long id;
 
     /**
-     * 用户姓名
+     * 登录帐号
+     */
+    private String userName;
+
+    /**
+     * 姓名
      */
     private String name;
 
     /**
-     * 登录账号
+     * 绑定邮箱
      */
-    private String account;
+    private String mail;
 
     /**
-     * 登录手机号
+     * 性别
      */
-    private String mobile;
+    private String sex;
 
     /**
      * 用户状态
      */
-    @TableField(value = "status")
     private String status;
 
     /**
@@ -50,17 +53,22 @@ public class UserInfo implements Serializable {
     /**
      * 所属部门
      */
-    private Integer orgId;
+    private Long deptId;
 
     /**
-     * 扩展码
+     * 业务扩展码
      */
     private String bizCode;
 
     /**
-     * 扩展JSON
+     * 头像URL
      */
-    private String ext;
+    private String avatar;
+
+    /**
+     * 绑定手机
+     */
+    private String mobileNumber;
 
     /**
      * 首页控制台类型(0/1)

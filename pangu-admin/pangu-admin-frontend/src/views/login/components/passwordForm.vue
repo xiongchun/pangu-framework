@@ -30,8 +30,8 @@
 			return {
 				form: {
 					userName: "admin",
-					password: "admin",
-					autologin: false
+					password: "123456",
+					autologin: true
 				},
 				rules: {
 					userName: [
@@ -63,13 +63,14 @@
 				var res = await this.$API.system.token.post(data)
 				if(res.code == 200){
 					this.$TOOL.cookie.set("TOKEN", res.data.token, {
-						expires: this.form.autologin? 20 : 0
+						// 单位：小时，0：长期有效
+						expires: this.form.autologin ? 8*60*60 : 0
 					})
 					this.$TOOL.data.set("USER_INFO", res.data.userInfo)
 					this.name = res.data.userInfo.name
 				}else{
 					this.isSaving = false
-					this.$message.warning(res.message)
+					this.$message.error(res.message)
 					return false
 				}
 				//获取菜单

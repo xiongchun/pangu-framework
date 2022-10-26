@@ -11,6 +11,11 @@ public class SystemConstants {
     public final static Long ROOT_NODE_ID = 0L;
 
     /**
+     * 缺省首页
+     */
+    public final static String DEFAULT_DASHBOARD = "1";
+
+    /**
      * 性别
      * 1:男 2:女 9:未知
      */
@@ -49,4 +54,6 @@ public class SystemConstants {
         public final static String IFRAME = "iframe";
         public final static String LINK = "link";
     }
+
+
 }
