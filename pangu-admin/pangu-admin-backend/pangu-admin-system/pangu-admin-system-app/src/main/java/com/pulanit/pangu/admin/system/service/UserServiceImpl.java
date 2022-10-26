@@ -29,10 +29,12 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.gitee.pulanos.pangu.framework.common.Constants;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
+import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
 import com.google.common.collect.Lists;
-import com.pulanit.pangu.admin.system.api.Constants;
+import com.pulanit.pangu.admin.system.api.SystemConstants;
 import com.pulanit.pangu.admin.system.api.domain.UserInfo;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
@@ -74,17 +76,25 @@ public class UserServiceImpl implements UserService {
     private RoleMapper roleMapper;
 
     @Override
-    public LoginOut login(LoginIn loginIn) {
+    public Result<LoginOut> login(LoginIn loginIn) {
+        UserEntity userEntity = userManager.findUserByAccountKey(loginIn.getUserName());
+        if (userEntity == null){
+            return Result.fail("用户名错误");
+        }
+        if (!StrUtil.equals(userManager.encodeUserPwd(loginIn.getPassword()), userEntity.getPassword())){
+            return Result.fail("密码错误");
+        }
+        Result<LoginOut> result = Result.success();
         LoginOut loginOut = new LoginOut();
-        loginOut.setToken(UUID.fastUUID().toString());
         UserInfo userInfo = new UserInfo();
-        userInfo.setId(1l);
-        userInfo.setName("超级管理员");
+        BeanUtil.copyProperties(userEntity, userInfo);
         userInfo.setDashboard("1");
-        userInfo.setRole(Arrays.asList("super"));
+        List<RoleEntity> roleEntities = userManager.listRolesByUserId(userEntity.getId());
+        List<String> roleKeys = roleEntities.stream().map(RoleEntity::getRoleKey).collect(Collectors.toList());
+        userInfo.setRole(roleKeys);
         loginOut.setUserInfo(userInfo);
-
-        return loginOut;
+        result.setData(loginOut);
+        return result;
     }
 
     @Override
@@ -121,11 +131,11 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void add(UserIn userIn) {
         if (StrUtil.isEmpty(userIn.getSex())){
-            userIn.setSex(Constants.Sex.UNKNOWN);
+            userIn.setSex(SystemConstants.Sex.UNKNOWN);
         }
         userIn.setAvatar(this.randomAvatar());
         userIn.setGmtCreated(DateUtil.date());
-        userIn.setPassword(SecureUtil.sha256(userIn.getPassword()));
+        userIn.setPassword(userManager.encodeUserPwd(userIn.getPassword()));
         userMapper.insert(userIn);
         userManager.creatUserRole(userIn.getId(), userIn.getRoleIds());
     }
@@ -184,19 +194,19 @@ public class UserServiceImpl implements UserService {
         BeanUtil.copyProperties(userEntity, userOut);
         userOut.setDeptName(deptManager.queryCascadeDeptName(userEntity.getDeptId()));
         //字典转换待优化
-        if (Constants.Sex.MALE.equals(userOut.getSex())){
+        if (SystemConstants.Sex.MALE.equals(userOut.getSex())){
             userOut.setSexDesc("男");
-        }else if (Constants.Sex.MALE.equals(userOut.getSex())){
+        }else if (SystemConstants.Sex.MALE.equals(userOut.getSex())){
             userOut.setSexDesc("女");
         }else {
             userOut.setSexDesc("未知");
         }
-        if (Constants.UserStatus.ENABLED.equals(userOut.getStatus())){
+        if (SystemConstants.UserStatus.ENABLED.equals(userOut.getStatus())){
             userOut.setStatusDesc("启用");
-        }else if (Constants.UserStatus.DISABLED.equals(userOut.getStatus())){
+        }else if (SystemConstants.UserStatus.DISABLED.equals(userOut.getStatus())){
             userOut.setStatusDesc("停用");
         }
-        if (Constants.UserType.DEFAULT.equals(userOut.getType())){
+        if (SystemConstants.UserType.DEFAULT.equals(userOut.getType())){
             userOut.setTypeDesc("缺省");
         }
         return userOut;
@@ -206,7 +216,7 @@ public class UserServiceImpl implements UserService {
     public void resetPassword(List<Long> userIds, String password) {
         if (CollUtil.isNotEmpty(userIds)){
             LambdaUpdateWrapper<UserEntity> updateWrapper = Wrappers.lambdaUpdate();
-            updateWrapper.set(UserEntity::getPassword, SecureUtil.sha256(password));
+            updateWrapper.set(UserEntity::getPassword, userManager.encodeUserPwd(password));
             updateWrapper.in(UserEntity::getId, userIds);
             userMapper.update(null, updateWrapper);
         }

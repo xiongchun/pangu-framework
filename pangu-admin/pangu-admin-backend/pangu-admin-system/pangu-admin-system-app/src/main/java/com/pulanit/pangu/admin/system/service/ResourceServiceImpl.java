@@ -11,9 +11,8 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
-import com.pulanit.pangu.admin.system.api.Constants;
+import com.pulanit.pangu.admin.system.api.SystemConstants;
 import com.pulanit.pangu.admin.system.api.domain.MenuMetaInfo;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
 import com.pulanit.pangu.admin.system.api.param.ResourceForLoginOut;
@@ -25,10 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -47,13 +44,13 @@ public class ResourceServiceImpl implements ResourceService {
         List<ResourceEntity> resourceEntities = resourceManager.listResourceEntitiesByUserId(userId);
         List<ResourceEntity> menuEntities = Lists.newArrayList();
         menuEntities.addAll(resourceEntities);
-        CollectionUtil.filter(menuEntities, e -> !Constants.ResourceType.BUTTON.equals(e.getType()));
+        CollectionUtil.filter(menuEntities, e -> !SystemConstants.ResourceType.BUTTON.equals(e.getType()));
         TreeNodeConfig config = new TreeNodeConfig();
         List<Tree<Integer>> treeNodes = TreeUtil.build(menuEntities, ROOT_ID.intValue(), config, (resourceEntity, treeNode) -> {
             fillHomeMenuTreeNode(treeNode, resourceEntity);
         });
         out.setMenu(treeNodes);
-        CollectionUtil.filter(resourceEntities, e -> Constants.ResourceType.BUTTON.equals(e.getType()));
+        CollectionUtil.filter(resourceEntities, e -> SystemConstants.ResourceType.BUTTON.equals(e.getType()));
         List<String> permissions = resourceEntities.stream().map(ResourceEntity::getResourceKey).collect(Collectors.toList());
         out.setPermissions(permissions);
         return out;

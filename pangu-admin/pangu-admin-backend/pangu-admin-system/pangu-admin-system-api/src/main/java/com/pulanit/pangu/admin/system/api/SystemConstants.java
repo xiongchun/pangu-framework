@@ -3,7 +3,7 @@ package com.pulanit.pangu.admin.system.api;
 /**
  * 常量表
  */
-public class Constants {
+public class SystemConstants {
 
     /**
      * 根节点ID

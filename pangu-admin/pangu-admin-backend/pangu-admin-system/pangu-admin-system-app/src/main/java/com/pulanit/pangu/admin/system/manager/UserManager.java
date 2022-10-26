@@ -1,16 +1,26 @@
 package com.pulanit.pangu.admin.system.manager;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.google.common.collect.Lists;
+import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
+import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserRoleEntity;
+import com.pulanit.pangu.admin.system.dao.mapper.RoleMapper;
+import com.pulanit.pangu.admin.system.dao.mapper.UserMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserRoleMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.management.relation.Role;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +30,10 @@ public class UserManager {
 
     @Autowired
     private UserRoleMapper userRoleMapper;
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private RoleMapper roleMapper;
 
 
     public void deleteUserRoleByUserId(Long userId){
@@ -50,6 +64,33 @@ public class UserManager {
         List<UserRoleEntity> userRoleEntities = userRoleMapper.selectList(lambdaQueryWrapper);
         List<Long> roleIds = userRoleEntities.stream().map(UserRoleEntity::getRoleId).collect(Collectors.toList());
         return  roleIds;
+    }
+
+    public List<RoleEntity> listRolesByUserId(Long userId){
+        List<RoleEntity> roleEntities = Lists.newArrayList();
+        Assert.notNull(userId, "userId 不能为空");
+        List<Long> roleIds = this.queryRoleIdsByUserId(userId);
+        if (CollUtil.isNotEmpty(roleIds)){
+            roleEntities = roleMapper.selectBatchIds(roleIds);
+        }
+        return roleEntities;
+    }
+
+    public UserEntity findUserByAccountKey(String accountKey){
+        Assert.notNull(accountKey, "账号标识 不能为空");
+        LambdaQueryWrapper<UserEntity> queryWrapper = Wrappers.lambdaQuery();
+        if (Validator.isMobile(accountKey)){
+            queryWrapper.eq(UserEntity::getMobileNumber, accountKey);
+        } else if (Validator.isEmail(accountKey)) {
+            queryWrapper.eq(UserEntity::getMail, accountKey);
+        }else {
+            queryWrapper.eq(UserEntity::getUserName, accountKey);
+        }
+        return userMapper.selectOne(queryWrapper);
+    }
+
+    public String encodeUserPwd(String pwd){
+        return SecureUtil.sha256(pwd);
     }
 
 

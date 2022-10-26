@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static com.pulanit.pangu.admin.system.api.Constants.ROOT_NODE_ID;
+import static com.pulanit.pangu.admin.system.api.SystemConstants.ROOT_NODE_ID;
 
 @Component
 @Slf4j

@@ -1,4 +1,4 @@
-package com.pulanit.pangu.admin.web.controller;
+package com.pulanit.pangu.admin.web.controller.home;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Console;
@@ -29,7 +29,7 @@ import java.util.Date;
 @Slf4j
 @RestController
 @RequestMapping("/api/system/auth")
-public class AuthController {
+public class LoginController {
 
     @Reference(version = "1.0.0", group = "pangu-admin-system-app")
     private UserService userService;
@@ -40,16 +40,16 @@ public class AuthController {
      */
     @PostMapping("/login")
     public Result<LoginOut> login(@RequestBody LoginIn loginIn) {
-        LoginOut loginOut = userService.login(loginIn);
-        final JWTSigner signer = JWTSignerUtil.hs256("123456".getBytes());
-        Date date = DateUtil.offsetSecond(DateUtil.date(), 5);
-        final String token = JWT.create().setExpiresAt(date).setSubject("100").setSigner(signer).sign();
-        ThreadUtil.sleep(15*1000);
-        JWTUtil.verify(token, signer);
-        JWTValidator.of(token).validateDate(DateUtil.date());
-        final JWT jwt = JWTUtil.parseToken(token);
-        Console.log(jwt.getPayload("sub"));
-        return Result.success(loginOut);
+        Result<LoginOut> result = userService.login(loginIn);
+//        final JWTSigner signer = JWTSignerUtil.hs256("123456".getBytes());
+//        Date date = DateUtil.offsetSecond(DateUtil.date(), 5);
+//        final String token = JWT.create().setExpiresAt(date).setSubject("100").setSigner(signer).sign();
+//        ThreadUtil.sleep(15*1000);
+//        JWTUtil.verify(token, signer);
+//        JWTValidator.of(token).validateDate(DateUtil.date());
+//        final JWT jwt = JWTUtil.parseToken(token);
+//        Console.log(jwt.getPayload("sub"));
+        return result;
     }
 
 }

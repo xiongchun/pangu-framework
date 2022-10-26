@@ -198,6 +198,7 @@ export default {
 				if (valid) {
 					this.isSaveing = true;
 					var res;
+					this.form.password = this.$TOOL.crypto.MD5(this.form.password)
 					if (this.mode == 'add') {
 						res = await this.$API.system.user.add.post(this.form)
 					} else if (this.mode == 'edit') {

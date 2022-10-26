@@ -109,13 +109,22 @@ public class Result<T> implements Serializable {
     }
 
     /**
-     * 创建返回对象
+     * 实例返回对象
      *
      * @param <T>
      * @return
      */
     public static <T> Result<T> make() {
         return new Result<T>();
+    }
+
+    /**
+     * 设置状态码和状态描述
+     * @param code 状态码
+     * @param message 状态描述
+     */
+    public void setCodeMsg(Integer code, String message) {
+        this.setCode(code).setMessage(message);
     }
 
 }

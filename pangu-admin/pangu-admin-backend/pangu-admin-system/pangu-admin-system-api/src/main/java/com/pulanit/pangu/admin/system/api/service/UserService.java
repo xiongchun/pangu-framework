@@ -1,6 +1,7 @@
 package com.pulanit.pangu.admin.system.api.service;
 
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
+import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.param.*;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public interface UserService {
 
-    LoginOut login(LoginIn loginIn);
+    Result<LoginOut> login(LoginIn loginIn);
 
     /**
      * 查询列表信息

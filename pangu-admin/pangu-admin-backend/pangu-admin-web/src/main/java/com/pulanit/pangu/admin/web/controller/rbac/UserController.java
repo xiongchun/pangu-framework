@@ -1,4 +1,4 @@
-package com.pulanit.pangu.admin.web.controller;
+package com.pulanit.pangu.admin.web.controller.rbac;
 
 import cn.hutool.core.lang.Assert;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
