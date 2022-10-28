@@ -32,8 +32,9 @@ import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
 import com.google.common.collect.Lists;
+import com.pulanit.pangu.admin.common.AppContext;
+import com.pulanit.pangu.admin.common.domain.UserInfo;
 import com.pulanit.pangu.admin.system.api.SystemConstants;
-import com.pulanit.pangu.admin.system.api.domain.UserInfo;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
@@ -99,8 +100,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageResult<UserOut> list(UserPageIn userPageIn) {
-        Console.log(RpcContext.getContext().get("userInfo"));
-        Console.log(RpcContext.getContext().getAttachment("userInfo"));
         Page<UserEntity> page = PagingUtil.createPage(userPageIn);
         LambdaQueryWrapper<UserEntity> lambdaQueryWrapper = Wrappers.lambdaQuery();
         lambdaQueryWrapper.select(UserEntity.class, info -> !info.getColumn().equals("password"));

@@ -4,6 +4,7 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Console;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
+import com.pulanit.pangu.admin.common.AppContext;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.param.UserIn;
 import com.pulanit.pangu.admin.system.api.param.UserOut;
@@ -35,8 +36,6 @@ public class UserController {
      */
     @GetMapping("/list")
     public Result<PageResult<UserOut>> list(UserPageIn userPageIn) {
-        Console.log(RpcContext.getContext().get("userInfo"));
-        Console.log(RpcContext.getContext().getAttachment("userInfo"));
         PageResult<UserOut> pageResult = userService.list(userPageIn);
         return Result.success(pageResult);
     }

@@ -13,10 +13,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <lombok.version>1.18.20</lombok.version>
-        <mybatis-plus.version>3.5.2</mybatis-plus.version>
-        <jackson-annotations.version>2.10.2</jackson-annotations.version>
-        <jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
         <hutool-core.version>5.8.3</hutool-core.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <pangu.version>5.2.0</pangu.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     </properties>
@@ -35,8 +33,13 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.gitee.pulanos.pangu</groupId>
-            <artifactId>pangu-common</artifactId>
+            <artifactId>pangu-dubbo-spring-boot-starter</artifactId>
             <version>${pangu.version}</version>
             <scope>provided</scope>
         </dependency>

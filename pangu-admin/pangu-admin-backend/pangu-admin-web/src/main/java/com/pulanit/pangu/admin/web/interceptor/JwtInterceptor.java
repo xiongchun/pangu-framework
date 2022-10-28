@@ -10,7 +10,8 @@ import cn.hutool.jwt.signers.JWTSignerUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
-import com.pulanit.pangu.admin.system.api.domain.UserInfo;
+import com.pulanit.pangu.admin.common.AppConstants;
+import com.pulanit.pangu.admin.common.domain.UserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.dubbo.rpc.RpcContext;
@@ -58,8 +59,7 @@ public class JwtInterceptor implements HandlerInterceptor {
         }
         final JWT jwt = JWTUtil.parseToken(token);
         UserInfo userInfo = JSON.parseObject(String.valueOf(jwt.getPayload(SUBJECT)), UserInfo.class);
-        RpcContext.getContext().set("userInfo", userInfo);
-        RpcContext.getContext().setAttachment("userInfo", "ABC");
+        RpcContext.getContext().setAttachment(AppConstants.CURRENT_USER_KEY, JSON.toJSONString(userInfo));
         return true;
     }
 

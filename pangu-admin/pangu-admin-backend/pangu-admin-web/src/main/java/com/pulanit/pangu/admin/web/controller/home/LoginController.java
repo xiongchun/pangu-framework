@@ -7,7 +7,7 @@ import cn.hutool.jwt.signers.JWTSignerUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
-import com.pulanit.pangu.admin.system.api.domain.UserInfo;
+import com.pulanit.pangu.admin.common.domain.UserInfo;
 import com.pulanit.pangu.admin.system.api.param.LoginIn;
 import com.pulanit.pangu.admin.system.api.param.LoginOut;
 import com.pulanit.pangu.admin.system.api.service.UserService;

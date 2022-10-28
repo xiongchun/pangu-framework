@@ -1,6 +1,6 @@
 package com.pulanit.pangu.admin.system.api.param;
 
-import com.pulanit.pangu.admin.system.api.domain.UserInfo;
+import com.pulanit.pangu.admin.common.domain.UserInfo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
