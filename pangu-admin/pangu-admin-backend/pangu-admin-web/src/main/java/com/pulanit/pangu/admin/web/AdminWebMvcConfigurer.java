@@ -22,7 +22,7 @@ public class AdminWebMvcConfigurer implements WebMvcConfigurer {
         interceptorRegistration.addPathPatterns("/**");
         //白名单
         List<String> excludePathPatterns = new ArrayList<String>();
-        excludePathPatterns.add("/api/system/auth/login");
+        excludePathPatterns.add("/**/login");
         interceptorRegistration.excludePathPatterns(excludePathPatterns);
         //Bean加载的时候有先后顺序 默认也是0 和@Order(0) 一个作用
         interceptorRegistration.order(0);

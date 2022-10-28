@@ -1,4 +1,4 @@
-package com.pulanit.pangu.admin.system.api.domain;
+package com.pulanit.pangu.admin.common.domain;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

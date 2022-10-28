@@ -13,6 +13,7 @@
 	<modules>
 		<module>pangu-admin-web</module>
 		<module>pangu-admin-system</module>
+		<module>pangu-admin-common</module>
 	</modules>
 
 </project>

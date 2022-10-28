@@ -14,7 +14,6 @@ npm run serve
 
 # 编译打包
 npm run build
-
 ```
 启动完成后浏览器访问 http://localhost:2800
 

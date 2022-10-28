@@ -1,6 +1,7 @@
 package com.pulanit.pangu.admin.web.controller.rbac;
 
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.lang.Console;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
@@ -10,6 +11,7 @@ import com.pulanit.pangu.admin.system.api.param.UserPageIn;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +35,8 @@ public class UserController {
      */
     @GetMapping("/list")
     public Result<PageResult<UserOut>> list(UserPageIn userPageIn) {
+        Console.log(RpcContext.getContext().get("userInfo"));
+        Console.log(RpcContext.getContext().getAttachment("userInfo"));
         PageResult<UserOut> pageResult = userService.list(userPageIn);
         return Result.success(pageResult);
     }
