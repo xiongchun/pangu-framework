@@ -60,7 +60,7 @@
 					password: this.$TOOL.crypto.MD5(this.form.password)
 				}
 				//获取token
-				var res = await this.$API.system.token.post(data)
+				var res = await this.$API.system.home.login.post(data)
 				if(res.code == 200){
 					this.$TOOL.cookie.set("TOKEN", res.data.token, {
 						// 单位：小时，0：长期有效

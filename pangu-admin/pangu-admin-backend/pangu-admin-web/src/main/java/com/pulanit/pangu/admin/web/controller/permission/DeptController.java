@@ -1,4 +1,4 @@
-package com.pulanit.pangu.admin.web.controller.rbac;
+package com.pulanit.pangu.admin.web.controller.permission;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.tree.Tree;

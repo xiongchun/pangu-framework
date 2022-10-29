@@ -4,9 +4,9 @@
 			<el-container>
 				<el-header style="height: auto;display: block;">
 					<div class="user-info-top">
-						<el-avatar :size="70" src="img/avatar.jpg"></el-avatar>
+						<el-avatar :size="70" :src="user.avatar">{{ user.userNameF }}</el-avatar>
 						<h2>{{ user.userName }}</h2>
-						<p><el-tag effect="dark" round size="large">{{ user.role }}</el-tag></p>
+						<p><el-tag effect="dark" round size="small">{{ user.role }}</el-tag></p>
 					</div>
 				</el-header>
 				<el-main class="nopadding">
@@ -105,8 +105,10 @@
 					}
 				],
 				user: {
-					userName: "Sakuya",
+					userName: "",
+					userNameF: "",
 					role: "超级管理员",
+					avatar: "",
 				},
 				page: "account"
 			}
@@ -124,6 +126,12 @@
 					}).then(() => {}).catch(() => {})
 				}
 			})
+		},
+		created() {
+			var userInfo = this.$TOOL.data.get("USER_INFO");
+			this.user.userName = userInfo.name;
+			this.user.userNameF = this.user.userName.substring(0,1);
+			this.user.avatar = userInfo.avatar
 		},
 		methods: {
 			openPage(item){

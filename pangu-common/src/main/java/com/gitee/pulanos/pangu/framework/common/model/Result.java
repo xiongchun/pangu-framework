@@ -17,6 +17,7 @@
 
 package com.gitee.pulanos.pangu.framework.common.model;
 
+import cn.hutool.core.util.StrUtil;
 import com.gitee.pulanos.pangu.framework.common.Constants;
 import lombok.Data;
 import lombok.ToString;
@@ -125,6 +126,15 @@ public class Result<T> implements Serializable {
      */
     public void setCodeMsg(Integer code, String message) {
         this.setCode(code).setMessage(message);
+    }
+
+    /**
+     * 返回业务结果是否成功状态
+     *
+     * @return
+     */
+    public boolean isSuccess(){
+        return Constants.Code.SUCCESS == getCode().intValue();
     }
 
 }

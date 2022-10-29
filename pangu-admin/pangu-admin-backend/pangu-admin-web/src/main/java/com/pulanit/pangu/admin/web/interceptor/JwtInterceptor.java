@@ -38,7 +38,6 @@ public class JwtInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader(TOKEN_HEADER);
-        log.info(token);
         if (StrUtil.isEmpty(token)){
             this.write("操作被拦截，没有获取到 TOKEN 参数", response);
             return false;
@@ -57,6 +56,9 @@ public class JwtInterceptor implements HandlerInterceptor {
             this.write("操作被拦截，TOKEN 时间校验失败。" + e.getMessage(), response);
             return false;
         }
+
+        // 如果需要结合 DB 校验，可以在此做扩展实现类似后端强制下线等需求
+
         final JWT jwt = JWTUtil.parseToken(token);
         UserInfo userInfo = JSON.parseObject(String.valueOf(jwt.getPayload(SUBJECT)), UserInfo.class);
         RpcContext.getContext().setAttachment(AppConstants.CURRENT_USER_KEY, JSON.toJSONString(userInfo));
@@ -64,6 +66,8 @@ public class JwtInterceptor implements HandlerInterceptor {
     }
 
     private void write(String info, HttpServletResponse response) throws Exception{
+        // request.js 拦截器根据 response status 状态码处理
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         String json = JSON.toJSONString(Result.fail(info));
         response.setContentType("application/json");
         IOUtils.write(json, response.getOutputStream());

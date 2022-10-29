@@ -2,11 +2,20 @@ import config from "@/config"
 import http from "@/utils/request"
 
 export default {
-	token: {
-		url: `${config.API_URL}/system/auth/login`,
-		name: "登录获取TOKEN",
-		post: async function (params) {
-			return await http.post(this.url, params);
+	home: {
+		login: {
+			url: `${config.API_URL}/system/home/login`,
+			name: "登录获取TOKEN",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
+		},
+		logout: {
+			url: `${config.API_URL}/system/home/logout`,
+			name: "登出",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
 		}
 	},
 	resource: {

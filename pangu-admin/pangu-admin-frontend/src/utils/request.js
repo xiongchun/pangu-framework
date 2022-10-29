@@ -49,7 +49,8 @@ axios.interceptors.response.use(
 					type: 'error',
 					closeOnClickModal: false,
 					center: true,
-					confirmButtonText: '重新登录'
+					confirmButtonText: '重新登录',
+					confirmButtonClass: 'el-button--danger'
 				}).then(() => {
 					router.replace({path: '/login'});
 				}).catch(() => {})
