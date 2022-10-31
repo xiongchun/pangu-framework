@@ -45,8 +45,8 @@
 				<el-input v-model="form.bizCode" placeholder="请输入业务扩展码" maxlength="50" show-word-limit clearable>
 				</el-input>
 			</el-form-item>
-			<el-form-item label="备注" prop="remark">
-				<el-input v-model="form.remark" placeholder="请输入备注" maxlength="250" show-word-limit clearable
+			<el-form-item label="备注/签名" prop="remark">
+				<el-input v-model="form.remark" placeholder="请输入备注/签名" maxlength="250" show-word-limit clearable
 					type="textarea"></el-input>
 			</el-form-item>
 		</el-form>

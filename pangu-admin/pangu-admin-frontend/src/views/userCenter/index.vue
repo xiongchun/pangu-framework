@@ -6,7 +6,7 @@
 					<div class="user-info-top">
 						<el-avatar :size="70" :src="user.avatar">{{ user.userNameF }}</el-avatar>
 						<h2>{{ user.userName }}</h2>
-						<p><el-tag effect="dark" round size="small">{{ user.role }}</el-tag></p>
+						<p><el-tag effect="plain" round size="default">{{ user.role }}</el-tag></p>
 					</div>
 				</el-header>
 				<el-main class="nopadding">
@@ -58,7 +58,7 @@
 						list: [
 							{
 								icon: "el-icon-postcard",
-								title: "账号信息",
+								title: "个人信息",
 								component: "account"
 							},
 							{
@@ -68,7 +68,7 @@
 							},
 							{
 								icon: "el-icon-lock",
-								title: "密码",
+								title: "修改密码",
 								component: "password"
 							},
 							{

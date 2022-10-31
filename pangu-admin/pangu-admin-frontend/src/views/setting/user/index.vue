@@ -43,7 +43,7 @@
 						<template #default="scope">
 							<span v-if="scope.row.sex == 1">男</span>
 							<span v-if="scope.row.sex == 2">女</span>
-							<span v-else>未知</span>
+							<span v-else>保密</span>
 						</template>
 					</el-table-column>
 					<el-table-column label="所属部门" prop="deptName" width="150" show-overflow-tooltip></el-table-column>
