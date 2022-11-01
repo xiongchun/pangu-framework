@@ -62,14 +62,14 @@
 								component: "account"
 							},
 							{
-								icon: "el-icon-operation",
-								title: "个人设置",
-								component: "seting"
-							},
-							{
 								icon: "el-icon-lock",
 								title: "修改密码",
 								component: "password"
+							},
+							{
+								icon: "el-icon-operation",
+								title: "偏好设置",
+								component: "seting"
 							},
 							{
 								icon: "el-icon-bell",

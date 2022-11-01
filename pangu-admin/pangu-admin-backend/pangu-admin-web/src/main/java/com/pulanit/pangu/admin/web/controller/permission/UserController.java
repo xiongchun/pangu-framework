@@ -1,9 +1,11 @@
 package com.pulanit.pangu.admin.web.controller.permission;
 
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.thread.ThreadUtil;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
+import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.UserIn;
 import com.pulanit.pangu.admin.system.api.param.UserOut;
 import com.pulanit.pangu.admin.system.api.param.UserPageIn;
@@ -52,13 +54,13 @@ public class UserController {
     /**
      * 修改
      *
-     * @param userIn
+     * @param userEntity
      * @return
      */
     @PostMapping("/update")
-    public Result<Void> update(@RequestBody UserIn userIn) {
-        Assert.notNull(userIn.getId(), "人员 ID 不能为空");
-        userService.update(userIn);
+    public Result<Void> update(@RequestBody UserEntity userEntity) {
+        Assert.notNull(userEntity.getId(), "人员 ID 不能为空");
+        userService.update(userEntity);
         return Result.success();
     }
 

@@ -21,6 +21,7 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Console;
+import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
@@ -143,11 +144,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void update(UserIn userIn) {
-        userIn.setGmtModified(DateUtil.date());
-        userMapper.updateById(userIn);
-        userManager.deleteUserRoleByUserId(userIn.getId());
-        userManager.creatUserRole(userIn.getId(), userIn.getRoleIds());
+    public void update(UserEntity userEntity) {
+        userEntity.setGmtModified(DateUtil.date());
+        userMapper.updateById(userEntity);
     }
 
     @Override
@@ -200,7 +199,7 @@ public class UserServiceImpl implements UserService {
         }else if (SystemConstants.Sex.MALE.equals(userOut.getSex())){
             userOut.setSexDesc("女");
         }else {
-            userOut.setSexDesc("未知");
+            userOut.setSexDesc("保密");
         }
         if (SystemConstants.UserStatus.ENABLED.equals(userOut.getStatus())){
             userOut.setStatusDesc("启用");
