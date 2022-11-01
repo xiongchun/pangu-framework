@@ -94,16 +94,6 @@ export default {
 							component: "logs"
 						}
 					]
-				},
-				{
-					groupName: "账号升级",
-					list: [
-						{
-							icon: "el-icon-office-building",
-							title: "升级为企业账号",
-							component: "upToEnterprise"
-						}
-					]
 				}
 			],
 			user: {

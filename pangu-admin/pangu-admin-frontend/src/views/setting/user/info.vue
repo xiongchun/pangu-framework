@@ -11,9 +11,11 @@
 				</el-descriptions-item>
 				<el-descriptions-item label="姓名" label-class-name="bold">{{ data.name }}
 				</el-descriptions-item>
-				<el-descriptions-item label="性别" label-class-name="bold">{{ data.sexDesc }}
-				</el-descriptions-item>
 				<el-descriptions-item label="所属部门" label-class-name="bold">{{ data.deptName }}
+				</el-descriptions-item>
+				<el-descriptions-item label="分配角色" label-class-name="bold">{{ data.roleNames }}
+				</el-descriptions-item>
+				<el-descriptions-item label="性别" label-class-name="bold">{{ data.sexDesc }}
 				</el-descriptions-item>
 				<el-descriptions-item label="用户状态" label-class-name="bold">{{ data.statusDesc }}
 				</el-descriptions-item>
@@ -27,18 +29,9 @@
 				</el-descriptions-item>
 				<el-descriptions-item label="创建时间" label-class-name="bold">{{ data.gmtCreated }}
 				</el-descriptions-item>
-				<el-descriptions-item label="备注" label-class-name="bold">{{ data.remark }}
+				<el-descriptions-item label="备注/签名" label-class-name="bold">{{ data.remark }}
 				</el-descriptions-item>
 			</el-descriptions>
-		</el-card>
-
-		<el-card shadow="hover" style="margin-top:20px; margin-bottom:20px" v-loading="loading2">
-			<template #header>
-				<div class="el-descriptions__title">
-					<span>已分配角色</span>
-				</div>
-			</template>
-			<span class="card_body">{{ data2.roleNames }}</span>
 		</el-card>
 
 		<el-card shadow="hover" style="margin-top:20px; margin-bottom:30px" v-loading="loading3">
@@ -57,9 +50,7 @@ export default {
 	data() {
 		return {
 			data: {},
-			data2: {},
 			loading: false,
-			loading2: false,
 			loading3: false
 		}
 	},
@@ -76,17 +67,6 @@ export default {
 					this.data = res.data
 				}
 				this.loading = false
-			})
-			this.loading2 = true
-			this.$API.system.user.queryRolesByUserId.get(params).then(res => {
-				if (res.code == 200) {
-					var roleNames = "";
-					for (const role of res.data) {
-						roleNames = roleNames + role.name + " | "
-					}
-					this.data2.roleNames = roleNames.substring(0, roleNames.length - 2)
-				}
-				this.loading2 = false
 			})
 		}
 	}
