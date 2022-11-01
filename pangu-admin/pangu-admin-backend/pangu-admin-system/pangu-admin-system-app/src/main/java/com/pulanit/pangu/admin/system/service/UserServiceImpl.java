@@ -193,6 +193,7 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = userMapper.selectById(userId);
         BeanUtil.copyProperties(userEntity, userOut);
         userOut.setDeptName(deptManager.queryCascadeDeptName(userEntity.getDeptId()));
+        userOut.setRoleNames(userManager.queryRoleNamesByUserId(userId));
         //字典转换待优化
         if (SystemConstants.Sex.MALE.equals(userOut.getSex())){
             userOut.setSexDesc("男");

@@ -1,11 +1,15 @@
 package com.pulanit.pangu.admin.system.manager;
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.lang.Console;
+import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.dao.mapper.DeptMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 import static com.pulanit.pangu.admin.system.api.SystemConstants.ROOT_NODE_ID;
 
@@ -18,24 +22,25 @@ public class DeptManager {
 
     private final String DEPT_SEPARATOR = " / ";
 
+    private final int MAX_LOOP = 10;
+
     /**
      * 获取级联部门名称（含上级部门）
      * @param deptId
      * @return
      */
     public String queryCascadeDeptName(Long deptId){
-        String deptName = "";
-        for (int i = 0; i < 100; i++) {
+        List<String> names = Lists.newArrayList();
+        for (int i = 0; i < MAX_LOOP; i++) {
             DeptEntity deptEntity = findDeptEntityById(deptId);
-            deptName = deptName + deptEntity.getName() + DEPT_SEPARATOR;
+            names.add(deptEntity.getName());
             deptId = deptEntity.getParentId();
             if (ROOT_NODE_ID.longValue() == deptId.longValue()){
                 break;
             }
         }
-        return StrUtil.subBefore(deptName, DEPT_SEPARATOR, true);
+        return CollUtil.join(names, DEPT_SEPARATOR);
     }
-
 
     public DeptEntity findDeptEntityById(Long deptId){
         return deptMapper.selectById(deptId);

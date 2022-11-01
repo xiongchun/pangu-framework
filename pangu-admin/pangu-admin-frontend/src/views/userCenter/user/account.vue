@@ -3,7 +3,12 @@
 		<el-form ref="form" :model="form" :rules="rules" label-width="80px" label-position="right" v-loading="loading">
 			<el-form-item label="登录账号" prop="userName">
 				<el-input v-model="form.userName" disabled></el-input>
-				<div class="el-form-item-msg">账号信息用于登录身份标识，不允许修改</div>
+			</el-form-item>
+			<el-form-item label="所属部门">
+				<el-input v-model="form.deptName" disabled></el-input>
+			</el-form-item>
+			<el-form-item label="所属角色">
+				<el-input v-model="form.roleNames" disabled></el-input>
 			</el-form-item>
 			<el-form-item label="姓名" prop="name">
 				<el-input v-model="form.name" placeholder="请输入真实姓名" maxlength="10" show-word-limit clearable></el-input>
@@ -29,25 +34,18 @@
 <script>
 
 export default {
+	emits: ['emitUserInfo'],
 	data() {
 		return {
 			isSaveing: false,
 			loading: false,
 			//表单数据
 			form: {
-				id: "",
-				userName: "",
-				sex: "0",
-				avatar: "",
-				name: "",
-				remark: ""
+				id:null
 			},
 			userInfo: this.$TOOL.data.get("USER_INFO"),
 			//验证规则
 			rules: {
-				userName: [
-					{ required: true, message: '登录账号不能为空' }
-				],
 				name: [
 					{ required: true, message: '真实姓名不能为空' }
 				]

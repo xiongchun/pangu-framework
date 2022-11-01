@@ -19,8 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.management.relation.Role;
-import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,6 +32,8 @@ public class UserManager {
     private UserMapper userMapper;
     @Autowired
     private RoleMapper roleMapper;
+
+    private final String SEPARATOR = " | ";
 
 
     public void deleteUserRoleByUserId(Long userId){
@@ -74,6 +74,16 @@ public class UserManager {
             roleEntities = roleMapper.selectBatchIds(roleIds);
         }
         return roleEntities;
+    }
+
+    public String queryRoleNamesByUserId(Long userId){
+        String names = "未授予角色权限";
+        List<RoleEntity> roleEntities = this.listRolesByUserId(userId);
+        if (CollUtil.isNotEmpty(roleEntities)){
+            List<String> roleNames = roleEntities.stream().map(RoleEntity::getName).collect(Collectors.toList());
+            names = CollUtil.join(roleNames, SEPARATOR);
+        }
+        return names;
     }
 
     public UserEntity findUserByAccountKey(String accountKey){
