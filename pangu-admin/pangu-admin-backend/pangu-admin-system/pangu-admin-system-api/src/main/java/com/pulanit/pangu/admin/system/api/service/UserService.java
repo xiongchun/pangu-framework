@@ -1,5 +1,6 @@
 package com.pulanit.pangu.admin.system.api.service;
 
+import com.gitee.pulanos.pangu.framework.common.exception.BizException;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
@@ -74,5 +75,13 @@ public interface UserService {
      * @param password
      */
     void resetPassword(List<Long> userIds, String password);
+
+    /**
+     * 修改密码
+     * @param userId
+     * @param password
+     * @param newPassword
+     */
+    void updatePassword(Long userId, String password, String newPassword);
 
 }

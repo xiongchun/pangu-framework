@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.framework.common.model;
+package com.gitee.pulanos.pangu.framework.common.entity;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;

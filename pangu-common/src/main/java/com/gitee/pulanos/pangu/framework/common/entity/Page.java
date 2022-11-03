@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.framework.common.model;
+package com.gitee.pulanos.pangu.framework.common.entity;
 
 import lombok.Data;
 import lombok.ToString;

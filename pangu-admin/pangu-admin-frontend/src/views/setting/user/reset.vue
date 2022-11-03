@@ -2,12 +2,12 @@
 	<el-dialog :title="titleMap[mode]" v-model="visible" :width="450" destroy-on-close @closed="$emit('closed')">
 		<el-form :model="form" :rules="rules" :disabled="mode == 'show'" ref="dialogForm" label-width="80px"
 			label-position="right">
-			<el-form-item label="登录密码" prop="password">
-				<el-input type="password" v-model="form.password" placeholder="请输入密码" maxlength="20" minlength="8"
+			<el-form-item label="新密码" prop="password">
+				<el-input type="password" v-model="form.password" placeholder="请输入新密码" maxlength="20" 
 					clearable show-password></el-input>
 			</el-form-item>
 			<el-form-item label="确认密码" prop="password2">
-				<el-input type="password" v-model="form.password2" placeholder="请再次输入密码" maxlength="20" minlength="8"
+				<el-input type="password" v-model="form.password2" placeholder="请再次输入新密码" maxlength="20"
 					clearable show-password></el-input>
 			</el-form-item>
 		</el-form>
@@ -37,7 +37,7 @@ export default {
 			//验证规则
 			rules: {
 				password: [
-					{ required: true, message: '登录密码不能为空' },
+					{ required: true, message: '新密码不能为空' },
 					{
 						validator: (rule, value, callback) => {
 							if (value.length < 6) {
@@ -48,7 +48,7 @@ export default {
 					}
 				],
 				password2: [
-					{ required: true, message: '请再次输入密码' },
+					{ required: true, message: '确认新密码不能为空' },
 					{
 						validator: (rule, value, callback) => {
 							if (value !== this.form.password) {
@@ -56,14 +56,6 @@ export default {
 							} else {
 								callback();
 							}
-						}
-					},
-					{
-						validator: (rule, value, callback) => {
-							if (value.length < 6) {
-								return callback(new Error('密码长度不能小于6位'))
-							}
-							callback();
 						}
 					}
 				]
@@ -81,7 +73,6 @@ export default {
 		},
 		//表单提交方法
 		submit() {
-
 			this.$refs.dialogForm.validate(async (valid) => {
 				if (valid) {
 					this.$confirm(`确定重置选中 ${this.userIds.length} 个用户的密码吗？`, '提示', {

@@ -15,9 +15,8 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.common.model;
+package com.gitee.pulanos.pangu.framework.common.entity;
 
-import cn.hutool.core.util.StrUtil;
 import com.gitee.pulanos.pangu.framework.common.Constants;
 import lombok.Data;
 import lombok.ToString;
@@ -42,7 +41,7 @@ public class Result<T> implements Serializable {
      * 返回码（必填项）
      * <p>示例值：10000</p>
      */
-    private Integer code;
+    private String code;
 
     /**
      * 返回码描述（选填项）
@@ -83,19 +82,8 @@ public class Result<T> implements Serializable {
      * @param <T>
      * @return
      */
-    public static <T> Result<T> fail(Integer code, String message) {
+    public static <T> Result<T> fail(String code, String message) {
         return new Result<T>().setCode(code).setMessage(message);
-    }
-
-    /**
-     * 接口调用失败（快捷模式）
-     *
-     * @param code
-     * @param <T>
-     * @return
-     */
-    public static <T> Result<T> fail(Integer code) {
-        return new Result<T>().setCode(code).setMessage("FAILED");
     }
 
     /**
@@ -124,7 +112,7 @@ public class Result<T> implements Serializable {
      * @param code 状态码
      * @param message 状态描述
      */
-    public void setCodeMsg(Integer code, String message) {
+    public void setCodeMsg(String code, String message) {
         this.setCode(code).setMessage(message);
     }
 
@@ -134,7 +122,7 @@ public class Result<T> implements Serializable {
      * @return
      */
     public boolean isSuccess(){
-        return Constants.Code.SUCCESS == getCode().intValue();
+        return  Constants.Code.SUCCESS.equals(code);
     }
 
 }

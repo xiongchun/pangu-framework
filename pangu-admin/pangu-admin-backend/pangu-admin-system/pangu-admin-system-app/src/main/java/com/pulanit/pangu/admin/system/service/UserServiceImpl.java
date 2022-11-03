@@ -21,19 +21,20 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Console;
-import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.gitee.pulanos.pangu.framework.common.exception.BizException;
 import com.gitee.pulanos.pangu.framework.common.model.PageResult;
 import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
+import com.gitee.pulanos.pangu.framework.starter.autoconfigure.PanguAppProperties;
 import com.google.common.collect.Lists;
-import com.pulanit.pangu.admin.common.AppContext;
 import com.pulanit.pangu.admin.common.domain.UserInfo;
 import com.pulanit.pangu.admin.system.api.SystemConstants;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
@@ -49,7 +50,9 @@ import com.pulanit.pangu.admin.system.manager.DeptManager;
 import com.pulanit.pangu.admin.system.manager.UserManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
-import org.apache.dubbo.rpc.RpcContext;
+import org.apache.dubbo.remoting.exchange.Response;
+import org.apache.dubbo.rpc.AppResponse;
+import org.apache.dubbo.rpc.filter.ExceptionFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -85,7 +88,7 @@ public class UserServiceImpl implements UserService {
             return Result.fail("用户名错误，请重新输入");
         }
         if (!StrUtil.equals(userManager.encodeUserPwd(loginIn.getPassword()), userEntity.getPassword())){
-            return Result.fail("密码错误，请查询输入");
+            return Result.fail("密码错误，请重新输入");
         }
         Result<LoginOut> result = Result.success();
         UserInfo userInfo = new UserInfo();
@@ -218,9 +221,32 @@ public class UserServiceImpl implements UserService {
         if (CollUtil.isNotEmpty(userIds)){
             LambdaUpdateWrapper<UserEntity> updateWrapper = Wrappers.lambdaUpdate();
             updateWrapper.set(UserEntity::getPassword, userManager.encodeUserPwd(password));
+            updateWrapper.set(UserEntity::getGmtModified, DateUtil.date());
             updateWrapper.in(UserEntity::getId, userIds);
             userMapper.update(null, updateWrapper);
         }
+    }
+
+    @Override
+    public void updatePassword(Long userId, String password, String newPassword){
+        //int i = 3 / 0;
+        String a = null;
+        if (a == null){
+            throw new BizException("测试一下1");
+        }
+        //Assert.notNull(a,"a不能为空");
+//        UserEntity userEntity = userMapper.selectById(userId);
+//        if (userEntity == null){
+//            throw new BizException("没有查询到当前用户信息");
+//        }
+//        if (!StrUtil.equals(userManager.encodeUserPwd(password), userEntity.getPassword())){
+//            throw new BizException("当前密码错误，请重试");
+//        }
+//        LambdaUpdateWrapper<UserEntity> updateWrapper = Wrappers.lambdaUpdate();
+//        updateWrapper.set(UserEntity::getPassword, userManager.encodeUserPwd(password));
+//        updateWrapper.set(UserEntity::getGmtModified, DateUtil.date());
+//        updateWrapper.eq(UserEntity::getId, userId);
+//        userMapper.update(null, updateWrapper);
     }
 
     private String randomAvatar(){

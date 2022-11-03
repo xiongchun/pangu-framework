@@ -12,6 +12,7 @@ import com.pulanit.pangu.admin.system.api.param.UserPageIn;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -122,11 +123,33 @@ public class UserController {
         return Result.success(userOut);
     }
 
+    /**
+     * 重置密码
+     * @param userIds
+     * @param password
+     * @return
+     */
     @PostMapping("/resetPassword")
     public Result<Void> resetPassword(@RequestParam List<Long> userIds, @RequestParam String password) {
-        Assert.notEmpty(userIds, "请先选中用户");
+        Assert.notEmpty(userIds, "用户 ID 不能为空");
         Assert.notEmpty(password, "密码字段不能为空");
         userService.resetPassword(userIds, password);
+        return Result.success();
+    }
+
+    /**
+     * 修改密码
+     * @param userId
+     * @param password
+     * @param newPassword
+     * @return
+     */
+    @PostMapping("/updatePassword")
+    public Result<Void> updatePassword(@RequestParam Long userId, @RequestParam String password, @RequestParam String newPassword) {
+        Assert.notNull(userId, "用户 ID 不能为空");
+        Assert.notEmpty(password, "当前密码不能为空");
+        Assert.notEmpty(newPassword, "新密码不能为空");
+        userService.updatePassword(userId, password, newPassword);
         return Result.success();
     }
 

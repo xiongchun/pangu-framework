@@ -41,7 +41,7 @@ export default {
 			loading: false,
 			//表单数据
 			form: {
-				id:null
+				id: null
 			},
 			userInfo: this.$TOOL.data.get("USER_INFO"),
 			//验证规则

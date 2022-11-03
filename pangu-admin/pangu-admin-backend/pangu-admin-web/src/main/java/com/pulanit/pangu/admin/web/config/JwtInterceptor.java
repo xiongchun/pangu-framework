@@ -1,4 +1,4 @@
-package com.pulanit.pangu.admin.web.interceptor;
+package com.pulanit.pangu.admin.web.config;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.exceptions.ValidateException;

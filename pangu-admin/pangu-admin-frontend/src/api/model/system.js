@@ -243,6 +243,13 @@ export default {
 			post: async function (params) {
 				return await http.post(this.url, params);
 			}
+		},
+		updatePassword: {
+			url: `${config.API_URL}/system/user/updatePassword`,
+			name: "修改密码",
+			post: async function (params) {
+				return await http.post(this.url, params);
+			}
 		}
 	},
 	app: {

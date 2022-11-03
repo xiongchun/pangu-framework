@@ -1,7 +1,7 @@
 package com.gitee.pulanos.pangu.framework.common.utils;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.gitee.pulanos.pangu.framework.common.model.PageResult;
+import com.gitee.pulanos.pangu.framework.common.entity.PageResult;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class PagingUtil {
         return new Page(page, pageSize);
     }
 
-    public static Page createPage(com.gitee.pulanos.pangu.framework.common.model.Page page){
+    public static Page createPage(com.gitee.pulanos.pangu.framework.common.entity.Page page){
         return createPage(page.getPage(), page.getPageSize());
     }
 

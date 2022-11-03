@@ -1,6 +1,5 @@
-package com.pulanit.pangu.admin.web;
+package com.pulanit.pangu.admin.web.config;
 
-import com.pulanit.pangu.admin.web.interceptor.JwtInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
