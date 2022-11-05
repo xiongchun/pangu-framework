@@ -98,20 +98,12 @@ public class Result<T> implements Serializable {
 
     /**
      * 设置状态码和状态描述
-     * @param code 状态码
+     *
+     * @param code    状态码
      * @param message 状态描述
      */
     public void setCodeMsg(String code, String message) {
         this.setCode(code).setMessage(message);
     }
-
-    /**
-     * 返回业务结果是否成功状态
-     *
-     * @return
-     */
-//    public boolean isSuccess(){
-//        return  Constants.Code.SUCCESS.equals(code);
-//    }
 
 }

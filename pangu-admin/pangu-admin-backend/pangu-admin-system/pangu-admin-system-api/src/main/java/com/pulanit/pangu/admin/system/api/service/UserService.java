@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface UserService {
 
-    Result<LoginOut> login(LoginIn loginIn);
+    LoginOut login(LoginIn loginIn);
 
     /**
      * 查询列表信息

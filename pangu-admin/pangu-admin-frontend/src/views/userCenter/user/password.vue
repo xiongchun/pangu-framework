@@ -18,7 +18,7 @@
 					clearable show-password></el-input>
 			</el-form-item>
 			<el-form-item>
-				<el-button type="primary" :loading="isSaveing" @click="submit2">修改密码</el-button>
+				<el-button type="primary" :loading="isSaveing" @click="submit">修改密码</el-button>
 			</el-form-item>
 		</el-form>
 	</el-card>
@@ -105,7 +105,7 @@ export default {
 				}
 			})
 		},
-		async submit2() {
+		async test() {
 			var reqData = new FormData()
 			reqData.append('userId', 1)
 			reqData.append('password', "124")

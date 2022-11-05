@@ -20,6 +20,7 @@ package com.pulanit.pangu.admin.system.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
@@ -76,15 +77,14 @@ public class UserServiceImpl implements UserService {
     private RoleMapper roleMapper;
 
     @Override
-    public Result<LoginOut> login(LoginIn loginIn) {
+    public LoginOut login(LoginIn loginIn) {
         UserEntity userEntity = userManager.findUserByAccountKey(loginIn.getUserName());
         if (userEntity == null){
-            return Result.fail("用户名错误，请重新输入");
+            throw new BizException("用户名错误，请重新输入");
         }
         if (!StrUtil.equals(userManager.encodeUserPwd(loginIn.getPassword()), userEntity.getPassword())){
-            return Result.fail("密码错误，请重新输入");
+            throw new BizException("密码错误，请重新输入");
         }
-        Result<LoginOut> result = Result.success();
         UserInfo userInfo = new UserInfo();
         BeanUtil.copyProperties(userEntity, userInfo);
         userInfo.setDashboard(DEFAULT_DASHBOARD);
@@ -92,8 +92,7 @@ public class UserServiceImpl implements UserService {
         List<String> roleKeys = roleEntities.stream().map(RoleEntity::getRoleKey).collect(Collectors.toList());
         userInfo.setRole(roleKeys);
         LoginOut loginOut = new LoginOut().setUserInfo(userInfo);
-        result.setData(loginOut);
-        return result;
+        return loginOut;
     }
 
     @Override
@@ -223,24 +222,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updatePassword(Long userId, String password, String newPassword){
-        int i = 3 / 0;
-        String a = null;
-        if (a == null){
-            throw new BizException("测试一下1");
+        UserEntity userEntity = userMapper.selectById(userId);
+        if (userEntity == null){
+            throw new BizException("没有查询到当前用户信息，请重试");
         }
-        //Assert.notNull(a,"a不能为空");
-//        UserEntity userEntity = userMapper.selectById(userId);
-//        if (userEntity == null){
-//            throw new BizException("没有查询到当前用户信息，请重试");
-//        }
-//        if (!StrUtil.equals(userManager.encodeUserPwd(password), userEntity.getPassword())){
-//            throw new BizException("当前密码错误，请重试");
-//        }
-//        LambdaUpdateWrapper<UserEntity> updateWrapper = Wrappers.lambdaUpdate();
-//        updateWrapper.set(UserEntity::getPassword, userManager.encodeUserPwd(password));
-//        updateWrapper.set(UserEntity::getGmtModified, DateUtil.date());
-//        updateWrapper.eq(UserEntity::getId, userId);
-//        userMapper.update(null, updateWrapper);
+        if (!StrUtil.equals(userManager.encodeUserPwd(password), userEntity.getPassword())){
+            throw new BizException("当前密码错误，请重试");
+        }
+        LambdaUpdateWrapper<UserEntity> updateWrapper = Wrappers.lambdaUpdate();
+        updateWrapper.set(UserEntity::getPassword, userManager.encodeUserPwd(password));
+        updateWrapper.set(UserEntity::getGmtModified, DateUtil.date());
+        updateWrapper.eq(UserEntity::getId, userId);
+        userMapper.update(null, updateWrapper);
     }
 
     private String randomAvatar(){

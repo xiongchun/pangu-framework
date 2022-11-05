@@ -48,18 +48,14 @@ public class LoginController {
      */
     @PostMapping("/login")
     public Result<LoginOut> login(@RequestBody LoginIn loginIn) {
-        Result<LoginOut> result = userService.login(loginIn);
-        if (result.isSuccess()){
-            LoginOut loginOut = result.getData();
-            UserInfo userInfo = loginOut.getUserInfo();
-            String token = createToken(userInfo);
-            result.setData(loginOut.setToken(token));
-            log.info("用户 [{}] 成功登录系统。（登录账号标识:{}）", userInfo.getName(), loginIn.getUserName());
-        }else {
-            log.info("账号 [{}] 尝试登录系统。{}", loginIn.getUserName(), result.getMessage());
-        }
-        return result;
-    }
+        log.info("账号 [{}] 尝试登录系统。{}", loginIn.getUserName());
+        LoginOut loginOut = userService.login(loginIn);
+        UserInfo userInfo = loginOut.getUserInfo();
+        String token = createToken(userInfo);
+        loginOut.setToken(token);
+        log.info("账号 [{}] 成功登录系统。姓名:{}）", loginIn.getUserName(), userInfo.getName());
+        return Result.success(loginOut);
+}
 
     /**
      * 登出
@@ -70,7 +66,7 @@ public class LoginController {
     public Result<Void> logout() {
         UserInfo userInfo = AppContext.getUserInfo();
         // 原生 JWT 机制，无需做后端的退出资源清理
-        if (userInfo != null){
+        if (userInfo != null) {
             log.info("用户 [{}] 成功登出系统。（userId:{}）", userInfo.getName(), userInfo.getId());
         }
         return Result.success();
@@ -78,6 +74,7 @@ public class LoginController {
 
     /**
      * 创建Token
+     *
      * @param userInfo
      * @return
      */
