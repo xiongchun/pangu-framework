@@ -20,20 +20,17 @@ package com.pulanit.pangu.admin.system.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.lang.Console;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.gitee.pulanos.pangu.framework.common.entity.PageResult;
+import com.gitee.pulanos.pangu.framework.common.entity.Result;
 import com.gitee.pulanos.pangu.framework.common.exception.BizException;
-import com.gitee.pulanos.pangu.framework.common.model.PageResult;
-import com.gitee.pulanos.pangu.framework.common.model.Result;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
-import com.gitee.pulanos.pangu.framework.starter.autoconfigure.PanguAppProperties;
 import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.common.domain.UserInfo;
 import com.pulanit.pangu.admin.system.api.SystemConstants;
@@ -50,9 +47,6 @@ import com.pulanit.pangu.admin.system.manager.DeptManager;
 import com.pulanit.pangu.admin.system.manager.UserManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
-import org.apache.dubbo.remoting.exchange.Response;
-import org.apache.dubbo.rpc.AppResponse;
-import org.apache.dubbo.rpc.filter.ExceptionFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -229,7 +223,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updatePassword(Long userId, String password, String newPassword){
-        //int i = 3 / 0;
+        int i = 3 / 0;
         String a = null;
         if (a == null){
             throw new BizException("测试一下1");
@@ -237,7 +231,7 @@ public class UserServiceImpl implements UserService {
         //Assert.notNull(a,"a不能为空");
 //        UserEntity userEntity = userMapper.selectById(userId);
 //        if (userEntity == null){
-//            throw new BizException("没有查询到当前用户信息");
+//            throw new BizException("没有查询到当前用户信息，请重试");
 //        }
 //        if (!StrUtil.equals(userManager.encodeUserPwd(password), userEntity.getPassword())){
 //            throw new BizException("当前密码错误，请重试");

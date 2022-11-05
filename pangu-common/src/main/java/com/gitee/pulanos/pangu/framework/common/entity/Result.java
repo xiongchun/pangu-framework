@@ -76,17 +76,6 @@ public class Result<T> implements Serializable {
     }
 
     /**
-     * 接口调用失败（快捷模式,带消息）
-     *
-     * @param code
-     * @param <T>
-     * @return
-     */
-    public static <T> Result<T> fail(String code, String message) {
-        return new Result<T>().setCode(code).setMessage(message);
-    }
-
-    /**
      * 接口调用失败（快捷模式）
      *
      * @param message
@@ -121,8 +110,8 @@ public class Result<T> implements Serializable {
      *
      * @return
      */
-    public boolean isSuccess(){
-        return  Constants.Code.SUCCESS.equals(code);
-    }
+//    public boolean isSuccess(){
+//        return  Constants.Code.SUCCESS.equals(code);
+//    }
 
 }

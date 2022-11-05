@@ -19,7 +19,7 @@ package com.gitee.pulanos.pangu.framework.common.exception;
 
 import com.gitee.pulanos.pangu.framework.common.Constants;
 import lombok.Data;
-import lombok.Getter;
+import lombok.experimental.Accessors;
 
 /**
  * Business Exception
@@ -30,13 +30,12 @@ import lombok.Getter;
  * @since 1.0.0
  */
 @Data
+@Accessors(chain = true)
 public class BizException extends RuntimeException {
 
     private static final long serialVersionUID = -1030469420838093832L;
 
     private String code = Constants.Code.BIZ_FAILED;
-
-    private String message = "业务异常";
 
     public BizException() {
     }
@@ -48,7 +47,6 @@ public class BizException extends RuntimeException {
     public BizException(String code, String message) {
         super(message);
         this.code = code;
-        this.message = message;
     }
 
     public BizException(Throwable throwable) {

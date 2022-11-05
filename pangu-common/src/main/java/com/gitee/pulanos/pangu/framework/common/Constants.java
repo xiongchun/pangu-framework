@@ -36,7 +36,7 @@ public final class Constants {
         /**
          * 服务暂不可用（业务服务异常错误）
          */
-        public final static String ERROR_SERVICE = "5000";
+        public final static String SERVER_ERROR = "5000";
         /**
          * 未授权
          */

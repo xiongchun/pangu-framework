@@ -42,8 +42,10 @@ axios.interceptors.response.use(
 			} else if (error.response.status == 500) {
 				ElNotification.error({
 					title: '请求错误',
-					message: error.response.data.message || "Status:500，服务器发生错误！"
+					message:"Status:500，服务器发生错误！"
 				});
+				// XC modified
+				console.error(error.response.data.message)
 			} else if (error.response.status == 401) {
 				ElMessageBox.confirm('当前用户已被登出或无权限访问当前资源，请尝试重新登录后再操作。', '无权限访问', {
 					type: 'error',

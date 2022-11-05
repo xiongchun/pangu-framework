@@ -1,6 +1,6 @@
 package com.pulanit.pangu.admin.system.api.service;
 
-import com.gitee.pulanos.pangu.framework.common.model.PageResult;
+import com.gitee.pulanos.pangu.framework.common.entity.PageResult;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.param.RoleIn;
 

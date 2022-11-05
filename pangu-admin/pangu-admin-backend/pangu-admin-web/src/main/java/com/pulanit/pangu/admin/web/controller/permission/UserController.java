@@ -1,9 +1,8 @@
 package com.pulanit.pangu.admin.web.controller.permission;
 
 import cn.hutool.core.lang.Assert;
-import cn.hutool.core.thread.ThreadUtil;
-import com.gitee.pulanos.pangu.framework.common.model.PageResult;
-import com.gitee.pulanos.pangu.framework.common.model.Result;
+import com.gitee.pulanos.pangu.framework.common.entity.PageResult;
+import com.gitee.pulanos.pangu.framework.common.entity.Result;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.UserIn;
@@ -12,7 +11,6 @@ import com.pulanit.pangu.admin.system.api.param.UserPageIn;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
