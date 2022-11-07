@@ -46,7 +46,7 @@ public class WebAutoConfiguration implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         if (webProperties.getCrossOrigin()){
             registry.addInterceptor(new CrossOriginInterceptor());
-            log.info("{} 注册跨域拦截器成功", Constants.Msg.OK);
+            log.info("{}注册跨域拦截器成功", Constants.Msg.OK);
         }
     }
 

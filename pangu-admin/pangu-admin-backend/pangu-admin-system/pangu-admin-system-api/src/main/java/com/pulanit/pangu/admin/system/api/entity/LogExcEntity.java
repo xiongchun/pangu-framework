@@ -8,7 +8,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
- * 用户-角色表
+ * 异常日志表
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
@@ -16,28 +16,41 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  */
 @Data
 @Accessors(chain = true)
-@TableName("user_role")
-public class UserRoleEntity implements Serializable {
+@TableName("log_exc")
+public class LogExcEntity implements Serializable {
 
    private static final long serialVersionUID=1L;
 
    /**
-    * 流水号
+    *  流水号
     */
    @TableId(value = "id", type = IdType.AUTO)
    private Long id;
 
    /**
-    * 用户ID
+    * 应用名称标识
     */
-   @TableField(value = "user_id")
-   private Long userId;
+   @TableField(value = "appName")
+   private String appName;
 
    /**
-    * 角色ID
+    * 异常编码
     */
-   @TableField(value = "role_id")
-   private Long roleId;
+   @TableField(value = "code")
+   private String code;
+
+   /**
+    * 异常内容
+    */
+   @TableField(value = "message")
+   private String message;
+
+   /**
+    * 异常发生时间
+    */
+   @TableField(value = "gmt_throwed")
+   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+   private Date gmtThrowed;
 
    /**
     * 创建时间

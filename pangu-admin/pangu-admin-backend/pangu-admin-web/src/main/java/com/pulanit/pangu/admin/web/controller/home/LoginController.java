@@ -48,7 +48,7 @@ public class LoginController {
      */
     @PostMapping("/login")
     public Result<LoginOut> login(@RequestBody LoginIn loginIn) {
-        log.info("账号 [{}] 尝试登录系统。{}", loginIn.getUserName());
+        log.info("账号 [{}] 尝试登录系统。", loginIn.getUserName());
         LoginOut loginOut = userService.login(loginIn);
         UserInfo userInfo = loginOut.getUserInfo();
         String token = createToken(userInfo);

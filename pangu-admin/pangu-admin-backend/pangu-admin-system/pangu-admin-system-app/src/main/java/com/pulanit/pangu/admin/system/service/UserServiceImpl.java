@@ -20,7 +20,6 @@ package com.pulanit.pangu.admin.system.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
@@ -29,7 +28,6 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.framework.common.entity.PageResult;
-import com.gitee.pulanos.pangu.framework.common.entity.Result;
 import com.gitee.pulanos.pangu.framework.common.exception.BizException;
 import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
 import com.google.common.collect.Lists;
@@ -222,6 +220,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updatePassword(Long userId, String password, String newPassword){
+        if (1 == 1){
+            throw new BizException("没有查询到当前用户信息，请重试2");
+        }
         UserEntity userEntity = userMapper.selectById(userId);
         if (userEntity == null){
             throw new BizException("没有查询到当前用户信息，请重试");

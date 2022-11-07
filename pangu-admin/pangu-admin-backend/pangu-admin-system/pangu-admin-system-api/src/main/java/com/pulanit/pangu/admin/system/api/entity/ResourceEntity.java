@@ -1,22 +1,18 @@
 package com.pulanit.pangu.admin.system.api.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
-
 import java.io.Serializable;
 import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * 资源表
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-10-04 21:19:53
+ * @date 2022-11-07 14:13:43
  */
 @Data
 @Accessors(chain = true)
@@ -56,7 +52,7 @@ public class ResourceEntity implements Serializable {
    private String type;
 
    /**
-    * 路由地址
+    * 菜单路由地址 | HTTP请求地址
     */
    @TableField(value = "path")
    private String path;

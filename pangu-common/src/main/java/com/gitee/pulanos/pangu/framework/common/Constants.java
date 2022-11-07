@@ -51,6 +51,11 @@ public final class Constants {
          */
         public final static String BIZ_FAILED = "4000";
 
+        /**
+         * 未知失败
+         */
+        public final static String UNKNOWN_FAILED = "-1";
+
     }
 
     /**
