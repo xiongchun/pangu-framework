@@ -1,15 +1,15 @@
 package com.pulanit.pangu.admin.web.log;
 
-import com.pulanit.pangu.admin.system.api.entity.LogExcEntity;
+import com.pulanit.pangu.admin.system.api.param.LogIn;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class LogQueue {
 
-    static final int QUEUE_MAX_SIZE   = 1000;
+    static final int QUEUE_MAX_SIZE   = 10000;
 
-    static BlockingQueue<LogExcEntity> blockingQueue = new LinkedBlockingQueue<LogExcEntity>(QUEUE_MAX_SIZE);
+    static BlockingQueue<LogIn> blockingQueue = new LinkedBlockingQueue<LogIn>(QUEUE_MAX_SIZE);
 
     private LogQueue() {
 
@@ -23,11 +23,11 @@ public class LogQueue {
         return SingletonHolder.queue;
     }
 
-    public  void  produce(LogExcEntity entity) throws InterruptedException {
-        blockingQueue.put(entity);
+    public  boolean produce(LogIn logIn) {
+        return blockingQueue.offer(logIn);
     }
 
-    public  LogExcEntity consume() throws InterruptedException {
+    public  LogIn consume() throws InterruptedException {
         return blockingQueue.take();
     }
 

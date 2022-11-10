@@ -8,16 +8,16 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
- * 异常日志表
+ * 操作日志表(失败)
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-11-07 14:13:43
+ * @date 2022-11-10 15:11:34
  */
 @Data
 @Accessors(chain = true)
-@TableName("log_exc")
-public class LogExcEntity implements Serializable {
+@TableName("log_fail")
+public class LogFailEntity implements Serializable {
 
    private static final long serialVersionUID=1L;
 
@@ -34,23 +34,41 @@ public class LogExcEntity implements Serializable {
    private String appName;
 
    /**
-    * 异常编码
+    * 路径入口标识
     */
-   @TableField(value = "code")
-   private String code;
+   @TableField(value = "path")
+   private String path;
 
    /**
-    * 异常内容
+    * 标签标识
     */
-   @TableField(value = "message")
-   private String message;
+   @TableField(value = "tag")
+   private String tag;
 
    /**
-    * 异常发生时间
+    * 业务耗时
     */
-   @TableField(value = "gmt_throwed")
+   @TableField(value = "time_elapsed")
+   private Integer timeElapsed;
+
+   /**
+    * 经办时间
+    */
+   @TableField(value = "gmt_executed")
    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-   private Date gmtThrowed;
+   private Date gmtExecuted;
+
+   /**
+    * 经办人
+    */
+   @TableField(value = "created_by")
+   private Long createdBy;
+
+   /**
+    * 经办人姓名
+    */
+   @TableField(value = "created_by_name")
+   private String createdByName;
 
    /**
     * 创建时间
@@ -60,10 +78,16 @@ public class LogExcEntity implements Serializable {
    private Date gmtCreated;
 
    /**
-    * 创建人
+    * 输入
     */
-   @TableField(value = "created_by")
-   private String createdBy;
+   @TableField(value = "input")
+   private String input;
+
+   /**
+    * 输出
+    */
+   @TableField(value = "output")
+   private String output;
 
    /**
     * 逻辑删除标志

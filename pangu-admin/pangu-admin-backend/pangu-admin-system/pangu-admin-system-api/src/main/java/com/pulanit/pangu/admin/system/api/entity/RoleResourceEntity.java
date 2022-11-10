@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * <p>此文件由代码生成器自动生成</p>
  *
  * @author 普蓝开源社区
- * @date 2022-11-07 14:13:43
+ * @date 2022-11-10 15:11:34
  */
 @Data
 @Accessors(chain = true)

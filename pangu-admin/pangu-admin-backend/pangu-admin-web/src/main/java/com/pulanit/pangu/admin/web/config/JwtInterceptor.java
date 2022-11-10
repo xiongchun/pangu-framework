@@ -15,6 +15,7 @@ import com.pulanit.pangu.admin.common.domain.UserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.dubbo.rpc.RpcContext;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * JWT 拦截器
  */
+@Order(20)
 @Slf4j
 @Component
 public class JwtInterceptor implements HandlerInterceptor {

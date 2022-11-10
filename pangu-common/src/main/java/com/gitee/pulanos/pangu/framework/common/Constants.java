@@ -29,32 +29,21 @@ public final class Constants {
      * 接口请求返回状态码
      */
     public final static class Code {
+
         /**
          * 接口调用成功，调用结果请参考具体API对应的业务返回参数。
          */
         public final static String SUCCESS = "200";
-        /**
-         * 服务暂不可用（业务服务异常错误）
-         */
-        public final static String SERVER_ERROR = "5000";
-        /**
-         * 未授权
-         */
-        public final static String FAIL_AUTH = "5001";
-        /**
-         * 接口限流（调用次数或调用频率超限）
-         */
-        public final static String FAIL_CALL_LIMITED = "5002";
 
         /**
          * 业务失败
          */
-        public final static String BIZ_FAILED = "4000";
+        public final static String BIZ_FAILED = "3000";
 
         /**
-         * 未知失败
+         * 系统失败
          */
-        public final static String UNKNOWN_FAILED = "-1";
+        public final static String SYSTEM_FAILED = "4000";
 
     }
 

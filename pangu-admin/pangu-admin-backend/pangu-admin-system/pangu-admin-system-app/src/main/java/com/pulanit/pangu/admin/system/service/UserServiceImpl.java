@@ -220,9 +220,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updatePassword(Long userId, String password, String newPassword){
-        if (1 == 1){
-            throw new BizException("没有查询到当前用户信息，请重试2");
-        }
         UserEntity userEntity = userMapper.selectById(userId);
         if (userEntity == null){
             throw new BizException("没有查询到当前用户信息，请重试");
