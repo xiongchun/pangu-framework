@@ -60,9 +60,9 @@
 					</el-table-column>
 					<el-table-column label="绑定手机" prop="mobileNumber" width="120"></el-table-column>
 					<el-table-column label="绑定邮箱" prop="mail" width="120"></el-table-column>
-					<el-table-column label="扩展码" prop="bizCode" width="120"></el-table-column>
+					<el-table-column label="扩展码" prop="bizCode" width="100"></el-table-column>
 					<el-table-column label="创建时间" prop="gmtCreated" width="180"></el-table-column>
-					<el-table-column label="备注" prop="remark" width="200" show-overflow-tooltip />
+					<!-- <el-table-column label="备注" prop="remark" width="200" show-overflow-tooltip /> -->
 					<el-table-column label="操作" fixed="right" align="right" width="160">
 						<template #default="scope">
 							<el-button-group>

@@ -19,7 +19,7 @@
 			<scTable ref="table" :apiObj="apiObj" row-key="id" @selection-change="selectionChange" stripe>
 				<el-table-column type="selection" width="50"></el-table-column>
 				<!-- <el-table-column label="#" type="index" width="50"></el-table-column> -->
-				<el-table-column label="角色名称" prop="name" width="150"></el-table-column>
+				<el-table-column label="角色名称" prop="name" width="200"></el-table-column>
 				<el-table-column label="角色标识" prop="roleKey" width="150"></el-table-column>
 				<el-table-column label="角色状态" prop="status" width="150">
 					<template #default="scope">
@@ -32,9 +32,9 @@
 						<el-tag v-if="scope.row.type == 1" type="info">缺省</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column label="扩展码" prop="bizCode" width="120"></el-table-column>
+				<el-table-column label="扩展码" prop="bizCode" width="100"></el-table-column>
 				<el-table-column label="创建时间" prop="gmtCreated" width="180"></el-table-column>
-				<el-table-column label="备注" prop="remark" width="200"></el-table-column>
+				<!-- <el-table-column label="备注" prop="remark" width="200"></el-table-column> -->
 				<el-table-column label="操作" fixed="right" align="right" width="120">
 					<template #default="scope">
 						<el-button-group>

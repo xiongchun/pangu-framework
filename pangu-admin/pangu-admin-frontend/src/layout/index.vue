@@ -184,7 +184,7 @@
 
 	<div class="layout-setting" @click="openSetting"><el-icon><el-icon-brush-filled /></el-icon></div>
 
-	<el-drawer title="布局实时演示" v-model="settingDialog" :size="400" append-to-body destroy-on-close>
+	<el-drawer title="个人偏好设置" v-model="settingDialog" :size="400" append-to-body destroy-on-close>
 		<setting></setting>
 	</el-drawer>
 </template>

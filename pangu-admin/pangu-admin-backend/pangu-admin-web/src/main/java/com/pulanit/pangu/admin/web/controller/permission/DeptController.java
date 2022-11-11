@@ -7,6 +7,7 @@ import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.api.param.DeptIn;
 import com.pulanit.pangu.admin.system.api.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.Method;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
@@ -90,6 +91,5 @@ public class DeptController {
         deptService.batchDelete(ids);
         return Result.success();
     }
-
 
 }

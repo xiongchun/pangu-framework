@@ -10,12 +10,12 @@
 				<el-icon-full-screen />
 			</el-icon>
 		</div>
-		<div class="tasks panel-item" @click="tasks">
+		<!-- <div class="tasks panel-item" @click="tasks">
 			<el-icon>
 				<el-icon-sort />
 			</el-icon>
-		</div>
-		<div class="msg panel-item" @click="showMsg">
+		</div> -->
+		<!-- <div class="msg panel-item" @click="showMsg">
 			<el-badge :hidden="msgList.length == 0" :value="msgList.length" class="badge" type="danger">
 				<el-icon>
 					<el-icon-chat-dot-round />
@@ -52,7 +52,7 @@
 					</el-footer>
 				</el-container>
 			</el-drawer>
-		</div>
+		</div> -->
 		<el-dropdown class="user panel-item" trigger="click" @command="handleUser">
 			<div class="user-avatar">
 				<el-avatar :size="30" :src="avatar">{{ userNameF }}</el-avatar>
