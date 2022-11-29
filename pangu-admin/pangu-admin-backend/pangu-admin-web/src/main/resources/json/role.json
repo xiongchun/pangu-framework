@@ -1,0 +1,43 @@
+{
+  "total": 2,
+  "page": 1,
+  "pageSize": 20,
+  "rows": [
+    {
+      "id": "1",
+      "label": "超级管理员",
+      "alias": "SA",
+      "sort": 1,
+      "status": "1",
+      "remark": "内置超级管理员角色",
+      "date": "2020-05-07 09:30:00"
+    },
+    {
+      "id": "2",
+      "label": "业务管理员",
+      "alias": "Business Administrator",
+      "sort": 2,
+      "status": "1",
+      "remark": "",
+      "date": "2020-05-07 09:30:00"
+    },
+    {
+      "id": "3",
+      "label": "文章管理员",
+      "alias": "Article administrator",
+      "sort": 3,
+      "status": "0",
+      "remark": "",
+      "date": "2020-05-07 09:30:00"
+    },
+    {
+      "id": "4",
+      "label": "发布人员",
+      "alias": "publish",
+      "sort": 4,
+      "status": "1",
+      "remark": "",
+      "date": "2020-05-07 09:30:00"
+    }
+  ]
+}

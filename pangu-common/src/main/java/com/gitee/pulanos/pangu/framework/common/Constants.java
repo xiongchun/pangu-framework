@@ -41,6 +41,11 @@ public final class Constants {
         public final static String BIZ_FAILED = "3000";
 
         /**
+         * 参数校验非法
+         */
+        public final static String ILLEGAL_ARGUMENT = "3001";
+
+        /**
          * 系统失败
          */
         public final static String SYSTEM_FAILED = "4000";

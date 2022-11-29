@@ -1,0 +1,60 @@
+[
+  {
+    "id": "1",
+    "parentId": "0",
+    "label": "华南分部",
+    "date": "2022-10-10 08:00:00",
+    "remark": "",
+    "status": 1,
+    "sort": 1,
+    "children": [
+      {
+        "id": "11",
+        "parentId": "1",
+        "label": "售前客服部",
+        "date": "2022-10-10 08:00:00",
+        "remark": "",
+        "status": 1,
+        "sort": 2
+      },
+      {
+        "id": "12",
+        "parentId": "1",
+        "label": "技术研发部",
+        "date": "2022-10-10 08:00:00",
+        "remark": "软件开发&测试",
+        "status": 0,
+        "sort": 3
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "parentId": "0",
+    "label": "华东分部",
+    "date": "2022-10-10 08:00:00",
+    "remark": "",
+    "status": 1,
+    "sort": 4,
+    "children": [
+      {
+        "id": "21",
+        "parentId": "2",
+        "label": "售前客服部2",
+        "date": "2022-10-10 08:00:00",
+        "remark": "",
+        "status": 1,
+        "sort": 5
+      },
+      {
+        "id": "22",
+        "parentId": "2",
+        "label": "技术研发部2",
+        "date": "2022-10-10 08:00:00",
+        "remark": "",
+        "status": 1,
+        "sort": 6
+      }
+    ]
+  }
+]

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<!-- 提示：自定义sql手工映射大部分时候为复杂的多表联合查询的SQL，单表操作和简单的多表连接都应该统一使用mybatis plus的API -->
+<!-- 提示：自定义sql手工映射大部分时候为复杂的多表联合查询的SQL，单表操作都应该统一使用mybatis plus的API -->
 <mapper namespace="com.gitee.pulanos.pangu.showcases.crud.dao.mapper.CrudMapper">
 
     <select id="listUsersByMap" resultType="com.gitee.pulanos.pangu.showcases.crud.dao.entity.UserEntity">
