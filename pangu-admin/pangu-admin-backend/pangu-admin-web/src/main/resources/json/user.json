@@ -1,0 +1,38 @@
+{
+  "total": 2,
+  "page": 1,
+  "pageSize": 20,
+  "summary": {
+    "id": "20",
+    "name": "999"
+  },
+  "rows": [
+    {
+      "id": "100",
+      "userName": "sakuya",
+      "avatar": "img/avatar.jpg",
+      "mail": "81883387@qq.com",
+      "name": "sakuya",
+      "group": [
+        "1"
+      ],
+      "groupName": "超级管理员",
+      "dept": "11",
+      "date": "2021-10-10 12:00:00"
+    },
+    {
+      "id": "101",
+      "userName": "luhkpev",
+      "avatar": "img/avatar3.gif",
+      "mail": "k.luhkpev@zdgtfd.ma",
+      "name": "John Martinez",
+      "group": [
+        "2",
+        "4"
+      ],
+      "groupName": "业务管理员,发布人员",
+      "dept": "22",
+      "date": "2021-02-21 14:21:48"
+    }
+  ]
+}

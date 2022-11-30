@@ -1,0 +1,40 @@
+# maven ignore
+target/
+*.jar
+!.mvn/wrapper/*
+*.war
+*.zip
+*.tar
+*.tar.gz
+.flattened-pom.xml
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+bin/
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# visual-studio-code ignore
+.vscode/
+
+# temp ignore
+logs/
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+*/.DS_Store
+Thumbs.db
+*.orig
+
+/.gradle/

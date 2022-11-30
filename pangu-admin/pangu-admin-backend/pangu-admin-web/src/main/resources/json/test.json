@@ -1,0 +1,14 @@
+{
+  "code": "200",
+  "message": "SUCCESS",
+  "data": [
+    {
+      "id": 2,
+      "userName": "xiongchun2",
+      "name": "熊春",
+      "deptId": 7,
+      "avatar": "avatar/avatar2.jpg",
+      "deptName": "董事会办公室"
+    }
+  ]
+}

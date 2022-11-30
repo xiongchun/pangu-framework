@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[2485],{5426:function(e){e.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/web-server","name":"WebServer","count":1,"permalink":"/blog/tags/web-server"}')}}]);

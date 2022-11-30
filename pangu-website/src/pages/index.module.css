@@ -1,0 +1,89 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__title2{
+	font-size: 45px !important;
+	letter-spacing: 3px;
+}
+
+@media screen and (max-width: 966px) {
+  .heroBanner {
+    padding: 2rem 0 2rem 0;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.license {
+	color: #ebedf0;
+	text-decoration: none;
+}
+
+.license:hover {
+	color: #ebedf0;
+}
+
+.xcbutton {
+    background-color: #25c2a0; /* Green */
+    border: 0px solid white;
+    color: #f4f4f5;
+    padding: 6px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+	font-weight: 600;
+    margin: 4px 12px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+	border-radius: 5px;
+	font-family: Caslon,Helvetica;
+}
+
+.xcbutton:hover {
+    background-color: #ebedf0;;
+	background:linear-gradient(to bottom, #ffffff 5%, #e9f9f4 100%);
+    color: #25c2a0;
+	border: 0px solid white;
+	text-decoration: none;
+}
+
+.xcbutton2 {
+    background-color: #25c2a0; /* Green */
+    border: 0px solid white;
+    color: #f4f4f5;
+    padding: 6px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+	font-weight: 600;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+	border-radius: 5px;
+	font-family: Caslon,Helvetica;
+}
+
+.xcbutton2:hover {
+    background-color: #ebedf0;;
+	background:linear-gradient(to bottom, #ffffff 5%, #e9f9f4 100%);
+    color: #25c2a0;
+	border: 0px solid white;
+	text-decoration: none;
+}
