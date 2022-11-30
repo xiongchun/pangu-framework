@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[6492],{3089:function(e){e.exports=JSON.parse('{"permalink":"/pangu-framework/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":3,"previousPage":null,"nextPage":null,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
