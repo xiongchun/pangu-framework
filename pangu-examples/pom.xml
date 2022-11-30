@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.gitee.pulanos.pangu</groupId>
+	<artifactId>pangu-examples</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0.0</version>
+	<name>pangu-examples</name>
+
+	<modules>
+		<module>pangu-examples-empty-springboot-based</module>
+		<module>pangu-examples-empty</module>
+		<module>pangu-examples-empty-web</module>
+		<module>pangu-examples-config-remote-nacos</module>
+		<module>pangu-examples-config-local</module>
+		<module>pangu-examples-log-dynamic</module>
+		<module>pangu-examples-crud</module>
+		<module>pangu-examples-cache-single</module>
+		<module>pangu-examples-cache-layering</module>
+		<module>pangu-examples-lock-redis-based</module>
+		<module>pangu-examples-dubbo-api</module>
+		<module>pangu-examples-dubbo-service</module>
+		<module>pangu-examples-dubbo-consumer</module>
+		<module>pangu-examples-dubbo-gateway-shenyu-service</module>
+		<module>pangu-examples-webapi-local-service-based</module>
+		<module>pangu-examples-webapi-dubbo-service-based</module>
+		<module>pangu-examples-webapi-gateway-shenyu-based</module>
+		<module>pangu-examples-mq-rabbitmq-sender</module>
+		<module>pangu-examples-mq-rabbitmq-receiver</module>
+		<module>pangu-examples-seata-at</module>
+		<module>pangu-examples-shardingsphere-readwrite-splitting</module>
+		<module>pangu-examples-shardingsphere-sharding</module>
+	</modules>
+
+</project>

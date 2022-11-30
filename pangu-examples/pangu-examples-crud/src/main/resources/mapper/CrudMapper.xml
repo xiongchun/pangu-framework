@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- 提示：自定义sql手工映射大部分时候为复杂的多表联合查询的SQL，单表操作都应该统一使用mybatis plus的API -->
+<mapper namespace="com.gitee.pulanos.pangu.showcases.crud.dao.mapper.CrudMapper">
+
+    <select id="listUsersByMap" resultType="com.gitee.pulanos.pangu.showcases.crud.dao.entity.UserEntity">
+        select id,name,age,user_type,gmt_create,gmt_update from user
+        <where>
+            <if test="userType!=null and userType!=''">
+                user_type = #{userType}
+            </if>
+        </where>
+    </select>
+
+    <select id="listUsersByPage" resultType="com.gitee.pulanos.pangu.showcases.crud.dao.entity.UserEntity">
+        select id,name,age,user_type,gmt_create,gmt_update from user
+        <where>
+            <if test="param.userType!=null and param.userType!=''">
+                user_type = #{param.userType}
+            </if>
+        </where>
+        ORDER BY id
+    </select>
+
+    <select id="listUserMapsByPage" resultType="java.util.Map">
+        select age, count(id) as userCnt from user
+        <where>
+            <if test="userType!=null and userType!=''">
+                user_type = #{userType}
+            </if>
+        </where>
+        GROUP BY age
+        ORDER BY age DESC
+    </select>
+
+
+</mapper>

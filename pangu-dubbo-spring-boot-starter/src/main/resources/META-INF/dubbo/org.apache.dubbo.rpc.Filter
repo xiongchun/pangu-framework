@@ -1,0 +1,1 @@
+dubboExceptionFilter=com.gitee.pulanos.pangu.framework.starter.dubbo.filter.DubboExceptionFilter
