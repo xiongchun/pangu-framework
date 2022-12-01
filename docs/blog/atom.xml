@@ -20,10 +20,11 @@
 </code></pre><h3>第二步：启动类调用日志增强方法</h3><pre><code class="language-jsx">static {
         AspectLogEnhance.enhance();
 }
-</code></pre><h3>第三步：分别构造盘古消费者微服务和生产者微服务</h3><p>参见如下盘古范例模块。<a href="https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples">获取代码</a></p><ul><li>pangu-examples-dubbo-service 服务生产者</li><li>pangu-examples-webapi-dubbo-service-based 服务消费者</li></ul><h2>查看日志输出效果</h2><p>我们在一个 Dubbo 服务消费者和一个 Dubbo 服务生产者应用中分别做如上配置后，就可以在每个调用链的日志里看到 TLog 自定嵌入的 TraceId 标签值 <code>10812814178142336</code>。如下所示。</p><pre><code>消费端：
+</code></pre><h3>第三步：分别构造盘古消费者微服务和生产者微服务</h3><p>参见如下盘古范例模块。<a href="https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples">获取代码</a></p><ul><li>pangu-examples-dubbo-service 服务生产者</li><li>pangu-examples-webapi-dubbo-service-based 服务消费者</li></ul><h2>查看日志输出效果</h2><p>我们在一个 Dubbo 服务消费者和一个 Dubbo 服务生产者应用中分别做如上配置后，就可以在每个调用链的日志里看到 TLog 自定嵌入的 TraceId 标签值 <code>10812814178142336</code>。如下所示。</p><pre><code class="language-jsx">消费端：
 2022-06-23 14:40:50 INFO 47050 - [nio-8080-exec-1] c.x.DemoController : &lt; 0 &gt;&lt; 10812814178142336 &gt; call case1...
 生产端：
 2022-06-23 14:40:50 INFO 46395 - [:20881-thread-4] c.x.UserServiceImpl : &lt; 0.1 &gt;&lt; 10812814178142336 &gt; 参数userIn：UserInDto(name=null, userType=1)
+</code></pre><p>如果是 HTTP 调用，则 TraceId 标签值 <code>10812814178142336</code> 会写入到 HTTP 请求的响应标题中。如下所示。</p><pre><code>tlogTraceId: 10812814178142336
 </code></pre>]]></content>
         <author>
             <name>xiongchun</name>
