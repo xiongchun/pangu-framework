@@ -1,14 +1,14 @@
 ---
 title: 常见问答FAQ
-tags: [盘古简介, FAQ]
-sidebar_position: 19
-slug: /faq
+hide_table_of_contents: false
 ---
 <head>
   <title>盘古开发框架 | 常见问答 FAQ</title>
   <meta name="keywords" content="盘古开发框架 | 常见问答FAQ" />
   <meta name="description" content="盘古开发框架是一套轻量稳健的工业级分布式微服务开发治理框架（兼容单体分层架构）" />
 </head>
+
+# 常见问答FAQ
 
 #### 1. 盘古开发框架的开源协议是啥？创始初衷和目标愿景是什么？  
 「盘古开发框架」基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议**开源**发布，且是**免费**的，创始初衷是「分享经验-传递价值-成就你我」。目标愿景是「共建共享开源生态」，不仅做开源生态的受益者也希望成为开源生态的贡献者。
@@ -21,6 +21,3 @@ slug: /faq
 
 #### 4. 盘古开发框架可以开发前端吗？有没有现成的『通用权限管理系统』？
 不可以。盘古是纯后端的底层技术架构框架，可开发 Web API 接口、 Dubbo 接口或执行纯后台任务。目前不涉及前端UI层开发，更无所谓的『通用权限管理系统』。
-
-## 下一步
-继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/docs/community) 寻求更多帮助。

@@ -57,6 +57,7 @@ const config = {
 		({
 			navbar: {
 				title: '盘古开发框架®',
+				hideOnScroll: true,
 				logo: {
 					alt: '盘古开发框架',
 					src: 'img/logo.svg',
@@ -65,36 +66,41 @@ const config = {
 						type: 'doc',
 						docId: 'intro',
 						position: 'left',
-						label: '开源文档',
+						label: '开发文档',
 					},
 					{
-						to: '/blog',
-						label: '博客专栏',
-						position: 'left'
-					},
-					{
-						to: '/docs/faq',
+						to: '/faq',
 						label: '常见问答',
 						position: 'left'
 					},
 					{
-						to: '/docs/thanks',
+						to: '/thanks',
 						label: '致敬',
 						position: 'left'
 					},
 					{
-						href: '/docs/community',
+						href: '/community',
 						label: '社区',
 						position: 'left',
 					},
 					{
-						href: 'https://gitee.com/pulanos/pangu-framework',
-						label: 'Gitee',
-						position: 'right',
+						href: '/online-demo',
+						label: '演示系统',
+						position: 'left',
+					},
+					{
+						to: '/blog',
+						label: '博客',
+						position: 'left'
 					},
 					{
 						href: 'https://github.com/xiongchun/pangu-framework',
 						label: 'GitHub',
+						position: 'right',
+					},
+					{
+						href: 'https://gitee.com/pulanos/pangu-framework',
+						label: 'Gitee',
 						position: 'right',
 					},
 				],
