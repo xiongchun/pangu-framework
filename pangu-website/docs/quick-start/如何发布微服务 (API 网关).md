@@ -123,7 +123,7 @@ logging.level.root=INFO
 可以在任何一个 SpringBean 组件中（针对网关模块而言一般是 Controller 中），引入服务接口后就像本地接口调用一样调用远程服务。Dubbo 将提供高性能的基于代理的远程调用能力，服务以接口为粒度，为开发者屏蔽远程调用底层细节。
 如下所示，通过 Cotroller 调用远程服务接口，实现将微服务接口发布为 WebAPI。
 
-```jsx {2,13} title="DemoController.java"
+```jsx title="DemoController.java"
 // 注入 Dubbo 服务接口
 @Reference(version = "1.0.0", group = "pangu-examples-dubbo-service")
 private UserService userService;
@@ -143,7 +143,7 @@ public Result<List<UserOut>> case1() {
 
 ### 启动入口
 
-```jsx {1}
+```jsx
 @EnableDubbo
 @SpringBootApplication
 public class DubboProviderApplication {
