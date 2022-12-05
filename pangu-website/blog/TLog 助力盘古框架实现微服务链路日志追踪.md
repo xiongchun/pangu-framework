@@ -3,7 +3,7 @@ slug: tlog
 title: TLog 助力盘古框架实现微服务链路日志追踪
 authors: [xiongchun]
 tags: [TLog]
-date: 2022-01-32
+date: 2022-01-3
 description: TLog 助力盘古框架实现微服务链路日志追踪
 hide_table_of_contents: false
 ---
