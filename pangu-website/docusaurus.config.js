@@ -7,23 +7,20 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: '盘古开发框架项目官网',
-	customFields: {
-		subTitle: '一套轻量稳健的工业级分布式微服务开发治理框架（兼容单体分层架构）',
-	},
-	tagline: '工业级微服务开发治理框架',
+	tagline: '一套轻量稳健的工业级移动端应用和中后台业务系统开发框架',
 	url: 'https://pulanos.gitee.io',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon2.png',
 	organizationName: '盘古开发框架,普蓝开源社区', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
-	plugins: [require.resolve("docusaurus-plugin-image-zoom")],
+	//plugins: [require.resolve("docusaurus-plugin-image-zoom")],
 	//baseUrl: '/',
 	baseUrl: '/pangu-framework/',
-	// 百度统计
+	// 百度统计 暂停使用
 	scripts: [
 		//https://pulanos.gitee.io/pangu-framework/
-		{ src: 'https://hm.baidu.com/hm.js?8a2c2aae78c4983e3cf661fea34e6353', async: true },
+		//{ src: 'https://hm.baidu.com/hm.js?8a2c2aae78c4983e3cf661fea34e6353', async: true },
 		//https://pangu.pulanit.com/
 		//{src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b',  async: true},
 	],
@@ -33,16 +30,16 @@ const config = {
 			/** @type {import('@docusaurus/preset-classic').Options} */
 			({
 				docs: {
+					path: 'docs',
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Please change this to your repo.
 					editUrl: 'https://gitee.com/pulanos/pangu-framework/tree/master/pangu-website/',
-					//sidebarHideable:true
 				},
 				blog: {
-					blogSidebarTitle: '最新发布博客',
 					blogTitle: '博客',
 					showReadingTime: true,
 					blogSidebarCount: 0,
+					blogSidebarTitle: '最新发布博客',
 					postsPerPage: 10,
 					// Please change this to your repo.
 					editUrl: 'https://gitee.com/pulanos/pangu-framework/tree/master/pangu-website/',
@@ -53,7 +50,18 @@ const config = {
 			}),
 		],
 	],
-
+	plugins: [
+		[
+			'@docusaurus/plugin-content-docs',
+			{
+				id: 'faq',
+				path: 'faq',
+				routeBasePath: 'faq',
+				sidebarPath: require.resolve('./sidebarsFaq.js'),
+				// ... other options
+			},
+		]
+	],
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
@@ -76,7 +84,7 @@ const config = {
 					label: '开发文档',
 				},
 				{
-					to: '/faq',
+					to: '/faq/index',
 					label: '常见问答',
 					position: 'left'
 				},
@@ -161,7 +169,7 @@ const config = {
 				}
 				],
 				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
-<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://www.pulanit.com">PuLan Open Source Community</a><br><img src="https://oscimg.oschina.net/oscnet/up-ba8a16960e88b912e4499d7dc0dd494d57e.gif" />`,
+<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://www.pulanit.com">PuLan Open Source Community</a><br><img src="./img/dashi.gif" />`,
 			},
 			zoom: {
 				selector: '.markdown :not(em) > img,.markdown > img',
@@ -180,6 +188,7 @@ const config = {
 			metadata: [
 				{ name: 'author', content: '普蓝开源社区' },
 				{ name: 'keywords', content: '盘古开发框架 分布式微服务架构 垂直单体分层架构 普蓝开源社区' },
+				// 百度站点收录验证
 				{ name: 'baidu-site-verification', content: 'code-FsdXztrzOo' }
 			]
 		}),

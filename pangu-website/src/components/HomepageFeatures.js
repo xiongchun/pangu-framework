@@ -8,8 +8,8 @@ const FeatureList = [
     Svg: require('../../static/img/plugins.svg').default,
     description: (
       <>
-        开箱即用的技术组件库、搭配自定义 SpringBoot 启动器和轻巧的代码生成 Maven 插件，可随意组合、自动装配、灵活插拔。
-		既能构建支持大并发高可用的互联网分布式架构也能快速搭建垂直单体分层架构。
+        开箱即用的技术组件库，可随意组合、自动装配、灵活插拔。成熟的权限系统系统参考实现，可实现快速搭建二次开发脚手架。
+        既能构建支持大并发高可用的互联网分布式架构也能快速搭建垂直单体分层架构。
       </>
     ),
   },
@@ -17,7 +17,8 @@ const FeatureList = [
     title: '成熟架构、稳定可靠',
     Svg: require('../../static/img/feat_coming.svg').default,
     description: (
-      <>盘古技术栈融合云原生思想，在微服务、容器化、DevOps 等方面完美支持和适配。可在云原生时代构建以「服务」为中心的现代应用架构，帮助用户在云环境中更好的构建、交付和管理自己的微服务平台。
+      <>
+        盘古技术栈融合云原生思想，在微服务、容器化、DevOps 等方面完美支持和适配。可在云原生时代构建以「服务」为中心的现代应用架构，帮助用户在云环境中更好的构建、交付和管理自己的微服务平台。
       </>
     ),
   },
@@ -27,14 +28,14 @@ const FeatureList = [
     description: (
       <>
         聚焦面向（移动）互联网的电商、金融、云端 SAAS 服务等大并发高可用可扩展的业务场景。
-		同时也能满足诸如 ERP 、CRM 等各种企业数字化和各级电子政务系统的中小规模应用需求。
+        同时也能满足诸如 ERP 、CRM 等各种企业数字化和各级电子政务系统的中小规模应用需求。
       </>
     ),
   }
-  
+
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
