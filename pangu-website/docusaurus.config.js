@@ -6,12 +6,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: '盘古开发框架项目官网',
+	title: '盘古开发框架项目官网:一套轻量稳健的工业级移动端应用和中后台业务系统开发框架',
 	tagline: '一套轻量稳健的工业级移动端应用和中后台业务系统开发框架',
 	url: 'https://pulanos.gitee.io',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
-	favicon: 'img/favicon2.png',
+	favicon: 'img/favicon.ico',
 	organizationName: '盘古开发框架,普蓝开源社区', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
 	//plugins: [require.resolve("docusaurus-plugin-image-zoom")],
@@ -109,16 +109,16 @@ const config = {
 					position: 'left'
 				},
 				{
-					href: 'https://github.com/xiongchun/pangu-framework',
-					label: 'GitHub',
-					position: 'right',
-				},
-				{
 					href: 'https://gitee.com/pulanos/pangu-framework',
 					label: 'Gitee',
 					position: 'right',
 				},
-				],
+				{
+					href: 'https://github.com/xiongchun/pangu-framework',
+					label: 'GitHub',
+					position: 'right',
+				}
+				]
 			},
 			footer: {
 				style: 'dark',
@@ -144,11 +144,11 @@ const config = {
 						href: 'https://gitee.com/pulanos/pangu-framework',
 					},
 					{
-						label: 'GitHub PanGu Framework',
-						href: 'https://github.com/xiongchun/pangu-framework',
-					}, {
 						label: 'GitCode PanGu Framework',
 						href: 'https://gitcode.net/pulanos/pangu-framework',
+					},{
+						label: 'GitHub PanGu Framework',
+						href: 'https://github.com/xiongchun/pangu-framework',
 					}
 					],
 				},
