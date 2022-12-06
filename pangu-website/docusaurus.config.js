@@ -14,7 +14,6 @@ const config = {
 	favicon: 'img/favicon.ico',
 	organizationName: '盘古开发框架,普蓝开源社区', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
-	//plugins: [require.resolve('docusaurus-plugin-image-zoom')],
 	//baseUrl: '/',
 	baseUrl: '/pangu-framework/',
 	// 百度统计 暂停使用
