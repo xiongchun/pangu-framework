@@ -14,7 +14,7 @@ const config = {
 	favicon: 'img/favicon.ico',
 	organizationName: '盘古开发框架,普蓝开源社区', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
-	//plugins: [require.resolve("docusaurus-plugin-image-zoom")],
+	//plugins: [require.resolve('docusaurus-plugin-image-zoom')],
 	//baseUrl: '/',
 	baseUrl: '/pangu-framework/',
 	// 百度统计 暂停使用
@@ -50,21 +50,30 @@ const config = {
 			}),
 		],
 	],
-	plugins: [
-		[
-			'@docusaurus/plugin-content-docs',
-			{
-				id: 'faq',
-				path: 'faq',
-				routeBasePath: 'faq',
-				sidebarPath: require.resolve('./sidebarsFaq.js'),
-				// ... other options
-			},
-		]
+	plugins: [require.resolve('docusaurus-plugin-image-zoom'),
+	[
+		'@docusaurus/plugin-content-docs',
+		{
+			id: 'faq',
+			path: 'faq',
+			routeBasePath: 'faq',
+			sidebarPath: require.resolve('./sidebarsFaq.js'),
+			// ... other options
+		},
+	]
 	],
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
+			zoom: {
+				selector: '.markdown :not(em) > img,.markdown > img',
+				background: {
+					light: 'rgb(255, 255, 255)',
+					dark: 'rgb(50, 50, 50)'
+				},
+				// options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+				config: {}
+			},
 			docs: {
 				sidebar: {
 					hideable: true,
@@ -104,7 +113,7 @@ const config = {
 					position: 'left',
 				},
 				{
-					to: '/blog',
+					to: '/blog/',
 					label: '博客',
 					position: 'left'
 				},
@@ -146,7 +155,7 @@ const config = {
 					{
 						label: 'GitCode PanGu Framework',
 						href: 'https://gitcode.net/pulanos/pangu-framework',
-					},{
+					}, {
 						label: 'GitHub PanGu Framework',
 						href: 'https://github.com/xiongchun/pangu-framework',
 					}
@@ -170,16 +179,6 @@ const config = {
 				],
 				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
 <br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://www.pulanit.com">PuLan Open Source Community</a><br><img src="./img/dashi.gif" />`,
-			},
-			zoom: {
-				selector: '.markdown :not(em) > img,.markdown > img',
-				config: {
-					// options you can specify via https://github.com/francoischalifour/medium-zoom#usage
-					background: {
-						light: 'rgb(255, 255, 255)',
-						dark: 'rgb(50, 50, 50)'
-					}
-				}
 			},
 			prism: {
 				theme: lightCodeTheme,
