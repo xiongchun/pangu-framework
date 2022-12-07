@@ -5,6 +5,12 @@ sidebar_position: 1
 slug: /intro
 ---
 
+<head>
+  <title>盘古开发框架简介</title>
+  <meta name="keywords" content="盘古开发框架简介" />
+  <meta name="description" content="盘古开发框架是一套轻量稳健的工业级分布式微服务开发治理框架（兼容单体分层架构）" />
+</head>
+
 export const Highlight = ({children, color}) => (
   <span
     style={{
@@ -17,27 +23,24 @@ export const Highlight = ({children, color}) => (
   </span>
 );
 
-export const Test = ({}) => (
-<html>
-<body>
-<div id="wai">
-<div className="divleft">此div完成左机关</div>
-<div className="divright"><img src="http://localhost:3000/pangu-framework/img/03.svg" /></div>
-</div>
-</body>
-</html>
-);
-
-<head>
-  <title>盘古开发框架简介</title>
-  <meta name="keywords" content="盘古开发框架简介" />
-  <meta name="description" content="盘古开发框架是一套轻量稳健的工业级分布式微服务开发治理框架（兼容单体分层架构）" />
-</head>
-
 [**盘古开发框架**](/) 是一套轻量稳健的工业级移动端应用和中后台业务系统开发框架。它基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议<Highlight color="#25c2a0">免费开源</Highlight>发布。我们希望不仅是开源的受益者也能成为开源贡献者，与开源社区一起**共建共享开源生态**。
 
-<Test>
-</Test>
+## 特性一览
+
+- **开箱即用、轻量灵活**  
+开箱即用的技术组件库，可随意组合、自动装配。轻量灵活的[权限系统参考实现](/online-demo)，可实现快速搭建二次开发脚手架的能力。同时支持大并发易扩展的高可用分布式架构也能快速组装成垂直单体分层架构。
+
+- **成熟架构、稳定可靠**  
+盘古技术栈融合云原生思想，在微服务、容器化、DevOps 等方面完美支持和适配。可在云原生时代构建以「服务」为中心的现代应用架构，帮助用户在云环境中更好的构建、交付和管理自己的微服务平台。
+
+- **全栈百搭适配各类业务场景**  
+聚焦面向（移动）互联网的电商、金融、云端 SAAS 服务等大并发高可用可扩展的业务场景。 同时也能满足诸如 ERP 、CRM 等各种企业数字化和各级电子政务系统的中小规模应用需求。
+
+## 生态架构图
+
+<img width="800"
+  src={require('/resources/doc/34-pangu-framework.png').default}
+  alt="盘古开发框架生态架构图" />
 
 ## 设计原则
 
@@ -46,19 +49,13 @@ export const Test = ({}) => (
 - **极简原则**  
   大道至简，简单代表好用、稳定、易协作。坚持「Keep it Simple & Stupid」设计理念。
 - **最佳实践原则**  
-  通过大量的生产实例总结，沉淀复用最佳实践。
-- **无为而无不为**  
-  不求大而全，聚焦专而精，保持架构的纯洁与透明。坚持「Less is More」设计理念。
+  通过大量的生产实例检验，沉淀复用最佳实践。
+- **无为而治原则**  
+  轻量灵活不求大而全，保持架构的纯洁与透明。坚持「Less is More」设计理念。
 - **服务优先原则**  
 「服务」是盘古开发框架的一等公民，我们旨在微服务和云原生范式基础上构建「以服务为中心」的现代应用架构。
-- **轻量灵活一致性原则**  
+- **一致性原则**  
   通用功能模块化，既能下沉复用也能对标替换；一套架构既是分布式微服务架构的工业级首选，同时也能兼容单体应用开发。
-  
-## 生态架构图
-
-<img width="800"
-  src={require('/resources/doc/34-pangu-framework.png').default}
-  alt="盘古开发框架生态架构图" />
 
 ## 主要功能
 
@@ -111,7 +108,7 @@ export const Test = ({}) => (
 
 ## 模块列表
 
-- 盘古资源依赖声明管理模块：pangu-parent
+- <Highlight color="#1877F2"><b>pangu-parent</b></Highlight> 盘古资源依赖声明管理模块
 - 盘古公共基础类库：pangu-common
 - 盘古启动、中心化配置等基础能力自动装配模块：pangu-spring-boot-starter
 - 盘古 Dubbo 服务开发自动装配模块：pangu-dubbo-spring-boot-starter

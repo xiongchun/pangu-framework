@@ -34,22 +34,3 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 .ghostwhite {
   color: #ebedf0;
 }
-/* XC */
-#wai {
-  width: 100%;
-  border: 1px solid #ebedf0;
-  padding: 10px;
-  overflow: hidden
-}
-
-.divleft {
-  float: left;
-  width: 60%;
-  border: 1px solid #ebedf0
-}
-
-.divright {
-  float: right;
-  width: 38%;
-  border: 1px solid #ebedf0
-}
