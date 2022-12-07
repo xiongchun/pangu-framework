@@ -108,19 +108,34 @@ export const Highlight = ({children, color}) => (
 
 ## 模块列表
 
-- <Highlight color="#1877F2"><b>pangu-parent</b></Highlight> 盘古资源依赖声明管理模块
-- 盘古公共基础类库：pangu-common
-- 盘古启动、中心化配置等基础能力自动装配模块：pangu-spring-boot-starter
-- 盘古 Dubbo 服务开发自动装配模块：pangu-dubbo-spring-boot-starter
-- 盘古数据库持久化操作自动装配模块：pangu-jdbc-spring-boot-starter
-- 盘古缓存开发自动装配模块：pangu-cache-spring-boot-starter
-- 盘古 Web 应用自动装配模块：pangu-web-spring-boot-starter
-- 盘古消息队列自动装配模块：pangu-rabbitmq-spring-boot-starter
-- 盘古分布式事务自动装配模块：pangu-seata-spring-boot-starter
-- 盘古数据治理（读写分离、数据分片等）自动装配模块：pangu-data-governance-spring-boot-starter
-- 盘古代码生成器Maven插件：pangu-generator-maven-plugin
-- 盘古项目官网和文档：pangu-website
-- 盘古框架模版化参考范例集：pangu-examples
+- **pangu-parent**   
+  盘古资源依赖声明管理模块
+- **pangu-common**  
+  盘古公共基础类库
+- **pangu-spring-boot-starter**  
+  盘古启动、中心化配置等基础能力自动装配模块
+- **pangu-dubbo-spring-boot-starter**  
+  盘古 Dubbo 服务开发自动装配模块
+- **pangu-jdbc-spring-boot-starter**  
+  盘古数据库持久化操作自动装配模块
+- **pangu-cache-spring-boot-starter**  
+  盘古缓存开发自动装配模块
+- **pangu-web-spring-boot-starter**  
+  盘古 Web 应用自动装配模块
+- **pangu-rabbitmq-spring-boot-starter**  
+  盘古消息队列自动装配模块
+- **pangu-seata-spring-boot-starter**  
+  盘古分布式事务自动装配模块
+- **pangu-data-governance-spring-boot-starter**  
+  盘古数据治理（读写分离、数据分片等）自动装配模块
+- **pangu-generator-maven-plugin**  
+  盘古代码生成器Maven插件
+- **pangu-admin** <Highlight color="#F56C6C">HOT</Highlight>  
+  盘古中后台业务系统二次开发脚手架（含前后端和权限系统参考实现）
+- **pangu-website**  
+  盘古项目官网和文档
+- **pangu-examples**  
+  盘古框架模版化参考范例集
 
 ## FAQ
 
