@@ -13,7 +13,27 @@ slug: /intro
   <meta name="description" content="盘古开发框架是一套轻量稳健的工业级分布式微服务开发治理框架（兼容单体分层架构）" />
 </head>
 
-[**盘古开发框架**](/) 是独立于 Spring Cloud 生态的一套轻量灵活、成熟可靠的工业级分布式微服务开发治理框架（兼容垂直单体分层架构)。它基于 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议**开源**发布，且是**免费**的。我们希望不仅是开源的受益者，也能成为开源贡献者，与开源社区一起**共建共享开源生态**。
+[**盘古开发框架**](/) 是一套轻量稳健的工业级移动端应用和中后台业务系统开发框架。它基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议**免费开源**发布。我们希望不仅是开源的受益者也能成为开源贡献者，与开源社区一起**共建共享免费开源生态**。
+
+<table rules="none" align="center">
+	<tr>
+		<td>
+			<center>
+				<img src="https://img-blog.csdnimg.cn/293b792757c24b8caa1ffba18ce76831.jpg" width="60%" />
+				<br/>
+				<font color="AAAAAA">001.jpg</font>
+			</center>
+		</td>
+		<td>
+			<center>
+				<img src="https://img-blog.csdnimg.cn/f70c9b6462314611828f3349942b1227.jpg" width="60%" />
+				<br/>
+				<font color="AAAAAA">002.jpg</font>
+			</center>
+		</td>
+	</tr>
+</table>
+
 
 ## 设计原则
 
@@ -53,7 +73,7 @@ slug: /intro
 
 ## 组件依赖
 ### 基础核心组件
-- Spring ※ Spring Boot
+- Spring Boot ※ Spring Framework
 - MyBatis (MyBatis Plus)
 - Apache Dubbo 
 - Aliware Nacos
