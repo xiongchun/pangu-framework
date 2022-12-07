@@ -27,10 +27,29 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.navbar__title{
-	font-size: 20px !important;
+.navbar__title {
+  font-size: 20px !important;
 }
 
-.ghostwhite{
-	color: #ebedf0;
+.ghostwhite {
+  color: #ebedf0;
+}
+/* XC */
+#wai {
+  width: 100%;
+  border: 1px solid #ebedf0;
+  padding: 10px;
+  overflow: hidden
+}
+
+.divleft {
+  float: left;
+  width: 60%;
+  border: 1px solid #ebedf0
+}
+
+.divright {
+  float: right;
+  width: 38%;
+  border: 1px solid #ebedf0
 }

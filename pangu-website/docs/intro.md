@@ -5,7 +5,28 @@ sidebar_position: 1
 slug: /intro
 ---
 
-# 简介
+export const Highlight = ({children, color}) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: '3px',
+      color: '#fff',
+      padding: '0.1rem',
+    }}>
+    {children}
+  </span>
+);
+
+export const Test = ({}) => (
+<html>
+<body>
+<div id="wai">
+<div className="divleft">此div完成左机关</div>
+<div className="divright"><img src="http://localhost:3000/pangu-framework/img/03.svg" /></div>
+</div>
+</body>
+</html>
+);
 
 <head>
   <title>盘古开发框架简介</title>
@@ -13,27 +34,10 @@ slug: /intro
   <meta name="description" content="盘古开发框架是一套轻量稳健的工业级分布式微服务开发治理框架（兼容单体分层架构）" />
 </head>
 
-[**盘古开发框架**](/) 是一套轻量稳健的工业级移动端应用和中后台业务系统开发框架。它基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议**免费开源**发布。我们希望不仅是开源的受益者也能成为开源贡献者，与开源社区一起**共建共享免费开源生态**。
+[**盘古开发框架**](/) 是一套轻量稳健的工业级移动端应用和中后台业务系统开发框架。它基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议<Highlight color="#25c2a0">免费开源</Highlight>发布。我们希望不仅是开源的受益者也能成为开源贡献者，与开源社区一起**共建共享开源生态**。
 
-<table rules="none" align="center">
-	<tr>
-		<td>
-			<center>
-				<img src="https://img-blog.csdnimg.cn/293b792757c24b8caa1ffba18ce76831.jpg" width="60%" />
-				<br/>
-				<font color="AAAAAA">001.jpg</font>
-			</center>
-		</td>
-		<td>
-			<center>
-				<img src="https://img-blog.csdnimg.cn/f70c9b6462314611828f3349942b1227.jpg" width="60%" />
-				<br/>
-				<font color="AAAAAA">002.jpg</font>
-			</center>
-		</td>
-	</tr>
-</table>
-
+<Test>
+</Test>
 
 ## 设计原则
 
@@ -51,11 +55,13 @@ slug: /intro
   通用功能模块化，既能下沉复用也能对标替换；一套架构既是分布式微服务架构的工业级首选，同时也能兼容单体应用开发。
   
 ## 生态架构图
+
 <img width="800"
   src={require('/resources/doc/34-pangu-framework.png').default}
   alt="盘古开发框架生态架构图" />
 
 ## 主要功能
+
 1. 自定义的 Spring Boot 启动器，完成各功能组件的自动装配。
 2. 自研轻量 Maven 插件，支持各场景的模版代码生成。
 3. 配置参数外部化、动态化和中心化管理。
@@ -72,33 +78,39 @@ slug: /intro
 14. 应用日志输出级别动态切换、分布式日志跟踪等...
 
 ## 组件依赖
+
 ### 基础核心组件
+
 - Spring Boot ※ Spring Framework
 - MyBatis (MyBatis Plus)
-- Apache Dubbo 
+- Apache Dubbo
 - Aliware Nacos
 
 ### 扩展增强型组件
+
 - Apache ShardingSphere
-- Aliware Seata 
+- Aliware Seata
 - Aliware Sentinel
-- Layering Cache 
-- Lock4J 
+- Layering Cache
+- Lock4J
 - TLog
 
 ### 辅助工具类组件
+
 - Lombok
 - Apache Commons
 - Google Guava
 - Hutool
 
 ### 可选组件
-- Apache ShenYu 
+
+- Apache ShenYu
 - XXL Job
 
 > **可选组件**指：由我们优选的做过适配或提供集成方案但不作为盘古框架缺省或标配的组件。
 
 ## 模块列表
+
 - 盘古资源依赖声明管理模块：pangu-parent
 - 盘古公共基础类库：pangu-common
 - 盘古启动、中心化配置等基础能力自动装配模块：pangu-spring-boot-starter
@@ -113,8 +125,10 @@ slug: /intro
 - 盘古项目官网和文档：pangu-website
 - 盘古框架模版化参考范例集：pangu-examples
 
-## FAQ 
+## FAQ
+
 你最想了解的常见问答可能都在这里：[:soon: 常见问答 FAQ](/docs/faq)。
 
 ## 下一步
+
 继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/docs/community) 寻求更多帮助。
