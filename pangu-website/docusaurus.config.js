@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: '盘古开发框架项目官网:一套轻量稳健的工业级移动端应用和中后台业务系统开发框架',
-	tagline: '一套轻量稳健的工业级移动端应用和中后台业务系统开发框架',
+	title: '盘古开发框架项目官网:一套轻量稳健的工业级 Web 接口服务应用和中后台业务系统开发框架',
+	tagline: '一套轻量稳健的工业级 Web 接口服务应用和中后台业务系统开发框架',
 	url: 'https://pulanos.gitee.io',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',

@@ -23,7 +23,7 @@ export const Highlight = ({children, color}) => (
   </span>
 );
 
-[**盘古开发框架**](/) 是一套轻量稳健的工业级移动端应用和中后台业务系统开发框架。它基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议<Highlight color="#25c2a0">免费开源</Highlight>发布。我们希望不仅是开源的受益者也能成为开源贡献者，与开源社区一起**共建共享开源生态**。
+[**盘古开发框架**](/) 是一套轻量稳健的工业级 Web 接口服务和中后台业务系统开发框架。它基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议<Highlight color="#25c2a0">免费开源</Highlight>发布。我们希望不仅是开源的受益者也能成为开源贡献者，与开源社区一起**共建共享开源生态**。
 
 ## 特性一览
 
@@ -51,11 +51,11 @@ export const Highlight = ({children, color}) => (
 - **最佳实践原则**  
   通过大量的生产实例检验，沉淀复用最佳实践。
 - **无为而治原则**  
-  轻量灵活不求大而全，保持架构的纯洁与透明。坚持「Less is More」设计理念。
+  不求大而全，轻量灵活保持架构的纯洁与透明，坚持「Less is More」设计理念。
 - **服务优先原则**  
-「服务」是盘古开发框架的一等公民，我们旨在微服务和云原生范式基础上构建「以服务为中心」的现代应用架构。
+「服务」是盘古开发框架的一等公民，旨在微服务和云原生范式基础上构建「以服务为中心」的现代应用架构。
 - **一致性原则**  
-  通用功能模块化，既能下沉复用也能对标替换；一套架构既是分布式微服务架构的工业级首选，同时也能兼容单体应用开发。
+  双架构支持，既是分布式微服务架构的工业级首选，同时也能兼容特定需求场景下的单体应用开发。
 
 ## 主要功能
 
@@ -72,39 +72,36 @@ export const Highlight = ({children, color}) => (
 11. 提供分布式环境下的多级缓存功能(注解式和编程式)。Caffeine 作为一级本地缓存，Redis 作为二级集中式缓存。
 12. 支持可配置、可监控的分布式任务调度。
 13. 支持注解声明式和编程式对业务代码在分布式环境下加并发互斥锁。
+14. 提供成熟的中后台业务系统二次开发脚手架（含前后端和[权限系统参考实现](/online-demo)）。
 14. 应用日志输出级别动态切换、分布式日志跟踪等...
 
 ## 组件依赖
 
-### 基础核心组件
+- **基础核心组件**
+  - Spring Boot ※ Spring Framework
+  - MyBatis (MyBatis Plus)
+  - Apache Dubbo
+  - Aliware Nacos
 
-- Spring Boot ※ Spring Framework
-- MyBatis (MyBatis Plus)
-- Apache Dubbo
-- Aliware Nacos
+- **扩展增强型组件**
+  - Apache ShardingSphere
+  - Aliware Seata
+  - Aliware Sentinel
+  - Layering Cache
+  - Lock4J
+  - TLog
 
-### 扩展增强型组件
+- **辅助工具类组件**
+  - Lombok
+  - Apache Commons
+  - Google Guava
+  - Hutool
 
-- Apache ShardingSphere
-- Aliware Seata
-- Aliware Sentinel
-- Layering Cache
-- Lock4J
-- TLog
+- **可选组件**  
+> 可选组件指由我们优选的做过适配或提供集成方案，但不作为盘古框架缺省或标配的组件。
 
-### 辅助工具类组件
-
-- Lombok
-- Apache Commons
-- Google Guava
-- Hutool
-
-### 可选组件
-
-- Apache ShenYu
-- XXL Job
-
-> **可选组件**指：由我们优选的做过适配或提供集成方案但不作为盘古框架缺省或标配的组件。
+  - Apache ShenYu
+  - XXL Job
 
 ## 模块列表
 
@@ -131,7 +128,7 @@ export const Highlight = ({children, color}) => (
 - **pangu-generator-maven-plugin**  
   盘古代码生成器Maven插件
 - **pangu-admin** <Highlight color="#F56C6C">HOT</Highlight>  
-  盘古中后台业务系统二次开发脚手架（含前后端和权限系统参考实现）
+  盘古中后台业务系统二次开发脚手架（含前后端和[权限系统参考实现](/online-demo)）
 - **pangu-website**  
   盘古项目官网和文档
 - **pangu-examples**  

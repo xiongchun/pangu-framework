@@ -12,7 +12,7 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <h1 className="hero__title"><span className={styles.hero__title2}>盘古开发框架</span></h1>
-        <p className="hero__subtitle">一套轻量稳健的工业级<b>移动端应用</b>和<b>中后台业务系统</b>开发框架</p>
+        <p className="hero__subtitle">一套轻量稳健的工业级<b> Web 接口服务</b>和<b>中后台业务系统</b>开发框架</p>
         <div className="btn-group">
           <div className={styles.buttons}>
             <Link

@@ -1,5 +1,5 @@
 ---
-title: 如何基于微服务开发 HTTP 接口
+title: 如何基于微服务开发 Web 接口
 tags: [快速开始,网关, API]
 sidebar_position: 25
 slug: /quick-start/how-to-create-http-api
@@ -13,10 +13,10 @@ slug: /quick-start/how-to-create-http-api
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-在上文[《如何开发微服务应用》](/docs/quick-start/how-to-make-microservice-architecture-app)中，已经介绍了如何开发一个微服务应用以及微服务模块之间的互相调用。本文介绍如何将微服务发布为 HTTP 接口供前端调用。
+在上文[《如何开发微服务应用》](/docs/quick-start/how-to-make-microservice-architecture-app)中，已经介绍了如何开发一个微服务应用以及微服务模块之间的互相调用。本文介绍如何将微服务发布为 Web 接口供前端调用。
 
 ## 技术实现方案
-在盘古开发框架下实现将微服务发布为 HTTP 接口有两种方式。一种是基于 Spring MVC 的接口调用模式；一种是基于 ShenYu 网关的泛化调用模式。
+在盘古开发框架下实现将微服务发布为 Web 接口有两种方式。一种是基于 Spring MVC 的接口调用模式；一种是基于 ShenYu 网关的泛化调用模式。
 
 ### 基于 Spring MVC 的接口调用模式
 - **实现原理**  
