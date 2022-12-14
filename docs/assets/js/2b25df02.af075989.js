@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[6727],{4418:e=>{e.exports=JSON.parse('{"permalink":"/pangu-framework/blog/tags/web-server","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"\u535a\u5ba2"}')}}]);

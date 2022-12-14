@@ -18,17 +18,18 @@ export const Highlight = ({children, color}) => (
       borderRadius: '3px',
       color: '#fff',
       padding: '0.1rem',
+      margin: '0.2rem'
     }}>
     {children}
   </span>
 );
 
-[**盘古开发框架**](/) 是一套轻量稳健的工业级 Web 接口服务和中后台业务系统开发框架。它基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议<Highlight color="#25c2a0">免费开源</Highlight>发布。我们希望不仅是开源的受益者也能成为开源贡献者，与开源社区一起**共建共享开源生态**。
+[**盘古开发框架**](/) 是一套轻量稳健的工业级 Web 接口服务和中后台业务系统开发框架。它基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)协议<Highlight color="#25c2a0">免费开源</Highlight>发布。我们希望不仅是开源的受益者也能成为开源贡献者，与开源社区一起**共建共享开源生态**。
 
 ## 特性一览
 
 - **开箱即用、轻量灵活**  
-开箱即用的技术组件库，可随意组合、自动装配。轻量灵活的[权限系统参考实现](/online-demo)，可实现快速搭建二次开发脚手架的能力。同时支持大并发易扩展的高可用分布式架构也能快速组装成垂直单体分层架构。
+开箱即用的技术组件库，可随意组合、自动装配。轻量灵活的 [权限系统参考实现](/online-demo) ，可实现快速搭建二次开发脚手架的能力。同时支持大并发易扩展的高可用分布式架构也能快速组装成垂直单体分层架构。
 
 - **成熟架构、稳定可靠**  
 盘古技术栈融合云原生思想，在微服务、容器化、DevOps 等方面完美支持和适配。可在云原生时代构建以「服务」为中心的现代应用架构，帮助用户在云环境中更好的构建、交付和管理自己的微服务平台。
@@ -72,7 +73,7 @@ export const Highlight = ({children, color}) => (
 11. 提供分布式环境下的多级缓存功能(注解式和编程式)。Caffeine 作为一级本地缓存，Redis 作为二级集中式缓存。
 12. 支持可配置、可监控的分布式任务调度。
 13. 支持注解声明式和编程式对业务代码在分布式环境下加并发互斥锁。
-14. 提供成熟的中后台业务系统二次开发脚手架（含前后端和[权限系统参考实现](/online-demo)）。
+14. 提供成熟的中后台业务系统二次开发脚手架（含前后端和 [权限系统参考实现](/online-demo) ）。<Highlight color="#F56C6C">HOT</Highlight>
 14. 应用日志输出级别动态切换、分布式日志跟踪等...
 
 ## 组件依赖
@@ -128,7 +129,7 @@ export const Highlight = ({children, color}) => (
 - **pangu-generator-maven-plugin**  
   盘古代码生成器Maven插件
 - **pangu-admin** <Highlight color="#F56C6C">HOT</Highlight>  
-  盘古中后台业务系统二次开发脚手架（含前后端和[权限系统参考实现](/online-demo)）
+  盘古中后台业务系统二次开发脚手架（含前后端和 [权限系统参考实现](/online-demo) ）
 - **pangu-website**  
   盘古项目官网和文档
 - **pangu-examples**  
@@ -136,8 +137,8 @@ export const Highlight = ({children, color}) => (
 
 ## FAQ
 
-你最想了解的常见问答可能都在这里：[:soon: 常见问答 FAQ](/docs/faq)。
+你最想了解的常见问答可能都在这里：[:soon: 常见问答 FAQ](/faq/index)。
 
 ## 下一步
 
-继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/docs/community) 寻求更多帮助。
+继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/community) 寻求更多帮助。

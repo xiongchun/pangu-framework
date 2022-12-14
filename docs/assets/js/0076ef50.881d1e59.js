@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[7378],{8296:a=>{a.exports=JSON.parse('{"label":"Nginx","permalink":"/pangu-framework/blog/tags/nginx","allTagsPath":"/pangu-framework/blog/tags","count":1}')}}]);

@@ -16,11 +16,11 @@ import TabItem from '@theme/TabItem';
 在上文[《如何开发微服务应用》](/docs/quick-start/how-to-make-microservice-architecture-app)中，已经介绍了如何开发一个微服务应用以及微服务模块之间的互相调用。本文介绍如何将微服务发布为 Web 接口供前端调用。
 
 ## 技术实现方案
-在盘古开发框架下实现将微服务发布为 Web 接口有两种方式。一种是基于 Spring MVC 的接口调用模式；一种是基于 ShenYu 网关的泛化调用模式。
+在盘古开发框架下实现将微服务发布为 Web 接口有两种方式。一种是基于 Spring RestController 的接口调用模式；一种是基于 ShenYu 网关的泛化调用模式。
 
-### 基于 Spring MVC 的接口调用模式
+### 基于 Spring RestController 的接口调用模式
 - **实现原理**  
-基于 Spring MVC Controller，依赖 Servlet 容器。
+基于 Spring RestController，依赖 Servlet 容器。
 - **Dubbo 集成**  
 依赖接口 JAR ，通过接口调用 Dubbo 服务。
 - **性能 & 复杂度**  
@@ -43,8 +43,8 @@ import TabItem from '@theme/TabItem';
 上述是从不同维度简单粗暴的以定性的角度给出了一些比较，结论是孤立且脱离项目背景和业务场景的，仅供参考。采用什么样的开发模式不能一概而论，需要综合实际情况酌情选择。但对于大部分盘古开发项目而言，我们推荐整体性价比较高的方案一。当然，如果您的项目背景适合使用 ShenYu网关，我们也给出了详细的集成方案。详见：[盘古开发框架集成 Apache ShenYu 网关](/blog/pangu-dev-framework-apache-shenyu)。
 :::
 
-## 编程实战一：基于 Spring MVC 的接口调用模式
-此种模式基于 SpringMVC 通过 Controller 调用后端 Dubbo 服务。依赖 Servlet 容器，需要引入服务接口包。对于 HTTP 接口层面的鉴权、流控等需求都需要基于Web拦截器来实现（盘古已经在Starter中实现，只需配置即可使用）。高可用和性能提升可通过Caddy/Nginx 充当 API 网关 反向代理后端多个 Web 节点实现。
+## 编程实战一：基于 Spring RestController 的接口调用模式
+此种模式基于 SpringMVC 通过 Controller 调用后端 Dubbo 服务。依赖 Servlet 容器，需要引入服务接口包。对于 HTTP 接口层面的鉴权、流控等需求都需要基于拦截器来实现。高可用和性能提升可通过Caddy/Nginx 充当 API 网关 反向代理后端多个 Web 节点实现。
 
 ### 安装相关盘古模块
 
@@ -156,10 +156,10 @@ public class DubboProviderApplication {
 ### 本范例源码
 - [pangu-examples-dubbo-api](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples/pangu-examples-dubbo-api)：Dubbo 服务接口包
 - [pangu-examples-dubbo-service](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples/pangu-examples-dubbo-service)：Dubbo 服务提供者
-- [pangu-examples-webapi-dubbo-service-based](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples/pangu-examples-webapi-dubbo-service-based)：基于 SpringMVC 将 Dubbo 服务发布为 HTTP 接口
+- [pangu-examples-webapi-dubbo-service-based](https://gitee.com/pulanos/pangu-framework/tree/master/pangu-examples/pangu-examples-webapi-dubbo-service-based)：基于 Spring Controller 将 Dubbo 服务发布为 HTTP 接口
 
 ## 编程实战二：基于 ShenYu 网关的泛化调用模式
 盘古开发框架下发布 Dubbo 服务为 HTTP 接口的缺省标准姿势已调整为基于 pangu-web 模块的传统接口调用模式（见上文）。基于 ShenYu 网关的开发模式已降级为一种可选方案，其文档已迁移到了博客专栏。详见：[盘古开发框架集成 Apache ShenYu 网关](/blog/pangu-dev-framework-apache-shenyu)。
 
 ## 下一步
-继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/docs/community) 寻求更多帮助。
+继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/community) 寻求更多帮助。

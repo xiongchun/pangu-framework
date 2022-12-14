@@ -49,17 +49,30 @@ const config = {
 			}),
 		],
 	],
-	plugins: [require.resolve('docusaurus-plugin-image-zoom'),
-	[
-		'@docusaurus/plugin-content-docs',
-		{
-			id: 'faq',
-			path: 'faq',
-			routeBasePath: 'faq',
-			sidebarPath: require.resolve('./sidebarsFaq.js'),
-			// ... other options
-		},
-	]
+	plugins: [
+		require.resolve('docusaurus-plugin-image-zoom'),
+		[
+			'@docusaurus/plugin-content-docs',
+			{
+				id: 'faq',
+				path: 'faq',
+				routeBasePath: 'faq',
+				sidebarPath: require.resolve('./sidebarsFaq.js'),
+				// ... other options
+			},
+		]
+	],
+	themes:[
+		[
+			require.resolve("@easyops-cn/docusaurus-search-local"),
+			({
+				hashed: true,
+				language: ["en", "zh"],
+				highlightSearchTermsOnTargetPage:true,
+				indexPages:true,
+				searchResultLimits:10
+			})
+		]
 	],
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -118,13 +131,13 @@ const config = {
 				},
 				{
 					href: 'https://gitee.com/pulanos/pangu-framework',
-					label: 'Gitee',
 					position: 'right',
+					className: 'header-gitee-link'
 				},
 				{
 					href: 'https://github.com/xiongchun/pangu-framework',
-					label: 'GitHub',
 					position: 'right',
+					className: 'header-github-link'
 				}
 				]
 			},
@@ -141,7 +154,7 @@ const config = {
 					}
 						, {
 						label: '常见问答',
-						to: '/docs/faq',
+						to: '/faq/index',
 					}
 					],
 				},
@@ -164,7 +177,7 @@ const config = {
 					title: '更多',
 					items: [{
 						label: '致敬',
-						to: '/docs/thanks',
+						to: '/thanks',
 					}, {
 						label: '开源中国',
 						href: 'https://www.oschina.net/',

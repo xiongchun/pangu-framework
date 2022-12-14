@@ -23,7 +23,7 @@ function HomepageHeader() {
             <Link
               className={styles.xcbutton2}
               to="https://gitee.com/pulanos/pangu-framework">
-              下载代码
+              获取代码
             </Link>
           </div>
         </div>
