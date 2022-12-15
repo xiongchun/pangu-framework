@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[3326],{8331:e=>{e.exports=JSON.parse('{"label":"ShenYu","permalink":"/blog/tags/shen-yu","allTagsPath":"/blog/tags","count":1}')}}]);
