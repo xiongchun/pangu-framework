@@ -105,7 +105,7 @@ const config = {
 					label: '开发文档',
 				},
 				{
-					to: '/faq/index',
+					to: '/faq/faq1',
 					label: '常见问答',
 					position: 'left'
 				},
@@ -154,7 +154,7 @@ const config = {
 					}
 						, {
 						label: '常见问答',
-						to: '/faq/index',
+						to: '/faq/faq1',
 					}
 					],
 				},
@@ -190,7 +190,7 @@ const config = {
 				}
 				],
 				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
-<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://www.pulanit.com">PuLan Open Source Community</a><br><img src="./img/dashi.gif" />`,
+<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://www.pulanit.com">PuLan Open Source Community</a><br><img src="https://pulanos.gitee.io/pangu-framework/img/dashi.gif" />`,
 			},
 			prism: {
 				theme: lightCodeTheme,
