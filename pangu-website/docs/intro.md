@@ -137,7 +137,7 @@ export const Highlight = ({children, color}) => (
 
 ## FAQ
 
-你最想了解的常见问答可能都在这里：[:soon: 常见问答 FAQ](/faq/index)。
+你最想了解的常见问答可能都在这里：[:soon: 常见问答 FAQ](/faq/faq1)。
 
 ## 下一步
 

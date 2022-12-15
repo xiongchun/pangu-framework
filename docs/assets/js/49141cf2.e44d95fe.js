@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[4214],{1709:e=>{e.exports=JSON.parse('[{"label":"FAQ","permalink":"/pangu-framework/faq/tags/faq","count":3}]')}}]);

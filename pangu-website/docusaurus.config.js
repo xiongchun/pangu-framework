@@ -179,8 +179,8 @@ const config = {
 						label: '致敬',
 						to: '/thanks',
 					}, {
-						label: '开源中国',
-						href: 'https://www.oschina.net/',
+						label: '在线演示',
+						to: '/online-demo',
 					},
 					{
 						label: 'Apache Software Foundation',
