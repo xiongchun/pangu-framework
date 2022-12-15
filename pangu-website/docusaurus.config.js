@@ -12,7 +12,7 @@ const config = {
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon.ico',
-	organizationName: '盘古开发框架,普蓝开源社区', // Usually your GitHub org/user name.
+	organizationName: '码农大熊', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
 	//baseUrl: '/',
 	baseUrl: '/pangu-framework/',
@@ -78,7 +78,7 @@ const config = {
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
 			zoom: {
-				selector: '.markdown :not(em) > img,.markdown > img',
+				selector: '.markdown :not(em) > img,.markdown > img, article img[loading]',
 				background: {
 					light: 'rgb(255, 255, 255)',
 					dark: 'rgb(50, 50, 50)'
@@ -197,7 +197,7 @@ const config = {
 				darkTheme: darkCodeTheme,
 			},
 			metadata: [
-				{ name: 'author', content: '普蓝开源社区' },
+				{ name: 'author', content: '码农大熊 普蓝开源社区' },
 				{ name: 'keywords', content: '盘古开发框架 分布式微服务架构 垂直单体分层架构 普蓝开源社区' },
 				// 百度站点收录验证
 				{ name: 'baidu-site-verification', content: 'code-FsdXztrzOo' }

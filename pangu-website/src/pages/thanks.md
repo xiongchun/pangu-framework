@@ -1,5 +1,4 @@
 ---
-title: 致敬 & 鸣谢
 hide_table_of_contents: false
 ---
 <head>
