@@ -222,7 +222,7 @@ npm run serve
 完整体验请访问：[在线演示系统](/online-demo)。
 
 <details>
-  <summary><b>快速 QA：</b>可以将盘古 Admin 改为单体应用吗？</summary>
+  <summary><b>快速 QA：</b>可以将盘古 Admin 后端改为单体应用吗？</summary>
   <div>
   必须可以。只需要自己做一些简单的代码合并即可将 RPC 微服务调用改为本地服务调用。如果连配置中心都不想搭建的话，可以将配置直接改为本地配置文件。
   </div>
