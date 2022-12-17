@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[3395],{5002:e=>{e.exports=JSON.parse('{"permalink":"/pangu-framework/blog/tags/\u90e8\u7f72","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"\u535a\u5ba2"}')}}]);
