@@ -46,6 +46,11 @@ public final class Constants {
         public final static String ILLEGAL_ARGUMENT = "3001";
 
         /**
+         * 数据库 SQL 异常
+         */
+        public final static String SQL_EXCEPTION = "3002";
+
+        /**
          * 系统失败
          */
         public final static String SYSTEM_FAILED = "4000";
@@ -87,6 +92,16 @@ public final class Constants {
          */
         public final static String DEFAULT_GROUP = "DEFAULT_GROUP";
 
+    }
+
+    /**
+     * profileActive
+     */
+    public final static class profilesActive{
+        public final static String DEV = "dev";
+        public final static String TEST = "test";
+        public final static String PROD = "prod";
+        public final static String DEMO = "demo";
     }
 
 }

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[2898],{5421:a=>{a.exports=JSON.parse('{"label":"Caddy","permalink":"/blog/tags/caddy","allTagsPath":"/blog/tags","count":2}')}}]);

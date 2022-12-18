@@ -1,5 +1,6 @@
 package com.pulanit.pangu.admin.web.config;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.gitee.pulanos.pangu.framework.common.Constants;
 import com.gitee.pulanos.pangu.framework.common.entity.Result;
@@ -18,9 +19,16 @@ public class GlobalExceptionHandler {
 
     @NacosValue(value = "${spring.application.name}")
     private String appName;
+    @NacosValue(value = "${spring.profiles.active}")
+    private String profilesActive;
     @Reference(version = "1.0.0", group = "pangu-admin-system-app", check = false)
     private LogService logService;
 
+    /**
+     * 主动抛出的业务异常
+     * @param exception
+     * @return
+     */
     @ExceptionHandler(value = BizException.class)
     public Result bizExceptionHandler(BizException exception) {
         String code = exception.getCode();
@@ -29,20 +37,37 @@ public class GlobalExceptionHandler {
         return Result.make().setCode(code).setMessage(message);
     }
 
+    /**
+     * 参数校验失败
+     * @param exception
+     * @return
+     */
     @ExceptionHandler(value = IllegalArgumentException.class)
     public Result IllegalArgumentExceptionHandler(IllegalArgumentException exception) {
         String code = Constants.Code.ILLEGAL_ARGUMENT;
         String message = exception.getMessage();
-        log.error("BizException: code={}, message={}", code, message);
+        log.error("IllegalArgumentException: code={}, message={}", code, message);
         return Result.make().setCode(code).setMessage(message);
     }
 
+    /**
+     * 其它异常
+     * @param exception
+     * @param response
+     * @return
+     */
     @ExceptionHandler(value = Exception.class)
     public Result exceptionHandler(Exception exception, HttpServletResponse response) {
-        response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         String code = Constants.Code.SYSTEM_FAILED;
         String message = exception.getMessage();
         log.error(message, exception);
+        // 语法糖 请忽略
+        if (Constants.profilesActive.DEMO.equalsIgnoreCase(profilesActive)){
+            if (StrUtil.containsIgnoreCase(message, "SQLSyntaxErrorException")){
+                return Result.make().setCode(Constants.Code.SQL_EXCEPTION).setMessage("演示环境下不支持当前操作，请搭建本地环境试用。");
+            }
+        }
+        response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         return Result.make().setCode(code).setMessage(message);
     }
 }

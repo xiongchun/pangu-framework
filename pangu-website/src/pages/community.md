@@ -9,12 +9,11 @@ hide_table_of_contents: false
 
 # 开发者社区
 
-## Gitee Issues
 任何关于盘古框架的问题、想法或建议都可以通过 [**issues**](https://gitee.com/pulanos/pangu-framework/issues?state=all) 提交。
 
  ## 主创团队🍃贡献者
 
-- 码农大熊
+- **码农大熊**
 <img width="100" src={require('/img/xiongchun.png').default} alt="盘古开发框架生态架构图" />
 
   Email: 307916217@qq.com  

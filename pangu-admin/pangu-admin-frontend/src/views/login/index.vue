@@ -5,15 +5,19 @@
 				<h2>{{ $t('global.appName') }}</h2>
 				<h4>{{ $t('login.slogan') }}</h4>
 				<p>{{ $t('login.describe') }}</p>
+				<p>
+					<a target="_blank" href="https://pangu.pulanit.com">访问开源项目官网</a>
+				</p>
 			</div>
 			<div class="login_adv__mask"></div>
 			<div class="login_adv__bottom">
-				© {{$t('global.appName')}} {{$CONFIG.APP_VER}}
+				© {{ $t('global.appName') }} {{ $CONFIG.APP_VER }}
 			</div>
 		</div>
 		<div class="login_main">
 			<div class="login_config">
-				<el-button :icon="config.dark?'el-icon-sunny':'el-icon-moon'" circle type="info" @click="configDark">
+				<el-button :icon="config.dark ? 'el-icon-sunny' : 'el-icon-moon'" circle type="info"
+					@click="configDark">
 				</el-button>
 				<el-dropdown trigger="click" placement="bottom-end" @command="configLang">
 					<el-button circle>
@@ -31,7 +35,7 @@
 					<template #dropdown>
 						<el-dropdown-menu>
 							<el-dropdown-item v-for="item in lang" :key="item.value" :command="item"
-								:class="{'selected':config.lang==item.value}">{{item.name}}</el-dropdown-item>
+								:class="{ 'selected': config.lang == item.value }">{{ item.name }}</el-dropdown-item>
 						</el-dropdown-menu>
 					</template>
 				</el-dropdown>
@@ -61,7 +65,7 @@
 	<el-dialog v-model="showWechatLogin" :title="$t('login.wechatLoginTitle')" :width="400" destroy-on-close>
 		<div class="qrCodeLogin">
 			<sc-qr-code class="qrCode" :text="WechatLoginCode" :size="200"></sc-qr-code>
-			<p class="msg">{{$tc('login.wechatLoginMsg', 1)}}<br />{{$tc('login.wechatLoginMsg', 2)}}</p>
+			<p class="msg">{{ $tc('login.wechatLoginMsg', 1) }}<br />{{ $tc('login.wechatLoginMsg', 2) }}</p>
 			<div class="qrCodeLogin-result" v-if="isWechatLoginResult">
 				<el-result icon="success" :title="$tc('login.wechatLoginResult', 1)"
 					:sub-title="$tc('login.wechatLoginResult', 2)"></el-result>
@@ -189,6 +193,11 @@ export default {
 	color: rgba(255, 255, 255, 0.6);
 }
 
+.login_adv__title p a {
+	color: #fff;
+	font-size: 16px;
+}
+
 .login_adv__title div {
 	margin-top: 10px;
 	display: flex;
@@ -209,6 +218,7 @@ export default {
 }
 
 .login_adv__bottom {
+	font-size: 16px;
 	position: absolute;
 	left: 0px;
 	right: 0px;

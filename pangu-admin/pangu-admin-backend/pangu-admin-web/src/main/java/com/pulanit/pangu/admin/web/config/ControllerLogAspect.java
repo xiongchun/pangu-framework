@@ -54,7 +54,7 @@ public class ControllerLogAspect {
 
     private static final LocalVariableTableParameterNameDiscoverer parameterNameDiscoverer = new LocalVariableTableParameterNameDiscoverer();
 
-    //@Around("pointcut()")
+    @Around("pointcut()")
     public Object doAroundMethod(ProceedingJoinPoint point) {
         LogIn logIn = new LogIn();
         UserInfo userInfo = AppContext.getUserInfo();
