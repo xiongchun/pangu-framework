@@ -17,6 +17,7 @@
 
 package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
 
+import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.api.config.annotation.NacosConfigListener;
 import com.alibaba.nacos.spring.util.ConfigParseUtils;
@@ -28,6 +29,7 @@ import org.springframework.boot.logging.LogLevel;
 import org.springframework.boot.logging.LoggingSystem;
 
 import javax.annotation.Resource;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -49,11 +51,11 @@ public class DynamicLogSwitcher {
 
     @NacosConfigListener(dataId = "${nacos.config.data-id}", timeout = 5000)
     public void onChange(String newCfgText) {
-        Properties properties = ConfigParseUtils.toProperties(newCfgText, configType);
+        Map<String, Object> properties = ConfigParseUtils.toProperties(newCfgText, configType);
         for (Object key : properties.keySet()) {
             String logKey = String.valueOf(key);
             if (logKey.startsWith(LOGGER_PREFIX)) {
-                String logValue = properties.getProperty(logKey, "INFO");
+                String logValue = MapUtil.getStr(properties, logKey, LogLevel.INFO.toString());
                 refreshLogLevelByKey(logKey, logValue);
             }
         }
