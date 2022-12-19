@@ -4,8 +4,8 @@
 
 ### 更多资源
 
-:maple_leaf: [项目主页&开发指南（主）](https://pangu.pulanit.com)  
-:leaves: [项目主页&开发指南（备1）](https://xiongchun.github.io/pangu-framework)  
+:maple_leaf: [项目主页&开发指南（主）](https://xiongchun.github.io/pangu-framework)  
+:leaves: [项目主页&开发指南（备1）](https://pangu.pulanit.com)  
 :sunflower: [项目主页&开发指南（备2）](https://pulanos.gitee.io/pangu-framework)
 
 ### 生态架构图
