@@ -27,6 +27,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.logging.LogLevel;
 import org.springframework.boot.logging.LoggingSystem;
 
+import javax.annotation.Resource;
 import java.util.Properties;
 
 /**
@@ -38,7 +39,7 @@ import java.util.Properties;
 @Slf4j
 public class DynamicLogSwitcher {
 
-    @Autowired
+    @Resource
     private LoggingSystem loggingSystem;
 
     @Value("${nacos.config.type}")
