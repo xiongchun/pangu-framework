@@ -7,14 +7,14 @@
     <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
         <artifactId>pangu-parent</artifactId>
-        <version>5.2.0</version>
+        <version>5.3.0</version>
         <relativePath/>
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
     <artifactId>pangu-examples-shardingsphere-readwrite-splitting</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>5.3.0</version>
 
 
     <dependencies>
@@ -28,7 +28,7 @@
         </dependency>
         <dependency>
             <groupId>com.gitee.pulanos.pangu</groupId>
-            <artifactId>pangu-shardingsphere-spring-boot-starter</artifactId>
+            <artifactId>pangu-data-governance-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

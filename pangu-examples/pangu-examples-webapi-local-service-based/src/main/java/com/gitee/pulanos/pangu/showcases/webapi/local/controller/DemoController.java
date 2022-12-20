@@ -17,15 +17,11 @@
 
 package com.gitee.pulanos.pangu.showcases.webapi.local.controller;
 
-import com.gitee.pulanos.pangu.framework.common.model.Result;
-import com.gitee.pulanos.pangu.framework.common.utils.BeanValidator;
+import com.gitee.pulanos.pangu.framework.common.entity.Result;
 import com.gitee.pulanos.pangu.showcases.webapi.local.dao.entity.UserEntity;
-import com.gitee.pulanos.pangu.showcases.webapi.local.param.CaseIn;
 import com.gitee.pulanos.pangu.showcases.webapi.local.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,11 +1,10 @@
 package com.gitee.pulanos.pangu.showcases.webapi.dubbo.controller;
 
-import com.gitee.pulanos.pangu.framework.common.model.Result;
+import com.gitee.pulanos.pangu.framework.common.entity.Result;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.dto.UserInDto;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.dto.UserOutDto;
 import com.gitee.pulanos.pangu.showcases.dubbo.api.service.UserService;
 import com.gitee.pulanos.pangu.showcases.webapi.dubbo.service.DemoService;
-import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;

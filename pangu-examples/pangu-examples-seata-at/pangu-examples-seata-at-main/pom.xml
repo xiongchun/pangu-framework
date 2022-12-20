@@ -7,14 +7,14 @@
     <parent>
         <groupId>com.gitee.pulanos.pangu</groupId>
         <artifactId>pangu-parent</artifactId>
-        <version>5.2.0</version>
+        <version>5.3.0</version>
         <relativePath/>
     </parent>
 
     <groupId>com.gitee.pulanos.pangu</groupId>
     <artifactId>pangu-examples-seata-at-main</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>5.3.0</version>
 
 
     <dependencies>
@@ -41,7 +41,7 @@
         <dependency>
             <groupId>com.gitee.pulanos.pangu</groupId>
             <artifactId>pangu-examples-seata-at-api</artifactId>
-            <version>1.0.0</version>
+            <version>5.3.0</version>
         </dependency>
     </dependencies>
 
@@ -63,7 +63,7 @@
             <plugin>
                 <groupId>com.gitee.pulanos.pangu</groupId>
                 <artifactId>pangu-generator-maven-plugin</artifactId>
-                <version>5.2.0</version>
+                <version>5.3.0</version>
                 <configuration>
                     <url>jdbc:mysql://127.0.0.1:3306/pangu-examples</url>
                     <user>root</user>
