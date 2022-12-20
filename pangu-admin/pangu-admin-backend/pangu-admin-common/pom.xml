@@ -7,7 +7,7 @@
     <groupId>com.gitee.pulanos.pangu</groupId>
     <artifactId>pangu-admin-common</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>5.3.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,7 +15,7 @@
         <lombok.version>1.18.20</lombok.version>
         <hutool-core.version>5.8.3</hutool-core.version>
         <fastjson.version>1.2.83</fastjson.version>
-        <pangu.version>5.2.0</pangu.version>
+        <pangu.version>5.3.0</pangu.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     </properties>
 
