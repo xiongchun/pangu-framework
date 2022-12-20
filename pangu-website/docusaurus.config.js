@@ -23,6 +23,10 @@ const config = {
 		//https://pangu.pulanit.com/
 		//{src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b',  async: true},
 	],
+	i18n: {
+		defaultLocale: "zh-Hans",
+		locales: ["zh-Hans"],
+	  },
 	presets: [
 		[
 			'classic',
@@ -33,6 +37,9 @@ const config = {
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Please change this to your repo.
 					editUrl: 'https://gitee.com/pulanos/pangu-framework/tree/master/pangu-website/',
+					showLastUpdateAuthor: true,
+					showLastUpdateTime: true,
+					breadcrumbs: true,
 				},
 				blog: {
 					blogTitle: '博客',
@@ -59,6 +66,9 @@ const config = {
 				routeBasePath: 'faq',
 				sidebarPath: require.resolve('./sidebarsFaq.js'),
 				// ... other options
+				showLastUpdateAuthor: true,
+				showLastUpdateTime: true,
+				breadcrumbs: true,
 			},
 		]
 	],
@@ -197,8 +207,8 @@ const config = {
 				darkTheme: darkCodeTheme,
 			},
 			metadata: [
-				{ name: 'author', content: '码农大熊 普蓝开源社区' },
-				{ name: 'keywords', content: '盘古开发框架 分布式微服务架构 垂直单体分层架构 普蓝开源社区' },
+				{ name: 'author', content: '码农大熊' },
+				{ name: 'keywords', content: '盘古开发框架 盘古通用权限系统 开源中后台业务脚手架 pangu-admin  分布式微服务架构 垂直单体分层架构 普蓝开源社区' },
 				// 百度站点收录验证
 				{ name: 'baidu-site-verification', content: 'code-FsdXztrzOo' }
 			]
