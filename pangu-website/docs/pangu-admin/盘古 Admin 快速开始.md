@@ -6,7 +6,7 @@ slug: /pangu-admin/quick-start
 ---
 
 <head>
-  <title>盘古 Admin 快速入门 | SUCI(Vue3、Element-Plus) | 盘古开发框架</title>
+  <title>盘古通用权限系统开发框架 快速开始 | SUCI(Vue3、Element-Plus) | 盘古开发框架</title>
   <meta name="keywords" content="盘古开发框架 | 部署运维指南" />
   <meta name="description" content="盘古开发框架是一套轻量稳健的工业级分布式微服务开发治理框架（兼容单体分层架构）" />
 </head>

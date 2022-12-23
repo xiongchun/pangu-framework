@@ -12,9 +12,10 @@ const config = {
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon.ico',
-	organizationName: 'xiongchunn', // Usually your GitHub org/user name.
+	organizationName: 'xiongchun', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
-	baseUrl: '/',
+	//baseUrl: '/',
+	baseUrl: '/pangu-framework/',
 	// 百度统计 暂停使用
 	scripts: [
 		//https://pulanos.gitee.io/pangu-framework/

@@ -6,7 +6,7 @@ slug: /intro
 ---
 
 <head>
-  <title>盘古开发框架简介</title>
+  <title>盘古框架文档 | 盘古开发框架简介</title>
   <meta name="keywords" content="盘古开发框架简介" />
   <meta name="description" content="盘古开发框架是一套轻量稳健的工业级分布式微服务开发治理框架（兼容单体分层架构）" />
 </head>
