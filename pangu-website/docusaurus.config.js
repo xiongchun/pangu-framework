@@ -12,10 +12,9 @@ const config = {
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon.ico',
-	organizationName: '码农大熊', // Usually your GitHub org/user name.
+	organizationName: 'xiongchunn', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
-	//baseUrl: '/',
-	baseUrl: '/pangu-framework/',
+	baseUrl: '/',
 	// 百度统计 暂停使用
 	scripts: [
 		//https://pulanos.gitee.io/pangu-framework/
@@ -135,7 +134,7 @@ const config = {
 					position: 'left',
 				},
 				{
-					to: '/blog/',
+					to: 'https://xiongchun.pulanit.com/blog/tags/%E7%9B%98%E5%8F%A4%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6',
 					label: '博客',
 					position: 'left'
 				},
@@ -160,7 +159,7 @@ const config = {
 						to: '/docs/intro',
 					}, {
 						label: '博客专栏',
-						to: '/blog',
+						to: 'https://xiongchun.pulanit.com/blog/tags/%E7%9B%98%E5%8F%A4%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6',
 					}
 						, {
 						label: '常见问答',
@@ -200,7 +199,7 @@ const config = {
 				}
 				],
 				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
-<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://www.pulanit.com">PuLan Open Source Community</a><br><img src="https://pangu.pulanit.com/img/dashi.gif" />`,
+<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://www.pulanit.com">PuLan Open Source Community</a><br>滇ICP备 2022001611 号<br><img src="https://pangu.pulanit.com/img/dashi.gif" />`,
 			},
 			prism: {
 				theme: lightCodeTheme,
