@@ -8,11 +8,11 @@
 :maple_leaf: [https://pulanos.gitee.io/pangu-framework](https://pulanos.gitee.io/pangu-framework)（镜像1）  
 :sunflower: [https://xiongchun.github.io/pangu-framework](https://xiongchun.github.io/pangu-framework)（镜像2） 
 
-### 生态系统
-通用权限系统参考实现: [https://pangu-admin.pulanit.com](https://pangu-admin.pulanit.com)
-
 ### 作者博客
-[https://xiongchun.pulanit.com/](https://xiongchun.pulanit.com/)
+[https://xiongchun.pulanit.com/(https://xiongchun.pulanit.com/)
+
+### 生态系统
+- 通用权限系统参考实现: [https://pangu-admin.pulanit.com](https://pangu-admin.pulanit.com)
 
 ### 生态架构图
 ![盘古开发框架生态架构图-码农大熊](https://gitcode.net/pulanos/pangu-framework/-/raw/master/docs/resources/doc/34-pangu-framework.png)
