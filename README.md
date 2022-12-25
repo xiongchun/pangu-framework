@@ -9,7 +9,7 @@
 :sunflower: [https://xiongchun.github.io/pangu-framework](https://xiongchun.github.io/pangu-framework)（镜像2） 
 
 ### 作者博客
-[https://xiongchun.pulanit.com/(https://xiongchun.pulanit.com/)
+[https://xiongchun.pulanit.com](https://xiongchun.pulanit.com/)
 
 ### 生态系统
 - 通用权限系统参考实现: [https://pangu-admin.pulanit.com](https://pangu-admin.pulanit.com)
