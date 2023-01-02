@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[2421],{5977:a=>{a.exports=JSON.parse('{"label":"\u6cdb\u5316\u8c03\u7528","permalink":"/pangu-framework/blog/tags/\u6cdb\u5316\u8c03\u7528","allTagsPath":"/pangu-framework/blog/tags","count":1}')}}]);

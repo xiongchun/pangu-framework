@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[3658],{772:a=>{a.exports=JSON.parse('{"label":"Dubbo","permalink":"/pangu-framework/blog/tags/dubbo","allTagsPath":"/pangu-framework/blog/tags","count":1}')}}]);

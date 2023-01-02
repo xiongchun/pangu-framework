@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[4214],{1709:a=>{a.exports=JSON.parse('[{"label":"\u76d8\u53e4\u7b80\u4ecb","permalink":"/pangu-framework/faq/tags/\u76d8\u53e4\u7b80\u4ecb","count":2},{"label":"\u76d8\u53e4\u67b6\u6784","permalink":"/pangu-framework/faq/tags/\u76d8\u53e4\u67b6\u6784","count":2}]')}}]);

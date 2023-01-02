@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[3326],{8331:function(e){e.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/shen-yu","name":"ShenYu","count":1,"permalink":"/blog/tags/shen-yu"}')}}]);

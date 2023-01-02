@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[2794],{5500:e=>{e.exports=JSON.parse('{"permalink":"/pangu-framework/blog/tags/caddy","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"\u535a\u5ba2"}')}}]);

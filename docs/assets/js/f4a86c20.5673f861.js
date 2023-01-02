@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[9415],{1246:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/t-log","name":"TLog","count":1,"permalink":"/blog/tags/t-log"}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpangu_website=self.webpackChunkpangu_website||[]).push([[5720],{981:a=>{a.exports=JSON.parse('{"label":"TLog","permalink":"/pangu-framework/blog/tags/t-log","allTagsPath":"/pangu-framework/blog/tags","count":1}')}}]);
