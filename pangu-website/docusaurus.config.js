@@ -8,9 +8,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
 	title: '盘古开发框架项目官网:一套轻量稳健的工业级 Web 接口服务应用和中后台业务系统开发框架',
 	tagline: '一套轻量稳健的工业级 Web 接口服务应用和中后台业务系统开发框架',
-	url: 'https://pulanos.gitee.io',
+	url: 'https://pangu.pulanit.com',
 	onBrokenLinks: 'throw',
-	onBrokenMarkdownLinks: 'warn',
+	onBrokenMarkdownLinks: 'throw',
 	favicon: 'img/favicon.ico',
 	organizationName: 'xiongchun', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
@@ -21,7 +21,7 @@ const config = {
 		//https://pulanos.gitee.io/pangu-framework/
 		//{ src: 'https://hm.baidu.com/hm.js?8a2c2aae78c4983e3cf661fea34e6353', async: true },
 		//https://pangu.pulanit.com/
-		//{src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b',  async: true},
+		{src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b',  async: true},
 	],
 	i18n: {
 		defaultLocale: "zh-Hans",
@@ -41,15 +41,15 @@ const config = {
 					showLastUpdateTime: true,
 					breadcrumbs: true,
 				},
-				blog: {
-					blogTitle: '博客',
-					showReadingTime: true,
-					blogSidebarCount: 0,
-					blogSidebarTitle: '最新发布博客',
-					postsPerPage: 10,
-					// Please change this to your repo.
-					editUrl: 'https://gitee.com/pulanos/pangu-framework/tree/master/pangu-website/',
-				},
+				// blog: {
+				// 	blogTitle: '博客',
+				// 	showReadingTime: true,
+				// 	blogSidebarCount: 0,
+				// 	blogSidebarTitle: '最新发布博客',
+				// 	postsPerPage: 10,
+				// 	// Please change this to your repo.
+				// 	editUrl: 'https://gitee.com/pulanos/pangu-framework/tree/master/pangu-website/',
+				// },
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
 				},
@@ -208,7 +208,7 @@ const config = {
 			},
 			metadata: [
 				{ name: 'author', content: '码农大熊' },
-				{ name: 'keywords', content: '盘古开发框架 盘古通用权限系统 开源中后台业务脚手架 pangu-admin  分布式微服务架构 垂直单体分层架构 普蓝开源社区' },
+				{ name: 'keywords', content: '盘古开发框架 盘古通用权限系统 盘古开源中后台业务脚手架 pangu-admin 分布式微服务架构 垂直单体分层架构 码农大熊' },
 				// 百度站点收录验证
 				{ name: 'baidu-site-verification', content: 'code-FsdXztrzOo' }
 			]

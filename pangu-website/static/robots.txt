@@ -1,0 +1,32 @@
+User-agent: Baiduspider
+Disallow: 
+User-agent: Sosospider
+Disallow: 
+User-agent: sogou spider
+Disallow: 
+User-agent: YodaoBot
+Disallow: 
+User-agent: Googlebot
+Disallow: 
+User-agent: Bingbot
+Disallow: 
+User-agent: Slurp
+Disallow: 
+User-agent: MSNBot
+Disallow: 
+User-agent: googlebot-image
+Disallow: 
+User-agent: googlebot-mobile
+Disallow: 
+User-agent: yahoo-mmcrawler
+Disallow: 
+User-agent: yahoo-blogs/v3.9
+Disallow: 
+User-agent: psbot
+Disallow: 
+User-agent: *
+Disallow: 
+Crawl-delay: 60
+Sitemap: https://pangu.pulanit.com/sitemap.xml
+Sitemap: https://pulanos.gitee.io/pangu-framework/sitemap.xml
+Sitemap: https://xiongchun.github.io/pangu-framework/sitemap.xml
