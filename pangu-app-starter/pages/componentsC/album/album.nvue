@@ -6,7 +6,7 @@
 				<view class="album">
 					<view class="album__avatar">
 						<image
-						    src="/static/common/img/logo.svg"
+						    src="/static/common/img/logo.png"
 						    mode=""
 						    style="width: 32px;height: 32px;"
 						></image>
@@ -36,7 +36,7 @@
 				<view class="album">
 					<view class="album__avatar">
 						<image
-						    src="/static/common/img/logo.svg"
+						    src="/static/common/img/logo.png"
 						    mode=""
 						    style="width: 32px;height: 32px;"
 						></image>
@@ -63,7 +63,7 @@
 				<view class="album">
 					<view class="album__avatar">
 						<image
-						    src="/static/common/img/logo.svg"
+						    src="/static/common/img/logo.png"
 						    mode=""
 						    style="width: 32px;height: 32px;"
 						></image>
@@ -101,7 +101,7 @@
 				<view class="album">
 					<view class="album__avatar">
 						<image
-						    src="/static/common/img/logo.svg"
+						    src="/static/common/img/logo.png"
 						    mode=""
 						    style="width: 32px;height: 32px;"
 						></image>
@@ -133,7 +133,7 @@
 				<view class="album">
 					<view class="album__avatar">
 						<image
-						    src="/static/common/img/logo.svg"
+						    src="/static/common/img/logo.png"
 						    mode=""
 						    style="width: 32px;height: 32px;"
 						></image>

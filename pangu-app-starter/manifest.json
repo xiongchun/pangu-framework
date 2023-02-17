@@ -1,5 +1,5 @@
 {
-    "name" : "PanGu App Starter",
+    "name" : "盘古 APP Starter",
     "appid" : "__UNI__F9497E9",
     "description" : "盘古移动端多平台开发脚手架",
     "versionName" : "1.0.0",
@@ -91,6 +91,9 @@
                         "spotlight@3x" : "unpackage/res/icons/120x120.png"
                     }
                 }
+            },
+            "splashscreen" : {
+                "androidStyle" : "common"
             }
         }
     },
