@@ -140,7 +140,7 @@
                 "enable" : false
             }
         },
-        "title" : "uView UI",
+        "title" : "盘古移动端多平台开发框架",
         "sdkConfigs" : {
             "maps" : {
                 "qqmap" : {
