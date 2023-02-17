@@ -1,0 +1,105 @@
+<template>
+	<view class="wrap u-page">
+		<page-nav :desc="desc"></page-nav>
+		<view class="u-demo-block">
+			<text class="u-demo-block__title">JS API 说明</text>
+			<view class="u-demo-block__content">
+				<view class="u-page__text-item">
+					<u--text type="primary" :lines="3" :text="desc2"></u--text>
+				</view>
+			</view>
+		</view>
+		<u-cell-group>
+			<u-cell
+			    title="基础"
+			    icon="/static/example/cell.png"
+			></u-cell>
+			<u-cell
+			    title="网络"
+			    icon="/static/example/noNetwork.png"
+			></u-cell>
+			<u-cell
+			    title="媒体 文件"
+			    icon="/static/example/parse.png"
+			></u-cell>
+			<u-cell
+			    title="数据缓存"
+			    icon="/static/example/grid.png"
+			></u-cell>
+			<u-cell
+			    title="位置 地图"
+			    icon="/static/example/notify.png"
+			></u-cell>
+			<u-cell
+			    title="设备"
+			    icon="/static/example/sticky.png"
+			></u-cell>
+			<u-cell
+			    title="界面"
+			    icon="/static/example/form.png"
+			></u-cell>
+			<u-cell
+			    title="路由"
+			    icon="/static/example/link.png"
+			></u-cell>
+			<u-cell
+			    title="键盘"
+			    icon="/static/example/keyboard.png"
+			></u-cell>
+			<u-cell
+			    title="第三方服务 (支付 分享等)"
+			    icon="/static/example/tag.png"
+			></u-cell>
+			<u-cell
+			    title="平台扩展 原生插件"
+			    icon="/static/example/icon.png"
+			></u-cell>
+		</u-cell-group>
+		<u-gap height="30" bgColor="#fff"></u-gap>
+	</view>
+</template>
+
+<script>
+	import list from "./api.config.js";
+	export default {
+		data() {
+			return {
+				list: list,
+				desc: 'PanGu APP Starter 集成了原生支持 nvue 的 uni app 内置组件、官方扩展组件和全面兼容 nvue 的 uni app 生态框架 uView UI。',
+				desc2:'JS API 由标准 ECMAScript 的 js API 和 uni 扩展 API 这两部分组成。这里不做演示，仅列表如下以供参考。'
+			}
+		},
+		computed: {
+			getIcon() {
+				return path => {
+					return '/static/example/' + path + '.png';
+				}
+			},
+		},
+		methods: {
+			openPage(detail) {
+			},
+		}
+	}
+</script>
+
+<style>
+	/* page {
+		background-color: rgb(240, 242, 244);
+	} */
+</style>
+
+<style lang="scss">
+	
+	.u-page__text-item {
+		flex: 1;
+	}
+	
+	.u-demo-block__content {
+		@include flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+	
+</style>

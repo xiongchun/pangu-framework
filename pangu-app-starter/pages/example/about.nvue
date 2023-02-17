@@ -1,0 +1,51 @@
+<template>
+	<view class="wrap u-page">
+		<page-nav :desc="desc"></page-nav>
+
+		<view class="u-page__item">
+			<u-cell-group>
+				<u-cell
+				    title="版本号"
+				    value="V 1.0.0"
+				></u-cell>
+				<u-cell
+				    title="开源项目主页"
+				    value="https://pangu.pulanit.com"
+				>
+				</u-cell>
+			</u-cell-group>
+		</view>
+		
+		<u-gap height="30" bgColor="#fff"></u-gap>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				desc: 'PanGu APP Starter 集成了原生支持 nvue 的 uni app 内置组件、官方扩展组件和全面兼容 nvue 的 uni app 生态框架 uView UI。',
+			}
+		},
+		computed: {},
+		methods: {}
+	}
+</script>
+
+<style>
+	/* page {
+		background-color: rgb(240, 242, 244);
+	} */
+</style>
+
+<style lang="scss">
+	.u-cell-icon1 {
+		width: 36rpx;
+		height: 36rpx;
+		margin-right: 8rpx;
+	}
+
+	.u-cell-group__title__text {
+		font-weight: bold;
+	}
+</style>

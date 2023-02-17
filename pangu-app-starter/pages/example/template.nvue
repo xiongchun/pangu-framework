@@ -1,0 +1,65 @@
+<template>
+	<view class="wrap u-page">
+		<page-nav :desc="desc"></page-nav>
+		<u-empty mode="data" text="暂未提供典型业务场景的模版页面" :icon="iconPath">
+		</u-empty>
+		<u-gap height="30" bgColor="#fff"></u-gap>
+	</view>
+</template>
+
+<script>
+	import list from "./template.config.js";
+	export default {
+		data() {
+			return {
+				iconPath: '/static/common/img/nodata.png',
+				list: list,
+				desc: 'PanGu APP Starter 集成了原生支持 nvue 的 uni app 内置组件、官方扩展组件和全面兼容 nvue 的 uni app 生态框架 uView UI。',
+			}
+		},
+		computed: {
+			getIcon() {
+				return path => {
+					return 'https://cdn.uviewui.com/uview/example/' + path + '.png';
+				}
+			},
+		},
+		methods: {
+			openPage(detail) {
+				const path = detail.name
+				// #ifdef APP-NVUE
+				// 目前安卓nvue下，由于overflow只能为hidden，所以布局上的原因，暂不支持steps和tooltip等组件
+				if (uni.$u.os() === 'android') {
+					const noSupportForAndroid = ['steps']
+					for (let i = 0; i < noSupportForAndroid.length; i++) {
+						if (path.indexOf(noSupportForAndroid[i]) > -1) {
+							return uni.$u.toast('安卓nvue下暂不支持此组件')
+						}
+					}
+				}
+				// #endif
+				uni.$u.route({
+					url: path
+				})
+			},
+		}
+	}
+</script>
+
+<style>
+	/* page {
+		background-color: rgb(240, 242, 244);
+	} */
+</style>
+
+<style lang="scss">
+	.u-cell-icon1 {
+		width: 36rpx;
+		height: 36rpx;
+		margin-right: 8rpx;
+	}
+
+	.u-cell-group__title__text {
+		font-weight: bold;
+	}
+</style>
