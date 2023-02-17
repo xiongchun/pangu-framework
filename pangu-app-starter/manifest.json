@@ -1,7 +1,7 @@
 {
     "name" : "PanGu App Starter",
-    "appid" : "",
-    "description" : "盘古移动端跨平台开发框架",
+    "appid" : "__UNI__F9497E9",
+    "description" : "盘古移动端多平台开发脚手架",
     "versionName" : "1.0.0",
     "versionCode" : 1,
     "transformPx" : false,
@@ -147,5 +147,6 @@
         },
         "domain" : ""
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "locale" : "zh-Hans"
 }
