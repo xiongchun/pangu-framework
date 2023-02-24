@@ -168,11 +168,11 @@
 			return {
 				albumWidth: 0,
 				urls1: [{
-					src2: '/static/example/image/album-1.jpeg',
+					src2: 'https://resource.pulanit.com/img/album-1.jpeg',
 				}],
 				urls2: [
-					'/static/example/image/album-1.jpeg',
-					'/static/example/image/album-2.jpeg',
+					'https://resource.pulanit.com/img/album-1.jpeg',
+					'https://resource.pulanit.com/img/album-2.jpeg',
 					'https://cdn.uviewui.com/uview/album/3.jpg',
 					'https://cdn.uviewui.com/uview/album/4.jpg',
 					'https://cdn.uviewui.com/uview/album/5.jpg',
@@ -185,12 +185,12 @@
 				urls3: [
 					'https://cdn.uviewui.com/uview/album/5.jpg',
 					'https://cdn.uviewui.com/uview/album/6.jpg',
-					'/static/example/image/album-1.jpeg',
-					'/static/example/image/album-2.jpeg',
+					'https://resource.pulanit.com/img/album-1.jpeg',
+					'https://resource.pulanit.com/img/album-2.jpeg',
 				],
 				urls4: [
-					'/static/example/image/album-1.jpeg',
-					'/static/example/image/album-2.jpeg',
+					'https://resource.pulanit.com/img/album-1.jpeg',
+					'https://resource.pulanit.com/img/album-2.jpeg',
 					'https://cdn.uviewui.com/uview/album/9.jpg',
 					'https://cdn.uviewui.com/uview/album/10.jpg',
 				]

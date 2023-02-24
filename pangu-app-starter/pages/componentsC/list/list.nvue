@@ -29,8 +29,8 @@
 			return {
 				indexList: [],
 				urls: [
-					'/static/example/image/album-1.jpeg',
-					'/static/example/image/album-2.jpeg',
+					'https://resource.pulanit.com/img/album-1.jpeg',
+					'https://resource.pulanit.com/img/album-2.jpeg',
 					'/static/common/img/logo.svg',
 					'https://cdn.uviewui.com/uview/album/4.jpg',
 					'https://cdn.uviewui.com/uview/album/5.jpg',

@@ -446,7 +446,7 @@
 	"tabBar": {
 		"color": "#303133",
 		"selectedColor": "#529b2e",
-		"borderStyle": "#f4f4f5",
+		"borderStyle": "black",
 		"backgroundColor": "#f4f4f5",
 		"list": [{
 			"pagePath": "pages/example/components",

@@ -106,13 +106,13 @@
 				fileList1: [],
 				fileList2: [],
 				fileList3: [{
-					url: '/static/example/image/album-2.jpeg',
+					url: 'https://resource.pulanit.com/img/album-2.jpeg',
 				}],
 				fileList4: [{
-						url: '/static/example/image/album-1.jpeg',
+						url: 'https://resource.pulanit.com/img/album-1.jpeg',
 					},
 					{
-						url: '/static/example/image/album-2.jpeg',
+						url: 'https://resource.pulanit.com/img/album-2.jpeg',
 					}
 				],
 				fileList5: [],

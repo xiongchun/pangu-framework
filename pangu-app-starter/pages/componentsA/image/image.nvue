@@ -77,7 +77,7 @@
 	export default {
 		data() {
 			return {
-				src: '/static/example/image/album-1.jpeg',
+				src: 'https://resource.pulanit.com/img/album-1.jpeg',
 				src1:''
 			}
 		},
