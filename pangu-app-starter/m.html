@@ -1,0 +1,91 @@
+<!-- PC 浏览器打开App时手机风格包装页面 -->
+
+<html>
+
+<head>
+    <title>盘古移动端多平台快速开发脚手架（盘古开发框架旗下生态项目）</title>
+</head>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!--The Main Thing-->
+<div id="wrapper">
+    <div class="phone view_3" id="phone_1">
+        <iframe src="https://pangu-app-starter.pulanit.com/" id="frame_1"></iframe>
+    </div>
+</div>
+
+<!--Controls etc.-->
+<div id="controls">
+
+
+</div>
+<div id="linkBack" style="position:absolute;right:0px;bottom:0px;background-color:#333;margin:0;width:70px;padding:5px">
+    <a href="https://pangu-app-starter.pulanit.com" target="_blank"
+        style="font-size:14px;text-decoration:none;color:#fff;padding:0 0 0 5px;font-family:sans-serif">原始视图</a>
+</div>
+
+</html>
+
+<script>
+    /*Only needed for the controls*/
+    var phone = document.getElementById("phone_1"),
+        iframe = document.getElementById("frame_1");
+
+    /*Controls*/
+    function updateIframe() {
+        phone.style.width = "380px";
+        phone.style.height = $("body").height() - 100;
+    }
+    updateIframe();
+</script>
+
+<style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: #ffffff;
+    }
+
+    /*Basic Phone styling*/
+
+    .phone {
+        border: 40px solid #ddd;
+        border-width: 55px 7px;
+        border-radius: 40px;
+        margin: 0px auto;
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    .phone iframe {
+        border: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .phone.view_3 {
+        -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        box-shadow: 0px 3px 0 #BBB, 0px 4px 0 #BBB, 0px 5px 0 #BBB, 0px 7px 0 #BBB, 0px 10px 20px #666;
+    }
+
+    @media (max-width: 900px) {
+        #wrapper {
+            -webkit-transform: scale(0.8, 0.8);
+            transform: scale(0.8, 0.8);
+        }
+    }
+
+    @media (max-width: 700px) {
+        #wrapper {
+            -webkit-transform: scale(0.6, 0.6);
+            transform: scale(0.6, 0.6);
+        }
+    }
+
+    @media (max-width: 500px) {
+        #wrapper {
+            -webkit-transform: scale(0.4, 0.4);
+            transform: scale(0.4, 0.4);
+        }
+    }
+</style>
