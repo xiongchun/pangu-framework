@@ -1,7 +1,7 @@
 <template>
 	<view class="nav-wrap">
 		<view class="nav-title">
-			<u--image :showLoading="true" src="/static/common/img/logo.png" width="80px"
+			<u--image :showLoading="true" src="https://resource.pulanit.com/pangu-app-starter/common/img/logo.png" width="80px"
 				height="70px" />
 			<view class="nav-info">
 				<view class="nav-info__title">

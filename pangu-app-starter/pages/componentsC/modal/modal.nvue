@@ -79,7 +79,7 @@
 		>
 			<image
 				style="width: 80px;height: 80px;"
-				src="/static/uview/common/logo.png"
+				src="https://resource.pulanit.com/pangu-app-starter/common/img/logo.png"
 			></image>
 		</u-modal>
 		<u-modal

@@ -102,7 +102,7 @@
 					<view>
 						<view class="u-skeleton-slot">
 							<image
-								src="/static/uview/common/logo.png"
+								src="https://resource.pulanit.com/pangu-app-starter/common/img/logo.png"
 								class="u-skeleton-slot__image"
 							></image>
 							<view class="u-skeleton-slot__content">

@@ -113,26 +113,26 @@
 				show6: false,
 				list: [{
 						title: '基础使用',
-						iconUrl: '/static/example/picker/2.png'
+						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/picker/2.png'
 					},
 					{
 						title: '设置默认项',
-						iconUrl: '/static/example/picker/5.png'
+						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/picker/5.png'
 					},
 					{
 						title: '多列联动',
-						iconUrl: '/static/example/picker/1.png'
+						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/picker/1.png'
 					},
 					{
 						title: '加载中状态(切换第一列)',
-						iconUrl: '/static/example/picker/3.png'
+						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/picker/3.png'
 					},
 					{
 						title: '设置标题',
-						iconUrl: '/static/example/picker/4.png'
+						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/picker/4.png'
 					}, {
 						title: '允许点击遮罩关闭',
-						iconUrl: '/static/example/picker/6.png'
+						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/picker/6.png'
 					},
 				]
 			}

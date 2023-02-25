@@ -12,47 +12,47 @@
 		<u-cell-group>
 			<u-cell
 			    title="基础"
-			    icon="/static/example/cell.png"
+			    icon="https://resource.pulanit.com/pangu-app-starter/example/cell.png"
 			></u-cell>
 			<u-cell
 			    title="网络"
-			    icon="/static/example/noNetwork.png"
+			    icon="https://resource.pulanit.com/pangu-app-starter/example/noNetwork.png"
 			></u-cell>
 			<u-cell
 			    title="媒体 文件"
-			    icon="/static/example/parse.png"
+			    icon="https://resource.pulanit.com/pangu-app-starter/example/parse.png"
 			></u-cell>
 			<u-cell
 			    title="数据缓存"
-			    icon="/static/example/grid.png"
+			    icon="https://resource.pulanit.com/pangu-app-starter/example/grid.png"
 			></u-cell>
 			<u-cell
 			    title="位置 地图"
-			    icon="/static/example/notify.png"
+			    icon="https://resource.pulanit.com/pangu-app-starter/example/notify.png"
 			></u-cell>
 			<u-cell
 			    title="设备"
-			    icon="/static/example/sticky.png"
+			    icon="https://resource.pulanit.com/pangu-app-starter/example/sticky.png"
 			></u-cell>
 			<u-cell
 			    title="界面"
-			    icon="/static/example/form.png"
+			    icon="https://resource.pulanit.com/pangu-app-starter/example/form.png"
 			></u-cell>
 			<u-cell
 			    title="路由"
-			    icon="/static/example/link.png"
+			    icon="https://resource.pulanit.com/pangu-app-starter/example/link.png"
 			></u-cell>
 			<u-cell
 			    title="键盘"
-			    icon="/static/example/keyboard.png"
+			    icon="https://resource.pulanit.com/pangu-app-starter/example/keyboard.png"
 			></u-cell>
 			<u-cell
 			    title="第三方服务 (支付 分享等)"
-			    icon="/static/example/tag.png"
+			    icon="https://resource.pulanit.com/pangu-app-starter/example/tag.png"
 			></u-cell>
 			<u-cell
 			    title="平台扩展 原生插件"
-			    icon="/static/example/icon.png"
+			    icon="https://resource.pulanit.com/pangu-app-starter/example/icon.png"
 			></u-cell>
 		</u-cell-group>
 		<u-gap height="30" bgColor="#fff"></u-gap>
@@ -72,7 +72,7 @@
 		computed: {
 			getIcon() {
 				return path => {
-					return '/static/example/' + path + '.png';
+					return 'https://resource.pulanit.com/pangu-app-starter/example/' + path + '.png';
 				}
 			},
 		},

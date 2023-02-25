@@ -31,7 +31,7 @@
 				urls: [
 					'https://resource.pulanit.com/img/album-1.jpeg',
 					'https://resource.pulanit.com/img/album-2.jpeg',
-					'/static/common/img/logo.svg',
+					'https://resource.pulanit.com/pangu-app-starter/common/img/logo.png',
 					'https://cdn.uviewui.com/uview/album/4.jpg',
 					'https://cdn.uviewui.com/uview/album/5.jpg',
 					'https://cdn.uviewui.com/uview/album/6.jpg',
