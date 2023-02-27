@@ -48,7 +48,7 @@
 							duration: 3000
 						},
 						title: '主要通知',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/notify/main.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/notify/main.png'
 					}, {
 						notifyData: {
 							message: 'notify顶部提示',
@@ -60,7 +60,7 @@
 							safeAreaInsetTop: false
 						},
 						title: '成功通知',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/notify/success.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/notify/success.png'
 					}, {
 						notifyData: {
 							message: 'notify顶部提示',
@@ -72,7 +72,7 @@
 							safeAreaInsetTop: false
 						},
 						title: '危险通知',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/notify/error.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/notify/error.png'
 					}, {
 						notifyData: {
 							message: 'notify顶部提示',
@@ -84,7 +84,7 @@
 							safeAreaInsetTop: false
 						},
 						title: '警告通知',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/notify/warning.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/notify/warning.png'
 					},
 					{
 						notifyData: {
@@ -96,7 +96,7 @@
 							safeAreaInsetTop: false
 						},
 						title: '自定义样式',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/notify/customStyle.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/notify/customStyle.png'
 					},
 					{
 						notifyData: {
@@ -109,7 +109,7 @@
 							safeAreaInsetTop: false
 						},
 						title: '自定义时间',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/notify/customTime.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/notify/customTime.png'
 					},
 					{
 						notifyData: {
@@ -121,7 +121,7 @@
 							safeAreaInsetTop: true
 						},
 						title: '插入状态栏高度',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/notify/height.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/notify/height.png'
 					}
 				]
 			}

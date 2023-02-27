@@ -12,7 +12,7 @@
 	export default {
 		data() {
 			return {
-				iconPath: 'https://resource.pulanit.com/pangu-app-starter/common/img/nodata.png',
+				iconPath: 'https://cdn.pulanit.com/pangu-app-starter/common/img/nodata.png',
 				list: list,
 				desc: 'PanGu APP Starter 集成了原生支持 nvue 的 uni app 内置组件、官方扩展组件和全面兼容 nvue 的 uni app 生态框架 uView UI。',
 			}

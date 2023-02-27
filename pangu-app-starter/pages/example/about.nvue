@@ -6,7 +6,7 @@
 			<u-cell-group>
 				<u-cell
 				    title="版本号"
-				    value="V 1.0.0"
+				    value="V 1.0.1"
 				></u-cell>
 				<u-cell
 				    title="开源项目主页"

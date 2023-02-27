@@ -79,7 +79,7 @@
 		>
 			<image
 				style="width: 80px;height: 80px;"
-				src="https://resource.pulanit.com/pangu-app-starter/common/img/logo.png"
+				src="https://cdn.pulanit.com/pangu-app-starter/common/img/logo.png"
 			></image>
 		</u-modal>
 		<u-modal
@@ -123,39 +123,39 @@
 				show9: false,
 				list: [{
 						title: '基础使用',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/modal/4.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/modal/4.png'
 					},
 					{
 						title: '无标题',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/modal/5.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/modal/5.png'
 					},
 					{
 						title: '带取消按钮',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/modal/2.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/modal/2.png'
 					},
 					{
 						title: '异步关闭',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/modal/6.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/modal/6.png'
 					},
 					{
 						title: '对调取消和确认按钮',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/modal/3.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/modal/3.png'
 					},
 					{
 						title: '允许点击遮罩关闭',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/modal/7.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/modal/7.png'
 					},
 					{
 						title: '传入slot',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/modal/1.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/modal/1.png'
 					},
 					{
 						title: '自定义按钮',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/modal/8.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/modal/8.png'
 					},
 					{
 						title: '淡入淡出动画',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/modal/9.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/modal/9.png'
 					}
 				]
 			}

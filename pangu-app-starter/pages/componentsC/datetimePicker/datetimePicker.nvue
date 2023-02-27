@@ -124,28 +124,28 @@
 				show7: false,
 				list: [{
 						title: '完整日期时间',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/datetimePicker/6.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/datetimePicker/6.png'
 					},
 					{
 						title: '年月日',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/datetimePicker/4.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/datetimePicker/4.png'
 					},
 					{
 						title: '年月',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/datetimePicker/3.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/datetimePicker/3.png'
 					},
 					{
 						title: '时间',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/datetimePicker/5.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/datetimePicker/5.png'
 					}, {
 						title: '过滤器(保留偶数年)',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/datetimePicker/2.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/datetimePicker/2.png'
 					}, {
 						title: '格式化',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/datetimePicker/1.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/datetimePicker/1.png'
 					}, {
 						title: '限制最大最小值',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/datetimePicker/7.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/datetimePicker/7.png'
 					}
 				]
 			}

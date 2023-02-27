@@ -104,52 +104,52 @@
 				current: 0,
 				currentNum: 0,
 				list1: [
-					'https://resource.pulanit.com/pangu-app-starter/album/1.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/2.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/3.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/1.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/2.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/3.jpeg',
 				],
 				list2: [{
-						image: 'https://resource.pulanit.com/pangu-app-starter/album/4.jpeg',
+						image: 'https://cdn.pulanit.com/pangu-app-starter/album/4.jpeg',
 						title: '昨夜星辰昨夜风，画楼西畔桂堂东',
 						type: 'image',
 					},
 					{
-						image: 'https://resource.pulanit.com/pangu-app-starter/album/5.jpeg',
+						image: 'https://cdn.pulanit.com/pangu-app-starter/album/5.jpeg',
 						title: '身无彩凤双飞翼，心有灵犀一点通'
 					},
 					{
-						image: 'https://resource.pulanit.com/pangu-app-starter/album/6.jpeg',
+						image: 'https://cdn.pulanit.com/pangu-app-starter/album/6.jpeg',
 						title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
 					}
 				],
 				list3: [
-					'https://resource.pulanit.com/pangu-app-starter/album/7.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/8.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/9.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/7.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/8.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/9.jpeg',
 				],
 				list4: [{
-						url: 'https://resource.pulanit.com/pangu-app-starter/example/mp4/1.mp4',
+						url: 'https://cdn.pulanit.com/pangu-app-starter/example/mp4/1.mp4',
 						title: '昨夜星辰昨夜风，画楼西畔桂堂东',
-						poster: 'https://resource.pulanit.com/pangu-app-starter/album/7.jpeg',
+						poster: 'https://cdn.pulanit.com/pangu-app-starter/album/7.jpeg',
 					},
 					{
-						url: 'https://resource.pulanit.com/pangu-app-starter/album/10.jpeg',
+						url: 'https://cdn.pulanit.com/pangu-app-starter/album/10.jpeg',
 						title: '身无彩凤双飞翼，心有灵犀一点通'
 					},
 					{
-						url: 'https://resource.pulanit.com/pangu-app-starter/album/2.jpeg',
+						url: 'https://cdn.pulanit.com/pangu-app-starter/album/2.jpeg',
 						title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
 					}
 				],
 				list5: [
-					'https://resource.pulanit.com/pangu-app-starter/album/10.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/1.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/2.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/10.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/1.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/2.jpeg',
 				],
 				list6: [
-					'https://resource.pulanit.com/pangu-app-starter/album/9.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/6.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/3.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/9.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/6.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/3.jpeg',
 				]
 			}
 		},

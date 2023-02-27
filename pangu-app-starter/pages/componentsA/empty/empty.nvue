@@ -41,7 +41,7 @@
 		data() {
 			// 如果使用这些图片，请勿直接引入cdn.uviewui.com的资源，因为此资源路径随时会有变动
 			// 变动后，您将会访问图片失败，如有需要，您可以将这些图片上传到自己的oss或者服务器再使用
-			const baseUrl = 'https://cdn.uviewui.com/uview/empty/'
+			const baseUrl = 'https://cdn.pulanit.com/pangu-app-starter/common/empty/'
 			return {
 				mode: 'car',
 				imgList: {
@@ -63,56 +63,56 @@
 				list: [{
 						imgName: 'car',
 						title: '购物车为空(同时传入slot)',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/car.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/car.png'
 					},
 					{
 						imgName: 'data',
 						title: '数据为空',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/data.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/data.png'
 					}, {
 						imgName: 'comment',
 						title: '评论为空',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/comment.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/comment.png'
 					}, {
 						imgName: 'coupon',
 						title: '没有优惠券',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/coupon.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/coupon.png'
 					}, {
 						imgName: 'history',
 						title: '无历史记录',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/history.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/history.png'
 					}, {
 						imgName: 'list',
 						title: '列表为空',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/list.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/list.png'
 					}, {
 						imgName: 'message',
 						title: '消息列表为空',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/message.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/message.png'
 					}, {
 						imgName: 'news',
 						title: '无新闻列表',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/news.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/news.png'
 					}, {
 						imgName: 'order',
 						title: '订单为空',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/order.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/order.png'
 					}, {
 						imgName: 'page',
 						title: '页面不存在',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/page.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/page.png'
 					}, {
 						imgName: 'permission',
 						title: '无权限',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/permission.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/permission.png'
 					}, {
 						imgName: 'search',
 						title: '没有搜索结果',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/search.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/search.png'
 					}, {
 						imgName: 'wifi',
 						title: '没有WiFi',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/empty/wifi.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/empty/wifi.png'
 					},
 				]
 

@@ -77,13 +77,13 @@
 	export default {
 		data() {
 			return {
-				src: 'https://resource.pulanit.com/pangu-app-starter/album/1.jpeg',
+				src: 'https://cdn.pulanit.com/pangu-app-starter/album/1.jpeg',
 				src1:''
 			}
 		},
 		onLoad() {
 			setTimeout(()=>{
-				this.src1 = 'https://resource.pulanit.com/pangu-app-starter/album/3.jpeg'
+				this.src1 = 'https://cdn.pulanit.com/pangu-app-starter/album/3.jpeg'
 			},3000)
 		},
 		methods: {

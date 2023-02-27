@@ -141,27 +141,27 @@
 	export default {
 		data() {
 			return {
-				src1: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/15.jpg',
-				src2: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/16.jpg',
-				src3: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/14.jpg',
-				src4: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/4.jpg',
-				src5: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/5.jpg',
-				src6: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/6.jpg',
-				src7: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/default.png',
+				src1: 'https://cdn.pulanit.com/pangu-app-starter/example/avatar/15.jpg',
+				src2: 'https://cdn.pulanit.com/pangu-app-starter/example/avatar/16.jpg',
+				src3: 'https://cdn.pulanit.com/pangu-app-starter/example/avatar/14.jpg',
+				src4: 'https://cdn.pulanit.com/pangu-app-starter/example/avatar/4.jpg',
+				src5: 'https://cdn.pulanit.com/pangu-app-starter/example/avatar/5.jpg',
+				src6: 'https://cdn.pulanit.com/pangu-app-starter/example/avatar/6.jpg',
+				src7: 'https://cdn.pulanit.com/pangu-app-starter/example/avatar/default.png',
 				urls: [
-					'https://resource.pulanit.com/pangu-app-starter/example/avatar/1.jpg',
-					'https://resource.pulanit.com/pangu-app-starter/example/avatar/2.jpg',
-					'https://resource.pulanit.com/pangu-app-starter/example/avatar/3.jpg',
-					'https://resource.pulanit.com/pangu-app-starter/example/avatar/7.jpg'
+					'https://cdn.pulanit.com/pangu-app-starter/example/avatar/1.jpg',
+					'https://cdn.pulanit.com/pangu-app-starter/example/avatar/2.jpg',
+					'https://cdn.pulanit.com/pangu-app-starter/example/avatar/3.jpg',
+					'https://cdn.pulanit.com/pangu-app-starter/example/avatar/7.jpg'
 				],
 				urls2: [
-					'https://resource.pulanit.com/pangu-app-starter/example/avatar/10.jpg',
-					'https://resource.pulanit.com/pangu-app-starter/example/avatar/11.jpg',
-					'https://resource.pulanit.com/pangu-app-starter/example/avatar/12.jpg',
-					'https://resource.pulanit.com/pangu-app-starter/example/avatar/13.jpg',
-					'https://resource.pulanit.com/pangu-app-starter/example/avatar/14.jpg',
-					'https://resource.pulanit.com/pangu-app-starter/example/avatar/15.jpg',
-					'https://resource.pulanit.com/pangu-app-starter/example/avatar/16.jpg'
+					'https://cdn.pulanit.com/pangu-app-starter/example/avatar/10.jpg',
+					'https://cdn.pulanit.com/pangu-app-starter/example/avatar/11.jpg',
+					'https://cdn.pulanit.com/pangu-app-starter/example/avatar/12.jpg',
+					'https://cdn.pulanit.com/pangu-app-starter/example/avatar/13.jpg',
+					'https://cdn.pulanit.com/pangu-app-starter/example/avatar/14.jpg',
+					'https://cdn.pulanit.com/pangu-app-starter/example/avatar/15.jpg',
+					'https://cdn.pulanit.com/pangu-app-starter/example/avatar/16.jpg'
 				]
 			}
 		},

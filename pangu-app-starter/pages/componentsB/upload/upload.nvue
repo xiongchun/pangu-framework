@@ -51,7 +51,7 @@
 				<view class="u-page__upload-item">
 					<u-upload :fileList="fileList6" @afterRead="afterRead" @delete="deletePic" name="6" multiple
 						:maxCount="1" width="250" height="150">
-						<image src="https://resource.pulanit.com/pangu-app-starter/example/positive.png" mode="widthFix"
+						<image src="https://cdn.pulanit.com/pangu-app-starter/example/positive.png" mode="widthFix"
 							style="width: 250px;height: 150px;"></image>
 					</u-upload>
 				</view>
@@ -67,20 +67,20 @@
 				fileList1: [],
 				fileList2: [],
 				fileList3: [{
-						url: 'https://resource.pulanit.com/pangu-app-starter/album/4.jpeg',
+						url: 'https://cdn.pulanit.com/pangu-app-starter/album/4.jpeg',
 					},
 					{
-						url: 'https://resource.pulanit.com/pangu-app-starter/album/3.jpeg',
+						url: 'https://cdn.pulanit.com/pangu-app-starter/album/3.jpeg',
 					},
 					{
-						url: 'https://resource.pulanit.com/pangu-app-starter/album/2.jpeg',
+						url: 'https://cdn.pulanit.com/pangu-app-starter/album/2.jpeg',
 					}
 				],
 				fileList4: [{
-						url: 'https://resource.pulanit.com/pangu-app-starter/album/5.jpeg',
+						url: 'https://cdn.pulanit.com/pangu-app-starter/album/5.jpeg',
 					},
 					{
-						url: 'https://resource.pulanit.com/pangu-app-starter/album/6.jpeg',
+						url: 'https://cdn.pulanit.com/pangu-app-starter/album/6.jpeg',
 					}
 				],
 				fileList5: [],

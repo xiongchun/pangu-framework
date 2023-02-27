@@ -25,7 +25,7 @@
 		computed: {
 			getIcon() {
 				return path => {
-					return 'https://resource.pulanit.com/pangu-app-starter/example/' + path + '.png';
+					return 'https://cdn.pulanit.com/pangu-app-starter/example/' + path + '.png';
 				}
 			},
 		},

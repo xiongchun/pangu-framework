@@ -78,7 +78,7 @@
 							closeOnClickOverlay: true
 						},
 						title: '顶部弹出',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/popup/modeTop.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/popup/modeTop.png'
 					},
 					{
 						popupData: {
@@ -87,7 +87,7 @@
 							closeOnClickOverlay: true
 						},
 						title: '右侧弹出',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/popup/modeRight.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/popup/modeRight.png'
 					},
 					{
 						popupData: {
@@ -96,7 +96,7 @@
 							closeOnClickOverlay: true
 						},
 						title: '底部弹出',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/popup/modeBottom.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/popup/modeBottom.png'
 					},
 					{
 						popupData: {
@@ -105,7 +105,7 @@
 							closeOnClickOverlay: true
 						},
 						title: '左侧弹出',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/popup/modeLeft.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/popup/modeLeft.png'
 					},
 					{
 						popupData: {
@@ -115,7 +115,7 @@
 							closeOnClickOverlay: true
 						},
 						title: '居中弹出',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/popup/modeCenter.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/popup/modeCenter.png'
 					},
 					{
 						popupData: {
@@ -125,7 +125,7 @@
 							closeOnClickOverlay: true
 						},
 						title: '显示圆角',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/popup/showRadis.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/popup/showRadis.png'
 					},
 					{
 						popupData: {
@@ -135,7 +135,7 @@
 							closeOnClickOverlay: false
 						},
 						title: '禁止点击遮罩关闭',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/popup/noClose.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/popup/noClose.png'
 					},
 					{
 						popupData: {
@@ -145,7 +145,7 @@
 							closeOnClickOverlay: true
 						},
 						title: '显示关闭按钮',
-						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/popup/showCloseBtn.png'
+						iconUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/popup/showCloseBtn.png'
 					}
 				]
 			}

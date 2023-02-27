@@ -12,47 +12,47 @@
 		<u-cell-group>
 			<u-cell
 			    title="基础"
-			    icon="https://resource.pulanit.com/pangu-app-starter/example/cell.png"
+			    icon="https://cdn.pulanit.com/pangu-app-starter/example/cell.png"
 			></u-cell>
 			<u-cell
 			    title="网络"
-			    icon="https://resource.pulanit.com/pangu-app-starter/example/noNetwork.png"
+			    icon="https://cdn.pulanit.com/pangu-app-starter/example/noNetwork.png"
 			></u-cell>
 			<u-cell
 			    title="媒体 文件"
-			    icon="https://resource.pulanit.com/pangu-app-starter/example/parse.png"
+			    icon="https://cdn.pulanit.com/pangu-app-starter/example/parse.png"
 			></u-cell>
 			<u-cell
 			    title="数据缓存"
-			    icon="https://resource.pulanit.com/pangu-app-starter/example/grid.png"
+			    icon="https://cdn.pulanit.com/pangu-app-starter/example/grid.png"
 			></u-cell>
 			<u-cell
 			    title="位置 地图"
-			    icon="https://resource.pulanit.com/pangu-app-starter/example/notify.png"
+			    icon="https://cdn.pulanit.com/pangu-app-starter/example/notify.png"
 			></u-cell>
 			<u-cell
 			    title="设备"
-			    icon="https://resource.pulanit.com/pangu-app-starter/example/sticky.png"
+			    icon="https://cdn.pulanit.com/pangu-app-starter/example/sticky.png"
 			></u-cell>
 			<u-cell
 			    title="界面"
-			    icon="https://resource.pulanit.com/pangu-app-starter/example/form.png"
+			    icon="https://cdn.pulanit.com/pangu-app-starter/example/form.png"
 			></u-cell>
 			<u-cell
 			    title="路由"
-			    icon="https://resource.pulanit.com/pangu-app-starter/example/link.png"
+			    icon="https://cdn.pulanit.com/pangu-app-starter/example/link.png"
 			></u-cell>
 			<u-cell
 			    title="键盘"
-			    icon="https://resource.pulanit.com/pangu-app-starter/example/keyboard.png"
+			    icon="https://cdn.pulanit.com/pangu-app-starter/example/keyboard.png"
 			></u-cell>
 			<u-cell
 			    title="第三方服务 (支付 分享等)"
-			    icon="https://resource.pulanit.com/pangu-app-starter/example/tag.png"
+			    icon="https://cdn.pulanit.com/pangu-app-starter/example/tag.png"
 			></u-cell>
 			<u-cell
 			    title="平台扩展 原生插件"
-			    icon="https://resource.pulanit.com/pangu-app-starter/example/icon.png"
+			    icon="https://cdn.pulanit.com/pangu-app-starter/example/icon.png"
 			></u-cell>
 		</u-cell-group>
 		<u-gap height="30" bgColor="#fff"></u-gap>
@@ -72,7 +72,7 @@
 		computed: {
 			getIcon() {
 				return path => {
-					return 'https://resource.pulanit.com/pangu-app-starter/example/' + path + '.png';
+					return 'https://cdn.pulanit.com/pangu-app-starter/example/' + path + '.png';
 				}
 			},
 		},

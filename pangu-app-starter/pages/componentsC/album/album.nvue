@@ -6,7 +6,7 @@
 				<view class="album">
 					<view class="album__avatar">
 						<image
-						    src="https://resource.pulanit.com/pangu-app-starter/common/img/logo.png"
+						    src="https://cdn.pulanit.com/pangu-app-starter/common/img/logo.png"
 						    mode=""
 						    style="width: 32px;height: 32px;"
 						></image>
@@ -36,7 +36,7 @@
 				<view class="album">
 					<view class="album__avatar">
 						<image
-						    src="https://resource.pulanit.com/pangu-app-starter/common/img/logo.png"
+						    src="https://cdn.pulanit.com/pangu-app-starter/common/img/logo.png"
 						    mode=""
 						    style="width: 32px;height: 32px;"
 						></image>
@@ -63,7 +63,7 @@
 				<view class="album">
 					<view class="album__avatar">
 						<image
-						    src="https://resource.pulanit.com/pangu-app-starter/common/img/logo.png"
+						    src="https://cdn.pulanit.com/pangu-app-starter/common/img/logo.png"
 						    mode=""
 						    style="width: 32px;height: 32px;"
 						></image>
@@ -101,7 +101,7 @@
 				<view class="album">
 					<view class="album__avatar">
 						<image
-						    src="https://resource.pulanit.com/pangu-app-starter/common/img/logo.png"
+						    src="https://cdn.pulanit.com/pangu-app-starter/common/img/logo.png"
 						    mode=""
 						    style="width: 32px;height: 32px;"
 						></image>
@@ -133,7 +133,7 @@
 				<view class="album">
 					<view class="album__avatar">
 						<image
-						    src="https://resource.pulanit.com/pangu-app-starter/common/img/logo.png"
+						    src="https://cdn.pulanit.com/pangu-app-starter/common/img/logo.png"
 						    mode=""
 						    style="width: 32px;height: 32px;"
 						></image>
@@ -168,31 +168,31 @@
 			return {
 				albumWidth: 0,
 				urls1: [{
-					src2: 'https://resource.pulanit.com/pangu-app-starter/album/1.jpeg',
+					src2: 'https://cdn.pulanit.com/pangu-app-starter/album/1.jpeg',
 				}],
 				urls2: [
-					'https://resource.pulanit.com/pangu-app-starter/album/1.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/2.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/3.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/4.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/5.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/6.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/7.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/8.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/9.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/10.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/1.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/2.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/3.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/4.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/5.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/6.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/7.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/8.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/9.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/10.jpeg',
 				],
 				urls3: [
-					'https://resource.pulanit.com/pangu-app-starter/album/2.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/8.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/4.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/3.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/2.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/8.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/4.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/3.jpeg',
 				],
 				urls4: [
-					'https://resource.pulanit.com/pangu-app-starter/album/5.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/6.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/9.jpeg',
-					'https://resource.pulanit.com/pangu-app-starter/album/10.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/5.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/6.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/9.jpeg',
+					'https://cdn.pulanit.com/pangu-app-starter/album/10.jpeg',
 				]
 			}
 		}

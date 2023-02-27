@@ -72,8 +72,8 @@
 export default {
 	data() {
 		return {
-			goodsBaseUrl: 'https://resource.pulanit.com/pangu-app-starter/example/goods/',
-			menuBaseUrl: 'https://resource.pulanit.com/pangu-app-starter/example/menu/',
+			goodsBaseUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/goods/',
+			menuBaseUrl: 'https://cdn.pulanit.com/pangu-app-starter/example/menu/',
 			goodsArr: [{
 					price: '230.5',
 					thumbnail: '1.png'
