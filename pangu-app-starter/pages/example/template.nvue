@@ -18,11 +18,6 @@
 			}
 		},
 		computed: {
-			getIcon() {
-				return path => {
-					return 'https://cdn.uviewui.com/uview/example/' + path + '.png';
-				}
-			},
 		},
 		methods: {
 			openPage(detail) {
