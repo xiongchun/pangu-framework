@@ -128,7 +128,7 @@
 			</view>
 			<view class="u-demo-block__content" style="margin-top: 20px">
 				<u-avatar-group
-					:urls="urls"
+					:urls="urls2"
 					size="35"
 					gap="0.6"
 				></u-avatar-group>
@@ -141,21 +141,27 @@
 	export default {
 		data() {
 			return {
-				src1: 'https://cdn.uviewui.com/uview/album/1.jpg',
-				src2: 'https://cdn.uviewui.com/uview/album/2.jpg',
-				src3: 'https://cdn.uviewui.com/uview/album/3.jpg',
-				src4: 'https://cdn.uviewui.com/uview/album/4.jpg',
-				src5: 'https://cdn.uviewui.com/uview/album/5.jpg',
-				src6: 'https://cdn.uviewui.com/uview/album/6.jpg',
-				src7: 'https://cdn.uviewui.com/uview/album/noExist.jpg',
+				src1: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/15.jpg',
+				src2: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/16.jpg',
+				src3: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/14.jpg',
+				src4: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/4.jpg',
+				src5: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/5.jpg',
+				src6: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/6.jpg',
+				src7: 'https://resource.pulanit.com/pangu-app-starter/example/avatar/default.png',
 				urls: [
-					'https://cdn.uviewui.com/uview/album/1.jpg',
-					'https://cdn.uviewui.com/uview/album/2.jpg',
-					'https://cdn.uviewui.com/uview/album/3.jpg',
-					'https://cdn.uviewui.com/uview/album/4.jpg',
-					'https://cdn.uviewui.com/uview/album/7.jpg',
-					'https://cdn.uviewui.com/uview/album/6.jpg',
-					'https://cdn.uviewui.com/uview/album/5.jpg'
+					'https://resource.pulanit.com/pangu-app-starter/example/avatar/1.jpg',
+					'https://resource.pulanit.com/pangu-app-starter/example/avatar/2.jpg',
+					'https://resource.pulanit.com/pangu-app-starter/example/avatar/3.jpg',
+					'https://resource.pulanit.com/pangu-app-starter/example/avatar/7.jpg'
+				],
+				urls2: [
+					'https://resource.pulanit.com/pangu-app-starter/example/avatar/10.jpg',
+					'https://resource.pulanit.com/pangu-app-starter/example/avatar/11.jpg',
+					'https://resource.pulanit.com/pangu-app-starter/example/avatar/12.jpg',
+					'https://resource.pulanit.com/pangu-app-starter/example/avatar/13.jpg',
+					'https://resource.pulanit.com/pangu-app-starter/example/avatar/14.jpg',
+					'https://resource.pulanit.com/pangu-app-starter/example/avatar/15.jpg',
+					'https://resource.pulanit.com/pangu-app-starter/example/avatar/16.jpg'
 				]
 			}
 		},

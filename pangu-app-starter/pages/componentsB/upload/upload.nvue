@@ -4,14 +4,8 @@
 			<text class="u-demo-block__title">基础用法</text>
 			<view class="u-demo-block__content">
 				<view class="u-page__upload-item">
-				<u-upload
-				    :fileList="fileList1"
-				    @afterRead="afterRead"
-				    @delete="deletePic"
-				    name="1"
-				    multiple
-				    :maxCount="10"
-				></u-upload>
+					<u-upload :fileList="fileList1" @afterRead="afterRead" @delete="deletePic" name="1" multiple
+						:maxCount="10"></u-upload>
 				</view>
 			</view>
 		</view>
@@ -19,31 +13,17 @@
 			<text class="u-demo-block__title">上传视频</text>
 			<view class="u-demo-block__content">
 				<view class="u-page__upload-item">
-				<u-upload
-				    :fileList="fileList2"
-				    @afterRead="afterRead"
-				    @delete="deletePic"
-				    name="2"
-				    multiple
-				    :maxCount="10"
-				    accept="video"
-				></u-upload>
+					<u-upload :fileList="fileList2" @afterRead="afterRead" @delete="deletePic" name="2" multiple
+						:maxCount="10" accept="video"></u-upload>
 				</view>
 			</view>
 		</view>
-			<view class="u-demo-block">
+		<view class="u-demo-block">
 			<text class="u-demo-block__title">文件预览</text>
 			<view class="u-demo-block__content">
 				<view class="u-page__upload-item">
-				<u-upload
-				    :fileList="fileList3"
-				    @afterRead="afterRead"
-				    @delete="deletePic"
-				    name="3"
-				    multiple
-				    :maxCount="10"
-				    :previewFullImage="true"
-				></u-upload>
+					<u-upload :fileList="fileList3" @afterRead="afterRead" @delete="deletePic" name="3" multiple
+						:maxCount="10" :previewFullImage="true"></u-upload>
 				</view>
 			</view>
 		</view>
@@ -51,29 +31,17 @@
 			<text class="u-demo-block__title">隐藏上传按钮</text>
 			<view class="u-demo-block__content">
 				<view class="u-page__upload-item">
-				<u-upload
-				    :fileList="fileList4"
-				    @afterRead="afterRead"
-				    @delete="deletePic"
-				    name="4"
-				    multiple
-				    :maxCount="2"
-				></u-upload>
+					<u-upload :fileList="fileList4" @afterRead="afterRead" @delete="deletePic" name="4" multiple
+						:maxCount="2"></u-upload>
 				</view>
 			</view>
 		</view>
-			<view class="u-demo-block">
+		<view class="u-demo-block">
 			<text class="u-demo-block__title">限制上传数量</text>
 			<view class="u-demo-block__content">
 				<view class="u-page__upload-item">
-				<u-upload
-				    :fileList="fileList5"
-				    @afterRead="afterRead"
-				    @delete="deletePic"
-				    name="5"
-				    multiple
-				    :maxCount="3"
-				></u-upload>
+					<u-upload :fileList="fileList5" @afterRead="afterRead" @delete="deletePic" name="5" multiple
+						:maxCount="3"></u-upload>
 				</view>
 			</view>
 		</view>
@@ -81,17 +49,10 @@
 			<text class="u-demo-block__title">自定义上传样式</text>
 			<view class="u-demo-block__content">
 				<view class="u-page__upload-item">
-					<u-upload
-						:fileList="fileList6"
-						@afterRead="afterRead"
-						@delete="deletePic"
-						name="6"
-						multiple
-						:maxCount="1"
-						width="250"
-						height="150"
-					>
-						<image src="https://resource.pulanit.com/pangu-app-starter/example/positive.png" mode="widthFix" style="width: 250px;height: 150px;"></image>
+					<u-upload :fileList="fileList6" @afterRead="afterRead" @delete="deletePic" name="6" multiple
+						:maxCount="1" width="250" height="150">
+						<image src="https://resource.pulanit.com/pangu-app-starter/example/positive.png" mode="widthFix"
+							style="width: 250px;height: 150px;"></image>
 					</u-upload>
 				</view>
 			</view>
@@ -106,13 +67,20 @@
 				fileList1: [],
 				fileList2: [],
 				fileList3: [{
-					url: 'https://resource.pulanit.com/img/album-2.jpeg',
-				}],
-				fileList4: [{
-						url: 'https://resource.pulanit.com/img/album-1.jpeg',
+						url: 'https://resource.pulanit.com/pangu-app-starter/album/4.jpeg',
 					},
 					{
-						url: 'https://resource.pulanit.com/img/album-2.jpeg',
+						url: 'https://resource.pulanit.com/pangu-app-starter/album/3.jpeg',
+					},
+					{
+						url: 'https://resource.pulanit.com/pangu-app-starter/album/2.jpeg',
+					}
+				],
+				fileList4: [{
+						url: 'https://resource.pulanit.com/pangu-app-starter/album/5.jpeg',
+					},
+					{
+						url: 'https://resource.pulanit.com/pangu-app-starter/album/6.jpeg',
 					}
 				],
 				fileList5: [],
@@ -120,8 +88,7 @@
 				fileList7: []
 			}
 		},
-		onLoad() {
-		},
+		onLoad() {},
 		methods: {
 			// 删除图片
 			deletePic(event) {
@@ -173,8 +140,8 @@
 
 <style lang="scss">
 	.u-page {
-		&__upload-item{
-			margin-top:5px;
+		&__upload-item {
+			margin-top: 5px;
 		}
 	}
 </style>

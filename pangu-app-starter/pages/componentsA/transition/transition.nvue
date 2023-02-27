@@ -54,67 +54,67 @@ export default {
                     mode: "fade",
                     title: "淡入",
                     iconUrl:
-                        "https://cdn.uviewui.com/uview/demo/transition/fade.png",
+                        "https://resource.pulanit.com/pangu-app-starter/example/transition/fade.png",
                 },
                 {
                     mode: "fade-up",
                     title: "上滑淡入",
                     iconUrl:
-                        "https://cdn.uviewui.com/uview/demo/transition/fadeUp.png",
+                        "https://resource.pulanit.com/pangu-app-starter/example/transition/fadeUp.png",
                 },
                 {
                     mode: "zoom",
                     title: "缩放",
                     iconUrl:
-                        "https://cdn.uviewui.com/uview/demo/transition/zoom.png",
+                        "https://resource.pulanit.com/pangu-app-starter/example/transition/zoom.png",
                 },
                 {
                     mode: "fade-zoom",
                     title: "缩放淡入",
                     iconUrl:
-                        "https://cdn.uviewui.com/uview/demo/transition/fadeZoom.png",
+                        "https://resource.pulanit.com/pangu-app-starter/example/transition/fadeZoom.png",
                 },
                 {
                     mode: "fade-down",
                     title: "下滑淡入",
                     iconUrl:
-                        "https://cdn.uviewui.com/uview/demo/transition/fadeDown.png",
+                        "https://resource.pulanit.com/pangu-app-starter/example/transition/fadeDown.png",
                 },
                 {
                     mode: "fade-left",
                     title: "左滑淡入",
                     iconUrl:
-                        "https://cdn.uviewui.com/uview/demo/transition/fadeLeft.png",
+                        "https://resource.pulanit.com/pangu-app-starter/example/transition/fadeLeft.png",
                 },
                 {
                     mode: "fade-right",
                     title: "右滑淡入",
                     iconUrl:
-                        "https://cdn.uviewui.com/uview/demo/transition/fadeRight.png",
+                        "https://resource.pulanit.com/pangu-app-starter/example/transition/fadeRight.png",
                 },
                 {
                     mode: "slide-up",
                     title: "上滑进入",
                     iconUrl:
-                        "https://cdn.uviewui.com/uview/demo/transition/slideUp.png",
+                        "https://resource.pulanit.com/pangu-app-starter/example/transition/slideUp.png",
                 },
                 {
                     mode: "slide-down",
                     title: "下滑进入",
                     iconUrl:
-                        "https://cdn.uviewui.com/uview/demo/transition/slideDown.png",
+                        "https://resource.pulanit.com/pangu-app-starter/example/transition/slideDown.png",
                 },
                 {
                     mode: "slide-left",
                     title: "左滑进入",
                     iconUrl:
-                        "https://cdn.uviewui.com/uview/demo/transition/slideLeft.png",
+                        "https://resource.pulanit.com/pangu-app-starter/example/transition/slideLeft.png",
                 },
                 {
                     mode: "slide-right",
                     title: "右滑进入",
                     iconUrl:
-                        "https://cdn.uviewui.com/uview/demo/transition/slideRight.png",
+                        "https://resource.pulanit.com/pangu-app-starter/example/transition/slideRight.png",
                 },
             ],
         };

@@ -24,7 +24,7 @@
 				></u-cell>
 				<u-cell
 				    title="单元格"
-				    icon="https://cdn.uviewui.com/uview/example/tag.png"
+				    icon="https://resource.pulanit.com/pangu-app-starter/example/tag.png"
 				></u-cell>
 			</u-cell-group>
 		</view>

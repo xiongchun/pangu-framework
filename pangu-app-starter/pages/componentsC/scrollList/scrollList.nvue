@@ -72,39 +72,39 @@
 export default {
 	data() {
 		return {
-			goodsBaseUrl: 'https://cdn.uviewui.com/uview/goods/',
-			menuBaseUrl: 'https://cdn.uviewui.com/uview/menu/',
+			goodsBaseUrl: 'https://resource.pulanit.com/pangu-app-starter/example/goods/',
+			menuBaseUrl: 'https://resource.pulanit.com/pangu-app-starter/example/menu/',
 			goodsArr: [{
 					price: '230.5',
-					thumbnail: '1.jpg'
+					thumbnail: '1.png'
 				},
 				{
 					price: '74.1',
-					thumbnail: '2.jpg'
+					thumbnail: '2.png'
 				},
 				{
 					price: '8457',
-					thumbnail: '6.jpg'
+					thumbnail: '3.png'
 				},
 				{
 					price: '1442',
-					thumbnail: '5.jpg'
+					thumbnail: '4.png'
 				},
 				{
 					price: '541',
-					thumbnail: '2.jpg'
+					thumbnail: '5.png'
 				},
 				{
 					price: '234',
-					thumbnail: '3.jpg'
+					thumbnail: '6.png'
 				},
 				{
 					price: '562',
-					thumbnail: '4.jpg'
+					thumbnail: '7.png'
 				},
 				{
 					price: '251.5',
-					thumbnail: '1.jpg'
+					thumbnail: '8.png'
 				}
 			],
 			menuArr: [

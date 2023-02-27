@@ -233,7 +233,7 @@
 					    type="success"
 					    plain
 					    size="large"
-					    icon="https://cdn.uviewui.com/uview/example/tag.png"
+					    icon="https://resource.pulanit.com/pangu-app-starter/example/tag.png"
 					>
 					</u-tag>
 				</view>

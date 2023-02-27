@@ -53,15 +53,15 @@
 				showOpcatiy: false,
 				list: [{
 						title: '基本案列',
-						iconUrl: 'https://cdn.uviewui.com/uview/demo/overlay/baseCases.png'
+						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/overlay/baseCases.png'
 					},
 					{
 						title: '嵌入内容',
-						iconUrl: 'https://cdn.uviewui.com/uview/demo/overlay/embeddedContent.png'
+						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/overlay/embeddedContent.png'
 					},
 					{
 						title: '设置透明度',
-						iconUrl: 'https://cdn.uviewui.com/uview/demo/overlay/setTransparency.png'
+						iconUrl: 'https://resource.pulanit.com/pangu-app-starter/example/overlay/setTransparency.png'
 					},
 				]
 			}
