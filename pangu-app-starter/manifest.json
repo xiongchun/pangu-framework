@@ -2,8 +2,8 @@
     "name" : "盘古 APP Starter",
     "appid" : "__UNI__F9497E9",
     "description" : "盘古移动端多平台快速开发脚手架",
-    "versionName" : "1.0.1",
-    "versionCode" : 101,
+    "versionName" : "1.1.0",
+    "versionCode" : 110,
     "transformPx" : false,
     "app-plus" : {
         "optimization" : {

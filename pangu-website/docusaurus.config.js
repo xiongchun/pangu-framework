@@ -16,8 +16,8 @@ const config = {
 	projectName: 'pangu-framework', // Usually your repo name.
 	//baseUrl: '/',
 	baseUrl: '/pangu-framework/',
-	// 百度统计 暂停使用
 	scripts: [
+		// GiteEE托管的百度统计 暂停使用
 		//https://pulanos.gitee.io/pangu-framework/
 		//{ src: 'https://hm.baidu.com/hm.js?8a2c2aae78c4983e3cf661fea34e6353', async: true },
 		//https://pangu.pulanit.com/
@@ -61,15 +61,28 @@ const config = {
 		[
 			'@docusaurus/plugin-content-docs',
 			{
-				id: 'faq',
-				path: 'faq',
-				routeBasePath: 'faq',
-				sidebarPath: require.resolve('./sidebarsFaq.js'),
+				id: 'app',
+				path: 'app',
+				routeBasePath: 'app',
+				sidebarPath: require.resolve('./sidebarsApp.js'),
 				// ... other options
 				showLastUpdateAuthor: true,
 				showLastUpdateTime: true,
 				breadcrumbs: true,
-			},
+			}
+		],
+		[
+			'@docusaurus/plugin-content-docs',
+			{
+				id: 'admin',
+				path: 'admin',
+				routeBasePath: 'admin',
+				sidebarPath: require.resolve('./sidebarsAdmin.js'),
+				// ... other options
+				showLastUpdateAuthor: true,
+				showLastUpdateTime: true,
+				breadcrumbs: true,
+			}
 		]
 	],
 	themes:[
@@ -112,12 +125,27 @@ const config = {
 					type: 'doc',
 					docId: 'intro',
 					position: 'left',
-					label: '开发文档',
+					label: '服务开发',
 				},
 				{
-					to: '/faq/misc',
-					label: '常见问答',
+					to: '/admin/intro',
+					label: 'Admin 开发',
 					position: 'left'
+				},
+				{
+					to: '/app/misc',
+					label: 'APP 开发',
+					position: 'left'
+				},
+				{
+					href: '/online-demo',
+					label: '在线演示',
+					position: 'left',
+				},
+				{
+					href: '/faq',
+					label: '常见问答',
+					position: 'left',
 				},
 				{
 					to: '/thanks',
@@ -127,11 +155,6 @@ const config = {
 				{
 					href: '/community',
 					label: '社区',
-					position: 'left',
-				},
-				{
-					href: '/online-demo',
-					label: '演示系统',
 					position: 'left',
 				},
 				{
