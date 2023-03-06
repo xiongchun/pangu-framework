@@ -133,7 +133,7 @@ const config = {
 					position: 'left'
 				},
 				{
-					to: '/app/misc',
+					to: '/app/intro',
 					label: 'APP 开发',
 					position: 'left'
 				},
