@@ -3,20 +3,20 @@ hide_table_of_contents: false
 ---
 
 <head>
-  <title>在线体验-演示系统入口 | 盘古开发框架</title>
-  <meta name="keywords" content="盘古开发框架 | 部署运维指南" />
+  <title>在线体验-盘古 Admin 演示系统入口 | 盘古开发框架</title>
+  <meta name="keywords" content="盘古 Admin 在线演示系统 | 盘古开发框架" />
   <meta name="description" content="盘古开发框架是一套轻量稳健的工业级分布式微服务开发治理框架（兼容单体分层架构）" />
 </head>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 在线演示系统入口
+# 盘古 Admin ：中后台业务系统二次开发脚手架
 
-## PanGu-Admin-Web
-盘古中后台业务系统二次开发脚手架。在线演示地址：[https://pangu-admin.pulanit.com](https://pangu-admin.pulanit.com)
+## 在线演示地址
+[https://pangu-admin.pulanit.com](https://pangu-admin.pulanit.com)
 
-> 如下为部分截屏展示。
+## 演示系统截屏
 
 <Tabs>
 <TabItem value="1" label="1">

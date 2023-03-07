@@ -1,31 +1,35 @@
 ---
-title: 简介
-tags: [盘古 Admin]
-sidebar_position: 1
-slug: /intro
+hide_table_of_contents: false
 ---
 
 <head>
-  <title>盘古通用权限系统开发框架 | 快速开始 | SUCI(Vue3、Element-Plus) | 盘古开发框架</title>
-  <meta name="keywords" content="盘古通用权限系统开发框架 | 快速开始 | SUCI(Vue3、Element-Plus) | 盘古开发框架" />
+  <title>盘古 APP 在线演示系统 | 盘古开发框架</title>
+  <meta name="keywords" content="盘古 APP 在线演示系统 | 盘古开发框架" />
+  <meta name="description" content="盘古开发框架是一套轻量稳健的工业级分布式微服务开发治理框架（兼容单体分层架构）" />
 </head>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-**盘古 APP Starter** 是集成了 uni-app 内置组件、官方扩展组件和全面兼容 nvue 的 uni-app 生态框架 uView UI 的多平台快速开发脚手架。用户可以基于此完成Android/IOS App、微信小程序、H5 应用的快速开发。（一次开发，针对不同平台编译发布版本）
+# 盘古 APP : 移动端多平台快速开发脚手架
 
-- **uni-app 介绍**  
-[uni-app](https://uniapp.dcloud.net.cn) 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到 iOS、Android、Web（响应式）、以及各种小程序（微信/支付宝/百度/头条/飞书/QQ/快手/钉钉/淘宝）、快应用等多个平台。
+## 微信小程序在线演示
+- > 微信扫描访问  
+<img width="150" src={require('/resources/doc/pangu-app/16.jpg').default} alt="盘古 APP Starter" />
 
-- **uView UI 介绍**  
-[uView UI](https://www.uviewui.com/components/intro.html) 是全面兼容 nvue 的 uni-app 生态框架，全面的组件和便捷的工具会让您信手拈来，如鱼得水。
+## H5 Web 应用在线演示
+- > 微信或手机浏览器扫码访问
+<img width="150" src={require('/resources/doc/pangu-app/18.png').default} alt="盘古 APP Starter" />
 
-- **HBuilderX 介绍**  
-[HbuilderX](https://hx.dcloud.net.cn) 是一款免费的前端开发 IDE。uni-app 的多端编译部署能力依赖于它。所以，盘古 APP Starter 的标准开发工具也就是 HBuilderX。
+- > 电脑端浏览器模拟访问  
+[https://pangu-app-starter.pulanit.com/h5.html](https://pangu-app-starter.pulanit.com/h5.html)  
 
-## 盘古 APP Starter 截屏
-如下为盘古 APP Starter 的部分截屏。完整体验请访问：[在线演示](/online-demo-app)。
+## Android 原生应用在线演示
+- > 手机浏览器扫码下载安装（微信扫码无效）
+<img width="150" src={require('/resources/doc/pangu-app/19.png').default} alt="盘古 APP Starter" />
+
+
+## 在线演示截屏
 
 <Tabs>
 <TabItem value="1" label="1">
@@ -74,6 +78,3 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 
 </Tabs>
-
-## 下一步
-继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/community) 寻求更多帮助。

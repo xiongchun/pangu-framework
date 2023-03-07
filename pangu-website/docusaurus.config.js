@@ -21,12 +21,12 @@ const config = {
 		//https://pulanos.gitee.io/pangu-framework/
 		//{ src: 'https://hm.baidu.com/hm.js?8a2c2aae78c4983e3cf661fea34e6353', async: true },
 		//https://pangu.pulanit.com/
-		{src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b',  async: true},
+		{ src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b', async: true },
 	],
 	i18n: {
 		defaultLocale: "zh-Hans",
 		locales: ["zh-Hans"],
-	  },
+	},
 	presets: [
 		[
 			'classic',
@@ -85,15 +85,15 @@ const config = {
 			}
 		]
 	],
-	themes:[
+	themes: [
 		[
 			require.resolve("@easyops-cn/docusaurus-search-local"),
 			({
 				hashed: true,
 				language: ["en", "zh"],
-				highlightSearchTermsOnTargetPage:true,
-				indexPages:true,
-				searchResultLimits:10
+				highlightSearchTermsOnTargetPage: true,
+				indexPages: true,
+				searchResultLimits: 10
 			})
 		]
 	],
@@ -138,9 +138,19 @@ const config = {
 					position: 'left'
 				},
 				{
-					href: '/online-demo',
-					label: '在线演示',
+					type: 'dropdown',
+					label: '在线体验',
 					position: 'left',
+					items: [
+						{
+							label: '「盘古 Admin」中后台业务系统二次开发脚手架',
+							href: '/online-demo',
+						},
+						{
+							label: '「盘古 APP」移动端多平台快速开发脚手架',
+							href: '/online-demo-app',
+						}
+					],
 				},
 				{
 					href: '/faq',
