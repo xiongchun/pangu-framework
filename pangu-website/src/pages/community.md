@@ -14,7 +14,7 @@ hide_table_of_contents: false
  ## 主创团队🍃贡献者
 
 - **码农大熊**
-<img width="100" src={require('/img/xiongchun.png').default} alt="盘古开发框架生态架构图" />
+<img width="100" src={require('/img/xiongchun.png').default} alt="熊春 盘古开发框架" />
 
   Email: 307916217@qq.com   
   Blog: https://xiongchun.pulanit.com   

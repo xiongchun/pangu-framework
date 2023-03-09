@@ -37,3 +37,9 @@ export const Highlight = ({children, color}) => (
 
 ## 适用场景
 基于盘古开发框架的前、中、后台三维多端行业数字化赋能能力，用户既能快速构建面向（移动）互联网的电商、金融、云端 SAAS 服务等大并发高可用可扩展的互联网应用场景，同时也能满足诸如 ERP 、CRM 等各种企业数字化和各级电子政务系统的中小规模业务需求。
+
+## 生态架构图
+
+<img width="800"
+  src={require('/resources/doc/34-pangu-framework.png').default}
+  alt="盘古开发框架生态架构图" />

@@ -19,9 +19,9 @@ const config = {
 	scripts: [
 		// GiteEE托管的百度统计 暂停使用
 		//https://pulanos.gitee.io/pangu-framework/
-		//{ src: 'https://hm.baidu.com/hm.js?8a2c2aae78c4983e3cf661fea34e6353', async: true },
+		{ src: 'https://hm.baidu.com/hm.js?8a2c2aae78c4983e3cf661fea34e6353', async: true },
 		//https://pangu.pulanit.com/
-		{ src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b', async: true },
+		//{ src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b', async: true },
 	],
 	i18n: {
 		defaultLocale: "zh-Hans",
@@ -125,7 +125,7 @@ const config = {
 					to: '/intro',
 					label: '简介',
 					position: 'left'
-				},{
+				}, {
 					type: 'doc',
 					docId: 'intro',
 					position: 'left',
@@ -188,15 +188,14 @@ const config = {
 				links: [{
 					title: '文档',
 					items: [{
-						label: '用户指南',
+						label: '盘古服务开发',
 						to: '/docs/intro',
 					}, {
-						label: '博客专栏',
-						to: 'https://xiongchun.pulanit.com/blog/tags/%E7%9B%98%E5%8F%A4%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6',
-					}
-						, {
-						label: '常见问答',
-						to: '/faq/misc',
+						label: '盘古 Admin 开发',
+						to: '/admin/intro',
+					}, {
+						label: '盘古 APP 开发',
+						to: '/app/intro',
 					}
 					],
 				},
@@ -221,8 +220,8 @@ const config = {
 						label: '致敬',
 						to: '/thanks',
 					}, {
-						label: '在线演示',
-						to: '/online-demo',
+						label: '博客',
+						to: 'https://xiongchun.pulanit.com/blog/tags/%E7%9B%98%E5%8F%A4%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6',
 					},
 					{
 						label: 'Apache Software Foundation',
