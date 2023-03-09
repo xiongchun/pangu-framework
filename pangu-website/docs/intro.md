@@ -6,24 +6,11 @@ slug: /intro
 ---
 
 <head>
-  <title>盘古框架文档 | 盘古开发框架简介</title>
+  <title>盘古框架文档 | 盘古服务开发框架简介</title>
   <meta name="keywords" content="盘古框架文档 | 盘古开发框架简介" />
 </head>
 
-export const Highlight = ({children, color}) => (
-  <span
-    style={{
-      backgroundColor: color,
-      borderRadius: '3px',
-      color: '#fff',
-      padding: '0.1rem',
-      margin: '0.2rem'
-    }}>
-    {children}
-  </span>
-);
-
-[**盘古开发框架**](/) 是一套轻量稳健的工业级 Web 接口服务和中后台业务系统开发框架。原生支持微服务分布式架构的同时也兼容单体应用架构模式。基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)协议<Highlight color="#25c2a0">免费开源</Highlight>发布。我们希望不仅是开源的受益者也能成为开源贡献者，与开源社区一起**共建共享开源生态**。
+[盘古服务开发框架](/docs/intro)（PanGu Service Framework）以 Dubbo、Nacos 和 Spring Boot 为核心架构，可在云原生时代构建以「服务」为中心的现代应用架构，帮助用户在云环境中更好的构建、交付和管理自己的微服务平台（也兼容支持垂直单体分层架构开发模式）。
 
 ## 设计原则
 
@@ -46,17 +33,6 @@ export const Highlight = ({children, color}) => (
   src={require('/resources/doc/34-pangu-framework.png').default}
   alt="盘古开发框架生态架构图" />
 
-## 特性一览
-
-- **开箱即用、轻量灵活**  
-开箱即用的技术组件库，可随意组合、自动装配。轻量灵活的 [权限系统参考实现](/online-demo) ，可实现快速搭建二次开发脚手架的能力。同时支持大并发易扩展的高可用分布式架构也能快速组装成垂直单体分层架构。
-
-- **成熟架构、稳定可靠**  
-盘古技术栈融合云原生思想，在微服务、容器化、DevOps 等方面完美支持和适配。可在云原生时代构建以「服务」为中心的现代应用架构，帮助用户在云环境中更好的构建、交付和管理自己的微服务平台。
-
-- **全栈百搭适配各类业务场景**  
-聚焦面向（移动）互联网的电商、金融、云端 SAAS 服务等大并发高可用可扩展的业务场景。 同时也能满足诸如 ERP 、CRM 等各种企业数字化和各级电子政务系统的中小规模应用需求。
-
 ## 主要功能
 
 1. 自定义的 Spring Boot 启动器，完成各功能组件的自动装配。
@@ -72,7 +48,6 @@ export const Highlight = ({children, color}) => (
 11. 提供分布式环境下的多级缓存功能(注解式和编程式)。Caffeine 作为一级本地缓存，Redis 作为二级集中式缓存。
 12. 支持可配置、可监控的分布式任务调度。
 13. 支持注解声明式和编程式对业务代码在分布式环境下加并发互斥锁。
-14. 提供成熟的中后台业务系统二次开发脚手架（含前后端和 [权限系统参考实现](/online-demo) ）。<Highlight color="#F56C6C">HOT</Highlight>
 14. 应用日志输出级别动态切换、分布式日志跟踪等...
 
 ## 组件依赖
@@ -127,16 +102,8 @@ export const Highlight = ({children, color}) => (
   盘古数据治理（读写分离、数据分片等）自动装配模块
 - **pangu-generator-maven-plugin**  
   盘古代码生成器Maven插件
-- **pangu-admin** <Highlight color="#F56C6C">HOT</Highlight>  
-  盘古中后台业务系统二次开发脚手架（含前后端和 [权限系统参考实现](/online-demo) ）
-- **pangu-website**  
-  盘古项目官网和文档
 - **pangu-examples**  
   盘古框架模版化参考范例集
-
-## FAQ
-
-你最想了解的常见问答可能都在这里：[:soon: 常见问答 FAQ](/faq/misc)。
 
 ## 下一步
 

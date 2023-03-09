@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: '盘古开发框架项目官网:一套轻量稳健的工业级 Web 接口服务应用和中后台业务系统开发框架',
-	tagline: '一套轻量稳健的工业级 Web 接口服务应用和中后台业务系统开发框架',
+	title: '盘古开发框架项目官网:一套轻量稳健的工业级行业数字化赋能开发框架',
+	tagline: '一套轻量稳健的工业级行业数字化赋能开发框架',
 	url: 'https://pangu.pulanit.com',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'throw',
@@ -122,6 +122,10 @@ const config = {
 					src: 'img/logo.svg',
 				},
 				items: [{
+					to: '/intro',
+					label: '简介',
+					position: 'left'
+				},{
 					type: 'doc',
 					docId: 'intro',
 					position: 'left',
@@ -151,11 +155,6 @@ const config = {
 							href: '/online-demo-app',
 						}
 					],
-				},
-				{
-					href: '/faq',
-					label: '常见问答',
-					position: 'left',
 				},
 				{
 					to: '/thanks',
@@ -233,7 +232,7 @@ const config = {
 				}
 				],
 				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
-<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://www.pulanit.com">PuLan Open Source Community</a><br>滇ICP备 2022001611 号<br><img src="https://pangu.pulanit.com/img/dashi.gif" />`,
+<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://www.pulanit.com">PuLan Open Source Community</a><br><img src="https://pangu.pulanit.com/img/dashi.gif" />`,
 			},
 			prism: {
 				theme: lightCodeTheme,

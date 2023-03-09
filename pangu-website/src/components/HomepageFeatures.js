@@ -4,20 +4,20 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: '开箱即用、轻量灵活',
+    title: '免费开源、自主可控',
     Svg: require('../../static/img/plugins.svg').default,
     description: (
       <>
-        开箱即用的技术组件库，可随意组合、自动装配。轻量灵活的 <a href='online-demo'>权限系统参考实现</a> ，可实现快速搭建二次开发脚手架的能力。同时支持大并发易扩展的高可用分布式架构也能快速组装成垂直单体分层架构。
+        「盘古开发框架」基于商业友好的 <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache-2.0</a> 开源协议<b>免费开源</b>发布。我们希望能为业界持续输出正向、积极的力量，不仅做开源的受益者也能成为开源贡献者，与开源社区一起共建共享开源生态。
       </>
     ),
   },
   {
-    title: '成熟架构、稳定可靠',
+    title: '成熟生态、快速开发',
     Svg: require('../../static/img/feat_coming.svg').default,
     description: (
       <>
-        盘古技术栈融合云原生思想，在微服务、容器化、DevOps 等方面完美支持和适配。可在云原生时代构建以「服务」为中心的现代应用架构，帮助用户在云环境中更好的构建、交付和管理自己的微服务平台。
+        由盘古「服务开发框架」、「中后台系统开发脚手架」、「移动端多平台开发脚手架」组成前、中、后台三维多端行业数字化赋能开发框架。可在云原生时代构建以「服务」为中心的现代应用架构，帮助用户在云环境中更好的构建和交付数字化开发任务。
       </>
     ),
   },
@@ -26,8 +26,8 @@ const FeatureList = [
     Svg: require('../../static/img/feat_vault.svg').default,
     description: (
       <>
-        聚焦面向（移动）互联网的电商、金融、云端 SAAS 服务等大并发高可用可扩展的业务场景。
-        同时也能满足诸如 ERP 、CRM 等各种企业数字化和各级电子政务系统的中小规模应用需求。
+        聚焦面向（移动）互联网的电商、金融、云端 SAAS 服务等大并发高可用可扩展的互联网应用场景。
+        同时也能满足诸如 ERP 、CRM 等各种企业数字化和各级电子政务系统的中小规模业务需求。
       </>
     ),
   }
