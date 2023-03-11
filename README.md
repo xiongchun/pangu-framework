@@ -4,7 +4,7 @@
 
 ### 项目主页&开发指南
 
-:leaves: [https://pangu.pulanit.com](https://pangu.pulanit.com)
+[https://pangu.pulanit.com](https://pangu.pulanit.com)
 ### 作者博客
 [https://xiongchun.pulanit.com](https://xiongchun.pulanit.com/)
 
