@@ -1,6 +1,6 @@
 ### 介绍
 
-[**盘古开发框架**](https://pangu.pulanit.com) 是一套轻量稳健的工业级前、中、后台三维多端行业数字化赋能开发框架。基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议<Highlight color="#25c2a0">免费开源</Highlight>发布。我们希望不仅是开源的受益者也能成为开源贡献者，与开源社区一起**共建共享开源生态**。
+[**盘古开发框架**](https://pangu.pulanit.com) 是一套轻量稳健的工业级前、中、后台三维多端行业数字化赋能开发框架。包含：**盘古服务开发框架**、**盘古中后台业务系统开发脚手架** 和 **盘古移动端多平台开发脚手架**。基于商业友好的 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) 协议免费开源发布。
 
 ### 项目主页&开发指南
 
