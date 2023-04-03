@@ -38,7 +38,7 @@ const config = {
 					// Please change this to your repo.
 					editUrl: 'https://gitee.com/pulanos/pangu-framework/tree/master/pangu-website/',
 					showLastUpdateAuthor: true,
-					showLastUpdateTime: true,
+					showLastUpdateTime: false,
 					breadcrumbs: true,
 				},
 				// blog: {
@@ -67,7 +67,7 @@ const config = {
 				sidebarPath: require.resolve('./sidebarsApp.js'),
 				// ... other options
 				showLastUpdateAuthor: true,
-				showLastUpdateTime: true,
+				showLastUpdateTime: false,
 				breadcrumbs: true,
 			}
 		],
@@ -80,7 +80,7 @@ const config = {
 				sidebarPath: require.resolve('./sidebarsAdmin.js'),
 				// ... other options
 				showLastUpdateAuthor: true,
-				showLastUpdateTime: true,
+				showLastUpdateTime: false,
 				breadcrumbs: true,
 			}
 		]
@@ -129,7 +129,7 @@ const config = {
 					type: 'doc',
 					docId: 'intro',
 					position: 'left',
-					label: '服务开发',
+					label: '微服务开发',
 				},
 				{
 					to: '/admin/intro',
@@ -188,7 +188,7 @@ const config = {
 				links: [{
 					title: '文档',
 					items: [{
-						label: '盘古服务开发',
+						label: '盘古微服务开发',
 						to: '/docs/intro',
 					}, {
 						label: '盘古 Admin 开发',

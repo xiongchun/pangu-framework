@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('../../static/img/plugins.svg').default,
     description: (
       <>
-        「盘古开发框架」基于商业友好的 <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache-2.0</a> 开源协议<b>免费开源</b>发布。我们希望能为业界持续输出正向、积极的力量，不仅做开源的受益者也能成为开源贡献者，与开源社区一起共建共享开源生态。
+        「盘古开发框架」基于商业友好的 <a href='https://www.apache.org/licenses/LICENSE-2.0' target='_blank'>Apache-2.0</a> 开源协议<b>免费开源</b>发布。希望能为业界持续输出正向、积极的力量，不仅做开源的受益者也能成为开源贡献者，与开源社区一起共建共享开源生态。
       </>
     ),
   },

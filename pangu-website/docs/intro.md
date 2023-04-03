@@ -10,7 +10,7 @@ slug: /intro
   <meta name="keywords" content="盘古框架文档 | 盘古开发框架简介" />
 </head>
 
-[盘古服务开发框架](/docs/intro)（PanGu Service Framework）以 Dubbo、Nacos 和 Spring Boot 为核心架构，可在云原生时代构建以「服务」为中心的现代应用架构，帮助用户在云环境中更好的构建、交付和管理自己的微服务平台（也兼容支持垂直单体分层架构开发模式）。
+**盘古微服务开发框架** 以 Dubbo、Nacos 和 Spring Boot 为核心架构，可在云原生时代构建以「服务」为中心的现代应用架构，帮助用户在云环境中更好的构建、交付和管理自己的微服务平台（也兼容支持垂直单体分层架构开发模式）。
 
 ## 设计原则
 
