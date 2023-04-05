@@ -11,12 +11,9 @@ hide_table_of_contents: false
 
 任何关于盘古框架的问题、想法或建议都可以通过 [**issues**](https://gitee.com/pulanos/pangu-framework/issues?state=all) 提交。
 
- ## 主创团队🍃贡献者
+ ## 贡献者列表
 
-- **码农大熊**
-<img width="120" src={require('/img/xiongchun.png').default} alt="熊春 盘古开发框架" />
-
-  Email: 307916217@qq.com   
-  Blog: https://xiongchun.pulanit.com   
-  Gitee: https://gitee.com/xiong-chun    
-  Github: https://github.com/xiongchun  
+#### **码农大熊**
+- Email: 307916217@qq.com      
+- GitHub: [https://gitee.com/xiong-chun](https://gitee.com/xiong-chun)  
+- Blog: [https://xiongchun.pulanit.com](https://xiongchun.pulanit.com)
