@@ -161,23 +161,23 @@ const config = {
 					label: '致敬',
 					position: 'left'
 				},
-				{
+				/* {
 					href: '/community',
 					label: '社区',
 					position: 'left',
-				},
-				{
+				}, */
+				/* {
 					to: 'https://xiongchun.pulanit.com/blog/tags/%E7%9B%98%E5%8F%A4%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6',
 					label: '博客',
 					position: 'left'
-				},
+				}, */
 				{
 					href: 'https://gitee.com/pulanos/pangu-framework',
 					position: 'right',
 					className: 'header-gitee-link'
 				},
 				{
-					href: 'https://github.com/xiongchun/pangu-framework',
+					href: 'https://gitee.com/pulanos/pangu-framework',
 					position: 'right',
 					className: 'header-github-link'
 				}
@@ -219,19 +219,29 @@ const config = {
 					items: [{
 						label: '致敬',
 						to: '/thanks',
-					}, {
+					},
+					/*  {
 						label: '博客',
 						to: 'https://xiongchun.pulanit.com/blog/tags/%E7%9B%98%E5%8F%A4%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6',
-					},
-					{
+					}, */
+					/* {
 						label: 'Apache Software Foundation',
 						href: 'https://www.apache.org/',
+					} */
+					{
+						label: '盘古 Admin 在线体验',
+						to:'/online-demo'
+					},
+					{
+						label: '盘古 App 在线体验',
+						to:'/online-demo-app'
 					}
+
 					],
 				}
 				],
 				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
-<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://www.pulanit.com">PuLan Open Source Community</a><br><img src="https://pangu.pulanit.com/img/dashi.gif" />`,
+<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://gitee.com/pulanos">PanGu Open Source Community</a><br><img src="https://pangu.pulanit.com/img/dashi.gif" />`,
 			},
 			prism: {
 				theme: lightCodeTheme,
