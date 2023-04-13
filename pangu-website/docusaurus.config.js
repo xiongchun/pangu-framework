@@ -15,7 +15,7 @@ const config = {
 	organizationName: 'xiongchun', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
 	//baseUrl: '/',
-	baseUrl: '/pangu-framework/',
+	baseUrl: '/pangu-framework',
 	scripts: [
 		// GiteEE托管的百度统计 暂停使用
 		//https://pulanos.gitee.io/pangu-framework/
