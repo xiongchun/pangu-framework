@@ -21,7 +21,7 @@ export const Highlight = ({children, color}) => (
 
 # 盘古开发框架简介
 
-**盘古开发框架** 是一套轻量稳健的工业级前、中、后台三维多端行业数字化赋能开发基座。基于 [Apache](https://www.apache.org/licenses/LICENSE-2.0) 协议<Highlight color="#25c2a0">免费开源</Highlight>发布，希望与开源社区一起 **分析经验传递价值，共建共享开源生态**。
+**盘古开发框架** 是一套轻量稳健的工业级前、中、后台三维多端行业数字化赋能开发基座。基于 [Apache](https://www.apache.org/licenses/LICENSE-2.0) 协议<Highlight color="#25c2a0">免费开源</Highlight>发布，希望与开源社区一起 **分析经验、传递价值，共建共享开源生态**。
 
 ## 生态项目
 盘古开发框架由如下三个子项目组成。
