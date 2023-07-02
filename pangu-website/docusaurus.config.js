@@ -17,11 +17,8 @@ const config = {
 	//baseUrl: '/',
 	baseUrl: '/pangu-framework',
 	scripts: [
-		// GiteEE托管的百度统计 暂停使用
-		//https://pulanos.gitee.io/pangu-framework/
-		{ src: 'https://hm.baidu.com/hm.js?8a2c2aae78c4983e3cf661fea34e6353', async: true },
 		//https://pangu.pulanit.com/
-		//{ src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b', async: true },
+		{ src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b', async: true },
 	],
 	i18n: {
 		defaultLocale: "zh-Hans",
@@ -166,18 +163,18 @@ const config = {
 					label: '社区',
 					position: 'left',
 				}, */
-				/* {
-					to: 'https://xiongchun.pulanit.com/blog/tags/%E7%9B%98%E5%8F%A4%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6',
-					label: '博客',
+				 {
+					to: 'https://xiongchun.pulanit.com',
+					label: '作者博客',
 					position: 'left'
-				}, */
+				}, 
 				{
 					href: 'https://gitee.com/pulanos/pangu-framework',
 					position: 'right',
 					className: 'header-gitee-link'
 				},
 				{
-					href: 'https://gitee.com/pulanos/pangu-framework',
+					href: 'https://github.com/xiongchun/pangu-framework',
 					position: 'right',
 					className: 'header-github-link'
 				}
@@ -241,7 +238,7 @@ const config = {
 				}
 				],
 				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
-<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://gitee.com/pulanos">PanGu Open Source Community</a><br><img src="https://pangu.pulanit.com/img/dashi.gif" />`,
+<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://xiongchun.pulanit.com">程序员大熊</a> <a class="ghostwhite" href="https://beian.miit.gov.cn/" target="_blank">滇ICP备2022001611号-1</a><br><img src="https://pangu.pulanit.com/img/dashi.gif" />`,
 			},
 			prism: {
 				theme: lightCodeTheme,
