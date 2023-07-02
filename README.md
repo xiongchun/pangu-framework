@@ -4,7 +4,7 @@
 
 ### 项目主页&开发指南
 
-[https://pulanos.gitee.io/pangu-framework](https://pulanos.gitee.io/pangu-framework)
+[https://pangu.pulanit.com](https://pangu.pulanit.com)
 
-### 生态架构图
-![盘古开发框架生态架构图-码农大熊](https://gitcode.net/pulanos/pangu-framework/-/raw/master/docs/resources/doc/34-pangu-framework.png)
+### 作者博客
+[https://xiongchun.pulanit.com](https://xiongchun.pulanit.com)
