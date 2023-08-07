@@ -24,6 +24,11 @@ public class LogQueue {
     }
 
     public  boolean produce(LogIn logIn) {
+        // drop last message and re-deliver
+//        if (!blockingQueue.offer(logIn)) {
+//            blockingQueue.poll();
+//            blockingQueue.offer(logIn);
+//        }
         return blockingQueue.offer(logIn);
     }
 

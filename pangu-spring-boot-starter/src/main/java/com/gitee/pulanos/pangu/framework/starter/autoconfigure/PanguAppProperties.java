@@ -34,4 +34,9 @@ public class PanguAppProperties {
      */
     private String appId = "";
 
+    /**
+     * 根据Nacos配置实现动态热刷新日志级别（缺省：true）
+     */
+    private boolean logReload = true;
+
 }

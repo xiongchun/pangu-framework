@@ -46,16 +46,16 @@ public class PanguBaseAutoConfiguration {
     @ConditionalOnMissingBean(ApplicationExitHook.class)
     public ApplicationExitHook createApplicationExitHook(){
         ApplicationExitHook applicationExitHook = new ApplicationExitHook();
-        log.info("{}{}{}", Constants.Msg.OK, "实例化并自动装配了Bean组件：", StrUtil.lowerFirst(ApplicationExitHook.class.getSimpleName()));
+        log.info("{}{}{}", Constants.Msg.OK, "loaded a bean：", StrUtil.lowerFirst(ApplicationExitHook.class.getSimpleName()));
         return applicationExitHook;
     }
 
     @Bean
-    @ConditionalOnProperty(prefix = "pangu", name = "config.data-id")
+    @ConditionalOnProperty(prefix = "pangu", name = "log-reload", havingValue = "true")
     @ConditionalOnClass(ConfigService.class)
     public DynamicLogSwitcher createDynamicLogSwitcher() {
         DynamicLogSwitcher dynamicLogSwitcher = new DynamicLogSwitcher();
-        log.info("{}{}{}", Constants.Msg.OK, "实例化并自动装配了Bean组件：", StrUtil.lowerFirst(DynamicLogSwitcher.class.getSimpleName()));
+        log.info("{}{}{}", Constants.Msg.OK, "loaded a bean：", StrUtil.lowerFirst(DynamicLogSwitcher.class.getSimpleName()));
         return dynamicLogSwitcher;
     }
 
