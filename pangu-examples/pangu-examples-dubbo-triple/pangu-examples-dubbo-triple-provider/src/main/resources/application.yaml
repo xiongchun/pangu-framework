@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: pangu-examples-dubbo-triple-provider
+  profiles:
+    active: ${spring.profiles.active:dev}
+nacos:
+  config:
+    namespace: ${nacos.namespace:dev}
+    server-addr: ${nacos.server-addr:127.0.0.1:8848}
+    username: ${nacos.username:nacos}
+    password: ${nacos.password:nacos}
+    type: yaml
+    data-id: ${spring.application.name}.${nacos.config.type}
+    auto-refresh: true
+    bootstrap:
+      enable: true
+      log-enable: true
+dubbo:
+  registry:
+    address: nacos://${nacos.server-addr:127.0.0.1:8848}?namespace=${nacos.namespace:dev}
+    username: ${nacos.username:nacos}
+    password: ${nacos.password:nacos}
+  protocol:
+    name: tri
+    port: -1
+  application:
+    qos-port: 22222
+  consumer:
+    check: false
+

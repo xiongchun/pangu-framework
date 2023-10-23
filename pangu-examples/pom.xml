@@ -33,6 +33,7 @@
 		<module>pangu-examples-seata-at</module>
 		<module>pangu-examples-shardingsphere-readwrite-splitting</module>
 		<module>pangu-examples-shardingsphere-sharding</module>
+		<module>pangu-examples-dubbo-triple</module>
 	</modules>
 
 </project>
