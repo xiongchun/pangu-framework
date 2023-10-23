@@ -9,7 +9,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import java.util.Map;
 
 @Slf4j
-@DubboService(version = "1.0", group = "els-exporter2")
+@DubboService(version = "1.0", group = "pangu-examples-dubbo-triple-provider")
 public class GreetServiceImpl implements GreetService {
     public static Map<String, StreamObserver<String>> observerMap = Maps.newHashMap();
 

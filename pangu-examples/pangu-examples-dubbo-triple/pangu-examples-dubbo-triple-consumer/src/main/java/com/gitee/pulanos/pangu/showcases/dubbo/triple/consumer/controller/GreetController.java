@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class GreetController {
 
-    @DubboReference(version = "1.0", group = "els-exporter2")
+    @DubboReference(version = "1.0", group = "pangu-examples-dubbo-triple-provider")
     private GreetService greetService;
 
     @RequestMapping ("/greet")
