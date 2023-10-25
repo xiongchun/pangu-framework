@@ -11,15 +11,11 @@
 
 	<modules>
 		<module>pangu-common</module>
-		<module>pangu-parent</module>
+		<module>pangu-dependencies</module>
 		<module>pangu-spring-boot-starter</module>
 		<module>pangu-jdbc-spring-boot-starter</module>
-		<module>pangu-cache-spring-boot-starter</module>
 		<module>pangu-dubbo-spring-boot-starter</module>
 		<module>pangu-web-spring-boot-starter</module>
-		<module>pangu-rabbitmq-spring-boot-starter</module>
-		<module>pangu-seata-spring-boot-starter</module>
-		<module>pangu-data-governance-spring-boot-starter</module>
 		<module>pangu-generator-maven-plugin</module>
 	</modules>
 
