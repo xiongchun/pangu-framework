@@ -1,4 +1,4 @@
-package com.gitee.pulanos.pangu.framework.sdk.misc.page;
+package com.gitee.pulanos.pangu.framework.sdk.dto.page;
 
 import lombok.Data;
 import lombok.ToString;

@@ -17,7 +17,7 @@
 
 package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
 
-import com.gitee.pulanos.pangu.framework.common.Constants;
+import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PreDestroy;

@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.sdk.misc;
+package com.gitee.pulanos.pangu.framework.sdk.dto;
 
-import com.gitee.pulanos.pangu.framework.common.Constants;
+import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
@@ -57,8 +57,6 @@ public class Result<T> implements Serializable {
     /**
      * 接口调用成功（快捷模式）
      *
-     * @param <T>
-     * @return
      */
     public static <T> Result<T> success() {
         return new Result<T>().setCode(Constants.Code.SUCCESS).setMessage("SUCCESS");
@@ -67,9 +65,6 @@ public class Result<T> implements Serializable {
     /**
      * 接口调用成功（快捷模式）
      *
-     * @param data
-     * @param <T>
-     * @return
      */
     public static <T> Result<T> success(T data) {
         return new Result<T>().setCode(Constants.Code.SUCCESS).setMessage("SUCCESS").setData(data);
@@ -78,9 +73,6 @@ public class Result<T> implements Serializable {
     /**
      * 接口调用失败（快捷模式）
      *
-     * @param message
-     * @param <T>
-     * @return
      */
     public static <T> Result<T> fail(String message) {
         return new Result<T>().setCode(Constants.Code.BIZ_FAILED).setMessage(message);
@@ -89,8 +81,6 @@ public class Result<T> implements Serializable {
     /**
      * 实例返回对象
      *
-     * @param <T>
-     * @return
      */
     public static <T> Result<T> make() {
         return new Result<T>();

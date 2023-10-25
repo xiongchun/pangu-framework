@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.sdk.misc.exception;
+package com.gitee.pulanos.pangu.framework.sdk.exception;
 
-import com.gitee.pulanos.pangu.framework.common.Constants;
+import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
