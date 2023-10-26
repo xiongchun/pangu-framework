@@ -16,4 +16,5 @@
 #
 
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.gitee.pulanos.pangu.framework.starter.autoconfigure.PanguBaseAutoConfiguration
+com.gitee.pulanos.pangu.framework.starter.base.BaseAutoConfiguration,\
+com.gitee.pulanos.pangu.framework.starter.jdbc.JdbcAutoConfiguration

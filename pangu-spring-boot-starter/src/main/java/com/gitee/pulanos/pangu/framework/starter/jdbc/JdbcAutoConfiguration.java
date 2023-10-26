@@ -15,48 +15,48 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
+package com.gitee.pulanos.pangu.framework.starter.jdbc;
 
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.nacos.api.config.ConfigService;
+import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * PanguBaseAutoConfiguration
+ * JdbcAutoConfiguration
  *
  * @author xiongchun
  */
 @Slf4j
 @Configuration
-@EnableConfigurationProperties(PanguAppProperties.class)
-public class PanguBaseAutoConfiguration {
+@EnableConfigurationProperties(JdbcProperties.class)
+public class JdbcAutoConfiguration {
 
     @Autowired
-    private PanguAppProperties panguAppProperties;
+    private JdbcProperties jdbcProperties;
 
     @Bean
-    @ConditionalOnMissingBean(ApplicationExitHook.class)
-    public ApplicationExitHook createApplicationExitHook(){
-        ApplicationExitHook applicationExitHook = new ApplicationExitHook();
-        log.info("{}{}{}", Constants.Msg.OK, "loaded a bean：", StrUtil.lowerFirst(ApplicationExitHook.class.getSimpleName()));
-        return applicationExitHook;
+    @ConditionalOnMissingBean
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+        PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
+        String dbType = jdbcProperties.getDbType();
+        String msg = "自动识别";
+        if (StrUtil.isNotEmpty(dbType)){
+            //显式指定，免得每次都去自动获取类型拼装分页方言
+            DbType dbTypeEnum = DbType.getDbType(dbType);
+            paginationInnerInterceptor.setDbType(dbTypeEnum);
+            msg = dbTypeEnum.getDb();
+        }
+        interceptor.addInnerInterceptor(paginationInnerInterceptor);
+        log.info("{}分页插件 {} 自动装配成功，分页SQL方言被显式设置为:{}", Constants.Msg.OK, PaginationInnerInterceptor.class.getSimpleName(), msg);
+        return interceptor;
     }
-
-    @Bean
-    @ConditionalOnProperty(prefix = "pangu", name = "log-reload", havingValue = "true")
-    @ConditionalOnClass(ConfigService.class)
-    public DynamicLogSwitcher createDynamicLogSwitcher() {
-        DynamicLogSwitcher dynamicLogSwitcher = new DynamicLogSwitcher();
-        log.info("{}{}{}", Constants.Msg.OK, "loaded a bean：", StrUtil.lowerFirst(DynamicLogSwitcher.class.getSimpleName()));
-        return dynamicLogSwitcher;
-    }
-
 }

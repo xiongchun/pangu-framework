@@ -38,21 +38,23 @@
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <dubbo-spring-boot-starter.version>2.7.4.1</dubbo-spring-boot-starter.version>
         <dubbo-registry-nacos.version>2.7.4.1</dubbo-registry-nacos.version>
-        <nacos-config-spring-boot-starter.version>0.2.8</nacos-config-spring-boot-starter.version>
-        <nacos-config-spring-boot-actuator.version>0.2.8</nacos-config-spring-boot-actuator.version>
+        <nacos-config-spring-boot-starter.version>0.2.12</nacos-config-spring-boot-starter.version>
+        <nacos-config-spring-boot-actuator.version>0.2.12</nacos-config-spring-boot-actuator.version>
         <mybatis-plus.version>3.5.4</mybatis-plus.version>
         <lock4j.version>2.2.1</lock4j.version>
         <shenyu.version>2.4.1</shenyu.version>
         <seata.version>1.4.2</seata.version>
         <shardingsphere.version>5.1.0</shardingsphere.version>
         <layering-cache.version>3.3.4</layering-cache.version>
-        <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.33</mysql-connector-java.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
-        <fastjson.version>1.2.83</fastjson.version>
+        <fastjson2.version>2.0.41</fastjson2.version>
         <hutool-all.version>5.8.22</hutool-all.version>
         <tlog-all-spring-boot-starter.version>1.4.3</tlog-all-spring-boot-starter.version>
         <lombok.version>1.18.20</lombok.version>
+        <logback-classic.version>1.3.5</logback-classic.version>
+        <maven-plugin.version>3.8.2</maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -202,14 +204,19 @@
                 <version>${commons-lang3.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool-all.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback-classic.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.yomahub</groupId>
@@ -234,6 +241,17 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-plugin-api</artifactId>
+                <version>${maven-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.plugin-tools</groupId>
+                <artifactId>maven-plugin-annotations</artifactId>
+                <version>${maven-plugin.version}</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
+package com.gitee.pulanos.pangu.framework.starter.base;
 
 import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import lombok.extern.slf4j.Slf4j;
@@ -32,10 +32,6 @@ public class ApplicationExitHook {
 
     @PreDestroy
     public void applicationExitHandler() {
-        exitLog();
-    }
-
-    private void exitLog() {
         String info = Constants.Msg.APP_EXIT;
         if (log.isInfoEnabled()) {
             log.info(info);

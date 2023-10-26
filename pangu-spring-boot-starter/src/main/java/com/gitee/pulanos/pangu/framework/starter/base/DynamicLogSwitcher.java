@@ -15,22 +15,20 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.autoconfigure;
+package com.gitee.pulanos.pangu.framework.starter.base;
 
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.api.config.annotation.NacosConfigListener;
 import com.alibaba.nacos.spring.util.ConfigParseUtils;
-import com.gitee.pulanos.pangu.framework.common.Constants;
+import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.logging.LogLevel;
 import org.springframework.boot.logging.LoggingSystem;
 
 import javax.annotation.Resource;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * DynamicLogSwitcher
