@@ -15,6 +15,7 @@ nacos:
     bootstrap:
       enable: true
       log-enable: true
+
 dubbo:
   registry:
     address: nacos://${nacos.server-addr:127.0.0.1:8848}?namespace=${nacos.namespace:dev}

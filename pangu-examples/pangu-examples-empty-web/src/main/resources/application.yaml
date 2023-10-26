@@ -14,4 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-spring.profiles.active=${spring.profiles.active:dev}
+
+server:
+  port: 9090
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: pangu-examples-empty-web
+
+logging:
+  level:
+    root: INFO
