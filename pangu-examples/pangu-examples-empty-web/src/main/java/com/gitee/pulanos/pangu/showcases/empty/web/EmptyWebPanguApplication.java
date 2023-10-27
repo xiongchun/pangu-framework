@@ -17,12 +17,9 @@
 
 package com.gitee.pulanos.pangu.showcases.empty.web;
 
-import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
 
 /**
  * @author xiongchun
@@ -32,7 +29,7 @@ import javax.annotation.PostConstruct;
 public class EmptyWebPanguApplication {
 
 	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(EmptyWebPanguApplication.class).run(args);
+		SpringApplication.run(EmptyWebPanguApplication.class, args);
 	}
 
 }

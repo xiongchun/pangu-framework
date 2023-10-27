@@ -22,12 +22,12 @@ import com.alibaba.nacos.api.config.ConfigService;
 import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * PanguBaseAutoConfiguration
@@ -35,7 +35,7 @@ import org.springframework.context.annotation.Configuration;
  * @author xiongchun
  */
 @Slf4j
-@Configuration
+@AutoConfiguration
 @EnableConfigurationProperties(PanguAppProperties.class)
 public class BaseAutoConfiguration {
 
@@ -46,7 +46,7 @@ public class BaseAutoConfiguration {
     @ConditionalOnMissingBean(ApplicationExitHook.class)
     public ApplicationExitHook createApplicationExitHook(){
         ApplicationExitHook applicationExitHook = new ApplicationExitHook();
-        log.info("{}{}{}", Constants.Msg.OK, "loaded a bean：", StrUtil.lowerFirst(ApplicationExitHook.class.getSimpleName()));
+        log.info("{}{}{}", Constants.Msg.OK, "AutoConfiguration a bean：", StrUtil.lowerFirst(ApplicationExitHook.class.getSimpleName()));
         return applicationExitHook;
     }
 
@@ -55,7 +55,7 @@ public class BaseAutoConfiguration {
     @ConditionalOnClass(ConfigService.class)
     public DynamicLogSwitcher createDynamicLogSwitcher() {
         DynamicLogSwitcher dynamicLogSwitcher = new DynamicLogSwitcher();
-        log.info("{}{}{}", Constants.Msg.OK, "loaded a bean：", StrUtil.lowerFirst(DynamicLogSwitcher.class.getSimpleName()));
+        log.info("{}{}{}", Constants.Msg.OK, "AutoConfiguration a bean：", StrUtil.lowerFirst(DynamicLogSwitcher.class.getSimpleName()));
         return dynamicLogSwitcher;
     }
 
