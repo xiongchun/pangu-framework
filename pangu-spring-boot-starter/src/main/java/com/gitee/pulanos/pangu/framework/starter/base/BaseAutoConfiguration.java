@@ -46,7 +46,7 @@ public class BaseAutoConfiguration {
     @ConditionalOnMissingBean(ApplicationExitHook.class)
     public ApplicationExitHook createApplicationExitHook(){
         ApplicationExitHook applicationExitHook = new ApplicationExitHook();
-        log.info("{}{}{}", Constants.Msg.OK, "AutoConfiguration a bean：", StrUtil.lowerFirst(ApplicationExitHook.class.getSimpleName()));
+        log.info("{}{}{}", Constants.Msg.OK, "@AutoConfiguration a bean：", StrUtil.lowerFirst(ApplicationExitHook.class.getSimpleName()));
         return applicationExitHook;
     }
 
@@ -55,7 +55,7 @@ public class BaseAutoConfiguration {
     @ConditionalOnClass(ConfigService.class)
     public DynamicLogSwitcher createDynamicLogSwitcher() {
         DynamicLogSwitcher dynamicLogSwitcher = new DynamicLogSwitcher();
-        log.info("{}{}{}", Constants.Msg.OK, "AutoConfiguration a bean：", StrUtil.lowerFirst(DynamicLogSwitcher.class.getSimpleName()));
+        log.info("{}{}{}", Constants.Msg.OK, "@AutoConfiguration a bean：", StrUtil.lowerFirst(DynamicLogSwitcher.class.getSimpleName()));
         return dynamicLogSwitcher;
     }
 

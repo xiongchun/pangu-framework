@@ -64,19 +64,19 @@ public final class Constants {
         /**
          * 应用开始启动
          */
-        public final static String APP_START = "(ô‿ô) PanGu Dev Framework is Starting.... ㊥ 盘古开发框架开始启动...";
+        public final static String APP_START = "(ô‿ô) PanGu Dev Framework is Starting....";
         /**
          * 应用启动失败
          */
-        public final static String APP_START_ERROR = "(ô‿ô) PanGu Dev Framework Failed to Start ㊥ 盘古开发框架启动失败";
+        public final static String APP_START_ERROR = "(ô‿ô) PanGu Dev Framework Failed to Start";
         /**
          * 应用启动成功
          */
-        public final static String APP_START_SUCCESS = "(ô‿ô) PanGu Dev Framework Started successfully ㊥ 盘古开发框架启动成功";
+        public final static String APP_START_SUCCESS = "(ô‿ô) PanGu Dev Framework Started successfully";
         /**
          * 应用退出
          */
-        public final static String APP_EXIT = "(ô‿ô) PanGu Dev Framework Stopped ㊥ 盘古开发框架已停止";
+        public final static String APP_EXIT = "(ô‿ô) PanGu Dev Framework Stopped";
         /**
          * OK消息
          */

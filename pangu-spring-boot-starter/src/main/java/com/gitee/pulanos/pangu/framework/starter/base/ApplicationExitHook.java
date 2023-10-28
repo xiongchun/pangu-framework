@@ -20,6 +20,7 @@ package com.gitee.pulanos.pangu.framework.starter.base;
 import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 /**
