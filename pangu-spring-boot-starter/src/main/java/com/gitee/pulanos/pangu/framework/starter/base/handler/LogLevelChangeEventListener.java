@@ -34,19 +34,20 @@ import java.util.Map;
  * DynamicLogSwitcher
  *
  * @author xiongchun
- * @date 2021-02-10
  */
 @Slf4j
-public class DynamicLogSwitcher {
+public class LogLevelChangeEventListener {
 
     @Resource
     private LoggingSystem loggingSystem;
 
-    @Value("${nacos.config.type}")
+    @Value("${nacos.config.type:}")
     private String configType;
 
     private static final String LOGGER_PREFIX = "logging.level.";
 
+    //TODO bugfix SpringBoot 3.X上面监听不到配置变更信息
+    //当前Nacos API 还不支持SpringBoot 3.X
     @NacosConfigListener(dataId = "${nacos.config.data-id}", timeout = 5000)
     public void onChange(String newCfgText) {
         Map<String, Object> properties = ConfigParseUtils.toProperties(newCfgText, configType);
@@ -64,7 +65,7 @@ public class DynamicLogSwitcher {
             logValue = logValue.toUpperCase();
             LogLevel logLevel = LogLevel.valueOf(logValue);
             loggingSystem.setLogLevel(StrUtil.subAfter(logKey, LOGGER_PREFIX, true), logLevel);
-            log.info(StrUtil.format("{}成功热刷新了日志级别 >> {}:{}", Constants.Msg.OK, logKey, logValue));
+            log.info(StrUtil.format("{}成功热加载了日志级别 >> {}:{}", Constants.Msg.OK, logKey, logValue));
         }
     }
 

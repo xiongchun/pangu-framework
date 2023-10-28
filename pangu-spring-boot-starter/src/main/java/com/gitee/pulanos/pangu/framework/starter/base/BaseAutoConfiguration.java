@@ -21,9 +21,8 @@ import cn.hutool.core.util.StrUtil;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import com.gitee.pulanos.pangu.framework.starter.base.handler.ApplicationReadyEventListener;
-import com.gitee.pulanos.pangu.framework.starter.base.handler.ApplicationStartingEventListener;
 import com.gitee.pulanos.pangu.framework.starter.base.handler.AvailabilityChangeEventListener;
-import com.gitee.pulanos.pangu.framework.starter.base.handler.DynamicLogSwitcher;
+import com.gitee.pulanos.pangu.framework.starter.base.handler.LogLevelChangeEventListener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -32,8 +31,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.availability.AvailabilityChangeEvent;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.boot.context.event.ApplicationStartingEvent;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
@@ -54,29 +51,20 @@ public class BaseAutoConfiguration {
     @ConditionalOnMissingBean(AvailabilityChangeEventListener.class)
     // SpringBoot 2.7+
     @ConditionalOnClass(AvailabilityChangeEvent.class)
-    public AvailabilityChangeEventListener createAvailabilityChangeEventListener(){
+    public AvailabilityChangeEventListener newAvailabilityChangeEventListener(){
         AvailabilityChangeEventListener listener = new AvailabilityChangeEventListener();
-        log.info("{}{}{}", Constants.Msg.OK, "@AutoConfiguration bean：", StrUtil.lowerFirst(AvailabilityChangeEventListener.class.getSimpleName()));
+        log.info("{}{}{}", Constants.Msg.OK, "@AutoConfiguration bean: ", StrUtil.lowerFirst(AvailabilityChangeEventListener.class.getSimpleName()));
         return listener;
     }
 
     @Bean
-    @ConditionalOnMissingBean(ApplicationReadyEventListener.class)
-    // SpringBoot 2.7-
-    @ConditionalOnMissingClass("org.springframework.boot.availability.AvailabilityChangeEvent")
-    public ApplicationReadyEventListener createApplicationReadyEventListener(){
-        ApplicationReadyEventListener listener = new ApplicationReadyEventListener();
-        log.info("{}{}{}", Constants.Msg.OK, "@AutoConfiguration bean：", StrUtil.lowerFirst(ApplicationReadyEventListener.class.getSimpleName()));
-        return listener;
-    }
-
-    @Bean
-    @ConditionalOnProperty(prefix = "pangu", name = "log-reload", havingValue = "true")
+    @ConditionalOnMissingBean(LogLevelChangeEventListener.class)
+    @ConditionalOnProperty(prefix = "pangu", name = "log-reload", havingValue = "true", matchIfMissing = true)
     @ConditionalOnClass(ConfigService.class)
-    public DynamicLogSwitcher createDynamicLogSwitcher() {
-        DynamicLogSwitcher dynamicLogSwitcher = new DynamicLogSwitcher();
-        log.info("{}{}{}", Constants.Msg.OK, "@AutoConfiguration bean：", StrUtil.lowerFirst(DynamicLogSwitcher.class.getSimpleName()));
-        return dynamicLogSwitcher;
+    public LogLevelChangeEventListener newLogLevelChangeEventListener() {
+        LogLevelChangeEventListener listener = new LogLevelChangeEventListener();
+        log.info("{}{}{}", Constants.Msg.OK, "@AutoConfiguration bean: ", StrUtil.lowerFirst(LogLevelChangeEventListener.class.getSimpleName()));
+        return listener;
     }
 
 }

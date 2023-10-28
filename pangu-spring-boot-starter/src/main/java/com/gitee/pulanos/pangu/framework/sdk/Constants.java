@@ -64,15 +64,15 @@ public final class Constants {
         /**
          * 应用开始启动
          */
-        public final static String APP_START = "(ô‿ô) PanGu Dev Framework is Starting....";
+        public final static String APP_START = "[ô‿ô] PanGu Dev Framework is Starting....";
         /**
          * 应用启动失败
          */
-        public final static String APP_START_ERROR = "(ô‿ô) PanGu Dev Framework Failed to Start";
+        public final static String APP_START_ERROR = "[ô‿ô] PanGu Dev Framework Failed to Start";
         /**
          * 应用启动成功
          */
-        public final static String APP_START_SUCCESS = "(ô‿ô) PanGu Dev Framework Started successfully";
+        public final static String APP_START_SUCCESS = "[ô‿ô] PanGu Dev Framework Started successfully";
         /**
          * 应用退出
          */

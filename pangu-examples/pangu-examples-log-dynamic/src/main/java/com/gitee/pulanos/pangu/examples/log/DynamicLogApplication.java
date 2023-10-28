@@ -20,8 +20,10 @@ package com.gitee.pulanos.pangu.examples.log;
 import cn.hutool.core.lang.Console;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
-import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
+import com.alibaba.nacos.api.config.ConfigService;
+import com.alibaba.nacos.spring.context.annotation.config.EnableNacosConfig;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
@@ -35,7 +37,7 @@ import javax.annotation.PostConstruct;
 public class DynamicLogApplication {
 
 	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(DynamicLogApplication.class).run(args);
+		SpringApplication.run(DynamicLogApplication.class, args);
 	}
 
 	@Component

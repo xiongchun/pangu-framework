@@ -14,7 +14,7 @@ public class ApplicationStartingEventListener implements ApplicationListener<App
     // 这个监听比较特殊，需要在 spring.factories 中配置。这个事件发生时，Spring容器还没初始化，不能被托管。
     @Override
     public void onApplicationEvent(ApplicationStartingEvent event) {
-        println(StrUtil.format("{} {}", DateUtil.now(), Constants.Msg.APP_START));
+        println(Constants.Msg.APP_START);
     }
 
     private void println(String info){
