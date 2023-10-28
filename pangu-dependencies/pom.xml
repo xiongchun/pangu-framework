@@ -68,48 +68,8 @@
             </dependency>
             <dependency>
                 <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-common</artifactId>
-                <version>${pangu.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gitee.pulanos.pangu</groupId>
                 <artifactId>pangu-spring-boot-starter</artifactId>
-                <version>${pangu.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-web-spring-boot-starter</artifactId>
-                <version>${pangu.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-jdbc-spring-boot-starter</artifactId>
-                <version>${pangu.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-cache-spring-boot-starter</artifactId>
-                <version>${pangu.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-dubbo-spring-boot-starter</artifactId>
-                <version>${pangu.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-rabbitmq-spring-boot-starter</artifactId>
-                <version>${pangu.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-seata-spring-boot-starter</artifactId>
-                <version>${pangu.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gitee.pulanos.pangu</groupId>
-                <artifactId>pangu-data-governance-spring-boot-starter</artifactId>
-                <version>${pangu.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dubbo</groupId>

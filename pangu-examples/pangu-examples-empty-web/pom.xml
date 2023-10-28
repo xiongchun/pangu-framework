@@ -21,6 +21,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
+        <pangu.version>6.0</pangu.version>
     </properties>
 
     <dependencyManagement>
@@ -28,14 +29,14 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.7.17</version>
+                <version>${project.parent.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>com.gitee.pulanos.pangu</groupId>
                 <artifactId>pangu-dependencies</artifactId>
-                <version>6.0</version>
+                <version>${pangu.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -50,7 +51,6 @@
         <dependency>
             <groupId>com.gitee.pulanos.pangu</groupId>
             <artifactId>pangu-spring-boot-starter</artifactId>
-            <version>6.0</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
