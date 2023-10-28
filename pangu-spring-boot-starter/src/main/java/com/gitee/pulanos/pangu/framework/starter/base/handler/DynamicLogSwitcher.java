@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.base;
+package com.gitee.pulanos.pangu.framework.starter.base.handler;
 
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;

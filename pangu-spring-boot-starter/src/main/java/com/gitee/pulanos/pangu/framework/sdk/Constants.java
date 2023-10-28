@@ -76,11 +76,11 @@ public final class Constants {
         /**
          * 应用退出
          */
-        public final static String APP_EXIT = "(ô‿ô) PanGu Dev Framework Stopped";
+        public final static String APP_EXIT = "[ô‿ô] PanGu Dev Framework has been shut down";
         /**
          * OK消息
          */
-        public final static String OK = "[OK] ";
+        public final static String OK = "[ô‿ô] ";
     }
 
     /**
