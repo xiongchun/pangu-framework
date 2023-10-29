@@ -20,8 +20,8 @@ package com.gitee.pulanos.pangu.showcases.config.remote.nacos;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
-import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
@@ -35,7 +35,7 @@ import javax.annotation.PostConstruct;
 public class NacosConfigurationApplication {
 
 	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(NacosConfigurationApplication.class).run(args);
+		SpringApplication.run(NacosConfigurationApplication.class, args);
 	}
 
 	@Component
@@ -43,11 +43,11 @@ public class NacosConfigurationApplication {
 		/**
 		 * 开启 autoRefreshed配置项, 可以实现参数的动态刷新
 		 */
-		@NacosValue(value = "${demo.app.id}")
+		@NacosValue(value = "${demo.app.id:}")
 		private String appId;
-		@NacosValue(value = "${demo.app.name}", autoRefreshed = true)
+		@NacosValue(value = "${demo.app.name:}", autoRefreshed = true)
 		private String appName;
-		@NacosValue(value = "${demo.app.author}", autoRefreshed = true)
+		@NacosValue(value = "${demo.app.author:}", autoRefreshed = true)
 		private String appAuthor;
 
 		@PostConstruct

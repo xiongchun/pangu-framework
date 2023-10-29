@@ -21,7 +21,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <pangu.version>6.0</pangu.version>
     </properties>
 
     <dependencyManagement>
@@ -36,7 +35,7 @@
             <dependency>
                 <groupId>com.gitee.pulanos.pangu</groupId>
                 <artifactId>pangu-dependencies</artifactId>
-                <version>${pangu.version}</version>
+                <version>6.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

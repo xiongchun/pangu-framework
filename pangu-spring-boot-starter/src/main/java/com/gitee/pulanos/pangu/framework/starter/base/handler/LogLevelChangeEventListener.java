@@ -25,6 +25,7 @@ import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.logging.LogLevel;
+import org.springframework.boot.logging.LoggerConfiguration;
 import org.springframework.boot.logging.LoggingSystem;
 
 import javax.annotation.Resource;
@@ -46,6 +47,8 @@ public class LogLevelChangeEventListener {
 
     private static final String LOGGER_PREFIX = "logging.level.";
 
+    public static final String ROOT_LOGGER_NAME = "ROOT";
+
     //TODO bugfix SpringBoot 3.X上面监听不到配置变更信息
     //当前Nacos API 还不支持SpringBoot 3.X
     @NacosConfigListener(dataId = "${nacos.config.data-id}", timeout = 5000)
@@ -55,17 +58,31 @@ public class LogLevelChangeEventListener {
             String logKey = String.valueOf(key);
             if (logKey.startsWith(LOGGER_PREFIX)) {
                 String logValue = MapUtil.getStr(properties, logKey, LogLevel.INFO.toString());
-                refreshLogLevelByKey(logKey, logValue);
+                LogLevel logLevel = LogLevel.valueOf(logValue.toUpperCase());
+                String loggerName = StrUtil.subAfter(logKey, LOGGER_PREFIX, true);
+                if (StrUtil.equalsIgnoreCase("root", loggerName)){
+                    loggerName = ROOT_LOGGER_NAME;
+                }
+                LoggerConfiguration loggerConfiguration = loggingSystem.getLoggerConfiguration(loggerName);
+                if (loggerConfiguration != null){
+                    if (loggerConfiguration.getConfiguredLevel() != logLevel){
+                        loggingSystem.setLogLevel(loggerName, logLevel);
+                        setLogLevel(loggerName, logLevel);
+                    }
+                }
             }
         }
     }
 
-    public void refreshLogLevelByKey(String logKey, String logValue) {
-        if (StrUtil.isNotEmpty(logKey) && StrUtil.isNotEmpty(logValue)) {
-            logValue = logValue.toUpperCase();
-            LogLevel logLevel = LogLevel.valueOf(logValue);
-            loggingSystem.setLogLevel(StrUtil.subAfter(logKey, LOGGER_PREFIX, true), logLevel);
-            log.info(StrUtil.format("{}成功热加载了日志级别 >> {}:{}", Constants.Msg.OK, logKey, logValue));
+    private void setLogLevel(String loggerName, LogLevel logLevel){
+        if (loggerName != null && logLevel != null){
+            loggingSystem.setLogLevel(loggerName, logLevel);
+            String msg = StrUtil.format("{}Reloaded the Loglevel >> {}:{}", Constants.Msg.OK, loggerName, logLevel);
+            if (log.isInfoEnabled()){
+                log.info(msg);
+            }else {
+                System.out.println(msg);
+            }
         }
     }
 
