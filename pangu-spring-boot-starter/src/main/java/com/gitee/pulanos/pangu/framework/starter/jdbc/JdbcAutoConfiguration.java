@@ -24,6 +24,8 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -35,7 +37,7 @@ import org.springframework.context.annotation.Configuration;
  * @author xiongchun
  */
 @Slf4j
-@Configuration
+@AutoConfiguration
 @EnableConfigurationProperties(JdbcProperties.class)
 public class JdbcAutoConfiguration {
 
@@ -44,13 +46,14 @@ public class JdbcAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
+    @ConditionalOnClass(MybatisPlusInterceptor.class)
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        System.out.println("XC100");
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
         String dbType = jdbcProperties.getDbType();
         String msg = "自动识别";
         if (StrUtil.isNotEmpty(dbType)){
-            //显式指定，免得每次都去自动获取类型拼装分页方言
             DbType dbTypeEnum = DbType.getDbType(dbType);
             paginationInnerInterceptor.setDbType(dbTypeEnum);
             msg = dbTypeEnum.getDb();

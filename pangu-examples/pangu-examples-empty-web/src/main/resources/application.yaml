@@ -27,7 +27,3 @@ spring:
 logging:
   level:
     root: INFO
-
-pangu:
-  log-reload: true
-  app-id: appId-0

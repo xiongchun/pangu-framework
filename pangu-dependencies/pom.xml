@@ -51,7 +51,6 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <fastjson2.version>2.0.41</fastjson2.version>
         <hutool-all.version>5.8.22</hutool-all.version>
-        <tlog-all-spring-boot-starter.version>1.4.3</tlog-all-spring-boot-starter.version>
         <lombok.version>1.18.20</lombok.version>
         <logback-classic.version>1.3.5</logback-classic.version>
         <maven-plugin.version>3.8.2</maven-plugin.version>
@@ -177,25 +176,6 @@
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>${logback-classic.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.yomahub</groupId>
-                <artifactId>tlog-all-spring-boot-starter</artifactId>
-                <version>${tlog-all-spring-boot-starter.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>log4j</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>com.yomahub</groupId>
-                        <artifactId>tlog-dubbox</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>com.alibaba</groupId>
-                        <artifactId>fastjson</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>

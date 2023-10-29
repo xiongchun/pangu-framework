@@ -19,6 +19,7 @@ package com.gitee.pulanos.pangu.showcases.crud.service;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Console;
+import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -29,7 +30,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.showcases.crud.dao.entity.UserEntity;
 import com.gitee.pulanos.pangu.showcases.crud.dao.mapper.CrudMapper;
 import com.gitee.pulanos.pangu.showcases.crud.dao.mapper.UserMapper;
-import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -138,7 +138,7 @@ public class CrudService {
      */
     public void bSelect() {
         log.info("自定义SQL映射查询数据...");
-        Map<String, Object> params = Maps.newHashMap();
+        Map<String, Object> params = MapUtil.newHashMap();
         params.put("userType", "1");
         List<UserEntity> userEntities = crudMapper.listUsersByMap(params);
         userEntities.forEach(System.out::println);
@@ -156,7 +156,7 @@ public class CrudService {
     public void bPageQuery(){
         log.info("自定义SQL映射分页查询数据...");
         Page page = new Page<UserEntity>(1,3);
-        Map<String, Object> params = Maps.newHashMap();
+        Map<String, Object> params = MapUtil.newHashMap();
         params.put("userType", "1");
         List<UserEntity> userEntities = crudMapper.listUsersByPage(page, params);
         Console.log("总数：{}", page.getTotal());

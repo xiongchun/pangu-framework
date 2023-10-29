@@ -17,7 +17,7 @@
 
 package com.gitee.pulanos.pangu.showcases.crud;
 
-import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -27,7 +27,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @SpringBootApplication
 public class CrudApplication {
+
 	public static void main(String[] args) {
-		PanGuApplicationBuilder.init(CrudApplication.class).run(args);
+		SpringApplication.run(CrudApplication.class, args);
 	}
 }
