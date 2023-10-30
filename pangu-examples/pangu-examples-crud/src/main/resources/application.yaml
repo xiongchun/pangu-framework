@@ -26,9 +26,9 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: url=jdbc:mysql://localhost:3306/pangu-examples?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
+    url: jdbc:mysql://localhost:3306/pangu-examples?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true&useSSL=false&rewriteBatchedStatements=true
     username: root
-    password: root
+    password: root1
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
@@ -43,5 +43,6 @@ logging:
   level:
     root: INFO
     com.gitee.pulanos.pangu: INFO
+    com.gitee.pulanos.pangu.showcases.crud.dao: DEBUG
   file:
     name: logs/pangu.log

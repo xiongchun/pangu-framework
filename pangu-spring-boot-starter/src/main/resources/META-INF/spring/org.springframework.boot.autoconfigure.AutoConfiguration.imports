@@ -1,2 +1,3 @@
 # >= SpringBoot 2.7
 com.gitee.pulanos.pangu.framework.starter.base.BaseAutoConfiguration
+com.gitee.pulanos.pangu.framework.starter.jdbc.JdbcAutoConfiguration

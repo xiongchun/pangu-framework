@@ -1,6 +1,7 @@
 # < SpringBoot 2.7
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.gitee.pulanos.pangu.framework.starter.base.BaseAutoConfiguration
+com.gitee.pulanos.pangu.framework.starter.base.BaseAutoConfiguration,\
+com.gitee.pulanos.pangu.framework.starter.jdbc.JdbcAutoConfiguration
 
 org.springframework.context.ApplicationListener=\
 com.gitee.pulanos.pangu.framework.starter.base.handler.ApplicationStartingEventListener

@@ -29,7 +29,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * JdbcAutoConfiguration
@@ -48,18 +47,22 @@ public class JdbcAutoConfiguration {
     @ConditionalOnMissingBean
     @ConditionalOnClass(MybatisPlusInterceptor.class)
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        System.out.println("XC100");
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
         String dbType = jdbcProperties.getDbType();
-        String msg = "自动识别";
+        String dialect = null;
         if (StrUtil.isNotEmpty(dbType)){
             DbType dbTypeEnum = DbType.getDbType(dbType);
             paginationInnerInterceptor.setDbType(dbTypeEnum);
-            msg = dbTypeEnum.getDb();
+            dialect = dbTypeEnum.getDb();
+        }else {
+            dialect = "Auto ID"; // 运行时自动识别
+            log.warn("{}{}", Constants.Msg.FAIL, "Missing pagination plugin parameter configuration, [pangu.db-type]");
         }
         interceptor.addInnerInterceptor(paginationInnerInterceptor);
-        log.info("{}分页插件 {} 自动装配成功，分页SQL方言被显式设置为:{}", Constants.Msg.OK, PaginationInnerInterceptor.class.getSimpleName(), msg);
+        log.info("{}{}{} DB Dialect: [{}] ", Constants.Msg.OK, "@AutoConfiguration pagination plugin: ",
+                StrUtil.lowerFirst(PaginationInnerInterceptor.class.getSimpleName()), dialect);
         return interceptor;
     }
+
 }
