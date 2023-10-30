@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.web.autoconfigure;
+package com.gitee.pulanos.pangu.framework.starter.web;
 
-import com.gitee.pulanos.pangu.framework.common.Constants;
-import com.gitee.pulanos.pangu.framework.starter.web.interceptor.CrossOriginInterceptor;
+import com.gitee.pulanos.pangu.framework.sdk.Constants;
+import com.gitee.pulanos.pangu.framework.starter.web.handler.CrossOriginInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -32,7 +32,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author xiongchun
  */
 @Slf4j
-@Configuration
+@AutoConfiguration
 @EnableConfigurationProperties(WebProperties.class)
 public class WebAutoConfiguration implements WebMvcConfigurer {
 

@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.web.interceptor;
+package com.gitee.pulanos.pangu.framework.starter.web.handler;
 
 import org.springframework.http.HttpHeaders;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author xiongchun
  */
-public class CrossOriginInterceptor extends HandlerInterceptorAdapter {
+public class CrossOriginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {

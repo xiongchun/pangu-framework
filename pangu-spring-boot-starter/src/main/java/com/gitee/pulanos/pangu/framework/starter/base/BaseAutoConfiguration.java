@@ -39,11 +39,11 @@ import org.springframework.context.annotation.Bean;
  */
 @Slf4j
 @AutoConfiguration
-@EnableConfigurationProperties(PanguAppProperties.class)
+@EnableConfigurationProperties(BaseProperties.class)
 public class BaseAutoConfiguration {
 
     @Autowired
-    private PanguAppProperties panguAppProperties;
+    private BaseProperties panguAppProperties;
 
     @Bean
     @ConditionalOnMissingBean(AvailabilityChangeEventListener.class)

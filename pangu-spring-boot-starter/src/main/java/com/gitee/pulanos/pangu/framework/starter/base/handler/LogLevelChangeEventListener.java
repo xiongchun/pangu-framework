@@ -66,7 +66,6 @@ public class LogLevelChangeEventListener {
                 LoggerConfiguration loggerConfiguration = loggingSystem.getLoggerConfiguration(loggerName);
                 if (loggerConfiguration != null){
                     if (loggerConfiguration.getConfiguredLevel() != logLevel){
-                        loggingSystem.setLogLevel(loggerName, logLevel);
                         setLogLevel(loggerName, logLevel);
                     }
                 }

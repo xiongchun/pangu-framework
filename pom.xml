@@ -13,7 +13,6 @@
 		<module>pangu-dependencies</module>
 		<module>pangu-spring-boot-starter</module>
 		<module>pangu-dubbo-spring-boot-starter</module>
-		<module>pangu-web-spring-boot-starter</module>
 		<module>pangu-generator-maven-plugin</module>
 	</modules>
 

@@ -15,23 +15,28 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.web.autoconfigure;
+package com.gitee.pulanos.pangu.framework.starter.base;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * WebProperties
+ * PanguAppProperties
  *
  * @author xiongchun
  */
 @Data
-@ConfigurationProperties(prefix = "pangu.web")
-public class WebProperties {
+@ConfigurationProperties(prefix = "pangu")
+public class BaseProperties {
 
     /**
-     * 是否启用跨域访问(缺省 FALSE)
+     * 盘古应用ID标识(缺省："")
      */
-    private Boolean crossOrigin = false;
+    private String appId = "";
+
+    /**
+     * 根据Nacos配置实现动态热刷新日志级别（缺省：true）
+     */
+    private boolean logReload = true;
 
 }
