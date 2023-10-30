@@ -16,13 +16,17 @@
 #
 
 server:
-  port: 9090
+  port: 8888
 
 spring:
   profiles:
     active: dev
   application:
     name: pangu-examples-empty-web
+
+pangu:
+  web:
+    cross-origin: true
 
 logging:
   level:

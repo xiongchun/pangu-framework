@@ -15,22 +15,31 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.showcases.crud;
+package com.gitee.pulanos.pangu.showcases.empty.web.controller;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import com.gitee.pulanos.pangu.framework.sdk.dto.Result;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 演示WebAPI Controller
+ *
  * @author xiongchun
  */
-@EnableTransactionManagement
-@SpringBootApplication
-public class CrudApplication {
+@Slf4j
+@RestController
+public class DemoController {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CrudApplication.class, args);
-	}
+    /**
+     * case1
+     *
+     * @return
+     */
+    @RequestMapping("/case1")
+    public Result<String> case1() {
+        log.info("call case1...");
+        return Result.success("OK");
+    }
+
 }
