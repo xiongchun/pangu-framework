@@ -24,7 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * CrossOrigin Interceptor
+ * CrossOrigin Interceptor <br/>
+ * 针对一些特殊场景使用，功能缺省是关闭的。<br/>
+ * 更多的跨域场景请通过反向代理或网关组件来实现。
  *
  * @author xiongchun
  */

@@ -15,4 +15,4 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.jdbc;
+package com.gitee.pulanos.pangu.framework.starter.mybatisplus;

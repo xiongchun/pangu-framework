@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.jdbc;
+package com.gitee.pulanos.pangu.framework.starter.mybatisplus;
 
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.annotation.DbType;
@@ -29,28 +29,27 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
- * JdbcAutoConfiguration
+ * MybatisPlusAutoConfiguration
  *
  * @author xiongchun
  */
 @Slf4j
-@Configuration
-@EnableConfigurationProperties(JdbcProperties.class)
-public class JdbcAutoConfiguration {
+@AutoConfiguration
+@EnableConfigurationProperties(MybatisPlusProperties.class)
+@ConditionalOnClass(MybatisPlusInterceptor.class)
+public class MybatisPlusAutoConfiguration {
 
     @Autowired
-    private JdbcProperties jdbcProperties;
+    private MybatisPlusProperties mybatisPlusProperties;
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnClass(MybatisPlusInterceptor.class)
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        String dbType = mybatisPlusProperties.getDbType();
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
-        String dbType = jdbcProperties.getDbType();
         String dialect = null;
         if (StrUtil.isNotEmpty(dbType)){
             DbType dbTypeEnum = DbType.getDbType(dbType);
@@ -58,7 +57,7 @@ public class JdbcAutoConfiguration {
             dialect = dbTypeEnum.getDb();
         }else {
             dialect = "Auto ID"; // 运行时自动识别
-            log.warn("{}{}", Constants.Msg.FAIL, "Missing pagination plugin parameter configuration, [pangu.db-type]");
+            log.warn("{}{}", Constants.Msg.FAIL, "Missing pagination plugin parameter configuration, [pangu.mybatis-plus.db-type]");
         }
         interceptor.addInnerInterceptor(paginationInnerInterceptor);
         log.info("{}{}{} DB Dialect: [{}] ", Constants.Msg.OK, "@AutoConfiguration pagination plugin: ",

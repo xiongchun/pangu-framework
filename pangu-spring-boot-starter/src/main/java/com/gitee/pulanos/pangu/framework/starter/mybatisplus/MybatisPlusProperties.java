@@ -15,22 +15,22 @@
  * limitations under the License.
  */
 
-package com.gitee.pulanos.pangu.framework.starter.jdbc;
+package com.gitee.pulanos.pangu.framework.starter.mybatisplus;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * JdbcProperties
+ * MybatisPlusProperties
  *
  * @author xiongchun
  */
 @Data
-@ConfigurationProperties(prefix = "pangu.jdbc")
-public class JdbcProperties {
+@ConfigurationProperties(prefix = "pangu.mybatis-plus")
+public class MybatisPlusProperties {
 
     /**
-     * 分页SQL方言数据库类型标识（缺省：自动识别）
+     * MyBatisPlus 分页SQL方言数据库类型标识（缺省：自动识别）
      */
     private String dbType;
 

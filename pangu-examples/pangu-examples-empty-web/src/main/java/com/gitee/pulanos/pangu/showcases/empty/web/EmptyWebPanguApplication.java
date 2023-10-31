@@ -27,7 +27,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 @SpringBootApplication
 public class EmptyWebPanguApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(EmptyWebPanguApplication.class, args);
 	}
