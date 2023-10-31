@@ -19,7 +19,6 @@ package com.gitee.pulanos.pangu.framework.starter.web;
 
 import cn.hutool.core.util.StrUtil;
 import com.gitee.pulanos.pangu.framework.sdk.Constants;
-import com.gitee.pulanos.pangu.framework.starter.base.handler.AvailabilityChangeEventListener;
 import com.gitee.pulanos.pangu.framework.starter.web.handler.CrossOriginInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
