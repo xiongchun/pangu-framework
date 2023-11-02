@@ -36,8 +36,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
-        <dubbo-spring-boot-starter.version>2.7.4.1</dubbo-spring-boot-starter.version>
-        <dubbo-registry-nacos.version>2.7.4.1</dubbo-registry-nacos.version>
+        <dubbo-spring-boot-starter.version>3.2.7</dubbo-spring-boot-starter.version>
+        <dubbo-registry-nacos.version>3.2.7</dubbo-registry-nacos.version>
         <nacos-config-spring-boot-starter.version>0.2.12</nacos-config-spring-boot-starter.version>
         <nacos-config-spring-boot-actuator.version>0.2.12</nacos-config-spring-boot-actuator.version>
         <mybatis-plus.version>3.5.4</mybatis-plus.version>
