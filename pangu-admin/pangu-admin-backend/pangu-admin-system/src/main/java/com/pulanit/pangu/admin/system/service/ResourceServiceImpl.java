@@ -2,7 +2,6 @@ package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.CollectionUtil;
-import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
@@ -13,7 +12,6 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Assert;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.system.api.SystemConstants;
 import com.pulanit.pangu.admin.system.api.domain.MenuMetaInfo;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
@@ -26,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -44,7 +43,7 @@ public class ResourceServiceImpl implements ResourceService {
     public ResourceForLoginOut listForLogin(Long userId) {
         ResourceForLoginOut out = new ResourceForLoginOut();
         List<ResourceEntity> resourceEntities = resourceManager.listResourceEntitiesByUserId(userId);
-        List<ResourceEntity> menuEntities = Lists.newArrayList();
+        List<ResourceEntity> menuEntities = Collections.emptyList();;
         menuEntities.addAll(resourceEntities);
         CollectionUtil.filter(menuEntities, e -> !SystemConstants.ResourceType.BUTTON.equals(e.getType()));
         TreeNodeConfig config = new TreeNodeConfig();
@@ -109,7 +108,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public void batchDelete(List<Long> ids) {
-        List<Long> deleteIds = Lists.newArrayList();
+        List<Long> deleteIds = Collections.emptyList();;
         deleteIds.addAll(ids);
         while (CollUtil.isNotEmpty(ids)){
             QueryWrapper queryWrapper = Wrappers.query();

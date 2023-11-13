@@ -9,7 +9,6 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.api.param.DeptIn;
 import com.pulanit.pangu.admin.system.api.service.DeptService;
@@ -57,7 +56,7 @@ public class DeptServiceImpl implements DeptService {
         LambdaQueryWrapper<DeptEntity> queryWrapper = Wrappers.lambdaQuery();
         queryWrapper.like(ObjectUtil.isNotEmpty(name), DeptEntity::getName, name);
         List<DeptEntity> deptEntities = deptMapper.selectList(queryWrapper);
-        List<Tree<Integer>> treeNodes = Lists.newArrayList();
+        List<Tree<Integer>> treeNodes = Collections.emptyList();
         deptEntities.forEach(deptEntity -> {
             Tree<Integer> treeNode = new Tree<>();
             fillTreeNode(treeNode, deptEntity);
@@ -107,7 +106,7 @@ public class DeptServiceImpl implements DeptService {
     @Transactional
     @Override
     public void batchDelete(List<Long> ids) {
-        List<Long> deleteIds = Lists.newArrayList();
+        List<Long> deleteIds = Collections.emptyList();;
         deleteIds.addAll(ids);
         while (CollUtil.isNotEmpty(ids)){
             QueryWrapper queryWrapper = Wrappers.query();

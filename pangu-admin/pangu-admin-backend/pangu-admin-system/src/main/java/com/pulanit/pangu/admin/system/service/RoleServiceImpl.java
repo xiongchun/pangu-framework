@@ -1,6 +1,5 @@
 package com.pulanit.pangu.admin.system.service;
 
-import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
@@ -8,8 +7,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Assert;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.gitee.pulanos.pangu.framework.common.entity.PageResult;
-import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
+import com.gitee.pulanos.pangu.framework.sdk.dto.page.PageResult;
+import com.gitee.pulanos.pangu.framework.sdk.dto.page.PagingUtil;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.RoleResourceEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserRoleEntity;
@@ -18,7 +17,6 @@ import com.pulanit.pangu.admin.system.api.service.RoleService;
 import com.pulanit.pangu.admin.system.dao.mapper.RoleMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.RoleResourceMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserRoleMapper;
-import com.pulanit.pangu.admin.system.manager.RoleManager;
 import com.pulanit.pangu.admin.system.manager.UserManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;

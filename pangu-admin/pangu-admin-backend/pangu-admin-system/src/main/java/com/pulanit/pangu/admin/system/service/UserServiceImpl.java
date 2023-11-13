@@ -28,17 +28,18 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Assert;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.gitee.pulanos.pangu.framework.common.entity.PageResult;
-import com.gitee.pulanos.pangu.framework.common.exception.BizException;
-import com.gitee.pulanos.pangu.framework.common.utils.PagingUtil;
-import com.google.common.collect.Lists;
+import com.gitee.pulanos.pangu.framework.sdk.dto.page.PageResult;
+import com.gitee.pulanos.pangu.framework.sdk.dto.page.PagingUtil;
+import com.gitee.pulanos.pangu.framework.sdk.exception.BizException;
 import com.pulanit.pangu.admin.common.domain.UserInfo;
 import com.pulanit.pangu.admin.system.api.SystemConstants;
-import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserRoleEntity;
-import com.pulanit.pangu.admin.system.api.param.*;
+import com.pulanit.pangu.admin.system.api.param.LoginIn;
+import com.pulanit.pangu.admin.system.api.param.LoginOut;
+import com.pulanit.pangu.admin.system.api.param.UserOut;
+import com.pulanit.pangu.admin.system.api.param.UserPageIn;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import com.pulanit.pangu.admin.system.dao.mapper.RoleMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserMapper;
@@ -51,6 +52,7 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -172,7 +174,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<RoleEntity> queryRolesByUserId(Long userId) {
-        List<RoleEntity> roleEntities = Lists.newArrayList();
+        List<RoleEntity> roleEntities = Collections.emptyList();;
         List<Long> roleIds = userManager.queryRoleIdsByUserId(userId);
         if (CollUtil.isNotEmpty(roleIds)) {
             roleEntities = roleMapper.selectBatchIds(roleIds);
@@ -183,7 +185,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<RoleEntity> queryGrantRolesByUserId(Long userId) {
         Assert.notNull(userId, "用户编号不能为空");
-        List<RoleEntity> roleEntities = Lists.newArrayList();
+        List<RoleEntity> roleEntities = Collections.emptyList();;
         List<RoleEntity> allRoles = roleMapper.selectList(Wrappers.emptyWrapper());
         List<RoleEntity> grantedRoles = this.queryRolesByUserId(userId);
         return CollUtil.subtractToList(allRoles, grantedRoles);
