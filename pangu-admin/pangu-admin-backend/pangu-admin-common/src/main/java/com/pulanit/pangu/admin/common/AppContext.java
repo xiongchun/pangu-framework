@@ -1,6 +1,6 @@
 package com.pulanit.pangu.admin.common;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.pulanit.pangu.admin.common.domain.UserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.rpc.RpcContext;

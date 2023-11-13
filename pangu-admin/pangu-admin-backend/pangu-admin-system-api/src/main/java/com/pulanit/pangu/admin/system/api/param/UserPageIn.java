@@ -1,6 +1,6 @@
 package com.pulanit.pangu.admin.system.api.param;
 
-import com.gitee.pulanos.pangu.framework.common.entity.Page;
+import com.gitee.pulanos.pangu.framework.sdk.dto.page.Page;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

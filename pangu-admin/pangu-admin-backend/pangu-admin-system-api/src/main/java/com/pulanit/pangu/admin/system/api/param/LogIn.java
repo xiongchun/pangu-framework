@@ -1,7 +1,6 @@
 package com.pulanit.pangu.admin.system.api.param;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
