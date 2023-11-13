@@ -19,7 +19,7 @@ import com.pulanit.pangu.admin.system.dao.mapper.RoleResourceMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserRoleMapper;
 import com.pulanit.pangu.admin.system.manager.UserManager;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 @Slf4j
-@Service(version = "1.0.0", group = "pangu-admin-system-app")
+@DubboService(version = "1.0.0", group = "pangu-admin-system")
 public class RoleServiceImpl implements RoleService {
 
     @Autowired

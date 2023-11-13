@@ -14,7 +14,7 @@ import com.pulanit.pangu.admin.system.api.param.DeptIn;
 import com.pulanit.pangu.admin.system.api.service.DeptService;
 import com.pulanit.pangu.admin.system.dao.mapper.DeptMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +24,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
-@Service(version = "1.0.0", group = "pangu-admin-system-app")
+@DubboService(version = "1.0.0", group = "pangu-admin-system")
 public class DeptServiceImpl implements DeptService {
 
     @Autowired

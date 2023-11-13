@@ -21,7 +21,7 @@ import com.pulanit.pangu.admin.system.api.service.ResourceService;
 import com.pulanit.pangu.admin.system.dao.mapper.ResourceMapper;
 import com.pulanit.pangu.admin.system.manager.ResourceManager;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collections;
@@ -30,7 +30,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
-@Service(version = "1.0.0", group = "pangu-admin-system-app")
+@DubboService(version = "1.0.0", group = "pangu-admin-system")
 public class ResourceServiceImpl implements ResourceService {
 
     @Autowired
