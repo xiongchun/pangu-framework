@@ -32,7 +32,7 @@ public class ResourceManager {
     public List<ResourceEntity> listResourceEntitiesByRoleId(Long roleId){
         Assert.notNull(roleId, "角色 ID 不能为空");
         List<ResourceEntity> resourceEntities = Collections.emptyList();;
-        LambdaQueryWrapper lambdaQueryWrapper = Wrappers.lambdaQuery(RoleResourceEntity.class).eq(RoleResourceEntity::getRoleId, roleId);
+        LambdaQueryWrapper<RoleResourceEntity> lambdaQueryWrapper = Wrappers.lambdaQuery(RoleResourceEntity.class).eq(RoleResourceEntity::getRoleId, roleId);
         List<RoleResourceEntity> entities = roleResourceMapper.selectList(lambdaQueryWrapper);
         List<Long> resourceIds = entities.stream().map(RoleResourceEntity::getResourceId).collect(Collectors.toList());
         if (CollUtil.isNotEmpty(resourceIds)){
@@ -44,7 +44,7 @@ public class ResourceManager {
     public List<ResourceEntity> listResourceEntitiesByUserId(Long userId){
         Assert.notNull(userId, "用户 ID 不能为空");
         List<ResourceEntity> resourceEntities = Collections.emptyList();;
-        LambdaQueryWrapper lambdaQueryWrapper = Wrappers.lambdaQuery(UserRoleEntity.class).eq(UserRoleEntity::getUserId, userId);
+        LambdaQueryWrapper<UserRoleEntity> lambdaQueryWrapper = Wrappers.lambdaQuery(UserRoleEntity.class).eq(UserRoleEntity::getUserId, userId);
         List<UserRoleEntity> userRoleEntities = userRoleMapper.selectList(lambdaQueryWrapper);
         for (UserRoleEntity userRoleEntity : userRoleEntities) {
             resourceEntities.addAll(this.listResourceEntitiesByRoleId(userRoleEntity.getRoleId()));
