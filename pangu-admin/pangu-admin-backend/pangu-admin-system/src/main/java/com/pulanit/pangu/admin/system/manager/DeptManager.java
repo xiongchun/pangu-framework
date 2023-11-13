@@ -1,14 +1,13 @@
 package com.pulanit.pangu.admin.system.manager;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.lang.Console;
-import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.dao.mapper.DeptMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 
 import static com.pulanit.pangu.admin.system.api.SystemConstants.ROOT_NODE_ID;
@@ -30,7 +29,7 @@ public class DeptManager {
      * @return
      */
     public String queryCascadeDeptName(Long deptId){
-        List<String> names = Lists.newArrayList();
+        List<String> names = Collections.emptyList();;
         for (int i = 0; i < MAX_LOOP; i++) {
             DeptEntity deptEntity = findDeptEntityById(deptId);
             names.add(deptEntity.getName());

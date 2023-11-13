@@ -2,22 +2,17 @@ package com.pulanit.pangu.admin.system.manager;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Validator;
-import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.gitee.pulanos.pangu.framework.common.entity.PageResult;
-import com.google.common.collect.Lists;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserRoleEntity;
 import com.pulanit.pangu.admin.system.api.param.UserOut;
-import com.pulanit.pangu.admin.system.api.param.UserPageIn;
 import com.pulanit.pangu.admin.system.dao.mapper.DeptMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.RoleMapper;
 import com.pulanit.pangu.admin.system.dao.mapper.UserMapper;
@@ -27,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -74,7 +70,7 @@ public class UserManager {
     }
 
     public List<RoleEntity> listRolesByUserId(Long userId){
-        List<RoleEntity> roleEntities = Lists.newArrayList();
+        List<RoleEntity> roleEntities = Collections.emptyList();;
         Assert.notNull(userId, "userId 不能为空");
         List<Long> roleIds = this.queryRoleIdsByUserId(userId);
         if (CollUtil.isNotEmpty(roleIds)){
@@ -101,7 +97,7 @@ public class UserManager {
     }
 
     public List<UserOut> transformEntity(List<UserEntity> userEntities){
-        List<UserOut> userOuts = Lists.newArrayList();
+        List<UserOut> userOuts = Collections.emptyList();;
         List<Long> deptIds = userEntities.stream().map(UserEntity::getDeptId).collect(Collectors.toList());
         deptIds = ObjectUtil.isEmpty(deptIds) ? Arrays.asList(-1L) : deptIds;
         List<DeptEntity> deptEntities = deptMapper.selectBatchIds(deptIds);
@@ -129,7 +125,7 @@ public class UserManager {
     }
 
     public List<UserEntity> listUsersByRoleId(Long roleId){
-        List<UserEntity> userEntities = Lists.newArrayList();
+        List<UserEntity> userEntities = Collections.emptyList();;
         List<Long> userIds = listUserIdsByRoleId(roleId);
         if (CollUtil.isNotEmpty(userIds)){
             LambdaQueryWrapper<UserEntity> queryWrapper = Wrappers.lambdaQuery();

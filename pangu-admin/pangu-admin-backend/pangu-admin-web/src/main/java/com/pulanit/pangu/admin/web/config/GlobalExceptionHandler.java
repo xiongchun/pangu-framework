@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
 
     @NacosValue(value = "${spring.application.name}")
     private String appName;
-    @NacosValue(value = "${spring.profiles.active}")
+    @NacosValue(value = "${spring.active}")
     private String profilesActive;
     @Reference(version = "1.0.0", group = "pangu-admin-system-app", check = false)
     private LogService logService;

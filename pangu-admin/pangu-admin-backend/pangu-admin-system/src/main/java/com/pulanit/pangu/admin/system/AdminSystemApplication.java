@@ -17,9 +17,8 @@
 
 package com.pulanit.pangu.admin.system;
 
-import com.gitee.pulanos.pangu.framework.starter.PanGuApplicationBuilder;
-import com.yomahub.tlog.core.enhance.bytes.AspectLogEnhance;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -31,10 +30,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 public class AdminSystemApplication {
 
-	static {
-		AspectLogEnhance.enhance();
-	}
     public static void main(String[] args) {
-        PanGuApplicationBuilder.init(AdminSystemApplication.class).run(args);
+        SpringApplication.run(AdminSystemApplication.class, args);
     }
 }

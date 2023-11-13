@@ -2,7 +2,7 @@ spring:
   application:
     name: pangu-examples-log-dynamic
   profiles:
-    active: ${spring.profiles.active:dev}
+    active: ${spring.active:dev}
 nacos:
   config:
     namespace: ${nacos.namespace:dev}

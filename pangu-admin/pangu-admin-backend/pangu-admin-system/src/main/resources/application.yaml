@@ -1,6 +1,6 @@
 spring:
   application:
-    name: pangu-examples-dubbo-triple-consumer
+    name: pangu-admin-system
   profiles:
     active: ${spring.active:dev}
 nacos:
@@ -15,17 +15,3 @@ nacos:
     bootstrap:
       enable: true
       log-enable: true
-dubbo:
-  registry:
-    address: nacos://${nacos.server-addr:127.0.0.1:8848}?namespace=${nacos.namespace:dev}
-    username: ${nacos.username:nacos}
-    password: ${nacos.password:nacos}
-  protocol:
-    name: tri
-    port: -1
-  application:
-    qos-port: 22223
-  consumer:
-    check: false
-    timeout: 5000
-

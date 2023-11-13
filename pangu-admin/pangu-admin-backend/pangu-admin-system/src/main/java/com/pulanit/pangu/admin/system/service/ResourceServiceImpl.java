@@ -37,7 +37,7 @@ public class ResourceServiceImpl implements ResourceService {
     private ResourceMapper resourceMapper;
     @Autowired
     private ResourceManager resourceManager;
-    private static final Long ROOT_ID = 0l;
+    private static final Long ROOT_ID = 0L;
 
     @Override
     public ResourceForLoginOut listForLogin(Long userId) {
@@ -108,11 +108,12 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public void batchDelete(List<Long> ids) {
-        List<Long> deleteIds = Collections.emptyList();;
+        List<Long> deleteIds = Collections.emptyList();
         deleteIds.addAll(ids);
         while (CollUtil.isNotEmpty(ids)){
             QueryWrapper queryWrapper = Wrappers.query();
-            queryWrapper.select("id").in("parent_id", ids);
+            queryWrapper.select("id");
+            queryWrapper.in("parent_id", ids);
             ids = (List<Long>) resourceMapper.selectObjs(queryWrapper);
             deleteIds.addAll(ids);
         }

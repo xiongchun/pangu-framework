@@ -106,11 +106,12 @@ public class DeptServiceImpl implements DeptService {
     @Transactional
     @Override
     public void batchDelete(List<Long> ids) {
-        List<Long> deleteIds = Collections.emptyList();;
+        List<Long> deleteIds = Collections.emptyList();
         deleteIds.addAll(ids);
         while (CollUtil.isNotEmpty(ids)){
             QueryWrapper queryWrapper = Wrappers.query();
-            queryWrapper.select("id").in("parent_id", ids);
+            queryWrapper.select("id");
+            queryWrapper.in("parent_id", ids);
             ids = (List<Long>) deptMapper.selectObjs(queryWrapper);
             deleteIds.addAll(ids);
         }

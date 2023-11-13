@@ -16,4 +16,4 @@
 #
 spring:
   profiles:
-    active: ${spring.profiles.active:dev}
+    active: ${spring.active:dev}
