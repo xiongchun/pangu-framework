@@ -1,7 +1,7 @@
 package com.pulanit.pangu.admin.web.log;
 
 import com.alibaba.nacos.api.config.annotation.NacosValue;
-import com.gitee.pulanos.pangu.framework.common.Constants;
+import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import com.pulanit.pangu.admin.system.api.param.LogIn;
 import com.pulanit.pangu.admin.system.api.service.LogService;
 import lombok.extern.slf4j.Slf4j;

@@ -2,13 +2,11 @@ package com.pulanit.pangu.admin.web.controller.permission;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.tree.Tree;
-import cn.hutool.core.thread.ThreadUtil;
-import com.gitee.pulanos.pangu.framework.common.entity.Result;
+import com.gitee.pulanos.pangu.framework.sdk.dto.Result;
 import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.api.param.DeptIn;
 import com.pulanit.pangu.admin.system.api.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.config.annotation.Method;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 

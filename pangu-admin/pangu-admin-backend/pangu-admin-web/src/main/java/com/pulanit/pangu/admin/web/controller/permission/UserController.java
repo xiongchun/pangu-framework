@@ -1,8 +1,8 @@
 package com.pulanit.pangu.admin.web.controller.permission;
 
 import cn.hutool.core.lang.Assert;
-import com.gitee.pulanos.pangu.framework.common.entity.PageResult;
-import com.gitee.pulanos.pangu.framework.common.entity.Result;
+import com.gitee.pulanos.pangu.framework.sdk.dto.Result;
+import com.gitee.pulanos.pangu.framework.sdk.dto.page.PageResult;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.UserOut;

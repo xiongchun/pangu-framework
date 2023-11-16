@@ -5,11 +5,10 @@ import cn.hutool.core.date.TimeInterval;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.system.SystemUtil;
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
-import com.gitee.pulanos.pangu.framework.common.Constants;
-import com.gitee.pulanos.pangu.framework.common.exception.BizException;
-import com.google.common.collect.Maps;
+import com.gitee.pulanos.pangu.framework.sdk.Constants;
+import com.gitee.pulanos.pangu.framework.sdk.exception.BizException;
 import com.pulanit.pangu.admin.common.AppContext;
 import com.pulanit.pangu.admin.common.domain.UserInfo;
 import com.pulanit.pangu.admin.system.api.param.LogIn;
@@ -25,6 +24,7 @@ import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -67,7 +67,7 @@ public class ControllerLogAspect {
         String path = StrUtil.format("{}#{}", beanType.getSimpleName(), method.getName());
         logIn.setPath(path);
         String[] paramNames = parameterNameDiscoverer.getParameterNames(method);
-        Map<String, Object> inputMap = Maps.newLinkedHashMap();
+        Map<String, Object> inputMap = new LinkedHashMap<>();
         Object[] args = point.getArgs();
         if (ArrayUtil.isNotEmpty(paramNames)){
             for (int i = 0; i < paramNames.length; i++){

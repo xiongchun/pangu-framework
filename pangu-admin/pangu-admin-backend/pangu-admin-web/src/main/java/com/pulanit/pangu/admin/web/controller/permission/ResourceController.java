@@ -2,7 +2,7 @@ package com.pulanit.pangu.admin.web.controller.permission;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.tree.Tree;
-import com.gitee.pulanos.pangu.framework.common.entity.Result;
+import com.gitee.pulanos.pangu.framework.sdk.dto.Result;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
 import com.pulanit.pangu.admin.system.api.param.ResourceForLoginOut;
 import com.pulanit.pangu.admin.system.api.param.ResourceOut;
