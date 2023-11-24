@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping("/api/system/user")
 public class UserController {
 
-    @DubboReference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system")
     private UserService userService;
 
     /**

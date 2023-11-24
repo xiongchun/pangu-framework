@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping("/api/system/dept")
 public class DeptController {
 
-    @DubboReference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system")
     private DeptService deptService;
 
     /**

@@ -5,6 +5,7 @@ import com.gitee.pulanos.pangu.framework.sdk.Constants;
 import com.pulanit.pangu.admin.system.api.param.LogIn;
 import com.pulanit.pangu.admin.system.api.service.LogService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,7 @@ public class LogQueueConsumer {
     @NacosValue(value = "${app.log.queue.consumer.pool.threads}")
     private int threads;
 
-    @Reference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system")
     private LogService logService;
 
     @PostConstruct

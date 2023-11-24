@@ -26,9 +26,9 @@ import java.util.List;
 @RequestMapping("/api/system/role")
 public class RoleController {
 
-    @DubboReference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system")
     private RoleService roleService;
-    @DubboReference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system")
     private UserService userService;
 
     /**

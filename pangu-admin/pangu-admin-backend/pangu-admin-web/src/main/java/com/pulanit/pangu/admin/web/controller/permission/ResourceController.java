@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping("/api/system/resource")
 public class ResourceController {
 
-    @DubboReference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system")
     private ResourceService resourceService;
 
     /**

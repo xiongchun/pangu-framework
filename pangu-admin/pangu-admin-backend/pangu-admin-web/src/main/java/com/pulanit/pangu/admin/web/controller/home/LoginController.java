@@ -32,7 +32,7 @@ import java.util.Date;
 @RequestMapping("/api/system/home")
 public class LoginController {
 
-    @DubboReference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system")
     private UserService userService;
 
     @NacosValue(value = "${app.jwt.secret-key}")

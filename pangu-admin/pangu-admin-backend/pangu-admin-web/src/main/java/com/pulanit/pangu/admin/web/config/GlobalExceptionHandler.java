@@ -7,6 +7,7 @@ import com.gitee.pulanos.pangu.framework.sdk.dto.Result;
 import com.gitee.pulanos.pangu.framework.sdk.exception.BizException;
 import com.pulanit.pangu.admin.system.api.service.LogService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -21,7 +22,7 @@ public class GlobalExceptionHandler {
     private String appName;
     @NacosValue(value = "${spring.active}")
     private String profilesActive;
-    @Reference(version = "1.0.0", group = "pangu-admin-system-app", check = false)
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system", check = false)
     private LogService logService;
 
     /**
