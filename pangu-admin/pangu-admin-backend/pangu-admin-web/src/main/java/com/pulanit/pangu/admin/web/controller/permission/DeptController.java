@@ -7,6 +7,7 @@ import com.pulanit.pangu.admin.system.api.entity.DeptEntity;
 import com.pulanit.pangu.admin.system.api.param.DeptIn;
 import com.pulanit.pangu.admin.system.api.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ import java.util.List;
 @RequestMapping("/api/system/dept")
 public class DeptController {
 
-    @Reference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system-app")
     private DeptService deptService;
 
     /**

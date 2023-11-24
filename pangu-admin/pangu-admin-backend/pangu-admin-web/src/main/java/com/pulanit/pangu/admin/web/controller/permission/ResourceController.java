@@ -8,6 +8,7 @@ import com.pulanit.pangu.admin.system.api.param.ResourceForLoginOut;
 import com.pulanit.pangu.admin.system.api.param.ResourceOut;
 import com.pulanit.pangu.admin.system.api.service.ResourceService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ import java.util.List;
 @RequestMapping("/api/system/resource")
 public class ResourceController {
 
-    @Reference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system-app")
     private ResourceService resourceService;
 
     /**

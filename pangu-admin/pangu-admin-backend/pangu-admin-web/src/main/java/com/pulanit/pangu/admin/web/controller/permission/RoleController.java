@@ -10,6 +10,7 @@ import com.pulanit.pangu.admin.system.api.param.UserPageIn;
 import com.pulanit.pangu.admin.system.api.service.RoleService;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +26,9 @@ import java.util.List;
 @RequestMapping("/api/system/role")
 public class RoleController {
 
-    @Reference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system-app")
     private RoleService roleService;
-    @Reference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system-app")
     private UserService userService;
 
     /**

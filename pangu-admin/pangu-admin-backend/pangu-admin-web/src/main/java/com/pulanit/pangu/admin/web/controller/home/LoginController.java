@@ -14,6 +14,7 @@ import com.pulanit.pangu.admin.system.api.param.LoginIn;
 import com.pulanit.pangu.admin.system.api.param.LoginOut;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +33,7 @@ import java.util.Date;
 @RequestMapping("/api/system/home")
 public class LoginController {
 
-    @Reference(version = "1.0.0", group = "pangu-admin-system-app")
+    @DubboReference(version = "1.0.0", group = "pangu-admin-system-app")
     private UserService userService;
 
     @NacosValue(value = "${app.jwt.secret-key}")
