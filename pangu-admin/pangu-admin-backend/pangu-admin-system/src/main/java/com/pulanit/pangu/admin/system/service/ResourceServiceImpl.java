@@ -2,6 +2,7 @@ package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
@@ -43,7 +44,7 @@ public class ResourceServiceImpl implements ResourceService {
     public ResourceForLoginOut listForLogin(Long userId) {
         ResourceForLoginOut out = new ResourceForLoginOut();
         List<ResourceEntity> resourceEntities = resourceManager.listResourceEntitiesByUserId(userId);
-        List<ResourceEntity> menuEntities = Collections.emptyList();;
+        List<ResourceEntity> menuEntities = ListUtil.list(false);
         menuEntities.addAll(resourceEntities);
         CollectionUtil.filter(menuEntities, e -> !SystemConstants.ResourceType.BUTTON.equals(e.getType()));
         TreeNodeConfig config = new TreeNodeConfig();
@@ -108,7 +109,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public void batchDelete(List<Long> ids) {
-        List<Long> deleteIds = Collections.emptyList();
+        List<Long> deleteIds = ListUtil.list(false);
         deleteIds.addAll(ids);
         while (CollUtil.isNotEmpty(ids)){
             QueryWrapper queryWrapper = Wrappers.query();

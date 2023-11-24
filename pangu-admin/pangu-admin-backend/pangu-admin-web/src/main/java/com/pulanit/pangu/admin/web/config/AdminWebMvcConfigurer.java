@@ -1,5 +1,6 @@
 package com.pulanit.pangu.admin.web.config;
 
+import cn.hutool.core.collection.ListUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -20,7 +21,7 @@ public class AdminWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     private void regJwt(InterceptorRegistry registry){
-        List<String> excludePathPatterns = Collections.emptyList();
+        List<String> excludePathPatterns = ListUtil.list(false);
         excludePathPatterns.add("/**/login");
         registry.addInterceptor(jwtInterceptor).addPathPatterns("/**").excludePathPatterns(excludePathPatterns);
     }

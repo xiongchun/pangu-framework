@@ -15,7 +15,6 @@ import com.pulanit.pangu.admin.system.api.param.LoginOut;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +44,6 @@ public class LoginController {
     /**
      * 登录
      *
-     * @return
      */
     @PostMapping("/login")
     public Result<LoginOut> login(@RequestBody LoginIn loginIn) {
@@ -61,7 +59,6 @@ public class LoginController {
     /**
      * 登出
      *
-     * @return
      */
     @PostMapping("/logout")
     public Result<Void> logout() {
@@ -76,8 +73,6 @@ public class LoginController {
     /**
      * 创建Token
      *
-     * @param userInfo
-     * @return
      */
     private String createToken(UserInfo userInfo) {
         final JWTSigner signer = JWTSignerUtil.hs256(secretKey.getBytes());

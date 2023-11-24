@@ -19,6 +19,7 @@ package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
@@ -174,7 +175,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<RoleEntity> queryRolesByUserId(Long userId) {
-        List<RoleEntity> roleEntities = Collections.emptyList();;
+        List<RoleEntity> roleEntities = ListUtil.list(false);
         List<Long> roleIds = userManager.queryRoleIdsByUserId(userId);
         if (CollUtil.isNotEmpty(roleIds)) {
             roleEntities = roleMapper.selectBatchIds(roleIds);
@@ -185,7 +186,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<RoleEntity> queryGrantRolesByUserId(Long userId) {
         Assert.notNull(userId, "用户编号不能为空");
-        List<RoleEntity> roleEntities = Collections.emptyList();;
+        List<RoleEntity> roleEntities = ListUtil.list(false);
         List<RoleEntity> allRoles = roleMapper.selectList(Wrappers.emptyWrapper());
         List<RoleEntity> grantedRoles = this.queryRolesByUserId(userId);
         return CollUtil.subtractToList(allRoles, grantedRoles);

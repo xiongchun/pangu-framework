@@ -1,6 +1,7 @@
 package com.pulanit.pangu.admin.system.manager;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.lang.Assert;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -31,7 +32,7 @@ public class ResourceManager {
 
     public List<ResourceEntity> listResourceEntitiesByRoleId(Long roleId){
         Assert.notNull(roleId, "角色 ID 不能为空");
-        List<ResourceEntity> resourceEntities = Collections.emptyList();;
+        List<ResourceEntity> resourceEntities = ListUtil.list(false);
         LambdaQueryWrapper<RoleResourceEntity> lambdaQueryWrapper = Wrappers.lambdaQuery(RoleResourceEntity.class).eq(RoleResourceEntity::getRoleId, roleId);
         List<RoleResourceEntity> entities = roleResourceMapper.selectList(lambdaQueryWrapper);
         List<Long> resourceIds = entities.stream().map(RoleResourceEntity::getResourceId).collect(Collectors.toList());
@@ -43,7 +44,7 @@ public class ResourceManager {
 
     public List<ResourceEntity> listResourceEntitiesByUserId(Long userId){
         Assert.notNull(userId, "用户 ID 不能为空");
-        List<ResourceEntity> resourceEntities = Collections.emptyList();;
+        List<ResourceEntity> resourceEntities = ListUtil.list(false);
         LambdaQueryWrapper<UserRoleEntity> lambdaQueryWrapper = Wrappers.lambdaQuery(UserRoleEntity.class).eq(UserRoleEntity::getUserId, userId);
         List<UserRoleEntity> userRoleEntities = userRoleMapper.selectList(lambdaQueryWrapper);
         for (UserRoleEntity userRoleEntity : userRoleEntities) {

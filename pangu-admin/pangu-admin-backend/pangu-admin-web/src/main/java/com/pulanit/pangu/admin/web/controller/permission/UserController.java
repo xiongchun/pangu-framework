@@ -10,7 +10,6 @@ import com.pulanit.pangu.admin.system.api.param.UserPageIn;
 import com.pulanit.pangu.admin.system.api.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +29,6 @@ public class UserController {
 
     /**
      * 获取用户
-     * @return
      */
     @GetMapping("/list")
     public Result<PageResult<UserOut>> list(UserPageIn userPageIn) {
@@ -40,9 +38,6 @@ public class UserController {
 
     /**
      * 新增
-     *
-     * @param userEntity
-     * @return
      */
     @PostMapping("/add")
     public Result<Void> add(@RequestBody UserEntity userEntity) {
@@ -52,9 +47,6 @@ public class UserController {
 
     /**
      * 修改
-     *
-     * @param userEntity
-     * @return
      */
     @PostMapping("/update")
     public Result<Void> update(@RequestBody UserEntity userEntity) {
@@ -65,9 +57,6 @@ public class UserController {
 
     /**
      * 删除
-     *
-     * @param id
-     * @return
      */
     @PostMapping("/delete")
     public Result<Void> delete(@RequestParam Long id) {
@@ -79,8 +68,6 @@ public class UserController {
     /**
      * 批量删除
      *
-     * @param ids
-     * @return
      */
     @PostMapping("/batchDelete")
     public Result<Void> batchDelete(@RequestParam List<Long> ids) {
@@ -91,8 +78,6 @@ public class UserController {
 
     /**
      * 校验登录账号
-     *
-     * @return
      */
     @GetMapping("/validateUserName")
     public Result<Long> validateUserName(@RequestParam String userName, @RequestParam Long id) {
@@ -102,8 +87,6 @@ public class UserController {
 
     /**
      * 查询用户分配角色
-     *
-     * @return
      */
     @GetMapping("/queryRolesByUserId")
     public Result<List<RoleEntity>> queryRolesByUserId(@RequestParam Long userId) {
@@ -112,8 +95,6 @@ public class UserController {
 
     /**
      * 查询用户待分配角色
-     *
-     * @return
      */
     @GetMapping("/queryGrantRolesByUserId")
     public Result<List<RoleEntity>> queryGrantRolesByUserId(@RequestParam Long userId) {
@@ -122,8 +103,6 @@ public class UserController {
 
     /**
      * 查询用户详细信息
-     *
-     * @return
      */
     @GetMapping("/queryUserDetailInfoById")
     public Result<UserOut> queryUserDetailInfoById(@RequestParam Long userId) {
@@ -133,9 +112,6 @@ public class UserController {
 
     /**
      * 重置密码
-     * @param userIds
-     * @param password
-     * @return
      */
     @PostMapping("/resetPassword")
     public Result<Void> resetPassword(@RequestParam List<Long> userIds, @RequestParam String password) {
@@ -147,10 +123,6 @@ public class UserController {
 
     /**
      * 修改密码
-     * @param userId
-     * @param password
-     * @param newPassword
-     * @return
      */
     @PostMapping("/updatePassword")
     public Result<Void> updatePassword(@RequestParam Long userId, @RequestParam String password, @RequestParam String newPassword) {
@@ -163,9 +135,6 @@ public class UserController {
 
     /**
      * 选择角色
-     * @param userId
-     * @param roleIds
-     * @return
      */
     @PostMapping("/grantSelectRole")
     public Result<Void> grantSelectRole(@RequestParam Long userId, @RequestParam List<Long> roleIds) {
@@ -177,9 +146,6 @@ public class UserController {
 
     /**
      * 撤销选择角色
-     * @param userId
-     * @param roleIds
-     * @return
      */
     @PostMapping("/cancelRole")
     public Result<Void> cancelRole(@RequestParam Long userId, @RequestParam List<Long> roleIds) {

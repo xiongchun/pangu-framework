@@ -1,6 +1,7 @@
 package com.pulanit.pangu.admin.system.service;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
@@ -40,7 +41,7 @@ public class DeptServiceImpl implements DeptService {
         }else {
             treeNodes = listByName(deptIn.getName());
         }
-        return treeNodes == null ? Collections.emptyList() : treeNodes;
+        return treeNodes == null ? ListUtil.list(false) : treeNodes;
     }
 
     private List<Tree<Integer>> listAll() {
@@ -56,7 +57,7 @@ public class DeptServiceImpl implements DeptService {
         LambdaQueryWrapper<DeptEntity> queryWrapper = Wrappers.lambdaQuery();
         queryWrapper.like(ObjectUtil.isNotEmpty(name), DeptEntity::getName, name);
         List<DeptEntity> deptEntities = deptMapper.selectList(queryWrapper);
-        List<Tree<Integer>> treeNodes = Collections.emptyList();
+        List<Tree<Integer>> treeNodes = ListUtil.list(false);
         deptEntities.forEach(deptEntity -> {
             Tree<Integer> treeNode = new Tree<>();
             fillTreeNode(treeNode, deptEntity);
@@ -106,7 +107,7 @@ public class DeptServiceImpl implements DeptService {
     @Transactional
     @Override
     public void batchDelete(List<Long> ids) {
-        List<Long> deleteIds = Collections.emptyList();
+        List<Long> deleteIds = ListUtil.list(false);
         deleteIds.addAll(ids);
         while (CollUtil.isNotEmpty(ids)){
             QueryWrapper queryWrapper = Wrappers.query();

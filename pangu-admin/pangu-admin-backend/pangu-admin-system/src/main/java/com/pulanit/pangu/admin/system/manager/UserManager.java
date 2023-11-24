@@ -2,6 +2,7 @@ package com.pulanit.pangu.admin.system.manager;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.ObjectUtil;
@@ -70,7 +71,7 @@ public class UserManager {
     }
 
     public List<RoleEntity> listRolesByUserId(Long userId){
-        List<RoleEntity> roleEntities = Collections.emptyList();;
+        List<RoleEntity> roleEntities = ListUtil.list(false);
         Assert.notNull(userId, "userId 不能为空");
         List<Long> roleIds = this.queryRoleIdsByUserId(userId);
         if (CollUtil.isNotEmpty(roleIds)){
@@ -97,7 +98,7 @@ public class UserManager {
     }
 
     public List<UserOut> transformEntity(List<UserEntity> userEntities){
-        List<UserOut> userOuts = Collections.emptyList();;
+        List<UserOut> userOuts = ListUtil.list(false);
         List<Long> deptIds = userEntities.stream().map(UserEntity::getDeptId).collect(Collectors.toList());
         deptIds = ObjectUtil.isEmpty(deptIds) ? Arrays.asList(-1L) : deptIds;
         List<DeptEntity> deptEntities = deptMapper.selectBatchIds(deptIds);
@@ -125,7 +126,7 @@ public class UserManager {
     }
 
     public List<UserEntity> listUsersByRoleId(Long roleId){
-        List<UserEntity> userEntities = Collections.emptyList();;
+        List<UserEntity> userEntities = ListUtil.list(false);
         List<Long> userIds = listUserIdsByRoleId(roleId);
         if (CollUtil.isNotEmpty(userIds)){
             LambdaQueryWrapper<UserEntity> queryWrapper = Wrappers.lambdaQuery();
