@@ -91,8 +91,7 @@ public class UserServiceImpl implements UserService {
         List<RoleEntity> roleEntities = userManager.listRolesByUserId(userEntity.getId());
         List<String> roleKeys = roleEntities.stream().map(RoleEntity::getRoleKey).collect(Collectors.toList());
         userInfo.setRole(roleKeys);
-        LoginOut loginOut = new LoginOut().setUserInfo(userInfo);
-        return loginOut;
+        return new LoginOut().setUserInfo(userInfo);
     }
 
     @Override
