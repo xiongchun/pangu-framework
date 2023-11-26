@@ -10,14 +10,17 @@ import cn.hutool.core.lang.tree.TreeUtil;
 import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Assert;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.pulanit.pangu.admin.system.api.SystemConstants;
 import com.pulanit.pangu.admin.system.api.domain.MenuMetaInfo;
 import com.pulanit.pangu.admin.system.api.entity.ResourceEntity;
+import com.pulanit.pangu.admin.system.api.entity.UserEntity;
 import com.pulanit.pangu.admin.system.api.param.ResourceForLoginOut;
 import com.pulanit.pangu.admin.system.api.param.ResourceOut;
+import com.pulanit.pangu.admin.system.api.param.UserOut;
 import com.pulanit.pangu.admin.system.api.service.ResourceService;
 import com.pulanit.pangu.admin.system.dao.mapper.ResourceMapper;
 import com.pulanit.pangu.admin.system.manager.ResourceManager;
@@ -25,6 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -44,8 +48,7 @@ public class ResourceServiceImpl implements ResourceService {
     public ResourceForLoginOut listForLogin(Long userId) {
         ResourceForLoginOut out = new ResourceForLoginOut();
         List<ResourceEntity> resourceEntities = resourceManager.listResourceEntitiesByUserId(userId);
-        List<ResourceEntity> menuEntities = ListUtil.list(false);
-        menuEntities.addAll(resourceEntities);
+        List<ResourceEntity> menuEntities = new ArrayList<>(resourceEntities);
         CollectionUtil.filter(menuEntities, e -> !SystemConstants.ResourceType.BUTTON.equals(e.getType()));
         TreeNodeConfig config = new TreeNodeConfig();
         List<Tree<Integer>> treeNodes = TreeUtil.build(menuEntities, ROOT_ID.intValue(), config, (resourceEntity, treeNode) -> {

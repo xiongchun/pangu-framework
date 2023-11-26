@@ -27,8 +27,6 @@ public class GlobalExceptionHandler {
 
     /**
      * 主动抛出的业务异常
-     * @param exception
-     * @return
      */
     @ExceptionHandler(value = BizException.class)
     public Result bizExceptionHandler(BizException exception) {
@@ -40,8 +38,6 @@ public class GlobalExceptionHandler {
 
     /**
      * 参数校验失败
-     * @param exception
-     * @return
      */
     @ExceptionHandler(value = IllegalArgumentException.class)
     public Result IllegalArgumentExceptionHandler(IllegalArgumentException exception) {
@@ -53,16 +49,13 @@ public class GlobalExceptionHandler {
 
     /**
      * 其它异常
-     * @param exception
-     * @param response
-     * @return
      */
     @ExceptionHandler(value = Exception.class)
     public Result exceptionHandler(Exception exception, HttpServletResponse response) {
         String code = Constants.Code.SYSTEM_FAILED;
         String message = exception.getMessage();
         log.error(message, exception);
-        // 语法糖 请忽略
+        // 语法糖 请忽略 在线演示使用
         if (Constants.profilesActive.DEMO.equalsIgnoreCase(profilesActive)){
             if (StrUtil.containsIgnoreCase(message, "SQLSyntaxErrorException")){
                 return Result.make().setCode(Constants.Code.SQL_EXCEPTION).setMessage("演示环境下不支持当前操作，请搭建本地环境试用。");

@@ -9,7 +9,6 @@ import com.pulanit.pangu.admin.system.api.param.ResourceOut;
 import com.pulanit.pangu.admin.system.api.service.ResourceService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +28,6 @@ public class ResourceController {
 
     /**
      * 用户登录获取菜单资源
-     * @return
      */
     @GetMapping("/list")
     public Result<ResourceForLoginOut> list(@RequestParam Long userId) {
@@ -40,7 +38,6 @@ public class ResourceController {
 
     /**
      * 获取菜单(管理模块)
-     * @return
      */
     @GetMapping("/listForManage")
     public Result<List<Tree<Integer>>> listForManage() {
@@ -50,8 +47,6 @@ public class ResourceController {
 
     /**
      * 角色授权
-     * @param roleId
-     * @return
      */
     @GetMapping("/listForGrant")
     public Result<ResourceOut> listForGrant(@RequestParam Long roleId){
@@ -61,9 +56,6 @@ public class ResourceController {
 
     /**
      * 新增
-     *
-     * @param resourceEntity
-     * @return
      */
     @PostMapping("/add")
     public Result<Long> add(@RequestBody ResourceEntity resourceEntity) {
@@ -73,9 +65,6 @@ public class ResourceController {
 
     /**
      * 修改
-     *
-     * @param resourceEntity
-     * @return
      */
     @PostMapping("/update")
     public Result<Void> update(@RequestBody ResourceEntity resourceEntity) {
@@ -92,9 +81,6 @@ public class ResourceController {
 
     /**
      * 批量删除
-     *
-     * @param ids
-     * @return
      */
     @PostMapping("/batchDelete")
     public Result<Void> batchDelete(@RequestParam List<Long> ids) {
@@ -105,8 +91,6 @@ public class ResourceController {
 
     /**
      * 根据用户查询资源编号
-     * @param userId
-     * @return
      */
     @GetMapping("/listAllResourcesByUserId")
     public Result<List<Tree<Integer>>> listAllResourcesByUserId(@RequestParam Long userId){

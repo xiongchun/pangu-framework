@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.pulanos.pangu.framework.sdk.dto.page.PageResult;
 import com.gitee.pulanos.pangu.framework.sdk.dto.page.PagingUtil;
+import com.gitee.pulanos.pangu.framework.sdk.exception.BizException;
 import com.pulanit.pangu.admin.system.api.entity.RoleEntity;
 import com.pulanit.pangu.admin.system.api.entity.RoleResourceEntity;
 import com.pulanit.pangu.admin.system.api.entity.UserRoleEntity;
