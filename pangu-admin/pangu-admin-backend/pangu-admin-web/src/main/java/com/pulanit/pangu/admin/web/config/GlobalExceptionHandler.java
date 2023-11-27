@@ -9,6 +9,7 @@ import com.pulanit.pangu.admin.system.api.service.LogService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.rpc.RpcException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -37,10 +38,21 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * RPC Exception
+     */
+    @ExceptionHandler(value = RpcException.class)
+    public Result RpcExceptionHandler(RpcException exception) {
+        String code = String.valueOf(exception.getCode());
+        String message = exception.getMessage();
+        log.error("RpcException: code={}, message={}", code, message);
+        return Result.make().setCode(code).setMessage(message);
+    }
+
+    /**
      * 参数校验失败
      */
     @ExceptionHandler(value = IllegalArgumentException.class)
-    public Result IllegalArgumentExceptionHandler(IllegalArgumentException exception) {
+    public Result illegalArgumentExceptionHandler(IllegalArgumentException exception) {
         String code = Constants.Code.ILLEGAL_ARGUMENT;
         String message = exception.getMessage();
         log.error("IllegalArgumentException: code={}, message={}", code, message);

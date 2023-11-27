@@ -21,6 +21,7 @@ import com.pulanit.pangu.admin.system.dao.mapper.UserRoleMapper;
 import com.pulanit.pangu.admin.system.manager.UserManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.apache.dubbo.rpc.RpcException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
