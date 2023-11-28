@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <name>pangu-dependencies</name>
     <url>https://gitee.com/pulanos/pangu-framework</url>
+    <description>PanGu Dev Framework is Open Source and freely available under the Apache v2 License</description>
 
     <licenses>
         <license>
