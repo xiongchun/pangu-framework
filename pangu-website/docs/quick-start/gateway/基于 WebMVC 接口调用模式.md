@@ -17,19 +17,21 @@ import TabItem from '@theme/TabItem';
 
 ### 安装相关盘古模块
 
-<Tabs defaultValue="dependency3">
-<TabItem value="parent" label="盘古 Parent">
+<Tabs>
+<TabItem value="parent" label="盘古依赖管理">
 
 ```jsx
-<parent>
+<dependency>
 	<groupId>com.gitee.pulanos.pangu</groupId>
-	<artifactId>pangu-parent</artifactId>
+	<artifactId>pangu-dependencies</artifactId>
 	<version>latest.version.xxx</version>
-	<relativePath/>
-</parent>
+	<type>pom</type>
+	<scope>import</scope>
+</dependency>
 ```
 </TabItem>
-<TabItem value="dependency1" label="基础模块">
+
+<TabItem value="dependency1" label="盘古 Starter">
 
 ```jsx
 <dependency>
@@ -38,25 +40,8 @@ import TabItem from '@theme/TabItem';
 </dependency>
 ```
 </TabItem>
-<TabItem value="dependency2" label="Dubbo模块">
 
-```jsx
-<dependency>
-	<groupId>com.gitee.pulanos.pangu</groupId>
-	<artifactId>pangu-dubbo-spring-boot-starter</artifactId>
-</dependency>
-```
-</TabItem>
-<TabItem value="dependency3" label="Web模块">
-
-```jsx
-<dependency>
-    <groupId>com.gitee.pulanos.pangu</groupId>
-    <artifactId>pangu-web-spring-boot-starter</artifactId>
-</dependency>
-```
-</TabItem>
-<TabItem value="dependency4" label="服务接口包">
+<TabItem value="dependency3" label="服务接口包">
 
 ```jsx
 <dependency>
@@ -65,7 +50,28 @@ import TabItem from '@theme/TabItem';
     <version>1.0.0</version>
 </dependency>
 ```
+</TabItem>
 
+<TabItem value="dependency2" label="其它 模块">
+
+```jsx
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+	<groupId>com.alibaba.boot</groupId>
+	<artifactId>nacos-config-spring-boot-starter</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.apache.dubbo</groupId>
+	<artifactId>dubbo-spring-boot-starter</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.apache.dubbo</groupId>
+	<artifactId>dubbo-registry-nacos</artifactId>
+</dependency>
+```
 </TabItem>
 </Tabs>
 
@@ -94,7 +100,7 @@ logging.level.root=INFO
 
 ```jsx title="DemoController.java"
 // 注入 Dubbo 服务接口
-@Reference(version = "1.0.0", group = "pangu-examples-dubbo-service")
+@DubboReference(version = "1.0.0", group = "pangu-examples-dubbo-service")
 private UserService userService;
 
 /**

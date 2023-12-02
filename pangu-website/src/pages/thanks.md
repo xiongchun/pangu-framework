@@ -32,10 +32,8 @@ hide_table_of_contents: false
 - [Apache ShenYu](https://shenyu.apache.org/) Java native API Gateway for service proxy, protocol conversion and API governance.
 - [Seata](https://seata.io/en-us/index.html)：Seata is an open source distributed transaction solution that delivers high performance and easy to use distributed transaction services under a microservices architecture.
 - [Sentinel](https://sentinelguard.io/en-us/) A powerful flow control component enabling reliability, resilience and monitoring for microservices. 
-- [XXL Job](https://github.com/xuxueli/xxl-job)：A distributed task scheduling framework. It's core design goal is to develop quickly and learn simple, lightweight, and easy to expand.
 - [Lock4j](https://gitee.com/baomidou/lock4j)：Lock4j is a distributed lock component.
 - [Hutool](https://hutool.cn/docs)：A set of tools that keep Java sweet.
-- [TLog](https://tlog.yomahub.com/en/docs/)：TLog is a lightweight distributed log tagging tracker.
 
 ## 前端开源项目
 - [Vue.js 3](https://vuejs.org)：An approachable, performant and versatile framework for building web user interfaces.

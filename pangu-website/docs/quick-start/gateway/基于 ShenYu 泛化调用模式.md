@@ -45,18 +45,20 @@ ShenYu 网关提供的功能非常多，这里我们只关注 HTTP 请求代理�
 ### 安装相关模块
 
 <Tabs defaultValue="parent">
-<TabItem value="parent" label="盘古 Parent">
+<TabItem value="parent" label="盘古依赖管理">
 
 ```jsx
-<parent>
+<dependency>
 	<groupId>com.gitee.pulanos.pangu</groupId>
-	<artifactId>pangu-parent</artifactId>
+	<artifactId>pangu-dependencies</artifactId>
 	<version>latest.version.xxx</version>
-	<relativePath/>
-</parent>
+	<type>pom</type>
+	<scope>import</scope>
+</dependency>
 ```
 </TabItem>
-<TabItem value="dependency1" label="基础模块">
+
+<TabItem value="dependency1" label="盘古 Starter">
 
 ```jsx
 <dependency>
@@ -69,8 +71,8 @@ ShenYu 网关提供的功能非常多，这里我们只关注 HTTP 请求代理�
 
 ```jsx
 <dependency>
-	<groupId>com.gitee.pulanos.pangu</groupId>
-	<artifactId>pangu-dubbo-spring-boot-starter</artifactId>
+	<groupId>org.apache.dubbo</groupId>
+	<artifactId>dubbo-spring-boot-starter</artifactId>
 </dependency>
 ```
 </TabItem>
