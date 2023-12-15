@@ -14,8 +14,8 @@ const config = {
 	favicon: 'img/favicon.ico',
 	organizationName: 'xiongchun', // Usually your GitHub org/user name.
 	projectName: 'pangu-framework', // Usually your repo name.
-	baseUrl: '/',
-	//baseUrl: '/pangu-framework',
+	//baseUrl: '/',
+	baseUrl: '/pangu-framework',
 	scripts: [
 		//https://pangu.pulanit.com/
 		{ src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b', async: true },
