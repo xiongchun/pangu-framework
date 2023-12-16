@@ -7,7 +7,7 @@
 
 ### 项目主页&开发指南
 
-[https://pangu.pulanit.com](https://pangu.pulanit.com)
+[https://pulanos.gitee.io/pangu-framework](https://pulanos.gitee.io/pangu-framework)
 
 ### 作者博客
-[https://xiongchun.pulanit.com](https://xiongchun.pulanit.com)
+[https://xiong-chun.gitee.io/home](https://xiong-chun.gitee.io/home)
