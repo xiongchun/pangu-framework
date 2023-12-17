@@ -164,7 +164,7 @@ const config = {
 					position: 'left',
 				}, */
 				 {
-					to: 'https://xiongchun.pulanit.com',
+					to: 'https://xiong-chun.gitee.io/home',
 					label: '作者博客',
 					position: 'left'
 				}, 
