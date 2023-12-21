@@ -9,5 +9,5 @@
 
 [https://pulanos.gitee.io/pangu-framework](https://pulanos.gitee.io/pangu-framework)
 
-### 作者博客
+### 作者博客2
 [https://xiong-chun.gitee.io/home](https://xiong-chun.gitee.io/home)
