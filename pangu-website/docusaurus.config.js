@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: '盘古开发框架官网:行业数字化赋能开发基座',
-	tagline: '一套轻量稳健的工业级行业数字化赋能开发基座',
+	title: '盘古开发框架开源项目官网:企业级数字化赋能开发基座',
+	tagline: '一套轻量稳健的企业级数字化赋能开发基座',
 	url: 'https://pangu.pulanit.com',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'throw',
