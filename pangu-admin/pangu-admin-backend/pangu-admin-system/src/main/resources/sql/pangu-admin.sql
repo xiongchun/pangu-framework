@@ -1,16 +1,17 @@
 /*
- Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
- Source Server         : root@localhost
+ Source Server         : mysql@1.14.17.140
  Source Server Type    : MySQL
- Source Server Version : 50731 (5.7.31)
- Source Host           : 127.0.0.1:3306
+ Source Server Version : 80200 (8.2.0)
+ Source Host           : 1.14.17.140:3306
  Source Schema         : pangu-admin
 
  Target Server Type    : MySQL
- Target Server Version : 50731 (5.7.31)
+ Target Server Version : 80200 (8.2.0)
  File Encoding         : 65001
- Date: 11/12/2022 20:39:13
+
+ Date: 28/01/2024 03:19:41
 */
 
 SET NAMES utf8mb4;
@@ -21,21 +22,21 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `dept`;
 CREATE TABLE `dept` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '流水号',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '流水号',
   `name` varchar(50) NOT NULL COMMENT '部门名称',
-  `parent_id` bigint(20) NOT NULL COMMENT '上级部门ID',
+  `parent_id` bigint NOT NULL COMMENT '上级部门ID',
   `status` varchar(4) NOT NULL COMMENT '部门状态',
   `type` varchar(10) NOT NULL COMMENT '部门类型',
   `biz_code` varchar(50) DEFAULT NULL COMMENT '业务扩展码',
-  `sort_no` int(10) NOT NULL COMMENT '排序号',
+  `sort_no` int NOT NULL COMMENT '排序号',
   `gmt_created` datetime NOT NULL COMMENT '创建时间',
   `created_by` varchar(25) DEFAULT NULL COMMENT '创建人',
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
   `modified_by` varchar(25) DEFAULT NULL COMMENT '修改人',
   `remark` varchar(250) DEFAULT NULL COMMENT '备注',
-  `deleted` bigint(20) NOT NULL DEFAULT '0' COMMENT '逻辑删除标识',
+  `deleted` bigint NOT NULL DEFAULT '0' COMMENT '逻辑删除标识',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COMMENT='部门表';
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='部门表';
 
 -- ----------------------------
 -- Records of dept
@@ -86,20 +87,20 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `log_fail`;
 CREATE TABLE `log_fail` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT ' 流水号',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT ' 流水号',
   `appName` varchar(50) NOT NULL COMMENT '应用名称标识',
   `path` varchar(100) NOT NULL COMMENT '路径入口标识',
   `tag` varchar(50) NOT NULL COMMENT '标签标识',
-  `time_elapsed` int(11) NOT NULL DEFAULT '0' COMMENT '业务耗时',
+  `time_elapsed` int NOT NULL DEFAULT '0' COMMENT '业务耗时',
   `gmt_executed` datetime NOT NULL COMMENT '经办时间',
-  `created_by` bigint(20) NOT NULL DEFAULT '0' COMMENT '经办人',
+  `created_by` bigint NOT NULL DEFAULT '0' COMMENT '经办人',
   `created_by_name` varchar(25) NOT NULL DEFAULT '' COMMENT '经办人姓名',
   `gmt_created` datetime NOT NULL COMMENT '创建时间',
   `input` varchar(250) NOT NULL DEFAULT '' COMMENT '输入',
   `output` varchar(250) NOT NULL DEFAULT '' COMMENT '输出',
-  `deleted` bigint(20) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
+  `deleted` bigint NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COMMENT='操作日志表(失败)';
+) ENGINE=InnoDB AUTO_INCREMENT=319 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='操作日志表(失败)';
 
 -- ----------------------------
 -- Records of log_fail
@@ -112,20 +113,20 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `log_success`;
 CREATE TABLE `log_success` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT ' 流水号',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT ' 流水号',
   `appName` varchar(50) NOT NULL COMMENT '应用名称标识',
   `path` varchar(100) NOT NULL COMMENT '路径入口标识',
   `tag` varchar(50) NOT NULL COMMENT '标签标识',
-  `time_elapsed` int(11) NOT NULL DEFAULT '0' COMMENT '业务耗时',
+  `time_elapsed` int NOT NULL DEFAULT '0' COMMENT '业务耗时',
   `gmt_executed` datetime NOT NULL COMMENT '经办时间',
-  `created_by` bigint(20) NOT NULL DEFAULT '0' COMMENT '经办人',
+  `created_by` bigint NOT NULL DEFAULT '0' COMMENT '经办人',
   `created_by_name` varchar(25) NOT NULL DEFAULT '' COMMENT '经办人姓名',
   `gmt_created` datetime NOT NULL COMMENT '创建时间',
   `input` varchar(250) NOT NULL DEFAULT '' COMMENT '输入',
   `output` varchar(250) NOT NULL DEFAULT '' COMMENT '输出',
-  `deleted` bigint(20) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
+  `deleted` bigint NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3930 DEFAULT CHARSET=utf8mb4 COMMENT='操作日志表(成功)';
+) ENGINE=InnoDB AUTO_INCREMENT=12597 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='操作日志表(成功)';
 
 -- ----------------------------
 -- Records of log_success
@@ -138,28 +139,28 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `resource`;
 CREATE TABLE `resource` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '流水号',
-  `parent_id` bigint(20) NOT NULL COMMENT '所属上级',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '流水号',
+  `parent_id` bigint NOT NULL COMMENT '所属上级',
   `title` varchar(50) NOT NULL COMMENT '资源名称',
   `resource_key` varchar(50) NOT NULL DEFAULT '' COMMENT '资源标识',
   `type` varchar(10) NOT NULL COMMENT '类型',
-  `path` varchar(100) DEFAULT '' COMMENT '菜单路由地址 | HTTP请求地址',
+  `path` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '菜单路由地址 | HTTP请求地址',
   `component` varchar(100) DEFAULT NULL COMMENT '视图组件位置',
   `icon` varchar(50) DEFAULT NULL COMMENT '图标',
   `hidden` varchar(2) NOT NULL DEFAULT '0' COMMENT '是否隐藏菜单(详情页等)',
   `fullpage` varchar(2) NOT NULL DEFAULT '0' COMMENT '是否整页打开路由',
   `affix` varchar(2) NOT NULL DEFAULT '0' COMMENT '是否固定(标签卡片没有关闭按钮)',
-  `sort_no` int(10) NOT NULL DEFAULT '1' COMMENT '排序号',
+  `sort_no` int NOT NULL DEFAULT '1' COMMENT '排序号',
   `gmt_created` datetime NOT NULL COMMENT '创建时间',
   `created_by` varchar(25) DEFAULT NULL COMMENT '创建人',
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
   `modified_by` varchar(25) DEFAULT NULL COMMENT '修改人',
-  `deleted` bigint(20) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
+  `deleted` bigint NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   `color` varchar(10) NOT NULL DEFAULT '' COMMENT '控制台快捷菜单的背景色',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `UKEY-1` (`resource_key`,`deleted`),
+  UNIQUE KEY `UKEY-1` (`resource_key`,`deleted`) USING BTREE,
   KEY `IDX-1` (`parent_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COMMENT='资源表';
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='资源表';
 
 -- ----------------------------
 -- Records of resource
@@ -174,7 +175,9 @@ INSERT INTO `resource` (`id`, `parent_id`, `title`, `resource_key`, `type`, `pat
 INSERT INTO `resource` (`id`, `parent_id`, `title`, `resource_key`, `type`, `path`, `component`, `icon`, `hidden`, `fullpage`, `affix`, `sort_no`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `deleted`, `color`) VALUES (7, 4, '人员管理', 'user', 'menu', '/setting/user', 'setting/user', 'el-icon-user', '0', '0', '0', 3, '2022-10-04 12:00:00', NULL, '2022-11-25 10:49:26', NULL, 0, '#C71585');
 INSERT INTO `resource` (`id`, `parent_id`, `title`, `resource_key`, `type`, `path`, `component`, `icon`, `hidden`, `fullpage`, `affix`, `sort_no`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `deleted`, `color`) VALUES (8, 4, '资源管理', 'resource', 'menu', '/setting/resource', 'setting/resource', 'el-icon-copyDocument', '0', '0', '0', 4, '2022-10-04 12:00:00', NULL, '2022-10-20 21:41:59', NULL, 0, '#FF8C00');
 INSERT INTO `resource` (`id`, `parent_id`, `title`, `resource_key`, `type`, `path`, `component`, `icon`, `hidden`, `fullpage`, `affix`, `sort_no`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `deleted`, `color`) VALUES (51, 5, '新增', 'dept:new', 'button', '', NULL, NULL, '0', '0', '0', 99, '2022-10-15 11:37:40', NULL, '2022-10-15 11:38:54', NULL, 0, '');
-INSERT INTO `resource` (`id`, `parent_id`, `title`, `resource_key`, `type`, `path`, `component`, `icon`, `hidden`, `fullpage`, `affix`, `sort_no`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `deleted`, `color`) VALUES (55, 0, '未命名_39791', '未命名_39791', 'menu', '', NULL, NULL, '0', '0', '0', 99, '2022-11-13 01:40:40', NULL, NULL, NULL, 55, '');
+INSERT INTO `resource` (`id`, `parent_id`, `title`, `resource_key`, `type`, `path`, `component`, `icon`, `hidden`, `fullpage`, `affix`, `sort_no`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `deleted`, `color`) VALUES (57, 0, '帮助', 'help', 'menu', '', NULL, 'el-icon-question-filled', '0', '0', '0', 99, '2024-01-28 02:54:36', NULL, '2024-01-28 02:59:37', NULL, 0, '');
+INSERT INTO `resource` (`id`, `parent_id`, `title`, `resource_key`, `type`, `path`, `component`, `icon`, `hidden`, `fullpage`, `affix`, `sort_no`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `deleted`, `color`) VALUES (58, 57, '文档教程', 'doc', 'link', 'https://pulanos.gitee.io/pangu-framework', NULL, 'el-icon-collection', '0', '0', '0', 1, '2024-01-28 02:55:58', NULL, '2024-01-28 03:14:06', NULL, 0, '#FF8C00');
+INSERT INTO `resource` (`id`, `parent_id`, `title`, `resource_key`, `type`, `path`, `component`, `icon`, `hidden`, `fullpage`, `affix`, `sort_no`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `deleted`, `color`) VALUES (60, 57, '视频教程', 'video', 'link', 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2112816', NULL, 'el-icon-film', '0', '0', '0', 2, '2024-01-28 03:04:22', NULL, '2024-01-28 03:14:15', NULL, 0, '#409EFF');
 COMMIT;
 
 -- ----------------------------
@@ -182,7 +185,7 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT ' 流水号',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT ' 流水号',
   `name` varchar(50) NOT NULL COMMENT '角色名称',
   `role_key` varchar(50) NOT NULL COMMENT '角色标识',
   `status` varchar(4) NOT NULL COMMENT '状态',
@@ -193,10 +196,10 @@ CREATE TABLE `role` (
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
   `modified_by` varchar(25) DEFAULT NULL COMMENT '修改人',
   `remark` varchar(250) DEFAULT NULL COMMENT '备注',
-  `deleted` bigint(20) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
+  `deleted` bigint NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `UKEY-1` (`role_key`,`deleted`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COMMENT='角色表';
+  UNIQUE KEY `UKEY-1` (`role_key`,`deleted`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色表';
 
 -- ----------------------------
 -- Records of role
@@ -215,7 +218,7 @@ INSERT INTO `role` (`id`, `name`, `role_key`, `status`, `type`, `biz_code`, `gmt
 INSERT INTO `role` (`id`, `name`, `role_key`, `status`, `type`, `biz_code`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`) VALUES (25, '测试8', 'T8', '1', '1', '', '2022-09-10 23:07:54', NULL, NULL, NULL, '', 0);
 INSERT INTO `role` (`id`, `name`, `role_key`, `status`, `type`, `biz_code`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`) VALUES (26, '测试9', 'T9', '1', '1', '', '2022-09-10 23:08:03', NULL, '2022-10-15 21:11:42', NULL, '', 0);
 INSERT INTO `role` (`id`, `name`, `role_key`, `status`, `type`, `biz_code`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`) VALUES (27, '测试10', 'T10', '1', '1', '', '2022-09-10 23:08:11', NULL, '2022-11-21 12:26:47', NULL, '', 0);
-INSERT INTO `role` (`id`, `name`, `role_key`, `status`, `type`, `biz_code`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`) VALUES (28, '开发角色', 'dev', '1', '1', '', '2022-09-10 23:08:23', NULL, '2022-11-15 16:00:38', NULL, '', 0);
+INSERT INTO `role` (`id`, `name`, `role_key`, `status`, `type`, `biz_code`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`) VALUES (28, '开发角色', 'dev', '1', '1', '', '2022-09-10 23:08:23', NULL, '2023-11-26 12:52:44', NULL, '', 0);
 INSERT INTO `role` (`id`, `name`, `role_key`, `status`, `type`, `biz_code`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`) VALUES (29, '管理员角色', 'super', '1', '1', '', '2022-10-21 16:59:32', NULL, '2022-11-21 20:24:13', NULL, '', 0);
 COMMIT;
 
@@ -224,15 +227,15 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `role_resource`;
 CREATE TABLE `role_resource` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '流水号',
-  `role_id` bigint(20) NOT NULL COMMENT '角色ID',
-  `resource_id` bigint(20) NOT NULL COMMENT '资源ID',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '流水号',
+  `role_id` bigint NOT NULL COMMENT '角色ID',
+  `resource_id` bigint NOT NULL COMMENT '资源ID',
   `gmt_created` datetime NOT NULL COMMENT '创建时间',
   `created_by` varchar(25) DEFAULT NULL COMMENT '创建人',
-  `deleted` bigint(20) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
+  `deleted` bigint NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `UKEY-1` (`role_id`,`resource_id`,`deleted`)
-) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=utf8mb4 COMMENT='角色-资源表';
+  UNIQUE KEY `UKEY-1` (`role_id`,`resource_id`,`deleted`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=279 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色-资源表';
 
 -- ----------------------------
 -- Records of role_resource
@@ -422,13 +425,13 @@ INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `cre
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (182, 27, 3, '2022-10-20 00:52:12', NULL, 182);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (183, 27, 8, '2022-10-20 00:52:12', NULL, 183);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (184, 27, 4, '2022-10-20 00:52:12', NULL, 184);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (185, 28, 1, '2022-10-20 01:06:32', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (186, 28, 2, '2022-10-20 01:06:32', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (187, 28, 3, '2022-10-20 01:06:32', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (188, 28, 5, '2022-10-20 01:06:32', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (189, 28, 51, '2022-10-20 01:06:32', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (190, 28, 8, '2022-10-20 01:06:32', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (191, 28, 4, '2022-10-20 01:06:32', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (185, 28, 1, '2022-10-20 01:06:32', NULL, 185);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (186, 28, 2, '2022-10-20 01:06:32', NULL, 186);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (187, 28, 3, '2022-10-20 01:06:32', NULL, 187);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (188, 28, 5, '2022-10-20 01:06:32', NULL, 188);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (189, 28, 51, '2022-10-20 01:06:32', NULL, 189);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (190, 28, 8, '2022-10-20 01:06:32', NULL, 190);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (191, 28, 4, '2022-10-20 01:06:32', NULL, 191);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (192, 29, 1, '2022-10-21 16:59:51', NULL, 192);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (193, 29, 2, '2022-10-21 16:59:51', NULL, 193);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (194, 29, 3, '2022-10-21 16:59:51', NULL, 194);
@@ -459,21 +462,63 @@ INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `cre
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (219, 29, 2, '2022-11-11 14:04:46', NULL, 219);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (220, 29, 2, '2022-11-21 16:47:46', NULL, 220);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (221, 29, 2, '2022-11-21 16:48:19', NULL, 221);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (222, 29, 1, '2022-11-21 16:49:20', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (223, 29, 2, '2022-11-21 16:49:20', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (224, 29, 3, '2022-11-21 16:49:20', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (225, 29, 4, '2022-11-21 16:49:20', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (226, 29, 5, '2022-11-21 16:49:20', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (227, 29, 51, '2022-11-21 16:49:20', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (228, 29, 6, '2022-11-21 16:49:20', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (229, 29, 7, '2022-11-21 16:49:20', NULL, 0);
-INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (230, 29, 8, '2022-11-21 16:49:20', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (222, 29, 1, '2022-11-21 16:49:20', NULL, 222);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (223, 29, 2, '2022-11-21 16:49:20', NULL, 223);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (224, 29, 3, '2022-11-21 16:49:20', NULL, 224);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (225, 29, 4, '2022-11-21 16:49:20', NULL, 225);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (226, 29, 5, '2022-11-21 16:49:20', NULL, 226);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (227, 29, 51, '2022-11-21 16:49:20', NULL, 227);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (228, 29, 6, '2022-11-21 16:49:20', NULL, 228);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (229, 29, 7, '2022-11-21 16:49:20', NULL, 229);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (230, 29, 8, '2022-11-21 16:49:20', NULL, 230);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (231, 27, 1, '2022-11-28 16:39:19', NULL, 0);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (232, 27, 2, '2022-11-28 16:39:19', NULL, 0);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (233, 27, 3, '2022-11-28 16:39:19', NULL, 0);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (234, 27, 7, '2022-11-28 16:39:19', NULL, 0);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (235, 27, 8, '2022-11-28 16:39:19', NULL, 0);
 INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (236, 27, 4, '2022-11-28 16:39:19', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (237, 29, 1, '2024-01-28 02:57:17', NULL, 237);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (238, 29, 2, '2024-01-28 02:57:17', NULL, 238);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (239, 29, 3, '2024-01-28 02:57:17', NULL, 239);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (240, 29, 4, '2024-01-28 02:57:17', NULL, 240);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (241, 29, 5, '2024-01-28 02:57:17', NULL, 241);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (242, 29, 51, '2024-01-28 02:57:17', NULL, 242);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (243, 29, 6, '2024-01-28 02:57:17', NULL, 243);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (244, 29, 7, '2024-01-28 02:57:17', NULL, 244);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (245, 29, 8, '2024-01-28 02:57:17', NULL, 245);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (246, 29, 57, '2024-01-28 02:57:17', NULL, 246);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (247, 29, 58, '2024-01-28 02:57:17', NULL, 247);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (248, 28, 1, '2024-01-28 02:57:30', NULL, 248);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (249, 28, 2, '2024-01-28 02:57:30', NULL, 249);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (250, 28, 3, '2024-01-28 02:57:30', NULL, 250);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (251, 28, 5, '2024-01-28 02:57:30', NULL, 251);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (252, 28, 51, '2024-01-28 02:57:30', NULL, 252);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (253, 28, 8, '2024-01-28 02:57:30', NULL, 253);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (254, 28, 57, '2024-01-28 02:57:30', NULL, 254);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (255, 28, 58, '2024-01-28 02:57:30', NULL, 255);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (256, 28, 4, '2024-01-28 02:57:30', NULL, 256);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (257, 29, 1, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (258, 29, 2, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (259, 29, 3, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (260, 29, 4, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (261, 29, 5, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (262, 29, 51, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (263, 29, 6, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (264, 29, 7, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (265, 29, 8, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (266, 29, 57, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (267, 29, 58, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (268, 29, 60, '2024-01-28 03:06:10', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (269, 28, 1, '2024-01-28 03:06:19', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (270, 28, 2, '2024-01-28 03:06:19', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (271, 28, 3, '2024-01-28 03:06:19', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (272, 28, 5, '2024-01-28 03:06:19', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (273, 28, 51, '2024-01-28 03:06:19', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (274, 28, 8, '2024-01-28 03:06:19', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (275, 28, 57, '2024-01-28 03:06:19', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (276, 28, 58, '2024-01-28 03:06:19', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (277, 28, 60, '2024-01-28 03:06:19', NULL, 0);
+INSERT INTO `role_resource` (`id`, `role_id`, `resource_id`, `gmt_created`, `created_by`, `deleted`) VALUES (278, 28, 4, '2024-01-28 03:06:19', NULL, 0);
 COMMIT;
 
 -- ----------------------------
@@ -481,7 +526,7 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '流水号',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '流水号',
   `user_name` varchar(50) NOT NULL COMMENT '登录帐号',
   `password` varchar(64) NOT NULL COMMENT '帐号密码',
   `name` varchar(50) NOT NULL COMMENT '姓名',
@@ -489,7 +534,7 @@ CREATE TABLE `user` (
   `sex` varchar(2) NOT NULL DEFAULT '0' COMMENT '性别',
   `status` varchar(2) NOT NULL COMMENT '用户状态',
   `type` varchar(2) NOT NULL COMMENT '用户类型',
-  `dept_id` bigint(20) NOT NULL COMMENT '所属部门',
+  `dept_id` bigint NOT NULL COMMENT '所属部门',
   `biz_code` varchar(50) DEFAULT NULL COMMENT '业务扩展码',
   `avatar` varchar(100) DEFAULT NULL COMMENT '头像URL',
   `gmt_created` datetime NOT NULL COMMENT '创建时间',
@@ -497,25 +542,25 @@ CREATE TABLE `user` (
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
   `modified_by` varchar(25) DEFAULT NULL COMMENT '修改人',
   `remark` varchar(250) DEFAULT NULL COMMENT '备注',
-  `deleted` bigint(20) NOT NULL DEFAULT '0' COMMENT '逻辑删除标识',
+  `deleted` bigint NOT NULL DEFAULT '0' COMMENT '逻辑删除标识',
   `mobile_number` varchar(20) DEFAULT NULL COMMENT '绑定手机',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `UKEY-1` (`user_name`,`deleted`),
-  UNIQUE KEY `UKEY-2` (`mail`,`deleted`),
-  UNIQUE KEY `UKEY-3` (`mobile_number`,`deleted`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
+  UNIQUE KEY `UKEY-1` (`user_name`,`deleted`) USING BTREE,
+  UNIQUE KEY `UKEY-2` (`mail`,`deleted`) USING BTREE,
+  UNIQUE KEY `UKEY-3` (`mobile_number`,`deleted`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` (`id`, `user_name`, `password`, `name`, `mail`, `sex`, `status`, `type`, `dept_id`, `biz_code`, `avatar`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`, `mobile_number`) VALUES (1, 'admin', 'cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac', '管理员', NULL, '1', '1', '1', 28, '', 'avatar/avatar7.jpg', '2022-10-21 16:58:58', NULL, '2022-11-30 16:13:06', NULL, '测试一下', 0, '18616786111');
+INSERT INTO `user` (`id`, `user_name`, `password`, `name`, `mail`, `sex`, `status`, `type`, `dept_id`, `biz_code`, `avatar`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`, `mobile_number`) VALUES (1, 'admin', 'cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac', '管理员', NULL, '1', '1', '1', 28, '', 'avatar/avatar7.jpg', '2022-10-21 16:58:58', NULL, '2023-11-26 12:54:44', NULL, '测试一下', 0, '18616786111');
 INSERT INTO `user` (`id`, `user_name`, `password`, `name`, `mail`, `sex`, `status`, `type`, `dept_id`, `biz_code`, `avatar`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`, `mobile_number`) VALUES (2, 'xiongda', 'cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac', '熊大', NULL, '0', '1', '1', 7, '1', 'avatar/avatar2.jpg', '2022-09-15 12:57:11', NULL, '2022-11-23 17:18:17', NULL, '2', 2, '18616786122');
 INSERT INTO `user` (`id`, `user_name`, `password`, `name`, `mail`, `sex`, `status`, `type`, `dept_id`, `biz_code`, `avatar`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`, `mobile_number`) VALUES (3, 'xiongchun3', 'cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac', '章子怡', NULL, '0', '1', '1', 41, '1', 'avatar/avatar5.jpg', '2022-09-17 11:34:01', NULL, NULL, NULL, '2', 3, '18616786133');
 INSERT INTO `user` (`id`, `user_name`, `password`, `name`, `mail`, `sex`, `status`, `type`, `dept_id`, `biz_code`, `avatar`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`, `mobile_number`) VALUES (4, 'xiongchun4', 'cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac', '古天乐', NULL, '0', '1', '1', 5, '', 'avatar/avatar4.jpg', '2022-09-17 11:46:00', NULL, '2022-09-26 20:45:44', NULL, '', 0, '18616786144');
 INSERT INTO `user` (`id`, `user_name`, `password`, `name`, `mail`, `sex`, `status`, `type`, `dept_id`, `biz_code`, `avatar`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`, `mobile_number`) VALUES (5, 'xiongchun5', 'cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac', '张曼玉', NULL, '0', '1', '1', 9, '', 'avatar/avatar2.jpg', '2022-09-18 10:51:43', NULL, '2022-11-25 15:02:11', NULL, '这是一个临时的测试账号', 0, '18616786155');
 INSERT INTO `user` (`id`, `user_name`, `password`, `name`, `mail`, `sex`, `status`, `type`, `dept_id`, `biz_code`, `avatar`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`, `mobile_number`) VALUES (6, 'huangyu', 'cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac', '大傻吊', NULL, '0', '1', '1', 14, '', 'avatar/avatar3.jpg', '2022-09-21 12:25:41', NULL, '2022-11-23 17:29:03', NULL, '', 0, '18616786166');
-INSERT INTO `user` (`id`, `user_name`, `password`, `name`, `mail`, `sex`, `status`, `type`, `dept_id`, `biz_code`, `avatar`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`, `mobile_number`) VALUES (7, 'xiongchun', 'd41d8cd98f00b204e9800998ecf8427e', 'xc', NULL, '0', '1', '1', 7, '1', 'avatar/avatar7.jpg', '2022-09-15 12:45:20', NULL, '2022-11-22 16:50:48', NULL, 'c', 0, '18616786199');
+INSERT INTO `user` (`id`, `user_name`, `password`, `name`, `mail`, `sex`, `status`, `type`, `dept_id`, `biz_code`, `avatar`, `gmt_created`, `created_by`, `gmt_modified`, `modified_by`, `remark`, `deleted`, `mobile_number`) VALUES (7, 'xiongchun', 'd41d8cd98f00b204e9800998ecf8427e', 'xc', NULL, '0', '1', '1', 7, '1', 'avatar/avatar7.jpg', '2022-09-15 12:45:20', NULL, '2023-11-25 19:08:46', NULL, 'c', 0, '18616786199');
 COMMIT;
 
 -- ----------------------------
@@ -523,15 +568,15 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '流水号',
-  `user_id` bigint(20) NOT NULL COMMENT '用户ID',
-  `role_id` bigint(20) NOT NULL COMMENT '角色ID',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '流水号',
+  `user_id` bigint NOT NULL COMMENT '用户ID',
+  `role_id` bigint NOT NULL COMMENT '角色ID',
   `gmt_created` datetime NOT NULL COMMENT '创建时间',
   `created_by` varchar(25) DEFAULT NULL COMMENT '创建人',
-  `deleted` bigint(20) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
+  `deleted` bigint NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `UKEY-1` (`user_id`,`role_id`,`deleted`)
-) ENGINE=InnoDB AUTO_INCREMENT=186 DEFAULT CHARSET=utf8mb4 COMMENT='用户-角色表';
+  UNIQUE KEY `UKEY-1` (`user_id`,`role_id`,`deleted`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=186 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户-角色表';
 
 -- ----------------------------
 -- Records of user_role

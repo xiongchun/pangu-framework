@@ -27,7 +27,7 @@
 				</el-cascader>
 			</el-form-item>
 			<el-form-item label="路由地址" prop="path" v-if="this.form.type !== 'button'">
-				<el-input v-model="form.path" placeholder="请输入路由地址" maxlength="50" show-word-limit clearable>
+				<el-input v-model="form.path" placeholder="请输入路由地址" maxlength="200" show-word-limit clearable>
 				</el-input>
 			</el-form-item>
 			<el-form-item label="视图组件" prop="component" v-if="this.form.type == 'menu'">
