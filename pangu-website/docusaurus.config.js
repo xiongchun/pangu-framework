@@ -158,11 +158,11 @@ const config = {
 					label: '致敬',
 					position: 'left'
 				},
-				/* {
-					href: '/community',
-					label: '社区',
+				 {
+					to: 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2112816',
+					label: '视频教程',
 					position: 'left',
-				}, */
+				}, 
 				 {
 					to: 'https://xiong-chun.gitee.io/home',
 					label: '作者博客',
@@ -213,14 +213,11 @@ const config = {
 				},
 				{
 					title: '更多',
-					items: [{
-						label: '致敬',
-						to: '/thanks',
-					},
-					/*  {
-						label: '博客',
-						to: 'https://xiongchun.pulanit.com/blog/tags/%E7%9B%98%E5%8F%A4%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6',
-					}, */
+					items: [
+					  {
+						label: '视频教程',
+						to: 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2112816',
+					}, 
 					/* {
 						label: 'Apache Software Foundation',
 						href: 'https://www.apache.org/',
