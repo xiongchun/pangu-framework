@@ -27,6 +27,4 @@ Disallow:
 User-agent: *
 Disallow: 
 Crawl-delay: 60
-Sitemap: https://pangu.pulanit.com/sitemap.xml
 Sitemap: https://pulanos.gitee.io/pangu-framework/sitemap.xml
-Sitemap: https://xiongchun.github.io/pangu-framework/sitemap.xml
