@@ -72,6 +72,10 @@
             <artifactId>dubbo-registry-nacos</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.pulanit.admin</groupId>
             <artifactId>pangu-admin-system-api</artifactId>
             <version>${project.version}</version>
