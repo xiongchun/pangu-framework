@@ -215,7 +215,7 @@ const config = {
 					title: '更多',
 					items: [
 					  {
-						label: '视频教程',
+						label: '盘古视频教程',
 						to: 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2112816',
 					}, 
 					/* {

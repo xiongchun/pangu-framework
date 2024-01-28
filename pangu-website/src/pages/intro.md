@@ -89,6 +89,6 @@ export const Highlight = ({children, color}) => (
 
 ## 视频教程
 
-> **广告**：欢迎大家关注订阅我的 B 站频道，[程序员大熊哥](https://space.bilibili.com/1517598861)。
+> **广告**：欢迎订阅我的 B 站频道观看更多 [高清教程](https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2112816)。我的 ID: [程序员大熊哥](https://space.bilibili.com/1517598861)。
 
-<iframe src="//player.bilibili.com/player.html?aid=923342303&bvid=BV1CT4y1H7f4&cid=1393296852&p=1" scrolling="no" border="0" frameborder="yes" framespacing="0" allowfullscreen="true" width="100%" height="480"> </iframe>
+<iframe src="//www.bilibili.com/blackboard/html5mobileplayer.html?aid=923342303&bvid=BV1CT4y1H7f4&cid=1393296852&p=1" scrolling="no" border="0" frameborder="yes" framespacing="0" allowfullscreen="true" width="100%" height="477"> </iframe>
