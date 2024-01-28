@@ -74,7 +74,8 @@
 			},
 			getMods(){
 				//这里可用改为读取远程数据
-				this.myModsName = this.$TOOL.data.get("MY_QUICK_MENU") || []
+				var defaultMods = ["doc","video"];
+				this.myModsName = this.$TOOL.data.get("MY_QUICK_MENU") + defaultMods
 				var menuTree = this.$TOOL.data.get("MENU")
 				this.filterMenu(menuTree)
 				this.myMods = this.mods.filter(item => {
