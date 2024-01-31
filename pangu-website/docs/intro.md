@@ -55,6 +55,12 @@ slug: /intro
   - Hutool
   - FastJSON2
 
+## 视频教程
+
+> **广告**：欢迎订阅我的 B 站频道观看更多 [高清教程](https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2112816)。我的 ID: [程序员大熊哥](https://space.bilibili.com/1517598861)。
+
+<iframe src="//www.bilibili.com/blackboard/html5mobileplayer.html?aid=1250142618&bvid=BV1CJ4m1b7nc&cid=1424796961&p=1&highQuality" scrolling="no" border="0" frameborder="yes" framespacing="0" allowfullscreen="true" width="100%" height="464"> </iframe>
+
 ## 下一步
 
 继续阅读其它章节获取你想要的答案或通过我们的 [开发者社区](/community) 寻求更多帮助。
