@@ -86,9 +86,3 @@ export const Highlight = ({children, color}) => (
 ## 重要的事情说三遍
 
 盘古开发框架终身永久<Highlight color="#67C23A">免费开源</Highlight><Highlight color="#409EFF">免费开源</Highlight><Highlight color="#F56C6C">免费开源</Highlight>！ (请勿再咨询此问题)
-
-## 视频教程
-
-> **广告**：欢迎订阅我的 B 站频道观看更多 [高清教程](https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2112816)。我的 ID: [程序员大熊哥](https://space.bilibili.com/1517598861)。
-
-<iframe src="//www.bilibili.com/blackboard/html5mobileplayer.html?aid=923342303&bvid=BV1CT4y1H7f4&cid=1393296852&p=1" scrolling="no" border="0" frameborder="yes" framespacing="0" allowfullscreen="true" width="100%" height="477"> </iframe>

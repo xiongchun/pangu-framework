@@ -159,7 +159,7 @@ const config = {
 					position: 'left'
 				},
 				 {
-					to: 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2112816',
+					to: 'https://www.bilibili.com/cheese/play/ss12651?csource=private_space_class_null&spm_id_from=333.999.0.0',
 					label: '视频教程',
 					position: 'left',
 				}, 
@@ -235,7 +235,7 @@ const config = {
 				}
 				],
 				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
-<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://xiongchun.pulanit.com">程序员大熊</a> <a class="ghostwhite" href="https://beian.miit.gov.cn/" target="_blank">滇ICP备2022001611号-1</a><br><img src="https://pangu.pulanit.com/img/dashi.gif" />`,
+<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://xiongchun.pulanit.com">程序员大熊</a> <a class="ghostwhite" href="https://beian.miit.gov.cn/" target="_blank">滇ICP备2022001611号-1</a><br><img src="https://pulanos.gitee.io/pangu-framework/img/dashi.gif" />`,
 			},
 			prism: {
 				theme: lightCodeTheme,
