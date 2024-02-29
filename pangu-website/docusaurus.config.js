@@ -159,7 +159,7 @@ const config = {
 					position: 'left'
 				},
 				 {
-					to: 'https://www.bilibili.com/cheese/play/ss12651?csource=private_space_class_null&spm_id_from=333.999.0.0',
+					to: 'https://space.bilibili.com/1517598861/channel/series',
 					label: '视频教程',
 					position: 'left',
 				}, 
