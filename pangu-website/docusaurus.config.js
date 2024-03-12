@@ -159,7 +159,7 @@ const config = {
 					position: 'left'
 				},
 				 {
-					to: 'https://space.bilibili.com/1517598861/channel/series',
+					to: 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2303894',
 					label: '视频教程',
 					position: 'left',
 				}, 
