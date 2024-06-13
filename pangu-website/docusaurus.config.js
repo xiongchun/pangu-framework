@@ -223,6 +223,10 @@ const config = {
 						href: 'https://www.apache.org/',
 					} */
 					{
+						to: 'https://xiongchun.pulanit.com',
+						label: '作者博客',
+					}, 
+					{
 						label: '盘古 Admin 在线体验',
 						to:'/online-demo'
 					},
