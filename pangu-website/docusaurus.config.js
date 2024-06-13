@@ -164,7 +164,7 @@ const config = {
 					position: 'left',
 				}, 
 				 {
-					to: 'https://xiong-chun.gitee.io/home',
+					to: 'https://xiongchun.pulanit.com',
 					label: '作者博客',
 					position: 'left'
 				}, 
@@ -199,15 +199,15 @@ const config = {
 				{
 					title: '源码',
 					items: [{
-						label: 'Gitee PanGu Framework',
+						label: 'GitHub Pangu Framework',
+						href: 'https://github.com/xiongchun/pangu-framework',
+					}, {
+						label: 'Gitee Pangu Framework',
 						href: 'https://gitee.com/pulanos/pangu-framework',
 					},
 					{
-						label: 'GitCode PanGu Framework',
+						label: 'GitCode Pangu Framework',
 						href: 'https://gitcode.net/pulanos/pangu-framework',
-					}, {
-						label: 'GitHub PanGu Framework',
-						href: 'https://github.com/xiongchun/pangu-framework',
 					}
 					],
 				},
@@ -216,7 +216,7 @@ const config = {
 					items: [
 					  {
 						label: '盘古视频教程',
-						to: 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2112816',
+						to: 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2303894',
 					}, 
 					/* {
 						label: 'Apache Software Foundation',
@@ -234,16 +234,16 @@ const config = {
 					],
 				}
 				],
-				copyright: `PanGu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
-<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://xiongchun.pulanit.com">程序员大熊</a> <a class="ghostwhite" href="https://beian.miit.gov.cn/" target="_blank">滇ICP备2022001611号-1</a><br><img src="https://pulanos.gitee.io/pangu-framework/img/dashi.gif" />`,
+				copyright: `Pangu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
+<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://pulanit.com">程序员老熊</a> <a class="ghostwhite" href="https://beian.miit.gov.cn/" target="_blank">滇ICP备2022001611号-1</a>`,
 			},
 			prism: {
 				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,
 			},
 			metadata: [
-				{ name: 'author', content: '码农大熊' },
-				{ name: 'keywords', content: '盘古开发框架 盘古通用权限系统 盘古开源中后台业务脚手架 pangu-admin 分布式微服务架构 垂直单体分层架构 码农大熊' },
+				{ name: 'author', content: '程序员老熊' },
+				{ name: 'keywords', content: '盘古开发框架 盘古通用权限系统 盘古开源中后台业务脚手架 pangu-admin 分布式微服务架构 垂直单体分层架构 程序员老熊' },
 				// 百度站点收录验证
 				{ name: 'baidu-site-verification', content: 'code-FsdXztrzOo' }
 			]
