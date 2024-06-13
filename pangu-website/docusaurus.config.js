@@ -169,14 +169,14 @@ const config = {
 					position: 'left'
 				}, 
 				{
-					href: 'https://gitee.com/pulanos/pangu-framework',
-					position: 'right',
-					className: 'header-gitee-link'
-				},
-				{
 					href: 'https://github.com/xiongchun/pangu-framework',
 					position: 'right',
 					className: 'header-github-link'
+				},
+				{
+					href: 'https://gitee.com/pulanos/pangu-framework',
+					position: 'right',
+					className: 'header-gitee-link'
 				}
 				]
 			},
