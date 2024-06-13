@@ -158,11 +158,11 @@ const config = {
 					label: '致敬',
 					position: 'left'
 				},
-				 {
-					to: 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2303894',
-					label: '视频教程',
-					position: 'left',
-				}, 
+				//  {
+				// 	to: 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2303894',
+				// 	label: '视频教程',
+				// 	position: 'left',
+				// }, 
 				 {
 					to: 'https://xiongchun.pulanit.com',
 					label: '作者博客',
@@ -214,10 +214,10 @@ const config = {
 				{
 					title: '更多',
 					items: [
-					  {
-						label: '盘古视频教程',
-						to: 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2303894',
-					}, 
+					//   {
+					// 	label: '盘古视频教程',
+					// 	to: 'https://space.bilibili.com/1517598861/channel/collectiondetail?sid=2303894',
+					// }, 
 					/* {
 						label: 'Apache Software Foundation',
 						href: 'https://www.apache.org/',
