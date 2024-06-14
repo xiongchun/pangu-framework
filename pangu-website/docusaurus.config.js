@@ -33,7 +33,7 @@ const config = {
 					path: 'docs',
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Please change this to your repo.
-					editUrl: 'https://gitee.com/pulanos/pangu-framework/tree/master/pangu-website/',
+					editUrl: 'https://gitee.com/xiong-chun/pangu-framework/tree/master/pangu-website/',
 					showLastUpdateAuthor: true,
 					showLastUpdateTime: false,
 					breadcrumbs: true,
@@ -174,7 +174,7 @@ const config = {
 					className: 'header-github-link'
 				},
 				{
-					href: 'https://gitee.com/pulanos/pangu-framework',
+					href: 'https://gitee.com/xiong-chun/pangu-framework',
 					position: 'right',
 					className: 'header-gitee-link'
 				}
@@ -203,7 +203,7 @@ const config = {
 						href: 'https://github.com/xiongchun/pangu-framework',
 					}, {
 						label: 'Gitee Pangu Framework',
-						href: 'https://gitee.com/pulanos/pangu-framework',
+						href: 'https://gitee.com/xiong-chun/pangu-framework',
 					},
 					{
 						label: 'GitCode Pangu Framework',
