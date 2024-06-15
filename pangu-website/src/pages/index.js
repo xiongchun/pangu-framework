@@ -22,7 +22,7 @@ function HomepageHeader() {
             </Link>
             <Link
               className={styles.xcbutton2}
-              to="https://gitee.com/pulanos/pangu-framework">
+              to="https://gitee.com/xiongchun/pangu-framework">
               获取代码
             </Link>
           </div>
