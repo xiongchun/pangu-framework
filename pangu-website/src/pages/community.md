@@ -9,7 +9,7 @@ hide_table_of_contents: false
 
 ## 开发者社区
 
-任何关于盘古框架的问题、想法或建议都可以通过 [**issues**](https://gitee.com/xiongchun/pangu-framework/issues?state=all) 提交。
+任何关于盘古框架的问题、想法或建议都可以通过 [**issues**](https://gitee.com/xiong-chun/pangu-framework/issues?state=all) 提交。
 
  ## 贡献者列表
 
