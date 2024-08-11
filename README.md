@@ -10,4 +10,4 @@
 [https://xiongchun.github.io/pangu-framework](https://xiongchun.github.io/pangu-framework)
 
 ### 作者博客
-[https://xiongchun.github.io/home](https://xiongchun.github.io/home)
+[https://xiongchun.github.io](https://xiongchun.github.io)
