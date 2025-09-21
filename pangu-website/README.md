@@ -21,4 +21,4 @@ This command starts a local development server and opens up a browser window. Mo
 $ npm run build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service. (note: it will copy builded files to ../docs for github autodeploy)
+This command generates static content into the `build` directory and can be served using any static contents hosting service.

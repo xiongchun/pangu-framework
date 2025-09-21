@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
 	title: '盘古开发框架开源项目官网:企业级数字化赋能开发基座',
 	tagline: '一套轻量稳健的企业级数字化赋能开发基座',
-	url: 'https://pangu.pulanit.com',
+	url: 'https://www.westcloud.app',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'throw',
 	favicon: 'img/favicon.ico',
@@ -18,7 +18,7 @@ const config = {
 	baseUrl: '/pangu-framework',
 	scripts: [
 		//https://pangu.pulanit.com/
-		{ src: 'https://hm.baidu.com/hm.js?abe6bd08ebb4621f70496f015defa76b', async: true },
+		{ src: 'https://hm.baidu.com/hm.js?2352cfeac77c35b98a91cfcb09eb8d67', async: true },
 	],
 	i18n: {
 		defaultLocale: "zh-Hans",
@@ -164,10 +164,15 @@ const config = {
 				// 	position: 'left',
 				// }, 
 				 {
-					to: 'https://xiongchun.pulanit.com',
+					to: 'https://xiongchun.github.io',
 					label: '作者博客',
 					position: 'left'
-				}, 
+				},
+				{
+					to: 'https://my.yecaoyun.com/aff.php?aff=6485',
+					label: '野草云（高性价比香港VPS服务器）',
+					position: 'left'
+				},
 				{
 					href: 'https://github.com/xiongchun/pangu-framework',
 					position: 'right',
@@ -223,23 +228,22 @@ const config = {
 						href: 'https://www.apache.org/',
 					} */
 					{
-						to: 'https://xiongchun.pulanit.com',
-						label: '作者博客',
-					}, 
-					{
 						label: '盘古 Admin 在线体验',
 						to:'/online-demo'
 					},
 					{
 						label: '盘古 App 在线体验',
 						to:'/online-demo-app'
+					},
+					{
+						to: 'https://my.yecaoyun.com/aff.php?aff=6485',
+						label: '野草云(高性价比香港VPS服务器)',
 					}
-
-					],
+],
 				}
 				],
 				copyright: `Pangu Dev Framework is Open Source and freely available under the <a target="_blank" class="ghostwhite" href="https://www.apache.org/licenses/LICENSE-2.0">Apache v2 License.</a> 
-<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://pulanit.com">程序员老熊</a> <a class="ghostwhite" href="https://beian.miit.gov.cn/" target="_blank">滇ICP备2022001611号-1</a>`,
+<br>Copyright © ${new Date().getFullYear()} <a target="_blank" class="ghostwhite" href="https://xiongchun.github.io">程序员老熊</a>`,
 			},
 			prism: {
 				theme: lightCodeTheme,
